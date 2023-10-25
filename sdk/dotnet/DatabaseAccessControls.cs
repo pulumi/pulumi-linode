@@ -11,47 +11,6 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Grant a Linode access to a database:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_instance = new Linode.Instance("my-instance", new()
-    ///     {
-    ///         Label = "myinstance",
-    ///         Region = "us-southeast",
-    ///         Type = "g6-nanode-1",
-    ///         Image = "linode/alpine3.14",
-    ///     });
-    /// 
-    ///     var my_db = new Linode.DatabaseMysql("my-db", new()
-    ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "mysql/8.0.30",
-    ///         Region = "us-southeast",
-    ///         Type = "g6-nanode-1",
-    ///     });
-    /// 
-    ///     var my_access = new Linode.DatabaseAccessControls("my-access", new()
-    ///     {
-    ///         DatabaseId = my_db.Id,
-    ///         DatabaseType = "mysql",
-    ///         AllowLists = new[]
-    ///         {
-    ///             my_instance.IpAddress,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databaseAccessControls:DatabaseAccessControls")]
     public partial class DatabaseAccessControls : global::Pulumi.CustomResource

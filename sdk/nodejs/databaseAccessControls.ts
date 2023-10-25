@@ -6,33 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.
- *
- * ## Example Usage
- *
- * Grant a Linode access to a database:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const my_instance = new linode.Instance("my-instance", {
- *     label: "myinstance",
- *     region: "us-southeast",
- *     type: "g6-nanode-1",
- *     image: "linode/alpine3.14",
- * });
- * const my_db = new linode.DatabaseMysql("my-db", {
- *     label: "mydatabase",
- *     engineId: "mysql/8.0.30",
- *     region: "us-southeast",
- *     type: "g6-nanode-1",
- * });
- * const my_access = new linode.DatabaseAccessControls("my-access", {
- *     databaseId: my_db.id,
- *     databaseType: "mysql",
- *     allowLists: [my_instance.ipAddress],
- * });
- * ```
  */
 export class DatabaseAccessControls extends pulumi.CustomResource {
     /**

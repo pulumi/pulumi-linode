@@ -111,30 +111,6 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
 
     Provides information about Linode MySQL Database Backups that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all backups for a MySQL database:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all_backups = linode.get_database_mysql_backups(database_id=12345)
-    ```
-
-    Get information about all automatic MySQL Database Backups:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    auto_backups = linode.get_database_mysql_backups(database_id=12345,
-        filters=[linode.GetDatabaseMysqlBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
-    ```
-
 
     :param int database_id: The ID of the database to retrieve backups for.
     :param bool latest: If true, only the latest backup will be returned.
@@ -173,30 +149,6 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
     > **NOTICE:** This data source has been deprecated in favor of `get_database_backups`.
 
     Provides information about Linode MySQL Database Backups that match a set of filters.
-
-    ## Example Usage
-
-    Get information about all backups for a MySQL database:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all_backups = linode.get_database_mysql_backups(database_id=12345)
-    ```
-
-    Get information about all automatic MySQL Database Backups:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    auto_backups = linode.get_database_mysql_backups(database_id=12345,
-        filters=[linode.GetDatabaseMysqlBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
-    ```
 
 
     :param int database_id: The ID of the database to retrieve backups for.

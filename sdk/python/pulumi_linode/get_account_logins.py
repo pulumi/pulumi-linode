@@ -70,26 +70,6 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
     """
     Provides information about Linode account logins that match a set of filters.
 
-    ## Example Usage
-
-    The following example shows how one might use this data source to access information about a Linode account login.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    filtered_account_logins = linode.get_account_logins(filters=[
-        linode.GetAccountLoginsFilterArgs(
-            name="restricted",
-            values=["true"],
-        ),
-        linode.GetAccountLoginsFilterArgs(
-            name="username",
-            values=["myUsername"],
-        ),
-    ])
-    pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
-    ```
     ## Filterable Fields
 
     * `ip`
@@ -117,26 +97,6 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     """
     Provides information about Linode account logins that match a set of filters.
 
-    ## Example Usage
-
-    The following example shows how one might use this data source to access information about a Linode account login.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    filtered_account_logins = linode.get_account_logins(filters=[
-        linode.GetAccountLoginsFilterArgs(
-            name="restricted",
-            values=["true"],
-        ),
-        linode.GetAccountLoginsFilterArgs(
-            name="username",
-            values=["myUsername"],
-        ),
-    ])
-    pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
-    ```
     ## Filterable Fields
 
     * `ip`

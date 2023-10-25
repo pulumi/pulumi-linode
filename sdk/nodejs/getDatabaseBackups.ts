@@ -8,36 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode Database Backups that match a set of filters.
- *
- * ## Example Usage
- *
- * Get information about all backups for a MySQL database:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all-backups = linode.getDatabaseBackups({
- *     databaseId: 12345,
- *     databaseType: "mysql",
- * });
- * ```
- *
- * Get information about all automatic PostgreSQL Database Backups:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const auto-backups = linode.getDatabaseBackups({
- *     databaseId: 12345,
- *     databaseType: "postgresql",
- *     filters: [{
- *         name: "type",
- *         values: ["auto"],
- *     }],
- * });
- * ```
  */
 export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseBackupsResult> {
 
@@ -101,36 +71,6 @@ export interface GetDatabaseBackupsResult {
 }
 /**
  * Provides information about Linode Database Backups that match a set of filters.
- *
- * ## Example Usage
- *
- * Get information about all backups for a MySQL database:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const all-backups = linode.getDatabaseBackups({
- *     databaseId: 12345,
- *     databaseType: "mysql",
- * });
- * ```
- *
- * Get information about all automatic PostgreSQL Database Backups:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const auto-backups = linode.getDatabaseBackups({
- *     databaseId: 12345,
- *     databaseType: "postgresql",
- *     filters: [{
- *         name: "type",
- *         values: ["auto"],
- *     }],
- * });
- * ```
  */
 export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseBackupsResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseBackups(a, opts))

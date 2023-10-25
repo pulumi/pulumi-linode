@@ -4,37 +4,15 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode account settings.
-//
-// ## Example Usage
-//
-// The following example shows how one might use this data source to access information about Linode account settings.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupAccountSettings(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAccountSettings(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAccountSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountSettingsResult
@@ -58,4 +36,69 @@ type LookupAccountSettingsResult struct {
 	NetworkHelper bool `pulumi:"networkHelper"`
 	// A string describing the status of this account’s Object Storage service enrollment.
 	ObjectStorage string `pulumi:"objectStorage"`
+}
+
+func LookupAccountSettingsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupAccountSettingsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupAccountSettingsResult, error) {
+		r, err := LookupAccountSettings(ctx, opts...)
+		var s LookupAccountSettingsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupAccountSettingsResultOutput)
+}
+
+// A collection of values returned by getAccountSettings.
+type LookupAccountSettingsResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountSettingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountSettingsResult)(nil)).Elem()
+}
+
+func (o LookupAccountSettingsResultOutput) ToLookupAccountSettingsResultOutput() LookupAccountSettingsResultOutput {
+	return o
+}
+
+func (o LookupAccountSettingsResultOutput) ToLookupAccountSettingsResultOutputWithContext(ctx context.Context) LookupAccountSettingsResultOutput {
+	return o
+}
+
+func (o LookupAccountSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountSettingsResult] {
+	return pulumix.Output[LookupAccountSettingsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Account-wide backups default.
+func (o LookupAccountSettingsResultOutput) BackupsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) bool { return v.BackupsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupAccountSettingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Longview Pro tier you are currently subscribed to.
+func (o LookupAccountSettingsResultOutput) LongviewSubscription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.LongviewSubscription }).(pulumi.StringOutput)
+}
+
+// Enables monitoring for connectivity, response, and total request time.
+func (o LookupAccountSettingsResultOutput) Managed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) bool { return v.Managed }).(pulumi.BoolOutput)
+}
+
+// Enables network helper across all users by default for new Linodes and Linode Configs.
+func (o LookupAccountSettingsResultOutput) NetworkHelper() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) bool { return v.NetworkHelper }).(pulumi.BoolOutput)
+}
+
+// A string describing the status of this account’s Object Storage service enrollment.
+func (o LookupAccountSettingsResultOutput) ObjectStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.ObjectStorage }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountSettingsResultOutput{})
 }

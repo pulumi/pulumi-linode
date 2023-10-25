@@ -16,30 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fooToken = new Linode.Token("fooToken", new()
-    ///     {
-    ///         Expiry = "2100-01-02T03:04:05Z",
-    ///         Label = "token",
-    ///         Scopes = "linodes:read_only",
-    ///     });
-    /// 
-    ///     var fooInstance = new Linode.Instance("fooInstance");
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Linodes Tokens can be imported using the Linode Token `id`, e.g.

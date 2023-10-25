@@ -77,11 +77,11 @@ class ObjectStorageObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: pulumi.Input[str],
-             bucket: pulumi.Input[str],
-             cluster: pulumi.Input[str],
-             key: pulumi.Input[str],
-             secret_key: pulumi.Input[str],
+             access_key: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input[str]] = None,
              cache_control: Optional[pulumi.Input[str]] = None,
              content: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,39 @@ class ObjectStorageObjectArgs:
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              source: Optional[pulumi.Input[str]] = None,
              website_redirect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if cache_control is None and 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_language is None and 'contentLanguage' in kwargs:
+            content_language = kwargs['contentLanguage']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if website_redirect is None and 'websiteRedirect' in kwargs:
+            website_redirect = kwargs['websiteRedirect']
+
         _setter("access_key", access_key)
         _setter("bucket", bucket)
         _setter("cluster", cluster)
@@ -433,7 +465,31 @@ class _ObjectStorageObjectState:
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              website_redirect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if cache_control is None and 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_language is None and 'contentLanguage' in kwargs:
+            content_language = kwargs['contentLanguage']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if website_redirect is None and 'websiteRedirect' in kwargs:
+            website_redirect = kwargs['websiteRedirect']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if acl is not None:
@@ -730,22 +786,6 @@ class ObjectStorageObject(pulumi.CustomResource):
         Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
 
         ## Example Usage
-        ### Uploading plaintext to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        object = linode.ObjectStorageObject("object",
-            bucket="my-bucket",
-            cluster="us-east-1",
-            key="my-object",
-            secret_key=linode_object_storage_key["my_key"]["secret_key"],
-            access_key=linode_object_storage_key["my_key"]["access_key"],
-            content="This is the content of the Object...",
-            content_type="text/plain",
-            content_language="en")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -778,22 +818,6 @@ class ObjectStorageObject(pulumi.CustomResource):
         Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
 
         ## Example Usage
-        ### Uploading plaintext to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        object = linode.ObjectStorageObject("object",
-            bucket="my-bucket",
-            cluster="us-east-1",
-            key="my-object",
-            secret_key=linode_object_storage_key["my_key"]["secret_key"],
-            access_key=linode_object_storage_key["my_key"]["access_key"],
-            content="This is the content of the Object...",
-            content_type="text/plain",
-            content_language="en")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageObjectArgs args: The arguments to use to populate this resource's properties.

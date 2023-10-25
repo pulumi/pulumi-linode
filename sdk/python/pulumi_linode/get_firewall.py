@@ -197,15 +197,6 @@ def get_firewall(id: Optional[int] = None,
     """
     Provides details about a Linode Firewall.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_firewall = linode.get_firewall(id=123)
-    ```
-
 
     :param int id: The Firewall's ID.
     """
@@ -236,15 +227,6 @@ def get_firewall_output(id: Optional[pulumi.Input[int]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
     """
     Provides details about a Linode Firewall.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_firewall = linode.get_firewall(id=123)
-    ```
 
 
     :param int id: The Firewall's ID.

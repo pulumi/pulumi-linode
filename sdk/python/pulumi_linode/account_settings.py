@@ -35,7 +35,15 @@ class AccountSettingsArgs:
              backups_enabled: Optional[pulumi.Input[bool]] = None,
              longview_subscription: Optional[pulumi.Input[str]] = None,
              network_helper: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backups_enabled is None and 'backupsEnabled' in kwargs:
+            backups_enabled = kwargs['backupsEnabled']
+        if longview_subscription is None and 'longviewSubscription' in kwargs:
+            longview_subscription = kwargs['longviewSubscription']
+        if network_helper is None and 'networkHelper' in kwargs:
+            network_helper = kwargs['networkHelper']
+
         if backups_enabled is not None:
             _setter("backups_enabled", backups_enabled)
         if longview_subscription is not None:
@@ -112,7 +120,17 @@ class _AccountSettingsState:
              managed: Optional[pulumi.Input[bool]] = None,
              network_helper: Optional[pulumi.Input[bool]] = None,
              object_storage: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backups_enabled is None and 'backupsEnabled' in kwargs:
+            backups_enabled = kwargs['backupsEnabled']
+        if longview_subscription is None and 'longviewSubscription' in kwargs:
+            longview_subscription = kwargs['longviewSubscription']
+        if network_helper is None and 'networkHelper' in kwargs:
+            network_helper = kwargs['networkHelper']
+        if object_storage is None and 'objectStorage' in kwargs:
+            object_storage = kwargs['objectStorage']
+
         if backups_enabled is not None:
             _setter("backups_enabled", backups_enabled)
         if longview_subscription is not None:
@@ -197,18 +215,6 @@ class AccountSettings(pulumi.CustomResource):
         """
         Manages the settings of a Linode account.
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to change their Linode account settings.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        myaccount = linode.AccountSettings("myaccount",
-            backups_enabled=True,
-            longview_subscription="longview-40")
-        ```
         ## Additional Results
 
         * `managed` - Enables monitoring for connectivity, response, and total request time.
@@ -230,18 +236,6 @@ class AccountSettings(pulumi.CustomResource):
         """
         Manages the settings of a Linode account.
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to change their Linode account settings.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        myaccount = linode.AccountSettings("myaccount",
-            backups_enabled=True,
-            longview_subscription="longview-40")
-        ```
         ## Additional Results
 
         * `managed` - Enables monitoring for connectivity, response, and total request time.

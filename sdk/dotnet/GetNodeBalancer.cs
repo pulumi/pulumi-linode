@@ -13,56 +13,12 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about a Linode NodeBalancer.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_nodebalancer = Linode.GetNodeBalancer.Invoke(new()
-        ///     {
-        ///         Id = 123,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeBalancerResult> InvokeAsync(GetNodeBalancerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerResult>("linode:index/getNodeBalancer:getNodeBalancer", args ?? new GetNodeBalancerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a Linode NodeBalancer.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_nodebalancer = Linode.GetNodeBalancer.Invoke(new()
-        ///     {
-        ///         Id = 123,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeBalancerResult> Invoke(GetNodeBalancerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeBalancerResult>("linode:index/getNodeBalancer:getNodeBalancer", args ?? new GetNodeBalancerInvokeArgs(), options.WithDefaults());

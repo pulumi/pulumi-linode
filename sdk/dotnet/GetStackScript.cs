@@ -13,60 +13,12 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about a specific Linode StackScript.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use this data source to access information about a Linode StackScript.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
-        ///     {
-        ///         Id = "355872",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetStackScriptResult> InvokeAsync(GetStackScriptArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides details about a specific Linode StackScript.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use this data source to access information about a Linode StackScript.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
-        ///     {
-        ///         Id = "355872",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetStackScriptResult> Invoke(GetStackScriptInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());

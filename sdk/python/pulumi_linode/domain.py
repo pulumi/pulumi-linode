@@ -64,8 +64,8 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             type: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              expire_sec: Optional[pulumi.Input[int]] = None,
@@ -77,7 +77,27 @@ class DomainArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if axfr_ips is None and 'axfrIps' in kwargs:
+            axfr_ips = kwargs['axfrIps']
+        if expire_sec is None and 'expireSec' in kwargs:
+            expire_sec = kwargs['expireSec']
+        if master_ips is None and 'masterIps' in kwargs:
+            master_ips = kwargs['masterIps']
+        if refresh_sec is None and 'refreshSec' in kwargs:
+            refresh_sec = kwargs['refreshSec']
+        if retry_sec is None and 'retrySec' in kwargs:
+            retry_sec = kwargs['retrySec']
+        if soa_email is None and 'soaEmail' in kwargs:
+            soa_email = kwargs['soaEmail']
+        if ttl_sec is None and 'ttlSec' in kwargs:
+            ttl_sec = kwargs['ttlSec']
+
         _setter("domain", domain)
         _setter("type", type)
         if axfr_ips is not None:
@@ -328,7 +348,23 @@ class _DomainState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl_sec: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if axfr_ips is None and 'axfrIps' in kwargs:
+            axfr_ips = kwargs['axfrIps']
+        if expire_sec is None and 'expireSec' in kwargs:
+            expire_sec = kwargs['expireSec']
+        if master_ips is None and 'masterIps' in kwargs:
+            master_ips = kwargs['masterIps']
+        if refresh_sec is None and 'refreshSec' in kwargs:
+            refresh_sec = kwargs['refreshSec']
+        if retry_sec is None and 'retrySec' in kwargs:
+            retry_sec = kwargs['retrySec']
+        if soa_email is None and 'soaEmail' in kwargs:
+            soa_email = kwargs['soaEmail']
+        if ttl_sec is None and 'ttlSec' in kwargs:
+            ttl_sec = kwargs['ttlSec']
+
         if axfr_ips is not None:
             _setter("axfr_ips", axfr_ips)
         if description is not None:
@@ -538,29 +574,6 @@ class Domain(pulumi.CustomResource):
         Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar_domain = linode.Domain("foobarDomain",
-            type="master",
-            domain="foobar.example",
-            soa_email="example@foobar.example",
-            tags=[
-                "foo",
-                "bar",
-            ])
-        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
-            domain_id=foobar_domain.id,
-            name="www",
-            record_type="CNAME",
-            target="foobar.example")
-        ```
-
         ## Import
 
         Linodes Domains can be imported using the Linode Domain `id`, e.g.
@@ -596,29 +609,6 @@ class Domain(pulumi.CustomResource):
         """
         Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode's managed DNS service.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar_domain = linode.Domain("foobarDomain",
-            type="master",
-            domain="foobar.example",
-            soa_email="example@foobar.example",
-            tags=[
-                "foo",
-                "bar",
-            ])
-        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
-            domain_id=foobar_domain.id,
-            name="www",
-            record_type="CNAME",
-            target="foobar.example")
-        ```
 
         ## Import
 

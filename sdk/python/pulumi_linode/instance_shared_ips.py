@@ -29,9 +29,17 @@ class InstanceSharedIpsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             linode_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if linode_id is None:
+            raise TypeError("Missing 'linode_id' argument")
+
         _setter("addresses", addresses)
         _setter("linode_id", linode_id)
 
@@ -80,7 +88,11 @@ class _InstanceSharedIpsState:
              _setter: Callable[[Any, Any], None],
              addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              linode_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+
         if addresses is not None:
             _setter("addresses", addresses)
         if linode_id is not None:

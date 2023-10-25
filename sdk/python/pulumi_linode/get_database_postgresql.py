@@ -318,16 +318,6 @@ def get_database_postgresql(database_id: Optional[int] = None,
     """
     Provides information about a Linode PostgreSQL Database.
 
-    ## Example Usage
-
-    Get information about a PostgreSQL database:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_db = linode.get_database_postgresql(id=12345)
-    ```
     ## updates
 
     The following arguments are exported by the `updates` specification block:
@@ -386,16 +376,6 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[i
     """
     Provides information about a Linode PostgreSQL Database.
 
-    ## Example Usage
-
-    Get information about a PostgreSQL database:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_db = linode.get_database_postgresql(id=12345)
-    ```
     ## updates
 
     The following arguments are exported by the `updates` specification block:

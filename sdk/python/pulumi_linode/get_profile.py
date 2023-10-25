@@ -165,17 +165,6 @@ class AwaitableGetProfileResult(GetProfileResult):
 def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProfileResult:
     """
     Provides information about a Linode profile.
-
-    ## Example Usage
-
-    The following example shows how one might use this data source to access profile details.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    profile = linode.get_profile()
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -199,16 +188,5 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
 def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProfileResult]:
     """
     Provides information about a Linode profile.
-
-    ## Example Usage
-
-    The following example shows how one might use this data source to access profile details.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    profile = linode.get_profile()
-    ```
     """
     ...

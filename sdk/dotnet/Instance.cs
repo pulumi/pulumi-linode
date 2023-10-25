@@ -14,40 +14,6 @@ namespace Pulumi.Linode
     /// For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
     /// 
     /// ## Example Usage
-    /// ### Simple Linode Instance
-    /// 
-    /// The following example shows how one might use this resource to configure a Linode instance.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web = new Linode.Instance("web", new()
-    ///     {
-    ///         AuthorizedKeys = new[]
-    ///         {
-    ///             "ssh-rsa AAAA...Gw== user@example.local",
-    ///         },
-    ///         Group = "foo",
-    ///         Image = "linode/ubuntu18.04",
-    ///         Label = "simple_instance",
-    ///         PrivateIp = true,
-    ///         Region = "us-central",
-    ///         RootPass = "terr4form-test",
-    ///         SwapSize = 256,
-    ///         Tags = new[]
-    ///         {
-    ///             "foo",
-    ///         },
-    ///         Type = "g6-standard-1",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

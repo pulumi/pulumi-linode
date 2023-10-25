@@ -90,27 +90,6 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
 
-    ## Example Usage
-
-    The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
-
-    The following example shows how one might use this data source to access information about a Linode Kernel.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    filtered_ssh = linode.get_sshkeys(filters=[
-        linode.GetSshkeysFilterArgs(
-            name="label",
-            values=["my-ssh"],
-        ),
-        linode.GetSshkeysFilterArgs(
-            name="ssh_key",
-            values=["RSA-6522525"],
-        ),
-    ])
-    ```
     ## Filterable Fields
 
     * `id`
@@ -148,27 +127,6 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
 
-    ## Example Usage
-
-    The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
-
-    The following example shows how one might use this data source to access information about a Linode Kernel.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    filtered_ssh = linode.get_sshkeys(filters=[
-        linode.GetSshkeysFilterArgs(
-            name="label",
-            values=["my-ssh"],
-        ),
-        linode.GetSshkeysFilterArgs(
-            name="ssh_key",
-            values=["RSA-6522525"],
-        ),
-    ])
-    ```
     ## Filterable Fields
 
     * `id`

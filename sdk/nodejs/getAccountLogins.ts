@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode account logins that match a set of filters.
  *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode account login.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const filtered-account-logins = linode.getAccountLogins({
- *     filters: [
- *         {
- *             name: "restricted",
- *             values: ["true"],
- *         },
- *         {
- *             name: "username",
- *             values: ["myUsername"],
- *         },
- *     ],
- * });
- * export const loginIds = filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins.map(__item => __item.id));
- * ```
  * ## Filterable Fields
  *
  * * `ip`
@@ -71,28 +49,6 @@ export interface GetAccountLoginsResult {
 /**
  * Provides information about Linode account logins that match a set of filters.
  *
- * ## Example Usage
- *
- * The following example shows how one might use this data source to access information about a Linode account login.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const filtered-account-logins = linode.getAccountLogins({
- *     filters: [
- *         {
- *             name: "restricted",
- *             values: ["true"],
- *         },
- *         {
- *             name: "username",
- *             values: ["myUsername"],
- *         },
- *     ],
- * });
- * export const loginIds = filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins.map(__item => __item.id));
- * ```
  * ## Filterable Fields
  *
  * * `ip`

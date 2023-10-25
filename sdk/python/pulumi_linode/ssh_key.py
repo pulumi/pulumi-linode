@@ -29,9 +29,17 @@ class SshKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: pulumi.Input[str],
-             ssh_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             label: Optional[pulumi.Input[str]] = None,
+             ssh_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if ssh_key is None and 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if ssh_key is None:
+            raise TypeError("Missing 'ssh_key' argument")
+
         _setter("label", label)
         _setter("ssh_key", ssh_key)
 
@@ -84,7 +92,11 @@ class _SshKeyState:
              created: Optional[pulumi.Input[str]] = None,
              label: Optional[pulumi.Input[str]] = None,
              ssh_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ssh_key is None and 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+
         if created is not None:
             _setter("created", created)
         if label is not None:

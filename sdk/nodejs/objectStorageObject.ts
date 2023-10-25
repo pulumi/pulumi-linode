@@ -8,23 +8,6 @@ import * as utilities from "./utilities";
  * Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
  *
  * ## Example Usage
- * ### Uploading plaintext to a bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const object = new linode.ObjectStorageObject("object", {
- *     bucket: "my-bucket",
- *     cluster: "us-east-1",
- *     key: "my-object",
- *     secretKey: linode_object_storage_key.my_key.secret_key,
- *     accessKey: linode_object_storage_key.my_key.access_key,
- *     content: "This is the content of the Object...",
- *     contentType: "text/plain",
- *     contentLanguage: "en",
- * });
- * ```
  */
 export class ObjectStorageObject extends pulumi.CustomResource {
     /**

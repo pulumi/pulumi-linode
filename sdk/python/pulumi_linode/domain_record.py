@@ -58,9 +58,9 @@ class DomainRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_id: pulumi.Input[int],
-             record_type: pulumi.Input[str],
-             target: pulumi.Input[str],
+             domain_id: Optional[pulumi.Input[int]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              priority: Optional[pulumi.Input[int]] = None,
@@ -69,7 +69,21 @@ class DomainRecordArgs:
              tag: Optional[pulumi.Input[str]] = None,
              ttl_sec: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if domain_id is None:
+            raise TypeError("Missing 'domain_id' argument")
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if ttl_sec is None and 'ttlSec' in kwargs:
+            ttl_sec = kwargs['ttlSec']
+
         _setter("domain_id", domain_id)
         _setter("record_type", record_type)
         _setter("target", target)
@@ -283,7 +297,15 @@ class _DomainRecordState:
              target: Optional[pulumi.Input[str]] = None,
              ttl_sec: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if ttl_sec is None and 'ttlSec' in kwargs:
+            ttl_sec = kwargs['ttlSec']
+
         if domain_id is not None:
             _setter("domain_id", domain_id)
         if name is not None:
@@ -463,25 +485,6 @@ class DomainRecord(pulumi.CustomResource):
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar_domain = linode.Domain("foobarDomain",
-            type="master",
-            domain="foobar.example",
-            soa_email="example@foobar.example")
-        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
-            domain_id=foobar_domain.id,
-            name="www",
-            record_type="CNAME",
-            target="foobar.example")
-        ```
-
         ## Import
 
         Linodes Domain Records can be imported using the Linode Domain `id` followed by the Domain Record `id` separated by a comma, e.g.
@@ -515,25 +518,6 @@ class DomainRecord(pulumi.CustomResource):
         """
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
         For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar_domain = linode.Domain("foobarDomain",
-            type="master",
-            domain="foobar.example",
-            soa_email="example@foobar.example")
-        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
-            domain_id=foobar_domain.id,
-            name="www",
-            record_type="CNAME",
-            target="foobar.example")
-        ```
 
         ## Import
 

@@ -89,39 +89,6 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     """
     Provides information about Linode instances that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all Linode instances with a certain label and tag:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_instances = linode.get_instances(filters=[
-        linode.GetInstancesFilterArgs(
-            name="label",
-            values=[
-                "my-label",
-                "my-other-label",
-            ],
-        ),
-        linode.GetInstancesFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
-    ])
-    pulumi.export("instanceId", my_instances.instances[0].id)
-    ```
-
-    Get information about all Linode instances associated with the current token:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all_instances = linode.get_instances()
-    pulumi.export("instanceIds", [__item.id for __item in all_instances.instances])
-    ```
     ## Filterable Fields
 
     * `group`
@@ -169,39 +136,6 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     """
     Provides information about Linode instances that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all Linode instances with a certain label and tag:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_instances = linode.get_instances(filters=[
-        linode.GetInstancesFilterArgs(
-            name="label",
-            values=[
-                "my-label",
-                "my-other-label",
-            ],
-        ),
-        linode.GetInstancesFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
-    ])
-    pulumi.export("instanceId", my_instances.instances[0].id)
-    ```
-
-    Get information about all Linode instances associated with the current token:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all_instances = linode.get_instances()
-    pulumi.export("instanceIds", [__item.id for __item in all_instances.instances])
-    ```
     ## Filterable Fields
 
     * `group`

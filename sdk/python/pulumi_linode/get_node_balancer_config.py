@@ -243,16 +243,6 @@ def get_node_balancer_config(id: Optional[int] = None,
     """
     Provides details about a Linode NodeBalancer Config.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_config = linode.get_node_balancer_config(id=123,
-        nodebalancer_id=456)
-    ```
-
 
     :param int id: The config's ID.
     :param int nodebalancer_id: The ID of the NodeBalancer that contains the config.
@@ -290,16 +280,6 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
     """
     Provides details about a Linode NodeBalancer Config.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_config = linode.get_node_balancer_config(id=123,
-        nodebalancer_id=456)
-    ```
 
 
     :param int id: The config's ID.

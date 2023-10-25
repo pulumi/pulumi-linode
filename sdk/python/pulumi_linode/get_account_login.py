@@ -106,17 +106,6 @@ def get_account_login(id: Optional[int] = None,
     """
     Provides details about a specific Linode account login.
 
-    ## Example Usage
-
-    The following example shows how one might use this data source to access information about a Linode account login.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_account_login = linode.get_account_login(id=123456)
-    ```
-
 
     :param int id: The unique ID of this login object.
     """
@@ -139,17 +128,6 @@ def get_account_login_output(id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginResult]:
     """
     Provides details about a specific Linode account login.
-
-    ## Example Usage
-
-    The following example shows how one might use this data source to access information about a Linode account login.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_account_login = linode.get_account_login(id=123456)
-    ```
 
 
     :param int id: The unique ID of this login object.

@@ -100,17 +100,6 @@ def get_ipv6_range(range: Optional[str] = None,
     """
     Provides information about a Linode IPv6 Range.
 
-    ## Example Usage
-
-    Get information about an IPv6 range assigned to a Linode:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    range_info = linode.get_ipv6_range(range="2001:0db8::")
-    ```
-
 
     :param str range: The IPv6 range to retrieve information about.
     """
@@ -133,17 +122,6 @@ def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6RangeResult]:
     """
     Provides information about a Linode IPv6 Range.
-
-    ## Example Usage
-
-    Get information about an IPv6 range assigned to a Linode:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    range_info = linode.get_ipv6_range(range="2001:0db8::")
-    ```
 
 
     :param str range: The IPv6 range to retrieve information about.

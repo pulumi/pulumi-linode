@@ -9,29 +9,6 @@ import * as utilities from "./utilities";
 /**
  * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
  *
- * ## Example Usage
- *
- * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
- *
- * The following example shows how one might use this data source to access information about a Linode Kernel.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const filteredSsh = linode.getSshkeys({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-ssh"],
- *         },
- *         {
- *             name: "ssh_key",
- *             values: ["RSA-6522525"],
- *         },
- *     ],
- * });
- * ```
  * ## Filterable Fields
  *
  * * `id`
@@ -84,29 +61,6 @@ export interface GetSshkeysResult {
 /**
  * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
  *
- * ## Example Usage
- *
- * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
- *
- * The following example shows how one might use this data source to access information about a Linode Kernel.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const filteredSsh = linode.getSshkeys({
- *     filters: [
- *         {
- *             name: "label",
- *             values: ["my-ssh"],
- *         },
- *         {
- *             name: "ssh_key",
- *             values: ["RSA-6522525"],
- *         },
- *     ],
- * });
- * ```
  * ## Filterable Fields
  *
  * * `id`

@@ -14,38 +14,6 @@ import (
 
 // Provides information about Linode volumes that match a set of filters.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			filtered_volumes, err := linode.GetVolumes(ctx, &linode.GetVolumesArgs{
-//				Filters: []linode.GetVolumesFilter{
-//					{
-//						Name: "label",
-//						Values: []string{
-//							"test-volume",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("volumes", filtered_volumes.Volumes)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Filterable Fields
 //
 // * `label`

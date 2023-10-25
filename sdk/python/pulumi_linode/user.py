@@ -65,8 +65,8 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             username: pulumi.Input[str],
+             email: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]]] = None,
              firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]]] = None,
              global_grants: Optional[pulumi.Input['UserGlobalGrantsArgs']] = None,
@@ -77,7 +77,31 @@ class UserArgs:
              restricted: Optional[pulumi.Input[bool]] = None,
              stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
              volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if domain_grants is None and 'domainGrants' in kwargs:
+            domain_grants = kwargs['domainGrants']
+        if firewall_grants is None and 'firewallGrants' in kwargs:
+            firewall_grants = kwargs['firewallGrants']
+        if global_grants is None and 'globalGrants' in kwargs:
+            global_grants = kwargs['globalGrants']
+        if image_grants is None and 'imageGrants' in kwargs:
+            image_grants = kwargs['imageGrants']
+        if linode_grants is None and 'linodeGrants' in kwargs:
+            linode_grants = kwargs['linodeGrants']
+        if longview_grants is None and 'longviewGrants' in kwargs:
+            longview_grants = kwargs['longviewGrants']
+        if nodebalancer_grants is None and 'nodebalancerGrants' in kwargs:
+            nodebalancer_grants = kwargs['nodebalancerGrants']
+        if stackscript_grants is None and 'stackscriptGrants' in kwargs:
+            stackscript_grants = kwargs['stackscriptGrants']
+        if volume_grants is None and 'volumeGrants' in kwargs:
+            volume_grants = kwargs['volumeGrants']
+
         _setter("email", email)
         _setter("username", username)
         if domain_grants is not None:
@@ -322,7 +346,31 @@ class _UserState:
              tfa_enabled: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
              volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_grants is None and 'domainGrants' in kwargs:
+            domain_grants = kwargs['domainGrants']
+        if firewall_grants is None and 'firewallGrants' in kwargs:
+            firewall_grants = kwargs['firewallGrants']
+        if global_grants is None and 'globalGrants' in kwargs:
+            global_grants = kwargs['globalGrants']
+        if image_grants is None and 'imageGrants' in kwargs:
+            image_grants = kwargs['imageGrants']
+        if linode_grants is None and 'linodeGrants' in kwargs:
+            linode_grants = kwargs['linodeGrants']
+        if longview_grants is None and 'longviewGrants' in kwargs:
+            longview_grants = kwargs['longviewGrants']
+        if nodebalancer_grants is None and 'nodebalancerGrants' in kwargs:
+            nodebalancer_grants = kwargs['nodebalancerGrants']
+        if ssh_keys is None and 'sshKeys' in kwargs:
+            ssh_keys = kwargs['sshKeys']
+        if stackscript_grants is None and 'stackscriptGrants' in kwargs:
+            stackscript_grants = kwargs['stackscriptGrants']
+        if tfa_enabled is None and 'tfaEnabled' in kwargs:
+            tfa_enabled = kwargs['tfaEnabled']
+        if volume_grants is None and 'volumeGrants' in kwargs:
+            volume_grants = kwargs['volumeGrants']
+
         if domain_grants is not None:
             _setter("domain_grants", domain_grants)
         if email is not None:
@@ -546,38 +594,6 @@ class User(pulumi.CustomResource):
         """
         Manages a Linode User.
 
-        ## Example Usage
-
-        Create an unrestricted user:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        john = linode.User("john",
-            email="john@acme.io",
-            username="john123")
-        ```
-
-        Create a restricted user with grants:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        fooser = linode.User("fooser",
-            email="cool@acme.io",
-            global_grants=linode.UserGlobalGrantsArgs(
-                add_images=True,
-                add_linodes=True,
-            ),
-            linode_grants=[linode.UserLinodeGrantArgs(
-                id=12345,
-                permissions="read_write",
-            )],
-            restricted=True,
-            username="cooluser123")
-        ```
         ## Global Grants
 
         * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
@@ -636,38 +652,6 @@ class User(pulumi.CustomResource):
         """
         Manages a Linode User.
 
-        ## Example Usage
-
-        Create an unrestricted user:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        john = linode.User("john",
-            email="john@acme.io",
-            username="john123")
-        ```
-
-        Create a restricted user with grants:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        fooser = linode.User("fooser",
-            email="cool@acme.io",
-            global_grants=linode.UserGlobalGrantsArgs(
-                add_images=True,
-                add_linodes=True,
-            ),
-            linode_grants=[linode.UserLinodeGrantArgs(
-                id=12345,
-                permissions="read_write",
-            )],
-            restricted=True,
-            username="cooluser123")
-        ```
         ## Global Grants
 
         * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
@@ -743,11 +727,7 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
             __props__.__dict__["firewall_grants"] = firewall_grants
-            if global_grants is not None and not isinstance(global_grants, UserGlobalGrantsArgs):
-                global_grants = global_grants or {}
-                def _setter(key, value):
-                    global_grants[key] = value
-                UserGlobalGrantsArgs._configure(_setter, **global_grants)
+            global_grants = _utilities.configure(global_grants, UserGlobalGrantsArgs, True)
             __props__.__dict__["global_grants"] = global_grants
             __props__.__dict__["image_grants"] = image_grants
             __props__.__dict__["linode_grants"] = linode_grants

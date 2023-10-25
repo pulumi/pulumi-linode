@@ -120,32 +120,6 @@ def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabas
     """
     Provides information about Linode Database Backups that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all backups for a MySQL database:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all_backups = linode.get_database_backups(database_id=12345,
-        database_type="mysql")
-    ```
-
-    Get information about all automatic PostgreSQL Database Backups:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    auto_backups = linode.get_database_backups(database_id=12345,
-        database_type="postgresql",
-        filters=[linode.GetDatabaseBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
-    ```
-
 
     :param int database_id: The ID of the database to retrieve backups for.
     :param str database_type: The type of the database to retrieve backups for. (`mysql`, `postgresql`)
@@ -188,32 +162,6 @@ def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseBackupsResult]:
     """
     Provides information about Linode Database Backups that match a set of filters.
-
-    ## Example Usage
-
-    Get information about all backups for a MySQL database:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all_backups = linode.get_database_backups(database_id=12345,
-        database_type="mysql")
-    ```
-
-    Get information about all automatic PostgreSQL Database Backups:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    auto_backups = linode.get_database_backups(database_id=12345,
-        database_type="postgresql",
-        filters=[linode.GetDatabaseBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
-    ```
 
 
     :param int database_id: The ID of the database to retrieve backups for.

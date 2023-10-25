@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about an LKE Cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const my-cluster = linode.getLkeCluster({
- *     id: 123,
- * });
- * ```
  */
 export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClusterResult> {
 
@@ -83,17 +72,6 @@ export interface GetLkeClusterResult {
 }
 /**
  * Provides details about an LKE Cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const my-cluster = linode.getLkeCluster({
- *     id: 123,
- * });
- * ```
  */
 export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClusterResult> {
     return pulumi.output(args).apply((a: any) => getLkeCluster(a, opts))

@@ -56,16 +56,28 @@ class FirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             inbound_policy: pulumi.Input[str],
-             label: pulumi.Input[str],
-             outbound_policy: pulumi.Input[str],
+             inbound_policy: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             outbound_policy: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
              linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if inbound_policy is None and 'inboundPolicy' in kwargs:
+            inbound_policy = kwargs['inboundPolicy']
+        if inbound_policy is None:
+            raise TypeError("Missing 'inbound_policy' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if outbound_policy is None and 'outboundPolicy' in kwargs:
+            outbound_policy = kwargs['outboundPolicy']
+        if outbound_policy is None:
+            raise TypeError("Missing 'outbound_policy' argument")
+
         _setter("inbound_policy", inbound_policy)
         _setter("label", label)
         _setter("outbound_policy", outbound_policy)
@@ -263,7 +275,13 @@ class _FirewallState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if inbound_policy is None and 'inboundPolicy' in kwargs:
+            inbound_policy = kwargs['inboundPolicy']
+        if outbound_policy is None and 'outboundPolicy' in kwargs:
+            outbound_policy = kwargs['outboundPolicy']
+
         if created is not None:
             _setter("created", created)
         if devices is not None:
@@ -470,64 +488,6 @@ class Firewall(pulumi.CustomResource):
         """
         Manages a Linode Firewall.
 
-        ## Example Usage
-
-        Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("myInstance",
-            label="my_instance",
-            image="linode/ubuntu18.04",
-            region="us-southeast",
-            type="g6-standard-1",
-            root_pass="bogusPassword$",
-            swap_size=256)
-        my_firewall = linode.Firewall("myFirewall",
-            label="my_firewall",
-            inbounds=[
-                linode.FirewallInboundArgs(
-                    label="allow-http",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallInboundArgs(
-                    label="allow-https",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-            ],
-            inbound_policy="DROP",
-            outbounds=[
-                linode.FirewallOutboundArgs(
-                    label="reject-http",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallOutboundArgs(
-                    label="reject-https",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-            ],
-            outbound_policy="ACCEPT",
-            linodes=[my_instance.id])
-        ```
-
         ## Import
 
         Firewalls can be imported using the `id`, e.g.
@@ -560,64 +520,6 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linode Firewall.
-
-        ## Example Usage
-
-        Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = linode.Instance("myInstance",
-            label="my_instance",
-            image="linode/ubuntu18.04",
-            region="us-southeast",
-            type="g6-standard-1",
-            root_pass="bogusPassword$",
-            swap_size=256)
-        my_firewall = linode.Firewall("myFirewall",
-            label="my_firewall",
-            inbounds=[
-                linode.FirewallInboundArgs(
-                    label="allow-http",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallInboundArgs(
-                    label="allow-https",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-            ],
-            inbound_policy="DROP",
-            outbounds=[
-                linode.FirewallOutboundArgs(
-                    label="reject-http",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallOutboundArgs(
-                    label="reject-https",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-            ],
-            outbound_policy="ACCEPT",
-            linodes=[my_instance.id])
-        ```
 
         ## Import
 

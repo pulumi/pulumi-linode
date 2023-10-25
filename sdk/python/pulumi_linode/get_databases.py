@@ -90,31 +90,6 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
     """
     Provides information about Linode Managed Databases that match a set of filters.
 
-    ## Example Usage
-
-    Get information about all Linode Managed Databases:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all = linode.get_databases()
-    pulumi.export("databaseIds", [__item.id for __item in all.databases])
-    ```
-
-    Get information about all Linode MySQL Databases:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    mysql = linode.get_databases(filters=[linode.GetDatabasesFilterArgs(
-        name="engine",
-        values=["mysql"],
-    )])
-    pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
-    ```
-
 
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
@@ -143,31 +118,6 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
     """
     Provides information about Linode Managed Databases that match a set of filters.
-
-    ## Example Usage
-
-    Get information about all Linode Managed Databases:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    all = linode.get_databases()
-    pulumi.export("databaseIds", [__item.id for __item in all.databases])
-    ```
-
-    Get information about all Linode MySQL Databases:
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    mysql = linode.get_databases(filters=[linode.GetDatabasesFilterArgs(
-        name="engine",
-        values=["mysql"],
-    )])
-    pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
-    ```
 
 
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)

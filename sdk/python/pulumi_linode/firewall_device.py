@@ -32,10 +32,22 @@ class FirewallDeviceInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_id: pulumi.Input[int],
-             firewall_id: pulumi.Input[int],
+             entity_id: Optional[pulumi.Input[int]] = None,
+             firewall_id: Optional[pulumi.Input[int]] = None,
              entity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_id is None:
+            raise TypeError("Missing 'entity_id' argument")
+        if firewall_id is None and 'firewallId' in kwargs:
+            firewall_id = kwargs['firewallId']
+        if firewall_id is None:
+            raise TypeError("Missing 'firewall_id' argument")
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+
         _setter("entity_id", entity_id)
         _setter("firewall_id", firewall_id)
         if entity_type is not None:
@@ -110,7 +122,15 @@ class _FirewallDeviceState:
              entity_type: Optional[pulumi.Input[str]] = None,
              firewall_id: Optional[pulumi.Input[int]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if firewall_id is None and 'firewallId' in kwargs:
+            firewall_id = kwargs['firewallId']
+
         if created is not None:
             _setter("created", created)
         if entity_id is not None:
@@ -197,33 +217,6 @@ class FirewallDevice(pulumi.CustomResource):
 
         **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_firewall = linode.Firewall("myFirewall",
-            label="my_firewall",
-            inbounds=[linode.FirewallInboundArgs(
-                label="http",
-                action="ACCEPT",
-                protocol="TCP",
-                ports="80",
-                ipv4s=["0.0.0.0/0"],
-                ipv6s=["::/0"],
-            )],
-            inbound_policy="DROP",
-            outbound_policy="ACCEPT")
-        my_instance = linode.Instance("myInstance",
-            label="my_instance",
-            region="us-southeast",
-            type="g6-standard-1")
-        my_device = linode.FirewallDevice("myDevice",
-            firewall_id=my_firewall.id,
-            entity_id=my_instance.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] entity_id: The unique ID of the entity to attach.
@@ -240,33 +233,6 @@ class FirewallDevice(pulumi.CustomResource):
         Manages a Linode Firewall Device.
 
         **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_firewall = linode.Firewall("myFirewall",
-            label="my_firewall",
-            inbounds=[linode.FirewallInboundArgs(
-                label="http",
-                action="ACCEPT",
-                protocol="TCP",
-                ports="80",
-                ipv4s=["0.0.0.0/0"],
-                ipv6s=["::/0"],
-            )],
-            inbound_policy="DROP",
-            outbound_policy="ACCEPT")
-        my_instance = linode.Instance("myInstance",
-            label="my_instance",
-            region="us-southeast",
-            type="g6-standard-1")
-        my_device = linode.FirewallDevice("myDevice",
-            firewall_id=my_firewall.id,
-            entity_id=my_instance.id)
-        ```
 
         :param str resource_name: The name of the resource.
         :param FirewallDeviceInitArgs args: The arguments to use to populate this resource's properties.

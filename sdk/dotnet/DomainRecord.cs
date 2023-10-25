@@ -13,36 +13,6 @@ namespace Pulumi.Linode
     /// Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
     /// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobarDomain = new Linode.Domain("foobarDomain", new()
-    ///     {
-    ///         Type = "master",
-    ///         DomainName = "foobar.example",
-    ///         SoaEmail = "example@foobar.example",
-    ///     });
-    /// 
-    ///     var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new()
-    ///     {
-    ///         DomainId = foobarDomain.Id,
-    ///         Name = "www",
-    ///         RecordType = "CNAME",
-    ///         Target = "foobar.example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Linodes Domain Records can be imported using the Linode Domain `id` followed by the Domain Record `id` separated by a comma, e.g.

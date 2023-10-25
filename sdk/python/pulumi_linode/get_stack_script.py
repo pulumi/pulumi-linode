@@ -203,17 +203,6 @@ def get_stack_script(id: Optional[str] = None,
     """
     Provides details about a specific Linode StackScript.
 
-    ## Example Usage
-
-    The following example shows how one might use this data source to access information about a Linode StackScript.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_stackscript = linode.get_stack_script(id="355872")
-    ```
-
 
     :param str id: The unique numeric ID of the StackScript to query.
     """
@@ -244,17 +233,6 @@ def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptResult]:
     """
     Provides details about a specific Linode StackScript.
-
-    ## Example Usage
-
-    The following example shows how one might use this data source to access information about a Linode StackScript.
-
-    ```python
-    import pulumi
-    import pulumi_linode as linode
-
-    my_stackscript = linode.get_stack_script(id="355872")
-    ```
 
 
     :param str id: The unique numeric ID of the StackScript to query.

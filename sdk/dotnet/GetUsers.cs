@@ -14,35 +14,6 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode users that match a set of filters.
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var filtered_users = Linode.GetUsers.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new Linode.Inputs.GetUsersFilterInputArgs
-        ///             {
-        ///                 Name = "username",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "test-user",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["users"] = filtered_users.Apply(filtered_users =&gt; filtered_users.Apply(getUsersResult =&gt; getUsersResult.Users)),
-        ///     };
-        /// });
-        /// ```
         /// 
         /// ## Filterable Fields
         /// 
@@ -64,35 +35,6 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode users that match a set of filters.
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var filtered_users = Linode.GetUsers.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new Linode.Inputs.GetUsersFilterInputArgs
-        ///             {
-        ///                 Name = "username",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "test-user",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["users"] = filtered_users.Apply(filtered_users =&gt; filtered_users.Apply(getUsersResult =&gt; getUsersResult.Users)),
-        ///     };
-        /// });
-        /// ```
         /// 
         /// ## Filterable Fields
         /// 

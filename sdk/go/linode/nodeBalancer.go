@@ -15,39 +15,6 @@ import (
 // Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
 // For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancer).
 //
-// ## Example Usage
-//
-// The following example shows how one might use this resource to configure a NodeBalancer.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-//				ClientConnThrottle: pulumi.Int(20),
-//				Label:              pulumi.String("mynodebalancer"),
-//				Region:             pulumi.String("us-east"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foobar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.

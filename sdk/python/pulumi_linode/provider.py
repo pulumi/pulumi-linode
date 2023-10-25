@@ -81,7 +81,35 @@ class ProviderArgs:
              token: Optional[pulumi.Input[str]] = None,
              ua_prefix: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_version is None and 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if config_path is None and 'configPath' in kwargs:
+            config_path = kwargs['configPath']
+        if config_profile is None and 'configProfile' in kwargs:
+            config_profile = kwargs['configProfile']
+        if disable_internal_cache is None and 'disableInternalCache' in kwargs:
+            disable_internal_cache = kwargs['disableInternalCache']
+        if event_poll_ms is None and 'eventPollMs' in kwargs:
+            event_poll_ms = kwargs['eventPollMs']
+        if lke_event_poll_ms is None and 'lkeEventPollMs' in kwargs:
+            lke_event_poll_ms = kwargs['lkeEventPollMs']
+        if lke_node_ready_poll_ms is None and 'lkeNodeReadyPollMs' in kwargs:
+            lke_node_ready_poll_ms = kwargs['lkeNodeReadyPollMs']
+        if max_retry_delay_ms is None and 'maxRetryDelayMs' in kwargs:
+            max_retry_delay_ms = kwargs['maxRetryDelayMs']
+        if min_retry_delay_ms is None and 'minRetryDelayMs' in kwargs:
+            min_retry_delay_ms = kwargs['minRetryDelayMs']
+        if skip_implicit_reboots is None and 'skipImplicitReboots' in kwargs:
+            skip_implicit_reboots = kwargs['skipImplicitReboots']
+        if skip_instance_delete_poll is None and 'skipInstanceDeletePoll' in kwargs:
+            skip_instance_delete_poll = kwargs['skipInstanceDeletePoll']
+        if skip_instance_ready_poll is None and 'skipInstanceReadyPoll' in kwargs:
+            skip_instance_ready_poll = kwargs['skipInstanceReadyPoll']
+        if ua_prefix is None and 'uaPrefix' in kwargs:
+            ua_prefix = kwargs['uaPrefix']
+
         if api_version is None:
             api_version = _utilities.get_env('LINODE_API_VERSION')
         if api_version is not None:

@@ -14,46 +14,6 @@ import (
 
 // Provides information about Linode Kernels that match a set of filters.
 //
-// ## Example Usage
-//
-// The following example shows how one might use this data source to access information about a Linode Kernel.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetKernels(ctx, &linode.GetKernelsArgs{
-//				Filters: []linode.GetKernelsFilter{
-//					{
-//						Name: "label",
-//						Values: []string{
-//							"my-kernel",
-//						},
-//					},
-//					{
-//						Name: "architecture",
-//						Values: []string{
-//							"x86_64",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Filterable Fields
 //
 // * `id`

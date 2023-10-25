@@ -74,7 +74,7 @@ class NodeBalancerConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nodebalancer_id: pulumi.Input[int],
+             nodebalancer_id: Optional[pulumi.Input[int]] = None,
              algorithm: Optional[pulumi.Input[str]] = None,
              check: Optional[pulumi.Input[str]] = None,
              check_attempts: Optional[pulumi.Input[int]] = None,
@@ -90,7 +90,33 @@ class NodeBalancerConfigArgs:
              ssl_cert: Optional[pulumi.Input[str]] = None,
              ssl_key: Optional[pulumi.Input[str]] = None,
              stickiness: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if nodebalancer_id is None and 'nodebalancerId' in kwargs:
+            nodebalancer_id = kwargs['nodebalancerId']
+        if nodebalancer_id is None:
+            raise TypeError("Missing 'nodebalancer_id' argument")
+        if check_attempts is None and 'checkAttempts' in kwargs:
+            check_attempts = kwargs['checkAttempts']
+        if check_body is None and 'checkBody' in kwargs:
+            check_body = kwargs['checkBody']
+        if check_interval is None and 'checkInterval' in kwargs:
+            check_interval = kwargs['checkInterval']
+        if check_passive is None and 'checkPassive' in kwargs:
+            check_passive = kwargs['checkPassive']
+        if check_path is None and 'checkPath' in kwargs:
+            check_path = kwargs['checkPath']
+        if check_timeout is None and 'checkTimeout' in kwargs:
+            check_timeout = kwargs['checkTimeout']
+        if cipher_suite is None and 'cipherSuite' in kwargs:
+            cipher_suite = kwargs['cipherSuite']
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
+            proxy_protocol = kwargs['proxyProtocol']
+        if ssl_cert is None and 'sslCert' in kwargs:
+            ssl_cert = kwargs['sslCert']
+        if ssl_key is None and 'sslKey' in kwargs:
+            ssl_key = kwargs['sslKey']
+
         _setter("nodebalancer_id", nodebalancer_id)
         if algorithm is not None:
             _setter("algorithm", algorithm)
@@ -407,7 +433,37 @@ class _NodeBalancerConfigState:
              ssl_fingerprint: Optional[pulumi.Input[str]] = None,
              ssl_key: Optional[pulumi.Input[str]] = None,
              stickiness: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if check_attempts is None and 'checkAttempts' in kwargs:
+            check_attempts = kwargs['checkAttempts']
+        if check_body is None and 'checkBody' in kwargs:
+            check_body = kwargs['checkBody']
+        if check_interval is None and 'checkInterval' in kwargs:
+            check_interval = kwargs['checkInterval']
+        if check_passive is None and 'checkPassive' in kwargs:
+            check_passive = kwargs['checkPassive']
+        if check_path is None and 'checkPath' in kwargs:
+            check_path = kwargs['checkPath']
+        if check_timeout is None and 'checkTimeout' in kwargs:
+            check_timeout = kwargs['checkTimeout']
+        if cipher_suite is None and 'cipherSuite' in kwargs:
+            cipher_suite = kwargs['cipherSuite']
+        if node_statuses is None and 'nodeStatuses' in kwargs:
+            node_statuses = kwargs['nodeStatuses']
+        if nodebalancer_id is None and 'nodebalancerId' in kwargs:
+            nodebalancer_id = kwargs['nodebalancerId']
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
+            proxy_protocol = kwargs['proxyProtocol']
+        if ssl_cert is None and 'sslCert' in kwargs:
+            ssl_cert = kwargs['sslCert']
+        if ssl_commonname is None and 'sslCommonname' in kwargs:
+            ssl_commonname = kwargs['sslCommonname']
+        if ssl_fingerprint is None and 'sslFingerprint' in kwargs:
+            ssl_fingerprint = kwargs['sslFingerprint']
+        if ssl_key is None and 'sslKey' in kwargs:
+            ssl_key = kwargs['sslKey']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if check is not None:
@@ -704,30 +760,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
         Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.NodeBalancer("foobar",
-            label="mynodebalancer",
-            region="us-east",
-            client_conn_throttle=20)
-        foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
-            port=8088,
-            protocol="http",
-            check="http",
-            check_path="/foo",
-            check_attempts=3,
-            check_timeout=30,
-            stickiness="http_cookie",
-            algorithm="source")
-        ```
-
         ## Import
 
         NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
@@ -765,30 +797,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
         """
         Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
         For more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createNodeBalancerConfig).
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.NodeBalancer("foobar",
-            label="mynodebalancer",
-            region="us-east",
-            client_conn_throttle=20)
-        foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
-            port=8088,
-            protocol="http",
-            check="http",
-            check_path="/foo",
-            check_attempts=3,
-            check_timeout=30,
-            stickiness="http_cookie",
-            algorithm="source")
-        ```
 
         ## Import
 

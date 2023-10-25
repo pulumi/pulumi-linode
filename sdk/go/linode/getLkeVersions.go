@@ -4,37 +4,15 @@
 package linode
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
-//
-// ## Example Usage
-//
-// The following example shows how one might use this data source to access information about a Linode LKE Version.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetLkeVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLkeVersions(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLkeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLkeVersionsResult
@@ -50,4 +28,49 @@ type GetLkeVersionsResult struct {
 	// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 	Id       string                  `pulumi:"id"`
 	Versions []GetLkeVersionsVersion `pulumi:"versions"`
+}
+
+func GetLkeVersionsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLkeVersionsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetLkeVersionsResult, error) {
+		r, err := GetLkeVersions(ctx, opts...)
+		var s GetLkeVersionsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetLkeVersionsResultOutput)
+}
+
+// A collection of values returned by getLkeVersions.
+type GetLkeVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetLkeVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeVersionsResult)(nil)).Elem()
+}
+
+func (o GetLkeVersionsResultOutput) ToGetLkeVersionsResultOutput() GetLkeVersionsResultOutput {
+	return o
+}
+
+func (o GetLkeVersionsResultOutput) ToGetLkeVersionsResultOutputWithContext(ctx context.Context) GetLkeVersionsResultOutput {
+	return o
+}
+
+func (o GetLkeVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLkeVersionsResult] {
+	return pulumix.Output[GetLkeVersionsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+func (o GetLkeVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetLkeVersionsResultOutput) Versions() GetLkeVersionsVersionArrayOutput {
+	return o.ApplyT(func(v GetLkeVersionsResult) []GetLkeVersionsVersion { return v.Versions }).(GetLkeVersionsVersionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLkeVersionsResultOutput{})
 }

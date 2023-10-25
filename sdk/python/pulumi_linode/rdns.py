@@ -32,10 +32,18 @@ class RdnsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             rdns: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             rdns: Optional[pulumi.Input[str]] = None,
              wait_for_available: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if rdns is None:
+            raise TypeError("Missing 'rdns' argument")
+        if wait_for_available is None and 'waitForAvailable' in kwargs:
+            wait_for_available = kwargs['waitForAvailable']
+
         _setter("address", address)
         _setter("rdns", rdns)
         if wait_for_available is not None:
@@ -102,7 +110,11 @@ class _RdnsState:
              address: Optional[pulumi.Input[str]] = None,
              rdns: Optional[pulumi.Input[str]] = None,
              wait_for_available: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if wait_for_available is None and 'waitForAvailable' in kwargs:
+            wait_for_available = kwargs['waitForAvailable']
+
         if address is not None:
             _setter("address", address)
         if rdns is not None:
