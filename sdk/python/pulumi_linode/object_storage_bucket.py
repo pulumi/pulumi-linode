@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,61 +41,22 @@ class ObjectStorageBucketArgs:
                
                * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
-        ObjectStorageBucketArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster=cluster,
-            label=label,
-            access_key=access_key,
-            acl=acl,
-            cert=cert,
-            cors_enabled=cors_enabled,
-            lifecycle_rules=lifecycle_rules,
-            secret_key=secret_key,
-            versioning=versioning,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             access_key: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
-             cors_enabled: Optional[pulumi.Input[bool]] = None,
-             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
-             secret_key: Optional[pulumi.Input[str]] = None,
-             versioning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster is None:
-            raise TypeError("Missing 'cluster' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if cors_enabled is None and 'corsEnabled' in kwargs:
-            cors_enabled = kwargs['corsEnabled']
-        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
-            lifecycle_rules = kwargs['lifecycleRules']
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-
-        _setter("cluster", cluster)
-        _setter("label", label)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "label", label)
         if access_key is not None:
-            _setter("access_key", access_key)
+            pulumi.set(__self__, "access_key", access_key)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if cert is not None:
-            _setter("cert", cert)
+            pulumi.set(__self__, "cert", cert)
         if cors_enabled is not None:
-            _setter("cors_enabled", cors_enabled)
+            pulumi.set(__self__, "cors_enabled", cors_enabled)
         if lifecycle_rules is not None:
-            _setter("lifecycle_rules", lifecycle_rules)
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
         if secret_key is not None:
-            _setter("secret_key", secret_key)
+            pulumi.set(__self__, "secret_key", secret_key)
         if versioning is not None:
-            _setter("versioning", versioning)
+            pulumi.set(__self__, "versioning", versioning)
 
     @property
     @pulumi.getter
@@ -241,63 +202,26 @@ class _ObjectStorageBucketState:
                
                * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
-        _ObjectStorageBucketState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key=access_key,
-            acl=acl,
-            cert=cert,
-            cluster=cluster,
-            cors_enabled=cors_enabled,
-            hostname=hostname,
-            label=label,
-            lifecycle_rules=lifecycle_rules,
-            secret_key=secret_key,
-            versioning=versioning,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
-             cluster: Optional[pulumi.Input[str]] = None,
-             cors_enabled: Optional[pulumi.Input[bool]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
-             secret_key: Optional[pulumi.Input[str]] = None,
-             versioning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if cors_enabled is None and 'corsEnabled' in kwargs:
-            cors_enabled = kwargs['corsEnabled']
-        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
-            lifecycle_rules = kwargs['lifecycleRules']
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-
         if access_key is not None:
-            _setter("access_key", access_key)
+            pulumi.set(__self__, "access_key", access_key)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if cert is not None:
-            _setter("cert", cert)
+            pulumi.set(__self__, "cert", cert)
         if cluster is not None:
-            _setter("cluster", cluster)
+            pulumi.set(__self__, "cluster", cluster)
         if cors_enabled is not None:
-            _setter("cors_enabled", cors_enabled)
+            pulumi.set(__self__, "cors_enabled", cors_enabled)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if lifecycle_rules is not None:
-            _setter("lifecycle_rules", lifecycle_rules)
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
         if secret_key is not None:
-            _setter("secret_key", secret_key)
+            pulumi.set(__self__, "secret_key", secret_key)
         if versioning is not None:
-            _setter("versioning", versioning)
+            pulumi.set(__self__, "versioning", versioning)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -566,10 +490,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ObjectStorageBucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -595,7 +515,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["acl"] = acl
-            cert = _utilities.configure(cert, ObjectStorageBucketCertArgs, True)
             __props__.__dict__["cert"] = cert
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")

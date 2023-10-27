@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -83,148 +83,61 @@ class InstanceArgs:
                - - -
         :param pulumi.Input[bool] watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region=region,
-            alerts=alerts,
-            authorized_keys=authorized_keys,
-            authorized_users=authorized_users,
-            backup_id=backup_id,
-            backups_enabled=backups_enabled,
-            boot_config_label=boot_config_label,
-            booted=booted,
-            configs=configs,
-            disks=disks,
-            group=group,
-            image=image,
-            interfaces=interfaces,
-            label=label,
-            metadatas=metadatas,
-            private_ip=private_ip,
-            resize_disk=resize_disk,
-            root_pass=root_pass,
-            shared_ipv4s=shared_ipv4s,
-            stackscript_data=stackscript_data,
-            stackscript_id=stackscript_id,
-            swap_size=swap_size,
-            tags=tags,
-            type=type,
-            watchdog_enabled=watchdog_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region: Optional[pulumi.Input[str]] = None,
-             alerts: Optional[pulumi.Input['InstanceAlertsArgs']] = None,
-             authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backup_id: Optional[pulumi.Input[int]] = None,
-             backups_enabled: Optional[pulumi.Input[bool]] = None,
-             boot_config_label: Optional[pulumi.Input[str]] = None,
-             booted: Optional[pulumi.Input[bool]] = None,
-             configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
-             disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
-             group: Optional[pulumi.Input[str]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
-             private_ip: Optional[pulumi.Input[bool]] = None,
-             resize_disk: Optional[pulumi.Input[bool]] = None,
-             root_pass: Optional[pulumi.Input[str]] = None,
-             shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             stackscript_id: Optional[pulumi.Input[int]] = None,
-             swap_size: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             watchdog_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if authorized_keys is None and 'authorizedKeys' in kwargs:
-            authorized_keys = kwargs['authorizedKeys']
-        if authorized_users is None and 'authorizedUsers' in kwargs:
-            authorized_users = kwargs['authorizedUsers']
-        if backup_id is None and 'backupId' in kwargs:
-            backup_id = kwargs['backupId']
-        if backups_enabled is None and 'backupsEnabled' in kwargs:
-            backups_enabled = kwargs['backupsEnabled']
-        if boot_config_label is None and 'bootConfigLabel' in kwargs:
-            boot_config_label = kwargs['bootConfigLabel']
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if resize_disk is None and 'resizeDisk' in kwargs:
-            resize_disk = kwargs['resizeDisk']
-        if root_pass is None and 'rootPass' in kwargs:
-            root_pass = kwargs['rootPass']
-        if shared_ipv4s is None and 'sharedIpv4s' in kwargs:
-            shared_ipv4s = kwargs['sharedIpv4s']
-        if stackscript_data is None and 'stackscriptData' in kwargs:
-            stackscript_data = kwargs['stackscriptData']
-        if stackscript_id is None and 'stackscriptId' in kwargs:
-            stackscript_id = kwargs['stackscriptId']
-        if swap_size is None and 'swapSize' in kwargs:
-            swap_size = kwargs['swapSize']
-        if watchdog_enabled is None and 'watchdogEnabled' in kwargs:
-            watchdog_enabled = kwargs['watchdogEnabled']
-
-        _setter("region", region)
+        pulumi.set(__self__, "region", region)
         if alerts is not None:
-            _setter("alerts", alerts)
+            pulumi.set(__self__, "alerts", alerts)
         if authorized_keys is not None:
-            _setter("authorized_keys", authorized_keys)
+            pulumi.set(__self__, "authorized_keys", authorized_keys)
         if authorized_users is not None:
-            _setter("authorized_users", authorized_users)
+            pulumi.set(__self__, "authorized_users", authorized_users)
         if backup_id is not None:
-            _setter("backup_id", backup_id)
+            pulumi.set(__self__, "backup_id", backup_id)
         if backups_enabled is not None:
-            _setter("backups_enabled", backups_enabled)
+            pulumi.set(__self__, "backups_enabled", backups_enabled)
         if boot_config_label is not None:
-            _setter("boot_config_label", boot_config_label)
+            pulumi.set(__self__, "boot_config_label", boot_config_label)
         if booted is not None:
-            _setter("booted", booted)
+            pulumi.set(__self__, "booted", booted)
         if configs is not None:
             warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
             pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
         if configs is not None:
-            _setter("configs", configs)
+            pulumi.set(__self__, "configs", configs)
         if disks is not None:
             warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
             pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
-            _setter("disks", disks)
+            pulumi.set(__self__, "disks", disks)
         if group is not None:
-            _setter("group", group)
+            pulumi.set(__self__, "group", group)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if interfaces is not None:
-            _setter("interfaces", interfaces)
+            pulumi.set(__self__, "interfaces", interfaces)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if metadatas is not None:
-            _setter("metadatas", metadatas)
+            pulumi.set(__self__, "metadatas", metadatas)
         if private_ip is not None:
-            _setter("private_ip", private_ip)
+            pulumi.set(__self__, "private_ip", private_ip)
         if resize_disk is not None:
-            _setter("resize_disk", resize_disk)
+            pulumi.set(__self__, "resize_disk", resize_disk)
         if root_pass is not None:
-            _setter("root_pass", root_pass)
+            pulumi.set(__self__, "root_pass", root_pass)
         if shared_ipv4s is not None:
-            _setter("shared_ipv4s", shared_ipv4s)
+            pulumi.set(__self__, "shared_ipv4s", shared_ipv4s)
         if stackscript_data is not None:
-            _setter("stackscript_data", stackscript_data)
+            pulumi.set(__self__, "stackscript_data", stackscript_data)
         if stackscript_id is not None:
-            _setter("stackscript_id", stackscript_id)
+            pulumi.set(__self__, "stackscript_id", stackscript_id)
         if swap_size is not None:
-            _setter("swap_size", swap_size)
+            pulumi.set(__self__, "swap_size", swap_size)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if watchdog_enabled is not None:
-            _setter("watchdog_enabled", watchdog_enabled)
+            pulumi.set(__self__, "watchdog_enabled", watchdog_enabled)
 
     @property
     @pulumi.getter
@@ -633,191 +546,80 @@ class _InstanceState:
                - - -
         :param pulumi.Input[bool] watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alerts=alerts,
-            authorized_keys=authorized_keys,
-            authorized_users=authorized_users,
-            backup_id=backup_id,
-            backups=backups,
-            backups_enabled=backups_enabled,
-            boot_config_label=boot_config_label,
-            booted=booted,
-            configs=configs,
-            disks=disks,
-            group=group,
-            has_user_data=has_user_data,
-            host_uuid=host_uuid,
-            image=image,
-            interfaces=interfaces,
-            ip_address=ip_address,
-            ipv4s=ipv4s,
-            ipv6=ipv6,
-            label=label,
-            metadatas=metadatas,
-            private_ip=private_ip,
-            private_ip_address=private_ip_address,
-            region=region,
-            resize_disk=resize_disk,
-            root_pass=root_pass,
-            shared_ipv4s=shared_ipv4s,
-            specs=specs,
-            stackscript_data=stackscript_data,
-            stackscript_id=stackscript_id,
-            status=status,
-            swap_size=swap_size,
-            tags=tags,
-            type=type,
-            watchdog_enabled=watchdog_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alerts: Optional[pulumi.Input['InstanceAlertsArgs']] = None,
-             authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backup_id: Optional[pulumi.Input[int]] = None,
-             backups: Optional[pulumi.Input['InstanceBackupsArgs']] = None,
-             backups_enabled: Optional[pulumi.Input[bool]] = None,
-             boot_config_label: Optional[pulumi.Input[str]] = None,
-             booted: Optional[pulumi.Input[bool]] = None,
-             configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
-             disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
-             group: Optional[pulumi.Input[str]] = None,
-             has_user_data: Optional[pulumi.Input[bool]] = None,
-             host_uuid: Optional[pulumi.Input[str]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ipv6: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
-             private_ip: Optional[pulumi.Input[bool]] = None,
-             private_ip_address: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             resize_disk: Optional[pulumi.Input[bool]] = None,
-             root_pass: Optional[pulumi.Input[str]] = None,
-             shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             specs: Optional[pulumi.Input['InstanceSpecsArgs']] = None,
-             stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             stackscript_id: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             swap_size: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             watchdog_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorized_keys is None and 'authorizedKeys' in kwargs:
-            authorized_keys = kwargs['authorizedKeys']
-        if authorized_users is None and 'authorizedUsers' in kwargs:
-            authorized_users = kwargs['authorizedUsers']
-        if backup_id is None and 'backupId' in kwargs:
-            backup_id = kwargs['backupId']
-        if backups_enabled is None and 'backupsEnabled' in kwargs:
-            backups_enabled = kwargs['backupsEnabled']
-        if boot_config_label is None and 'bootConfigLabel' in kwargs:
-            boot_config_label = kwargs['bootConfigLabel']
-        if has_user_data is None and 'hasUserData' in kwargs:
-            has_user_data = kwargs['hasUserData']
-        if host_uuid is None and 'hostUuid' in kwargs:
-            host_uuid = kwargs['hostUuid']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip_address is None and 'privateIpAddress' in kwargs:
-            private_ip_address = kwargs['privateIpAddress']
-        if resize_disk is None and 'resizeDisk' in kwargs:
-            resize_disk = kwargs['resizeDisk']
-        if root_pass is None and 'rootPass' in kwargs:
-            root_pass = kwargs['rootPass']
-        if shared_ipv4s is None and 'sharedIpv4s' in kwargs:
-            shared_ipv4s = kwargs['sharedIpv4s']
-        if stackscript_data is None and 'stackscriptData' in kwargs:
-            stackscript_data = kwargs['stackscriptData']
-        if stackscript_id is None and 'stackscriptId' in kwargs:
-            stackscript_id = kwargs['stackscriptId']
-        if swap_size is None and 'swapSize' in kwargs:
-            swap_size = kwargs['swapSize']
-        if watchdog_enabled is None and 'watchdogEnabled' in kwargs:
-            watchdog_enabled = kwargs['watchdogEnabled']
-
         if alerts is not None:
-            _setter("alerts", alerts)
+            pulumi.set(__self__, "alerts", alerts)
         if authorized_keys is not None:
-            _setter("authorized_keys", authorized_keys)
+            pulumi.set(__self__, "authorized_keys", authorized_keys)
         if authorized_users is not None:
-            _setter("authorized_users", authorized_users)
+            pulumi.set(__self__, "authorized_users", authorized_users)
         if backup_id is not None:
-            _setter("backup_id", backup_id)
+            pulumi.set(__self__, "backup_id", backup_id)
         if backups is not None:
-            _setter("backups", backups)
+            pulumi.set(__self__, "backups", backups)
         if backups_enabled is not None:
-            _setter("backups_enabled", backups_enabled)
+            pulumi.set(__self__, "backups_enabled", backups_enabled)
         if boot_config_label is not None:
-            _setter("boot_config_label", boot_config_label)
+            pulumi.set(__self__, "boot_config_label", boot_config_label)
         if booted is not None:
-            _setter("booted", booted)
+            pulumi.set(__self__, "booted", booted)
         if configs is not None:
             warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
             pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
         if configs is not None:
-            _setter("configs", configs)
+            pulumi.set(__self__, "configs", configs)
         if disks is not None:
             warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
             pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
-            _setter("disks", disks)
+            pulumi.set(__self__, "disks", disks)
         if group is not None:
-            _setter("group", group)
+            pulumi.set(__self__, "group", group)
         if has_user_data is not None:
-            _setter("has_user_data", has_user_data)
+            pulumi.set(__self__, "has_user_data", has_user_data)
         if host_uuid is not None:
-            _setter("host_uuid", host_uuid)
+            pulumi.set(__self__, "host_uuid", host_uuid)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if interfaces is not None:
-            _setter("interfaces", interfaces)
+            pulumi.set(__self__, "interfaces", interfaces)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if ipv4s is not None:
-            _setter("ipv4s", ipv4s)
+            pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if metadatas is not None:
-            _setter("metadatas", metadatas)
+            pulumi.set(__self__, "metadatas", metadatas)
         if private_ip is not None:
-            _setter("private_ip", private_ip)
+            pulumi.set(__self__, "private_ip", private_ip)
         if private_ip_address is not None:
-            _setter("private_ip_address", private_ip_address)
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if resize_disk is not None:
-            _setter("resize_disk", resize_disk)
+            pulumi.set(__self__, "resize_disk", resize_disk)
         if root_pass is not None:
-            _setter("root_pass", root_pass)
+            pulumi.set(__self__, "root_pass", root_pass)
         if shared_ipv4s is not None:
-            _setter("shared_ipv4s", shared_ipv4s)
+            pulumi.set(__self__, "shared_ipv4s", shared_ipv4s)
         if specs is not None:
-            _setter("specs", specs)
+            pulumi.set(__self__, "specs", specs)
         if stackscript_data is not None:
-            _setter("stackscript_data", stackscript_data)
+            pulumi.set(__self__, "stackscript_data", stackscript_data)
         if stackscript_id is not None:
-            _setter("stackscript_id", stackscript_id)
+            pulumi.set(__self__, "stackscript_id", stackscript_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if swap_size is not None:
-            _setter("swap_size", swap_size)
+            pulumi.set(__self__, "swap_size", swap_size)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if watchdog_enabled is not None:
-            _setter("watchdog_enabled", watchdog_enabled)
+            pulumi.set(__self__, "watchdog_enabled", watchdog_enabled)
 
     @property
     @pulumi.getter
@@ -1415,10 +1217,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1458,7 +1256,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            alerts = _utilities.configure(alerts, InstanceAlertsArgs, True)
             __props__.__dict__["alerts"] = alerts
             __props__.__dict__["authorized_keys"] = authorized_keys
             __props__.__dict__["authorized_users"] = authorized_users
