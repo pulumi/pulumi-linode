@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,58 +41,21 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
-        FirewallArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            inbound_policy=inbound_policy,
-            label=label,
-            outbound_policy=outbound_policy,
-            disabled=disabled,
-            inbounds=inbounds,
-            linodes=linodes,
-            nodebalancers=nodebalancers,
-            outbounds=outbounds,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             inbound_policy: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             outbound_policy: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
-             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if inbound_policy is None and 'inboundPolicy' in kwargs:
-            inbound_policy = kwargs['inboundPolicy']
-        if inbound_policy is None:
-            raise TypeError("Missing 'inbound_policy' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if outbound_policy is None and 'outboundPolicy' in kwargs:
-            outbound_policy = kwargs['outboundPolicy']
-        if outbound_policy is None:
-            raise TypeError("Missing 'outbound_policy' argument")
-
-        _setter("inbound_policy", inbound_policy)
-        _setter("label", label)
-        _setter("outbound_policy", outbound_policy)
+        pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "outbound_policy", outbound_policy)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if inbounds is not None:
-            _setter("inbounds", inbounds)
+            pulumi.set(__self__, "inbounds", inbounds)
         if linodes is not None:
-            _setter("linodes", linodes)
+            pulumi.set(__self__, "linodes", linodes)
         if nodebalancers is not None:
-            _setter("nodebalancers", nodebalancers)
+            pulumi.set(__self__, "nodebalancers", nodebalancers)
         if outbounds is not None:
-            _setter("outbounds", outbounds)
+            pulumi.set(__self__, "outbounds", outbounds)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="inboundPolicy")
@@ -243,71 +206,32 @@ class _FirewallState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         :param pulumi.Input[str] updated: When this firewall was last updated
         """
-        _FirewallState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created=created,
-            devices=devices,
-            disabled=disabled,
-            inbound_policy=inbound_policy,
-            inbounds=inbounds,
-            label=label,
-            linodes=linodes,
-            nodebalancers=nodebalancers,
-            outbound_policy=outbound_policy,
-            outbounds=outbounds,
-            status=status,
-            tags=tags,
-            updated=updated,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created: Optional[pulumi.Input[str]] = None,
-             devices: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             inbound_policy: Optional[pulumi.Input[str]] = None,
-             inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             outbound_policy: Optional[pulumi.Input[str]] = None,
-             outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if inbound_policy is None and 'inboundPolicy' in kwargs:
-            inbound_policy = kwargs['inboundPolicy']
-        if outbound_policy is None and 'outboundPolicy' in kwargs:
-            outbound_policy = kwargs['outboundPolicy']
-
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if devices is not None:
-            _setter("devices", devices)
+            pulumi.set(__self__, "devices", devices)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if inbound_policy is not None:
-            _setter("inbound_policy", inbound_policy)
+            pulumi.set(__self__, "inbound_policy", inbound_policy)
         if inbounds is not None:
-            _setter("inbounds", inbounds)
+            pulumi.set(__self__, "inbounds", inbounds)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if linodes is not None:
-            _setter("linodes", linodes)
+            pulumi.set(__self__, "linodes", linodes)
         if nodebalancers is not None:
-            _setter("nodebalancers", nodebalancers)
+            pulumi.set(__self__, "nodebalancers", nodebalancers)
         if outbound_policy is not None:
-            _setter("outbound_policy", outbound_policy)
+            pulumi.set(__self__, "outbound_policy", outbound_policy)
         if outbounds is not None:
-            _setter("outbounds", outbounds)
+            pulumi.set(__self__, "outbounds", outbounds)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
 
     @property
     @pulumi.getter
@@ -655,10 +579,6 @@ class Firewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

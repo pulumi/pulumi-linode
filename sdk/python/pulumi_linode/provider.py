@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -45,107 +45,42 @@ class ProviderArgs:
         :param pulumi.Input[str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[str] url: The HTTP(S) API address of the Linode API to use.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_version=api_version,
-            config_path=config_path,
-            config_profile=config_profile,
-            disable_internal_cache=disable_internal_cache,
-            event_poll_ms=event_poll_ms,
-            lke_event_poll_ms=lke_event_poll_ms,
-            lke_node_ready_poll_ms=lke_node_ready_poll_ms,
-            max_retry_delay_ms=max_retry_delay_ms,
-            min_retry_delay_ms=min_retry_delay_ms,
-            skip_implicit_reboots=skip_implicit_reboots,
-            skip_instance_delete_poll=skip_instance_delete_poll,
-            skip_instance_ready_poll=skip_instance_ready_poll,
-            token=token,
-            ua_prefix=ua_prefix,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_version: Optional[pulumi.Input[str]] = None,
-             config_path: Optional[pulumi.Input[str]] = None,
-             config_profile: Optional[pulumi.Input[str]] = None,
-             disable_internal_cache: Optional[pulumi.Input[bool]] = None,
-             event_poll_ms: Optional[pulumi.Input[int]] = None,
-             lke_event_poll_ms: Optional[pulumi.Input[int]] = None,
-             lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
-             max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
-             min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
-             skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
-             skip_instance_delete_poll: Optional[pulumi.Input[bool]] = None,
-             skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             ua_prefix: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_version is None and 'apiVersion' in kwargs:
-            api_version = kwargs['apiVersion']
-        if config_path is None and 'configPath' in kwargs:
-            config_path = kwargs['configPath']
-        if config_profile is None and 'configProfile' in kwargs:
-            config_profile = kwargs['configProfile']
-        if disable_internal_cache is None and 'disableInternalCache' in kwargs:
-            disable_internal_cache = kwargs['disableInternalCache']
-        if event_poll_ms is None and 'eventPollMs' in kwargs:
-            event_poll_ms = kwargs['eventPollMs']
-        if lke_event_poll_ms is None and 'lkeEventPollMs' in kwargs:
-            lke_event_poll_ms = kwargs['lkeEventPollMs']
-        if lke_node_ready_poll_ms is None and 'lkeNodeReadyPollMs' in kwargs:
-            lke_node_ready_poll_ms = kwargs['lkeNodeReadyPollMs']
-        if max_retry_delay_ms is None and 'maxRetryDelayMs' in kwargs:
-            max_retry_delay_ms = kwargs['maxRetryDelayMs']
-        if min_retry_delay_ms is None and 'minRetryDelayMs' in kwargs:
-            min_retry_delay_ms = kwargs['minRetryDelayMs']
-        if skip_implicit_reboots is None and 'skipImplicitReboots' in kwargs:
-            skip_implicit_reboots = kwargs['skipImplicitReboots']
-        if skip_instance_delete_poll is None and 'skipInstanceDeletePoll' in kwargs:
-            skip_instance_delete_poll = kwargs['skipInstanceDeletePoll']
-        if skip_instance_ready_poll is None and 'skipInstanceReadyPoll' in kwargs:
-            skip_instance_ready_poll = kwargs['skipInstanceReadyPoll']
-        if ua_prefix is None and 'uaPrefix' in kwargs:
-            ua_prefix = kwargs['uaPrefix']
-
         if api_version is None:
             api_version = _utilities.get_env('LINODE_API_VERSION')
         if api_version is not None:
-            _setter("api_version", api_version)
+            pulumi.set(__self__, "api_version", api_version)
         if config_path is not None:
-            _setter("config_path", config_path)
+            pulumi.set(__self__, "config_path", config_path)
         if config_profile is not None:
-            _setter("config_profile", config_profile)
+            pulumi.set(__self__, "config_profile", config_profile)
         if disable_internal_cache is not None:
-            _setter("disable_internal_cache", disable_internal_cache)
+            pulumi.set(__self__, "disable_internal_cache", disable_internal_cache)
         if event_poll_ms is not None:
-            _setter("event_poll_ms", event_poll_ms)
+            pulumi.set(__self__, "event_poll_ms", event_poll_ms)
         if lke_event_poll_ms is not None:
-            _setter("lke_event_poll_ms", lke_event_poll_ms)
+            pulumi.set(__self__, "lke_event_poll_ms", lke_event_poll_ms)
         if lke_node_ready_poll_ms is not None:
-            _setter("lke_node_ready_poll_ms", lke_node_ready_poll_ms)
+            pulumi.set(__self__, "lke_node_ready_poll_ms", lke_node_ready_poll_ms)
         if max_retry_delay_ms is not None:
-            _setter("max_retry_delay_ms", max_retry_delay_ms)
+            pulumi.set(__self__, "max_retry_delay_ms", max_retry_delay_ms)
         if min_retry_delay_ms is not None:
-            _setter("min_retry_delay_ms", min_retry_delay_ms)
+            pulumi.set(__self__, "min_retry_delay_ms", min_retry_delay_ms)
         if skip_implicit_reboots is not None:
-            _setter("skip_implicit_reboots", skip_implicit_reboots)
+            pulumi.set(__self__, "skip_implicit_reboots", skip_implicit_reboots)
         if skip_instance_delete_poll is not None:
-            _setter("skip_instance_delete_poll", skip_instance_delete_poll)
+            pulumi.set(__self__, "skip_instance_delete_poll", skip_instance_delete_poll)
         if skip_instance_ready_poll is not None:
-            _setter("skip_instance_ready_poll", skip_instance_ready_poll)
+            pulumi.set(__self__, "skip_instance_ready_poll", skip_instance_ready_poll)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if ua_prefix is None:
             ua_prefix = _utilities.get_env('LINODE_UA_PREFIX')
         if ua_prefix is not None:
-            _setter("ua_prefix", ua_prefix)
+            pulumi.set(__self__, "ua_prefix", ua_prefix)
         if url is None:
             url = _utilities.get_env('LINODE_URL')
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -387,10 +322,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

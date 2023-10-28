@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,26 +25,9 @@ class ObjectStorageKeyArgs:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         """
-        ObjectStorageKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            label=label,
-            bucket_accesses=bucket_accesses,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             label: Optional[pulumi.Input[str]] = None,
-             bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if bucket_accesses is None and 'bucketAccesses' in kwargs:
-            bucket_accesses = kwargs['bucketAccesses']
-
-        _setter("label", label)
+        pulumi.set(__self__, "label", label)
         if bucket_accesses is not None:
-            _setter("bucket_accesses", bucket_accesses)
+            pulumi.set(__self__, "bucket_accesses", bucket_accesses)
 
     @property
     @pulumi.getter
@@ -91,41 +74,16 @@ class _ObjectStorageKeyState:
         :param pulumi.Input[bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[str] secret_key: This keypair's secret key.
         """
-        _ObjectStorageKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key=access_key,
-            bucket_accesses=bucket_accesses,
-            label=label,
-            limited=limited,
-            secret_key=secret_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key: Optional[pulumi.Input[str]] = None,
-             bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             limited: Optional[pulumi.Input[bool]] = None,
-             secret_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if bucket_accesses is None and 'bucketAccesses' in kwargs:
-            bucket_accesses = kwargs['bucketAccesses']
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-
         if access_key is not None:
-            _setter("access_key", access_key)
+            pulumi.set(__self__, "access_key", access_key)
         if bucket_accesses is not None:
-            _setter("bucket_accesses", bucket_accesses)
+            pulumi.set(__self__, "bucket_accesses", bucket_accesses)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if limited is not None:
-            _setter("limited", limited)
+            pulumi.set(__self__, "limited", limited)
         if secret_key is not None:
-            _setter("secret_key", secret_key)
+            pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -249,10 +207,6 @@ class ObjectStorageKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ObjectStorageKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

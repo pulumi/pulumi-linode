@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,47 +35,14 @@ class LkeClusterArgs:
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
-        LkeClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            k8s_version=k8s_version,
-            label=label,
-            pools=pools,
-            region=region,
-            control_plane=control_plane,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             k8s_version: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if k8s_version is None and 'k8sVersion' in kwargs:
-            k8s_version = kwargs['k8sVersion']
-        if k8s_version is None:
-            raise TypeError("Missing 'k8s_version' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if pools is None:
-            raise TypeError("Missing 'pools' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-
-        _setter("k8s_version", k8s_version)
-        _setter("label", label)
-        _setter("pools", pools)
-        _setter("region", region)
+        pulumi.set(__self__, "k8s_version", k8s_version)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "pools", pools)
+        pulumi.set(__self__, "region", region)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="k8sVersion")
@@ -184,63 +151,26 @@ class _LkeClusterState:
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
         """
-        _LkeClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_endpoints=api_endpoints,
-            control_plane=control_plane,
-            dashboard_url=dashboard_url,
-            k8s_version=k8s_version,
-            kubeconfig=kubeconfig,
-            label=label,
-            pools=pools,
-            region=region,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
-             dashboard_url: Optional[pulumi.Input[str]] = None,
-             k8s_version: Optional[pulumi.Input[str]] = None,
-             kubeconfig: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_endpoints is None and 'apiEndpoints' in kwargs:
-            api_endpoints = kwargs['apiEndpoints']
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if dashboard_url is None and 'dashboardUrl' in kwargs:
-            dashboard_url = kwargs['dashboardUrl']
-        if k8s_version is None and 'k8sVersion' in kwargs:
-            k8s_version = kwargs['k8sVersion']
-
         if api_endpoints is not None:
-            _setter("api_endpoints", api_endpoints)
+            pulumi.set(__self__, "api_endpoints", api_endpoints)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if dashboard_url is not None:
-            _setter("dashboard_url", dashboard_url)
+            pulumi.set(__self__, "dashboard_url", dashboard_url)
         if k8s_version is not None:
-            _setter("k8s_version", k8s_version)
+            pulumi.set(__self__, "k8s_version", k8s_version)
         if kubeconfig is not None:
-            _setter("kubeconfig", kubeconfig)
+            pulumi.set(__self__, "kubeconfig", kubeconfig)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if pools is not None:
-            _setter("pools", pools)
+            pulumi.set(__self__, "pools", pools)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="apiEndpoints")
@@ -510,10 +440,6 @@ class LkeCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LkeClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -534,7 +460,6 @@ class LkeCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LkeClusterArgs.__new__(LkeClusterArgs)
 
-            control_plane = _utilities.configure(control_plane, LkeClusterControlPlaneArgs, True)
             __props__.__dict__["control_plane"] = control_plane
             if k8s_version is None and not opts.urn:
                 raise TypeError("Missing required property 'k8s_version'")

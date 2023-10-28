@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ImageArgs', 'Image']
@@ -43,58 +43,21 @@ class ImageArgs:
                The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://api.linode.com/v4/regions).
         """
-        ImageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            label=label,
-            cloud_init=cloud_init,
-            description=description,
-            disk_id=disk_id,
-            file_hash=file_hash,
-            file_path=file_path,
-            linode_id=linode_id,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             label: Optional[pulumi.Input[str]] = None,
-             cloud_init: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_id: Optional[pulumi.Input[int]] = None,
-             file_hash: Optional[pulumi.Input[str]] = None,
-             file_path: Optional[pulumi.Input[str]] = None,
-             linode_id: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if cloud_init is None and 'cloudInit' in kwargs:
-            cloud_init = kwargs['cloudInit']
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if file_hash is None and 'fileHash' in kwargs:
-            file_hash = kwargs['fileHash']
-        if file_path is None and 'filePath' in kwargs:
-            file_path = kwargs['filePath']
-        if linode_id is None and 'linodeId' in kwargs:
-            linode_id = kwargs['linodeId']
-
-        _setter("label", label)
+        pulumi.set(__self__, "label", label)
         if cloud_init is not None:
-            _setter("cloud_init", cloud_init)
+            pulumi.set(__self__, "cloud_init", cloud_init)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_id is not None:
-            _setter("disk_id", disk_id)
+            pulumi.set(__self__, "disk_id", disk_id)
         if file_hash is not None:
-            _setter("file_hash", file_hash)
+            pulumi.set(__self__, "file_hash", file_hash)
         if file_path is not None:
-            _setter("file_path", file_path)
+            pulumi.set(__self__, "file_path", file_path)
         if linode_id is not None:
-            _setter("linode_id", linode_id)
+            pulumi.set(__self__, "linode_id", linode_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -255,101 +218,42 @@ class _ImageState:
         :param pulumi.Input[str] type: How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         :param pulumi.Input[str] vendor: The upstream distribution vendor. Nil for private Images.
         """
-        _ImageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            capabilities=capabilities,
-            cloud_init=cloud_init,
-            created=created,
-            created_by=created_by,
-            deprecated=deprecated,
-            description=description,
-            disk_id=disk_id,
-            expiry=expiry,
-            file_hash=file_hash,
-            file_path=file_path,
-            is_public=is_public,
-            label=label,
-            linode_id=linode_id,
-            region=region,
-            size=size,
-            status=status,
-            type=type,
-            vendor=vendor,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cloud_init: Optional[pulumi.Input[bool]] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             deprecated: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_id: Optional[pulumi.Input[int]] = None,
-             expiry: Optional[pulumi.Input[str]] = None,
-             file_hash: Optional[pulumi.Input[str]] = None,
-             file_path: Optional[pulumi.Input[str]] = None,
-             is_public: Optional[pulumi.Input[bool]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             linode_id: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             vendor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloud_init is None and 'cloudInit' in kwargs:
-            cloud_init = kwargs['cloudInit']
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if file_hash is None and 'fileHash' in kwargs:
-            file_hash = kwargs['fileHash']
-        if file_path is None and 'filePath' in kwargs:
-            file_path = kwargs['filePath']
-        if is_public is None and 'isPublic' in kwargs:
-            is_public = kwargs['isPublic']
-        if linode_id is None and 'linodeId' in kwargs:
-            linode_id = kwargs['linodeId']
-
         if capabilities is not None:
-            _setter("capabilities", capabilities)
+            pulumi.set(__self__, "capabilities", capabilities)
         if cloud_init is not None:
-            _setter("cloud_init", cloud_init)
+            pulumi.set(__self__, "cloud_init", cloud_init)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if deprecated is not None:
-            _setter("deprecated", deprecated)
+            pulumi.set(__self__, "deprecated", deprecated)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_id is not None:
-            _setter("disk_id", disk_id)
+            pulumi.set(__self__, "disk_id", disk_id)
         if expiry is not None:
-            _setter("expiry", expiry)
+            pulumi.set(__self__, "expiry", expiry)
         if file_hash is not None:
-            _setter("file_hash", file_hash)
+            pulumi.set(__self__, "file_hash", file_hash)
         if file_path is not None:
-            _setter("file_path", file_path)
+            pulumi.set(__self__, "file_path", file_path)
         if is_public is not None:
-            _setter("is_public", is_public)
+            pulumi.set(__self__, "is_public", is_public)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if linode_id is not None:
-            _setter("linode_id", linode_id)
+            pulumi.set(__self__, "linode_id", linode_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vendor is not None:
-            _setter("vendor", vendor)
+            pulumi.set(__self__, "vendor", vendor)
 
     @property
     @pulumi.getter
@@ -655,10 +559,6 @@ class Image(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
