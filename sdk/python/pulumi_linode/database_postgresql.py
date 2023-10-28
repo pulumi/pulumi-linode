@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,75 +53,24 @@ class DatabasePostgresqlArgs:
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input['DatabasePostgresqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
-        DatabasePostgresqlArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            engine_id=engine_id,
-            label=label,
-            region=region,
-            type=type,
-            allow_lists=allow_lists,
-            cluster_size=cluster_size,
-            encrypted=encrypted,
-            replication_commit_type=replication_commit_type,
-            replication_type=replication_type,
-            ssl_connection=ssl_connection,
-            updates=updates,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             engine_id: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cluster_size: Optional[pulumi.Input[int]] = None,
-             encrypted: Optional[pulumi.Input[bool]] = None,
-             replication_commit_type: Optional[pulumi.Input[str]] = None,
-             replication_type: Optional[pulumi.Input[str]] = None,
-             ssl_connection: Optional[pulumi.Input[bool]] = None,
-             updates: Optional[pulumi.Input['DatabasePostgresqlUpdatesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if engine_id is None and 'engineId' in kwargs:
-            engine_id = kwargs['engineId']
-        if engine_id is None:
-            raise TypeError("Missing 'engine_id' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if allow_lists is None and 'allowLists' in kwargs:
-            allow_lists = kwargs['allowLists']
-        if cluster_size is None and 'clusterSize' in kwargs:
-            cluster_size = kwargs['clusterSize']
-        if replication_commit_type is None and 'replicationCommitType' in kwargs:
-            replication_commit_type = kwargs['replicationCommitType']
-        if replication_type is None and 'replicationType' in kwargs:
-            replication_type = kwargs['replicationType']
-        if ssl_connection is None and 'sslConnection' in kwargs:
-            ssl_connection = kwargs['sslConnection']
-
-        _setter("engine_id", engine_id)
-        _setter("label", label)
-        _setter("region", region)
-        _setter("type", type)
+        pulumi.set(__self__, "engine_id", engine_id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "type", type)
         if allow_lists is not None:
-            _setter("allow_lists", allow_lists)
+            pulumi.set(__self__, "allow_lists", allow_lists)
         if cluster_size is not None:
-            _setter("cluster_size", cluster_size)
+            pulumi.set(__self__, "cluster_size", cluster_size)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if replication_commit_type is not None:
-            _setter("replication_commit_type", replication_commit_type)
+            pulumi.set(__self__, "replication_commit_type", replication_commit_type)
         if replication_type is not None:
-            _setter("replication_type", replication_type)
+            pulumi.set(__self__, "replication_type", replication_type)
         if ssl_connection is not None:
-            _setter("ssl_connection", ssl_connection)
+            pulumi.set(__self__, "ssl_connection", ssl_connection)
         if updates is not None:
-            _setter("updates", updates)
+            pulumi.set(__self__, "updates", updates)
 
     @property
     @pulumi.getter(name="engineId")
@@ -330,125 +279,50 @@ class _DatabasePostgresqlState:
         :param pulumi.Input['DatabasePostgresqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `13.2`)
         """
-        _DatabasePostgresqlState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_lists=allow_lists,
-            ca_cert=ca_cert,
-            cluster_size=cluster_size,
-            created=created,
-            encrypted=encrypted,
-            engine=engine,
-            engine_id=engine_id,
-            host_primary=host_primary,
-            host_secondary=host_secondary,
-            label=label,
-            port=port,
-            region=region,
-            replication_commit_type=replication_commit_type,
-            replication_type=replication_type,
-            root_password=root_password,
-            root_username=root_username,
-            ssl_connection=ssl_connection,
-            status=status,
-            type=type,
-            updated=updated,
-            updates=updates,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ca_cert: Optional[pulumi.Input[str]] = None,
-             cluster_size: Optional[pulumi.Input[int]] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             encrypted: Optional[pulumi.Input[bool]] = None,
-             engine: Optional[pulumi.Input[str]] = None,
-             engine_id: Optional[pulumi.Input[str]] = None,
-             host_primary: Optional[pulumi.Input[str]] = None,
-             host_secondary: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             replication_commit_type: Optional[pulumi.Input[str]] = None,
-             replication_type: Optional[pulumi.Input[str]] = None,
-             root_password: Optional[pulumi.Input[str]] = None,
-             root_username: Optional[pulumi.Input[str]] = None,
-             ssl_connection: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             updates: Optional[pulumi.Input['DatabasePostgresqlUpdatesArgs']] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_lists is None and 'allowLists' in kwargs:
-            allow_lists = kwargs['allowLists']
-        if ca_cert is None and 'caCert' in kwargs:
-            ca_cert = kwargs['caCert']
-        if cluster_size is None and 'clusterSize' in kwargs:
-            cluster_size = kwargs['clusterSize']
-        if engine_id is None and 'engineId' in kwargs:
-            engine_id = kwargs['engineId']
-        if host_primary is None and 'hostPrimary' in kwargs:
-            host_primary = kwargs['hostPrimary']
-        if host_secondary is None and 'hostSecondary' in kwargs:
-            host_secondary = kwargs['hostSecondary']
-        if replication_commit_type is None and 'replicationCommitType' in kwargs:
-            replication_commit_type = kwargs['replicationCommitType']
-        if replication_type is None and 'replicationType' in kwargs:
-            replication_type = kwargs['replicationType']
-        if root_password is None and 'rootPassword' in kwargs:
-            root_password = kwargs['rootPassword']
-        if root_username is None and 'rootUsername' in kwargs:
-            root_username = kwargs['rootUsername']
-        if ssl_connection is None and 'sslConnection' in kwargs:
-            ssl_connection = kwargs['sslConnection']
-
         if allow_lists is not None:
-            _setter("allow_lists", allow_lists)
+            pulumi.set(__self__, "allow_lists", allow_lists)
         if ca_cert is not None:
-            _setter("ca_cert", ca_cert)
+            pulumi.set(__self__, "ca_cert", ca_cert)
         if cluster_size is not None:
-            _setter("cluster_size", cluster_size)
+            pulumi.set(__self__, "cluster_size", cluster_size)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if engine is not None:
-            _setter("engine", engine)
+            pulumi.set(__self__, "engine", engine)
         if engine_id is not None:
-            _setter("engine_id", engine_id)
+            pulumi.set(__self__, "engine_id", engine_id)
         if host_primary is not None:
-            _setter("host_primary", host_primary)
+            pulumi.set(__self__, "host_primary", host_primary)
         if host_secondary is not None:
-            _setter("host_secondary", host_secondary)
+            pulumi.set(__self__, "host_secondary", host_secondary)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if replication_commit_type is not None:
-            _setter("replication_commit_type", replication_commit_type)
+            pulumi.set(__self__, "replication_commit_type", replication_commit_type)
         if replication_type is not None:
-            _setter("replication_type", replication_type)
+            pulumi.set(__self__, "replication_type", replication_type)
         if root_password is not None:
-            _setter("root_password", root_password)
+            pulumi.set(__self__, "root_password", root_password)
         if root_username is not None:
-            _setter("root_username", root_username)
+            pulumi.set(__self__, "root_username", root_username)
         if ssl_connection is not None:
-            _setter("ssl_connection", ssl_connection)
+            pulumi.set(__self__, "ssl_connection", ssl_connection)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
         if updates is not None:
-            _setter("updates", updates)
+            pulumi.set(__self__, "updates", updates)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="allowLists")
@@ -922,10 +796,6 @@ class DatabasePostgresql(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatabasePostgresqlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -969,7 +839,6 @@ class DatabasePostgresql(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            updates = _utilities.configure(updates, DatabasePostgresqlUpdatesArgs, True)
             __props__.__dict__["updates"] = updates
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["created"] = None

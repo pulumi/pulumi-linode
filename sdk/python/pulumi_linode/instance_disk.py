@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InstanceDiskInitArgs', 'InstanceDisk']
@@ -39,70 +39,23 @@ class InstanceDiskInitArgs:
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
         """
-        InstanceDiskInitArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            label=label,
-            linode_id=linode_id,
-            size=size,
-            authorized_keys=authorized_keys,
-            authorized_users=authorized_users,
-            filesystem=filesystem,
-            image=image,
-            root_pass=root_pass,
-            stackscript_data=stackscript_data,
-            stackscript_id=stackscript_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             label: Optional[pulumi.Input[str]] = None,
-             linode_id: Optional[pulumi.Input[int]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             filesystem: Optional[pulumi.Input[str]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             root_pass: Optional[pulumi.Input[str]] = None,
-             stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             stackscript_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if linode_id is None and 'linodeId' in kwargs:
-            linode_id = kwargs['linodeId']
-        if linode_id is None:
-            raise TypeError("Missing 'linode_id' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if authorized_keys is None and 'authorizedKeys' in kwargs:
-            authorized_keys = kwargs['authorizedKeys']
-        if authorized_users is None and 'authorizedUsers' in kwargs:
-            authorized_users = kwargs['authorizedUsers']
-        if root_pass is None and 'rootPass' in kwargs:
-            root_pass = kwargs['rootPass']
-        if stackscript_data is None and 'stackscriptData' in kwargs:
-            stackscript_data = kwargs['stackscriptData']
-        if stackscript_id is None and 'stackscriptId' in kwargs:
-            stackscript_id = kwargs['stackscriptId']
-
-        _setter("label", label)
-        _setter("linode_id", linode_id)
-        _setter("size", size)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linode_id", linode_id)
+        pulumi.set(__self__, "size", size)
         if authorized_keys is not None:
-            _setter("authorized_keys", authorized_keys)
+            pulumi.set(__self__, "authorized_keys", authorized_keys)
         if authorized_users is not None:
-            _setter("authorized_users", authorized_users)
+            pulumi.set(__self__, "authorized_users", authorized_users)
         if filesystem is not None:
-            _setter("filesystem", filesystem)
+            pulumi.set(__self__, "filesystem", filesystem)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if root_pass is not None:
-            _setter("root_pass", root_pass)
+            pulumi.set(__self__, "root_pass", root_pass)
         if stackscript_data is not None:
-            _setter("stackscript_data", stackscript_data)
+            pulumi.set(__self__, "stackscript_data", stackscript_data)
         if stackscript_id is not None:
-            _setter("stackscript_id", stackscript_id)
+            pulumi.set(__self__, "stackscript_id", stackscript_id)
 
     @property
     @pulumi.getter
@@ -261,79 +214,32 @@ class _InstanceDiskState:
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
         :param pulumi.Input[str] updated: When this disk was last updated.
         """
-        _InstanceDiskState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorized_keys=authorized_keys,
-            authorized_users=authorized_users,
-            created=created,
-            filesystem=filesystem,
-            image=image,
-            label=label,
-            linode_id=linode_id,
-            root_pass=root_pass,
-            size=size,
-            stackscript_data=stackscript_data,
-            stackscript_id=stackscript_id,
-            status=status,
-            updated=updated,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             filesystem: Optional[pulumi.Input[str]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             linode_id: Optional[pulumi.Input[int]] = None,
-             root_pass: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             stackscript_id: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorized_keys is None and 'authorizedKeys' in kwargs:
-            authorized_keys = kwargs['authorizedKeys']
-        if authorized_users is None and 'authorizedUsers' in kwargs:
-            authorized_users = kwargs['authorizedUsers']
-        if linode_id is None and 'linodeId' in kwargs:
-            linode_id = kwargs['linodeId']
-        if root_pass is None and 'rootPass' in kwargs:
-            root_pass = kwargs['rootPass']
-        if stackscript_data is None and 'stackscriptData' in kwargs:
-            stackscript_data = kwargs['stackscriptData']
-        if stackscript_id is None and 'stackscriptId' in kwargs:
-            stackscript_id = kwargs['stackscriptId']
-
         if authorized_keys is not None:
-            _setter("authorized_keys", authorized_keys)
+            pulumi.set(__self__, "authorized_keys", authorized_keys)
         if authorized_users is not None:
-            _setter("authorized_users", authorized_users)
+            pulumi.set(__self__, "authorized_users", authorized_users)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if filesystem is not None:
-            _setter("filesystem", filesystem)
+            pulumi.set(__self__, "filesystem", filesystem)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if linode_id is not None:
-            _setter("linode_id", linode_id)
+            pulumi.set(__self__, "linode_id", linode_id)
         if root_pass is not None:
-            _setter("root_pass", root_pass)
+            pulumi.set(__self__, "root_pass", root_pass)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if stackscript_data is not None:
-            _setter("stackscript_data", stackscript_data)
+            pulumi.set(__self__, "stackscript_data", stackscript_data)
         if stackscript_id is not None:
-            _setter("stackscript_id", stackscript_id)
+            pulumi.set(__self__, "stackscript_id", stackscript_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
 
     @property
     @pulumi.getter(name="authorizedKeys")
@@ -651,10 +557,6 @@ class InstanceDisk(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceDiskInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

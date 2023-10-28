@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ObjectStorageObjectArgs', 'ObjectStorageObject']
@@ -53,112 +53,37 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
         """
-        ObjectStorageObjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key=access_key,
-            bucket=bucket,
-            cluster=cluster,
-            key=key,
-            secret_key=secret_key,
-            acl=acl,
-            cache_control=cache_control,
-            content=content,
-            content_base64=content_base64,
-            content_disposition=content_disposition,
-            content_encoding=content_encoding,
-            content_language=content_language,
-            content_type=content_type,
-            etag=etag,
-            force_destroy=force_destroy,
-            metadata=metadata,
-            source=source,
-            website_redirect=website_redirect,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key: Optional[pulumi.Input[str]] = None,
-             bucket: Optional[pulumi.Input[str]] = None,
-             cluster: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             secret_key: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             cache_control: Optional[pulumi.Input[str]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_base64: Optional[pulumi.Input[str]] = None,
-             content_disposition: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             content_language: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             website_redirect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if access_key is None:
-            raise TypeError("Missing 'access_key' argument")
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if cluster is None:
-            raise TypeError("Missing 'cluster' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-        if secret_key is None:
-            raise TypeError("Missing 'secret_key' argument")
-        if cache_control is None and 'cacheControl' in kwargs:
-            cache_control = kwargs['cacheControl']
-        if content_base64 is None and 'contentBase64' in kwargs:
-            content_base64 = kwargs['contentBase64']
-        if content_disposition is None and 'contentDisposition' in kwargs:
-            content_disposition = kwargs['contentDisposition']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if content_language is None and 'contentLanguage' in kwargs:
-            content_language = kwargs['contentLanguage']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if website_redirect is None and 'websiteRedirect' in kwargs:
-            website_redirect = kwargs['websiteRedirect']
-
-        _setter("access_key", access_key)
-        _setter("bucket", bucket)
-        _setter("cluster", cluster)
-        _setter("key", key)
-        _setter("secret_key", secret_key)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "secret_key", secret_key)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if cache_control is not None:
-            _setter("cache_control", cache_control)
+            pulumi.set(__self__, "cache_control", cache_control)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_base64 is not None:
-            _setter("content_base64", content_base64)
+            pulumi.set(__self__, "content_base64", content_base64)
         if content_disposition is not None:
-            _setter("content_disposition", content_disposition)
+            pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if content_language is not None:
-            _setter("content_language", content_language)
+            pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if website_redirect is not None:
-            _setter("website_redirect", website_redirect)
+            pulumi.set(__self__, "website_redirect", website_redirect)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -421,113 +346,44 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[str] version_id: A unique version ID value for the object.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
         """
-        _ObjectStorageObjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key=access_key,
-            acl=acl,
-            bucket=bucket,
-            cache_control=cache_control,
-            cluster=cluster,
-            content=content,
-            content_base64=content_base64,
-            content_disposition=content_disposition,
-            content_encoding=content_encoding,
-            content_language=content_language,
-            content_type=content_type,
-            etag=etag,
-            force_destroy=force_destroy,
-            key=key,
-            metadata=metadata,
-            secret_key=secret_key,
-            source=source,
-            version_id=version_id,
-            website_redirect=website_redirect,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             bucket: Optional[pulumi.Input[str]] = None,
-             cache_control: Optional[pulumi.Input[str]] = None,
-             cluster: Optional[pulumi.Input[str]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_base64: Optional[pulumi.Input[str]] = None,
-             content_disposition: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             content_language: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             secret_key: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             version_id: Optional[pulumi.Input[str]] = None,
-             website_redirect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if cache_control is None and 'cacheControl' in kwargs:
-            cache_control = kwargs['cacheControl']
-        if content_base64 is None and 'contentBase64' in kwargs:
-            content_base64 = kwargs['contentBase64']
-        if content_disposition is None and 'contentDisposition' in kwargs:
-            content_disposition = kwargs['contentDisposition']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if content_language is None and 'contentLanguage' in kwargs:
-            content_language = kwargs['contentLanguage']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-        if website_redirect is None and 'websiteRedirect' in kwargs:
-            website_redirect = kwargs['websiteRedirect']
-
         if access_key is not None:
-            _setter("access_key", access_key)
+            pulumi.set(__self__, "access_key", access_key)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if cache_control is not None:
-            _setter("cache_control", cache_control)
+            pulumi.set(__self__, "cache_control", cache_control)
         if cluster is not None:
-            _setter("cluster", cluster)
+            pulumi.set(__self__, "cluster", cluster)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_base64 is not None:
-            _setter("content_base64", content_base64)
+            pulumi.set(__self__, "content_base64", content_base64)
         if content_disposition is not None:
-            _setter("content_disposition", content_disposition)
+            pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if content_language is not None:
-            _setter("content_language", content_language)
+            pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if secret_key is not None:
-            _setter("secret_key", secret_key)
+            pulumi.set(__self__, "secret_key", secret_key)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if version_id is not None:
-            _setter("version_id", version_id)
+            pulumi.set(__self__, "version_id", version_id)
         if website_redirect is not None:
-            _setter("website_redirect", website_redirect)
+            pulumi.set(__self__, "website_redirect", website_redirect)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -861,10 +717,6 @@ class ObjectStorageObject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ObjectStorageObjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
