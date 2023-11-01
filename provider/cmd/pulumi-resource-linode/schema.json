@@ -387,6 +387,10 @@
                     "$ref": "#/types/linode:index/InstanceConfigHelpers:InstanceConfigHelpers",
                     "description": "Helpers enabled when booting to this Linode Config.\n"
                 },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the disk in the Linode API.\n"
+                },
                 "interfaces": {
                     "type": "array",
                     "items": {
@@ -427,6 +431,7 @@
                     "requiredOutputs": [
                         "devices",
                         "helpers",
+                        "id",
                         "label",
                         "rootDevice"
                     ]
@@ -3506,6 +3511,10 @@
                     },
                     "description": "Helpers enabled when booting to this Linode Config.\n"
                 },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the disk in the Linode API.\n"
+                },
                 "interfaces": {
                     "type": "array",
                     "items": {
@@ -3542,6 +3551,7 @@
                 "comments",
                 "devices",
                 "helpers",
+                "id",
                 "interfaces",
                 "kernel",
                 "label",
@@ -9017,6 +9027,10 @@
                     "type": "boolean",
                     "description": "If true, the bucket will have CORS enabled for all origins.\n"
                 },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The endpoint for the bucket used for s3 connections.\n"
+                },
                 "hostname": {
                     "type": "string",
                     "description": "The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made\npublic.\n"
@@ -9043,6 +9057,7 @@
             },
             "required": [
                 "cluster",
+                "endpoint",
                 "hostname",
                 "label",
                 "versioning"
@@ -9117,6 +9132,10 @@
                     "corsEnabled": {
                         "type": "boolean",
                         "description": "If true, the bucket will have CORS enabled for all origins.\n"
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "The endpoint for the bucket used for s3 connections.\n"
                     },
                     "hostname": {
                         "type": "string",
@@ -9274,6 +9293,10 @@
                     "type": "string",
                     "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
                 },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.\n"
+                },
                 "etag": {
                     "type": "string",
                     "description": "The specific version of this object.\n"
@@ -9315,6 +9338,7 @@
                 "bucket",
                 "cluster",
                 "contentType",
+                "endpoint",
                 "etag",
                 "key",
                 "secretKey",
@@ -9366,6 +9390,10 @@
                 "contentType": {
                     "type": "string",
                     "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.\n"
                 },
                 "etag": {
                     "type": "string",
@@ -9455,6 +9483,10 @@
                     "contentType": {
                         "type": "string",
                         "description": "A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.\n"
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.\n"
                     },
                     "etag": {
                         "type": "string",
