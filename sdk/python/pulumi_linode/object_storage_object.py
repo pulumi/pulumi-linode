@@ -27,6 +27,7 @@ class ObjectStorageObjectArgs:
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -47,6 +48,7 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
         :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
@@ -74,6 +76,8 @@ class ObjectStorageObjectArgs:
             pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if force_destroy is not None:
@@ -243,6 +247,18 @@ class ObjectStorageObjectArgs:
 
     @property
     @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
         The specific version of this object.
@@ -316,6 +332,7 @@ class _ObjectStorageObjectState:
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -337,6 +354,7 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
         :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
@@ -368,6 +386,8 @@ class _ObjectStorageObjectState:
             pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if force_destroy is not None:
@@ -519,6 +539,18 @@ class _ObjectStorageObjectState:
 
     @property
     @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
         The specific version of this object.
@@ -630,6 +662,7 @@ class ObjectStorageObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -672,6 +705,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
         :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
@@ -733,6 +767,7 @@ class ObjectStorageObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -766,6 +801,7 @@ class ObjectStorageObject(pulumi.CustomResource):
             __props__.__dict__["content_encoding"] = content_encoding
             __props__.__dict__["content_language"] = content_language
             __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["etag"] = etag
             __props__.__dict__["force_destroy"] = force_destroy
             if key is None and not opts.urn:
@@ -799,6 +835,7 @@ class ObjectStorageObject(pulumi.CustomResource):
             content_encoding: Optional[pulumi.Input[str]] = None,
             content_language: Optional[pulumi.Input[str]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
+            endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
@@ -825,6 +862,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
         :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
@@ -849,6 +887,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         __props__.__dict__["content_encoding"] = content_encoding
         __props__.__dict__["content_language"] = content_language
         __props__.__dict__["content_type"] = content_type
+        __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["key"] = key
@@ -946,6 +985,14 @@ class ObjectStorageObject(pulumi.CustomResource):
         A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         """
         return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output[str]:
+        """
+        Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter

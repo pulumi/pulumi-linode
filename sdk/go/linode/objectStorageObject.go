@@ -73,6 +73,8 @@ type ObjectStorageObject struct {
 	ContentLanguage pulumi.StringPtrOutput `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
+	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The specific version of this object.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -158,6 +160,8 @@ type objectStorageObjectState struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
+	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+	Endpoint *string `pulumi:"endpoint"`
 	// The specific version of this object.
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -199,6 +203,8 @@ type ObjectStorageObjectState struct {
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
+	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+	Endpoint pulumi.StringPtrInput
 	// The specific version of this object.
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -244,6 +250,8 @@ type objectStorageObjectArgs struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType *string `pulumi:"contentType"`
+	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+	Endpoint *string `pulumi:"endpoint"`
 	// The specific version of this object.
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -284,6 +292,8 @@ type ObjectStorageObjectArgs struct {
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 	ContentType pulumi.StringPtrInput
+	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+	Endpoint pulumi.StringPtrInput
 	// The specific version of this object.
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
@@ -464,6 +474,11 @@ func (o ObjectStorageObjectOutput) ContentLanguage() pulumi.StringPtrOutput {
 // A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
 func (o ObjectStorageObjectOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+func (o ObjectStorageObjectOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The specific version of this object.

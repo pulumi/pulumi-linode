@@ -30,6 +30,12 @@ namespace Pulumi.Linode.Inputs
         [Input("helpers")]
         public Input<Inputs.InstanceConfigHelpersArgs>? Helpers { get; set; }
 
+        /// <summary>
+        /// The ID of the disk in the Linode API.
+        /// </summary>
+        [Input("id")]
+        public Input<int>? Id { get; set; }
+
         [Input("interfaces")]
         private InputList<Inputs.InstanceConfigInterfaceArgs>? _interfaces;
         public InputList<Inputs.InstanceConfigInterfaceArgs> Interfaces

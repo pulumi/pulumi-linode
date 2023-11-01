@@ -179,6 +179,7 @@ class _ObjectStorageBucketState:
                  cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  cors_enabled: Optional[pulumi.Input[bool]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
@@ -191,6 +192,7 @@ class _ObjectStorageBucketState:
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
                public.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
@@ -212,6 +214,8 @@ class _ObjectStorageBucketState:
             pulumi.set(__self__, "cluster", cluster)
         if cors_enabled is not None:
             pulumi.set(__self__, "cors_enabled", cors_enabled)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if label is not None:
@@ -282,6 +286,18 @@ class _ObjectStorageBucketState:
     @cors_enabled.setter
     def cors_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cors_enabled", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint for the bucket used for s3 connections.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
 
     @property
     @pulumi.getter
@@ -526,6 +542,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
             __props__.__dict__["secret_key"] = secret_key
             __props__.__dict__["versioning"] = versioning
+            __props__.__dict__["endpoint"] = None
             __props__.__dict__["hostname"] = None
         super(ObjectStorageBucket, __self__).__init__(
             'linode:index/objectStorageBucket:ObjectStorageBucket',
@@ -542,6 +559,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
             cert: Optional[pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             cors_enabled: Optional[pulumi.Input[bool]] = None,
+            endpoint: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]]] = None,
@@ -559,6 +577,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
                public.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
@@ -579,6 +598,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         __props__.__dict__["cert"] = cert
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["cors_enabled"] = cors_enabled
+        __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["label"] = label
         __props__.__dict__["lifecycle_rules"] = lifecycle_rules
@@ -625,6 +645,14 @@ class ObjectStorageBucket(pulumi.CustomResource):
         If true, the bucket will have CORS enabled for all origins.
         """
         return pulumi.get(self, "cors_enabled")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output[str]:
+        """
+        The endpoint for the bucket used for s3 connections.
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter

@@ -117,6 +117,8 @@ type ObjectStorageBucket struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrOutput `pulumi:"corsEnabled"`
+	// The endpoint for the bucket used for s3 connections.
+	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
 	// public.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -180,6 +182,8 @@ type objectStorageBucketState struct {
 	Cluster *string `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
+	// The endpoint for the bucket used for s3 connections.
+	Endpoint *string `pulumi:"endpoint"`
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
 	// public.
 	Hostname *string `pulumi:"hostname"`
@@ -208,6 +212,8 @@ type ObjectStorageBucketState struct {
 	Cluster pulumi.StringPtrInput
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrInput
+	// The endpoint for the bucket used for s3 connections.
+	Endpoint pulumi.StringPtrInput
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
 	// public.
 	Hostname pulumi.StringPtrInput
@@ -414,6 +420,11 @@ func (o ObjectStorageBucketOutput) Cluster() pulumi.StringOutput {
 // If true, the bucket will have CORS enabled for all origins.
 func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolPtrOutput { return v.CorsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The endpoint for the bucket used for s3 connections.
+func (o ObjectStorageBucketOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
