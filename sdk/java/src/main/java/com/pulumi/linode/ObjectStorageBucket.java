@@ -191,6 +191,20 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.corsEnabled);
     }
     /**
+     * The endpoint for the bucket used for s3 connections.
+     * 
+     */
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
+    private Output<String> endpoint;
+
+    /**
+     * @return The endpoint for the bucket used for s3 connections.
+     * 
+     */
+    public Output<String> endpoint() {
+        return this.endpoint;
+    }
+    /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
      * public.
      * 

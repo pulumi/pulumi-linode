@@ -183,6 +183,21 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     * 
+     */
+    @Import(name="endpoint")
+    private @Nullable Output<String> endpoint;
+
+    /**
+     * @return Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     * 
+     */
+    public Optional<Output<String>> endpoint() {
+        return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
      * The specific version of this object.
      * 
      */
@@ -301,6 +316,7 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         this.contentEncoding = $.contentEncoding;
         this.contentLanguage = $.contentLanguage;
         this.contentType = $.contentType;
+        this.endpoint = $.endpoint;
         this.etag = $.etag;
         this.forceDestroy = $.forceDestroy;
         this.key = $.key;
@@ -557,6 +573,27 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
          */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
+        }
+
+        /**
+         * @param endpoint Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(@Nullable Output<String> endpoint) {
+            $.endpoint = endpoint;
+            return this;
+        }
+
+        /**
+         * @param endpoint Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(String endpoint) {
+            return endpoint(Output.of(endpoint));
         }
 
         /**

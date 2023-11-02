@@ -119,6 +119,12 @@ namespace Pulumi.Linode
         public Output<bool?> CorsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The endpoint for the bucket used for s3 connections.
+        /// </summary>
+        [Output("endpoint")]
+        public Output<string> Endpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
         /// public.
         /// </summary>
@@ -300,6 +306,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("corsEnabled")]
         public Input<bool>? CorsEnabled { get; set; }
+
+        /// <summary>
+        /// The endpoint for the bucket used for s3 connections.
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         /// <summary>
         /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made

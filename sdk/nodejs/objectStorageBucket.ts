@@ -106,6 +106,10 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     public readonly corsEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The endpoint for the bucket used for s3 connections.
+     */
+    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
      * public.
      */
@@ -149,6 +153,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["cert"] = state ? state.cert : undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["corsEnabled"] = state ? state.corsEnabled : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
@@ -171,6 +176,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             resourceInputs["secretKey"] = args ? args.secretKey : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -202,6 +208,10 @@ export interface ObjectStorageBucketState {
      * If true, the bucket will have CORS enabled for all origins.
      */
     corsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The endpoint for the bucket used for s3 connections.
+     */
+    endpoint?: pulumi.Input<string>;
     /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
      * public.

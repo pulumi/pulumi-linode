@@ -25,6 +25,10 @@ namespace Pulumi.Linode.Outputs
         /// Helpers enabled when booting to this Linode Config.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigHelperResult> Helpers;
+        /// <summary>
+        /// The ID of the disk in the Linode API.
+        /// </summary>
+        public readonly int Id;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceResult> Interfaces;
         /// <summary>
         /// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -59,6 +63,8 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetInstancesInstanceConfigHelperResult> helpers,
 
+            int id,
+
             ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceResult> interfaces,
 
             string kernel,
@@ -76,6 +82,7 @@ namespace Pulumi.Linode.Outputs
             Comments = comments;
             Devices = devices;
             Helpers = helpers;
+            Id = id;
             Interfaces = interfaces;
             Kernel = kernel;
             Label = label;

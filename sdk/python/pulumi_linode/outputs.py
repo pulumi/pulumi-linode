@@ -699,6 +699,7 @@ class InstanceConfig(dict):
                  comments: Optional[str] = None,
                  devices: Optional['outputs.InstanceConfigDevices'] = None,
                  helpers: Optional['outputs.InstanceConfigHelpers'] = None,
+                 id: Optional[int] = None,
                  interfaces: Optional[Sequence['outputs.InstanceConfigInterface']] = None,
                  kernel: Optional[str] = None,
                  memory_limit: Optional[int] = None,
@@ -710,6 +711,7 @@ class InstanceConfig(dict):
         :param str comments: Arbitrary user comments about this `config`.
         :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
+        :param int id: The ID of the disk in the Linode API.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param int memory_limit: Defaults to the total RAM of the Linode
                
@@ -725,6 +727,8 @@ class InstanceConfig(dict):
             pulumi.set(__self__, "devices", devices)
         if helpers is not None:
             pulumi.set(__self__, "helpers", helpers)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
         if kernel is not None:
@@ -769,6 +773,14 @@ class InstanceConfig(dict):
         Helpers enabled when booting to this Linode Config.
         """
         return pulumi.get(self, "helpers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the disk in the Linode API.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -6185,6 +6197,7 @@ class GetInstancesInstanceConfigResult(dict):
                  comments: str,
                  devices: Sequence['outputs.GetInstancesInstanceConfigDeviceResult'],
                  helpers: Sequence['outputs.GetInstancesInstanceConfigHelperResult'],
+                 id: int,
                  interfaces: Sequence['outputs.GetInstancesInstanceConfigInterfaceResult'],
                  kernel: str,
                  label: str,
@@ -6196,6 +6209,7 @@ class GetInstancesInstanceConfigResult(dict):
         :param str comments: Arbitrary user comments about this `config`.
         :param Sequence['GetInstancesInstanceConfigDeviceArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param Sequence['GetInstancesInstanceConfigHelperArgs'] helpers: Helpers enabled when booting to this Linode Config.
+        :param int id: The ID of the disk in the Linode API.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
         :param int memory_limit: Defaults to the total RAM of the Linode
@@ -6206,6 +6220,7 @@ class GetInstancesInstanceConfigResult(dict):
         pulumi.set(__self__, "comments", comments)
         pulumi.set(__self__, "devices", devices)
         pulumi.set(__self__, "helpers", helpers)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "interfaces", interfaces)
         pulumi.set(__self__, "kernel", kernel)
         pulumi.set(__self__, "label", label)
@@ -6237,6 +6252,14 @@ class GetInstancesInstanceConfigResult(dict):
         Helpers enabled when booting to this Linode Config.
         """
         return pulumi.get(self, "helpers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the disk in the Linode API.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

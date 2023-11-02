@@ -29,6 +29,11 @@ public final class GetInstancesInstanceConfig {
      * 
      */
     private List<GetInstancesInstanceConfigHelper> helpers;
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    private Integer id;
     private List<GetInstancesInstanceConfigInterface> interfaces;
     /**
      * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -82,6 +87,13 @@ public final class GetInstancesInstanceConfig {
      */
     public List<GetInstancesInstanceConfigHelper> helpers() {
         return this.helpers;
+    }
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    public Integer id() {
+        return this.id;
     }
     public List<GetInstancesInstanceConfigInterface> interfaces() {
         return this.interfaces;
@@ -141,6 +153,7 @@ public final class GetInstancesInstanceConfig {
         private String comments;
         private List<GetInstancesInstanceConfigDevice> devices;
         private List<GetInstancesInstanceConfigHelper> helpers;
+        private Integer id;
         private List<GetInstancesInstanceConfigInterface> interfaces;
         private String kernel;
         private String label;
@@ -154,6 +167,7 @@ public final class GetInstancesInstanceConfig {
     	      this.comments = defaults.comments;
     	      this.devices = defaults.devices;
     	      this.helpers = defaults.helpers;
+    	      this.id = defaults.id;
     	      this.interfaces = defaults.interfaces;
     	      this.kernel = defaults.kernel;
     	      this.label = defaults.label;
@@ -183,6 +197,11 @@ public final class GetInstancesInstanceConfig {
         }
         public Builder helpers(GetInstancesInstanceConfigHelper... helpers) {
             return helpers(List.of(helpers));
+        }
+        @CustomType.Setter
+        public Builder id(Integer id) {
+            this.id = Objects.requireNonNull(id);
+            return this;
         }
         @CustomType.Setter
         public Builder interfaces(List<GetInstancesInstanceConfigInterface> interfaces) {
@@ -227,6 +246,7 @@ public final class GetInstancesInstanceConfig {
             o.comments = comments;
             o.devices = devices;
             o.helpers = helpers;
+            o.id = id;
             o.interfaces = interfaces;
             o.kernel = kernel;
             o.label = label;

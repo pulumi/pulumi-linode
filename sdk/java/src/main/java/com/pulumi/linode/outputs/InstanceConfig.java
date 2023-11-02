@@ -31,6 +31,11 @@ public final class InstanceConfig {
      * 
      */
     private @Nullable InstanceConfigHelpers helpers;
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    private @Nullable Integer id;
     private @Nullable List<InstanceConfigInterface> interfaces;
     /**
      * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -86,6 +91,13 @@ public final class InstanceConfig {
      */
     public Optional<InstanceConfigHelpers> helpers() {
         return Optional.ofNullable(this.helpers);
+    }
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    public Optional<Integer> id() {
+        return Optional.ofNullable(this.id);
     }
     public List<InstanceConfigInterface> interfaces() {
         return this.interfaces == null ? List.of() : this.interfaces;
@@ -147,6 +159,7 @@ public final class InstanceConfig {
         private @Nullable String comments;
         private @Nullable InstanceConfigDevices devices;
         private @Nullable InstanceConfigHelpers helpers;
+        private @Nullable Integer id;
         private @Nullable List<InstanceConfigInterface> interfaces;
         private @Nullable String kernel;
         private String label;
@@ -160,6 +173,7 @@ public final class InstanceConfig {
     	      this.comments = defaults.comments;
     	      this.devices = defaults.devices;
     	      this.helpers = defaults.helpers;
+    	      this.id = defaults.id;
     	      this.interfaces = defaults.interfaces;
     	      this.kernel = defaults.kernel;
     	      this.label = defaults.label;
@@ -182,6 +196,11 @@ public final class InstanceConfig {
         @CustomType.Setter
         public Builder helpers(@Nullable InstanceConfigHelpers helpers) {
             this.helpers = helpers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(@Nullable Integer id) {
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -227,6 +246,7 @@ public final class InstanceConfig {
             o.comments = comments;
             o.devices = devices;
             o.helpers = helpers;
+            o.id = id;
             o.interfaces = interfaces;
             o.kernel = kernel;
             o.label = label;

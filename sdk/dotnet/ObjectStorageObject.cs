@@ -108,6 +108,12 @@ namespace Pulumi.Linode
         public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
+        /// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+        /// </summary>
+        [Output("endpoint")]
+        public Output<string> Endpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The specific version of this object.
         /// </summary>
         [Output("etag")]
@@ -268,6 +274,12 @@ namespace Pulumi.Linode
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
+        /// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
         /// The specific version of this object.
         /// </summary>
         [Input("etag")]
@@ -388,6 +400,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
+
+        /// <summary>
+        /// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         /// <summary>
         /// The specific version of this object.

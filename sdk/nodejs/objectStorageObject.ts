@@ -99,6 +99,10 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     public readonly contentType!: pulumi.Output<string>;
     /**
+     * Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     */
+    public readonly endpoint!: pulumi.Output<string>;
+    /**
      * The specific version of this object.
      */
     public readonly etag!: pulumi.Output<string>;
@@ -155,6 +159,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
             resourceInputs["contentLanguage"] = state ? state.contentLanguage : undefined;
             resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
@@ -191,6 +196,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
             resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
@@ -253,6 +259,10 @@ export interface ObjectStorageObjectState {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     */
+    endpoint?: pulumi.Input<string>;
     /**
      * The specific version of this object.
      */
@@ -335,6 +345,10 @@ export interface ObjectStorageObjectArgs {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     */
+    endpoint?: pulumi.Input<string>;
     /**
      * The specific version of this object.
      */

@@ -688,6 +688,7 @@ class InstanceConfigArgs:
                  comments: Optional[pulumi.Input[str]] = None,
                  devices: Optional[pulumi.Input['InstanceConfigDevicesArgs']] = None,
                  helpers: Optional[pulumi.Input['InstanceConfigHelpersArgs']] = None,
+                 id: Optional[pulumi.Input[int]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]] = None,
                  kernel: Optional[pulumi.Input[str]] = None,
                  memory_limit: Optional[pulumi.Input[int]] = None,
@@ -699,6 +700,7 @@ class InstanceConfigArgs:
         :param pulumi.Input[str] comments: Arbitrary user comments about this `config`.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
+        :param pulumi.Input[int] id: The ID of the disk in the Linode API.
         :param pulumi.Input[str] kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param pulumi.Input[int] memory_limit: Defaults to the total RAM of the Linode
                
@@ -714,6 +716,8 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "devices", devices)
         if helpers is not None:
             pulumi.set(__self__, "helpers", helpers)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
         if kernel is not None:
@@ -774,6 +778,18 @@ class InstanceConfigArgs:
     @helpers.setter
     def helpers(self, value: Optional[pulumi.Input['InstanceConfigHelpersArgs']]):
         pulumi.set(self, "helpers", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the disk in the Linode API.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter

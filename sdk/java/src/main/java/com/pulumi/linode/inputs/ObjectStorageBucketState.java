@@ -95,6 +95,21 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The endpoint for the bucket used for s3 connections.
+     * 
+     */
+    @Import(name="endpoint")
+    private @Nullable Output<String> endpoint;
+
+    /**
+     * @return The endpoint for the bucket used for s3 connections.
+     * 
+     */
+    public Optional<Output<String>> endpoint() {
+        return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
      * public.
      * 
@@ -187,6 +202,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         this.cert = $.cert;
         this.cluster = $.cluster;
         this.corsEnabled = $.corsEnabled;
+        this.endpoint = $.endpoint;
         this.hostname = $.hostname;
         this.label = $.label;
         this.lifecycleRules = $.lifecycleRules;
@@ -315,6 +331,27 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          */
         public Builder corsEnabled(Boolean corsEnabled) {
             return corsEnabled(Output.of(corsEnabled));
+        }
+
+        /**
+         * @param endpoint The endpoint for the bucket used for s3 connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(@Nullable Output<String> endpoint) {
+            $.endpoint = endpoint;
+            return this;
+        }
+
+        /**
+         * @param endpoint The endpoint for the bucket used for s3 connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(String endpoint) {
+            return endpoint(Output.of(endpoint));
         }
 
         /**

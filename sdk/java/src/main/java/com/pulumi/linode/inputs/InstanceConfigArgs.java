@@ -65,6 +65,21 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.helpers);
     }
 
+    /**
+     * The ID of the disk in the Linode API.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<Integer> id;
+
+    /**
+     * @return The ID of the disk in the Linode API.
+     * 
+     */
+    public Optional<Output<Integer>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
     @Import(name="interfaces")
     private @Nullable Output<List<InstanceConfigInterfaceArgs>> interfaces;
 
@@ -172,6 +187,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.comments = $.comments;
         this.devices = $.devices;
         this.helpers = $.helpers;
+        this.id = $.id;
         this.interfaces = $.interfaces;
         this.kernel = $.kernel;
         this.label = $.label;
@@ -260,6 +276,27 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder helpers(InstanceConfigHelpersArgs helpers) {
             return helpers(Output.of(helpers));
+        }
+
+        /**
+         * @param id The ID of the disk in the Linode API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<Integer> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The ID of the disk in the Linode API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(Integer id) {
+            return id(Output.of(id));
         }
 
         public Builder interfaces(@Nullable Output<List<InstanceConfigInterfaceArgs>> interfaces) {

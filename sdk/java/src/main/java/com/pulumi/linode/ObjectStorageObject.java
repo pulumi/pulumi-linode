@@ -215,6 +215,20 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return this.contentType;
     }
     /**
+     * Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     * 
+     */
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
+    private Output<String> endpoint;
+
+    /**
+     * @return Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
+     * 
+     */
+    public Output<String> endpoint() {
+        return this.endpoint;
+    }
+    /**
      * The specific version of this object.
      * 
      */

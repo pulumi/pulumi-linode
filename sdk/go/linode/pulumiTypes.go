@@ -1531,7 +1531,9 @@ type InstanceConfig struct {
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
-	Helpers    *InstanceConfigHelpers    `pulumi:"helpers"`
+	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
+	// The ID of the disk in the Linode API.
+	Id         *int                      `pulumi:"id"`
 	Interfaces []InstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel *string `pulumi:"kernel"`
@@ -1566,7 +1568,9 @@ type InstanceConfigArgs struct {
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
-	Helpers    InstanceConfigHelpersPtrInput     `pulumi:"helpers"`
+	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
+	// The ID of the disk in the Linode API.
+	Id         pulumi.IntPtrInput                `pulumi:"id"`
 	Interfaces InstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
@@ -1666,6 +1670,11 @@ func (o InstanceConfigOutput) Devices() InstanceConfigDevicesPtrOutput {
 // Helpers enabled when booting to this Linode Config.
 func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
+}
+
+// The ID of the disk in the Linode API.
+func (o InstanceConfigOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceConfigOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
@@ -16362,7 +16371,9 @@ type GetInstancesInstanceConfig struct {
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices []GetInstancesInstanceConfigDevice `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
-	Helpers    []GetInstancesInstanceConfigHelper    `pulumi:"helpers"`
+	Helpers []GetInstancesInstanceConfigHelper `pulumi:"helpers"`
+	// The ID of the disk in the Linode API.
+	Id         int                                   `pulumi:"id"`
 	Interfaces []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel string `pulumi:"kernel"`
@@ -16395,7 +16406,9 @@ type GetInstancesInstanceConfigArgs struct {
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices GetInstancesInstanceConfigDeviceArrayInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
-	Helpers    GetInstancesInstanceConfigHelperArrayInput    `pulumi:"helpers"`
+	Helpers GetInstancesInstanceConfigHelperArrayInput `pulumi:"helpers"`
+	// The ID of the disk in the Linode API.
+	Id         pulumi.IntInput                               `pulumi:"id"`
 	Interfaces GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringInput `pulumi:"kernel"`
@@ -16493,6 +16506,11 @@ func (o GetInstancesInstanceConfigOutput) Devices() GetInstancesInstanceConfigDe
 // Helpers enabled when booting to this Linode Config.
 func (o GetInstancesInstanceConfigOutput) Helpers() GetInstancesInstanceConfigHelperArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigHelper { return v.Helpers }).(GetInstancesInstanceConfigHelperArrayOutput)
+}
+
+// The ID of the disk in the Linode API.
+func (o GetInstancesInstanceConfigOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfig) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetInstancesInstanceConfigOutput) Interfaces() GetInstancesInstanceConfigInterfaceArrayOutput {
