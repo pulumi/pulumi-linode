@@ -151,7 +151,7 @@ require (
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
-	github.com/linode/linodego v1.24.0 // indirect
+	github.com/linode/linodego v1.24.1 // indirect
 	github.com/linode/linodego/k8s v0.0.0-20200831124119-58d5d5bb7947 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
