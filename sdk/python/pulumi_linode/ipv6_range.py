@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['Ipv6RangeArgs', 'Ipv6Range']
@@ -23,11 +23,34 @@ class Ipv6RangeArgs:
         :param pulumi.Input[int] linode_id: The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         :param pulumi.Input[str] route_target: The IPv6 SLAAC address to assign this range to.
         """
-        pulumi.set(__self__, "prefix_length", prefix_length)
+        Ipv6RangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefix_length=prefix_length,
+            linode_id=linode_id,
+            route_target=route_target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefix_length: Optional[pulumi.Input[int]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             route_target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if prefix_length is None:
+            raise TypeError("Missing 'prefix_length' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if route_target is None and 'routeTarget' in kwargs:
+            route_target = kwargs['routeTarget']
+
+        _setter("prefix_length", prefix_length)
         if linode_id is not None:
-            pulumi.set(__self__, "linode_id", linode_id)
+            _setter("linode_id", linode_id)
         if route_target is not None:
-            pulumi.set(__self__, "route_target", route_target)
+            _setter("route_target", route_target)
 
     @property
     @pulumi.getter(name="prefixLength")
@@ -86,20 +109,51 @@ class _Ipv6RangeState:
         :param pulumi.Input[str] region: The region for this range of IPv6 addresses.
         :param pulumi.Input[str] route_target: The IPv6 SLAAC address to assign this range to.
         """
+        _Ipv6RangeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_bgp=is_bgp,
+            linode_id=linode_id,
+            linodes=linodes,
+            prefix_length=prefix_length,
+            range=range,
+            region=region,
+            route_target=route_target,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_bgp: Optional[pulumi.Input[bool]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             prefix_length: Optional[pulumi.Input[int]] = None,
+             range: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             route_target: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if is_bgp is None and 'isBgp' in kwargs:
+            is_bgp = kwargs['isBgp']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if route_target is None and 'routeTarget' in kwargs:
+            route_target = kwargs['routeTarget']
+
         if is_bgp is not None:
-            pulumi.set(__self__, "is_bgp", is_bgp)
+            _setter("is_bgp", is_bgp)
         if linode_id is not None:
-            pulumi.set(__self__, "linode_id", linode_id)
+            _setter("linode_id", linode_id)
         if linodes is not None:
-            pulumi.set(__self__, "linodes", linodes)
+            _setter("linodes", linodes)
         if prefix_length is not None:
-            pulumi.set(__self__, "prefix_length", prefix_length)
+            _setter("prefix_length", prefix_length)
         if range is not None:
-            pulumi.set(__self__, "range", range)
+            _setter("range", range)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if route_target is not None:
-            pulumi.set(__self__, "route_target", route_target)
+            _setter("route_target", route_target)
 
     @property
     @pulumi.getter(name="isBgp")
@@ -251,6 +305,10 @@ class Ipv6Range(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            Ipv6RangeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

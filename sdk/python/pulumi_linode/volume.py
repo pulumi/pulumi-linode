@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VolumeArgs', 'Volume']
@@ -31,17 +31,44 @@ class VolumeArgs:
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
-        pulumi.set(__self__, "label", label)
+        VolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            linode_id=linode_id,
+            region=region,
+            size=size,
+            source_volume_id=source_volume_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: Optional[pulumi.Input[str]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             source_volume_id: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if source_volume_id is None and 'sourceVolumeId' in kwargs:
+            source_volume_id = kwargs['sourceVolumeId']
+
+        _setter("label", label)
         if linode_id is not None:
-            pulumi.set(__self__, "linode_id", linode_id)
+            _setter("linode_id", linode_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if source_volume_id is not None:
-            pulumi.set(__self__, "source_volume_id", source_volume_id)
+            _setter("source_volume_id", source_volume_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -142,22 +169,53 @@ class _VolumeState:
         :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
+        _VolumeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filesystem_path=filesystem_path,
+            label=label,
+            linode_id=linode_id,
+            region=region,
+            size=size,
+            source_volume_id=source_volume_id,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filesystem_path: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             linode_id: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             source_volume_id: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if filesystem_path is None and 'filesystemPath' in kwargs:
+            filesystem_path = kwargs['filesystemPath']
+        if linode_id is None and 'linodeId' in kwargs:
+            linode_id = kwargs['linodeId']
+        if source_volume_id is None and 'sourceVolumeId' in kwargs:
+            source_volume_id = kwargs['sourceVolumeId']
+
         if filesystem_path is not None:
-            pulumi.set(__self__, "filesystem_path", filesystem_path)
+            _setter("filesystem_path", filesystem_path)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if linode_id is not None:
-            pulumi.set(__self__, "linode_id", linode_id)
+            _setter("linode_id", linode_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if source_volume_id is not None:
-            pulumi.set(__self__, "source_volume_id", source_volume_id)
+            _setter("source_volume_id", source_volume_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="filesystemPath")
@@ -423,6 +481,10 @@ class Volume(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

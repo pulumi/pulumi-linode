@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,39 @@ class NodeBalancerArgs:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
+        NodeBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_conn_throttle=client_conn_throttle,
+            firewall_id=firewall_id,
+            label=label,
+            region=region,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_conn_throttle: Optional[pulumi.Input[int]] = None,
+             firewall_id: Optional[pulumi.Input[int]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_conn_throttle is None and 'clientConnThrottle' in kwargs:
+            client_conn_throttle = kwargs['clientConnThrottle']
+        if firewall_id is None and 'firewallId' in kwargs:
+            firewall_id = kwargs['firewallId']
+
         if client_conn_throttle is not None:
-            pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+            _setter("client_conn_throttle", client_conn_throttle)
         if firewall_id is not None:
-            pulumi.set(__self__, "firewall_id", firewall_id)
+            _setter("firewall_id", firewall_id)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="clientConnThrottle")
@@ -135,28 +158,63 @@ class _NodeBalancerState:
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
         """
+        _NodeBalancerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_conn_throttle=client_conn_throttle,
+            created=created,
+            firewall_id=firewall_id,
+            hostname=hostname,
+            ipv4=ipv4,
+            ipv6=ipv6,
+            label=label,
+            region=region,
+            tags=tags,
+            transfers=transfers,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_conn_throttle: Optional[pulumi.Input[int]] = None,
+             created: Optional[pulumi.Input[str]] = None,
+             firewall_id: Optional[pulumi.Input[int]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             ipv4: Optional[pulumi.Input[str]] = None,
+             ipv6: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transfers: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_conn_throttle is None and 'clientConnThrottle' in kwargs:
+            client_conn_throttle = kwargs['clientConnThrottle']
+        if firewall_id is None and 'firewallId' in kwargs:
+            firewall_id = kwargs['firewallId']
+
         if client_conn_throttle is not None:
-            pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+            _setter("client_conn_throttle", client_conn_throttle)
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if firewall_id is not None:
-            pulumi.set(__self__, "firewall_id", firewall_id)
+            _setter("firewall_id", firewall_id)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ipv4 is not None:
-            pulumi.set(__self__, "ipv4", ipv4)
+            _setter("ipv4", ipv4)
         if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+            _setter("ipv6", ipv6)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transfers is not None:
-            pulumi.set(__self__, "transfers", transfers)
+            _setter("transfers", transfers)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
 
     @property
     @pulumi.getter(name="clientConnThrottle")
@@ -384,6 +442,10 @@ class NodeBalancer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeBalancerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

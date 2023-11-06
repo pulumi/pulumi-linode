@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,14 +33,47 @@ class StackScriptArgs:
         :param pulumi.Input[bool] is_public: This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "images", images)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "script", script)
+        StackScriptArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            images=images,
+            label=label,
+            script=script,
+            is_public=is_public,
+            rev_note=rev_note,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             script: Optional[pulumi.Input[str]] = None,
+             is_public: Optional[pulumi.Input[bool]] = None,
+             rev_note: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if rev_note is None and 'revNote' in kwargs:
+            rev_note = kwargs['revNote']
+
+        _setter("description", description)
+        _setter("images", images)
+        _setter("label", label)
+        _setter("script", script)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if rev_note is not None:
-            pulumi.set(__self__, "rev_note", rev_note)
+            _setter("rev_note", rev_note)
 
     @property
     @pulumi.getter
@@ -151,32 +184,79 @@ class _StackScriptState:
         :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[str] username: The User who created the StackScript.
         """
+        _StackScriptState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            deployments_active=deployments_active,
+            deployments_total=deployments_total,
+            description=description,
+            images=images,
+            is_public=is_public,
+            label=label,
+            rev_note=rev_note,
+            script=script,
+            updated=updated,
+            user_defined_fields=user_defined_fields,
+            user_gravatar_id=user_gravatar_id,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: Optional[pulumi.Input[str]] = None,
+             deployments_active: Optional[pulumi.Input[int]] = None,
+             deployments_total: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_public: Optional[pulumi.Input[bool]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             rev_note: Optional[pulumi.Input[str]] = None,
+             script: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]] = None,
+             user_gravatar_id: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployments_active is None and 'deploymentsActive' in kwargs:
+            deployments_active = kwargs['deploymentsActive']
+        if deployments_total is None and 'deploymentsTotal' in kwargs:
+            deployments_total = kwargs['deploymentsTotal']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if rev_note is None and 'revNote' in kwargs:
+            rev_note = kwargs['revNote']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+        if user_gravatar_id is None and 'userGravatarId' in kwargs:
+            user_gravatar_id = kwargs['userGravatarId']
+
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if deployments_active is not None:
-            pulumi.set(__self__, "deployments_active", deployments_active)
+            _setter("deployments_active", deployments_active)
         if deployments_total is not None:
-            pulumi.set(__self__, "deployments_total", deployments_total)
+            _setter("deployments_total", deployments_total)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if images is not None:
-            pulumi.set(__self__, "images", images)
+            _setter("images", images)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if rev_note is not None:
-            pulumi.set(__self__, "rev_note", rev_note)
+            _setter("rev_note", rev_note)
         if script is not None:
-            pulumi.set(__self__, "script", script)
+            _setter("script", script)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
         if user_defined_fields is not None:
-            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+            _setter("user_defined_fields", user_defined_fields)
         if user_gravatar_id is not None:
-            pulumi.set(__self__, "user_gravatar_id", user_gravatar_id)
+            _setter("user_gravatar_id", user_gravatar_id)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -468,6 +548,10 @@ class StackScript(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StackScriptArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

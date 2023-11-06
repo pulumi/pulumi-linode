@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,22 +47,69 @@ class DatabaseMysqlArgs:
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
-        pulumi.set(__self__, "engine_id", engine_id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "type", type)
+        DatabaseMysqlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine_id=engine_id,
+            label=label,
+            region=region,
+            type=type,
+            allow_lists=allow_lists,
+            cluster_size=cluster_size,
+            encrypted=encrypted,
+            replication_type=replication_type,
+            ssl_connection=ssl_connection,
+            updates=updates,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine_id: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cluster_size: Optional[pulumi.Input[int]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             replication_type: Optional[pulumi.Input[str]] = None,
+             ssl_connection: Optional[pulumi.Input[bool]] = None,
+             updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if engine_id is None and 'engineId' in kwargs:
+            engine_id = kwargs['engineId']
+        if engine_id is None:
+            raise TypeError("Missing 'engine_id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if cluster_size is None and 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if ssl_connection is None and 'sslConnection' in kwargs:
+            ssl_connection = kwargs['sslConnection']
+
+        _setter("engine_id", engine_id)
+        _setter("label", label)
+        _setter("region", region)
+        _setter("type", type)
         if allow_lists is not None:
-            pulumi.set(__self__, "allow_lists", allow_lists)
+            _setter("allow_lists", allow_lists)
         if cluster_size is not None:
-            pulumi.set(__self__, "cluster_size", cluster_size)
+            _setter("cluster_size", cluster_size)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if replication_type is not None:
-            pulumi.set(__self__, "replication_type", replication_type)
+            _setter("replication_type", replication_type)
         if ssl_connection is not None:
-            pulumi.set(__self__, "ssl_connection", ssl_connection)
+            _setter("ssl_connection", ssl_connection)
         if updates is not None:
-            pulumi.set(__self__, "updates", updates)
+            _setter("updates", updates)
 
     @property
     @pulumi.getter(name="engineId")
@@ -247,46 +294,115 @@ class _DatabaseMysqlState:
         :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
         """
+        _DatabaseMysqlState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_lists=allow_lists,
+            ca_cert=ca_cert,
+            cluster_size=cluster_size,
+            created=created,
+            encrypted=encrypted,
+            engine=engine,
+            engine_id=engine_id,
+            host_primary=host_primary,
+            host_secondary=host_secondary,
+            label=label,
+            region=region,
+            replication_type=replication_type,
+            root_password=root_password,
+            root_username=root_username,
+            ssl_connection=ssl_connection,
+            status=status,
+            type=type,
+            updated=updated,
+            updates=updates,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_size: Optional[pulumi.Input[int]] = None,
+             created: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_id: Optional[pulumi.Input[str]] = None,
+             host_primary: Optional[pulumi.Input[str]] = None,
+             host_secondary: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replication_type: Optional[pulumi.Input[str]] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             root_username: Optional[pulumi.Input[str]] = None,
+             ssl_connection: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if ca_cert is None and 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if cluster_size is None and 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if engine_id is None and 'engineId' in kwargs:
+            engine_id = kwargs['engineId']
+        if host_primary is None and 'hostPrimary' in kwargs:
+            host_primary = kwargs['hostPrimary']
+        if host_secondary is None and 'hostSecondary' in kwargs:
+            host_secondary = kwargs['hostSecondary']
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if root_username is None and 'rootUsername' in kwargs:
+            root_username = kwargs['rootUsername']
+        if ssl_connection is None and 'sslConnection' in kwargs:
+            ssl_connection = kwargs['sslConnection']
+
         if allow_lists is not None:
-            pulumi.set(__self__, "allow_lists", allow_lists)
+            _setter("allow_lists", allow_lists)
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if cluster_size is not None:
-            pulumi.set(__self__, "cluster_size", cluster_size)
+            _setter("cluster_size", cluster_size)
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_id is not None:
-            pulumi.set(__self__, "engine_id", engine_id)
+            _setter("engine_id", engine_id)
         if host_primary is not None:
-            pulumi.set(__self__, "host_primary", host_primary)
+            _setter("host_primary", host_primary)
         if host_secondary is not None:
-            pulumi.set(__self__, "host_secondary", host_secondary)
+            _setter("host_secondary", host_secondary)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replication_type is not None:
-            pulumi.set(__self__, "replication_type", replication_type)
+            _setter("replication_type", replication_type)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
         if root_username is not None:
-            pulumi.set(__self__, "root_username", root_username)
+            _setter("root_username", root_username)
         if ssl_connection is not None:
-            pulumi.set(__self__, "ssl_connection", ssl_connection)
+            _setter("ssl_connection", ssl_connection)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
         if updates is not None:
-            pulumi.set(__self__, "updates", updates)
+            _setter("updates", updates)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="allowLists")
@@ -724,6 +840,10 @@ class DatabaseMysql(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseMysqlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -765,6 +885,11 @@ class DatabaseMysql(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            if updates is not None and not isinstance(updates, DatabaseMysqlUpdatesArgs):
+                updates = updates or {}
+                def _setter(key, value):
+                    updates[key] = value
+                DatabaseMysqlUpdatesArgs._configure(_setter, **updates)
             __props__.__dict__["updates"] = updates
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["created"] = None

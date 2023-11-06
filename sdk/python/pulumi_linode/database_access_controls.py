@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatabaseAccessControlsArgs', 'DatabaseAccessControls']
@@ -23,9 +23,36 @@ class DatabaseAccessControlsArgs:
         :param pulumi.Input[int] database_id: The unique ID of the target database.
         :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
         """
-        pulumi.set(__self__, "allow_lists", allow_lists)
-        pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "database_type", database_type)
+        DatabaseAccessControlsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_lists=allow_lists,
+            database_id=database_id,
+            database_type=database_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             database_id: Optional[pulumi.Input[int]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if allow_lists is None:
+            raise TypeError("Missing 'allow_lists' argument")
+        if database_id is None and 'databaseId' in kwargs:
+            database_id = kwargs['databaseId']
+        if database_id is None:
+            raise TypeError("Missing 'database_id' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+
+        _setter("allow_lists", allow_lists)
+        _setter("database_id", database_id)
+        _setter("database_type", database_type)
 
     @property
     @pulumi.getter(name="allowLists")
@@ -76,12 +103,33 @@ class _DatabaseAccessControlsState:
         :param pulumi.Input[int] database_id: The unique ID of the target database.
         :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
         """
+        _DatabaseAccessControlsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_lists=allow_lists,
+            database_id=database_id,
+            database_type=database_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             database_id: Optional[pulumi.Input[int]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_lists is None and 'allowLists' in kwargs:
+            allow_lists = kwargs['allowLists']
+        if database_id is None and 'databaseId' in kwargs:
+            database_id = kwargs['databaseId']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+
         if allow_lists is not None:
-            pulumi.set(__self__, "allow_lists", allow_lists)
+            _setter("allow_lists", allow_lists)
         if database_id is not None:
-            pulumi.set(__self__, "database_id", database_id)
+            _setter("database_id", database_id)
         if database_type is not None:
-            pulumi.set(__self__, "database_type", database_type)
+            _setter("database_type", database_type)
 
     @property
     @pulumi.getter(name="allowLists")
@@ -205,6 +253,10 @@ class DatabaseAccessControls(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseAccessControlsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

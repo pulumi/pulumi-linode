@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DomainArgs', 'Domain']
@@ -45,30 +45,83 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "type", type)
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            type=type,
+            axfr_ips=axfr_ips,
+            description=description,
+            expire_sec=expire_sec,
+            group=group,
+            master_ips=master_ips,
+            refresh_sec=refresh_sec,
+            retry_sec=retry_sec,
+            soa_email=soa_email,
+            status=status,
+            tags=tags,
+            ttl_sec=ttl_sec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expire_sec: Optional[pulumi.Input[int]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             master_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             refresh_sec: Optional[pulumi.Input[int]] = None,
+             retry_sec: Optional[pulumi.Input[int]] = None,
+             soa_email: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ttl_sec: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if axfr_ips is None and 'axfrIps' in kwargs:
+            axfr_ips = kwargs['axfrIps']
+        if expire_sec is None and 'expireSec' in kwargs:
+            expire_sec = kwargs['expireSec']
+        if master_ips is None and 'masterIps' in kwargs:
+            master_ips = kwargs['masterIps']
+        if refresh_sec is None and 'refreshSec' in kwargs:
+            refresh_sec = kwargs['refreshSec']
+        if retry_sec is None and 'retrySec' in kwargs:
+            retry_sec = kwargs['retrySec']
+        if soa_email is None and 'soaEmail' in kwargs:
+            soa_email = kwargs['soaEmail']
+        if ttl_sec is None and 'ttlSec' in kwargs:
+            ttl_sec = kwargs['ttlSec']
+
+        _setter("domain", domain)
+        _setter("type", type)
         if axfr_ips is not None:
-            pulumi.set(__self__, "axfr_ips", axfr_ips)
+            _setter("axfr_ips", axfr_ips)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expire_sec is not None:
-            pulumi.set(__self__, "expire_sec", expire_sec)
+            _setter("expire_sec", expire_sec)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if master_ips is not None:
-            pulumi.set(__self__, "master_ips", master_ips)
+            _setter("master_ips", master_ips)
         if refresh_sec is not None:
-            pulumi.set(__self__, "refresh_sec", refresh_sec)
+            _setter("refresh_sec", refresh_sec)
         if retry_sec is not None:
-            pulumi.set(__self__, "retry_sec", retry_sec)
+            _setter("retry_sec", retry_sec)
         if soa_email is not None:
-            pulumi.set(__self__, "soa_email", soa_email)
+            _setter("soa_email", soa_email)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if ttl_sec is not None:
-            pulumi.set(__self__, "ttl_sec", ttl_sec)
+            _setter("ttl_sec", ttl_sec)
 
     @property
     @pulumi.getter
@@ -263,32 +316,81 @@ class _DomainState:
         :param pulumi.Input[int] ttl_sec: 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         :param pulumi.Input[str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            axfr_ips=axfr_ips,
+            description=description,
+            domain=domain,
+            expire_sec=expire_sec,
+            group=group,
+            master_ips=master_ips,
+            refresh_sec=refresh_sec,
+            retry_sec=retry_sec,
+            soa_email=soa_email,
+            status=status,
+            tags=tags,
+            ttl_sec=ttl_sec,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             axfr_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             expire_sec: Optional[pulumi.Input[int]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             master_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             refresh_sec: Optional[pulumi.Input[int]] = None,
+             retry_sec: Optional[pulumi.Input[int]] = None,
+             soa_email: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ttl_sec: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if axfr_ips is None and 'axfrIps' in kwargs:
+            axfr_ips = kwargs['axfrIps']
+        if expire_sec is None and 'expireSec' in kwargs:
+            expire_sec = kwargs['expireSec']
+        if master_ips is None and 'masterIps' in kwargs:
+            master_ips = kwargs['masterIps']
+        if refresh_sec is None and 'refreshSec' in kwargs:
+            refresh_sec = kwargs['refreshSec']
+        if retry_sec is None and 'retrySec' in kwargs:
+            retry_sec = kwargs['retrySec']
+        if soa_email is None and 'soaEmail' in kwargs:
+            soa_email = kwargs['soaEmail']
+        if ttl_sec is None and 'ttlSec' in kwargs:
+            ttl_sec = kwargs['ttlSec']
+
         if axfr_ips is not None:
-            pulumi.set(__self__, "axfr_ips", axfr_ips)
+            _setter("axfr_ips", axfr_ips)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if expire_sec is not None:
-            pulumi.set(__self__, "expire_sec", expire_sec)
+            _setter("expire_sec", expire_sec)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if master_ips is not None:
-            pulumi.set(__self__, "master_ips", master_ips)
+            _setter("master_ips", master_ips)
         if refresh_sec is not None:
-            pulumi.set(__self__, "refresh_sec", refresh_sec)
+            _setter("refresh_sec", refresh_sec)
         if retry_sec is not None:
-            pulumi.set(__self__, "retry_sec", retry_sec)
+            _setter("retry_sec", retry_sec)
         if soa_email is not None:
-            pulumi.set(__self__, "soa_email", soa_email)
+            _setter("soa_email", soa_email)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if ttl_sec is not None:
-            pulumi.set(__self__, "ttl_sec", ttl_sec)
+            _setter("ttl_sec", ttl_sec)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="axfrIps")
@@ -572,6 +674,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
