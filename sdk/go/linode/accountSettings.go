@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages the settings of a Linode account.
@@ -163,12 +162,6 @@ func (i *AccountSettings) ToAccountSettingsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingsOutput)
 }
 
-func (i *AccountSettings) ToOutput(ctx context.Context) pulumix.Output[*AccountSettings] {
-	return pulumix.Output[*AccountSettings]{
-		OutputState: i.ToAccountSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountSettingsArrayInput is an input type that accepts AccountSettingsArray and AccountSettingsArrayOutput values.
 // You can construct a concrete instance of `AccountSettingsArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i AccountSettingsArray) ToAccountSettingsArrayOutput() AccountSettingsArra
 
 func (i AccountSettingsArray) ToAccountSettingsArrayOutputWithContext(ctx context.Context) AccountSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingsArrayOutput)
-}
-
-func (i AccountSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountSettings] {
-	return pulumix.Output[[]*AccountSettings]{
-		OutputState: i.ToAccountSettingsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountSettingsMapInput is an input type that accepts AccountSettingsMap and AccountSettingsMapOutput values.
@@ -225,12 +212,6 @@ func (i AccountSettingsMap) ToAccountSettingsMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AccountSettingsMapOutput)
 }
 
-func (i AccountSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountSettings] {
-	return pulumix.Output[map[string]*AccountSettings]{
-		OutputState: i.ToAccountSettingsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountSettingsOutput struct{ *pulumi.OutputState }
 
 func (AccountSettingsOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o AccountSettingsOutput) ToAccountSettingsOutput() AccountSettingsOutput {
 
 func (o AccountSettingsOutput) ToAccountSettingsOutputWithContext(ctx context.Context) AccountSettingsOutput {
 	return o
-}
-
-func (o AccountSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountSettings] {
-	return pulumix.Output[*AccountSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
@@ -290,12 +265,6 @@ func (o AccountSettingsArrayOutput) ToAccountSettingsArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o AccountSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountSettings] {
-	return pulumix.Output[[]*AccountSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountSettingsArrayOutput) Index(i pulumi.IntInput) AccountSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountSettings {
 		return vs[0].([]*AccountSettings)[vs[1].(int)]
@@ -314,12 +283,6 @@ func (o AccountSettingsMapOutput) ToAccountSettingsMapOutput() AccountSettingsMa
 
 func (o AccountSettingsMapOutput) ToAccountSettingsMapOutputWithContext(ctx context.Context) AccountSettingsMapOutput {
 	return o
-}
-
-func (o AccountSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountSettings] {
-	return pulumix.Output[map[string]*AccountSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountSettingsMapOutput) MapIndex(k pulumi.StringInput) AccountSettingsOutput {

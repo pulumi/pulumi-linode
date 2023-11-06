@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -179,12 +178,6 @@ func (i *Ipv6Range) ToIpv6RangeOutputWithContext(ctx context.Context) Ipv6RangeO
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6RangeOutput)
 }
 
-func (i *Ipv6Range) ToOutput(ctx context.Context) pulumix.Output[*Ipv6Range] {
-	return pulumix.Output[*Ipv6Range]{
-		OutputState: i.ToIpv6RangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ipv6RangeArrayInput is an input type that accepts Ipv6RangeArray and Ipv6RangeArrayOutput values.
 // You can construct a concrete instance of `Ipv6RangeArrayInput` via:
 //
@@ -208,12 +201,6 @@ func (i Ipv6RangeArray) ToIpv6RangeArrayOutput() Ipv6RangeArrayOutput {
 
 func (i Ipv6RangeArray) ToIpv6RangeArrayOutputWithContext(ctx context.Context) Ipv6RangeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6RangeArrayOutput)
-}
-
-func (i Ipv6RangeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6Range] {
-	return pulumix.Output[[]*Ipv6Range]{
-		OutputState: i.ToIpv6RangeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Ipv6RangeMapInput is an input type that accepts Ipv6RangeMap and Ipv6RangeMapOutput values.
@@ -241,12 +228,6 @@ func (i Ipv6RangeMap) ToIpv6RangeMapOutputWithContext(ctx context.Context) Ipv6R
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6RangeMapOutput)
 }
 
-func (i Ipv6RangeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6Range] {
-	return pulumix.Output[map[string]*Ipv6Range]{
-		OutputState: i.ToIpv6RangeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Ipv6RangeOutput struct{ *pulumi.OutputState }
 
 func (Ipv6RangeOutput) ElementType() reflect.Type {
@@ -259,12 +240,6 @@ func (o Ipv6RangeOutput) ToIpv6RangeOutput() Ipv6RangeOutput {
 
 func (o Ipv6RangeOutput) ToIpv6RangeOutputWithContext(ctx context.Context) Ipv6RangeOutput {
 	return o
-}
-
-func (o Ipv6RangeOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv6Range] {
-	return pulumix.Output[*Ipv6Range]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether this IPv6 range is shared.
@@ -316,12 +291,6 @@ func (o Ipv6RangeArrayOutput) ToIpv6RangeArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o Ipv6RangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6Range] {
-	return pulumix.Output[[]*Ipv6Range]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Ipv6RangeArrayOutput) Index(i pulumi.IntInput) Ipv6RangeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6Range {
 		return vs[0].([]*Ipv6Range)[vs[1].(int)]
@@ -340,12 +309,6 @@ func (o Ipv6RangeMapOutput) ToIpv6RangeMapOutput() Ipv6RangeMapOutput {
 
 func (o Ipv6RangeMapOutput) ToIpv6RangeMapOutputWithContext(ctx context.Context) Ipv6RangeMapOutput {
 	return o
-}
-
-func (o Ipv6RangeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6Range] {
-	return pulumix.Output[map[string]*Ipv6Range]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Ipv6RangeMapOutput) MapIndex(k pulumi.StringInput) Ipv6RangeOutput {

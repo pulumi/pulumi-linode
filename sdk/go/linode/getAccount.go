@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode account.
@@ -104,12 +103,6 @@ func (o GetAccountResultOutput) ToGetAccountResultOutput() GetAccountResultOutpu
 
 func (o GetAccountResultOutput) ToGetAccountResultOutputWithContext(ctx context.Context) GetAccountResultOutput {
 	return o
-}
-
-func (o GetAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountResult] {
-	return pulumix.Output[GetAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // First line of this Account's billing address.

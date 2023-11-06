@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode profile.
@@ -98,12 +97,6 @@ func (o GetProfileResultOutput) ToGetProfileResultOutput() GetProfileResultOutpu
 
 func (o GetProfileResultOutput) ToGetProfileResultOutputWithContext(ctx context.Context) GetProfileResultOutput {
 	return o
-}
-
-func (o GetProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProfileResult] {
-	return pulumix.Output[GetProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of SSH Keys authorized to use Lish for this user. This value is ignored if lishAuthMethod is 'disabled'.

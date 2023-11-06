@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode instance type
@@ -120,12 +119,6 @@ func (o GetInstanceTypeResultOutput) ToGetInstanceTypeResultOutput() GetInstance
 
 func (o GetInstanceTypeResultOutput) ToGetInstanceTypeResultOutputWithContext(ctx context.Context) GetInstanceTypeResultOutput {
 	return o
-}
-
-func (o GetInstanceTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypeResult] {
-	return pulumix.Output[GetInstanceTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonsOutput {
