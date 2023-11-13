@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode Networking IP Address
@@ -116,12 +115,6 @@ func (o GetNetworkingIpResultOutput) ToGetNetworkingIpResultOutput() GetNetworki
 
 func (o GetNetworkingIpResultOutput) ToGetNetworkingIpResultOutputWithContext(ctx context.Context) GetNetworkingIpResultOutput {
 	return o
-}
-
-func (o GetNetworkingIpResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkingIpResult] {
-	return pulumix.Output[GetNetworkingIpResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address.

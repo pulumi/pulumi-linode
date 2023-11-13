@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode account settings.
@@ -88,12 +87,6 @@ func (o LookupAccountSettingsResultOutput) ToLookupAccountSettingsResultOutput()
 
 func (o LookupAccountSettingsResultOutput) ToLookupAccountSettingsResultOutputWithContext(ctx context.Context) LookupAccountSettingsResultOutput {
 	return o
-}
-
-func (o LookupAccountSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountSettingsResult] {
-	return pulumix.Output[LookupAccountSettingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account-wide backups default.

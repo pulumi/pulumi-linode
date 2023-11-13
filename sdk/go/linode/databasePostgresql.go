@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode PostgreSQL Database resource. This can be used to create, modify, and delete Linode PostgreSQL Databases.
@@ -443,12 +442,6 @@ func (i *DatabasePostgresql) ToDatabasePostgresqlOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlOutput)
 }
 
-func (i *DatabasePostgresql) ToOutput(ctx context.Context) pulumix.Output[*DatabasePostgresql] {
-	return pulumix.Output[*DatabasePostgresql]{
-		OutputState: i.ToDatabasePostgresqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabasePostgresqlArrayInput is an input type that accepts DatabasePostgresqlArray and DatabasePostgresqlArrayOutput values.
 // You can construct a concrete instance of `DatabasePostgresqlArrayInput` via:
 //
@@ -472,12 +465,6 @@ func (i DatabasePostgresqlArray) ToDatabasePostgresqlArrayOutput() DatabasePostg
 
 func (i DatabasePostgresqlArray) ToDatabasePostgresqlArrayOutputWithContext(ctx context.Context) DatabasePostgresqlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlArrayOutput)
-}
-
-func (i DatabasePostgresqlArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabasePostgresql] {
-	return pulumix.Output[[]*DatabasePostgresql]{
-		OutputState: i.ToDatabasePostgresqlArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabasePostgresqlMapInput is an input type that accepts DatabasePostgresqlMap and DatabasePostgresqlMapOutput values.
@@ -505,12 +492,6 @@ func (i DatabasePostgresqlMap) ToDatabasePostgresqlMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlMapOutput)
 }
 
-func (i DatabasePostgresqlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabasePostgresql] {
-	return pulumix.Output[map[string]*DatabasePostgresql]{
-		OutputState: i.ToDatabasePostgresqlMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabasePostgresqlOutput struct{ *pulumi.OutputState }
 
 func (DatabasePostgresqlOutput) ElementType() reflect.Type {
@@ -523,12 +504,6 @@ func (o DatabasePostgresqlOutput) ToDatabasePostgresqlOutput() DatabasePostgresq
 
 func (o DatabasePostgresqlOutput) ToDatabasePostgresqlOutputWithContext(ctx context.Context) DatabasePostgresqlOutput {
 	return o
-}
-
-func (o DatabasePostgresqlOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabasePostgresql] {
-	return pulumix.Output[*DatabasePostgresql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
@@ -667,12 +642,6 @@ func (o DatabasePostgresqlArrayOutput) ToDatabasePostgresqlArrayOutputWithContex
 	return o
 }
 
-func (o DatabasePostgresqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabasePostgresql] {
-	return pulumix.Output[[]*DatabasePostgresql]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabasePostgresqlArrayOutput) Index(i pulumi.IntInput) DatabasePostgresqlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabasePostgresql {
 		return vs[0].([]*DatabasePostgresql)[vs[1].(int)]
@@ -691,12 +660,6 @@ func (o DatabasePostgresqlMapOutput) ToDatabasePostgresqlMapOutput() DatabasePos
 
 func (o DatabasePostgresqlMapOutput) ToDatabasePostgresqlMapOutputWithContext(ctx context.Context) DatabasePostgresqlMapOutput {
 	return o
-}
-
-func (o DatabasePostgresqlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabasePostgresql] {
-	return pulumix.Output[map[string]*DatabasePostgresql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabasePostgresqlMapOutput) MapIndex(k pulumi.StringInput) DatabasePostgresqlOutput {

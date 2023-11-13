@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode Kernels that match a set of filters.
@@ -141,12 +140,6 @@ func (o GetKernelsResultOutput) ToGetKernelsResultOutput() GetKernelsResultOutpu
 
 func (o GetKernelsResultOutput) ToGetKernelsResultOutputWithContext(ctx context.Context) GetKernelsResultOutput {
 	return o
-}
-
-func (o GetKernelsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKernelsResult] {
-	return pulumix.Output[GetKernelsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetKernelsResultOutput) Filters() GetKernelsFilterArrayOutput {

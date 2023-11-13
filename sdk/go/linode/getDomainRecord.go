@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode Domain Record.
@@ -137,12 +136,6 @@ func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutput() Looku
 
 func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutputWithContext(ctx context.Context) LookupDomainRecordResultOutput {
 	return o
-}
-
-func (o LookupDomainRecordResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainRecordResult] {
-	return pulumix.Output[LookupDomainRecordResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The associated domain's unique ID.

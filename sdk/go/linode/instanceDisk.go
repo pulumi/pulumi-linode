@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
@@ -334,12 +333,6 @@ func (i *InstanceDisk) ToInstanceDiskOutputWithContext(ctx context.Context) Inst
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskOutput)
 }
 
-func (i *InstanceDisk) ToOutput(ctx context.Context) pulumix.Output[*InstanceDisk] {
-	return pulumix.Output[*InstanceDisk]{
-		OutputState: i.ToInstanceDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceDiskArrayInput is an input type that accepts InstanceDiskArray and InstanceDiskArrayOutput values.
 // You can construct a concrete instance of `InstanceDiskArrayInput` via:
 //
@@ -363,12 +356,6 @@ func (i InstanceDiskArray) ToInstanceDiskArrayOutput() InstanceDiskArrayOutput {
 
 func (i InstanceDiskArray) ToInstanceDiskArrayOutputWithContext(ctx context.Context) InstanceDiskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskArrayOutput)
-}
-
-func (i InstanceDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceDisk] {
-	return pulumix.Output[[]*InstanceDisk]{
-		OutputState: i.ToInstanceDiskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceDiskMapInput is an input type that accepts InstanceDiskMap and InstanceDiskMapOutput values.
@@ -396,12 +383,6 @@ func (i InstanceDiskMap) ToInstanceDiskMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskMapOutput)
 }
 
-func (i InstanceDiskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceDisk] {
-	return pulumix.Output[map[string]*InstanceDisk]{
-		OutputState: i.ToInstanceDiskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceDiskOutput struct{ *pulumi.OutputState }
 
 func (InstanceDiskOutput) ElementType() reflect.Type {
@@ -414,12 +395,6 @@ func (o InstanceDiskOutput) ToInstanceDiskOutput() InstanceDiskOutput {
 
 func (o InstanceDiskOutput) ToInstanceDiskOutputWithContext(ctx context.Context) InstanceDiskOutput {
 	return o
-}
-
-func (o InstanceDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDisk] {
-	return pulumix.Output[*InstanceDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
@@ -503,12 +478,6 @@ func (o InstanceDiskArrayOutput) ToInstanceDiskArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o InstanceDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceDisk] {
-	return pulumix.Output[[]*InstanceDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceDiskArrayOutput) Index(i pulumi.IntInput) InstanceDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceDisk {
 		return vs[0].([]*InstanceDisk)[vs[1].(int)]
@@ -527,12 +496,6 @@ func (o InstanceDiskMapOutput) ToInstanceDiskMapOutput() InstanceDiskMapOutput {
 
 func (o InstanceDiskMapOutput) ToInstanceDiskMapOutputWithContext(ctx context.Context) InstanceDiskMapOutput {
 	return o
-}
-
-func (o InstanceDiskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceDisk] {
-	return pulumix.Output[map[string]*InstanceDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceDiskMapOutput) MapIndex(k pulumi.StringInput) InstanceDiskOutput {
