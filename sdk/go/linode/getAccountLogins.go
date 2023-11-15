@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode account logins that match a set of filters.
@@ -126,12 +125,6 @@ func (o GetAccountLoginsResultOutput) ToGetAccountLoginsResultOutput() GetAccoun
 
 func (o GetAccountLoginsResultOutput) ToGetAccountLoginsResultOutputWithContext(ctx context.Context) GetAccountLoginsResultOutput {
 	return o
-}
-
-func (o GetAccountLoginsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountLoginsResult] {
-	return pulumix.Output[GetAccountLoginsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccountLoginsResultOutput) Filters() GetAccountLoginsFilterArrayOutput {

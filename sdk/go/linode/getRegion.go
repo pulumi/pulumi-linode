@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -109,12 +108,6 @@ func (o GetRegionResultOutput) ToGetRegionResultOutput() GetRegionResultOutput {
 
 func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Context) GetRegionResultOutput {
 	return o
-}
-
-func (o GetRegionResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionResult] {
-	return pulumix.Output[GetRegionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of capabilities of this region.

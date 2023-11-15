@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode NodeBalancer Node resource.  This can be used to create, modify, and delete Linodes NodeBalancer Nodes.
@@ -187,12 +186,6 @@ func (i *NodeBalancerNode) ToNodeBalancerNodeOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeOutput)
 }
 
-func (i *NodeBalancerNode) ToOutput(ctx context.Context) pulumix.Output[*NodeBalancerNode] {
-	return pulumix.Output[*NodeBalancerNode]{
-		OutputState: i.ToNodeBalancerNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeBalancerNodeArrayInput is an input type that accepts NodeBalancerNodeArray and NodeBalancerNodeArrayOutput values.
 // You can construct a concrete instance of `NodeBalancerNodeArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i NodeBalancerNodeArray) ToNodeBalancerNodeArrayOutput() NodeBalancerNodeA
 
 func (i NodeBalancerNodeArray) ToNodeBalancerNodeArrayOutputWithContext(ctx context.Context) NodeBalancerNodeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeArrayOutput)
-}
-
-func (i NodeBalancerNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]*NodeBalancerNode] {
-	return pulumix.Output[[]*NodeBalancerNode]{
-		OutputState: i.ToNodeBalancerNodeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeBalancerNodeMapInput is an input type that accepts NodeBalancerNodeMap and NodeBalancerNodeMapOutput values.
@@ -249,12 +236,6 @@ func (i NodeBalancerNodeMap) ToNodeBalancerNodeMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerNodeMapOutput)
 }
 
-func (i NodeBalancerNodeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeBalancerNode] {
-	return pulumix.Output[map[string]*NodeBalancerNode]{
-		OutputState: i.ToNodeBalancerNodeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeBalancerNodeOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerNodeOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutput() NodeBalancerNodeOutpu
 
 func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutputWithContext(ctx context.Context) NodeBalancerNodeOutput {
 	return o
-}
-
-func (o NodeBalancerNodeOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeBalancerNode] {
-	return pulumix.Output[*NodeBalancerNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private IP Address where this backend can be reached. This must be a private IP address.
@@ -326,12 +301,6 @@ func (o NodeBalancerNodeArrayOutput) ToNodeBalancerNodeArrayOutputWithContext(ct
 	return o
 }
 
-func (o NodeBalancerNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NodeBalancerNode] {
-	return pulumix.Output[[]*NodeBalancerNode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeBalancerNodeArrayOutput) Index(i pulumi.IntInput) NodeBalancerNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeBalancerNode {
 		return vs[0].([]*NodeBalancerNode)[vs[1].(int)]
@@ -350,12 +319,6 @@ func (o NodeBalancerNodeMapOutput) ToNodeBalancerNodeMapOutput() NodeBalancerNod
 
 func (o NodeBalancerNodeMapOutput) ToNodeBalancerNodeMapOutputWithContext(ctx context.Context) NodeBalancerNodeMapOutput {
 	return o
-}
-
-func (o NodeBalancerNodeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeBalancerNode] {
-	return pulumix.Output[map[string]*NodeBalancerNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeBalancerNodeMapOutput) MapIndex(k pulumi.StringInput) NodeBalancerNodeOutput {

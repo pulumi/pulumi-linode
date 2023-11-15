@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about a Linode NodeBalancer node.
@@ -118,12 +117,6 @@ func (o LookupNodeBalancerNodeResultOutput) ToLookupNodeBalancerNodeResultOutput
 
 func (o LookupNodeBalancerNodeResultOutput) ToLookupNodeBalancerNodeResultOutputWithContext(ctx context.Context) LookupNodeBalancerNodeResultOutput {
 	return o
-}
-
-func (o LookupNodeBalancerNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeBalancerNodeResult] {
-	return pulumix.Output[LookupNodeBalancerNodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private IP Address where this backend can be reached.

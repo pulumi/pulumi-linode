@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode Database Backups that match a set of filters.
@@ -166,12 +165,6 @@ func (o GetDatabaseBackupsResultOutput) ToGetDatabaseBackupsResultOutput() GetDa
 
 func (o GetDatabaseBackupsResultOutput) ToGetDatabaseBackupsResultOutputWithContext(ctx context.Context) GetDatabaseBackupsResultOutput {
 	return o
-}
-
-func (o GetDatabaseBackupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseBackupsResult] {
-	return pulumix.Output[GetDatabaseBackupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseBackupsResultOutput) Backups() GetDatabaseBackupsBackupArrayOutput {

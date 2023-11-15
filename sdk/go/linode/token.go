@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode Token resource.  This can be used to create, modify, and delete Linode API Personal Access Tokens.  Personal Access Tokens proxy user credentials for Linode API access.  This is necessary for tools, such as Pulumi, to interact with Linode services on a user's behalf.
@@ -187,12 +186,6 @@ func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TokenOutput)
 }
 
-func (i *Token) ToOutput(ctx context.Context) pulumix.Output[*Token] {
-	return pulumix.Output[*Token]{
-		OutputState: i.ToTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TokenArrayInput is an input type that accepts TokenArray and TokenArrayOutput values.
 // You can construct a concrete instance of `TokenArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i TokenArray) ToTokenArrayOutput() TokenArrayOutput {
 
 func (i TokenArray) ToTokenArrayOutputWithContext(ctx context.Context) TokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TokenArrayOutput)
-}
-
-func (i TokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*Token] {
-	return pulumix.Output[[]*Token]{
-		OutputState: i.ToTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TokenMapInput is an input type that accepts TokenMap and TokenMapOutput values.
@@ -249,12 +236,6 @@ func (i TokenMap) ToTokenMapOutputWithContext(ctx context.Context) TokenMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TokenMapOutput)
 }
 
-func (i TokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Token] {
-	return pulumix.Output[map[string]*Token]{
-		OutputState: i.ToTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TokenOutput struct{ *pulumi.OutputState }
 
 func (TokenOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o TokenOutput) ToTokenOutput() TokenOutput {
 
 func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
-}
-
-func (o TokenOutput) ToOutput(ctx context.Context) pulumix.Output[*Token] {
-	return pulumix.Output[*Token]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date this Token was created.
@@ -314,12 +289,6 @@ func (o TokenArrayOutput) ToTokenArrayOutputWithContext(ctx context.Context) Tok
 	return o
 }
 
-func (o TokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Token] {
-	return pulumix.Output[[]*Token]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TokenArrayOutput) Index(i pulumi.IntInput) TokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Token {
 		return vs[0].([]*Token)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o TokenMapOutput) ToTokenMapOutput() TokenMapOutput {
 
 func (o TokenMapOutput) ToTokenMapOutputWithContext(ctx context.Context) TokenMapOutput {
 	return o
-}
-
-func (o TokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Token] {
-	return pulumix.Output[map[string]*Token]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TokenMapOutput) MapIndex(k pulumi.StringInput) TokenOutput {

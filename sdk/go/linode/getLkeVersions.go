@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -80,12 +79,6 @@ func (o GetLkeVersionsResultOutput) ToGetLkeVersionsResultOutput() GetLkeVersion
 
 func (o GetLkeVersionsResultOutput) ToGetLkeVersionsResultOutputWithContext(ctx context.Context) GetLkeVersionsResultOutput {
 	return o
-}
-
-func (o GetLkeVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLkeVersionsResult] {
-	return pulumix.Output[GetLkeVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.

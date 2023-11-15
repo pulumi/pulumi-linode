@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTICE:** This data source has been deprecated in favor of `getDatabaseBackups`.
@@ -159,12 +158,6 @@ func (o GetDatabaseMysqlBackupsResultOutput) ToGetDatabaseMysqlBackupsResultOutp
 
 func (o GetDatabaseMysqlBackupsResultOutput) ToGetDatabaseMysqlBackupsResultOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsResultOutput {
 	return o
-}
-
-func (o GetDatabaseMysqlBackupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseMysqlBackupsResult] {
-	return pulumix.Output[GetDatabaseMysqlBackupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseMysqlBackupsResultOutput) Backups() GetDatabaseMysqlBackupsBackupArrayOutput {

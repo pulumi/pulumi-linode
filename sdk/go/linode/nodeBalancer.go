@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
@@ -227,12 +226,6 @@ func (i *NodeBalancer) ToNodeBalancerOutputWithContext(ctx context.Context) Node
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerOutput)
 }
 
-func (i *NodeBalancer) ToOutput(ctx context.Context) pulumix.Output[*NodeBalancer] {
-	return pulumix.Output[*NodeBalancer]{
-		OutputState: i.ToNodeBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeBalancerArrayInput is an input type that accepts NodeBalancerArray and NodeBalancerArrayOutput values.
 // You can construct a concrete instance of `NodeBalancerArrayInput` via:
 //
@@ -256,12 +249,6 @@ func (i NodeBalancerArray) ToNodeBalancerArrayOutput() NodeBalancerArrayOutput {
 
 func (i NodeBalancerArray) ToNodeBalancerArrayOutputWithContext(ctx context.Context) NodeBalancerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerArrayOutput)
-}
-
-func (i NodeBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]*NodeBalancer] {
-	return pulumix.Output[[]*NodeBalancer]{
-		OutputState: i.ToNodeBalancerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeBalancerMapInput is an input type that accepts NodeBalancerMap and NodeBalancerMapOutput values.
@@ -289,12 +276,6 @@ func (i NodeBalancerMap) ToNodeBalancerMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerMapOutput)
 }
 
-func (i NodeBalancerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeBalancer] {
-	return pulumix.Output[map[string]*NodeBalancer]{
-		OutputState: i.ToNodeBalancerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeBalancerOutput struct{ *pulumi.OutputState }
 
 func (NodeBalancerOutput) ElementType() reflect.Type {
@@ -307,12 +288,6 @@ func (o NodeBalancerOutput) ToNodeBalancerOutput() NodeBalancerOutput {
 
 func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context) NodeBalancerOutput {
 	return o
-}
-
-func (o NodeBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeBalancer] {
-	return pulumix.Output[*NodeBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -386,12 +361,6 @@ func (o NodeBalancerArrayOutput) ToNodeBalancerArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o NodeBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NodeBalancer] {
-	return pulumix.Output[[]*NodeBalancer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeBalancerArrayOutput) Index(i pulumi.IntInput) NodeBalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeBalancer {
 		return vs[0].([]*NodeBalancer)[vs[1].(int)]
@@ -410,12 +379,6 @@ func (o NodeBalancerMapOutput) ToNodeBalancerMapOutput() NodeBalancerMapOutput {
 
 func (o NodeBalancerMapOutput) ToNodeBalancerMapOutputWithContext(ctx context.Context) NodeBalancerMapOutput {
 	return o
-}
-
-func (o NodeBalancerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeBalancer] {
-	return pulumix.Output[map[string]*NodeBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeBalancerMapOutput) MapIndex(k pulumi.StringInput) NodeBalancerOutput {

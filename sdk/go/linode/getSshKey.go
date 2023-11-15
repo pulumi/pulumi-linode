@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
@@ -108,12 +107,6 @@ func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutput() LookupSshKeyResul
 
 func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutputWithContext(ctx context.Context) LookupSshKeyResultOutput {
 	return o
-}
-
-func (o LookupSshKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSshKeyResult] {
-	return pulumix.Output[LookupSshKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date this key was added.
