@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode IPv6 Range.
@@ -106,12 +105,6 @@ func (o LookupIpv6RangeResultOutput) ToLookupIpv6RangeResultOutput() LookupIpv6R
 
 func (o LookupIpv6RangeResultOutput) ToLookupIpv6RangeResultOutputWithContext(ctx context.Context) LookupIpv6RangeResultOutput {
 	return o
-}
-
-func (o LookupIpv6RangeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIpv6RangeResult] {
-	return pulumix.Output[LookupIpv6RangeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupIpv6RangeResultOutput) Id() pulumi.StringOutput {

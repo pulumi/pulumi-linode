@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode MySQL Database.
@@ -160,12 +159,6 @@ func (o LookupDatabaseMysqlResultOutput) ToLookupDatabaseMysqlResultOutput() Loo
 
 func (o LookupDatabaseMysqlResultOutput) ToLookupDatabaseMysqlResultOutputWithContext(ctx context.Context) LookupDatabaseMysqlResultOutput {
 	return o
-}
-
-func (o LookupDatabaseMysqlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseMysqlResult] {
-	return pulumix.Output[LookupDatabaseMysqlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.

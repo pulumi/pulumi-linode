@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about a Linode Domain Zonefile.
@@ -102,12 +101,6 @@ func (o GetDomainZonefileResultOutput) ToGetDomainZonefileResultOutput() GetDoma
 
 func (o GetDomainZonefileResultOutput) ToGetDomainZonefileResultOutputWithContext(ctx context.Context) GetDomainZonefileResultOutput {
 	return o
-}
-
-func (o GetDomainZonefileResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainZonefileResult] {
-	return pulumix.Output[GetDomainZonefileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The associated domain's unique ID.

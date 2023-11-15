@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides details about the networking configuration of an Instance.
@@ -100,12 +99,6 @@ func (o GetInstanceNetworkingResultOutput) ToGetInstanceNetworkingResultOutput()
 
 func (o GetInstanceNetworkingResultOutput) ToGetInstanceNetworkingResultOutputWithContext(ctx context.Context) GetInstanceNetworkingResultOutput {
 	return o
-}
-
-func (o GetInstanceNetworkingResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceNetworkingResult] {
-	return pulumix.Output[GetInstanceNetworkingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstanceNetworkingResultOutput) Id() pulumi.StringOutput {

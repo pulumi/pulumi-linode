@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an LKE cluster.
@@ -298,12 +297,6 @@ func (i *LkeCluster) ToLkeClusterOutputWithContext(ctx context.Context) LkeClust
 	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterOutput)
 }
 
-func (i *LkeCluster) ToOutput(ctx context.Context) pulumix.Output[*LkeCluster] {
-	return pulumix.Output[*LkeCluster]{
-		OutputState: i.ToLkeClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LkeClusterArrayInput is an input type that accepts LkeClusterArray and LkeClusterArrayOutput values.
 // You can construct a concrete instance of `LkeClusterArrayInput` via:
 //
@@ -327,12 +320,6 @@ func (i LkeClusterArray) ToLkeClusterArrayOutput() LkeClusterArrayOutput {
 
 func (i LkeClusterArray) ToLkeClusterArrayOutputWithContext(ctx context.Context) LkeClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterArrayOutput)
-}
-
-func (i LkeClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*LkeCluster] {
-	return pulumix.Output[[]*LkeCluster]{
-		OutputState: i.ToLkeClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LkeClusterMapInput is an input type that accepts LkeClusterMap and LkeClusterMapOutput values.
@@ -360,12 +347,6 @@ func (i LkeClusterMap) ToLkeClusterMapOutputWithContext(ctx context.Context) Lke
 	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterMapOutput)
 }
 
-func (i LkeClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LkeCluster] {
-	return pulumix.Output[map[string]*LkeCluster]{
-		OutputState: i.ToLkeClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LkeClusterOutput struct{ *pulumi.OutputState }
 
 func (LkeClusterOutput) ElementType() reflect.Type {
@@ -378,12 +359,6 @@ func (o LkeClusterOutput) ToLkeClusterOutput() LkeClusterOutput {
 
 func (o LkeClusterOutput) ToLkeClusterOutputWithContext(ctx context.Context) LkeClusterOutput {
 	return o
-}
-
-func (o LkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*LkeCluster] {
-	return pulumix.Output[*LkeCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoints for the Kubernetes API server.
@@ -454,12 +429,6 @@ func (o LkeClusterArrayOutput) ToLkeClusterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o LkeClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LkeCluster] {
-	return pulumix.Output[[]*LkeCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LkeClusterArrayOutput) Index(i pulumi.IntInput) LkeClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LkeCluster {
 		return vs[0].([]*LkeCluster)[vs[1].(int)]
@@ -478,12 +447,6 @@ func (o LkeClusterMapOutput) ToLkeClusterMapOutput() LkeClusterMapOutput {
 
 func (o LkeClusterMapOutput) ToLkeClusterMapOutputWithContext(ctx context.Context) LkeClusterMapOutput {
 	return o
-}
-
-func (o LkeClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LkeCluster] {
-	return pulumix.Output[map[string]*LkeCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LkeClusterMapOutput) MapIndex(k pulumi.StringInput) LkeClusterOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode volumes that match a set of filters.
@@ -121,12 +120,6 @@ func (o GetVolumesResultOutput) ToGetVolumesResultOutput() GetVolumesResultOutpu
 
 func (o GetVolumesResultOutput) ToGetVolumesResultOutputWithContext(ctx context.Context) GetVolumesResultOutput {
 	return o
-}
-
-func (o GetVolumesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVolumesResult] {
-	return pulumix.Output[GetVolumesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVolumesResultOutput) Filters() GetVolumesFilterArrayOutput {

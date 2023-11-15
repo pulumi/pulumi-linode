@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information about Linode Managed Database engines that match a set of filters.
@@ -204,12 +203,6 @@ func (o GetDatabaseEnginesResultOutput) ToGetDatabaseEnginesResultOutput() GetDa
 
 func (o GetDatabaseEnginesResultOutput) ToGetDatabaseEnginesResultOutputWithContext(ctx context.Context) GetDatabaseEnginesResultOutput {
 	return o
-}
-
-func (o GetDatabaseEnginesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseEnginesResult] {
-	return pulumix.Output[GetDatabaseEnginesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDatabaseEnginesResultOutput) Engines() GetDatabaseEnginesEngineArrayOutput {
