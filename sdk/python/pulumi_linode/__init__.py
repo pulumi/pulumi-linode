@@ -59,6 +59,10 @@ from .get_users import *
 from .get_vlans import *
 from .get_volume import *
 from .get_volumes import *
+from .get_vpc import *
+from .get_vpc_subnet import *
+from .get_vpc_subnets import *
+from .get_vpcs import *
 from .image import *
 from .instance import *
 from .instance_disk import *
@@ -79,6 +83,8 @@ from .stack_script import *
 from .token import *
 from .user import *
 from .volume import *
+from .vpc import *
+from .vpc_subnet import *
 from ._inputs import *
 from . import outputs
 
@@ -306,6 +312,22 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/vpc",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/vpc:Vpc": "Vpc"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/vpcSubnet",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/vpcSubnet:VpcSubnet": "VpcSubnet"
   }
  }
 ]

@@ -236,6 +236,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.disks;
     }
     /**
+     * The ID of the firewall applied to the Linode instance during creation.
+     * 
+     */
+    @Export(name="firewallId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> firewallId;
+
+    /**
+     * @return The ID of the firewall applied to the Linode instance during creation.
+     * 
+     */
+    public Output<Optional<Integer>> firewallId() {
+        return Codegen.optional(this.firewallId);
+    }
+    /**
      * The display group of the Linode instance.
      * 
      */
@@ -250,14 +264,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.group);
     }
     /**
-     * Whether or not this Instance was created with user-data.
+     * Whether this Instance was created with user-data.
      * 
      */
     @Export(name="hasUserData", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hasUserData;
 
     /**
-     * @return Whether or not this Instance was created with user-data.
+     * @return Whether this Instance was created with user-data.
      * 
      */
     public Output<Boolean> hasUserData() {
@@ -470,12 +484,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
      */
     @Export(name="sharedIpv4s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sharedIpv4s;
 
     /**
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     public Output<List<String>> sharedIpv4s() {

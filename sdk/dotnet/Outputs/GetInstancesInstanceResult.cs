@@ -22,6 +22,9 @@ namespace Pulumi.Linode.Outputs
         /// The display group of the Linode instance.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// Whether this Instance was created with user-data.
+        /// </summary>
         public readonly bool HasUserData;
         public readonly string HostUuid;
         /// <summary>
@@ -45,7 +48,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Ipv6;
         /// <summary>
-        /// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         /// </summary>
         public readonly string Label;
         /// <summary>

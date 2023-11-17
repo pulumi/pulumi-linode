@@ -92,6 +92,14 @@ import com.pulumi.linode.inputs.GetVolumeArgs;
 import com.pulumi.linode.inputs.GetVolumePlainArgs;
 import com.pulumi.linode.inputs.GetVolumesArgs;
 import com.pulumi.linode.inputs.GetVolumesPlainArgs;
+import com.pulumi.linode.inputs.GetVpcArgs;
+import com.pulumi.linode.inputs.GetVpcPlainArgs;
+import com.pulumi.linode.inputs.GetVpcSubnetArgs;
+import com.pulumi.linode.inputs.GetVpcSubnetPlainArgs;
+import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
+import com.pulumi.linode.inputs.GetVpcSubnetsPlainArgs;
+import com.pulumi.linode.inputs.GetVpcsArgs;
+import com.pulumi.linode.inputs.GetVpcsPlainArgs;
 import com.pulumi.linode.outputs.GetAccountLoginResult;
 import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
@@ -138,6 +146,10 @@ import com.pulumi.linode.outputs.GetUsersResult;
 import com.pulumi.linode.outputs.GetVlansResult;
 import com.pulumi.linode.outputs.GetVolumeResult;
 import com.pulumi.linode.outputs.GetVolumesResult;
+import com.pulumi.linode.outputs.GetVpcResult;
+import com.pulumi.linode.outputs.GetVpcSubnetResult;
+import com.pulumi.linode.outputs.GetVpcSubnetsResult;
+import com.pulumi.linode.outputs.GetVpcsResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -12267,5 +12279,845 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode VPC.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVpcResult> getVpc(GetVpcArgs args) {
+        return getVpc(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode VPC.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args) {
+        return getVpcPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode VPC.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode VPC.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
+     *             .id(123)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode VPC subnet.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
+     *             .vpcId(123)
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args) {
+        return getVpcSubnet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode VPC subnet.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
+     *             .vpcId(123)
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVpcSubnetResult> getVpcSubnetPlain(GetVpcSubnetPlainArgs args) {
+        return getVpcSubnetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode VPC subnet.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
+     *             .vpcId(123)
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpcSubnet:getVpcSubnet", TypeShape.of(GetVpcSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode VPC subnet.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
+     *             .vpcId(123)
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVpcSubnetResult> getVpcSubnetPlain(GetVpcSubnetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVpcSubnet:getVpcSubnet", TypeShape.of(GetVpcSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC subnets.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
+     *             .vpcId(123)
+     *             .filters(GetVpcSubnetsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ipv4`
+     * 
+     */
+    public static Output<GetVpcSubnetsResult> getVpcSubnets(GetVpcSubnetsArgs args) {
+        return getVpcSubnets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC subnets.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
+     *             .vpcId(123)
+     *             .filters(GetVpcSubnetsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ipv4`
+     * 
+     */
+    public static CompletableFuture<GetVpcSubnetsResult> getVpcSubnetsPlain(GetVpcSubnetsPlainArgs args) {
+        return getVpcSubnetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC subnets.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
+     *             .vpcId(123)
+     *             .filters(GetVpcSubnetsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ipv4`
+     * 
+     */
+    public static Output<GetVpcSubnetsResult> getVpcSubnets(GetVpcSubnetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpcSubnets:getVpcSubnets", TypeShape.of(GetVpcSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC subnets.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
+     *             .vpcId(123)
+     *             .filters(GetVpcSubnetsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `ipv4`
+     * 
+     */
+    public static CompletableFuture<GetVpcSubnetsResult> getVpcSubnetsPlain(GetVpcSubnetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVpcSubnets:getVpcSubnets", TypeShape.of(GetVpcSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Linode VPCs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPCs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
+     *             .filters(GetVpcsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `description`
+     * 
+     * * `region`
+     * 
+     */
+    public static Output<GetVpcsResult> getVpcs() {
+        return getVpcs(GetVpcsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPCs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPCs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
+     *             .filters(GetVpcsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `description`
+     * 
+     * * `region`
+     * 
+     */
+    public static CompletableFuture<GetVpcsResult> getVpcsPlain() {
+        return getVpcsPlain(GetVpcsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPCs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPCs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
+     *             .filters(GetVpcsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `description`
+     * 
+     * * `region`
+     * 
+     */
+    public static Output<GetVpcsResult> getVpcs(GetVpcsArgs args) {
+        return getVpcs(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPCs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPCs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
+     *             .filters(GetVpcsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `description`
+     * 
+     * * `region`
+     * 
+     */
+    public static CompletableFuture<GetVpcsResult> getVpcsPlain(GetVpcsPlainArgs args) {
+        return getVpcsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPCs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPCs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
+     *             .filters(GetVpcsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `description`
+     * 
+     * * `region`
+     * 
+     */
+    public static Output<GetVpcsResult> getVpcs(GetVpcsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpcs:getVpcs", TypeShape.of(GetVpcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Linode VPCs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPCs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
+     *             .filters(GetVpcsFilterArgs.builder()
+     *                 .name(&#34;label&#34;)
+     *                 .values(&#34;test&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `description`
+     * 
+     * * `region`
+     * 
+     */
+    public static CompletableFuture<GetVpcsResult> getVpcsPlain(GetVpcsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVpcs:getVpcs", TypeShape.of(GetVpcsResult.class), args, Utilities.withVersion(options));
     }
 }

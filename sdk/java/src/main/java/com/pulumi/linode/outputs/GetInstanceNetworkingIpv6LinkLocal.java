@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -56,6 +57,7 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
      * 
      */
     private String type;
+    private GetInstanceNetworkingIpv6LinkLocalVpcNat11 vpcNat11;
 
     private GetInstanceNetworkingIpv6LinkLocal() {}
     /**
@@ -121,6 +123,9 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
     public String type() {
         return this.type;
     }
+    public GetInstanceNetworkingIpv6LinkLocalVpcNat11 vpcNat11() {
+        return this.vpcNat11;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -140,6 +145,7 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
         private String region;
         private String subnetMask;
         private String type;
+        private GetInstanceNetworkingIpv6LinkLocalVpcNat11 vpcNat11;
         public Builder() {}
         public Builder(GetInstanceNetworkingIpv6LinkLocal defaults) {
     	      Objects.requireNonNull(defaults);
@@ -152,6 +158,7 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
     	      this.region = defaults.region;
     	      this.subnetMask = defaults.subnetMask;
     	      this.type = defaults.type;
+    	      this.vpcNat11 = defaults.vpcNat11;
         }
 
         @CustomType.Setter
@@ -199,6 +206,11 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcNat11(GetInstanceNetworkingIpv6LinkLocalVpcNat11 vpcNat11) {
+            this.vpcNat11 = Objects.requireNonNull(vpcNat11);
+            return this;
+        }
         public GetInstanceNetworkingIpv6LinkLocal build() {
             final var o = new GetInstanceNetworkingIpv6LinkLocal();
             o.address = address;
@@ -210,6 +222,7 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
             o.region = region;
             o.subnetMask = subnetMask;
             o.type = type;
+            o.vpcNat11 = vpcNat11;
             return o;
         }
     }

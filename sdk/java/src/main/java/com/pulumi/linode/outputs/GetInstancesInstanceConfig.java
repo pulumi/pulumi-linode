@@ -41,7 +41,7 @@ public final class GetInstancesInstanceConfig {
      */
     private String kernel;
     /**
-     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      * 
      */
     private String label;
@@ -106,7 +106,7 @@ public final class GetInstancesInstanceConfig {
         return this.kernel;
     }
     /**
-     * @return (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      * 
      */
     public String label() {

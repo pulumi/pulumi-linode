@@ -778,6 +778,16 @@ export interface GetInstanceNetworkingIpv4Private {
      * The type of address this is.
      */
     type: string;
+    vpcNat11: outputs.GetInstanceNetworkingIpv4PrivateVpcNat11;
+}
+
+export interface GetInstanceNetworkingIpv4PrivateVpcNat11 {
+    /**
+     * The address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv4Public {
@@ -817,6 +827,16 @@ export interface GetInstanceNetworkingIpv4Public {
      * The type of address this is.
      */
     type: string;
+    vpcNat11: outputs.GetInstanceNetworkingIpv4PublicVpcNat11;
+}
+
+export interface GetInstanceNetworkingIpv4PublicVpcNat11 {
+    /**
+     * The address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv4Reserved {
@@ -856,6 +876,16 @@ export interface GetInstanceNetworkingIpv4Reserved {
      * The type of address this is.
      */
     type: string;
+    vpcNat11: outputs.GetInstanceNetworkingIpv4ReservedVpcNat11;
+}
+
+export interface GetInstanceNetworkingIpv4ReservedVpcNat11 {
+    /**
+     * The address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv4Shared {
@@ -895,6 +925,16 @@ export interface GetInstanceNetworkingIpv4Shared {
      * The type of address this is.
      */
     type: string;
+    vpcNat11: outputs.GetInstanceNetworkingIpv4SharedVpcNat11;
+}
+
+export interface GetInstanceNetworkingIpv4SharedVpcNat11 {
+    /**
+     * The address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv6 {
@@ -959,6 +999,16 @@ export interface GetInstanceNetworkingIpv6LinkLocal {
      * The type of address this is.
      */
     type: string;
+    vpcNat11: outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11;
+}
+
+export interface GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
+    /**
+     * The address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv6Slaac {
@@ -998,6 +1048,16 @@ export interface GetInstanceNetworkingIpv6Slaac {
      * The type of address this is.
      */
     type: string;
+    vpcNat11: outputs.GetInstanceNetworkingIpv6SlaacVpcNat11;
+}
+
+export interface GetInstanceNetworkingIpv6SlaacVpcNat11 {
+    /**
+     * The address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface GetInstanceTypeAddons {
@@ -1152,6 +1212,9 @@ export interface GetInstancesInstance {
      * The display group of the Linode instance.
      */
     group: string;
+    /**
+     * Whether this Instance was created with user-data.
+     */
     hasUserData: boolean;
     hostUuid: string;
     /**
@@ -1175,7 +1238,7 @@ export interface GetInstancesInstance {
      */
     ipv6: string;
     /**
-     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label: string;
     /**
@@ -1260,7 +1323,7 @@ export interface GetInstancesInstanceConfig {
      */
     kernel: string;
     /**
-     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label: string;
     /**
@@ -1436,18 +1499,54 @@ export interface GetInstancesInstanceConfigHelper {
 }
 
 export interface GetInstancesInstanceConfigInterface {
+    active: boolean;
     /**
-     * (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * The ID of the disk in the Linode API.
+     */
+    id: number;
+    /**
+     * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+     */
+    ipRanges?: string[];
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
     ipamAddress?: string;
     /**
-     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
+    ipv4: outputs.GetInstancesInstanceConfigInterfaceIpv4;
+    /**
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: string;
     /**
-     * (Required) The type of interface. (`public`, `vlan`)
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      */
-    purpose?: string;
+    primary?: boolean;
+    /**
+     * The type of interface. (`public`, `vlan`, `vpc`)
+     */
+    purpose: string;
+    /**
+     * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+     */
+    subnetId?: number;
+    /**
+     * The ID of VPC which this interface is attached to.
+     */
+    vpcId: number;
+}
+
+export interface GetInstancesInstanceConfigInterfaceIpv4 {
+    /**
+     * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+     */
+    nat11: string;
+    /**
+     * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+     */
+    vpc: string;
 }
 
 export interface GetInstancesInstanceDisk {
@@ -1460,7 +1559,7 @@ export interface GetInstancesInstanceDisk {
      */
     id: number;
     /**
-     * (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label: string;
     /**
@@ -2434,6 +2533,122 @@ export interface GetVolumesVolume {
     updated: string;
 }
 
+export interface GetVpcSubnetLinode {
+    /**
+     * The unique id of this VPC subnet.
+     */
+    id: number;
+    interfaces: outputs.GetVpcSubnetLinodeInterface[];
+}
+
+export interface GetVpcSubnetLinodeInterface {
+    active: boolean;
+    /**
+     * The unique id of this VPC subnet.
+     */
+    id: number;
+}
+
+export interface GetVpcSubnetsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVpcSubnetsVpcSubnet {
+    /**
+     * The date and time when the VPC Subnet was created.
+     */
+    created: string;
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: number;
+    /**
+     * The IPv4 range of this subnet in CIDR format.
+     */
+    ipv4: string;
+    /**
+     * The label of the VPC subnet.
+     */
+    label: string;
+    /**
+     * A list of Linode IDs that added to this subnet.
+     */
+    linodes: outputs.GetVpcSubnetsVpcSubnetLinode[];
+    /**
+     * The date and time when the VPC Subnet was last updated.
+     */
+    updated: string;
+}
+
+export interface GetVpcSubnetsVpcSubnetLinode {
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: number;
+    interfaces: outputs.GetVpcSubnetsVpcSubnetLinodeInterface[];
+}
+
+export interface GetVpcSubnetsVpcSubnetLinodeInterface {
+    active: boolean;
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: number;
+}
+
+export interface GetVpcsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVpcsVpc {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created: string;
+    /**
+     * The user-defined description of this VPC.
+     */
+    description: string;
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    /**
+     * The label of the VPC.
+     */
+    label: string;
+    /**
+     * The region where the VPC is deployed.
+     */
+    region: string;
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated: string;
+}
+
 export interface InstanceAlerts {
     cpu: number;
     io: number;
@@ -2663,18 +2878,58 @@ export interface InstanceConfigHelpers {
 }
 
 export interface InstanceConfigInterface {
+    active: boolean;
     /**
-     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * The ID of the disk in the Linode API.
+     */
+    id: number;
+    /**
+     * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+     */
+    ipRanges?: string[];
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
     ipamAddress?: string;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
+    ipv4: outputs.InstanceConfigInterfaceIpv4;
+    /**
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: string;
     /**
-     * The type of interface. (`public`, `vlan`)
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
-    purpose?: string;
+    primary?: boolean;
+    /**
+     * The type of interface. (`public`, `vlan`, `vpc`)
+     */
+    purpose: string;
+    /**
+     * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+     */
+    subnetId?: number;
+    /**
+     * The ID of VPC which this interface is attached to.
+     */
+    vpcId: number;
+}
+
+export interface InstanceConfigInterfaceIpv4 {
+    /**
+     * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+     */
+    nat11: string;
+    /**
+     * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+     */
+    vpc: string;
 }
 
 export interface InstanceDisk {
@@ -2725,18 +2980,67 @@ export interface InstanceDisk {
 }
 
 export interface InstanceInterface {
+    active: boolean;
     /**
-     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * The ID of the disk in the Linode API.
+     */
+    id: number;
+    /**
+     * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+     */
+    ipRanges?: string[];
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
     ipamAddress?: string;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
+    ipv4: outputs.InstanceInterfaceIpv4;
+    /**
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: string;
     /**
-     * The type of interface. (`public`, `vlan`)
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
-    purpose?: string;
+    primary?: boolean;
+    /**
+     * The type of interface. (`public`, `vlan`, `vpc`)
+     */
+    purpose: string;
+    /**
+     * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+     */
+    subnetId?: number;
+    /**
+     * The ID of VPC which this interface is attached to.
+     */
+    vpcId: number;
+}
+
+export interface InstanceInterfaceIpv4 {
+    /**
+     * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+     */
+    nat11: string;
+    /**
+     * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+     */
+    vpc: string;
+}
+
+export interface InstanceIpVpcNat11 {
+    /**
+     * The resulting IPv4 address.
+     */
+    address: string;
+    subnetId: number;
+    vpcId: number;
 }
 
 export interface InstanceMetadata {
@@ -2981,5 +3285,21 @@ export interface UserStackscriptGrant {
 export interface UserVolumeGrant {
     id: number;
     permissions: string;
+}
+
+export interface VpcSubnetLinode {
+    /**
+     * The ID of the VPC Subnet.
+     */
+    id: number;
+    interfaces: outputs.VpcSubnetLinodeInterface[];
+}
+
+export interface VpcSubnetLinodeInterface {
+    active: boolean;
+    /**
+     * The ID of the VPC Subnet.
+     */
+    id: number;
 }
 

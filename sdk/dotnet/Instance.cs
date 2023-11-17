@@ -126,13 +126,19 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the firewall applied to the Linode instance during creation.
+        /// </summary>
+        [Output("firewallId")]
+        public Output<int?> FirewallId { get; private set; } = null!;
+
+        /// <summary>
         /// The display group of the Linode instance.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not this Instance was created with user-data.
+        /// Whether this Instance was created with user-data.
         /// </summary>
         [Output("hasUserData")]
         public Output<bool> HasUserData { get; private set; } = null!;
@@ -228,6 +234,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        /// 
+        /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         /// </summary>
         [Output("sharedIpv4s")]
         public Output<ImmutableArray<string>> SharedIpv4s { get; private set; } = null!;
@@ -412,6 +420,12 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
+        /// The ID of the firewall applied to the Linode instance during creation.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
         /// The display group of the Linode instance.
         /// </summary>
         [Input("group")]
@@ -503,6 +517,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        /// 
+        /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         /// </summary>
         public InputList<string> SharedIpv4s
         {
@@ -657,13 +673,19 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
+        /// The ID of the firewall applied to the Linode instance during creation.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
         /// The display group of the Linode instance.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Whether or not this Instance was created with user-data.
+        /// Whether this Instance was created with user-data.
         /// </summary>
         [Input("hasUserData")]
         public Input<bool>? HasUserData { get; set; }
@@ -790,6 +812,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+        /// 
+        /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         /// </summary>
         public InputList<string> SharedIpv4s
         {

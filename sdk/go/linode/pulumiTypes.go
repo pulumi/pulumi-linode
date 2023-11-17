@@ -3374,12 +3374,29 @@ func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput 
 }
 
 type InstanceConfigInterface struct {
-	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	Active *bool `pulumi:"active"`
+	// The ID of the disk in the Linode API.
+	Id *int `pulumi:"id"`
+	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+	IpRanges []string `pulumi:"ipRanges"`
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// The name of this interface. If the interface is a VLAN, a label is required.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4 *InstanceConfigInterfaceIpv4 `pulumi:"ipv4"`
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
-	// The type of interface. (`public`, `vlan`)
-	Purpose *string `pulumi:"purpose"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
+	Primary *bool `pulumi:"primary"`
+	// The type of interface. (`public`, `vlan`, `vpc`)
+	Purpose string `pulumi:"purpose"`
+	// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+	SubnetId *int `pulumi:"subnetId"`
+	// The ID of VPC which this interface is attached to.
+	VpcId *int `pulumi:"vpcId"`
 }
 
 // InstanceConfigInterfaceInput is an input type that accepts InstanceConfigInterfaceArgs and InstanceConfigInterfaceOutput values.
@@ -3394,12 +3411,29 @@ type InstanceConfigInterfaceInput interface {
 }
 
 type InstanceConfigInterfaceArgs struct {
-	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// The ID of the disk in the Linode API.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// The name of this interface. If the interface is a VLAN, a label is required.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4 InstanceConfigInterfaceIpv4PtrInput `pulumi:"ipv4"`
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The type of interface. (`public`, `vlan`)
-	Purpose pulumi.StringPtrInput `pulumi:"purpose"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+	// The type of interface. (`public`, `vlan`, `vpc`)
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+	SubnetId pulumi.IntPtrInput `pulumi:"subnetId"`
+	// The ID of VPC which this interface is attached to.
+	VpcId pulumi.IntPtrInput `pulumi:"vpcId"`
 }
 
 func (InstanceConfigInterfaceArgs) ElementType() reflect.Type {
@@ -3453,19 +3487,57 @@ func (o InstanceConfigInterfaceOutput) ToInstanceConfigInterfaceOutputWithContex
 	return o
 }
 
-// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+func (o InstanceConfigInterfaceOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the disk in the Linode API.
+func (o InstanceConfigInterfaceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+func (o InstanceConfigInterfaceOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 func (o InstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// The name of this interface. If the interface is a VLAN, a label is required.
+// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+func (o InstanceConfigInterfaceOutput) Ipv4() InstanceConfigInterfaceIpv4PtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *InstanceConfigInterfaceIpv4 { return v.Ipv4 }).(InstanceConfigInterfaceIpv4PtrOutput)
+}
+
+// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 func (o InstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// The type of interface. (`public`, `vlan`)
-func (o InstanceConfigInterfaceOutput) Purpose() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
+// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+//
+// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// The following computed attribute is available in a VPC interface:
+func (o InstanceConfigInterfaceOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// The type of interface. (`public`, `vlan`, `vpc`)
+func (o InstanceConfigInterfaceOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+func (o InstanceConfigInterfaceOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *int { return v.SubnetId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of VPC which this interface is attached to.
+func (o InstanceConfigInterfaceOutput) VpcId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterface) *int { return v.VpcId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceConfigInterfaceArrayOutput struct{ *pulumi.OutputState }
@@ -3486,6 +3558,162 @@ func (o InstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceCon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigInterface {
 		return vs[0].([]InstanceConfigInterface)[vs[1].(int)]
 	}).(InstanceConfigInterfaceOutput)
+}
+
+type InstanceConfigInterfaceIpv4 struct {
+	// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+	Nat11 *string `pulumi:"nat11"`
+	// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+	Vpc *string `pulumi:"vpc"`
+}
+
+// InstanceConfigInterfaceIpv4Input is an input type that accepts InstanceConfigInterfaceIpv4Args and InstanceConfigInterfaceIpv4Output values.
+// You can construct a concrete instance of `InstanceConfigInterfaceIpv4Input` via:
+//
+//	InstanceConfigInterfaceIpv4Args{...}
+type InstanceConfigInterfaceIpv4Input interface {
+	pulumi.Input
+
+	ToInstanceConfigInterfaceIpv4Output() InstanceConfigInterfaceIpv4Output
+	ToInstanceConfigInterfaceIpv4OutputWithContext(context.Context) InstanceConfigInterfaceIpv4Output
+}
+
+type InstanceConfigInterfaceIpv4Args struct {
+	// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+	Nat11 pulumi.StringPtrInput `pulumi:"nat11"`
+	// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
+}
+
+func (InstanceConfigInterfaceIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigInterfaceIpv4)(nil)).Elem()
+}
+
+func (i InstanceConfigInterfaceIpv4Args) ToInstanceConfigInterfaceIpv4Output() InstanceConfigInterfaceIpv4Output {
+	return i.ToInstanceConfigInterfaceIpv4OutputWithContext(context.Background())
+}
+
+func (i InstanceConfigInterfaceIpv4Args) ToInstanceConfigInterfaceIpv4OutputWithContext(ctx context.Context) InstanceConfigInterfaceIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigInterfaceIpv4Output)
+}
+
+func (i InstanceConfigInterfaceIpv4Args) ToInstanceConfigInterfaceIpv4PtrOutput() InstanceConfigInterfaceIpv4PtrOutput {
+	return i.ToInstanceConfigInterfaceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigInterfaceIpv4Args) ToInstanceConfigInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceConfigInterfaceIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigInterfaceIpv4Output).ToInstanceConfigInterfaceIpv4PtrOutputWithContext(ctx)
+}
+
+// InstanceConfigInterfaceIpv4PtrInput is an input type that accepts InstanceConfigInterfaceIpv4Args, InstanceConfigInterfaceIpv4Ptr and InstanceConfigInterfaceIpv4PtrOutput values.
+// You can construct a concrete instance of `InstanceConfigInterfaceIpv4PtrInput` via:
+//
+//	        InstanceConfigInterfaceIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InstanceConfigInterfaceIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInstanceConfigInterfaceIpv4PtrOutput() InstanceConfigInterfaceIpv4PtrOutput
+	ToInstanceConfigInterfaceIpv4PtrOutputWithContext(context.Context) InstanceConfigInterfaceIpv4PtrOutput
+}
+
+type instanceConfigInterfaceIpv4PtrType InstanceConfigInterfaceIpv4Args
+
+func InstanceConfigInterfaceIpv4Ptr(v *InstanceConfigInterfaceIpv4Args) InstanceConfigInterfaceIpv4PtrInput {
+	return (*instanceConfigInterfaceIpv4PtrType)(v)
+}
+
+func (*instanceConfigInterfaceIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConfigInterfaceIpv4)(nil)).Elem()
+}
+
+func (i *instanceConfigInterfaceIpv4PtrType) ToInstanceConfigInterfaceIpv4PtrOutput() InstanceConfigInterfaceIpv4PtrOutput {
+	return i.ToInstanceConfigInterfaceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *instanceConfigInterfaceIpv4PtrType) ToInstanceConfigInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceConfigInterfaceIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigInterfaceIpv4PtrOutput)
+}
+
+type InstanceConfigInterfaceIpv4Output struct{ *pulumi.OutputState }
+
+func (InstanceConfigInterfaceIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigInterfaceIpv4)(nil)).Elem()
+}
+
+func (o InstanceConfigInterfaceIpv4Output) ToInstanceConfigInterfaceIpv4Output() InstanceConfigInterfaceIpv4Output {
+	return o
+}
+
+func (o InstanceConfigInterfaceIpv4Output) ToInstanceConfigInterfaceIpv4OutputWithContext(ctx context.Context) InstanceConfigInterfaceIpv4Output {
+	return o
+}
+
+func (o InstanceConfigInterfaceIpv4Output) ToInstanceConfigInterfaceIpv4PtrOutput() InstanceConfigInterfaceIpv4PtrOutput {
+	return o.ToInstanceConfigInterfaceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConfigInterfaceIpv4Output) ToInstanceConfigInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceConfigInterfaceIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigInterfaceIpv4) *InstanceConfigInterfaceIpv4 {
+		return &v
+	}).(InstanceConfigInterfaceIpv4PtrOutput)
+}
+
+// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+func (o InstanceConfigInterfaceIpv4Output) Nat11() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterfaceIpv4) *string { return v.Nat11 }).(pulumi.StringPtrOutput)
+}
+
+// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+func (o InstanceConfigInterfaceIpv4Output) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigInterfaceIpv4) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+type InstanceConfigInterfaceIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigInterfaceIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConfigInterfaceIpv4)(nil)).Elem()
+}
+
+func (o InstanceConfigInterfaceIpv4PtrOutput) ToInstanceConfigInterfaceIpv4PtrOutput() InstanceConfigInterfaceIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceConfigInterfaceIpv4PtrOutput) ToInstanceConfigInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceConfigInterfaceIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceConfigInterfaceIpv4PtrOutput) Elem() InstanceConfigInterfaceIpv4Output {
+	return o.ApplyT(func(v *InstanceConfigInterfaceIpv4) InstanceConfigInterfaceIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigInterfaceIpv4
+		return ret
+	}).(InstanceConfigInterfaceIpv4Output)
+}
+
+// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+func (o InstanceConfigInterfaceIpv4PtrOutput) Nat11() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceConfigInterfaceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Nat11
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+func (o InstanceConfigInterfaceIpv4PtrOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceConfigInterfaceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Vpc
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceDiskType struct {
@@ -3676,12 +3904,29 @@ func (o InstanceDiskTypeArrayOutput) Index(i pulumi.IntInput) InstanceDiskTypeOu
 }
 
 type InstanceInterface struct {
-	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	Active *bool `pulumi:"active"`
+	// The ID of the disk in the Linode API.
+	Id *int `pulumi:"id"`
+	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+	IpRanges []string `pulumi:"ipRanges"`
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// The name of this interface. If the interface is a VLAN, a label is required.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4 *InstanceInterfaceIpv4 `pulumi:"ipv4"`
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
-	// The type of interface. (`public`, `vlan`)
-	Purpose *string `pulumi:"purpose"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
+	Primary *bool `pulumi:"primary"`
+	// The type of interface. (`public`, `vlan`, `vpc`)
+	Purpose string `pulumi:"purpose"`
+	// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+	SubnetId *int `pulumi:"subnetId"`
+	// The ID of VPC which this interface is attached to.
+	VpcId *int `pulumi:"vpcId"`
 }
 
 // InstanceInterfaceInput is an input type that accepts InstanceInterfaceArgs and InstanceInterfaceOutput values.
@@ -3696,12 +3941,29 @@ type InstanceInterfaceInput interface {
 }
 
 type InstanceInterfaceArgs struct {
-	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// The ID of the disk in the Linode API.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// The name of this interface. If the interface is a VLAN, a label is required.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4 InstanceInterfaceIpv4PtrInput `pulumi:"ipv4"`
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The type of interface. (`public`, `vlan`)
-	Purpose pulumi.StringPtrInput `pulumi:"purpose"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+	// The type of interface. (`public`, `vlan`, `vpc`)
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+	SubnetId pulumi.IntPtrInput `pulumi:"subnetId"`
+	// The ID of VPC which this interface is attached to.
+	VpcId pulumi.IntPtrInput `pulumi:"vpcId"`
 }
 
 func (InstanceInterfaceArgs) ElementType() reflect.Type {
@@ -3755,19 +4017,57 @@ func (o InstanceInterfaceOutput) ToInstanceInterfaceOutputWithContext(ctx contex
 	return o
 }
 
-// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+func (o InstanceInterfaceOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the disk in the Linode API.
+func (o InstanceInterfaceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+func (o InstanceInterfaceOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceInterface) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 func (o InstanceInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// The name of this interface. If the interface is a VLAN, a label is required.
+// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+func (o InstanceInterfaceOutput) Ipv4() InstanceInterfaceIpv4PtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *InstanceInterfaceIpv4 { return v.Ipv4 }).(InstanceInterfaceIpv4PtrOutput)
+}
+
+// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 func (o InstanceInterfaceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// The type of interface. (`public`, `vlan`)
-func (o InstanceInterfaceOutput) Purpose() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
+// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+//
+// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// The following computed attribute is available in a VPC interface:
+func (o InstanceInterfaceOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// The type of interface. (`public`, `vlan`, `vpc`)
+func (o InstanceInterfaceOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceInterface) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+func (o InstanceInterfaceOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *int { return v.SubnetId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of VPC which this interface is attached to.
+func (o InstanceInterfaceOutput) VpcId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceInterface) *int { return v.VpcId }).(pulumi.IntPtrOutput)
 }
 
 type InstanceInterfaceArrayOutput struct{ *pulumi.OutputState }
@@ -3788,6 +4088,271 @@ func (o InstanceInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceInterface
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceInterface {
 		return vs[0].([]InstanceInterface)[vs[1].(int)]
 	}).(InstanceInterfaceOutput)
+}
+
+type InstanceInterfaceIpv4 struct {
+	// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+	Nat11 *string `pulumi:"nat11"`
+	// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+	Vpc *string `pulumi:"vpc"`
+}
+
+// InstanceInterfaceIpv4Input is an input type that accepts InstanceInterfaceIpv4Args and InstanceInterfaceIpv4Output values.
+// You can construct a concrete instance of `InstanceInterfaceIpv4Input` via:
+//
+//	InstanceInterfaceIpv4Args{...}
+type InstanceInterfaceIpv4Input interface {
+	pulumi.Input
+
+	ToInstanceInterfaceIpv4Output() InstanceInterfaceIpv4Output
+	ToInstanceInterfaceIpv4OutputWithContext(context.Context) InstanceInterfaceIpv4Output
+}
+
+type InstanceInterfaceIpv4Args struct {
+	// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+	Nat11 pulumi.StringPtrInput `pulumi:"nat11"`
+	// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
+}
+
+func (InstanceInterfaceIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInterfaceIpv4)(nil)).Elem()
+}
+
+func (i InstanceInterfaceIpv4Args) ToInstanceInterfaceIpv4Output() InstanceInterfaceIpv4Output {
+	return i.ToInstanceInterfaceIpv4OutputWithContext(context.Background())
+}
+
+func (i InstanceInterfaceIpv4Args) ToInstanceInterfaceIpv4OutputWithContext(ctx context.Context) InstanceInterfaceIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInterfaceIpv4Output)
+}
+
+func (i InstanceInterfaceIpv4Args) ToInstanceInterfaceIpv4PtrOutput() InstanceInterfaceIpv4PtrOutput {
+	return i.ToInstanceInterfaceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InstanceInterfaceIpv4Args) ToInstanceInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceInterfaceIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInterfaceIpv4Output).ToInstanceInterfaceIpv4PtrOutputWithContext(ctx)
+}
+
+// InstanceInterfaceIpv4PtrInput is an input type that accepts InstanceInterfaceIpv4Args, InstanceInterfaceIpv4Ptr and InstanceInterfaceIpv4PtrOutput values.
+// You can construct a concrete instance of `InstanceInterfaceIpv4PtrInput` via:
+//
+//	        InstanceInterfaceIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InstanceInterfaceIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInstanceInterfaceIpv4PtrOutput() InstanceInterfaceIpv4PtrOutput
+	ToInstanceInterfaceIpv4PtrOutputWithContext(context.Context) InstanceInterfaceIpv4PtrOutput
+}
+
+type instanceInterfaceIpv4PtrType InstanceInterfaceIpv4Args
+
+func InstanceInterfaceIpv4Ptr(v *InstanceInterfaceIpv4Args) InstanceInterfaceIpv4PtrInput {
+	return (*instanceInterfaceIpv4PtrType)(v)
+}
+
+func (*instanceInterfaceIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceInterfaceIpv4)(nil)).Elem()
+}
+
+func (i *instanceInterfaceIpv4PtrType) ToInstanceInterfaceIpv4PtrOutput() InstanceInterfaceIpv4PtrOutput {
+	return i.ToInstanceInterfaceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *instanceInterfaceIpv4PtrType) ToInstanceInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceInterfaceIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceInterfaceIpv4PtrOutput)
+}
+
+type InstanceInterfaceIpv4Output struct{ *pulumi.OutputState }
+
+func (InstanceInterfaceIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceInterfaceIpv4)(nil)).Elem()
+}
+
+func (o InstanceInterfaceIpv4Output) ToInstanceInterfaceIpv4Output() InstanceInterfaceIpv4Output {
+	return o
+}
+
+func (o InstanceInterfaceIpv4Output) ToInstanceInterfaceIpv4OutputWithContext(ctx context.Context) InstanceInterfaceIpv4Output {
+	return o
+}
+
+func (o InstanceInterfaceIpv4Output) ToInstanceInterfaceIpv4PtrOutput() InstanceInterfaceIpv4PtrOutput {
+	return o.ToInstanceInterfaceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InstanceInterfaceIpv4Output) ToInstanceInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceInterfaceIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceInterfaceIpv4) *InstanceInterfaceIpv4 {
+		return &v
+	}).(InstanceInterfaceIpv4PtrOutput)
+}
+
+// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+func (o InstanceInterfaceIpv4Output) Nat11() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceInterfaceIpv4) *string { return v.Nat11 }).(pulumi.StringPtrOutput)
+}
+
+// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+func (o InstanceInterfaceIpv4Output) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceInterfaceIpv4) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+type InstanceInterfaceIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceInterfaceIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceInterfaceIpv4)(nil)).Elem()
+}
+
+func (o InstanceInterfaceIpv4PtrOutput) ToInstanceInterfaceIpv4PtrOutput() InstanceInterfaceIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceInterfaceIpv4PtrOutput) ToInstanceInterfaceIpv4PtrOutputWithContext(ctx context.Context) InstanceInterfaceIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceInterfaceIpv4PtrOutput) Elem() InstanceInterfaceIpv4Output {
+	return o.ApplyT(func(v *InstanceInterfaceIpv4) InstanceInterfaceIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceInterfaceIpv4
+		return ret
+	}).(InstanceInterfaceIpv4Output)
+}
+
+// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+func (o InstanceInterfaceIpv4PtrOutput) Nat11() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceInterfaceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Nat11
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+func (o InstanceInterfaceIpv4PtrOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceInterfaceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Vpc
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceIpVpcNat11 struct {
+	// The resulting IPv4 address.
+	Address  *string `pulumi:"address"`
+	SubnetId *int    `pulumi:"subnetId"`
+	VpcId    *int    `pulumi:"vpcId"`
+}
+
+// InstanceIpVpcNat11Input is an input type that accepts InstanceIpVpcNat11Args and InstanceIpVpcNat11Output values.
+// You can construct a concrete instance of `InstanceIpVpcNat11Input` via:
+//
+//	InstanceIpVpcNat11Args{...}
+type InstanceIpVpcNat11Input interface {
+	pulumi.Input
+
+	ToInstanceIpVpcNat11Output() InstanceIpVpcNat11Output
+	ToInstanceIpVpcNat11OutputWithContext(context.Context) InstanceIpVpcNat11Output
+}
+
+type InstanceIpVpcNat11Args struct {
+	// The resulting IPv4 address.
+	Address  pulumi.StringPtrInput `pulumi:"address"`
+	SubnetId pulumi.IntPtrInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntPtrInput    `pulumi:"vpcId"`
+}
+
+func (InstanceIpVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpVpcNat11)(nil)).Elem()
+}
+
+func (i InstanceIpVpcNat11Args) ToInstanceIpVpcNat11Output() InstanceIpVpcNat11Output {
+	return i.ToInstanceIpVpcNat11OutputWithContext(context.Background())
+}
+
+func (i InstanceIpVpcNat11Args) ToInstanceIpVpcNat11OutputWithContext(ctx context.Context) InstanceIpVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpVpcNat11Output)
+}
+
+// InstanceIpVpcNat11ArrayInput is an input type that accepts InstanceIpVpcNat11Array and InstanceIpVpcNat11ArrayOutput values.
+// You can construct a concrete instance of `InstanceIpVpcNat11ArrayInput` via:
+//
+//	InstanceIpVpcNat11Array{ InstanceIpVpcNat11Args{...} }
+type InstanceIpVpcNat11ArrayInput interface {
+	pulumi.Input
+
+	ToInstanceIpVpcNat11ArrayOutput() InstanceIpVpcNat11ArrayOutput
+	ToInstanceIpVpcNat11ArrayOutputWithContext(context.Context) InstanceIpVpcNat11ArrayOutput
+}
+
+type InstanceIpVpcNat11Array []InstanceIpVpcNat11Input
+
+func (InstanceIpVpcNat11Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpVpcNat11)(nil)).Elem()
+}
+
+func (i InstanceIpVpcNat11Array) ToInstanceIpVpcNat11ArrayOutput() InstanceIpVpcNat11ArrayOutput {
+	return i.ToInstanceIpVpcNat11ArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceIpVpcNat11Array) ToInstanceIpVpcNat11ArrayOutputWithContext(ctx context.Context) InstanceIpVpcNat11ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpVpcNat11ArrayOutput)
+}
+
+type InstanceIpVpcNat11Output struct{ *pulumi.OutputState }
+
+func (InstanceIpVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpVpcNat11)(nil)).Elem()
+}
+
+func (o InstanceIpVpcNat11Output) ToInstanceIpVpcNat11Output() InstanceIpVpcNat11Output {
+	return o
+}
+
+func (o InstanceIpVpcNat11Output) ToInstanceIpVpcNat11OutputWithContext(ctx context.Context) InstanceIpVpcNat11Output {
+	return o
+}
+
+// The resulting IPv4 address.
+func (o InstanceIpVpcNat11Output) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpVpcNat11) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceIpVpcNat11Output) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceIpVpcNat11) *int { return v.SubnetId }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceIpVpcNat11Output) VpcId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceIpVpcNat11) *int { return v.VpcId }).(pulumi.IntPtrOutput)
+}
+
+type InstanceIpVpcNat11ArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpVpcNat11ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpVpcNat11)(nil)).Elem()
+}
+
+func (o InstanceIpVpcNat11ArrayOutput) ToInstanceIpVpcNat11ArrayOutput() InstanceIpVpcNat11ArrayOutput {
+	return o
+}
+
+func (o InstanceIpVpcNat11ArrayOutput) ToInstanceIpVpcNat11ArrayOutputWithContext(ctx context.Context) InstanceIpVpcNat11ArrayOutput {
+	return o
+}
+
+func (o InstanceIpVpcNat11ArrayOutput) Index(i pulumi.IntInput) InstanceIpVpcNat11Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpVpcNat11 {
+		return vs[0].([]InstanceIpVpcNat11)[vs[1].(int)]
+	}).(InstanceIpVpcNat11Output)
 }
 
 type InstanceMetadata struct {
@@ -6797,6 +7362,212 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserVolumeGrant {
 		return vs[0].([]UserVolumeGrant)[vs[1].(int)]
 	}).(UserVolumeGrantOutput)
+}
+
+type VpcSubnetLinode struct {
+	// The ID of the VPC Subnet.
+	Id         int                        `pulumi:"id"`
+	Interfaces []VpcSubnetLinodeInterface `pulumi:"interfaces"`
+}
+
+// VpcSubnetLinodeInput is an input type that accepts VpcSubnetLinodeArgs and VpcSubnetLinodeOutput values.
+// You can construct a concrete instance of `VpcSubnetLinodeInput` via:
+//
+//	VpcSubnetLinodeArgs{...}
+type VpcSubnetLinodeInput interface {
+	pulumi.Input
+
+	ToVpcSubnetLinodeOutput() VpcSubnetLinodeOutput
+	ToVpcSubnetLinodeOutputWithContext(context.Context) VpcSubnetLinodeOutput
+}
+
+type VpcSubnetLinodeArgs struct {
+	// The ID of the VPC Subnet.
+	Id         pulumi.IntInput                    `pulumi:"id"`
+	Interfaces VpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
+}
+
+func (VpcSubnetLinodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetLinode)(nil)).Elem()
+}
+
+func (i VpcSubnetLinodeArgs) ToVpcSubnetLinodeOutput() VpcSubnetLinodeOutput {
+	return i.ToVpcSubnetLinodeOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetLinodeArgs) ToVpcSubnetLinodeOutputWithContext(ctx context.Context) VpcSubnetLinodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetLinodeOutput)
+}
+
+// VpcSubnetLinodeArrayInput is an input type that accepts VpcSubnetLinodeArray and VpcSubnetLinodeArrayOutput values.
+// You can construct a concrete instance of `VpcSubnetLinodeArrayInput` via:
+//
+//	VpcSubnetLinodeArray{ VpcSubnetLinodeArgs{...} }
+type VpcSubnetLinodeArrayInput interface {
+	pulumi.Input
+
+	ToVpcSubnetLinodeArrayOutput() VpcSubnetLinodeArrayOutput
+	ToVpcSubnetLinodeArrayOutputWithContext(context.Context) VpcSubnetLinodeArrayOutput
+}
+
+type VpcSubnetLinodeArray []VpcSubnetLinodeInput
+
+func (VpcSubnetLinodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetLinode)(nil)).Elem()
+}
+
+func (i VpcSubnetLinodeArray) ToVpcSubnetLinodeArrayOutput() VpcSubnetLinodeArrayOutput {
+	return i.ToVpcSubnetLinodeArrayOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetLinodeArray) ToVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) VpcSubnetLinodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetLinodeArrayOutput)
+}
+
+type VpcSubnetLinodeOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetLinodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetLinode)(nil)).Elem()
+}
+
+func (o VpcSubnetLinodeOutput) ToVpcSubnetLinodeOutput() VpcSubnetLinodeOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeOutput) ToVpcSubnetLinodeOutputWithContext(ctx context.Context) VpcSubnetLinodeOutput {
+	return o
+}
+
+// The ID of the VPC Subnet.
+func (o VpcSubnetLinodeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v VpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o VpcSubnetLinodeOutput) Interfaces() VpcSubnetLinodeInterfaceArrayOutput {
+	return o.ApplyT(func(v VpcSubnetLinode) []VpcSubnetLinodeInterface { return v.Interfaces }).(VpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type VpcSubnetLinodeArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetLinodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetLinode)(nil)).Elem()
+}
+
+func (o VpcSubnetLinodeArrayOutput) ToVpcSubnetLinodeArrayOutput() VpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeArrayOutput) ToVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) VpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) VpcSubnetLinodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnetLinode {
+		return vs[0].([]VpcSubnetLinode)[vs[1].(int)]
+	}).(VpcSubnetLinodeOutput)
+}
+
+type VpcSubnetLinodeInterface struct {
+	Active bool `pulumi:"active"`
+	// The ID of the VPC Subnet.
+	Id int `pulumi:"id"`
+}
+
+// VpcSubnetLinodeInterfaceInput is an input type that accepts VpcSubnetLinodeInterfaceArgs and VpcSubnetLinodeInterfaceOutput values.
+// You can construct a concrete instance of `VpcSubnetLinodeInterfaceInput` via:
+//
+//	VpcSubnetLinodeInterfaceArgs{...}
+type VpcSubnetLinodeInterfaceInput interface {
+	pulumi.Input
+
+	ToVpcSubnetLinodeInterfaceOutput() VpcSubnetLinodeInterfaceOutput
+	ToVpcSubnetLinodeInterfaceOutputWithContext(context.Context) VpcSubnetLinodeInterfaceOutput
+}
+
+type VpcSubnetLinodeInterfaceArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The ID of the VPC Subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (VpcSubnetLinodeInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i VpcSubnetLinodeInterfaceArgs) ToVpcSubnetLinodeInterfaceOutput() VpcSubnetLinodeInterfaceOutput {
+	return i.ToVpcSubnetLinodeInterfaceOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetLinodeInterfaceArgs) ToVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) VpcSubnetLinodeInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetLinodeInterfaceOutput)
+}
+
+// VpcSubnetLinodeInterfaceArrayInput is an input type that accepts VpcSubnetLinodeInterfaceArray and VpcSubnetLinodeInterfaceArrayOutput values.
+// You can construct a concrete instance of `VpcSubnetLinodeInterfaceArrayInput` via:
+//
+//	VpcSubnetLinodeInterfaceArray{ VpcSubnetLinodeInterfaceArgs{...} }
+type VpcSubnetLinodeInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToVpcSubnetLinodeInterfaceArrayOutput() VpcSubnetLinodeInterfaceArrayOutput
+	ToVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Context) VpcSubnetLinodeInterfaceArrayOutput
+}
+
+type VpcSubnetLinodeInterfaceArray []VpcSubnetLinodeInterfaceInput
+
+func (VpcSubnetLinodeInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i VpcSubnetLinodeInterfaceArray) ToVpcSubnetLinodeInterfaceArrayOutput() VpcSubnetLinodeInterfaceArrayOutput {
+	return i.ToVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetLinodeInterfaceArray) ToVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) VpcSubnetLinodeInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type VpcSubnetLinodeInterfaceOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetLinodeInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o VpcSubnetLinodeInterfaceOutput) ToVpcSubnetLinodeInterfaceOutput() VpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeInterfaceOutput) ToVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) VpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v VpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The ID of the VPC Subnet.
+func (o VpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v VpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+type VpcSubnetLinodeInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetLinodeInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o VpcSubnetLinodeInterfaceArrayOutput) ToVpcSubnetLinodeInterfaceArrayOutput() VpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeInterfaceArrayOutput) ToVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) VpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o VpcSubnetLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) VpcSubnetLinodeInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnetLinodeInterface {
+		return vs[0].([]VpcSubnetLinodeInterface)[vs[1].(int)]
+	}).(VpcSubnetLinodeInterfaceOutput)
 }
 
 type GetAccountLoginsFilter struct {
@@ -10770,7 +11541,8 @@ type GetInstanceNetworkingIpv4Private struct {
 	// The subnet mask.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type string `pulumi:"type"`
+	Type     string                                   `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4PrivateVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetInstanceNetworkingIpv4PrivateInput is an input type that accepts GetInstanceNetworkingIpv4PrivateArgs and GetInstanceNetworkingIpv4PrivateOutput values.
@@ -10802,7 +11574,8 @@ type GetInstanceNetworkingIpv4PrivateArgs struct {
 	// The subnet mask.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput                            `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4PrivateVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetInstanceNetworkingIpv4PrivateArgs) ElementType() reflect.Type {
@@ -10901,6 +11674,10 @@ func (o GetInstanceNetworkingIpv4PrivateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceNetworkingIpv4PrivateOutput) VpcNat11() GetInstanceNetworkingIpv4PrivateVpcNat11Output {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) GetInstanceNetworkingIpv4PrivateVpcNat11 { return v.VpcNat11 }).(GetInstanceNetworkingIpv4PrivateVpcNat11Output)
+}
+
 type GetInstanceNetworkingIpv4PrivateArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceNetworkingIpv4PrivateArrayOutput) ElementType() reflect.Type {
@@ -10921,6 +11698,70 @@ func (o GetInstanceNetworkingIpv4PrivateArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetInstanceNetworkingIpv4PrivateOutput)
 }
 
+type GetInstanceNetworkingIpv4PrivateVpcNat11 struct {
+	// The address.
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// GetInstanceNetworkingIpv4PrivateVpcNat11Input is an input type that accepts GetInstanceNetworkingIpv4PrivateVpcNat11Args and GetInstanceNetworkingIpv4PrivateVpcNat11Output values.
+// You can construct a concrete instance of `GetInstanceNetworkingIpv4PrivateVpcNat11Input` via:
+//
+//	GetInstanceNetworkingIpv4PrivateVpcNat11Args{...}
+type GetInstanceNetworkingIpv4PrivateVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkingIpv4PrivateVpcNat11Output() GetInstanceNetworkingIpv4PrivateVpcNat11Output
+	ToGetInstanceNetworkingIpv4PrivateVpcNat11OutputWithContext(context.Context) GetInstanceNetworkingIpv4PrivateVpcNat11Output
+}
+
+type GetInstanceNetworkingIpv4PrivateVpcNat11Args struct {
+	// The address.
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (GetInstanceNetworkingIpv4PrivateVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4PrivateVpcNat11)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkingIpv4PrivateVpcNat11Args) ToGetInstanceNetworkingIpv4PrivateVpcNat11Output() GetInstanceNetworkingIpv4PrivateVpcNat11Output {
+	return i.ToGetInstanceNetworkingIpv4PrivateVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkingIpv4PrivateVpcNat11Args) ToGetInstanceNetworkingIpv4PrivateVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4PrivateVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv4PrivateVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv4PrivateVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkingIpv4PrivateVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4PrivateVpcNat11)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkingIpv4PrivateVpcNat11Output) ToGetInstanceNetworkingIpv4PrivateVpcNat11Output() GetInstanceNetworkingIpv4PrivateVpcNat11Output {
+	return o
+}
+
+func (o GetInstanceNetworkingIpv4PrivateVpcNat11Output) ToGetInstanceNetworkingIpv4PrivateVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4PrivateVpcNat11Output {
+	return o
+}
+
+// The address.
+func (o GetInstanceNetworkingIpv4PrivateVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4PrivateVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv4PrivateVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4PrivateVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkingIpv4PrivateVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4PrivateVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
 type GetInstanceNetworkingIpv4Public struct {
 	// The address.
 	Address string `pulumi:"address"`
@@ -10939,7 +11780,8 @@ type GetInstanceNetworkingIpv4Public struct {
 	// The subnet mask.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type string `pulumi:"type"`
+	Type     string                                  `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4PublicVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetInstanceNetworkingIpv4PublicInput is an input type that accepts GetInstanceNetworkingIpv4PublicArgs and GetInstanceNetworkingIpv4PublicOutput values.
@@ -10971,7 +11813,8 @@ type GetInstanceNetworkingIpv4PublicArgs struct {
 	// The subnet mask.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput                           `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4PublicVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetInstanceNetworkingIpv4PublicArgs) ElementType() reflect.Type {
@@ -11070,6 +11913,10 @@ func (o GetInstanceNetworkingIpv4PublicOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceNetworkingIpv4PublicOutput) VpcNat11() GetInstanceNetworkingIpv4PublicVpcNat11Output {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) GetInstanceNetworkingIpv4PublicVpcNat11 { return v.VpcNat11 }).(GetInstanceNetworkingIpv4PublicVpcNat11Output)
+}
+
 type GetInstanceNetworkingIpv4PublicArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceNetworkingIpv4PublicArrayOutput) ElementType() reflect.Type {
@@ -11090,6 +11937,70 @@ func (o GetInstanceNetworkingIpv4PublicArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetInstanceNetworkingIpv4PublicOutput)
 }
 
+type GetInstanceNetworkingIpv4PublicVpcNat11 struct {
+	// The address.
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// GetInstanceNetworkingIpv4PublicVpcNat11Input is an input type that accepts GetInstanceNetworkingIpv4PublicVpcNat11Args and GetInstanceNetworkingIpv4PublicVpcNat11Output values.
+// You can construct a concrete instance of `GetInstanceNetworkingIpv4PublicVpcNat11Input` via:
+//
+//	GetInstanceNetworkingIpv4PublicVpcNat11Args{...}
+type GetInstanceNetworkingIpv4PublicVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkingIpv4PublicVpcNat11Output() GetInstanceNetworkingIpv4PublicVpcNat11Output
+	ToGetInstanceNetworkingIpv4PublicVpcNat11OutputWithContext(context.Context) GetInstanceNetworkingIpv4PublicVpcNat11Output
+}
+
+type GetInstanceNetworkingIpv4PublicVpcNat11Args struct {
+	// The address.
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (GetInstanceNetworkingIpv4PublicVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4PublicVpcNat11)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkingIpv4PublicVpcNat11Args) ToGetInstanceNetworkingIpv4PublicVpcNat11Output() GetInstanceNetworkingIpv4PublicVpcNat11Output {
+	return i.ToGetInstanceNetworkingIpv4PublicVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkingIpv4PublicVpcNat11Args) ToGetInstanceNetworkingIpv4PublicVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4PublicVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv4PublicVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv4PublicVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkingIpv4PublicVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4PublicVpcNat11)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkingIpv4PublicVpcNat11Output) ToGetInstanceNetworkingIpv4PublicVpcNat11Output() GetInstanceNetworkingIpv4PublicVpcNat11Output {
+	return o
+}
+
+func (o GetInstanceNetworkingIpv4PublicVpcNat11Output) ToGetInstanceNetworkingIpv4PublicVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4PublicVpcNat11Output {
+	return o
+}
+
+// The address.
+func (o GetInstanceNetworkingIpv4PublicVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4PublicVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv4PublicVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4PublicVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkingIpv4PublicVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4PublicVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
 type GetInstanceNetworkingIpv4Reserved struct {
 	// The address.
 	Address string `pulumi:"address"`
@@ -11108,7 +12019,8 @@ type GetInstanceNetworkingIpv4Reserved struct {
 	// The subnet mask.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type string `pulumi:"type"`
+	Type     string                                    `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4ReservedVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetInstanceNetworkingIpv4ReservedInput is an input type that accepts GetInstanceNetworkingIpv4ReservedArgs and GetInstanceNetworkingIpv4ReservedOutput values.
@@ -11140,7 +12052,8 @@ type GetInstanceNetworkingIpv4ReservedArgs struct {
 	// The subnet mask.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput                             `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4ReservedVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetInstanceNetworkingIpv4ReservedArgs) ElementType() reflect.Type {
@@ -11239,6 +12152,10 @@ func (o GetInstanceNetworkingIpv4ReservedOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceNetworkingIpv4ReservedOutput) VpcNat11() GetInstanceNetworkingIpv4ReservedVpcNat11Output {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) GetInstanceNetworkingIpv4ReservedVpcNat11 { return v.VpcNat11 }).(GetInstanceNetworkingIpv4ReservedVpcNat11Output)
+}
+
 type GetInstanceNetworkingIpv4ReservedArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceNetworkingIpv4ReservedArrayOutput) ElementType() reflect.Type {
@@ -11259,6 +12176,70 @@ func (o GetInstanceNetworkingIpv4ReservedArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetInstanceNetworkingIpv4ReservedOutput)
 }
 
+type GetInstanceNetworkingIpv4ReservedVpcNat11 struct {
+	// The address.
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// GetInstanceNetworkingIpv4ReservedVpcNat11Input is an input type that accepts GetInstanceNetworkingIpv4ReservedVpcNat11Args and GetInstanceNetworkingIpv4ReservedVpcNat11Output values.
+// You can construct a concrete instance of `GetInstanceNetworkingIpv4ReservedVpcNat11Input` via:
+//
+//	GetInstanceNetworkingIpv4ReservedVpcNat11Args{...}
+type GetInstanceNetworkingIpv4ReservedVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkingIpv4ReservedVpcNat11Output() GetInstanceNetworkingIpv4ReservedVpcNat11Output
+	ToGetInstanceNetworkingIpv4ReservedVpcNat11OutputWithContext(context.Context) GetInstanceNetworkingIpv4ReservedVpcNat11Output
+}
+
+type GetInstanceNetworkingIpv4ReservedVpcNat11Args struct {
+	// The address.
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (GetInstanceNetworkingIpv4ReservedVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4ReservedVpcNat11)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkingIpv4ReservedVpcNat11Args) ToGetInstanceNetworkingIpv4ReservedVpcNat11Output() GetInstanceNetworkingIpv4ReservedVpcNat11Output {
+	return i.ToGetInstanceNetworkingIpv4ReservedVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkingIpv4ReservedVpcNat11Args) ToGetInstanceNetworkingIpv4ReservedVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4ReservedVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv4ReservedVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv4ReservedVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkingIpv4ReservedVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4ReservedVpcNat11)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkingIpv4ReservedVpcNat11Output) ToGetInstanceNetworkingIpv4ReservedVpcNat11Output() GetInstanceNetworkingIpv4ReservedVpcNat11Output {
+	return o
+}
+
+func (o GetInstanceNetworkingIpv4ReservedVpcNat11Output) ToGetInstanceNetworkingIpv4ReservedVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4ReservedVpcNat11Output {
+	return o
+}
+
+// The address.
+func (o GetInstanceNetworkingIpv4ReservedVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4ReservedVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv4ReservedVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4ReservedVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkingIpv4ReservedVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4ReservedVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
 type GetInstanceNetworkingIpv4Shared struct {
 	// The address.
 	Address string `pulumi:"address"`
@@ -11277,7 +12258,8 @@ type GetInstanceNetworkingIpv4Shared struct {
 	// The subnet mask.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type string `pulumi:"type"`
+	Type     string                                  `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4SharedVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetInstanceNetworkingIpv4SharedInput is an input type that accepts GetInstanceNetworkingIpv4SharedArgs and GetInstanceNetworkingIpv4SharedOutput values.
@@ -11309,7 +12291,8 @@ type GetInstanceNetworkingIpv4SharedArgs struct {
 	// The subnet mask.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput                           `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv4SharedVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetInstanceNetworkingIpv4SharedArgs) ElementType() reflect.Type {
@@ -11408,6 +12391,10 @@ func (o GetInstanceNetworkingIpv4SharedOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceNetworkingIpv4SharedOutput) VpcNat11() GetInstanceNetworkingIpv4SharedVpcNat11Output {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) GetInstanceNetworkingIpv4SharedVpcNat11 { return v.VpcNat11 }).(GetInstanceNetworkingIpv4SharedVpcNat11Output)
+}
+
 type GetInstanceNetworkingIpv4SharedArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceNetworkingIpv4SharedArrayOutput) ElementType() reflect.Type {
@@ -11426,6 +12413,70 @@ func (o GetInstanceNetworkingIpv4SharedArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkingIpv4Shared {
 		return vs[0].([]GetInstanceNetworkingIpv4Shared)[vs[1].(int)]
 	}).(GetInstanceNetworkingIpv4SharedOutput)
+}
+
+type GetInstanceNetworkingIpv4SharedVpcNat11 struct {
+	// The address.
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// GetInstanceNetworkingIpv4SharedVpcNat11Input is an input type that accepts GetInstanceNetworkingIpv4SharedVpcNat11Args and GetInstanceNetworkingIpv4SharedVpcNat11Output values.
+// You can construct a concrete instance of `GetInstanceNetworkingIpv4SharedVpcNat11Input` via:
+//
+//	GetInstanceNetworkingIpv4SharedVpcNat11Args{...}
+type GetInstanceNetworkingIpv4SharedVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkingIpv4SharedVpcNat11Output() GetInstanceNetworkingIpv4SharedVpcNat11Output
+	ToGetInstanceNetworkingIpv4SharedVpcNat11OutputWithContext(context.Context) GetInstanceNetworkingIpv4SharedVpcNat11Output
+}
+
+type GetInstanceNetworkingIpv4SharedVpcNat11Args struct {
+	// The address.
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (GetInstanceNetworkingIpv4SharedVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4SharedVpcNat11)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkingIpv4SharedVpcNat11Args) ToGetInstanceNetworkingIpv4SharedVpcNat11Output() GetInstanceNetworkingIpv4SharedVpcNat11Output {
+	return i.ToGetInstanceNetworkingIpv4SharedVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkingIpv4SharedVpcNat11Args) ToGetInstanceNetworkingIpv4SharedVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4SharedVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv4SharedVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv4SharedVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkingIpv4SharedVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv4SharedVpcNat11)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkingIpv4SharedVpcNat11Output) ToGetInstanceNetworkingIpv4SharedVpcNat11Output() GetInstanceNetworkingIpv4SharedVpcNat11Output {
+	return o
+}
+
+func (o GetInstanceNetworkingIpv4SharedVpcNat11Output) ToGetInstanceNetworkingIpv4SharedVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv4SharedVpcNat11Output {
+	return o
+}
+
+// The address.
+func (o GetInstanceNetworkingIpv4SharedVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4SharedVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv4SharedVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4SharedVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkingIpv4SharedVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4SharedVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 type GetInstanceNetworkingIpv6 struct {
@@ -11676,7 +12727,8 @@ type GetInstanceNetworkingIpv6LinkLocal struct {
 	// The subnet mask.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type string `pulumi:"type"`
+	Type     string                                     `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv6LinkLocalVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetInstanceNetworkingIpv6LinkLocalInput is an input type that accepts GetInstanceNetworkingIpv6LinkLocalArgs and GetInstanceNetworkingIpv6LinkLocalOutput values.
@@ -11708,7 +12760,8 @@ type GetInstanceNetworkingIpv6LinkLocalArgs struct {
 	// The subnet mask.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput                              `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv6LinkLocalVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetInstanceNetworkingIpv6LinkLocalArgs) ElementType() reflect.Type {
@@ -11782,6 +12835,76 @@ func (o GetInstanceNetworkingIpv6LinkLocalOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceNetworkingIpv6LinkLocalOutput) VpcNat11() GetInstanceNetworkingIpv6LinkLocalVpcNat11Output {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
+		return v.VpcNat11
+	}).(GetInstanceNetworkingIpv6LinkLocalVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv6LinkLocalVpcNat11 struct {
+	// The address.
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// GetInstanceNetworkingIpv6LinkLocalVpcNat11Input is an input type that accepts GetInstanceNetworkingIpv6LinkLocalVpcNat11Args and GetInstanceNetworkingIpv6LinkLocalVpcNat11Output values.
+// You can construct a concrete instance of `GetInstanceNetworkingIpv6LinkLocalVpcNat11Input` via:
+//
+//	GetInstanceNetworkingIpv6LinkLocalVpcNat11Args{...}
+type GetInstanceNetworkingIpv6LinkLocalVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkingIpv6LinkLocalVpcNat11Output() GetInstanceNetworkingIpv6LinkLocalVpcNat11Output
+	ToGetInstanceNetworkingIpv6LinkLocalVpcNat11OutputWithContext(context.Context) GetInstanceNetworkingIpv6LinkLocalVpcNat11Output
+}
+
+type GetInstanceNetworkingIpv6LinkLocalVpcNat11Args struct {
+	// The address.
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (GetInstanceNetworkingIpv6LinkLocalVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalVpcNat11)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkingIpv6LinkLocalVpcNat11Args) ToGetInstanceNetworkingIpv6LinkLocalVpcNat11Output() GetInstanceNetworkingIpv6LinkLocalVpcNat11Output {
+	return i.ToGetInstanceNetworkingIpv6LinkLocalVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkingIpv6LinkLocalVpcNat11Args) ToGetInstanceNetworkingIpv6LinkLocalVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6LinkLocalVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv6LinkLocalVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv6LinkLocalVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkingIpv6LinkLocalVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalVpcNat11)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkingIpv6LinkLocalVpcNat11Output) ToGetInstanceNetworkingIpv6LinkLocalVpcNat11Output() GetInstanceNetworkingIpv6LinkLocalVpcNat11Output {
+	return o
+}
+
+func (o GetInstanceNetworkingIpv6LinkLocalVpcNat11Output) ToGetInstanceNetworkingIpv6LinkLocalVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6LinkLocalVpcNat11Output {
+	return o
+}
+
+// The address.
+func (o GetInstanceNetworkingIpv6LinkLocalVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocalVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv6LinkLocalVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocalVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkingIpv6LinkLocalVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocalVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
 type GetInstanceNetworkingIpv6Slaac struct {
 	// The address.
 	Address string `pulumi:"address"`
@@ -11800,7 +12923,8 @@ type GetInstanceNetworkingIpv6Slaac struct {
 	// The subnet mask.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type string `pulumi:"type"`
+	Type     string                                 `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv6SlaacVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetInstanceNetworkingIpv6SlaacInput is an input type that accepts GetInstanceNetworkingIpv6SlaacArgs and GetInstanceNetworkingIpv6SlaacOutput values.
@@ -11832,7 +12956,8 @@ type GetInstanceNetworkingIpv6SlaacArgs struct {
 	// The subnet mask.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput                          `pulumi:"type"`
+	VpcNat11 GetInstanceNetworkingIpv6SlaacVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetInstanceNetworkingIpv6SlaacArgs) ElementType() reflect.Type {
@@ -11904,6 +13029,74 @@ func (o GetInstanceNetworkingIpv6SlaacOutput) SubnetMask() pulumi.StringOutput {
 // The type of address this is.
 func (o GetInstanceNetworkingIpv6SlaacOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv6SlaacOutput) VpcNat11() GetInstanceNetworkingIpv6SlaacVpcNat11Output {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) GetInstanceNetworkingIpv6SlaacVpcNat11 { return v.VpcNat11 }).(GetInstanceNetworkingIpv6SlaacVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv6SlaacVpcNat11 struct {
+	// The address.
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// GetInstanceNetworkingIpv6SlaacVpcNat11Input is an input type that accepts GetInstanceNetworkingIpv6SlaacVpcNat11Args and GetInstanceNetworkingIpv6SlaacVpcNat11Output values.
+// You can construct a concrete instance of `GetInstanceNetworkingIpv6SlaacVpcNat11Input` via:
+//
+//	GetInstanceNetworkingIpv6SlaacVpcNat11Args{...}
+type GetInstanceNetworkingIpv6SlaacVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkingIpv6SlaacVpcNat11Output() GetInstanceNetworkingIpv6SlaacVpcNat11Output
+	ToGetInstanceNetworkingIpv6SlaacVpcNat11OutputWithContext(context.Context) GetInstanceNetworkingIpv6SlaacVpcNat11Output
+}
+
+type GetInstanceNetworkingIpv6SlaacVpcNat11Args struct {
+	// The address.
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (GetInstanceNetworkingIpv6SlaacVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacVpcNat11)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkingIpv6SlaacVpcNat11Args) ToGetInstanceNetworkingIpv6SlaacVpcNat11Output() GetInstanceNetworkingIpv6SlaacVpcNat11Output {
+	return i.ToGetInstanceNetworkingIpv6SlaacVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkingIpv6SlaacVpcNat11Args) ToGetInstanceNetworkingIpv6SlaacVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6SlaacVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkingIpv6SlaacVpcNat11Output)
+}
+
+type GetInstanceNetworkingIpv6SlaacVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkingIpv6SlaacVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacVpcNat11)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkingIpv6SlaacVpcNat11Output) ToGetInstanceNetworkingIpv6SlaacVpcNat11Output() GetInstanceNetworkingIpv6SlaacVpcNat11Output {
+	return o
+}
+
+func (o GetInstanceNetworkingIpv6SlaacVpcNat11Output) ToGetInstanceNetworkingIpv6SlaacVpcNat11OutputWithContext(ctx context.Context) GetInstanceNetworkingIpv6SlaacVpcNat11Output {
+	return o
+}
+
+// The address.
+func (o GetInstanceNetworkingIpv6SlaacVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6SlaacVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkingIpv6SlaacVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6SlaacVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkingIpv6SlaacVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6SlaacVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 type GetInstanceTypeAddons struct {
@@ -13457,7 +14650,8 @@ type GetInstancesInstance struct {
 	Configs         []GetInstancesInstanceConfig `pulumi:"configs"`
 	Disks           []GetInstancesInstanceDisk   `pulumi:"disks"`
 	// The display group of the Linode instance.
-	Group       string `pulumi:"group"`
+	Group string `pulumi:"group"`
+	// Whether this Instance was created with user-data.
 	HasUserData bool   `pulumi:"hasUserData"`
 	HostUuid    string `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
@@ -13470,7 +14664,7 @@ type GetInstancesInstance struct {
 	Ipv4s []string `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 string `pulumi:"ipv6"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label string `pulumi:"label"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress string `pulumi:"privateIpAddress"`
@@ -13507,7 +14701,8 @@ type GetInstancesInstanceArgs struct {
 	Configs         GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
 	Disks           GetInstancesInstanceDiskArrayInput   `pulumi:"disks"`
 	// The display group of the Linode instance.
-	Group       pulumi.StringInput `pulumi:"group"`
+	Group pulumi.StringInput `pulumi:"group"`
+	// Whether this Instance was created with user-data.
 	HasUserData pulumi.BoolInput   `pulumi:"hasUserData"`
 	HostUuid    pulumi.StringInput `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
@@ -13520,7 +14715,7 @@ type GetInstancesInstanceArgs struct {
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringInput `pulumi:"label"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
@@ -13615,6 +14810,7 @@ func (o GetInstancesInstanceOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// Whether this Instance was created with user-data.
 func (o GetInstancesInstanceOutput) HasUserData() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.HasUserData }).(pulumi.BoolOutput)
 }
@@ -13648,7 +14844,7 @@ func (o GetInstancesInstanceOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
-// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -14012,7 +15208,7 @@ type GetInstancesInstanceConfig struct {
 	Interfaces []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel string `pulumi:"kernel"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label string `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
 	MemoryLimit int `pulumi:"memoryLimit"`
@@ -14047,7 +15243,7 @@ type GetInstancesInstanceConfigArgs struct {
 	Interfaces GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringInput `pulumi:"kernel"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
 	MemoryLimit pulumi.IntInput `pulumi:"memoryLimit"`
@@ -14139,7 +15335,7 @@ func (o GetInstancesInstanceConfigOutput) Kernel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Kernel }).(pulumi.StringOutput)
 }
 
-// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 func (o GetInstancesInstanceConfigOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -15374,12 +16570,25 @@ func (o GetInstancesInstanceConfigHelperArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetInstancesInstanceConfigInterface struct {
-	// (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	Active bool `pulumi:"active"`
+	// The ID of the disk in the Linode API.
+	Id int `pulumi:"id"`
+	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+	IpRanges []string `pulumi:"ipRanges"`
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4 GetInstancesInstanceConfigInterfaceIpv4 `pulumi:"ipv4"`
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
-	// (Required) The type of interface. (`public`, `vlan`)
-	Purpose *string `pulumi:"purpose"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	Primary *bool `pulumi:"primary"`
+	// The type of interface. (`public`, `vlan`, `vpc`)
+	Purpose string `pulumi:"purpose"`
+	// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+	SubnetId *int `pulumi:"subnetId"`
+	// The ID of VPC which this interface is attached to.
+	VpcId int `pulumi:"vpcId"`
 }
 
 // GetInstancesInstanceConfigInterfaceInput is an input type that accepts GetInstancesInstanceConfigInterfaceArgs and GetInstancesInstanceConfigInterfaceOutput values.
@@ -15394,12 +16603,25 @@ type GetInstancesInstanceConfigInterfaceInput interface {
 }
 
 type GetInstancesInstanceConfigInterfaceArgs struct {
-	// (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The ID of the disk in the Linode API.
+	Id pulumi.IntInput `pulumi:"id"`
+	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4 GetInstancesInstanceConfigInterfaceIpv4Input `pulumi:"ipv4"`
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
-	// (Required) The type of interface. (`public`, `vlan`)
-	Purpose pulumi.StringPtrInput `pulumi:"purpose"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+	// The type of interface. (`public`, `vlan`, `vpc`)
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+	SubnetId pulumi.IntPtrInput `pulumi:"subnetId"`
+	// The ID of VPC which this interface is attached to.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
 }
 
 func (GetInstancesInstanceConfigInterfaceArgs) ElementType() reflect.Type {
@@ -15453,19 +16675,53 @@ func (o GetInstancesInstanceConfigInterfaceOutput) ToGetInstancesInstanceConfigI
 	return o
 }
 
-// (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+func (o GetInstancesInstanceConfigInterfaceOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The ID of the disk in the Linode API.
+func (o GetInstancesInstanceConfigInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+func (o GetInstancesInstanceConfigInterfaceOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 func (o GetInstancesInstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+func (o GetInstancesInstanceConfigInterfaceOutput) Ipv4() GetInstancesInstanceConfigInterfaceIpv4Output {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) GetInstancesInstanceConfigInterfaceIpv4 { return v.Ipv4 }).(GetInstancesInstanceConfigInterfaceIpv4Output)
+}
+
+// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 func (o GetInstancesInstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// (Required) The type of interface. (`public`, `vlan`)
-func (o GetInstancesInstanceConfigInterfaceOutput) Purpose() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Purpose }).(pulumi.StringPtrOutput)
+// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+func (o GetInstancesInstanceConfigInterfaceOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// The type of interface. (`public`, `vlan`, `vpc`)
+func (o GetInstancesInstanceConfigInterfaceOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+func (o GetInstancesInstanceConfigInterfaceOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *int { return v.SubnetId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of VPC which this interface is attached to.
+func (o GetInstancesInstanceConfigInterfaceOutput) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 type GetInstancesInstanceConfigInterfaceArrayOutput struct{ *pulumi.OutputState }
@@ -15488,12 +16744,73 @@ func (o GetInstancesInstanceConfigInterfaceArrayOutput) Index(i pulumi.IntInput)
 	}).(GetInstancesInstanceConfigInterfaceOutput)
 }
 
+type GetInstancesInstanceConfigInterfaceIpv4 struct {
+	// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+	Nat11 string `pulumi:"nat11"`
+	// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+	Vpc string `pulumi:"vpc"`
+}
+
+// GetInstancesInstanceConfigInterfaceIpv4Input is an input type that accepts GetInstancesInstanceConfigInterfaceIpv4Args and GetInstancesInstanceConfigInterfaceIpv4Output values.
+// You can construct a concrete instance of `GetInstancesInstanceConfigInterfaceIpv4Input` via:
+//
+//	GetInstancesInstanceConfigInterfaceIpv4Args{...}
+type GetInstancesInstanceConfigInterfaceIpv4Input interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceConfigInterfaceIpv4Output() GetInstancesInstanceConfigInterfaceIpv4Output
+	ToGetInstancesInstanceConfigInterfaceIpv4OutputWithContext(context.Context) GetInstancesInstanceConfigInterfaceIpv4Output
+}
+
+type GetInstancesInstanceConfigInterfaceIpv4Args struct {
+	// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+	Nat11 pulumi.StringInput `pulumi:"nat11"`
+	// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+	Vpc pulumi.StringInput `pulumi:"vpc"`
+}
+
+func (GetInstancesInstanceConfigInterfaceIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceConfigInterfaceIpv4)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceConfigInterfaceIpv4Args) ToGetInstancesInstanceConfigInterfaceIpv4Output() GetInstancesInstanceConfigInterfaceIpv4Output {
+	return i.ToGetInstancesInstanceConfigInterfaceIpv4OutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceConfigInterfaceIpv4Args) ToGetInstancesInstanceConfigInterfaceIpv4OutputWithContext(ctx context.Context) GetInstancesInstanceConfigInterfaceIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceConfigInterfaceIpv4Output)
+}
+
+type GetInstancesInstanceConfigInterfaceIpv4Output struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceConfigInterfaceIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceConfigInterfaceIpv4)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceConfigInterfaceIpv4Output) ToGetInstancesInstanceConfigInterfaceIpv4Output() GetInstancesInstanceConfigInterfaceIpv4Output {
+	return o
+}
+
+func (o GetInstancesInstanceConfigInterfaceIpv4Output) ToGetInstancesInstanceConfigInterfaceIpv4OutputWithContext(ctx context.Context) GetInstancesInstanceConfigInterfaceIpv4Output {
+	return o
+}
+
+// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+func (o GetInstancesInstanceConfigInterfaceIpv4Output) Nat11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterfaceIpv4) string { return v.Nat11 }).(pulumi.StringOutput)
+}
+
+// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+func (o GetInstancesInstanceConfigInterfaceIpv4Output) Vpc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceConfigInterfaceIpv4) string { return v.Vpc }).(pulumi.StringOutput)
+}
+
 type GetInstancesInstanceDisk struct {
 	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 	Filesystem string `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id int `pulumi:"id"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label string `pulumi:"label"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
@@ -15515,7 +16832,7 @@ type GetInstancesInstanceDiskArgs struct {
 	Filesystem pulumi.StringInput `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
-	// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -15582,7 +16899,7 @@ func (o GetInstancesInstanceDiskOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 func (o GetInstancesInstanceDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -21904,6 +23221,932 @@ func (o GetVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetVolumesVolumeOu
 	}).(GetVolumesVolumeOutput)
 }
 
+type GetVpcSubnetLinode struct {
+	// The unique id of this VPC subnet.
+	Id         int                           `pulumi:"id"`
+	Interfaces []GetVpcSubnetLinodeInterface `pulumi:"interfaces"`
+}
+
+// GetVpcSubnetLinodeInput is an input type that accepts GetVpcSubnetLinodeArgs and GetVpcSubnetLinodeOutput values.
+// You can construct a concrete instance of `GetVpcSubnetLinodeInput` via:
+//
+//	GetVpcSubnetLinodeArgs{...}
+type GetVpcSubnetLinodeInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetLinodeOutput() GetVpcSubnetLinodeOutput
+	ToGetVpcSubnetLinodeOutputWithContext(context.Context) GetVpcSubnetLinodeOutput
+}
+
+type GetVpcSubnetLinodeArgs struct {
+	// The unique id of this VPC subnet.
+	Id         pulumi.IntInput                       `pulumi:"id"`
+	Interfaces GetVpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
+}
+
+func (GetVpcSubnetLinodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetLinode)(nil)).Elem()
+}
+
+func (i GetVpcSubnetLinodeArgs) ToGetVpcSubnetLinodeOutput() GetVpcSubnetLinodeOutput {
+	return i.ToGetVpcSubnetLinodeOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetLinodeArgs) ToGetVpcSubnetLinodeOutputWithContext(ctx context.Context) GetVpcSubnetLinodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetLinodeOutput)
+}
+
+// GetVpcSubnetLinodeArrayInput is an input type that accepts GetVpcSubnetLinodeArray and GetVpcSubnetLinodeArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetLinodeArrayInput` via:
+//
+//	GetVpcSubnetLinodeArray{ GetVpcSubnetLinodeArgs{...} }
+type GetVpcSubnetLinodeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetLinodeArrayOutput() GetVpcSubnetLinodeArrayOutput
+	ToGetVpcSubnetLinodeArrayOutputWithContext(context.Context) GetVpcSubnetLinodeArrayOutput
+}
+
+type GetVpcSubnetLinodeArray []GetVpcSubnetLinodeInput
+
+func (GetVpcSubnetLinodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetLinode)(nil)).Elem()
+}
+
+func (i GetVpcSubnetLinodeArray) ToGetVpcSubnetLinodeArrayOutput() GetVpcSubnetLinodeArrayOutput {
+	return i.ToGetVpcSubnetLinodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetLinodeArray) ToGetVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) GetVpcSubnetLinodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetLinodeArrayOutput)
+}
+
+type GetVpcSubnetLinodeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetLinodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetLinode)(nil)).Elem()
+}
+
+func (o GetVpcSubnetLinodeOutput) ToGetVpcSubnetLinodeOutput() GetVpcSubnetLinodeOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeOutput) ToGetVpcSubnetLinodeOutputWithContext(ctx context.Context) GetVpcSubnetLinodeOutput {
+	return o
+}
+
+// The unique id of this VPC subnet.
+func (o GetVpcSubnetLinodeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetVpcSubnetLinodeOutput) Interfaces() GetVpcSubnetLinodeInterfaceArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetLinode) []GetVpcSubnetLinodeInterface { return v.Interfaces }).(GetVpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type GetVpcSubnetLinodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetLinodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetLinode)(nil)).Elem()
+}
+
+func (o GetVpcSubnetLinodeArrayOutput) ToGetVpcSubnetLinodeArrayOutput() GetVpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeArrayOutput) ToGetVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) GetVpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetLinodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetLinode {
+		return vs[0].([]GetVpcSubnetLinode)[vs[1].(int)]
+	}).(GetVpcSubnetLinodeOutput)
+}
+
+type GetVpcSubnetLinodeInterface struct {
+	Active bool `pulumi:"active"`
+	// The unique id of this VPC subnet.
+	Id int `pulumi:"id"`
+}
+
+// GetVpcSubnetLinodeInterfaceInput is an input type that accepts GetVpcSubnetLinodeInterfaceArgs and GetVpcSubnetLinodeInterfaceOutput values.
+// You can construct a concrete instance of `GetVpcSubnetLinodeInterfaceInput` via:
+//
+//	GetVpcSubnetLinodeInterfaceArgs{...}
+type GetVpcSubnetLinodeInterfaceInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetLinodeInterfaceOutput() GetVpcSubnetLinodeInterfaceOutput
+	ToGetVpcSubnetLinodeInterfaceOutputWithContext(context.Context) GetVpcSubnetLinodeInterfaceOutput
+}
+
+type GetVpcSubnetLinodeInterfaceArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The unique id of this VPC subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (GetVpcSubnetLinodeInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i GetVpcSubnetLinodeInterfaceArgs) ToGetVpcSubnetLinodeInterfaceOutput() GetVpcSubnetLinodeInterfaceOutput {
+	return i.ToGetVpcSubnetLinodeInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetLinodeInterfaceArgs) ToGetVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) GetVpcSubnetLinodeInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetLinodeInterfaceOutput)
+}
+
+// GetVpcSubnetLinodeInterfaceArrayInput is an input type that accepts GetVpcSubnetLinodeInterfaceArray and GetVpcSubnetLinodeInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetLinodeInterfaceArrayInput` via:
+//
+//	GetVpcSubnetLinodeInterfaceArray{ GetVpcSubnetLinodeInterfaceArgs{...} }
+type GetVpcSubnetLinodeInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetLinodeInterfaceArrayOutput() GetVpcSubnetLinodeInterfaceArrayOutput
+	ToGetVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Context) GetVpcSubnetLinodeInterfaceArrayOutput
+}
+
+type GetVpcSubnetLinodeInterfaceArray []GetVpcSubnetLinodeInterfaceInput
+
+func (GetVpcSubnetLinodeInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i GetVpcSubnetLinodeInterfaceArray) ToGetVpcSubnetLinodeInterfaceArrayOutput() GetVpcSubnetLinodeInterfaceArrayOutput {
+	return i.ToGetVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetLinodeInterfaceArray) ToGetVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) GetVpcSubnetLinodeInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type GetVpcSubnetLinodeInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetLinodeInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o GetVpcSubnetLinodeInterfaceOutput) ToGetVpcSubnetLinodeInterfaceOutput() GetVpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeInterfaceOutput) ToGetVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) GetVpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The unique id of this VPC subnet.
+func (o GetVpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+type GetVpcSubnetLinodeInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetLinodeInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o GetVpcSubnetLinodeInterfaceArrayOutput) ToGetVpcSubnetLinodeInterfaceArrayOutput() GetVpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeInterfaceArrayOutput) ToGetVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) GetVpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetLinodeInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetLinodeInterface {
+		return vs[0].([]GetVpcSubnetLinodeInterface)[vs[1].(int)]
+	}).(GetVpcSubnetLinodeInterfaceOutput)
+}
+
+type GetVpcSubnetsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetVpcSubnetsFilterInput is an input type that accepts GetVpcSubnetsFilterArgs and GetVpcSubnetsFilterOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsFilterInput` via:
+//
+//	GetVpcSubnetsFilterArgs{...}
+type GetVpcSubnetsFilterInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsFilterOutput() GetVpcSubnetsFilterOutput
+	ToGetVpcSubnetsFilterOutputWithContext(context.Context) GetVpcSubnetsFilterOutput
+}
+
+type GetVpcSubnetsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVpcSubnetsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsFilter)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsFilterArgs) ToGetVpcSubnetsFilterOutput() GetVpcSubnetsFilterOutput {
+	return i.ToGetVpcSubnetsFilterOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsFilterArgs) ToGetVpcSubnetsFilterOutputWithContext(ctx context.Context) GetVpcSubnetsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsFilterOutput)
+}
+
+// GetVpcSubnetsFilterArrayInput is an input type that accepts GetVpcSubnetsFilterArray and GetVpcSubnetsFilterArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsFilterArrayInput` via:
+//
+//	GetVpcSubnetsFilterArray{ GetVpcSubnetsFilterArgs{...} }
+type GetVpcSubnetsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsFilterArrayOutput() GetVpcSubnetsFilterArrayOutput
+	ToGetVpcSubnetsFilterArrayOutputWithContext(context.Context) GetVpcSubnetsFilterArrayOutput
+}
+
+type GetVpcSubnetsFilterArray []GetVpcSubnetsFilterInput
+
+func (GetVpcSubnetsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsFilter)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsFilterArray) ToGetVpcSubnetsFilterArrayOutput() GetVpcSubnetsFilterArrayOutput {
+	return i.ToGetVpcSubnetsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsFilterArray) ToGetVpcSubnetsFilterArrayOutputWithContext(ctx context.Context) GetVpcSubnetsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsFilterArrayOutput)
+}
+
+type GetVpcSubnetsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsFilter)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsFilterOutput) ToGetVpcSubnetsFilterOutput() GetVpcSubnetsFilterOutput {
+	return o
+}
+
+func (o GetVpcSubnetsFilterOutput) ToGetVpcSubnetsFilterOutputWithContext(ctx context.Context) GetVpcSubnetsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetVpcSubnetsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcSubnetsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetVpcSubnetsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetVpcSubnetsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVpcSubnetsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsFilter)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsFilterArrayOutput) ToGetVpcSubnetsFilterArrayOutput() GetVpcSubnetsFilterArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsFilterArrayOutput) ToGetVpcSubnetsFilterArrayOutputWithContext(ctx context.Context) GetVpcSubnetsFilterArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsFilterArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetsFilter {
+		return vs[0].([]GetVpcSubnetsFilter)[vs[1].(int)]
+	}).(GetVpcSubnetsFilterOutput)
+}
+
+type GetVpcSubnetsVpcSubnet struct {
+	// The date and time when the VPC Subnet was created.
+	Created string `pulumi:"created"`
+	// The unique id of the VPC subnet.
+	Id int `pulumi:"id"`
+	// The IPv4 range of this subnet in CIDR format.
+	Ipv4 string `pulumi:"ipv4"`
+	// The label of the VPC subnet.
+	Label string `pulumi:"label"`
+	// A list of Linode IDs that added to this subnet.
+	Linodes []GetVpcSubnetsVpcSubnetLinode `pulumi:"linodes"`
+	// The date and time when the VPC Subnet was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetVpcSubnetsVpcSubnetInput is an input type that accepts GetVpcSubnetsVpcSubnetArgs and GetVpcSubnetsVpcSubnetOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetInput` via:
+//
+//	GetVpcSubnetsVpcSubnetArgs{...}
+type GetVpcSubnetsVpcSubnetInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetOutput() GetVpcSubnetsVpcSubnetOutput
+	ToGetVpcSubnetsVpcSubnetOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetOutput
+}
+
+type GetVpcSubnetsVpcSubnetArgs struct {
+	// The date and time when the VPC Subnet was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The unique id of the VPC subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The IPv4 range of this subnet in CIDR format.
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+	// The label of the VPC subnet.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A list of Linode IDs that added to this subnet.
+	Linodes GetVpcSubnetsVpcSubnetLinodeArrayInput `pulumi:"linodes"`
+	// The date and time when the VPC Subnet was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetVpcSubnetsVpcSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnet)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetArgs) ToGetVpcSubnetsVpcSubnetOutput() GetVpcSubnetsVpcSubnetOutput {
+	return i.ToGetVpcSubnetsVpcSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetArgs) ToGetVpcSubnetsVpcSubnetOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetOutput)
+}
+
+// GetVpcSubnetsVpcSubnetArrayInput is an input type that accepts GetVpcSubnetsVpcSubnetArray and GetVpcSubnetsVpcSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetArrayInput` via:
+//
+//	GetVpcSubnetsVpcSubnetArray{ GetVpcSubnetsVpcSubnetArgs{...} }
+type GetVpcSubnetsVpcSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetArrayOutput() GetVpcSubnetsVpcSubnetArrayOutput
+	ToGetVpcSubnetsVpcSubnetArrayOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetArrayOutput
+}
+
+type GetVpcSubnetsVpcSubnetArray []GetVpcSubnetsVpcSubnetInput
+
+func (GetVpcSubnetsVpcSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnet)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetArray) ToGetVpcSubnetsVpcSubnetArrayOutput() GetVpcSubnetsVpcSubnetArrayOutput {
+	return i.ToGetVpcSubnetsVpcSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetArray) ToGetVpcSubnetsVpcSubnetArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnet)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetOutput) ToGetVpcSubnetsVpcSubnetOutput() GetVpcSubnetsVpcSubnetOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetOutput) ToGetVpcSubnetsVpcSubnetOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetOutput {
+	return o
+}
+
+// The date and time when the VPC Subnet was created.
+func (o GetVpcSubnetsVpcSubnetOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The unique id of the VPC subnet.
+func (o GetVpcSubnetsVpcSubnetOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The IPv4 range of this subnet in CIDR format.
+func (o GetVpcSubnetsVpcSubnetOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+// The label of the VPC subnet.
+func (o GetVpcSubnetsVpcSubnetOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A list of Linode IDs that added to this subnet.
+func (o GetVpcSubnetsVpcSubnetOutput) Linodes() GetVpcSubnetsVpcSubnetLinodeArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) []GetVpcSubnetsVpcSubnetLinode { return v.Linodes }).(GetVpcSubnetsVpcSubnetLinodeArrayOutput)
+}
+
+// The date and time when the VPC Subnet was last updated.
+func (o GetVpcSubnetsVpcSubnetOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetVpcSubnetsVpcSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnet)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetArrayOutput) ToGetVpcSubnetsVpcSubnetArrayOutput() GetVpcSubnetsVpcSubnetArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetArrayOutput) ToGetVpcSubnetsVpcSubnetArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsVpcSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetsVpcSubnet {
+		return vs[0].([]GetVpcSubnetsVpcSubnet)[vs[1].(int)]
+	}).(GetVpcSubnetsVpcSubnetOutput)
+}
+
+type GetVpcSubnetsVpcSubnetLinode struct {
+	// The unique id of the VPC subnet.
+	Id         int                                     `pulumi:"id"`
+	Interfaces []GetVpcSubnetsVpcSubnetLinodeInterface `pulumi:"interfaces"`
+}
+
+// GetVpcSubnetsVpcSubnetLinodeInput is an input type that accepts GetVpcSubnetsVpcSubnetLinodeArgs and GetVpcSubnetsVpcSubnetLinodeOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetLinodeInput` via:
+//
+//	GetVpcSubnetsVpcSubnetLinodeArgs{...}
+type GetVpcSubnetsVpcSubnetLinodeInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetLinodeOutput() GetVpcSubnetsVpcSubnetLinodeOutput
+	ToGetVpcSubnetsVpcSubnetLinodeOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetLinodeOutput
+}
+
+type GetVpcSubnetsVpcSubnetLinodeArgs struct {
+	// The unique id of the VPC subnet.
+	Id         pulumi.IntInput                                 `pulumi:"id"`
+	Interfaces GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
+}
+
+func (GetVpcSubnetsVpcSubnetLinodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeArgs) ToGetVpcSubnetsVpcSubnetLinodeOutput() GetVpcSubnetsVpcSubnetLinodeOutput {
+	return i.ToGetVpcSubnetsVpcSubnetLinodeOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeArgs) ToGetVpcSubnetsVpcSubnetLinodeOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetLinodeOutput)
+}
+
+// GetVpcSubnetsVpcSubnetLinodeArrayInput is an input type that accepts GetVpcSubnetsVpcSubnetLinodeArray and GetVpcSubnetsVpcSubnetLinodeArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetLinodeArrayInput` via:
+//
+//	GetVpcSubnetsVpcSubnetLinodeArray{ GetVpcSubnetsVpcSubnetLinodeArgs{...} }
+type GetVpcSubnetsVpcSubnetLinodeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetLinodeArrayOutput() GetVpcSubnetsVpcSubnetLinodeArrayOutput
+	ToGetVpcSubnetsVpcSubnetLinodeArrayOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetLinodeArrayOutput
+}
+
+type GetVpcSubnetsVpcSubnetLinodeArray []GetVpcSubnetsVpcSubnetLinodeInput
+
+func (GetVpcSubnetsVpcSubnetLinodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeArray) ToGetVpcSubnetsVpcSubnetLinodeArrayOutput() GetVpcSubnetsVpcSubnetLinodeArrayOutput {
+	return i.ToGetVpcSubnetsVpcSubnetLinodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeArray) ToGetVpcSubnetsVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetLinodeArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetLinodeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetLinodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeOutput) ToGetVpcSubnetsVpcSubnetLinodeOutput() GetVpcSubnetsVpcSubnetLinodeOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeOutput) ToGetVpcSubnetsVpcSubnetLinodeOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeOutput {
+	return o
+}
+
+// The unique id of the VPC subnet.
+func (o GetVpcSubnetsVpcSubnetLinodeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeOutput) Interfaces() GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinode) []GetVpcSubnetsVpcSubnetLinodeInterface { return v.Interfaces }).(GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetLinodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetLinodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeArrayOutput) ToGetVpcSubnetsVpcSubnetLinodeArrayOutput() GetVpcSubnetsVpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeArrayOutput) ToGetVpcSubnetsVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsVpcSubnetLinodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetsVpcSubnetLinode {
+		return vs[0].([]GetVpcSubnetsVpcSubnetLinode)[vs[1].(int)]
+	}).(GetVpcSubnetsVpcSubnetLinodeOutput)
+}
+
+type GetVpcSubnetsVpcSubnetLinodeInterface struct {
+	Active bool `pulumi:"active"`
+	// The unique id of the VPC subnet.
+	Id int `pulumi:"id"`
+}
+
+// GetVpcSubnetsVpcSubnetLinodeInterfaceInput is an input type that accepts GetVpcSubnetsVpcSubnetLinodeInterfaceArgs and GetVpcSubnetsVpcSubnetLinodeInterfaceOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetLinodeInterfaceInput` via:
+//
+//	GetVpcSubnetsVpcSubnetLinodeInterfaceArgs{...}
+type GetVpcSubnetsVpcSubnetLinodeInterfaceInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutput() GetVpcSubnetsVpcSubnetLinodeInterfaceOutput
+	ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetLinodeInterfaceOutput
+}
+
+type GetVpcSubnetsVpcSubnetLinodeInterfaceArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The unique id of the VPC subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (GetVpcSubnetsVpcSubnetLinodeInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeInterfaceArgs) ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutput() GetVpcSubnetsVpcSubnetLinodeInterfaceOutput {
+	return i.ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeInterfaceArgs) ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetLinodeInterfaceOutput)
+}
+
+// GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput is an input type that accepts GetVpcSubnetsVpcSubnetLinodeInterfaceArray and GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput` via:
+//
+//	GetVpcSubnetsVpcSubnetLinodeInterfaceArray{ GetVpcSubnetsVpcSubnetLinodeInterfaceArgs{...} }
+type GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput() GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput
+	ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput
+}
+
+type GetVpcSubnetsVpcSubnetLinodeInterfaceArray []GetVpcSubnetsVpcSubnetLinodeInterfaceInput
+
+func (GetVpcSubnetsVpcSubnetLinodeInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeInterfaceArray) ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput() GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput {
+	return i.ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetLinodeInterfaceArray) ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetLinodeInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutput() GetVpcSubnetsVpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) ToGetVpcSubnetsVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The unique id of the VPC subnet.
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+type GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput) ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput() GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput) ToGetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsVpcSubnetLinodeInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetsVpcSubnetLinodeInterface {
+		return vs[0].([]GetVpcSubnetsVpcSubnetLinodeInterface)[vs[1].(int)]
+	}).(GetVpcSubnetsVpcSubnetLinodeInterfaceOutput)
+}
+
+type GetVpcsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetVpcsFilterInput is an input type that accepts GetVpcsFilterArgs and GetVpcsFilterOutput values.
+// You can construct a concrete instance of `GetVpcsFilterInput` via:
+//
+//	GetVpcsFilterArgs{...}
+type GetVpcsFilterInput interface {
+	pulumi.Input
+
+	ToGetVpcsFilterOutput() GetVpcsFilterOutput
+	ToGetVpcsFilterOutputWithContext(context.Context) GetVpcsFilterOutput
+}
+
+type GetVpcsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVpcsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsFilter)(nil)).Elem()
+}
+
+func (i GetVpcsFilterArgs) ToGetVpcsFilterOutput() GetVpcsFilterOutput {
+	return i.ToGetVpcsFilterOutputWithContext(context.Background())
+}
+
+func (i GetVpcsFilterArgs) ToGetVpcsFilterOutputWithContext(ctx context.Context) GetVpcsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsFilterOutput)
+}
+
+// GetVpcsFilterArrayInput is an input type that accepts GetVpcsFilterArray and GetVpcsFilterArrayOutput values.
+// You can construct a concrete instance of `GetVpcsFilterArrayInput` via:
+//
+//	GetVpcsFilterArray{ GetVpcsFilterArgs{...} }
+type GetVpcsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsFilterArrayOutput() GetVpcsFilterArrayOutput
+	ToGetVpcsFilterArrayOutputWithContext(context.Context) GetVpcsFilterArrayOutput
+}
+
+type GetVpcsFilterArray []GetVpcsFilterInput
+
+func (GetVpcsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsFilter)(nil)).Elem()
+}
+
+func (i GetVpcsFilterArray) ToGetVpcsFilterArrayOutput() GetVpcsFilterArrayOutput {
+	return i.ToGetVpcsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsFilterArray) ToGetVpcsFilterArrayOutputWithContext(ctx context.Context) GetVpcsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsFilterArrayOutput)
+}
+
+type GetVpcsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsFilter)(nil)).Elem()
+}
+
+func (o GetVpcsFilterOutput) ToGetVpcsFilterOutput() GetVpcsFilterOutput {
+	return o
+}
+
+func (o GetVpcsFilterOutput) ToGetVpcsFilterOutputWithContext(ctx context.Context) GetVpcsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetVpcsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetVpcsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetVpcsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVpcsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsFilter)(nil)).Elem()
+}
+
+func (o GetVpcsFilterArrayOutput) ToGetVpcsFilterArrayOutput() GetVpcsFilterArrayOutput {
+	return o
+}
+
+func (o GetVpcsFilterArrayOutput) ToGetVpcsFilterArrayOutputWithContext(ctx context.Context) GetVpcsFilterArrayOutput {
+	return o
+}
+
+func (o GetVpcsFilterArrayOutput) Index(i pulumi.IntInput) GetVpcsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsFilter {
+		return vs[0].([]GetVpcsFilter)[vs[1].(int)]
+	}).(GetVpcsFilterOutput)
+}
+
+type GetVpcsVpc struct {
+	// The date and time when the VPC was created.
+	Created string `pulumi:"created"`
+	// The user-defined description of this VPC.
+	Description string `pulumi:"description"`
+	// The unique id of this VPC.
+	Id int `pulumi:"id"`
+	// The label of the VPC.
+	Label string `pulumi:"label"`
+	// The region where the VPC is deployed.
+	Region string `pulumi:"region"`
+	// The date and time when the VPC was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetVpcsVpcInput is an input type that accepts GetVpcsVpcArgs and GetVpcsVpcOutput values.
+// You can construct a concrete instance of `GetVpcsVpcInput` via:
+//
+//	GetVpcsVpcArgs{...}
+type GetVpcsVpcInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcOutput() GetVpcsVpcOutput
+	ToGetVpcsVpcOutputWithContext(context.Context) GetVpcsVpcOutput
+}
+
+type GetVpcsVpcArgs struct {
+	// The date and time when the VPC was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The user-defined description of this VPC.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique id of this VPC.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label of the VPC.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The region where the VPC is deployed.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The date and time when the VPC was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetVpcsVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpc)(nil)).Elem()
+}
+
+func (i GetVpcsVpcArgs) ToGetVpcsVpcOutput() GetVpcsVpcOutput {
+	return i.ToGetVpcsVpcOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcArgs) ToGetVpcsVpcOutputWithContext(ctx context.Context) GetVpcsVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcOutput)
+}
+
+// GetVpcsVpcArrayInput is an input type that accepts GetVpcsVpcArray and GetVpcsVpcArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcArrayInput` via:
+//
+//	GetVpcsVpcArray{ GetVpcsVpcArgs{...} }
+type GetVpcsVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcArrayOutput() GetVpcsVpcArrayOutput
+	ToGetVpcsVpcArrayOutputWithContext(context.Context) GetVpcsVpcArrayOutput
+}
+
+type GetVpcsVpcArray []GetVpcsVpcInput
+
+func (GetVpcsVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpc)(nil)).Elem()
+}
+
+func (i GetVpcsVpcArray) ToGetVpcsVpcArrayOutput() GetVpcsVpcArrayOutput {
+	return i.ToGetVpcsVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcArray) ToGetVpcsVpcArrayOutputWithContext(ctx context.Context) GetVpcsVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcArrayOutput)
+}
+
+type GetVpcsVpcOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpc)(nil)).Elem()
+}
+
+func (o GetVpcsVpcOutput) ToGetVpcsVpcOutput() GetVpcsVpcOutput {
+	return o
+}
+
+func (o GetVpcsVpcOutput) ToGetVpcsVpcOutputWithContext(ctx context.Context) GetVpcsVpcOutput {
+	return o
+}
+
+// The date and time when the VPC was created.
+func (o GetVpcsVpcOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpc) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The user-defined description of this VPC.
+func (o GetVpcsVpcOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpc) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique id of this VPC.
+func (o GetVpcsVpcOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpc) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label of the VPC.
+func (o GetVpcsVpcOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpc) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The region where the VPC is deployed.
+func (o GetVpcsVpcOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpc) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The date and time when the VPC was last updated.
+func (o GetVpcsVpcOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpc) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetVpcsVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpc)(nil)).Elem()
+}
+
+func (o GetVpcsVpcArrayOutput) ToGetVpcsVpcArrayOutput() GetVpcsVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcArrayOutput) ToGetVpcsVpcArrayOutputWithContext(ctx context.Context) GetVpcsVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpc {
+		return vs[0].([]GetVpcsVpc)[vs[1].(int)]
+	}).(GetVpcsVpcOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesPtrInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
@@ -21945,10 +24188,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigHelpersPtrInput)(nil)).Elem(), InstanceConfigHelpersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInterfaceInput)(nil)).Elem(), InstanceConfigInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInterfaceArrayInput)(nil)).Elem(), InstanceConfigInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInterfaceIpv4Input)(nil)).Elem(), InstanceConfigInterfaceIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInterfaceIpv4PtrInput)(nil)).Elem(), InstanceConfigInterfaceIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiskTypeInput)(nil)).Elem(), InstanceDiskTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiskTypeArrayInput)(nil)).Elem(), InstanceDiskTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceInput)(nil)).Elem(), InstanceInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceArrayInput)(nil)).Elem(), InstanceInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceIpv4Input)(nil)).Elem(), InstanceInterfaceIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceIpv4PtrInput)(nil)).Elem(), InstanceInterfaceIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpVpcNat11Input)(nil)).Elem(), InstanceIpVpcNat11Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpVpcNat11ArrayInput)(nil)).Elem(), InstanceIpVpcNat11Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataInput)(nil)).Elem(), InstanceMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataArrayInput)(nil)).Elem(), InstanceMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsInput)(nil)).Elem(), InstanceSpecsArgs{})
@@ -21995,6 +24244,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantArrayInput)(nil)).Elem(), UserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantInput)(nil)).Elem(), UserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantArrayInput)(nil)).Elem(), UserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInput)(nil)).Elem(), VpcSubnetLinodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeArrayInput)(nil)).Elem(), VpcSubnetLinodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInterfaceInput)(nil)).Elem(), VpcSubnetLinodeInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInterfaceArrayInput)(nil)).Elem(), VpcSubnetLinodeInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsFilterInput)(nil)).Elem(), GetAccountLoginsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsFilterArrayInput)(nil)).Elem(), GetAccountLoginsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsLoginInput)(nil)).Elem(), GetAccountLoginsLoginArgs{})
@@ -22055,18 +24308,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4ArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv4Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4PrivateInput)(nil)).Elem(), GetInstanceNetworkingIpv4PrivateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4PrivateArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv4PrivateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4PrivateVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv4PrivateVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4PublicInput)(nil)).Elem(), GetInstanceNetworkingIpv4PublicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4PublicArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv4PublicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4PublicVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv4PublicVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4ReservedInput)(nil)).Elem(), GetInstanceNetworkingIpv4ReservedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4ReservedArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv4ReservedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4ReservedVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv4ReservedVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4SharedInput)(nil)).Elem(), GetInstanceNetworkingIpv4SharedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4SharedArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv4SharedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv4SharedVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv4SharedVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6Input)(nil)).Elem(), GetInstanceNetworkingIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6ArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6GlobalInput)(nil)).Elem(), GetInstanceNetworkingIpv6GlobalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6GlobalArrayInput)(nil)).Elem(), GetInstanceNetworkingIpv6GlobalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalInput)(nil)).Elem(), GetInstanceNetworkingIpv6LinkLocalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv6LinkLocalVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacInput)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsInput)(nil)).Elem(), GetInstanceTypeAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupInput)(nil)).Elem(), GetInstanceTypeAddonsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupArrayInput)(nil)).Elem(), GetInstanceTypeAddonsBackupArray{})
@@ -22126,6 +24385,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceConfigHelperArrayInput)(nil)).Elem(), GetInstancesInstanceConfigHelperArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceConfigInterfaceInput)(nil)).Elem(), GetInstancesInstanceConfigInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceConfigInterfaceArrayInput)(nil)).Elem(), GetInstancesInstanceConfigInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceConfigInterfaceIpv4Input)(nil)).Elem(), GetInstancesInstanceConfigInterfaceIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskInput)(nil)).Elem(), GetInstancesInstanceDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskArrayInput)(nil)).Elem(), GetInstancesInstanceDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecInput)(nil)).Elem(), GetInstancesInstanceSpecArgs{})
@@ -22227,6 +24487,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesFilterArrayInput)(nil)).Elem(), GetVolumesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeInput)(nil)).Elem(), GetVolumesVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeArrayInput)(nil)).Elem(), GetVolumesVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeInput)(nil)).Elem(), GetVpcSubnetLinodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeArrayInput)(nil)).Elem(), GetVpcSubnetLinodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeInterfaceInput)(nil)).Elem(), GetVpcSubnetLinodeInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeInterfaceArrayInput)(nil)).Elem(), GetVpcSubnetLinodeInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsFilterInput)(nil)).Elem(), GetVpcSubnetsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsFilterArrayInput)(nil)).Elem(), GetVpcSubnetsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetLinodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetLinodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeInterfaceInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetLinodeInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetLinodeInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsFilterInput)(nil)).Elem(), GetVpcsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsFilterArrayInput)(nil)).Elem(), GetVpcsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcInput)(nil)).Elem(), GetVpcsVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcArrayInput)(nil)).Elem(), GetVpcsVpcArray{})
 	pulumi.RegisterOutputType(DatabaseMysqlUpdatesOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlUpdatesPtrOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesOutput{})
@@ -22267,10 +24543,16 @@ func init() {
 	pulumi.RegisterOutputType(InstanceConfigHelpersPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigInterfaceOutput{})
 	pulumi.RegisterOutputType(InstanceConfigInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceConfigInterfaceIpv4Output{})
+	pulumi.RegisterOutputType(InstanceConfigInterfaceIpv4PtrOutput{})
 	pulumi.RegisterOutputType(InstanceDiskTypeOutput{})
 	pulumi.RegisterOutputType(InstanceDiskTypeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceInterfaceOutput{})
 	pulumi.RegisterOutputType(InstanceInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceInterfaceIpv4Output{})
+	pulumi.RegisterOutputType(InstanceInterfaceIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InstanceIpVpcNat11Output{})
+	pulumi.RegisterOutputType(InstanceIpVpcNat11ArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsOutput{})
@@ -22317,6 +24599,10 @@ func init() {
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(VpcSubnetLinodeOutput{})
+	pulumi.RegisterOutputType(VpcSubnetLinodeArrayOutput{})
+	pulumi.RegisterOutputType(VpcSubnetLinodeInterfaceOutput{})
+	pulumi.RegisterOutputType(VpcSubnetLinodeInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsFilterOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsLoginOutput{})
@@ -22377,18 +24663,24 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4ArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4PrivateOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4PrivateArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4PrivateVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4PublicOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4PublicArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4PublicVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4ReservedOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4ReservedArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4ReservedVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4SharedOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4SharedArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkingIpv4SharedVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6GlobalOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6GlobalArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6LinkLocalOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6LinkLocalVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupArrayOutput{})
@@ -22448,6 +24740,7 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigHelperArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigInterfaceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceConfigInterfaceIpv4Output{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})
@@ -22549,4 +24842,20 @@ func init() {
 	pulumi.RegisterOutputType(GetVolumesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumesVolumeOutput{})
 	pulumi.RegisterOutputType(GetVolumesVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetLinodeOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetLinodeArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetLinodeInterfaceOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetLinodeInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsFilterOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetLinodeOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetLinodeArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetLinodeInterfaceOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsFilterOutput{})
+	pulumi.RegisterOutputType(GetVpcsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcArrayOutput{})
 }

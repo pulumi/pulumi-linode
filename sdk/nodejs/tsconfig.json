@@ -69,6 +69,10 @@
         "getVlans.ts",
         "getVolume.ts",
         "getVolumes.ts",
+        "getVpc.ts",
+        "getVpcSubnet.ts",
+        "getVpcSubnets.ts",
+        "getVpcs.ts",
         "image.ts",
         "index.ts",
         "instance.ts",
@@ -93,6 +97,8 @@
         "types/output.ts",
         "user.ts",
         "utilities.ts",
-        "volume.ts"
+        "volume.ts",
+        "vpc.ts",
+        "vpcSubnet.ts"
     ]
 }

@@ -99,9 +99,11 @@ type Instance struct {
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks InstanceDiskTypeArrayOutput `pulumi:"disks"`
+	// The ID of the firewall applied to the Linode instance during creation.
+	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Whether or not this Instance was created with user-data.
+	// Whether this Instance was created with user-data.
 	HasUserData pulumi.BoolOutput `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringOutput `pulumi:"hostUuid"`
@@ -141,6 +143,8 @@ type Instance struct {
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	//
+	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s pulumi.StringArrayOutput `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecsOutput `pulumi:"specs"`
@@ -230,9 +234,11 @@ type instanceState struct {
 	Configs []InstanceConfig `pulumi:"configs"`
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
+	// The ID of the firewall applied to the Linode instance during creation.
+	FirewallId *int `pulumi:"firewallId"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
-	// Whether or not this Instance was created with user-data.
+	// Whether this Instance was created with user-data.
 	HasUserData *bool `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid *string `pulumi:"hostUuid"`
@@ -272,6 +278,8 @@ type instanceState struct {
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	//
+	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs *InstanceSpecs `pulumi:"specs"`
@@ -318,9 +326,11 @@ type InstanceState struct {
 	Configs InstanceConfigArrayInput
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks InstanceDiskTypeArrayInput
+	// The ID of the firewall applied to the Linode instance during creation.
+	FirewallId pulumi.IntPtrInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
-	// Whether or not this Instance was created with user-data.
+	// Whether this Instance was created with user-data.
 	HasUserData pulumi.BoolPtrInput
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringPtrInput
@@ -360,6 +370,8 @@ type InstanceState struct {
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	//
+	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s pulumi.StringArrayInput
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecsPtrInput
@@ -408,6 +420,8 @@ type instanceArgs struct {
 	Configs []InstanceConfig `pulumi:"configs"`
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
+	// The ID of the firewall applied to the Linode instance during creation.
+	FirewallId *int `pulumi:"firewallId"`
 	// The display group of the Linode instance.
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -438,6 +452,8 @@ type instanceArgs struct {
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	//
+	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
@@ -479,6 +495,8 @@ type InstanceArgs struct {
 	Configs InstanceConfigArrayInput
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks InstanceDiskTypeArrayInput
+	// The ID of the firewall applied to the Linode instance during creation.
+	FirewallId pulumi.IntPtrInput
 	// The display group of the Linode instance.
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
@@ -509,6 +527,8 @@ type InstanceArgs struct {
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+	//
+	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s pulumi.StringArrayInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapInput
@@ -667,12 +687,17 @@ func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDiskTypeArrayOutput { return v.Disks }).(InstanceDiskTypeArrayOutput)
 }
 
+// The ID of the firewall applied to the Linode instance during creation.
+func (o InstanceOutput) FirewallId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.FirewallId }).(pulumi.IntPtrOutput)
+}
+
 // The display group of the Linode instance.
 func (o InstanceOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not this Instance was created with user-data.
+// Whether this Instance was created with user-data.
 func (o InstanceOutput) HasUserData() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.HasUserData }).(pulumi.BoolOutput)
 }
@@ -754,6 +779,8 @@ func (o InstanceOutput) RootPass() pulumi.StringPtrOutput {
 }
 
 // A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+//
+// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 func (o InstanceOutput) SharedIpv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SharedIpv4s }).(pulumi.StringArrayOutput)
 }

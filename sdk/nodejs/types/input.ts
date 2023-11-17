@@ -2614,6 +2614,206 @@ export interface GetVolumesVolumeArgs {
     updated?: pulumi.Input<string>;
 }
 
+export interface GetVpcSubnetsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVpcSubnetsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVpcSubnetsVpcSubnet {
+    /**
+     * The date and time when the VPC Subnet was created.
+     */
+    created?: string;
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id?: number;
+    /**
+     * The IPv4 range of this subnet in CIDR format.
+     */
+    ipv4?: string;
+    /**
+     * The label of the VPC subnet.
+     */
+    label?: string;
+    /**
+     * A list of Linode IDs that added to this subnet.
+     */
+    linodes?: inputs.GetVpcSubnetsVpcSubnetLinode[];
+    /**
+     * The date and time when the VPC Subnet was last updated.
+     */
+    updated?: string;
+}
+
+export interface GetVpcSubnetsVpcSubnetArgs {
+    /**
+     * The date and time when the VPC Subnet was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The IPv4 range of this subnet in CIDR format.
+     */
+    ipv4?: pulumi.Input<string>;
+    /**
+     * The label of the VPC subnet.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * A list of Linode IDs that added to this subnet.
+     */
+    linodes?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsVpcSubnetLinodeArgs>[]>;
+    /**
+     * The date and time when the VPC Subnet was last updated.
+     */
+    updated?: pulumi.Input<string>;
+}
+
+export interface GetVpcSubnetsVpcSubnetLinode {
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: number;
+    interfaces: inputs.GetVpcSubnetsVpcSubnetLinodeInterface[];
+}
+
+export interface GetVpcSubnetsVpcSubnetLinodeArgs {
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: pulumi.Input<number>;
+    interfaces: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsVpcSubnetLinodeInterfaceArgs>[]>;
+}
+
+export interface GetVpcSubnetsVpcSubnetLinodeInterface {
+    active: boolean;
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: number;
+}
+
+export interface GetVpcSubnetsVpcSubnetLinodeInterfaceArgs {
+    active: pulumi.Input<boolean>;
+    /**
+     * The unique id of the VPC subnet.
+     */
+    id: pulumi.Input<number>;
+}
+
+export interface GetVpcsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVpcsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVpcsVpc {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created?: string;
+    /**
+     * The user-defined description of this VPC.
+     */
+    description?: string;
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    /**
+     * The label of the VPC.
+     */
+    label?: string;
+    /**
+     * The region where the VPC is deployed.
+     */
+    region?: string;
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated?: string;
+}
+
+export interface GetVpcsVpcArgs {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The user-defined description of this VPC.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique id of this VPC.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The label of the VPC.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The region where the VPC is deployed.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated?: pulumi.Input<string>;
+}
+
 export interface InstanceAlerts {
     cpu?: pulumi.Input<number>;
     io?: pulumi.Input<number>;
@@ -2843,18 +3043,58 @@ export interface InstanceConfigHelpers {
 }
 
 export interface InstanceConfigInterface {
+    active?: pulumi.Input<boolean>;
     /**
-     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * The ID of the disk in the Linode API.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
     ipamAddress?: pulumi.Input<string>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
+    ipv4?: pulumi.Input<inputs.InstanceConfigInterfaceIpv4>;
+    /**
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: pulumi.Input<string>;
     /**
-     * The type of interface. (`public`, `vlan`)
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
-    purpose?: pulumi.Input<string>;
+    primary?: pulumi.Input<boolean>;
+    /**
+     * The type of interface. (`public`, `vlan`, `vpc`)
+     */
+    purpose: pulumi.Input<string>;
+    /**
+     * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+     */
+    subnetId?: pulumi.Input<number>;
+    /**
+     * The ID of VPC which this interface is attached to.
+     */
+    vpcId?: pulumi.Input<number>;
+}
+
+export interface InstanceConfigInterfaceIpv4 {
+    /**
+     * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+     */
+    nat11?: pulumi.Input<string>;
+    /**
+     * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+     */
+    vpc?: pulumi.Input<string>;
 }
 
 export interface InstanceDisk {
@@ -2905,18 +3145,67 @@ export interface InstanceDisk {
 }
 
 export interface InstanceInterface {
+    active?: pulumi.Input<boolean>;
     /**
-     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+     * The ID of the disk in the Linode API.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
     ipamAddress?: pulumi.Input<string>;
     /**
-     * The name of this interface. If the interface is a VLAN, a label is required.
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
+    ipv4?: pulumi.Input<inputs.InstanceInterfaceIpv4>;
+    /**
+     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: pulumi.Input<string>;
     /**
-     * The type of interface. (`public`, `vlan`)
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
-    purpose?: pulumi.Input<string>;
+    primary?: pulumi.Input<boolean>;
+    /**
+     * The type of interface. (`public`, `vlan`, `vpc`)
+     */
+    purpose: pulumi.Input<string>;
+    /**
+     * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+     */
+    subnetId?: pulumi.Input<number>;
+    /**
+     * The ID of VPC which this interface is attached to.
+     */
+    vpcId?: pulumi.Input<number>;
+}
+
+export interface InstanceInterfaceIpv4 {
+    /**
+     * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+     */
+    nat11?: pulumi.Input<string>;
+    /**
+     * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+     */
+    vpc?: pulumi.Input<string>;
+}
+
+export interface InstanceIpVpcNat11 {
+    /**
+     * The resulting IPv4 address.
+     */
+    address?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number>;
 }
 
 export interface InstanceMetadata {
@@ -3161,4 +3450,20 @@ export interface UserStackscriptGrant {
 export interface UserVolumeGrant {
     id: pulumi.Input<number>;
     permissions: pulumi.Input<string>;
+}
+
+export interface VpcSubnetLinode {
+    /**
+     * The ID of the VPC Subnet.
+     */
+    id: pulumi.Input<number>;
+    interfaces: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinodeInterface>[]>;
+}
+
+export interface VpcSubnetLinodeInterface {
+    active: pulumi.Input<boolean>;
+    /**
+     * The ID of the VPC Subnet.
+     */
+    id: pulumi.Input<number>;
 }
