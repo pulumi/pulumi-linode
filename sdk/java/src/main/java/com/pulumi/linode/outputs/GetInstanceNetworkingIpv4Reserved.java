@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4ReservedVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -56,6 +57,7 @@ public final class GetInstanceNetworkingIpv4Reserved {
      * 
      */
     private String type;
+    private GetInstanceNetworkingIpv4ReservedVpcNat11 vpcNat11;
 
     private GetInstanceNetworkingIpv4Reserved() {}
     /**
@@ -121,6 +123,9 @@ public final class GetInstanceNetworkingIpv4Reserved {
     public String type() {
         return this.type;
     }
+    public GetInstanceNetworkingIpv4ReservedVpcNat11 vpcNat11() {
+        return this.vpcNat11;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -140,6 +145,7 @@ public final class GetInstanceNetworkingIpv4Reserved {
         private String region;
         private String subnetMask;
         private String type;
+        private GetInstanceNetworkingIpv4ReservedVpcNat11 vpcNat11;
         public Builder() {}
         public Builder(GetInstanceNetworkingIpv4Reserved defaults) {
     	      Objects.requireNonNull(defaults);
@@ -152,6 +158,7 @@ public final class GetInstanceNetworkingIpv4Reserved {
     	      this.region = defaults.region;
     	      this.subnetMask = defaults.subnetMask;
     	      this.type = defaults.type;
+    	      this.vpcNat11 = defaults.vpcNat11;
         }
 
         @CustomType.Setter
@@ -199,6 +206,11 @@ public final class GetInstanceNetworkingIpv4Reserved {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcNat11(GetInstanceNetworkingIpv4ReservedVpcNat11 vpcNat11) {
+            this.vpcNat11 = Objects.requireNonNull(vpcNat11);
+            return this;
+        }
         public GetInstanceNetworkingIpv4Reserved build() {
             final var o = new GetInstanceNetworkingIpv4Reserved();
             o.address = address;
@@ -210,6 +222,7 @@ public final class GetInstanceNetworkingIpv4Reserved {
             o.region = region;
             o.subnetMask = subnetMask;
             o.type = type;
+            o.vpcNat11 = vpcNat11;
             return o;
         }
     }

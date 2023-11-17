@@ -177,6 +177,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the firewall applied to the Linode instance during creation.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<Integer> firewallId;
+
+    /**
+     * @return The ID of the firewall applied to the Linode instance during creation.
+     * 
+     */
+    public Optional<Output<Integer>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
      * The display group of the Linode instance.
      * 
      */
@@ -336,12 +351,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
      */
     @Import(name="sharedIpv4s")
     private @Nullable Output<List<String>> sharedIpv4s;
 
     /**
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     public Optional<Output<List<String>>> sharedIpv4s() {
@@ -454,6 +473,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.booted = $.booted;
         this.configs = $.configs;
         this.disks = $.disks;
+        this.firewallId = $.firewallId;
         this.group = $.group;
         this.image = $.image;
         this.interfaces = $.interfaces;
@@ -742,6 +762,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param firewallId The ID of the firewall applied to the Linode instance during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<Integer> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The ID of the firewall applied to the Linode instance during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(Integer firewallId) {
+            return firewallId(Output.of(firewallId));
+        }
+
+        /**
          * @param group The display group of the Linode instance.
          * 
          * @return builder
@@ -976,6 +1017,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
+         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+         * 
          * @return builder
          * 
          */
@@ -987,6 +1030,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
+         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+         * 
          * @return builder
          * 
          */
@@ -996,6 +1041,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+         * 
+         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
          * @return builder
          * 

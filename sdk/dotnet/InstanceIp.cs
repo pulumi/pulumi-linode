@@ -106,6 +106,12 @@ namespace Pulumi.Linode
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// </summary>
+        [Output("vpcNat11s")]
+        public Output<ImmutableArray<Outputs.InstanceIpVpcNat11>> VpcNat11s { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a InstanceIp resource with the given unique name, arguments, and options.
@@ -243,6 +249,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("vpcNat11s")]
+        private InputList<Inputs.InstanceIpVpcNat11GetArgs>? _vpcNat11s;
+
+        /// <summary>
+        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// </summary>
+        public InputList<Inputs.InstanceIpVpcNat11GetArgs> VpcNat11s
+        {
+            get => _vpcNat11s ?? (_vpcNat11s = new InputList<Inputs.InstanceIpVpcNat11GetArgs>());
+            set => _vpcNat11s = value;
+        }
 
         public InstanceIpState()
         {

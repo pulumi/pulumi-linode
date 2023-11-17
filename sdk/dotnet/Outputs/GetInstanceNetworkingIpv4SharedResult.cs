@@ -49,6 +49,7 @@ namespace Pulumi.Linode.Outputs
         /// The type of address this is.
         /// </summary>
         public readonly string Type;
+        public readonly Outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result VpcNat11;
 
         [OutputConstructor]
         private GetInstanceNetworkingIpv4SharedResult(
@@ -68,7 +69,9 @@ namespace Pulumi.Linode.Outputs
 
             string subnetMask,
 
-            string type)
+            string type,
+
+            Outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result vpcNat11)
         {
             Address = address;
             Gateway = gateway;
@@ -79,6 +82,7 @@ namespace Pulumi.Linode.Outputs
             Region = region;
             SubnetMask = subnetMask;
             Type = type;
+            VpcNat11 = vpcNat11;
         }
     }
 }

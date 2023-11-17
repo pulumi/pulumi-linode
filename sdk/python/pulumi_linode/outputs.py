@@ -31,8 +31,11 @@ __all__ = [
     'InstanceConfigDevicesSdh',
     'InstanceConfigHelpers',
     'InstanceConfigInterface',
+    'InstanceConfigInterfaceIpv4',
     'InstanceDisk',
     'InstanceInterface',
+    'InstanceInterfaceIpv4',
+    'InstanceIpVpcNat11',
     'InstanceMetadata',
     'InstanceSpecs',
     'LkeClusterControlPlane',
@@ -56,6 +59,8 @@ __all__ = [
     'UserNodebalancerGrant',
     'UserStackscriptGrant',
     'UserVolumeGrant',
+    'VpcSubnetLinode',
+    'VpcSubnetLinodeInterface',
     'GetAccountLoginsFilterResult',
     'GetAccountLoginsLoginResult',
     'GetDatabaseBackupsBackupResult',
@@ -86,13 +91,19 @@ __all__ = [
     'GetInstanceBackupsInProgressDiskResult',
     'GetInstanceNetworkingIpv4Result',
     'GetInstanceNetworkingIpv4PrivateResult',
+    'GetInstanceNetworkingIpv4PrivateVpcNat11Result',
     'GetInstanceNetworkingIpv4PublicResult',
+    'GetInstanceNetworkingIpv4PublicVpcNat11Result',
     'GetInstanceNetworkingIpv4ReservedResult',
+    'GetInstanceNetworkingIpv4ReservedVpcNat11Result',
     'GetInstanceNetworkingIpv4SharedResult',
+    'GetInstanceNetworkingIpv4SharedVpcNat11Result',
     'GetInstanceNetworkingIpv6Result',
     'GetInstanceNetworkingIpv6GlobalResult',
     'GetInstanceNetworkingIpv6LinkLocalResult',
+    'GetInstanceNetworkingIpv6LinkLocalVpcNat11Result',
     'GetInstanceNetworkingIpv6SlaacResult',
+    'GetInstanceNetworkingIpv6SlaacVpcNat11Result',
     'GetInstanceTypeAddonsResult',
     'GetInstanceTypeAddonsBackupResult',
     'GetInstanceTypeAddonsBackupPriceResult',
@@ -124,6 +135,7 @@ __all__ = [
     'GetInstancesInstanceConfigDeviceSdhResult',
     'GetInstancesInstanceConfigHelperResult',
     'GetInstancesInstanceConfigInterfaceResult',
+    'GetInstancesInstanceConfigInterfaceIpv4Result',
     'GetInstancesInstanceDiskResult',
     'GetInstancesInstanceSpecResult',
     'GetKernelsFilterResult',
@@ -175,6 +187,14 @@ __all__ = [
     'GetVlansVlanResult',
     'GetVolumesFilterResult',
     'GetVolumesVolumeResult',
+    'GetVpcSubnetLinodeResult',
+    'GetVpcSubnetLinodeInterfaceResult',
+    'GetVpcSubnetsFilterResult',
+    'GetVpcSubnetsVpcSubnetResult',
+    'GetVpcSubnetsVpcSubnetLinodeResult',
+    'GetVpcSubnetsVpcSubnetLinodeInterfaceResult',
+    'GetVpcsFilterResult',
+    'GetVpcsVpcResult',
 ]
 
 @pulumi.output_type
@@ -1506,8 +1526,14 @@ class InstanceConfigInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipamAddress":
+        if key == "ipRanges":
+            suggest = "ip_ranges"
+        elif key == "ipamAddress":
             suggest = "ipam_address"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceConfigInterface. Access the value via the '{suggest}' property getter instead.")
@@ -1521,44 +1547,162 @@ class InstanceConfigInterface(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 purpose: str,
+                 active: Optional[bool] = None,
+                 id: Optional[int] = None,
+                 ip_ranges: Optional[Sequence[str]] = None,
                  ipam_address: Optional[str] = None,
+                 ipv4: Optional['outputs.InstanceConfigInterfaceIpv4'] = None,
                  label: Optional[str] = None,
-                 purpose: Optional[str] = None):
+                 primary: Optional[bool] = None,
+                 subnet_id: Optional[int] = None,
+                 vpc_id: Optional[int] = None):
         """
-        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
-        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
-        :param str purpose: The type of interface. (`public`, `vlan`)
+        :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
+        :param int id: The ID of the disk in the Linode API.
+        :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        :param 'InstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+               
+               * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+               
+               The following computed attribute is available in a VPC interface:
+        :param int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        :param int vpc_id: The ID of VPC which this interface is attached to.
         """
+        pulumi.set(__self__, "purpose", purpose)
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip_ranges is not None:
+            pulumi.set(__self__, "ip_ranges", ip_ranges)
         if ipam_address is not None:
             pulumi.set(__self__, "ipam_address", ipam_address)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
         if label is not None:
             pulumi.set(__self__, "label", label)
-        if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> str:
+        """
+        The type of interface. (`public`, `vlan`, `vpc`)
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the disk in the Linode API.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        """
+        return pulumi.get(self, "ip_ranges")
 
     @property
     @pulumi.getter(name="ipamAddress")
     def ipam_address(self) -> Optional[str]:
         """
-        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "ipam_address")
 
     @property
     @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InstanceConfigInterfaceIpv4']:
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
     def label(self) -> Optional[str]:
         """
-        The name of this interface. If the interface is a VLAN, a label is required.
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[str]:
+    def primary(self) -> Optional[bool]:
         """
-        The type of interface. (`public`, `vlan`)
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+
+        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        The following computed attribute is available in a VPC interface:
         """
-        return pulumi.get(self, "purpose")
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[int]:
+        """
+        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[int]:
+        """
+        The ID of VPC which this interface is attached to.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class InstanceConfigInterfaceIpv4(dict):
+    def __init__(__self__, *,
+                 nat11: Optional[str] = None,
+                 vpc: Optional[str] = None):
+        """
+        :param str nat11: The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        :param str vpc: The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+        if nat11 is not None:
+            pulumi.set(__self__, "nat11", nat11)
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def nat11(self) -> Optional[str]:
+        """
+        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        """
+        return pulumi.get(self, "nat11")
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> Optional[str]:
+        """
+        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+        return pulumi.get(self, "vpc")
 
 
 @pulumi.output_type
@@ -1730,8 +1874,14 @@ class InstanceInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipamAddress":
+        if key == "ipRanges":
+            suggest = "ip_ranges"
+        elif key == "ipamAddress":
             suggest = "ipam_address"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceInterface. Access the value via the '{suggest}' property getter instead.")
@@ -1745,44 +1895,216 @@ class InstanceInterface(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 purpose: str,
+                 active: Optional[bool] = None,
+                 id: Optional[int] = None,
+                 ip_ranges: Optional[Sequence[str]] = None,
                  ipam_address: Optional[str] = None,
+                 ipv4: Optional['outputs.InstanceInterfaceIpv4'] = None,
                  label: Optional[str] = None,
-                 purpose: Optional[str] = None):
+                 primary: Optional[bool] = None,
+                 subnet_id: Optional[int] = None,
+                 vpc_id: Optional[int] = None):
         """
-        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
-        :param str label: The name of this interface. If the interface is a VLAN, a label is required.
-        :param str purpose: The type of interface. (`public`, `vlan`)
+        :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
+        :param int id: The ID of the disk in the Linode API.
+        :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        :param 'InstanceInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+               
+               * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+               
+               The following computed attribute is available in a VPC interface:
+        :param int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        :param int vpc_id: The ID of VPC which this interface is attached to.
         """
+        pulumi.set(__self__, "purpose", purpose)
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip_ranges is not None:
+            pulumi.set(__self__, "ip_ranges", ip_ranges)
         if ipam_address is not None:
             pulumi.set(__self__, "ipam_address", ipam_address)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
         if label is not None:
             pulumi.set(__self__, "label", label)
-        if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> str:
+        """
+        The type of interface. (`public`, `vlan`, `vpc`)
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the disk in the Linode API.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        """
+        return pulumi.get(self, "ip_ranges")
 
     @property
     @pulumi.getter(name="ipamAddress")
     def ipam_address(self) -> Optional[str]:
         """
-        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "ipam_address")
 
     @property
     @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InstanceInterfaceIpv4']:
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
     def label(self) -> Optional[str]:
         """
-        The name of this interface. If the interface is a VLAN, a label is required.
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[str]:
+    def primary(self) -> Optional[bool]:
         """
-        The type of interface. (`public`, `vlan`)
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+
+        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        The following computed attribute is available in a VPC interface:
         """
-        return pulumi.get(self, "purpose")
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[int]:
+        """
+        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[int]:
+        """
+        The ID of VPC which this interface is attached to.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class InstanceInterfaceIpv4(dict):
+    def __init__(__self__, *,
+                 nat11: Optional[str] = None,
+                 vpc: Optional[str] = None):
+        """
+        :param str nat11: The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        :param str vpc: The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+        if nat11 is not None:
+            pulumi.set(__self__, "nat11", nat11)
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def nat11(self) -> Optional[str]:
+        """
+        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        """
+        return pulumi.get(self, "nat11")
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> Optional[str]:
+        """
+        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+        return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class InstanceIpVpcNat11(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceIpVpcNat11. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceIpVpcNat11.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceIpVpcNat11.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 subnet_id: Optional[int] = None,
+                 vpc_id: Optional[int] = None):
+        """
+        :param str address: The resulting IPv4 address.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        The resulting IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[int]:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[int]:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -2786,6 +3108,56 @@ class UserVolumeGrant(dict):
     @pulumi.getter
     def permissions(self) -> str:
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class VpcSubnetLinode(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 interfaces: Sequence['outputs.VpcSubnetLinodeInterface']):
+        """
+        :param int id: The ID of the VPC Subnet.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interfaces", interfaces)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the VPC Subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.VpcSubnetLinodeInterface']:
+        return pulumi.get(self, "interfaces")
+
+
+@pulumi.output_type
+class VpcSubnetLinodeInterface(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 id: int):
+        """
+        :param int id: The ID of the VPC Subnet.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the VPC Subnet.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -4707,7 +5079,8 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
                  rdns: str,
                  region: str,
                  subnet_mask: str,
-                 type: str):
+                 type: str,
+                 vpc_nat11: 'outputs.GetInstanceNetworkingIpv4PrivateVpcNat11Result'):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
@@ -4728,6 +5101,7 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
@@ -4800,6 +5174,43 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         The type of address this is.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4PrivateVpcNat11Result':
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4PrivateVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
+        """
+        :param str address: The address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -4813,7 +5224,8 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
                  rdns: str,
                  region: str,
                  subnet_mask: str,
-                 type: str):
+                 type: str,
+                 vpc_nat11: 'outputs.GetInstanceNetworkingIpv4PublicVpcNat11Result'):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
@@ -4834,6 +5246,7 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
@@ -4906,6 +5319,43 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         The type of address this is.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4PublicVpcNat11Result':
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4PublicVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
+        """
+        :param str address: The address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -4919,7 +5369,8 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
                  rdns: str,
                  region: str,
                  subnet_mask: str,
-                 type: str):
+                 type: str,
+                 vpc_nat11: 'outputs.GetInstanceNetworkingIpv4ReservedVpcNat11Result'):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
@@ -4940,6 +5391,7 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
@@ -5012,6 +5464,43 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         The type of address this is.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4ReservedVpcNat11Result':
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4ReservedVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
+        """
+        :param str address: The address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -5025,7 +5514,8 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
                  rdns: str,
                  region: str,
                  subnet_mask: str,
-                 type: str):
+                 type: str,
+                 vpc_nat11: 'outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result'):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
@@ -5046,6 +5536,7 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
@@ -5118,6 +5609,43 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         The type of address this is.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result':
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4SharedVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
+        """
+        :param str address: The address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -5208,7 +5736,8 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
                  rdns: str,
                  region: str,
                  subnet_mask: str,
-                 type: str):
+                 type: str,
+                 vpc_nat11: 'outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11Result'):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
@@ -5229,6 +5758,7 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
@@ -5301,6 +5831,43 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         The type of address this is.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11Result':
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv6LinkLocalVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
+        """
+        :param str address: The address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -5314,7 +5881,8 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
                  rdns: str,
                  region: str,
                  subnet_mask: str,
-                 type: str):
+                 type: str,
+                 vpc_nat11: 'outputs.GetInstanceNetworkingIpv6SlaacVpcNat11Result'):
         """
         :param str address: The address.
         :param str gateway: The default gateway for this address.
@@ -5335,6 +5903,7 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
@@ -5407,6 +5976,43 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         The type of address this is.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv6SlaacVpcNat11Result':
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv6SlaacVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
+        """
+        :param str address: The address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -5900,12 +6506,13 @@ class GetInstancesInstanceResult(dict):
                  watchdog_enabled: bool):
         """
         :param str group: The display group of the Linode instance.
+        :param bool has_user_data: Whether this Instance was created with user-data.
         :param int id: The ID of the disk in the Linode API.
         :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param str ip_address: A string containing the Linode's public IP address.
         :param Sequence[str] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param str ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
-        :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param str private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         :param str status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -5973,6 +6580,9 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="hasUserData")
     def has_user_data(self) -> bool:
+        """
+        Whether this Instance was created with user-data.
+        """
         return pulumi.get(self, "has_user_data")
 
     @property
@@ -6024,7 +6634,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "label")
 
@@ -6211,7 +6821,7 @@ class GetInstancesInstanceConfigResult(dict):
         :param Sequence['GetInstancesInstanceConfigHelperArgs'] helpers: Helpers enabled when booting to this Linode Config.
         :param int id: The ID of the disk in the Linode API.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
-        :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param int memory_limit: Defaults to the total RAM of the Linode
         :param str root_device: The root device to boot.
         :param str run_level: Defines the state of your Linode after booting.
@@ -6278,7 +6888,7 @@ class GetInstancesInstanceConfigResult(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "label")
 
@@ -6779,26 +7389,93 @@ class GetInstancesInstanceConfigHelperResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceConfigInterfaceResult(dict):
     def __init__(__self__, *,
+                 active: bool,
+                 id: int,
+                 ipv4: 'outputs.GetInstancesInstanceConfigInterfaceIpv4Result',
+                 purpose: str,
+                 vpc_id: int,
+                 ip_ranges: Optional[Sequence[str]] = None,
                  ipam_address: Optional[str] = None,
                  label: Optional[str] = None,
-                 purpose: Optional[str] = None):
+                 primary: Optional[bool] = None,
+                 subnet_id: Optional[int] = None):
         """
-        :param str ipam_address: (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
-        :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
-        :param str purpose: (Required) The type of interface. (`public`, `vlan`)
+        :param int id: The ID of the disk in the Linode API.
+        :param 'GetInstancesInstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
+        :param int vpc_id: The ID of VPC which this interface is attached to.
+        :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+        :param int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "purpose", purpose)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if ip_ranges is not None:
+            pulumi.set(__self__, "ip_ranges", ip_ranges)
         if ipam_address is not None:
             pulumi.set(__self__, "ipam_address", ipam_address)
         if label is not None:
             pulumi.set(__self__, "label", label)
-        if purpose is not None:
-            pulumi.set(__self__, "purpose", purpose)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the disk in the Linode API.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> 'outputs.GetInstancesInstanceConfigInterfaceIpv4Result':
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> str:
+        """
+        The type of interface. (`public`, `vlan`, `vpc`)
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        """
+        The ID of VPC which this interface is attached to.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        """
+        return pulumi.get(self, "ip_ranges")
 
     @property
     @pulumi.getter(name="ipamAddress")
     def ipam_address(self) -> Optional[str]:
         """
-        (Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "ipam_address")
 
@@ -6806,17 +7483,54 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
     @pulumi.getter
     def label(self) -> Optional[str]:
         """
-        (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[str]:
+    def primary(self) -> Optional[bool]:
         """
-        (Required) The type of interface. (`public`, `vlan`)
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
         """
-        return pulumi.get(self, "purpose")
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[int]:
+        """
+        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigInterfaceIpv4Result(dict):
+    def __init__(__self__, *,
+                 nat11: str,
+                 vpc: str):
+        """
+        :param str nat11: The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        :param str vpc: The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+        pulumi.set(__self__, "nat11", nat11)
+        pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def nat11(self) -> str:
+        """
+        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        """
+        return pulumi.get(self, "nat11")
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> str:
+        """
+        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+        return pulumi.get(self, "vpc")
 
 
 @pulumi.output_type
@@ -6829,7 +7543,7 @@ class GetInstancesInstanceDiskResult(dict):
         """
         :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
         :param int id: The ID of the disk in the Linode API.
-        :param str label: (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param int size: The size of the Disk in MB.
         """
         pulumi.set(__self__, "filesystem", filesystem)
@@ -6857,7 +7571,7 @@ class GetInstancesInstanceDiskResult(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         """
         return pulumi.get(self, "label")
 
@@ -9576,6 +10290,334 @@ class GetVolumesVolumeResult(dict):
     def updated(self) -> str:
         """
         When this Volume was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetVpcSubnetLinodeResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 interfaces: Sequence['outputs.GetVpcSubnetLinodeInterfaceResult']):
+        """
+        :param int id: The unique id of this VPC subnet.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interfaces", interfaces)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique id of this VPC subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.GetVpcSubnetLinodeInterfaceResult']:
+        return pulumi.get(self, "interfaces")
+
+
+@pulumi.output_type
+class GetVpcSubnetLinodeInterfaceResult(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 id: int):
+        """
+        :param int id: The unique id of this VPC subnet.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique id of this VPC subnet.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetVpcSubnetsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetVpcSubnetsVpcSubnetResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 id: int,
+                 ipv4: str,
+                 label: str,
+                 linodes: Sequence['outputs.GetVpcSubnetsVpcSubnetLinodeResult'],
+                 updated: str):
+        """
+        :param str created: The date and time when the VPC Subnet was created.
+        :param int id: The unique id of the VPC subnet.
+        :param str ipv4: The IPv4 range of this subnet in CIDR format.
+        :param str label: The label of the VPC subnet.
+        :param Sequence['GetVpcSubnetsVpcSubnetLinodeArgs'] linodes: A list of Linode IDs that added to this subnet.
+        :param str updated: The date and time when the VPC Subnet was last updated.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date and time when the VPC Subnet was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique id of the VPC subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The IPv4 range of this subnet in CIDR format.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the VPC subnet.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def linodes(self) -> Sequence['outputs.GetVpcSubnetsVpcSubnetLinodeResult']:
+        """
+        A list of Linode IDs that added to this subnet.
+        """
+        return pulumi.get(self, "linodes")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date and time when the VPC Subnet was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetVpcSubnetsVpcSubnetLinodeResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 interfaces: Sequence['outputs.GetVpcSubnetsVpcSubnetLinodeInterfaceResult']):
+        """
+        :param int id: The unique id of the VPC subnet.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interfaces", interfaces)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique id of the VPC subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.GetVpcSubnetsVpcSubnetLinodeInterfaceResult']:
+        return pulumi.get(self, "interfaces")
+
+
+@pulumi.output_type
+class GetVpcSubnetsVpcSubnetLinodeInterfaceResult(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 id: int):
+        """
+        :param int id: The unique id of the VPC subnet.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique id of the VPC subnet.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetVpcsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetVpcsVpcResult(dict):
+    def __init__(__self__, *,
+                 created: str,
+                 description: str,
+                 id: int,
+                 label: str,
+                 region: str,
+                 updated: str):
+        """
+        :param str created: The date and time when the VPC was created.
+        :param str description: The user-defined description of this VPC.
+        :param int id: The unique id of this VPC.
+        :param str label: The label of the VPC.
+        :param str region: The region where the VPC is deployed.
+        :param str updated: The date and time when the VPC was last updated.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "updated", updated)
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The date and time when the VPC was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The user-defined description of this VPC.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the VPC.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region where the VPC is deployed.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The date and time when the VPC was last updated.
         """
         return pulumi.get(self, "updated")
 

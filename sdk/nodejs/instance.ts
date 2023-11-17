@@ -120,11 +120,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.InstanceDisk[]>;
     /**
+     * The ID of the firewall applied to the Linode instance during creation.
+     */
+    public readonly firewallId!: pulumi.Output<number | undefined>;
+    /**
      * The display group of the Linode instance.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
-     * Whether or not this Instance was created with user-data.
+     * Whether this Instance was created with user-data.
      */
     public /*out*/ readonly hasUserData!: pulumi.Output<boolean>;
     /**
@@ -192,6 +196,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly rootPass!: pulumi.Output<string | undefined>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     *
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     public readonly sharedIpv4s!: pulumi.Output<string[]>;
     /**
@@ -252,6 +258,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["booted"] = state ? state.booted : undefined;
             resourceInputs["configs"] = state ? state.configs : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["hasUserData"] = state ? state.hasUserData : undefined;
             resourceInputs["hostUuid"] = state ? state.hostUuid : undefined;
@@ -290,6 +297,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["booted"] = args ? args.booted : undefined;
             resourceInputs["configs"] = args ? args.configs : undefined;
             resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["firewallId"] = args ? args.firewallId : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["interfaces"] = args ? args.interfaces : undefined;
@@ -372,11 +380,15 @@ export interface InstanceState {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
+     * The ID of the firewall applied to the Linode instance during creation.
+     */
+    firewallId?: pulumi.Input<number>;
+    /**
      * The display group of the Linode instance.
      */
     group?: pulumi.Input<string>;
     /**
-     * Whether or not this Instance was created with user-data.
+     * Whether this Instance was created with user-data.
      */
     hasUserData?: pulumi.Input<boolean>;
     /**
@@ -444,6 +456,8 @@ export interface InstanceState {
     rootPass?: pulumi.Input<string>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     *
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -527,6 +541,10 @@ export interface InstanceArgs {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
+     * The ID of the firewall applied to the Linode instance during creation.
+     */
+    firewallId?: pulumi.Input<number>;
+    /**
      * The display group of the Linode instance.
      */
     group?: pulumi.Input<string>;
@@ -575,6 +593,8 @@ export interface InstanceArgs {
     rootPass?: pulumi.Input<string>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+     *
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**

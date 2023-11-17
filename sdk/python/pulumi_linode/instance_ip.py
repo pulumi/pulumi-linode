@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceIpArgs', 'InstanceIp']
 
@@ -94,7 +96,8 @@ class _InstanceIpState:
                  rdns: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_mask: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 vpc_nat11s: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]] = None):
         """
         Input properties used for looking up and filtering InstanceIp resources.
         :param pulumi.Input[str] address: The resulting IPv4 address.
@@ -107,6 +110,7 @@ class _InstanceIpState:
         :param pulumi.Input[str] region: The region this IP resides in.
         :param pulumi.Input[str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]] vpc_nat11s: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -128,6 +132,8 @@ class _InstanceIpState:
             pulumi.set(__self__, "subnet_mask", subnet_mask)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if vpc_nat11s is not None:
+            pulumi.set(__self__, "vpc_nat11s", vpc_nat11s)
 
     @property
     @pulumi.getter
@@ -249,6 +255,18 @@ class _InstanceIpState:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="vpcNat11s")
+    def vpc_nat11s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]:
+        """
+        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        """
+        return pulumi.get(self, "vpc_nat11s")
+
+    @vpc_nat11s.setter
+    def vpc_nat11s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]):
+        pulumi.set(self, "vpc_nat11s", value)
+
 
 class InstanceIp(pulumi.CustomResource):
     @overload
@@ -359,6 +377,7 @@ class InstanceIp(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["subnet_mask"] = None
             __props__.__dict__["type"] = None
+            __props__.__dict__["vpc_nat11s"] = None
         super(InstanceIp, __self__).__init__(
             'linode:index/instanceIp:InstanceIp',
             resource_name,
@@ -378,7 +397,8 @@ class InstanceIp(pulumi.CustomResource):
             rdns: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             subnet_mask: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'InstanceIp':
+            type: Optional[pulumi.Input[str]] = None,
+            vpc_nat11s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpVpcNat11Args']]]]] = None) -> 'InstanceIp':
         """
         Get an existing InstanceIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -396,6 +416,7 @@ class InstanceIp(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region this IP resides in.
         :param pulumi.Input[str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpVpcNat11Args']]]] vpc_nat11s: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,6 +432,7 @@ class InstanceIp(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["subnet_mask"] = subnet_mask
         __props__.__dict__["type"] = type
+        __props__.__dict__["vpc_nat11s"] = vpc_nat11s
         return InstanceIp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -492,4 +514,12 @@ class InstanceIp(pulumi.CustomResource):
         The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11s")
+    def vpc_nat11s(self) -> pulumi.Output[Sequence['outputs.InstanceIpVpcNat11']]:
+        """
+        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        """
+        return pulumi.get(self, "vpc_nat11s")
 

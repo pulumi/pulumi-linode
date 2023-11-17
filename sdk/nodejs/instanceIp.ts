@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -97,6 +99,10 @@ export class InstanceIp extends pulumi.CustomResource {
      * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    public /*out*/ readonly vpcNat11s!: pulumi.Output<outputs.InstanceIpVpcNat11[]>;
 
     /**
      * Create a InstanceIp resource with the given unique name, arguments, and options.
@@ -121,6 +127,7 @@ export class InstanceIp extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["subnetMask"] = state ? state.subnetMask : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vpcNat11s"] = state ? state.vpcNat11s : undefined;
         } else {
             const args = argsOrState as InstanceIpArgs | undefined;
             if ((!args || args.linodeId === undefined) && !opts.urn) {
@@ -136,6 +143,7 @@ export class InstanceIp extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["subnetMask"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["vpcNat11s"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceIp.__pulumiType, name, resourceInputs, opts);
@@ -186,6 +194,10 @@ export interface InstanceIpState {
      * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      */
     type?: pulumi.Input<string>;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    vpcNat11s?: pulumi.Input<pulumi.Input<inputs.InstanceIpVpcNat11>[]>;
 }
 
 /**

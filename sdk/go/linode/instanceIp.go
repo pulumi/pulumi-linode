@@ -76,6 +76,8 @@ type InstanceIp struct {
 	SubnetMask pulumi.StringOutput `pulumi:"subnetMask"`
 	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11s InstanceIpVpcNat11ArrayOutput `pulumi:"vpcNat11s"`
 }
 
 // NewInstanceIp registers a new resource with the given unique name, arguments, and options.
@@ -131,6 +133,8 @@ type instanceIpState struct {
 	SubnetMask *string `pulumi:"subnetMask"`
 	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type *string `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11s []InstanceIpVpcNat11 `pulumi:"vpcNat11s"`
 }
 
 type InstanceIpState struct {
@@ -154,6 +158,8 @@ type InstanceIpState struct {
 	SubnetMask pulumi.StringPtrInput
 	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type pulumi.StringPtrInput
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11s InstanceIpVpcNat11ArrayInput
 }
 
 func (InstanceIpState) ElementType() reflect.Type {
@@ -318,6 +324,11 @@ func (o InstanceIpOutput) SubnetMask() pulumi.StringOutput {
 // The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 func (o InstanceIpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+func (o InstanceIpOutput) VpcNat11s() InstanceIpVpcNat11ArrayOutput {
+	return o.ApplyT(func(v *InstanceIp) InstanceIpVpcNat11ArrayOutput { return v.VpcNat11s }).(InstanceIpVpcNat11ArrayOutput)
 }
 
 type InstanceIpArrayOutput struct{ *pulumi.OutputState }

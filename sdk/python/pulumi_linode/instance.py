@@ -26,6 +26,7 @@ class InstanceArgs:
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
@@ -54,6 +55,7 @@ class InstanceArgs:
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
@@ -74,6 +76,8 @@ class InstanceArgs:
                * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+               
+               * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
@@ -108,6 +112,8 @@ class InstanceArgs:
             pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if image is not None:
@@ -265,6 +271,18 @@ class InstanceArgs:
         pulumi.set(self, "disks", value)
 
     @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the firewall applied to the Linode instance during creation.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "firewall_id", value)
+
+    @property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -376,6 +394,8 @@ class InstanceArgs:
     def shared_ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+
+        * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         """
         return pulumi.get(self, "shared_ipv4s")
 
@@ -471,6 +491,7 @@ class _InstanceState:
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  has_user_data: Optional[pulumi.Input[bool]] = None,
                  host_uuid: Optional[pulumi.Input[str]] = None,
@@ -508,8 +529,9 @@ class _InstanceState:
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
         :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[bool] has_user_data: Whether or not this Instance was created with user-data.
+        :param pulumi.Input[bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[str] host_uuid: The Linode’s host machine, as a UUID.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
@@ -535,6 +557,8 @@ class _InstanceState:
                * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+               
+               * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         :param pulumi.Input['InstanceSpecsArgs'] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -572,6 +596,8 @@ class _InstanceState:
             pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if has_user_data is not None:
@@ -747,6 +773,18 @@ class _InstanceState:
         pulumi.set(self, "disks", value)
 
     @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the firewall applied to the Linode instance during creation.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "firewall_id", value)
+
+    @property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -762,7 +800,7 @@ class _InstanceState:
     @pulumi.getter(name="hasUserData")
     def has_user_data(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not this Instance was created with user-data.
+        Whether this Instance was created with user-data.
         """
         return pulumi.get(self, "has_user_data")
 
@@ -942,6 +980,8 @@ class _InstanceState:
     def shared_ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+
+        * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         """
         return pulumi.get(self, "shared_ipv4s")
 
@@ -1062,6 +1102,7 @@ class Instance(pulumi.CustomResource):
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
@@ -1131,6 +1172,7 @@ class Instance(pulumi.CustomResource):
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
         :param pulumi.Input[str] group: The display group of the Linode instance.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
@@ -1152,6 +1194,8 @@ class Instance(pulumi.CustomResource):
                * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+               
+               * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
@@ -1231,6 +1275,7 @@ class Instance(pulumi.CustomResource):
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
+                 firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
@@ -1265,6 +1310,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["booted"] = booted
             __props__.__dict__["configs"] = configs
             __props__.__dict__["disks"] = disks
+            __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["group"] = group
             __props__.__dict__["image"] = image
             __props__.__dict__["interfaces"] = interfaces
@@ -1314,6 +1360,7 @@ class Instance(pulumi.CustomResource):
             booted: Optional[pulumi.Input[bool]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDiskArgs']]]]] = None,
+            firewall_id: Optional[pulumi.Input[int]] = None,
             group: Optional[pulumi.Input[str]] = None,
             has_user_data: Optional[pulumi.Input[bool]] = None,
             host_uuid: Optional[pulumi.Input[str]] = None,
@@ -1356,8 +1403,9 @@ class Instance(pulumi.CustomResource):
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
         :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[bool] has_user_data: Whether or not this Instance was created with user-data.
+        :param pulumi.Input[bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[str] host_uuid: The Linode’s host machine, as a UUID.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
@@ -1383,6 +1431,8 @@ class Instance(pulumi.CustomResource):
                * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
         :param pulumi.Input[str] root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+               
+               * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         :param pulumi.Input[pulumi.InputType['InstanceSpecsArgs']] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
@@ -1408,6 +1458,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["booted"] = booted
         __props__.__dict__["configs"] = configs
         __props__.__dict__["disks"] = disks
+        __props__.__dict__["firewall_id"] = firewall_id
         __props__.__dict__["group"] = group
         __props__.__dict__["has_user_data"] = has_user_data
         __props__.__dict__["host_uuid"] = host_uuid
@@ -1520,6 +1571,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "disks")
 
     @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The ID of the firewall applied to the Linode instance during creation.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @property
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1531,7 +1590,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="hasUserData")
     def has_user_data(self) -> pulumi.Output[bool]:
         """
-        Whether or not this Instance was created with user-data.
+        Whether this Instance was created with user-data.
         """
         return pulumi.get(self, "has_user_data")
 
@@ -1655,6 +1714,8 @@ class Instance(pulumi.CustomResource):
     def shared_ipv4s(self) -> pulumi.Output[Sequence[str]]:
         """
         A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
+
+        * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         """
         return pulumi.get(self, "shared_ipv4s")
 

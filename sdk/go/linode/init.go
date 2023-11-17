@@ -75,6 +75,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "linode:index/volume:Volume":
 		r = &Volume{}
+	case "linode:index/vpc:Vpc":
+		r = &Vpc{}
+	case "linode:index/vpcSubnet:VpcSubnet":
+		r = &VpcSubnet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -239,6 +243,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/vpc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/vpcSubnet",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

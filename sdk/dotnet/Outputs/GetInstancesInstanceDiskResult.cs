@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// (Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.
+        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         /// </summary>
         public readonly string Label;
         /// <summary>

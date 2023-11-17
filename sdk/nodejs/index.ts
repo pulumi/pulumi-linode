@@ -275,6 +275,26 @@ export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
 export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
 
+export { GetVpcArgs, GetVpcResult, GetVpcOutputArgs } from "./getVpc";
+export const getVpc: typeof import("./getVpc").getVpc = null as any;
+export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
+utilities.lazyLoad(exports, ["getVpc","getVpcOutput"], () => require("./getVpc"));
+
+export { GetVpcSubnetArgs, GetVpcSubnetResult, GetVpcSubnetOutputArgs } from "./getVpcSubnet";
+export const getVpcSubnet: typeof import("./getVpcSubnet").getVpcSubnet = null as any;
+export const getVpcSubnetOutput: typeof import("./getVpcSubnet").getVpcSubnetOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcSubnet","getVpcSubnetOutput"], () => require("./getVpcSubnet"));
+
+export { GetVpcSubnetsArgs, GetVpcSubnetsResult, GetVpcSubnetsOutputArgs } from "./getVpcSubnets";
+export const getVpcSubnets: typeof import("./getVpcSubnets").getVpcSubnets = null as any;
+export const getVpcSubnetsOutput: typeof import("./getVpcSubnets").getVpcSubnetsOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcSubnets","getVpcSubnetsOutput"], () => require("./getVpcSubnets"));
+
+export { GetVpcsArgs, GetVpcsResult, GetVpcsOutputArgs } from "./getVpcs";
+export const getVpcs: typeof import("./getVpcs").getVpcs = null as any;
+export const getVpcsOutput: typeof import("./getVpcs").getVpcsOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcs","getVpcsOutput"], () => require("./getVpcs"));
+
 export { ImageArgs, ImageState } from "./image";
 export type Image = import("./image").Image;
 export const Image: typeof import("./image").Image = null as any;
@@ -375,6 +395,16 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { VpcArgs, VpcState } from "./vpc";
+export type Vpc = import("./vpc").Vpc;
+export const Vpc: typeof import("./vpc").Vpc = null as any;
+utilities.lazyLoad(exports, ["Vpc"], () => require("./vpc"));
+
+export { VpcSubnetArgs, VpcSubnetState } from "./vpcSubnet";
+export type VpcSubnet = import("./vpcSubnet").VpcSubnet;
+export const VpcSubnet: typeof import("./vpcSubnet").VpcSubnet = null as any;
+utilities.lazyLoad(exports, ["VpcSubnet"], () => require("./vpcSubnet"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -443,6 +473,10 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "linode:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "linode:index/vpc:Vpc":
+                return new Vpc(name, <any>undefined, { urn })
+            case "linode:index/vpcSubnet:VpcSubnet":
+                return new VpcSubnet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -475,6 +509,8 @@ pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
 pulumi.runtime.registerResourceModule("linode", "index/token", _module)
 pulumi.runtime.registerResourceModule("linode", "index/user", _module)
 pulumi.runtime.registerResourceModule("linode", "index/volume", _module)
+pulumi.runtime.registerResourceModule("linode", "index/vpc", _module)
+pulumi.runtime.registerResourceModule("linode", "index/vpcSubnet", _module)
 pulumi.runtime.registerResourcePackage("linode", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

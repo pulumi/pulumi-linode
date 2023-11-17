@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.InstanceIpArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.InstanceIpState;
+import com.pulumi.linode.outputs.InstanceIpVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -205,6 +207,20 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    @Export(name="vpcNat11s", refs={List.class,InstanceIpVpcNat11.class}, tree="[0,1]")
+    private Output<List<InstanceIpVpcNat11>> vpcNat11s;
+
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public Output<List<InstanceIpVpcNat11>> vpcNat11s() {
+        return this.vpcNat11s;
     }
 
     /**

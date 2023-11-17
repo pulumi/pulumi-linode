@@ -5,9 +5,11 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.InstanceIpVpcNat11Args;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -167,6 +169,21 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    @Import(name="vpcNat11s")
+    private @Nullable Output<List<InstanceIpVpcNat11Args>> vpcNat11s;
+
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public Optional<Output<List<InstanceIpVpcNat11Args>>> vpcNat11s() {
+        return Optional.ofNullable(this.vpcNat11s);
+    }
+
     private InstanceIpState() {}
 
     private InstanceIpState(InstanceIpState $) {
@@ -180,6 +197,7 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.subnetMask = $.subnetMask;
         this.type = $.type;
+        this.vpcNat11s = $.vpcNat11s;
     }
 
     public static Builder builder() {
@@ -408,6 +426,37 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11s(@Nullable Output<List<InstanceIpVpcNat11Args>> vpcNat11s) {
+            $.vpcNat11s = vpcNat11s;
+            return this;
+        }
+
+        /**
+         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11s(List<InstanceIpVpcNat11Args> vpcNat11s) {
+            return vpcNat11s(Output.of(vpcNat11s));
+        }
+
+        /**
+         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11s(InstanceIpVpcNat11Args... vpcNat11s) {
+            return vpcNat11s(List.of(vpcNat11s));
         }
 
         public InstanceIpState build() {
