@@ -179,7 +179,17 @@
                                     "maxItemsOne": true
                                 },
                                 "interface": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv4": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -198,7 +208,17 @@
                         }
                     },
                     "interface": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv4": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "ipv4": {
                         "maxItemsOne": false
@@ -231,7 +251,12 @@
             },
             "linode_instance_ip": {
                 "current": "linode:index/instanceIp:InstanceIp",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "vpc_nat_1_1": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_instance_shared_ips": {
                 "current": "linode:index/instanceSharedIps:InstanceSharedIps",
@@ -405,6 +430,28 @@
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_vpc": {
+                "current": "linode:index/vpc:Vpc",
+                "majorVersion": 4
+            },
+            "linode_vpc_subnet": {
+                "current": "linode:index/vpcSubnet:VpcSubnet",
+                "majorVersion": 4,
+                "fields": {
+                    "linodes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "interfaces": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -972,7 +1019,17 @@
                                                 "maxItemsOne": false
                                             },
                                             "interface": {
-                                                "maxItemsOne": false
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ip_ranges": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ipv4": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -1401,6 +1458,82 @@
                         }
                     }
                 }
+            },
+            "linode_vpc": {
+                "current": "linode:index/getVpc:getVpc",
+                "majorVersion": 4
+            },
+            "linode_vpc_subnet": {
+                "current": "linode:index/getVpcSubnet:getVpcSubnet",
+                "majorVersion": 4,
+                "fields": {
+                    "linodes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "interfaces": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_vpc_subnets": {
+                "current": "linode:index/getVpcSubnets:getVpcSubnets",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpc_subnets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "linodes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "elem": {
+                                            "fields": {
+                                                "interfaces": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_vpcs": {
+                "current": "linode:index/getVpcs:getVpcs",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpcs": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
@@ -1432,7 +1565,9 @@
             "linode:index/stackScript:StackScript": 1,
             "linode:index/token:Token": 1,
             "linode:index/user:User": 0,
-            "linode:index/volume:Volume": 0
+            "linode:index/volume:Volume": 0,
+            "linode:index/vpc:Vpc": 1,
+            "linode:index/vpcSubnet:VpcSubnet": 1
         },
         "functions": {
             "linode:index/getAccount:getAccount": 1,
@@ -1480,7 +1615,11 @@
             "linode:index/getUsers:getUsers": 1,
             "linode:index/getVlans:getVlans": 1,
             "linode:index/getVolume:getVolume": 1,
-            "linode:index/getVolumes:getVolumes": 1
+            "linode:index/getVolumes:getVolumes": 1,
+            "linode:index/getVpc:getVpc": 1,
+            "linode:index/getVpcSubnet:getVpcSubnet": 1,
+            "linode:index/getVpcSubnets:getVpcSubnets": 1,
+            "linode:index/getVpcs:getVpcs": 1
         }
     },
     "renames": {
@@ -1511,7 +1650,9 @@
             "linode:index/stackScript:StackScript": "linode_stackscript",
             "linode:index/token:Token": "linode_token",
             "linode:index/user:User": "linode_user",
-            "linode:index/volume:Volume": "linode_volume"
+            "linode:index/volume:Volume": "linode_volume",
+            "linode:index/vpc:Vpc": "linode_vpc",
+            "linode:index/vpcSubnet:VpcSubnet": "linode_vpc_subnet"
         },
         "functions": {
             "linode:index/getAccount:getAccount": "linode_account",
@@ -1559,7 +1700,11 @@
             "linode:index/getUsers:getUsers": "linode_users",
             "linode:index/getVlans:getVlans": "linode_vlans",
             "linode:index/getVolume:getVolume": "linode_volume",
-            "linode:index/getVolumes:getVolumes": "linode_volumes"
+            "linode:index/getVolumes:getVolumes": "linode_volumes",
+            "linode:index/getVpc:getVpc": "linode_vpc",
+            "linode:index/getVpcSubnet:getVpcSubnet": "linode_vpc_subnet",
+            "linode:index/getVpcSubnets:getVpcSubnets": "linode_vpc_subnets",
+            "linode:index/getVpcs:getVpcs": "linode_vpcs"
         },
         "renamedProperties": {
             "linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates": {
@@ -1641,7 +1786,13 @@
                 "updatedbDisabled": "updatedb_disabled"
             },
             "linode:index/InstanceConfigInterface:InstanceConfigInterface": {
-                "ipamAddress": "ipam_address"
+                "ipRanges": "ip_ranges",
+                "ipamAddress": "ipam_address",
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
+            },
+            "linode:index/InstanceConfigInterfaceIpv4:InstanceConfigInterfaceIpv4": {
+                "nat11": "nat_1_1"
             },
             "linode:index/InstanceDisk:InstanceDisk": {
                 "authorizedKeys": "authorized_keys",
@@ -1652,7 +1803,17 @@
                 "stackscriptId": "stackscript_id"
             },
             "linode:index/InstanceInterface:InstanceInterface": {
-                "ipamAddress": "ipam_address"
+                "ipRanges": "ip_ranges",
+                "ipamAddress": "ipam_address",
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
+            },
+            "linode:index/InstanceInterfaceIpv4:InstanceInterfaceIpv4": {
+                "nat11": "nat_1_1"
+            },
+            "linode:index/InstanceIpVpcNat11:InstanceIpVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/InstanceMetadata:InstanceMetadata": {
                 "userData": "user_data"
@@ -1942,19 +2103,39 @@
             },
             "linode:index/getInstanceNetworkingIpv4Private:getInstanceNetworkingIpv4Private": {
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11": "vpc_nat_1_1"
+            },
+            "linode:index/getInstanceNetworkingIpv4PrivateVpcNat11:getInstanceNetworkingIpv4PrivateVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/getInstanceNetworkingIpv4Public:getInstanceNetworkingIpv4Public": {
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11": "vpc_nat_1_1"
+            },
+            "linode:index/getInstanceNetworkingIpv4PublicVpcNat11:getInstanceNetworkingIpv4PublicVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/getInstanceNetworkingIpv4Reserved:getInstanceNetworkingIpv4Reserved": {
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11": "vpc_nat_1_1"
+            },
+            "linode:index/getInstanceNetworkingIpv4ReservedVpcNat11:getInstanceNetworkingIpv4ReservedVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/getInstanceNetworkingIpv4Shared:getInstanceNetworkingIpv4Shared": {
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11": "vpc_nat_1_1"
+            },
+            "linode:index/getInstanceNetworkingIpv4SharedVpcNat11:getInstanceNetworkingIpv4SharedVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/getInstanceNetworkingIpv6:getInstanceNetworkingIpv6": {
                 "globals": "global",
@@ -1965,11 +2146,21 @@
             },
             "linode:index/getInstanceNetworkingIpv6LinkLocal:getInstanceNetworkingIpv6LinkLocal": {
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11": "vpc_nat_1_1"
+            },
+            "linode:index/getInstanceNetworkingIpv6LinkLocalVpcNat11:getInstanceNetworkingIpv6LinkLocalVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/getInstanceNetworkingIpv6Slaac:getInstanceNetworkingIpv6Slaac": {
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11": "vpc_nat_1_1"
+            },
+            "linode:index/getInstanceNetworkingIpv6SlaacVpcNat11:getInstanceNetworkingIpv6SlaacVpcNat11": {
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
             },
             "linode:index/getInstanceType:getInstanceType": {
                 "networkOut": "network_out",
@@ -2085,7 +2276,13 @@
                 "updatedbDisabled": "updatedb_disabled"
             },
             "linode:index/getInstancesInstanceConfigInterface:getInstancesInstanceConfigInterface": {
-                "ipamAddress": "ipam_address"
+                "ipRanges": "ip_ranges",
+                "ipamAddress": "ipam_address",
+                "subnetId": "subnet_id",
+                "vpcId": "vpc_id"
+            },
+            "linode:index/getInstancesInstanceConfigInterfaceIpv4:getInstancesInstanceConfigInterfaceIpv4": {
+                "nat11": "nat_1_1"
             },
             "linode:index/getIpv6Range:getIpv6Range": {
                 "isBgp": "is_bgp"
@@ -2298,6 +2495,23 @@
                 "filesystemPath": "filesystem_path",
                 "linodeId": "linode_id"
             },
+            "linode:index/getVpcSubnet:getVpcSubnet": {
+                "vpcId": "vpc_id"
+            },
+            "linode:index/getVpcSubnets:getVpcSubnets": {
+                "filters": "filter",
+                "vpcId": "vpc_id",
+                "vpcSubnets": "vpc_subnets"
+            },
+            "linode:index/getVpcSubnetsFilter:getVpcSubnetsFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getVpcs:getVpcs": {
+                "filters": "filter"
+            },
+            "linode:index/getVpcsFilter:getVpcsFilter": {
+                "matchBy": "match_by"
+            },
             "linode:index/image:Image": {
                 "cloudInit": "cloud_init",
                 "createdBy": "created_by",
@@ -2315,6 +2529,7 @@
                 "bootConfigLabel": "boot_config_label",
                 "configs": "config",
                 "disks": "disk",
+                "firewallId": "firewall_id",
                 "hasUserData": "has_user_data",
                 "hostUuid": "host_uuid",
                 "interfaces": "interface",
@@ -2342,7 +2557,8 @@
             "linode:index/instanceIp:InstanceIp": {
                 "applyImmediately": "apply_immediately",
                 "linodeId": "linode_id",
-                "subnetMask": "subnet_mask"
+                "subnetMask": "subnet_mask",
+                "vpcNat11s": "vpc_nat_1_1"
             },
             "linode:index/instanceSharedIps:InstanceSharedIps": {
                 "linodeId": "linode_id"
@@ -2440,6 +2656,9 @@
                 "filesystemPath": "filesystem_path",
                 "linodeId": "linode_id",
                 "sourceVolumeId": "source_volume_id"
+            },
+            "linode:index/vpcSubnet:VpcSubnet": {
+                "vpcId": "vpc_id"
             },
             "linode:index:Provider": {
                 "apiVersion": "api_version",

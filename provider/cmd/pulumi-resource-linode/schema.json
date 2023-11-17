@@ -700,20 +700,85 @@
         },
         "linode:index/InstanceConfigInterface:InstanceConfigInterface": {
             "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the disk in the Linode API.\n"
+                },
+                "ipRanges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.\n"
+                },
                 "ipamAddress": {
                     "type": "string",
-                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.\n"
+                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.\n"
+                },
+                "ipv4": {
+                    "$ref": "#/types/linode:index/InstanceConfigInterfaceIpv4:InstanceConfigInterfaceIpv4",
+                    "description": "This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.\n"
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n"
+                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                },
+                "primary": {
+                    "type": "boolean",
+                    "description": "Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.\n\n* `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.\n\nThe following computed attribute is available in a VPC interface:\n"
                 },
                 "purpose": {
                     "type": "string",
-                    "description": "The type of interface. (`public`, `vlan`)\n"
+                    "description": "The type of interface. (`public`, `vlan`, `vpc`)\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The ID of VPC which this interface is attached to.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "purpose"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "active",
+                        "id",
+                        "ipv4",
+                        "purpose",
+                        "vpcId"
+                    ]
+                }
+            }
+        },
+        "linode:index/InstanceConfigInterfaceIpv4:InstanceConfigInterfaceIpv4": {
+            "properties": {
+                "nat11": {
+                    "type": "string",
+                    "description": "The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.\n"
+                },
+                "vpc": {
+                    "type": "string",
+                    "description": "The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "nat11",
+                        "vpc"
+                    ]
+                }
+            }
         },
         "linode:index/InstanceDisk:InstanceDisk": {
             "properties": {
@@ -803,20 +868,109 @@
         },
         "linode:index/InstanceInterface:InstanceInterface": {
             "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the disk in the Linode API.\n"
+                },
+                "ipRanges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.\n"
+                },
                 "ipamAddress": {
                     "type": "string",
-                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.\n"
+                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.\n"
+                },
+                "ipv4": {
+                    "$ref": "#/types/linode:index/InstanceInterfaceIpv4:InstanceInterfaceIpv4",
+                    "description": "This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.\n"
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of this interface. If the interface is a VLAN, a label is required.\n"
+                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                },
+                "primary": {
+                    "type": "boolean",
+                    "description": "Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.\n\n* `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.\n\nThe following computed attribute is available in a VPC interface:\n"
                 },
                 "purpose": {
                     "type": "string",
-                    "description": "The type of interface. (`public`, `vlan`)\n"
+                    "description": "The type of interface. (`public`, `vlan`, `vpc`)\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The ID of VPC which this interface is attached to.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "purpose"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "active",
+                        "id",
+                        "ipv4",
+                        "purpose",
+                        "vpcId"
+                    ]
+                }
+            }
+        },
+        "linode:index/InstanceInterfaceIpv4:InstanceInterfaceIpv4": {
+            "properties": {
+                "nat11": {
+                    "type": "string",
+                    "description": "The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.\n"
+                },
+                "vpc": {
+                    "type": "string",
+                    "description": "The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "nat11",
+                        "vpc"
+                    ]
+                }
+            }
+        },
+        "linode:index/InstanceIpVpcNat11:InstanceIpVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The resulting IPv4 address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "subnetId",
+                        "vpcId"
+                    ]
+                }
+            }
         },
         "linode:index/InstanceMetadata:InstanceMetadata": {
             "properties": {
@@ -1300,6 +1454,41 @@
             "required": [
                 "id",
                 "permissions"
+            ]
+        },
+        "linode:index/VpcSubnetLinode:VpcSubnetLinode": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the VPC Subnet.\n"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/VpcSubnetLinodeInterface:VpcSubnetLinodeInterface"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "interfaces"
+            ]
+        },
+        "linode:index/VpcSubnetLinodeInterface:VpcSubnetLinodeInterface": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the VPC Subnet.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "id"
             ]
         },
         "linode:index/getAccountLoginsFilter:getAccountLoginsFilter": {
@@ -2550,6 +2739,9 @@
                 "type": {
                     "type": "string",
                     "description": "The type of address this is.\n"
+                },
+                "vpcNat11": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4PrivateVpcNat11:getInstanceNetworkingIpv4PrivateVpcNat11"
                 }
             },
             "type": "object",
@@ -2562,7 +2754,33 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv4PrivateVpcNat11:getInstanceNetworkingIpv4PrivateVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -2607,6 +2825,9 @@
                 "type": {
                     "type": "string",
                     "description": "The type of address this is.\n"
+                },
+                "vpcNat11": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4PublicVpcNat11:getInstanceNetworkingIpv4PublicVpcNat11"
                 }
             },
             "type": "object",
@@ -2619,7 +2840,33 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv4PublicVpcNat11:getInstanceNetworkingIpv4PublicVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -2664,6 +2911,9 @@
                 "type": {
                     "type": "string",
                     "description": "The type of address this is.\n"
+                },
+                "vpcNat11": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4ReservedVpcNat11:getInstanceNetworkingIpv4ReservedVpcNat11"
                 }
             },
             "type": "object",
@@ -2676,7 +2926,33 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv4ReservedVpcNat11:getInstanceNetworkingIpv4ReservedVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -2721,6 +2997,9 @@
                 "type": {
                     "type": "string",
                     "description": "The type of address this is.\n"
+                },
+                "vpcNat11": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4SharedVpcNat11:getInstanceNetworkingIpv4SharedVpcNat11"
                 }
             },
             "type": "object",
@@ -2733,7 +3012,33 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv4SharedVpcNat11:getInstanceNetworkingIpv4SharedVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -2837,6 +3142,9 @@
                 "type": {
                     "type": "string",
                     "description": "The type of address this is.\n"
+                },
+                "vpcNat11": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6LinkLocalVpcNat11:getInstanceNetworkingIpv6LinkLocalVpcNat11"
                 }
             },
             "type": "object",
@@ -2849,7 +3157,33 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv6LinkLocalVpcNat11:getInstanceNetworkingIpv6LinkLocalVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -2894,6 +3228,9 @@
                 "type": {
                     "type": "string",
                     "description": "The type of address this is.\n"
+                },
+                "vpcNat11": {
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6SlaacVpcNat11:getInstanceNetworkingIpv6SlaacVpcNat11"
                 }
             },
             "type": "object",
@@ -2906,7 +3243,33 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv6SlaacVpcNat11:getInstanceNetworkingIpv6SlaacVpcNat11": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "subnetId": {
+                    "type": "integer"
+                },
+                "vpcId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -3308,7 +3671,8 @@
                     "description": "The display group of the Linode instance.\n"
                 },
                 "hasUserData": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this Instance was created with user-data.\n"
                 },
                 "hostUuid": {
                     "type": "string"
@@ -3338,7 +3702,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "(Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.\n"
+                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
                 },
                 "privateIpAddress": {
                     "type": "string",
@@ -3527,7 +3891,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "(Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.\n"
+                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
                 },
                 "memoryLimit": {
                     "type": "integer",
@@ -3873,20 +4237,84 @@
         },
         "linode:index/getInstancesInstanceConfigInterface:getInstancesInstanceConfigInterface": {
             "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the disk in the Linode API.\n"
+                },
+                "ipRanges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.\n"
+                },
                 "ipamAddress": {
                     "type": "string",
-                    "description": "(Optional) This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation.\n"
+                    "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.\n"
+                },
+                "ipv4": {
+                    "$ref": "#/types/linode:index/getInstancesInstanceConfigInterfaceIpv4:getInstancesInstanceConfigInterfaceIpv4",
+                    "description": "This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.\n"
                 },
                 "label": {
                     "type": "string",
-                    "description": "(Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.\n"
+                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                },
+                "primary": {
+                    "type": "boolean",
+                    "description": "Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.\n"
                 },
                 "purpose": {
                     "type": "string",
-                    "description": "(Required) The type of interface. (`public`, `vlan`)\n"
+                    "description": "The type of interface. (`public`, `vlan`, `vpc`)\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The ID of VPC which this interface is attached to.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "active",
+                "id",
+                "ipv4",
+                "purpose",
+                "vpcId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstancesInstanceConfigInterfaceIpv4:getInstancesInstanceConfigInterfaceIpv4": {
+            "properties": {
+                "nat11": {
+                    "type": "string",
+                    "description": "The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.\n"
+                },
+                "vpc": {
+                    "type": "string",
+                    "description": "The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "nat11",
+                "vpc"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "linode:index/getInstancesInstanceDisk:getInstancesInstanceDisk": {
             "properties": {
@@ -3900,7 +4328,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "(Optional) The name of this interface. If the interface is a `vlan`, a label is required. Must be undefined for `public` purpose interfaces.\n"
+                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -5547,6 +5975,223 @@
                 "size",
                 "status",
                 "tags",
+                "updated"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getVpcSubnetLinode:getVpcSubnetLinode": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id of this VPC subnet.\n"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getVpcSubnetLinodeInterface:getVpcSubnetLinodeInterface"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "interfaces"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getVpcSubnetLinodeInterface:getVpcSubnetLinodeInterface": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id of this VPC subnet.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getVpcSubnetsFilter:getVpcSubnetsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getVpcSubnetsVpcSubnet:getVpcSubnetsVpcSubnet": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "The date and time when the VPC Subnet was created.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id of the VPC subnet.\n"
+                },
+                "ipv4": {
+                    "type": "string",
+                    "description": "The IPv4 range of this subnet in CIDR format.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the VPC subnet.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getVpcSubnetsVpcSubnetLinode:getVpcSubnetsVpcSubnetLinode"
+                    },
+                    "description": "A list of Linode IDs that added to this subnet.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "The date and time when the VPC Subnet was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "id",
+                "ipv4",
+                "label",
+                "linodes",
+                "updated"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getVpcSubnetsVpcSubnetLinode:getVpcSubnetsVpcSubnetLinode": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id of the VPC subnet.\n"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getVpcSubnetsVpcSubnetLinodeInterface:getVpcSubnetsVpcSubnetLinodeInterface"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "interfaces"
+            ]
+        },
+        "linode:index/getVpcSubnetsVpcSubnetLinodeInterface:getVpcSubnetsVpcSubnetLinodeInterface": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id of the VPC subnet.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "id"
+            ]
+        },
+        "linode:index/getVpcsFilter:getVpcsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getVpcsVpc:getVpcsVpc": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "The date and time when the VPC was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The user-defined description of this VPC.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id of this VPC.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the VPC.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the VPC is deployed.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "The date and time when the VPC was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "created",
+                "description",
+                "id",
+                "label",
+                "region",
                 "updated"
             ],
             "language": {
@@ -7357,13 +8002,17 @@
                     },
                     "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                 },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The ID of the firewall applied to the Linode instance during creation.\n"
+                },
                 "group": {
                     "type": "string",
                     "description": "The display group of the Linode instance.\n"
                 },
                 "hasUserData": {
                     "type": "boolean",
-                    "description": "Whether or not this Instance was created with user-data.\n"
+                    "description": "Whether this Instance was created with user-data.\n"
                 },
                 "hostUuid": {
                     "type": "string",
@@ -7432,7 +8081,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n"
+                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n"
                 },
                 "specs": {
                     "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs",
@@ -7548,6 +8197,11 @@
                     },
                     "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                 },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The ID of the firewall applied to the Linode instance during creation.\n",
+                    "willReplaceOnChanges": true
+                },
                 "group": {
                     "type": "string",
                     "description": "The display group of the Linode instance.\n"
@@ -7599,7 +8253,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n"
+                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n"
                 },
                 "stackscriptData": {
                     "type": "object",
@@ -7697,13 +8351,18 @@
                         },
                         "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                     },
+                    "firewallId": {
+                        "type": "integer",
+                        "description": "The ID of the firewall applied to the Linode instance during creation.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "group": {
                         "type": "string",
                         "description": "The display group of the Linode instance.\n"
                     },
                     "hasUserData": {
                         "type": "boolean",
-                        "description": "Whether or not this Instance was created with user-data.\n"
+                        "description": "Whether this Instance was created with user-data.\n"
                     },
                     "hostUuid": {
                         "type": "string",
@@ -7775,7 +8434,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n"
+                        "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n"
                     },
                     "specs": {
                         "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs",
@@ -8084,6 +8743,13 @@
                 "type": {
                     "type": "string",
                     "description": "The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)\n"
+                },
+                "vpcNat11s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/InstanceIpVpcNat11:InstanceIpVpcNat11"
+                    },
+                    "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.\n"
                 }
             },
             "required": [
@@ -8094,7 +8760,8 @@
                 "rdns",
                 "region",
                 "subnetMask",
-                "type"
+                "type",
+                "vpcNat11s"
             ],
             "inputProperties": {
                 "applyImmediately": {
@@ -8163,6 +8830,13 @@
                     "type": {
                         "type": "string",
                         "description": "The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)\n"
+                    },
+                    "vpcNat11s": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/InstanceIpVpcNat11:InstanceIpVpcNat11"
+                        },
+                        "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.\n"
                     }
                 },
                 "type": "object"
@@ -10325,6 +10999,174 @@
                             "type": "string"
                         },
                         "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/vpc:Vpc": {
+            "description": "Manages a Linode VPC.\n\nPlease refer to linode.VpcSubnet to manage the subnets under a Linode VPC.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a VPC:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst test = new linode.Vpc(\"test\", {\n    description: \"My first VPC.\",\n    label: \"test-vpc\",\n    region: \"us-east\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.Vpc(\"test\",\n    description=\"My first VPC.\",\n    label=\"test-vpc\",\n    region=\"us-east\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Linode.Vpc(\"test\", new()\n    {\n        Description = \"My first VPC.\",\n        Label = \"test-vpc\",\n        Region = \"us-east\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewVpc(ctx, \"test\", \u0026linode.VpcArgs{\n\t\t\tDescription: pulumi.String(\"My first VPC.\"),\n\t\t\tLabel:       pulumi.String(\"test-vpc\"),\n\t\t\tRegion:      pulumi.String(\"us-east\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Vpc;\nimport com.pulumi.linode.VpcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new Vpc(\"test\", VpcArgs.builder()        \n            .description(\"My first VPC.\")\n            .label(\"test-vpc\")\n            .region(\"us-east\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: linode:Vpc\n    properties:\n      description: My first VPC.\n      label: test-vpc\n      region: us-east\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "The date and time when the VPC was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The user-defined description of this VPC.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the VPC. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the VPC.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "The date and time when the VPC was last updated.\n"
+                }
+            },
+            "required": [
+                "created",
+                "description",
+                "label",
+                "region",
+                "updated"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The user-defined description of this VPC.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the VPC. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the VPC.\n"
+                }
+            },
+            "requiredInputs": [
+                "label",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vpc resources.\n",
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "The date and time when the VPC was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The user-defined description of this VPC.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The label of the VPC. This field can only contain ASCII letters, digits and dashes.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the VPC.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "The date and time when the VPC was last updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/vpcSubnet:VpcSubnet": {
+            "description": "Manages a Linode VPC subnet.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a VPC subnet:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst test = new linode.VpcSubnet(\"test\", {\n    ipv4: \"10.0.0.0/24\",\n    label: \"test-subnet\",\n    vpcId: 123,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.VpcSubnet(\"test\",\n    ipv4=\"10.0.0.0/24\",\n    label=\"test-subnet\",\n    vpc_id=123)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Linode.VpcSubnet(\"test\", new()\n    {\n        Ipv4 = \"10.0.0.0/24\",\n        Label = \"test-subnet\",\n        VpcId = 123,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewVpcSubnet(ctx, \"test\", \u0026linode.VpcSubnetArgs{\n\t\t\tIpv4:  pulumi.String(\"10.0.0.0/24\"),\n\t\t\tLabel: pulumi.String(\"test-subnet\"),\n\t\t\tVpcId: pulumi.Int(123),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.VpcSubnet;\nimport com.pulumi.linode.VpcSubnetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new VpcSubnet(\"test\", VpcSubnetArgs.builder()        \n            .ipv4(\"10.0.0.0/24\")\n            .label(\"test-subnet\")\n            .vpcId(123)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: linode:VpcSubnet\n    properties:\n      ipv4: 10.0.0.0/24\n      label: test-subnet\n      vpcId: 123\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "The date and time when the VPC was created.\n"
+                },
+                "ipv4": {
+                    "type": "string",
+                    "description": "The IPv4 range of this subnet in CIDR format.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the VPC. Only contains ASCII letters, digits and dashes.\n"
+                },
+                "linodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/VpcSubnetLinode:VpcSubnetLinode"
+                    },
+                    "description": "A list of Linode IDs that added to this subnet.\n"
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "The date and time when the VPC was last updated.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The id of the parent VPC for this VPC Subnet.\n"
+                }
+            },
+            "required": [
+                "created",
+                "ipv4",
+                "label",
+                "linodes",
+                "updated",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "ipv4": {
+                    "type": "string",
+                    "description": "The IPv4 range of this subnet in CIDR format.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the VPC. Only contains ASCII letters, digits and dashes.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The id of the parent VPC for this VPC Subnet.\n"
+                }
+            },
+            "requiredInputs": [
+                "ipv4",
+                "label",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcSubnet resources.\n",
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "The date and time when the VPC was created.\n"
+                    },
+                    "ipv4": {
+                        "type": "string",
+                        "description": "The IPv4 range of this subnet in CIDR format.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The label of the VPC. Only contains ASCII letters, digits and dashes.\n"
+                    },
+                    "linodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/VpcSubnetLinode:VpcSubnetLinode"
+                        },
+                        "description": "A list of Linode IDs that added to this subnet.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "The date and time when the VPC was last updated.\n"
+                    },
+                    "vpcId": {
+                        "type": "integer",
+                        "description": "The id of the parent VPC for this VPC Subnet.\n"
                     }
                 },
                 "type": "object"
@@ -13667,6 +14509,227 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getVolumesVolume:getVolumesVolume"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        "linode:index/getVpc:getVpc": {
+            "description": "Provides information about a Linode VPC.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode VPC.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = linode.getVpc({\n    id: 123,\n});\nexport const vpc = foo;\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_vpc(id=123)\npulumi.export(\"vpc\", foo)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Linode.GetVpc.Invoke(new()\n    {\n        Id = 123,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vpc\"] = foo,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.LookupVpc(ctx, \u0026linode.LookupVpcArgs{\n\t\t\tId: 123,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vpc\", foo)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVpcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()\n            .id(123)\n            .build());\n\n        ctx.export(\"vpc\", foo.applyValue(getVpcResult -\u003e getVpcResult));\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: linode:getVpc\n      Arguments:\n        id: 123\noutputs:\n  vpc: ${foo}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpc.\n",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "The unique id of this VPC.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpc.\n",
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "The date and time when the VPC was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The user-defined description of this VPC.\n"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The label of the VPC.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the VPC is deployed.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "The date and time when the VPC was last updated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "created",
+                    "description",
+                    "id",
+                    "label",
+                    "region",
+                    "updated"
+                ]
+            }
+        },
+        "linode:index/getVpcSubnet:getVpcSubnet": {
+            "description": "Provides information about a Linode VPC subnet.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode VPC subnet.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = linode.getVpcSubnet({\n    vpcId: 123,\n    id: 12345,\n});\nexport const vpcSubnet = foo;\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.get_vpc_subnet(vpc_id=123,\n    id=12345)\npulumi.export(\"vpcSubnet\", foo)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Linode.GetVpcSubnet.Invoke(new()\n    {\n        VpcId = 123,\n        Id = 12345,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vpcSubnet\"] = foo,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.LookupVpcSubnet(ctx, \u0026linode.LookupVpcSubnetArgs{\n\t\t\tVpcId: 123,\n\t\t\tId:    12345,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vpcSubnet\", foo)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVpcSubnetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()\n            .vpcId(123)\n            .id(12345)\n            .build());\n\n        ctx.export(\"vpcSubnet\", foo.applyValue(getVpcSubnetResult -\u003e getVpcSubnetResult));\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: linode:getVpcSubnet\n      Arguments:\n        vpcId: 123\n        id: 12345\noutputs:\n  vpcSubnet: ${foo}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcSubnet.\n",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "The unique id of this VPC subnet.\n"
+                    },
+                    "vpcId": {
+                        "type": "integer",
+                        "description": "The id of the parent VPC for this VPC Subnet.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcSubnet.\n",
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "description": "The date and time when the VPC Subnet was created.\n"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "ipv4": {
+                        "type": "string",
+                        "description": "The IPv4 range of this subnet in CIDR format.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The label of the VPC subnet.\n"
+                    },
+                    "linodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcSubnetLinode:getVpcSubnetLinode"
+                        },
+                        "description": "A list of Linode IDs that added to this subnet.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "The date and time when the VPC Subnet was last updated.\n"
+                    },
+                    "vpcId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "created",
+                    "id",
+                    "ipv4",
+                    "label",
+                    "linodes",
+                    "updated",
+                    "vpcId"
+                ]
+            }
+        },
+        "linode:index/getVpcSubnets:getVpcSubnets": {
+            "description": "Provides information about a list of Linode VPC subnets that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to list VPC subnets.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-subnets = linode.getVpcSubnets({\n    vpcId: 123,\n    filters: [{\n        name: \"label\",\n        values: [\"test\"],\n    }],\n});\nexport const vpcSubnets = filtered_subnets.then(filtered_subnets =\u003e filtered_subnets.vpcSubnets);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_subnets = linode.get_vpc_subnets(vpc_id=123,\n    filters=[linode.GetVpcSubnetsFilterArgs(\n        name=\"label\",\n        values=[\"test\"],\n    )])\npulumi.export(\"vpcSubnets\", filtered_subnets.vpc_subnets)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_subnets = Linode.GetVpcSubnets.Invoke(new()\n    {\n        VpcId = 123,\n        Filters = new[]\n        {\n            new Linode.Inputs.GetVpcSubnetsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"test\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vpcSubnets\"] = filtered_subnets.Apply(filtered_subnets =\u003e filtered_subnets.Apply(getVpcSubnetsResult =\u003e getVpcSubnetsResult.VpcSubnets)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_subnets, err := linode.GetVpcSubnets(ctx, \u0026linode.GetVpcSubnetsArgs{\n\t\t\tVpcId: 123,\n\t\t\tFilters: []linode.GetVpcSubnetsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"test\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vpcSubnets\", filtered_subnets.VpcSubnets)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVpcSubnetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()\n            .vpcId(123)\n            .filters(GetVpcSubnetsFilterArgs.builder()\n                .name(\"label\")\n                .values(\"test\")\n                .build())\n            .build());\n\n        ctx.export(\"vpcSubnets\", filtered_subnets.vpcSubnets());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-subnets:\n    fn::invoke:\n      Function: linode:getVpcSubnets\n      Arguments:\n        vpcId: 123\n        filters:\n          - name: label\n            values:\n              - test\noutputs:\n  vpcSubnets: ${[\"filtered-subnets\"].vpcSubnets}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `ipv4`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcSubnets.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcSubnetsFilter:getVpcSubnetsFilter"
+                        }
+                    },
+                    "vpcId": {
+                        "type": "integer",
+                        "description": "The id of the parent VPC for the list of VPCs.\n\n* `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.\n"
+                    },
+                    "vpcSubnets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcSubnetsVpcSubnet:getVpcSubnetsVpcSubnet"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcSubnets.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcSubnetsFilter:getVpcSubnetsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique id of the VPC subnet.\n"
+                    },
+                    "vpcId": {
+                        "type": "integer"
+                    },
+                    "vpcSubnets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcSubnetsVpcSubnet:getVpcSubnetsVpcSubnet"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "vpcId"
+                ]
+            }
+        },
+        "linode:index/getVpcs:getVpcs": {
+            "description": "Provides information about a list of Linode VPCs that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to list VPCs.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-vpcs = linode.getVpcs({\n    filters: [{\n        name: \"label\",\n        values: [\"test\"],\n    }],\n});\nexport const vpcs = filtered_vpcs.then(filtered_vpcs =\u003e filtered_vpcs.vpcs);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_vpcs = linode.get_vpcs(filters=[linode.GetVpcsFilterArgs(\n    name=\"label\",\n    values=[\"test\"],\n)])\npulumi.export(\"vpcs\", filtered_vpcs.vpcs)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_vpcs = Linode.GetVpcs.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetVpcsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"test\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vpcs\"] = filtered_vpcs.Apply(filtered_vpcs =\u003e filtered_vpcs.Apply(getVpcsResult =\u003e getVpcsResult.Vpcs)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_vpcs, err := linode.GetVpcs(ctx, \u0026linode.GetVpcsArgs{\n\t\t\tFilters: []linode.GetVpcsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"test\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vpcs\", filtered_vpcs.Vpcs)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVpcsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()\n            .filters(GetVpcsFilterArgs.builder()\n                .name(\"label\")\n                .values(\"test\")\n                .build())\n            .build());\n\n        ctx.export(\"vpcs\", filtered_vpcs.vpcs());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-vpcs:\n    fn::invoke:\n      Function: linode:getVpcs\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - test\noutputs:\n  vpcs: ${[\"filtered-vpcs\"].vpcs}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `description`\n\n* `region`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcs.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcsFilter:getVpcsFilter"
+                        }
+                    },
+                    "vpcs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcsVpc:getVpcsVpc"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcs.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcsFilter:getVpcsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique id of this VPC.\n"
+                    },
+                    "vpcs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcsVpc:getVpcsVpc"
                         }
                     }
                 },
