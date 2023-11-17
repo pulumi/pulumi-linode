@@ -51,14 +51,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Helpers enabled when booting to this Linode Config.
+     * (Options) Helpers enabled when booting to this Linode Config.
      * 
      */
     @Import(name="helpers")
     private @Nullable Output<InstanceConfigHelpersArgs> helpers;
 
     /**
-     * @return Helpers enabled when booting to this Linode Config.
+     * @return (Options) Helpers enabled when booting to this Linode Config.
      * 
      */
     public Optional<Output<InstanceConfigHelpersArgs>> helpers() {
@@ -80,9 +80,17 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     * 
+     */
     @Import(name="interfaces")
     private @Nullable Output<List<InstanceConfigInterfaceArgs>> interfaces;
 
+    /**
+     * @return `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     * 
+     */
     public Optional<Output<List<InstanceConfigInterfaceArgs>>> interfaces() {
         return Optional.ofNullable(this.interfaces);
     }
@@ -120,16 +128,12 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Defaults to the total RAM of the Linode
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
-     * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<Integer> memoryLimit;
 
     /**
      * @return Defaults to the total RAM of the Linode
-     * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     public Optional<Output<Integer>> memoryLimit() {
@@ -258,7 +262,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param helpers Helpers enabled when booting to this Linode Config.
+         * @param helpers (Options) Helpers enabled when booting to this Linode Config.
          * 
          * @return builder
          * 
@@ -269,7 +273,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param helpers Helpers enabled when booting to this Linode Config.
+         * @param helpers (Options) Helpers enabled when booting to this Linode Config.
          * 
          * @return builder
          * 
@@ -299,15 +303,33 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
             return id(Output.of(id));
         }
 
+        /**
+         * @param interfaces `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(@Nullable Output<List<InstanceConfigInterfaceArgs>> interfaces) {
             $.interfaces = interfaces;
             return this;
         }
 
+        /**
+         * @param interfaces `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(List<InstanceConfigInterfaceArgs> interfaces) {
             return interfaces(Output.of(interfaces));
         }
 
+        /**
+         * @param interfaces `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(InstanceConfigInterfaceArgs... interfaces) {
             return interfaces(List.of(interfaces));
         }
@@ -357,8 +379,6 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param memoryLimit Defaults to the total RAM of the Linode
          * 
-         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
-         * 
          * @return builder
          * 
          */
@@ -369,8 +389,6 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param memoryLimit Defaults to the total RAM of the Linode
-         * 
-         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
          * 
          * @return builder
          * 

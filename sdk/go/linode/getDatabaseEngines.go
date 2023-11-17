@@ -137,10 +137,9 @@ func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts 
 // A collection of arguments for invoking getDatabaseEngines.
 type GetDatabaseEnginesArgs struct {
 	Engines []GetDatabaseEnginesEngine `pulumi:"engines"`
+	// `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -175,10 +174,9 @@ func GetDatabaseEnginesOutput(ctx *pulumi.Context, args GetDatabaseEnginesOutput
 // A collection of arguments for invoking getDatabaseEngines.
 type GetDatabaseEnginesOutputArgs struct {
 	Engines GetDatabaseEnginesEngineArrayInput `pulumi:"engines"`
+	// `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
 	Filters GetDatabaseEnginesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

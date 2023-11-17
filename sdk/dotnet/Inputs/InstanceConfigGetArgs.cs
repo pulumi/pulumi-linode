@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.InstanceConfigDevicesGetArgs>? Devices { get; set; }
 
         /// <summary>
-        /// Helpers enabled when booting to this Linode Config.
+        /// (Options) Helpers enabled when booting to this Linode Config.
         /// </summary>
         [Input("helpers")]
         public Input<Inputs.InstanceConfigHelpersGetArgs>? Helpers { get; set; }
@@ -38,6 +38,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("interfaces")]
         private InputList<Inputs.InstanceConfigInterfaceGetArgs>? _interfaces;
+
+        /// <summary>
+        /// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+        /// </summary>
         public InputList<Inputs.InstanceConfigInterfaceGetArgs> Interfaces
         {
             get => _interfaces ?? (_interfaces = new InputList<Inputs.InstanceConfigInterfaceGetArgs>());
@@ -58,8 +62,6 @@ namespace Pulumi.Linode.Inputs
 
         /// <summary>
         /// Defaults to the total RAM of the Linode
-        /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }

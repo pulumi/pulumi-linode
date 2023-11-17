@@ -188,16 +188,12 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
     /**
      * The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
      * 
-     * ***
-     * 
      */
     @Export(name="target", refs={String.class}, tree="[0]")
     private Output<String> target;
 
     /**
      * @return The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     * 
-     * ***
      * 
      */
     public Output<String> target() {

@@ -142,16 +142,12 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      * 
-     * ***
-     * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
      * @return The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -445,8 +441,6 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param size The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -457,8 +451,6 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param size The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-         * 
-         * ***
          * 
          * @return builder
          * 

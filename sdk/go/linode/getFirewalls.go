@@ -130,6 +130,7 @@ func GetFirewalls(ctx *pulumi.Context, args *GetFirewallsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFirewalls.
 type GetFirewallsArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
 	Filters   []GetFirewallsFilter   `pulumi:"filters"`
 	Firewalls []GetFirewallsFirewall `pulumi:"firewalls"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -163,6 +164,7 @@ func GetFirewallsOutput(ctx *pulumi.Context, args GetFirewallsOutputArgs, opts .
 
 // A collection of arguments for invoking getFirewalls.
 type GetFirewallsOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
 	Filters   GetFirewallsFilterArrayInput   `pulumi:"filters"`
 	Firewalls GetFirewallsFirewallArrayInput `pulumi:"firewalls"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)

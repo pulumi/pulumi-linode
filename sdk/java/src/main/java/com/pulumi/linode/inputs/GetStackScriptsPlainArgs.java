@@ -18,9 +18,17 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetStackScriptsPlainArgs Empty = new GetStackScriptsPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetStackScriptsFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * 
+     */
     public Optional<List<GetStackScriptsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -28,16 +36,12 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-     * 
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -109,19 +113,29 @@ public final class GetStackScriptsPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetStackScriptsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetStackScriptsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetStackScriptsFilter... filters) {
             return filters(List.of(filters));
         }
 
         /**
          * @param latest If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-         * 
-         * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
          * 
          * @return builder
          * 

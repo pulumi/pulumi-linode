@@ -26,9 +26,17 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.engines);
     }
 
+    /**
+     * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetDatabaseEnginesFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetDatabaseEnginesFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -36,16 +44,12 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
     /**
      * If true, only the latest engine version will be returned.
      * 
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Output<Boolean> latest;
 
     /**
      * @return If true, only the latest engine version will be returned.
-     * 
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
      * 
      */
     public Optional<Output<Boolean>> latest() {
@@ -123,23 +127,39 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
             return engines(List.of(engines));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetDatabaseEnginesFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetDatabaseEnginesFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetDatabaseEnginesFilterArgs... filters) {
             return filters(List.of(filters));
         }
 
         /**
          * @param latest If true, only the latest engine version will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
          * 
          * @return builder
          * 
@@ -151,8 +171,6 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param latest If true, only the latest engine version will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
          * 
          * @return builder
          * 

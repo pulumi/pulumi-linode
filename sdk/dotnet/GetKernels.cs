@@ -147,6 +147,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetKernelsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetKernelsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetKernelsFilterArgs>());
@@ -183,6 +187,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetKernelsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetKernelsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetKernelsFilterInputArgs>());

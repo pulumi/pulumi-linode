@@ -140,6 +140,13 @@ class DatabaseMysqlUpdatesArgs:
                  frequency: pulumi.Input[str],
                  hour_of_day: pulumi.Input[int],
                  week_of_month: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] day_of_week: The day to perform maintenance. (`monday`, `tuesday`, ...)
+        :param pulumi.Input[int] duration: The maximum maintenance window time in hours. (`1`..`3`)
+        :param pulumi.Input[str] frequency: Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        :param pulumi.Input[int] hour_of_day: The hour to begin maintenance based in UTC time. (`0`..`23`)
+        :param pulumi.Input[int] week_of_month: The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "frequency", frequency)
@@ -150,6 +157,9 @@ class DatabaseMysqlUpdatesArgs:
     @property
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> pulumi.Input[str]:
+        """
+        The day to perform maintenance. (`monday`, `tuesday`, ...)
+        """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
@@ -159,6 +169,9 @@ class DatabaseMysqlUpdatesArgs:
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Input[int]:
+        """
+        The maximum maintenance window time in hours. (`1`..`3`)
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -168,6 +181,9 @@ class DatabaseMysqlUpdatesArgs:
     @property
     @pulumi.getter
     def frequency(self) -> pulumi.Input[str]:
+        """
+        Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
@@ -177,6 +193,9 @@ class DatabaseMysqlUpdatesArgs:
     @property
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> pulumi.Input[int]:
+        """
+        The hour to begin maintenance based in UTC time. (`0`..`23`)
+        """
         return pulumi.get(self, "hour_of_day")
 
     @hour_of_day.setter
@@ -186,6 +205,9 @@ class DatabaseMysqlUpdatesArgs:
     @property
     @pulumi.getter(name="weekOfMonth")
     def week_of_month(self) -> Optional[pulumi.Input[int]]:
+        """
+        The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        """
         return pulumi.get(self, "week_of_month")
 
     @week_of_month.setter
@@ -201,6 +223,13 @@ class DatabasePostgresqlUpdatesArgs:
                  frequency: pulumi.Input[str],
                  hour_of_day: pulumi.Input[int],
                  week_of_month: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] day_of_week: The day to perform maintenance. (`monday`, `tuesday`, ...)
+        :param pulumi.Input[int] duration: The maximum maintenance window time in hours. (`1`..`3`)
+        :param pulumi.Input[str] frequency: Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        :param pulumi.Input[int] hour_of_day: The hour to begin maintenance based in UTC time. (`0`..`23`)
+        :param pulumi.Input[int] week_of_month: The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "frequency", frequency)
@@ -211,6 +240,9 @@ class DatabasePostgresqlUpdatesArgs:
     @property
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> pulumi.Input[str]:
+        """
+        The day to perform maintenance. (`monday`, `tuesday`, ...)
+        """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
@@ -220,6 +252,9 @@ class DatabasePostgresqlUpdatesArgs:
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Input[int]:
+        """
+        The maximum maintenance window time in hours. (`1`..`3`)
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -229,6 +264,9 @@ class DatabasePostgresqlUpdatesArgs:
     @property
     @pulumi.getter
     def frequency(self) -> pulumi.Input[str]:
+        """
+        Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
@@ -238,6 +276,9 @@ class DatabasePostgresqlUpdatesArgs:
     @property
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> pulumi.Input[int]:
+        """
+        The hour to begin maintenance based in UTC time. (`0`..`23`)
+        """
         return pulumi.get(self, "hour_of_day")
 
     @hour_of_day.setter
@@ -247,6 +288,9 @@ class DatabasePostgresqlUpdatesArgs:
     @property
     @pulumi.getter(name="weekOfMonth")
     def week_of_month(self) -> Optional[pulumi.Input[int]]:
+        """
+        The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        """
         return pulumi.get(self, "week_of_month")
 
     @week_of_month.setter
@@ -549,6 +593,13 @@ class InstanceAlertsArgs:
                  network_in: Optional[pulumi.Input[int]] = None,
                  network_out: Optional[pulumi.Input[int]] = None,
                  transfer_quota: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cpu: The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+        :param pulumi.Input[int] io: The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        :param pulumi.Input[int] network_in: The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param pulumi.Input[int] network_out: The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param pulumi.Input[int] transfer_quota: The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if io is not None:
@@ -563,6 +614,9 @@ class InstanceAlertsArgs:
     @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+        """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
@@ -572,6 +626,9 @@ class InstanceAlertsArgs:
     @property
     @pulumi.getter
     def io(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        """
         return pulumi.get(self, "io")
 
     @io.setter
@@ -581,6 +638,9 @@ class InstanceAlertsArgs:
     @property
     @pulumi.getter(name="networkIn")
     def network_in(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "network_in")
 
     @network_in.setter
@@ -590,6 +650,9 @@ class InstanceAlertsArgs:
     @property
     @pulumi.getter(name="networkOut")
     def network_out(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "network_out")
 
     @network_out.setter
@@ -599,6 +662,9 @@ class InstanceAlertsArgs:
     @property
     @pulumi.getter(name="transferQuota")
     def transfer_quota(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "transfer_quota")
 
     @transfer_quota.setter
@@ -710,12 +776,11 @@ class InstanceConfigArgs:
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[str] comments: Arbitrary user comments about this `config`.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
-        :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
+        :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: (Options) Helpers enabled when booting to this Linode Config.
         :param pulumi.Input[int] id: The ID of the disk in the Linode API.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]] interfaces: `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         :param pulumi.Input[str] kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param pulumi.Input[int] memory_limit: Defaults to the total RAM of the Linode
-               
-               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         :param pulumi.Input[str] root_device: The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
         :param pulumi.Input[str] run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
         :param pulumi.Input[str] virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
@@ -782,7 +847,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def helpers(self) -> Optional[pulumi.Input['InstanceConfigHelpersArgs']]:
         """
-        Helpers enabled when booting to this Linode Config.
+        (Options) Helpers enabled when booting to this Linode Config.
         """
         return pulumi.get(self, "helpers")
 
@@ -805,6 +870,9 @@ class InstanceConfigArgs:
     @property
     @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]:
+        """
+        `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+        """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
@@ -828,8 +896,6 @@ class InstanceConfigArgs:
     def memory_limit(self) -> Optional[pulumi.Input[int]]:
         """
         Defaults to the total RAM of the Linode
-
-        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -1522,13 +1588,11 @@ class InstanceConfigInterfaceArgs:
         :param pulumi.Input[int] id: The ID of the disk in the Linode API.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param pulumi.Input[str] ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        :param pulumi.Input['InstanceConfigInterfaceIpv4Args'] ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-        :param pulumi.Input[str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
-        :param pulumi.Input[bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-               
-               * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        :param pulumi.Input['InstanceConfigInterfaceIpv4Args'] ipv4: `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
                
                The following computed attribute is available in a VPC interface:
+        :param pulumi.Input[str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param pulumi.Input[bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
         :param pulumi.Input[int] subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param pulumi.Input[int] vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -1613,7 +1677,9 @@ class InstanceConfigInterfaceArgs:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input['InstanceConfigInterfaceIpv4Args']]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "ipv4")
 
@@ -1638,10 +1704,6 @@ class InstanceConfigInterfaceArgs:
     def primary(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-
-        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-
-        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "primary")
 
@@ -1912,13 +1974,11 @@ class InstanceInterfaceArgs:
         :param pulumi.Input[int] id: The ID of the disk in the Linode API.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param pulumi.Input[str] ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        :param pulumi.Input['InstanceInterfaceIpv4Args'] ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-        :param pulumi.Input[str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
-        :param pulumi.Input[bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-               
-               * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        :param pulumi.Input['InstanceInterfaceIpv4Args'] ipv4: `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
                
                The following computed attribute is available in a VPC interface:
+        :param pulumi.Input[str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param pulumi.Input[bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
         :param pulumi.Input[int] subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param pulumi.Input[int] vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -2003,7 +2063,9 @@ class InstanceInterfaceArgs:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input['InstanceInterfaceIpv4Args']]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "ipv4")
 
@@ -2028,10 +2090,6 @@ class InstanceInterfaceArgs:
     def primary(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-
-        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-
-        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "primary")
 
@@ -2154,12 +2212,18 @@ class InstanceIpVpcNat11Args:
 class InstanceMetadataArgs:
     def __init__(__self__, *,
                  user_data: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_data: The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        """
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -2253,9 +2317,8 @@ class LkeClusterPoolArgs:
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
         """
         :param pulumi.Input[int] count: The number of nodes in the Node Pool.
-               
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param pulumi.Input[str] type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input['LkeClusterPoolAutoscalerArgs'] autoscaler: `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param pulumi.Input[int] id: The ID of the node.
         """
         pulumi.set(__self__, "count", count)
@@ -2272,8 +2335,6 @@ class LkeClusterPoolArgs:
     def count(self) -> pulumi.Input[int]:
         """
         The number of nodes in the Node Pool.
-
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "count")
 
@@ -2296,6 +2357,9 @@ class LkeClusterPoolArgs:
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']]:
+        """
+        `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -2556,11 +2620,9 @@ class ObjectStorageBucketLifecycleRuleArgs:
         """
         :param pulumi.Input[bool] enabled: Specifies whether the lifecycle rule is active.
         :param pulumi.Input[int] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-               
-               * `expiration` - (Optional) Specifies a period in the object's expire.
-               
-               * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        :param pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs'] expiration: `expiration` - (Optional) Specifies a period in the object's expire.
         :param pulumi.Input[str] id: The unique identifier for the rule.
+        :param pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expiration: `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         :param pulumi.Input[str] prefix: The object key prefix identifying one or more objects to which the rule applies.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -2592,10 +2654,6 @@ class ObjectStorageBucketLifecycleRuleArgs:
     def abort_incomplete_multipart_upload_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-
-        * `expiration` - (Optional) Specifies a period in the object's expire.
-
-        * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         """
         return pulumi.get(self, "abort_incomplete_multipart_upload_days")
 
@@ -2606,6 +2664,9 @@ class ObjectStorageBucketLifecycleRuleArgs:
     @property
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs']]:
+        """
+        `expiration` - (Optional) Specifies a period in the object's expire.
+        """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
@@ -2627,6 +2688,9 @@ class ObjectStorageBucketLifecycleRuleArgs:
     @property
     @pulumi.getter(name="noncurrentVersionExpiration")
     def noncurrent_version_expiration(self) -> Optional[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs']]:
+        """
+        `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        """
         return pulumi.get(self, "noncurrent_version_expiration")
 
     @noncurrent_version_expiration.setter

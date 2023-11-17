@@ -51,16 +51,12 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
     /**
      * The label given to this key. For display purposes only.
      * 
-     * ***
-     * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
      * @return The label given to this key. For display purposes only.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> label() {
@@ -180,8 +176,6 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         /**
          * @param label The label given to this key. For display purposes only.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -192,8 +186,6 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param label The label given to this key. For display purposes only.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -104,8 +104,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        /// 
-        /// - - -
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -218,8 +216,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        /// 
-        /// - - -
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -294,8 +290,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-        /// 
-        /// - - -
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

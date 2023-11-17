@@ -91,6 +91,9 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     * `country`
 
     * `capabilities`
+
+
+    :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -135,5 +138,8 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     * `country`
 
     * `capabilities`
+
+
+    :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
     """
     ...

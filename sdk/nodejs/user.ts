@@ -114,7 +114,9 @@ export class User extends pulumi.CustomResource {
      */
     public readonly firewallGrants!: pulumi.Output<outputs.UserFirewallGrant[]>;
     /**
-     * A structure containing the Account-level grants a User has.
+     * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     *
+     * The following arguments are sets of entity grants:
      */
     public readonly globalGrants!: pulumi.Output<outputs.UserGlobalGrants>;
     /**
@@ -135,10 +137,6 @@ export class User extends pulumi.CustomResource {
     public readonly nodebalancerGrants!: pulumi.Output<outputs.UserNodebalancerGrant[]>;
     /**
      * If true, this user will only have explicit permissions granted.
-     *
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-     *
-     * The following arguments are sets of entity grants:
      */
     public readonly restricted!: pulumi.Output<boolean | undefined>;
     /**
@@ -234,7 +232,9 @@ export interface UserState {
      */
     firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
     /**
-     * A structure containing the Account-level grants a User has.
+     * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     *
+     * The following arguments are sets of entity grants:
      */
     globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
     /**
@@ -255,10 +255,6 @@ export interface UserState {
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
-     *
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-     *
-     * The following arguments are sets of entity grants:
      */
     restricted?: pulumi.Input<boolean>;
     /**
@@ -300,7 +296,9 @@ export interface UserArgs {
      */
     firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
     /**
-     * A structure containing the Account-level grants a User has.
+     * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     *
+     * The following arguments are sets of entity grants:
      */
     globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
     /**
@@ -321,10 +319,6 @@ export interface UserArgs {
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
-     *
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-     *
-     * The following arguments are sets of entity grants:
      */
     restricted?: pulumi.Input<boolean>;
     /**

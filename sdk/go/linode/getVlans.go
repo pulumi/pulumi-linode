@@ -83,6 +83,7 @@ func GetVlans(ctx *pulumi.Context, args *GetVlansArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getVlans.
 type GetVlansArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
 	Filters []GetVlansFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -115,6 +116,7 @@ func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getVlans.
 type GetVlansOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
 	Filters GetVlansFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

@@ -81,6 +81,7 @@ func GetNodebalancers(ctx *pulumi.Context, args *GetNodebalancersArgs, opts ...p
 
 // A collection of arguments for invoking getNodebalancers.
 type GetNodebalancersArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
 	Filters       []GetNodebalancersFilter       `pulumi:"filters"`
 	Nodebalancers []GetNodebalancersNodebalancer `pulumi:"nodebalancers"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -114,6 +115,7 @@ func GetNodebalancersOutput(ctx *pulumi.Context, args GetNodebalancersOutputArgs
 
 // A collection of arguments for invoking getNodebalancers.
 type GetNodebalancersOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
 	Filters       GetNodebalancersFilterArrayInput       `pulumi:"filters"`
 	Nodebalancers GetNodebalancersNodebalancerArrayInput `pulumi:"nodebalancers"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)

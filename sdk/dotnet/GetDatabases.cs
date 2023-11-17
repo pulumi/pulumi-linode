@@ -151,6 +151,10 @@ namespace Pulumi.Linode
 
         [Input("filters")]
         private List<Inputs.GetDatabasesFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetDatabasesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetDatabasesFilterArgs>());
@@ -187,6 +191,10 @@ namespace Pulumi.Linode
 
         [Input("filters")]
         private InputList<Inputs.GetDatabasesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetDatabasesFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetDatabasesFilterInputArgs>());

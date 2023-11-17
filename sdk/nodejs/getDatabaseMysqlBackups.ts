@@ -59,11 +59,12 @@ export interface GetDatabaseMysqlBackupsArgs {
      * The ID of the database to retrieve backups for.
      */
     databaseId: number;
+    /**
+     * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     */
     filters?: inputs.GetDatabaseMysqlBackupsFilter[];
     /**
      * If true, only the latest backup will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -136,11 +137,12 @@ export interface GetDatabaseMysqlBackupsOutputArgs {
      * The ID of the database to retrieve backups for.
      */
     databaseId: pulumi.Input<number>;
+    /**
+     * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseMysqlBackupsFilterArgs>[]>;
     /**
      * If true, only the latest backup will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

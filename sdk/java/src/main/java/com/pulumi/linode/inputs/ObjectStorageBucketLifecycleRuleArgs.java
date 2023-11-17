@@ -22,20 +22,12 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
-     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
-     * 
-     * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
-     * 
      */
     @Import(name="abortIncompleteMultipartUploadDays")
     private @Nullable Output<Integer> abortIncompleteMultipartUploadDays;
 
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-     * 
-     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
-     * 
-     * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
      * 
      */
     public Optional<Output<Integer>> abortIncompleteMultipartUploadDays() {
@@ -57,9 +49,17 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         return this.enabled;
     }
 
+    /**
+     * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * 
+     */
     @Import(name="expiration")
     private @Nullable Output<ObjectStorageBucketLifecycleRuleExpirationArgs> expiration;
 
+    /**
+     * @return `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * 
+     */
     public Optional<Output<ObjectStorageBucketLifecycleRuleExpirationArgs>> expiration() {
         return Optional.ofNullable(this.expiration);
     }
@@ -79,9 +79,17 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+     * 
+     */
     @Import(name="noncurrentVersionExpiration")
     private @Nullable Output<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs> noncurrentVersionExpiration;
 
+    /**
+     * @return `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+     * 
+     */
     public Optional<Output<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs>> noncurrentVersionExpiration() {
         return Optional.ofNullable(this.noncurrentVersionExpiration);
     }
@@ -133,10 +141,6 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         /**
          * @param abortIncompleteMultipartUploadDays Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
          * 
-         * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
-         * 
-         * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
-         * 
          * @return builder
          * 
          */
@@ -147,10 +151,6 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
 
         /**
          * @param abortIncompleteMultipartUploadDays Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-         * 
-         * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
-         * 
-         * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
          * 
          * @return builder
          * 
@@ -180,11 +180,23 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param expiration `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(@Nullable Output<ObjectStorageBucketLifecycleRuleExpirationArgs> expiration) {
             $.expiration = expiration;
             return this;
         }
 
+        /**
+         * @param expiration `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(ObjectStorageBucketLifecycleRuleExpirationArgs expiration) {
             return expiration(Output.of(expiration));
         }
@@ -210,11 +222,23 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
             return id(Output.of(id));
         }
 
+        /**
+         * @param noncurrentVersionExpiration `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noncurrentVersionExpiration(@Nullable Output<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs> noncurrentVersionExpiration) {
             $.noncurrentVersionExpiration = noncurrentVersionExpiration;
             return this;
         }
 
+        /**
+         * @param noncurrentVersionExpiration `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noncurrentVersionExpiration(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs noncurrentVersionExpiration) {
             return noncurrentVersionExpiration(Output.of(noncurrentVersionExpiration));
         }

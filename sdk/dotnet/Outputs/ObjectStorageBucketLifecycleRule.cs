@@ -15,21 +15,23 @@ namespace Pulumi.Linode.Outputs
     {
         /// <summary>
         /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-        /// 
-        /// * `expiration` - (Optional) Specifies a period in the object's expire.
-        /// 
-        /// * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         /// </summary>
         public readonly int? AbortIncompleteMultipartUploadDays;
         /// <summary>
         /// Specifies whether the lifecycle rule is active.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// `expiration` - (Optional) Specifies a period in the object's expire.
+        /// </summary>
         public readonly Outputs.ObjectStorageBucketLifecycleRuleExpiration? Expiration;
         /// <summary>
         /// The unique identifier for the rule.
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        /// </summary>
         public readonly Outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration? NoncurrentVersionExpiration;
         /// <summary>
         /// The object key prefix identifying one or more objects to which the rule applies.

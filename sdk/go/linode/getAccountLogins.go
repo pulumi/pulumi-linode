@@ -77,6 +77,7 @@ func GetAccountLogins(ctx *pulumi.Context, args *GetAccountLoginsArgs, opts ...p
 
 // A collection of arguments for invoking getAccountLogins.
 type GetAccountLoginsArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
 	Filters []GetAccountLoginsFilter `pulumi:"filters"`
 	Logins  []GetAccountLoginsLogin  `pulumi:"logins"`
 }
@@ -104,6 +105,7 @@ func GetAccountLoginsOutput(ctx *pulumi.Context, args GetAccountLoginsOutputArgs
 
 // A collection of arguments for invoking getAccountLogins.
 type GetAccountLoginsOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
 	Filters GetAccountLoginsFilterArrayInput `pulumi:"filters"`
 	Logins  GetAccountLoginsLoginArrayInput  `pulumi:"logins"`
 }

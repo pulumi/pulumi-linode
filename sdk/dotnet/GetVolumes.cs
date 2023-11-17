@@ -101,6 +101,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetVolumesFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetVolumesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVolumesFilterArgs>());
@@ -137,6 +141,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetVolumesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetVolumesFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetVolumesFilterInputArgs>());

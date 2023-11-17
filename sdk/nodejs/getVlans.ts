@@ -60,6 +60,9 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getVlans.
  */
 export interface GetVlansArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+     */
     filters?: inputs.GetVlansFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -128,6 +131,9 @@ export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getVlans.
  */
 export interface GetVlansOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVlansFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

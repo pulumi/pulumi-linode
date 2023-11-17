@@ -105,8 +105,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly bootConfigLabel!: pulumi.Output<string>;
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-     *
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
     public readonly booted!: pulumi.Output<boolean>;
     /**
@@ -140,8 +138,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     public readonly interfaces!: pulumi.Output<outputs.InstanceInterface[] | undefined>;
     /**
@@ -149,7 +146,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
     public /*out*/ readonly ipv4s!: pulumi.Output<string[]>;
     /**
@@ -178,16 +177,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     *
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-     *
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
     /**
@@ -196,8 +185,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly rootPass!: pulumi.Output<string | undefined>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     *
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     public readonly sharedIpv4s!: pulumi.Output<string[]>;
     /**
@@ -226,8 +213,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -365,8 +350,6 @@ export interface InstanceState {
     bootConfigLabel?: pulumi.Input<string>;
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-     *
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
     booted?: pulumi.Input<boolean>;
     /**
@@ -400,8 +383,7 @@ export interface InstanceState {
      */
     image?: pulumi.Input<string>;
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
@@ -409,7 +391,9 @@ export interface InstanceState {
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -438,16 +422,6 @@ export interface InstanceState {
     region?: pulumi.Input<string>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     *
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-     *
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
@@ -456,8 +430,6 @@ export interface InstanceState {
     rootPass?: pulumi.Input<string>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     *
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -486,8 +458,6 @@ export interface InstanceState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -526,8 +496,6 @@ export interface InstanceArgs {
     bootConfigLabel?: pulumi.Input<string>;
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-     *
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
     booted?: pulumi.Input<boolean>;
     /**
@@ -553,8 +521,7 @@ export interface InstanceArgs {
      */
     image?: pulumi.Input<string>;
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
@@ -575,16 +542,6 @@ export interface InstanceArgs {
     region: pulumi.Input<string>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     *
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-     *
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
@@ -593,8 +550,6 @@ export interface InstanceArgs {
     rootPass?: pulumi.Input<string>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     *
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -615,8 +570,6 @@ export interface InstanceArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**

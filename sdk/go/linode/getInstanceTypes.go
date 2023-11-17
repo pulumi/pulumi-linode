@@ -110,6 +110,7 @@ func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...p
 
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
 	Filters []GetInstanceTypesFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -143,6 +144,7 @@ func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs
 
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
 	Filters GetInstanceTypesFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

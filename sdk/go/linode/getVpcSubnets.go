@@ -68,10 +68,9 @@ func GetVpcSubnets(ctx *pulumi.Context, args *GetVpcSubnetsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getVpcSubnets.
 type GetVpcSubnetsArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
 	Filters []GetVpcSubnetsFilter `pulumi:"filters"`
 	// The id of the parent VPC for the list of VPCs.
-	//
-	// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
 	VpcId      int                      `pulumi:"vpcId"`
 	VpcSubnets []GetVpcSubnetsVpcSubnet `pulumi:"vpcSubnets"`
 }
@@ -100,10 +99,9 @@ func GetVpcSubnetsOutput(ctx *pulumi.Context, args GetVpcSubnetsOutputArgs, opts
 
 // A collection of arguments for invoking getVpcSubnets.
 type GetVpcSubnetsOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
 	Filters GetVpcSubnetsFilterArrayInput `pulumi:"filters"`
 	// The id of the parent VPC for the list of VPCs.
-	//
-	// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
 	VpcId      pulumi.IntInput                  `pulumi:"vpcId"`
 	VpcSubnets GetVpcSubnetsVpcSubnetArrayInput `pulumi:"vpcSubnets"`
 }

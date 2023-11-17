@@ -18,9 +18,17 @@ public final class GetVolumesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVolumesArgs Empty = new GetVolumesArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetVolumesFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetVolumesFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -89,15 +97,33 @@ public final class GetVolumesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetVolumesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetVolumesFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetVolumesFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetVolumesFilterArgs... filters) {
             return filters(List.of(filters));
         }

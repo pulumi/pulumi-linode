@@ -16,37 +16,77 @@ public final class DatabasePostgresqlUpdatesArgs extends com.pulumi.resources.Re
 
     public static final DatabasePostgresqlUpdatesArgs Empty = new DatabasePostgresqlUpdatesArgs();
 
+    /**
+     * The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     */
     @Import(name="dayOfWeek", required=true)
     private Output<String> dayOfWeek;
 
+    /**
+     * @return The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     */
     public Output<String> dayOfWeek() {
         return this.dayOfWeek;
     }
 
+    /**
+     * The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     */
     @Import(name="duration", required=true)
     private Output<Integer> duration;
 
+    /**
+     * @return The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     */
     public Output<Integer> duration() {
         return this.duration;
     }
 
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     */
     @Import(name="frequency", required=true)
     private Output<String> frequency;
 
+    /**
+     * @return Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     */
     public Output<String> frequency() {
         return this.frequency;
     }
 
+    /**
+     * The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     */
     @Import(name="hourOfDay", required=true)
     private Output<Integer> hourOfDay;
 
+    /**
+     * @return The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     */
     public Output<Integer> hourOfDay() {
         return this.hourOfDay;
     }
 
+    /**
+     * The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
     @Import(name="weekOfMonth")
     private @Nullable Output<Integer> weekOfMonth;
 
+    /**
+     * @return The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
     public Optional<Output<Integer>> weekOfMonth() {
         return Optional.ofNullable(this.weekOfMonth);
     }
@@ -79,47 +119,107 @@ public final class DatabasePostgresqlUpdatesArgs extends com.pulumi.resources.Re
             $ = new DatabasePostgresqlUpdatesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dayOfWeek The day to perform maintenance. (`monday`, `tuesday`, ...)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dayOfWeek(Output<String> dayOfWeek) {
             $.dayOfWeek = dayOfWeek;
             return this;
         }
 
+        /**
+         * @param dayOfWeek The day to perform maintenance. (`monday`, `tuesday`, ...)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dayOfWeek(String dayOfWeek) {
             return dayOfWeek(Output.of(dayOfWeek));
         }
 
+        /**
+         * @param duration The maximum maintenance window time in hours. (`1`..`3`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(Output<Integer> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration The maximum maintenance window time in hours. (`1`..`3`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
         }
 
+        /**
+         * @param frequency Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder frequency(Output<String> frequency) {
             $.frequency = frequency;
             return this;
         }
 
+        /**
+         * @param frequency Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder frequency(String frequency) {
             return frequency(Output.of(frequency));
         }
 
+        /**
+         * @param hourOfDay The hour to begin maintenance based in UTC time. (`0`..`23`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder hourOfDay(Output<Integer> hourOfDay) {
             $.hourOfDay = hourOfDay;
             return this;
         }
 
+        /**
+         * @param hourOfDay The hour to begin maintenance based in UTC time. (`0`..`23`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder hourOfDay(Integer hourOfDay) {
             return hourOfDay(Output.of(hourOfDay));
         }
 
+        /**
+         * @param weekOfMonth The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekOfMonth(@Nullable Output<Integer> weekOfMonth) {
             $.weekOfMonth = weekOfMonth;
             return this;
         }
 
+        /**
+         * @param weekOfMonth The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekOfMonth(Integer weekOfMonth) {
             return weekOfMonth(Output.of(weekOfMonth));
         }

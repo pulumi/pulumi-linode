@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceMetadata {
+    /**
+     * @return The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
+     */
     private @Nullable String userData;
 
     private InstanceMetadata() {}
+    /**
+     * @return The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
+     */
     public Optional<String> userData() {
         return Optional.ofNullable(this.userData);
     }

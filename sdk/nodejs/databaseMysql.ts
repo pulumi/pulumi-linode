@@ -53,19 +53,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ## updates
- *
- * The following arguments are supported in the `updates` specification block:
- *
- * * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
- *
- * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
- *
- * * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
- *
- * * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
- *
- * * `weekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  *
  * ## Import
  *
@@ -149,8 +136,8 @@ export class DatabaseMysql extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-     *
      * * Must be `none` for a single node cluster.
+     *
      *
      * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
@@ -165,8 +152,6 @@ export class DatabaseMysql extends pulumi.CustomResource {
     public /*out*/ readonly rootUsername!: pulumi.Output<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-     *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     public readonly sslConnection!: pulumi.Output<boolean | undefined>;
     /**
@@ -175,8 +160,6 @@ export class DatabaseMysql extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -184,7 +167,7 @@ export class DatabaseMysql extends pulumi.CustomResource {
      */
     public /*out*/ readonly updated!: pulumi.Output<string>;
     /**
-     * Configuration settings for automated patch update maintenance for the Managed Database.
+     * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     public readonly updates!: pulumi.Output<outputs.DatabaseMysqlUpdates>;
     /**
@@ -317,8 +300,8 @@ export interface DatabaseMysqlState {
     region?: pulumi.Input<string>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-     *
      * * Must be `none` for a single node cluster.
+     *
      *
      * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
@@ -333,8 +316,6 @@ export interface DatabaseMysqlState {
     rootUsername?: pulumi.Input<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-     *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     sslConnection?: pulumi.Input<boolean>;
     /**
@@ -343,8 +324,6 @@ export interface DatabaseMysqlState {
     status?: pulumi.Input<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -352,7 +331,7 @@ export interface DatabaseMysqlState {
      */
     updated?: pulumi.Input<string>;
     /**
-     * Configuration settings for automated patch update maintenance for the Managed Database.
+     * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     updates?: pulumi.Input<inputs.DatabaseMysqlUpdates>;
     /**
@@ -391,26 +370,22 @@ export interface DatabaseMysqlArgs {
     region: pulumi.Input<string>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-     *
      * * Must be `none` for a single node cluster.
+     *
      *
      * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
     replicationType?: pulumi.Input<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-     *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     sslConnection?: pulumi.Input<boolean>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
     /**
-     * Configuration settings for automated patch update maintenance for the Managed Database.
+     * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     updates?: pulumi.Input<inputs.DatabaseMysqlUpdates>;
 }

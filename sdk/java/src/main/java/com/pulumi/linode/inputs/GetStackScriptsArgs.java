@@ -19,9 +19,17 @@ public final class GetStackScriptsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetStackScriptsArgs Empty = new GetStackScriptsArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetStackScriptsFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetStackScriptsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -29,16 +37,12 @@ public final class GetStackScriptsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Output<Boolean> latest;
 
     /**
      * @return If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-     * 
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      * 
      */
     public Optional<Output<Boolean>> latest() {
@@ -110,23 +114,39 @@ public final class GetStackScriptsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetStackScriptsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetStackScriptsFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetStackScriptsFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetStackScriptsFilterArgs... filters) {
             return filters(List.of(filters));
         }
 
         /**
          * @param latest If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-         * 
-         * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
          * 
          * @return builder
          * 
@@ -138,8 +158,6 @@ public final class GetStackScriptsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param latest If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-         * 
-         * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
          * 
          * @return builder
          * 

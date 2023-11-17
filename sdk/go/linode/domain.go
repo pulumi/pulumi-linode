@@ -81,8 +81,6 @@ type Domain struct {
 	// The group this Domain belongs to. This is for display purposes only.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// The IP addresses representing the master DNS for this Domain.
-	//
-	// ***
 	MasterIps pulumi.StringArrayOutput `pulumi:"masterIps"`
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	RefreshSec pulumi.IntPtrOutput `pulumi:"refreshSec"`
@@ -147,8 +145,6 @@ type domainState struct {
 	// The group this Domain belongs to. This is for display purposes only.
 	Group *string `pulumi:"group"`
 	// The IP addresses representing the master DNS for this Domain.
-	//
-	// ***
 	MasterIps []string `pulumi:"masterIps"`
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	RefreshSec *int `pulumi:"refreshSec"`
@@ -178,8 +174,6 @@ type DomainState struct {
 	// The group this Domain belongs to. This is for display purposes only.
 	Group pulumi.StringPtrInput
 	// The IP addresses representing the master DNS for this Domain.
-	//
-	// ***
 	MasterIps pulumi.StringArrayInput
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	RefreshSec pulumi.IntPtrInput
@@ -213,8 +207,6 @@ type domainArgs struct {
 	// The group this Domain belongs to. This is for display purposes only.
 	Group *string `pulumi:"group"`
 	// The IP addresses representing the master DNS for this Domain.
-	//
-	// ***
 	MasterIps []string `pulumi:"masterIps"`
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	RefreshSec *int `pulumi:"refreshSec"`
@@ -245,8 +237,6 @@ type DomainArgs struct {
 	// The group this Domain belongs to. This is for display purposes only.
 	Group pulumi.StringPtrInput
 	// The IP addresses representing the master DNS for this Domain.
-	//
-	// ***
 	MasterIps pulumi.StringArrayInput
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	RefreshSec pulumi.IntPtrInput
@@ -377,8 +367,6 @@ func (o DomainOutput) Group() pulumi.StringPtrOutput {
 }
 
 // The IP addresses representing the master DNS for this Domain.
-//
-// ***
 func (o DomainOutput) MasterIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.MasterIps }).(pulumi.StringArrayOutput)
 }

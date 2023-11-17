@@ -31,15 +31,11 @@ class ObjectStorageBucketArgs:
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
         :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
-        :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
+        :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: `cert` - (Optional) The bucket's TLS/SSL certificate.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
-        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-               
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-               
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "label", label)
@@ -110,7 +106,7 @@ class ObjectStorageBucketArgs:
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input['ObjectStorageBucketCertArgs']]:
         """
-        The cert used by this Object Storage Bucket.
+        `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "cert")
 
@@ -134,7 +130,7 @@ class ObjectStorageBucketArgs:
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
         """
-        Lifecycle rules to be applied to the bucket.
+        `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         """
         return pulumi.get(self, "lifecycle_rules")
 
@@ -159,10 +155,6 @@ class ObjectStorageBucketArgs:
     def versioning(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-
-        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-
-        * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "versioning")
 
@@ -189,20 +181,16 @@ class _ObjectStorageBucketState:
         Input properties used for looking up and filtering ObjectStorageBucket resources.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
         :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
-        :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
+        :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: `cert` - (Optional) The bucket's TLS/SSL certificate.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
                public.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-               
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-               
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -255,7 +243,7 @@ class _ObjectStorageBucketState:
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input['ObjectStorageBucketCertArgs']]:
         """
-        The cert used by this Object Storage Bucket.
+        `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "cert")
 
@@ -328,7 +316,7 @@ class _ObjectStorageBucketState:
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
         """
-        Lifecycle rules to be applied to the bucket.
+        `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         """
         return pulumi.get(self, "lifecycle_rules")
 
@@ -353,10 +341,6 @@ class _ObjectStorageBucketState:
     def versioning(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-
-        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-
-        * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "versioning")
 
@@ -431,17 +415,13 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
         :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
-        :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: The cert used by this Object Storage Bucket.
+        :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: `cert` - (Optional) The bucket's TLS/SSL certificate.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-               
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-               
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         ...
     @overload
@@ -574,20 +554,16 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key to authenticate with.
         :param pulumi.Input[str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
-        :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: The cert used by this Object Storage Bucket.
+        :param pulumi.Input[pulumi.InputType['ObjectStorageBucketCertArgs']] cert: `cert` - (Optional) The bucket's TLS/SSL certificate.
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
                public.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageBucketLifecycleRuleArgs']]]] lifecycle_rules: `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         :param pulumi.Input[str] secret_key: The secret key to authenticate with.
         :param pulumi.Input[bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-               
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-               
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -626,7 +602,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     @pulumi.getter
     def cert(self) -> pulumi.Output[Optional['outputs.ObjectStorageBucketCert']]:
         """
-        The cert used by this Object Storage Bucket.
+        `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "cert")
 
@@ -675,7 +651,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> pulumi.Output[Optional[Sequence['outputs.ObjectStorageBucketLifecycleRule']]]:
         """
-        Lifecycle rules to be applied to the bucket.
+        `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         """
         return pulumi.get(self, "lifecycle_rules")
 
@@ -692,10 +668,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def versioning(self) -> pulumi.Output[bool]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-
-        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-
-        * `cert` - (Optional) The bucket's TLS/SSL certificate.
         """
         return pulumi.get(self, "versioning")
 

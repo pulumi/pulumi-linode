@@ -118,7 +118,9 @@ type User struct {
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The firewalls the user has permissions access to.
 	FirewallGrants UserFirewallGrantArrayOutput `pulumi:"firewallGrants"`
-	// A structure containing the Account-level grants a User has.
+	// `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	GlobalGrants UserGlobalGrantsOutput `pulumi:"globalGrants"`
 	// The images the user has permissions access to.
 	ImageGrants UserImageGrantArrayOutput `pulumi:"imageGrants"`
@@ -129,10 +131,6 @@ type User struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayOutput `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
-	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-	//
-	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrOutput `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
@@ -188,7 +186,9 @@ type userState struct {
 	Email *string `pulumi:"email"`
 	// The firewalls the user has permissions access to.
 	FirewallGrants []UserFirewallGrant `pulumi:"firewallGrants"`
-	// A structure containing the Account-level grants a User has.
+	// `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
 	// The images the user has permissions access to.
 	ImageGrants []UserImageGrant `pulumi:"imageGrants"`
@@ -199,10 +199,6 @@ type userState struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
-	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-	//
-	// The following arguments are sets of entity grants:
 	Restricted *bool `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys []string `pulumi:"sshKeys"`
@@ -223,7 +219,9 @@ type UserState struct {
 	Email pulumi.StringPtrInput
 	// The firewalls the user has permissions access to.
 	FirewallGrants UserFirewallGrantArrayInput
-	// A structure containing the Account-level grants a User has.
+	// `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	GlobalGrants UserGlobalGrantsPtrInput
 	// The images the user has permissions access to.
 	ImageGrants UserImageGrantArrayInput
@@ -234,10 +232,6 @@ type UserState struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
-	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-	//
-	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrInput
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayInput
@@ -262,7 +256,9 @@ type userArgs struct {
 	Email string `pulumi:"email"`
 	// The firewalls the user has permissions access to.
 	FirewallGrants []UserFirewallGrant `pulumi:"firewallGrants"`
-	// A structure containing the Account-level grants a User has.
+	// `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
 	// The images the user has permissions access to.
 	ImageGrants []UserImageGrant `pulumi:"imageGrants"`
@@ -273,10 +269,6 @@ type userArgs struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
-	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-	//
-	// The following arguments are sets of entity grants:
 	Restricted *bool `pulumi:"restricted"`
 	// The StackScripts the user has permissions access to.
 	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
@@ -294,7 +286,9 @@ type UserArgs struct {
 	Email pulumi.StringInput
 	// The firewalls the user has permissions access to.
 	FirewallGrants UserFirewallGrantArrayInput
-	// A structure containing the Account-level grants a User has.
+	// `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	//
+	// The following arguments are sets of entity grants:
 	GlobalGrants UserGlobalGrantsPtrInput
 	// The images the user has permissions access to.
 	ImageGrants UserImageGrantArrayInput
@@ -305,10 +299,6 @@ type UserArgs struct {
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
-	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-	//
-	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrInput
 	// The StackScripts the user has permissions access to.
 	StackscriptGrants UserStackscriptGrantArrayInput
@@ -420,7 +410,9 @@ func (o UserOutput) FirewallGrants() UserFirewallGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserFirewallGrantArrayOutput { return v.FirewallGrants }).(UserFirewallGrantArrayOutput)
 }
 
-// A structure containing the Account-level grants a User has.
+// `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+//
+// The following arguments are sets of entity grants:
 func (o UserOutput) GlobalGrants() UserGlobalGrantsOutput {
 	return o.ApplyT(func(v *User) UserGlobalGrantsOutput { return v.GlobalGrants }).(UserGlobalGrantsOutput)
 }
@@ -446,10 +438,6 @@ func (o UserOutput) NodebalancerGrants() UserNodebalancerGrantArrayOutput {
 }
 
 // If true, this user will only have explicit permissions granted.
-//
-// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
-//
-// The following arguments are sets of entity grants:
 func (o UserOutput) Restricted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Restricted }).(pulumi.BoolPtrOutput)
 }

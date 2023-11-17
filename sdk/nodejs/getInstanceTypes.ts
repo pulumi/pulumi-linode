@@ -69,6 +69,9 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getInstanceTypes.
  */
 export interface GetInstanceTypesArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+     */
     filters?: inputs.GetInstanceTypesFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -149,6 +152,9 @@ export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?:
  * A collection of arguments for invoking getInstanceTypes.
  */
 export interface GetInstanceTypesOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

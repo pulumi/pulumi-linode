@@ -35,16 +35,12 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      * 
-     * ***
-     * 
      */
     @Import(name="images", required=true)
     private Output<List<String>> images;
 
     /**
      * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> images() {
@@ -164,8 +160,6 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -177,8 +171,6 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -188,8 +180,6 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-         * 
-         * ***
          * 
          * @return builder
          * 

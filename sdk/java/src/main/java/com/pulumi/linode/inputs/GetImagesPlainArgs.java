@@ -18,9 +18,17 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetImagesPlainArgs Empty = new GetImagesPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetImagesFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+     * 
+     */
     public Optional<List<GetImagesFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -35,16 +43,12 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-     * 
-     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -109,11 +113,23 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetImagesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetImagesFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetImagesFilter... filters) {
             return filters(List.of(filters));
         }
@@ -129,8 +145,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param latest If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-         * 
-         * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
          * 
          * @return builder
          * 

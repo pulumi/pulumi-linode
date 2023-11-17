@@ -92,11 +92,10 @@ type GetDatabaseBackupsArgs struct {
 	// The ID of the database to retrieve backups for.
 	DatabaseId int `pulumi:"databaseId"`
 	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
-	DatabaseType string                     `pulumi:"databaseType"`
-	Filters      []GetDatabaseBackupsFilter `pulumi:"filters"`
+	DatabaseType string `pulumi:"databaseType"`
+	// `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+	Filters []GetDatabaseBackupsFilter `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -136,11 +135,10 @@ type GetDatabaseBackupsOutputArgs struct {
 	// The ID of the database to retrieve backups for.
 	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
 	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
-	DatabaseType pulumi.StringInput                 `pulumi:"databaseType"`
-	Filters      GetDatabaseBackupsFilterArrayInput `pulumi:"filters"`
+	DatabaseType pulumi.StringInput `pulumi:"databaseType"`
+	// `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+	Filters GetDatabaseBackupsFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

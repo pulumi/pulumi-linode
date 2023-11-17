@@ -143,6 +143,7 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     * `watchdog_enabled`
 
 
+    :param Sequence[pulumi.InputType['GetInstancesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode instances that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -223,6 +224,7 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     * `watchdog_enabled`
 
 
+    :param Sequence[pulumi.InputType['GetInstancesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode instances that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

@@ -121,6 +121,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetVpcSubnetsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetVpcSubnetsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVpcSubnetsFilterArgs>());
@@ -129,8 +133,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The id of the parent VPC for the list of VPCs.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public int VpcId { get; set; }
@@ -153,6 +155,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetVpcSubnetsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetVpcSubnetsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetVpcSubnetsFilterInputArgs>());
@@ -161,8 +167,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The id of the parent VPC for the list of VPCs.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;

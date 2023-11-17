@@ -66,11 +66,12 @@ export interface GetDatabaseBackupsArgs {
      * The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      */
     databaseType: string;
+    /**
+     * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     */
     filters?: inputs.GetDatabaseBackupsFilter[];
     /**
      * If true, only the latest backup will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -149,11 +150,12 @@ export interface GetDatabaseBackupsOutputArgs {
      * The type of the database to retrieve backups for. (`mysql`, `postgresql`)
      */
     databaseType: pulumi.Input<string>;
+    /**
+     * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseBackupsFilterArgs>[]>;
     /**
      * If true, only the latest backup will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

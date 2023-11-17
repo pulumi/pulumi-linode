@@ -54,16 +54,12 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     /**
      * If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
      * 
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
-     * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
      * @return If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
-     * 
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -73,8 +69,6 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      * 
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-     * 
      */
     @Import(name="inboundPolicy")
     private @Nullable Output<String> inboundPolicy;
@@ -82,22 +76,20 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      * 
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-     * 
      */
     public Optional<Output<String>> inboundPolicy() {
         return Optional.ofNullable(this.inboundPolicy);
     }
 
     /**
-     * A firewall rule that specifies what inbound network traffic is allowed.
+     * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     @Import(name="inbounds")
     private @Nullable Output<List<FirewallInboundArgs>> inbounds;
 
     /**
-     * @return A firewall rule that specifies what inbound network traffic is allowed.
+     * @return `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     public Optional<Output<List<FirewallInboundArgs>>> inbounds() {
@@ -165,14 +157,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A firewall rule that specifies what outbound network traffic is allowed.
+     * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
     @Import(name="outbounds")
     private @Nullable Output<List<FirewallOutboundArgs>> outbounds;
 
     /**
-     * @return A firewall rule that specifies what outbound network traffic is allowed.
+     * @return `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
     public Optional<Output<List<FirewallOutboundArgs>>> outbounds() {
@@ -315,8 +307,6 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disabled If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
          * 
-         * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
-         * 
          * @return builder
          * 
          */
@@ -328,8 +318,6 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disabled If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
          * 
-         * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
-         * 
          * @return builder
          * 
          */
@@ -339,8 +327,6 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param inboundPolicy The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
-         * 
-         * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -353,8 +339,6 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param inboundPolicy The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
          * 
-         * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-         * 
          * @return builder
          * 
          */
@@ -363,7 +347,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inbounds A firewall rule that specifies what inbound network traffic is allowed.
+         * @param inbounds `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -374,7 +358,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inbounds A firewall rule that specifies what inbound network traffic is allowed.
+         * @param inbounds `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -384,7 +368,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inbounds A firewall rule that specifies what inbound network traffic is allowed.
+         * @param inbounds `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -498,7 +482,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outbounds A firewall rule that specifies what outbound network traffic is allowed.
+         * @param outbounds `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -509,7 +493,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outbounds A firewall rule that specifies what outbound network traffic is allowed.
+         * @param outbounds `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -519,7 +503,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outbounds A firewall rule that specifies what outbound network traffic is allowed.
+         * @param outbounds `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
          * 
          * @return builder
          * 

@@ -44,6 +44,9 @@ export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getVolumes.
  */
 export interface GetVolumesArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+     */
     filters?: inputs.GetVolumesFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -99,6 +102,9 @@ export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getVolumes.
  */
 export interface GetVolumesOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVolumesFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

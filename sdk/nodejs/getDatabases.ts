@@ -53,6 +53,9 @@ export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOption
  */
 export interface GetDatabasesArgs {
     databases?: inputs.GetDatabasesDatabase[];
+    /**
+     * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+     */
     filters?: inputs.GetDatabasesFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -116,6 +119,9 @@ export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.
  */
 export interface GetDatabasesOutputArgs {
     databases?: pulumi.Input<pulumi.Input<inputs.GetDatabasesDatabaseArgs>[]>;
+    /**
+     * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabasesFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

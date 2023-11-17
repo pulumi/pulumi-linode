@@ -113,8 +113,6 @@ export class Volume extends pulumi.CustomResource {
     public readonly linodeId!: pulumi.Output<number>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -192,8 +190,6 @@ export interface VolumeState {
     linodeId?: pulumi.Input<number>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -228,8 +224,6 @@ export interface VolumeArgs {
     linodeId?: pulumi.Input<number>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**

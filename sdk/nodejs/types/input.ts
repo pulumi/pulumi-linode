@@ -6,18 +6,48 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface DatabaseMysqlUpdates {
+    /**
+     * The day to perform maintenance. (`monday`, `tuesday`, ...)
+     */
     dayOfWeek: pulumi.Input<string>;
+    /**
+     * The maximum maintenance window time in hours. (`1`..`3`)
+     */
     duration: pulumi.Input<number>;
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     */
     frequency: pulumi.Input<string>;
+    /**
+     * The hour to begin maintenance based in UTC time. (`0`..`23`)
+     */
     hourOfDay: pulumi.Input<number>;
+    /**
+     * The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     */
     weekOfMonth?: pulumi.Input<number>;
 }
 
 export interface DatabasePostgresqlUpdates {
+    /**
+     * The day to perform maintenance. (`monday`, `tuesday`, ...)
+     */
     dayOfWeek: pulumi.Input<string>;
+    /**
+     * The maximum maintenance window time in hours. (`1`..`3`)
+     */
     duration: pulumi.Input<number>;
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     */
     frequency: pulumi.Input<string>;
+    /**
+     * The hour to begin maintenance based in UTC time. (`0`..`23`)
+     */
     hourOfDay: pulumi.Input<number>;
+    /**
+     * The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     */
     weekOfMonth?: pulumi.Input<number>;
 }
 
@@ -2815,10 +2845,25 @@ export interface GetVpcsVpcArgs {
 }
 
 export interface InstanceAlerts {
+    /**
+     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+     */
     cpu?: pulumi.Input<number>;
+    /**
+     * The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+     */
     io?: pulumi.Input<number>;
+    /**
+     * The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkIn?: pulumi.Input<number>;
+    /**
+     * The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkOut?: pulumi.Input<number>;
+    /**
+     * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     */
     transferQuota?: pulumi.Input<number>;
 }
 
@@ -2852,13 +2897,16 @@ export interface InstanceConfig {
      */
     devices?: pulumi.Input<inputs.InstanceConfigDevices>;
     /**
-     * Helpers enabled when booting to this Linode Config.
+     * (Options) Helpers enabled when booting to this Linode Config.
      */
     helpers?: pulumi.Input<inputs.InstanceConfigHelpers>;
     /**
      * The ID of the disk in the Linode API.
      */
     id?: pulumi.Input<number>;
+    /**
+     * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
     /**
      * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -2870,8 +2918,6 @@ export interface InstanceConfig {
     label: pulumi.Input<string>;
     /**
      * Defaults to the total RAM of the Linode
-     *
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
@@ -3057,7 +3103,9 @@ export interface InstanceConfigInterface {
      */
     ipamAddress?: pulumi.Input<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
     ipv4?: pulumi.Input<inputs.InstanceConfigInterfaceIpv4>;
     /**
@@ -3066,10 +3114,6 @@ export interface InstanceConfigInterface {
     label?: pulumi.Input<string>;
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-     *
-     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-     *
-     * The following computed attribute is available in a VPC interface:
      */
     primary?: pulumi.Input<boolean>;
     /**
@@ -3159,7 +3203,9 @@ export interface InstanceInterface {
      */
     ipamAddress?: pulumi.Input<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * The following computed attribute is available in a VPC interface:
      */
     ipv4?: pulumi.Input<inputs.InstanceInterfaceIpv4>;
     /**
@@ -3168,10 +3214,6 @@ export interface InstanceInterface {
     label?: pulumi.Input<string>;
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-     *
-     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-     *
-     * The following computed attribute is available in a VPC interface:
      */
     primary?: pulumi.Input<boolean>;
     /**
@@ -3209,6 +3251,9 @@ export interface InstanceIpVpcNat11 {
 }
 
 export interface InstanceMetadata {
+    /**
+     * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     */
     userData?: pulumi.Input<string>;
 }
 
@@ -3227,11 +3272,12 @@ export interface LkeClusterControlPlane {
 }
 
 export interface LkeClusterPool {
+    /**
+     * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     */
     autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
     /**
      * The number of nodes in the Node Pool.
-     *
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     count: pulumi.Input<number>;
     /**
@@ -3311,21 +3357,23 @@ export interface ObjectStorageBucketCert {
 export interface ObjectStorageBucketLifecycleRule {
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-     *
-     * * `expiration` - (Optional) Specifies a period in the object's expire.
-     *
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
      */
     abortIncompleteMultipartUploadDays?: pulumi.Input<number>;
     /**
      * Specifies whether the lifecycle rule is active.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * `expiration` - (Optional) Specifies a period in the object's expire.
+     */
     expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleExpiration>;
     /**
      * The unique identifier for the rule.
      */
     id?: pulumi.Input<string>;
+    /**
+     * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     */
     noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration>;
     /**
      * The object key prefix identifying one or more objects to which the rule applies.

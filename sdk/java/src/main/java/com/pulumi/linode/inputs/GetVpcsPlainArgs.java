@@ -16,9 +16,17 @@ public final class GetVpcsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVpcsPlainArgs Empty = new GetVpcsPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetVpcsFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+     * 
+     */
     public Optional<List<GetVpcsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -55,11 +63,23 @@ public final class GetVpcsPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetVpcsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetVpcsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetVpcsFilter... filters) {
             return filters(List.of(filters));
         }

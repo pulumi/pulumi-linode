@@ -117,7 +117,9 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.UserFirewallGrant>> FirewallGrants { get; private set; } = null!;
 
         /// <summary>
-        /// A structure containing the Account-level grants a User has.
+        /// `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// 
+        /// The following arguments are sets of entity grants:
         /// </summary>
         [Output("globalGrants")]
         public Output<Outputs.UserGlobalGrants> GlobalGrants { get; private set; } = null!;
@@ -148,10 +150,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
-        /// 
-        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-        /// 
-        /// The following arguments are sets of entity grants:
         /// </summary>
         [Output("restricted")]
         public Output<bool?> Restricted { get; private set; } = null!;
@@ -263,7 +261,9 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A structure containing the Account-level grants a User has.
+        /// `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// 
+        /// The following arguments are sets of entity grants:
         /// </summary>
         [Input("globalGrants")]
         public Input<Inputs.UserGlobalGrantsArgs>? GlobalGrants { get; set; }
@@ -318,10 +318,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
-        /// 
-        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-        /// 
-        /// The following arguments are sets of entity grants:
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }
@@ -395,7 +391,9 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A structure containing the Account-level grants a User has.
+        /// `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// 
+        /// The following arguments are sets of entity grants:
         /// </summary>
         [Input("globalGrants")]
         public Input<Inputs.UserGlobalGrantsGetArgs>? GlobalGrants { get; set; }
@@ -450,10 +448,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
-        /// 
-        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-        /// 
-        /// The following arguments are sets of entity grants:
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }

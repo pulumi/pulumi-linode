@@ -82,16 +82,12 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      * 
-     * ***
-     * 
      */
     @Import(name="images")
     private @Nullable Output<List<String>> images;
 
     /**
      * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> images() {
@@ -341,8 +337,6 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -354,8 +348,6 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -365,8 +357,6 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param images A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-         * 
-         * ***
          * 
          * @return builder
          * 

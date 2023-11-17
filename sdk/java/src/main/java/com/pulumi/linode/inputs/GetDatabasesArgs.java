@@ -25,9 +25,17 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.databases);
     }
 
+    /**
+     * `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetDatabasesFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetDatabasesFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -102,15 +110,33 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
             return databases(List.of(databases));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetDatabasesFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetDatabasesFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetDatabasesFilterArgs... filters) {
             return filters(List.of(filters));
         }

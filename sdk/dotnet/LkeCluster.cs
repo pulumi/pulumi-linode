@@ -101,7 +101,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> ApiEndpoints { get; private set; } = null!;
 
         /// <summary>
-        /// Defines settings for the Kubernetes Control Plane.
+        /// `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Output("controlPlane")]
         public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
@@ -131,17 +131,13 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// </summary>
         [Output("pools")]
         public Output<ImmutableArray<Outputs.LkeClusterPool>> Pools { get; private set; } = null!;
 
         /// <summary>
         /// This Kubernetes cluster's location.
-        /// 
-        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-        /// 
-        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -209,7 +205,7 @@ namespace Pulumi.Linode
     public sealed class LkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines settings for the Kubernetes Control Plane.
+        /// `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("controlPlane")]
         public Input<Inputs.LkeClusterControlPlaneArgs>? ControlPlane { get; set; }
@@ -230,7 +226,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeClusterPoolArgs>? _pools;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// </summary>
         public InputList<Inputs.LkeClusterPoolArgs> Pools
         {
@@ -240,10 +236,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// This Kubernetes cluster's location.
-        /// 
-        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-        /// 
-        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -281,7 +273,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Defines settings for the Kubernetes Control Plane.
+        /// `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("controlPlane")]
         public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
@@ -324,7 +316,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeClusterPoolGetArgs>? _pools;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// </summary>
         public InputList<Inputs.LkeClusterPoolGetArgs> Pools
         {
@@ -334,10 +326,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// This Kubernetes cluster's location.
-        /// 
-        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-        /// 
-        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

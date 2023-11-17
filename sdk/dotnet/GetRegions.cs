@@ -121,6 +121,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetRegionsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetRegionsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetRegionsFilterArgs>());
@@ -145,6 +149,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetRegionsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetRegionsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetRegionsFilterInputArgs>());

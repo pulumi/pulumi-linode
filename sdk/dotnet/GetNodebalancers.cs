@@ -151,6 +151,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetNodebalancersFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetNodebalancersFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetNodebalancersFilterArgs>());
@@ -187,6 +191,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetNodebalancersFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetNodebalancersFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetNodebalancersFilterInputArgs>());

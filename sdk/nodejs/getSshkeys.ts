@@ -56,6 +56,9 @@ export function getSshkeys(args?: GetSshkeysArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getSshkeys.
  */
 export interface GetSshkeysArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+     */
     filters?: inputs.GetSshkeysFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -123,6 +126,9 @@ export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSshkeys.
  */
 export interface GetSshkeysOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetSshkeysFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

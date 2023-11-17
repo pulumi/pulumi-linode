@@ -52,6 +52,9 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+     */
     filters?: inputs.GetUsersFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -115,6 +118,9 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetUsersFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

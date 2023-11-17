@@ -135,6 +135,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetAccountLoginsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetAccountLoginsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetAccountLoginsFilterArgs>());
@@ -159,6 +163,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetAccountLoginsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetAccountLoginsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetAccountLoginsFilterInputArgs>());

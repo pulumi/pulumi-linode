@@ -17,9 +17,17 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRegionsArgs Empty = new GetRegionsArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetRegionsFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetRegionsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -56,15 +64,33 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetRegionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetRegionsFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetRegionsFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetRegionsFilterArgs... filters) {
             return filters(List.of(filters));
         }

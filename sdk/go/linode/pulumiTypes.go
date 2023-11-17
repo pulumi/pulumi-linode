@@ -14,11 +14,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DatabaseMysqlUpdates struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+	// The day to perform maintenance. (`monday`, `tuesday`, ...)
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours. (`1`..`3`)
+	Duration int `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+	Frequency string `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time. (`0`..`23`)
+	HourOfDay int `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+	WeekOfMonth *int `pulumi:"weekOfMonth"`
 }
 
 // DatabaseMysqlUpdatesInput is an input type that accepts DatabaseMysqlUpdatesArgs and DatabaseMysqlUpdatesOutput values.
@@ -33,10 +38,15 @@ type DatabaseMysqlUpdatesInput interface {
 }
 
 type DatabaseMysqlUpdatesArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The day to perform maintenance. (`monday`, `tuesday`, ...)
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours. (`1`..`3`)
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time. (`0`..`23`)
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
 }
 
@@ -117,22 +127,27 @@ func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesPtrOutputWithContext(c
 	}).(DatabaseMysqlUpdatesPtrOutput)
 }
 
+// The day to perform maintenance. (`monday`, `tuesday`, ...)
 func (o DatabaseMysqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
+// The maximum maintenance window time in hours. (`1`..`3`)
 func (o DatabaseMysqlUpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
 func (o DatabaseMysqlUpdatesOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// The hour to begin maintenance based in UTC time. (`0`..`23`)
 func (o DatabaseMysqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func (o DatabaseMysqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
 }
@@ -161,6 +176,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) Elem() DatabaseMysqlUpdatesOutput {
 	}).(DatabaseMysqlUpdatesOutput)
 }
 
+// The day to perform maintenance. (`monday`, `tuesday`, ...)
 func (o DatabaseMysqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
 		if v == nil {
@@ -170,6 +186,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum maintenance window time in hours. (`1`..`3`)
 func (o DatabaseMysqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
 		if v == nil {
@@ -179,6 +196,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
 func (o DatabaseMysqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
 		if v == nil {
@@ -188,6 +206,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour to begin maintenance based in UTC time. (`0`..`23`)
 func (o DatabaseMysqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
 		if v == nil {
@@ -197,6 +216,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
 		if v == nil {
@@ -207,11 +227,16 @@ func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 }
 
 type DatabasePostgresqlUpdates struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+	// The day to perform maintenance. (`monday`, `tuesday`, ...)
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours. (`1`..`3`)
+	Duration int `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+	Frequency string `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time. (`0`..`23`)
+	HourOfDay int `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+	WeekOfMonth *int `pulumi:"weekOfMonth"`
 }
 
 // DatabasePostgresqlUpdatesInput is an input type that accepts DatabasePostgresqlUpdatesArgs and DatabasePostgresqlUpdatesOutput values.
@@ -226,10 +251,15 @@ type DatabasePostgresqlUpdatesInput interface {
 }
 
 type DatabasePostgresqlUpdatesArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The day to perform maintenance. (`monday`, `tuesday`, ...)
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours. (`1`..`3`)
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time. (`0`..`23`)
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
 }
 
@@ -310,22 +340,27 @@ func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesPtrOutputWit
 	}).(DatabasePostgresqlUpdatesPtrOutput)
 }
 
+// The day to perform maintenance. (`monday`, `tuesday`, ...)
 func (o DatabasePostgresqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
+// The maximum maintenance window time in hours. (`1`..`3`)
 func (o DatabasePostgresqlUpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
 func (o DatabasePostgresqlUpdatesOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// The hour to begin maintenance based in UTC time. (`0`..`23`)
 func (o DatabasePostgresqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func (o DatabasePostgresqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
 }
@@ -354,6 +389,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) Elem() DatabasePostgresqlUpdatesOutp
 	}).(DatabasePostgresqlUpdatesOutput)
 }
 
+// The day to perform maintenance. (`monday`, `tuesday`, ...)
 func (o DatabasePostgresqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
 		if v == nil {
@@ -363,6 +399,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum maintenance window time in hours. (`1`..`3`)
 func (o DatabasePostgresqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
 		if v == nil {
@@ -372,6 +409,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
 func (o DatabasePostgresqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
 		if v == nil {
@@ -381,6 +419,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour to begin maintenance based in UTC time. (`0`..`23`)
 func (o DatabasePostgresqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
 		if v == nil {
@@ -390,6 +429,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
 		if v == nil {
@@ -817,10 +857,15 @@ func (o FirewallOutboundArrayOutput) Index(i pulumi.IntInput) FirewallOutboundOu
 }
 
 type InstanceAlerts struct {
-	Cpu           *int `pulumi:"cpu"`
-	Io            *int `pulumi:"io"`
-	NetworkIn     *int `pulumi:"networkIn"`
-	NetworkOut    *int `pulumi:"networkOut"`
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+	Cpu *int `pulumi:"cpu"`
+	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+	Io *int `pulumi:"io"`
+	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkIn *int `pulumi:"networkIn"`
+	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkOut *int `pulumi:"networkOut"`
+	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota *int `pulumi:"transferQuota"`
 }
 
@@ -836,10 +881,15 @@ type InstanceAlertsInput interface {
 }
 
 type InstanceAlertsArgs struct {
-	Cpu           pulumi.IntPtrInput `pulumi:"cpu"`
-	Io            pulumi.IntPtrInput `pulumi:"io"`
-	NetworkIn     pulumi.IntPtrInput `pulumi:"networkIn"`
-	NetworkOut    pulumi.IntPtrInput `pulumi:"networkOut"`
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+	Cpu pulumi.IntPtrInput `pulumi:"cpu"`
+	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+	Io pulumi.IntPtrInput `pulumi:"io"`
+	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkIn pulumi.IntPtrInput `pulumi:"networkIn"`
+	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkOut pulumi.IntPtrInput `pulumi:"networkOut"`
+	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota pulumi.IntPtrInput `pulumi:"transferQuota"`
 }
 
@@ -920,22 +970,27 @@ func (o InstanceAlertsOutput) ToInstanceAlertsPtrOutputWithContext(ctx context.C
 	}).(InstanceAlertsPtrOutput)
 }
 
+// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 func (o InstanceAlertsOutput) Cpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
 }
 
+// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 func (o InstanceAlertsOutput) Io() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.Io }).(pulumi.IntPtrOutput)
 }
 
+// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) NetworkIn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkIn }).(pulumi.IntPtrOutput)
 }
 
+// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) NetworkOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
 }
 
+// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
 }
@@ -964,6 +1019,7 @@ func (o InstanceAlertsPtrOutput) Elem() InstanceAlertsOutput {
 	}).(InstanceAlertsOutput)
 }
 
+// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 func (o InstanceAlertsPtrOutput) Cpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -973,6 +1029,7 @@ func (o InstanceAlertsPtrOutput) Cpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 func (o InstanceAlertsPtrOutput) Io() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -982,6 +1039,7 @@ func (o InstanceAlertsPtrOutput) Io() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) NetworkIn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -991,6 +1049,7 @@ func (o InstanceAlertsPtrOutput) NetworkIn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) NetworkOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -1000,6 +1059,7 @@ func (o InstanceAlertsPtrOutput) NetworkOut() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -1337,18 +1397,17 @@ type InstanceConfig struct {
 	Comments *string `pulumi:"comments"`
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices *InstanceConfigDevices `pulumi:"devices"`
-	// Helpers enabled when booting to this Linode Config.
+	// (Options) Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
 	// The ID of the disk in the Linode API.
-	Id         *int                      `pulumi:"id"`
+	Id *int `pulumi:"id"`
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces []InstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel *string `pulumi:"kernel"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label string `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
 	RootDevice *string `pulumi:"rootDevice"`
@@ -1374,18 +1433,17 @@ type InstanceConfigArgs struct {
 	Comments pulumi.StringPtrInput `pulumi:"comments"`
 	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
-	// Helpers enabled when booting to this Linode Config.
+	// (Options) Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
 	// The ID of the disk in the Linode API.
-	Id         pulumi.IntPtrInput                `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces InstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	MemoryLimit pulumi.IntPtrInput `pulumi:"memoryLimit"`
 	// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
 	RootDevice pulumi.StringPtrInput `pulumi:"rootDevice"`
@@ -1456,7 +1514,7 @@ func (o InstanceConfigOutput) Devices() InstanceConfigDevicesPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigDevices { return v.Devices }).(InstanceConfigDevicesPtrOutput)
 }
 
-// Helpers enabled when booting to this Linode Config.
+// (Options) Helpers enabled when booting to this Linode Config.
 func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
@@ -1466,6 +1524,7 @@ func (o InstanceConfigOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 func (o InstanceConfigOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
 	return o.ApplyT(func(v InstanceConfig) []InstanceConfigInterface { return v.Interfaces }).(InstanceConfigInterfaceArrayOutput)
 }
@@ -1481,8 +1540,6 @@ func (o InstanceConfigOutput) Label() pulumi.StringOutput {
 }
 
 // Defaults to the total RAM of the Linode
-//
-// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 func (o InstanceConfigOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
@@ -3381,15 +3438,13 @@ type InstanceConfigInterface struct {
 	IpRanges []string `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4 *InstanceConfigInterfaceIpv4 `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
 	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-	//
-	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary *bool `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose string `pulumi:"purpose"`
@@ -3418,15 +3473,13 @@ type InstanceConfigInterfaceArgs struct {
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4 InstanceConfigInterfaceIpv4PtrInput `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-	//
-	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary pulumi.BoolPtrInput `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose pulumi.StringInput `pulumi:"purpose"`
@@ -3506,7 +3559,9 @@ func (o InstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// The following computed attribute is available in a VPC interface:
 func (o InstanceConfigInterfaceOutput) Ipv4() InstanceConfigInterfaceIpv4PtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *InstanceConfigInterfaceIpv4 { return v.Ipv4 }).(InstanceConfigInterfaceIpv4PtrOutput)
 }
@@ -3517,10 +3572,6 @@ func (o InstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
 }
 
 // Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-//
-// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-//
-// The following computed attribute is available in a VPC interface:
 func (o InstanceConfigInterfaceOutput) Primary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
 }
@@ -3911,15 +3962,13 @@ type InstanceInterface struct {
 	IpRanges []string `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4 *InstanceInterfaceIpv4 `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
 	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-	//
-	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary *bool `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose string `pulumi:"purpose"`
@@ -3948,15 +3997,13 @@ type InstanceInterfaceArgs struct {
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4 InstanceInterfaceIpv4PtrInput `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-	//
-	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary pulumi.BoolPtrInput `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose pulumi.StringInput `pulumi:"purpose"`
@@ -4036,7 +4083,9 @@ func (o InstanceInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// The following computed attribute is available in a VPC interface:
 func (o InstanceInterfaceOutput) Ipv4() InstanceInterfaceIpv4PtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *InstanceInterfaceIpv4 { return v.Ipv4 }).(InstanceInterfaceIpv4PtrOutput)
 }
@@ -4047,10 +4096,6 @@ func (o InstanceInterfaceOutput) Label() pulumi.StringPtrOutput {
 }
 
 // Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-//
-// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
-//
-// The following computed attribute is available in a VPC interface:
 func (o InstanceInterfaceOutput) Primary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
 }
@@ -4356,6 +4401,7 @@ func (o InstanceIpVpcNat11ArrayOutput) Index(i pulumi.IntInput) InstanceIpVpcNat
 }
 
 type InstanceMetadata struct {
+	// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	UserData *string `pulumi:"userData"`
 }
 
@@ -4371,6 +4417,7 @@ type InstanceMetadataInput interface {
 }
 
 type InstanceMetadataArgs struct {
+	// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	UserData pulumi.StringPtrInput `pulumi:"userData"`
 }
 
@@ -4425,6 +4472,7 @@ func (o InstanceMetadataOutput) ToInstanceMetadataOutputWithContext(ctx context.
 	return o
 }
 
+// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 func (o InstanceMetadataOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMetadata) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }
@@ -4765,10 +4813,9 @@ func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput
 }
 
 type LkeClusterPool struct {
+	// `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
-	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count int `pulumi:"count"`
 	// The ID of the node.
 	Id    *int                 `pulumi:"id"`
@@ -4789,10 +4836,9 @@ type LkeClusterPoolInput interface {
 }
 
 type LkeClusterPoolArgs struct {
+	// `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Autoscaler LkeClusterPoolAutoscalerPtrInput `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
-	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count pulumi.IntInput `pulumi:"count"`
 	// The ID of the node.
 	Id    pulumi.IntPtrInput           `pulumi:"id"`
@@ -4852,13 +4898,12 @@ func (o LkeClusterPoolOutput) ToLkeClusterPoolOutputWithContext(ctx context.Cont
 	return o
 }
 
+// `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *LkeClusterPoolAutoscaler { return v.Autoscaler }).(LkeClusterPoolAutoscalerPtrOutput)
 }
 
 // The number of nodes in the Node Pool.
-//
-// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeClusterPoolOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v LkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
 }
@@ -5547,16 +5592,14 @@ func (o ObjectStorageBucketCertPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 
 type ObjectStorageBucketLifecycleRule struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-	//
-	// * `expiration` - (Optional) Specifies a period in the object's expire.
-	//
-	// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	AbortIncompleteMultipartUploadDays *int `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies whether the lifecycle rule is active.
-	Enabled    bool                                        `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
+	// `expiration` - (Optional) Specifies a period in the object's expire.
 	Expiration *ObjectStorageBucketLifecycleRuleExpiration `pulumi:"expiration"`
 	// The unique identifier for the rule.
-	Id                          *string                                                      `pulumi:"id"`
+	Id *string `pulumi:"id"`
+	// `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	NoncurrentVersionExpiration *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpiration"`
 	// The object key prefix identifying one or more objects to which the rule applies.
 	Prefix *string `pulumi:"prefix"`
@@ -5575,16 +5618,14 @@ type ObjectStorageBucketLifecycleRuleInput interface {
 
 type ObjectStorageBucketLifecycleRuleArgs struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-	//
-	// * `expiration` - (Optional) Specifies a period in the object's expire.
-	//
-	// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	AbortIncompleteMultipartUploadDays pulumi.IntPtrInput `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies whether the lifecycle rule is active.
-	Enabled    pulumi.BoolInput                                   `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// `expiration` - (Optional) Specifies a period in the object's expire.
 	Expiration ObjectStorageBucketLifecycleRuleExpirationPtrInput `pulumi:"expiration"`
 	// The unique identifier for the rule.
-	Id                          pulumi.StringPtrInput                                               `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	NoncurrentVersionExpiration ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrInput `pulumi:"noncurrentVersionExpiration"`
 	// The object key prefix identifying one or more objects to which the rule applies.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
@@ -5642,10 +5683,6 @@ func (o ObjectStorageBucketLifecycleRuleOutput) ToObjectStorageBucketLifecycleRu
 }
 
 // Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-//
-// * `expiration` - (Optional) Specifies a period in the object's expire.
-//
-// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 func (o ObjectStorageBucketLifecycleRuleOutput) AbortIncompleteMultipartUploadDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *int { return v.AbortIncompleteMultipartUploadDays }).(pulumi.IntPtrOutput)
 }
@@ -5655,6 +5692,7 @@ func (o ObjectStorageBucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// `expiration` - (Optional) Specifies a period in the object's expire.
 func (o ObjectStorageBucketLifecycleRuleOutput) Expiration() ObjectStorageBucketLifecycleRuleExpirationPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *ObjectStorageBucketLifecycleRuleExpiration {
 		return v.Expiration
@@ -5666,6 +5704,7 @@ func (o ObjectStorageBucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 func (o ObjectStorageBucketLifecycleRuleOutput) NoncurrentVersionExpiration() ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
 		return v.NoncurrentVersionExpiration

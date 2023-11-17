@@ -131,6 +131,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetSshkeysFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetSshkeysFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetSshkeysFilterArgs>());
@@ -167,6 +171,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetSshkeysFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetSshkeysFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetSshkeysFilterInputArgs>());

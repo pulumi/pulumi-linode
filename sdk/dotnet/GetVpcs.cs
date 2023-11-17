@@ -123,6 +123,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetVpcsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetVpcsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVpcsFilterArgs>());
@@ -147,6 +151,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetVpcsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetVpcsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetVpcsFilterInputArgs>());

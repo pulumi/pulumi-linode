@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabaseMysqlUpdates {
+    /**
+     * @return The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     */
     private String dayOfWeek;
+    /**
+     * @return The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     */
     private Integer duration;
+    /**
+     * @return Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     */
     private String frequency;
+    /**
+     * @return The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     */
     private Integer hourOfDay;
+    /**
+     * @return The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
     private @Nullable Integer weekOfMonth;
 
     private DatabaseMysqlUpdates() {}
+    /**
+     * @return The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     */
     public String dayOfWeek() {
         return this.dayOfWeek;
     }
+    /**
+     * @return The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     */
     public Integer duration() {
         return this.duration;
     }
+    /**
+     * @return Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     */
     public String frequency() {
         return this.frequency;
     }
+    /**
+     * @return The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     */
     public Integer hourOfDay() {
         return this.hourOfDay;
     }
+    /**
+     * @return The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
     public Optional<Integer> weekOfMonth() {
         return Optional.ofNullable(this.weekOfMonth);
     }

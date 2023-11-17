@@ -40,8 +40,6 @@ type Image struct {
 	Deprecated pulumi.BoolOutput `pulumi:"deprecated"`
 	// A detailed description of this Image.
 	//
-	// ***
-	//
 	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
@@ -57,8 +55,6 @@ type Image struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
-	//
-	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 	//
@@ -121,8 +117,6 @@ type imageState struct {
 	Deprecated *bool `pulumi:"deprecated"`
 	// A detailed description of this Image.
 	//
-	// ***
-	//
 	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
@@ -138,8 +132,6 @@ type imageState struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label *string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
-	//
-	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 	//
@@ -170,8 +162,6 @@ type ImageState struct {
 	Deprecated pulumi.BoolPtrInput
 	// A detailed description of this Image.
 	//
-	// ***
-	//
 	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
@@ -187,8 +177,6 @@ type ImageState struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringPtrInput
 	// The ID of the Linode that this Image will be created from.
-	//
-	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 	//
@@ -215,8 +203,6 @@ type imageArgs struct {
 	CloudInit *bool `pulumi:"cloudInit"`
 	// A detailed description of this Image.
 	//
-	// ***
-	//
 	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
@@ -228,8 +214,6 @@ type imageArgs struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
-	//
-	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 	//
@@ -245,8 +229,6 @@ type ImageArgs struct {
 	CloudInit pulumi.BoolPtrInput
 	// A detailed description of this Image.
 	//
-	// ***
-	//
 	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
@@ -258,8 +240,6 @@ type ImageArgs struct {
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringInput
 	// The ID of the Linode that this Image will be created from.
-	//
-	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 	//
@@ -383,8 +363,6 @@ func (o ImageOutput) Deprecated() pulumi.BoolOutput {
 
 // A detailed description of this Image.
 //
-// ***
-//
 // The following arguments apply to creating an image from an existing Linode Instance:
 func (o ImageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -421,8 +399,6 @@ func (o ImageOutput) Label() pulumi.StringOutput {
 }
 
 // The ID of the Linode that this Image will be created from.
-//
-// ***
 //
 // > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 //

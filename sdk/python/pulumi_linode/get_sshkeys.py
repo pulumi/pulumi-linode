@@ -120,6 +120,7 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
     * `ssh_key`
 
 
+    :param Sequence[pulumi.InputType['GetSshkeysFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -178,6 +179,7 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     * `ssh_key`
 
 
+    :param Sequence[pulumi.InputType['GetSshkeysFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

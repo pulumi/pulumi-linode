@@ -18,9 +18,17 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUsersArgs Empty = new GetUsersArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetUsersFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetUsersFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -89,15 +97,33 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUsersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetUsersFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetUsersFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetUsersFilterArgs... filters) {
             return filters(List.of(filters));
         }

@@ -110,7 +110,7 @@ type ObjectStorageBucket struct {
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
-	// The cert used by this Object Storage Bucket.
+	// `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Cert ObjectStorageBucketCertPtrOutput `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
@@ -123,15 +123,11 @@ type ObjectStorageBucket struct {
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// Lifecycle rules to be applied to the bucket.
+	// `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
 	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning pulumi.BoolOutput `pulumi:"versioning"`
 }
 
@@ -175,7 +171,7 @@ type objectStorageBucketState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl *string `pulumi:"acl"`
-	// The cert used by this Object Storage Bucket.
+	// `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster *string `pulumi:"cluster"`
@@ -188,15 +184,11 @@ type objectStorageBucketState struct {
 	Hostname *string `pulumi:"hostname"`
 	// The label of the Linode Object Storage Bucket.
 	Label *string `pulumi:"label"`
-	// Lifecycle rules to be applied to the bucket.
+	// `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The secret key to authenticate with.
 	SecretKey *string `pulumi:"secretKey"`
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning *bool `pulumi:"versioning"`
 }
 
@@ -205,7 +197,7 @@ type ObjectStorageBucketState struct {
 	AccessKey pulumi.StringPtrInput
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl pulumi.StringPtrInput
-	// The cert used by this Object Storage Bucket.
+	// `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Cert ObjectStorageBucketCertPtrInput
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringPtrInput
@@ -218,15 +210,11 @@ type ObjectStorageBucketState struct {
 	Hostname pulumi.StringPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringPtrInput
-	// Lifecycle rules to be applied to the bucket.
+	// `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
 	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrInput
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning pulumi.BoolPtrInput
 }
 
@@ -239,7 +227,7 @@ type objectStorageBucketArgs struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl *string `pulumi:"acl"`
-	// The cert used by this Object Storage Bucket.
+	// `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster string `pulumi:"cluster"`
@@ -247,15 +235,11 @@ type objectStorageBucketArgs struct {
 	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The label of the Linode Object Storage Bucket.
 	Label string `pulumi:"label"`
-	// Lifecycle rules to be applied to the bucket.
+	// `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The secret key to authenticate with.
 	SecretKey *string `pulumi:"secretKey"`
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning *bool `pulumi:"versioning"`
 }
 
@@ -265,7 +249,7 @@ type ObjectStorageBucketArgs struct {
 	AccessKey pulumi.StringPtrInput
 	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
 	Acl pulumi.StringPtrInput
-	// The cert used by this Object Storage Bucket.
+	// `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Cert ObjectStorageBucketCertPtrInput
 	// The cluster of the Linode Object Storage Bucket.
 	Cluster pulumi.StringInput
@@ -273,15 +257,11 @@ type ObjectStorageBucketArgs struct {
 	CorsEnabled pulumi.BoolPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringInput
-	// Lifecycle rules to be applied to the bucket.
+	// `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
 	// The secret key to authenticate with.
 	SecretKey pulumi.StringPtrInput
 	// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
-	//
-	// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 	Versioning pulumi.BoolPtrInput
 }
 
@@ -382,7 +362,7 @@ func (o ObjectStorageBucketOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
 }
 
-// The cert used by this Object Storage Bucket.
+// `cert` - (Optional) The bucket's TLS/SSL certificate.
 func (o ObjectStorageBucketOutput) Cert() ObjectStorageBucketCertPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucketCertPtrOutput { return v.Cert }).(ObjectStorageBucketCertPtrOutput)
 }
@@ -413,7 +393,7 @@ func (o ObjectStorageBucketOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// Lifecycle rules to be applied to the bucket.
+// `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
 func (o ObjectStorageBucketOutput) LifecycleRules() ObjectStorageBucketLifecycleRuleArrayOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucketLifecycleRuleArrayOutput { return v.LifecycleRules }).(ObjectStorageBucketLifecycleRuleArrayOutput)
 }
@@ -424,10 +404,6 @@ func (o ObjectStorageBucketOutput) SecretKey() pulumi.StringPtrOutput {
 }
 
 // Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
-//
-// * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
-//
-// * `cert` - (Optional) The bucket's TLS/SSL certificate.
 func (o ObjectStorageBucketOutput) Versioning() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolOutput { return v.Versioning }).(pulumi.BoolOutput)
 }

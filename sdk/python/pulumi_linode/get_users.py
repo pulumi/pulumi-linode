@@ -116,6 +116,7 @@ def get_users(filters: Optional[Sequence[pulumi.InputType['GetUsersFilterArgs']]
     * `verfied_phone_number`
 
 
+    :param Sequence[pulumi.InputType['GetUsersFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -170,6 +171,7 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     * `verfied_phone_number`
 
 
+    :param Sequence[pulumi.InputType['GetUsersFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

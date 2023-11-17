@@ -104,9 +104,8 @@ def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFi
     * `ipv4`
 
 
+    :param Sequence[pulumi.InputType['GetVpcSubnetsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
     :param int vpc_id: The id of the parent VPC for the list of VPCs.
-           
-           * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -154,8 +153,7 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     * `ipv4`
 
 
+    :param Sequence[pulumi.InputType['GetVpcSubnetsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
     :param int vpc_id: The id of the parent VPC for the list of VPCs.
-           
-           * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
     """
     ...

@@ -127,6 +127,7 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
     * `client_conn_throttle`
 
 
+    :param Sequence[pulumi.InputType['GetNodebalancersFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -192,6 +193,7 @@ def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     * `client_conn_throttle`
 
 
+    :param Sequence[pulumi.InputType['GetNodebalancersFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

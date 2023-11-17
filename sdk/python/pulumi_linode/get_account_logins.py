@@ -97,6 +97,9 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
     * `restricted`
 
     * `username`
+
+
+    :param Sequence[pulumi.InputType['GetAccountLoginsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -144,5 +147,8 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     * `restricted`
 
     * `username`
+
+
+    :param Sequence[pulumi.InputType['GetAccountLoginsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
     """
     ...

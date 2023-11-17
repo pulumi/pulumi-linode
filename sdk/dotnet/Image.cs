@@ -58,7 +58,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// A detailed description of this Image.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
@@ -104,7 +105,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         /// 
@@ -198,7 +200,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// A detailed description of this Image.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
@@ -232,7 +235,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         /// 
@@ -294,7 +298,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// A detailed description of this Image.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
@@ -340,7 +345,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Linode that this Image will be created from.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         /// 

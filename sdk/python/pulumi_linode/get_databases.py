@@ -116,6 +116,7 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
     ```
 
 
+    :param Sequence[pulumi.InputType['GetDatabasesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """
@@ -170,6 +171,7 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
     ```
 
 
+    :param Sequence[pulumi.InputType['GetDatabasesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select databases that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """

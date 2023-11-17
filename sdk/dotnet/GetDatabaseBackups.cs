@@ -159,6 +159,10 @@ namespace Pulumi.Linode
 
         [Input("filters")]
         private List<Inputs.GetDatabaseBackupsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetDatabaseBackupsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetDatabaseBackupsFilterArgs>());
@@ -167,8 +171,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest backup will be returned.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -215,6 +217,10 @@ namespace Pulumi.Linode
 
         [Input("filters")]
         private InputList<Inputs.GetDatabaseBackupsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetDatabaseBackupsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetDatabaseBackupsFilterInputArgs>());
@@ -223,8 +229,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest backup will be returned.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

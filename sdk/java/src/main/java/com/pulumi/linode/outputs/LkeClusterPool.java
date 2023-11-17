@@ -15,11 +15,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LkeClusterPool {
+    /**
+     * @return `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     */
     private @Nullable LkeClusterPoolAutoscaler autoscaler;
     /**
      * @return The number of nodes in the Node Pool.
-     * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     private Integer count;
@@ -36,13 +38,15 @@ public final class LkeClusterPool {
     private String type;
 
     private LkeClusterPool() {}
+    /**
+     * @return `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     */
     public Optional<LkeClusterPoolAutoscaler> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
     /**
      * @return The number of nodes in the Node Pool.
-     * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Integer count() {

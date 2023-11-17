@@ -64,6 +64,9 @@ export function getKernels(args?: GetKernelsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getKernels.
  */
 export interface GetKernelsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+     */
     filters?: inputs.GetKernelsFilter[];
     kernels?: inputs.GetKernelsKernel[];
     /**
@@ -139,6 +142,9 @@ export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getKernels.
  */
 export interface GetKernelsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetKernelsFilterArgs>[]>;
     kernels?: pulumi.Input<pulumi.Input<inputs.GetKernelsKernelArgs>[]>;
     /**

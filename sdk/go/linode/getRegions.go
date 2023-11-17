@@ -70,6 +70,7 @@ func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRegions.
 type GetRegionsArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
 	Filters []GetRegionsFilter `pulumi:"filters"`
 	Regions []GetRegionsRegion `pulumi:"regions"`
 }
@@ -96,6 +97,7 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRegions.
 type GetRegionsOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
 	Filters GetRegionsFilterArrayInput `pulumi:"filters"`
 	Regions GetRegionsRegionArrayInput `pulumi:"regions"`
 }

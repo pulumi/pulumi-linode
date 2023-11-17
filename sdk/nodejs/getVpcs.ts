@@ -49,6 +49,9 @@ export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getVpcs.
  */
 export interface GetVpcsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+     */
     filters?: inputs.GetVpcsFilter[];
     vpcs?: inputs.GetVpcsVpc[];
 }
@@ -101,6 +104,9 @@ export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getVpcs.
  */
 export interface GetVpcsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVpcsFilterArgs>[]>;
     vpcs?: pulumi.Input<pulumi.Input<inputs.GetVpcsVpcArgs>[]>;
 }

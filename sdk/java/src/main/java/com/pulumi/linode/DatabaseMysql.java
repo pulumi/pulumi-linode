@@ -104,19 +104,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## updates
- * 
- * The following arguments are supported in the `updates` specification block:
- * 
- * * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
- * 
- * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
- * 
- * * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
- * 
- * * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
- * 
- * * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  * 
  * ## Import
  * 
@@ -285,7 +272,6 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
     }
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-     * 
      * * Must be `none` for a single node cluster.
      * 
      * * Must be `asynch` or `semi_synch` for a high availability cluster.
@@ -296,7 +282,6 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-     * 
      * * Must be `none` for a single node cluster.
      * 
      * * Must be `asynch` or `semi_synch` for a high availability cluster.
@@ -336,16 +321,12 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
      */
     @Export(name="sslConnection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sslConnection;
 
     /**
      * @return Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Output<Optional<Boolean>> sslConnection() {
@@ -368,16 +349,12 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
-     * ***
-     * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -398,14 +375,14 @@ public class DatabaseMysql extends com.pulumi.resources.CustomResource {
         return this.updated;
     }
     /**
-     * Configuration settings for automated patch update maintenance for the Managed Database.
+     * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     @Export(name="updates", refs={DatabaseMysqlUpdates.class}, tree="[0]")
     private Output<DatabaseMysqlUpdates> updates;
 
     /**
-     * @return Configuration settings for automated patch update maintenance for the Managed Database.
+     * @return `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Output<DatabaseMysqlUpdates> updates() {

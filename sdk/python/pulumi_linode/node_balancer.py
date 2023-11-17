@@ -27,8 +27,6 @@ class NodeBalancerArgs:
         :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         if client_conn_throttle is not None:
@@ -83,8 +81,6 @@ class NodeBalancerArgs:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -129,8 +125,6 @@ class _NodeBalancerState:
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
@@ -247,8 +241,6 @@ class _NodeBalancerState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -337,8 +329,6 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         """
         ...
@@ -450,8 +440,6 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
@@ -534,8 +522,6 @@ class NodeBalancer(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-
-        - - -
         """
         return pulumi.get(self, "region")
 

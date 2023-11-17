@@ -78,12 +78,13 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+     */
     filters?: inputs.GetImagesFilter[];
     images?: inputs.GetImagesImage[];
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -173,12 +174,13 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
     images?: pulumi.Input<pulumi.Input<inputs.GetImagesImageArgs>[]>;
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

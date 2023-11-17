@@ -26,8 +26,6 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The private IP Address where this backend can be reached. This must be a private IP address.
-        /// 
-        /// - - -
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
@@ -116,8 +114,6 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The private IP Address where this backend can be reached. This must be a private IP address.
-        /// 
-        /// - - -
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
@@ -162,8 +158,6 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The private IP Address where this backend can be reached. This must be a private IP address.
-        /// 
-        /// - - -
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }

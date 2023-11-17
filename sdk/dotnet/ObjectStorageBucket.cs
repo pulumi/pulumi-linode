@@ -101,7 +101,7 @@ namespace Pulumi.Linode
         public Output<string?> Acl { get; private set; } = null!;
 
         /// <summary>
-        /// The cert used by this Object Storage Bucket.
+        /// `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Output("cert")]
         public Output<Outputs.ObjectStorageBucketCert?> Cert { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// Lifecycle rules to be applied to the bucket.
+        /// `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         /// </summary>
         [Output("lifecycleRules")]
         public Output<ImmutableArray<Outputs.ObjectStorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
@@ -151,10 +151,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-        /// 
-        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-        /// 
-        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Output("versioning")]
         public Output<bool> Versioning { get; private set; } = null!;
@@ -218,7 +214,7 @@ namespace Pulumi.Linode
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// The cert used by this Object Storage Bucket.
+        /// `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("cert")]
         public Input<Inputs.ObjectStorageBucketCertArgs>? Cert { get; set; }
@@ -245,7 +241,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ObjectStorageBucketLifecycleRuleArgs>? _lifecycleRules;
 
         /// <summary>
-        /// Lifecycle rules to be applied to the bucket.
+        /// `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         /// </summary>
         public InputList<Inputs.ObjectStorageBucketLifecycleRuleArgs> LifecycleRules
         {
@@ -261,10 +257,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-        /// 
-        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-        /// 
-        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
@@ -290,7 +282,7 @@ namespace Pulumi.Linode
         public Input<string>? Acl { get; set; }
 
         /// <summary>
-        /// The cert used by this Object Storage Bucket.
+        /// `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("cert")]
         public Input<Inputs.ObjectStorageBucketCertGetArgs>? Cert { get; set; }
@@ -330,7 +322,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ObjectStorageBucketLifecycleRuleGetArgs>? _lifecycleRules;
 
         /// <summary>
-        /// Lifecycle rules to be applied to the bucket.
+        /// `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
         /// </summary>
         public InputList<Inputs.ObjectStorageBucketLifecycleRuleGetArgs> LifecycleRules
         {
@@ -346,10 +338,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-        /// 
-        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-        /// 
-        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }

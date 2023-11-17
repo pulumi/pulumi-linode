@@ -17,9 +17,17 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetInstanceTypesPlainArgs Empty = new GetInstanceTypesPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetInstanceTypesFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+     * 
+     */
     public Optional<List<GetInstanceTypesFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -88,11 +96,23 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetInstanceTypesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetInstanceTypesFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetInstanceTypesFilter... filters) {
             return filters(List.of(filters));
         }

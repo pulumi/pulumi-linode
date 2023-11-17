@@ -178,14 +178,18 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.firewallGrants;
     }
     /**
-     * A structure containing the Account-level grants a User has.
+     * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * 
+     * The following arguments are sets of entity grants:
      * 
      */
     @Export(name="globalGrants", refs={UserGlobalGrants.class}, tree="[0]")
     private Output<UserGlobalGrants> globalGrants;
 
     /**
-     * @return A structure containing the Account-level grants a User has.
+     * @return `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * 
+     * The following arguments are sets of entity grants:
      * 
      */
     public Output<UserGlobalGrants> globalGrants() {
@@ -250,20 +254,12 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-     * 
-     * The following arguments are sets of entity grants:
-     * 
      */
     @Export(name="restricted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> restricted;
 
     /**
      * @return If true, this user will only have explicit permissions granted.
-     * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-     * 
-     * The following arguments are sets of entity grants:
      * 
      */
     public Output<Optional<Boolean>> restricted() {

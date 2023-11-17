@@ -131,8 +131,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -221,8 +219,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -279,8 +275,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

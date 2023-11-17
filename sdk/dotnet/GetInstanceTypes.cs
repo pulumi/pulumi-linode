@@ -177,6 +177,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetInstanceTypesFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetInstanceTypesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetInstanceTypesFilterArgs>());
@@ -213,6 +217,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetInstanceTypesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetInstanceTypesFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetInstanceTypesFilterInputArgs>());

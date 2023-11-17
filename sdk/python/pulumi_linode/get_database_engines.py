@@ -144,9 +144,8 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     ```
 
 
+    :param Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
     :param bool latest: If true, only the latest engine version will be returned.
-           
-           * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """
@@ -222,9 +221,8 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     ```
 
 
+    :param Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
     :param bool latest: If true, only the latest engine version will be returned.
-           
-           * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """

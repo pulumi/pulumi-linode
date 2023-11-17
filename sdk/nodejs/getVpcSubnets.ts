@@ -48,11 +48,12 @@ export function getVpcSubnets(args: GetVpcSubnetsArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getVpcSubnets.
  */
 export interface GetVpcSubnetsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+     */
     filters?: inputs.GetVpcSubnetsFilter[];
     /**
      * The id of the parent VPC for the list of VPCs.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
      */
     vpcId: number;
     vpcSubnets?: inputs.GetVpcSubnetsVpcSubnet[];
@@ -106,11 +107,12 @@ export function getVpcSubnetsOutput(args: GetVpcSubnetsOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getVpcSubnets.
  */
 export interface GetVpcSubnetsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsFilterArgs>[]>;
     /**
      * The id of the parent VPC for the list of VPCs.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
      */
     vpcId: pulumi.Input<number>;
     vpcSubnets?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsVpcSubnetArgs>[]>;

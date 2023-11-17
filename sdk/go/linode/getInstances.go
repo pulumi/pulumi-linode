@@ -115,6 +115,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode instances that meet certain requirements.
 	Filters []GetInstancesFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -147,6 +148,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode instances that meet certain requirements.
 	Filters GetInstancesFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

@@ -32,20 +32,16 @@ class DatabaseMysqlArgs:
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-               
                * Must be `none` for a single node cluster.
+               
                
                * Must be `asynch` or `semi_synch` for a high availability cluster.
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-               
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-        :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         pulumi.set(__self__, "engine_id", engine_id)
         pulumi.set(__self__, "label", label)
@@ -105,8 +101,6 @@ class DatabaseMysqlArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The Linode Instance type used for the nodes of the  Managed Database instance.
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -155,8 +149,8 @@ class DatabaseMysqlArgs:
     def replication_type(self) -> Optional[pulumi.Input[str]]:
         """
         The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-
         * Must be `none` for a single node cluster.
+
 
         * Must be `asynch` or `semi_synch` for a high availability cluster.
         """
@@ -171,8 +165,6 @@ class DatabaseMysqlArgs:
     def ssl_connection(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "ssl_connection")
 
@@ -184,7 +176,7 @@ class DatabaseMysqlArgs:
     @pulumi.getter
     def updates(self) -> Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']]:
         """
-        Configuration settings for automated patch update maintenance for the Managed Database.
+        `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "updates")
 
@@ -230,21 +222,17 @@ class _DatabaseMysqlState:
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-               
                * Must be `none` for a single node cluster.
+               
                
                * Must be `asynch` or `semi_synch` for a high availability cluster.
         :param pulumi.Input[str] root_password: The randomly-generated root password for the Managed Database instance.
         :param pulumi.Input[str] root_username: The root username for the Managed Database instance.
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-               
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] status: The operating status of the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
-        :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
         """
         if allow_lists is not None:
@@ -425,8 +413,8 @@ class _DatabaseMysqlState:
     def replication_type(self) -> Optional[pulumi.Input[str]]:
         """
         The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-
         * Must be `none` for a single node cluster.
+
 
         * Must be `asynch` or `semi_synch` for a high availability cluster.
         """
@@ -465,8 +453,6 @@ class _DatabaseMysqlState:
     def ssl_connection(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "ssl_connection")
 
@@ -491,8 +477,6 @@ class _DatabaseMysqlState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The Linode Instance type used for the nodes of the  Managed Database instance.
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -516,7 +500,7 @@ class _DatabaseMysqlState:
     @pulumi.getter
     def updates(self) -> Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']]:
         """
-        Configuration settings for automated patch update maintenance for the Managed Database.
+        `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "updates")
 
@@ -598,19 +582,6 @@ class DatabaseMysql(pulumi.CustomResource):
                 week_of_month=2,
             ))
         ```
-        ## updates
-
-        The following arguments are supported in the `updates` specification block:
-
-        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
-
-        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
-
-        * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-
-        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
-
-        * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 
         ## Import
 
@@ -629,17 +600,13 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-               
                * Must be `none` for a single node cluster.
+               
                
                * Must be `asynch` or `semi_synch` for a high availability cluster.
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-               
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
     @overload
@@ -692,19 +659,6 @@ class DatabaseMysql(pulumi.CustomResource):
                 week_of_month=2,
             ))
         ```
-        ## updates
-
-        The following arguments are supported in the `updates` specification block:
-
-        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
-
-        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
-
-        * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-
-        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
-
-        * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 
         ## Import
 
@@ -827,21 +781,17 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] replication_type: The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-               
                * Must be `none` for a single node cluster.
+               
                
                * Must be `asynch` or `semi_synch` for a high availability cluster.
         :param pulumi.Input[str] root_password: The randomly-generated root password for the Managed Database instance.
         :param pulumi.Input[str] root_username: The root username for the Managed Database instance.
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-               
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] status: The operating status of the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -963,8 +913,8 @@ class DatabaseMysql(pulumi.CustomResource):
     def replication_type(self) -> pulumi.Output[Optional[str]]:
         """
         The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-
         * Must be `none` for a single node cluster.
+
 
         * Must be `asynch` or `semi_synch` for a high availability cluster.
         """
@@ -991,8 +941,6 @@ class DatabaseMysql(pulumi.CustomResource):
     def ssl_connection(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "ssl_connection")
 
@@ -1009,8 +957,6 @@ class DatabaseMysql(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The Linode Instance type used for the nodes of the  Managed Database instance.
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -1026,7 +972,7 @@ class DatabaseMysql(pulumi.CustomResource):
     @pulumi.getter
     def updates(self) -> pulumi.Output['outputs.DatabaseMysqlUpdates']:
         """
-        Configuration settings for automated patch update maintenance for the Managed Database.
+        `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "updates")
 

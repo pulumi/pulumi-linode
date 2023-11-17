@@ -197,6 +197,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetImagesFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetImagesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetImagesFilterArgs>());
@@ -213,8 +217,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -241,6 +243,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetImagesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetImagesFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetImagesFilterInputArgs>());
@@ -257,8 +263,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

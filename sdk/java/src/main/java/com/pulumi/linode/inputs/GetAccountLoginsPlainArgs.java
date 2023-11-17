@@ -16,9 +16,17 @@ public final class GetAccountLoginsPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetAccountLoginsPlainArgs Empty = new GetAccountLoginsPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetAccountLoginsFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+     * 
+     */
     public Optional<List<GetAccountLoginsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -55,11 +63,23 @@ public final class GetAccountLoginsPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetAccountLoginsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetAccountLoginsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetAccountLoginsFilter... filters) {
             return filters(List.of(filters));
         }

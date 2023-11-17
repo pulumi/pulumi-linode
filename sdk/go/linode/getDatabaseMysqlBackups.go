@@ -89,11 +89,10 @@ func GetDatabaseMysqlBackups(ctx *pulumi.Context, args *GetDatabaseMysqlBackupsA
 // A collection of arguments for invoking getDatabaseMysqlBackups.
 type GetDatabaseMysqlBackupsArgs struct {
 	// The ID of the database to retrieve backups for.
-	DatabaseId int                             `pulumi:"databaseId"`
-	Filters    []GetDatabaseMysqlBackupsFilter `pulumi:"filters"`
+	DatabaseId int `pulumi:"databaseId"`
+	// `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+	Filters []GetDatabaseMysqlBackupsFilter `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -129,11 +128,10 @@ func GetDatabaseMysqlBackupsOutput(ctx *pulumi.Context, args GetDatabaseMysqlBac
 // A collection of arguments for invoking getDatabaseMysqlBackups.
 type GetDatabaseMysqlBackupsOutputArgs struct {
 	// The ID of the database to retrieve backups for.
-	DatabaseId pulumi.IntInput                         `pulumi:"databaseId"`
-	Filters    GetDatabaseMysqlBackupsFilterArrayInput `pulumi:"filters"`
+	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
+	// `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+	Filters GetDatabaseMysqlBackupsFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest backup will be returned.
-	//
-	// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

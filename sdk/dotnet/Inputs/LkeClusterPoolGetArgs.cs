@@ -12,13 +12,14 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class LkeClusterPoolGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.LkeClusterPoolAutoscalerGetArgs>? Autoscaler { get; set; }
 
         /// <summary>
         /// The number of nodes in the Node Pool.
-        /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;

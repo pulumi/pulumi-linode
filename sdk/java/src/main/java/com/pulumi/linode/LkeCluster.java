@@ -129,14 +129,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.apiEndpoints;
     }
     /**
-     * Defines settings for the Kubernetes Control Plane.
+     * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     @Export(name="controlPlane", refs={LkeClusterControlPlane.class}, tree="[0]")
     private Output<LkeClusterControlPlane> controlPlane;
 
     /**
-     * @return Defines settings for the Kubernetes Control Plane.
+     * @return `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     public Output<LkeClusterControlPlane> controlPlane() {
@@ -199,14 +199,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * Additional nested attributes:
+     * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
      */
     @Export(name="pools", refs={List.class,LkeClusterPool.class}, tree="[0,1]")
     private Output<List<LkeClusterPool>> pools;
 
     /**
-     * @return Additional nested attributes:
+     * @return `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
      */
     public Output<List<LkeClusterPool>> pools() {
@@ -215,20 +215,12 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-     * 
-     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return This Kubernetes cluster&#39;s location.
-     * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-     * 
-     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     public Output<String> region() {

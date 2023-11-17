@@ -25,9 +25,17 @@ public final class GetDatabaseEnginesPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.engines);
     }
 
+    /**
+     * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetDatabaseEnginesFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * 
+     */
     public Optional<List<GetDatabaseEnginesFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -35,16 +43,12 @@ public final class GetDatabaseEnginesPlainArgs extends com.pulumi.resources.Invo
     /**
      * If true, only the latest engine version will be returned.
      * 
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest engine version will be returned.
-     * 
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -118,19 +122,29 @@ public final class GetDatabaseEnginesPlainArgs extends com.pulumi.resources.Invo
             return engines(List.of(engines));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetDatabaseEnginesFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetDatabaseEnginesFilter... filters) {
             return filters(List.of(filters));
         }
 
         /**
          * @param latest If true, only the latest engine version will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
          * 
          * @return builder
          * 

@@ -18,9 +18,17 @@ public final class GetSshkeysArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSshkeysArgs Empty = new GetSshkeysArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetSshkeysFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetSshkeysFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -89,15 +97,33 @@ public final class GetSshkeysArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSshkeysArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetSshkeysFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetSshkeysFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetSshkeysFilterArgs... filters) {
             return filters(List.of(filters));
         }

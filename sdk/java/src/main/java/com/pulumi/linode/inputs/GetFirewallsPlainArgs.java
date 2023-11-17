@@ -17,9 +17,17 @@ public final class GetFirewallsPlainArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetFirewallsPlainArgs Empty = new GetFirewallsPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetFirewallsFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+     * 
+     */
     public Optional<List<GetFirewallsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -88,11 +96,23 @@ public final class GetFirewallsPlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetFirewallsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetFirewallsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetFirewallsFilter... filters) {
             return filters(List.of(filters));
         }

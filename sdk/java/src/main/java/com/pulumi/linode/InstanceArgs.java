@@ -118,16 +118,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-     * 
      */
     @Import(name="booted")
     private @Nullable Output<Boolean> booted;
 
     /**
      * @return If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
-     * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
      */
     public Optional<Output<Boolean>> booted() {
@@ -222,16 +218,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     @Import(name="interfaces")
     private @Nullable Output<List<InstanceInterfaceArgs>> interfaces;
 
     /**
-     * @return An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * @return `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     public Optional<Output<List<InstanceInterfaceArgs>>> interfaces() {
@@ -301,32 +295,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-     * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-     * 
      */
     @Import(name="resizeDisk")
     private @Nullable Output<Boolean> resizeDisk;
 
     /**
      * @return If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-     * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
      * 
      */
     public Optional<Output<Boolean>> resizeDisk() {
@@ -351,16 +325,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     * 
      */
     @Import(name="sharedIpv4s")
     private @Nullable Output<List<String>> sharedIpv4s;
 
     /**
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     * 
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     public Optional<Output<List<String>>> sharedIpv4s() {
@@ -430,16 +400,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      * 
-     * ***
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -659,8 +625,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param booted If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
          * 
-         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-         * 
          * @return builder
          * 
          */
@@ -671,8 +635,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param booted If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
-         * 
-         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
          * 
          * @return builder
          * 
@@ -825,8 +787,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-         * must be declared in the config block.
+         * @param interfaces `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
          * 
          * @return builder
          * 
@@ -837,8 +798,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-         * must be declared in the config block.
+         * @param interfaces `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
          * 
          * @return builder
          * 
@@ -848,8 +808,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-         * must be declared in the config block.
+         * @param interfaces `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
          * 
          * @return builder
          * 
@@ -955,16 +914,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resizeDisk If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
          * 
-         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-         * 
-         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-         * 
          * @return builder
          * 
          */
@@ -975,16 +924,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resizeDisk If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-         * 
-         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-         * 
-         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
          * 
          * @return builder
          * 
@@ -1017,8 +956,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
-         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-         * 
          * @return builder
          * 
          */
@@ -1030,8 +967,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
-         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-         * 
          * @return builder
          * 
          */
@@ -1041,8 +976,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-         * 
-         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
          * @return builder
          * 
@@ -1148,8 +1081,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1160,8 +1091,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-         * 
-         * ***
          * 
          * @return builder
          * 

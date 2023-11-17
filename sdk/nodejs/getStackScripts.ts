@@ -70,11 +70,12 @@ export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getStackScripts.
  */
 export interface GetStackScriptsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     */
     filters?: inputs.GetStackScriptsFilter[];
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -157,11 +158,12 @@ export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: p
  * A collection of arguments for invoking getStackScripts.
  */
 export interface GetStackScriptsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsFilterArgs>[]>;
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

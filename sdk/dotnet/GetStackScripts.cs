@@ -163,6 +163,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetStackScriptsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetStackScriptsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetStackScriptsFilterArgs>());
@@ -171,8 +175,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -207,6 +209,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetStackScriptsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetStackScriptsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetStackScriptsFilterInputArgs>());
@@ -215,8 +221,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

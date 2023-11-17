@@ -149,14 +149,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.acl);
     }
     /**
-     * The cert used by this Object Storage Bucket.
+     * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     @Export(name="cert", refs={ObjectStorageBucketCert.class}, tree="[0]")
     private Output</* @Nullable */ ObjectStorageBucketCert> cert;
 
     /**
-     * @return The cert used by this Object Storage Bucket.
+     * @return `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     public Output<Optional<ObjectStorageBucketCert>> cert() {
@@ -235,14 +235,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * Lifecycle rules to be applied to the bucket.
+     * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
      * 
      */
     @Export(name="lifecycleRules", refs={List.class,ObjectStorageBucketLifecycleRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ObjectStorageBucketLifecycleRule>> lifecycleRules;
 
     /**
-     * @return Lifecycle rules to be applied to the bucket.
+     * @return `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
      * 
      */
     public Output<Optional<List<ObjectStorageBucketLifecycleRule>>> lifecycleRules() {
@@ -265,20 +265,12 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
      * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-     * 
-     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
-     * 
      */
     @Export(name="versioning", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> versioning;
 
     /**
      * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-     * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-     * 
-     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     public Output<Boolean> versioning() {

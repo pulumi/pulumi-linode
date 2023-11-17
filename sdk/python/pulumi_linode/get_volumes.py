@@ -108,6 +108,7 @@ def get_volumes(filters: Optional[Sequence[pulumi.InputType['GetVolumesFilterArg
     * `tags`
 
 
+    :param Sequence[pulumi.InputType['GetVolumesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -154,6 +155,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     * `tags`
 
 
+    :param Sequence[pulumi.InputType['GetVolumesFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

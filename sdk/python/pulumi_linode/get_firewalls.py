@@ -157,6 +157,7 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
     * `tags`
 
 
+    :param Sequence[pulumi.InputType['GetFirewallsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -252,6 +253,7 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     * `tags`
 
 
+    :param Sequence[pulumi.InputType['GetFirewallsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

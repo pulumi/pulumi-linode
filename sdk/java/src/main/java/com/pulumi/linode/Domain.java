@@ -150,16 +150,12 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * The IP addresses representing the master DNS for this Domain.
      * 
-     * ***
-     * 
      */
     @Export(name="masterIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> masterIps;
 
     /**
      * @return The IP addresses representing the master DNS for this Domain.
-     * 
-     * ***
      * 
      */
     public Output<Optional<List<String>>> masterIps() {

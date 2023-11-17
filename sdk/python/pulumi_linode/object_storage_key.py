@@ -21,8 +21,6 @@ class ObjectStorageKeyArgs:
         """
         The set of arguments for constructing a ObjectStorageKey resource.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         """
         pulumi.set(__self__, "label", label)
@@ -34,8 +32,6 @@ class ObjectStorageKeyArgs:
     def label(self) -> pulumi.Input[str]:
         """
         The label given to this key. For display purposes only.
-
-        - - -
         """
         return pulumi.get(self, "label")
 
@@ -69,8 +65,6 @@ class _ObjectStorageKeyState:
         :param pulumi.Input[str] access_key: This keypair's access key. This is not secret.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
-               
-               - - -
         :param pulumi.Input[bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[str] secret_key: This keypair's secret key.
         """
@@ -114,8 +108,6 @@ class _ObjectStorageKeyState:
     def label(self) -> Optional[pulumi.Input[str]]:
         """
         The label given to this key. For display purposes only.
-
-        - - -
         """
         return pulumi.get(self, "label")
 
@@ -174,8 +166,6 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
-               
-               - - -
         """
         ...
     @overload
@@ -257,8 +247,6 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.Input[str] access_key: This keypair's access key. This is not secret.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
-               
-               - - -
         :param pulumi.Input[bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[str] secret_key: This keypair's secret key.
         """
@@ -294,8 +282,6 @@ class ObjectStorageKey(pulumi.CustomResource):
     def label(self) -> pulumi.Output[str]:
         """
         The label given to this key. For display purposes only.
-
-        - - -
         """
         return pulumi.get(self, "label")
 

@@ -57,9 +57,17 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
         return this.databaseType;
     }
 
+    /**
+     * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetDatabaseBackupsFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetDatabaseBackupsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -67,16 +75,12 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
     /**
      * If true, only the latest backup will be returned.
      * 
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Output<Boolean> latest;
 
     /**
      * @return If true, only the latest backup will be returned.
-     * 
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      * 
      */
     public Optional<Output<Boolean>> latest() {
@@ -198,23 +202,39 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
             return databaseType(Output.of(databaseType));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetDatabaseBackupsFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetDatabaseBackupsFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetDatabaseBackupsFilterArgs... filters) {
             return filters(List.of(filters));
         }
 
         /**
          * @param latest If true, only the latest backup will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
          * 
          * @return builder
          * 
@@ -226,8 +246,6 @@ public final class GetDatabaseBackupsArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param latest If true, only the latest backup will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
          * 
          * @return builder
          * 

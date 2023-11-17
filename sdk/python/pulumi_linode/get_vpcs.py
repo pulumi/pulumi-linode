@@ -93,6 +93,9 @@ def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] 
     * `description`
 
     * `region`
+
+
+    :param Sequence[pulumi.InputType['GetVpcsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -136,5 +139,8 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
     * `description`
 
     * `region`
+
+
+    :param Sequence[pulumi.InputType['GetVpcsFilterArgs']] filters: `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
     """
     ...

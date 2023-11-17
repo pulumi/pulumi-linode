@@ -70,6 +70,7 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
 	Filters []GetUsersFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -103,6 +104,7 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode users that meet certain requirements.
 	Filters GetUsersFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

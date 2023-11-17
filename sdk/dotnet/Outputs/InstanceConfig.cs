@@ -22,13 +22,16 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.InstanceConfigDevices? Devices;
         /// <summary>
-        /// Helpers enabled when booting to this Linode Config.
+        /// (Options) Helpers enabled when booting to this Linode Config.
         /// </summary>
         public readonly Outputs.InstanceConfigHelpers? Helpers;
         /// <summary>
         /// The ID of the disk in the Linode API.
         /// </summary>
         public readonly int? Id;
+        /// <summary>
+        /// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+        /// </summary>
         public readonly ImmutableArray<Outputs.InstanceConfigInterface> Interfaces;
         /// <summary>
         /// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -40,8 +43,6 @@ namespace Pulumi.Linode.Outputs
         public readonly string Label;
         /// <summary>
         /// Defaults to the total RAM of the Linode
-        /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         /// </summary>
         public readonly int? MemoryLimit;
         /// <summary>

@@ -72,14 +72,18 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A structure containing the Account-level grants a User has.
+     * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * 
+     * The following arguments are sets of entity grants:
      * 
      */
     @Import(name="globalGrants")
     private @Nullable Output<UserGlobalGrantsArgs> globalGrants;
 
     /**
-     * @return A structure containing the Account-level grants a User has.
+     * @return `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * 
+     * The following arguments are sets of entity grants:
      * 
      */
     public Optional<Output<UserGlobalGrantsArgs>> globalGrants() {
@@ -149,20 +153,12 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-     * 
-     * The following arguments are sets of entity grants:
-     * 
      */
     @Import(name="restricted")
     private @Nullable Output<Boolean> restricted;
 
     /**
      * @return If true, this user will only have explicit permissions granted.
-     * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-     * 
-     * The following arguments are sets of entity grants:
      * 
      */
     public Optional<Output<Boolean>> restricted() {
@@ -365,7 +361,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param globalGrants A structure containing the Account-level grants a User has.
+         * @param globalGrants `global_grants` - (optional) A structure containing the Account-level grants a User has.
+         * 
+         * The following arguments are sets of entity grants:
          * 
          * @return builder
          * 
@@ -376,7 +374,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param globalGrants A structure containing the Account-level grants a User has.
+         * @param globalGrants `global_grants` - (optional) A structure containing the Account-level grants a User has.
+         * 
+         * The following arguments are sets of entity grants:
          * 
          * @return builder
          * 
@@ -512,10 +512,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param restricted If true, this user will only have explicit permissions granted.
          * 
-         * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-         * 
-         * The following arguments are sets of entity grants:
-         * 
          * @return builder
          * 
          */
@@ -526,10 +522,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param restricted If true, this user will only have explicit permissions granted.
-         * 
-         * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-         * 
-         * The following arguments are sets of entity grants:
          * 
          * @return builder
          * 

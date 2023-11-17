@@ -108,7 +108,7 @@ type LkeCluster struct {
 
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints pulumi.StringArrayOutput `pulumi:"apiEndpoints"`
-	// Defines settings for the Kubernetes Control Plane.
+	// `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
@@ -118,13 +118,9 @@ type LkeCluster struct {
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// Additional nested attributes:
+	// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	Pools LkeClusterPoolArrayOutput `pulumi:"pools"`
 	// This Kubernetes cluster's location.
-	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -180,7 +176,7 @@ func GetLkeCluster(ctx *pulumi.Context,
 type lkeClusterState struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
-	// Defines settings for the Kubernetes Control Plane.
+	// `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl *string `pulumi:"dashboardUrl"`
@@ -190,13 +186,9 @@ type lkeClusterState struct {
 	Kubeconfig *string `pulumi:"kubeconfig"`
 	// This Kubernetes cluster's unique label.
 	Label *string `pulumi:"label"`
-	// Additional nested attributes:
+	// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
-	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region *string `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status *string `pulumi:"status"`
@@ -207,7 +199,7 @@ type lkeClusterState struct {
 type LkeClusterState struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints pulumi.StringArrayInput
-	// Defines settings for the Kubernetes Control Plane.
+	// `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl pulumi.StringPtrInput
@@ -217,13 +209,9 @@ type LkeClusterState struct {
 	Kubeconfig pulumi.StringPtrInput
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringPtrInput
-	// Additional nested attributes:
+	// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
-	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringPtrInput
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringPtrInput
@@ -236,19 +224,15 @@ func (LkeClusterState) ElementType() reflect.Type {
 }
 
 type lkeClusterArgs struct {
-	// Defines settings for the Kubernetes Control Plane.
+	// `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// This Kubernetes cluster's unique label.
 	Label string `pulumi:"label"`
-	// Additional nested attributes:
+	// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
-	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region string `pulumi:"region"`
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -256,19 +240,15 @@ type lkeClusterArgs struct {
 
 // The set of arguments for constructing a LkeCluster resource.
 type LkeClusterArgs struct {
-	// Defines settings for the Kubernetes Control Plane.
+	// `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringInput
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringInput
-	// Additional nested attributes:
+	// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
-	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringInput
 	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
@@ -366,7 +346,7 @@ func (o LkeClusterOutput) ApiEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
 }
 
-// Defines settings for the Kubernetes Control Plane.
+// `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 func (o LkeClusterOutput) ControlPlane() LkeClusterControlPlaneOutput {
 	return o.ApplyT(func(v *LkeCluster) LkeClusterControlPlaneOutput { return v.ControlPlane }).(LkeClusterControlPlaneOutput)
 }
@@ -391,16 +371,12 @@ func (o LkeClusterOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// Additional nested attributes:
+// `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 func (o LkeClusterOutput) Pools() LkeClusterPoolArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) LkeClusterPoolArrayOutput { return v.Pools }).(LkeClusterPoolArrayOutput)
 }
 
 // This Kubernetes cluster's location.
-//
-// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-//
-// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 func (o LkeClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

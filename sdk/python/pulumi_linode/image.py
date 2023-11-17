@@ -28,7 +28,8 @@ class ImageArgs:
         :param pulumi.Input[bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[str] description: A detailed description of this Image.
                
-               - - -
+               
+               
                
                The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
@@ -36,7 +37,8 @@ class ImageArgs:
         :param pulumi.Input[str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               
+               
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
                
@@ -89,7 +91,8 @@ class ImageArgs:
         """
         A detailed description of this Image.
 
-        - - -
+
+
 
         The following arguments apply to creating an image from an existing Linode Instance:
         """
@@ -141,7 +144,8 @@ class ImageArgs:
         """
         The ID of the Linode that this Image will be created from.
 
-        - - -
+
+
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 
@@ -196,7 +200,8 @@ class _ImageState:
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         :param pulumi.Input[str] description: A detailed description of this Image.
                
-               - - -
+               
+               
                
                The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
@@ -207,7 +212,8 @@ class _ImageState:
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               
+               
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
                
@@ -321,7 +327,8 @@ class _ImageState:
         """
         A detailed description of this Image.
 
-        - - -
+
+
 
         The following arguments apply to creating an image from an existing Linode Instance:
         """
@@ -409,7 +416,8 @@ class _ImageState:
         """
         The ID of the Linode that this Image will be created from.
 
-        - - -
+
+
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 
@@ -514,7 +522,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[str] description: A detailed description of this Image.
                
-               - - -
+               
+               
                
                The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
@@ -523,7 +532,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               
+               
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
                
@@ -643,7 +653,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[bool] deprecated: Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         :param pulumi.Input[str] description: A detailed description of this Image.
                
-               - - -
+               
+               
                
                The following arguments apply to creating an image from an existing Linode Instance:
         :param pulumi.Input[int] disk_id: The ID of the Linode Disk that this Image will be created from.
@@ -654,7 +665,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               
+               
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
                
@@ -735,7 +747,8 @@ class Image(pulumi.CustomResource):
         """
         A detailed description of this Image.
 
-        - - -
+
+
 
         The following arguments apply to creating an image from an existing Linode Instance:
         """
@@ -795,7 +808,8 @@ class Image(pulumi.CustomResource):
         """
         The ID of the Linode that this Image will be created from.
 
-        - - -
+
+
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
 

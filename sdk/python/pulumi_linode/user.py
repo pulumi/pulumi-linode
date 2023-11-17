@@ -34,16 +34,14 @@ class UserArgs:
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
-        :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: A structure containing the Account-level grants a User has.
+        :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               
+               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
-               
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-               
-               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
         """
@@ -122,7 +120,9 @@ class UserArgs:
     @pulumi.getter(name="globalGrants")
     def global_grants(self) -> Optional[pulumi.Input['UserGlobalGrantsArgs']]:
         """
-        A structure containing the Account-level grants a User has.
+        `global_grants` - (optional) A structure containing the Account-level grants a User has.
+
+        The following arguments are sets of entity grants:
         """
         return pulumi.get(self, "global_grants")
 
@@ -183,10 +183,6 @@ class UserArgs:
     def restricted(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, this user will only have explicit permissions granted.
-
-        * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-
-        The following arguments are sets of entity grants:
         """
         return pulumi.get(self, "restricted")
 
@@ -241,16 +237,14 @@ class _UserState:
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
-        :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: A structure containing the Account-level grants a User has.
+        :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               
+               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
-               
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-               
-               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of the User's SSH keys.
         :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
@@ -326,7 +320,9 @@ class _UserState:
     @pulumi.getter(name="globalGrants")
     def global_grants(self) -> Optional[pulumi.Input['UserGlobalGrantsArgs']]:
         """
-        A structure containing the Account-level grants a User has.
+        `global_grants` - (optional) A structure containing the Account-level grants a User has.
+
+        The following arguments are sets of entity grants:
         """
         return pulumi.get(self, "global_grants")
 
@@ -387,10 +383,6 @@ class _UserState:
     def restricted(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, this user will only have explicit permissions granted.
-
-        * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-
-        The following arguments are sets of entity grants:
         """
         return pulumi.get(self, "restricted")
 
@@ -547,16 +539,14 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]] firewall_grants: The firewalls the user has permissions access to.
-        :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: A structure containing the Account-level grants a User has.
+        :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               
+               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
-               
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-               
-               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]] volume_grants: The volumes the user has permissions access to.
@@ -720,16 +710,14 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]] firewall_grants: The firewalls the user has permissions access to.
-        :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: A structure containing the Account-level grants a User has.
+        :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               
+               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]] image_grants: The images the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
-               
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-               
-               The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of the User's SSH keys.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
@@ -784,7 +772,9 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="globalGrants")
     def global_grants(self) -> pulumi.Output['outputs.UserGlobalGrants']:
         """
-        A structure containing the Account-level grants a User has.
+        `global_grants` - (optional) A structure containing the Account-level grants a User has.
+
+        The following arguments are sets of entity grants:
         """
         return pulumi.get(self, "global_grants")
 
@@ -825,10 +815,6 @@ class User(pulumi.CustomResource):
     def restricted(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, this user will only have explicit permissions granted.
-
-        * `global_grants` - (optional) A structure containing the Account-level grants a User has.
-
-        The following arguments are sets of entity grants:
         """
         return pulumi.get(self, "restricted")
 

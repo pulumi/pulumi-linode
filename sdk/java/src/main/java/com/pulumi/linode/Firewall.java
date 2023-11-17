@@ -147,16 +147,12 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
      * 
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
-     * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
      * @return If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
-     * 
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
@@ -165,8 +161,6 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      * 
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-     * 
      */
     @Export(name="inboundPolicy", refs={String.class}, tree="[0]")
     private Output<String> inboundPolicy;
@@ -174,21 +168,19 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * @return The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      * 
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-     * 
      */
     public Output<String> inboundPolicy() {
         return this.inboundPolicy;
     }
     /**
-     * A firewall rule that specifies what inbound network traffic is allowed.
+     * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     @Export(name="inbounds", refs={List.class,FirewallInbound.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallInbound>> inbounds;
 
     /**
-     * @return A firewall rule that specifies what inbound network traffic is allowed.
+     * @return `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     public Output<Optional<List<FirewallInbound>>> inbounds() {
@@ -251,14 +243,14 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return this.outboundPolicy;
     }
     /**
-     * A firewall rule that specifies what outbound network traffic is allowed.
+     * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
     @Export(name="outbounds", refs={List.class,FirewallOutbound.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallOutbound>> outbounds;
 
     /**
-     * @return A firewall rule that specifies what outbound network traffic is allowed.
+     * @return `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
     public Output<Optional<List<FirewallOutbound>>> outbounds() {

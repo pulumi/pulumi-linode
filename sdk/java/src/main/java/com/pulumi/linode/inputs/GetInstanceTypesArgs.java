@@ -18,9 +18,17 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetInstanceTypesArgs Empty = new GetInstanceTypesArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetInstanceTypesFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetInstanceTypesFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -89,15 +97,33 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetInstanceTypesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetInstanceTypesFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetInstanceTypesFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Instance types that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetInstanceTypesFilterArgs... filters) {
             return filters(List.of(filters));
         }

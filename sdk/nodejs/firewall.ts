@@ -115,18 +115,14 @@ export class Firewall extends pulumi.CustomResource {
     public /*out*/ readonly devices!: pulumi.Output<outputs.FirewallDevice[]>;
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
-     *
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
-     *
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
     public readonly inboundPolicy!: pulumi.Output<string>;
     /**
-     * A firewall rule that specifies what inbound network traffic is allowed.
+     * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
     public readonly inbounds!: pulumi.Output<outputs.FirewallInbound[] | undefined>;
     /**
@@ -146,7 +142,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly outboundPolicy!: pulumi.Output<string>;
     /**
-     * A firewall rule that specifies what outbound network traffic is allowed.
+     * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
     public readonly outbounds!: pulumi.Output<outputs.FirewallOutbound[] | undefined>;
     /**
@@ -232,18 +228,14 @@ export interface FirewallState {
     devices?: pulumi.Input<pulumi.Input<inputs.FirewallDevice>[]>;
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
-     *
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
     disabled?: pulumi.Input<boolean>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
-     *
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
     inboundPolicy?: pulumi.Input<string>;
     /**
-     * A firewall rule that specifies what inbound network traffic is allowed.
+     * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
     inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
     /**
@@ -263,7 +255,7 @@ export interface FirewallState {
      */
     outboundPolicy?: pulumi.Input<string>;
     /**
-     * A firewall rule that specifies what outbound network traffic is allowed.
+     * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
     outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
     /**
@@ -286,18 +278,14 @@ export interface FirewallState {
 export interface FirewallArgs {
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
-     *
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
     disabled?: pulumi.Input<boolean>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
-     *
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
     inboundPolicy: pulumi.Input<string>;
     /**
-     * A firewall rule that specifies what inbound network traffic is allowed.
+     * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
     inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
     /**
@@ -317,7 +305,7 @@ export interface FirewallArgs {
      */
     outboundPolicy: pulumi.Input<string>;
     /**
-     * A firewall rule that specifies what outbound network traffic is allowed.
+     * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
     outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
     /**

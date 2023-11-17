@@ -92,7 +92,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly apiEndpoints!: pulumi.Output<string[]>;
     /**
-     * Defines settings for the Kubernetes Control Plane.
+     * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
     public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
     /**
@@ -112,15 +112,11 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public readonly label!: pulumi.Output<string>;
     /**
-     * Additional nested attributes:
+     * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      */
     public readonly pools!: pulumi.Output<outputs.LkeClusterPool[]>;
     /**
      * This Kubernetes cluster's location.
-     *
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-     *
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -196,7 +192,7 @@ export interface LkeClusterState {
      */
     apiEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines settings for the Kubernetes Control Plane.
+     * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
@@ -216,15 +212,11 @@ export interface LkeClusterState {
      */
     label?: pulumi.Input<string>;
     /**
-     * Additional nested attributes:
+     * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      */
     pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
     /**
      * This Kubernetes cluster's location.
-     *
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-     *
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
     region?: pulumi.Input<string>;
     /**
@@ -242,7 +234,7 @@ export interface LkeClusterState {
  */
 export interface LkeClusterArgs {
     /**
-     * Defines settings for the Kubernetes Control Plane.
+     * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
@@ -254,15 +246,11 @@ export interface LkeClusterArgs {
      */
     label: pulumi.Input<string>;
     /**
-     * Additional nested attributes:
+     * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      */
     pools: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
     /**
      * This Kubernetes cluster's location.
-     *
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
-     *
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
     region: pulumi.Input<string>;
     /**

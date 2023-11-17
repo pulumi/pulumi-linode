@@ -131,8 +131,6 @@ type InstanceDisk struct {
 	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-	//
-	// ***
 	Size pulumi.IntOutput `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
 	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
@@ -211,8 +209,6 @@ type instanceDiskState struct {
 	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-	//
-	// ***
 	Size *int `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
@@ -242,8 +238,6 @@ type InstanceDiskState struct {
 	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
 	RootPass pulumi.StringPtrInput
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-	//
-	// ***
 	Size pulumi.IntPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
 	StackscriptData pulumi.MapInput
@@ -275,8 +269,6 @@ type instanceDiskArgs struct {
 	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-	//
-	// ***
 	Size int `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
@@ -301,8 +293,6 @@ type InstanceDiskArgs struct {
 	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
 	RootPass pulumi.StringPtrInput
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-	//
-	// ***
 	Size pulumi.IntInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
 	StackscriptData pulumi.MapInput
@@ -438,8 +428,6 @@ func (o InstanceDiskOutput) RootPass() pulumi.StringPtrOutput {
 }
 
 // The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-//
-// ***
 func (o InstanceDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

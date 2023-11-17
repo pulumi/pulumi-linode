@@ -53,6 +53,9 @@ export function getAccountLogins(args?: GetAccountLoginsArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getAccountLogins.
  */
 export interface GetAccountLoginsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+     */
     filters?: inputs.GetAccountLoginsFilter[];
     logins?: inputs.GetAccountLoginsLogin[];
 }
@@ -109,6 +112,9 @@ export function getAccountLoginsOutput(args?: GetAccountLoginsOutputArgs, opts?:
  * A collection of arguments for invoking getAccountLogins.
  */
 export interface GetAccountLoginsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode account logins that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetAccountLoginsFilterArgs>[]>;
     logins?: pulumi.Input<pulumi.Input<inputs.GetAccountLoginsLoginArgs>[]>;
 }

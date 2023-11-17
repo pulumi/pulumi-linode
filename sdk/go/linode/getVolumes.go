@@ -62,6 +62,7 @@ func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getVolumes.
 type GetVolumesArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
 	Filters []GetVolumesFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -95,6 +96,7 @@ func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getVolumes.
 type GetVolumesOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode volumes that meet certain requirements.
 	Filters GetVolumesFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

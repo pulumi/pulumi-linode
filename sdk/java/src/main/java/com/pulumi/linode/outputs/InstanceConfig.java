@@ -27,7 +27,7 @@ public final class InstanceConfig {
      */
     private @Nullable InstanceConfigDevices devices;
     /**
-     * @return Helpers enabled when booting to this Linode Config.
+     * @return (Options) Helpers enabled when booting to this Linode Config.
      * 
      */
     private @Nullable InstanceConfigHelpers helpers;
@@ -36,6 +36,10 @@ public final class InstanceConfig {
      * 
      */
     private @Nullable Integer id;
+    /**
+     * @return `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     * 
+     */
     private @Nullable List<InstanceConfigInterface> interfaces;
     /**
      * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -49,8 +53,6 @@ public final class InstanceConfig {
     private String label;
     /**
      * @return Defaults to the total RAM of the Linode
-     * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     private @Nullable Integer memoryLimit;
@@ -86,7 +88,7 @@ public final class InstanceConfig {
         return Optional.ofNullable(this.devices);
     }
     /**
-     * @return Helpers enabled when booting to this Linode Config.
+     * @return (Options) Helpers enabled when booting to this Linode Config.
      * 
      */
     public Optional<InstanceConfigHelpers> helpers() {
@@ -99,6 +101,10 @@ public final class InstanceConfig {
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
+     * 
+     */
     public List<InstanceConfigInterface> interfaces() {
         return this.interfaces == null ? List.of() : this.interfaces;
     }
@@ -118,8 +124,6 @@ public final class InstanceConfig {
     }
     /**
      * @return Defaults to the total RAM of the Linode
-     * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      * 
      */
     public Optional<Integer> memoryLimit() {

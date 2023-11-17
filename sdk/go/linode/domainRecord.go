@@ -83,8 +83,6 @@ type DomainRecord struct {
 	// The tag portion of a CAA record. It is invalid to set this on other record types.
 	Tag pulumi.StringPtrOutput `pulumi:"tag"`
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-	//
-	// ***
 	Target pulumi.StringOutput `pulumi:"target"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrOutput `pulumi:"ttlSec"`
@@ -148,8 +146,6 @@ type domainRecordState struct {
 	// The tag portion of a CAA record. It is invalid to set this on other record types.
 	Tag *string `pulumi:"tag"`
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-	//
-	// ***
 	Target *string `pulumi:"target"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec *int `pulumi:"ttlSec"`
@@ -175,8 +171,6 @@ type DomainRecordState struct {
 	// The tag portion of a CAA record. It is invalid to set this on other record types.
 	Tag pulumi.StringPtrInput
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-	//
-	// ***
 	Target pulumi.StringPtrInput
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrInput
@@ -206,8 +200,6 @@ type domainRecordArgs struct {
 	// The tag portion of a CAA record. It is invalid to set this on other record types.
 	Tag *string `pulumi:"tag"`
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-	//
-	// ***
 	Target string `pulumi:"target"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec *int `pulumi:"ttlSec"`
@@ -234,8 +226,6 @@ type DomainRecordArgs struct {
 	// The tag portion of a CAA record. It is invalid to set this on other record types.
 	Tag pulumi.StringPtrInput
 	// The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-	//
-	// ***
 	Target pulumi.StringInput
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrInput
@@ -371,8 +361,6 @@ func (o DomainRecordOutput) Tag() pulumi.StringPtrOutput {
 }
 
 // The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-//
-// ***
 func (o DomainRecordOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainRecord) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }

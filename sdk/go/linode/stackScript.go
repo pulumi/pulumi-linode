@@ -89,8 +89,6 @@ type StackScript struct {
 	// A description for the StackScript.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-	//
-	// ***
 	Images pulumi.StringArrayOutput `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic pulumi.BoolOutput `pulumi:"isPublic"`
@@ -161,8 +159,6 @@ type stackScriptState struct {
 	// A description for the StackScript.
 	Description *string `pulumi:"description"`
 	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-	//
-	// ***
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic *bool `pulumi:"isPublic"`
@@ -192,8 +188,6 @@ type StackScriptState struct {
 	// A description for the StackScript.
 	Description pulumi.StringPtrInput
 	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-	//
-	// ***
 	Images pulumi.StringArrayInput
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic pulumi.BoolPtrInput
@@ -221,8 +215,6 @@ type stackScriptArgs struct {
 	// A description for the StackScript.
 	Description string `pulumi:"description"`
 	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-	//
-	// ***
 	Images []string `pulumi:"images"`
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic *bool `pulumi:"isPublic"`
@@ -239,8 +231,6 @@ type StackScriptArgs struct {
 	// A description for the StackScript.
 	Description pulumi.StringInput
 	// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-	//
-	// ***
 	Images pulumi.StringArrayInput
 	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
 	IsPublic pulumi.BoolPtrInput
@@ -360,8 +350,6 @@ func (o StackScriptOutput) Description() pulumi.StringOutput {
 }
 
 // A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-//
-// ***
 func (o StackScriptOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StackScript) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
 }

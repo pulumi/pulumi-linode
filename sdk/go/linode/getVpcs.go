@@ -69,6 +69,7 @@ func GetVpcs(ctx *pulumi.Context, args *GetVpcsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getVpcs.
 type GetVpcsArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
 	Filters []GetVpcsFilter `pulumi:"filters"`
 	Vpcs    []GetVpcsVpc    `pulumi:"vpcs"`
 }
@@ -96,6 +97,7 @@ func GetVpcsOutput(ctx *pulumi.Context, args GetVpcsOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getVpcs.
 type GetVpcsOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode VPCs that meet certain requirements.
 	Filters GetVpcsFilterArrayInput `pulumi:"filters"`
 	Vpcs    GetVpcsVpcArrayInput    `pulumi:"vpcs"`
 }

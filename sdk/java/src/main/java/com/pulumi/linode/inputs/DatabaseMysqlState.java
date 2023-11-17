@@ -186,7 +186,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-     * 
      * * Must be `none` for a single node cluster.
      * 
      * * Must be `asynch` or `semi_synch` for a high availability cluster.
@@ -197,7 +196,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-     * 
      * * Must be `none` for a single node cluster.
      * 
      * * Must be `asynch` or `semi_synch` for a high availability cluster.
@@ -240,16 +238,12 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-     * 
      */
     @Import(name="sslConnection")
     private @Nullable Output<Boolean> sslConnection;
 
     /**
      * @return Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-     * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Optional<Output<Boolean>> sslConnection() {
@@ -274,16 +268,12 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
-     * ***
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -306,14 +296,14 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Configuration settings for automated patch update maintenance for the Managed Database.
+     * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     @Import(name="updates")
     private @Nullable Output<DatabaseMysqlUpdatesArgs> updates;
 
     /**
-     * @return Configuration settings for automated patch update maintenance for the Managed Database.
+     * @return `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
     public Optional<Output<DatabaseMysqlUpdatesArgs>> updates() {
@@ -621,7 +611,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-         * 
          * * Must be `none` for a single node cluster.
          * 
          * * Must be `asynch` or `semi_synch` for a high availability cluster.
@@ -636,7 +625,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
-         * 
          * * Must be `none` for a single node cluster.
          * 
          * * Must be `asynch` or `semi_synch` for a high availability cluster.
@@ -693,8 +681,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param sslConnection Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
          * 
-         * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
-         * 
          * @return builder
          * 
          */
@@ -705,8 +691,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sslConnection Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-         * 
-         * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
          * @return builder
          * 
@@ -739,8 +723,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -751,8 +733,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -783,7 +763,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updates Configuration settings for automated patch update maintenance for the Managed Database.
+         * @param updates `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
          * @return builder
          * 
@@ -794,7 +774,7 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updates Configuration settings for automated patch update maintenance for the Managed Database.
+         * @param updates `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
          * @return builder
          * 

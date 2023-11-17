@@ -75,11 +75,12 @@ export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.
  */
 export interface GetDatabaseEnginesArgs {
     engines?: inputs.GetDatabaseEnginesEngine[];
+    /**
+     * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     */
     filters?: inputs.GetDatabaseEnginesFilter[];
     /**
      * If true, only the latest engine version will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -166,11 +167,12 @@ export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, op
  */
 export interface GetDatabaseEnginesOutputArgs {
     engines?: pulumi.Input<pulumi.Input<inputs.GetDatabaseEnginesEngineArgs>[]>;
+    /**
+     * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseEnginesFilterArgs>[]>;
     /**
      * If true, only the latest engine version will be returned.
-     *
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
      */
     latest?: pulumi.Input<boolean>;
     /**

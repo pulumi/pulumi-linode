@@ -229,6 +229,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private List<Inputs.GetFirewallsFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetFirewallsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetFirewallsFilterArgs>());
@@ -265,6 +269,10 @@ namespace Pulumi.Linode
     {
         [Input("filters")]
         private InputList<Inputs.GetFirewallsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetFirewallsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetFirewallsFilterInputArgs>());

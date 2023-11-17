@@ -63,6 +63,9 @@ export function getNodebalancers(args?: GetNodebalancersArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getNodebalancers.
  */
 export interface GetNodebalancersArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     */
     filters?: inputs.GetNodebalancersFilter[];
     nodebalancers?: inputs.GetNodebalancersNodebalancer[];
     /**
@@ -137,6 +140,9 @@ export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?:
  * A collection of arguments for invoking getNodebalancers.
  */
 export interface GetNodebalancersOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersFilterArgs>[]>;
     nodebalancers?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersNodebalancerArgs>[]>;
     /**

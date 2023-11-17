@@ -91,19 +91,6 @@ import (
 //	}
 //
 // ```
-// ## updates
-//
-// The following arguments are supported in the `updates` specification block:
-//
-// * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
-//
-// * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
-//
-// * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-//
-// * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
-//
-// * `weekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 //
 // ## Import
 //
@@ -142,13 +129,11 @@ type DatabasePostgresql struct {
 	// The region to use for the Managed Database.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
-	//
 	// * Must be `local` or `off` for the `asynch` replication type.
 	//
 	// * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
 	ReplicationCommitType pulumi.StringPtrOutput `pulumi:"replicationCommitType"`
 	// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-	//
 	// * Must be `none` for a single node cluster.
 	//
 	// * Must be `asynch` or `semiSynch` for a high availability cluster.
@@ -158,18 +143,14 @@ type DatabasePostgresql struct {
 	// The root username for the Managed Database instance.
 	RootUsername pulumi.StringOutput `pulumi:"rootUsername"`
 	// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection pulumi.BoolPtrOutput `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// Configuration settings for automated patch update maintenance for the Managed Database.
+	// `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabasePostgresqlUpdatesOutput `pulumi:"updates"`
 	// The Managed Database engine version. (e.g. `13.2`)
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -248,13 +229,11 @@ type databasePostgresqlState struct {
 	// The region to use for the Managed Database.
 	Region *string `pulumi:"region"`
 	// The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
-	//
 	// * Must be `local` or `off` for the `asynch` replication type.
 	//
 	// * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
 	ReplicationCommitType *string `pulumi:"replicationCommitType"`
 	// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-	//
 	// * Must be `none` for a single node cluster.
 	//
 	// * Must be `asynch` or `semiSynch` for a high availability cluster.
@@ -264,18 +243,14 @@ type databasePostgresqlState struct {
 	// The root username for the Managed Database instance.
 	RootUsername *string `pulumi:"rootUsername"`
 	// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
 	Status *string `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated *string `pulumi:"updated"`
-	// Configuration settings for automated patch update maintenance for the Managed Database.
+	// `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates *DatabasePostgresqlUpdates `pulumi:"updates"`
 	// The Managed Database engine version. (e.g. `13.2`)
 	Version *string `pulumi:"version"`
@@ -307,13 +282,11 @@ type DatabasePostgresqlState struct {
 	// The region to use for the Managed Database.
 	Region pulumi.StringPtrInput
 	// The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
-	//
 	// * Must be `local` or `off` for the `asynch` replication type.
 	//
 	// * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
 	ReplicationCommitType pulumi.StringPtrInput
 	// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-	//
 	// * Must be `none` for a single node cluster.
 	//
 	// * Must be `asynch` or `semiSynch` for a high availability cluster.
@@ -323,18 +296,14 @@ type DatabasePostgresqlState struct {
 	// The root username for the Managed Database instance.
 	RootUsername pulumi.StringPtrInput
 	// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection pulumi.BoolPtrInput
 	// The operating status of the Managed Database.
 	Status pulumi.StringPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// When this Managed Database was last updated.
 	Updated pulumi.StringPtrInput
-	// Configuration settings for automated patch update maintenance for the Managed Database.
+	// `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabasePostgresqlUpdatesPtrInput
 	// The Managed Database engine version. (e.g. `13.2`)
 	Version pulumi.StringPtrInput
@@ -358,26 +327,20 @@ type databasePostgresqlArgs struct {
 	// The region to use for the Managed Database.
 	Region string `pulumi:"region"`
 	// The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
-	//
 	// * Must be `local` or `off` for the `asynch` replication type.
 	//
 	// * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
 	ReplicationCommitType *string `pulumi:"replicationCommitType"`
 	// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-	//
 	// * Must be `none` for a single node cluster.
 	//
 	// * Must be `asynch` or `semiSynch` for a high availability cluster.
 	ReplicationType *string `pulumi:"replicationType"`
 	// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type string `pulumi:"type"`
-	// Configuration settings for automated patch update maintenance for the Managed Database.
+	// `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates *DatabasePostgresqlUpdates `pulumi:"updates"`
 }
 
@@ -396,26 +359,20 @@ type DatabasePostgresqlArgs struct {
 	// The region to use for the Managed Database.
 	Region pulumi.StringInput
 	// The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
-	//
 	// * Must be `local` or `off` for the `asynch` replication type.
 	//
 	// * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
 	ReplicationCommitType pulumi.StringPtrInput
 	// The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-	//
 	// * Must be `none` for a single node cluster.
 	//
 	// * Must be `asynch` or `semiSynch` for a high availability cluster.
 	ReplicationType pulumi.StringPtrInput
 	// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection pulumi.BoolPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringInput
-	// Configuration settings for automated patch update maintenance for the Managed Database.
+	// `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabasePostgresqlUpdatesPtrInput
 }
 
@@ -567,7 +524,6 @@ func (o DatabasePostgresqlOutput) Region() pulumi.StringOutput {
 }
 
 // The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
-//
 // * Must be `local` or `off` for the `asynch` replication type.
 //
 // * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
@@ -576,7 +532,6 @@ func (o DatabasePostgresqlOutput) ReplicationCommitType() pulumi.StringPtrOutput
 }
 
 // The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
-//
 // * Must be `none` for a single node cluster.
 //
 // * Must be `asynch` or `semiSynch` for a high availability cluster.
@@ -595,8 +550,6 @@ func (o DatabasePostgresqlOutput) RootUsername() pulumi.StringOutput {
 }
 
 // Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
-//
-// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 func (o DatabasePostgresqlOutput) SslConnection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.BoolPtrOutput { return v.SslConnection }).(pulumi.BoolPtrOutput)
 }
@@ -607,8 +560,6 @@ func (o DatabasePostgresqlOutput) Status() pulumi.StringOutput {
 }
 
 // The Linode Instance type used for the nodes of the  Managed Database instance.
-//
-// ***
 func (o DatabasePostgresqlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -618,7 +569,7 @@ func (o DatabasePostgresqlOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// Configuration settings for automated patch update maintenance for the Managed Database.
+// `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 func (o DatabasePostgresqlOutput) Updates() DatabasePostgresqlUpdatesOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) DatabasePostgresqlUpdatesOutput { return v.Updates }).(DatabasePostgresqlUpdatesOutput)
 }

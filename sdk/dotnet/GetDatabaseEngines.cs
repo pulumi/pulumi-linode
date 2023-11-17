@@ -225,6 +225,10 @@ namespace Pulumi.Linode
 
         [Input("filters")]
         private List<Inputs.GetDatabaseEnginesFilterArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+        /// </summary>
         public List<Inputs.GetDatabaseEnginesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetDatabaseEnginesFilterArgs>());
@@ -233,8 +237,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest engine version will be returned.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -269,6 +271,10 @@ namespace Pulumi.Linode
 
         [Input("filters")]
         private InputList<Inputs.GetDatabaseEnginesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+        /// </summary>
         public InputList<Inputs.GetDatabaseEnginesFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetDatabaseEnginesFilterInputArgs>());
@@ -277,8 +283,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, only the latest engine version will be returned.
-        /// 
-        /// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }

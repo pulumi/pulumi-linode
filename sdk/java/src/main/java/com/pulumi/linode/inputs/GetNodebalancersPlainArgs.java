@@ -17,9 +17,17 @@ public final class GetNodebalancersPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetNodebalancersPlainArgs Empty = new GetNodebalancersPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetNodebalancersFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * 
+     */
     public Optional<List<GetNodebalancersFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -88,11 +96,23 @@ public final class GetNodebalancersPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetNodebalancersPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetNodebalancersFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetNodebalancersFilter... filters) {
             return filters(List.of(filters));
         }

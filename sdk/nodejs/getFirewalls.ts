@@ -93,6 +93,9 @@ export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getFirewalls.
  */
 export interface GetFirewallsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+     */
     filters?: inputs.GetFirewallsFilter[];
     firewalls?: inputs.GetFirewallsFirewall[];
     /**
@@ -197,6 +200,9 @@ export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getFirewalls.
  */
 export interface GetFirewallsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Cloud Firewalls that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFilterArgs>[]>;
     firewalls?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallArgs>[]>;
     /**

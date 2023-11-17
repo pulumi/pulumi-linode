@@ -50,6 +50,9 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+     */
     filters?: inputs.GetRegionsFilter[];
     regions?: inputs.GetRegionsRegion[];
 }
@@ -100,6 +103,9 @@ export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsOutputArgs {
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode regions that meet certain requirements.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[]>;
     regions?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionArgs>[]>;
 }

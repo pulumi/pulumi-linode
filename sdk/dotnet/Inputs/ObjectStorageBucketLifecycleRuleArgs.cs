@@ -14,10 +14,6 @@ namespace Pulumi.Linode.Inputs
     {
         /// <summary>
         /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-        /// 
-        /// * `expiration` - (Optional) Specifies a period in the object's expire.
-        /// 
-        /// * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
         /// </summary>
         [Input("abortIncompleteMultipartUploadDays")]
         public Input<int>? AbortIncompleteMultipartUploadDays { get; set; }
@@ -28,6 +24,9 @@ namespace Pulumi.Linode.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// `expiration` - (Optional) Specifies a period in the object's expire.
+        /// </summary>
         [Input("expiration")]
         public Input<Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs>? Expiration { get; set; }
 
@@ -37,6 +36,9 @@ namespace Pulumi.Linode.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        /// </summary>
         [Input("noncurrentVersionExpiration")]
         public Input<Inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs>? NoncurrentVersionExpiration { get; set; }
 

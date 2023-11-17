@@ -68,7 +68,8 @@ export class Image extends pulumi.CustomResource {
     /**
      * A detailed description of this Image.
      *
-     * - - -
+     *
+     *
      *
      * The following arguments apply to creating an image from an existing Linode Instance:
      */
@@ -100,7 +101,8 @@ export class Image extends pulumi.CustomResource {
     /**
      * The ID of the Linode that this Image will be created from.
      *
-     * - - -
+     *
+     *
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      *
@@ -215,7 +217,8 @@ export interface ImageState {
     /**
      * A detailed description of this Image.
      *
-     * - - -
+     *
+     *
      *
      * The following arguments apply to creating an image from an existing Linode Instance:
      */
@@ -247,7 +250,8 @@ export interface ImageState {
     /**
      * The ID of the Linode that this Image will be created from.
      *
-     * - - -
+     *
+     *
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      *
@@ -287,7 +291,8 @@ export interface ImageArgs {
     /**
      * A detailed description of this Image.
      *
-     * - - -
+     *
+     *
      *
      * The following arguments apply to creating an image from an existing Linode Instance:
      */
@@ -311,7 +316,8 @@ export interface ImageArgs {
     /**
      * The ID of the Linode that this Image will be created from.
      *
-     * - - -
+     *
+     *
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      *

@@ -50,14 +50,14 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The cert used by this Object Storage Bucket.
+     * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     @Import(name="cert")
     private @Nullable Output<ObjectStorageBucketCertArgs> cert;
 
     /**
-     * @return The cert used by this Object Storage Bucket.
+     * @return `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     public Optional<Output<ObjectStorageBucketCertArgs>> cert() {
@@ -110,14 +110,14 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Lifecycle rules to be applied to the bucket.
+     * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
      * 
      */
     @Import(name="lifecycleRules")
     private @Nullable Output<List<ObjectStorageBucketLifecycleRuleArgs>> lifecycleRules;
 
     /**
-     * @return Lifecycle rules to be applied to the bucket.
+     * @return `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
      * 
      */
     public Optional<Output<List<ObjectStorageBucketLifecycleRuleArgs>>> lifecycleRules() {
@@ -142,20 +142,12 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
      * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-     * 
-     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
-     * 
      */
     @Import(name="versioning")
     private @Nullable Output<Boolean> versioning;
 
     /**
      * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-     * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-     * 
-     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
      */
     public Optional<Output<Boolean>> versioning() {
@@ -237,7 +229,7 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cert The cert used by this Object Storage Bucket.
+         * @param cert `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
          * 
          * @return builder
          * 
@@ -248,7 +240,7 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cert The cert used by this Object Storage Bucket.
+         * @param cert `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
          * 
          * @return builder
          * 
@@ -321,7 +313,7 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lifecycleRules Lifecycle rules to be applied to the bucket.
+         * @param lifecycleRules `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
          * 
          * @return builder
          * 
@@ -332,7 +324,7 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lifecycleRules Lifecycle rules to be applied to the bucket.
+         * @param lifecycleRules `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
          * 
          * @return builder
          * 
@@ -342,7 +334,7 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lifecycleRules Lifecycle rules to be applied to the bucket.
+         * @param lifecycleRules `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
          * 
          * @return builder
          * 
@@ -375,10 +367,6 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         /**
          * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
          * 
-         * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-         * 
-         * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
-         * 
          * @return builder
          * 
          */
@@ -389,10 +377,6 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
 
         /**
          * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-         * 
-         * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
-         * 
-         * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
          * 
          * @return builder
          * 

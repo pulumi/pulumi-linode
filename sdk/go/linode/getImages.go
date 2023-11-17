@@ -114,11 +114,10 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
 	Filters []GetImagesFilter `pulumi:"filters"`
 	Images  []GetImagesImage  `pulumi:"images"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-	//
-	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -152,11 +151,10 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
 	Filters GetImagesFilterArrayInput `pulumi:"filters"`
 	Images  GetImagesImageArrayInput  `pulumi:"images"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
-	//
-	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

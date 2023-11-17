@@ -74,6 +74,7 @@ func GetSshkeys(ctx *pulumi.Context, args *GetSshkeysArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getSshkeys.
 type GetSshkeysArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
 	Filters []GetSshkeysFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -107,6 +108,7 @@ func GetSshkeysOutput(ctx *pulumi.Context, args GetSshkeysOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getSshkeys.
 type GetSshkeysOutputArgs struct {
+	// `filter` - (Optional) A set of filters used to select Linode SSH Keys that meet certain requirements.
 	Filters GetSshkeysFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`

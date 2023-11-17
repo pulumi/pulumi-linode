@@ -17,9 +17,17 @@ public final class GetKernelsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKernelsPlainArgs Empty = new GetKernelsPlainArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetKernelsFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+     * 
+     */
     public Optional<List<GetKernelsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -88,11 +96,23 @@ public final class GetKernelsPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetKernelsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetKernelsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode Kernels that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetKernelsFilter... filters) {
             return filters(List.of(filters));
         }

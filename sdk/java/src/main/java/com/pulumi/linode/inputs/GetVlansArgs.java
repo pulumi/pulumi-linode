@@ -18,9 +18,17 @@ public final class GetVlansArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVlansArgs Empty = new GetVlansArgs();
 
+    /**
+     * `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<GetVlansFilterArgs>> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+     * 
+     */
     public Optional<Output<List<GetVlansFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -89,15 +97,33 @@ public final class GetVlansArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetVlansArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<GetVlansFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<GetVlansFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select Linode VLANs that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetVlansFilterArgs... filters) {
             return filters(List.of(filters));
         }

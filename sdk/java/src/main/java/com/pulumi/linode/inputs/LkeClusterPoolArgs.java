@@ -19,9 +19,17 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final LkeClusterPoolArgs Empty = new LkeClusterPoolArgs();
 
+    /**
+     * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     */
     @Import(name="autoscaler")
     private @Nullable Output<LkeClusterPoolAutoscalerArgs> autoscaler;
 
+    /**
+     * @return `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     */
     public Optional<Output<LkeClusterPoolAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -29,16 +37,12 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The number of nodes in the Node Pool.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
     /**
      * @return The number of nodes in the Node Pool.
-     * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Output<Integer> count() {
@@ -110,19 +114,29 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
             $ = new LkeClusterPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscaler `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(@Nullable Output<LkeClusterPoolAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
+        /**
+         * @param autoscaler `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(LkeClusterPoolAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
 
         /**
          * @param count The number of nodes in the Node Pool.
-         * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 
@@ -134,8 +148,6 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param count The number of nodes in the Node Pool.
-         * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 

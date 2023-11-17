@@ -90,8 +90,6 @@ type Instance struct {
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringOutput `pulumi:"bootConfigLabel"`
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
@@ -109,12 +107,13 @@ type Instance struct {
 	HostUuid pulumi.StringOutput `pulumi:"hostUuid"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrOutput `pulumi:"image"`
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4s pulumi.StringArrayOutput `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
@@ -129,22 +128,10 @@ type Instance struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-	//
-	// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-	//
-	// * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-	//
-	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s pulumi.StringArrayOutput `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecsOutput `pulumi:"specs"`
@@ -159,8 +146,6 @@ type Instance struct {
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-	//
-	// ***
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 	WatchdogEnabled pulumi.BoolPtrOutput `pulumi:"watchdogEnabled"`
@@ -225,8 +210,6 @@ type instanceState struct {
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
@@ -244,12 +227,13 @@ type instanceState struct {
 	HostUuid *string `pulumi:"hostUuid"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4s []string `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 *string `pulumi:"ipv6"`
@@ -264,22 +248,10 @@ type instanceState struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region *string `pulumi:"region"`
 	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-	//
-	// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-	//
-	// * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-	//
-	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs *InstanceSpecs `pulumi:"specs"`
@@ -294,8 +266,6 @@ type instanceState struct {
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 	WatchdogEnabled *bool `pulumi:"watchdogEnabled"`
@@ -317,8 +287,6 @@ type InstanceState struct {
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringPtrInput
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
@@ -336,12 +304,13 @@ type InstanceState struct {
 	HostUuid pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces InstanceInterfaceArrayInput
 	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringPtrInput
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// The following computed attribute is available in a VPC interface:
 	Ipv4s pulumi.StringArrayInput
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringPtrInput
@@ -356,22 +325,10 @@ type InstanceState struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringPtrInput
 	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-	//
-	// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-	//
-	// * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk pulumi.BoolPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-	//
-	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s pulumi.StringArrayInput
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecsPtrInput
@@ -386,8 +343,6 @@ type InstanceState struct {
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 	WatchdogEnabled pulumi.BoolPtrInput
@@ -411,8 +366,6 @@ type instanceArgs struct {
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
@@ -426,8 +379,7 @@ type instanceArgs struct {
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
@@ -438,22 +390,10 @@ type instanceArgs struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region string `pulumi:"region"`
 	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-	//
-	// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-	//
-	// * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass *string `pulumi:"rootPass"`
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-	//
-	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
@@ -464,8 +404,6 @@ type instanceArgs struct {
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 	WatchdogEnabled *bool `pulumi:"watchdogEnabled"`
@@ -486,8 +424,6 @@ type InstanceArgs struct {
 	// The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `bootConfigLabel`. *This value can not be imported.*
 	BootConfigLabel pulumi.StringPtrInput
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
@@ -501,8 +437,7 @@ type InstanceArgs struct {
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	Interfaces InstanceInterfaceArrayInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
@@ -513,22 +448,10 @@ type InstanceArgs struct {
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
 	Region pulumi.StringInput
 	// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-	//
-	// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-	//
-	// * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-	//
-	// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	ResizeDisk pulumi.BoolPtrInput
 	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
 	RootPass pulumi.StringPtrInput
 	// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-	//
-	// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	SharedIpv4s pulumi.StringArrayInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
 	StackscriptData pulumi.MapInput
@@ -539,8 +462,6 @@ type InstanceArgs struct {
 	// A list of tags applied to this object. Tags are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
 	WatchdogEnabled pulumi.BoolPtrInput
@@ -669,8 +590,6 @@ func (o InstanceOutput) BootConfigLabel() pulumi.StringOutput {
 }
 
 // If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-//
-// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 func (o InstanceOutput) Booted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.Booted }).(pulumi.BoolOutput)
 }
@@ -712,8 +631,7 @@ func (o InstanceOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-// must be declared in the config block.
+// `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 func (o InstanceOutput) Interfaces() InstanceInterfaceArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceInterfaceArrayOutput { return v.Interfaces }).(InstanceInterfaceArrayOutput)
 }
@@ -723,7 +641,9 @@ func (o InstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// The following computed attribute is available in a VPC interface:
 func (o InstanceOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
@@ -759,16 +679,6 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 }
 
 // If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-//
-// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-//
-// * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-//
-// * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-//
-// * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-//
-// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 func (o InstanceOutput) ResizeDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ResizeDisk }).(pulumi.BoolPtrOutput)
 }
@@ -779,8 +689,6 @@ func (o InstanceOutput) RootPass() pulumi.StringPtrOutput {
 }
 
 // A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-//
-// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 func (o InstanceOutput) SharedIpv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SharedIpv4s }).(pulumi.StringArrayOutput)
 }
@@ -816,8 +724,6 @@ func (o InstanceOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-//
-// ***
 func (o InstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -56,9 +56,17 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
         return this.databaseType;
     }
 
+    /**
+     * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetDatabaseBackupsFilter> filters;
 
+    /**
+     * @return `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+     * 
+     */
     public Optional<List<GetDatabaseBackupsFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -66,16 +74,12 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
     /**
      * If true, only the latest backup will be returned.
      * 
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
-     * 
      */
     @Import(name="latest")
     private @Nullable Boolean latest;
 
     /**
      * @return If true, only the latest backup will be returned.
-     * 
-     * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
      * 
      */
     public Optional<Boolean> latest() {
@@ -173,19 +177,29 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetDatabaseBackupsFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetDatabaseBackupsFilter... filters) {
             return filters(List.of(filters));
         }
 
         /**
          * @param latest If true, only the latest backup will be returned.
-         * 
-         * * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
          * 
          * @return builder
          * 
