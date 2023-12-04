@@ -514,7 +514,7 @@ class User(pulumi.CustomResource):
         ```
         ## Global Grants
 
-        * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
+        * `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
 
         * `add_domains` - (optional) If true, this User may add Domains.
 
@@ -604,7 +604,7 @@ class User(pulumi.CustomResource):
         ```
         ## Global Grants
 
-        * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
+        * `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
 
         * `add_domains` - (optional) If true, this User may add Domains.
 

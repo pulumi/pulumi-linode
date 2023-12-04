@@ -82,7 +82,7 @@ import (
 // ```
 // ## Global Grants
 //
-// * `account-access` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
+// * `accountAccess` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
 //
 // * `addDomains` - (optional) If true, this User may add Domains.
 //
