@@ -46,7 +46,7 @@ require (
 	github.com/armon/go-metrics v0.4.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
-	github.com/aws/aws-sdk-go v1.47.0 // indirect
+	github.com/aws/aws-sdk-go v1.48.5 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.4 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.18.12 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.12 // indirect
@@ -154,6 +154,7 @@ require (
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/linode/linodego v1.25.0 // indirect
 	github.com/linode/linodego/k8s v1.25.1 // indirect
+	github.com/linode/terraform-provider-linode/v2 v2.10.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
@@ -228,14 +229,14 @@ require (
 	go.uber.org/atomic v1.10.0 // indirect
 	gocloud.dev v0.29.0 // indirect
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
-	golang.org/x/crypto v0.15.0 // indirect
+	golang.org/x/crypto v0.16.0 // indirect
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
 	golang.org/x/mod v0.13.0 // indirect
-	golang.org/x/net v0.18.0 // indirect
+	golang.org/x/net v0.19.0 // indirect
 	golang.org/x/oauth2 v0.11.0 // indirect
 	golang.org/x/sync v0.4.0 // indirect
-	golang.org/x/sys v0.14.0 // indirect
-	golang.org/x/term v0.14.0 // indirect
+	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/term v0.15.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/tools v0.14.0 // indirect
