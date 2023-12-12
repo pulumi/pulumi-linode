@@ -87,11 +87,11 @@ public final class InstanceConfigDevicesSda {
             return this;
         }
         public InstanceConfigDevicesSda build() {
-            final var o = new InstanceConfigDevicesSda();
-            o.diskId = diskId;
-            o.diskLabel = diskLabel;
-            o.volumeId = volumeId;
-            return o;
+            final var _resultValue = new InstanceConfigDevicesSda();
+            _resultValue.diskId = diskId;
+            _resultValue.diskLabel = diskLabel;
+            _resultValue.volumeId = volumeId;
+            return _resultValue;
         }
     }
 }

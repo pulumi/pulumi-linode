@@ -84,11 +84,11 @@ public final class GetNodeBalancerTransfer {
             return this;
         }
         public GetNodeBalancerTransfer build() {
-            final var o = new GetNodeBalancerTransfer();
-            o.in = in;
-            o.out = out;
-            o.total = total;
-            return o;
+            final var _resultValue = new GetNodeBalancerTransfer();
+            _resultValue.in = in;
+            _resultValue.out = out;
+            _resultValue.total = total;
+            return _resultValue;
         }
     }
 }

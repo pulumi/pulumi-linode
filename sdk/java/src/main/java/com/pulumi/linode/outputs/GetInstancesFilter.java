@@ -90,11 +90,11 @@ public final class GetInstancesFilter {
             return values(List.of(values));
         }
         public GetInstancesFilter build() {
-            final var o = new GetInstancesFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetInstancesFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

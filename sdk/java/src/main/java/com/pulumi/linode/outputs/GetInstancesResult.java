@@ -101,13 +101,13 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.filters = filters;
-            o.id = id;
-            o.instances = instances;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

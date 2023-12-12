@@ -85,11 +85,11 @@ public final class GetUserNodebalancerGrant {
             return this;
         }
         public GetUserNodebalancerGrant build() {
-            final var o = new GetUserNodebalancerGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUserNodebalancerGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

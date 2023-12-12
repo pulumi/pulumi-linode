@@ -103,13 +103,13 @@ public final class GetInstanceBackupsResult {
             return this;
         }
         public GetInstanceBackupsResult build() {
-            final var o = new GetInstanceBackupsResult();
-            o.automatics = automatics;
-            o.currents = currents;
-            o.id = id;
-            o.inProgresses = inProgresses;
-            o.linodeId = linodeId;
-            return o;
+            final var _resultValue = new GetInstanceBackupsResult();
+            _resultValue.automatics = automatics;
+            _resultValue.currents = currents;
+            _resultValue.id = id;
+            _resultValue.inProgresses = inProgresses;
+            _resultValue.linodeId = linodeId;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetInstanceTypesTypePrice {
             return this;
         }
         public GetInstanceTypesTypePrice build() {
-            final var o = new GetInstanceTypesTypePrice();
-            o.hourly = hourly;
-            o.monthly = monthly;
-            return o;
+            final var _resultValue = new GetInstanceTypesTypePrice();
+            _resultValue.hourly = hourly;
+            _resultValue.monthly = monthly;
+            return _resultValue;
         }
     }
 }

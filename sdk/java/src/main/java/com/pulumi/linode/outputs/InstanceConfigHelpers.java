@@ -116,13 +116,13 @@ public final class InstanceConfigHelpers {
             return this;
         }
         public InstanceConfigHelpers build() {
-            final var o = new InstanceConfigHelpers();
-            o.devtmpfsAutomount = devtmpfsAutomount;
-            o.distro = distro;
-            o.modulesDep = modulesDep;
-            o.network = network;
-            o.updatedbDisabled = updatedbDisabled;
-            return o;
+            final var _resultValue = new InstanceConfigHelpers();
+            _resultValue.devtmpfsAutomount = devtmpfsAutomount;
+            _resultValue.distro = distro;
+            _resultValue.modulesDep = modulesDep;
+            _resultValue.network = network;
+            _resultValue.updatedbDisabled = updatedbDisabled;
+            return _resultValue;
         }
     }
 }

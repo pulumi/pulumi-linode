@@ -87,11 +87,11 @@ public final class GetInstancesInstanceConfigDeviceSdh {
             return this;
         }
         public GetInstancesInstanceConfigDeviceSdh build() {
-            final var o = new GetInstancesInstanceConfigDeviceSdh();
-            o.diskId = diskId;
-            o.diskLabel = diskLabel;
-            o.volumeId = volumeId;
-            return o;
+            final var _resultValue = new GetInstancesInstanceConfigDeviceSdh();
+            _resultValue.diskId = diskId;
+            _resultValue.diskLabel = diskLabel;
+            _resultValue.volumeId = volumeId;
+            return _resultValue;
         }
     }
 }

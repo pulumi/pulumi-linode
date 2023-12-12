@@ -66,11 +66,11 @@ public final class GetInstanceNetworkingIpv6 {
             return this;
         }
         public GetInstanceNetworkingIpv6 build() {
-            final var o = new GetInstanceNetworkingIpv6();
-            o.globals = globals;
-            o.linkLocal = linkLocal;
-            o.slaac = slaac;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv6();
+            _resultValue.globals = globals;
+            _resultValue.linkLocal = linkLocal;
+            _resultValue.slaac = slaac;
+            return _resultValue;
         }
     }
 }

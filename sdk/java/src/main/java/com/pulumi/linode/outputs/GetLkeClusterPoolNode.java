@@ -85,11 +85,11 @@ public final class GetLkeClusterPoolNode {
             return this;
         }
         public GetLkeClusterPoolNode build() {
-            final var o = new GetLkeClusterPoolNode();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetLkeClusterPoolNode();
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

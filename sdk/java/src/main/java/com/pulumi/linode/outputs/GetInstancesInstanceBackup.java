@@ -73,11 +73,11 @@ public final class GetInstancesInstanceBackup {
             return schedules(List.of(schedules));
         }
         public GetInstancesInstanceBackup build() {
-            final var o = new GetInstancesInstanceBackup();
-            o.available = available;
-            o.enabled = enabled;
-            o.schedules = schedules;
-            return o;
+            final var _resultValue = new GetInstancesInstanceBackup();
+            _resultValue.available = available;
+            _resultValue.enabled = enabled;
+            _resultValue.schedules = schedules;
+            return _resultValue;
         }
     }
 }

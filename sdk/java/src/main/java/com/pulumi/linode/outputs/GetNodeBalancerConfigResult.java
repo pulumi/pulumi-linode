@@ -344,26 +344,26 @@ public final class GetNodeBalancerConfigResult {
             return this;
         }
         public GetNodeBalancerConfigResult build() {
-            final var o = new GetNodeBalancerConfigResult();
-            o.algorithm = algorithm;
-            o.check = check;
-            o.checkAttempts = checkAttempts;
-            o.checkBody = checkBody;
-            o.checkInterval = checkInterval;
-            o.checkPassive = checkPassive;
-            o.checkPath = checkPath;
-            o.checkTimeout = checkTimeout;
-            o.cipherSuite = cipherSuite;
-            o.id = id;
-            o.nodeStatuses = nodeStatuses;
-            o.nodebalancerId = nodebalancerId;
-            o.port = port;
-            o.protocol = protocol;
-            o.proxyProtocol = proxyProtocol;
-            o.sslCommonname = sslCommonname;
-            o.sslFingerprint = sslFingerprint;
-            o.stickiness = stickiness;
-            return o;
+            final var _resultValue = new GetNodeBalancerConfigResult();
+            _resultValue.algorithm = algorithm;
+            _resultValue.check = check;
+            _resultValue.checkAttempts = checkAttempts;
+            _resultValue.checkBody = checkBody;
+            _resultValue.checkInterval = checkInterval;
+            _resultValue.checkPassive = checkPassive;
+            _resultValue.checkPath = checkPath;
+            _resultValue.checkTimeout = checkTimeout;
+            _resultValue.cipherSuite = cipherSuite;
+            _resultValue.id = id;
+            _resultValue.nodeStatuses = nodeStatuses;
+            _resultValue.nodebalancerId = nodebalancerId;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.proxyProtocol = proxyProtocol;
+            _resultValue.sslCommonname = sslCommonname;
+            _resultValue.sslFingerprint = sslFingerprint;
+            _resultValue.stickiness = stickiness;
+            return _resultValue;
         }
     }
 }

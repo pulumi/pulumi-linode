@@ -132,16 +132,16 @@ public final class InstanceConfigDevices {
             return this;
         }
         public InstanceConfigDevices build() {
-            final var o = new InstanceConfigDevices();
-            o.sda = sda;
-            o.sdb = sdb;
-            o.sdc = sdc;
-            o.sdd = sdd;
-            o.sde = sde;
-            o.sdf = sdf;
-            o.sdg = sdg;
-            o.sdh = sdh;
-            return o;
+            final var _resultValue = new InstanceConfigDevices();
+            _resultValue.sda = sda;
+            _resultValue.sdb = sdb;
+            _resultValue.sdc = sdc;
+            _resultValue.sdd = sdd;
+            _resultValue.sde = sde;
+            _resultValue.sdf = sdf;
+            _resultValue.sdg = sdg;
+            _resultValue.sdh = sdh;
+            return _resultValue;
         }
     }
 }

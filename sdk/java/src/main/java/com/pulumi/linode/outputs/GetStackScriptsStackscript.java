@@ -303,22 +303,22 @@ public final class GetStackScriptsStackscript {
             return this;
         }
         public GetStackScriptsStackscript build() {
-            final var o = new GetStackScriptsStackscript();
-            o.created = created;
-            o.deploymentsActive = deploymentsActive;
-            o.deploymentsTotal = deploymentsTotal;
-            o.description = description;
-            o.id = id;
-            o.images = images;
-            o.isPublic = isPublic;
-            o.label = label;
-            o.revNote = revNote;
-            o.script = script;
-            o.updated = updated;
-            o.userDefinedFields = userDefinedFields;
-            o.userGravatarId = userGravatarId;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetStackScriptsStackscript();
+            _resultValue.created = created;
+            _resultValue.deploymentsActive = deploymentsActive;
+            _resultValue.deploymentsTotal = deploymentsTotal;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.images = images;
+            _resultValue.isPublic = isPublic;
+            _resultValue.label = label;
+            _resultValue.revNote = revNote;
+            _resultValue.script = script;
+            _resultValue.updated = updated;
+            _resultValue.userDefinedFields = userDefinedFields;
+            _resultValue.userGravatarId = userGravatarId;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

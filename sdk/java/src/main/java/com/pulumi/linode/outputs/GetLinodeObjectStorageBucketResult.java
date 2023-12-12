@@ -105,15 +105,15 @@ public final class GetLinodeObjectStorageBucketResult {
             return this;
         }
         public GetLinodeObjectStorageBucketResult build() {
-            final var o = new GetLinodeObjectStorageBucketResult();
-            o.cluster = cluster;
-            o.created = created;
-            o.hostname = hostname;
-            o.id = id;
-            o.label = label;
-            o.objects = objects;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetLinodeObjectStorageBucketResult();
+            _resultValue.cluster = cluster;
+            _resultValue.created = created;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.objects = objects;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

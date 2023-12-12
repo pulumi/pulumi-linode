@@ -73,12 +73,12 @@ public final class InstanceSpecs {
             return this;
         }
         public InstanceSpecs build() {
-            final var o = new InstanceSpecs();
-            o.disk = disk;
-            o.memory = memory;
-            o.transfer = transfer;
-            o.vcpus = vcpus;
-            return o;
+            final var _resultValue = new InstanceSpecs();
+            _resultValue.disk = disk;
+            _resultValue.memory = memory;
+            _resultValue.transfer = transfer;
+            _resultValue.vcpus = vcpus;
+            return _resultValue;
         }
     }
 }

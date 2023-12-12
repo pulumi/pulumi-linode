@@ -123,14 +123,14 @@ public final class GetIpv6RangeResult {
             return this;
         }
         public GetIpv6RangeResult build() {
-            final var o = new GetIpv6RangeResult();
-            o.id = id;
-            o.isBgp = isBgp;
-            o.linodes = linodes;
-            o.prefix = prefix;
-            o.range = range;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetIpv6RangeResult();
+            _resultValue.id = id;
+            _resultValue.isBgp = isBgp;
+            _resultValue.linodes = linodes;
+            _resultValue.prefix = prefix;
+            _resultValue.range = range;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

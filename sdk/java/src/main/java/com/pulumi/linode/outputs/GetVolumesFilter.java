@@ -90,11 +90,11 @@ public final class GetVolumesFilter {
             return values(List.of(values));
         }
         public GetVolumesFilter build() {
-            final var o = new GetVolumesFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetVolumesFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

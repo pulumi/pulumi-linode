@@ -123,13 +123,13 @@ public final class GetFirewallDevice {
             return this;
         }
         public GetFirewallDevice build() {
-            final var o = new GetFirewallDevice();
-            o.entityId = entityId;
-            o.id = id;
-            o.label = label;
-            o.type = type;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetFirewallDevice();
+            _resultValue.entityId = entityId;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.type = type;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

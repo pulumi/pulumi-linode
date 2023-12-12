@@ -95,12 +95,12 @@ public final class GetInstanceNetworkingIpv4 {
             return shareds(List.of(shareds));
         }
         public GetInstanceNetworkingIpv4 build() {
-            final var o = new GetInstanceNetworkingIpv4();
-            o.privates = privates;
-            o.publics = publics;
-            o.reserveds = reserveds;
-            o.shareds = shareds;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv4();
+            _resultValue.privates = privates;
+            _resultValue.publics = publics;
+            _resultValue.reserveds = reserveds;
+            _resultValue.shareds = shareds;
+            return _resultValue;
         }
     }
 }

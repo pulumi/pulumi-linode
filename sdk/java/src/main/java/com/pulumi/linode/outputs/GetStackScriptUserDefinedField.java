@@ -141,14 +141,14 @@ public final class GetStackScriptUserDefinedField {
             return this;
         }
         public GetStackScriptUserDefinedField build() {
-            final var o = new GetStackScriptUserDefinedField();
-            o.default_ = default_;
-            o.example = example;
-            o.label = label;
-            o.manyOf = manyOf;
-            o.name = name;
-            o.oneOf = oneOf;
-            return o;
+            final var _resultValue = new GetStackScriptUserDefinedField();
+            _resultValue.default_ = default_;
+            _resultValue.example = example;
+            _resultValue.label = label;
+            _resultValue.manyOf = manyOf;
+            _resultValue.name = name;
+            _resultValue.oneOf = oneOf;
+            return _resultValue;
         }
     }
 }

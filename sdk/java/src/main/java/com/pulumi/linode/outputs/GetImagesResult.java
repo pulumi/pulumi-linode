@@ -113,14 +113,14 @@ public final class GetImagesResult {
             return this;
         }
         public GetImagesResult build() {
-            final var o = new GetImagesResult();
-            o.filters = filters;
-            o.id = id;
-            o.images = images;
-            o.latest = latest;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetImagesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.images = images;
+            _resultValue.latest = latest;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

@@ -69,11 +69,11 @@ public final class GetInstanceTypesTypeRegionPrice {
             return this;
         }
         public GetInstanceTypesTypeRegionPrice build() {
-            final var o = new GetInstanceTypesTypeRegionPrice();
-            o.hourly = hourly;
-            o.id = id;
-            o.monthly = monthly;
-            return o;
+            final var _resultValue = new GetInstanceTypesTypeRegionPrice();
+            _resultValue.hourly = hourly;
+            _resultValue.id = id;
+            _resultValue.monthly = monthly;
+            return _resultValue;
         }
     }
 }

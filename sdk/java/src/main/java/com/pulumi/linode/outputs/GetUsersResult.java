@@ -101,13 +101,13 @@ public final class GetUsersResult {
             return users(List.of(users));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.filters = filters;
-            o.id = id;
-            o.order = order;
-            o.orderBy = orderBy;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

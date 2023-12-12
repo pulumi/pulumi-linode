@@ -132,13 +132,13 @@ public final class GetLkeClusterPool {
             return this;
         }
         public GetLkeClusterPool build() {
-            final var o = new GetLkeClusterPool();
-            o.autoscalers = autoscalers;
-            o.count = count;
-            o.id = id;
-            o.nodes = nodes;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetLkeClusterPool();
+            _resultValue.autoscalers = autoscalers;
+            _resultValue.count = count;
+            _resultValue.id = id;
+            _resultValue.nodes = nodes;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

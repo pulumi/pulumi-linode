@@ -90,11 +90,11 @@ public final class GetImagesFilter {
             return values(List.of(values));
         }
         public GetImagesFilter build() {
-            final var o = new GetImagesFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetImagesFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

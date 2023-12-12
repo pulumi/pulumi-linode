@@ -90,11 +90,11 @@ public final class GetStackScriptsFilter {
             return values(List.of(values));
         }
         public GetStackScriptsFilter build() {
-            final var o = new GetStackScriptsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetStackScriptsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

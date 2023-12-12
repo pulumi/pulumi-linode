@@ -101,13 +101,13 @@ public final class GetVolumesResult {
             return volumes(List.of(volumes));
         }
         public GetVolumesResult build() {
-            final var o = new GetVolumesResult();
-            o.filters = filters;
-            o.id = id;
-            o.order = order;
-            o.orderBy = orderBy;
-            o.volumes = volumes;
-            return o;
+            final var _resultValue = new GetVolumesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            _resultValue.volumes = volumes;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class GetDatabaseMysqlBackupsFilter {
             return values(List.of(values));
         }
         public GetDatabaseMysqlBackupsFilter build() {
-            final var o = new GetDatabaseMysqlBackupsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetDatabaseMysqlBackupsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

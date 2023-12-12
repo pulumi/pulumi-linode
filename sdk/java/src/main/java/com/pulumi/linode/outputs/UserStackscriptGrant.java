@@ -50,10 +50,10 @@ public final class UserStackscriptGrant {
             return this;
         }
         public UserStackscriptGrant build() {
-            final var o = new UserStackscriptGrant();
-            o.id = id;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserStackscriptGrant();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

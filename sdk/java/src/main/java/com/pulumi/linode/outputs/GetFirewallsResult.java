@@ -101,13 +101,13 @@ public final class GetFirewallsResult {
             return this;
         }
         public GetFirewallsResult build() {
-            final var o = new GetFirewallsResult();
-            o.filters = filters;
-            o.firewalls = firewalls;
-            o.id = id;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetFirewallsResult();
+            _resultValue.filters = filters;
+            _resultValue.firewalls = firewalls;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

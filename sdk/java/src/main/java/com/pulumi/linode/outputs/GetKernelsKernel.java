@@ -191,17 +191,17 @@ public final class GetKernelsKernel {
             return this;
         }
         public GetKernelsKernel build() {
-            final var o = new GetKernelsKernel();
-            o.architecture = architecture;
-            o.built = built;
-            o.deprecated = deprecated;
-            o.id = id;
-            o.kvm = kvm;
-            o.label = label;
-            o.pvops = pvops;
-            o.version = version;
-            o.xen = xen;
-            return o;
+            final var _resultValue = new GetKernelsKernel();
+            _resultValue.architecture = architecture;
+            _resultValue.built = built;
+            _resultValue.deprecated = deprecated;
+            _resultValue.id = id;
+            _resultValue.kvm = kvm;
+            _resultValue.label = label;
+            _resultValue.pvops = pvops;
+            _resultValue.version = version;
+            _resultValue.xen = xen;
+            return _resultValue;
         }
     }
 }

@@ -226,19 +226,19 @@ public final class GetInstanceTypesType {
             return this;
         }
         public GetInstanceTypesType build() {
-            final var o = new GetInstanceTypesType();
-            o.addons = addons;
-            o.class_ = class_;
-            o.disk = disk;
-            o.id = id;
-            o.label = label;
-            o.memory = memory;
-            o.networkOut = networkOut;
-            o.prices = prices;
-            o.regionPrices = regionPrices;
-            o.transfer = transfer;
-            o.vcpus = vcpus;
-            return o;
+            final var _resultValue = new GetInstanceTypesType();
+            _resultValue.addons = addons;
+            _resultValue.class_ = class_;
+            _resultValue.disk = disk;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.memory = memory;
+            _resultValue.networkOut = networkOut;
+            _resultValue.prices = prices;
+            _resultValue.regionPrices = regionPrices;
+            _resultValue.transfer = transfer;
+            _resultValue.vcpus = vcpus;
+            return _resultValue;
         }
     }
 }

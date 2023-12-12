@@ -65,10 +65,10 @@ public final class GetRegionsRegionResolver {
             return this;
         }
         public GetRegionsRegionResolver build() {
-            final var o = new GetRegionsRegionResolver();
-            o.ipv4 = ipv4;
-            o.ipv6 = ipv6;
-            return o;
+            final var _resultValue = new GetRegionsRegionResolver();
+            _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6 = ipv6;
+            return _resultValue;
         }
     }
 }

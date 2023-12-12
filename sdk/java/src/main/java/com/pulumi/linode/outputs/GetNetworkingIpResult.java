@@ -211,18 +211,18 @@ public final class GetNetworkingIpResult {
             return this;
         }
         public GetNetworkingIpResult build() {
-            final var o = new GetNetworkingIpResult();
-            o.address = address;
-            o.gateway = gateway;
-            o.id = id;
-            o.linodeId = linodeId;
-            o.prefix = prefix;
-            o.public_ = public_;
-            o.rdns = rdns;
-            o.region = region;
-            o.subnetMask = subnetMask;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetNetworkingIpResult();
+            _resultValue.address = address;
+            _resultValue.gateway = gateway;
+            _resultValue.id = id;
+            _resultValue.linodeId = linodeId;
+            _resultValue.prefix = prefix;
+            _resultValue.public_ = public_;
+            _resultValue.rdns = rdns;
+            _resultValue.region = region;
+            _resultValue.subnetMask = subnetMask;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

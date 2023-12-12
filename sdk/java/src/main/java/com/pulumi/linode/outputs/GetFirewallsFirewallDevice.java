@@ -99,13 +99,13 @@ public final class GetFirewallsFirewallDevice {
             return this;
         }
         public GetFirewallsFirewallDevice build() {
-            final var o = new GetFirewallsFirewallDevice();
-            o.entityId = entityId;
-            o.id = id;
-            o.label = label;
-            o.type = type;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetFirewallsFirewallDevice();
+            _resultValue.entityId = entityId;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.type = type;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

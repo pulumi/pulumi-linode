@@ -65,10 +65,10 @@ public final class ObjectStorageBucketCert {
             return this;
         }
         public ObjectStorageBucketCert build() {
-            final var o = new ObjectStorageBucketCert();
-            o.certificate = certificate;
-            o.privateKey = privateKey;
-            return o;
+            final var _resultValue = new ObjectStorageBucketCert();
+            _resultValue.certificate = certificate;
+            _resultValue.privateKey = privateKey;
+            return _resultValue;
         }
     }
 }

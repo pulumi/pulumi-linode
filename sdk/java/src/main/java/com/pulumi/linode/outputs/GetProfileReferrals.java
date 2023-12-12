@@ -95,14 +95,14 @@ public final class GetProfileReferrals {
             return this;
         }
         public GetProfileReferrals build() {
-            final var o = new GetProfileReferrals();
-            o.code = code;
-            o.completed = completed;
-            o.credit = credit;
-            o.pending = pending;
-            o.total = total;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetProfileReferrals();
+            _resultValue.code = code;
+            _resultValue.completed = completed;
+            _resultValue.credit = credit;
+            _resultValue.pending = pending;
+            _resultValue.total = total;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

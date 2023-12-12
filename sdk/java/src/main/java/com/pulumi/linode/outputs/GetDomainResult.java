@@ -306,22 +306,22 @@ public final class GetDomainResult {
             return this;
         }
         public GetDomainResult build() {
-            final var o = new GetDomainResult();
-            o.axfrIps = axfrIps;
-            o.description = description;
-            o.domain = domain;
-            o.expireSec = expireSec;
-            o.group = group;
-            o.id = id;
-            o.masterIps = masterIps;
-            o.refreshSec = refreshSec;
-            o.retrySec = retrySec;
-            o.soaEmail = soaEmail;
-            o.status = status;
-            o.tags = tags;
-            o.ttlSec = ttlSec;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDomainResult();
+            _resultValue.axfrIps = axfrIps;
+            _resultValue.description = description;
+            _resultValue.domain = domain;
+            _resultValue.expireSec = expireSec;
+            _resultValue.group = group;
+            _resultValue.id = id;
+            _resultValue.masterIps = masterIps;
+            _resultValue.refreshSec = refreshSec;
+            _resultValue.retrySec = retrySec;
+            _resultValue.soaEmail = soaEmail;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.ttlSec = ttlSec;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

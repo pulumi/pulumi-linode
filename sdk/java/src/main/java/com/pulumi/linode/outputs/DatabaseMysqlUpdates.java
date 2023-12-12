@@ -85,13 +85,13 @@ public final class DatabaseMysqlUpdates {
             return this;
         }
         public DatabaseMysqlUpdates build() {
-            final var o = new DatabaseMysqlUpdates();
-            o.dayOfWeek = dayOfWeek;
-            o.duration = duration;
-            o.frequency = frequency;
-            o.hourOfDay = hourOfDay;
-            o.weekOfMonth = weekOfMonth;
-            return o;
+            final var _resultValue = new DatabaseMysqlUpdates();
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.duration = duration;
+            _resultValue.frequency = frequency;
+            _resultValue.hourOfDay = hourOfDay;
+            _resultValue.weekOfMonth = weekOfMonth;
+            return _resultValue;
         }
     }
 }

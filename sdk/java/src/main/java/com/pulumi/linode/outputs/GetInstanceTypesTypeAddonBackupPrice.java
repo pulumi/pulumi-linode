@@ -49,10 +49,10 @@ public final class GetInstanceTypesTypeAddonBackupPrice {
             return this;
         }
         public GetInstanceTypesTypeAddonBackupPrice build() {
-            final var o = new GetInstanceTypesTypeAddonBackupPrice();
-            o.hourly = hourly;
-            o.monthly = monthly;
-            return o;
+            final var _resultValue = new GetInstanceTypesTypeAddonBackupPrice();
+            _resultValue.hourly = hourly;
+            _resultValue.monthly = monthly;
+            return _resultValue;
         }
     }
 }

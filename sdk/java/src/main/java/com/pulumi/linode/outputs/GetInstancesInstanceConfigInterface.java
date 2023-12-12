@@ -218,18 +218,18 @@ public final class GetInstancesInstanceConfigInterface {
             return this;
         }
         public GetInstancesInstanceConfigInterface build() {
-            final var o = new GetInstancesInstanceConfigInterface();
-            o.active = active;
-            o.id = id;
-            o.ipRanges = ipRanges;
-            o.ipamAddress = ipamAddress;
-            o.ipv4 = ipv4;
-            o.label = label;
-            o.primary = primary;
-            o.purpose = purpose;
-            o.subnetId = subnetId;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetInstancesInstanceConfigInterface();
+            _resultValue.active = active;
+            _resultValue.id = id;
+            _resultValue.ipRanges = ipRanges;
+            _resultValue.ipamAddress = ipamAddress;
+            _resultValue.ipv4 = ipv4;
+            _resultValue.label = label;
+            _resultValue.primary = primary;
+            _resultValue.purpose = purpose;
+            _resultValue.subnetId = subnetId;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

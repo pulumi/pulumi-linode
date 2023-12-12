@@ -104,12 +104,12 @@ public final class GetInstanceNetworkingIpv6Global {
             return this;
         }
         public GetInstanceNetworkingIpv6Global build() {
-            final var o = new GetInstanceNetworkingIpv6Global();
-            o.prefix = prefix;
-            o.range = range;
-            o.region = region;
-            o.routeTarget = routeTarget;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv6Global();
+            _resultValue.prefix = prefix;
+            _resultValue.range = range;
+            _resultValue.region = region;
+            _resultValue.routeTarget = routeTarget;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class GetInstanceBackupsAutomaticDisk {
             return this;
         }
         public GetInstanceBackupsAutomaticDisk build() {
-            final var o = new GetInstanceBackupsAutomaticDisk();
-            o.filesystem = filesystem;
-            o.label = label;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetInstanceBackupsAutomaticDisk();
+            _resultValue.filesystem = filesystem;
+            _resultValue.label = label;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

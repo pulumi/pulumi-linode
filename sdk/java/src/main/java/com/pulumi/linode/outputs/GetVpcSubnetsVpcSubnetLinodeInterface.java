@@ -58,10 +58,10 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface {
             return this;
         }
         public GetVpcSubnetsVpcSubnetLinodeInterface build() {
-            final var o = new GetVpcSubnetsVpcSubnetLinodeInterface();
-            o.active = active;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetVpcSubnetsVpcSubnetLinodeInterface();
+            _resultValue.active = active;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

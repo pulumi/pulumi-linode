@@ -83,13 +83,13 @@ public final class GetDatabasePostgresqlUpdate {
             return this;
         }
         public GetDatabasePostgresqlUpdate build() {
-            final var o = new GetDatabasePostgresqlUpdate();
-            o.dayOfWeek = dayOfWeek;
-            o.duration = duration;
-            o.frequency = frequency;
-            o.hourOfDay = hourOfDay;
-            o.weekOfMonth = weekOfMonth;
-            return o;
+            final var _resultValue = new GetDatabasePostgresqlUpdate();
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.duration = duration;
+            _resultValue.frequency = frequency;
+            _resultValue.hourOfDay = hourOfDay;
+            _resultValue.weekOfMonth = weekOfMonth;
+            return _resultValue;
         }
     }
 }

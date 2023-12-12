@@ -415,30 +415,30 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.alerts = alerts;
-            o.backups = backups;
-            o.bootConfigLabel = bootConfigLabel;
-            o.configs = configs;
-            o.disks = disks;
-            o.group = group;
-            o.hasUserData = hasUserData;
-            o.hostUuid = hostUuid;
-            o.id = id;
-            o.image = image;
-            o.ipAddress = ipAddress;
-            o.ipv4s = ipv4s;
-            o.ipv6 = ipv6;
-            o.label = label;
-            o.privateIpAddress = privateIpAddress;
-            o.region = region;
-            o.specs = specs;
-            o.status = status;
-            o.swapSize = swapSize;
-            o.tags = tags;
-            o.type = type;
-            o.watchdogEnabled = watchdogEnabled;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.alerts = alerts;
+            _resultValue.backups = backups;
+            _resultValue.bootConfigLabel = bootConfigLabel;
+            _resultValue.configs = configs;
+            _resultValue.disks = disks;
+            _resultValue.group = group;
+            _resultValue.hasUserData = hasUserData;
+            _resultValue.hostUuid = hostUuid;
+            _resultValue.id = id;
+            _resultValue.image = image;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.ipv4s = ipv4s;
+            _resultValue.ipv6 = ipv6;
+            _resultValue.label = label;
+            _resultValue.privateIpAddress = privateIpAddress;
+            _resultValue.region = region;
+            _resultValue.specs = specs;
+            _resultValue.status = status;
+            _resultValue.swapSize = swapSize;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.watchdogEnabled = watchdogEnabled;
+            return _resultValue;
         }
     }
 }

@@ -135,14 +135,14 @@ public final class GetAccountLoginResult {
             return this;
         }
         public GetAccountLoginResult build() {
-            final var o = new GetAccountLoginResult();
-            o.datetime = datetime;
-            o.id = id;
-            o.ip = ip;
-            o.restricted = restricted;
-            o.status = status;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetAccountLoginResult();
+            _resultValue.datetime = datetime;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.restricted = restricted;
+            _resultValue.status = status;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

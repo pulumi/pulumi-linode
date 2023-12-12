@@ -147,14 +147,14 @@ public final class GetVpcSubnetsVpcSubnet {
             return this;
         }
         public GetVpcSubnetsVpcSubnet build() {
-            final var o = new GetVpcSubnetsVpcSubnet();
-            o.created = created;
-            o.id = id;
-            o.ipv4 = ipv4;
-            o.label = label;
-            o.linodes = linodes;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetVpcSubnetsVpcSubnet();
+            _resultValue.created = created;
+            _resultValue.id = id;
+            _resultValue.ipv4 = ipv4;
+            _resultValue.label = label;
+            _resultValue.linodes = linodes;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }

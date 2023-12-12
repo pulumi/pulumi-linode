@@ -101,13 +101,13 @@ public final class GetNodebalancersResult {
             return this;
         }
         public GetNodebalancersResult build() {
-            final var o = new GetNodebalancersResult();
-            o.filters = filters;
-            o.id = id;
-            o.nodebalancers = nodebalancers;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetNodebalancersResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.nodebalancers = nodebalancers;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

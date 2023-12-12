@@ -234,19 +234,19 @@ public final class GetProfileResult {
             return this;
         }
         public GetProfileResult build() {
-            final var o = new GetProfileResult();
-            o.authorizedKeys = authorizedKeys;
-            o.email = email;
-            o.emailNotifications = emailNotifications;
-            o.id = id;
-            o.ipWhitelistEnabled = ipWhitelistEnabled;
-            o.lishAuthMethod = lishAuthMethod;
-            o.referrals = referrals;
-            o.restricted = restricted;
-            o.timezone = timezone;
-            o.twoFactorAuth = twoFactorAuth;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetProfileResult();
+            _resultValue.authorizedKeys = authorizedKeys;
+            _resultValue.email = email;
+            _resultValue.emailNotifications = emailNotifications;
+            _resultValue.id = id;
+            _resultValue.ipWhitelistEnabled = ipWhitelistEnabled;
+            _resultValue.lishAuthMethod = lishAuthMethod;
+            _resultValue.referrals = referrals;
+            _resultValue.restricted = restricted;
+            _resultValue.timezone = timezone;
+            _resultValue.twoFactorAuth = twoFactorAuth;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

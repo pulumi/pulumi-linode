@@ -69,11 +69,11 @@ public final class GetInstanceNetworkingIpv4ReservedVpcNat11 {
             return this;
         }
         public GetInstanceNetworkingIpv4ReservedVpcNat11 build() {
-            final var o = new GetInstanceNetworkingIpv4ReservedVpcNat11();
-            o.address = address;
-            o.subnetId = subnetId;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv4ReservedVpcNat11();
+            _resultValue.address = address;
+            _resultValue.subnetId = subnetId;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

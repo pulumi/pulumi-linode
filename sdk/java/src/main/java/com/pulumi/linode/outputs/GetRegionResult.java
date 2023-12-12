@@ -134,14 +134,14 @@ public final class GetRegionResult {
             return this;
         }
         public GetRegionResult build() {
-            final var o = new GetRegionResult();
-            o.capabilities = capabilities;
-            o.country = country;
-            o.id = id;
-            o.label = label;
-            o.resolvers = resolvers;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRegionResult();
+            _resultValue.capabilities = capabilities;
+            _resultValue.country = country;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.resolvers = resolvers;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

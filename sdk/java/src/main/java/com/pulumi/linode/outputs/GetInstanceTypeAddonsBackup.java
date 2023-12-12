@@ -57,10 +57,10 @@ public final class GetInstanceTypeAddonsBackup {
             return regionPrices(List.of(regionPrices));
         }
         public GetInstanceTypeAddonsBackup build() {
-            final var o = new GetInstanceTypeAddonsBackup();
-            o.prices = prices;
-            o.regionPrices = regionPrices;
-            return o;
+            final var _resultValue = new GetInstanceTypeAddonsBackup();
+            _resultValue.prices = prices;
+            _resultValue.regionPrices = regionPrices;
+            return _resultValue;
         }
     }
 }

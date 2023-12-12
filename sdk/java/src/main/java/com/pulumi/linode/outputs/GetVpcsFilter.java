@@ -90,11 +90,11 @@ public final class GetVpcsFilter {
             return values(List.of(values));
         }
         public GetVpcsFilter build() {
-            final var o = new GetVpcsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetVpcsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

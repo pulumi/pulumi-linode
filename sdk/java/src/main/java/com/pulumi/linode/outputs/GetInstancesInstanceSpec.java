@@ -71,12 +71,12 @@ public final class GetInstancesInstanceSpec {
             return this;
         }
         public GetInstancesInstanceSpec build() {
-            final var o = new GetInstancesInstanceSpec();
-            o.disk = disk;
-            o.memory = memory;
-            o.transfer = transfer;
-            o.vcpus = vcpus;
-            return o;
+            final var _resultValue = new GetInstancesInstanceSpec();
+            _resultValue.disk = disk;
+            _resultValue.memory = memory;
+            _resultValue.transfer = transfer;
+            _resultValue.vcpus = vcpus;
+            return _resultValue;
         }
     }
 }

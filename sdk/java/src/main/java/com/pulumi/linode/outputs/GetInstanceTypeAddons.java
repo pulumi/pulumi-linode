@@ -42,9 +42,9 @@ public final class GetInstanceTypeAddons {
             return backups(List.of(backups));
         }
         public GetInstanceTypeAddons build() {
-            final var o = new GetInstanceTypeAddons();
-            o.backups = backups;
-            return o;
+            final var _resultValue = new GetInstanceTypeAddons();
+            _resultValue.backups = backups;
+            return _resultValue;
         }
     }
 }

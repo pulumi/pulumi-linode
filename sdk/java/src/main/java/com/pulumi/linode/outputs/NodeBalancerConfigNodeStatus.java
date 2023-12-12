@@ -67,10 +67,10 @@ public final class NodeBalancerConfigNodeStatus {
             return this;
         }
         public NodeBalancerConfigNodeStatus build() {
-            final var o = new NodeBalancerConfigNodeStatus();
-            o.down = down;
-            o.up = up;
-            return o;
+            final var _resultValue = new NodeBalancerConfigNodeStatus();
+            _resultValue.down = down;
+            _resultValue.up = up;
+            return _resultValue;
         }
     }
 }

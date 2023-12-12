@@ -136,16 +136,16 @@ public final class GetDatabaseBackupsResult {
             return this;
         }
         public GetDatabaseBackupsResult build() {
-            final var o = new GetDatabaseBackupsResult();
-            o.backups = backups;
-            o.databaseId = databaseId;
-            o.databaseType = databaseType;
-            o.filters = filters;
-            o.id = id;
-            o.latest = latest;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetDatabaseBackupsResult();
+            _resultValue.backups = backups;
+            _resultValue.databaseId = databaseId;
+            _resultValue.databaseType = databaseType;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.latest = latest;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

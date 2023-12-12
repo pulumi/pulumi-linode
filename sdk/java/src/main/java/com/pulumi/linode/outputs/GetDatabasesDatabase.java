@@ -348,25 +348,25 @@ public final class GetDatabasesDatabase {
             return this;
         }
         public GetDatabasesDatabase build() {
-            final var o = new GetDatabasesDatabase();
-            o.allowLists = allowLists;
-            o.clusterSize = clusterSize;
-            o.created = created;
-            o.encrypted = encrypted;
-            o.engine = engine;
-            o.hostPrimary = hostPrimary;
-            o.hostSecondary = hostSecondary;
-            o.id = id;
-            o.instanceUri = instanceUri;
-            o.label = label;
-            o.region = region;
-            o.replicationType = replicationType;
-            o.sslConnection = sslConnection;
-            o.status = status;
-            o.type = type;
-            o.updated = updated;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDatabasesDatabase();
+            _resultValue.allowLists = allowLists;
+            _resultValue.clusterSize = clusterSize;
+            _resultValue.created = created;
+            _resultValue.encrypted = encrypted;
+            _resultValue.engine = engine;
+            _resultValue.hostPrimary = hostPrimary;
+            _resultValue.hostSecondary = hostSecondary;
+            _resultValue.id = id;
+            _resultValue.instanceUri = instanceUri;
+            _resultValue.label = label;
+            _resultValue.region = region;
+            _resultValue.replicationType = replicationType;
+            _resultValue.sslConnection = sslConnection;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.updated = updated;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

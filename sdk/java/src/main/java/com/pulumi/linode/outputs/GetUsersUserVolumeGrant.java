@@ -85,11 +85,11 @@ public final class GetUsersUserVolumeGrant {
             return this;
         }
         public GetUsersUserVolumeGrant build() {
-            final var o = new GetUsersUserVolumeGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUsersUserVolumeGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

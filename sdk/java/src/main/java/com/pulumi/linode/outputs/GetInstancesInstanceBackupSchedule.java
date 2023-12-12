@@ -65,10 +65,10 @@ public final class GetInstancesInstanceBackupSchedule {
             return this;
         }
         public GetInstancesInstanceBackupSchedule build() {
-            final var o = new GetInstancesInstanceBackupSchedule();
-            o.day = day;
-            o.window = window;
-            return o;
+            final var _resultValue = new GetInstancesInstanceBackupSchedule();
+            _resultValue.day = day;
+            _resultValue.window = window;
+            return _resultValue;
         }
     }
 }

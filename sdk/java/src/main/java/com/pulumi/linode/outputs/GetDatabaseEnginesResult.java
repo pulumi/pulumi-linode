@@ -113,14 +113,14 @@ public final class GetDatabaseEnginesResult {
             return this;
         }
         public GetDatabaseEnginesResult build() {
-            final var o = new GetDatabaseEnginesResult();
-            o.engines = engines;
-            o.filters = filters;
-            o.id = id;
-            o.latest = latest;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetDatabaseEnginesResult();
+            _resultValue.engines = engines;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.latest = latest;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

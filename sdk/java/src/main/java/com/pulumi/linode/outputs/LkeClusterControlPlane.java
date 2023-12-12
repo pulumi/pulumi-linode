@@ -48,9 +48,9 @@ public final class LkeClusterControlPlane {
             return this;
         }
         public LkeClusterControlPlane build() {
-            final var o = new LkeClusterControlPlane();
-            o.highAvailability = highAvailability;
-            return o;
+            final var _resultValue = new LkeClusterControlPlane();
+            _resultValue.highAvailability = highAvailability;
+            return _resultValue;
         }
     }
 }

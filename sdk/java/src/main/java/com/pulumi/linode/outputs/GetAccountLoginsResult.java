@@ -78,11 +78,11 @@ public final class GetAccountLoginsResult {
             return logins(List.of(logins));
         }
         public GetAccountLoginsResult build() {
-            final var o = new GetAccountLoginsResult();
-            o.filters = filters;
-            o.id = id;
-            o.logins = logins;
-            return o;
+            final var _resultValue = new GetAccountLoginsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.logins = logins;
+            return _resultValue;
         }
     }
 }

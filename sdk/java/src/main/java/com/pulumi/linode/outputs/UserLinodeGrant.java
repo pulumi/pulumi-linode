@@ -50,10 +50,10 @@ public final class UserLinodeGrant {
             return this;
         }
         public UserLinodeGrant build() {
-            final var o = new UserLinodeGrant();
-            o.id = id;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserLinodeGrant();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

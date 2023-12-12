@@ -222,18 +222,18 @@ public final class GetVolumesVolume {
             return this;
         }
         public GetVolumesVolume build() {
-            final var o = new GetVolumesVolume();
-            o.created = created;
-            o.filesystemPath = filesystemPath;
-            o.id = id;
-            o.label = label;
-            o.linodeId = linodeId;
-            o.region = region;
-            o.size = size;
-            o.status = status;
-            o.tags = tags;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetVolumesVolume();
+            _resultValue.created = created;
+            _resultValue.filesystemPath = filesystemPath;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.linodeId = linodeId;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }

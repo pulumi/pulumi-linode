@@ -85,11 +85,11 @@ public final class GetUsersUserDomainGrant {
             return this;
         }
         public GetUsersUserDomainGrant build() {
-            final var o = new GetUsersUserDomainGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUsersUserDomainGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

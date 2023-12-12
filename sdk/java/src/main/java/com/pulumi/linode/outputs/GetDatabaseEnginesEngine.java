@@ -84,11 +84,11 @@ public final class GetDatabaseEnginesEngine {
             return this;
         }
         public GetDatabaseEnginesEngine build() {
-            final var o = new GetDatabaseEnginesEngine();
-            o.engine = engine;
-            o.id = id;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDatabaseEnginesEngine();
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

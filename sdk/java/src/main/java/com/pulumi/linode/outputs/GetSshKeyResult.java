@@ -97,12 +97,12 @@ public final class GetSshKeyResult {
             return this;
         }
         public GetSshKeyResult build() {
-            final var o = new GetSshKeyResult();
-            o.created = created;
-            o.id = id;
-            o.label = label;
-            o.sshKey = sshKey;
-            return o;
+            final var _resultValue = new GetSshKeyResult();
+            _resultValue.created = created;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.sshKey = sshKey;
+            return _resultValue;
         }
     }
 }

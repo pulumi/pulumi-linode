@@ -267,21 +267,21 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.address1 = address1;
-            o.address2 = address2;
-            o.balance = balance;
-            o.city = city;
-            o.company = company;
-            o.country = country;
-            o.email = email;
-            o.firstName = firstName;
-            o.id = id;
-            o.lastName = lastName;
-            o.phone = phone;
-            o.state = state;
-            o.zip = zip;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.address1 = address1;
+            _resultValue.address2 = address2;
+            _resultValue.balance = balance;
+            _resultValue.city = city;
+            _resultValue.company = company;
+            _resultValue.country = country;
+            _resultValue.email = email;
+            _resultValue.firstName = firstName;
+            _resultValue.id = id;
+            _resultValue.lastName = lastName;
+            _resultValue.phone = phone;
+            _resultValue.state = state;
+            _resultValue.zip = zip;
+            return _resultValue;
         }
     }
 }

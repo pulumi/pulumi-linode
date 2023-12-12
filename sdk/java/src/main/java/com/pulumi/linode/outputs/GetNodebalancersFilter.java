@@ -90,11 +90,11 @@ public final class GetNodebalancersFilter {
             return values(List.of(values));
         }
         public GetNodebalancersFilter build() {
-            final var o = new GetNodebalancersFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetNodebalancersFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

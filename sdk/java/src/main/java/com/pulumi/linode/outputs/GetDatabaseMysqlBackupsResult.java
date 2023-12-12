@@ -125,15 +125,15 @@ public final class GetDatabaseMysqlBackupsResult {
             return this;
         }
         public GetDatabaseMysqlBackupsResult build() {
-            final var o = new GetDatabaseMysqlBackupsResult();
-            o.backups = backups;
-            o.databaseId = databaseId;
-            o.filters = filters;
-            o.id = id;
-            o.latest = latest;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetDatabaseMysqlBackupsResult();
+            _resultValue.backups = backups;
+            _resultValue.databaseId = databaseId;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.latest = latest;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

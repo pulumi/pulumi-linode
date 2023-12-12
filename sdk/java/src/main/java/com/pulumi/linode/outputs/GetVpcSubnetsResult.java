@@ -90,12 +90,12 @@ public final class GetVpcSubnetsResult {
             return vpcSubnets(List.of(vpcSubnets));
         }
         public GetVpcSubnetsResult build() {
-            final var o = new GetVpcSubnetsResult();
-            o.filters = filters;
-            o.id = id;
-            o.vpcId = vpcId;
-            o.vpcSubnets = vpcSubnets;
-            return o;
+            final var _resultValue = new GetVpcSubnetsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcSubnets = vpcSubnets;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class GetLkeVersionsVersion {
             return this;
         }
         public GetLkeVersionsVersion build() {
-            final var o = new GetLkeVersionsVersion();
-            o.id = id;
-            return o;
+            final var _resultValue = new GetLkeVersionsVersion();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

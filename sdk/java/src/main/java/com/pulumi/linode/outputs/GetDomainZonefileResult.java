@@ -81,11 +81,11 @@ public final class GetDomainZonefileResult {
             return zoneFiles(List.of(zoneFiles));
         }
         public GetDomainZonefileResult build() {
-            final var o = new GetDomainZonefileResult();
-            o.domainId = domainId;
-            o.id = id;
-            o.zoneFiles = zoneFiles;
-            return o;
+            final var _resultValue = new GetDomainZonefileResult();
+            _resultValue.domainId = domainId;
+            _resultValue.id = id;
+            _resultValue.zoneFiles = zoneFiles;
+            return _resultValue;
         }
     }
 }

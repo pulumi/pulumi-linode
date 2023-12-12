@@ -134,14 +134,14 @@ public final class GetAccountSettingsResult {
             return this;
         }
         public GetAccountSettingsResult build() {
-            final var o = new GetAccountSettingsResult();
-            o.backupsEnabled = backupsEnabled;
-            o.id = id;
-            o.longviewSubscription = longviewSubscription;
-            o.managed = managed;
-            o.networkHelper = networkHelper;
-            o.objectStorage = objectStorage;
-            return o;
+            final var _resultValue = new GetAccountSettingsResult();
+            _resultValue.backupsEnabled = backupsEnabled;
+            _resultValue.id = id;
+            _resultValue.longviewSubscription = longviewSubscription;
+            _resultValue.managed = managed;
+            _resultValue.networkHelper = networkHelper;
+            _resultValue.objectStorage = objectStorage;
+            return _resultValue;
         }
     }
 }

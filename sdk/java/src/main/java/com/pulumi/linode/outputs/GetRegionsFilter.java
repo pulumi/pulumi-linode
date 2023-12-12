@@ -90,11 +90,11 @@ public final class GetRegionsFilter {
             return values(List.of(values));
         }
         public GetRegionsFilter build() {
-            final var o = new GetRegionsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRegionsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }
