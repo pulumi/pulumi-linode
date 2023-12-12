@@ -155,16 +155,16 @@ public final class GetInstancesInstanceConfigDevice {
             return sdhs(List.of(sdhs));
         }
         public GetInstancesInstanceConfigDevice build() {
-            final var o = new GetInstancesInstanceConfigDevice();
-            o.sdas = sdas;
-            o.sdbs = sdbs;
-            o.sdcs = sdcs;
-            o.sdds = sdds;
-            o.sdes = sdes;
-            o.sdfs = sdfs;
-            o.sdgs = sdgs;
-            o.sdhs = sdhs;
-            return o;
+            final var _resultValue = new GetInstancesInstanceConfigDevice();
+            _resultValue.sdas = sdas;
+            _resultValue.sdbs = sdbs;
+            _resultValue.sdcs = sdcs;
+            _resultValue.sdds = sdds;
+            _resultValue.sdes = sdes;
+            _resultValue.sdfs = sdfs;
+            _resultValue.sdgs = sdgs;
+            _resultValue.sdhs = sdhs;
+            return _resultValue;
         }
     }
 }

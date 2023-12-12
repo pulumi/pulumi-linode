@@ -101,13 +101,13 @@ public final class GetDatabasesResult {
             return this;
         }
         public GetDatabasesResult build() {
-            final var o = new GetDatabasesResult();
-            o.databases = databases;
-            o.filters = filters;
-            o.id = id;
-            o.order = order;
-            o.orderBy = orderBy;
-            return o;
+            final var _resultValue = new GetDatabasesResult();
+            _resultValue.databases = databases;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            return _resultValue;
         }
     }
 }

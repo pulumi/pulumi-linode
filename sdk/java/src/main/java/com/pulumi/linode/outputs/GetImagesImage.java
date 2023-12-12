@@ -264,21 +264,21 @@ public final class GetImagesImage {
             return this;
         }
         public GetImagesImage build() {
-            final var o = new GetImagesImage();
-            o.capabilities = capabilities;
-            o.created = created;
-            o.createdBy = createdBy;
-            o.deprecated = deprecated;
-            o.description = description;
-            o.expiry = expiry;
-            o.id = id;
-            o.isPublic = isPublic;
-            o.label = label;
-            o.size = size;
-            o.status = status;
-            o.type = type;
-            o.vendor = vendor;
-            return o;
+            final var _resultValue = new GetImagesImage();
+            _resultValue.capabilities = capabilities;
+            _resultValue.created = created;
+            _resultValue.createdBy = createdBy;
+            _resultValue.deprecated = deprecated;
+            _resultValue.description = description;
+            _resultValue.expiry = expiry;
+            _resultValue.id = id;
+            _resultValue.isPublic = isPublic;
+            _resultValue.label = label;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.vendor = vendor;
+            return _resultValue;
         }
     }
 }

@@ -211,18 +211,18 @@ public final class GetInstanceBackupsAutomatic {
             return this;
         }
         public GetInstanceBackupsAutomatic build() {
-            final var o = new GetInstanceBackupsAutomatic();
-            o.available = available;
-            o.configs = configs;
-            o.created = created;
-            o.disks = disks;
-            o.finished = finished;
-            o.id = id;
-            o.label = label;
-            o.status = status;
-            o.type = type;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetInstanceBackupsAutomatic();
+            _resultValue.available = available;
+            _resultValue.configs = configs;
+            _resultValue.created = created;
+            _resultValue.disks = disks;
+            _resultValue.finished = finished;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }

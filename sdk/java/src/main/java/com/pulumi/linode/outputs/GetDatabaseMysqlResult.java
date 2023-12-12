@@ -445,30 +445,30 @@ public final class GetDatabaseMysqlResult {
             return this;
         }
         public GetDatabaseMysqlResult build() {
-            final var o = new GetDatabaseMysqlResult();
-            o.allowLists = allowLists;
-            o.caCert = caCert;
-            o.clusterSize = clusterSize;
-            o.created = created;
-            o.databaseId = databaseId;
-            o.encrypted = encrypted;
-            o.engine = engine;
-            o.engineId = engineId;
-            o.hostPrimary = hostPrimary;
-            o.hostSecondary = hostSecondary;
-            o.id = id;
-            o.label = label;
-            o.region = region;
-            o.replicationType = replicationType;
-            o.rootPassword = rootPassword;
-            o.rootUsername = rootUsername;
-            o.sslConnection = sslConnection;
-            o.status = status;
-            o.type = type;
-            o.updated = updated;
-            o.updates = updates;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDatabaseMysqlResult();
+            _resultValue.allowLists = allowLists;
+            _resultValue.caCert = caCert;
+            _resultValue.clusterSize = clusterSize;
+            _resultValue.created = created;
+            _resultValue.databaseId = databaseId;
+            _resultValue.encrypted = encrypted;
+            _resultValue.engine = engine;
+            _resultValue.engineId = engineId;
+            _resultValue.hostPrimary = hostPrimary;
+            _resultValue.hostSecondary = hostSecondary;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.region = region;
+            _resultValue.replicationType = replicationType;
+            _resultValue.rootPassword = rootPassword;
+            _resultValue.rootUsername = rootUsername;
+            _resultValue.sslConnection = sslConnection;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.updated = updated;
+            _resultValue.updates = updates;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -150,14 +150,14 @@ public final class FirewallOutbound {
             return this;
         }
         public FirewallOutbound build() {
-            final var o = new FirewallOutbound();
-            o.action = action;
-            o.ipv4s = ipv4s;
-            o.ipv6s = ipv6s;
-            o.label = label;
-            o.ports = ports;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new FirewallOutbound();
+            _resultValue.action = action;
+            _resultValue.ipv4s = ipv4s;
+            _resultValue.ipv6s = ipv6s;
+            _resultValue.label = label;
+            _resultValue.ports = ports;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

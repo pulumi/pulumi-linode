@@ -71,11 +71,11 @@ public final class InstanceBackups {
             return this;
         }
         public InstanceBackups build() {
-            final var o = new InstanceBackups();
-            o.available = available;
-            o.enabled = enabled;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new InstanceBackups();
+            _resultValue.available = available;
+            _resultValue.enabled = enabled;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

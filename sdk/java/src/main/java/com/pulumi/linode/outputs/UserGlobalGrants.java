@@ -162,20 +162,20 @@ public final class UserGlobalGrants {
             return this;
         }
         public UserGlobalGrants build() {
-            final var o = new UserGlobalGrants();
-            o.accountAccess = accountAccess;
-            o.addDatabases = addDatabases;
-            o.addDomains = addDomains;
-            o.addFirewalls = addFirewalls;
-            o.addImages = addImages;
-            o.addLinodes = addLinodes;
-            o.addLongview = addLongview;
-            o.addNodebalancers = addNodebalancers;
-            o.addStackscripts = addStackscripts;
-            o.addVolumes = addVolumes;
-            o.cancelAccount = cancelAccount;
-            o.longviewSubscription = longviewSubscription;
-            return o;
+            final var _resultValue = new UserGlobalGrants();
+            _resultValue.accountAccess = accountAccess;
+            _resultValue.addDatabases = addDatabases;
+            _resultValue.addDomains = addDomains;
+            _resultValue.addFirewalls = addFirewalls;
+            _resultValue.addImages = addImages;
+            _resultValue.addLinodes = addLinodes;
+            _resultValue.addLongview = addLongview;
+            _resultValue.addNodebalancers = addNodebalancers;
+            _resultValue.addStackscripts = addStackscripts;
+            _resultValue.addVolumes = addVolumes;
+            _resultValue.cancelAccount = cancelAccount;
+            _resultValue.longviewSubscription = longviewSubscription;
+            return _resultValue;
         }
     }
 }

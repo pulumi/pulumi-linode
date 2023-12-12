@@ -236,19 +236,19 @@ public final class GetLkeClusterResult {
             return tags(List.of(tags));
         }
         public GetLkeClusterResult build() {
-            final var o = new GetLkeClusterResult();
-            o.apiEndpoints = apiEndpoints;
-            o.controlPlanes = controlPlanes;
-            o.dashboardUrl = dashboardUrl;
-            o.id = id;
-            o.k8sVersion = k8sVersion;
-            o.kubeconfig = kubeconfig;
-            o.label = label;
-            o.pools = pools;
-            o.region = region;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetLkeClusterResult();
+            _resultValue.apiEndpoints = apiEndpoints;
+            _resultValue.controlPlanes = controlPlanes;
+            _resultValue.dashboardUrl = dashboardUrl;
+            _resultValue.id = id;
+            _resultValue.k8sVersion = k8sVersion;
+            _resultValue.kubeconfig = kubeconfig;
+            _resultValue.label = label;
+            _resultValue.pools = pools;
+            _resultValue.region = region;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

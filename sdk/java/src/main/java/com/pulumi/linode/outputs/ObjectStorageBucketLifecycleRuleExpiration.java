@@ -88,11 +88,11 @@ public final class ObjectStorageBucketLifecycleRuleExpiration {
             return this;
         }
         public ObjectStorageBucketLifecycleRuleExpiration build() {
-            final var o = new ObjectStorageBucketLifecycleRuleExpiration();
-            o.date = date;
-            o.days = days;
-            o.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
-            return o;
+            final var _resultValue = new ObjectStorageBucketLifecycleRuleExpiration();
+            _resultValue.date = date;
+            _resultValue.days = days;
+            _resultValue.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
+            return _resultValue;
         }
     }
 }

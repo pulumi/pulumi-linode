@@ -114,13 +114,13 @@ public final class GetObjectStorageClusterResult {
             return this;
         }
         public GetObjectStorageClusterResult build() {
-            final var o = new GetObjectStorageClusterResult();
-            o.domain = domain;
-            o.id = id;
-            o.region = region;
-            o.staticSiteDomain = staticSiteDomain;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetObjectStorageClusterResult();
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.region = region;
+            _resultValue.staticSiteDomain = staticSiteDomain;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -50,10 +50,10 @@ public final class UserImageGrant {
             return this;
         }
         public UserImageGrant build() {
-            final var o = new UserImageGrant();
-            o.id = id;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserImageGrant();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

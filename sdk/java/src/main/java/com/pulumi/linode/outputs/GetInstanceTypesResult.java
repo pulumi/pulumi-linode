@@ -101,13 +101,13 @@ public final class GetInstanceTypesResult {
             return types(List.of(types));
         }
         public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.filters = filters;
-            o.id = id;
-            o.order = order;
-            o.orderBy = orderBy;
-            o.types = types;
-            return o;
+            final var _resultValue = new GetInstanceTypesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            _resultValue.types = types;
+            return _resultValue;
         }
     }
 }

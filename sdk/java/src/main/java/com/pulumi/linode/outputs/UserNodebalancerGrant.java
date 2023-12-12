@@ -50,10 +50,10 @@ public final class UserNodebalancerGrant {
             return this;
         }
         public UserNodebalancerGrant build() {
-            final var o = new UserNodebalancerGrant();
-            o.id = id;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserNodebalancerGrant();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

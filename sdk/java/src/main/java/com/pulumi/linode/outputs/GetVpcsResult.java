@@ -78,11 +78,11 @@ public final class GetVpcsResult {
             return vpcs(List.of(vpcs));
         }
         public GetVpcsResult build() {
-            final var o = new GetVpcsResult();
-            o.filters = filters;
-            o.id = id;
-            o.vpcs = vpcs;
-            return o;
+            final var _resultValue = new GetVpcsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.vpcs = vpcs;
+            return _resultValue;
         }
     }
 }

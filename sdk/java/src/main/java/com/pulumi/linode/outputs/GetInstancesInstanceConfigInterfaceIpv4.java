@@ -65,10 +65,10 @@ public final class GetInstancesInstanceConfigInterfaceIpv4 {
             return this;
         }
         public GetInstancesInstanceConfigInterfaceIpv4 build() {
-            final var o = new GetInstancesInstanceConfigInterfaceIpv4();
-            o.nat11 = nat11;
-            o.vpc = vpc;
-            return o;
+            final var _resultValue = new GetInstancesInstanceConfigInterfaceIpv4();
+            _resultValue.nat11 = nat11;
+            _resultValue.vpc = vpc;
+            return _resultValue;
         }
     }
 }

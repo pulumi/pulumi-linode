@@ -212,18 +212,18 @@ public final class GetInstanceNetworkingIpv6LinkLocal {
             return this;
         }
         public GetInstanceNetworkingIpv6LinkLocal build() {
-            final var o = new GetInstanceNetworkingIpv6LinkLocal();
-            o.address = address;
-            o.gateway = gateway;
-            o.linodeId = linodeId;
-            o.prefix = prefix;
-            o.public_ = public_;
-            o.rdns = rdns;
-            o.region = region;
-            o.subnetMask = subnetMask;
-            o.type = type;
-            o.vpcNat11 = vpcNat11;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv6LinkLocal();
+            _resultValue.address = address;
+            _resultValue.gateway = gateway;
+            _resultValue.linodeId = linodeId;
+            _resultValue.prefix = prefix;
+            _resultValue.public_ = public_;
+            _resultValue.rdns = rdns;
+            _resultValue.region = region;
+            _resultValue.subnetMask = subnetMask;
+            _resultValue.type = type;
+            _resultValue.vpcNat11 = vpcNat11;
+            return _resultValue;
         }
     }
 }

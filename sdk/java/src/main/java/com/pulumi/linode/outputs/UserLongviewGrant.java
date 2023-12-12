@@ -50,10 +50,10 @@ public final class UserLongviewGrant {
             return this;
         }
         public UserLongviewGrant build() {
-            final var o = new UserLongviewGrant();
-            o.id = id;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserLongviewGrant();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

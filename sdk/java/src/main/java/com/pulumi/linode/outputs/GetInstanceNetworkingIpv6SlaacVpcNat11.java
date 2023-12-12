@@ -69,11 +69,11 @@ public final class GetInstanceNetworkingIpv6SlaacVpcNat11 {
             return this;
         }
         public GetInstanceNetworkingIpv6SlaacVpcNat11 build() {
-            final var o = new GetInstanceNetworkingIpv6SlaacVpcNat11();
-            o.address = address;
-            o.subnetId = subnetId;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv6SlaacVpcNat11();
+            _resultValue.address = address;
+            _resultValue.subnetId = subnetId;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

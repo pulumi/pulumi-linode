@@ -65,10 +65,10 @@ public final class GetNodeBalancerConfigNodeStatus {
             return this;
         }
         public GetNodeBalancerConfigNodeStatus build() {
-            final var o = new GetNodeBalancerConfigNodeStatus();
-            o.down = down;
-            o.up = up;
-            return o;
+            final var _resultValue = new GetNodeBalancerConfigNodeStatus();
+            _resultValue.down = down;
+            _resultValue.up = up;
+            return _resultValue;
         }
     }
 }

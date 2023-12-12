@@ -90,11 +90,11 @@ public final class GetFirewallsFilter {
             return values(List.of(values));
         }
         public GetFirewallsFilter build() {
-            final var o = new GetFirewallsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetFirewallsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

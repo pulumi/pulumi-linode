@@ -258,20 +258,20 @@ public final class GetDomainRecordResult {
             return this;
         }
         public GetDomainRecordResult build() {
-            final var o = new GetDomainRecordResult();
-            o.domainId = domainId;
-            o.id = id;
-            o.name = name;
-            o.port = port;
-            o.priority = priority;
-            o.protocol = protocol;
-            o.service = service;
-            o.tag = tag;
-            o.target = target;
-            o.ttlSec = ttlSec;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetDomainRecordResult();
+            _resultValue.domainId = domainId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.priority = priority;
+            _resultValue.protocol = protocol;
+            _resultValue.service = service;
+            _resultValue.tag = tag;
+            _resultValue.target = target;
+            _resultValue.ttlSec = ttlSec;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

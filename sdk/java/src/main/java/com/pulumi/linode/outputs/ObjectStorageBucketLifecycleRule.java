@@ -139,14 +139,14 @@ public final class ObjectStorageBucketLifecycleRule {
             return this;
         }
         public ObjectStorageBucketLifecycleRule build() {
-            final var o = new ObjectStorageBucketLifecycleRule();
-            o.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
-            o.enabled = enabled;
-            o.expiration = expiration;
-            o.id = id;
-            o.noncurrentVersionExpiration = noncurrentVersionExpiration;
-            o.prefix = prefix;
-            return o;
+            final var _resultValue = new ObjectStorageBucketLifecycleRule();
+            _resultValue.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
+            _resultValue.enabled = enabled;
+            _resultValue.expiration = expiration;
+            _resultValue.id = id;
+            _resultValue.noncurrentVersionExpiration = noncurrentVersionExpiration;
+            _resultValue.prefix = prefix;
+            return _resultValue;
         }
     }
 }

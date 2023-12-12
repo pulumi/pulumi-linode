@@ -85,11 +85,11 @@ public final class GetInstanceBackupsCurrentDisk {
             return this;
         }
         public GetInstanceBackupsCurrentDisk build() {
-            final var o = new GetInstanceBackupsCurrentDisk();
-            o.filesystem = filesystem;
-            o.label = label;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetInstanceBackupsCurrentDisk();
+            _resultValue.filesystem = filesystem;
+            _resultValue.label = label;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

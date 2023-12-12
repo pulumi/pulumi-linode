@@ -90,11 +90,11 @@ public final class GetVlansFilter {
             return values(List.of(values));
         }
         public GetVlansFilter build() {
-            final var o = new GetVlansFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetVlansFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

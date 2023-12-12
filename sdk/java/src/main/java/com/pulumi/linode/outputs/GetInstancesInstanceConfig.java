@@ -242,19 +242,19 @@ public final class GetInstancesInstanceConfig {
             return this;
         }
         public GetInstancesInstanceConfig build() {
-            final var o = new GetInstancesInstanceConfig();
-            o.comments = comments;
-            o.devices = devices;
-            o.helpers = helpers;
-            o.id = id;
-            o.interfaces = interfaces;
-            o.kernel = kernel;
-            o.label = label;
-            o.memoryLimit = memoryLimit;
-            o.rootDevice = rootDevice;
-            o.runLevel = runLevel;
-            o.virtMode = virtMode;
-            return o;
+            final var _resultValue = new GetInstancesInstanceConfig();
+            _resultValue.comments = comments;
+            _resultValue.devices = devices;
+            _resultValue.helpers = helpers;
+            _resultValue.id = id;
+            _resultValue.interfaces = interfaces;
+            _resultValue.kernel = kernel;
+            _resultValue.label = label;
+            _resultValue.memoryLimit = memoryLimit;
+            _resultValue.rootDevice = rootDevice;
+            _resultValue.runLevel = runLevel;
+            _resultValue.virtMode = virtMode;
+            return _resultValue;
         }
     }
 }

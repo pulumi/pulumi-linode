@@ -156,16 +156,16 @@ public final class GetNodeBalancerNodeResult {
             return this;
         }
         public GetNodeBalancerNodeResult build() {
-            final var o = new GetNodeBalancerNodeResult();
-            o.address = address;
-            o.configId = configId;
-            o.id = id;
-            o.label = label;
-            o.mode = mode;
-            o.nodebalancerId = nodebalancerId;
-            o.status = status;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetNodeBalancerNodeResult();
+            _resultValue.address = address;
+            _resultValue.configId = configId;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.mode = mode;
+            _resultValue.nodebalancerId = nodebalancerId;
+            _resultValue.status = status;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

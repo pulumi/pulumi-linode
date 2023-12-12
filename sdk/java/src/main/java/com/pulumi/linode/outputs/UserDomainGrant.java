@@ -50,10 +50,10 @@ public final class UserDomainGrant {
             return this;
         }
         public UserDomainGrant build() {
-            final var o = new UserDomainGrant();
-            o.id = id;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new UserDomainGrant();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

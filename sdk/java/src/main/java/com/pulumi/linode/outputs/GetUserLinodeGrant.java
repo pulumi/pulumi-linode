@@ -85,11 +85,11 @@ public final class GetUserLinodeGrant {
             return this;
         }
         public GetUserLinodeGrant build() {
-            final var o = new GetUserLinodeGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUserLinodeGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

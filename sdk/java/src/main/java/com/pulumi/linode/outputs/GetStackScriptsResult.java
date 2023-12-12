@@ -113,14 +113,14 @@ public final class GetStackScriptsResult {
             return stackscripts(List.of(stackscripts));
         }
         public GetStackScriptsResult build() {
-            final var o = new GetStackScriptsResult();
-            o.filters = filters;
-            o.id = id;
-            o.latest = latest;
-            o.order = order;
-            o.orderBy = orderBy;
-            o.stackscripts = stackscripts;
-            return o;
+            final var _resultValue = new GetStackScriptsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.latest = latest;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            _resultValue.stackscripts = stackscripts;
+            return _resultValue;
         }
     }
 }

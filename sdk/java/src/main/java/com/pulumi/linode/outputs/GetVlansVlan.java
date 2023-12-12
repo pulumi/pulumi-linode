@@ -108,12 +108,12 @@ public final class GetVlansVlan {
             return this;
         }
         public GetVlansVlan build() {
-            final var o = new GetVlansVlan();
-            o.created = created;
-            o.label = label;
-            o.linodes = linodes;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetVlansVlan();
+            _resultValue.created = created;
+            _resultValue.label = label;
+            _resultValue.linodes = linodes;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

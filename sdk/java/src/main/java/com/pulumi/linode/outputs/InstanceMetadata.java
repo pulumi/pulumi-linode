@@ -40,9 +40,9 @@ public final class InstanceMetadata {
             return this;
         }
         public InstanceMetadata build() {
-            final var o = new InstanceMetadata();
-            o.userData = userData;
-            return o;
+            final var _resultValue = new InstanceMetadata();
+            _resultValue.userData = userData;
+            return _resultValue;
         }
     }
 }

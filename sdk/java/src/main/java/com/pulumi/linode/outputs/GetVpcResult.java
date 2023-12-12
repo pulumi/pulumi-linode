@@ -134,14 +134,14 @@ public final class GetVpcResult {
             return this;
         }
         public GetVpcResult build() {
-            final var o = new GetVpcResult();
-            o.created = created;
-            o.description = description;
-            o.id = id;
-            o.label = label;
-            o.region = region;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetVpcResult();
+            _resultValue.created = created;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.region = region;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }

@@ -62,10 +62,10 @@ public final class GetVpcSubnetLinode {
             return interfaces(List.of(interfaces));
         }
         public GetVpcSubnetLinode build() {
-            final var o = new GetVpcSubnetLinode();
-            o.id = id;
-            o.interfaces = interfaces;
-            return o;
+            final var _resultValue = new GetVpcSubnetLinode();
+            _resultValue.id = id;
+            _resultValue.interfaces = interfaces;
+            return _resultValue;
         }
     }
 }

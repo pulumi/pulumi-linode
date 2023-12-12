@@ -85,11 +85,11 @@ public final class GetInstanceBackupsInProgressDisk {
             return this;
         }
         public GetInstanceBackupsInProgressDisk build() {
-            final var o = new GetInstanceBackupsInProgressDisk();
-            o.filesystem = filesystem;
-            o.label = label;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetInstanceBackupsInProgressDisk();
+            _resultValue.filesystem = filesystem;
+            _resultValue.label = label;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

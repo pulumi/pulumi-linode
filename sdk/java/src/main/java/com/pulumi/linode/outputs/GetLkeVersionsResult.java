@@ -62,10 +62,10 @@ public final class GetLkeVersionsResult {
             return versions(List.of(versions));
         }
         public GetLkeVersionsResult build() {
-            final var o = new GetLkeVersionsResult();
-            o.id = id;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetLkeVersionsResult();
+            _resultValue.id = id;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

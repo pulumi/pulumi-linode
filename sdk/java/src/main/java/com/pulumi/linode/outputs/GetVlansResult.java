@@ -93,13 +93,13 @@ public final class GetVlansResult {
             return vlans(List.of(vlans));
         }
         public GetVlansResult build() {
-            final var o = new GetVlansResult();
-            o.filters = filters;
-            o.id = id;
-            o.order = order;
-            o.orderBy = orderBy;
-            o.vlans = vlans;
-            return o;
+            final var _resultValue = new GetVlansResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.orderBy = orderBy;
+            _resultValue.vlans = vlans;
+            return _resultValue;
         }
     }
 }

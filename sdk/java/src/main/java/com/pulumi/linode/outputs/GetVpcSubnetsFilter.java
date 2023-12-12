@@ -90,11 +90,11 @@ public final class GetVpcSubnetsFilter {
             return values(List.of(values));
         }
         public GetVpcSubnetsFilter build() {
-            final var o = new GetVpcSubnetsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetVpcSubnetsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

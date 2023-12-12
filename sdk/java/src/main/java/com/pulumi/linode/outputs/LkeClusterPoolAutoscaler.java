@@ -65,10 +65,10 @@ public final class LkeClusterPoolAutoscaler {
             return this;
         }
         public LkeClusterPoolAutoscaler build() {
-            final var o = new LkeClusterPoolAutoscaler();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new LkeClusterPoolAutoscaler();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

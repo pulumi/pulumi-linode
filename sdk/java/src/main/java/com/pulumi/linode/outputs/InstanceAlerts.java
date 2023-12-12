@@ -84,13 +84,13 @@ public final class InstanceAlerts {
             return this;
         }
         public InstanceAlerts build() {
-            final var o = new InstanceAlerts();
-            o.cpu = cpu;
-            o.io = io;
-            o.networkIn = networkIn;
-            o.networkOut = networkOut;
-            o.transferQuota = transferQuota;
-            return o;
+            final var _resultValue = new InstanceAlerts();
+            _resultValue.cpu = cpu;
+            _resultValue.io = io;
+            _resultValue.networkIn = networkIn;
+            _resultValue.networkOut = networkOut;
+            _resultValue.transferQuota = transferQuota;
+            return _resultValue;
         }
     }
 }

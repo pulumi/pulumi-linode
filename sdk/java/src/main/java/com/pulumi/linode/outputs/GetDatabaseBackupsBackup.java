@@ -104,12 +104,12 @@ public final class GetDatabaseBackupsBackup {
             return this;
         }
         public GetDatabaseBackupsBackup build() {
-            final var o = new GetDatabaseBackupsBackup();
-            o.created = created;
-            o.id = id;
-            o.label = label;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDatabaseBackupsBackup();
+            _resultValue.created = created;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

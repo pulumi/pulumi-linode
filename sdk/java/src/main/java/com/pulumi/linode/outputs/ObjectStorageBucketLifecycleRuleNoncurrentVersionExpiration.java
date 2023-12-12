@@ -46,9 +46,9 @@ public final class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
             return this;
         }
         public ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration build() {
-            final var o = new ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration();
-            o.days = days;
-            return o;
+            final var _resultValue = new ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration();
+            _resultValue.days = days;
+            return _resultValue;
         }
     }
 }

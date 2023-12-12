@@ -85,11 +85,11 @@ public final class GetUsersUserStackscriptGrant {
             return this;
         }
         public GetUsersUserStackscriptGrant build() {
-            final var o = new GetUsersUserStackscriptGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUsersUserStackscriptGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

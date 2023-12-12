@@ -104,12 +104,12 @@ public final class GetInstancesInstanceDisk {
             return this;
         }
         public GetInstancesInstanceDisk build() {
-            final var o = new GetInstancesInstanceDisk();
-            o.filesystem = filesystem;
-            o.id = id;
-            o.label = label;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetInstancesInstanceDisk();
+            _resultValue.filesystem = filesystem;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -326,26 +326,26 @@ public final class GetUserResult {
             return volumeGrants(List.of(volumeGrants));
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.databaseGrants = databaseGrants;
-            o.domainGrants = domainGrants;
-            o.email = email;
-            o.firewallGrants = firewallGrants;
-            o.globalGrants = globalGrants;
-            o.id = id;
-            o.imageGrants = imageGrants;
-            o.linodeGrants = linodeGrants;
-            o.longviewGrants = longviewGrants;
-            o.nodebalancerGrants = nodebalancerGrants;
-            o.passwordCreated = passwordCreated;
-            o.restricted = restricted;
-            o.sshKeys = sshKeys;
-            o.stackscriptGrants = stackscriptGrants;
-            o.tfaEnabled = tfaEnabled;
-            o.username = username;
-            o.verifiedPhoneNumber = verifiedPhoneNumber;
-            o.volumeGrants = volumeGrants;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.databaseGrants = databaseGrants;
+            _resultValue.domainGrants = domainGrants;
+            _resultValue.email = email;
+            _resultValue.firewallGrants = firewallGrants;
+            _resultValue.globalGrants = globalGrants;
+            _resultValue.id = id;
+            _resultValue.imageGrants = imageGrants;
+            _resultValue.linodeGrants = linodeGrants;
+            _resultValue.longviewGrants = longviewGrants;
+            _resultValue.nodebalancerGrants = nodebalancerGrants;
+            _resultValue.passwordCreated = passwordCreated;
+            _resultValue.restricted = restricted;
+            _resultValue.sshKeys = sshKeys;
+            _resultValue.stackscriptGrants = stackscriptGrants;
+            _resultValue.tfaEnabled = tfaEnabled;
+            _resultValue.username = username;
+            _resultValue.verifiedPhoneNumber = verifiedPhoneNumber;
+            _resultValue.volumeGrants = volumeGrants;
+            return _resultValue;
         }
     }
 }

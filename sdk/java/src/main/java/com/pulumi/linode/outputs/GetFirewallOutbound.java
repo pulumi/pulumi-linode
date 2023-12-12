@@ -148,14 +148,14 @@ public final class GetFirewallOutbound {
             return this;
         }
         public GetFirewallOutbound build() {
-            final var o = new GetFirewallOutbound();
-            o.action = action;
-            o.ipv4s = ipv4s;
-            o.ipv6s = ipv6s;
-            o.label = label;
-            o.ports = ports;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new GetFirewallOutbound();
+            _resultValue.action = action;
+            _resultValue.ipv4s = ipv4s;
+            _resultValue.ipv6s = ipv6s;
+            _resultValue.label = label;
+            _resultValue.ports = ports;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

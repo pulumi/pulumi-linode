@@ -249,19 +249,19 @@ public final class InstanceDisk {
             return this;
         }
         public InstanceDisk build() {
-            final var o = new InstanceDisk();
-            o.authorizedKeys = authorizedKeys;
-            o.authorizedUsers = authorizedUsers;
-            o.filesystem = filesystem;
-            o.id = id;
-            o.image = image;
-            o.label = label;
-            o.readOnly = readOnly;
-            o.rootPass = rootPass;
-            o.size = size;
-            o.stackscriptData = stackscriptData;
-            o.stackscriptId = stackscriptId;
-            return o;
+            final var _resultValue = new InstanceDisk();
+            _resultValue.authorizedKeys = authorizedKeys;
+            _resultValue.authorizedUsers = authorizedUsers;
+            _resultValue.filesystem = filesystem;
+            _resultValue.id = id;
+            _resultValue.image = image;
+            _resultValue.label = label;
+            _resultValue.readOnly = readOnly;
+            _resultValue.rootPass = rootPass;
+            _resultValue.size = size;
+            _resultValue.stackscriptData = stackscriptData;
+            _resultValue.stackscriptId = stackscriptId;
+            return _resultValue;
         }
     }
 }

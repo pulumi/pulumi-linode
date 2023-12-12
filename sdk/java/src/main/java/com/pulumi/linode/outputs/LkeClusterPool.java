@@ -119,13 +119,13 @@ public final class LkeClusterPool {
             return this;
         }
         public LkeClusterPool build() {
-            final var o = new LkeClusterPool();
-            o.autoscaler = autoscaler;
-            o.count = count;
-            o.id = id;
-            o.nodes = nodes;
-            o.type = type;
-            return o;
+            final var _resultValue = new LkeClusterPool();
+            _resultValue.autoscaler = autoscaler;
+            _resultValue.count = count;
+            _resultValue.id = id;
+            _resultValue.nodes = nodes;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

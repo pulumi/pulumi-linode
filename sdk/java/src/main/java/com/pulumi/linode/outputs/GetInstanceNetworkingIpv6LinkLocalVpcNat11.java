@@ -69,11 +69,11 @@ public final class GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
             return this;
         }
         public GetInstanceNetworkingIpv6LinkLocalVpcNat11 build() {
-            final var o = new GetInstanceNetworkingIpv6LinkLocalVpcNat11();
-            o.address = address;
-            o.subnetId = subnetId;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingIpv6LinkLocalVpcNat11();
+            _resultValue.address = address;
+            _resultValue.subnetId = subnetId;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

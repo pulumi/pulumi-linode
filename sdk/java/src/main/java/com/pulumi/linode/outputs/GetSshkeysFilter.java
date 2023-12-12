@@ -90,11 +90,11 @@ public final class GetSshkeysFilter {
             return values(List.of(values));
         }
         public GetSshkeysFilter build() {
-            final var o = new GetSshkeysFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetSshkeysFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

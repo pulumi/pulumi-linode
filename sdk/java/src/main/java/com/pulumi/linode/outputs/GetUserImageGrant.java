@@ -85,11 +85,11 @@ public final class GetUserImageGrant {
             return this;
         }
         public GetUserImageGrant build() {
-            final var o = new GetUserImageGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUserImageGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class GetKernelsFilter {
             return values(List.of(values));
         }
         public GetKernelsFilter build() {
-            final var o = new GetKernelsFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetKernelsFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

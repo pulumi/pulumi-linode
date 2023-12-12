@@ -90,11 +90,11 @@ public final class GetDatabasesFilter {
             return values(List.of(values));
         }
         public GetDatabasesFilter build() {
-            final var o = new GetDatabasesFilter();
-            o.matchBy = matchBy;
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetDatabasesFilter();
+            _resultValue.matchBy = matchBy;
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

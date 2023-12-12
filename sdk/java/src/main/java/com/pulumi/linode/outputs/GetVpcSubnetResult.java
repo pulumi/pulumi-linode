@@ -150,15 +150,15 @@ public final class GetVpcSubnetResult {
             return this;
         }
         public GetVpcSubnetResult build() {
-            final var o = new GetVpcSubnetResult();
-            o.created = created;
-            o.id = id;
-            o.ipv4 = ipv4;
-            o.label = label;
-            o.linodes = linodes;
-            o.updated = updated;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetVpcSubnetResult();
+            _resultValue.created = created;
+            _resultValue.id = id;
+            _resultValue.ipv4 = ipv4;
+            _resultValue.label = label;
+            _resultValue.linodes = linodes;
+            _resultValue.updated = updated;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

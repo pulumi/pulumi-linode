@@ -89,12 +89,12 @@ public final class GetInstanceNetworkingResult {
             return this;
         }
         public GetInstanceNetworkingResult build() {
-            final var o = new GetInstanceNetworkingResult();
-            o.id = id;
-            o.ipv4s = ipv4s;
-            o.ipv6s = ipv6s;
-            o.linodeId = linodeId;
-            return o;
+            final var _resultValue = new GetInstanceNetworkingResult();
+            _resultValue.id = id;
+            _resultValue.ipv4s = ipv4s;
+            _resultValue.ipv6s = ipv6s;
+            _resultValue.linodeId = linodeId;
+            return _resultValue;
         }
     }
 }

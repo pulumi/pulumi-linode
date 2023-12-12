@@ -104,12 +104,12 @@ public final class GetDatabaseMysqlBackupsBackup {
             return this;
         }
         public GetDatabaseMysqlBackupsBackup build() {
-            final var o = new GetDatabaseMysqlBackupsBackup();
-            o.created = created;
-            o.id = id;
-            o.label = label;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDatabaseMysqlBackupsBackup();
+            _resultValue.created = created;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

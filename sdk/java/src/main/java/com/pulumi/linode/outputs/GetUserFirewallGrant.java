@@ -85,11 +85,11 @@ public final class GetUserFirewallGrant {
             return this;
         }
         public GetUserFirewallGrant build() {
-            final var o = new GetUserFirewallGrant();
-            o.id = id;
-            o.label = label;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GetUserFirewallGrant();
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

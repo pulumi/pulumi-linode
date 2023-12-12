@@ -84,11 +84,11 @@ public final class ObjectStorageKeyBucketAccess {
             return this;
         }
         public ObjectStorageKeyBucketAccess build() {
-            final var o = new ObjectStorageKeyBucketAccess();
-            o.bucketName = bucketName;
-            o.cluster = cluster;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new ObjectStorageKeyBucketAccess();
+            _resultValue.bucketName = bucketName;
+            _resultValue.cluster = cluster;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

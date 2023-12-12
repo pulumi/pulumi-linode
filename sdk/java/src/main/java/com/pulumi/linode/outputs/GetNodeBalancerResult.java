@@ -229,19 +229,19 @@ public final class GetNodeBalancerResult {
             return this;
         }
         public GetNodeBalancerResult build() {
-            final var o = new GetNodeBalancerResult();
-            o.clientConnThrottle = clientConnThrottle;
-            o.created = created;
-            o.hostname = hostname;
-            o.id = id;
-            o.ipv4 = ipv4;
-            o.ipv6 = ipv6;
-            o.label = label;
-            o.region = region;
-            o.tags = tags;
-            o.transfers = transfers;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetNodeBalancerResult();
+            _resultValue.clientConnThrottle = clientConnThrottle;
+            _resultValue.created = created;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6 = ipv6;
+            _resultValue.label = label;
+            _resultValue.region = region;
+            _resultValue.tags = tags;
+            _resultValue.transfers = transfers;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }

@@ -125,13 +125,13 @@ public final class FirewallDevice {
             return this;
         }
         public FirewallDevice build() {
-            final var o = new FirewallDevice();
-            o.entityId = entityId;
-            o.id = id;
-            o.label = label;
-            o.type = type;
-            o.url = url;
-            return o;
+            final var _resultValue = new FirewallDevice();
+            _resultValue.entityId = entityId;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.type = type;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

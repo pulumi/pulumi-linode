@@ -286,22 +286,22 @@ public final class GetFirewallsFirewall {
             return this;
         }
         public GetFirewallsFirewall build() {
-            final var o = new GetFirewallsFirewall();
-            o.created = created;
-            o.devices = devices;
-            o.disabled = disabled;
-            o.id = id;
-            o.inboundPolicy = inboundPolicy;
-            o.inbounds = inbounds;
-            o.label = label;
-            o.linodes = linodes;
-            o.nodebalancers = nodebalancers;
-            o.outboundPolicy = outboundPolicy;
-            o.outbounds = outbounds;
-            o.status = status;
-            o.tags = tags;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetFirewallsFirewall();
+            _resultValue.created = created;
+            _resultValue.devices = devices;
+            _resultValue.disabled = disabled;
+            _resultValue.id = id;
+            _resultValue.inboundPolicy = inboundPolicy;
+            _resultValue.inbounds = inbounds;
+            _resultValue.label = label;
+            _resultValue.linodes = linodes;
+            _resultValue.nodebalancers = nodebalancers;
+            _resultValue.outboundPolicy = outboundPolicy;
+            _resultValue.outbounds = outbounds;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }
