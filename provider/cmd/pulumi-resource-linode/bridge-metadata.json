@@ -14,9 +14,6 @@
                     }
                 }
             },
-            "linode_database_mongodb": {
-                "current": "linode:index/databaseMongodb:DatabaseMongodb"
-            },
             "linode_database_mysql": {
                 "current": "linode:index/databaseMysql:DatabaseMysql",
                 "majorVersion": 4,
@@ -444,11 +441,9 @@
                     "linodes": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "interfaces": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "interfaces": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -525,9 +520,6 @@
                         }
                     }
                 }
-            },
-            "linode_database_mongodb": {
-                "current": "linode:index/getDatabaseMongodb:getDatabaseMongodb"
             },
             "linode_database_mysql": {
                 "current": "linode:index/getDatabaseMysql:getDatabaseMysql",
@@ -636,14 +628,12 @@
                     "inbound": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ipv4": {
-                                        "maxItemsOne": false
-                                    },
-                                    "ipv6": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -657,14 +647,12 @@
                     "outbound": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ipv4": {
-                                        "maxItemsOne": false
-                                    },
-                                    "ipv6": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -777,14 +765,12 @@
                     "automatic": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "configs": {
-                                        "maxItemsOne": false
-                                    },
-                                    "disks": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "configs": {
+                                    "maxItemsOne": false
+                                },
+                                "disks": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -792,14 +778,12 @@
                     "current": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "configs": {
-                                        "maxItemsOne": false
-                                    },
-                                    "disks": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "configs": {
+                                    "maxItemsOne": false
+                                },
+                                "disks": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -807,14 +791,12 @@
                     "in_progress": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "configs": {
-                                        "maxItemsOne": false
-                                    },
-                                    "disks": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "configs": {
+                                    "maxItemsOne": false
+                                },
+                                "disks": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -828,20 +810,18 @@
                     "ipv4": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "private": {
-                                        "maxItemsOne": false
-                                    },
-                                    "public": {
-                                        "maxItemsOne": false
-                                    },
-                                    "reserved": {
-                                        "maxItemsOne": false
-                                    },
-                                    "shared": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "private": {
+                                    "maxItemsOne": false
+                                },
+                                "public": {
+                                    "maxItemsOne": false
+                                },
+                                "reserved": {
+                                    "maxItemsOne": false
+                                },
+                                "shared": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -849,11 +829,9 @@
                     "ipv6": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "global": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "global": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -867,20 +845,16 @@
                     "addons": {
                         "maxItemsOne": true,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "backups": {
-                                        "maxItemsOne": false,
-                                        "elem": {
-                                            "elem": {
-                                                "fields": {
-                                                    "price": {
-                                                        "maxItemsOne": false
-                                                    },
-                                                    "region_prices": {
-                                                        "maxItemsOne": false
-                                                    }
-                                                }
+                            "fields": {
+                                "backups": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "price": {
+                                                "maxItemsOne": false
+                                            },
+                                            "region_prices": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -917,20 +891,16 @@
                                 "addons": {
                                     "maxItemsOne": false,
                                     "elem": {
-                                        "elem": {
-                                            "fields": {
-                                                "backups": {
-                                                    "maxItemsOne": false,
-                                                    "elem": {
-                                                        "elem": {
-                                                            "fields": {
-                                                                "price": {
-                                                                    "maxItemsOne": false
-                                                                },
-                                                                "region_prices": {
-                                                                    "maxItemsOne": false
-                                                                }
-                                                            }
+                                        "fields": {
+                                            "backups": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "price": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "region_prices": {
+                                                            "maxItemsOne": false
                                                         }
                                                     }
                                                 }
@@ -1470,11 +1440,9 @@
                     "linodes": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "interfaces": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "interfaces": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -1502,11 +1470,9 @@
                                 "linodes": {
                                     "maxItemsOne": false,
                                     "elem": {
-                                        "elem": {
-                                            "fields": {
-                                                "interfaces": {
-                                                    "maxItemsOne": false
-                                                }
+                                        "fields": {
+                                            "interfaces": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -1533,6 +1499,30 @@
                     "vpcs": {
                         "maxItemsOne": false
                     }
+                }
+            }
+        }
+    },
+    "auto-settings": {
+        "resources": {
+            "linode_instance": {
+                "maxItemsOneOverrides": {
+                    "backups": true,
+                    "backups.$.schedule": true,
+                    "specs": true
+                }
+            }
+        },
+        "datasources": {
+            "linode_instance_type": {
+                "maxItemsOneOverrides": {
+                    "addons": true,
+                    "price": true
+                }
+            },
+            "linode_profile": {
+                "maxItemsOneOverrides": {
+                    "referrals": true
                 }
             }
         }
