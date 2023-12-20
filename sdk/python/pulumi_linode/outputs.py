@@ -61,6 +61,8 @@ __all__ = [
     'UserVolumeGrant',
     'VpcSubnetLinode',
     'VpcSubnetLinodeInterface',
+    'GetAccountAvailabilitiesAvailabilityResult',
+    'GetAccountAvailabilitiesFilterResult',
     'GetAccountLoginsFilterResult',
     'GetAccountLoginsLoginResult',
     'GetDatabaseBackupsBackupResult',
@@ -2075,22 +2077,19 @@ class InstanceIpVpcNat11(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 address: Optional[str] = None,
-                 subnet_id: Optional[int] = None,
-                 vpc_id: Optional[int] = None):
+                 address: str,
+                 subnet_id: int,
+                 vpc_id: int):
         """
         :param str address: The resulting IPv4 address.
         """
-        if address is not None:
-            pulumi.set(__self__, "address", address)
-        if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
-        if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter
-    def address(self) -> Optional[str]:
+    def address(self) -> str:
         """
         The resulting IPv4 address.
         """
@@ -2098,12 +2097,12 @@ class InstanceIpVpcNat11(dict):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[int]:
+    def subnet_id(self) -> int:
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[int]:
+    def vpc_id(self) -> int:
         return pulumi.get(self, "vpc_id")
 
 
@@ -3158,6 +3157,76 @@ class VpcSubnetLinodeInterface(dict):
         The ID of the VPC Subnet.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetAccountAvailabilitiesAvailabilityResult(dict):
+    def __init__(__self__, *,
+                 region: str,
+                 unavailables: Sequence[str]):
+        """
+        :param str region: The region this availability entry refers to.
+        :param Sequence[str] unavailables: A set of services that are unavailable for the given region.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "unavailables", unavailables)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region this availability entry refers to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def unavailables(self) -> Sequence[str]:
+        """
+        A set of services that are unavailable for the given region.
+        """
+        return pulumi.get(self, "unavailables")
+
+
+@pulumi.output_type
+class GetAccountAvailabilitiesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
 
 
 @pulumi.output_type

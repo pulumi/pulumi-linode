@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceIpVpcNat11 {
@@ -16,23 +14,23 @@ public final class InstanceIpVpcNat11 {
      * @return The resulting IPv4 address.
      * 
      */
-    private @Nullable String address;
-    private @Nullable Integer subnetId;
-    private @Nullable Integer vpcId;
+    private String address;
+    private Integer subnetId;
+    private Integer vpcId;
 
     private InstanceIpVpcNat11() {}
     /**
      * @return The resulting IPv4 address.
      * 
      */
-    public Optional<String> address() {
-        return Optional.ofNullable(this.address);
+    public String address() {
+        return this.address;
     }
-    public Optional<Integer> subnetId() {
-        return Optional.ofNullable(this.subnetId);
+    public Integer subnetId() {
+        return this.subnetId;
     }
-    public Optional<Integer> vpcId() {
-        return Optional.ofNullable(this.vpcId);
+    public Integer vpcId() {
+        return this.vpcId;
     }
 
     public static Builder builder() {
@@ -44,9 +42,9 @@ public final class InstanceIpVpcNat11 {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String address;
-        private @Nullable Integer subnetId;
-        private @Nullable Integer vpcId;
+        private String address;
+        private Integer subnetId;
+        private Integer vpcId;
         public Builder() {}
         public Builder(InstanceIpVpcNat11 defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +54,18 @@ public final class InstanceIpVpcNat11 {
         }
 
         @CustomType.Setter
-        public Builder address(@Nullable String address) {
-            this.address = address;
+        public Builder address(String address) {
+            this.address = Objects.requireNonNull(address);
             return this;
         }
         @CustomType.Setter
-        public Builder subnetId(@Nullable Integer subnetId) {
-            this.subnetId = subnetId;
+        public Builder subnetId(Integer subnetId) {
+            this.subnetId = Objects.requireNonNull(subnetId);
             return this;
         }
         @CustomType.Setter
-        public Builder vpcId(@Nullable Integer vpcId) {
-            this.vpcId = vpcId;
+        public Builder vpcId(Integer vpcId) {
+            this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
         public InstanceIpVpcNat11 build() {

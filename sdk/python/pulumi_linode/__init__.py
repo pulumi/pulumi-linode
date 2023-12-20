@@ -14,6 +14,8 @@ from .domain_record import *
 from .firewall import *
 from .firewall_device import *
 from .get_account import *
+from .get_account_availabilities import *
+from .get_account_availability import *
 from .get_account_login import *
 from .get_account_logins import *
 from .get_account_settings import *

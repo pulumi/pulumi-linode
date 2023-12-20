@@ -4248,9 +4248,9 @@ func (o InstanceInterfaceIpv4PtrOutput) Vpc() pulumi.StringPtrOutput {
 
 type InstanceIpVpcNat11 struct {
 	// The resulting IPv4 address.
-	Address  *string `pulumi:"address"`
-	SubnetId *int    `pulumi:"subnetId"`
-	VpcId    *int    `pulumi:"vpcId"`
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
 }
 
 // InstanceIpVpcNat11Input is an input type that accepts InstanceIpVpcNat11Args and InstanceIpVpcNat11Output values.
@@ -4266,9 +4266,9 @@ type InstanceIpVpcNat11Input interface {
 
 type InstanceIpVpcNat11Args struct {
 	// The resulting IPv4 address.
-	Address  pulumi.StringPtrInput `pulumi:"address"`
-	SubnetId pulumi.IntPtrInput    `pulumi:"subnetId"`
-	VpcId    pulumi.IntPtrInput    `pulumi:"vpcId"`
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
 }
 
 func (InstanceIpVpcNat11Args) ElementType() reflect.Type {
@@ -4323,16 +4323,16 @@ func (o InstanceIpVpcNat11Output) ToInstanceIpVpcNat11OutputWithContext(ctx cont
 }
 
 // The resulting IPv4 address.
-func (o InstanceIpVpcNat11Output) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceIpVpcNat11) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o InstanceIpVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIpVpcNat11) string { return v.Address }).(pulumi.StringOutput)
 }
 
-func (o InstanceIpVpcNat11Output) SubnetId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceIpVpcNat11) *int { return v.SubnetId }).(pulumi.IntPtrOutput)
+func (o InstanceIpVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceIpVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
 }
 
-func (o InstanceIpVpcNat11Output) VpcId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceIpVpcNat11) *int { return v.VpcId }).(pulumi.IntPtrOutput)
+func (o InstanceIpVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceIpVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 type InstanceIpVpcNat11ArrayOutput struct{ *pulumi.OutputState }
@@ -7568,6 +7568,227 @@ func (o VpcSubnetLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) VpcSubnetL
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnetLinodeInterface {
 		return vs[0].([]VpcSubnetLinodeInterface)[vs[1].(int)]
 	}).(VpcSubnetLinodeInterfaceOutput)
+}
+
+type GetAccountAvailabilitiesAvailability struct {
+	// The region this availability entry refers to.
+	Region string `pulumi:"region"`
+	// A set of services that are unavailable for the given region.
+	Unavailables []string `pulumi:"unavailables"`
+}
+
+// GetAccountAvailabilitiesAvailabilityInput is an input type that accepts GetAccountAvailabilitiesAvailabilityArgs and GetAccountAvailabilitiesAvailabilityOutput values.
+// You can construct a concrete instance of `GetAccountAvailabilitiesAvailabilityInput` via:
+//
+//	GetAccountAvailabilitiesAvailabilityArgs{...}
+type GetAccountAvailabilitiesAvailabilityInput interface {
+	pulumi.Input
+
+	ToGetAccountAvailabilitiesAvailabilityOutput() GetAccountAvailabilitiesAvailabilityOutput
+	ToGetAccountAvailabilitiesAvailabilityOutputWithContext(context.Context) GetAccountAvailabilitiesAvailabilityOutput
+}
+
+type GetAccountAvailabilitiesAvailabilityArgs struct {
+	// The region this availability entry refers to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// A set of services that are unavailable for the given region.
+	Unavailables pulumi.StringArrayInput `pulumi:"unavailables"`
+}
+
+func (GetAccountAvailabilitiesAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAvailabilitiesAvailability)(nil)).Elem()
+}
+
+func (i GetAccountAvailabilitiesAvailabilityArgs) ToGetAccountAvailabilitiesAvailabilityOutput() GetAccountAvailabilitiesAvailabilityOutput {
+	return i.ToGetAccountAvailabilitiesAvailabilityOutputWithContext(context.Background())
+}
+
+func (i GetAccountAvailabilitiesAvailabilityArgs) ToGetAccountAvailabilitiesAvailabilityOutputWithContext(ctx context.Context) GetAccountAvailabilitiesAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAvailabilitiesAvailabilityOutput)
+}
+
+// GetAccountAvailabilitiesAvailabilityArrayInput is an input type that accepts GetAccountAvailabilitiesAvailabilityArray and GetAccountAvailabilitiesAvailabilityArrayOutput values.
+// You can construct a concrete instance of `GetAccountAvailabilitiesAvailabilityArrayInput` via:
+//
+//	GetAccountAvailabilitiesAvailabilityArray{ GetAccountAvailabilitiesAvailabilityArgs{...} }
+type GetAccountAvailabilitiesAvailabilityArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountAvailabilitiesAvailabilityArrayOutput() GetAccountAvailabilitiesAvailabilityArrayOutput
+	ToGetAccountAvailabilitiesAvailabilityArrayOutputWithContext(context.Context) GetAccountAvailabilitiesAvailabilityArrayOutput
+}
+
+type GetAccountAvailabilitiesAvailabilityArray []GetAccountAvailabilitiesAvailabilityInput
+
+func (GetAccountAvailabilitiesAvailabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAvailabilitiesAvailability)(nil)).Elem()
+}
+
+func (i GetAccountAvailabilitiesAvailabilityArray) ToGetAccountAvailabilitiesAvailabilityArrayOutput() GetAccountAvailabilitiesAvailabilityArrayOutput {
+	return i.ToGetAccountAvailabilitiesAvailabilityArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountAvailabilitiesAvailabilityArray) ToGetAccountAvailabilitiesAvailabilityArrayOutputWithContext(ctx context.Context) GetAccountAvailabilitiesAvailabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAvailabilitiesAvailabilityArrayOutput)
+}
+
+type GetAccountAvailabilitiesAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAvailabilitiesAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAvailabilitiesAvailability)(nil)).Elem()
+}
+
+func (o GetAccountAvailabilitiesAvailabilityOutput) ToGetAccountAvailabilitiesAvailabilityOutput() GetAccountAvailabilitiesAvailabilityOutput {
+	return o
+}
+
+func (o GetAccountAvailabilitiesAvailabilityOutput) ToGetAccountAvailabilitiesAvailabilityOutputWithContext(ctx context.Context) GetAccountAvailabilitiesAvailabilityOutput {
+	return o
+}
+
+// The region this availability entry refers to.
+func (o GetAccountAvailabilitiesAvailabilityOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAvailabilitiesAvailability) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// A set of services that are unavailable for the given region.
+func (o GetAccountAvailabilitiesAvailabilityOutput) Unavailables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountAvailabilitiesAvailability) []string { return v.Unavailables }).(pulumi.StringArrayOutput)
+}
+
+type GetAccountAvailabilitiesAvailabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAvailabilitiesAvailabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAvailabilitiesAvailability)(nil)).Elem()
+}
+
+func (o GetAccountAvailabilitiesAvailabilityArrayOutput) ToGetAccountAvailabilitiesAvailabilityArrayOutput() GetAccountAvailabilitiesAvailabilityArrayOutput {
+	return o
+}
+
+func (o GetAccountAvailabilitiesAvailabilityArrayOutput) ToGetAccountAvailabilitiesAvailabilityArrayOutputWithContext(ctx context.Context) GetAccountAvailabilitiesAvailabilityArrayOutput {
+	return o
+}
+
+func (o GetAccountAvailabilitiesAvailabilityArrayOutput) Index(i pulumi.IntInput) GetAccountAvailabilitiesAvailabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountAvailabilitiesAvailability {
+		return vs[0].([]GetAccountAvailabilitiesAvailability)[vs[1].(int)]
+	}).(GetAccountAvailabilitiesAvailabilityOutput)
+}
+
+type GetAccountAvailabilitiesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetAccountAvailabilitiesFilterInput is an input type that accepts GetAccountAvailabilitiesFilterArgs and GetAccountAvailabilitiesFilterOutput values.
+// You can construct a concrete instance of `GetAccountAvailabilitiesFilterInput` via:
+//
+//	GetAccountAvailabilitiesFilterArgs{...}
+type GetAccountAvailabilitiesFilterInput interface {
+	pulumi.Input
+
+	ToGetAccountAvailabilitiesFilterOutput() GetAccountAvailabilitiesFilterOutput
+	ToGetAccountAvailabilitiesFilterOutputWithContext(context.Context) GetAccountAvailabilitiesFilterOutput
+}
+
+type GetAccountAvailabilitiesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAccountAvailabilitiesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAvailabilitiesFilter)(nil)).Elem()
+}
+
+func (i GetAccountAvailabilitiesFilterArgs) ToGetAccountAvailabilitiesFilterOutput() GetAccountAvailabilitiesFilterOutput {
+	return i.ToGetAccountAvailabilitiesFilterOutputWithContext(context.Background())
+}
+
+func (i GetAccountAvailabilitiesFilterArgs) ToGetAccountAvailabilitiesFilterOutputWithContext(ctx context.Context) GetAccountAvailabilitiesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAvailabilitiesFilterOutput)
+}
+
+// GetAccountAvailabilitiesFilterArrayInput is an input type that accepts GetAccountAvailabilitiesFilterArray and GetAccountAvailabilitiesFilterArrayOutput values.
+// You can construct a concrete instance of `GetAccountAvailabilitiesFilterArrayInput` via:
+//
+//	GetAccountAvailabilitiesFilterArray{ GetAccountAvailabilitiesFilterArgs{...} }
+type GetAccountAvailabilitiesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountAvailabilitiesFilterArrayOutput() GetAccountAvailabilitiesFilterArrayOutput
+	ToGetAccountAvailabilitiesFilterArrayOutputWithContext(context.Context) GetAccountAvailabilitiesFilterArrayOutput
+}
+
+type GetAccountAvailabilitiesFilterArray []GetAccountAvailabilitiesFilterInput
+
+func (GetAccountAvailabilitiesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAvailabilitiesFilter)(nil)).Elem()
+}
+
+func (i GetAccountAvailabilitiesFilterArray) ToGetAccountAvailabilitiesFilterArrayOutput() GetAccountAvailabilitiesFilterArrayOutput {
+	return i.ToGetAccountAvailabilitiesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountAvailabilitiesFilterArray) ToGetAccountAvailabilitiesFilterArrayOutputWithContext(ctx context.Context) GetAccountAvailabilitiesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAvailabilitiesFilterArrayOutput)
+}
+
+type GetAccountAvailabilitiesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAvailabilitiesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAvailabilitiesFilter)(nil)).Elem()
+}
+
+func (o GetAccountAvailabilitiesFilterOutput) ToGetAccountAvailabilitiesFilterOutput() GetAccountAvailabilitiesFilterOutput {
+	return o
+}
+
+func (o GetAccountAvailabilitiesFilterOutput) ToGetAccountAvailabilitiesFilterOutputWithContext(ctx context.Context) GetAccountAvailabilitiesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetAccountAvailabilitiesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAvailabilitiesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetAccountAvailabilitiesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAvailabilitiesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetAccountAvailabilitiesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountAvailabilitiesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAccountAvailabilitiesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAvailabilitiesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAvailabilitiesFilter)(nil)).Elem()
+}
+
+func (o GetAccountAvailabilitiesFilterArrayOutput) ToGetAccountAvailabilitiesFilterArrayOutput() GetAccountAvailabilitiesFilterArrayOutput {
+	return o
+}
+
+func (o GetAccountAvailabilitiesFilterArrayOutput) ToGetAccountAvailabilitiesFilterArrayOutputWithContext(ctx context.Context) GetAccountAvailabilitiesFilterArrayOutput {
+	return o
+}
+
+func (o GetAccountAvailabilitiesFilterArrayOutput) Index(i pulumi.IntInput) GetAccountAvailabilitiesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountAvailabilitiesFilter {
+		return vs[0].([]GetAccountAvailabilitiesFilter)[vs[1].(int)]
+	}).(GetAccountAvailabilitiesFilterOutput)
 }
 
 type GetAccountLoginsFilter struct {
@@ -24248,6 +24469,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeArrayInput)(nil)).Elem(), VpcSubnetLinodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInterfaceInput)(nil)).Elem(), VpcSubnetLinodeInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInterfaceArrayInput)(nil)).Elem(), VpcSubnetLinodeInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAvailabilitiesAvailabilityInput)(nil)).Elem(), GetAccountAvailabilitiesAvailabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAvailabilitiesAvailabilityArrayInput)(nil)).Elem(), GetAccountAvailabilitiesAvailabilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAvailabilitiesFilterInput)(nil)).Elem(), GetAccountAvailabilitiesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAvailabilitiesFilterArrayInput)(nil)).Elem(), GetAccountAvailabilitiesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsFilterInput)(nil)).Elem(), GetAccountLoginsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsFilterArrayInput)(nil)).Elem(), GetAccountLoginsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsLoginInput)(nil)).Elem(), GetAccountLoginsLoginArgs{})
@@ -24603,6 +24828,10 @@ func init() {
 	pulumi.RegisterOutputType(VpcSubnetLinodeArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeInterfaceOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountAvailabilitiesAvailabilityOutput{})
+	pulumi.RegisterOutputType(GetAccountAvailabilitiesAvailabilityArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountAvailabilitiesFilterOutput{})
+	pulumi.RegisterOutputType(GetAccountAvailabilitiesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsFilterOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsLoginOutput{})

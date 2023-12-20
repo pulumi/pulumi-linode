@@ -98,6 +98,32 @@ export interface FirewallOutbound {
     protocol: string;
 }
 
+export interface GetAccountAvailabilitiesAvailability {
+    /**
+     * The region this availability entry refers to.
+     */
+    region: string;
+    /**
+     * A set of services that are unavailable for the given region.
+     */
+    unavailables: string[];
+}
+
+export interface GetAccountAvailabilitiesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetAccountLoginsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)

@@ -445,7 +445,7 @@ class InstanceIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applyImmediately")
-    def apply_immediately(self) -> pulumi.Output[Optional[bool]]:
+    def apply_immediately(self) -> pulumi.Output[bool]:
         """
         If true, the instance will be rebooted to update network interfaces.
         """
@@ -477,7 +477,7 @@ class InstanceIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def public(self) -> pulumi.Output[Optional[bool]]:
+    def public(self) -> pulumi.Output[bool]:
         """
         Whether the IPv4 address is public or private. Defaults to true.
         """

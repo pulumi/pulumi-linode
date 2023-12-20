@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceArgs {
@@ -20,29 +18,29 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
      * The resulting IPv4 address.
      * 
      */
-    @Import(name="address")
-    private @Nullable Output<String> address;
+    @Import(name="address", required=true)
+    private Output<String> address;
 
     /**
      * @return The resulting IPv4 address.
      * 
      */
-    public Optional<Output<String>> address() {
-        return Optional.ofNullable(this.address);
+    public Output<String> address() {
+        return this.address;
     }
 
-    @Import(name="subnetId")
-    private @Nullable Output<Integer> subnetId;
+    @Import(name="subnetId", required=true)
+    private Output<Integer> subnetId;
 
-    public Optional<Output<Integer>> subnetId() {
-        return Optional.ofNullable(this.subnetId);
+    public Output<Integer> subnetId() {
+        return this.subnetId;
     }
 
-    @Import(name="vpcId")
-    private @Nullable Output<Integer> vpcId;
+    @Import(name="vpcId", required=true)
+    private Output<Integer> vpcId;
 
-    public Optional<Output<Integer>> vpcId() {
-        return Optional.ofNullable(this.vpcId);
+    public Output<Integer> vpcId() {
+        return this.vpcId;
     }
 
     private InstanceIpVpcNat11Args() {}
@@ -77,7 +75,7 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder address(@Nullable Output<String> address) {
+        public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
@@ -92,7 +90,7 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
             return address(Output.of(address));
         }
 
-        public Builder subnetId(@Nullable Output<Integer> subnetId) {
+        public Builder subnetId(Output<Integer> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
@@ -101,7 +99,7 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
             return subnetId(Output.of(subnetId));
         }
 
-        public Builder vpcId(@Nullable Output<Integer> vpcId) {
+        public Builder vpcId(Output<Integer> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
@@ -111,6 +109,9 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
         }
 
         public InstanceIpVpcNat11Args build() {
+            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
+            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
+            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
             return $;
         }
     }

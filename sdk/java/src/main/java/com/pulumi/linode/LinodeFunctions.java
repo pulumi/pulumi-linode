@@ -8,6 +8,10 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.linode.Utilities;
+import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+import com.pulumi.linode.inputs.GetAccountAvailabilitiesPlainArgs;
+import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
+import com.pulumi.linode.inputs.GetAccountAvailabilityPlainArgs;
 import com.pulumi.linode.inputs.GetAccountLoginArgs;
 import com.pulumi.linode.inputs.GetAccountLoginPlainArgs;
 import com.pulumi.linode.inputs.GetAccountLoginsArgs;
@@ -100,6 +104,8 @@ import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
 import com.pulumi.linode.inputs.GetVpcSubnetsPlainArgs;
 import com.pulumi.linode.inputs.GetVpcsArgs;
 import com.pulumi.linode.inputs.GetVpcsPlainArgs;
+import com.pulumi.linode.outputs.GetAccountAvailabilitiesResult;
+import com.pulumi.linode.outputs.GetAccountAvailabilityResult;
 import com.pulumi.linode.outputs.GetAccountLoginResult;
 import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
@@ -381,6 +387,450 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about services which are unavailable for the current Linode account.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to discover regions without specific service availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
+     *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
+     *                 .name(&#34;unavailable&#34;)
+     *                 .values(&#34;Linodes&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `region`
+     * 
+     * * `unavailable`
+     * 
+     */
+    public static Output<GetAccountAvailabilitiesResult> getAccountAvailabilities() {
+        return getAccountAvailabilities(GetAccountAvailabilitiesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about services which are unavailable for the current Linode account.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to discover regions without specific service availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
+     *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
+     *                 .name(&#34;unavailable&#34;)
+     *                 .values(&#34;Linodes&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `region`
+     * 
+     * * `unavailable`
+     * 
+     */
+    public static CompletableFuture<GetAccountAvailabilitiesResult> getAccountAvailabilitiesPlain() {
+        return getAccountAvailabilitiesPlain(GetAccountAvailabilitiesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about services which are unavailable for the current Linode account.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to discover regions without specific service availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
+     *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
+     *                 .name(&#34;unavailable&#34;)
+     *                 .values(&#34;Linodes&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `region`
+     * 
+     * * `unavailable`
+     * 
+     */
+    public static Output<GetAccountAvailabilitiesResult> getAccountAvailabilities(GetAccountAvailabilitiesArgs args) {
+        return getAccountAvailabilities(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about services which are unavailable for the current Linode account.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to discover regions without specific service availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
+     *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
+     *                 .name(&#34;unavailable&#34;)
+     *                 .values(&#34;Linodes&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `region`
+     * 
+     * * `unavailable`
+     * 
+     */
+    public static CompletableFuture<GetAccountAvailabilitiesResult> getAccountAvailabilitiesPlain(GetAccountAvailabilitiesPlainArgs args) {
+        return getAccountAvailabilitiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about services which are unavailable for the current Linode account.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to discover regions without specific service availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
+     *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
+     *                 .name(&#34;unavailable&#34;)
+     *                 .values(&#34;Linodes&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `region`
+     * 
+     * * `unavailable`
+     * 
+     */
+    public static Output<GetAccountAvailabilitiesResult> getAccountAvailabilities(GetAccountAvailabilitiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountAvailabilities:getAccountAvailabilities", TypeShape.of(GetAccountAvailabilitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about services which are unavailable for the current Linode account.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to discover regions without specific service availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
+     *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
+     *                 .name(&#34;unavailable&#34;)
+     *                 .values(&#34;Linodes&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `region`
+     * 
+     * * `unavailable`
+     * 
+     */
+    public static CompletableFuture<GetAccountAvailabilitiesResult> getAccountAvailabilitiesPlain(GetAccountAvailabilitiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getAccountAvailabilities:getAccountAvailabilities", TypeShape.of(GetAccountAvailabilitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about resource availability in a region to an account specifically.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
+     *             .region(&#34;us-east&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountAvailabilityResult> getAccountAvailability(GetAccountAvailabilityArgs args) {
+        return getAccountAvailability(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about resource availability in a region to an account specifically.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
+     *             .region(&#34;us-east&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountAvailabilityResult> getAccountAvailabilityPlain(GetAccountAvailabilityPlainArgs args) {
+        return getAccountAvailabilityPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about resource availability in a region to an account specifically.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
+     *             .region(&#34;us-east&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountAvailabilityResult> getAccountAvailability(GetAccountAvailabilityArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountAvailability:getAccountAvailability", TypeShape.of(GetAccountAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about resource availability in a region to an account specifically.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode account availability.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
+     *             .region(&#34;us-east&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountAvailabilityResult> getAccountAvailabilityPlain(GetAccountAvailabilityPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getAccountAvailability:getAccountAvailability", TypeShape.of(GetAccountAvailabilityResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about a specific Linode account login.

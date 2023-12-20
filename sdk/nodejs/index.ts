@@ -50,6 +50,16 @@ export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
 
+export { GetAccountAvailabilitiesArgs, GetAccountAvailabilitiesResult, GetAccountAvailabilitiesOutputArgs } from "./getAccountAvailabilities";
+export const getAccountAvailabilities: typeof import("./getAccountAvailabilities").getAccountAvailabilities = null as any;
+export const getAccountAvailabilitiesOutput: typeof import("./getAccountAvailabilities").getAccountAvailabilitiesOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountAvailabilities","getAccountAvailabilitiesOutput"], () => require("./getAccountAvailabilities"));
+
+export { GetAccountAvailabilityArgs, GetAccountAvailabilityResult, GetAccountAvailabilityOutputArgs } from "./getAccountAvailability";
+export const getAccountAvailability: typeof import("./getAccountAvailability").getAccountAvailability = null as any;
+export const getAccountAvailabilityOutput: typeof import("./getAccountAvailability").getAccountAvailabilityOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountAvailability","getAccountAvailabilityOutput"], () => require("./getAccountAvailability"));
+
 export { GetAccountLoginArgs, GetAccountLoginResult, GetAccountLoginOutputArgs } from "./getAccountLogin";
 export const getAccountLogin: typeof import("./getAccountLogin").getAccountLogin = null as any;
 export const getAccountLoginOutput: typeof import("./getAccountLogin").getAccountLoginOutput = null as any;
