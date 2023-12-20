@@ -98,6 +98,58 @@ export interface FirewallOutbound {
     protocol: pulumi.Input<string>;
 }
 
+export interface GetAccountAvailabilitiesAvailability {
+    /**
+     * The region this availability entry refers to.
+     */
+    region: string;
+    /**
+     * A set of services that are unavailable for the given region.
+     */
+    unavailables?: string[];
+}
+
+export interface GetAccountAvailabilitiesAvailabilityArgs {
+    /**
+     * The region this availability entry refers to.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * A set of services that are unavailable for the given region.
+     */
+    unavailables?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetAccountAvailabilitiesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetAccountAvailabilitiesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetAccountLoginsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3203,9 +3255,9 @@ export interface InstanceIpVpcNat11 {
     /**
      * The resulting IPv4 address.
      */
-    address?: pulumi.Input<string>;
-    subnetId?: pulumi.Input<number>;
-    vpcId?: pulumi.Input<number>;
+    address: pulumi.Input<string>;
+    subnetId: pulumi.Input<number>;
+    vpcId: pulumi.Input<number>;
 }
 
 export interface InstanceMetadata {

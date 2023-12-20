@@ -16,17 +16,17 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The resulting IPv4 address.
         /// </summary>
-        public readonly string? Address;
-        public readonly int? SubnetId;
-        public readonly int? VpcId;
+        public readonly string Address;
+        public readonly int SubnetId;
+        public readonly int VpcId;
 
         [OutputConstructor]
         private InstanceIpVpcNat11(
-            string? address,
+            string address,
 
-            int? subnetId,
+            int subnetId,
 
-            int? vpcId)
+            int vpcId)
         {
             Address = address;
             SubnetId = subnetId;

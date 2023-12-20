@@ -56,7 +56,7 @@ namespace Pulumi.Linode
         /// If true, the instance will be rebooted to update network interfaces.
         /// </summary>
         [Output("applyImmediately")]
-        public Output<bool?> ApplyImmediately { get; private set; } = null!;
+        public Output<bool> ApplyImmediately { get; private set; } = null!;
 
         /// <summary>
         /// The default gateway for this address
@@ -80,7 +80,7 @@ namespace Pulumi.Linode
         /// Whether the IPv4 address is public or private. Defaults to true.
         /// </summary>
         [Output("public")]
-        public Output<bool?> Public { get; private set; } = null!;
+        public Output<bool> Public { get; private set; } = null!;
 
         /// <summary>
         /// The reverse DNS assigned to this address.

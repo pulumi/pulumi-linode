@@ -66,7 +66,7 @@ export class InstanceIp extends pulumi.CustomResource {
     /**
      * If true, the instance will be rebooted to update network interfaces.
      */
-    public readonly applyImmediately!: pulumi.Output<boolean | undefined>;
+    public readonly applyImmediately!: pulumi.Output<boolean>;
     /**
      * The default gateway for this address
      */
@@ -82,7 +82,7 @@ export class InstanceIp extends pulumi.CustomResource {
     /**
      * Whether the IPv4 address is public or private. Defaults to true.
      */
-    public readonly public!: pulumi.Output<boolean | undefined>;
+    public readonly public!: pulumi.Output<boolean>;
     /**
      * The reverse DNS assigned to this address.
      */

@@ -24,6 +24,8 @@
         "firewall.ts",
         "firewallDevice.ts",
         "getAccount.ts",
+        "getAccountAvailabilities.ts",
+        "getAccountAvailability.ts",
         "getAccountLogin.ts",
         "getAccountLogins.ts",
         "getAccountSettings.ts",

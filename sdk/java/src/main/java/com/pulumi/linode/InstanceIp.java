@@ -15,7 +15,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -87,14 +86,14 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="applyImmediately", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> applyImmediately;
+    private Output<Boolean> applyImmediately;
 
     /**
      * @return If true, the instance will be rebooted to update network interfaces.
      * 
      */
-    public Output<Optional<Boolean>> applyImmediately() {
-        return Codegen.optional(this.applyImmediately);
+    public Output<Boolean> applyImmediately() {
+        return this.applyImmediately;
     }
     /**
      * The default gateway for this address
@@ -143,14 +142,14 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="public", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> public_;
+    private Output<Boolean> public_;
 
     /**
      * @return Whether the IPv4 address is public or private. Defaults to true.
      * 
      */
-    public Output<Optional<Boolean>> public_() {
-        return Codegen.optional(this.public_);
+    public Output<Boolean> public_() {
+        return this.public_;
     }
     /**
      * The reverse DNS assigned to this address.

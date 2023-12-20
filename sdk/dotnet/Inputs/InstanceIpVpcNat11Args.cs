@@ -15,14 +15,14 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The resulting IPv4 address.
         /// </summary>
-        [Input("address")]
-        public Input<string>? Address { get; set; }
+        [Input("address", required: true)]
+        public Input<string> Address { get; set; } = null!;
 
-        [Input("subnetId")]
-        public Input<int>? SubnetId { get; set; }
+        [Input("subnetId", required: true)]
+        public Input<int> SubnetId { get; set; } = null!;
 
-        [Input("vpcId")]
-        public Input<int>? VpcId { get; set; }
+        [Input("vpcId", required: true)]
+        public Input<int> VpcId { get; set; } = null!;
 
         public InstanceIpVpcNat11Args()
         {

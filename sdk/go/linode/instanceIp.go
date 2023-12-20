@@ -59,7 +59,7 @@ type InstanceIp struct {
 	// The resulting IPv4 address.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// If true, the instance will be rebooted to update network interfaces.
-	ApplyImmediately pulumi.BoolPtrOutput `pulumi:"applyImmediately"`
+	ApplyImmediately pulumi.BoolOutput `pulumi:"applyImmediately"`
 	// The default gateway for this address
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
 	// The ID of the Linode to allocate an IPv4 address for.
@@ -67,7 +67,7 @@ type InstanceIp struct {
 	// The number of bits set in the subnet mask.
 	Prefix pulumi.IntOutput `pulumi:"prefix"`
 	// Whether the IPv4 address is public or private. Defaults to true.
-	Public pulumi.BoolPtrOutput `pulumi:"public"`
+	Public pulumi.BoolOutput `pulumi:"public"`
 	// The reverse DNS assigned to this address.
 	Rdns pulumi.StringOutput `pulumi:"rdns"`
 	// The region this IP resides in.
@@ -282,8 +282,8 @@ func (o InstanceIpOutput) Address() pulumi.StringOutput {
 }
 
 // If true, the instance will be rebooted to update network interfaces.
-func (o InstanceIpOutput) ApplyImmediately() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceIp) pulumi.BoolPtrOutput { return v.ApplyImmediately }).(pulumi.BoolPtrOutput)
+func (o InstanceIpOutput) ApplyImmediately() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.BoolOutput { return v.ApplyImmediately }).(pulumi.BoolOutput)
 }
 
 // The default gateway for this address
@@ -302,8 +302,8 @@ func (o InstanceIpOutput) Prefix() pulumi.IntOutput {
 }
 
 // Whether the IPv4 address is public or private. Defaults to true.
-func (o InstanceIpOutput) Public() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceIp) pulumi.BoolPtrOutput { return v.Public }).(pulumi.BoolPtrOutput)
+func (o InstanceIpOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstanceIp) pulumi.BoolOutput { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address.
