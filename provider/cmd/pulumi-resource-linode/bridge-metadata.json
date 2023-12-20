@@ -456,6 +456,41 @@
                 "current": "linode:index/getAccount:getAccount",
                 "majorVersion": 4
             },
+            "linode_account_availabilities": {
+                "current": "linode:index/getAccountAvailabilities:getAccountAvailabilities",
+                "majorVersion": 4,
+                "fields": {
+                    "availabilities": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "unavailable": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_account_availability": {
+                "current": "linode:index/getAccountAvailability:getAccountAvailability",
+                "majorVersion": 4,
+                "fields": {
+                    "unavailable": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_account_login": {
                 "current": "linode:index/getAccountLogin:getAccountLogin",
                 "majorVersion": 4
@@ -1540,7 +1575,7 @@
             "linode:index/image:Image": 0,
             "linode:index/instance:Instance": 0,
             "linode:index/instanceDisk:InstanceDisk": 0,
-            "linode:index/instanceIp:InstanceIp": 0,
+            "linode:index/instanceIp:InstanceIp": 1,
             "linode:index/instanceSharedIps:InstanceSharedIps": 0,
             "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
@@ -1561,6 +1596,8 @@
         },
         "functions": {
             "linode:index/getAccount:getAccount": 1,
+            "linode:index/getAccountAvailabilities:getAccountAvailabilities": 1,
+            "linode:index/getAccountAvailability:getAccountAvailability": 1,
             "linode:index/getAccountLogin:getAccountLogin": 1,
             "linode:index/getAccountLogins:getAccountLogins": 1,
             "linode:index/getAccountSettings:getAccountSettings": 1,
@@ -1646,6 +1683,8 @@
         },
         "functions": {
             "linode:index/getAccount:getAccount": "linode_account",
+            "linode:index/getAccountAvailabilities:getAccountAvailabilities": "linode_account_availabilities",
+            "linode:index/getAccountAvailability:getAccountAvailability": "linode_account_availability",
             "linode:index/getAccountLogin:getAccountLogin": "linode_account_login",
             "linode:index/getAccountLogins:getAccountLogins": "linode_account_logins",
             "linode:index/getAccountSettings:getAccountSettings": "linode_account_settings",
@@ -1911,6 +1950,18 @@
                 "address2": "address_2",
                 "firstName": "first_name",
                 "lastName": "last_name"
+            },
+            "linode:index/getAccountAvailabilities:getAccountAvailabilities": {
+                "filters": "filter"
+            },
+            "linode:index/getAccountAvailabilitiesAvailability:getAccountAvailabilitiesAvailability": {
+                "unavailables": "unavailable"
+            },
+            "linode:index/getAccountAvailabilitiesFilter:getAccountAvailabilitiesFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getAccountAvailability:getAccountAvailability": {
+                "unavailables": "unavailable"
             },
             "linode:index/getAccountLogins:getAccountLogins": {
                 "filters": "filter"

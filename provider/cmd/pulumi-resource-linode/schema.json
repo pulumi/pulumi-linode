@@ -962,15 +962,11 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "address",
-                        "subnetId",
-                        "vpcId"
-                    ]
-                }
-            }
+            "required": [
+                "address",
+                "subnetId",
+                "vpcId"
+            ]
         },
         "linode:index/InstanceMetadata:InstanceMetadata": {
             "properties": {
@@ -1489,6 +1485,57 @@
             "required": [
                 "active",
                 "id"
+            ]
+        },
+        "linode:index/getAccountAvailabilitiesAvailability:getAccountAvailabilitiesAvailability": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region this availability entry refers to.\n"
+                },
+                "unavailables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of services that are unavailable for the given region.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region",
+                "unavailables"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "region"
+                    ]
+                }
+            }
+        },
+        "linode:index/getAccountAvailabilitiesFilter:getAccountAvailabilitiesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
             ]
         },
         "linode:index/getAccountLoginsFilter:getAccountLoginsFilter": {
@@ -8754,9 +8801,11 @@
             },
             "required": [
                 "address",
+                "applyImmediately",
                 "gateway",
                 "linodeId",
                 "prefix",
+                "public",
                 "rdns",
                 "region",
                 "subnetMask",
@@ -8770,13 +8819,11 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode to allocate an IPv4 address for.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Linode to allocate an IPv4 address for.\n"
                 },
                 "public": {
                     "type": "boolean",
-                    "description": "Whether the IPv4 address is public or private. Defaults to true.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether the IPv4 address is public or private. Defaults to true.\n"
                 },
                 "rdns": {
                     "type": "string",
@@ -8803,8 +8850,7 @@
                     },
                     "linodeId": {
                         "type": "integer",
-                        "description": "The ID of the Linode to allocate an IPv4 address for.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Linode to allocate an IPv4 address for.\n"
                     },
                     "prefix": {
                         "type": "integer",
@@ -8812,8 +8858,7 @@
                     },
                     "public": {
                         "type": "boolean",
-                        "description": "Whether the IPv4 address is public or private. Defaults to true.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Whether the IPv4 address is public or private. Defaults to true.\n"
                     },
                     "rdns": {
                         "type": "string",
@@ -11246,6 +11291,93 @@
                     "phone",
                     "state",
                     "zip"
+                ]
+            }
+        },
+        "linode:index/getAccountAvailabilities:getAccountAvailabilities": {
+            "description": "Provides information about services which are unavailable for the current Linode account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to discover regions without specific service availability.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nexport = async () =\u003e {\n    const filtered-availabilities = await linode.getAccountAvailabilities({\n        filters: [{\n            name: \"unavailable\",\n            values: [\"Linodes\"],\n        }],\n    });\n    return {\n        \"regions-without-linodes\": filtered_availabilities.availabilities.map(__item =\u003e __item.region),\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_availabilities = linode.get_account_availabilities(filters=[linode.GetAccountAvailabilitiesFilterArgs(\n    name=\"unavailable\",\n    values=[\"Linodes\"],\n)])\npulumi.export(\"regions-without-linodes\", [__item.region for __item in filtered_availabilities.availabilities])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_availabilities = Linode.GetAccountAvailabilities.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetAccountAvailabilitiesFilterInputArgs\n            {\n                Name = \"unavailable\",\n                Values = new[]\n                {\n                    \"Linodes\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"regions-without-linodes\"] = filtered_availabilities.Apply(filtered_availabilities =\u003e filtered_availabilities.Apply(getAccountAvailabilitiesResult =\u003e getAccountAvailabilitiesResult.Availabilities).Select(__item =\u003e __item.Region).ToList()),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_availabilities, err := linode.GetAccountAvailabilities(ctx, \u0026linode.GetAccountAvailabilitiesArgs{\n\t\t\tFilters: []linode.GetAccountAvailabilitiesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"unavailable\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Linodes\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvar splat0 []*string\n\t\tfor _, val0 := range filtered_availabilities.Availabilities {\n\t\t\tsplat0 = append(splat0, val0.Region)\n\t\t}\n\t\tctx.Export(\"regions-without-linodes\", splat0)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()\n            .filters(GetAccountAvailabilitiesFilterArgs.builder()\n                .name(\"unavailable\")\n                .values(\"Linodes\")\n                .build())\n            .build());\n\n        ctx.export(\"regions-without-linodes\", filtered_availabilities.availabilities().stream().map(element -\u003e element.region()).collect(toList()));\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `region`\n\n* `unavailable`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccountAvailabilities.\n",
+                "properties": {
+                    "availabilities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getAccountAvailabilitiesAvailability:getAccountAvailabilitiesAvailability"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getAccountAvailabilitiesFilter:getAccountAvailabilitiesFilter"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccountAvailabilities.\n",
+                "properties": {
+                    "availabilities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getAccountAvailabilitiesAvailability:getAccountAvailabilitiesAvailability"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getAccountAvailabilitiesFilter:getAccountAvailabilitiesFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        "linode:index/getAccountAvailability:getAccountAvailability": {
+            "description": "Provides details about resource availability in a region to an account specifically.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a Linode account availability.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myAccountAvailability = linode.getAccountAvailability({\n    region: \"us-east\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_account_availability = linode.get_account_availability(region=\"us-east\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myAccountAvailability = Linode.GetAccountAvailability.Invoke(new()\n    {\n        Region = \"us-east\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetAccountAvailability(ctx, \u0026linode.GetAccountAvailabilityArgs{\n\t\t\tRegion: \"us-east\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetAccountAvailabilityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()\n            .region(\"us-east\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myAccountAvailability:\n    fn::invoke:\n      Function: linode:getAccountAvailability\n      Arguments:\n        region: us-east\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccountAvailability.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The region ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "region"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccountAvailability.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region ID.\n"
+                    },
+                    "unavailables": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of resources which are NOT available to the account in a region.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "region",
+                    "unavailables",
+                    "id"
                 ]
             }
         },
