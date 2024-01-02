@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -64,17 +65,26 @@ public final class GetDomainZonefileResult {
 
         @CustomType.Setter
         public Builder domainId(Integer domainId) {
-            this.domainId = Objects.requireNonNull(domainId);
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetDomainZonefileResult", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainZonefileResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder zoneFiles(List<String> zoneFiles) {
-            this.zoneFiles = Objects.requireNonNull(zoneFiles);
+            if (zoneFiles == null) {
+              throw new MissingRequiredPropertyException("GetDomainZonefileResult", "zoneFiles");
+            }
+            this.zoneFiles = zoneFiles;
             return this;
         }
         public Builder zoneFiles(String... zoneFiles) {

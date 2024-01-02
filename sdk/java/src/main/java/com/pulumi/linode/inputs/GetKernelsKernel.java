@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -266,15 +267,33 @@ public final class GetKernelsKernel extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetKernelsKernel build() {
-            $.architecture = Objects.requireNonNull($.architecture, "expected parameter 'architecture' to be non-null");
-            $.built = Objects.requireNonNull($.built, "expected parameter 'built' to be non-null");
-            $.deprecated = Objects.requireNonNull($.deprecated, "expected parameter 'deprecated' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.kvm = Objects.requireNonNull($.kvm, "expected parameter 'kvm' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.pvops = Objects.requireNonNull($.pvops, "expected parameter 'pvops' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
-            $.xen = Objects.requireNonNull($.xen, "expected parameter 'xen' to be non-null");
+            if ($.architecture == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "architecture");
+            }
+            if ($.built == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "built");
+            }
+            if ($.deprecated == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "deprecated");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "id");
+            }
+            if ($.kvm == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "kvm");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "label");
+            }
+            if ($.pvops == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "pvops");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "version");
+            }
+            if ($.xen == null) {
+                throw new MissingRequiredPropertyException("GetKernelsKernel", "xen");
+            }
             return $;
         }
     }

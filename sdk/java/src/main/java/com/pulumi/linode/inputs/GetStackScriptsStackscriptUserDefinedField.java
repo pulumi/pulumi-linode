@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -198,12 +199,24 @@ public final class GetStackScriptsStackscriptUserDefinedField extends com.pulumi
         }
 
         public GetStackScriptsStackscriptUserDefinedField build() {
-            $.default_ = Objects.requireNonNull($.default_, "expected parameter 'default' to be non-null");
-            $.example = Objects.requireNonNull($.example, "expected parameter 'example' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.manyOf = Objects.requireNonNull($.manyOf, "expected parameter 'manyOf' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.oneOf = Objects.requireNonNull($.oneOf, "expected parameter 'oneOf' to be non-null");
+            if ($.default_ == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "default_");
+            }
+            if ($.example == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "example");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "label");
+            }
+            if ($.manyOf == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "manyOf");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "name");
+            }
+            if ($.oneOf == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "oneOf");
+            }
             return $;
         }
     }

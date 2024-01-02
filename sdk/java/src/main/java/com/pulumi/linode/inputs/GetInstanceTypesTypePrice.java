@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -62,8 +63,12 @@ public final class GetInstanceTypesTypePrice extends com.pulumi.resources.Invoke
         }
 
         public GetInstanceTypesTypePrice build() {
-            $.hourly = Objects.requireNonNull($.hourly, "expected parameter 'hourly' to be non-null");
-            $.monthly = Objects.requireNonNull($.monthly, "expected parameter 'monthly' to be non-null");
+            if ($.hourly == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypePrice", "hourly");
+            }
+            if ($.monthly == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypePrice", "monthly");
+            }
             return $;
         }
     }

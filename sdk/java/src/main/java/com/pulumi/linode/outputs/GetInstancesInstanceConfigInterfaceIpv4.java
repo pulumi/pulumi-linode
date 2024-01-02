@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetInstancesInstanceConfigInterfaceIpv4 {
 
         @CustomType.Setter
         public Builder nat11(String nat11) {
-            this.nat11 = Objects.requireNonNull(nat11);
+            if (nat11 == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterfaceIpv4", "nat11");
+            }
+            this.nat11 = nat11;
             return this;
         }
         @CustomType.Setter
         public Builder vpc(String vpc) {
-            this.vpc = Objects.requireNonNull(vpc);
+            if (vpc == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterfaceIpv4", "vpc");
+            }
+            this.vpc = vpc;
             return this;
         }
         public GetInstancesInstanceConfigInterfaceIpv4 build() {

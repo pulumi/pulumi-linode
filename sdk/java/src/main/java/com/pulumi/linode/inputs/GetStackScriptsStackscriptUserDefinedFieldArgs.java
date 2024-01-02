@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -259,12 +260,24 @@ public final class GetStackScriptsStackscriptUserDefinedFieldArgs extends com.pu
         }
 
         public GetStackScriptsStackscriptUserDefinedFieldArgs build() {
-            $.default_ = Objects.requireNonNull($.default_, "expected parameter 'default' to be non-null");
-            $.example = Objects.requireNonNull($.example, "expected parameter 'example' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.manyOf = Objects.requireNonNull($.manyOf, "expected parameter 'manyOf' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.oneOf = Objects.requireNonNull($.oneOf, "expected parameter 'oneOf' to be non-null");
+            if ($.default_ == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedFieldArgs", "default_");
+            }
+            if ($.example == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedFieldArgs", "example");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedFieldArgs", "label");
+            }
+            if ($.manyOf == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedFieldArgs", "manyOf");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedFieldArgs", "name");
+            }
+            if ($.oneOf == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedFieldArgs", "oneOf");
+            }
             return $;
         }
     }

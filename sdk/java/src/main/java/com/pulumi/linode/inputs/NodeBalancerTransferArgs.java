@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class NodeBalancerTransferArgs extends com.pulumi.resources.Resourc
         }
 
         public NodeBalancerTransferArgs build() {
-            $.in = Objects.requireNonNull($.in, "expected parameter 'in' to be non-null");
-            $.out = Objects.requireNonNull($.out, "expected parameter 'out' to be non-null");
-            $.total = Objects.requireNonNull($.total, "expected parameter 'total' to be non-null");
+            if ($.in == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerTransferArgs", "in");
+            }
+            if ($.out == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerTransferArgs", "out");
+            }
+            if ($.total == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerTransferArgs", "total");
+            }
             return $;
         }
     }

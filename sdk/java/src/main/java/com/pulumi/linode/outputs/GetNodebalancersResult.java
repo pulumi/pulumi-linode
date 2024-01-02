@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetNodebalancersFilter;
 import com.pulumi.linode.outputs.GetNodebalancersNodebalancer;
 import java.lang.String;
@@ -71,6 +72,7 @@ public final class GetNodebalancersResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetNodebalancersFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -79,11 +81,15 @@ public final class GetNodebalancersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodebalancers(@Nullable List<GetNodebalancersNodebalancer> nodebalancers) {
+
             this.nodebalancers = nodebalancers;
             return this;
         }
@@ -92,11 +98,13 @@ public final class GetNodebalancersResult {
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }

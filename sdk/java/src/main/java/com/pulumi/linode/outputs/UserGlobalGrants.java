@@ -103,61 +103,73 @@ public final class UserGlobalGrants {
 
         @CustomType.Setter
         public Builder accountAccess(@Nullable String accountAccess) {
+
             this.accountAccess = accountAccess;
             return this;
         }
         @CustomType.Setter
         public Builder addDatabases(@Nullable Boolean addDatabases) {
+
             this.addDatabases = addDatabases;
             return this;
         }
         @CustomType.Setter
         public Builder addDomains(@Nullable Boolean addDomains) {
+
             this.addDomains = addDomains;
             return this;
         }
         @CustomType.Setter
         public Builder addFirewalls(@Nullable Boolean addFirewalls) {
+
             this.addFirewalls = addFirewalls;
             return this;
         }
         @CustomType.Setter
         public Builder addImages(@Nullable Boolean addImages) {
+
             this.addImages = addImages;
             return this;
         }
         @CustomType.Setter
         public Builder addLinodes(@Nullable Boolean addLinodes) {
+
             this.addLinodes = addLinodes;
             return this;
         }
         @CustomType.Setter
         public Builder addLongview(@Nullable Boolean addLongview) {
+
             this.addLongview = addLongview;
             return this;
         }
         @CustomType.Setter
         public Builder addNodebalancers(@Nullable Boolean addNodebalancers) {
+
             this.addNodebalancers = addNodebalancers;
             return this;
         }
         @CustomType.Setter
         public Builder addStackscripts(@Nullable Boolean addStackscripts) {
+
             this.addStackscripts = addStackscripts;
             return this;
         }
         @CustomType.Setter
         public Builder addVolumes(@Nullable Boolean addVolumes) {
+
             this.addVolumes = addVolumes;
             return this;
         }
         @CustomType.Setter
         public Builder cancelAccount(@Nullable Boolean cancelAccount) {
+
             this.cancelAccount = cancelAccount;
             return this;
         }
         @CustomType.Setter
         public Builder longviewSubscription(@Nullable Boolean longviewSubscription) {
+
             this.longviewSubscription = longviewSubscription;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetInstanceNetworkingIpv6Global {
 
         @CustomType.Setter
         public Builder prefix(Integer prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Global", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder range(String range) {
-            this.range = Objects.requireNonNull(range);
+            if (range == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Global", "range");
+            }
+            this.range = range;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Global", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder routeTarget(String routeTarget) {
-            this.routeTarget = Objects.requireNonNull(routeTarget);
+            if (routeTarget == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Global", "routeTarget");
+            }
+            this.routeTarget = routeTarget;
             return this;
         }
         public GetInstanceNetworkingIpv6Global build() {

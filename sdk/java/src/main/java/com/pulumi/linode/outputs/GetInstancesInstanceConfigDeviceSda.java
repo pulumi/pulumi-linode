@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,21 @@ public final class GetInstancesInstanceConfigDeviceSda {
 
         @CustomType.Setter
         public Builder diskId(Integer diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDeviceSda", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskLabel(@Nullable String diskLabel) {
+
             this.diskLabel = diskLabel;
             return this;
         }
         @CustomType.Setter
         public Builder volumeId(@Nullable Integer volumeId) {
+
             this.volumeId = volumeId;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSda;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdb;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdc;
@@ -92,7 +93,10 @@ public final class GetInstancesInstanceConfigDevice {
 
         @CustomType.Setter
         public Builder sdas(List<GetInstancesInstanceConfigDeviceSda> sdas) {
-            this.sdas = Objects.requireNonNull(sdas);
+            if (sdas == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdas");
+            }
+            this.sdas = sdas;
             return this;
         }
         public Builder sdas(GetInstancesInstanceConfigDeviceSda... sdas) {
@@ -100,7 +104,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdbs(List<GetInstancesInstanceConfigDeviceSdb> sdbs) {
-            this.sdbs = Objects.requireNonNull(sdbs);
+            if (sdbs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbs");
+            }
+            this.sdbs = sdbs;
             return this;
         }
         public Builder sdbs(GetInstancesInstanceConfigDeviceSdb... sdbs) {
@@ -108,7 +115,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdcs(List<GetInstancesInstanceConfigDeviceSdc> sdcs) {
-            this.sdcs = Objects.requireNonNull(sdcs);
+            if (sdcs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdcs");
+            }
+            this.sdcs = sdcs;
             return this;
         }
         public Builder sdcs(GetInstancesInstanceConfigDeviceSdc... sdcs) {
@@ -116,7 +126,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdds(List<GetInstancesInstanceConfigDeviceSdd> sdds) {
-            this.sdds = Objects.requireNonNull(sdds);
+            if (sdds == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdds");
+            }
+            this.sdds = sdds;
             return this;
         }
         public Builder sdds(GetInstancesInstanceConfigDeviceSdd... sdds) {
@@ -124,7 +137,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdes(List<GetInstancesInstanceConfigDeviceSde> sdes) {
-            this.sdes = Objects.requireNonNull(sdes);
+            if (sdes == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdes");
+            }
+            this.sdes = sdes;
             return this;
         }
         public Builder sdes(GetInstancesInstanceConfigDeviceSde... sdes) {
@@ -132,7 +148,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdfs(List<GetInstancesInstanceConfigDeviceSdf> sdfs) {
-            this.sdfs = Objects.requireNonNull(sdfs);
+            if (sdfs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdfs");
+            }
+            this.sdfs = sdfs;
             return this;
         }
         public Builder sdfs(GetInstancesInstanceConfigDeviceSdf... sdfs) {
@@ -140,7 +159,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdgs(List<GetInstancesInstanceConfigDeviceSdg> sdgs) {
-            this.sdgs = Objects.requireNonNull(sdgs);
+            if (sdgs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdgs");
+            }
+            this.sdgs = sdgs;
             return this;
         }
         public Builder sdgs(GetInstancesInstanceConfigDeviceSdg... sdgs) {
@@ -148,7 +170,10 @@ public final class GetInstancesInstanceConfigDevice {
         }
         @CustomType.Setter
         public Builder sdhs(List<GetInstancesInstanceConfigDeviceSdh> sdhs) {
-            this.sdhs = Objects.requireNonNull(sdhs);
+            if (sdhs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdhs");
+            }
+            this.sdhs = sdhs;
             return this;
         }
         public Builder sdhs(GetInstancesInstanceConfigDeviceSdh... sdhs) {

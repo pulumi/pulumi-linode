@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -55,17 +56,26 @@ public final class GetInstanceNetworkingIpv4PublicVpcNat11 {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4PublicVpcNat11", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(Integer subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4PublicVpcNat11", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(Integer vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4PublicVpcNat11", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetInstanceNetworkingIpv4PublicVpcNat11 build() {

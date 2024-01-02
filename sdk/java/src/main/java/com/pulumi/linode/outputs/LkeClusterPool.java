@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.LkeClusterPoolAutoscaler;
 import com.pulumi.linode.outputs.LkeClusterPoolNode;
 import java.lang.Integer;
@@ -92,21 +93,27 @@ public final class LkeClusterPool {
 
         @CustomType.Setter
         public Builder autoscaler(@Nullable LkeClusterPoolAutoscaler autoscaler) {
+
             this.autoscaler = autoscaler;
             return this;
         }
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("LkeClusterPool", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(@Nullable List<LkeClusterPoolNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
@@ -115,7 +122,10 @@ public final class LkeClusterPool {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("LkeClusterPool", "type");
+            }
+            this.type = type;
             return this;
         }
         public LkeClusterPool build() {

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDevice;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigHelper;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigInterface;
@@ -179,12 +180,18 @@ public final class GetInstancesInstanceConfig {
 
         @CustomType.Setter
         public Builder comments(String comments) {
-            this.comments = Objects.requireNonNull(comments);
+            if (comments == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "comments");
+            }
+            this.comments = comments;
             return this;
         }
         @CustomType.Setter
         public Builder devices(List<GetInstancesInstanceConfigDevice> devices) {
-            this.devices = Objects.requireNonNull(devices);
+            if (devices == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "devices");
+            }
+            this.devices = devices;
             return this;
         }
         public Builder devices(GetInstancesInstanceConfigDevice... devices) {
@@ -192,7 +199,10 @@ public final class GetInstancesInstanceConfig {
         }
         @CustomType.Setter
         public Builder helpers(List<GetInstancesInstanceConfigHelper> helpers) {
-            this.helpers = Objects.requireNonNull(helpers);
+            if (helpers == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "helpers");
+            }
+            this.helpers = helpers;
             return this;
         }
         public Builder helpers(GetInstancesInstanceConfigHelper... helpers) {
@@ -200,12 +210,18 @@ public final class GetInstancesInstanceConfig {
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(List<GetInstancesInstanceConfigInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "interfaces");
+            }
+            this.interfaces = interfaces;
             return this;
         }
         public Builder interfaces(GetInstancesInstanceConfigInterface... interfaces) {
@@ -213,32 +229,50 @@ public final class GetInstancesInstanceConfig {
         }
         @CustomType.Setter
         public Builder kernel(String kernel) {
-            this.kernel = Objects.requireNonNull(kernel);
+            if (kernel == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "kernel");
+            }
+            this.kernel = kernel;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder memoryLimit(Integer memoryLimit) {
-            this.memoryLimit = Objects.requireNonNull(memoryLimit);
+            if (memoryLimit == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "memoryLimit");
+            }
+            this.memoryLimit = memoryLimit;
             return this;
         }
         @CustomType.Setter
         public Builder rootDevice(String rootDevice) {
-            this.rootDevice = Objects.requireNonNull(rootDevice);
+            if (rootDevice == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "rootDevice");
+            }
+            this.rootDevice = rootDevice;
             return this;
         }
         @CustomType.Setter
         public Builder runLevel(String runLevel) {
-            this.runLevel = Objects.requireNonNull(runLevel);
+            if (runLevel == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "runLevel");
+            }
+            this.runLevel = runLevel;
             return this;
         }
         @CustomType.Setter
         public Builder virtMode(String virtMode) {
-            this.virtMode = Objects.requireNonNull(virtMode);
+            if (virtMode == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfig", "virtMode");
+            }
+            this.virtMode = virtMode;
             return this;
         }
         public GetInstancesInstanceConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -106,32 +107,50 @@ public final class GetAccountLoginsLogin {
 
         @CustomType.Setter
         public Builder datetime(String datetime) {
-            this.datetime = Objects.requireNonNull(datetime);
+            if (datetime == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsLogin", "datetime");
+            }
+            this.datetime = datetime;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsLogin", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsLogin", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder restricted(Boolean restricted) {
-            this.restricted = Objects.requireNonNull(restricted);
+            if (restricted == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsLogin", "restricted");
+            }
+            this.restricted = restricted;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsLogin", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsLogin", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetAccountLoginsLogin build() {

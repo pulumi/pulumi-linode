@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetUsersUserDatabaseGrant;
 import com.pulumi.linode.inputs.GetUsersUserDomainGrant;
 import com.pulumi.linode.inputs.GetUsersUserFirewallGrant;
@@ -444,24 +445,60 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetUsersUser build() {
-            $.databaseGrants = Objects.requireNonNull($.databaseGrants, "expected parameter 'databaseGrants' to be non-null");
-            $.domainGrants = Objects.requireNonNull($.domainGrants, "expected parameter 'domainGrants' to be non-null");
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.firewallGrants = Objects.requireNonNull($.firewallGrants, "expected parameter 'firewallGrants' to be non-null");
-            $.globalGrants = Objects.requireNonNull($.globalGrants, "expected parameter 'globalGrants' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.imageGrants = Objects.requireNonNull($.imageGrants, "expected parameter 'imageGrants' to be non-null");
-            $.linodeGrants = Objects.requireNonNull($.linodeGrants, "expected parameter 'linodeGrants' to be non-null");
-            $.longviewGrants = Objects.requireNonNull($.longviewGrants, "expected parameter 'longviewGrants' to be non-null");
-            $.nodebalancerGrants = Objects.requireNonNull($.nodebalancerGrants, "expected parameter 'nodebalancerGrants' to be non-null");
-            $.passwordCreated = Objects.requireNonNull($.passwordCreated, "expected parameter 'passwordCreated' to be non-null");
-            $.restricted = Objects.requireNonNull($.restricted, "expected parameter 'restricted' to be non-null");
-            $.sshKeys = Objects.requireNonNull($.sshKeys, "expected parameter 'sshKeys' to be non-null");
-            $.stackscriptGrants = Objects.requireNonNull($.stackscriptGrants, "expected parameter 'stackscriptGrants' to be non-null");
-            $.tfaEnabled = Objects.requireNonNull($.tfaEnabled, "expected parameter 'tfaEnabled' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
-            $.verifiedPhoneNumber = Objects.requireNonNull($.verifiedPhoneNumber, "expected parameter 'verifiedPhoneNumber' to be non-null");
-            $.volumeGrants = Objects.requireNonNull($.volumeGrants, "expected parameter 'volumeGrants' to be non-null");
+            if ($.databaseGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "databaseGrants");
+            }
+            if ($.domainGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "domainGrants");
+            }
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "email");
+            }
+            if ($.firewallGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "firewallGrants");
+            }
+            if ($.globalGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "globalGrants");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "id");
+            }
+            if ($.imageGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "imageGrants");
+            }
+            if ($.linodeGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "linodeGrants");
+            }
+            if ($.longviewGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "longviewGrants");
+            }
+            if ($.nodebalancerGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "nodebalancerGrants");
+            }
+            if ($.passwordCreated == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "passwordCreated");
+            }
+            if ($.restricted == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "restricted");
+            }
+            if ($.sshKeys == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "sshKeys");
+            }
+            if ($.stackscriptGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "stackscriptGrants");
+            }
+            if ($.tfaEnabled == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "tfaEnabled");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "username");
+            }
+            if ($.verifiedPhoneNumber == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "verifiedPhoneNumber");
+            }
+            if ($.volumeGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "volumeGrants");
+            }
             return $;
         }
     }

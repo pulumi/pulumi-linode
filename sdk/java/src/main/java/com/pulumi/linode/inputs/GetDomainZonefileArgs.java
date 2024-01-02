@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetDomainZonefileArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetDomainZonefileArgs build() {
-            $.domainId = Objects.requireNonNull($.domainId, "expected parameter 'domainId' to be non-null");
+            if ($.domainId == null) {
+                throw new MissingRequiredPropertyException("GetDomainZonefileArgs", "domainId");
+            }
             return $;
         }
     }

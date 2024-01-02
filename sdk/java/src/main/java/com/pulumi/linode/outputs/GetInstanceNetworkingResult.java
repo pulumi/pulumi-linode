@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6;
 import java.lang.Integer;
@@ -64,12 +65,18 @@ public final class GetInstanceNetworkingResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4s(List<GetInstanceNetworkingIpv4> ipv4s) {
-            this.ipv4s = Objects.requireNonNull(ipv4s);
+            if (ipv4s == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingResult", "ipv4s");
+            }
+            this.ipv4s = ipv4s;
             return this;
         }
         public Builder ipv4s(GetInstanceNetworkingIpv4... ipv4s) {
@@ -77,7 +84,10 @@ public final class GetInstanceNetworkingResult {
         }
         @CustomType.Setter
         public Builder ipv6s(List<GetInstanceNetworkingIpv6> ipv6s) {
-            this.ipv6s = Objects.requireNonNull(ipv6s);
+            if (ipv6s == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingResult", "ipv6s");
+            }
+            this.ipv6s = ipv6s;
             return this;
         }
         public Builder ipv6s(GetInstanceNetworkingIpv6... ipv6s) {
@@ -85,7 +95,10 @@ public final class GetInstanceNetworkingResult {
         }
         @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
-            this.linodeId = Objects.requireNonNull(linodeId);
+            if (linodeId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingResult", "linodeId");
+            }
+            this.linodeId = linodeId;
             return this;
         }
         public GetInstanceNetworkingResult build() {

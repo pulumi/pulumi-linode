@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.UserDomainGrantArgs;
 import com.pulumi.linode.inputs.UserFirewallGrantArgs;
 import com.pulumi.linode.inputs.UserGlobalGrantsArgs;
@@ -590,8 +591,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "email");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "username");
+            }
             return $;
         }
     }

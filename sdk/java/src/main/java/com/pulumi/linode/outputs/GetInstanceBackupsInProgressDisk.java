@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetInstanceBackupsInProgressDisk {
 
         @CustomType.Setter
         public Builder filesystem(String filesystem) {
-            this.filesystem = Objects.requireNonNull(filesystem);
+            if (filesystem == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsInProgressDisk", "filesystem");
+            }
+            this.filesystem = filesystem;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsInProgressDisk", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsInProgressDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         public GetInstanceBackupsInProgressDisk build() {

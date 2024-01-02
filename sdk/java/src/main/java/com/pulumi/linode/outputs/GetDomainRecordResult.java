@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -199,62 +200,94 @@ public final class GetDomainRecordResult {
 
         @CustomType.Setter
         public Builder domainId(Integer domainId) {
-            this.domainId = Objects.requireNonNull(domainId);
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "service");
+            }
+            this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder ttlSec(Integer ttlSec) {
-            this.ttlSec = Objects.requireNonNull(ttlSec);
+            if (ttlSec == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "ttlSec");
+            }
+            this.ttlSec = ttlSec;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetDomainRecordResult", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetDomainRecordResult build() {

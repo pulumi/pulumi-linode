@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackup;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetInstanceTypeAddons {
 
         @CustomType.Setter
         public Builder backups(List<GetInstanceTypeAddonsBackup> backups) {
-            this.backups = Objects.requireNonNull(backups);
+            if (backups == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeAddons", "backups");
+            }
+            this.backups = backups;
             return this;
         }
         public Builder backups(GetInstanceTypeAddonsBackup... backups) {

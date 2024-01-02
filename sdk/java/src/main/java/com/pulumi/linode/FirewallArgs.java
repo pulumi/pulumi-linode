@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.FirewallInboundArgs;
 import com.pulumi.linode.inputs.FirewallOutboundArgs;
 import java.lang.Boolean;
@@ -443,9 +444,15 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallArgs build() {
-            $.inboundPolicy = Objects.requireNonNull($.inboundPolicy, "expected parameter 'inboundPolicy' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.outboundPolicy = Objects.requireNonNull($.outboundPolicy, "expected parameter 'outboundPolicy' to be non-null");
+            if ($.inboundPolicy == null) {
+                throw new MissingRequiredPropertyException("FirewallArgs", "inboundPolicy");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("FirewallArgs", "label");
+            }
+            if ($.outboundPolicy == null) {
+                throw new MissingRequiredPropertyException("FirewallArgs", "outboundPolicy");
+            }
             return $;
         }
     }

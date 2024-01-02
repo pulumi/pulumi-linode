@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetInstanceNetworkingPlainArgs extends com.pulumi.resources.I
         }
 
         public GetInstanceNetworkingPlainArgs build() {
-            $.linodeId = Objects.requireNonNull($.linodeId, "expected parameter 'linodeId' to be non-null");
+            if ($.linodeId == null) {
+                throw new MissingRequiredPropertyException("GetInstanceNetworkingPlainArgs", "linodeId");
+            }
             return $;
         }
     }

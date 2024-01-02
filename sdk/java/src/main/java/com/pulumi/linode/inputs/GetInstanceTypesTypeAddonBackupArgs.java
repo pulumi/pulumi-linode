@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackupPriceArgs;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackupRegionPriceArgs;
 import java.util.List;
@@ -81,8 +82,12 @@ public final class GetInstanceTypesTypeAddonBackupArgs extends com.pulumi.resour
         }
 
         public GetInstanceTypesTypeAddonBackupArgs build() {
-            $.prices = Objects.requireNonNull($.prices, "expected parameter 'prices' to be non-null");
-            $.regionPrices = Objects.requireNonNull($.regionPrices, "expected parameter 'regionPrices' to be non-null");
+            if ($.prices == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeAddonBackupArgs", "prices");
+            }
+            if ($.regionPrices == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeAddonBackupArgs", "regionPrices");
+            }
             return $;
         }
     }

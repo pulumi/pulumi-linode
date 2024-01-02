@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetRegionsRegionResolver;
 import java.lang.String;
 import java.util.List;
@@ -99,7 +100,10 @@ public final class GetRegionsRegion {
 
         @CustomType.Setter
         public Builder capabilities(List<String> capabilities) {
-            this.capabilities = Objects.requireNonNull(capabilities);
+            if (capabilities == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "capabilities");
+            }
+            this.capabilities = capabilities;
             return this;
         }
         public Builder capabilities(String... capabilities) {
@@ -107,21 +111,31 @@ public final class GetRegionsRegion {
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder resolvers(@Nullable List<GetRegionsRegionResolver> resolvers) {
+
             this.resolvers = resolvers;
             return this;
         }
@@ -130,7 +144,10 @@ public final class GetRegionsRegion {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetRegionsRegion build() {

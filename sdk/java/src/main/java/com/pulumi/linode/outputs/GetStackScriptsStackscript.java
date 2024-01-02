@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetStackScriptsStackscriptUserDefinedField;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -228,32 +229,50 @@ public final class GetStackScriptsStackscript {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentsActive(Integer deploymentsActive) {
-            this.deploymentsActive = Objects.requireNonNull(deploymentsActive);
+            if (deploymentsActive == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "deploymentsActive");
+            }
+            this.deploymentsActive = deploymentsActive;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentsTotal(Integer deploymentsTotal) {
-            this.deploymentsTotal = Objects.requireNonNull(deploymentsTotal);
+            if (deploymentsTotal == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "deploymentsTotal");
+            }
+            this.deploymentsTotal = deploymentsTotal;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder images(List<String> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(String... images) {
@@ -261,32 +280,50 @@ public final class GetStackScriptsStackscript {
         }
         @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
-            this.isPublic = Objects.requireNonNull(isPublic);
+            if (isPublic == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "isPublic");
+            }
+            this.isPublic = isPublic;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder revNote(String revNote) {
-            this.revNote = Objects.requireNonNull(revNote);
+            if (revNote == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "revNote");
+            }
+            this.revNote = revNote;
             return this;
         }
         @CustomType.Setter
         public Builder script(String script) {
-            this.script = Objects.requireNonNull(script);
+            if (script == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "script");
+            }
+            this.script = script;
             return this;
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder userDefinedFields(List<GetStackScriptsStackscriptUserDefinedField> userDefinedFields) {
-            this.userDefinedFields = Objects.requireNonNull(userDefinedFields);
+            if (userDefinedFields == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "userDefinedFields");
+            }
+            this.userDefinedFields = userDefinedFields;
             return this;
         }
         public Builder userDefinedFields(GetStackScriptsStackscriptUserDefinedField... userDefinedFields) {
@@ -294,12 +331,18 @@ public final class GetStackScriptsStackscript {
         }
         @CustomType.Setter
         public Builder userGravatarId(String userGravatarId) {
-            this.userGravatarId = Objects.requireNonNull(userGravatarId);
+            if (userGravatarId == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "userGravatarId");
+            }
+            this.userGravatarId = userGravatarId;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscript", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetStackScriptsStackscript build() {

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigNodeStatus;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -252,57 +253,90 @@ public final class GetNodeBalancerConfigResult {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder check(String check) {
-            this.check = Objects.requireNonNull(check);
+            if (check == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "check");
+            }
+            this.check = check;
             return this;
         }
         @CustomType.Setter
         public Builder checkAttempts(Integer checkAttempts) {
-            this.checkAttempts = Objects.requireNonNull(checkAttempts);
+            if (checkAttempts == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "checkAttempts");
+            }
+            this.checkAttempts = checkAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder checkBody(String checkBody) {
-            this.checkBody = Objects.requireNonNull(checkBody);
+            if (checkBody == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "checkBody");
+            }
+            this.checkBody = checkBody;
             return this;
         }
         @CustomType.Setter
         public Builder checkInterval(Integer checkInterval) {
-            this.checkInterval = Objects.requireNonNull(checkInterval);
+            if (checkInterval == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "checkInterval");
+            }
+            this.checkInterval = checkInterval;
             return this;
         }
         @CustomType.Setter
         public Builder checkPassive(Boolean checkPassive) {
-            this.checkPassive = Objects.requireNonNull(checkPassive);
+            if (checkPassive == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "checkPassive");
+            }
+            this.checkPassive = checkPassive;
             return this;
         }
         @CustomType.Setter
         public Builder checkPath(String checkPath) {
-            this.checkPath = Objects.requireNonNull(checkPath);
+            if (checkPath == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "checkPath");
+            }
+            this.checkPath = checkPath;
             return this;
         }
         @CustomType.Setter
         public Builder checkTimeout(Integer checkTimeout) {
-            this.checkTimeout = Objects.requireNonNull(checkTimeout);
+            if (checkTimeout == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "checkTimeout");
+            }
+            this.checkTimeout = checkTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder cipherSuite(String cipherSuite) {
-            this.cipherSuite = Objects.requireNonNull(cipherSuite);
+            if (cipherSuite == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "cipherSuite");
+            }
+            this.cipherSuite = cipherSuite;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeStatuses(List<GetNodeBalancerConfigNodeStatus> nodeStatuses) {
-            this.nodeStatuses = Objects.requireNonNull(nodeStatuses);
+            if (nodeStatuses == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "nodeStatuses");
+            }
+            this.nodeStatuses = nodeStatuses;
             return this;
         }
         public Builder nodeStatuses(GetNodeBalancerConfigNodeStatus... nodeStatuses) {
@@ -310,37 +344,58 @@ public final class GetNodeBalancerConfigResult {
         }
         @CustomType.Setter
         public Builder nodebalancerId(Integer nodebalancerId) {
-            this.nodebalancerId = Objects.requireNonNull(nodebalancerId);
+            if (nodebalancerId == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "nodebalancerId");
+            }
+            this.nodebalancerId = nodebalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder proxyProtocol(String proxyProtocol) {
-            this.proxyProtocol = Objects.requireNonNull(proxyProtocol);
+            if (proxyProtocol == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "proxyProtocol");
+            }
+            this.proxyProtocol = proxyProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder sslCommonname(String sslCommonname) {
-            this.sslCommonname = Objects.requireNonNull(sslCommonname);
+            if (sslCommonname == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "sslCommonname");
+            }
+            this.sslCommonname = sslCommonname;
             return this;
         }
         @CustomType.Setter
         public Builder sslFingerprint(String sslFingerprint) {
-            this.sslFingerprint = Objects.requireNonNull(sslFingerprint);
+            if (sslFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "sslFingerprint");
+            }
+            this.sslFingerprint = sslFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder stickiness(String stickiness) {
-            this.stickiness = Objects.requireNonNull(stickiness);
+            if (stickiness == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "stickiness");
+            }
+            this.stickiness = stickiness;
             return this;
         }
         public GetNodeBalancerConfigResult build() {

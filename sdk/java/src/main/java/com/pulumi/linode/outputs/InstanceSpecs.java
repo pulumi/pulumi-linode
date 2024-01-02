@@ -54,21 +54,25 @@ public final class InstanceSpecs {
 
         @CustomType.Setter
         public Builder disk(@Nullable Integer disk) {
+
             this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Integer memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder transfer(@Nullable Integer transfer) {
+
             this.transfer = transfer;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(@Nullable Integer vcpus) {
+
             this.vcpus = vcpus;
             return this;
         }

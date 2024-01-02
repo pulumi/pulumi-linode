@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.InstanceConfigInterfaceIpv4Args;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -419,7 +420,9 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         public InstanceConfigInterfaceArgs build() {
-            $.purpose = Objects.requireNonNull($.purpose, "expected parameter 'purpose' to be non-null");
+            if ($.purpose == null) {
+                throw new MissingRequiredPropertyException("InstanceConfigInterfaceArgs", "purpose");
+            }
             return $;
         }
     }

@@ -60,26 +60,31 @@ public final class InstanceAlerts {
 
         @CustomType.Setter
         public Builder cpu(@Nullable Integer cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder io(@Nullable Integer io) {
+
             this.io = io;
             return this;
         }
         @CustomType.Setter
         public Builder networkIn(@Nullable Integer networkIn) {
+
             this.networkIn = networkIn;
             return this;
         }
         @CustomType.Setter
         public Builder networkOut(@Nullable Integer networkOut) {
+
             this.networkOut = networkOut;
             return this;
         }
         @CustomType.Setter
         public Builder transferQuota(@Nullable Integer transferQuota) {
+
             this.transferQuota = transferQuota;
             return this;
         }

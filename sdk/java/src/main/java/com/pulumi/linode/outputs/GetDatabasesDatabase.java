@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -261,7 +262,10 @@ public final class GetDatabasesDatabase {
 
         @CustomType.Setter
         public Builder allowLists(List<String> allowLists) {
-            this.allowLists = Objects.requireNonNull(allowLists);
+            if (allowLists == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "allowLists");
+            }
+            this.allowLists = allowLists;
             return this;
         }
         public Builder allowLists(String... allowLists) {
@@ -269,82 +273,130 @@ public final class GetDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder clusterSize(Integer clusterSize) {
-            this.clusterSize = Objects.requireNonNull(clusterSize);
+            if (clusterSize == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "clusterSize");
+            }
+            this.clusterSize = clusterSize;
             return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder encrypted(Boolean encrypted) {
-            this.encrypted = Objects.requireNonNull(encrypted);
+            if (encrypted == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "encrypted");
+            }
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder hostPrimary(String hostPrimary) {
-            this.hostPrimary = Objects.requireNonNull(hostPrimary);
+            if (hostPrimary == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "hostPrimary");
+            }
+            this.hostPrimary = hostPrimary;
             return this;
         }
         @CustomType.Setter
         public Builder hostSecondary(String hostSecondary) {
-            this.hostSecondary = Objects.requireNonNull(hostSecondary);
+            if (hostSecondary == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "hostSecondary");
+            }
+            this.hostSecondary = hostSecondary;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceUri(String instanceUri) {
-            this.instanceUri = Objects.requireNonNull(instanceUri);
+            if (instanceUri == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "instanceUri");
+            }
+            this.instanceUri = instanceUri;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder replicationType(String replicationType) {
-            this.replicationType = Objects.requireNonNull(replicationType);
+            if (replicationType == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "replicationType");
+            }
+            this.replicationType = replicationType;
             return this;
         }
         @CustomType.Setter
         public Builder sslConnection(Boolean sslConnection) {
-            this.sslConnection = Objects.requireNonNull(sslConnection);
+            if (sslConnection == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "sslConnection");
+            }
+            this.sslConnection = sslConnection;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDatabasesDatabase build() {

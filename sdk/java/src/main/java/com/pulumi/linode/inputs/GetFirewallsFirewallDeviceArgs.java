@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -163,11 +164,21 @@ public final class GetFirewallsFirewallDeviceArgs extends com.pulumi.resources.R
         }
 
         public GetFirewallsFirewallDeviceArgs build() {
-            $.entityId = Objects.requireNonNull($.entityId, "expected parameter 'entityId' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.entityId == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallDeviceArgs", "entityId");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallDeviceArgs", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallDeviceArgs", "label");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallDeviceArgs", "type");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallDeviceArgs", "url");
+            }
             return $;
         }
     }

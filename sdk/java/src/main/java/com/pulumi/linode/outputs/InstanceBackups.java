@@ -57,16 +57,19 @@ public final class InstanceBackups {
 
         @CustomType.Setter
         public Builder available(@Nullable Boolean available) {
+
             this.available = available;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable InstanceBackupsSchedule schedule) {
+
             this.schedule = schedule;
             return this;
         }

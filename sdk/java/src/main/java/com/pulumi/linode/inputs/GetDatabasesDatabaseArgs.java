@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -659,23 +660,57 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
         }
 
         public GetDatabasesDatabaseArgs build() {
-            $.allowLists = Objects.requireNonNull($.allowLists, "expected parameter 'allowLists' to be non-null");
-            $.clusterSize = Objects.requireNonNull($.clusterSize, "expected parameter 'clusterSize' to be non-null");
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.encrypted = Objects.requireNonNull($.encrypted, "expected parameter 'encrypted' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.hostPrimary = Objects.requireNonNull($.hostPrimary, "expected parameter 'hostPrimary' to be non-null");
-            $.hostSecondary = Objects.requireNonNull($.hostSecondary, "expected parameter 'hostSecondary' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.instanceUri = Objects.requireNonNull($.instanceUri, "expected parameter 'instanceUri' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.replicationType = Objects.requireNonNull($.replicationType, "expected parameter 'replicationType' to be non-null");
-            $.sslConnection = Objects.requireNonNull($.sslConnection, "expected parameter 'sslConnection' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.allowLists == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "allowLists");
+            }
+            if ($.clusterSize == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "clusterSize");
+            }
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "created");
+            }
+            if ($.encrypted == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "encrypted");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "engine");
+            }
+            if ($.hostPrimary == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "hostPrimary");
+            }
+            if ($.hostSecondary == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "hostSecondary");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "id");
+            }
+            if ($.instanceUri == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "instanceUri");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "label");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "region");
+            }
+            if ($.replicationType == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "replicationType");
+            }
+            if ($.sslConnection == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "sslConnection");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "status");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "type");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "updated");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "version");
+            }
             return $;
         }
     }

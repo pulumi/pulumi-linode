@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetInstancesInstanceDisk {
 
         @CustomType.Setter
         public Builder filesystem(String filesystem) {
-            this.filesystem = Objects.requireNonNull(filesystem);
+            if (filesystem == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDisk", "filesystem");
+            }
+            this.filesystem = filesystem;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDisk", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDisk", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         public GetInstancesInstanceDisk build() {

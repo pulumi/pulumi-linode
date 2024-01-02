@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -168,12 +169,24 @@ public final class GetFirewallsFirewallInboundArgs extends com.pulumi.resources.
         }
 
         public GetFirewallsFirewallInboundArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.ipv4s = Objects.requireNonNull($.ipv4s, "expected parameter 'ipv4s' to be non-null");
-            $.ipv6s = Objects.requireNonNull($.ipv6s, "expected parameter 'ipv6s' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.ports = Objects.requireNonNull($.ports, "expected parameter 'ports' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallInboundArgs", "action");
+            }
+            if ($.ipv4s == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallInboundArgs", "ipv4s");
+            }
+            if ($.ipv6s == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallInboundArgs", "ipv6s");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallInboundArgs", "label");
+            }
+            if ($.ports == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallInboundArgs", "ports");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallInboundArgs", "protocol");
+            }
             return $;
         }
     }

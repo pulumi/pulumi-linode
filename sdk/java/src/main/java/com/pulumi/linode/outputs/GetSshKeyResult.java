@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,22 +79,32 @@ public final class GetSshKeyResult {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder sshKey(String sshKey) {
-            this.sshKey = Objects.requireNonNull(sshKey);
+            if (sshKey == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "sshKey");
+            }
+            this.sshKey = sshKey;
             return this;
         }
         public GetSshKeyResult build() {

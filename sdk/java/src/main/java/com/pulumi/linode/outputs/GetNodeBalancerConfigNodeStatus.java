@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetNodeBalancerConfigNodeStatus {
 
         @CustomType.Setter
         public Builder down(Integer down) {
-            this.down = Objects.requireNonNull(down);
+            if (down == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigNodeStatus", "down");
+            }
+            this.down = down;
             return this;
         }
         @CustomType.Setter
         public Builder up(Integer up) {
-            this.up = Objects.requireNonNull(up);
+            if (up == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigNodeStatus", "up");
+            }
+            this.up = up;
             return this;
         }
         public GetNodeBalancerConfigNodeStatus build() {

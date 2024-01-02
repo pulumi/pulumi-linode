@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetInstancesInstanceConfigHelper {
 
         @CustomType.Setter
         public Builder devtmpfsAutomount(Boolean devtmpfsAutomount) {
-            this.devtmpfsAutomount = Objects.requireNonNull(devtmpfsAutomount);
+            if (devtmpfsAutomount == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigHelper", "devtmpfsAutomount");
+            }
+            this.devtmpfsAutomount = devtmpfsAutomount;
             return this;
         }
         @CustomType.Setter
         public Builder distro(Boolean distro) {
-            this.distro = Objects.requireNonNull(distro);
+            if (distro == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigHelper", "distro");
+            }
+            this.distro = distro;
             return this;
         }
         @CustomType.Setter
         public Builder modulesDep(Boolean modulesDep) {
-            this.modulesDep = Objects.requireNonNull(modulesDep);
+            if (modulesDep == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigHelper", "modulesDep");
+            }
+            this.modulesDep = modulesDep;
             return this;
         }
         @CustomType.Setter
         public Builder network(Boolean network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigHelper", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder updatedbDisabled(Boolean updatedbDisabled) {
-            this.updatedbDisabled = Objects.requireNonNull(updatedbDisabled);
+            if (updatedbDisabled == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigHelper", "updatedbDisabled");
+            }
+            this.updatedbDisabled = updatedbDisabled;
             return this;
         }
         public GetInstancesInstanceConfigHelper build() {

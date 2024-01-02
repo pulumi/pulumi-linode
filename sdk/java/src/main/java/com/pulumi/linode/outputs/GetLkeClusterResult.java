@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetLkeClusterControlPlane;
 import com.pulumi.linode.outputs.GetLkeClusterPool;
 import java.lang.Integer;
@@ -170,7 +171,10 @@ public final class GetLkeClusterResult {
 
         @CustomType.Setter
         public Builder apiEndpoints(List<String> apiEndpoints) {
-            this.apiEndpoints = Objects.requireNonNull(apiEndpoints);
+            if (apiEndpoints == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "apiEndpoints");
+            }
+            this.apiEndpoints = apiEndpoints;
             return this;
         }
         public Builder apiEndpoints(String... apiEndpoints) {
@@ -178,7 +182,10 @@ public final class GetLkeClusterResult {
         }
         @CustomType.Setter
         public Builder controlPlanes(List<GetLkeClusterControlPlane> controlPlanes) {
-            this.controlPlanes = Objects.requireNonNull(controlPlanes);
+            if (controlPlanes == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "controlPlanes");
+            }
+            this.controlPlanes = controlPlanes;
             return this;
         }
         public Builder controlPlanes(GetLkeClusterControlPlane... controlPlanes) {
@@ -186,32 +193,50 @@ public final class GetLkeClusterResult {
         }
         @CustomType.Setter
         public Builder dashboardUrl(String dashboardUrl) {
-            this.dashboardUrl = Objects.requireNonNull(dashboardUrl);
+            if (dashboardUrl == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "dashboardUrl");
+            }
+            this.dashboardUrl = dashboardUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder k8sVersion(String k8sVersion) {
-            this.k8sVersion = Objects.requireNonNull(k8sVersion);
+            if (k8sVersion == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "k8sVersion");
+            }
+            this.k8sVersion = k8sVersion;
             return this;
         }
         @CustomType.Setter
         public Builder kubeconfig(String kubeconfig) {
-            this.kubeconfig = Objects.requireNonNull(kubeconfig);
+            if (kubeconfig == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "kubeconfig");
+            }
+            this.kubeconfig = kubeconfig;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder pools(List<GetLkeClusterPool> pools) {
-            this.pools = Objects.requireNonNull(pools);
+            if (pools == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "pools");
+            }
+            this.pools = pools;
             return this;
         }
         public Builder pools(GetLkeClusterPool... pools) {
@@ -219,17 +244,26 @@ public final class GetLkeClusterResult {
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetNodeBalancerTransfer;
 import java.lang.Integer;
 import java.lang.String;
@@ -169,47 +170,74 @@ public final class GetNodeBalancerResult {
 
         @CustomType.Setter
         public Builder clientConnThrottle(Integer clientConnThrottle) {
-            this.clientConnThrottle = Objects.requireNonNull(clientConnThrottle);
+            if (clientConnThrottle == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "clientConnThrottle");
+            }
+            this.clientConnThrottle = clientConnThrottle;
             return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4(String ipv4) {
-            this.ipv4 = Objects.requireNonNull(ipv4);
+            if (ipv4 == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "ipv4");
+            }
+            this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6(String ipv6) {
-            this.ipv6 = Objects.requireNonNull(ipv6);
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "ipv6");
+            }
+            this.ipv6 = ipv6;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -217,7 +245,10 @@ public final class GetNodeBalancerResult {
         }
         @CustomType.Setter
         public Builder transfers(List<GetNodeBalancerTransfer> transfers) {
-            this.transfers = Objects.requireNonNull(transfers);
+            if (transfers == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "transfers");
+            }
+            this.transfers = transfers;
             return this;
         }
         public Builder transfers(GetNodeBalancerTransfer... transfers) {
@@ -225,7 +256,10 @@ public final class GetNodeBalancerResult {
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         public GetNodeBalancerResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GetDatabaseEnginesEngineArgs extends com.pulumi.resources.Res
         }
 
         public GetDatabaseEnginesEngineArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseEnginesEngineArgs", "engine");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseEnginesEngineArgs", "id");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseEnginesEngineArgs", "version");
+            }
             return $;
         }
     }

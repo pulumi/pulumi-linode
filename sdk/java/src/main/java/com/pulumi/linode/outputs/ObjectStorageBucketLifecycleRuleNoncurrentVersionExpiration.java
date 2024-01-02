@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
 
         @CustomType.Setter
         public Builder days(Integer days) {
-            this.days = Objects.requireNonNull(days);
+            if (days == null) {
+              throw new MissingRequiredPropertyException("ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration", "days");
+            }
+            this.days = days;
             return this;
         }
         public ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration build() {

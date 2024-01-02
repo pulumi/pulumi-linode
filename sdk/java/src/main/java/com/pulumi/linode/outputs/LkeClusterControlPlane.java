@@ -44,6 +44,7 @@ public final class LkeClusterControlPlane {
 
         @CustomType.Setter
         public Builder highAvailability(@Nullable Boolean highAvailability) {
+
             this.highAvailability = highAvailability;
             return this;
         }

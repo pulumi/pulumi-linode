@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetLkeClusterControlPlane {
 
         @CustomType.Setter
         public Builder highAvailability(Boolean highAvailability) {
-            this.highAvailability = Objects.requireNonNull(highAvailability);
+            if (highAvailability == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterControlPlane", "highAvailability");
+            }
+            this.highAvailability = highAvailability;
             return this;
         }
         public GetLkeClusterControlPlane build() {

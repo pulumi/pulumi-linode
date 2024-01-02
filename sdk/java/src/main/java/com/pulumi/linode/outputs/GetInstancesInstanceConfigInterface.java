@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigInterfaceIpv4;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -166,16 +167,23 @@ public final class GetInstancesInstanceConfigInterface {
 
         @CustomType.Setter
         public Builder active(Boolean active) {
-            this.active = Objects.requireNonNull(active);
+            if (active == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterface", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterface", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipRanges(@Nullable List<String> ipRanges) {
+
             this.ipRanges = ipRanges;
             return this;
         }
@@ -184,37 +192,50 @@ public final class GetInstancesInstanceConfigInterface {
         }
         @CustomType.Setter
         public Builder ipamAddress(@Nullable String ipamAddress) {
+
             this.ipamAddress = ipamAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4(GetInstancesInstanceConfigInterfaceIpv4 ipv4) {
-            this.ipv4 = Objects.requireNonNull(ipv4);
+            if (ipv4 == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterface", "ipv4");
+            }
+            this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder primary(@Nullable Boolean primary) {
+
             this.primary = primary;
             return this;
         }
         @CustomType.Setter
         public Builder purpose(String purpose) {
-            this.purpose = Objects.requireNonNull(purpose);
+            if (purpose == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterface", "purpose");
+            }
+            this.purpose = purpose;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(@Nullable Integer subnetId) {
+
             this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(Integer vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterface", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetInstancesInstanceConfigInterface build() {

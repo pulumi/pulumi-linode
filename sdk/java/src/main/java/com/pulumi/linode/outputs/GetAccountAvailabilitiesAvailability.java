@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetAccountAvailabilitiesAvailability {
 
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder unavailables(List<String> unavailables) {
-            this.unavailables = Objects.requireNonNull(unavailables);
+            if (unavailables == null) {
+              throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "unavailables");
+            }
+            this.unavailables = unavailables;
             return this;
         }
         public Builder unavailables(String... unavailables) {

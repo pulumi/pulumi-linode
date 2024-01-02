@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceTypePrice {
 
         @CustomType.Setter
         public Builder hourly(Double hourly) {
-            this.hourly = Objects.requireNonNull(hourly);
+            if (hourly == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypePrice", "hourly");
+            }
+            this.hourly = hourly;
             return this;
         }
         @CustomType.Setter
         public Builder monthly(Double monthly) {
-            this.monthly = Objects.requireNonNull(monthly);
+            if (monthly == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypePrice", "monthly");
+            }
+            this.monthly = monthly;
             return this;
         }
         public GetInstanceTypePrice build() {

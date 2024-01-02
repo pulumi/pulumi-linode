@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetInstancesInstanceSpec {
 
         @CustomType.Setter
         public Builder disk(Integer disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder transfer(Integer transfer) {
-            this.transfer = Objects.requireNonNull(transfer);
+            if (transfer == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "transfer");
+            }
+            this.transfer = transfer;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
-            this.vcpus = Objects.requireNonNull(vcpus);
+            if (vcpus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "vcpus");
+            }
+            this.vcpus = vcpus;
             return this;
         }
         public GetInstancesInstanceSpec build() {
