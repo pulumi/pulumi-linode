@@ -73,16 +73,19 @@ public final class InstanceConfigDevicesSdf {
 
         @CustomType.Setter
         public Builder diskId(@Nullable Integer diskId) {
+
             this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskLabel(@Nullable String diskLabel) {
+
             this.diskLabel = diskLabel;
             return this;
         }
         @CustomType.Setter
         public Builder volumeId(@Nullable Integer volumeId) {
+
             this.volumeId = volumeId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GetNodeBalancerNodeArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetNodeBalancerNodeArgs build() {
-            $.configId = Objects.requireNonNull($.configId, "expected parameter 'configId' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.nodebalancerId = Objects.requireNonNull($.nodebalancerId, "expected parameter 'nodebalancerId' to be non-null");
+            if ($.configId == null) {
+                throw new MissingRequiredPropertyException("GetNodeBalancerNodeArgs", "configId");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetNodeBalancerNodeArgs", "id");
+            }
+            if ($.nodebalancerId == null) {
+                throw new MissingRequiredPropertyException("GetNodeBalancerNodeArgs", "nodebalancerId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonBackup;
 import java.util.List;
 import java.util.Objects;
@@ -54,7 +55,9 @@ public final class GetInstanceTypesTypeAddon extends com.pulumi.resources.Invoke
         }
 
         public GetInstanceTypesTypeAddon build() {
-            $.backups = Objects.requireNonNull($.backups, "expected parameter 'backups' to be non-null");
+            if ($.backups == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeAddon", "backups");
+            }
             return $;
         }
     }

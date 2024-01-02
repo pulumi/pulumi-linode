@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVolumesFilter;
 import com.pulumi.linode.outputs.GetVolumesVolume;
 import java.lang.String;
@@ -71,6 +72,7 @@ public final class GetVolumesResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetVolumesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -79,21 +81,27 @@ public final class GetVolumesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVolumesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<GetVolumesVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }

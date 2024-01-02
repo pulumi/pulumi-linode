@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceBackupsCurrentDisk;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -156,12 +157,18 @@ public final class GetInstanceBackupsCurrent {
 
         @CustomType.Setter
         public Builder available(Boolean available) {
-            this.available = Objects.requireNonNull(available);
+            if (available == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "available");
+            }
+            this.available = available;
             return this;
         }
         @CustomType.Setter
         public Builder configs(List<String> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(String... configs) {
@@ -169,12 +176,18 @@ public final class GetInstanceBackupsCurrent {
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder disks(List<GetInstanceBackupsCurrentDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetInstanceBackupsCurrentDisk... disks) {
@@ -182,32 +195,50 @@ public final class GetInstanceBackupsCurrent {
         }
         @CustomType.Setter
         public Builder finished(String finished) {
-            this.finished = Objects.requireNonNull(finished);
+            if (finished == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "finished");
+            }
+            this.finished = finished;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsCurrent", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         public GetInstanceBackupsCurrent build() {

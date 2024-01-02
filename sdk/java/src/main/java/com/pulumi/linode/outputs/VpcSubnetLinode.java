@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.VpcSubnetLinodeInterface;
 import java.lang.Integer;
 import java.util.List;
@@ -50,12 +51,18 @@ public final class VpcSubnetLinode {
 
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("VpcSubnetLinode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(List<VpcSubnetLinodeInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("VpcSubnetLinode", "interfaces");
+            }
+            this.interfaces = interfaces;
             return this;
         }
         public Builder interfaces(VpcSubnetLinodeInterface... interfaces) {

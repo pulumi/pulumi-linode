@@ -58,11 +58,13 @@ public final class InstanceInterfaceIpv4 {
 
         @CustomType.Setter
         public Builder nat11(@Nullable String nat11) {
+
             this.nat11 = nat11;
             return this;
         }
         @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
+
             this.vpc = vpc;
             return this;
         }

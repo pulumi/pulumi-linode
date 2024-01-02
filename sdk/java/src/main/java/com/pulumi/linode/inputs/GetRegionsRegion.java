@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetRegionsRegionResolver;
 import java.lang.String;
 import java.util.List;
@@ -188,11 +189,21 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRegionsRegion build() {
-            $.capabilities = Objects.requireNonNull($.capabilities, "expected parameter 'capabilities' to be non-null");
-            $.country = Objects.requireNonNull($.country, "expected parameter 'country' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.capabilities == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "capabilities");
+            }
+            if ($.country == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "country");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "label");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "status");
+            }
             return $;
         }
     }

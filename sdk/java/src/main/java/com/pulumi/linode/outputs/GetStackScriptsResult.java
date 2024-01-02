@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetStackScriptsFilter;
 import com.pulumi.linode.outputs.GetStackScriptsStackscript;
 import java.lang.Boolean;
@@ -78,6 +79,7 @@ public final class GetStackScriptsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetStackScriptsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -86,26 +88,33 @@ public final class GetStackScriptsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
+
             this.latest = latest;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder stackscripts(@Nullable List<GetStackScriptsStackscript> stackscripts) {
+
             this.stackscripts = stackscripts;
             return this;
         }

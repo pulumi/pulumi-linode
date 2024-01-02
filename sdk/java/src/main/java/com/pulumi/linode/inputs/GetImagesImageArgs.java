@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -485,19 +486,45 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GetImagesImageArgs build() {
-            $.capabilities = Objects.requireNonNull($.capabilities, "expected parameter 'capabilities' to be non-null");
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.createdBy = Objects.requireNonNull($.createdBy, "expected parameter 'createdBy' to be non-null");
-            $.deprecated = Objects.requireNonNull($.deprecated, "expected parameter 'deprecated' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.expiry = Objects.requireNonNull($.expiry, "expected parameter 'expiry' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.isPublic = Objects.requireNonNull($.isPublic, "expected parameter 'isPublic' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.vendor = Objects.requireNonNull($.vendor, "expected parameter 'vendor' to be non-null");
+            if ($.capabilities == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "capabilities");
+            }
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "created");
+            }
+            if ($.createdBy == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "createdBy");
+            }
+            if ($.deprecated == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "deprecated");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "description");
+            }
+            if ($.expiry == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "expiry");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "id");
+            }
+            if ($.isPublic == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "isPublic");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "label");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "size");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "status");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "type");
+            }
+            if ($.vendor == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "vendor");
+            }
             return $;
         }
     }

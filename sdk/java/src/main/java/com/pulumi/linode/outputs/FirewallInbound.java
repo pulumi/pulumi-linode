@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -115,11 +116,15 @@ public final class FirewallInbound {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("FirewallInbound", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4s(@Nullable List<String> ipv4s) {
+
             this.ipv4s = ipv4s;
             return this;
         }
@@ -128,6 +133,7 @@ public final class FirewallInbound {
         }
         @CustomType.Setter
         public Builder ipv6s(@Nullable List<String> ipv6s) {
+
             this.ipv6s = ipv6s;
             return this;
         }
@@ -136,17 +142,24 @@ public final class FirewallInbound {
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("FirewallInbound", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable String ports) {
+
             this.ports = ports;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("FirewallInbound", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public FirewallInbound build() {

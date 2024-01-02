@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public FirewallDeviceArgs build() {
-            $.entityId = Objects.requireNonNull($.entityId, "expected parameter 'entityId' to be non-null");
-            $.firewallId = Objects.requireNonNull($.firewallId, "expected parameter 'firewallId' to be non-null");
+            if ($.entityId == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "entityId");
+            }
+            if ($.firewallId == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "firewallId");
+            }
             return $;
         }
     }

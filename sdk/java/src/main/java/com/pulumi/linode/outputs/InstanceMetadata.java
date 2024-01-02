@@ -36,6 +36,7 @@ public final class InstanceMetadata {
 
         @CustomType.Setter
         public Builder userData(@Nullable String userData) {
+
             this.userData = userData;
             return this;
         }

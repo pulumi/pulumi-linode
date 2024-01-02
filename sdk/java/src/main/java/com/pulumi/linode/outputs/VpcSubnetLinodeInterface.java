@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -49,12 +50,18 @@ public final class VpcSubnetLinodeInterface {
 
         @CustomType.Setter
         public Builder active(Boolean active) {
-            this.active = Objects.requireNonNull(active);
+            if (active == null) {
+              throw new MissingRequiredPropertyException("VpcSubnetLinodeInterface", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("VpcSubnetLinodeInterface", "id");
+            }
+            this.id = id;
             return this;
         }
         public VpcSubnetLinodeInterface build() {

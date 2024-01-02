@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetRegionResolver;
 import java.lang.String;
 import java.util.List;
@@ -84,7 +85,9 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRegionPlainArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetRegionPlainArgs", "id");
+            }
             return $;
         }
     }

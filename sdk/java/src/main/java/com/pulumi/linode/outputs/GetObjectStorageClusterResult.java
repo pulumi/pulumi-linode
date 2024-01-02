@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetObjectStorageClusterResult {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageClusterResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageClusterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageClusterResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder staticSiteDomain(String staticSiteDomain) {
-            this.staticSiteDomain = Objects.requireNonNull(staticSiteDomain);
+            if (staticSiteDomain == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageClusterResult", "staticSiteDomain");
+            }
+            this.staticSiteDomain = staticSiteDomain;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageClusterResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetObjectStorageClusterResult build() {

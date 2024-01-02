@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlUpdate;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -350,7 +351,10 @@ public final class GetDatabasePostgresqlResult {
 
         @CustomType.Setter
         public Builder allowLists(List<String> allowLists) {
-            this.allowLists = Objects.requireNonNull(allowLists);
+            if (allowLists == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "allowLists");
+            }
+            this.allowLists = allowLists;
             return this;
         }
         public Builder allowLists(String... allowLists) {
@@ -358,112 +362,174 @@ public final class GetDatabasePostgresqlResult {
         }
         @CustomType.Setter
         public Builder caCert(String caCert) {
-            this.caCert = Objects.requireNonNull(caCert);
+            if (caCert == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "caCert");
+            }
+            this.caCert = caCert;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSize(Integer clusterSize) {
-            this.clusterSize = Objects.requireNonNull(clusterSize);
+            if (clusterSize == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "clusterSize");
+            }
+            this.clusterSize = clusterSize;
             return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder databaseId(@Nullable Integer databaseId) {
+
             this.databaseId = databaseId;
             return this;
         }
         @CustomType.Setter
         public Builder encrypted(Boolean encrypted) {
-            this.encrypted = Objects.requireNonNull(encrypted);
+            if (encrypted == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "encrypted");
+            }
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineId(String engineId) {
-            this.engineId = Objects.requireNonNull(engineId);
+            if (engineId == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "engineId");
+            }
+            this.engineId = engineId;
             return this;
         }
         @CustomType.Setter
         public Builder hostPrimary(String hostPrimary) {
-            this.hostPrimary = Objects.requireNonNull(hostPrimary);
+            if (hostPrimary == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "hostPrimary");
+            }
+            this.hostPrimary = hostPrimary;
             return this;
         }
         @CustomType.Setter
         public Builder hostSecondary(String hostSecondary) {
-            this.hostSecondary = Objects.requireNonNull(hostSecondary);
+            if (hostSecondary == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "hostSecondary");
+            }
+            this.hostSecondary = hostSecondary;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder replicationCommitType(String replicationCommitType) {
-            this.replicationCommitType = Objects.requireNonNull(replicationCommitType);
+            if (replicationCommitType == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "replicationCommitType");
+            }
+            this.replicationCommitType = replicationCommitType;
             return this;
         }
         @CustomType.Setter
         public Builder replicationType(String replicationType) {
-            this.replicationType = Objects.requireNonNull(replicationType);
+            if (replicationType == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "replicationType");
+            }
+            this.replicationType = replicationType;
             return this;
         }
         @CustomType.Setter
         public Builder rootPassword(String rootPassword) {
-            this.rootPassword = Objects.requireNonNull(rootPassword);
+            if (rootPassword == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "rootPassword");
+            }
+            this.rootPassword = rootPassword;
             return this;
         }
         @CustomType.Setter
         public Builder rootUsername(String rootUsername) {
-            this.rootUsername = Objects.requireNonNull(rootUsername);
+            if (rootUsername == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "rootUsername");
+            }
+            this.rootUsername = rootUsername;
             return this;
         }
         @CustomType.Setter
         public Builder sslConnection(Boolean sslConnection) {
-            this.sslConnection = Objects.requireNonNull(sslConnection);
+            if (sslConnection == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "sslConnection");
+            }
+            this.sslConnection = sslConnection;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder updates(List<GetDatabasePostgresqlUpdate> updates) {
-            this.updates = Objects.requireNonNull(updates);
+            if (updates == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "updates");
+            }
+            this.updates = updates;
             return this;
         }
         public Builder updates(GetDatabasePostgresqlUpdate... updates) {
@@ -471,7 +537,10 @@ public final class GetDatabasePostgresqlResult {
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDatabasePostgresqlResult build() {

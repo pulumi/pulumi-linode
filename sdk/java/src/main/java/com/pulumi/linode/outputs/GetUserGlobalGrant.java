@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -189,62 +190,98 @@ public final class GetUserGlobalGrant {
 
         @CustomType.Setter
         public Builder accountAccess(String accountAccess) {
-            this.accountAccess = Objects.requireNonNull(accountAccess);
+            if (accountAccess == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "accountAccess");
+            }
+            this.accountAccess = accountAccess;
             return this;
         }
         @CustomType.Setter
         public Builder addDatabases(Boolean addDatabases) {
-            this.addDatabases = Objects.requireNonNull(addDatabases);
+            if (addDatabases == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addDatabases");
+            }
+            this.addDatabases = addDatabases;
             return this;
         }
         @CustomType.Setter
         public Builder addDomains(Boolean addDomains) {
-            this.addDomains = Objects.requireNonNull(addDomains);
+            if (addDomains == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addDomains");
+            }
+            this.addDomains = addDomains;
             return this;
         }
         @CustomType.Setter
         public Builder addFirewalls(Boolean addFirewalls) {
-            this.addFirewalls = Objects.requireNonNull(addFirewalls);
+            if (addFirewalls == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addFirewalls");
+            }
+            this.addFirewalls = addFirewalls;
             return this;
         }
         @CustomType.Setter
         public Builder addImages(Boolean addImages) {
-            this.addImages = Objects.requireNonNull(addImages);
+            if (addImages == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addImages");
+            }
+            this.addImages = addImages;
             return this;
         }
         @CustomType.Setter
         public Builder addLinodes(Boolean addLinodes) {
-            this.addLinodes = Objects.requireNonNull(addLinodes);
+            if (addLinodes == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addLinodes");
+            }
+            this.addLinodes = addLinodes;
             return this;
         }
         @CustomType.Setter
         public Builder addLongview(Boolean addLongview) {
-            this.addLongview = Objects.requireNonNull(addLongview);
+            if (addLongview == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addLongview");
+            }
+            this.addLongview = addLongview;
             return this;
         }
         @CustomType.Setter
         public Builder addNodebalancers(Boolean addNodebalancers) {
-            this.addNodebalancers = Objects.requireNonNull(addNodebalancers);
+            if (addNodebalancers == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addNodebalancers");
+            }
+            this.addNodebalancers = addNodebalancers;
             return this;
         }
         @CustomType.Setter
         public Builder addStackscripts(Boolean addStackscripts) {
-            this.addStackscripts = Objects.requireNonNull(addStackscripts);
+            if (addStackscripts == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addStackscripts");
+            }
+            this.addStackscripts = addStackscripts;
             return this;
         }
         @CustomType.Setter
         public Builder addVolumes(Boolean addVolumes) {
-            this.addVolumes = Objects.requireNonNull(addVolumes);
+            if (addVolumes == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addVolumes");
+            }
+            this.addVolumes = addVolumes;
             return this;
         }
         @CustomType.Setter
         public Builder cancelAccount(Boolean cancelAccount) {
-            this.cancelAccount = Objects.requireNonNull(cancelAccount);
+            if (cancelAccount == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "cancelAccount");
+            }
+            this.cancelAccount = cancelAccount;
             return this;
         }
         @CustomType.Setter
         public Builder longviewSubscription(Boolean longviewSubscription) {
-            this.longviewSubscription = Objects.requireNonNull(longviewSubscription);
+            if (longviewSubscription == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "longviewSubscription");
+            }
+            this.longviewSubscription = longviewSubscription;
             return this;
         }
         public GetUserGlobalGrant build() {

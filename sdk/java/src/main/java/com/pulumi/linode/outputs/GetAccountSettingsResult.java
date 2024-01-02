@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -105,32 +106,50 @@ public final class GetAccountSettingsResult {
 
         @CustomType.Setter
         public Builder backupsEnabled(Boolean backupsEnabled) {
-            this.backupsEnabled = Objects.requireNonNull(backupsEnabled);
+            if (backupsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "backupsEnabled");
+            }
+            this.backupsEnabled = backupsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder longviewSubscription(String longviewSubscription) {
-            this.longviewSubscription = Objects.requireNonNull(longviewSubscription);
+            if (longviewSubscription == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "longviewSubscription");
+            }
+            this.longviewSubscription = longviewSubscription;
             return this;
         }
         @CustomType.Setter
         public Builder managed(Boolean managed) {
-            this.managed = Objects.requireNonNull(managed);
+            if (managed == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "managed");
+            }
+            this.managed = managed;
             return this;
         }
         @CustomType.Setter
         public Builder networkHelper(Boolean networkHelper) {
-            this.networkHelper = Objects.requireNonNull(networkHelper);
+            if (networkHelper == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "networkHelper");
+            }
+            this.networkHelper = networkHelper;
             return this;
         }
         @CustomType.Setter
         public Builder objectStorage(String objectStorage) {
-            this.objectStorage = Objects.requireNonNull(objectStorage);
+            if (objectStorage == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "objectStorage");
+            }
+            this.objectStorage = objectStorage;
             return this;
         }
         public GetAccountSettingsResult build() {

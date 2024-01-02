@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.ObjectStorageKeyBucketAccessArgs;
 import java.lang.String;
 import java.util.List;
@@ -133,7 +134,9 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ObjectStorageKeyArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageKeyArgs", "label");
+            }
             return $;
         }
     }

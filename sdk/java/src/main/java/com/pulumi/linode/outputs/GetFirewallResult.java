@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetFirewallDevice;
 import com.pulumi.linode.outputs.GetFirewallInbound;
 import com.pulumi.linode.outputs.GetFirewallOutbound;
@@ -206,12 +207,18 @@ public final class GetFirewallResult {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder devices(List<GetFirewallDevice> devices) {
-            this.devices = Objects.requireNonNull(devices);
+            if (devices == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "devices");
+            }
+            this.devices = devices;
             return this;
         }
         public Builder devices(GetFirewallDevice... devices) {
@@ -219,22 +226,34 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inboundPolicy(String inboundPolicy) {
-            this.inboundPolicy = Objects.requireNonNull(inboundPolicy);
+            if (inboundPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "inboundPolicy");
+            }
+            this.inboundPolicy = inboundPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder inbounds(List<GetFirewallInbound> inbounds) {
-            this.inbounds = Objects.requireNonNull(inbounds);
+            if (inbounds == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "inbounds");
+            }
+            this.inbounds = inbounds;
             return this;
         }
         public Builder inbounds(GetFirewallInbound... inbounds) {
@@ -242,12 +261,18 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder linodes(List<Integer> linodes) {
-            this.linodes = Objects.requireNonNull(linodes);
+            if (linodes == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "linodes");
+            }
+            this.linodes = linodes;
             return this;
         }
         public Builder linodes(Integer... linodes) {
@@ -255,7 +280,10 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder nodebalancers(List<Integer> nodebalancers) {
-            this.nodebalancers = Objects.requireNonNull(nodebalancers);
+            if (nodebalancers == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "nodebalancers");
+            }
+            this.nodebalancers = nodebalancers;
             return this;
         }
         public Builder nodebalancers(Integer... nodebalancers) {
@@ -263,12 +291,18 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder outboundPolicy(String outboundPolicy) {
-            this.outboundPolicy = Objects.requireNonNull(outboundPolicy);
+            if (outboundPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "outboundPolicy");
+            }
+            this.outboundPolicy = outboundPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder outbounds(List<GetFirewallOutbound> outbounds) {
-            this.outbounds = Objects.requireNonNull(outbounds);
+            if (outbounds == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "outbounds");
+            }
+            this.outbounds = outbounds;
             return this;
         }
         public Builder outbounds(GetFirewallOutbound... outbounds) {
@@ -276,12 +310,18 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -289,7 +329,10 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         public GetFirewallResult build() {

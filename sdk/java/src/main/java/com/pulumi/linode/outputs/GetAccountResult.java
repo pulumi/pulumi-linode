@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -203,67 +204,106 @@ public final class GetAccountResult {
 
         @CustomType.Setter
         public Builder address1(String address1) {
-            this.address1 = Objects.requireNonNull(address1);
+            if (address1 == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "address1");
+            }
+            this.address1 = address1;
             return this;
         }
         @CustomType.Setter
         public Builder address2(String address2) {
-            this.address2 = Objects.requireNonNull(address2);
+            if (address2 == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "address2");
+            }
+            this.address2 = address2;
             return this;
         }
         @CustomType.Setter
         public Builder balance(Double balance) {
-            this.balance = Objects.requireNonNull(balance);
+            if (balance == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "balance");
+            }
+            this.balance = balance;
             return this;
         }
         @CustomType.Setter
         public Builder city(String city) {
-            this.city = Objects.requireNonNull(city);
+            if (city == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "city");
+            }
+            this.city = city;
             return this;
         }
         @CustomType.Setter
         public Builder company(String company) {
-            this.company = Objects.requireNonNull(company);
+            if (company == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "company");
+            }
+            this.company = company;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder firstName(String firstName) {
-            this.firstName = Objects.requireNonNull(firstName);
+            if (firstName == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "firstName");
+            }
+            this.firstName = firstName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastName(String lastName) {
-            this.lastName = Objects.requireNonNull(lastName);
+            if (lastName == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "lastName");
+            }
+            this.lastName = lastName;
             return this;
         }
         @CustomType.Setter
         public Builder phone(String phone) {
-            this.phone = Objects.requireNonNull(phone);
+            if (phone == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "phone");
+            }
+            this.phone = phone;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder zip(String zip) {
-            this.zip = Objects.requireNonNull(zip);
+            if (zip == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "zip");
+            }
+            this.zip = zip;
             return this;
         }
         public GetAccountResult build() {

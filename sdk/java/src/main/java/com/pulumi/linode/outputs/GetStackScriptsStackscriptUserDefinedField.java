@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetStackScriptsStackscriptUserDefinedField {
 
         @CustomType.Setter("default")
         public Builder default_(String default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder example(String example) {
-            this.example = Objects.requireNonNull(example);
+            if (example == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "example");
+            }
+            this.example = example;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder manyOf(String manyOf) {
-            this.manyOf = Objects.requireNonNull(manyOf);
+            if (manyOf == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "manyOf");
+            }
+            this.manyOf = manyOf;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder oneOf(String oneOf) {
-            this.oneOf = Objects.requireNonNull(oneOf);
+            if (oneOf == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsStackscriptUserDefinedField", "oneOf");
+            }
+            this.oneOf = oneOf;
             return this;
         }
         public GetStackScriptsStackscriptUserDefinedField build() {

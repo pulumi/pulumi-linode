@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcSubnetLinode;
 import java.lang.Integer;
 import java.lang.String;
@@ -113,27 +114,42 @@ public final class GetVpcSubnetResult {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4(String ipv4) {
-            this.ipv4 = Objects.requireNonNull(ipv4);
+            if (ipv4 == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "ipv4");
+            }
+            this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder linodes(List<GetVpcSubnetLinode> linodes) {
-            this.linodes = Objects.requireNonNull(linodes);
+            if (linodes == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "linodes");
+            }
+            this.linodes = linodes;
             return this;
         }
         public Builder linodes(GetVpcSubnetLinode... linodes) {
@@ -141,12 +157,18 @@ public final class GetVpcSubnetResult {
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(Integer vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetVpcSubnetResult build() {

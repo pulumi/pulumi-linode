@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.InstanceConfigDevicesArgs;
 import com.pulumi.linode.inputs.InstanceConfigHelpersArgs;
 import com.pulumi.linode.inputs.InstanceConfigInterfaceArgs;
@@ -443,7 +444,9 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public InstanceConfigArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("InstanceConfigArgs", "label");
+            }
             return $;
         }
     }

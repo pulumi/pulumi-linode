@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -241,12 +242,24 @@ public final class GetAccountLoginsLoginArgs extends com.pulumi.resources.Resour
         }
 
         public GetAccountLoginsLoginArgs build() {
-            $.datetime = Objects.requireNonNull($.datetime, "expected parameter 'datetime' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
-            $.restricted = Objects.requireNonNull($.restricted, "expected parameter 'restricted' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.datetime == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginsLoginArgs", "datetime");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginsLoginArgs", "id");
+            }
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginsLoginArgs", "ip");
+            }
+            if ($.restricted == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginsLoginArgs", "restricted");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginsLoginArgs", "status");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginsLoginArgs", "username");
+            }
             return $;
         }
     }

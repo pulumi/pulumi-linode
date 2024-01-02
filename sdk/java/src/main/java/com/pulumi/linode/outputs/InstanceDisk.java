@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -189,6 +190,7 @@ public final class InstanceDisk {
 
         @CustomType.Setter
         public Builder authorizedKeys(@Nullable List<String> authorizedKeys) {
+
             this.authorizedKeys = authorizedKeys;
             return this;
         }
@@ -197,6 +199,7 @@ public final class InstanceDisk {
         }
         @CustomType.Setter
         public Builder authorizedUsers(@Nullable List<String> authorizedUsers) {
+
             this.authorizedUsers = authorizedUsers;
             return this;
         }
@@ -205,46 +208,59 @@ public final class InstanceDisk {
         }
         @CustomType.Setter
         public Builder filesystem(@Nullable String filesystem) {
+
             this.filesystem = filesystem;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("InstanceDisk", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
+
             this.readOnly = readOnly;
             return this;
         }
         @CustomType.Setter
         public Builder rootPass(@Nullable String rootPass) {
+
             this.rootPass = rootPass;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("InstanceDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder stackscriptData(@Nullable Map<String,Object> stackscriptData) {
+
             this.stackscriptData = stackscriptData;
             return this;
         }
         @CustomType.Setter
         public Builder stackscriptId(@Nullable Integer stackscriptId) {
+
             this.stackscriptId = stackscriptId;
             return this;
         }

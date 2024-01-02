@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -58,27 +59,42 @@ public final class GetInstancesInstanceAlerts {
 
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder io(Integer io) {
-            this.io = Objects.requireNonNull(io);
+            if (io == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "io");
+            }
+            this.io = io;
             return this;
         }
         @CustomType.Setter
         public Builder networkIn(Integer networkIn) {
-            this.networkIn = Objects.requireNonNull(networkIn);
+            if (networkIn == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "networkIn");
+            }
+            this.networkIn = networkIn;
             return this;
         }
         @CustomType.Setter
         public Builder networkOut(Integer networkOut) {
-            this.networkOut = Objects.requireNonNull(networkOut);
+            if (networkOut == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "networkOut");
+            }
+            this.networkOut = networkOut;
             return this;
         }
         @CustomType.Setter
         public Builder transferQuota(Integer transferQuota) {
-            this.transferQuota = Objects.requireNonNull(transferQuota);
+            if (transferQuota == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "transferQuota");
+            }
+            this.transferQuota = transferQuota;
             return this;
         }
         public GetInstancesInstanceAlerts build() {

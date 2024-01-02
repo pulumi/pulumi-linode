@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -637,7 +638,9 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public NodeBalancerConfigArgs build() {
-            $.nodebalancerId = Objects.requireNonNull($.nodebalancerId, "expected parameter 'nodebalancerId' to be non-null");
+            if ($.nodebalancerId == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerConfigArgs", "nodebalancerId");
+            }
             return $;
         }
     }

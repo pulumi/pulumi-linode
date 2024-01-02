@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcSubnetsFilter;
 import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnet;
 import java.lang.Integer;
@@ -65,6 +66,7 @@ public final class GetVpcSubnetsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetVpcSubnetsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -73,16 +75,23 @@ public final class GetVpcSubnetsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(Integer vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetsResult", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcSubnets(@Nullable List<GetVpcSubnetsVpcSubnet> vpcSubnets) {
+
             this.vpcSubnets = vpcSubnets;
             return this;
         }

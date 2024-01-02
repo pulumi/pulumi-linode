@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,8 +102,12 @@ public final class GetAccountAvailabilitiesAvailability extends com.pulumi.resou
         }
 
         public GetAccountAvailabilitiesAvailability build() {
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.unavailables = Objects.requireNonNull($.unavailables, "expected parameter 'unavailables' to be non-null");
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "region");
+            }
+            if ($.unavailables == null) {
+                throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "unavailables");
+            }
             return $;
         }
     }

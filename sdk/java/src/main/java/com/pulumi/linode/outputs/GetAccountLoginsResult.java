@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetAccountLoginsFilter;
 import com.pulumi.linode.outputs.GetAccountLoginsLogin;
 import java.lang.String;
@@ -58,6 +59,7 @@ public final class GetAccountLoginsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAccountLoginsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -66,11 +68,15 @@ public final class GetAccountLoginsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logins(@Nullable List<GetAccountLoginsLogin> logins) {
+
             this.logins = logins;
             return this;
         }

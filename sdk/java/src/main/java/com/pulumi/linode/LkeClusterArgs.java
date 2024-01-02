@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolArgs;
 import java.lang.String;
@@ -300,10 +301,18 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LkeClusterArgs build() {
-            $.k8sVersion = Objects.requireNonNull($.k8sVersion, "expected parameter 'k8sVersion' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.pools = Objects.requireNonNull($.pools, "expected parameter 'pools' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.k8sVersion == null) {
+                throw new MissingRequiredPropertyException("LkeClusterArgs", "k8sVersion");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("LkeClusterArgs", "label");
+            }
+            if ($.pools == null) {
+                throw new MissingRequiredPropertyException("LkeClusterArgs", "pools");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("LkeClusterArgs", "region");
+            }
             return $;
         }
     }

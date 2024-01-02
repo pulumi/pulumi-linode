@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -347,18 +348,42 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
         }
 
         public GetUsersUserGlobalGrant build() {
-            $.accountAccess = Objects.requireNonNull($.accountAccess, "expected parameter 'accountAccess' to be non-null");
-            $.addDatabases = Objects.requireNonNull($.addDatabases, "expected parameter 'addDatabases' to be non-null");
-            $.addDomains = Objects.requireNonNull($.addDomains, "expected parameter 'addDomains' to be non-null");
-            $.addFirewalls = Objects.requireNonNull($.addFirewalls, "expected parameter 'addFirewalls' to be non-null");
-            $.addImages = Objects.requireNonNull($.addImages, "expected parameter 'addImages' to be non-null");
-            $.addLinodes = Objects.requireNonNull($.addLinodes, "expected parameter 'addLinodes' to be non-null");
-            $.addLongview = Objects.requireNonNull($.addLongview, "expected parameter 'addLongview' to be non-null");
-            $.addNodebalancers = Objects.requireNonNull($.addNodebalancers, "expected parameter 'addNodebalancers' to be non-null");
-            $.addStackscripts = Objects.requireNonNull($.addStackscripts, "expected parameter 'addStackscripts' to be non-null");
-            $.addVolumes = Objects.requireNonNull($.addVolumes, "expected parameter 'addVolumes' to be non-null");
-            $.cancelAccount = Objects.requireNonNull($.cancelAccount, "expected parameter 'cancelAccount' to be non-null");
-            $.longviewSubscription = Objects.requireNonNull($.longviewSubscription, "expected parameter 'longviewSubscription' to be non-null");
+            if ($.accountAccess == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "accountAccess");
+            }
+            if ($.addDatabases == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addDatabases");
+            }
+            if ($.addDomains == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addDomains");
+            }
+            if ($.addFirewalls == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addFirewalls");
+            }
+            if ($.addImages == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addImages");
+            }
+            if ($.addLinodes == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addLinodes");
+            }
+            if ($.addLongview == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addLongview");
+            }
+            if ($.addNodebalancers == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addNodebalancers");
+            }
+            if ($.addStackscripts == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addStackscripts");
+            }
+            if ($.addVolumes == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addVolumes");
+            }
+            if ($.cancelAccount == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "cancelAccount");
+            }
+            if ($.longviewSubscription == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "longviewSubscription");
+            }
             return $;
         }
     }

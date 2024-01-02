@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6Global;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6LinkLocal;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6Slaac;
@@ -49,7 +50,10 @@ public final class GetInstanceNetworkingIpv6 {
 
         @CustomType.Setter
         public Builder globals(List<GetInstanceNetworkingIpv6Global> globals) {
-            this.globals = Objects.requireNonNull(globals);
+            if (globals == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6", "globals");
+            }
+            this.globals = globals;
             return this;
         }
         public Builder globals(GetInstanceNetworkingIpv6Global... globals) {
@@ -57,12 +61,18 @@ public final class GetInstanceNetworkingIpv6 {
         }
         @CustomType.Setter
         public Builder linkLocal(GetInstanceNetworkingIpv6LinkLocal linkLocal) {
-            this.linkLocal = Objects.requireNonNull(linkLocal);
+            if (linkLocal == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6", "linkLocal");
+            }
+            this.linkLocal = linkLocal;
             return this;
         }
         @CustomType.Setter
         public Builder slaac(GetInstanceNetworkingIpv6Slaac slaac) {
-            this.slaac = Objects.requireNonNull(slaac);
+            if (slaac == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6", "slaac");
+            }
+            this.slaac = slaac;
             return this;
         }
         public GetInstanceNetworkingIpv6 build() {

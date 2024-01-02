@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackupPrice;
 import com.pulumi.linode.outputs.GetInstanceTypeAddonsBackupRegionPrice;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetInstanceTypeAddonsBackup {
 
         @CustomType.Setter
         public Builder prices(List<GetInstanceTypeAddonsBackupPrice> prices) {
-            this.prices = Objects.requireNonNull(prices);
+            if (prices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeAddonsBackup", "prices");
+            }
+            this.prices = prices;
             return this;
         }
         public Builder prices(GetInstanceTypeAddonsBackupPrice... prices) {
@@ -50,7 +54,10 @@ public final class GetInstanceTypeAddonsBackup {
         }
         @CustomType.Setter
         public Builder regionPrices(List<GetInstanceTypeAddonsBackupRegionPrice> regionPrices) {
-            this.regionPrices = Objects.requireNonNull(regionPrices);
+            if (regionPrices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeAddonsBackup", "regionPrices");
+            }
+            this.regionPrices = regionPrices;
             return this;
         }
         public Builder regionPrices(GetInstanceTypeAddonsBackupRegionPrice... regionPrices) {

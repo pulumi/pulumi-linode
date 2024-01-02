@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.ObjectStorageBucketCertArgs;
 import com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleArgs;
 import java.lang.Boolean;
@@ -402,8 +403,12 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         public ObjectStorageBucketArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageBucketArgs", "cluster");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageBucketArgs", "label");
+            }
             return $;
         }
     }

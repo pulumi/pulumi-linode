@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetProfileReferrals;
 import java.lang.Boolean;
 import java.lang.String;
@@ -177,7 +178,10 @@ public final class GetProfileResult {
 
         @CustomType.Setter
         public Builder authorizedKeys(List<String> authorizedKeys) {
-            this.authorizedKeys = Objects.requireNonNull(authorizedKeys);
+            if (authorizedKeys == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "authorizedKeys");
+            }
+            this.authorizedKeys = authorizedKeys;
             return this;
         }
         public Builder authorizedKeys(String... authorizedKeys) {
@@ -185,52 +189,82 @@ public final class GetProfileResult {
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder emailNotifications(Boolean emailNotifications) {
-            this.emailNotifications = Objects.requireNonNull(emailNotifications);
+            if (emailNotifications == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "emailNotifications");
+            }
+            this.emailNotifications = emailNotifications;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipWhitelistEnabled(Boolean ipWhitelistEnabled) {
-            this.ipWhitelistEnabled = Objects.requireNonNull(ipWhitelistEnabled);
+            if (ipWhitelistEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "ipWhitelistEnabled");
+            }
+            this.ipWhitelistEnabled = ipWhitelistEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder lishAuthMethod(String lishAuthMethod) {
-            this.lishAuthMethod = Objects.requireNonNull(lishAuthMethod);
+            if (lishAuthMethod == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "lishAuthMethod");
+            }
+            this.lishAuthMethod = lishAuthMethod;
             return this;
         }
         @CustomType.Setter
         public Builder referrals(GetProfileReferrals referrals) {
-            this.referrals = Objects.requireNonNull(referrals);
+            if (referrals == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "referrals");
+            }
+            this.referrals = referrals;
             return this;
         }
         @CustomType.Setter
         public Builder restricted(Boolean restricted) {
-            this.restricted = Objects.requireNonNull(restricted);
+            if (restricted == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "restricted");
+            }
+            this.restricted = restricted;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(String timezone) {
-            this.timezone = Objects.requireNonNull(timezone);
+            if (timezone == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "timezone");
+            }
+            this.timezone = timezone;
             return this;
         }
         @CustomType.Setter
         public Builder twoFactorAuth(Boolean twoFactorAuth) {
-            this.twoFactorAuth = Objects.requireNonNull(twoFactorAuth);
+            if (twoFactorAuth == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "twoFactorAuth");
+            }
+            this.twoFactorAuth = twoFactorAuth;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetProfileResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetProfileResult build() {

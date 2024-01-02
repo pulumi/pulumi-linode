@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -123,8 +124,12 @@ public final class InstanceSharedIpsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public InstanceSharedIpsArgs build() {
-            $.addresses = Objects.requireNonNull($.addresses, "expected parameter 'addresses' to be non-null");
-            $.linodeId = Objects.requireNonNull($.linodeId, "expected parameter 'linodeId' to be non-null");
+            if ($.addresses == null) {
+                throw new MissingRequiredPropertyException("InstanceSharedIpsArgs", "addresses");
+            }
+            if ($.linodeId == null) {
+                throw new MissingRequiredPropertyException("InstanceSharedIpsArgs", "linodeId");
+            }
             return $;
         }
     }

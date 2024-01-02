@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetSshKeyPlainArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetSshKeyPlainArgs", "label");
+            }
             return $;
         }
     }

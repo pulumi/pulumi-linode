@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceTypesTypeAddon;
 import com.pulumi.linode.outputs.GetInstanceTypesTypePrice;
 import com.pulumi.linode.outputs.GetInstanceTypesTypeRegionPrice;
@@ -163,7 +164,10 @@ public final class GetInstanceTypesType {
 
         @CustomType.Setter
         public Builder addons(List<GetInstanceTypesTypeAddon> addons) {
-            this.addons = Objects.requireNonNull(addons);
+            if (addons == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "addons");
+            }
+            this.addons = addons;
             return this;
         }
         public Builder addons(GetInstanceTypesTypeAddon... addons) {
@@ -171,37 +175,58 @@ public final class GetInstanceTypesType {
         }
         @CustomType.Setter("class")
         public Builder class_(String class_) {
-            this.class_ = Objects.requireNonNull(class_);
+            if (class_ == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "class_");
+            }
+            this.class_ = class_;
             return this;
         }
         @CustomType.Setter
         public Builder disk(Integer disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder networkOut(Integer networkOut) {
-            this.networkOut = Objects.requireNonNull(networkOut);
+            if (networkOut == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "networkOut");
+            }
+            this.networkOut = networkOut;
             return this;
         }
         @CustomType.Setter
         public Builder prices(List<GetInstanceTypesTypePrice> prices) {
-            this.prices = Objects.requireNonNull(prices);
+            if (prices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "prices");
+            }
+            this.prices = prices;
             return this;
         }
         public Builder prices(GetInstanceTypesTypePrice... prices) {
@@ -209,7 +234,10 @@ public final class GetInstanceTypesType {
         }
         @CustomType.Setter
         public Builder regionPrices(List<GetInstanceTypesTypeRegionPrice> regionPrices) {
-            this.regionPrices = Objects.requireNonNull(regionPrices);
+            if (regionPrices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "regionPrices");
+            }
+            this.regionPrices = regionPrices;
             return this;
         }
         public Builder regionPrices(GetInstanceTypesTypeRegionPrice... regionPrices) {
@@ -217,12 +245,18 @@ public final class GetInstanceTypesType {
         }
         @CustomType.Setter
         public Builder transfer(Integer transfer) {
-            this.transfer = Objects.requireNonNull(transfer);
+            if (transfer == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "transfer");
+            }
+            this.transfer = transfer;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
-            this.vcpus = Objects.requireNonNull(vcpus);
+            if (vcpus == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "vcpus");
+            }
+            this.vcpus = vcpus;
             return this;
         }
         public GetInstanceTypesType build() {

@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -283,10 +284,18 @@ public final class StackScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StackScriptArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.images = Objects.requireNonNull($.images, "expected parameter 'images' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("StackScriptArgs", "description");
+            }
+            if ($.images == null) {
+                throw new MissingRequiredPropertyException("StackScriptArgs", "images");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("StackScriptArgs", "label");
+            }
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("StackScriptArgs", "script");
+            }
             return $;
         }
     }

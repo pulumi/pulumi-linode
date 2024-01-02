@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.InstanceAlertsArgs;
 import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
@@ -1192,7 +1193,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "region");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class GetLinodeObjectStorageBucketArgs extends com.pulumi.resources
         }
 
         public GetLinodeObjectStorageBucketArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketArgs", "cluster");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketArgs", "label");
+            }
             return $;
         }
     }

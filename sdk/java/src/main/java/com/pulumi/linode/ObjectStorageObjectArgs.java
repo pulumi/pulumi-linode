@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -744,11 +745,21 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         }
 
         public ObjectStorageObjectArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "accessKey");
+            }
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "bucket");
+            }
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "cluster");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "key");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "secretKey");
+            }
             return $;
         }
     }

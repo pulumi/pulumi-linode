@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstancesInstanceBackupSchedule;
 import java.lang.Boolean;
 import java.util.List;
@@ -56,17 +57,26 @@ public final class GetInstancesInstanceBackup {
 
         @CustomType.Setter
         public Builder available(Boolean available) {
-            this.available = Objects.requireNonNull(available);
+            if (available == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceBackup", "available");
+            }
+            this.available = available;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceBackup", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder schedules(List<GetInstancesInstanceBackupSchedule> schedules) {
-            this.schedules = Objects.requireNonNull(schedules);
+            if (schedules == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceBackup", "schedules");
+            }
+            this.schedules = schedules;
             return this;
         }
         public Builder schedules(GetInstancesInstanceBackupSchedule... schedules) {

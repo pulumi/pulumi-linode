@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetInstancesInstanceBackupSchedule {
 
         @CustomType.Setter
         public Builder day(String day) {
-            this.day = Objects.requireNonNull(day);
+            if (day == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceBackupSchedule", "day");
+            }
+            this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder window(String window) {
-            this.window = Objects.requireNonNull(window);
+            if (window == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceBackupSchedule", "window");
+            }
+            this.window = window;
             return this;
         }
         public GetInstancesInstanceBackupSchedule build() {

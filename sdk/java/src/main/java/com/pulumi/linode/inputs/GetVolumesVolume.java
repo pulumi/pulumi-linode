@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -318,16 +319,36 @@ public final class GetVolumesVolume extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetVolumesVolume build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.filesystemPath = Objects.requireNonNull($.filesystemPath, "expected parameter 'filesystemPath' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.linodeId = Objects.requireNonNull($.linodeId, "expected parameter 'linodeId' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "created");
+            }
+            if ($.filesystemPath == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "filesystemPath");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "label");
+            }
+            if ($.linodeId == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "linodeId");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "region");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "size");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "status");
+            }
+            if ($.tags == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "tags");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "updated");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -160,9 +161,15 @@ public final class DatabaseAccessControlsArgs extends com.pulumi.resources.Resou
         }
 
         public DatabaseAccessControlsArgs build() {
-            $.allowLists = Objects.requireNonNull($.allowLists, "expected parameter 'allowLists' to be non-null");
-            $.databaseId = Objects.requireNonNull($.databaseId, "expected parameter 'databaseId' to be non-null");
-            $.databaseType = Objects.requireNonNull($.databaseType, "expected parameter 'databaseType' to be non-null");
+            if ($.allowLists == null) {
+                throw new MissingRequiredPropertyException("DatabaseAccessControlsArgs", "allowLists");
+            }
+            if ($.databaseId == null) {
+                throw new MissingRequiredPropertyException("DatabaseAccessControlsArgs", "databaseId");
+            }
+            if ($.databaseType == null) {
+                throw new MissingRequiredPropertyException("DatabaseAccessControlsArgs", "databaseType");
+            }
             return $;
         }
     }

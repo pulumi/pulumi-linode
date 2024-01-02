@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,37 +72,58 @@ public final class GetLinodeObjectStorageBucketResult {
 
         @CustomType.Setter
         public Builder cluster(String cluster) {
-            this.cluster = Objects.requireNonNull(cluster);
+            if (cluster == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "cluster");
+            }
+            this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder objects(Integer objects) {
-            this.objects = Objects.requireNonNull(objects);
+            if (objects == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "objects");
+            }
+            this.objects = objects;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "size");
+            }
+            this.size = size;
             return this;
         }
         public GetLinodeObjectStorageBucketResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class GetSshkeysSshkeyArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GetSshkeysSshkeyArgs build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.sshKey = Objects.requireNonNull($.sshKey, "expected parameter 'sshKey' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetSshkeysSshkeyArgs", "created");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetSshkeysSshkeyArgs", "label");
+            }
+            if ($.sshKey == null) {
+                throw new MissingRequiredPropertyException("GetSshkeysSshkeyArgs", "sshKey");
+            }
             return $;
         }
     }

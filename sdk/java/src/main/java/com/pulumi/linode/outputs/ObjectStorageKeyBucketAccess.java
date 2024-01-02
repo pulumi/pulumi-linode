@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class ObjectStorageKeyBucketAccess {
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccess", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder cluster(String cluster) {
-            this.cluster = Objects.requireNonNull(cluster);
+            if (cluster == null) {
+              throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccess", "cluster");
+            }
+            this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(String permissions) {
-            this.permissions = Objects.requireNonNull(permissions);
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccess", "permissions");
+            }
+            this.permissions = permissions;
             return this;
         }
         public ObjectStorageKeyBucketAccess build() {

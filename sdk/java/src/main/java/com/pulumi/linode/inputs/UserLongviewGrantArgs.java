@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class UserLongviewGrantArgs extends com.pulumi.resources.ResourceAr
         }
 
         public UserLongviewGrantArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("UserLongviewGrantArgs", "id");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("UserLongviewGrantArgs", "permissions");
+            }
             return $;
         }
     }

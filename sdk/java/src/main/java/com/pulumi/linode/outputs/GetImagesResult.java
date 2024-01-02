@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetImagesFilter;
 import com.pulumi.linode.outputs.GetImagesImage;
 import java.lang.Boolean;
@@ -78,6 +79,7 @@ public final class GetImagesResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetImagesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -86,11 +88,15 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder images(@Nullable List<GetImagesImage> images) {
+
             this.images = images;
             return this;
         }
@@ -99,16 +105,19 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
+
             this.latest = latest;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
