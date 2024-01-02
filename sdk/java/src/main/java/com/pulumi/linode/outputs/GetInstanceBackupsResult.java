@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceBackupsAutomatic;
 import com.pulumi.linode.outputs.GetInstanceBackupsCurrent;
 import com.pulumi.linode.outputs.GetInstanceBackupsInProgress;
@@ -70,7 +71,10 @@ public final class GetInstanceBackupsResult {
 
         @CustomType.Setter
         public Builder automatics(List<GetInstanceBackupsAutomatic> automatics) {
-            this.automatics = Objects.requireNonNull(automatics);
+            if (automatics == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsResult", "automatics");
+            }
+            this.automatics = automatics;
             return this;
         }
         public Builder automatics(GetInstanceBackupsAutomatic... automatics) {
@@ -78,7 +82,10 @@ public final class GetInstanceBackupsResult {
         }
         @CustomType.Setter
         public Builder currents(List<GetInstanceBackupsCurrent> currents) {
-            this.currents = Objects.requireNonNull(currents);
+            if (currents == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsResult", "currents");
+            }
+            this.currents = currents;
             return this;
         }
         public Builder currents(GetInstanceBackupsCurrent... currents) {
@@ -86,12 +93,18 @@ public final class GetInstanceBackupsResult {
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inProgresses(List<GetInstanceBackupsInProgress> inProgresses) {
-            this.inProgresses = Objects.requireNonNull(inProgresses);
+            if (inProgresses == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsResult", "inProgresses");
+            }
+            this.inProgresses = inProgresses;
             return this;
         }
         public Builder inProgresses(GetInstanceBackupsInProgress... inProgresses) {
@@ -99,7 +112,10 @@ public final class GetInstanceBackupsResult {
         }
         @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
-            this.linodeId = Objects.requireNonNull(linodeId);
+            if (linodeId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBackupsResult", "linodeId");
+            }
+            this.linodeId = linodeId;
             return this;
         }
         public GetInstanceBackupsResult build() {

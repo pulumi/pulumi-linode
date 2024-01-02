@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetStackScriptsStackscriptUserDefinedFieldArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -579,20 +580,48 @@ public final class GetStackScriptsStackscriptArgs extends com.pulumi.resources.R
         }
 
         public GetStackScriptsStackscriptArgs build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.deploymentsActive = Objects.requireNonNull($.deploymentsActive, "expected parameter 'deploymentsActive' to be non-null");
-            $.deploymentsTotal = Objects.requireNonNull($.deploymentsTotal, "expected parameter 'deploymentsTotal' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.images = Objects.requireNonNull($.images, "expected parameter 'images' to be non-null");
-            $.isPublic = Objects.requireNonNull($.isPublic, "expected parameter 'isPublic' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.revNote = Objects.requireNonNull($.revNote, "expected parameter 'revNote' to be non-null");
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
-            $.userDefinedFields = Objects.requireNonNull($.userDefinedFields, "expected parameter 'userDefinedFields' to be non-null");
-            $.userGravatarId = Objects.requireNonNull($.userGravatarId, "expected parameter 'userGravatarId' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "created");
+            }
+            if ($.deploymentsActive == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "deploymentsActive");
+            }
+            if ($.deploymentsTotal == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "deploymentsTotal");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "description");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "id");
+            }
+            if ($.images == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "images");
+            }
+            if ($.isPublic == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "isPublic");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "label");
+            }
+            if ($.revNote == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "revNote");
+            }
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "script");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "updated");
+            }
+            if ($.userDefinedFields == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "userDefinedFields");
+            }
+            if ($.userGravatarId == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "userGravatarId");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetStackScriptsStackscriptArgs", "username");
+            }
             return $;
         }
     }

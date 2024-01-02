@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetDatabasePostgresqlUpdate {
 
         @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
-            this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
+            if (dayOfWeek == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlUpdate", "dayOfWeek");
+            }
+            this.dayOfWeek = dayOfWeek;
             return this;
         }
         @CustomType.Setter
         public Builder duration(Integer duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlUpdate", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder frequency(String frequency) {
-            this.frequency = Objects.requireNonNull(frequency);
+            if (frequency == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlUpdate", "frequency");
+            }
+            this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
         public Builder hourOfDay(Integer hourOfDay) {
-            this.hourOfDay = Objects.requireNonNull(hourOfDay);
+            if (hourOfDay == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlUpdate", "hourOfDay");
+            }
+            this.hourOfDay = hourOfDay;
             return this;
         }
         @CustomType.Setter
         public Builder weekOfMonth(Integer weekOfMonth) {
-            this.weekOfMonth = Objects.requireNonNull(weekOfMonth);
+            if (weekOfMonth == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlUpdate", "weekOfMonth");
+            }
+            this.weekOfMonth = weekOfMonth;
             return this;
         }
         public GetDatabasePostgresqlUpdate build() {

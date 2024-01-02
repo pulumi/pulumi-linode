@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class VpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpcArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("VpcArgs", "label");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("VpcArgs", "region");
+            }
             return $;
         }
     }

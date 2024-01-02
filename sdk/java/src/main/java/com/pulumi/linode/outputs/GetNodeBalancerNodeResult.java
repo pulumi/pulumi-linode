@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -117,42 +118,66 @@ public final class GetNodeBalancerNodeResult {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder configId(Integer configId) {
-            this.configId = Objects.requireNonNull(configId);
+            if (configId == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "configId");
+            }
+            this.configId = configId;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder nodebalancerId(Integer nodebalancerId) {
-            this.nodebalancerId = Objects.requireNonNull(nodebalancerId);
+            if (nodebalancerId == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "nodebalancerId");
+            }
+            this.nodebalancerId = nodebalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetNodeBalancerNodeResult build() {

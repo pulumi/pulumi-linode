@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeAddonArgs;
 import com.pulumi.linode.inputs.GetInstanceTypesTypePriceArgs;
 import com.pulumi.linode.inputs.GetInstanceTypesTypeRegionPriceArgs;
@@ -401,17 +402,39 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
         }
 
         public GetInstanceTypesTypeArgs build() {
-            $.addons = Objects.requireNonNull($.addons, "expected parameter 'addons' to be non-null");
-            $.class_ = Objects.requireNonNull($.class_, "expected parameter 'class' to be non-null");
-            $.disk = Objects.requireNonNull($.disk, "expected parameter 'disk' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.memory = Objects.requireNonNull($.memory, "expected parameter 'memory' to be non-null");
-            $.networkOut = Objects.requireNonNull($.networkOut, "expected parameter 'networkOut' to be non-null");
-            $.prices = Objects.requireNonNull($.prices, "expected parameter 'prices' to be non-null");
-            $.regionPrices = Objects.requireNonNull($.regionPrices, "expected parameter 'regionPrices' to be non-null");
-            $.transfer = Objects.requireNonNull($.transfer, "expected parameter 'transfer' to be non-null");
-            $.vcpus = Objects.requireNonNull($.vcpus, "expected parameter 'vcpus' to be non-null");
+            if ($.addons == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "addons");
+            }
+            if ($.class_ == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "class_");
+            }
+            if ($.disk == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "disk");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "label");
+            }
+            if ($.memory == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "memory");
+            }
+            if ($.networkOut == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "networkOut");
+            }
+            if ($.prices == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "prices");
+            }
+            if ($.regionPrices == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "regionPrices");
+            }
+            if ($.transfer == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "transfer");
+            }
+            if ($.vcpus == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "vcpus");
+            }
             return $;
         }
     }

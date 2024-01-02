@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleExpirationArgs;
 import com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs;
 import java.lang.Boolean;
@@ -241,7 +242,9 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         }
 
         public ObjectStorageBucketLifecycleRuleArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageBucketLifecycleRuleArgs", "enabled");
+            }
             return $;
         }
     }

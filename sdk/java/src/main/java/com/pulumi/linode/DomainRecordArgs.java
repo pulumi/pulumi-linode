@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -455,9 +456,15 @@ public final class DomainRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainRecordArgs build() {
-            $.domainId = Objects.requireNonNull($.domainId, "expected parameter 'domainId' to be non-null");
-            $.recordType = Objects.requireNonNull($.recordType, "expected parameter 'recordType' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.domainId == null) {
+                throw new MissingRequiredPropertyException("DomainRecordArgs", "domainId");
+            }
+            if ($.recordType == null) {
+                throw new MissingRequiredPropertyException("DomainRecordArgs", "recordType");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("DomainRecordArgs", "target");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetDatabaseBackupsBackup;
 import com.pulumi.linode.inputs.GetDatabaseBackupsFilter;
 import java.lang.Boolean;
@@ -218,8 +219,12 @@ public final class GetDatabaseBackupsPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetDatabaseBackupsPlainArgs build() {
-            $.databaseId = Objects.requireNonNull($.databaseId, "expected parameter 'databaseId' to be non-null");
-            $.databaseType = Objects.requireNonNull($.databaseType, "expected parameter 'databaseType' to be non-null");
+            if ($.databaseId == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseBackupsPlainArgs", "databaseId");
+            }
+            if ($.databaseType == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseBackupsPlainArgs", "databaseType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.InstanceConfigDevices;
 import com.pulumi.linode.outputs.InstanceConfigHelpers;
 import com.pulumi.linode.outputs.InstanceConfigInterface;
@@ -185,26 +186,31 @@ public final class InstanceConfig {
 
         @CustomType.Setter
         public Builder comments(@Nullable String comments) {
+
             this.comments = comments;
             return this;
         }
         @CustomType.Setter
         public Builder devices(@Nullable InstanceConfigDevices devices) {
+
             this.devices = devices;
             return this;
         }
         @CustomType.Setter
         public Builder helpers(@Nullable InstanceConfigHelpers helpers) {
+
             this.helpers = helpers;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(@Nullable List<InstanceConfigInterface> interfaces) {
+
             this.interfaces = interfaces;
             return this;
         }
@@ -213,31 +219,39 @@ public final class InstanceConfig {
         }
         @CustomType.Setter
         public Builder kernel(@Nullable String kernel) {
+
             this.kernel = kernel;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("InstanceConfig", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder memoryLimit(@Nullable Integer memoryLimit) {
+
             this.memoryLimit = memoryLimit;
             return this;
         }
         @CustomType.Setter
         public Builder rootDevice(@Nullable String rootDevice) {
+
             this.rootDevice = rootDevice;
             return this;
         }
         @CustomType.Setter
         public Builder runLevel(@Nullable String runLevel) {
+
             this.runLevel = runLevel;
             return this;
         }
         @CustomType.Setter
         public Builder virtMode(@Nullable String virtMode) {
+
             this.virtMode = virtMode;
             return this;
         }

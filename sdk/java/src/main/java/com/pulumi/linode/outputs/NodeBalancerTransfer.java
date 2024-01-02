@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class NodeBalancerTransfer {
 
         @CustomType.Setter
         public Builder in(Double in) {
-            this.in = Objects.requireNonNull(in);
+            if (in == null) {
+              throw new MissingRequiredPropertyException("NodeBalancerTransfer", "in");
+            }
+            this.in = in;
             return this;
         }
         @CustomType.Setter
         public Builder out(Double out) {
-            this.out = Objects.requireNonNull(out);
+            if (out == null) {
+              throw new MissingRequiredPropertyException("NodeBalancerTransfer", "out");
+            }
+            this.out = out;
             return this;
         }
         @CustomType.Setter
         public Builder total(Double total) {
-            this.total = Objects.requireNonNull(total);
+            if (total == null) {
+              throw new MissingRequiredPropertyException("NodeBalancerTransfer", "total");
+            }
+            this.total = total;
             return this;
         }
         public NodeBalancerTransfer build() {

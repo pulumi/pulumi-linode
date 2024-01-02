@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetNodebalancersNodebalancerTransfer;
 import java.lang.Integer;
 import java.lang.String;
@@ -336,17 +337,39 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
         }
 
         public GetNodebalancersNodebalancer build() {
-            $.clientConnThrottle = Objects.requireNonNull($.clientConnThrottle, "expected parameter 'clientConnThrottle' to be non-null");
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.ipv4 = Objects.requireNonNull($.ipv4, "expected parameter 'ipv4' to be non-null");
-            $.ipv6 = Objects.requireNonNull($.ipv6, "expected parameter 'ipv6' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");
-            $.transfers = Objects.requireNonNull($.transfers, "expected parameter 'transfers' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
+            if ($.clientConnThrottle == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "clientConnThrottle");
+            }
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "created");
+            }
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "hostname");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "id");
+            }
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "ipv4");
+            }
+            if ($.ipv6 == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "ipv6");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "label");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "region");
+            }
+            if ($.tags == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "tags");
+            }
+            if ($.transfers == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "transfers");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "updated");
+            }
             return $;
         }
     }

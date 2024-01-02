@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -282,9 +283,15 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public FirewallInboundArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("FirewallInboundArgs", "action");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("FirewallInboundArgs", "label");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("FirewallInboundArgs", "protocol");
+            }
             return $;
         }
     }

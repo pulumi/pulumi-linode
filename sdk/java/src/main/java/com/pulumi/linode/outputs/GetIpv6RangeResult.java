@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -91,17 +92,26 @@ public final class GetIpv6RangeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isBgp(Boolean isBgp) {
-            this.isBgp = Objects.requireNonNull(isBgp);
+            if (isBgp == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangeResult", "isBgp");
+            }
+            this.isBgp = isBgp;
             return this;
         }
         @CustomType.Setter
         public Builder linodes(List<Integer> linodes) {
-            this.linodes = Objects.requireNonNull(linodes);
+            if (linodes == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangeResult", "linodes");
+            }
+            this.linodes = linodes;
             return this;
         }
         public Builder linodes(Integer... linodes) {
@@ -109,17 +119,26 @@ public final class GetIpv6RangeResult {
         }
         @CustomType.Setter
         public Builder prefix(Integer prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangeResult", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder range(String range) {
-            this.range = Objects.requireNonNull(range);
+            if (range == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangeResult", "range");
+            }
+            this.range = range;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangeResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetIpv6RangeResult build() {

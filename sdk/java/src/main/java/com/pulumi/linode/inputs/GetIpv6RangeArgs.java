@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetIpv6RangeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetIpv6RangeArgs build() {
-            $.range = Objects.requireNonNull($.range, "expected parameter 'range' to be non-null");
+            if ($.range == null) {
+                throw new MissingRequiredPropertyException("GetIpv6RangeArgs", "range");
+            }
             return $;
         }
     }

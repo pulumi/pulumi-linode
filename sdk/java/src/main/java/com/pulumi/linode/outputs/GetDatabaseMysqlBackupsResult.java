@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsBackup;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsFilter;
 import java.lang.Boolean;
@@ -85,7 +86,10 @@ public final class GetDatabaseMysqlBackupsResult {
 
         @CustomType.Setter
         public Builder backups(List<GetDatabaseMysqlBackupsBackup> backups) {
-            this.backups = Objects.requireNonNull(backups);
+            if (backups == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseMysqlBackupsResult", "backups");
+            }
+            this.backups = backups;
             return this;
         }
         public Builder backups(GetDatabaseMysqlBackupsBackup... backups) {
@@ -93,11 +97,15 @@ public final class GetDatabaseMysqlBackupsResult {
         }
         @CustomType.Setter
         public Builder databaseId(Integer databaseId) {
-            this.databaseId = Objects.requireNonNull(databaseId);
+            if (databaseId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseMysqlBackupsResult", "databaseId");
+            }
+            this.databaseId = databaseId;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetDatabaseMysqlBackupsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -106,21 +114,27 @@ public final class GetDatabaseMysqlBackupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseMysqlBackupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
+
             this.latest = latest;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }

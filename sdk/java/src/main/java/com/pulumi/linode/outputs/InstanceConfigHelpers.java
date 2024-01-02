@@ -92,26 +92,31 @@ public final class InstanceConfigHelpers {
 
         @CustomType.Setter
         public Builder devtmpfsAutomount(@Nullable Boolean devtmpfsAutomount) {
+
             this.devtmpfsAutomount = devtmpfsAutomount;
             return this;
         }
         @CustomType.Setter
         public Builder distro(@Nullable Boolean distro) {
+
             this.distro = distro;
             return this;
         }
         @CustomType.Setter
         public Builder modulesDep(@Nullable Boolean modulesDep) {
+
             this.modulesDep = modulesDep;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable Boolean network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder updatedbDisabled(@Nullable Boolean updatedbDisabled) {
+
             this.updatedbDisabled = updatedbDisabled;
             return this;
         }

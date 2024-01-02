@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetFirewallsFirewallDeviceArgs;
 import com.pulumi.linode.inputs.GetFirewallsFirewallInboundArgs;
 import com.pulumi.linode.inputs.GetFirewallsFirewallOutboundArgs;
@@ -519,17 +520,39 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         }
 
         public GetFirewallsFirewallArgs build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.disabled = Objects.requireNonNull($.disabled, "expected parameter 'disabled' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.inboundPolicy = Objects.requireNonNull($.inboundPolicy, "expected parameter 'inboundPolicy' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.linodes = Objects.requireNonNull($.linodes, "expected parameter 'linodes' to be non-null");
-            $.nodebalancers = Objects.requireNonNull($.nodebalancers, "expected parameter 'nodebalancers' to be non-null");
-            $.outboundPolicy = Objects.requireNonNull($.outboundPolicy, "expected parameter 'outboundPolicy' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "created");
+            }
+            if ($.disabled == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "disabled");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "id");
+            }
+            if ($.inboundPolicy == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "inboundPolicy");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "label");
+            }
+            if ($.linodes == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "linodes");
+            }
+            if ($.nodebalancers == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "nodebalancers");
+            }
+            if ($.outboundPolicy == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "outboundPolicy");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "status");
+            }
+            if ($.tags == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "tags");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewallArgs", "updated");
+            }
             return $;
         }
     }

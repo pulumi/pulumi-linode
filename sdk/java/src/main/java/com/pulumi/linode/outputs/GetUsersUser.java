@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetUsersUserDatabaseGrant;
 import com.pulumi.linode.outputs.GetUsersUserDomainGrant;
 import com.pulumi.linode.outputs.GetUsersUserFirewallGrant;
@@ -212,7 +213,10 @@ public final class GetUsersUser {
 
         @CustomType.Setter
         public Builder databaseGrants(List<GetUsersUserDatabaseGrant> databaseGrants) {
-            this.databaseGrants = Objects.requireNonNull(databaseGrants);
+            if (databaseGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "databaseGrants");
+            }
+            this.databaseGrants = databaseGrants;
             return this;
         }
         public Builder databaseGrants(GetUsersUserDatabaseGrant... databaseGrants) {
@@ -220,7 +224,10 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder domainGrants(List<GetUsersUserDomainGrant> domainGrants) {
-            this.domainGrants = Objects.requireNonNull(domainGrants);
+            if (domainGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "domainGrants");
+            }
+            this.domainGrants = domainGrants;
             return this;
         }
         public Builder domainGrants(GetUsersUserDomainGrant... domainGrants) {
@@ -228,12 +235,18 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder firewallGrants(List<GetUsersUserFirewallGrant> firewallGrants) {
-            this.firewallGrants = Objects.requireNonNull(firewallGrants);
+            if (firewallGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "firewallGrants");
+            }
+            this.firewallGrants = firewallGrants;
             return this;
         }
         public Builder firewallGrants(GetUsersUserFirewallGrant... firewallGrants) {
@@ -241,7 +254,10 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder globalGrants(List<GetUsersUserGlobalGrant> globalGrants) {
-            this.globalGrants = Objects.requireNonNull(globalGrants);
+            if (globalGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "globalGrants");
+            }
+            this.globalGrants = globalGrants;
             return this;
         }
         public Builder globalGrants(GetUsersUserGlobalGrant... globalGrants) {
@@ -249,12 +265,18 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageGrants(List<GetUsersUserImageGrant> imageGrants) {
-            this.imageGrants = Objects.requireNonNull(imageGrants);
+            if (imageGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "imageGrants");
+            }
+            this.imageGrants = imageGrants;
             return this;
         }
         public Builder imageGrants(GetUsersUserImageGrant... imageGrants) {
@@ -262,7 +284,10 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder linodeGrants(List<GetUsersUserLinodeGrant> linodeGrants) {
-            this.linodeGrants = Objects.requireNonNull(linodeGrants);
+            if (linodeGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "linodeGrants");
+            }
+            this.linodeGrants = linodeGrants;
             return this;
         }
         public Builder linodeGrants(GetUsersUserLinodeGrant... linodeGrants) {
@@ -270,7 +295,10 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder longviewGrants(List<GetUsersUserLongviewGrant> longviewGrants) {
-            this.longviewGrants = Objects.requireNonNull(longviewGrants);
+            if (longviewGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "longviewGrants");
+            }
+            this.longviewGrants = longviewGrants;
             return this;
         }
         public Builder longviewGrants(GetUsersUserLongviewGrant... longviewGrants) {
@@ -278,7 +306,10 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder nodebalancerGrants(List<GetUsersUserNodebalancerGrant> nodebalancerGrants) {
-            this.nodebalancerGrants = Objects.requireNonNull(nodebalancerGrants);
+            if (nodebalancerGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "nodebalancerGrants");
+            }
+            this.nodebalancerGrants = nodebalancerGrants;
             return this;
         }
         public Builder nodebalancerGrants(GetUsersUserNodebalancerGrant... nodebalancerGrants) {
@@ -286,17 +317,26 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder passwordCreated(String passwordCreated) {
-            this.passwordCreated = Objects.requireNonNull(passwordCreated);
+            if (passwordCreated == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "passwordCreated");
+            }
+            this.passwordCreated = passwordCreated;
             return this;
         }
         @CustomType.Setter
         public Builder restricted(Boolean restricted) {
-            this.restricted = Objects.requireNonNull(restricted);
+            if (restricted == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "restricted");
+            }
+            this.restricted = restricted;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeys(List<String> sshKeys) {
-            this.sshKeys = Objects.requireNonNull(sshKeys);
+            if (sshKeys == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "sshKeys");
+            }
+            this.sshKeys = sshKeys;
             return this;
         }
         public Builder sshKeys(String... sshKeys) {
@@ -304,7 +344,10 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder stackscriptGrants(List<GetUsersUserStackscriptGrant> stackscriptGrants) {
-            this.stackscriptGrants = Objects.requireNonNull(stackscriptGrants);
+            if (stackscriptGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "stackscriptGrants");
+            }
+            this.stackscriptGrants = stackscriptGrants;
             return this;
         }
         public Builder stackscriptGrants(GetUsersUserStackscriptGrant... stackscriptGrants) {
@@ -312,22 +355,34 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder tfaEnabled(Boolean tfaEnabled) {
-            this.tfaEnabled = Objects.requireNonNull(tfaEnabled);
+            if (tfaEnabled == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "tfaEnabled");
+            }
+            this.tfaEnabled = tfaEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder verifiedPhoneNumber(String verifiedPhoneNumber) {
-            this.verifiedPhoneNumber = Objects.requireNonNull(verifiedPhoneNumber);
+            if (verifiedPhoneNumber == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "verifiedPhoneNumber");
+            }
+            this.verifiedPhoneNumber = verifiedPhoneNumber;
             return this;
         }
         @CustomType.Setter
         public Builder volumeGrants(List<GetUsersUserVolumeGrant> volumeGrants) {
-            this.volumeGrants = Objects.requireNonNull(volumeGrants);
+            if (volumeGrants == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "volumeGrants");
+            }
+            this.volumeGrants = volumeGrants;
             return this;
         }
         public Builder volumeGrants(GetUsersUserVolumeGrant... volumeGrants) {

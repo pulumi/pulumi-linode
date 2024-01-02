@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnetLinode;
 import java.lang.Integer;
 import java.lang.String;
@@ -211,12 +212,24 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
         }
 
         public GetVpcSubnetsVpcSubnet build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.ipv4 = Objects.requireNonNull($.ipv4, "expected parameter 'ipv4' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.linodes = Objects.requireNonNull($.linodes, "expected parameter 'linodes' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "created");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "id");
+            }
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "ipv4");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "label");
+            }
+            if ($.linodes == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "linodes");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "updated");
+            }
             return $;
         }
     }

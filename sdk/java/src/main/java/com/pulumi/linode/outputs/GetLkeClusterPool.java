@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetLkeClusterPoolAutoscaler;
 import com.pulumi.linode.outputs.GetLkeClusterPoolNode;
 import java.lang.Integer;
@@ -102,7 +103,10 @@ public final class GetLkeClusterPool {
 
         @CustomType.Setter
         public Builder autoscalers(List<GetLkeClusterPoolAutoscaler> autoscalers) {
-            this.autoscalers = Objects.requireNonNull(autoscalers);
+            if (autoscalers == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "autoscalers");
+            }
+            this.autoscalers = autoscalers;
             return this;
         }
         public Builder autoscalers(GetLkeClusterPoolAutoscaler... autoscalers) {
@@ -110,17 +114,26 @@ public final class GetLkeClusterPool {
         }
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(List<GetLkeClusterPoolNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetLkeClusterPoolNode... nodes) {
@@ -128,7 +141,10 @@ public final class GetLkeClusterPool {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetLkeClusterPool build() {

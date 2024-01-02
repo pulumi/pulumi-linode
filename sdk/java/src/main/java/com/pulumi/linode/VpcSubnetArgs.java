@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpcSubnetArgs build() {
-            $.ipv4 = Objects.requireNonNull($.ipv4, "expected parameter 'ipv4' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("VpcSubnetArgs", "ipv4");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("VpcSubnetArgs", "label");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("VpcSubnetArgs", "vpcId");
+            }
             return $;
         }
     }

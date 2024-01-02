@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -170,47 +171,74 @@ public final class GetVolumesVolume {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder filesystemPath(String filesystemPath) {
-            this.filesystemPath = Objects.requireNonNull(filesystemPath);
+            if (filesystemPath == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "filesystemPath");
+            }
+            this.filesystemPath = filesystemPath;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
-            this.linodeId = Objects.requireNonNull(linodeId);
+            if (linodeId == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "linodeId");
+            }
+            this.linodeId = linodeId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -218,7 +246,10 @@ public final class GetVolumesVolume {
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         public GetVolumesVolume build() {

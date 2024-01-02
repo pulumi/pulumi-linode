@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TokenArgs build() {
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("TokenArgs", "scopes");
+            }
             return $;
         }
     }

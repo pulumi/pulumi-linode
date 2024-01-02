@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -125,10 +126,18 @@ public final class DatabaseMysqlUpdatesArgs extends com.pulumi.resources.Resourc
         }
 
         public DatabaseMysqlUpdatesArgs build() {
-            $.dayOfWeek = Objects.requireNonNull($.dayOfWeek, "expected parameter 'dayOfWeek' to be non-null");
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.frequency = Objects.requireNonNull($.frequency, "expected parameter 'frequency' to be non-null");
-            $.hourOfDay = Objects.requireNonNull($.hourOfDay, "expected parameter 'hourOfDay' to be non-null");
+            if ($.dayOfWeek == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlUpdatesArgs", "dayOfWeek");
+            }
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlUpdatesArgs", "duration");
+            }
+            if ($.frequency == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlUpdatesArgs", "frequency");
+            }
+            if ($.hourOfDay == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlUpdatesArgs", "hourOfDay");
+            }
             return $;
         }
     }

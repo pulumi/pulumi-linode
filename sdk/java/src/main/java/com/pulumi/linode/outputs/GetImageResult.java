@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -189,7 +190,10 @@ public final class GetImageResult {
 
         @CustomType.Setter
         public Builder capabilities(List<String> capabilities) {
-            this.capabilities = Objects.requireNonNull(capabilities);
+            if (capabilities == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "capabilities");
+            }
+            this.capabilities = capabilities;
             return this;
         }
         public Builder capabilities(String... capabilities) {
@@ -197,62 +201,98 @@ public final class GetImageResult {
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder deprecated(Boolean deprecated) {
-            this.deprecated = Objects.requireNonNull(deprecated);
+            if (deprecated == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "deprecated");
+            }
+            this.deprecated = deprecated;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiry(String expiry) {
-            this.expiry = Objects.requireNonNull(expiry);
+            if (expiry == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "expiry");
+            }
+            this.expiry = expiry;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
-            this.isPublic = Objects.requireNonNull(isPublic);
+            if (isPublic == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "isPublic");
+            }
+            this.isPublic = isPublic;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vendor(String vendor) {
-            this.vendor = Objects.requireNonNull(vendor);
+            if (vendor == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "vendor");
+            }
+            this.vendor = vendor;
             return this;
         }
         public GetImageResult build() {

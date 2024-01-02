@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetRegionResolver extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRegionResolver build() {
-            $.ipv4 = Objects.requireNonNull($.ipv4, "expected parameter 'ipv4' to be non-null");
-            $.ipv6 = Objects.requireNonNull($.ipv6, "expected parameter 'ipv6' to be non-null");
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("GetRegionResolver", "ipv4");
+            }
+            if ($.ipv6 == null) {
+                throw new MissingRequiredPropertyException("GetRegionResolver", "ipv6");
+            }
             return $;
         }
     }

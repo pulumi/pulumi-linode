@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetLkeVersionsVersion;
 import java.lang.String;
 import java.util.List;
@@ -50,12 +51,18 @@ public final class GetLkeVersionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLkeVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder versions(List<GetLkeVersionsVersion> versions) {
-            this.versions = Objects.requireNonNull(versions);
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetLkeVersionsResult", "versions");
+            }
+            this.versions = versions;
             return this;
         }
         public Builder versions(GetLkeVersionsVersion... versions) {

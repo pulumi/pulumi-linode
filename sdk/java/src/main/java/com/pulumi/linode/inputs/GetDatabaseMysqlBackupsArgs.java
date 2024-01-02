@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsFilterArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -220,7 +221,9 @@ public final class GetDatabaseMysqlBackupsArgs extends com.pulumi.resources.Invo
         }
 
         public GetDatabaseMysqlBackupsArgs build() {
-            $.databaseId = Objects.requireNonNull($.databaseId, "expected parameter 'databaseId' to be non-null");
+            if ($.databaseId == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseMysqlBackupsArgs", "databaseId");
+            }
             return $;
         }
     }

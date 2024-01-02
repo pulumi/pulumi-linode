@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -66,32 +67,50 @@ public final class GetProfileReferrals {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetProfileReferrals", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder completed(Integer completed) {
-            this.completed = Objects.requireNonNull(completed);
+            if (completed == null) {
+              throw new MissingRequiredPropertyException("GetProfileReferrals", "completed");
+            }
+            this.completed = completed;
             return this;
         }
         @CustomType.Setter
         public Builder credit(Double credit) {
-            this.credit = Objects.requireNonNull(credit);
+            if (credit == null) {
+              throw new MissingRequiredPropertyException("GetProfileReferrals", "credit");
+            }
+            this.credit = credit;
             return this;
         }
         @CustomType.Setter
         public Builder pending(Integer pending) {
-            this.pending = Objects.requireNonNull(pending);
+            if (pending == null) {
+              throw new MissingRequiredPropertyException("GetProfileReferrals", "pending");
+            }
+            this.pending = pending;
             return this;
         }
         @CustomType.Setter
         public Builder total(Integer total) {
-            this.total = Objects.requireNonNull(total);
+            if (total == null) {
+              throw new MissingRequiredPropertyException("GetProfileReferrals", "total");
+            }
+            this.total = total;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetProfileReferrals", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetProfileReferrals build() {

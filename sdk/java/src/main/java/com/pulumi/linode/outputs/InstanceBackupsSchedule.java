@@ -58,11 +58,13 @@ public final class InstanceBackupsSchedule {
 
         @CustomType.Setter
         public Builder day(@Nullable String day) {
+
             this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder window(@Nullable String window) {
+
             this.window = window;
             return this;
         }

@@ -73,16 +73,19 @@ public final class LkeClusterPoolNode {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable Integer instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

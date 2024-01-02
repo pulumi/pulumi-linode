@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.ObjectStorageBucketLifecycleRuleExpiration;
 import com.pulumi.linode.outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration;
 import java.lang.Boolean;
@@ -110,31 +111,39 @@ public final class ObjectStorageBucketLifecycleRule {
 
         @CustomType.Setter
         public Builder abortIncompleteMultipartUploadDays(@Nullable Integer abortIncompleteMultipartUploadDays) {
+
             this.abortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("ObjectStorageBucketLifecycleRule", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(@Nullable ObjectStorageBucketLifecycleRuleExpiration expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder noncurrentVersionExpiration(@Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration) {
+
             this.noncurrentVersionExpiration = noncurrentVersionExpiration;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }

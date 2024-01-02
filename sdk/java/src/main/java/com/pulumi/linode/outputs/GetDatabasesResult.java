@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetDatabasesDatabase;
 import com.pulumi.linode.outputs.GetDatabasesFilter;
 import java.lang.String;
@@ -71,6 +72,7 @@ public final class GetDatabasesResult {
 
         @CustomType.Setter
         public Builder databases(@Nullable List<GetDatabasesDatabase> databases) {
+
             this.databases = databases;
             return this;
         }
@@ -79,6 +81,7 @@ public final class GetDatabasesResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetDatabasesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -87,16 +90,21 @@ public final class GetDatabasesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -270,10 +271,18 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
         }
 
         public NodeBalancerNodeArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.configId = Objects.requireNonNull($.configId, "expected parameter 'configId' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.nodebalancerId = Objects.requireNonNull($.nodebalancerId, "expected parameter 'nodebalancerId' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerNodeArgs", "address");
+            }
+            if ($.configId == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerNodeArgs", "configId");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerNodeArgs", "label");
+            }
+            if ($.nodebalancerId == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerNodeArgs", "nodebalancerId");
+            }
             return $;
         }
     }

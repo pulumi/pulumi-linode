@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -260,12 +261,24 @@ public final class GetVpcsVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GetVpcsVpcArgs build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.updated = Objects.requireNonNull($.updated, "expected parameter 'updated' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "created");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "description");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "label");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "region");
+            }
+            if ($.updated == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "updated");
+            }
             return $;
         }
     }

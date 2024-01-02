@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Private;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Public;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Reserved;
@@ -64,7 +65,10 @@ public final class GetInstanceNetworkingIpv4 {
 
         @CustomType.Setter
         public Builder privates(List<GetInstanceNetworkingIpv4Private> privates) {
-            this.privates = Objects.requireNonNull(privates);
+            if (privates == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4", "privates");
+            }
+            this.privates = privates;
             return this;
         }
         public Builder privates(GetInstanceNetworkingIpv4Private... privates) {
@@ -72,7 +76,10 @@ public final class GetInstanceNetworkingIpv4 {
         }
         @CustomType.Setter
         public Builder publics(List<GetInstanceNetworkingIpv4Public> publics) {
-            this.publics = Objects.requireNonNull(publics);
+            if (publics == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4", "publics");
+            }
+            this.publics = publics;
             return this;
         }
         public Builder publics(GetInstanceNetworkingIpv4Public... publics) {
@@ -80,7 +87,10 @@ public final class GetInstanceNetworkingIpv4 {
         }
         @CustomType.Setter
         public Builder reserveds(List<GetInstanceNetworkingIpv4Reserved> reserveds) {
-            this.reserveds = Objects.requireNonNull(reserveds);
+            if (reserveds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4", "reserveds");
+            }
+            this.reserveds = reserveds;
             return this;
         }
         public Builder reserveds(GetInstanceNetworkingIpv4Reserved... reserveds) {
@@ -88,7 +98,10 @@ public final class GetInstanceNetworkingIpv4 {
         }
         @CustomType.Setter
         public Builder shareds(List<GetInstanceNetworkingIpv4Shared> shareds) {
-            this.shareds = Objects.requireNonNull(shareds);
+            if (shareds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4", "shareds");
+            }
+            this.shareds = shareds;
             return this;
         }
         public Builder shareds(GetInstanceNetworkingIpv4Shared... shareds) {

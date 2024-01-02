@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetAccountAvailabilitiesAvailability;
 import com.pulumi.linode.outputs.GetAccountAvailabilitiesFilter;
 import java.lang.String;
@@ -50,6 +51,7 @@ public final class GetAccountAvailabilitiesResult {
 
         @CustomType.Setter
         public Builder availabilities(@Nullable List<GetAccountAvailabilitiesAvailability> availabilities) {
+
             this.availabilities = availabilities;
             return this;
         }
@@ -58,6 +60,7 @@ public final class GetAccountAvailabilitiesResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAccountAvailabilitiesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -66,7 +69,10 @@ public final class GetAccountAvailabilitiesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountAvailabilitiesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetAccountAvailabilitiesResult build() {

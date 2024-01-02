@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -197,10 +198,18 @@ public final class GetVlansVlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GetVlansVlanArgs build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.linodes = Objects.requireNonNull($.linodes, "expected parameter 'linodes' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetVlansVlanArgs", "created");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetVlansVlanArgs", "label");
+            }
+            if ($.linodes == null) {
+                throw new MissingRequiredPropertyException("GetVlansVlanArgs", "linodes");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetVlansVlanArgs", "region");
+            }
             return $;
         }
     }

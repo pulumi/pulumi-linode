@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class RdnsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RdnsArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.rdns = Objects.requireNonNull($.rdns, "expected parameter 'rdns' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("RdnsArgs", "address");
+            }
+            if ($.rdns == null) {
+                throw new MissingRequiredPropertyException("RdnsArgs", "rdns");
+            }
             return $;
         }
     }

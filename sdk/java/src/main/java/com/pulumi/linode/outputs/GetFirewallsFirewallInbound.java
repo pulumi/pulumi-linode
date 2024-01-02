@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,12 +74,18 @@ public final class GetFirewallsFirewallInbound {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewallInbound", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4s(List<String> ipv4s) {
-            this.ipv4s = Objects.requireNonNull(ipv4s);
+            if (ipv4s == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewallInbound", "ipv4s");
+            }
+            this.ipv4s = ipv4s;
             return this;
         }
         public Builder ipv4s(String... ipv4s) {
@@ -86,7 +93,10 @@ public final class GetFirewallsFirewallInbound {
         }
         @CustomType.Setter
         public Builder ipv6s(List<String> ipv6s) {
-            this.ipv6s = Objects.requireNonNull(ipv6s);
+            if (ipv6s == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewallInbound", "ipv6s");
+            }
+            this.ipv6s = ipv6s;
             return this;
         }
         public Builder ipv6s(String... ipv6s) {
@@ -94,17 +104,26 @@ public final class GetFirewallsFirewallInbound {
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewallInbound", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder ports(String ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewallInbound", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewallInbound", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public GetFirewallsFirewallInbound build() {

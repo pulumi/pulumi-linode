@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -228,7 +229,10 @@ public final class GetDomainResult {
 
         @CustomType.Setter
         public Builder axfrIps(List<String> axfrIps) {
-            this.axfrIps = Objects.requireNonNull(axfrIps);
+            if (axfrIps == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "axfrIps");
+            }
+            this.axfrIps = axfrIps;
             return this;
         }
         public Builder axfrIps(String... axfrIps) {
@@ -236,32 +240,46 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder expireSec(Integer expireSec) {
-            this.expireSec = Objects.requireNonNull(expireSec);
+            if (expireSec == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "expireSec");
+            }
+            this.expireSec = expireSec;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder masterIps(List<String> masterIps) {
-            this.masterIps = Objects.requireNonNull(masterIps);
+            if (masterIps == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "masterIps");
+            }
+            this.masterIps = masterIps;
             return this;
         }
         public Builder masterIps(String... masterIps) {
@@ -269,27 +287,42 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder refreshSec(Integer refreshSec) {
-            this.refreshSec = Objects.requireNonNull(refreshSec);
+            if (refreshSec == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "refreshSec");
+            }
+            this.refreshSec = refreshSec;
             return this;
         }
         @CustomType.Setter
         public Builder retrySec(Integer retrySec) {
-            this.retrySec = Objects.requireNonNull(retrySec);
+            if (retrySec == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "retrySec");
+            }
+            this.retrySec = retrySec;
             return this;
         }
         @CustomType.Setter
         public Builder soaEmail(String soaEmail) {
-            this.soaEmail = Objects.requireNonNull(soaEmail);
+            if (soaEmail == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "soaEmail");
+            }
+            this.soaEmail = soaEmail;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -297,12 +330,18 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder ttlSec(Integer ttlSec) {
-            this.ttlSec = Objects.requireNonNull(ttlSec);
+            if (ttlSec == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "ttlSec");
+            }
+            this.ttlSec = ttlSec;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetDomainResult build() {

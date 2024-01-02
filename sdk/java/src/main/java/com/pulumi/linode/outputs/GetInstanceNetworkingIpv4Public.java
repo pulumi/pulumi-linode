@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4PublicVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -163,52 +164,82 @@ public final class GetInstanceNetworkingIpv4Public {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder gateway(String gateway) {
-            this.gateway = Objects.requireNonNull(gateway);
+            if (gateway == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "gateway");
+            }
+            this.gateway = gateway;
             return this;
         }
         @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
-            this.linodeId = Objects.requireNonNull(linodeId);
+            if (linodeId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "linodeId");
+            }
+            this.linodeId = linodeId;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(Integer prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
-            this.public_ = Objects.requireNonNull(public_);
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "public_");
+            }
+            this.public_ = public_;
             return this;
         }
         @CustomType.Setter
         public Builder rdns(String rdns) {
-            this.rdns = Objects.requireNonNull(rdns);
+            if (rdns == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "rdns");
+            }
+            this.rdns = rdns;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder subnetMask(String subnetMask) {
-            this.subnetMask = Objects.requireNonNull(subnetMask);
+            if (subnetMask == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "subnetMask");
+            }
+            this.subnetMask = subnetMask;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpcNat11(GetInstanceNetworkingIpv4PublicVpcNat11 vpcNat11) {
-            this.vpcNat11 = Objects.requireNonNull(vpcNat11);
+            if (vpcNat11 == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Public", "vpcNat11");
+            }
+            this.vpcNat11 = vpcNat11;
             return this;
         }
         public GetInstanceNetworkingIpv4Public build() {

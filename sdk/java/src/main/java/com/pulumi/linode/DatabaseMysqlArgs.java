@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.DatabaseMysqlUpdatesArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -455,10 +456,18 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DatabaseMysqlArgs build() {
-            $.engineId = Objects.requireNonNull($.engineId, "expected parameter 'engineId' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.engineId == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlArgs", "engineId");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlArgs", "label");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlArgs", "region");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DatabaseMysqlArgs", "type");
+            }
             return $;
         }
     }

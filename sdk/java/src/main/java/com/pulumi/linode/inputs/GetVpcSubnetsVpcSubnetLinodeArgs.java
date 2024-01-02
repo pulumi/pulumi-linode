@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnetLinodeInterfaceArgs;
 import java.lang.Integer;
 import java.util.List;
@@ -97,8 +98,12 @@ public final class GetVpcSubnetsVpcSubnetLinodeArgs extends com.pulumi.resources
         }
 
         public GetVpcSubnetsVpcSubnetLinodeArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.interfaces = Objects.requireNonNull($.interfaces, "expected parameter 'interfaces' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeArgs", "id");
+            }
+            if ($.interfaces == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeArgs", "interfaces");
+            }
             return $;
         }
     }

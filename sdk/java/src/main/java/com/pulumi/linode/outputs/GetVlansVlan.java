@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -86,17 +87,26 @@ public final class GetVlansVlan {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetVlansVlan", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetVlansVlan", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder linodes(List<Integer> linodes) {
-            this.linodes = Objects.requireNonNull(linodes);
+            if (linodes == null) {
+              throw new MissingRequiredPropertyException("GetVlansVlan", "linodes");
+            }
+            this.linodes = linodes;
             return this;
         }
         public Builder linodes(Integer... linodes) {
@@ -104,7 +114,10 @@ public final class GetVlansVlan {
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetVlansVlan", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetVlansVlan build() {

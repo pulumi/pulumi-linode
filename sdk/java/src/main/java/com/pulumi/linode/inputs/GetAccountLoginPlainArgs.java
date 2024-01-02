@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetAccountLoginPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetAccountLoginPlainArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetAccountLoginPlainArgs", "id");
+            }
             return $;
         }
     }

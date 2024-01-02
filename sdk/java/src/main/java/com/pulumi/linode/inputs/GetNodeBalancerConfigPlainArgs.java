@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetNodeBalancerConfigPlainArgs extends com.pulumi.resources.I
         }
 
         public GetNodeBalancerConfigPlainArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.nodebalancerId = Objects.requireNonNull($.nodebalancerId, "expected parameter 'nodebalancerId' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetNodeBalancerConfigPlainArgs", "id");
+            }
+            if ($.nodebalancerId == null) {
+                throw new MissingRequiredPropertyException("GetNodeBalancerConfigPlainArgs", "nodebalancerId");
+            }
             return $;
         }
     }

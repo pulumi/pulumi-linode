@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -145,10 +146,18 @@ public final class GetDatabaseBackupsBackup extends com.pulumi.resources.InvokeA
         }
 
         public GetDatabaseBackupsBackup build() {
-            $.created = Objects.requireNonNull($.created, "expected parameter 'created' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.created == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseBackupsBackup", "created");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseBackupsBackup", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseBackupsBackup", "label");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseBackupsBackup", "type");
+            }
             return $;
         }
     }

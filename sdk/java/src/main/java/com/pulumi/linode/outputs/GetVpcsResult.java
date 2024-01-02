@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcsFilter;
 import com.pulumi.linode.outputs.GetVpcsVpc;
 import java.lang.String;
@@ -58,6 +59,7 @@ public final class GetVpcsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetVpcsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -66,11 +68,15 @@ public final class GetVpcsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder vpcs(@Nullable List<GetVpcsVpc> vpcs) {
+
             this.vpcs = vpcs;
             return this;
         }

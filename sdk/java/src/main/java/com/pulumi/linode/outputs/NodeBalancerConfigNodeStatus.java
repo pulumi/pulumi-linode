@@ -58,11 +58,13 @@ public final class NodeBalancerConfigNodeStatus {
 
         @CustomType.Setter
         public Builder down(@Nullable Integer down) {
+
             this.down = down;
             return this;
         }
         @CustomType.Setter
         public Builder up(@Nullable Integer up) {
+
             this.up = up;
             return this;
         }

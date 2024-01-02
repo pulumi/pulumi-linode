@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.LkeClusterPoolAutoscalerArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolNodeArgs;
 import java.lang.Integer;
@@ -200,8 +201,12 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public LkeClusterPoolArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("LkeClusterPoolArgs", "count");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("LkeClusterPoolArgs", "type");
+            }
             return $;
         }
     }

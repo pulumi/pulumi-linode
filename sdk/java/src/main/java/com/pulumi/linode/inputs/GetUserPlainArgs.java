@@ -4,6 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetUserDatabaseGrant;
 import com.pulumi.linode.inputs.GetUserDomainGrant;
 import com.pulumi.linode.inputs.GetUserFirewallGrant;
@@ -228,7 +229,9 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetUserPlainArgs build() {
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetUserPlainArgs", "username");
+            }
             return $;
         }
     }

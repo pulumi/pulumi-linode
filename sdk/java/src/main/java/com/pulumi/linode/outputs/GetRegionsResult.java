@@ -4,6 +4,7 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetRegionsFilter;
 import com.pulumi.linode.outputs.GetRegionsRegion;
 import java.lang.String;
@@ -50,6 +51,7 @@ public final class GetRegionsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetRegionsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -58,11 +60,15 @@ public final class GetRegionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder regions(@Nullable List<GetRegionsRegion> regions) {
+
             this.regions = regions;
             return this;
         }

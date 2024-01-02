@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -441,9 +442,15 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceDiskArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.linodeId = Objects.requireNonNull($.linodeId, "expected parameter 'linodeId' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("InstanceDiskArgs", "label");
+            }
+            if ($.linodeId == null) {
+                throw new MissingRequiredPropertyException("InstanceDiskArgs", "linodeId");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("InstanceDiskArgs", "size");
+            }
             return $;
         }
     }
