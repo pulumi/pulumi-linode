@@ -161,7 +161,7 @@ require (
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/linode/linodego v1.26.0 // indirect
 	github.com/linode/linodego/k8s v1.25.2 // indirect
-	github.com/linode/terraform-provider-linode/v2 v2.11.0 // indirect
+	github.com/linode/terraform-provider-linode/v2 v2.12.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

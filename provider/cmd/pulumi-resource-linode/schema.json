@@ -4679,6 +4679,153 @@
                 }
             }
         },
+        "linode:index/getNodebalancerConfigsFilter:getNodebalancerConfigsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getNodebalancerConfigsNodebalancerConfig:getNodebalancerConfigsNodebalancerConfig": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)\n"
+                },
+                "check": {
+                    "type": "string",
+                    "description": "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)\n"
+                },
+                "checkAttempts": {
+                    "type": "integer",
+                    "description": "How many times to attempt a check before considering a backend to be down. (1-30)\n"
+                },
+                "checkBody": {
+                    "type": "string"
+                },
+                "checkInterval": {
+                    "type": "integer",
+                    "description": "How often, in seconds, to check that backends are up and serving requests.\n"
+                },
+                "checkPassive": {
+                    "type": "boolean",
+                    "description": "If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.\n"
+                },
+                "checkPath": {
+                    "type": "string",
+                    "description": "The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.\n"
+                },
+                "checkTimeout": {
+                    "type": "integer",
+                    "description": "How long, in seconds, to wait for a check attempt before considering it failed. (1-30)\n"
+                },
+                "cipherSuite": {
+                    "type": "string",
+                    "description": "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The config's ID.\n"
+                },
+                "nodeStatuses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getNodebalancerConfigsNodebalancerConfigNodeStatus:getNodebalancerConfigsNodebalancerConfigNodeStatus"
+                    }
+                },
+                "nodebalancerId": {
+                    "type": "integer",
+                    "description": "The ID of the NodeBalancer to access.\n\n* `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The TCP port this Config is for.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)\n"
+                },
+                "proxyProtocol": {
+                    "type": "string",
+                    "description": "The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)\n"
+                },
+                "sslCommonname": {
+                    "type": "string",
+                    "description": "The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.\n"
+                },
+                "sslFingerprint": {
+                    "type": "string",
+                    "description": "The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.\n"
+                },
+                "stickiness": {
+                    "type": "string",
+                    "description": "Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm",
+                "check",
+                "checkAttempts",
+                "checkBody",
+                "checkInterval",
+                "checkPassive",
+                "checkPath",
+                "checkTimeout",
+                "cipherSuite",
+                "id",
+                "nodeStatuses",
+                "nodebalancerId",
+                "port",
+                "protocol",
+                "proxyProtocol",
+                "sslCommonname",
+                "sslFingerprint",
+                "stickiness"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id",
+                        "nodebalancerId"
+                    ]
+                }
+            }
+        },
+        "linode:index/getNodebalancerConfigsNodebalancerConfigNodeStatus:getNodebalancerConfigsNodebalancerConfigNodeStatus": {
+            "properties": {
+                "down": {
+                    "type": "integer",
+                    "description": "The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.\n"
+                },
+                "up": {
+                    "type": "integer",
+                    "description": "The number of backends considered to be 'UP' and healthy, and that are serving requests.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "down",
+                "up"
+            ]
+        },
         "linode:index/getNodebalancersFilter:getNodebalancersFilter": {
             "properties": {
                 "matchBy": {
@@ -7717,24 +7864,22 @@
             "required": [
                 "created",
                 "entityId",
+                "entityType",
                 "firewallId",
                 "updated"
             ],
             "inputProperties": {
                 "entityId": {
                     "type": "integer",
-                    "description": "The unique ID of the entity to attach.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique ID of the entity to attach.\n"
                 },
                 "entityType": {
                     "type": "string",
-                    "description": "The type of the entity to attach. (default: `linode`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of the entity to attach. (default: `linode`)\n"
                 },
                 "firewallId": {
                     "type": "integer",
-                    "description": "The unique ID of the target Firewall.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique ID of the target Firewall.\n"
                 }
             },
             "requiredInputs": [
@@ -7750,18 +7895,15 @@
                     },
                     "entityId": {
                         "type": "integer",
-                        "description": "The unique ID of the entity to attach.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique ID of the entity to attach.\n"
                     },
                     "entityType": {
                         "type": "string",
-                        "description": "The type of the entity to attach. (default: `linode`)\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of the entity to attach. (default: `linode`)\n"
                     },
                     "firewallId": {
                         "type": "integer",
-                        "description": "The unique ID of the target Firewall.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique ID of the target Firewall.\n"
                     },
                     "updated": {
                         "type": "string",
@@ -10925,7 +11067,7 @@
             }
         },
         "linode:index/volume:Volume": {
-            "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobaz = new Linode.Instance(\"foobaz\", new()\n    {\n        RootPass = \"3X4mp13\",\n        Type = \"g6-nanode-1\",\n        Region = \"us-west\",\n        Tags = new[]\n        {\n            \"foobaz\",\n        },\n    });\n\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"foo-volume\",\n        Region = foobaz.Region,\n        LinodeId = foobaz.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobaz = new Instance(\"foobaz\", InstanceArgs.builder()        \n            .rootPass(\"3X4mp13\")\n            .type(\"g6-nanode-1\")\n            .region(\"us-west\")\n            .tags(\"foobaz\")\n            .build());\n\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()        \n            .label(\"foo-volume\")\n            .region(foobaz.region())\n            .linodeId(foobaz.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobaz:\n    type: linode:Instance\n    properties:\n      rootPass: 3X4mp13\n      type: g6-nanode-1\n      region: us-west\n      tags:\n        - foobaz\n  foobar:\n    type: linode:Volume\n    properties:\n      label: foo-volume\n      region: ${foobaz.region}\n      linodeId: ${foobaz.id}\n```\n\nVolumes can also be attached using the Linode Instance config device map.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    configs: [{\n        devices: {\n            sda: {\n                volumeId: 123,\n            },\n        },\n        kernel: \"linode/latest-64bit\",\n        label: \"boot-existing-volume\",\n    }],\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    configs=[linode.InstanceConfigArgs(\n        devices=linode.InstanceConfigDevicesArgs(\n            sda=linode.InstanceConfigDevicesSdaArgs(\n                volume_id=123,\n            ),\n        ),\n        kernel=\"linode/latest-64bit\",\n        label=\"boot-existing-volume\",\n    )],\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.Instance(\"foo\", new()\n    {\n        Configs = new[]\n        {\n            new Linode.Inputs.InstanceConfigArgs\n            {\n                Devices = new Linode.Inputs.InstanceConfigDevicesArgs\n                {\n                    Sda = new Linode.Inputs.InstanceConfigDevicesSdaArgs\n                    {\n                        VolumeId = 123,\n                    },\n                },\n                Kernel = \"linode/latest-64bit\",\n                Label = \"boot-existing-volume\",\n            },\n        },\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tConfigs: linode.InstanceConfigArray{\n\t\t\t\t\u0026linode.InstanceConfigArgs{\n\t\t\t\t\tDevices: \u0026linode.InstanceConfigDevicesArgs{\n\t\t\t\t\t\tSda: \u0026linode.InstanceConfigDevicesSdaArgs{\n\t\t\t\t\t\t\tVolumeId: pulumi.Int(123),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKernel: pulumi.String(\"linode/latest-64bit\"),\n\t\t\t\t\tLabel:  pulumi.String(\"boot-existing-volume\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceConfigArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesArgs;\nimport com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Instance(\"foo\", InstanceArgs.builder()        \n            .configs(InstanceConfigArgs.builder()\n                .devices(InstanceConfigDevicesArgs.builder()\n                    .sda(InstanceConfigDevicesSdaArgs.builder()\n                        .volumeId(\"123\")\n                        .build())\n                    .build())\n                .kernel(\"linode/latest-64bit\")\n                .label(\"boot-existing-volume\")\n                .build())\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:Instance\n    properties:\n      configs:\n        - devices:\n            sda:\n              volumeId: '123'\n          kernel: linode/latest-64bit\n          label: boot-existing-volume\n      region: us-east\n      type: g6-nanode-1\n```\n\nVolumes may also be cloned from existing volumes.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"my-cloned-volume\",\n    sourceVolumeId: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.Volume(\"foobar\",\n    label=\"my-cloned-volume\",\n    source_volume_id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"my-cloned-volume\",\n        SourceVolumeId = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:          pulumi.String(\"my-cloned-volume\"),\n\t\t\tSourceVolumeId: pulumi.Int(12345),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()        \n            .label(\"my-cloned-volume\")\n            .sourceVolumeId(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Volume\n    properties:\n      label: my-cloned-volume\n      sourceVolumeId: 12345\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n ",
+            "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).\n\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n $ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n ",
             "properties": {
                 "filesystemPath": {
                     "type": "string",
@@ -13645,6 +13787,78 @@
                     "nodebalancerId",
                     "status",
                     "weight"
+                ]
+            }
+        },
+        "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": {
+            "description": "Provides information about Linode NodeBalancer Configs that match a set of filters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe following example shows how one might use this data source to access information about a list of NodeBalancer Configs.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filterNbConfigs = linode.getNodebalancerConfigs({\n    nodebalancerId: 12345,\n    filters: [{\n        name: \"port\",\n        values: [\"80\"],\n    }],\n});\nexport const nodebalancerConfigId = filterNbConfigs.then(filterNbConfigs =\u003e filterNbConfigs.nodebalancerConfigs?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfilter_nb_configs = linode.get_nodebalancer_configs(nodebalancer_id=12345,\n    filters=[linode.GetNodebalancerConfigsFilterArgs(\n        name=\"port\",\n        values=[\"80\"],\n    )])\npulumi.export(\"nodebalancerConfigId\", filter_nb_configs.nodebalancer_configs[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filterNbConfigs = Linode.GetNodebalancerConfigs.Invoke(new()\n    {\n        NodebalancerId = 12345,\n        Filters = new[]\n        {\n            new Linode.Inputs.GetNodebalancerConfigsFilterInputArgs\n            {\n                Name = \"port\",\n                Values = new[]\n                {\n                    \"80\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"nodebalancerConfigId\"] = filterNbConfigs.Apply(getNodebalancerConfigsResult =\u003e getNodebalancerConfigsResult.NodebalancerConfigs[0]?.Id),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfilterNbConfigs, err := linode.GetNodebalancerConfigs(ctx, \u0026linode.GetNodebalancerConfigsArgs{\n\t\t\tNodebalancerId: 12345,\n\t\t\tFilters: []linode.GetNodebalancerConfigsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"port\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"80\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"nodebalancerConfigId\", filterNbConfigs.NodebalancerConfigs[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()\n            .nodebalancerId(12345)\n            .filters(GetNodebalancerConfigsFilterArgs.builder()\n                .name(\"port\")\n                .values(\"80\")\n                .build())\n            .build());\n\n        ctx.export(\"nodebalancerConfigId\", filterNbConfigs.applyValue(getNodebalancerConfigsResult -\u003e getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));\n    }\n}\n```\n```yaml\nvariables:\n  filterNbConfigs:\n    fn::invoke:\n      Function: linode:getNodebalancerConfigs\n      Arguments:\n        nodebalancerId: 12345\n        filters:\n          - name: port\n            values:\n              - '80'\noutputs:\n  nodebalancerConfigId: ${filterNbConfigs.nodebalancerConfigs[0].id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Filterable Fields\n\n* `algorithm`\n\n* `check`\n\n* `nodebalancer_id`\n\n* `port`\n\n* `protocol`\n\n* `proxy_protocol`\n\n* `stickiness`\n\n* `check_path`\n\n* `check_body`\n\n* `check_passive`\n\n* `cipher_suite`\n\n* `ssl_commonname`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNodebalancerConfigs.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancerConfigsFilter:getNodebalancerConfigsFilter"
+                        }
+                    },
+                    "nodebalancerConfigs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancerConfigsNodebalancerConfig:getNodebalancerConfigsNodebalancerConfig"
+                        }
+                    },
+                    "nodebalancerId": {
+                        "type": "integer",
+                        "description": "The ID of the NodeBalancer to access.\n\n* `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.\n"
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "nodebalancerId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNodebalancerConfigs.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancerConfigsFilter:getNodebalancerConfigsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The config's ID.\n"
+                    },
+                    "nodebalancerConfigs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNodebalancerConfigsNodebalancerConfig:getNodebalancerConfigsNodebalancerConfig"
+                        }
+                    },
+                    "nodebalancerId": {
+                        "type": "integer",
+                        "description": "The ID of the NodeBalancer that contains the config.\n"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "nodebalancerId"
                 ]
             }
         },
