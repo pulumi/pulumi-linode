@@ -331,7 +331,7 @@ class FirewallDevice(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> pulumi.Output[Optional[str]]:
+    def entity_type(self) -> pulumi.Output[str]:
         """
         The type of the entity to attach. (default: `linode`)
         """

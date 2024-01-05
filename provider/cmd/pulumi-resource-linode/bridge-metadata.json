@@ -1150,6 +1150,32 @@
                     }
                 }
             },
+            "linode_nodebalancer_configs": {
+                "current": "linode:index/getNodebalancerConfigs:getNodebalancerConfigs",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "nodebalancer_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "node_status": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_nodebalancer_node": {
                 "current": "linode:index/getNodeBalancerNode:getNodeBalancerNode",
                 "majorVersion": 4
@@ -1571,7 +1597,7 @@
             "linode:index/domain:Domain": 0,
             "linode:index/domainRecord:DomainRecord": 0,
             "linode:index/firewall:Firewall": 0,
-            "linode:index/firewallDevice:FirewallDevice": 0,
+            "linode:index/firewallDevice:FirewallDevice": 1,
             "linode:index/image:Image": 0,
             "linode:index/instance:Instance": 0,
             "linode:index/instanceDisk:InstanceDisk": 0,
@@ -1629,6 +1655,7 @@
             "linode:index/getNodeBalancer:getNodeBalancer": 1,
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": 1,
+            "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": 1,
             "linode:index/getNodebalancers:getNodebalancers": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getProfile:getProfile": 1,
@@ -1716,6 +1743,7 @@
             "linode:index/getNodeBalancer:getNodeBalancer": "linode_nodebalancer",
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": "linode_nodebalancer_config",
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": "linode_nodebalancer_node",
+            "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": "linode_nodebalancer_configs",
             "linode:index/getNodebalancers:getNodebalancers": "linode_nodebalancers",
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": "linode_object_storage_cluster",
             "linode:index/getProfile:getProfile": "linode_profile",
@@ -2375,6 +2403,29 @@
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": {
                 "configId": "config_id",
                 "nodebalancerId": "nodebalancer_id"
+            },
+            "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": {
+                "filters": "filter",
+                "nodebalancerConfigs": "nodebalancer_configs",
+                "nodebalancerId": "nodebalancer_id",
+                "orderBy": "order_by"
+            },
+            "linode:index/getNodebalancerConfigsFilter:getNodebalancerConfigsFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getNodebalancerConfigsNodebalancerConfig:getNodebalancerConfigsNodebalancerConfig": {
+                "checkAttempts": "check_attempts",
+                "checkBody": "check_body",
+                "checkInterval": "check_interval",
+                "checkPassive": "check_passive",
+                "checkPath": "check_path",
+                "checkTimeout": "check_timeout",
+                "cipherSuite": "cipher_suite",
+                "nodeStatuses": "node_status",
+                "nodebalancerId": "nodebalancer_id",
+                "proxyProtocol": "proxy_protocol",
+                "sslCommonname": "ssl_commonname",
+                "sslFingerprint": "ssl_fingerprint"
             },
             "linode:index/getNodebalancers:getNodebalancers": {
                 "filters": "filter",

@@ -18309,6 +18309,479 @@ func (o GetNodeBalancerTransferArrayOutput) Index(i pulumi.IntInput) GetNodeBala
 	}).(GetNodeBalancerTransferOutput)
 }
 
+type GetNodebalancerConfigsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetNodebalancerConfigsFilterInput is an input type that accepts GetNodebalancerConfigsFilterArgs and GetNodebalancerConfigsFilterOutput values.
+// You can construct a concrete instance of `GetNodebalancerConfigsFilterInput` via:
+//
+//	GetNodebalancerConfigsFilterArgs{...}
+type GetNodebalancerConfigsFilterInput interface {
+	pulumi.Input
+
+	ToGetNodebalancerConfigsFilterOutput() GetNodebalancerConfigsFilterOutput
+	ToGetNodebalancerConfigsFilterOutputWithContext(context.Context) GetNodebalancerConfigsFilterOutput
+}
+
+type GetNodebalancerConfigsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNodebalancerConfigsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancerConfigsFilter)(nil)).Elem()
+}
+
+func (i GetNodebalancerConfigsFilterArgs) ToGetNodebalancerConfigsFilterOutput() GetNodebalancerConfigsFilterOutput {
+	return i.ToGetNodebalancerConfigsFilterOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancerConfigsFilterArgs) ToGetNodebalancerConfigsFilterOutputWithContext(ctx context.Context) GetNodebalancerConfigsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancerConfigsFilterOutput)
+}
+
+// GetNodebalancerConfigsFilterArrayInput is an input type that accepts GetNodebalancerConfigsFilterArray and GetNodebalancerConfigsFilterArrayOutput values.
+// You can construct a concrete instance of `GetNodebalancerConfigsFilterArrayInput` via:
+//
+//	GetNodebalancerConfigsFilterArray{ GetNodebalancerConfigsFilterArgs{...} }
+type GetNodebalancerConfigsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNodebalancerConfigsFilterArrayOutput() GetNodebalancerConfigsFilterArrayOutput
+	ToGetNodebalancerConfigsFilterArrayOutputWithContext(context.Context) GetNodebalancerConfigsFilterArrayOutput
+}
+
+type GetNodebalancerConfigsFilterArray []GetNodebalancerConfigsFilterInput
+
+func (GetNodebalancerConfigsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancerConfigsFilter)(nil)).Elem()
+}
+
+func (i GetNodebalancerConfigsFilterArray) ToGetNodebalancerConfigsFilterArrayOutput() GetNodebalancerConfigsFilterArrayOutput {
+	return i.ToGetNodebalancerConfigsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancerConfigsFilterArray) ToGetNodebalancerConfigsFilterArrayOutputWithContext(ctx context.Context) GetNodebalancerConfigsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancerConfigsFilterArrayOutput)
+}
+
+type GetNodebalancerConfigsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancerConfigsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancerConfigsFilter)(nil)).Elem()
+}
+
+func (o GetNodebalancerConfigsFilterOutput) ToGetNodebalancerConfigsFilterOutput() GetNodebalancerConfigsFilterOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsFilterOutput) ToGetNodebalancerConfigsFilterOutputWithContext(ctx context.Context) GetNodebalancerConfigsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetNodebalancerConfigsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetNodebalancerConfigsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetNodebalancerConfigsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNodebalancerConfigsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancerConfigsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancerConfigsFilter)(nil)).Elem()
+}
+
+func (o GetNodebalancerConfigsFilterArrayOutput) ToGetNodebalancerConfigsFilterArrayOutput() GetNodebalancerConfigsFilterArrayOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsFilterArrayOutput) ToGetNodebalancerConfigsFilterArrayOutputWithContext(ctx context.Context) GetNodebalancerConfigsFilterArrayOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsFilterArrayOutput) Index(i pulumi.IntInput) GetNodebalancerConfigsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodebalancerConfigsFilter {
+		return vs[0].([]GetNodebalancerConfigsFilter)[vs[1].(int)]
+	}).(GetNodebalancerConfigsFilterOutput)
+}
+
+type GetNodebalancerConfigsNodebalancerConfig struct {
+	// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+	Algorithm string `pulumi:"algorithm"`
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
+	Check string `pulumi:"check"`
+	// How many times to attempt a check before considering a backend to be down. (1-30)
+	CheckAttempts int    `pulumi:"checkAttempts"`
+	CheckBody     string `pulumi:"checkBody"`
+	// How often, in seconds, to check that backends are up and serving requests.
+	CheckInterval int `pulumi:"checkInterval"`
+	// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+	CheckPassive bool `pulumi:"checkPassive"`
+	// The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+	CheckPath string `pulumi:"checkPath"`
+	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+	CheckTimeout int `pulumi:"checkTimeout"`
+	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+	CipherSuite string `pulumi:"cipherSuite"`
+	// The config's ID.
+	Id           int                                                  `pulumi:"id"`
+	NodeStatuses []GetNodebalancerConfigsNodebalancerConfigNodeStatus `pulumi:"nodeStatuses"`
+	// The ID of the NodeBalancer to access.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+	NodebalancerId int `pulumi:"nodebalancerId"`
+	// The TCP port this Config is for.
+	Port int `pulumi:"port"`
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+	Protocol string `pulumi:"protocol"`
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+	ProxyProtocol string `pulumi:"proxyProtocol"`
+	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	SslCommonname string `pulumi:"sslCommonname"`
+	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	SslFingerprint string `pulumi:"sslFingerprint"`
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
+	Stickiness string `pulumi:"stickiness"`
+}
+
+// GetNodebalancerConfigsNodebalancerConfigInput is an input type that accepts GetNodebalancerConfigsNodebalancerConfigArgs and GetNodebalancerConfigsNodebalancerConfigOutput values.
+// You can construct a concrete instance of `GetNodebalancerConfigsNodebalancerConfigInput` via:
+//
+//	GetNodebalancerConfigsNodebalancerConfigArgs{...}
+type GetNodebalancerConfigsNodebalancerConfigInput interface {
+	pulumi.Input
+
+	ToGetNodebalancerConfigsNodebalancerConfigOutput() GetNodebalancerConfigsNodebalancerConfigOutput
+	ToGetNodebalancerConfigsNodebalancerConfigOutputWithContext(context.Context) GetNodebalancerConfigsNodebalancerConfigOutput
+}
+
+type GetNodebalancerConfigsNodebalancerConfigArgs struct {
+	// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
+	Check pulumi.StringInput `pulumi:"check"`
+	// How many times to attempt a check before considering a backend to be down. (1-30)
+	CheckAttempts pulumi.IntInput    `pulumi:"checkAttempts"`
+	CheckBody     pulumi.StringInput `pulumi:"checkBody"`
+	// How often, in seconds, to check that backends are up and serving requests.
+	CheckInterval pulumi.IntInput `pulumi:"checkInterval"`
+	// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+	CheckPassive pulumi.BoolInput `pulumi:"checkPassive"`
+	// The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+	CheckPath pulumi.StringInput `pulumi:"checkPath"`
+	// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+	CheckTimeout pulumi.IntInput `pulumi:"checkTimeout"`
+	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+	CipherSuite pulumi.StringInput `pulumi:"cipherSuite"`
+	// The config's ID.
+	Id           pulumi.IntInput                                              `pulumi:"id"`
+	NodeStatuses GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayInput `pulumi:"nodeStatuses"`
+	// The ID of the NodeBalancer to access.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+	NodebalancerId pulumi.IntInput `pulumi:"nodebalancerId"`
+	// The TCP port this Config is for.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+	ProxyProtocol pulumi.StringInput `pulumi:"proxyProtocol"`
+	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	SslCommonname pulumi.StringInput `pulumi:"sslCommonname"`
+	// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+	SslFingerprint pulumi.StringInput `pulumi:"sslFingerprint"`
+	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
+	Stickiness pulumi.StringInput `pulumi:"stickiness"`
+}
+
+func (GetNodebalancerConfigsNodebalancerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfig)(nil)).Elem()
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigArgs) ToGetNodebalancerConfigsNodebalancerConfigOutput() GetNodebalancerConfigsNodebalancerConfigOutput {
+	return i.ToGetNodebalancerConfigsNodebalancerConfigOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigArgs) ToGetNodebalancerConfigsNodebalancerConfigOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancerConfigsNodebalancerConfigOutput)
+}
+
+// GetNodebalancerConfigsNodebalancerConfigArrayInput is an input type that accepts GetNodebalancerConfigsNodebalancerConfigArray and GetNodebalancerConfigsNodebalancerConfigArrayOutput values.
+// You can construct a concrete instance of `GetNodebalancerConfigsNodebalancerConfigArrayInput` via:
+//
+//	GetNodebalancerConfigsNodebalancerConfigArray{ GetNodebalancerConfigsNodebalancerConfigArgs{...} }
+type GetNodebalancerConfigsNodebalancerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetNodebalancerConfigsNodebalancerConfigArrayOutput() GetNodebalancerConfigsNodebalancerConfigArrayOutput
+	ToGetNodebalancerConfigsNodebalancerConfigArrayOutputWithContext(context.Context) GetNodebalancerConfigsNodebalancerConfigArrayOutput
+}
+
+type GetNodebalancerConfigsNodebalancerConfigArray []GetNodebalancerConfigsNodebalancerConfigInput
+
+func (GetNodebalancerConfigsNodebalancerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancerConfigsNodebalancerConfig)(nil)).Elem()
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigArray) ToGetNodebalancerConfigsNodebalancerConfigArrayOutput() GetNodebalancerConfigsNodebalancerConfigArrayOutput {
+	return i.ToGetNodebalancerConfigsNodebalancerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigArray) ToGetNodebalancerConfigsNodebalancerConfigArrayOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancerConfigsNodebalancerConfigArrayOutput)
+}
+
+type GetNodebalancerConfigsNodebalancerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancerConfigsNodebalancerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfig)(nil)).Elem()
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) ToGetNodebalancerConfigsNodebalancerConfigOutput() GetNodebalancerConfigsNodebalancerConfigOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) ToGetNodebalancerConfigsNodebalancerConfigOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigOutput {
+	return o
+}
+
+// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) Check() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.Check }).(pulumi.StringOutput)
+}
+
+// How many times to attempt a check before considering a backend to be down. (1-30)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.CheckAttempts }).(pulumi.IntOutput)
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckBody() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.CheckBody }).(pulumi.StringOutput)
+}
+
+// How often, in seconds, to check that backends are up and serving requests.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.CheckInterval }).(pulumi.IntOutput)
+}
+
+// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckPassive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) bool { return v.CheckPassive }).(pulumi.BoolOutput)
+}
+
+// The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.CheckPath }).(pulumi.StringOutput)
+}
+
+// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.CheckTimeout }).(pulumi.IntOutput)
+}
+
+// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) CipherSuite() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.CipherSuite }).(pulumi.StringOutput)
+}
+
+// The config's ID.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) NodeStatuses() GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) []GetNodebalancerConfigsNodebalancerConfigNodeStatus {
+		return v.NodeStatuses
+	}).(GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput)
+}
+
+// The ID of the NodeBalancer to access.
+//
+// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) NodebalancerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.NodebalancerId }).(pulumi.IntOutput)
+}
+
+// The TCP port this Config is for.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) ProxyProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.ProxyProtocol }).(pulumi.StringOutput)
+}
+
+// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) SslCommonname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.SslCommonname }).(pulumi.StringOutput)
+}
+
+// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) SslFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.SslFingerprint }).(pulumi.StringOutput)
+}
+
+// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) Stickiness() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.Stickiness }).(pulumi.StringOutput)
+}
+
+type GetNodebalancerConfigsNodebalancerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancerConfigsNodebalancerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancerConfigsNodebalancerConfig)(nil)).Elem()
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigArrayOutput) ToGetNodebalancerConfigsNodebalancerConfigArrayOutput() GetNodebalancerConfigsNodebalancerConfigArrayOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigArrayOutput) ToGetNodebalancerConfigsNodebalancerConfigArrayOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigArrayOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigArrayOutput) Index(i pulumi.IntInput) GetNodebalancerConfigsNodebalancerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodebalancerConfigsNodebalancerConfig {
+		return vs[0].([]GetNodebalancerConfigsNodebalancerConfig)[vs[1].(int)]
+	}).(GetNodebalancerConfigsNodebalancerConfigOutput)
+}
+
+type GetNodebalancerConfigsNodebalancerConfigNodeStatus struct {
+	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+	Down int `pulumi:"down"`
+	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+	Up int `pulumi:"up"`
+}
+
+// GetNodebalancerConfigsNodebalancerConfigNodeStatusInput is an input type that accepts GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs and GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput values.
+// You can construct a concrete instance of `GetNodebalancerConfigsNodebalancerConfigNodeStatusInput` via:
+//
+//	GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs{...}
+type GetNodebalancerConfigsNodebalancerConfigNodeStatusInput interface {
+	pulumi.Input
+
+	ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutput() GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput
+	ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutputWithContext(context.Context) GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput
+}
+
+type GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs struct {
+	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+	Down pulumi.IntInput `pulumi:"down"`
+	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+	Up pulumi.IntInput `pulumi:"up"`
+}
+
+func (GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutput() GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput {
+	return i.ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput)
+}
+
+// GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayInput is an input type that accepts GetNodebalancerConfigsNodebalancerConfigNodeStatusArray and GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput values.
+// You can construct a concrete instance of `GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayInput` via:
+//
+//	GetNodebalancerConfigsNodebalancerConfigNodeStatusArray{ GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs{...} }
+type GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput() GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput
+	ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutputWithContext(context.Context) GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput
+}
+
+type GetNodebalancerConfigsNodebalancerConfigNodeStatusArray []GetNodebalancerConfigsNodebalancerConfigNodeStatusInput
+
+func (GetNodebalancerConfigsNodebalancerConfigNodeStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancerConfigsNodebalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigNodeStatusArray) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput() GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput {
+	return i.ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodebalancerConfigsNodebalancerConfigNodeStatusArray) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput)
+}
+
+type GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutput() GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput {
+	return o
+}
+
+// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput) Down() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfigNodeStatus) int { return v.Down }).(pulumi.IntOutput)
+}
+
+// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput) Up() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfigNodeStatus) int { return v.Up }).(pulumi.IntOutput)
+}
+
+type GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodebalancerConfigsNodebalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput() GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput) ToGetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutputWithContext(ctx context.Context) GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput {
+	return o
+}
+
+func (o GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodebalancerConfigsNodebalancerConfigNodeStatus {
+		return vs[0].([]GetNodebalancerConfigsNodebalancerConfigNodeStatus)[vs[1].(int)]
+	}).(GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput)
+}
+
 type GetNodebalancersFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -24633,6 +25106,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferInput)(nil)).Elem(), GetNodeBalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferArrayInput)(nil)).Elem(), GetNodeBalancerTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsFilterInput)(nil)).Elem(), GetNodebalancerConfigsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsFilterArrayInput)(nil)).Elem(), GetNodebalancerConfigsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfigInput)(nil)).Elem(), GetNodebalancerConfigsNodebalancerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfigArrayInput)(nil)).Elem(), GetNodebalancerConfigsNodebalancerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfigNodeStatusInput)(nil)).Elem(), GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodebalancerConfigsNodebalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersFilterInput)(nil)).Elem(), GetNodebalancersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersFilterArrayInput)(nil)).Elem(), GetNodebalancersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerInput)(nil)).Elem(), GetNodebalancersNodebalancerArgs{})
@@ -24992,6 +25471,12 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferArrayOutput{})
+	pulumi.RegisterOutputType(GetNodebalancerConfigsFilterOutput{})
+	pulumi.RegisterOutputType(GetNodebalancerConfigsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNodebalancerConfigsNodebalancerConfigOutput{})
+	pulumi.RegisterOutputType(GetNodebalancerConfigsNodebalancerConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetNodebalancerConfigsNodebalancerConfigNodeStatusOutput{})
+	pulumi.RegisterOutputType(GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersFilterOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerOutput{})

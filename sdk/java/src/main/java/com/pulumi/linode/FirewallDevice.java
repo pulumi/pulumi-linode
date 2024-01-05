@@ -12,7 +12,6 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.FirewallDeviceState;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -112,14 +111,14 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> entityType;
+    private Output<String> entityType;
 
     /**
      * @return The type of the entity to attach. (default: `linode`)
      * 
      */
-    public Output<Optional<String>> entityType() {
-        return Codegen.optional(this.entityType);
+    public Output<String> entityType() {
+        return this.entityType;
     }
     /**
      * The unique ID of the target Firewall.

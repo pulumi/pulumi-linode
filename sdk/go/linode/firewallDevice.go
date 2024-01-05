@@ -80,7 +80,7 @@ type FirewallDevice struct {
 	// The unique ID of the entity to attach.
 	EntityId pulumi.IntOutput `pulumi:"entityId"`
 	// The type of the entity to attach. (default: `linode`)
-	EntityType pulumi.StringPtrOutput `pulumi:"entityType"`
+	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// The unique ID of the target Firewall.
 	FirewallId pulumi.IntOutput `pulumi:"firewallId"`
 	// When the Firewall Device was last updated.
@@ -269,8 +269,8 @@ func (o FirewallDeviceOutput) EntityId() pulumi.IntOutput {
 }
 
 // The type of the entity to attach. (default: `linode`)
-func (o FirewallDeviceOutput) EntityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FirewallDevice) pulumi.StringPtrOutput { return v.EntityType }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallDevice) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
 }
 
 // The unique ID of the target Firewall.

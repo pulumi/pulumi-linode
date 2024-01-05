@@ -1,7 +1,5 @@
 provider: linode
 major-version: 4
-javaGenVersion: v0.9.3
 env:
   LINODE_TOKEN: ${{ secrets.LINODE_API_TOKEN }}
 makeTemplate: bridged
-team: ecosystem

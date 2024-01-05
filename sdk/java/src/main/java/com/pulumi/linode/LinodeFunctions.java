@@ -70,6 +70,8 @@ import com.pulumi.linode.inputs.GetNodeBalancerConfigPlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerNodePlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerPlainArgs;
+import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
+import com.pulumi.linode.inputs.GetNodebalancerConfigsPlainArgs;
 import com.pulumi.linode.inputs.GetNodebalancersArgs;
 import com.pulumi.linode.inputs.GetNodebalancersPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
@@ -138,6 +140,7 @@ import com.pulumi.linode.outputs.GetNetworkingIpResult;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
 import com.pulumi.linode.outputs.GetNodeBalancerNodeResult;
 import com.pulumi.linode.outputs.GetNodeBalancerResult;
+import com.pulumi.linode.outputs.GetNodebalancerConfigsResult;
 import com.pulumi.linode.outputs.GetNodebalancersResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
 import com.pulumi.linode.outputs.GetProfileResult;
@@ -9287,6 +9290,282 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetNodeBalancerNodeResult> getNodeBalancerNodePlain(GetNodeBalancerNodePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNodeBalancerNode:getNodeBalancerNode", TypeShape.of(GetNodeBalancerNodeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerConfigsFilterArgs.builder()
+     *                 .name(&#34;port&#34;)
+     *                 .values(&#34;80&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `algorithm`
+     * 
+     * * `check`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `port`
+     * 
+     * * `protocol`
+     * 
+     * * `proxy_protocol`
+     * 
+     * * `stickiness`
+     * 
+     * * `check_path`
+     * 
+     * * `check_body`
+     * 
+     * * `check_passive`
+     * 
+     * * `cipher_suite`
+     * 
+     * * `ssl_commonname`
+     * 
+     */
+    public static Output<GetNodebalancerConfigsResult> getNodebalancerConfigs(GetNodebalancerConfigsArgs args) {
+        return getNodebalancerConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerConfigsFilterArgs.builder()
+     *                 .name(&#34;port&#34;)
+     *                 .values(&#34;80&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `algorithm`
+     * 
+     * * `check`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `port`
+     * 
+     * * `protocol`
+     * 
+     * * `proxy_protocol`
+     * 
+     * * `stickiness`
+     * 
+     * * `check_path`
+     * 
+     * * `check_body`
+     * 
+     * * `check_passive`
+     * 
+     * * `cipher_suite`
+     * 
+     * * `ssl_commonname`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancerConfigsResult> getNodebalancerConfigsPlain(GetNodebalancerConfigsPlainArgs args) {
+        return getNodebalancerConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerConfigsFilterArgs.builder()
+     *                 .name(&#34;port&#34;)
+     *                 .values(&#34;80&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `algorithm`
+     * 
+     * * `check`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `port`
+     * 
+     * * `protocol`
+     * 
+     * * `proxy_protocol`
+     * 
+     * * `stickiness`
+     * 
+     * * `check_path`
+     * 
+     * * `check_body`
+     * 
+     * * `check_passive`
+     * 
+     * * `cipher_suite`
+     * 
+     * * `ssl_commonname`
+     * 
+     */
+    public static Output<GetNodebalancerConfigsResult> getNodebalancerConfigs(GetNodebalancerConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", TypeShape.of(GetNodebalancerConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerConfigsFilterArgs.builder()
+     *                 .name(&#34;port&#34;)
+     *                 .values(&#34;80&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `algorithm`
+     * 
+     * * `check`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `port`
+     * 
+     * * `protocol`
+     * 
+     * * `proxy_protocol`
+     * 
+     * * `stickiness`
+     * 
+     * * `check_path`
+     * 
+     * * `check_body`
+     * 
+     * * `check_passive`
+     * 
+     * * `cipher_suite`
+     * 
+     * * `ssl_commonname`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancerConfigsResult> getNodebalancerConfigsPlain(GetNodebalancerConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", TypeShape.of(GetNodebalancerConfigsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.

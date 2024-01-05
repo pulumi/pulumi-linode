@@ -89,6 +89,9 @@ __all__ = [
     'GetInstancesFilterArgs',
     'GetKernelsFilterArgs',
     'GetKernelsKernelArgs',
+    'GetNodebalancerConfigsFilterArgs',
+    'GetNodebalancerConfigsNodebalancerConfigArgs',
+    'GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs',
     'GetNodebalancersFilterArgs',
     'GetNodebalancersNodebalancerArgs',
     'GetNodebalancersNodebalancerTransferArgs',
@@ -5495,6 +5498,369 @@ class GetKernelsKernelArgs:
     @xen.setter
     def xen(self, value: bool):
         pulumi.set(self, "xen", value)
+
+
+@pulumi.input_type
+class GetNodebalancerConfigsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetNodebalancerConfigsNodebalancerConfigArgs:
+    def __init__(__self__, *,
+                 algorithm: str,
+                 check: str,
+                 check_attempts: int,
+                 check_body: str,
+                 check_interval: int,
+                 check_passive: bool,
+                 check_path: str,
+                 check_timeout: int,
+                 cipher_suite: str,
+                 id: int,
+                 node_statuses: Sequence['GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs'],
+                 nodebalancer_id: int,
+                 port: int,
+                 protocol: str,
+                 proxy_protocol: str,
+                 ssl_commonname: str,
+                 ssl_fingerprint: str,
+                 stickiness: str):
+        """
+        :param str algorithm: What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+        :param str check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        :param int check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param int check_interval: How often, in seconds, to check that backends are up and serving requests.
+        :param bool check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+        :param str check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+        :param int check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        :param str cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+        :param int id: The config's ID.
+        :param int nodebalancer_id: The ID of the NodeBalancer to access.
+               
+               * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        :param int port: The TCP port this Config is for.
+        :param str protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        :param str proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+        :param str ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param str ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        :param str stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "check", check)
+        pulumi.set(__self__, "check_attempts", check_attempts)
+        pulumi.set(__self__, "check_body", check_body)
+        pulumi.set(__self__, "check_interval", check_interval)
+        pulumi.set(__self__, "check_passive", check_passive)
+        pulumi.set(__self__, "check_path", check_path)
+        pulumi.set(__self__, "check_timeout", check_timeout)
+        pulumi.set(__self__, "cipher_suite", cipher_suite)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_statuses", node_statuses)
+        pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+        pulumi.set(__self__, "ssl_commonname", ssl_commonname)
+        pulumi.set(__self__, "ssl_fingerprint", ssl_fingerprint)
+        pulumi.set(__self__, "stickiness", stickiness)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: str):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def check(self) -> str:
+        """
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        """
+        return pulumi.get(self, "check")
+
+    @check.setter
+    def check(self, value: str):
+        pulumi.set(self, "check", value)
+
+    @property
+    @pulumi.getter(name="checkAttempts")
+    def check_attempts(self) -> int:
+        """
+        How many times to attempt a check before considering a backend to be down. (1-30)
+        """
+        return pulumi.get(self, "check_attempts")
+
+    @check_attempts.setter
+    def check_attempts(self, value: int):
+        pulumi.set(self, "check_attempts", value)
+
+    @property
+    @pulumi.getter(name="checkBody")
+    def check_body(self) -> str:
+        return pulumi.get(self, "check_body")
+
+    @check_body.setter
+    def check_body(self, value: str):
+        pulumi.set(self, "check_body", value)
+
+    @property
+    @pulumi.getter(name="checkInterval")
+    def check_interval(self) -> int:
+        """
+        How often, in seconds, to check that backends are up and serving requests.
+        """
+        return pulumi.get(self, "check_interval")
+
+    @check_interval.setter
+    def check_interval(self, value: int):
+        pulumi.set(self, "check_interval", value)
+
+    @property
+    @pulumi.getter(name="checkPassive")
+    def check_passive(self) -> bool:
+        """
+        If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+        """
+        return pulumi.get(self, "check_passive")
+
+    @check_passive.setter
+    def check_passive(self, value: bool):
+        pulumi.set(self, "check_passive", value)
+
+    @property
+    @pulumi.getter(name="checkPath")
+    def check_path(self) -> str:
+        """
+        The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+        """
+        return pulumi.get(self, "check_path")
+
+    @check_path.setter
+    def check_path(self, value: str):
+        pulumi.set(self, "check_path", value)
+
+    @property
+    @pulumi.getter(name="checkTimeout")
+    def check_timeout(self) -> int:
+        """
+        How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        """
+        return pulumi.get(self, "check_timeout")
+
+    @check_timeout.setter
+    def check_timeout(self, value: int):
+        pulumi.set(self, "check_timeout", value)
+
+    @property
+    @pulumi.getter(name="cipherSuite")
+    def cipher_suite(self) -> str:
+        """
+        What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+        """
+        return pulumi.get(self, "cipher_suite")
+
+    @cipher_suite.setter
+    def cipher_suite(self, value: str):
+        pulumi.set(self, "cipher_suite", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The config's ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="nodeStatuses")
+    def node_statuses(self) -> Sequence['GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs']:
+        return pulumi.get(self, "node_statuses")
+
+    @node_statuses.setter
+    def node_statuses(self, value: Sequence['GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs']):
+        pulumi.set(self, "node_statuses", value)
+
+    @property
+    @pulumi.getter(name="nodebalancerId")
+    def nodebalancer_id(self) -> int:
+        """
+        The ID of the NodeBalancer to access.
+
+        * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        """
+        return pulumi.get(self, "nodebalancer_id")
+
+    @nodebalancer_id.setter
+    def nodebalancer_id(self, value: int):
+        pulumi.set(self, "nodebalancer_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The TCP port this Config is for.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: int):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: str):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="proxyProtocol")
+    def proxy_protocol(self) -> str:
+        """
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+        """
+        return pulumi.get(self, "proxy_protocol")
+
+    @proxy_protocol.setter
+    def proxy_protocol(self, value: str):
+        pulumi.set(self, "proxy_protocol", value)
+
+    @property
+    @pulumi.getter(name="sslCommonname")
+    def ssl_commonname(self) -> str:
+        """
+        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        """
+        return pulumi.get(self, "ssl_commonname")
+
+    @ssl_commonname.setter
+    def ssl_commonname(self, value: str):
+        pulumi.set(self, "ssl_commonname", value)
+
+    @property
+    @pulumi.getter(name="sslFingerprint")
+    def ssl_fingerprint(self) -> str:
+        """
+        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        """
+        return pulumi.get(self, "ssl_fingerprint")
+
+    @ssl_fingerprint.setter
+    def ssl_fingerprint(self, value: str):
+        pulumi.set(self, "ssl_fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def stickiness(self) -> str:
+        """
+        Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        """
+        return pulumi.get(self, "stickiness")
+
+    @stickiness.setter
+    def stickiness(self, value: str):
+        pulumi.set(self, "stickiness", value)
+
+
+@pulumi.input_type
+class GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs:
+    def __init__(__self__, *,
+                 down: int,
+                 up: int):
+        """
+        :param int down: The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        :param int up: The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
+        pulumi.set(__self__, "down", down)
+        pulumi.set(__self__, "up", up)
+
+    @property
+    @pulumi.getter
+    def down(self) -> int:
+        """
+        The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        """
+        return pulumi.get(self, "down")
+
+    @down.setter
+    def down(self, value: int):
+        pulumi.set(self, "down", value)
+
+    @property
+    @pulumi.getter
+    def up(self) -> int:
+        """
+        The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
+        return pulumi.get(self, "up")
+
+    @up.setter
+    def up(self, value: int):
+        pulumi.set(self, "up", value)
 
 
 @pulumi.input_type
