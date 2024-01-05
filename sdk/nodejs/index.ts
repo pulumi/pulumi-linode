@@ -215,6 +215,11 @@ export const getNodeBalancerNode: typeof import("./getNodeBalancerNode").getNode
 export const getNodeBalancerNodeOutput: typeof import("./getNodeBalancerNode").getNodeBalancerNodeOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeBalancerNode","getNodeBalancerNodeOutput"], () => require("./getNodeBalancerNode"));
 
+export { GetNodebalancerConfigsArgs, GetNodebalancerConfigsResult, GetNodebalancerConfigsOutputArgs } from "./getNodebalancerConfigs";
+export const getNodebalancerConfigs: typeof import("./getNodebalancerConfigs").getNodebalancerConfigs = null as any;
+export const getNodebalancerConfigsOutput: typeof import("./getNodebalancerConfigs").getNodebalancerConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getNodebalancerConfigs","getNodebalancerConfigsOutput"], () => require("./getNodebalancerConfigs"));
+
 export { GetNodebalancersArgs, GetNodebalancersResult, GetNodebalancersOutputArgs } from "./getNodebalancers";
 export const getNodebalancers: typeof import("./getNodebalancers").getNodebalancers = null as any;
 export const getNodebalancersOutput: typeof import("./getNodebalancers").getNodebalancersOutput = null as any;

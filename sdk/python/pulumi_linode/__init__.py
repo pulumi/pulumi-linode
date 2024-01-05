@@ -47,6 +47,7 @@ from .get_networking_ip import *
 from .get_node_balancer import *
 from .get_node_balancer_config import *
 from .get_node_balancer_node import *
+from .get_nodebalancer_configs import *
 from .get_nodebalancers import *
 from .get_object_storage_cluster import *
 from .get_profile import *

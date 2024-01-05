@@ -78,7 +78,7 @@ export class FirewallDevice extends pulumi.CustomResource {
     /**
      * The type of the entity to attach. (default: `linode`)
      */
-    public readonly entityType!: pulumi.Output<string | undefined>;
+    public readonly entityType!: pulumi.Output<string>;
     /**
      * The unique ID of the target Firewall.
      */

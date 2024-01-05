@@ -1738,6 +1738,103 @@ export interface GetNodeBalancerTransfer {
     total: number;
 }
 
+export interface GetNodebalancerConfigsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetNodebalancerConfigsNodebalancerConfig {
+    /**
+     * What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+     */
+    algorithm: string;
+    /**
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
+     */
+    check: string;
+    /**
+     * How many times to attempt a check before considering a backend to be down. (1-30)
+     */
+    checkAttempts: number;
+    checkBody: string;
+    /**
+     * How often, in seconds, to check that backends are up and serving requests.
+     */
+    checkInterval: number;
+    /**
+     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+     */
+    checkPassive: boolean;
+    /**
+     * The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+     */
+    checkPath: string;
+    /**
+     * How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+     */
+    checkTimeout: number;
+    /**
+     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+     */
+    cipherSuite: string;
+    /**
+     * The config's ID.
+     */
+    id: number;
+    nodeStatuses: outputs.GetNodebalancerConfigsNodebalancerConfigNodeStatus[];
+    /**
+     * The ID of the NodeBalancer to access.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     */
+    nodebalancerId: number;
+    /**
+     * The TCP port this Config is for.
+     */
+    port: number;
+    /**
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     */
+    protocol: string;
+    /**
+     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+     */
+    proxyProtocol: string;
+    /**
+     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     */
+    sslCommonname: string;
+    /**
+     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+     */
+    sslFingerprint: string;
+    /**
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
+     */
+    stickiness: string;
+}
+
+export interface GetNodebalancerConfigsNodebalancerConfigNodeStatus {
+    /**
+     * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+     */
+    down: number;
+    /**
+     * The number of backends considered to be 'UP' and healthy, and that are serving requests.
+     */
+    up: number;
+}
+
 export interface GetNodebalancersFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)

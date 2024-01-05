@@ -84,7 +84,7 @@ namespace Pulumi.Linode
         /// The type of the entity to attach. (default: `linode`)
         /// </summary>
         [Output("entityType")]
-        public Output<string?> EntityType { get; private set; } = null!;
+        public Output<string> EntityType { get; private set; } = null!;
 
         /// <summary>
         /// The unique ID of the target Firewall.
