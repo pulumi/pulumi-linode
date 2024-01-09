@@ -190,16 +190,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-     * 
      */
     @Export(name="booted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> booted;
 
     /**
      * @return If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
-     * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
      */
     public Output<Boolean> booted() {
@@ -420,14 +416,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.privateIpAddress;
     }
     /**
-     * This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+     * This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+     * @return This is the location where the Linode is deployed. Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
      * 
      */
     public Output<String> region() {

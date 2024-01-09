@@ -110,8 +110,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-        /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         /// </summary>
         [Output("booted")]
         public Output<bool> Booted { get; private set; } = null!;
@@ -205,7 +203,7 @@ namespace Pulumi.Linode
         public Output<string> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -391,8 +389,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-        /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         /// </summary>
         [Input("booted")]
         public Input<bool>? Booted { get; set; }
@@ -475,7 +471,7 @@ namespace Pulumi.Linode
         public Input<bool>? PrivateIp { get; set; }
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -644,8 +640,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-        /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         /// </summary>
         [Input("booted")]
         public Input<bool>? Booted { get; set; }
@@ -770,7 +764,7 @@ namespace Pulumi.Linode
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
