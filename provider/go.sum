@@ -2010,8 +2010,8 @@ github.com/lightstep/lightstep-tracer-go v0.18.1/go.mod h1:jlF1pusYV4pidLvZ+XD0U
 github.com/linode/linodego v1.4.0/go.mod h1:PVsRxSlOiJyvG4/scTszpmZDTdgS+to3X6eS8pRrWI8=
 github.com/linode/linodego v1.8.0/go.mod h1:heqhl91D8QTPVm2k9qZHP78zzbOdTFLXE9NJc3bcc50=
 github.com/linode/linodego v1.12.0/go.mod h1:NJlzvlNtdMRRkXb0oN6UWzUkj6t+IBsyveHgZ5Ppjyk=
-github.com/linode/linodego v1.26.0 h1:2tOZ3Wxn4YvGBRgZi3Vz6dab+L16XUntJ9sJxh3ZBio=
-github.com/linode/linodego v1.26.0/go.mod h1:kD7Bf1piWg/AXb9TA0ThAVwzR+GPf6r2PvbTbVk7PMA=
+github.com/linode/linodego v1.27.0 h1:ISRsasemj/bG+jAxs1k6bTTeOJcp+Xpm810SY3GoI0k=
+github.com/linode/linodego v1.27.0/go.mod h1:kD7Bf1piWg/AXb9TA0ThAVwzR+GPf6r2PvbTbVk7PMA=
 github.com/linode/linodego/k8s v1.25.2 h1:PY6S0sAD3xANVvM9WY38bz9GqMTjIbytC8IJJ9Cv23o=
 github.com/linode/linodego/k8s v1.25.2/go.mod h1:DC1XCSRZRGsmaa/ggpDPSDUmOM6aK1bhSIP6+f9Cwhc=
 github.com/linode/terraform-provider-linode/v2 v2.12.0 h1:MkevvfKeoSTtOUNqapQyj+Ovk8SFHRPoXh7WS+NIvvg=
