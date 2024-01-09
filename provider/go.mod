@@ -159,7 +159,7 @@ require (
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
-	github.com/linode/linodego v1.26.0 // indirect
+	github.com/linode/linodego v1.27.0 // indirect
 	github.com/linode/linodego/k8s v1.25.2 // indirect
 	github.com/linode/terraform-provider-linode/v2 v2.12.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect

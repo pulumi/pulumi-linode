@@ -8174,7 +8174,7 @@
                 },
                 "booted": {
                     "type": "boolean",
-                    "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.\n"
+                    "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n"
                 },
                 "configs": {
                     "type": "array",
@@ -8254,7 +8254,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.\n"
+                    "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.\n"
                 },
                 "resizeDisk": {
                     "type": "boolean",
@@ -8369,7 +8369,7 @@
                 },
                 "booted": {
                     "type": "boolean",
-                    "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.\n"
+                    "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n"
                 },
                 "configs": {
                     "type": "array",
@@ -8424,7 +8424,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.\n",
+                    "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.\n",
                     "willReplaceOnChanges": true
                 },
                 "resizeDisk": {
@@ -8523,7 +8523,7 @@
                     },
                     "booted": {
                         "type": "boolean",
-                        "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.\n"
+                        "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n"
                     },
                     "configs": {
                         "type": "array",
@@ -8605,7 +8605,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` forces the creation of a new Linode Instance.*.\n",
+                        "description": "This is the location where the Linode is deployed. Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.\n",
                         "willReplaceOnChanges": true
                     },
                     "resizeDisk": {
