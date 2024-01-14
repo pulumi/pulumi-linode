@@ -18,10 +18,12 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
-	linode "github.com/pulumi/pulumi-linode/provider/v4"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+
+	linode "github.com/pulumi/pulumi-linode/provider/v4"
 )
 
 //go:embed schema-embed.json

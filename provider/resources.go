@@ -17,12 +17,14 @@ package linode
 import (
 	"context"
 	"fmt"
-
-	// embed is used to store bridge-metadata.json in the compiled binary
-	_ "embed"
 	"path/filepath"
 	"regexp"
 	"unicode"
+
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
+	"github.com/linode/terraform-provider-linode/linode"
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -30,7 +32,6 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/linode/terraform-provider-linode/linode"
 	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
 )
 
