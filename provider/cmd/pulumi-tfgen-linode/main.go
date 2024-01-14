@@ -15,8 +15,9 @@
 package main
 
 import (
-	linode "github.com/pulumi/pulumi-linode/provider/v4"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+
+	linode "github.com/pulumi/pulumi-linode/provider/v4"
 )
 
 func main() {
