@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class LkeClusterPool
     {
+        /// <summary>
+        /// When specified, the number of nodes autoscales within the defined minimum and maximum values.
+        /// </summary>
         public readonly Outputs.LkeClusterPoolAutoscaler? Autoscaler;
         /// <summary>
         /// The number of nodes in the Node Pool.
@@ -24,6 +27,9 @@ namespace Pulumi.Linode.Outputs
         /// The ID of the node.
         /// </summary>
         public readonly int? Id;
+        /// <summary>
+        /// The nodes in the node pool.
+        /// </summary>
         public readonly ImmutableArray<Outputs.LkeClusterPoolNode> Nodes;
         /// <summary>
         /// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).

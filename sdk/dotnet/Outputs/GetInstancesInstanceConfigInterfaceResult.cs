@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstancesInstanceConfigInterfaceResult
     {
+        /// <summary>
+        /// Whether this interface is currently booted and active.
+        /// </summary>
         public readonly bool Active;
         /// <summary>
         /// The ID of the disk in the Linode API.

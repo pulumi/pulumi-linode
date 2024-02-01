@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstanceBackupsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this Backup is available for restoration.
+        /// </summary>
         [Input("available")]
         public Input<bool>? Available { get; set; }
 

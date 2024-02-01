@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstanceConfigInterface {
+    /**
+     * @return Whether this interface is currently booted and active.
+     * 
+     */
     private Boolean active;
     /**
      * @return The ID of the disk in the Linode API.
@@ -64,6 +68,10 @@ public final class GetInstancesInstanceConfigInterface {
     private Integer vpcId;
 
     private GetInstancesInstanceConfigInterface() {}
+    /**
+     * @return Whether this interface is currently booted and active.
+     * 
+     */
     public Boolean active() {
         return this.active;
     }

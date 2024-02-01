@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstanceConfigHelpersGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Populates the /dev directory early during boot without udev. Defaults to false.
+        /// </summary>
         [Input("devtmpfsAutomount")]
         public Input<bool>? DevtmpfsAutomount { get; set; }
 

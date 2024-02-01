@@ -18,24 +18,45 @@ namespace Pulumi.Linode.Inputs
         [Input("sda")]
         public Input<Inputs.InstanceConfigDevicesSdaGetArgs>? Sda { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdb")]
         public Input<Inputs.InstanceConfigDevicesSdbGetArgs>? Sdb { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdc")]
         public Input<Inputs.InstanceConfigDevicesSdcGetArgs>? Sdc { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdd")]
         public Input<Inputs.InstanceConfigDevicesSddGetArgs>? Sdd { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sde")]
         public Input<Inputs.InstanceConfigDevicesSdeGetArgs>? Sde { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdf")]
         public Input<Inputs.InstanceConfigDevicesSdfGetArgs>? Sdf { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdg")]
         public Input<Inputs.InstanceConfigDevicesSdgGetArgs>? Sdg { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdh")]
         public Input<Inputs.InstanceConfigDevicesSdhGetArgs>? Sdh { get; set; }
 

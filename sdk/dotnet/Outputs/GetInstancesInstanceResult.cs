@@ -14,9 +14,21 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceResult
     {
         public readonly Outputs.GetInstancesInstanceAlertsResult Alerts;
+        /// <summary>
+        /// Information about this Linode's backups status.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceBackupResult> Backups;
+        /// <summary>
+        /// The Label of the Instance Config that should be used to boot the Linode instance.
+        /// </summary>
         public readonly string BootConfigLabel;
+        /// <summary>
+        /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigResult> Configs;
+        /// <summary>
+        /// Disks associated with this Linode.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceDiskResult> Disks;
         /// <summary>
         /// The display group of the Linode instance.
@@ -26,6 +38,9 @@ namespace Pulumi.Linode.Outputs
         /// Whether this Instance was created with user-data.
         /// </summary>
         public readonly bool HasUserData;
+        /// <summary>
+        /// The Linode’s host machine, as a UUID.
+        /// </summary>
         public readonly string HostUuid;
         /// <summary>
         /// The ID of the disk in the Linode API.

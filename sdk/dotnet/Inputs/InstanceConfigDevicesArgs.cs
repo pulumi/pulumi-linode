@@ -18,24 +18,45 @@ namespace Pulumi.Linode.Inputs
         [Input("sda")]
         public Input<Inputs.InstanceConfigDevicesSdaArgs>? Sda { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdb")]
         public Input<Inputs.InstanceConfigDevicesSdbArgs>? Sdb { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdc")]
         public Input<Inputs.InstanceConfigDevicesSdcArgs>? Sdc { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdd")]
         public Input<Inputs.InstanceConfigDevicesSddArgs>? Sdd { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sde")]
         public Input<Inputs.InstanceConfigDevicesSdeArgs>? Sde { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdf")]
         public Input<Inputs.InstanceConfigDevicesSdfArgs>? Sdf { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdg")]
         public Input<Inputs.InstanceConfigDevicesSdgArgs>? Sdg { get; set; }
 
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdh")]
         public Input<Inputs.InstanceConfigDevicesSdhArgs>? Sdh { get; set; }
 

@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstanceMetadataGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 

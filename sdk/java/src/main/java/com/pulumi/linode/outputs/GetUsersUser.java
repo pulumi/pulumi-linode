@@ -22,23 +22,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersUser {
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserDatabaseGrant> databaseGrants;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserDomainGrant> domainGrants;
     /**
      * @return The email address for this User, for account management communications, and may be used for other communications as configured.
      * 
      */
     private String email;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserFirewallGrant> firewallGrants;
+    /**
+     * @return A structure containing the Account-level grants a User has.
+     * 
+     */
     private List<GetUsersUserGlobalGrant> globalGrants;
     /**
      * @return The ID of entity this grant applies to.
      * 
      */
     private String id;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserImageGrant> imageGrants;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserLinodeGrant> linodeGrants;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserLongviewGrant> longviewGrants;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserNodebalancerGrant> nodebalancerGrants;
     /**
      * @return The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
@@ -55,6 +87,10 @@ public final class GetUsersUser {
      * 
      */
     private List<String> sshKeys;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserStackscriptGrant> stackscriptGrants;
     /**
      * @return A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
@@ -71,12 +107,24 @@ public final class GetUsersUser {
      * 
      */
     private String verifiedPhoneNumber;
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     private List<GetUsersUserVolumeGrant> volumeGrants;
 
     private GetUsersUser() {}
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserDatabaseGrant> databaseGrants() {
         return this.databaseGrants;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserDomainGrant> domainGrants() {
         return this.domainGrants;
     }
@@ -87,9 +135,17 @@ public final class GetUsersUser {
     public String email() {
         return this.email;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserFirewallGrant> firewallGrants() {
         return this.firewallGrants;
     }
+    /**
+     * @return A structure containing the Account-level grants a User has.
+     * 
+     */
     public List<GetUsersUserGlobalGrant> globalGrants() {
         return this.globalGrants;
     }
@@ -100,15 +156,31 @@ public final class GetUsersUser {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserImageGrant> imageGrants() {
         return this.imageGrants;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserLinodeGrant> linodeGrants() {
         return this.linodeGrants;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserLongviewGrant> longviewGrants() {
         return this.longviewGrants;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserNodebalancerGrant> nodebalancerGrants() {
         return this.nodebalancerGrants;
     }
@@ -133,6 +205,10 @@ public final class GetUsersUser {
     public List<String> sshKeys() {
         return this.sshKeys;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserStackscriptGrant> stackscriptGrants() {
         return this.stackscriptGrants;
     }
@@ -157,6 +233,10 @@ public final class GetUsersUser {
     public String verifiedPhoneNumber() {
         return this.verifiedPhoneNumber;
     }
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserVolumeGrant> volumeGrants() {
         return this.volumeGrants;
     }

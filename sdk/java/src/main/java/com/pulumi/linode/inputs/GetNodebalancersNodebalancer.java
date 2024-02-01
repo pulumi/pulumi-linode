@@ -151,9 +151,17 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
         return this.tags;
     }
 
+    /**
+     * Information about the amount of transfer this NodeBalancer has had so far this month.
+     * 
+     */
     @Import(name="transfers", required=true)
     private List<GetNodebalancersNodebalancerTransfer> transfers;
 
+    /**
+     * @return Information about the amount of transfer this NodeBalancer has had so far this month.
+     * 
+     */
     public List<GetNodebalancersNodebalancerTransfer> transfers() {
         return this.transfers;
     }
@@ -316,11 +324,23 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
             return tags(List.of(tags));
         }
 
+        /**
+         * @param transfers Information about the amount of transfer this NodeBalancer has had so far this month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder transfers(List<GetNodebalancersNodebalancerTransfer> transfers) {
             $.transfers = transfers;
             return this;
         }
 
+        /**
+         * @param transfers Information about the amount of transfer this NodeBalancer has had so far this month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder transfers(GetNodebalancersNodebalancerTransfer... transfers) {
             return transfers(List.of(transfers));
         }

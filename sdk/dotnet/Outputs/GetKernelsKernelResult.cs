@@ -17,6 +17,9 @@ namespace Pulumi.Linode.Outputs
         /// The architecture of this Kernel.
         /// </summary>
         public readonly string Architecture;
+        /// <summary>
+        /// The date on which this Kernel was built.
+        /// </summary>
         public readonly string Built;
         /// <summary>
         /// Whether or not this Kernel is deprecated.

@@ -38,6 +38,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("interfaces")]
         private InputList<Inputs.InstanceConfigInterfaceGetArgs>? _interfaces;
+
+        /// <summary>
+        /// An array of Network Interfaces for this Linode’s Configuration Profile.
+        /// </summary>
         public InputList<Inputs.InstanceConfigInterfaceGetArgs> Interfaces
         {
             get => _interfaces ?? (_interfaces = new InputList<Inputs.InstanceConfigInterfaceGetArgs>());

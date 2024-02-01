@@ -14,11 +14,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DatabaseMysqlUpdates struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+	// The day to perform maintenance.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration int `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis.
+	Frequency string `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time.
+	HourOfDay int `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+	WeekOfMonth *int `pulumi:"weekOfMonth"`
 }
 
 // DatabaseMysqlUpdatesInput is an input type that accepts DatabaseMysqlUpdatesArgs and DatabaseMysqlUpdatesOutput values.
@@ -33,10 +38,15 @@ type DatabaseMysqlUpdatesInput interface {
 }
 
 type DatabaseMysqlUpdatesArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The day to perform maintenance.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis.
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time.
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
 	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
 }
 
@@ -117,22 +127,27 @@ func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesPtrOutputWithContext(c
 	}).(DatabaseMysqlUpdatesPtrOutput)
 }
 
+// The day to perform maintenance.
 func (o DatabaseMysqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o DatabaseMysqlUpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis.
 func (o DatabaseMysqlUpdatesOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// The hour to begin maintenance based in UTC time.
 func (o DatabaseMysqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
 func (o DatabaseMysqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseMysqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
 }
@@ -161,6 +176,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) Elem() DatabaseMysqlUpdatesOutput {
 	}).(DatabaseMysqlUpdatesOutput)
 }
 
+// The day to perform maintenance.
 func (o DatabaseMysqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
 		if v == nil {
@@ -170,6 +186,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o DatabaseMysqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
 		if v == nil {
@@ -179,6 +196,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis.
 func (o DatabaseMysqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
 		if v == nil {
@@ -188,6 +206,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour to begin maintenance based in UTC time.
 func (o DatabaseMysqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
 		if v == nil {
@@ -197,6 +216,7 @@ func (o DatabaseMysqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
 func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
 		if v == nil {
@@ -207,11 +227,16 @@ func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 }
 
 type DatabasePostgresqlUpdates struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth *int   `pulumi:"weekOfMonth"`
+	// The day to perform maintenance.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration int `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis.
+	Frequency string `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time.
+	HourOfDay int `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+	WeekOfMonth *int `pulumi:"weekOfMonth"`
 }
 
 // DatabasePostgresqlUpdatesInput is an input type that accepts DatabasePostgresqlUpdatesArgs and DatabasePostgresqlUpdatesOutput values.
@@ -226,10 +251,15 @@ type DatabasePostgresqlUpdatesInput interface {
 }
 
 type DatabasePostgresqlUpdatesArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The day to perform maintenance.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// Whether maintenance occurs on a weekly or monthly basis.
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The hour to begin maintenance based in UTC time.
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
+	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
 	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
 }
 
@@ -310,22 +340,27 @@ func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesPtrOutputWit
 	}).(DatabasePostgresqlUpdatesPtrOutput)
 }
 
+// The day to perform maintenance.
 func (o DatabasePostgresqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o DatabasePostgresqlUpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis.
 func (o DatabasePostgresqlUpdatesOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// The hour to begin maintenance based in UTC time.
 func (o DatabasePostgresqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
 func (o DatabasePostgresqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabasePostgresqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
 }
@@ -354,6 +389,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) Elem() DatabasePostgresqlUpdatesOutp
 	}).(DatabasePostgresqlUpdatesOutput)
 }
 
+// The day to perform maintenance.
 func (o DatabasePostgresqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
 		if v == nil {
@@ -363,6 +399,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o DatabasePostgresqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
 		if v == nil {
@@ -372,6 +409,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether maintenance occurs on a weekly or monthly basis.
 func (o DatabasePostgresqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
 		if v == nil {
@@ -381,6 +419,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour to begin maintenance based in UTC time.
 func (o DatabasePostgresqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
 		if v == nil {
@@ -390,6 +429,7 @@ func (o DatabasePostgresqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
 func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
 		if v == nil {
@@ -817,10 +857,15 @@ func (o FirewallOutboundArrayOutput) Index(i pulumi.IntInput) FirewallOutboundOu
 }
 
 type InstanceAlerts struct {
-	Cpu           *int `pulumi:"cpu"`
-	Io            *int `pulumi:"io"`
-	NetworkIn     *int `pulumi:"networkIn"`
-	NetworkOut    *int `pulumi:"networkOut"`
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+	Cpu *int `pulumi:"cpu"`
+	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+	Io *int `pulumi:"io"`
+	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkIn *int `pulumi:"networkIn"`
+	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkOut *int `pulumi:"networkOut"`
+	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota *int `pulumi:"transferQuota"`
 }
 
@@ -836,10 +881,15 @@ type InstanceAlertsInput interface {
 }
 
 type InstanceAlertsArgs struct {
-	Cpu           pulumi.IntPtrInput `pulumi:"cpu"`
-	Io            pulumi.IntPtrInput `pulumi:"io"`
-	NetworkIn     pulumi.IntPtrInput `pulumi:"networkIn"`
-	NetworkOut    pulumi.IntPtrInput `pulumi:"networkOut"`
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+	Cpu pulumi.IntPtrInput `pulumi:"cpu"`
+	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+	Io pulumi.IntPtrInput `pulumi:"io"`
+	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkIn pulumi.IntPtrInput `pulumi:"networkIn"`
+	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkOut pulumi.IntPtrInput `pulumi:"networkOut"`
+	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota pulumi.IntPtrInput `pulumi:"transferQuota"`
 }
 
@@ -920,22 +970,27 @@ func (o InstanceAlertsOutput) ToInstanceAlertsPtrOutputWithContext(ctx context.C
 	}).(InstanceAlertsPtrOutput)
 }
 
+// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 func (o InstanceAlertsOutput) Cpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.Cpu }).(pulumi.IntPtrOutput)
 }
 
+// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 func (o InstanceAlertsOutput) Io() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.Io }).(pulumi.IntPtrOutput)
 }
 
+// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) NetworkIn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkIn }).(pulumi.IntPtrOutput)
 }
 
+// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) NetworkOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
 }
 
+// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
 }
@@ -964,6 +1019,7 @@ func (o InstanceAlertsPtrOutput) Elem() InstanceAlertsOutput {
 	}).(InstanceAlertsOutput)
 }
 
+// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 func (o InstanceAlertsPtrOutput) Cpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -973,6 +1029,7 @@ func (o InstanceAlertsPtrOutput) Cpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 func (o InstanceAlertsPtrOutput) Io() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -982,6 +1039,7 @@ func (o InstanceAlertsPtrOutput) Io() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) NetworkIn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -991,6 +1049,7 @@ func (o InstanceAlertsPtrOutput) NetworkIn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) NetworkOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -1000,6 +1059,7 @@ func (o InstanceAlertsPtrOutput) NetworkOut() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
 		if v == nil {
@@ -1010,6 +1070,7 @@ func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 }
 
 type InstanceBackups struct {
+	// Whether this Backup is available for restoration.
 	Available *bool `pulumi:"available"`
 	// If this Linode has the Backup service enabled.
 	Enabled  *bool                    `pulumi:"enabled"`
@@ -1028,6 +1089,7 @@ type InstanceBackupsInput interface {
 }
 
 type InstanceBackupsArgs struct {
+	// Whether this Backup is available for restoration.
 	Available pulumi.BoolPtrInput `pulumi:"available"`
 	// If this Linode has the Backup service enabled.
 	Enabled  pulumi.BoolPtrInput             `pulumi:"enabled"`
@@ -1111,6 +1173,7 @@ func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutputWithContext(ctx context
 	}).(InstanceBackupsPtrOutput)
 }
 
+// Whether this Backup is available for restoration.
 func (o InstanceBackupsOutput) Available() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceBackups) *bool { return v.Available }).(pulumi.BoolPtrOutput)
 }
@@ -1148,6 +1211,7 @@ func (o InstanceBackupsPtrOutput) Elem() InstanceBackupsOutput {
 	}).(InstanceBackupsOutput)
 }
 
+// Whether this Backup is available for restoration.
 func (o InstanceBackupsPtrOutput) Available() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceBackups) *bool {
 		if v == nil {
@@ -1340,7 +1404,8 @@ type InstanceConfig struct {
 	// Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
 	// The ID of the disk in the Linode API.
-	Id         *int                      `pulumi:"id"`
+	Id *int `pulumi:"id"`
+	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces []InstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel *string `pulumi:"kernel"`
@@ -1377,7 +1442,8 @@ type InstanceConfigArgs struct {
 	// Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
 	// The ID of the disk in the Linode API.
-	Id         pulumi.IntPtrInput                `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces InstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
@@ -1466,6 +1532,7 @@ func (o InstanceConfigOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// An array of Network Interfaces for this Linode’s Configuration Profile.
 func (o InstanceConfigOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
 	return o.ApplyT(func(v InstanceConfig) []InstanceConfigInterface { return v.Interfaces }).(InstanceConfigInterfaceArrayOutput)
 }
@@ -1525,12 +1592,19 @@ func (o InstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceConfigOutput
 type InstanceConfigDevices struct {
 	// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 	Sda *InstanceConfigDevicesSda `pulumi:"sda"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdb *InstanceConfigDevicesSdb `pulumi:"sdb"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdc *InstanceConfigDevicesSdc `pulumi:"sdc"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdd *InstanceConfigDevicesSdd `pulumi:"sdd"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sde *InstanceConfigDevicesSde `pulumi:"sde"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdf *InstanceConfigDevicesSdf `pulumi:"sdf"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdg *InstanceConfigDevicesSdg `pulumi:"sdg"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdh *InstanceConfigDevicesSdh `pulumi:"sdh"`
 }
 
@@ -1548,12 +1622,19 @@ type InstanceConfigDevicesInput interface {
 type InstanceConfigDevicesArgs struct {
 	// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 	Sda InstanceConfigDevicesSdaPtrInput `pulumi:"sda"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdb InstanceConfigDevicesSdbPtrInput `pulumi:"sdb"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdc InstanceConfigDevicesSdcPtrInput `pulumi:"sdc"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdd InstanceConfigDevicesSddPtrInput `pulumi:"sdd"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sde InstanceConfigDevicesSdePtrInput `pulumi:"sde"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdf InstanceConfigDevicesSdfPtrInput `pulumi:"sdf"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdg InstanceConfigDevicesSdgPtrInput `pulumi:"sdg"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdh InstanceConfigDevicesSdhPtrInput `pulumi:"sdh"`
 }
 
@@ -1639,30 +1720,37 @@ func (o InstanceConfigDevicesOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sdb() InstanceConfigDevicesSdbPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdb { return v.Sdb }).(InstanceConfigDevicesSdbPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sdc() InstanceConfigDevicesSdcPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdc { return v.Sdc }).(InstanceConfigDevicesSdcPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sdd() InstanceConfigDevicesSddPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdd { return v.Sdd }).(InstanceConfigDevicesSddPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sde() InstanceConfigDevicesSdePtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSde { return v.Sde }).(InstanceConfigDevicesSdePtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sdf() InstanceConfigDevicesSdfPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdf { return v.Sdf }).(InstanceConfigDevicesSdfPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sdg() InstanceConfigDevicesSdgPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdg { return v.Sdg }).(InstanceConfigDevicesSdgPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sdh() InstanceConfigDevicesSdhPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSdh { return v.Sdh }).(InstanceConfigDevicesSdhPtrOutput)
 }
@@ -1701,6 +1789,7 @@ func (o InstanceConfigDevicesPtrOutput) Sda() InstanceConfigDevicesSdaPtrOutput 
 	}).(InstanceConfigDevicesSdaPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sdb() InstanceConfigDevicesSdbPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSdb {
 		if v == nil {
@@ -1710,6 +1799,7 @@ func (o InstanceConfigDevicesPtrOutput) Sdb() InstanceConfigDevicesSdbPtrOutput 
 	}).(InstanceConfigDevicesSdbPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sdc() InstanceConfigDevicesSdcPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSdc {
 		if v == nil {
@@ -1719,6 +1809,7 @@ func (o InstanceConfigDevicesPtrOutput) Sdc() InstanceConfigDevicesSdcPtrOutput 
 	}).(InstanceConfigDevicesSdcPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sdd() InstanceConfigDevicesSddPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSdd {
 		if v == nil {
@@ -1728,6 +1819,7 @@ func (o InstanceConfigDevicesPtrOutput) Sdd() InstanceConfigDevicesSddPtrOutput 
 	}).(InstanceConfigDevicesSddPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sde() InstanceConfigDevicesSdePtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSde {
 		if v == nil {
@@ -1737,6 +1829,7 @@ func (o InstanceConfigDevicesPtrOutput) Sde() InstanceConfigDevicesSdePtrOutput 
 	}).(InstanceConfigDevicesSdePtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sdf() InstanceConfigDevicesSdfPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSdf {
 		if v == nil {
@@ -1746,6 +1839,7 @@ func (o InstanceConfigDevicesPtrOutput) Sdf() InstanceConfigDevicesSdfPtrOutput 
 	}).(InstanceConfigDevicesSdfPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sdg() InstanceConfigDevicesSdgPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSdg {
 		if v == nil {
@@ -1755,6 +1849,7 @@ func (o InstanceConfigDevicesPtrOutput) Sdg() InstanceConfigDevicesSdgPtrOutput 
 	}).(InstanceConfigDevicesSdgPtrOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sdh() InstanceConfigDevicesSdhPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSdh {
 		if v == nil {
@@ -3165,6 +3260,7 @@ func (o InstanceConfigDevicesSdhPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigHelpers struct {
+	// Populates the /dev directory early during boot without udev. Defaults to false.
 	DevtmpfsAutomount *bool `pulumi:"devtmpfsAutomount"`
 	// Controls the behavior of the Linode Config's Distribution Helper setting.
 	Distro *bool `pulumi:"distro"`
@@ -3188,6 +3284,7 @@ type InstanceConfigHelpersInput interface {
 }
 
 type InstanceConfigHelpersArgs struct {
+	// Populates the /dev directory early during boot without udev. Defaults to false.
 	DevtmpfsAutomount pulumi.BoolPtrInput `pulumi:"devtmpfsAutomount"`
 	// Controls the behavior of the Linode Config's Distribution Helper setting.
 	Distro pulumi.BoolPtrInput `pulumi:"distro"`
@@ -3276,6 +3373,7 @@ func (o InstanceConfigHelpersOutput) ToInstanceConfigHelpersPtrOutputWithContext
 	}).(InstanceConfigHelpersPtrOutput)
 }
 
+// Populates the /dev directory early during boot without udev. Defaults to false.
 func (o InstanceConfigHelpersOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigHelpers) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
 }
@@ -3324,6 +3422,7 @@ func (o InstanceConfigHelpersPtrOutput) Elem() InstanceConfigHelpersOutput {
 	}).(InstanceConfigHelpersOutput)
 }
 
+// Populates the /dev directory early during boot without udev. Defaults to false.
 func (o InstanceConfigHelpersPtrOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigHelpers) *bool {
 		if v == nil {
@@ -3374,6 +3473,7 @@ func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput 
 }
 
 type InstanceConfigInterface struct {
+	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
@@ -3411,6 +3511,7 @@ type InstanceConfigInterfaceInput interface {
 }
 
 type InstanceConfigInterfaceArgs struct {
+	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
@@ -3487,6 +3588,7 @@ func (o InstanceConfigInterfaceOutput) ToInstanceConfigInterfaceOutputWithContex
 	return o
 }
 
+// Whether this interface is currently booted and active.
 func (o InstanceConfigInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
@@ -3904,6 +4006,7 @@ func (o InstanceDiskTypeArrayOutput) Index(i pulumi.IntInput) InstanceDiskTypeOu
 }
 
 type InstanceInterface struct {
+	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
@@ -3941,6 +4044,7 @@ type InstanceInterfaceInput interface {
 }
 
 type InstanceInterfaceArgs struct {
+	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
@@ -4017,6 +4121,7 @@ func (o InstanceInterfaceOutput) ToInstanceInterfaceOutputWithContext(ctx contex
 	return o
 }
 
+// Whether this interface is currently booted and active.
 func (o InstanceInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
@@ -4356,6 +4461,7 @@ func (o InstanceIpVpcNat11ArrayOutput) Index(i pulumi.IntInput) InstanceIpVpcNat
 }
 
 type InstanceMetadata struct {
+	// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	UserData *string `pulumi:"userData"`
 }
 
@@ -4371,6 +4477,7 @@ type InstanceMetadataInput interface {
 }
 
 type InstanceMetadataArgs struct {
+	// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	UserData pulumi.StringPtrInput `pulumi:"userData"`
 }
 
@@ -4425,6 +4532,7 @@ func (o InstanceMetadataOutput) ToInstanceMetadataOutputWithContext(ctx context.
 	return o
 }
 
+// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 func (o InstanceMetadataOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMetadata) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }
@@ -4450,10 +4558,14 @@ func (o InstanceMetadataArrayOutput) Index(i pulumi.IntInput) InstanceMetadataOu
 }
 
 type InstanceSpecs struct {
-	Disk     *int `pulumi:"disk"`
-	Memory   *int `pulumi:"memory"`
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	Disk *int `pulumi:"disk"`
+	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+	Memory *int `pulumi:"memory"`
+	// The amount of network transfer this Linode is allotted each month.
 	Transfer *int `pulumi:"transfer"`
-	Vcpus    *int `pulumi:"vcpus"`
+	// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+	Vcpus *int `pulumi:"vcpus"`
 }
 
 // InstanceSpecsInput is an input type that accepts InstanceSpecsArgs and InstanceSpecsOutput values.
@@ -4468,10 +4580,14 @@ type InstanceSpecsInput interface {
 }
 
 type InstanceSpecsArgs struct {
-	Disk     pulumi.IntPtrInput `pulumi:"disk"`
-	Memory   pulumi.IntPtrInput `pulumi:"memory"`
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The amount of network transfer this Linode is allotted each month.
 	Transfer pulumi.IntPtrInput `pulumi:"transfer"`
-	Vcpus    pulumi.IntPtrInput `pulumi:"vcpus"`
+	// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
 func (InstanceSpecsArgs) ElementType() reflect.Type {
@@ -4551,18 +4667,22 @@ func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Con
 	}).(InstanceSpecsPtrOutput)
 }
 
+// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
 func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
+// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 func (o InstanceSpecsOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
+// The amount of network transfer this Linode is allotted each month.
 func (o InstanceSpecsOutput) Transfer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
 }
 
+// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
 func (o InstanceSpecsOutput) Vcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
@@ -4591,6 +4711,7 @@ func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
 	}).(InstanceSpecsOutput)
 }
 
+// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
 func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSpecs) *int {
 		if v == nil {
@@ -4600,6 +4721,7 @@ func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 func (o InstanceSpecsPtrOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSpecs) *int {
 		if v == nil {
@@ -4609,6 +4731,7 @@ func (o InstanceSpecsPtrOutput) Memory() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The amount of network transfer this Linode is allotted each month.
 func (o InstanceSpecsPtrOutput) Transfer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSpecs) *int {
 		if v == nil {
@@ -4618,6 +4741,7 @@ func (o InstanceSpecsPtrOutput) Transfer() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
 func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSpecs) *int {
 		if v == nil {
@@ -4765,13 +4889,15 @@ func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput
 }
 
 type LkeClusterPool struct {
+	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count int `pulumi:"count"`
 	// The ID of the node.
-	Id    *int                 `pulumi:"id"`
+	Id *int `pulumi:"id"`
+	// The nodes in the node pool.
 	Nodes []LkeClusterPoolNode `pulumi:"nodes"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
@@ -4789,13 +4915,15 @@ type LkeClusterPoolInput interface {
 }
 
 type LkeClusterPoolArgs struct {
+	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler LkeClusterPoolAutoscalerPtrInput `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool.
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count pulumi.IntInput `pulumi:"count"`
 	// The ID of the node.
-	Id    pulumi.IntPtrInput           `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The nodes in the node pool.
 	Nodes LkeClusterPoolNodeArrayInput `pulumi:"nodes"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
@@ -4852,6 +4980,7 @@ func (o LkeClusterPoolOutput) ToLkeClusterPoolOutputWithContext(ctx context.Cont
 	return o
 }
 
+// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *LkeClusterPoolAutoscaler { return v.Autoscaler }).(LkeClusterPoolAutoscalerPtrOutput)
 }
@@ -4868,6 +4997,7 @@ func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// The nodes in the node pool.
 func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolNode { return v.Nodes }).(LkeClusterPoolNodeArrayOutput)
 }
@@ -5553,10 +5683,12 @@ type ObjectStorageBucketLifecycleRule struct {
 	// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	AbortIncompleteMultipartUploadDays *int `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies whether the lifecycle rule is active.
-	Enabled    bool                                        `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
+	// Specifies a period in the object's expire.
 	Expiration *ObjectStorageBucketLifecycleRuleExpiration `pulumi:"expiration"`
 	// The unique identifier for the rule.
-	Id                          *string                                                      `pulumi:"id"`
+	Id *string `pulumi:"id"`
+	// Specifies when non-current object versions expire.
 	NoncurrentVersionExpiration *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpiration"`
 	// The object key prefix identifying one or more objects to which the rule applies.
 	Prefix *string `pulumi:"prefix"`
@@ -5581,10 +5713,12 @@ type ObjectStorageBucketLifecycleRuleArgs struct {
 	// * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
 	AbortIncompleteMultipartUploadDays pulumi.IntPtrInput `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies whether the lifecycle rule is active.
-	Enabled    pulumi.BoolInput                                   `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Specifies a period in the object's expire.
 	Expiration ObjectStorageBucketLifecycleRuleExpirationPtrInput `pulumi:"expiration"`
 	// The unique identifier for the rule.
-	Id                          pulumi.StringPtrInput                                               `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Specifies when non-current object versions expire.
 	NoncurrentVersionExpiration ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrInput `pulumi:"noncurrentVersionExpiration"`
 	// The object key prefix identifying one or more objects to which the rule applies.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
@@ -5655,6 +5789,7 @@ func (o ObjectStorageBucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Specifies a period in the object's expire.
 func (o ObjectStorageBucketLifecycleRuleOutput) Expiration() ObjectStorageBucketLifecycleRuleExpirationPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *ObjectStorageBucketLifecycleRuleExpiration {
 		return v.Expiration
@@ -5666,6 +5801,7 @@ func (o ObjectStorageBucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Specifies when non-current object versions expire.
 func (o ObjectStorageBucketLifecycleRuleOutput) NoncurrentVersionExpiration() ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
 	return o.ApplyT(func(v ObjectStorageBucketLifecycleRule) *ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
 		return v.NoncurrentVersionExpiration
@@ -6267,7 +6403,9 @@ func (o StackScriptUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) StackSc
 }
 
 type UserDomainGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -6283,7 +6421,9 @@ type UserDomainGrantInput interface {
 }
 
 type UserDomainGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -6338,10 +6478,12 @@ func (o UserDomainGrantOutput) ToUserDomainGrantOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserDomainGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserDomainGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserDomainGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDomainGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -6367,7 +6509,9 @@ func (o UserDomainGrantArrayOutput) Index(i pulumi.IntInput) UserDomainGrantOutp
 }
 
 type UserFirewallGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -6383,7 +6527,9 @@ type UserFirewallGrantInput interface {
 }
 
 type UserFirewallGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -6438,10 +6584,12 @@ func (o UserFirewallGrantOutput) ToUserFirewallGrantOutputWithContext(ctx contex
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserFirewallGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserFirewallGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserFirewallGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserFirewallGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -6467,18 +6615,30 @@ func (o UserFirewallGrantArrayOutput) Index(i pulumi.IntInput) UserFirewallGrant
 }
 
 type UserGlobalGrants struct {
-	AccountAccess        *string `pulumi:"accountAccess"`
-	AddDatabases         *bool   `pulumi:"addDatabases"`
-	AddDomains           *bool   `pulumi:"addDomains"`
-	AddFirewalls         *bool   `pulumi:"addFirewalls"`
-	AddImages            *bool   `pulumi:"addImages"`
-	AddLinodes           *bool   `pulumi:"addLinodes"`
-	AddLongview          *bool   `pulumi:"addLongview"`
-	AddNodebalancers     *bool   `pulumi:"addNodebalancers"`
-	AddStackscripts      *bool   `pulumi:"addStackscripts"`
-	AddVolumes           *bool   `pulumi:"addVolumes"`
-	CancelAccount        *bool   `pulumi:"cancelAccount"`
-	LongviewSubscription *bool   `pulumi:"longviewSubscription"`
+	// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+	AccountAccess *string `pulumi:"accountAccess"`
+	// If true, this User may add Databases.
+	AddDatabases *bool `pulumi:"addDatabases"`
+	// If true, this User may add Domains.
+	AddDomains *bool `pulumi:"addDomains"`
+	// If true, this User may add Firewalls.
+	AddFirewalls *bool `pulumi:"addFirewalls"`
+	// If true, this User may add Images.
+	AddImages *bool `pulumi:"addImages"`
+	// If true, this User may create Linodes.
+	AddLinodes *bool `pulumi:"addLinodes"`
+	// If true, this User may create Longview clients and view the current plan.
+	AddLongview *bool `pulumi:"addLongview"`
+	// If true, this User may add NodeBalancers.
+	AddNodebalancers *bool `pulumi:"addNodebalancers"`
+	// If true, this User may add StackScripts.
+	AddStackscripts *bool `pulumi:"addStackscripts"`
+	// If true, this User may add Volumes.
+	AddVolumes *bool `pulumi:"addVolumes"`
+	// If true, this User may cancel the entire Account.
+	CancelAccount *bool `pulumi:"cancelAccount"`
+	// If true, this User may manage the Account’s Longview subscription.
+	LongviewSubscription *bool `pulumi:"longviewSubscription"`
 }
 
 // UserGlobalGrantsInput is an input type that accepts UserGlobalGrantsArgs and UserGlobalGrantsOutput values.
@@ -6493,18 +6653,30 @@ type UserGlobalGrantsInput interface {
 }
 
 type UserGlobalGrantsArgs struct {
-	AccountAccess        pulumi.StringPtrInput `pulumi:"accountAccess"`
-	AddDatabases         pulumi.BoolPtrInput   `pulumi:"addDatabases"`
-	AddDomains           pulumi.BoolPtrInput   `pulumi:"addDomains"`
-	AddFirewalls         pulumi.BoolPtrInput   `pulumi:"addFirewalls"`
-	AddImages            pulumi.BoolPtrInput   `pulumi:"addImages"`
-	AddLinodes           pulumi.BoolPtrInput   `pulumi:"addLinodes"`
-	AddLongview          pulumi.BoolPtrInput   `pulumi:"addLongview"`
-	AddNodebalancers     pulumi.BoolPtrInput   `pulumi:"addNodebalancers"`
-	AddStackscripts      pulumi.BoolPtrInput   `pulumi:"addStackscripts"`
-	AddVolumes           pulumi.BoolPtrInput   `pulumi:"addVolumes"`
-	CancelAccount        pulumi.BoolPtrInput   `pulumi:"cancelAccount"`
-	LongviewSubscription pulumi.BoolPtrInput   `pulumi:"longviewSubscription"`
+	// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+	AccountAccess pulumi.StringPtrInput `pulumi:"accountAccess"`
+	// If true, this User may add Databases.
+	AddDatabases pulumi.BoolPtrInput `pulumi:"addDatabases"`
+	// If true, this User may add Domains.
+	AddDomains pulumi.BoolPtrInput `pulumi:"addDomains"`
+	// If true, this User may add Firewalls.
+	AddFirewalls pulumi.BoolPtrInput `pulumi:"addFirewalls"`
+	// If true, this User may add Images.
+	AddImages pulumi.BoolPtrInput `pulumi:"addImages"`
+	// If true, this User may create Linodes.
+	AddLinodes pulumi.BoolPtrInput `pulumi:"addLinodes"`
+	// If true, this User may create Longview clients and view the current plan.
+	AddLongview pulumi.BoolPtrInput `pulumi:"addLongview"`
+	// If true, this User may add NodeBalancers.
+	AddNodebalancers pulumi.BoolPtrInput `pulumi:"addNodebalancers"`
+	// If true, this User may add StackScripts.
+	AddStackscripts pulumi.BoolPtrInput `pulumi:"addStackscripts"`
+	// If true, this User may add Volumes.
+	AddVolumes pulumi.BoolPtrInput `pulumi:"addVolumes"`
+	// If true, this User may cancel the entire Account.
+	CancelAccount pulumi.BoolPtrInput `pulumi:"cancelAccount"`
+	// If true, this User may manage the Account’s Longview subscription.
+	LongviewSubscription pulumi.BoolPtrInput `pulumi:"longviewSubscription"`
 }
 
 func (UserGlobalGrantsArgs) ElementType() reflect.Type {
@@ -6584,50 +6756,62 @@ func (o UserGlobalGrantsOutput) ToUserGlobalGrantsPtrOutputWithContext(ctx conte
 	}).(UserGlobalGrantsPtrOutput)
 }
 
+// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
 func (o UserGlobalGrantsOutput) AccountAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *string { return v.AccountAccess }).(pulumi.StringPtrOutput)
 }
 
+// If true, this User may add Databases.
 func (o UserGlobalGrantsOutput) AddDatabases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddDatabases }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Domains.
 func (o UserGlobalGrantsOutput) AddDomains() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddDomains }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Firewalls.
 func (o UserGlobalGrantsOutput) AddFirewalls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddFirewalls }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Images.
 func (o UserGlobalGrantsOutput) AddImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddImages }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may create Linodes.
 func (o UserGlobalGrantsOutput) AddLinodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddLinodes }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may create Longview clients and view the current plan.
 func (o UserGlobalGrantsOutput) AddLongview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddLongview }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add NodeBalancers.
 func (o UserGlobalGrantsOutput) AddNodebalancers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddNodebalancers }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add StackScripts.
 func (o UserGlobalGrantsOutput) AddStackscripts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddStackscripts }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Volumes.
 func (o UserGlobalGrantsOutput) AddVolumes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddVolumes }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may cancel the entire Account.
 func (o UserGlobalGrantsOutput) CancelAccount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.CancelAccount }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may manage the Account’s Longview subscription.
 func (o UserGlobalGrantsOutput) LongviewSubscription() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.LongviewSubscription }).(pulumi.BoolPtrOutput)
 }
@@ -6656,6 +6840,7 @@ func (o UserGlobalGrantsPtrOutput) Elem() UserGlobalGrantsOutput {
 	}).(UserGlobalGrantsOutput)
 }
 
+// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
 func (o UserGlobalGrantsPtrOutput) AccountAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *string {
 		if v == nil {
@@ -6665,6 +6850,7 @@ func (o UserGlobalGrantsPtrOutput) AccountAccess() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// If true, this User may add Databases.
 func (o UserGlobalGrantsPtrOutput) AddDatabases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6674,6 +6860,7 @@ func (o UserGlobalGrantsPtrOutput) AddDatabases() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Domains.
 func (o UserGlobalGrantsPtrOutput) AddDomains() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6683,6 +6870,7 @@ func (o UserGlobalGrantsPtrOutput) AddDomains() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Firewalls.
 func (o UserGlobalGrantsPtrOutput) AddFirewalls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6692,6 +6880,7 @@ func (o UserGlobalGrantsPtrOutput) AddFirewalls() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Images.
 func (o UserGlobalGrantsPtrOutput) AddImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6701,6 +6890,7 @@ func (o UserGlobalGrantsPtrOutput) AddImages() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may create Linodes.
 func (o UserGlobalGrantsPtrOutput) AddLinodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6710,6 +6900,7 @@ func (o UserGlobalGrantsPtrOutput) AddLinodes() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may create Longview clients and view the current plan.
 func (o UserGlobalGrantsPtrOutput) AddLongview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6719,6 +6910,7 @@ func (o UserGlobalGrantsPtrOutput) AddLongview() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add NodeBalancers.
 func (o UserGlobalGrantsPtrOutput) AddNodebalancers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6728,6 +6920,7 @@ func (o UserGlobalGrantsPtrOutput) AddNodebalancers() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add StackScripts.
 func (o UserGlobalGrantsPtrOutput) AddStackscripts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6737,6 +6930,7 @@ func (o UserGlobalGrantsPtrOutput) AddStackscripts() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Volumes.
 func (o UserGlobalGrantsPtrOutput) AddVolumes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6746,6 +6940,7 @@ func (o UserGlobalGrantsPtrOutput) AddVolumes() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may cancel the entire Account.
 func (o UserGlobalGrantsPtrOutput) CancelAccount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6755,6 +6950,7 @@ func (o UserGlobalGrantsPtrOutput) CancelAccount() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may manage the Account’s Longview subscription.
 func (o UserGlobalGrantsPtrOutput) LongviewSubscription() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
 		if v == nil {
@@ -6765,7 +6961,9 @@ func (o UserGlobalGrantsPtrOutput) LongviewSubscription() pulumi.BoolPtrOutput {
 }
 
 type UserImageGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -6781,7 +6979,9 @@ type UserImageGrantInput interface {
 }
 
 type UserImageGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -6836,10 +7036,12 @@ func (o UserImageGrantOutput) ToUserImageGrantOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserImageGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserImageGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserImageGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserImageGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -6865,7 +7067,9 @@ func (o UserImageGrantArrayOutput) Index(i pulumi.IntInput) UserImageGrantOutput
 }
 
 type UserLinodeGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -6881,7 +7085,9 @@ type UserLinodeGrantInput interface {
 }
 
 type UserLinodeGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -6936,10 +7142,12 @@ func (o UserLinodeGrantOutput) ToUserLinodeGrantOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserLinodeGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserLinodeGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserLinodeGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserLinodeGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -6965,7 +7173,9 @@ func (o UserLinodeGrantArrayOutput) Index(i pulumi.IntInput) UserLinodeGrantOutp
 }
 
 type UserLongviewGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -6981,7 +7191,9 @@ type UserLongviewGrantInput interface {
 }
 
 type UserLongviewGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -7036,10 +7248,12 @@ func (o UserLongviewGrantOutput) ToUserLongviewGrantOutputWithContext(ctx contex
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserLongviewGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserLongviewGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserLongviewGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserLongviewGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -7065,7 +7279,9 @@ func (o UserLongviewGrantArrayOutput) Index(i pulumi.IntInput) UserLongviewGrant
 }
 
 type UserNodebalancerGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -7081,7 +7297,9 @@ type UserNodebalancerGrantInput interface {
 }
 
 type UserNodebalancerGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -7136,10 +7354,12 @@ func (o UserNodebalancerGrantOutput) ToUserNodebalancerGrantOutputWithContext(ct
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserNodebalancerGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserNodebalancerGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserNodebalancerGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserNodebalancerGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -7165,7 +7385,9 @@ func (o UserNodebalancerGrantArrayOutput) Index(i pulumi.IntInput) UserNodebalan
 }
 
 type UserStackscriptGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -7181,7 +7403,9 @@ type UserStackscriptGrantInput interface {
 }
 
 type UserStackscriptGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -7236,10 +7460,12 @@ func (o UserStackscriptGrantOutput) ToUserStackscriptGrantOutputWithContext(ctx 
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserStackscriptGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserStackscriptGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserStackscriptGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserStackscriptGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -7265,7 +7491,9 @@ func (o UserStackscriptGrantArrayOutput) Index(i pulumi.IntInput) UserStackscrip
 }
 
 type UserVolumeGrant struct {
-	Id          int    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -7281,7 +7509,9 @@ type UserVolumeGrantInput interface {
 }
 
 type UserVolumeGrantArgs struct {
-	Id          pulumi.IntInput    `pulumi:"id"`
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -7336,10 +7566,12 @@ func (o UserVolumeGrantOutput) ToUserVolumeGrantOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the entity this grant applies to.
 func (o UserVolumeGrantOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v UserVolumeGrant) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The level of access this User has to this entity. If null, this User has no access.
 func (o UserVolumeGrantOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v UserVolumeGrant) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -7914,8 +8146,9 @@ type GetAccountLoginsLogin struct {
 	// The remote IP address that requested the login.
 	Ip string `pulumi:"ip"`
 	// True if the User that was logged into was a restricted User, false otherwise.
-	Restricted bool   `pulumi:"restricted"`
-	Status     string `pulumi:"status"`
+	Restricted bool `pulumi:"restricted"`
+	// Whether the login attempt succeeded or failed.
+	Status string `pulumi:"status"`
 	// The username of the User that was logged into.
 	Username string `pulumi:"username"`
 }
@@ -7939,8 +8172,9 @@ type GetAccountLoginsLoginArgs struct {
 	// The remote IP address that requested the login.
 	Ip pulumi.StringInput `pulumi:"ip"`
 	// True if the User that was logged into was a restricted User, false otherwise.
-	Restricted pulumi.BoolInput   `pulumi:"restricted"`
-	Status     pulumi.StringInput `pulumi:"status"`
+	Restricted pulumi.BoolInput `pulumi:"restricted"`
+	// Whether the login attempt succeeded or failed.
+	Status pulumi.StringInput `pulumi:"status"`
 	// The username of the User that was logged into.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -8016,6 +8250,7 @@ func (o GetAccountLoginsLoginOutput) Restricted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAccountLoginsLogin) bool { return v.Restricted }).(pulumi.BoolOutput)
 }
 
+// Whether the login attempt succeeded or failed.
 func (o GetAccountLoginsLoginOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountLoginsLogin) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -9005,7 +9240,8 @@ type GetDatabasesDatabase struct {
 	// The secondary/private network host for the Managed Database.
 	HostSecondary string `pulumi:"hostSecondary"`
 	// The ID of the Managed Database.
-	Id          int    `pulumi:"id"`
+	Id int `pulumi:"id"`
+	// he API route for the database instance.
 	InstanceUri string `pulumi:"instanceUri"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
@@ -9052,7 +9288,8 @@ type GetDatabasesDatabaseArgs struct {
 	// The secondary/private network host for the Managed Database.
 	HostSecondary pulumi.StringInput `pulumi:"hostSecondary"`
 	// The ID of the Managed Database.
-	Id          pulumi.IntInput    `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
+	// he API route for the database instance.
 	InstanceUri pulumi.StringInput `pulumi:"instanceUri"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -9163,6 +9400,7 @@ func (o GetDatabasesDatabaseOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// he API route for the database instance.
 func (o GetDatabasesDatabaseOutput) InstanceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.InstanceUri }).(pulumi.StringOutput)
 }
@@ -9876,23 +10114,27 @@ func (o GetFirewallsFilterArrayOutput) Index(i pulumi.IntInput) GetFirewallsFilt
 
 type GetFirewallsFirewall struct {
 	// When this firewall was created.
-	Created string                       `pulumi:"created"`
+	Created string `pulumi:"created"`
+	// The devices associated with this firewall.
 	Devices []GetFirewallsFirewallDevice `pulumi:"devices"`
 	// If true, the Firewall is inactive.
 	Disabled bool `pulumi:"disabled"`
 	// The unique ID assigned to this Firewall.
 	Id int `pulumi:"id"`
 	// The default behavior for inbound traffic.
-	InboundPolicy string                        `pulumi:"inboundPolicy"`
-	Inbounds      []GetFirewallsFirewallInbound `pulumi:"inbounds"`
+	InboundPolicy string `pulumi:"inboundPolicy"`
+	// A set of firewall rules that specify what inbound network traffic is allowed.
+	Inbounds []GetFirewallsFirewallInbound `pulumi:"inbounds"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label string `pulumi:"label"`
 	// The IDs of Linodes this firewall is applied to.
-	Linodes       []int `pulumi:"linodes"`
+	Linodes []int `pulumi:"linodes"`
+	// The IDs of NodeBalancers assigned to this Firewall..
 	Nodebalancers []int `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic.
-	OutboundPolicy string                         `pulumi:"outboundPolicy"`
-	Outbounds      []GetFirewallsFirewallOutbound `pulumi:"outbounds"`
+	OutboundPolicy string `pulumi:"outboundPolicy"`
+	// A set of firewall rules that specify what outbound network traffic is allowed.
+	Outbounds []GetFirewallsFirewallOutbound `pulumi:"outbounds"`
 	// The status of the firewall.
 	Status string `pulumi:"status"`
 	// An array of tags applied to this object. Tags are for organizational purposes only.
@@ -9914,23 +10156,27 @@ type GetFirewallsFirewallInput interface {
 
 type GetFirewallsFirewallArgs struct {
 	// When this firewall was created.
-	Created pulumi.StringInput                   `pulumi:"created"`
+	Created pulumi.StringInput `pulumi:"created"`
+	// The devices associated with this firewall.
 	Devices GetFirewallsFirewallDeviceArrayInput `pulumi:"devices"`
 	// If true, the Firewall is inactive.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 	// The unique ID assigned to this Firewall.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The default behavior for inbound traffic.
-	InboundPolicy pulumi.StringInput                    `pulumi:"inboundPolicy"`
-	Inbounds      GetFirewallsFirewallInboundArrayInput `pulumi:"inbounds"`
+	InboundPolicy pulumi.StringInput `pulumi:"inboundPolicy"`
+	// A set of firewall rules that specify what inbound network traffic is allowed.
+	Inbounds GetFirewallsFirewallInboundArrayInput `pulumi:"inbounds"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The IDs of Linodes this firewall is applied to.
-	Linodes       pulumi.IntArrayInput `pulumi:"linodes"`
+	Linodes pulumi.IntArrayInput `pulumi:"linodes"`
+	// The IDs of NodeBalancers assigned to this Firewall..
 	Nodebalancers pulumi.IntArrayInput `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic.
-	OutboundPolicy pulumi.StringInput                     `pulumi:"outboundPolicy"`
-	Outbounds      GetFirewallsFirewallOutboundArrayInput `pulumi:"outbounds"`
+	OutboundPolicy pulumi.StringInput `pulumi:"outboundPolicy"`
+	// A set of firewall rules that specify what outbound network traffic is allowed.
+	Outbounds GetFirewallsFirewallOutboundArrayInput `pulumi:"outbounds"`
 	// The status of the firewall.
 	Status pulumi.StringInput `pulumi:"status"`
 	// An array of tags applied to this object. Tags are for organizational purposes only.
@@ -9995,6 +10241,7 @@ func (o GetFirewallsFirewallOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The devices associated with this firewall.
 func (o GetFirewallsFirewallOutput) Devices() GetFirewallsFirewallDeviceArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallDevice { return v.Devices }).(GetFirewallsFirewallDeviceArrayOutput)
 }
@@ -10014,6 +10261,7 @@ func (o GetFirewallsFirewallOutput) InboundPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.InboundPolicy }).(pulumi.StringOutput)
 }
 
+// A set of firewall rules that specify what inbound network traffic is allowed.
 func (o GetFirewallsFirewallOutput) Inbounds() GetFirewallsFirewallInboundArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallInbound { return v.Inbounds }).(GetFirewallsFirewallInboundArrayOutput)
 }
@@ -10028,6 +10276,7 @@ func (o GetFirewallsFirewallOutput) Linodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Linodes }).(pulumi.IntArrayOutput)
 }
 
+// The IDs of NodeBalancers assigned to this Firewall..
 func (o GetFirewallsFirewallOutput) Nodebalancers() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Nodebalancers }).(pulumi.IntArrayOutput)
 }
@@ -10037,6 +10286,7 @@ func (o GetFirewallsFirewallOutput) OutboundPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.OutboundPolicy }).(pulumi.StringOutput)
 }
 
+// A set of firewall rules that specify what outbound network traffic is allowed.
 func (o GetFirewallsFirewallOutput) Outbounds() GetFirewallsFirewallOutboundArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallOutbound { return v.Outbounds }).(GetFirewallsFirewallOutboundArrayOutput)
 }
@@ -10077,13 +10327,16 @@ func (o GetFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetFirewallsFi
 }
 
 type GetFirewallsFirewallDevice struct {
+	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId int `pulumi:"entityId"`
 	// The unique ID assigned to this Firewall.
 	Id int `pulumi:"id"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label string `pulumi:"label"`
-	Type  string `pulumi:"type"`
-	Url   string `pulumi:"url"`
+	// The type of Firewall Device.
+	Type string `pulumi:"type"`
+	// The URL of the underlying entity this device references.
+	Url string `pulumi:"url"`
 }
 
 // GetFirewallsFirewallDeviceInput is an input type that accepts GetFirewallsFirewallDeviceArgs and GetFirewallsFirewallDeviceOutput values.
@@ -10098,13 +10351,16 @@ type GetFirewallsFirewallDeviceInput interface {
 }
 
 type GetFirewallsFirewallDeviceArgs struct {
+	// The ID of the underlying entity this device references (i.e. the Linode's ID).
 	EntityId pulumi.IntInput `pulumi:"entityId"`
 	// The unique ID assigned to this Firewall.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
-	Type  pulumi.StringInput `pulumi:"type"`
-	Url   pulumi.StringInput `pulumi:"url"`
+	// The type of Firewall Device.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL of the underlying entity this device references.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetFirewallsFirewallDeviceArgs) ElementType() reflect.Type {
@@ -10158,6 +10414,7 @@ func (o GetFirewallsFirewallDeviceOutput) ToGetFirewallsFirewallDeviceOutputWith
 	return o
 }
 
+// The ID of the underlying entity this device references (i.e. the Linode's ID).
 func (o GetFirewallsFirewallDeviceOutput) EntityId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallDevice) int { return v.EntityId }).(pulumi.IntOutput)
 }
@@ -10172,10 +10429,12 @@ func (o GetFirewallsFirewallDeviceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallDevice) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The type of Firewall Device.
 func (o GetFirewallsFirewallDeviceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallDevice) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The URL of the underlying entity this device references.
 func (o GetFirewallsFirewallDeviceOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallDevice) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -10201,12 +10460,17 @@ func (o GetFirewallsFirewallDeviceArrayOutput) Index(i pulumi.IntInput) GetFirew
 }
 
 type GetFirewallsFirewallInbound struct {
-	Action string   `pulumi:"action"`
-	Ipv4s  []string `pulumi:"ipv4s"`
-	Ipv6s  []string `pulumi:"ipv6s"`
+	// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-	Label    string `pulumi:"label"`
-	Ports    string `pulumi:"ports"`
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (TCP, UDP, ICMP)
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -10222,12 +10486,17 @@ type GetFirewallsFirewallInboundInput interface {
 }
 
 type GetFirewallsFirewallInboundArgs struct {
-	Action pulumi.StringInput      `pulumi:"action"`
-	Ipv4s  pulumi.StringArrayInput `pulumi:"ipv4s"`
-	Ipv6s  pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-	Label    pulumi.StringInput `pulumi:"label"`
-	Ports    pulumi.StringInput `pulumi:"ports"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (TCP, UDP, ICMP)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -10282,14 +10551,17 @@ func (o GetFirewallsFirewallInboundOutput) ToGetFirewallsFirewallInboundOutputWi
 	return o
 }
 
+// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
 func (o GetFirewallsFirewallInboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// A list of IPv4 addresses or networks in IP/mask format.
 func (o GetFirewallsFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
+// A list of IPv6 addresses or networks in IP/mask format.
 func (o GetFirewallsFirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
 }
@@ -10299,10 +10571,12 @@ func (o GetFirewallsFirewallInboundOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 func (o GetFirewallsFirewallInboundOutput) Ports() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
 }
 
+// The network protocol this rule controls. (TCP, UDP, ICMP)
 func (o GetFirewallsFirewallInboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -10328,12 +10602,17 @@ func (o GetFirewallsFirewallInboundArrayOutput) Index(i pulumi.IntInput) GetFire
 }
 
 type GetFirewallsFirewallOutbound struct {
-	Action string   `pulumi:"action"`
-	Ipv4s  []string `pulumi:"ipv4s"`
-	Ipv6s  []string `pulumi:"ipv6s"`
+	// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-	Label    string `pulumi:"label"`
-	Ports    string `pulumi:"ports"`
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (TCP, UDP, ICMP)
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -10349,12 +10628,17 @@ type GetFirewallsFirewallOutboundInput interface {
 }
 
 type GetFirewallsFirewallOutboundArgs struct {
-	Action pulumi.StringInput      `pulumi:"action"`
-	Ipv4s  pulumi.StringArrayInput `pulumi:"ipv4s"`
-	Ipv6s  pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-	Label    pulumi.StringInput `pulumi:"label"`
-	Ports    pulumi.StringInput `pulumi:"ports"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (TCP, UDP, ICMP)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -10409,14 +10693,17 @@ func (o GetFirewallsFirewallOutboundOutput) ToGetFirewallsFirewallOutboundOutput
 	return o
 }
 
+// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
 func (o GetFirewallsFirewallOutboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// A list of IPv4 addresses or networks in IP/mask format.
 func (o GetFirewallsFirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
+// A list of IPv6 addresses or networks in IP/mask format.
 func (o GetFirewallsFirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
 }
@@ -10426,10 +10713,12 @@ func (o GetFirewallsFirewallOutboundOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 func (o GetFirewallsFirewallOutboundOutput) Ports() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
 }
 
+// The network protocol this rule controls. (TCP, UDP, ICMP)
 func (o GetFirewallsFirewallOutboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -10570,6 +10859,7 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 }
 
 type GetImagesImage struct {
+	// The capabilities of this Image.
 	Capabilities []string `pulumi:"capabilities"`
 	// When this Image was created.
 	Created string `pulumi:"created"`
@@ -10579,7 +10869,8 @@ type GetImagesImage struct {
 	Deprecated bool `pulumi:"deprecated"`
 	// A detailed description of this Image.
 	Description string `pulumi:"description"`
-	Expiry      string `pulumi:"expiry"`
+	// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+	Expiry string `pulumi:"expiry"`
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id string `pulumi:"id"`
 	// True if the Image is public.
@@ -10608,6 +10899,7 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
+	// The capabilities of this Image.
 	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
 	// When this Image was created.
 	Created pulumi.StringInput `pulumi:"created"`
@@ -10617,7 +10909,8 @@ type GetImagesImageArgs struct {
 	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
 	// A detailed description of this Image.
 	Description pulumi.StringInput `pulumi:"description"`
-	Expiry      pulumi.StringInput `pulumi:"expiry"`
+	// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// True if the Image is public.
@@ -10685,6 +10978,7 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The capabilities of this Image.
 func (o GetImagesImageOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesImage) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
@@ -10709,6 +11003,7 @@ func (o GetImagesImageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
 func (o GetImagesImageOutput) Expiry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Expiry }).(pulumi.StringOutput)
 }
@@ -13958,6 +14253,7 @@ func (o GetInstanceTypesFilterArrayOutput) Index(i pulumi.IntInput) GetInstanceT
 }
 
 type GetInstanceTypesType struct {
+	// Information about the optional Backup service offered for Linodes.
 	Addons []GetInstanceTypesTypeAddon `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
 	Class string `pulumi:"class"`
@@ -13970,8 +14266,10 @@ type GetInstanceTypesType struct {
 	// The amount of RAM included in this Linode Type.
 	Memory int `pulumi:"memory"`
 	// The Mbits outbound bandwidth allocation.
-	NetworkOut   int                               `pulumi:"networkOut"`
-	Prices       []GetInstanceTypesTypePrice       `pulumi:"prices"`
+	NetworkOut int `pulumi:"networkOut"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices []GetInstanceTypesTypePrice `pulumi:"prices"`
+	// A list of region-specific prices for this plan.
 	RegionPrices []GetInstanceTypesTypeRegionPrice `pulumi:"regionPrices"`
 	// The monthly outbound transfer amount, in MB.
 	Transfer int `pulumi:"transfer"`
@@ -13991,6 +14289,7 @@ type GetInstanceTypesTypeInput interface {
 }
 
 type GetInstanceTypesTypeArgs struct {
+	// Information about the optional Backup service offered for Linodes.
 	Addons GetInstanceTypesTypeAddonArrayInput `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
 	Class pulumi.StringInput `pulumi:"class"`
@@ -14003,8 +14302,10 @@ type GetInstanceTypesTypeArgs struct {
 	// The amount of RAM included in this Linode Type.
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The Mbits outbound bandwidth allocation.
-	NetworkOut   pulumi.IntInput                           `pulumi:"networkOut"`
-	Prices       GetInstanceTypesTypePriceArrayInput       `pulumi:"prices"`
+	NetworkOut pulumi.IntInput `pulumi:"networkOut"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices GetInstanceTypesTypePriceArrayInput `pulumi:"prices"`
+	// A list of region-specific prices for this plan.
 	RegionPrices GetInstanceTypesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
 	// The monthly outbound transfer amount, in MB.
 	Transfer pulumi.IntInput `pulumi:"transfer"`
@@ -14063,6 +14364,7 @@ func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutputWithContext(ctx 
 	return o
 }
 
+// Information about the optional Backup service offered for Linodes.
 func (o GetInstanceTypesTypeOutput) Addons() GetInstanceTypesTypeAddonArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypeAddon { return v.Addons }).(GetInstanceTypesTypeAddonArrayOutput)
 }
@@ -14097,10 +14399,12 @@ func (o GetInstanceTypesTypeOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
 
+// Cost in US dollars, broken down into hourly and monthly charges.
 func (o GetInstanceTypesTypeOutput) Prices() GetInstanceTypesTypePriceArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypePrice { return v.Prices }).(GetInstanceTypesTypePriceArrayOutput)
 }
 
+// A list of region-specific prices for this plan.
 func (o GetInstanceTypesTypeOutput) RegionPrices() GetInstanceTypesTypeRegionPriceArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypeRegionPrice { return v.RegionPrices }).(GetInstanceTypesTypeRegionPriceArrayOutput)
 }
@@ -14865,16 +15169,21 @@ func (o GetInstancesFilterArrayOutput) Index(i pulumi.IntInput) GetInstancesFilt
 }
 
 type GetInstancesInstance struct {
-	Alerts          GetInstancesInstanceAlerts   `pulumi:"alerts"`
-	Backups         []GetInstancesInstanceBackup `pulumi:"backups"`
-	BootConfigLabel string                       `pulumi:"bootConfigLabel"`
-	Configs         []GetInstancesInstanceConfig `pulumi:"configs"`
-	Disks           []GetInstancesInstanceDisk   `pulumi:"disks"`
+	Alerts GetInstancesInstanceAlerts `pulumi:"alerts"`
+	// Information about this Linode's backups status.
+	Backups []GetInstancesInstanceBackup `pulumi:"backups"`
+	// The Label of the Instance Config that should be used to boot the Linode instance.
+	BootConfigLabel string `pulumi:"bootConfigLabel"`
+	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+	Configs []GetInstancesInstanceConfig `pulumi:"configs"`
+	// Disks associated with this Linode.
+	Disks []GetInstancesInstanceDisk `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group string `pulumi:"group"`
 	// Whether this Instance was created with user-data.
-	HasUserData bool   `pulumi:"hasUserData"`
-	HostUuid    string `pulumi:"hostUuid"`
+	HasUserData bool `pulumi:"hasUserData"`
+	// The Linode’s host machine, as a UUID.
+	HostUuid string `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
 	Id int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -14916,16 +15225,21 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	Alerts          GetInstancesInstanceAlertsInput      `pulumi:"alerts"`
-	Backups         GetInstancesInstanceBackupArrayInput `pulumi:"backups"`
-	BootConfigLabel pulumi.StringInput                   `pulumi:"bootConfigLabel"`
-	Configs         GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
-	Disks           GetInstancesInstanceDiskArrayInput   `pulumi:"disks"`
+	Alerts GetInstancesInstanceAlertsInput `pulumi:"alerts"`
+	// Information about this Linode's backups status.
+	Backups GetInstancesInstanceBackupArrayInput `pulumi:"backups"`
+	// The Label of the Instance Config that should be used to boot the Linode instance.
+	BootConfigLabel pulumi.StringInput `pulumi:"bootConfigLabel"`
+	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+	Configs GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
+	// Disks associated with this Linode.
+	Disks GetInstancesInstanceDiskArrayInput `pulumi:"disks"`
 	// The display group of the Linode instance.
 	Group pulumi.StringInput `pulumi:"group"`
 	// Whether this Instance was created with user-data.
-	HasUserData pulumi.BoolInput   `pulumi:"hasUserData"`
-	HostUuid    pulumi.StringInput `pulumi:"hostUuid"`
+	HasUserData pulumi.BoolInput `pulumi:"hasUserData"`
+	// The Linode’s host machine, as a UUID.
+	HostUuid pulumi.StringInput `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
@@ -15010,18 +15324,22 @@ func (o GetInstancesInstanceOutput) Alerts() GetInstancesInstanceAlertsOutput {
 	return o.ApplyT(func(v GetInstancesInstance) GetInstancesInstanceAlerts { return v.Alerts }).(GetInstancesInstanceAlertsOutput)
 }
 
+// Information about this Linode's backups status.
 func (o GetInstancesInstanceOutput) Backups() GetInstancesInstanceBackupArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceBackup { return v.Backups }).(GetInstancesInstanceBackupArrayOutput)
 }
 
+// The Label of the Instance Config that should be used to boot the Linode instance.
 func (o GetInstancesInstanceOutput) BootConfigLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.BootConfigLabel }).(pulumi.StringOutput)
 }
 
+// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 func (o GetInstancesInstanceOutput) Configs() GetInstancesInstanceConfigArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceConfig { return v.Configs }).(GetInstancesInstanceConfigArrayOutput)
 }
 
+// Disks associated with this Linode.
 func (o GetInstancesInstanceOutput) Disks() GetInstancesInstanceDiskArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceDisk { return v.Disks }).(GetInstancesInstanceDiskArrayOutput)
 }
@@ -15036,6 +15354,7 @@ func (o GetInstancesInstanceOutput) HasUserData() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.HasUserData }).(pulumi.BoolOutput)
 }
 
+// The Linode’s host machine, as a UUID.
 func (o GetInstancesInstanceOutput) HostUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.HostUuid }).(pulumi.StringOutput)
 }
@@ -15130,10 +15449,15 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceAlerts struct {
-	Cpu           int `pulumi:"cpu"`
-	Io            int `pulumi:"io"`
-	NetworkIn     int `pulumi:"networkIn"`
-	NetworkOut    int `pulumi:"networkOut"`
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+	Cpu int `pulumi:"cpu"`
+	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+	Io int `pulumi:"io"`
+	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkIn int `pulumi:"networkIn"`
+	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkOut int `pulumi:"networkOut"`
+	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota int `pulumi:"transferQuota"`
 }
 
@@ -15149,10 +15473,15 @@ type GetInstancesInstanceAlertsInput interface {
 }
 
 type GetInstancesInstanceAlertsArgs struct {
-	Cpu           pulumi.IntInput `pulumi:"cpu"`
-	Io            pulumi.IntInput `pulumi:"io"`
-	NetworkIn     pulumi.IntInput `pulumi:"networkIn"`
-	NetworkOut    pulumi.IntInput `pulumi:"networkOut"`
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+	Io pulumi.IntInput `pulumi:"io"`
+	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkIn pulumi.IntInput `pulumi:"networkIn"`
+	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+	NetworkOut pulumi.IntInput `pulumi:"networkOut"`
+	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota pulumi.IntInput `pulumi:"transferQuota"`
 }
 
@@ -15182,27 +15511,33 @@ func (o GetInstancesInstanceAlertsOutput) ToGetInstancesInstanceAlertsOutputWith
 	return o
 }
 
+// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.Cpu }).(pulumi.IntOutput)
 }
 
+// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) Io() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.Io }).(pulumi.IntOutput)
 }
 
+// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) NetworkIn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.NetworkIn }).(pulumi.IntOutput)
 }
 
+// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
 
+// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) TransferQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.TransferQuota }).(pulumi.IntOutput)
 }
 
 type GetInstancesInstanceBackup struct {
+	// Whether this Backup is available for restoration.
 	Available bool `pulumi:"available"`
 	// If this Linode has the Backup service enabled.
 	Enabled   bool                                 `pulumi:"enabled"`
@@ -15221,6 +15556,7 @@ type GetInstancesInstanceBackupInput interface {
 }
 
 type GetInstancesInstanceBackupArgs struct {
+	// Whether this Backup is available for restoration.
 	Available pulumi.BoolInput `pulumi:"available"`
 	// If this Linode has the Backup service enabled.
 	Enabled   pulumi.BoolInput                             `pulumi:"enabled"`
@@ -15278,6 +15614,7 @@ func (o GetInstancesInstanceBackupOutput) ToGetInstancesInstanceBackupOutputWith
 	return o
 }
 
+// Whether this Backup is available for restoration.
 func (o GetInstancesInstanceBackupOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceBackup) bool { return v.Available }).(pulumi.BoolOutput)
 }
@@ -15425,7 +15762,8 @@ type GetInstancesInstanceConfig struct {
 	// Helpers enabled when booting to this Linode Config.
 	Helpers []GetInstancesInstanceConfigHelper `pulumi:"helpers"`
 	// The ID of the disk in the Linode API.
-	Id         int                                   `pulumi:"id"`
+	Id int `pulumi:"id"`
+	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel string `pulumi:"kernel"`
@@ -15460,7 +15798,8 @@ type GetInstancesInstanceConfigArgs struct {
 	// Helpers enabled when booting to this Linode Config.
 	Helpers GetInstancesInstanceConfigHelperArrayInput `pulumi:"helpers"`
 	// The ID of the disk in the Linode API.
-	Id         pulumi.IntInput                               `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
+	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
 	Kernel pulumi.StringInput `pulumi:"kernel"`
@@ -15547,6 +15886,7 @@ func (o GetInstancesInstanceConfigOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// An array of Network Interfaces for this Linode’s Configuration Profile.
 func (o GetInstancesInstanceConfigOutput) Interfaces() GetInstancesInstanceConfigInterfaceArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigInterface { return v.Interfaces }).(GetInstancesInstanceConfigInterfaceArrayOutput)
 }
@@ -15604,12 +15944,19 @@ func (o GetInstancesInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInsta
 type GetInstancesInstanceConfigDevice struct {
 	// ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 	Sdas []GetInstancesInstanceConfigDeviceSda `pulumi:"sdas"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdbs []GetInstancesInstanceConfigDeviceSdb `pulumi:"sdbs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdcs []GetInstancesInstanceConfigDeviceSdc `pulumi:"sdcs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdds []GetInstancesInstanceConfigDeviceSdd `pulumi:"sdds"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdes []GetInstancesInstanceConfigDeviceSde `pulumi:"sdes"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdfs []GetInstancesInstanceConfigDeviceSdf `pulumi:"sdfs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdgs []GetInstancesInstanceConfigDeviceSdg `pulumi:"sdgs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdhs []GetInstancesInstanceConfigDeviceSdh `pulumi:"sdhs"`
 }
 
@@ -15627,12 +15974,19 @@ type GetInstancesInstanceConfigDeviceInput interface {
 type GetInstancesInstanceConfigDeviceArgs struct {
 	// ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 	Sdas GetInstancesInstanceConfigDeviceSdaArrayInput `pulumi:"sdas"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdbs GetInstancesInstanceConfigDeviceSdbArrayInput `pulumi:"sdbs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdcs GetInstancesInstanceConfigDeviceSdcArrayInput `pulumi:"sdcs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdds GetInstancesInstanceConfigDeviceSddArrayInput `pulumi:"sdds"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdes GetInstancesInstanceConfigDeviceSdeArrayInput `pulumi:"sdes"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdfs GetInstancesInstanceConfigDeviceSdfArrayInput `pulumi:"sdfs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdgs GetInstancesInstanceConfigDeviceSdgArrayInput `pulumi:"sdgs"`
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdhs GetInstancesInstanceConfigDeviceSdhArrayInput `pulumi:"sdhs"`
 }
 
@@ -15692,30 +16046,37 @@ func (o GetInstancesInstanceConfigDeviceOutput) Sdas() GetInstancesInstanceConfi
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSda { return v.Sdas }).(GetInstancesInstanceConfigDeviceSdaArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdbs() GetInstancesInstanceConfigDeviceSdbArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSdb { return v.Sdbs }).(GetInstancesInstanceConfigDeviceSdbArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdcs() GetInstancesInstanceConfigDeviceSdcArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSdc { return v.Sdcs }).(GetInstancesInstanceConfigDeviceSdcArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdds() GetInstancesInstanceConfigDeviceSddArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSdd { return v.Sdds }).(GetInstancesInstanceConfigDeviceSddArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdes() GetInstancesInstanceConfigDeviceSdeArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSde { return v.Sdes }).(GetInstancesInstanceConfigDeviceSdeArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdfs() GetInstancesInstanceConfigDeviceSdfArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSdf { return v.Sdfs }).(GetInstancesInstanceConfigDeviceSdfArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdgs() GetInstancesInstanceConfigDeviceSdgArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSdg { return v.Sdgs }).(GetInstancesInstanceConfigDeviceSdgArrayOutput)
 }
 
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o GetInstancesInstanceConfigDeviceOutput) Sdhs() GetInstancesInstanceConfigDeviceSdhArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigDevice) []GetInstancesInstanceConfigDeviceSdh { return v.Sdhs }).(GetInstancesInstanceConfigDeviceSdhArrayOutput)
 }
@@ -16661,6 +17022,7 @@ func (o GetInstancesInstanceConfigDeviceSdhArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstancesInstanceConfigHelper struct {
+	// Populates the /dev directory early during boot without udev. Defaults to false.
 	DevtmpfsAutomount bool `pulumi:"devtmpfsAutomount"`
 	// Controls the behavior of the Linode Config's Distribution Helper setting.
 	Distro bool `pulumi:"distro"`
@@ -16684,6 +17046,7 @@ type GetInstancesInstanceConfigHelperInput interface {
 }
 
 type GetInstancesInstanceConfigHelperArgs struct {
+	// Populates the /dev directory early during boot without udev. Defaults to false.
 	DevtmpfsAutomount pulumi.BoolInput `pulumi:"devtmpfsAutomount"`
 	// Controls the behavior of the Linode Config's Distribution Helper setting.
 	Distro pulumi.BoolInput `pulumi:"distro"`
@@ -16746,6 +17109,7 @@ func (o GetInstancesInstanceConfigHelperOutput) ToGetInstancesInstanceConfigHelp
 	return o
 }
 
+// Populates the /dev directory early during boot without udev. Defaults to false.
 func (o GetInstancesInstanceConfigHelperOutput) DevtmpfsAutomount() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigHelper) bool { return v.DevtmpfsAutomount }).(pulumi.BoolOutput)
 }
@@ -16791,6 +17155,7 @@ func (o GetInstancesInstanceConfigHelperArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetInstancesInstanceConfigInterface struct {
+	// Whether this interface is currently booted and active.
 	Active bool `pulumi:"active"`
 	// The ID of the disk in the Linode API.
 	Id int `pulumi:"id"`
@@ -16824,6 +17189,7 @@ type GetInstancesInstanceConfigInterfaceInput interface {
 }
 
 type GetInstancesInstanceConfigInterfaceArgs struct {
+	// Whether this interface is currently booted and active.
 	Active pulumi.BoolInput `pulumi:"active"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
@@ -16896,6 +17262,7 @@ func (o GetInstancesInstanceConfigInterfaceOutput) ToGetInstancesInstanceConfigI
 	return o
 }
 
+// Whether this interface is currently booted and active.
 func (o GetInstancesInstanceConfigInterfaceOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) bool { return v.Active }).(pulumi.BoolOutput)
 }
@@ -17151,10 +17518,14 @@ func (o GetInstancesInstanceDiskArrayOutput) Index(i pulumi.IntInput) GetInstanc
 }
 
 type GetInstancesInstanceSpec struct {
-	Disk     int `pulumi:"disk"`
-	Memory   int `pulumi:"memory"`
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	Disk int `pulumi:"disk"`
+	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+	Memory int `pulumi:"memory"`
+	// The amount of network transfer this Linode is allotted each month.
 	Transfer int `pulumi:"transfer"`
-	Vcpus    int `pulumi:"vcpus"`
+	// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+	Vcpus int `pulumi:"vcpus"`
 }
 
 // GetInstancesInstanceSpecInput is an input type that accepts GetInstancesInstanceSpecArgs and GetInstancesInstanceSpecOutput values.
@@ -17169,10 +17540,14 @@ type GetInstancesInstanceSpecInput interface {
 }
 
 type GetInstancesInstanceSpecArgs struct {
-	Disk     pulumi.IntInput `pulumi:"disk"`
-	Memory   pulumi.IntInput `pulumi:"memory"`
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The amount of network transfer this Linode is allotted each month.
 	Transfer pulumi.IntInput `pulumi:"transfer"`
-	Vcpus    pulumi.IntInput `pulumi:"vcpus"`
+	// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
 }
 
 func (GetInstancesInstanceSpecArgs) ElementType() reflect.Type {
@@ -17226,18 +17601,22 @@ func (o GetInstancesInstanceSpecOutput) ToGetInstancesInstanceSpecOutputWithCont
 	return o
 }
 
+// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
 func (o GetInstancesInstanceSpecOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Disk }).(pulumi.IntOutput)
 }
 
+// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 func (o GetInstancesInstanceSpecOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Memory }).(pulumi.IntOutput)
 }
 
+// The amount of network transfer this Linode is allotted each month.
 func (o GetInstancesInstanceSpecOutput) Transfer() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Transfer }).(pulumi.IntOutput)
 }
 
+// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
 func (o GetInstancesInstanceSpecOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Vcpus }).(pulumi.IntOutput)
 }
@@ -17380,7 +17759,8 @@ func (o GetKernelsFilterArrayOutput) Index(i pulumi.IntInput) GetKernelsFilterOu
 type GetKernelsKernel struct {
 	// The architecture of this Kernel.
 	Architecture string `pulumi:"architecture"`
-	Built        string `pulumi:"built"`
+	// The date on which this Kernel was built.
+	Built string `pulumi:"built"`
 	// Whether or not this Kernel is deprecated.
 	Deprecated bool `pulumi:"deprecated"`
 	// The unique ID of this Kernel.
@@ -17411,7 +17791,8 @@ type GetKernelsKernelInput interface {
 type GetKernelsKernelArgs struct {
 	// The architecture of this Kernel.
 	Architecture pulumi.StringInput `pulumi:"architecture"`
-	Built        pulumi.StringInput `pulumi:"built"`
+	// The date on which this Kernel was built.
+	Built pulumi.StringInput `pulumi:"built"`
 	// Whether or not this Kernel is deprecated.
 	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
 	// The unique ID of this Kernel.
@@ -17484,6 +17865,7 @@ func (o GetKernelsKernelOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelsKernel) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
+// The date on which this Kernel was built.
 func (o GetKernelsKernelOutput) Built() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelsKernel) string { return v.Built }).(pulumi.StringOutput)
 }
@@ -17544,6 +17926,7 @@ func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOu
 }
 
 type GetLkeClusterControlPlane struct {
+	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
 	HighAvailability bool `pulumi:"highAvailability"`
 }
 
@@ -17559,6 +17942,7 @@ type GetLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClusterControlPlaneArgs struct {
+	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 }
 
@@ -17613,6 +17997,7 @@ func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithCo
 	return o
 }
 
+// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
 func (o GetLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
 }
@@ -18430,8 +18815,9 @@ type GetNodebalancerConfigsNodebalancerConfig struct {
 	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check string `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
-	CheckAttempts int    `pulumi:"checkAttempts"`
-	CheckBody     string `pulumi:"checkBody"`
+	CheckAttempts int `pulumi:"checkAttempts"`
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+	CheckBody string `pulumi:"checkBody"`
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval int `pulumi:"checkInterval"`
 	// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
@@ -18443,7 +18829,8 @@ type GetNodebalancerConfigsNodebalancerConfig struct {
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
 	CipherSuite string `pulumi:"cipherSuite"`
 	// The config's ID.
-	Id           int                                                  `pulumi:"id"`
+	Id int `pulumi:"id"`
+	// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 	NodeStatuses []GetNodebalancerConfigsNodebalancerConfigNodeStatus `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	//
@@ -18480,8 +18867,9 @@ type GetNodebalancerConfigsNodebalancerConfigArgs struct {
 	// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
 	Check pulumi.StringInput `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
-	CheckAttempts pulumi.IntInput    `pulumi:"checkAttempts"`
-	CheckBody     pulumi.StringInput `pulumi:"checkBody"`
+	CheckAttempts pulumi.IntInput `pulumi:"checkAttempts"`
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+	CheckBody pulumi.StringInput `pulumi:"checkBody"`
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval pulumi.IntInput `pulumi:"checkInterval"`
 	// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
@@ -18493,7 +18881,8 @@ type GetNodebalancerConfigsNodebalancerConfigArgs struct {
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
 	CipherSuite pulumi.StringInput `pulumi:"cipherSuite"`
 	// The config's ID.
-	Id           pulumi.IntInput                                              `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
+	// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 	NodeStatuses GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayInput `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	//
@@ -18579,6 +18968,7 @@ func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckAttempts() pulumi.I
 	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.CheckAttempts }).(pulumi.IntOutput)
 }
 
+// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 func (o GetNodebalancerConfigsNodebalancerConfigOutput) CheckBody() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.CheckBody }).(pulumi.StringOutput)
 }
@@ -18613,6 +19003,7 @@ func (o GetNodebalancerConfigsNodebalancerConfigOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 func (o GetNodebalancerConfigsNodebalancerConfigOutput) NodeStatuses() GetNodebalancerConfigsNodebalancerConfigNodeStatusArrayOutput {
 	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) []GetNodebalancerConfigsNodebalancerConfigNodeStatus {
 		return v.NodeStatuses
@@ -18915,7 +19306,8 @@ type GetNodebalancersNodebalancer struct {
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags      []string                               `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers []GetNodebalancersNodebalancerTransfer `pulumi:"transfers"`
 	// When this Linode NodeBalancer was last updated
 	Updated string `pulumi:"updated"`
@@ -18950,7 +19342,8 @@ type GetNodebalancersNodebalancerArgs struct {
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region pulumi.StringInput `pulumi:"region"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags      pulumi.StringArrayInput                        `pulumi:"tags"`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers GetNodebalancersNodebalancerTransferArrayInput `pulumi:"transfers"`
 	// When this Linode NodeBalancer was last updated
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -19052,6 +19445,7 @@ func (o GetNodebalancersNodebalancerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodebalancersNodebalancer) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Information about the amount of transfer this NodeBalancer has had so far this month.
 func (o GetNodebalancersNodebalancerOutput) Transfers() GetNodebalancersNodebalancerTransferArrayOutput {
 	return o.ApplyT(func(v GetNodebalancersNodebalancer) []GetNodebalancersNodebalancerTransfer { return v.Transfers }).(GetNodebalancersNodebalancerTransferArrayOutput)
 }
@@ -19501,7 +19895,8 @@ type GetRegionsRegion struct {
 	Capabilities []string `pulumi:"capabilities"`
 	// The country the region resides in.
 	Country string `pulumi:"country"`
-	Id      string `pulumi:"id"`
+	// The unique ID of this Region.
+	Id string `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
 	Label     string                     `pulumi:"label"`
 	Resolvers []GetRegionsRegionResolver `pulumi:"resolvers"`
@@ -19525,7 +19920,8 @@ type GetRegionsRegionArgs struct {
 	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
 	// The country the region resides in.
 	Country pulumi.StringInput `pulumi:"country"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	// The unique ID of this Region.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
 	Label     pulumi.StringInput                 `pulumi:"label"`
 	Resolvers GetRegionsRegionResolverArrayInput `pulumi:"resolvers"`
@@ -19594,6 +19990,7 @@ func (o GetRegionsRegionOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.Country }).(pulumi.StringOutput)
 }
 
+// The unique ID of this Region.
 func (o GetRegionsRegionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -21936,32 +22333,42 @@ func (o GetUsersFilterArrayOutput) Index(i pulumi.IntInput) GetUsersFilterOutput
 }
 
 type GetUsersUser struct {
+	// A set containing all of the user's active grants.
 	DatabaseGrants []GetUsersUserDatabaseGrant `pulumi:"databaseGrants"`
-	DomainGrants   []GetUsersUserDomainGrant   `pulumi:"domainGrants"`
+	// A set containing all of the user's active grants.
+	DomainGrants []GetUsersUserDomainGrant `pulumi:"domainGrants"`
 	// The email address for this User, for account management communications, and may be used for other communications as configured.
-	Email          string                      `pulumi:"email"`
+	Email string `pulumi:"email"`
+	// A set containing all of the user's active grants.
 	FirewallGrants []GetUsersUserFirewallGrant `pulumi:"firewallGrants"`
-	GlobalGrants   []GetUsersUserGlobalGrant   `pulumi:"globalGrants"`
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants []GetUsersUserGlobalGrant `pulumi:"globalGrants"`
 	// The ID of entity this grant applies to.
-	Id                 string                          `pulumi:"id"`
-	ImageGrants        []GetUsersUserImageGrant        `pulumi:"imageGrants"`
-	LinodeGrants       []GetUsersUserLinodeGrant       `pulumi:"linodeGrants"`
-	LongviewGrants     []GetUsersUserLongviewGrant     `pulumi:"longviewGrants"`
+	Id string `pulumi:"id"`
+	// A set containing all of the user's active grants.
+	ImageGrants []GetUsersUserImageGrant `pulumi:"imageGrants"`
+	// A set containing all of the user's active grants.
+	LinodeGrants []GetUsersUserLinodeGrant `pulumi:"linodeGrants"`
+	// A set containing all of the user's active grants.
+	LongviewGrants []GetUsersUserLongviewGrant `pulumi:"longviewGrants"`
+	// A set containing all of the user's active grants.
 	NodebalancerGrants []GetUsersUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
 	PasswordCreated string `pulumi:"passwordCreated"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted bool `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
-	SshKeys           []string                       `pulumi:"sshKeys"`
+	SshKeys []string `pulumi:"sshKeys"`
+	// A set containing all of the user's active grants.
 	StackscriptGrants []GetUsersUserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
 	TfaEnabled bool `pulumi:"tfaEnabled"`
 	// This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
 	Username string `pulumi:"username"`
 	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
-	VerifiedPhoneNumber string                    `pulumi:"verifiedPhoneNumber"`
-	VolumeGrants        []GetUsersUserVolumeGrant `pulumi:"volumeGrants"`
+	VerifiedPhoneNumber string `pulumi:"verifiedPhoneNumber"`
+	// A set containing all of the user's active grants.
+	VolumeGrants []GetUsersUserVolumeGrant `pulumi:"volumeGrants"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -21976,32 +22383,42 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
+	// A set containing all of the user's active grants.
 	DatabaseGrants GetUsersUserDatabaseGrantArrayInput `pulumi:"databaseGrants"`
-	DomainGrants   GetUsersUserDomainGrantArrayInput   `pulumi:"domainGrants"`
+	// A set containing all of the user's active grants.
+	DomainGrants GetUsersUserDomainGrantArrayInput `pulumi:"domainGrants"`
 	// The email address for this User, for account management communications, and may be used for other communications as configured.
-	Email          pulumi.StringInput                  `pulumi:"email"`
+	Email pulumi.StringInput `pulumi:"email"`
+	// A set containing all of the user's active grants.
 	FirewallGrants GetUsersUserFirewallGrantArrayInput `pulumi:"firewallGrants"`
-	GlobalGrants   GetUsersUserGlobalGrantArrayInput   `pulumi:"globalGrants"`
+	// A structure containing the Account-level grants a User has.
+	GlobalGrants GetUsersUserGlobalGrantArrayInput `pulumi:"globalGrants"`
 	// The ID of entity this grant applies to.
-	Id                 pulumi.StringInput                      `pulumi:"id"`
-	ImageGrants        GetUsersUserImageGrantArrayInput        `pulumi:"imageGrants"`
-	LinodeGrants       GetUsersUserLinodeGrantArrayInput       `pulumi:"linodeGrants"`
-	LongviewGrants     GetUsersUserLongviewGrantArrayInput     `pulumi:"longviewGrants"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// A set containing all of the user's active grants.
+	ImageGrants GetUsersUserImageGrantArrayInput `pulumi:"imageGrants"`
+	// A set containing all of the user's active grants.
+	LinodeGrants GetUsersUserLinodeGrantArrayInput `pulumi:"linodeGrants"`
+	// A set containing all of the user's active grants.
+	LongviewGrants GetUsersUserLongviewGrantArrayInput `pulumi:"longviewGrants"`
+	// A set containing all of the user's active grants.
 	NodebalancerGrants GetUsersUserNodebalancerGrantArrayInput `pulumi:"nodebalancerGrants"`
 	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
 	PasswordCreated pulumi.StringInput `pulumi:"passwordCreated"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted pulumi.BoolInput `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
-	SshKeys           pulumi.StringArrayInput                `pulumi:"sshKeys"`
+	SshKeys pulumi.StringArrayInput `pulumi:"sshKeys"`
+	// A set containing all of the user's active grants.
 	StackscriptGrants GetUsersUserStackscriptGrantArrayInput `pulumi:"stackscriptGrants"`
 	// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
 	TfaEnabled pulumi.BoolInput `pulumi:"tfaEnabled"`
 	// This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
 	Username pulumi.StringInput `pulumi:"username"`
 	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
-	VerifiedPhoneNumber pulumi.StringInput                `pulumi:"verifiedPhoneNumber"`
-	VolumeGrants        GetUsersUserVolumeGrantArrayInput `pulumi:"volumeGrants"`
+	VerifiedPhoneNumber pulumi.StringInput `pulumi:"verifiedPhoneNumber"`
+	// A set containing all of the user's active grants.
+	VolumeGrants GetUsersUserVolumeGrantArrayInput `pulumi:"volumeGrants"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -22055,10 +22472,12 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) DatabaseGrants() GetUsersUserDatabaseGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserDatabaseGrant { return v.DatabaseGrants }).(GetUsersUserDatabaseGrantArrayOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) DomainGrants() GetUsersUserDomainGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserDomainGrant { return v.DomainGrants }).(GetUsersUserDomainGrantArrayOutput)
 }
@@ -22068,10 +22487,12 @@ func (o GetUsersUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) FirewallGrants() GetUsersUserFirewallGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserFirewallGrant { return v.FirewallGrants }).(GetUsersUserFirewallGrantArrayOutput)
 }
 
+// A structure containing the Account-level grants a User has.
 func (o GetUsersUserOutput) GlobalGrants() GetUsersUserGlobalGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserGlobalGrant { return v.GlobalGrants }).(GetUsersUserGlobalGrantArrayOutput)
 }
@@ -22081,18 +22502,22 @@ func (o GetUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) ImageGrants() GetUsersUserImageGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserImageGrant { return v.ImageGrants }).(GetUsersUserImageGrantArrayOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) LinodeGrants() GetUsersUserLinodeGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserLinodeGrant { return v.LinodeGrants }).(GetUsersUserLinodeGrantArrayOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) LongviewGrants() GetUsersUserLongviewGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserLongviewGrant { return v.LongviewGrants }).(GetUsersUserLongviewGrantArrayOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) NodebalancerGrants() GetUsersUserNodebalancerGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserNodebalancerGrant { return v.NodebalancerGrants }).(GetUsersUserNodebalancerGrantArrayOutput)
 }
@@ -22112,6 +22537,7 @@ func (o GetUsersUserOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []string { return v.SshKeys }).(pulumi.StringArrayOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) StackscriptGrants() GetUsersUserStackscriptGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserStackscriptGrant { return v.StackscriptGrants }).(GetUsersUserStackscriptGrantArrayOutput)
 }
@@ -22131,6 +22557,7 @@ func (o GetUsersUserOutput) VerifiedPhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.VerifiedPhoneNumber }).(pulumi.StringOutput)
 }
 
+// A set containing all of the user's active grants.
 func (o GetUsersUserOutput) VolumeGrants() GetUsersUserVolumeGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserVolumeGrant { return v.VolumeGrants }).(GetUsersUserVolumeGrantArrayOutput)
 }

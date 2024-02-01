@@ -55,12 +55,12 @@ If true, Linode Instances will not be rebooted on config and interface changes.
 
 skipInstanceDeletePoll: Optional[bool]
 """
-Skip waiting for a linode_instance resource to finish deleting.
+Skip waiting for a Instance resource to finish deleting.
 """
 
 skipInstanceReadyPoll: Optional[bool]
 """
-Skip waiting for a linode_instance resource to be running.
+Skip waiting for a Instance resource to be running.
 """
 
 token: Optional[str]

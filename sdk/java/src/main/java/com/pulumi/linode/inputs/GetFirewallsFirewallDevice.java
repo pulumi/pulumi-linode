@@ -14,9 +14,17 @@ public final class GetFirewallsFirewallDevice extends com.pulumi.resources.Invok
 
     public static final GetFirewallsFirewallDevice Empty = new GetFirewallsFirewallDevice();
 
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+     * 
+     */
     @Import(name="entityId", required=true)
     private Integer entityId;
 
+    /**
+     * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+     * 
+     */
     public Integer entityId() {
         return this.entityId;
     }
@@ -51,16 +59,32 @@ public final class GetFirewallsFirewallDevice extends com.pulumi.resources.Invok
         return this.label;
     }
 
+    /**
+     * The type of Firewall Device.
+     * 
+     */
     @Import(name="type", required=true)
     private String type;
 
+    /**
+     * @return The type of Firewall Device.
+     * 
+     */
     public String type() {
         return this.type;
     }
 
+    /**
+     * The URL of the underlying entity this device references.
+     * 
+     */
     @Import(name="url", required=true)
     private String url;
 
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     public String url() {
         return this.url;
     }
@@ -93,6 +117,12 @@ public final class GetFirewallsFirewallDevice extends com.pulumi.resources.Invok
             $ = new GetFirewallsFirewallDevice(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entityId The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityId(Integer entityId) {
             $.entityId = entityId;
             return this;
@@ -120,11 +150,23 @@ public final class GetFirewallsFirewallDevice extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param type The type of Firewall Device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param url The URL of the underlying entity this device references.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             $.url = url;
             return this;

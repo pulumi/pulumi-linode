@@ -13,14 +13,29 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetFirewallsFirewallInboundResult
     {
+        /// <summary>
+        /// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// A list of IPv4 addresses or networks in IP/mask format.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv4s;
+        /// <summary>
+        /// A list of IPv6 addresses or networks in IP/mask format.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv6s;
         /// <summary>
         /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// </summary>
         public readonly string Ports;
+        /// <summary>
+        /// The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// </summary>
         public readonly string Protocol;
 
         [OutputConstructor]

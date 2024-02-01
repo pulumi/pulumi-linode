@@ -63,9 +63,17 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
         return this.checkAttempts;
     }
 
+    /**
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     * 
+     */
     @Import(name="checkBody", required=true)
     private Output<String> checkBody;
 
+    /**
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     * 
+     */
     public Output<String> checkBody() {
         return this.checkBody;
     }
@@ -160,9 +168,17 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
         return this.id;
     }
 
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     * 
+     */
     @Import(name="nodeStatuses", required=true)
     private Output<List<GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs>> nodeStatuses;
 
+    /**
+     * @return A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     * 
+     */
     public Output<List<GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs>> nodeStatuses() {
         return this.nodeStatuses;
     }
@@ -380,11 +396,23 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
             return checkAttempts(Output.of(checkAttempts));
         }
 
+        /**
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkBody(Output<String> checkBody) {
             $.checkBody = checkBody;
             return this;
         }
 
+        /**
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkBody(String checkBody) {
             return checkBody(Output.of(checkBody));
         }
@@ -515,15 +543,33 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
             return id(Output.of(id));
         }
 
+        /**
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeStatuses(Output<List<GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs>> nodeStatuses) {
             $.nodeStatuses = nodeStatuses;
             return this;
         }
 
+        /**
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeStatuses(List<GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs> nodeStatuses) {
             return nodeStatuses(Output.of(nodeStatuses));
         }
 
+        /**
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeStatuses(GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs... nodeStatuses) {
             return nodeStatuses(List.of(nodeStatuses));
         }

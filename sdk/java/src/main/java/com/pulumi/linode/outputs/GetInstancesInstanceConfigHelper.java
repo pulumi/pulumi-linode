@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceConfigHelper {
+    /**
+     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * 
+     */
     private Boolean devtmpfsAutomount;
     /**
      * @return Controls the behavior of the Linode Config&#39;s Distribution Helper setting.
@@ -33,6 +37,10 @@ public final class GetInstancesInstanceConfigHelper {
     private Boolean updatedbDisabled;
 
     private GetInstancesInstanceConfigHelper() {}
+    /**
+     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * 
+     */
     public Boolean devtmpfsAutomount() {
         return this.devtmpfsAutomount;
     }

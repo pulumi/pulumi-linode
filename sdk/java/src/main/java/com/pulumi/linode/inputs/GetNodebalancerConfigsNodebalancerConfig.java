@@ -62,9 +62,17 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         return this.checkAttempts;
     }
 
+    /**
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     * 
+     */
     @Import(name="checkBody", required=true)
     private String checkBody;
 
+    /**
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     * 
+     */
     public String checkBody() {
         return this.checkBody;
     }
@@ -159,9 +167,17 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         return this.id;
     }
 
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     * 
+     */
     @Import(name="nodeStatuses", required=true)
     private List<GetNodebalancerConfigsNodebalancerConfigNodeStatus> nodeStatuses;
 
+    /**
+     * @return A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     * 
+     */
     public List<GetNodebalancerConfigsNodebalancerConfigNodeStatus> nodeStatuses() {
         return this.nodeStatuses;
     }
@@ -349,6 +365,12 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
             return this;
         }
 
+        /**
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkBody(String checkBody) {
             $.checkBody = checkBody;
             return this;
@@ -420,11 +442,23 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
             return this;
         }
 
+        /**
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeStatuses(List<GetNodebalancerConfigsNodebalancerConfigNodeStatus> nodeStatuses) {
             $.nodeStatuses = nodeStatuses;
             return this;
         }
 
+        /**
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeStatuses(GetNodebalancerConfigsNodebalancerConfigNodeStatus... nodeStatuses) {
             return nodeStatuses(List.of(nodeStatuses));
         }

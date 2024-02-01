@@ -32,6 +32,10 @@ public final class GetAccountLoginsLogin {
      * 
      */
     private Boolean restricted;
+    /**
+     * @return Whether the login attempt succeeded or failed.
+     * 
+     */
     private String status;
     /**
      * @return The username of the User that was logged into.
@@ -68,6 +72,10 @@ public final class GetAccountLoginsLogin {
     public Boolean restricted() {
         return this.restricted;
     }
+    /**
+     * @return Whether the login attempt succeeded or failed.
+     * 
+     */
     public String status() {
         return this.status;
     }

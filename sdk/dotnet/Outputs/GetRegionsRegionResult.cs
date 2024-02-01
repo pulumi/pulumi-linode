@@ -21,6 +21,9 @@ namespace Pulumi.Linode.Outputs
         /// The country the region resides in.
         /// </summary>
         public readonly string Country;
+        /// <summary>
+        /// The unique ID of this Region.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Detailed location information for this Region, including city, state or region, and country.

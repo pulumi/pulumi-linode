@@ -48,9 +48,17 @@ public final class GetRegionsRegionArgs extends com.pulumi.resources.ResourceArg
         return this.country;
     }
 
+    /**
+     * The unique ID of this Region.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return The unique ID of this Region.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -173,11 +181,23 @@ public final class GetRegionsRegionArgs extends com.pulumi.resources.ResourceArg
             return country(Output.of(country));
         }
 
+        /**
+         * @param id The unique ID of this Region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The unique ID of this Region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

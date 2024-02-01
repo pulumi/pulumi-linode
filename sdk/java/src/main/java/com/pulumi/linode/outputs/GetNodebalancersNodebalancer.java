@@ -58,6 +58,10 @@ public final class GetNodebalancersNodebalancer {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Information about the amount of transfer this NodeBalancer has had so far this month.
+     * 
+     */
     private List<GetNodebalancersNodebalancerTransfer> transfers;
     /**
      * @return When this Linode NodeBalancer was last updated
@@ -129,6 +133,10 @@ public final class GetNodebalancersNodebalancer {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Information about the amount of transfer this NodeBalancer has had so far this month.
+     * 
+     */
     public List<GetNodebalancersNodebalancerTransfer> transfers() {
         return this.transfers;
     }

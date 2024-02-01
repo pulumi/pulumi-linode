@@ -16,9 +16,17 @@ public final class InstanceBackupsArgs extends com.pulumi.resources.ResourceArgs
 
     public static final InstanceBackupsArgs Empty = new InstanceBackupsArgs();
 
+    /**
+     * Whether this Backup is available for restoration.
+     * 
+     */
     @Import(name="available")
     private @Nullable Output<Boolean> available;
 
+    /**
+     * @return Whether this Backup is available for restoration.
+     * 
+     */
     public Optional<Output<Boolean>> available() {
         return Optional.ofNullable(this.available);
     }
@@ -71,11 +79,23 @@ public final class InstanceBackupsArgs extends com.pulumi.resources.ResourceArgs
             $ = new InstanceBackupsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param available Whether this Backup is available for restoration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder available(@Nullable Output<Boolean> available) {
             $.available = available;
             return this;
         }
 
+        /**
+         * @param available Whether this Backup is available for restoration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder available(Boolean available) {
             return available(Output.of(available));
         }

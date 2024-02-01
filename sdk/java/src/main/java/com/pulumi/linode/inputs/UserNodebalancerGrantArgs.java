@@ -15,16 +15,32 @@ public final class UserNodebalancerGrantArgs extends com.pulumi.resources.Resour
 
     public static final UserNodebalancerGrantArgs Empty = new UserNodebalancerGrantArgs();
 
+    /**
+     * The ID of the entity this grant applies to.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
+    /**
+     * @return The ID of the entity this grant applies to.
+     * 
+     */
     public Output<Integer> id() {
         return this.id;
     }
 
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     * 
+     */
     @Import(name="permissions", required=true)
     private Output<String> permissions;
 
+    /**
+     * @return The level of access this User has to this entity. If null, this User has no access.
+     * 
+     */
     public Output<String> permissions() {
         return this.permissions;
     }
@@ -54,20 +70,44 @@ public final class UserNodebalancerGrantArgs extends com.pulumi.resources.Resour
             $ = new UserNodebalancerGrantArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The ID of the entity this grant applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<Integer> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID of the entity this grant applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Integer id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param permissions The level of access this User has to this entity. If null, this User has no access.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(Output<String> permissions) {
             $.permissions = permissions;
             return this;
         }
 
+        /**
+         * @param permissions The level of access this User has to this entity. If null, this User has no access.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(String permissions) {
             return permissions(Output.of(permissions));
         }

@@ -58,9 +58,17 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         return this.enabled;
     }
 
+    /**
+     * Specifies a period in the object&#39;s expire.
+     * 
+     */
     @Import(name="expiration")
     private @Nullable Output<ObjectStorageBucketLifecycleRuleExpirationArgs> expiration;
 
+    /**
+     * @return Specifies a period in the object&#39;s expire.
+     * 
+     */
     public Optional<Output<ObjectStorageBucketLifecycleRuleExpirationArgs>> expiration() {
         return Optional.ofNullable(this.expiration);
     }
@@ -80,9 +88,17 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Specifies when non-current object versions expire.
+     * 
+     */
     @Import(name="noncurrentVersionExpiration")
     private @Nullable Output<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs> noncurrentVersionExpiration;
 
+    /**
+     * @return Specifies when non-current object versions expire.
+     * 
+     */
     public Optional<Output<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs>> noncurrentVersionExpiration() {
         return Optional.ofNullable(this.noncurrentVersionExpiration);
     }
@@ -181,11 +197,23 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param expiration Specifies a period in the object&#39;s expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(@Nullable Output<ObjectStorageBucketLifecycleRuleExpirationArgs> expiration) {
             $.expiration = expiration;
             return this;
         }
 
+        /**
+         * @param expiration Specifies a period in the object&#39;s expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(ObjectStorageBucketLifecycleRuleExpirationArgs expiration) {
             return expiration(Output.of(expiration));
         }
@@ -211,11 +239,23 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
             return id(Output.of(id));
         }
 
+        /**
+         * @param noncurrentVersionExpiration Specifies when non-current object versions expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noncurrentVersionExpiration(@Nullable Output<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs> noncurrentVersionExpiration) {
             $.noncurrentVersionExpiration = noncurrentVersionExpiration;
             return this;
         }
 
+        /**
+         * @param noncurrentVersionExpiration Specifies when non-current object versions expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noncurrentVersionExpiration(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs noncurrentVersionExpiration) {
             return noncurrentVersionExpiration(Output.of(noncurrentVersionExpiration));
         }

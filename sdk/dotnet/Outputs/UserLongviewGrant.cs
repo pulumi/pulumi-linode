@@ -13,7 +13,13 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class UserLongviewGrant
     {
+        /// <summary>
+        /// The ID of the entity this grant applies to.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The level of access this User has to this entity. If null, this User has no access.
+        /// </summary>
         public readonly string Permissions;
 
         [OutputConstructor]

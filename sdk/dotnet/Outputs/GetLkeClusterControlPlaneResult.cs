@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetLkeClusterControlPlaneResult
     {
+        /// <summary>
+        /// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        /// </summary>
         public readonly bool HighAvailability;
 
         [OutputConstructor]

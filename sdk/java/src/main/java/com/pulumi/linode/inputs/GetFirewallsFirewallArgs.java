@@ -37,9 +37,17 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         return this.created;
     }
 
+    /**
+     * The devices associated with this firewall.
+     * 
+     */
     @Import(name="devices")
     private @Nullable Output<List<GetFirewallsFirewallDeviceArgs>> devices;
 
+    /**
+     * @return The devices associated with this firewall.
+     * 
+     */
     public Optional<Output<List<GetFirewallsFirewallDeviceArgs>>> devices() {
         return Optional.ofNullable(this.devices);
     }
@@ -89,9 +97,17 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         return this.inboundPolicy;
     }
 
+    /**
+     * A set of firewall rules that specify what inbound network traffic is allowed.
+     * 
+     */
     @Import(name="inbounds")
     private @Nullable Output<List<GetFirewallsFirewallInboundArgs>> inbounds;
 
+    /**
+     * @return A set of firewall rules that specify what inbound network traffic is allowed.
+     * 
+     */
     public Optional<Output<List<GetFirewallsFirewallInboundArgs>>> inbounds() {
         return Optional.ofNullable(this.inbounds);
     }
@@ -126,9 +142,17 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         return this.linodes;
     }
 
+    /**
+     * The IDs of NodeBalancers assigned to this Firewall..
+     * 
+     */
     @Import(name="nodebalancers", required=true)
     private Output<List<Integer>> nodebalancers;
 
+    /**
+     * @return The IDs of NodeBalancers assigned to this Firewall..
+     * 
+     */
     public Output<List<Integer>> nodebalancers() {
         return this.nodebalancers;
     }
@@ -148,9 +172,17 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
         return this.outboundPolicy;
     }
 
+    /**
+     * A set of firewall rules that specify what outbound network traffic is allowed.
+     * 
+     */
     @Import(name="outbounds")
     private @Nullable Output<List<GetFirewallsFirewallOutboundArgs>> outbounds;
 
+    /**
+     * @return A set of firewall rules that specify what outbound network traffic is allowed.
+     * 
+     */
     public Optional<Output<List<GetFirewallsFirewallOutboundArgs>>> outbounds() {
         return Optional.ofNullable(this.outbounds);
     }
@@ -258,15 +290,33 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
             return created(Output.of(created));
         }
 
+        /**
+         * @param devices The devices associated with this firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devices(@Nullable Output<List<GetFirewallsFirewallDeviceArgs>> devices) {
             $.devices = devices;
             return this;
         }
 
+        /**
+         * @param devices The devices associated with this firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devices(List<GetFirewallsFirewallDeviceArgs> devices) {
             return devices(Output.of(devices));
         }
 
+        /**
+         * @param devices The devices associated with this firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devices(GetFirewallsFirewallDeviceArgs... devices) {
             return devices(List.of(devices));
         }
@@ -334,15 +384,33 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
             return inboundPolicy(Output.of(inboundPolicy));
         }
 
+        /**
+         * @param inbounds A set of firewall rules that specify what inbound network traffic is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inbounds(@Nullable Output<List<GetFirewallsFirewallInboundArgs>> inbounds) {
             $.inbounds = inbounds;
             return this;
         }
 
+        /**
+         * @param inbounds A set of firewall rules that specify what inbound network traffic is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inbounds(List<GetFirewallsFirewallInboundArgs> inbounds) {
             return inbounds(Output.of(inbounds));
         }
 
+        /**
+         * @param inbounds A set of firewall rules that specify what inbound network traffic is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inbounds(GetFirewallsFirewallInboundArgs... inbounds) {
             return inbounds(List.of(inbounds));
         }
@@ -399,15 +467,33 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
             return linodes(List.of(linodes));
         }
 
+        /**
+         * @param nodebalancers The IDs of NodeBalancers assigned to this Firewall..
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodebalancers(Output<List<Integer>> nodebalancers) {
             $.nodebalancers = nodebalancers;
             return this;
         }
 
+        /**
+         * @param nodebalancers The IDs of NodeBalancers assigned to this Firewall..
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodebalancers(List<Integer> nodebalancers) {
             return nodebalancers(Output.of(nodebalancers));
         }
 
+        /**
+         * @param nodebalancers The IDs of NodeBalancers assigned to this Firewall..
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodebalancers(Integer... nodebalancers) {
             return nodebalancers(List.of(nodebalancers));
         }
@@ -433,15 +519,33 @@ public final class GetFirewallsFirewallArgs extends com.pulumi.resources.Resourc
             return outboundPolicy(Output.of(outboundPolicy));
         }
 
+        /**
+         * @param outbounds A set of firewall rules that specify what outbound network traffic is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outbounds(@Nullable Output<List<GetFirewallsFirewallOutboundArgs>> outbounds) {
             $.outbounds = outbounds;
             return this;
         }
 
+        /**
+         * @param outbounds A set of firewall rules that specify what outbound network traffic is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outbounds(List<GetFirewallsFirewallOutboundArgs> outbounds) {
             return outbounds(Output.of(outbounds));
         }
 
+        /**
+         * @param outbounds A set of firewall rules that specify what outbound network traffic is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outbounds(GetFirewallsFirewallOutboundArgs... outbounds) {
             return outbounds(List.of(outbounds));
         }
