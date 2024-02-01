@@ -11,25 +11,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceAlerts {
+    /**
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     */
     private @Nullable Integer cpu;
+    /**
+     * @return The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     */
     private @Nullable Integer io;
+    /**
+     * @return The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     private @Nullable Integer networkIn;
+    /**
+     * @return The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     private @Nullable Integer networkOut;
+    /**
+     * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     private @Nullable Integer transferQuota;
 
     private InstanceAlerts() {}
+    /**
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     */
     public Optional<Integer> cpu() {
         return Optional.ofNullable(this.cpu);
     }
+    /**
+     * @return The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     */
     public Optional<Integer> io() {
         return Optional.ofNullable(this.io);
     }
+    /**
+     * @return The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Optional<Integer> networkIn() {
         return Optional.ofNullable(this.networkIn);
     }
+    /**
+     * @return The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Optional<Integer> networkOut() {
         return Optional.ofNullable(this.networkOut);
     }
+    /**
+     * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Optional<Integer> transferQuota() {
         return Optional.ofNullable(this.transferQuota);
     }

@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceConfigHelpers {
+    /**
+     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * 
+     */
     private @Nullable Boolean devtmpfsAutomount;
     /**
      * @return Controls the behavior of the Linode Config&#39;s Distribution Helper setting.
@@ -34,6 +38,10 @@ public final class InstanceConfigHelpers {
     private @Nullable Boolean updatedbDisabled;
 
     private InstanceConfigHelpers() {}
+    /**
+     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * 
+     */
     public Optional<Boolean> devtmpfsAutomount() {
         return Optional.ofNullable(this.devtmpfsAutomount);
     }

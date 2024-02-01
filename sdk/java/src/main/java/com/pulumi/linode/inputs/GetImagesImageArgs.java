@@ -17,9 +17,17 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final GetImagesImageArgs Empty = new GetImagesImageArgs();
 
+    /**
+     * The capabilities of this Image.
+     * 
+     */
     @Import(name="capabilities", required=true)
     private Output<List<String>> capabilities;
 
+    /**
+     * @return The capabilities of this Image.
+     * 
+     */
     public Output<List<String>> capabilities() {
         return this.capabilities;
     }
@@ -84,9 +92,17 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         return this.description;
     }
 
+    /**
+     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     * 
+     */
     @Import(name="expiry", required=true)
     private Output<String> expiry;
 
+    /**
+     * @return Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     * 
+     */
     public Output<String> expiry() {
         return this.expiry;
     }
@@ -232,15 +248,33 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
             $ = new GetImagesImageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capabilities(Output<List<String>> capabilities) {
             $.capabilities = capabilities;
             return this;
         }
 
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capabilities(List<String> capabilities) {
             return capabilities(Output.of(capabilities));
         }
 
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capabilities(String... capabilities) {
             return capabilities(List.of(capabilities));
         }
@@ -329,11 +363,23 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
             return description(Output.of(description));
         }
 
+        /**
+         * @param expiry Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiry(Output<String> expiry) {
             $.expiry = expiry;
             return this;
         }
 
+        /**
+         * @param expiry Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiry(String expiry) {
             return expiry(Output.of(expiry));
         }

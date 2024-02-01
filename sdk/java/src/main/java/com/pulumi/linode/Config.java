@@ -75,14 +75,14 @@ public final class Config {
         return Codegen.booleanProp("skipImplicitReboots").config(config).get();
     }
 /**
- * Skip waiting for a linode_instance resource to finish deleting.
+ * Skip waiting for a linode.Instance resource to finish deleting.
  * 
  */
     public Optional<Boolean> skipInstanceDeletePoll() {
         return Codegen.booleanProp("skipInstanceDeletePoll").config(config).get();
     }
 /**
- * Skip waiting for a linode_instance resource to be running.
+ * Skip waiting for a linode.Instance resource to be running.
  * 
  */
     public Optional<Boolean> skipInstanceReadyPoll() {

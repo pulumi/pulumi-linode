@@ -25,6 +25,9 @@ namespace Pulumi.Linode.Outputs
         /// How many times to attempt a check before considering a backend to be down. (1-30)
         /// </summary>
         public readonly int CheckAttempts;
+        /// <summary>
+        /// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+        /// </summary>
         public readonly string CheckBody;
         /// <summary>
         /// How often, in seconds, to check that backends are up and serving requests.
@@ -50,6 +53,9 @@ namespace Pulumi.Linode.Outputs
         /// The config's ID.
         /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusResult> NodeStatuses;
         /// <summary>
         /// The ID of the NodeBalancer to access.

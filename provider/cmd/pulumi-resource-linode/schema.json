@@ -98,11 +98,11 @@
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
+                "description": "Skip waiting for a linode.Instance resource to finish deleting.\n"
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode_instance resource to be running.\n"
+                "description": "Skip waiting for a linode.Instance resource to be running.\n"
             },
             "token": {
                 "type": "string",
@@ -132,19 +132,24 @@
         "linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates": {
             "properties": {
                 "dayOfWeek": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The day to perform maintenance.\n"
                 },
                 "duration": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum maintenance window time in hours.\n"
                 },
                 "frequency": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Whether maintenance occurs on a weekly or monthly basis.\n"
                 },
                 "hourOfDay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The hour to begin maintenance based in UTC time.\n"
                 },
                 "weekOfMonth": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The week of the month to perform monthly frequency updates. Required for monthly frequency updates.\n"
                 }
             },
             "type": "object",
@@ -158,19 +163,24 @@
         "linode:index/DatabasePostgresqlUpdates:DatabasePostgresqlUpdates": {
             "properties": {
                 "dayOfWeek": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The day to perform maintenance.\n"
                 },
                 "duration": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum maintenance window time in hours.\n"
                 },
                 "frequency": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Whether maintenance occurs on a weekly or monthly basis.\n"
                 },
                 "hourOfDay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The hour to begin maintenance based in UTC time.\n"
                 },
                 "weekOfMonth": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The week of the month to perform monthly frequency updates. Required for monthly frequency updates.\n"
                 }
             },
             "type": "object",
@@ -300,19 +310,24 @@
         "linode:index/InstanceAlerts:InstanceAlerts": {
             "properties": {
                 "cpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.\n"
                 },
                 "io": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.\n"
                 },
                 "networkIn": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.\n"
                 },
                 "networkOut": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.\n"
                 },
                 "transferQuota": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.\n"
                 }
             },
             "type": "object",
@@ -331,7 +346,8 @@
         "linode:index/InstanceBackups:InstanceBackups": {
             "properties": {
                 "available": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this Backup is available for restoration.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -395,7 +411,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
-                    }
+                    },
+                    "description": "An array of Network Interfaces for this Linode’s Configuration Profile.\n"
                 },
                 "kernel": {
                     "type": "string",
@@ -445,25 +462,32 @@
                     "description": "... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `\"fullvirt\"` `virt_mode`.\n"
                 },
                 "sdb": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdc": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdc:InstanceConfigDevicesSdc",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdd": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdd:InstanceConfigDevicesSdd",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sde": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSde:InstanceConfigDevicesSde"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSde:InstanceConfigDevicesSde",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdf": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdf:InstanceConfigDevicesSdf",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdg": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdg:InstanceConfigDevicesSdg",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdh": {
-                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh"
+                    "$ref": "#/types/linode:index/InstanceConfigDevicesSdh:InstanceConfigDevicesSdh",
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 }
             },
             "type": "object",
@@ -677,7 +701,8 @@
         "linode:index/InstanceConfigHelpers:InstanceConfigHelpers": {
             "properties": {
                 "devtmpfsAutomount": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Populates the /dev directory early during boot without udev. Defaults to false.\n"
                 },
                 "distro": {
                     "type": "boolean",
@@ -701,7 +726,8 @@
         "linode:index/InstanceConfigInterface:InstanceConfigInterface": {
             "properties": {
                 "active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this interface is currently booted and active.\n"
                 },
                 "id": {
                     "type": "integer",
@@ -869,7 +895,8 @@
         "linode:index/InstanceInterface:InstanceInterface": {
             "properties": {
                 "active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this interface is currently booted and active.\n"
                 },
                 "id": {
                     "type": "integer",
@@ -972,6 +999,7 @@
             "properties": {
                 "userData": {
                     "type": "string",
+                    "description": "The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -980,16 +1008,20 @@
         "linode:index/InstanceSpecs:InstanceSpecs": {
             "properties": {
                 "disk": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.\n"
                 },
                 "memory": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.\n"
                 },
                 "transfer": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of network transfer this Linode is allotted each month.\n"
                 },
                 "vcpus": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.\n"
                 }
             },
             "type": "object",
@@ -1023,7 +1055,8 @@
         "linode:index/LkeClusterPool:LkeClusterPool": {
             "properties": {
                 "autoscaler": {
-                    "$ref": "#/types/linode:index/LkeClusterPoolAutoscaler:LkeClusterPoolAutoscaler"
+                    "$ref": "#/types/linode:index/LkeClusterPoolAutoscaler:LkeClusterPoolAutoscaler",
+                    "description": "When specified, the number of nodes autoscales within the defined minimum and maximum values.\n"
                 },
                 "count": {
                     "type": "integer",
@@ -1037,7 +1070,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/LkeClusterPoolNode:LkeClusterPoolNode"
-                    }
+                    },
+                    "description": "The nodes in the node pool.\n"
                 },
                 "type": {
                     "type": "string",
@@ -1176,14 +1210,16 @@
                     "description": "Specifies whether the lifecycle rule is active.\n"
                 },
                 "expiration": {
-                    "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRuleExpiration:ObjectStorageBucketLifecycleRuleExpiration"
+                    "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRuleExpiration:ObjectStorageBucketLifecycleRuleExpiration",
+                    "description": "Specifies a period in the object's expire.\n"
                 },
                 "id": {
                     "type": "string",
                     "description": "The unique identifier for the rule.\n"
                 },
                 "noncurrentVersionExpiration": {
-                    "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration:ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration"
+                    "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration:ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration",
+                    "description": "Specifies when non-current object versions expire.\n"
                 },
                 "prefix": {
                     "type": "string",
@@ -1294,10 +1330,12 @@
         "linode:index/UserDomainGrant:UserDomainGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1309,10 +1347,12 @@
         "linode:index/UserFirewallGrant:UserFirewallGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1324,40 +1364,52 @@
         "linode:index/UserGlobalGrants:UserGlobalGrants": {
             "properties": {
                 "accountAccess": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.\n"
                 },
                 "addDatabases": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Databases.\n"
                 },
                 "addDomains": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Domains.\n"
                 },
                 "addFirewalls": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Firewalls.\n"
                 },
                 "addImages": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Images.\n"
                 },
                 "addLinodes": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may create Linodes.\n"
                 },
                 "addLongview": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may create Longview clients and view the current plan.\n"
                 },
                 "addNodebalancers": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add NodeBalancers.\n"
                 },
                 "addStackscripts": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add StackScripts.\n"
                 },
                 "addVolumes": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may add Volumes.\n"
                 },
                 "cancelAccount": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may cancel the entire Account.\n"
                 },
                 "longviewSubscription": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this User may manage the Account’s Longview subscription.\n"
                 }
             },
             "type": "object"
@@ -1365,10 +1417,12 @@
         "linode:index/UserImageGrant:UserImageGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1380,10 +1434,12 @@
         "linode:index/UserLinodeGrant:UserLinodeGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1395,10 +1451,12 @@
         "linode:index/UserLongviewGrant:UserLongviewGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1410,10 +1468,12 @@
         "linode:index/UserNodebalancerGrant:UserNodebalancerGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1425,10 +1485,12 @@
         "linode:index/UserStackscriptGrant:UserStackscriptGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1440,10 +1502,12 @@
         "linode:index/UserVolumeGrant:UserVolumeGrant": {
             "properties": {
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
                 },
                 "permissions": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
                 }
             },
             "type": "object",
@@ -1581,7 +1645,8 @@
                     "description": "True if the User that was logged into was a restricted User, false otherwise.\n"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Whether the login attempt succeeded or failed.\n"
                 },
                 "username": {
                     "type": "string",
@@ -1870,7 +1935,8 @@
                     "description": "The ID of the Managed Database.\n"
                 },
                 "instanceUri": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "he API route for the database instance.\n"
                 },
                 "label": {
                     "type": "string",
@@ -2122,7 +2188,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getFirewallsFirewallDevice:getFirewallsFirewallDevice"
-                    }
+                    },
+                    "description": "The devices associated with this firewall.\n"
                 },
                 "disabled": {
                     "type": "boolean",
@@ -2140,7 +2207,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getFirewallsFirewallInbound:getFirewallsFirewallInbound"
-                    }
+                    },
+                    "description": "A set of firewall rules that specify what inbound network traffic is allowed.\n"
                 },
                 "label": {
                     "type": "string",
@@ -2157,7 +2225,8 @@
                     "type": "array",
                     "items": {
                         "type": "integer"
-                    }
+                    },
+                    "description": "The IDs of NodeBalancers assigned to this Firewall..\n"
                 },
                 "outboundPolicy": {
                     "type": "string",
@@ -2167,7 +2236,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getFirewallsFirewallOutbound:getFirewallsFirewallOutbound"
-                    }
+                    },
+                    "description": "A set of firewall rules that specify what outbound network traffic is allowed.\n"
                 },
                 "status": {
                     "type": "string",
@@ -2208,7 +2278,8 @@
         "linode:index/getFirewallsFirewallDevice:getFirewallsFirewallDevice": {
             "properties": {
                 "entityId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the underlying entity this device references (i.e. the Linode's ID).\n"
                 },
                 "id": {
                     "type": "integer",
@@ -2219,10 +2290,12 @@
                     "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of Firewall Device.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL of the underlying entity this device references.\n"
                 }
             },
             "type": "object",
@@ -2242,29 +2315,34 @@
         "linode:index/getFirewallsFirewallInbound:getFirewallsFirewallInbound": {
             "properties": {
                 "action": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).\n"
                 },
                 "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of IPv4 addresses or networks in IP/mask format.\n"
                 },
                 "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of IPv6 addresses or networks in IP/mask format.\n"
                 },
                 "label": {
                     "type": "string",
                     "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
                 },
                 "ports": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A string representation of ports and/or port ranges (i.e. \"443\" or \"80-90, 91\").\n"
                 },
                 "protocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The network protocol this rule controls. (TCP, UDP, ICMP)\n"
                 }
             },
             "type": "object",
@@ -2285,29 +2363,34 @@
         "linode:index/getFirewallsFirewallOutbound:getFirewallsFirewallOutbound": {
             "properties": {
                 "action": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).\n"
                 },
                 "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of IPv4 addresses or networks in IP/mask format.\n"
                 },
                 "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of IPv6 addresses or networks in IP/mask format.\n"
                 },
                 "label": {
                     "type": "string",
                     "description": "The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.\n"
                 },
                 "ports": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A string representation of ports and/or port ranges (i.e. \"443\" or \"80-90, 91\").\n"
                 },
                 "protocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The network protocol this rule controls. (TCP, UDP, ICMP)\n"
                 }
             },
             "type": "object",
@@ -2355,7 +2438,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The capabilities of this Image.\n"
                 },
                 "created": {
                     "type": "string",
@@ -2374,7 +2458,8 @@
                     "description": "A detailed description of this Image.\n"
                 },
                 "expiry": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Only Images created automatically (from a deleted Linode; type=automatic) will expire.\n"
                 },
                 "id": {
                     "type": "string",
@@ -3489,7 +3574,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstanceTypesTypeAddon:getInstanceTypesTypeAddon"
-                    }
+                    },
+                    "description": "Information about the optional Backup service offered for Linodes.\n"
                 },
                 "class": {
                     "type": "string",
@@ -3519,13 +3605,15 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice"
-                    }
+                    },
+                    "description": "Cost in US dollars, broken down into hourly and monthly charges.\n"
                 },
                 "regionPrices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstanceTypesTypeRegionPrice:getInstanceTypesTypeRegionPrice"
-                    }
+                    },
+                    "description": "A list of region-specific prices for this plan.\n"
                 },
                 "transfer": {
                     "type": "integer",
@@ -3696,22 +3784,26 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceBackup:getInstancesInstanceBackup"
-                    }
+                    },
+                    "description": "Information about this Linode's backups status.\n"
                 },
                 "bootConfigLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
                 },
                 "configs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfig:getInstancesInstanceConfig"
-                    }
+                    },
+                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
                 },
                 "disks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceDisk:getInstancesInstanceDisk"
-                    }
+                    },
+                    "description": "Disks associated with this Linode.\n"
                 },
                 "group": {
                     "type": "string",
@@ -3722,7 +3814,8 @@
                     "description": "Whether this Instance was created with user-data.\n"
                 },
                 "hostUuid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Linode’s host machine, as a UUID.\n"
                 },
                 "id": {
                     "type": "integer",
@@ -3823,19 +3916,24 @@
         "linode:index/getInstancesInstanceAlerts:getInstancesInstanceAlerts": {
             "properties": {
                 "cpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.\n"
                 },
                 "io": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.\n"
                 },
                 "networkIn": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.\n"
                 },
                 "networkOut": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.\n"
                 },
                 "transferQuota": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.\n"
                 }
             },
             "type": "object",
@@ -3855,7 +3953,8 @@
         "linode:index/getInstancesInstanceBackup:getInstancesInstanceBackup": {
             "properties": {
                 "available": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this Backup is available for restoration.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -3930,7 +4029,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigInterface:getInstancesInstanceConfigInterface"
-                    }
+                    },
+                    "description": "An array of Network Interfaces for this Linode’s Configuration Profile.\n"
                 },
                 "kernel": {
                     "type": "string",
@@ -3990,43 +4090,50 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSdb:getInstancesInstanceConfigDeviceSdb"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdcs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSdc:getInstancesInstanceConfigDeviceSdc"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdds": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSdd:getInstancesInstanceConfigDeviceSdd"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSde:getInstancesInstanceConfigDeviceSde"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdfs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSdf:getInstancesInstanceConfigDeviceSdf"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdgs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSdg:getInstancesInstanceConfigDeviceSdg"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdhs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getInstancesInstanceConfigDeviceSdh:getInstancesInstanceConfigDeviceSdh"
-                    }
+                    },
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 }
             },
             "type": "object",
@@ -4249,7 +4356,8 @@
         "linode:index/getInstancesInstanceConfigHelper:getInstancesInstanceConfigHelper": {
             "properties": {
                 "devtmpfsAutomount": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Populates the /dev directory early during boot without udev. Defaults to false.\n"
                 },
                 "distro": {
                     "type": "boolean",
@@ -4285,7 +4393,8 @@
         "linode:index/getInstancesInstanceConfigInterface:getInstancesInstanceConfigInterface": {
             "properties": {
                 "active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this interface is currently booted and active.\n"
                 },
                 "id": {
                     "type": "integer",
@@ -4398,16 +4507,20 @@
         "linode:index/getInstancesInstanceSpec:getInstancesInstanceSpec": {
             "properties": {
                 "disk": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.\n"
                 },
                 "memory": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.\n"
                 },
                 "transfer": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of network transfer this Linode is allotted each month.\n"
                 },
                 "vcpus": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.\n"
                 }
             },
             "type": "object",
@@ -4454,7 +4567,8 @@
                     "description": "The architecture of this Kernel.\n"
                 },
                 "built": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The date on which this Kernel was built.\n"
                 },
                 "deprecated": {
                     "type": "boolean",
@@ -4508,7 +4622,8 @@
         "linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane": {
             "properties": {
                 "highAvailability": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Defines whether High Availability is enabled for the Control Plane Components of the cluster.\n"
                 }
             },
             "type": "object",
@@ -4718,7 +4833,8 @@
                     "description": "How many times to attempt a check before considering a backend to be down. (1-30)\n"
                 },
                 "checkBody": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down\n"
                 },
                 "checkInterval": {
                     "type": "integer",
@@ -4748,7 +4864,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getNodebalancerConfigsNodebalancerConfigNodeStatus:getNodebalancerConfigsNodebalancerConfigNodeStatus"
-                    }
+                    },
+                    "description": "A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.\n"
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -4895,7 +5012,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getNodebalancersNodebalancerTransfer:getNodebalancersNodebalancerTransfer"
-                    }
+                    },
+                    "description": "Information about the amount of transfer this NodeBalancer has had so far this month.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -5042,7 +5160,8 @@
                     "description": "The country the region resides in.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique ID of this Region.\n"
                 },
                 "label": {
                     "type": "string",
@@ -5644,13 +5763,15 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserDatabaseGrant:getUsersUserDatabaseGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "domainGrants": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserDomainGrant:getUsersUserDomainGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "email": {
                     "type": "string",
@@ -5660,13 +5781,15 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserFirewallGrant:getUsersUserFirewallGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "globalGrants": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserGlobalGrant:getUsersUserGlobalGrant"
-                    }
+                    },
+                    "description": "A structure containing the Account-level grants a User has.\n"
                 },
                 "id": {
                     "type": "string",
@@ -5676,25 +5799,29 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserImageGrant:getUsersUserImageGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "linodeGrants": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserLinodeGrant:getUsersUserLinodeGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "longviewGrants": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserLongviewGrant:getUsersUserLongviewGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "nodebalancerGrants": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserNodebalancerGrant:getUsersUserNodebalancerGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "passwordCreated": {
                     "type": "string",
@@ -5715,7 +5842,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserStackscriptGrant:getUsersUserStackscriptGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 },
                 "tfaEnabled": {
                     "type": "boolean",
@@ -5733,7 +5861,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/getUsersUserVolumeGrant:getUsersUserVolumeGrant"
-                    }
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 }
             },
             "type": "object",

@@ -18,6 +18,9 @@ namespace Pulumi.Linode.Inputs
         [Input("architecture", required: true)]
         public string Architecture { get; set; } = null!;
 
+        /// <summary>
+        /// The date on which this Kernel was built.
+        /// </summary>
         [Input("built", required: true)]
         public string Built { get; set; } = null!;
 

@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceInterface {
+    /**
+     * @return Whether this interface is currently booted and active.
+     * 
+     */
     private @Nullable Boolean active;
     /**
      * @return The ID of the disk in the Linode API.
@@ -68,6 +72,10 @@ public final class InstanceInterface {
     private @Nullable Integer vpcId;
 
     private InstanceInterface() {}
+    /**
+     * @return Whether this interface is currently booted and active.
+     * 
+     */
     public Optional<Boolean> active() {
         return Optional.ofNullable(this.active);
     }

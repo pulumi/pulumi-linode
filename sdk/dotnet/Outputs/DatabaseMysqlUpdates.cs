@@ -13,10 +13,25 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class DatabaseMysqlUpdates
     {
+        /// <summary>
+        /// The day to perform maintenance.
+        /// </summary>
         public readonly string DayOfWeek;
+        /// <summary>
+        /// The maximum maintenance window time in hours.
+        /// </summary>
         public readonly int Duration;
+        /// <summary>
+        /// Whether maintenance occurs on a weekly or monthly basis.
+        /// </summary>
         public readonly string Frequency;
+        /// <summary>
+        /// The hour to begin maintenance based in UTC time.
+        /// </summary>
         public readonly int HourOfDay;
+        /// <summary>
+        /// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        /// </summary>
         public readonly int? WeekOfMonth;
 
         [OutputConstructor]

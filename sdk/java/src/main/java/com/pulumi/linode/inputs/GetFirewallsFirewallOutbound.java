@@ -14,23 +14,47 @@ public final class GetFirewallsFirewallOutbound extends com.pulumi.resources.Inv
 
     public static final GetFirewallsFirewallOutbound Empty = new GetFirewallsFirewallOutbound();
 
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     */
     @Import(name="action", required=true)
     private String action;
 
+    /**
+     * @return Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     */
     public String action() {
         return this.action;
     }
 
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     */
     @Import(name="ipv4s", required=true)
     private List<String> ipv4s;
 
+    /**
+     * @return A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     */
     public List<String> ipv4s() {
         return this.ipv4s;
     }
 
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     */
     @Import(name="ipv6s", required=true)
     private List<String> ipv6s;
 
+    /**
+     * @return A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     */
     public List<String> ipv6s() {
         return this.ipv6s;
     }
@@ -50,16 +74,32 @@ public final class GetFirewallsFirewallOutbound extends com.pulumi.resources.Inv
         return this.label;
     }
 
+    /**
+     * A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     */
     @Import(name="ports", required=true)
     private String ports;
 
+    /**
+     * @return A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     */
     public String ports() {
         return this.ports;
     }
 
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     */
     @Import(name="protocol", required=true)
     private String protocol;
 
+    /**
+     * @return The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }
@@ -93,25 +133,55 @@ public final class GetFirewallsFirewallOutbound extends com.pulumi.resources.Inv
             $ = new GetFirewallsFirewallOutbound(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param ipv4s A list of IPv4 addresses or networks in IP/mask format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4s(List<String> ipv4s) {
             $.ipv4s = ipv4s;
             return this;
         }
 
+        /**
+         * @param ipv4s A list of IPv4 addresses or networks in IP/mask format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4s(String... ipv4s) {
             return ipv4s(List.of(ipv4s));
         }
 
+        /**
+         * @param ipv6s A list of IPv6 addresses or networks in IP/mask format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6s(List<String> ipv6s) {
             $.ipv6s = ipv6s;
             return this;
         }
 
+        /**
+         * @param ipv6s A list of IPv6 addresses or networks in IP/mask format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6s(String... ipv6s) {
             return ipv6s(List.of(ipv6s));
         }
@@ -127,11 +197,23 @@ public final class GetFirewallsFirewallOutbound extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param ports A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(String ports) {
             $.ports = ports;
             return this;
         }
 
+        /**
+         * @param protocol The network protocol this rule controls. (TCP, UDP, ICMP)
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(String protocol) {
             $.protocol = protocol;
             return this;

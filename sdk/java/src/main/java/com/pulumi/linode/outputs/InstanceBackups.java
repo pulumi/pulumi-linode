@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceBackups {
+    /**
+     * @return Whether this Backup is available for restoration.
+     * 
+     */
     private @Nullable Boolean available;
     /**
      * @return If this Linode has the Backup service enabled.
@@ -21,6 +25,10 @@ public final class InstanceBackups {
     private @Nullable InstanceBackupsSchedule schedule;
 
     private InstanceBackups() {}
+    /**
+     * @return Whether this Backup is available for restoration.
+     * 
+     */
     public Optional<Boolean> available() {
         return Optional.ofNullable(this.available);
     }

@@ -29,6 +29,9 @@ namespace Pulumi.Linode.Outputs
         /// The ID of the disk in the Linode API.
         /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// An array of Network Interfaces for this Linode’s Configuration Profile.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceResult> Interfaces;
         /// <summary>
         /// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).

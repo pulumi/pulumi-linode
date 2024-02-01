@@ -36,6 +36,9 @@ namespace Pulumi.Linode.Inputs
         [Input("restricted", required: true)]
         public bool Restricted { get; set; }
 
+        /// <summary>
+        /// Whether the login attempt succeeded or failed.
+        /// </summary>
         [Input("status", required: true)]
         public string Status { get; set; } = null!;
 

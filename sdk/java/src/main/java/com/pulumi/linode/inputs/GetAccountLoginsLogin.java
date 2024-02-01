@@ -75,9 +75,17 @@ public final class GetAccountLoginsLogin extends com.pulumi.resources.InvokeArgs
         return this.restricted;
     }
 
+    /**
+     * Whether the login attempt succeeded or failed.
+     * 
+     */
     @Import(name="status", required=true)
     private String status;
 
+    /**
+     * @return Whether the login attempt succeeded or failed.
+     * 
+     */
     public String status() {
         return this.status;
     }
@@ -170,6 +178,12 @@ public final class GetAccountLoginsLogin extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param status Whether the login attempt succeeded or failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             $.status = status;
             return this;

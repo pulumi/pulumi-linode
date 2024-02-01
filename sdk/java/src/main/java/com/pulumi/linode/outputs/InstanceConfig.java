@@ -37,6 +37,10 @@ public final class InstanceConfig {
      * 
      */
     private @Nullable Integer id;
+    /**
+     * @return An array of Network Interfaces for this Linode’s Configuration Profile.
+     * 
+     */
     private @Nullable List<InstanceConfigInterface> interfaces;
     /**
      * @return A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -100,6 +104,10 @@ public final class InstanceConfig {
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return An array of Network Interfaces for this Linode’s Configuration Profile.
+     * 
+     */
     public List<InstanceConfigInterface> interfaces() {
         return this.interfaces == null ? List.of() : this.interfaces;
     }

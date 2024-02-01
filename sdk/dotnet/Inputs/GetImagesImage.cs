@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Inputs
     {
         [Input("capabilities", required: true)]
         private List<string>? _capabilities;
+
+        /// <summary>
+        /// The capabilities of this Image.
+        /// </summary>
         public List<string> Capabilities
         {
             get => _capabilities ?? (_capabilities = new List<string>());
@@ -44,6 +48,9 @@ namespace Pulumi.Linode.Inputs
         [Input("description", required: true)]
         public string Description { get; set; } = null!;
 
+        /// <summary>
+        /// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        /// </summary>
         [Input("expiry", required: true)]
         public string Expiry { get; set; } = null!;
 

@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabasePostgresqlUpdates {
+    /**
+     * @return The day to perform maintenance.
+     * 
+     */
     private String dayOfWeek;
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
     private Integer duration;
+    /**
+     * @return Whether maintenance occurs on a weekly or monthly basis.
+     * 
+     */
     private String frequency;
+    /**
+     * @return The hour to begin maintenance based in UTC time.
+     * 
+     */
     private Integer hourOfDay;
+    /**
+     * @return The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+     * 
+     */
     private @Nullable Integer weekOfMonth;
 
     private DatabasePostgresqlUpdates() {}
+    /**
+     * @return The day to perform maintenance.
+     * 
+     */
     public String dayOfWeek() {
         return this.dayOfWeek;
     }
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
     public Integer duration() {
         return this.duration;
     }
+    /**
+     * @return Whether maintenance occurs on a weekly or monthly basis.
+     * 
+     */
     public String frequency() {
         return this.frequency;
     }
+    /**
+     * @return The hour to begin maintenance based in UTC time.
+     * 
+     */
     public Integer hourOfDay() {
         return this.hourOfDay;
     }
+    /**
+     * @return The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+     * 
+     */
     public Optional<Integer> weekOfMonth() {
         return Optional.ofNullable(this.weekOfMonth);
     }

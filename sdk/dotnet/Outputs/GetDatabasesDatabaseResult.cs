@@ -45,6 +45,9 @@ namespace Pulumi.Linode.Outputs
         /// The ID of the Managed Database.
         /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// he API route for the database instance.
+        /// </summary>
         public readonly string InstanceUri;
         /// <summary>
         /// A unique, user-defined string referring to the Managed Database.

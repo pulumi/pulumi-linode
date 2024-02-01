@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetImagesImageResult
     {
+        /// <summary>
+        /// The capabilities of this Image.
+        /// </summary>
         public readonly ImmutableArray<string> Capabilities;
         /// <summary>
         /// When this Image was created.
@@ -30,6 +33,9 @@ namespace Pulumi.Linode.Outputs
         /// A detailed description of this Image.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        /// </summary>
         public readonly string Expiry;
         /// <summary>
         /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.

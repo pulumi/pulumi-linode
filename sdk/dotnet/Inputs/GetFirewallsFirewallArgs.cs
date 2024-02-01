@@ -20,6 +20,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("devices")]
         private InputList<Inputs.GetFirewallsFirewallDeviceInputArgs>? _devices;
+
+        /// <summary>
+        /// The devices associated with this firewall.
+        /// </summary>
         public InputList<Inputs.GetFirewallsFirewallDeviceInputArgs> Devices
         {
             get => _devices ?? (_devices = new InputList<Inputs.GetFirewallsFirewallDeviceInputArgs>());
@@ -46,6 +50,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("inbounds")]
         private InputList<Inputs.GetFirewallsFirewallInboundInputArgs>? _inbounds;
+
+        /// <summary>
+        /// A set of firewall rules that specify what inbound network traffic is allowed.
+        /// </summary>
         public InputList<Inputs.GetFirewallsFirewallInboundInputArgs> Inbounds
         {
             get => _inbounds ?? (_inbounds = new InputList<Inputs.GetFirewallsFirewallInboundInputArgs>());
@@ -72,6 +80,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("nodebalancers", required: true)]
         private InputList<int>? _nodebalancers;
+
+        /// <summary>
+        /// The IDs of NodeBalancers assigned to this Firewall..
+        /// </summary>
         public InputList<int> Nodebalancers
         {
             get => _nodebalancers ?? (_nodebalancers = new InputList<int>());
@@ -86,6 +98,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("outbounds")]
         private InputList<Inputs.GetFirewallsFirewallOutboundInputArgs>? _outbounds;
+
+        /// <summary>
+        /// A set of firewall rules that specify what outbound network traffic is allowed.
+        /// </summary>
         public InputList<Inputs.GetFirewallsFirewallOutboundInputArgs> Outbounds
         {
             get => _outbounds ?? (_outbounds = new InputList<Inputs.GetFirewallsFirewallOutboundInputArgs>());

@@ -10,25 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceAlerts {
+    /**
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     */
     private Integer cpu;
+    /**
+     * @return The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     */
     private Integer io;
+    /**
+     * @return The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     private Integer networkIn;
+    /**
+     * @return The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     private Integer networkOut;
+    /**
+     * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     private Integer transferQuota;
 
     private GetInstancesInstanceAlerts() {}
+    /**
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     */
     public Integer cpu() {
         return this.cpu;
     }
+    /**
+     * @return The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     */
     public Integer io() {
         return this.io;
     }
+    /**
+     * @return The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Integer networkIn() {
         return this.networkIn;
     }
+    /**
+     * @return The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Integer networkOut() {
         return this.networkOut;
     }
+    /**
+     * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Integer transferQuota() {
         return this.transferQuota;
     }
