@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetFirewallsFirewallDeviceResult
     {
+        /// <summary>
+        /// The ID of the underlying entity this device references (i.e. the Linode's ID).
+        /// </summary>
         public readonly int EntityId;
         /// <summary>
         /// The unique ID assigned to this Firewall.
@@ -22,7 +25,13 @@ namespace Pulumi.Linode.Outputs
         /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The type of Firewall Device.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The URL of the underlying entity this device references.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

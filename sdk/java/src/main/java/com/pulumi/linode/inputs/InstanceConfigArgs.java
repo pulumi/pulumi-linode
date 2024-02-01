@@ -81,9 +81,17 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * An array of Network Interfaces for this Linode’s Configuration Profile.
+     * 
+     */
     @Import(name="interfaces")
     private @Nullable Output<List<InstanceConfigInterfaceArgs>> interfaces;
 
+    /**
+     * @return An array of Network Interfaces for this Linode’s Configuration Profile.
+     * 
+     */
     public Optional<Output<List<InstanceConfigInterfaceArgs>>> interfaces() {
         return Optional.ofNullable(this.interfaces);
     }
@@ -300,15 +308,33 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
             return id(Output.of(id));
         }
 
+        /**
+         * @param interfaces An array of Network Interfaces for this Linode’s Configuration Profile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(@Nullable Output<List<InstanceConfigInterfaceArgs>> interfaces) {
             $.interfaces = interfaces;
             return this;
         }
 
+        /**
+         * @param interfaces An array of Network Interfaces for this Linode’s Configuration Profile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(List<InstanceConfigInterfaceArgs> interfaces) {
             return interfaces(Output.of(interfaces));
         }
 
+        /**
+         * @param interfaces An array of Network Interfaces for this Linode’s Configuration Profile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(InstanceConfigInterfaceArgs... interfaces) {
             return interfaces(List.of(interfaces));
         }

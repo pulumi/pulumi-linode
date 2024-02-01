@@ -6,18 +6,48 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface DatabaseMysqlUpdates {
+    /**
+     * The day to perform maintenance.
+     */
     dayOfWeek: pulumi.Input<string>;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: pulumi.Input<number>;
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis.
+     */
     frequency: pulumi.Input<string>;
+    /**
+     * The hour to begin maintenance based in UTC time.
+     */
     hourOfDay: pulumi.Input<number>;
+    /**
+     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+     */
     weekOfMonth?: pulumi.Input<number>;
 }
 
 export interface DatabasePostgresqlUpdates {
+    /**
+     * The day to perform maintenance.
+     */
     dayOfWeek: pulumi.Input<string>;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: pulumi.Input<number>;
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis.
+     */
     frequency: pulumi.Input<string>;
+    /**
+     * The hour to begin maintenance based in UTC time.
+     */
     hourOfDay: pulumi.Input<number>;
+    /**
+     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+     */
     weekOfMonth?: pulumi.Input<number>;
 }
 
@@ -197,6 +227,9 @@ export interface GetAccountLoginsLogin {
      * True if the User that was logged into was a restricted User, false otherwise.
      */
     restricted?: boolean;
+    /**
+     * Whether the login attempt succeeded or failed.
+     */
     status?: string;
     /**
      * The username of the User that was logged into.
@@ -221,6 +254,9 @@ export interface GetAccountLoginsLoginArgs {
      * True if the User that was logged into was a restricted User, false otherwise.
      */
     restricted?: pulumi.Input<boolean>;
+    /**
+     * Whether the login attempt succeeded or failed.
+     */
     status?: pulumi.Input<string>;
     /**
      * The username of the User that was logged into.
@@ -419,6 +455,9 @@ export interface GetDatabasesDatabase {
      * The ID of the Managed Database.
      */
     id?: number;
+    /**
+     * he API route for the database instance.
+     */
     instanceUri?: string;
     /**
      * A unique, user-defined string referring to the Managed Database.
@@ -487,6 +526,9 @@ export interface GetDatabasesDatabaseArgs {
      * The ID of the Managed Database.
      */
     id?: pulumi.Input<number>;
+    /**
+     * he API route for the database instance.
+     */
     instanceUri?: pulumi.Input<string>;
     /**
      * A unique, user-defined string referring to the Managed Database.
@@ -587,6 +629,9 @@ export interface GetFirewallsFirewall {
      * When this firewall was created.
      */
     created?: string;
+    /**
+     * The devices associated with this firewall.
+     */
     devices?: inputs.GetFirewallsFirewallDevice[];
     /**
      * If true, the Firewall is inactive.
@@ -600,6 +645,9 @@ export interface GetFirewallsFirewall {
      * The default behavior for inbound traffic.
      */
     inboundPolicy?: string;
+    /**
+     * A set of firewall rules that specify what inbound network traffic is allowed.
+     */
     inbounds?: inputs.GetFirewallsFirewallInbound[];
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -609,11 +657,17 @@ export interface GetFirewallsFirewall {
      * The IDs of Linodes this firewall is applied to.
      */
     linodes?: number[];
+    /**
+     * The IDs of NodeBalancers assigned to this Firewall..
+     */
     nodebalancers?: number[];
     /**
      * The default behavior for outbound traffic.
      */
     outboundPolicy?: string;
+    /**
+     * A set of firewall rules that specify what outbound network traffic is allowed.
+     */
     outbounds?: inputs.GetFirewallsFirewallOutbound[];
     /**
      * The status of the firewall.
@@ -634,6 +688,9 @@ export interface GetFirewallsFirewallArgs {
      * When this firewall was created.
      */
     created?: pulumi.Input<string>;
+    /**
+     * The devices associated with this firewall.
+     */
     devices?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallDeviceArgs>[]>;
     /**
      * If true, the Firewall is inactive.
@@ -647,6 +704,9 @@ export interface GetFirewallsFirewallArgs {
      * The default behavior for inbound traffic.
      */
     inboundPolicy?: pulumi.Input<string>;
+    /**
+     * A set of firewall rules that specify what inbound network traffic is allowed.
+     */
     inbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallInboundArgs>[]>;
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -656,11 +716,17 @@ export interface GetFirewallsFirewallArgs {
      * The IDs of Linodes this firewall is applied to.
      */
     linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The IDs of NodeBalancers assigned to this Firewall..
+     */
     nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The default behavior for outbound traffic.
      */
     outboundPolicy?: pulumi.Input<string>;
+    /**
+     * A set of firewall rules that specify what outbound network traffic is allowed.
+     */
     outbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallOutboundArgs>[]>;
     /**
      * The status of the firewall.
@@ -677,6 +743,9 @@ export interface GetFirewallsFirewallArgs {
 }
 
 export interface GetFirewallsFirewallDevice {
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode's ID).
+     */
     entityId?: number;
     /**
      * The unique ID assigned to this Firewall.
@@ -686,11 +755,20 @@ export interface GetFirewallsFirewallDevice {
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label?: string;
+    /**
+     * The type of Firewall Device.
+     */
     type?: string;
+    /**
+     * The URL of the underlying entity this device references.
+     */
     url?: string;
 }
 
 export interface GetFirewallsFirewallDeviceArgs {
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode's ID).
+     */
     entityId?: pulumi.Input<number>;
     /**
      * The unique ID assigned to this Firewall.
@@ -700,55 +778,121 @@ export interface GetFirewallsFirewallDeviceArgs {
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * The type of Firewall Device.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * The URL of the underlying entity this device references.
+     */
     url?: pulumi.Input<string>;
 }
 
 export interface GetFirewallsFirewallInbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     */
     action?: string;
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     */
     ipv4s?: string[];
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     */
     ipv6s?: string[];
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label?: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
     ports?: string;
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     */
     protocol?: string;
 }
 
 export interface GetFirewallsFirewallInboundArgs {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     */
     action?: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
     ports?: pulumi.Input<string>;
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     */
     protocol?: pulumi.Input<string>;
 }
 
 export interface GetFirewallsFirewallOutbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     */
     action?: string;
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     */
     ipv4s?: string[];
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     */
     ipv6s?: string[];
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label?: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
     ports?: string;
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     */
     protocol?: string;
 }
 
 export interface GetFirewallsFirewallOutboundArgs {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     */
     action?: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
     ports?: pulumi.Input<string>;
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     */
     protocol?: pulumi.Input<string>;
 }
 
@@ -783,6 +927,9 @@ export interface GetImagesFilterArgs {
 }
 
 export interface GetImagesImage {
+    /**
+     * The capabilities of this Image.
+     */
     capabilities?: string[];
     /**
      * When this Image was created.
@@ -800,6 +947,9 @@ export interface GetImagesImage {
      * A detailed description of this Image.
      */
     description?: string;
+    /**
+     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     */
     expiry?: string;
     /**
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -832,6 +982,9 @@ export interface GetImagesImage {
 }
 
 export interface GetImagesImageArgs {
+    /**
+     * The capabilities of this Image.
+     */
     capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When this Image was created.
@@ -849,6 +1002,9 @@ export interface GetImagesImageArgs {
      * A detailed description of this Image.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     */
     expiry?: pulumi.Input<string>;
     /**
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -911,6 +1067,9 @@ export interface GetInstanceTypesFilterArgs {
 }
 
 export interface GetInstanceTypesType {
+    /**
+     * Information about the optional Backup service offered for Linodes.
+     */
     addons?: inputs.GetInstanceTypesTypeAddon[];
     /**
      * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
@@ -936,7 +1095,13 @@ export interface GetInstanceTypesType {
      * The Mbits outbound bandwidth allocation.
      */
     networkOut?: number;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
     prices?: inputs.GetInstanceTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this plan.
+     */
     regionPrices?: inputs.GetInstanceTypesTypeRegionPrice[];
     /**
      * The monthly outbound transfer amount, in MB.
@@ -949,6 +1114,9 @@ export interface GetInstanceTypesType {
 }
 
 export interface GetInstanceTypesTypeArgs {
+    /**
+     * Information about the optional Backup service offered for Linodes.
+     */
     addons?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonArgs>[]>;
     /**
      * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
@@ -974,7 +1142,13 @@ export interface GetInstanceTypesTypeArgs {
      * The Mbits outbound bandwidth allocation.
      */
     networkOut?: pulumi.Input<number>;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
     prices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypePriceArgs>[]>;
+    /**
+     * A list of region-specific prices for this plan.
+     */
     regionPrices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeRegionPriceArgs>[]>;
     /**
      * The monthly outbound transfer amount, in MB.
@@ -1125,6 +1299,9 @@ export interface GetKernelsKernel {
      * The architecture of this Kernel.
      */
     architecture?: string;
+    /**
+     * The date on which this Kernel was built.
+     */
     built?: string;
     /**
      * Whether or not this Kernel is deprecated.
@@ -1161,6 +1338,9 @@ export interface GetKernelsKernelArgs {
      * The architecture of this Kernel.
      */
     architecture?: pulumi.Input<string>;
+    /**
+     * The date on which this Kernel was built.
+     */
     built?: pulumi.Input<string>;
     /**
      * Whether or not this Kernel is deprecated.
@@ -1235,6 +1415,9 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
      * How many times to attempt a check before considering a backend to be down. (1-30)
      */
     checkAttempts?: number;
+    /**
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     */
     checkBody?: string;
     /**
      * How often, in seconds, to check that backends are up and serving requests.
@@ -1260,6 +1443,9 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
      * The config's ID.
      */
     id: number;
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     */
     nodeStatuses?: inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatus[];
     /**
      * The ID of the NodeBalancer to access.
@@ -1306,6 +1492,9 @@ export interface GetNodebalancerConfigsNodebalancerConfigArgs {
      * How many times to attempt a check before considering a backend to be down. (1-30)
      */
     checkAttempts?: pulumi.Input<number>;
+    /**
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     */
     checkBody?: pulumi.Input<string>;
     /**
      * How often, in seconds, to check that backends are up and serving requests.
@@ -1331,6 +1520,9 @@ export interface GetNodebalancerConfigsNodebalancerConfigArgs {
      * The config's ID.
      */
     id: pulumi.Input<number>;
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     */
     nodeStatuses?: pulumi.Input<pulumi.Input<inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs>[]>;
     /**
      * The ID of the NodeBalancer to access.
@@ -1453,6 +1645,9 @@ export interface GetNodebalancersNodebalancer {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     tags?: string[];
+    /**
+     * Information about the amount of transfer this NodeBalancer has had so far this month.
+     */
     transfers?: inputs.GetNodebalancersNodebalancerTransfer[];
     /**
      * When this Linode NodeBalancer was last updated
@@ -1497,6 +1692,9 @@ export interface GetNodebalancersNodebalancerArgs {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Information about the amount of transfer this NodeBalancer has had so far this month.
+     */
     transfers?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersNodebalancerTransferArgs>[]>;
     /**
      * When this Linode NodeBalancer was last updated
@@ -1595,6 +1793,9 @@ export interface GetRegionsRegion {
      * The country the region resides in.
      */
     country?: string;
+    /**
+     * The unique ID of this Region.
+     */
     id?: string;
     /**
      * Detailed location information for this Region, including city, state or region, and country.
@@ -1616,6 +1817,9 @@ export interface GetRegionsRegionArgs {
      * The country the region resides in.
      */
     country?: pulumi.Input<string>;
+    /**
+     * The unique ID of this Region.
+     */
     id?: pulumi.Input<string>;
     /**
      * Detailed location information for this Region, including city, state or region, and country.
@@ -2221,21 +2425,45 @@ export interface GetUsersFilterArgs {
 }
 
 export interface GetUsersUser {
+    /**
+     * A set containing all of the user's active grants.
+     */
     databaseGrants?: inputs.GetUsersUserDatabaseGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     domainGrants?: inputs.GetUsersUserDomainGrant[];
     /**
      * The email address for this User, for account management communications, and may be used for other communications as configured.
      */
     email?: string;
+    /**
+     * A set containing all of the user's active grants.
+     */
     firewallGrants?: inputs.GetUsersUserFirewallGrant[];
+    /**
+     * A structure containing the Account-level grants a User has.
+     */
     globalGrants?: inputs.GetUsersUserGlobalGrant[];
     /**
      * The ID of entity this grant applies to.
      */
     id?: string;
+    /**
+     * A set containing all of the user's active grants.
+     */
     imageGrants?: inputs.GetUsersUserImageGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     linodeGrants?: inputs.GetUsersUserLinodeGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     longviewGrants?: inputs.GetUsersUserLongviewGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     nodebalancerGrants?: inputs.GetUsersUserNodebalancerGrant[];
     /**
      * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
@@ -2249,6 +2477,9 @@ export interface GetUsersUser {
      * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      */
     sshKeys?: string[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     stackscriptGrants?: inputs.GetUsersUserStackscriptGrant[];
     /**
      * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
@@ -2262,25 +2493,52 @@ export interface GetUsersUser {
      * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
      */
     verifiedPhoneNumber?: string;
+    /**
+     * A set containing all of the user's active grants.
+     */
     volumeGrants?: inputs.GetUsersUserVolumeGrant[];
 }
 
 export interface GetUsersUserArgs {
+    /**
+     * A set containing all of the user's active grants.
+     */
     databaseGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserDatabaseGrantArgs>[]>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     domainGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserDomainGrantArgs>[]>;
     /**
      * The email address for this User, for account management communications, and may be used for other communications as configured.
      */
     email?: pulumi.Input<string>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     firewallGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserFirewallGrantArgs>[]>;
+    /**
+     * A structure containing the Account-level grants a User has.
+     */
     globalGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserGlobalGrantArgs>[]>;
     /**
      * The ID of entity this grant applies to.
      */
     id?: pulumi.Input<string>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     imageGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserImageGrantArgs>[]>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserLinodeGrantArgs>[]>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserLongviewGrantArgs>[]>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserNodebalancerGrantArgs>[]>;
     /**
      * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
@@ -2294,6 +2552,9 @@ export interface GetUsersUserArgs {
      * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserStackscriptGrantArgs>[]>;
     /**
      * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
@@ -2307,6 +2568,9 @@ export interface GetUsersUserArgs {
      * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
      */
     verifiedPhoneNumber?: pulumi.Input<string>;
+    /**
+     * A set containing all of the user's active grants.
+     */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserVolumeGrantArgs>[]>;
 }
 
@@ -3061,14 +3325,32 @@ export interface GetVpcsVpcArgs {
 }
 
 export interface InstanceAlerts {
+    /**
+     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+     */
     cpu?: pulumi.Input<number>;
+    /**
+     * The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+     */
     io?: pulumi.Input<number>;
+    /**
+     * The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkIn?: pulumi.Input<number>;
+    /**
+     * The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkOut?: pulumi.Input<number>;
+    /**
+     * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     */
     transferQuota?: pulumi.Input<number>;
 }
 
 export interface InstanceBackups {
+    /**
+     * Whether this Backup is available for restoration.
+     */
     available?: pulumi.Input<boolean>;
     /**
      * If this Linode has the Backup service enabled.
@@ -3105,6 +3387,9 @@ export interface InstanceConfig {
      * The ID of the disk in the Linode API.
      */
     id?: pulumi.Input<number>;
+    /**
+     * An array of Network Interfaces for this Linode’s Configuration Profile.
+     */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
     /**
      * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -3139,12 +3424,33 @@ export interface InstanceConfigDevices {
      * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
     sda?: pulumi.Input<inputs.InstanceConfigDevicesSda>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdb?: pulumi.Input<inputs.InstanceConfigDevicesSdb>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdc?: pulumi.Input<inputs.InstanceConfigDevicesSdc>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdd?: pulumi.Input<inputs.InstanceConfigDevicesSdd>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sde?: pulumi.Input<inputs.InstanceConfigDevicesSde>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdf?: pulumi.Input<inputs.InstanceConfigDevicesSdf>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdg?: pulumi.Input<inputs.InstanceConfigDevicesSdg>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdh?: pulumi.Input<inputs.InstanceConfigDevicesSdh>;
 }
 
@@ -3269,6 +3575,9 @@ export interface InstanceConfigDevicesSdh {
 }
 
 export interface InstanceConfigHelpers {
+    /**
+     * Populates the /dev directory early during boot without udev. Defaults to false.
+     */
     devtmpfsAutomount?: pulumi.Input<boolean>;
     /**
      * Controls the behavior of the Linode Config's Distribution Helper setting.
@@ -3289,6 +3598,9 @@ export interface InstanceConfigHelpers {
 }
 
 export interface InstanceConfigInterface {
+    /**
+     * Whether this interface is currently booted and active.
+     */
     active?: pulumi.Input<boolean>;
     /**
      * The ID of the disk in the Linode API.
@@ -3391,6 +3703,9 @@ export interface InstanceDisk {
 }
 
 export interface InstanceInterface {
+    /**
+     * Whether this interface is currently booted and active.
+     */
     active?: pulumi.Input<boolean>;
     /**
      * The ID of the disk in the Linode API.
@@ -3455,13 +3770,28 @@ export interface InstanceIpVpcNat11 {
 }
 
 export interface InstanceMetadata {
+    /**
+     * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     */
     userData?: pulumi.Input<string>;
 }
 
 export interface InstanceSpecs {
+    /**
+     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     */
     disk?: pulumi.Input<number>;
+    /**
+     * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     */
     memory?: pulumi.Input<number>;
+    /**
+     * The amount of network transfer this Linode is allotted each month.
+     */
     transfer?: pulumi.Input<number>;
+    /**
+     * The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     */
     vcpus?: pulumi.Input<number>;
 }
 
@@ -3473,6 +3803,9 @@ export interface LkeClusterControlPlane {
 }
 
 export interface LkeClusterPool {
+    /**
+     * When specified, the number of nodes autoscales within the defined minimum and maximum values.
+     */
     autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
     /**
      * The number of nodes in the Node Pool.
@@ -3484,6 +3817,9 @@ export interface LkeClusterPool {
      * The ID of the node.
      */
     id?: pulumi.Input<number>;
+    /**
+     * The nodes in the node pool.
+     */
     nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -3567,11 +3903,17 @@ export interface ObjectStorageBucketLifecycleRule {
      * Specifies whether the lifecycle rule is active.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Specifies a period in the object's expire.
+     */
     expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleExpiration>;
     /**
      * The unique identifier for the rule.
      */
     id?: pulumi.Input<string>;
+    /**
+     * Specifies when non-current object versions expire.
+     */
     noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration>;
     /**
      * The object key prefix identifying one or more objects to which the rule applies.
@@ -3644,57 +3986,141 @@ export interface StackScriptUserDefinedField {
 }
 
 export interface UserDomainGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserFirewallGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserGlobalGrants {
+    /**
+     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+     */
     accountAccess?: pulumi.Input<string>;
+    /**
+     * If true, this User may add Databases.
+     */
     addDatabases?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Domains.
+     */
     addDomains?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Firewalls.
+     */
     addFirewalls?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Images.
+     */
     addImages?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may create Linodes.
+     */
     addLinodes?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may create Longview clients and view the current plan.
+     */
     addLongview?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add NodeBalancers.
+     */
     addNodebalancers?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add StackScripts.
+     */
     addStackscripts?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Volumes.
+     */
     addVolumes?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may cancel the entire Account.
+     */
     cancelAccount?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may manage the Account’s Longview subscription.
+     */
     longviewSubscription?: pulumi.Input<boolean>;
 }
 
 export interface UserImageGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserLinodeGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserLongviewGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserNodebalancerGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserStackscriptGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 
 export interface UserVolumeGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: pulumi.Input<string>;
 }
 

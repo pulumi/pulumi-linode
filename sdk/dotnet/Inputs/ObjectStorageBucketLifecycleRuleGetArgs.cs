@@ -28,6 +28,9 @@ namespace Pulumi.Linode.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies a period in the object's expire.
+        /// </summary>
         [Input("expiration")]
         public Input<Inputs.ObjectStorageBucketLifecycleRuleExpirationGetArgs>? Expiration { get; set; }
 
@@ -37,6 +40,9 @@ namespace Pulumi.Linode.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Specifies when non-current object versions expire.
+        /// </summary>
         [Input("noncurrentVersionExpiration")]
         public Input<Inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationGetArgs>? NoncurrentVersionExpiration { get; set; }
 

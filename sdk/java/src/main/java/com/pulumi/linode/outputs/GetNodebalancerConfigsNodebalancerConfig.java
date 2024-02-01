@@ -29,6 +29,10 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
      * 
      */
     private Integer checkAttempts;
+    /**
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     * 
+     */
     private String checkBody;
     /**
      * @return How often, in seconds, to check that backends are up and serving requests.
@@ -60,6 +64,10 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
      * 
      */
     private Integer id;
+    /**
+     * @return A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     * 
+     */
     private List<GetNodebalancerConfigsNodebalancerConfigNodeStatus> nodeStatuses;
     /**
      * @return The ID of the NodeBalancer to access.
@@ -121,6 +129,10 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
     public Integer checkAttempts() {
         return this.checkAttempts;
     }
+    /**
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     * 
+     */
     public String checkBody() {
         return this.checkBody;
     }
@@ -166,6 +178,10 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     * 
+     */
     public List<GetNodebalancerConfigsNodebalancerConfigNodeStatus> nodeStatuses() {
         return this.nodeStatuses;
     }

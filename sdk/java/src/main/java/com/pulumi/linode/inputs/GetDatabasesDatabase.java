@@ -136,9 +136,17 @@ public final class GetDatabasesDatabase extends com.pulumi.resources.InvokeArgs 
         return this.id;
     }
 
+    /**
+     * he API route for the database instance.
+     * 
+     */
     @Import(name="instanceUri", required=true)
     private String instanceUri;
 
+    /**
+     * @return he API route for the database instance.
+     * 
+     */
     public String instanceUri() {
         return this.instanceUri;
     }
@@ -401,6 +409,12 @@ public final class GetDatabasesDatabase extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param instanceUri he API route for the database instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceUri(String instanceUri) {
             $.instanceUri = instanceUri;
             return this;

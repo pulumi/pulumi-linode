@@ -15,6 +15,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesType {
+    /**
+     * @return Information about the optional Backup service offered for Linodes.
+     * 
+     */
     private List<GetInstanceTypesTypeAddon> addons;
     /**
      * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
@@ -46,7 +50,15 @@ public final class GetInstanceTypesType {
      * 
      */
     private Integer networkOut;
+    /**
+     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * 
+     */
     private List<GetInstanceTypesTypePrice> prices;
+    /**
+     * @return A list of region-specific prices for this plan.
+     * 
+     */
     private List<GetInstanceTypesTypeRegionPrice> regionPrices;
     /**
      * @return The monthly outbound transfer amount, in MB.
@@ -60,6 +72,10 @@ public final class GetInstanceTypesType {
     private Integer vcpus;
 
     private GetInstanceTypesType() {}
+    /**
+     * @return Information about the optional Backup service offered for Linodes.
+     * 
+     */
     public List<GetInstanceTypesTypeAddon> addons() {
         return this.addons;
     }
@@ -105,9 +121,17 @@ public final class GetInstanceTypesType {
     public Integer networkOut() {
         return this.networkOut;
     }
+    /**
+     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * 
+     */
     public List<GetInstanceTypesTypePrice> prices() {
         return this.prices;
     }
+    /**
+     * @return A list of region-specific prices for this plan.
+     * 
+     */
     public List<GetInstanceTypesTypeRegionPrice> regionPrices() {
         return this.regionPrices;
     }

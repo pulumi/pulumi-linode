@@ -66,6 +66,9 @@ namespace Pulumi.Linode.Inputs
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
 
+        /// <summary>
+        /// he API route for the database instance.
+        /// </summary>
         [Input("instanceUri", required: true)]
         public Input<string> InstanceUri { get; set; } = null!;
 

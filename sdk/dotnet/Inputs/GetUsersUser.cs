@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Inputs
     {
         [Input("databaseGrants", required: true)]
         private List<Inputs.GetUsersUserDatabaseGrantArgs>? _databaseGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserDatabaseGrantArgs> DatabaseGrants
         {
             get => _databaseGrants ?? (_databaseGrants = new List<Inputs.GetUsersUserDatabaseGrantArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("domainGrants", required: true)]
         private List<Inputs.GetUsersUserDomainGrantArgs>? _domainGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserDomainGrantArgs> DomainGrants
         {
             get => _domainGrants ?? (_domainGrants = new List<Inputs.GetUsersUserDomainGrantArgs>());
@@ -36,6 +44,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("firewallGrants", required: true)]
         private List<Inputs.GetUsersUserFirewallGrantArgs>? _firewallGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserFirewallGrantArgs> FirewallGrants
         {
             get => _firewallGrants ?? (_firewallGrants = new List<Inputs.GetUsersUserFirewallGrantArgs>());
@@ -44,6 +56,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("globalGrants", required: true)]
         private List<Inputs.GetUsersUserGlobalGrantArgs>? _globalGrants;
+
+        /// <summary>
+        /// A structure containing the Account-level grants a User has.
+        /// </summary>
         public List<Inputs.GetUsersUserGlobalGrantArgs> GlobalGrants
         {
             get => _globalGrants ?? (_globalGrants = new List<Inputs.GetUsersUserGlobalGrantArgs>());
@@ -58,6 +74,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("imageGrants", required: true)]
         private List<Inputs.GetUsersUserImageGrantArgs>? _imageGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserImageGrantArgs> ImageGrants
         {
             get => _imageGrants ?? (_imageGrants = new List<Inputs.GetUsersUserImageGrantArgs>());
@@ -66,6 +86,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("linodeGrants", required: true)]
         private List<Inputs.GetUsersUserLinodeGrantArgs>? _linodeGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserLinodeGrantArgs> LinodeGrants
         {
             get => _linodeGrants ?? (_linodeGrants = new List<Inputs.GetUsersUserLinodeGrantArgs>());
@@ -74,6 +98,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("longviewGrants", required: true)]
         private List<Inputs.GetUsersUserLongviewGrantArgs>? _longviewGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserLongviewGrantArgs> LongviewGrants
         {
             get => _longviewGrants ?? (_longviewGrants = new List<Inputs.GetUsersUserLongviewGrantArgs>());
@@ -82,6 +110,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("nodebalancerGrants", required: true)]
         private List<Inputs.GetUsersUserNodebalancerGrantArgs>? _nodebalancerGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserNodebalancerGrantArgs> NodebalancerGrants
         {
             get => _nodebalancerGrants ?? (_nodebalancerGrants = new List<Inputs.GetUsersUserNodebalancerGrantArgs>());
@@ -114,6 +146,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("stackscriptGrants", required: true)]
         private List<Inputs.GetUsersUserStackscriptGrantArgs>? _stackscriptGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserStackscriptGrantArgs> StackscriptGrants
         {
             get => _stackscriptGrants ?? (_stackscriptGrants = new List<Inputs.GetUsersUserStackscriptGrantArgs>());
@@ -140,6 +176,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("volumeGrants", required: true)]
         private List<Inputs.GetUsersUserVolumeGrantArgs>? _volumeGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
         public List<Inputs.GetUsersUserVolumeGrantArgs> VolumeGrants
         {
             get => _volumeGrants ?? (_volumeGrants = new List<Inputs.GetUsersUserVolumeGrantArgs>());

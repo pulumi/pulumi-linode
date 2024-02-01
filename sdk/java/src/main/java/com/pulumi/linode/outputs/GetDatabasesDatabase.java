@@ -53,6 +53,10 @@ public final class GetDatabasesDatabase {
      * 
      */
     private Integer id;
+    /**
+     * @return he API route for the database instance.
+     * 
+     */
     private String instanceUri;
     /**
      * @return A unique, user-defined string referring to the Managed Database.
@@ -152,6 +156,10 @@ public final class GetDatabasesDatabase {
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return he API route for the database instance.
+     * 
+     */
     public String instanceUri() {
         return this.instanceUri;
     }

@@ -15,9 +15,17 @@ public final class InstanceMetadataArgs extends com.pulumi.resources.ResourceArg
 
     public static final InstanceMetadataArgs Empty = new InstanceMetadataArgs();
 
+    /**
+     * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
+     */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
+    /**
+     * @return The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
+     */
     public Optional<Output<String>> userData() {
         return Optional.ofNullable(this.userData);
     }
@@ -46,11 +54,23 @@ public final class InstanceMetadataArgs extends com.pulumi.resources.ResourceArg
             $ = new InstanceMetadataArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param userData The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userData(@Nullable Output<String> userData) {
             $.userData = userData;
             return this;
         }
 
+        /**
+         * @param userData The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userData(String userData) {
             return userData(Output.of(userData));
         }

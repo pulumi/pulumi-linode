@@ -231,6 +231,13 @@ class DatabaseMysqlUpdates(dict):
                  frequency: str,
                  hour_of_day: int,
                  week_of_month: Optional[int] = None):
+        """
+        :param str day_of_week: The day to perform maintenance.
+        :param int duration: The maximum maintenance window time in hours.
+        :param str frequency: Whether maintenance occurs on a weekly or monthly basis.
+        :param int hour_of_day: The hour to begin maintenance based in UTC time.
+        :param int week_of_month: The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "frequency", frequency)
@@ -241,26 +248,41 @@ class DatabaseMysqlUpdates(dict):
     @property
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> str:
+        """
+        The day to perform maintenance.
+        """
         return pulumi.get(self, "day_of_week")
 
     @property
     @pulumi.getter
     def duration(self) -> int:
+        """
+        The maximum maintenance window time in hours.
+        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def frequency(self) -> str:
+        """
+        Whether maintenance occurs on a weekly or monthly basis.
+        """
         return pulumi.get(self, "frequency")
 
     @property
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> int:
+        """
+        The hour to begin maintenance based in UTC time.
+        """
         return pulumi.get(self, "hour_of_day")
 
     @property
     @pulumi.getter(name="weekOfMonth")
     def week_of_month(self) -> Optional[int]:
+        """
+        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        """
         return pulumi.get(self, "week_of_month")
 
 
@@ -293,6 +315,13 @@ class DatabasePostgresqlUpdates(dict):
                  frequency: str,
                  hour_of_day: int,
                  week_of_month: Optional[int] = None):
+        """
+        :param str day_of_week: The day to perform maintenance.
+        :param int duration: The maximum maintenance window time in hours.
+        :param str frequency: Whether maintenance occurs on a weekly or monthly basis.
+        :param int hour_of_day: The hour to begin maintenance based in UTC time.
+        :param int week_of_month: The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "frequency", frequency)
@@ -303,26 +332,41 @@ class DatabasePostgresqlUpdates(dict):
     @property
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> str:
+        """
+        The day to perform maintenance.
+        """
         return pulumi.get(self, "day_of_week")
 
     @property
     @pulumi.getter
     def duration(self) -> int:
+        """
+        The maximum maintenance window time in hours.
+        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def frequency(self) -> str:
+        """
+        Whether maintenance occurs on a weekly or monthly basis.
+        """
         return pulumi.get(self, "frequency")
 
     @property
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> int:
+        """
+        The hour to begin maintenance based in UTC time.
+        """
         return pulumi.get(self, "hour_of_day")
 
     @property
     @pulumi.getter(name="weekOfMonth")
     def week_of_month(self) -> Optional[int]:
+        """
+        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        """
         return pulumi.get(self, "week_of_month")
 
 
@@ -591,6 +635,13 @@ class InstanceAlerts(dict):
                  network_in: Optional[int] = None,
                  network_out: Optional[int] = None,
                  transfer_quota: Optional[int] = None):
+        """
+        :param int cpu: The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+        :param int io: The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        :param int network_in: The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param int network_out: The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param int transfer_quota: The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if io is not None:
@@ -605,26 +656,41 @@ class InstanceAlerts(dict):
     @property
     @pulumi.getter
     def cpu(self) -> Optional[int]:
+        """
+        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter
     def io(self) -> Optional[int]:
+        """
+        The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        """
         return pulumi.get(self, "io")
 
     @property
     @pulumi.getter(name="networkIn")
     def network_in(self) -> Optional[int]:
+        """
+        The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "network_in")
 
     @property
     @pulumi.getter(name="networkOut")
     def network_out(self) -> Optional[int]:
+        """
+        The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "network_out")
 
     @property
     @pulumi.getter(name="transferQuota")
     def transfer_quota(self) -> Optional[int]:
+        """
+        The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "transfer_quota")
 
 
@@ -635,6 +701,7 @@ class InstanceBackups(dict):
                  enabled: Optional[bool] = None,
                  schedule: Optional['outputs.InstanceBackupsSchedule'] = None):
         """
+        :param bool available: Whether this Backup is available for restoration.
         :param bool enabled: If this Linode has the Backup service enabled.
         """
         if available is not None:
@@ -647,6 +714,9 @@ class InstanceBackups(dict):
     @property
     @pulumi.getter
     def available(self) -> Optional[bool]:
+        """
+        Whether this Backup is available for restoration.
+        """
         return pulumi.get(self, "available")
 
     @property
@@ -737,6 +807,7 @@ class InstanceConfig(dict):
         :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
         :param int id: The ID of the disk in the Linode API.
+        :param Sequence['InstanceConfigInterfaceArgs'] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param int memory_limit: Defaults to the total RAM of the Linode
                
@@ -810,6 +881,9 @@ class InstanceConfig(dict):
     @property
     @pulumi.getter
     def interfaces(self) -> Optional[Sequence['outputs.InstanceConfigInterface']]:
+        """
+        An array of Network Interfaces for this Linode’s Configuration Profile.
+        """
         return pulumi.get(self, "interfaces")
 
     @property
@@ -868,6 +942,13 @@ class InstanceConfigDevices(dict):
                  sdh: Optional['outputs.InstanceConfigDevicesSdh'] = None):
         """
         :param 'InstanceConfigDevicesSdaArgs' sda: ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        :param 'InstanceConfigDevicesSdbArgs' sdb: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param 'InstanceConfigDevicesSdcArgs' sdc: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param 'InstanceConfigDevicesSddArgs' sdd: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param 'InstanceConfigDevicesSdeArgs' sde: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param 'InstanceConfigDevicesSdfArgs' sdf: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param 'InstanceConfigDevicesSdgArgs' sdg: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param 'InstanceConfigDevicesSdhArgs' sdh: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         """
         if sda is not None:
             pulumi.set(__self__, "sda", sda)
@@ -897,36 +978,57 @@ class InstanceConfigDevices(dict):
     @property
     @pulumi.getter
     def sdb(self) -> Optional['outputs.InstanceConfigDevicesSdb']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdb")
 
     @property
     @pulumi.getter
     def sdc(self) -> Optional['outputs.InstanceConfigDevicesSdc']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdc")
 
     @property
     @pulumi.getter
     def sdd(self) -> Optional['outputs.InstanceConfigDevicesSdd']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdd")
 
     @property
     @pulumi.getter
     def sde(self) -> Optional['outputs.InstanceConfigDevicesSde']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sde")
 
     @property
     @pulumi.getter
     def sdf(self) -> Optional['outputs.InstanceConfigDevicesSdf']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdf")
 
     @property
     @pulumi.getter
     def sdg(self) -> Optional['outputs.InstanceConfigDevicesSdg']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdg")
 
     @property
     @pulumi.getter
     def sdh(self) -> Optional['outputs.InstanceConfigDevicesSdh']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdh")
 
 
@@ -1472,6 +1574,7 @@ class InstanceConfigHelpers(dict):
                  network: Optional[bool] = None,
                  updatedb_disabled: Optional[bool] = None):
         """
+        :param bool devtmpfs_automount: Populates the /dev directory early during boot without udev. Defaults to false.
         :param bool distro: Controls the behavior of the Linode Config's Distribution Helper setting.
         :param bool modules_dep: Creates a modules dependency file for the Kernel you run.
         :param bool network: Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
@@ -1491,6 +1594,9 @@ class InstanceConfigHelpers(dict):
     @property
     @pulumi.getter(name="devtmpfsAutomount")
     def devtmpfs_automount(self) -> Optional[bool]:
+        """
+        Populates the /dev directory early during boot without udev. Defaults to false.
+        """
         return pulumi.get(self, "devtmpfs_automount")
 
     @property
@@ -1564,6 +1670,7 @@ class InstanceConfigInterface(dict):
                  vpc_id: Optional[int] = None):
         """
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
+        :param bool active: Whether this interface is currently booted and active.
         :param int id: The ID of the disk in the Linode API.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
@@ -1608,6 +1715,9 @@ class InstanceConfigInterface(dict):
     @property
     @pulumi.getter
     def active(self) -> Optional[bool]:
+        """
+        Whether this interface is currently booted and active.
+        """
         return pulumi.get(self, "active")
 
     @property
@@ -1912,6 +2022,7 @@ class InstanceInterface(dict):
                  vpc_id: Optional[int] = None):
         """
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
+        :param bool active: Whether this interface is currently booted and active.
         :param int id: The ID of the disk in the Linode API.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
@@ -1956,6 +2067,9 @@ class InstanceInterface(dict):
     @property
     @pulumi.getter
     def active(self) -> Optional[bool]:
+        """
+        Whether this interface is currently booted and active.
+        """
         return pulumi.get(self, "active")
 
     @property
@@ -2130,12 +2244,18 @@ class InstanceMetadata(dict):
 
     def __init__(__self__, *,
                  user_data: Optional[str] = None):
+        """
+        :param str user_data: The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        """
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[str]:
+        """
+        The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        """
         return pulumi.get(self, "user_data")
 
 
@@ -2146,6 +2266,12 @@ class InstanceSpecs(dict):
                  memory: Optional[int] = None,
                  transfer: Optional[int] = None,
                  vcpus: Optional[int] = None):
+        """
+        :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        :param int memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+        :param int transfer: The amount of network transfer this Linode is allotted each month.
+        :param int vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+        """
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
         if memory is not None:
@@ -2158,21 +2284,33 @@ class InstanceSpecs(dict):
     @property
     @pulumi.getter
     def disk(self) -> Optional[int]:
+        """
+        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        """
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter
     def memory(self) -> Optional[int]:
+        """
+        The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
     def transfer(self) -> Optional[int]:
+        """
+        The amount of network transfer this Linode is allotted each month.
+        """
         return pulumi.get(self, "transfer")
 
     @property
     @pulumi.getter
     def vcpus(self) -> Optional[int]:
+        """
+        The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+        """
         return pulumi.get(self, "vcpus")
 
 
@@ -2225,7 +2363,9 @@ class LkeClusterPool(dict):
                
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param str type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param 'LkeClusterPoolAutoscalerArgs' autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
         :param int id: The ID of the node.
+        :param Sequence['LkeClusterPoolNodeArgs'] nodes: The nodes in the node pool.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -2257,6 +2397,9 @@ class LkeClusterPool(dict):
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional['outputs.LkeClusterPoolAutoscaler']:
+        """
+        When specified, the number of nodes autoscales within the defined minimum and maximum values.
+        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -2270,6 +2413,9 @@ class LkeClusterPool(dict):
     @property
     @pulumi.getter
     def nodes(self) -> Optional[Sequence['outputs.LkeClusterPoolNode']]:
+        """
+        The nodes in the node pool.
+        """
         return pulumi.get(self, "nodes")
 
 
@@ -2531,7 +2677,9 @@ class ObjectStorageBucketLifecycleRule(dict):
                * `expiration` - (Optional) Specifies a period in the object's expire.
                
                * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        :param 'ObjectStorageBucketLifecycleRuleExpirationArgs' expiration: Specifies a period in the object's expire.
         :param str id: The unique identifier for the rule.
+        :param 'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs' noncurrent_version_expiration: Specifies when non-current object versions expire.
         :param str prefix: The object key prefix identifying one or more objects to which the rule applies.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -2569,6 +2717,9 @@ class ObjectStorageBucketLifecycleRule(dict):
     @property
     @pulumi.getter
     def expiration(self) -> Optional['outputs.ObjectStorageBucketLifecycleRuleExpiration']:
+        """
+        Specifies a period in the object's expire.
+        """
         return pulumi.get(self, "expiration")
 
     @property
@@ -2582,6 +2733,9 @@ class ObjectStorageBucketLifecycleRule(dict):
     @property
     @pulumi.getter(name="noncurrentVersionExpiration")
     def noncurrent_version_expiration(self) -> Optional['outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration']:
+        """
+        Specifies when non-current object versions expire.
+        """
         return pulumi.get(self, "noncurrent_version_expiration")
 
     @property
@@ -2825,17 +2979,27 @@ class UserDomainGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -2844,17 +3008,27 @@ class UserFirewallGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -2912,6 +3086,20 @@ class UserGlobalGrants(dict):
                  add_volumes: Optional[bool] = None,
                  cancel_account: Optional[bool] = None,
                  longview_subscription: Optional[bool] = None):
+        """
+        :param str account_access: The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+        :param bool add_databases: If true, this User may add Databases.
+        :param bool add_domains: If true, this User may add Domains.
+        :param bool add_firewalls: If true, this User may add Firewalls.
+        :param bool add_images: If true, this User may add Images.
+        :param bool add_linodes: If true, this User may create Linodes.
+        :param bool add_longview: If true, this User may create Longview clients and view the current plan.
+        :param bool add_nodebalancers: If true, this User may add NodeBalancers.
+        :param bool add_stackscripts: If true, this User may add StackScripts.
+        :param bool add_volumes: If true, this User may add Volumes.
+        :param bool cancel_account: If true, this User may cancel the entire Account.
+        :param bool longview_subscription: If true, this User may manage the Account’s Longview subscription.
+        """
         if account_access is not None:
             pulumi.set(__self__, "account_access", account_access)
         if add_databases is not None:
@@ -2940,61 +3128,97 @@ class UserGlobalGrants(dict):
     @property
     @pulumi.getter(name="accountAccess")
     def account_access(self) -> Optional[str]:
+        """
+        The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+        """
         return pulumi.get(self, "account_access")
 
     @property
     @pulumi.getter(name="addDatabases")
     def add_databases(self) -> Optional[bool]:
+        """
+        If true, this User may add Databases.
+        """
         return pulumi.get(self, "add_databases")
 
     @property
     @pulumi.getter(name="addDomains")
     def add_domains(self) -> Optional[bool]:
+        """
+        If true, this User may add Domains.
+        """
         return pulumi.get(self, "add_domains")
 
     @property
     @pulumi.getter(name="addFirewalls")
     def add_firewalls(self) -> Optional[bool]:
+        """
+        If true, this User may add Firewalls.
+        """
         return pulumi.get(self, "add_firewalls")
 
     @property
     @pulumi.getter(name="addImages")
     def add_images(self) -> Optional[bool]:
+        """
+        If true, this User may add Images.
+        """
         return pulumi.get(self, "add_images")
 
     @property
     @pulumi.getter(name="addLinodes")
     def add_linodes(self) -> Optional[bool]:
+        """
+        If true, this User may create Linodes.
+        """
         return pulumi.get(self, "add_linodes")
 
     @property
     @pulumi.getter(name="addLongview")
     def add_longview(self) -> Optional[bool]:
+        """
+        If true, this User may create Longview clients and view the current plan.
+        """
         return pulumi.get(self, "add_longview")
 
     @property
     @pulumi.getter(name="addNodebalancers")
     def add_nodebalancers(self) -> Optional[bool]:
+        """
+        If true, this User may add NodeBalancers.
+        """
         return pulumi.get(self, "add_nodebalancers")
 
     @property
     @pulumi.getter(name="addStackscripts")
     def add_stackscripts(self) -> Optional[bool]:
+        """
+        If true, this User may add StackScripts.
+        """
         return pulumi.get(self, "add_stackscripts")
 
     @property
     @pulumi.getter(name="addVolumes")
     def add_volumes(self) -> Optional[bool]:
+        """
+        If true, this User may add Volumes.
+        """
         return pulumi.get(self, "add_volumes")
 
     @property
     @pulumi.getter(name="cancelAccount")
     def cancel_account(self) -> Optional[bool]:
+        """
+        If true, this User may cancel the entire Account.
+        """
         return pulumi.get(self, "cancel_account")
 
     @property
     @pulumi.getter(name="longviewSubscription")
     def longview_subscription(self) -> Optional[bool]:
+        """
+        If true, this User may manage the Account’s Longview subscription.
+        """
         return pulumi.get(self, "longview_subscription")
 
 
@@ -3003,17 +3227,27 @@ class UserImageGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -3022,17 +3256,27 @@ class UserLinodeGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -3041,17 +3285,27 @@ class UserLongviewGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -3060,17 +3314,27 @@ class UserNodebalancerGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -3079,17 +3343,27 @@ class UserStackscriptGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -3098,17 +3372,27 @@ class UserVolumeGrant(dict):
     def __init__(__self__, *,
                  id: int,
                  permissions: str):
+        """
+        :param int id: The ID of the entity this grant applies to.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the entity this grant applies to.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
         return pulumi.get(self, "permissions")
 
 
@@ -3287,6 +3571,7 @@ class GetAccountLoginsLoginResult(dict):
         :param int id: The unique ID of this login object.
         :param str ip: The remote IP address that requested the login.
         :param bool restricted: True if the User that was logged into was a restricted User, false otherwise.
+        :param str status: Whether the login attempt succeeded or failed.
         :param str username: The username of the User that was logged into.
         """
         pulumi.set(__self__, "datetime", datetime)
@@ -3331,6 +3616,9 @@ class GetAccountLoginsLoginResult(dict):
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Whether the login attempt succeeded or failed.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -3716,6 +4004,7 @@ class GetDatabasesDatabaseResult(dict):
         :param str host_primary: The primary host for the Managed Database.
         :param str host_secondary: The secondary/private network host for the Managed Database.
         :param int id: The ID of the Managed Database.
+        :param str instance_uri: he API route for the database instance.
         :param str label: A unique, user-defined string referring to the Managed Database.
         :param str region: The region to use for the Managed Database.
         :param str replication_type: The replication method used for the Managed Database.
@@ -3810,6 +4099,9 @@ class GetDatabasesDatabaseResult(dict):
     @property
     @pulumi.getter(name="instanceUri")
     def instance_uri(self) -> str:
+        """
+        he API route for the database instance.
+        """
         return pulumi.get(self, "instance_uri")
 
     @property
@@ -4191,10 +4483,14 @@ class GetFirewallsFirewallResult(dict):
         :param str inbound_policy: The default behavior for inbound traffic.
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         :param Sequence[int] linodes: The IDs of Linodes this firewall is applied to.
+        :param Sequence[int] nodebalancers: The IDs of NodeBalancers assigned to this Firewall..
         :param str outbound_policy: The default behavior for outbound traffic.
         :param str status: The status of the firewall.
         :param Sequence[str] tags: An array of tags applied to this object. Tags are for organizational purposes only.
         :param str updated: When this firewall was last updated.
+        :param Sequence['GetFirewallsFirewallDeviceArgs'] devices: The devices associated with this firewall.
+        :param Sequence['GetFirewallsFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
+        :param Sequence['GetFirewallsFirewallOutboundArgs'] outbounds: A set of firewall rules that specify what outbound network traffic is allowed.
         """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "disabled", disabled)
@@ -4265,6 +4561,9 @@ class GetFirewallsFirewallResult(dict):
     @property
     @pulumi.getter
     def nodebalancers(self) -> Sequence[int]:
+        """
+        The IDs of NodeBalancers assigned to this Firewall..
+        """
         return pulumi.get(self, "nodebalancers")
 
     @property
@@ -4302,16 +4601,25 @@ class GetFirewallsFirewallResult(dict):
     @property
     @pulumi.getter
     def devices(self) -> Optional[Sequence['outputs.GetFirewallsFirewallDeviceResult']]:
+        """
+        The devices associated with this firewall.
+        """
         return pulumi.get(self, "devices")
 
     @property
     @pulumi.getter
     def inbounds(self) -> Optional[Sequence['outputs.GetFirewallsFirewallInboundResult']]:
+        """
+        A set of firewall rules that specify what inbound network traffic is allowed.
+        """
         return pulumi.get(self, "inbounds")
 
     @property
     @pulumi.getter
     def outbounds(self) -> Optional[Sequence['outputs.GetFirewallsFirewallOutboundResult']]:
+        """
+        A set of firewall rules that specify what outbound network traffic is allowed.
+        """
         return pulumi.get(self, "outbounds")
 
 
@@ -4324,8 +4632,11 @@ class GetFirewallsFirewallDeviceResult(dict):
                  type: str,
                  url: str):
         """
+        :param int entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
         :param int id: The unique ID assigned to this Firewall.
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        :param str type: The type of Firewall Device.
+        :param str url: The URL of the underlying entity this device references.
         """
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "id", id)
@@ -4336,6 +4647,9 @@ class GetFirewallsFirewallDeviceResult(dict):
     @property
     @pulumi.getter(name="entityId")
     def entity_id(self) -> int:
+        """
+        The ID of the underlying entity this device references (i.e. the Linode's ID).
+        """
         return pulumi.get(self, "entity_id")
 
     @property
@@ -4357,11 +4671,17 @@ class GetFirewallsFirewallDeviceResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of Firewall Device.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The URL of the underlying entity this device references.
+        """
         return pulumi.get(self, "url")
 
 
@@ -4375,7 +4695,12 @@ class GetFirewallsFirewallInboundResult(dict):
                  ports: str,
                  protocol: str):
         """
+        :param str action: Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        :param Sequence[str] ipv4s: A list of IPv4 addresses or networks in IP/mask format.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks in IP/mask format.
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        :param str protocol: The network protocol this rule controls. (TCP, UDP, ICMP)
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "ipv4s", ipv4s)
@@ -4387,16 +4712,25 @@ class GetFirewallsFirewallInboundResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def ipv4s(self) -> Sequence[str]:
+        """
+        A list of IPv4 addresses or networks in IP/mask format.
+        """
         return pulumi.get(self, "ipv4s")
 
     @property
     @pulumi.getter
     def ipv6s(self) -> Sequence[str]:
+        """
+        A list of IPv6 addresses or networks in IP/mask format.
+        """
         return pulumi.get(self, "ipv6s")
 
     @property
@@ -4410,11 +4744,17 @@ class GetFirewallsFirewallInboundResult(dict):
     @property
     @pulumi.getter
     def ports(self) -> str:
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        The network protocol this rule controls. (TCP, UDP, ICMP)
+        """
         return pulumi.get(self, "protocol")
 
 
@@ -4428,7 +4768,12 @@ class GetFirewallsFirewallOutboundResult(dict):
                  ports: str,
                  protocol: str):
         """
+        :param str action: Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        :param Sequence[str] ipv4s: A list of IPv4 addresses or networks in IP/mask format.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks in IP/mask format.
         :param str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        :param str protocol: The network protocol this rule controls. (TCP, UDP, ICMP)
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "ipv4s", ipv4s)
@@ -4440,16 +4785,25 @@ class GetFirewallsFirewallOutboundResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def ipv4s(self) -> Sequence[str]:
+        """
+        A list of IPv4 addresses or networks in IP/mask format.
+        """
         return pulumi.get(self, "ipv4s")
 
     @property
     @pulumi.getter
     def ipv6s(self) -> Sequence[str]:
+        """
+        A list of IPv6 addresses or networks in IP/mask format.
+        """
         return pulumi.get(self, "ipv6s")
 
     @property
@@ -4463,11 +4817,17 @@ class GetFirewallsFirewallOutboundResult(dict):
     @property
     @pulumi.getter
     def ports(self) -> str:
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        The network protocol this rule controls. (TCP, UDP, ICMP)
+        """
         return pulumi.get(self, "protocol")
 
 
@@ -4529,10 +4889,12 @@ class GetImagesImageResult(dict):
                  type: str,
                  vendor: str):
         """
+        :param Sequence[str] capabilities: The capabilities of this Image.
         :param str created: When this Image was created.
         :param str created_by: The name of the User who created this Image, or "linode" for official Images.
         :param bool deprecated: Whether or not this Image is deprecated. Will only be true for deprecated public Images.
         :param str description: A detailed description of this Image.
+        :param str expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
         :param bool is_public: True if the Image is public.
         :param str label: A short description of the Image.
@@ -4558,6 +4920,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter
     def capabilities(self) -> Sequence[str]:
+        """
+        The capabilities of this Image.
+        """
         return pulumi.get(self, "capabilities")
 
     @property
@@ -4595,6 +4960,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter
     def expiry(self) -> str:
+        """
+        Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        """
         return pulumi.get(self, "expiry")
 
     @property
@@ -6276,12 +6644,15 @@ class GetInstanceTypesTypeResult(dict):
                  transfer: int,
                  vcpus: int):
         """
+        :param Sequence['GetInstanceTypesTypeAddonArgs'] addons: Information about the optional Backup service offered for Linodes.
         :param str class_: The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
         :param int disk: The Disk size, in MB, of the Linode Type.
         :param str id: The ID representing the Linode Type.
         :param str label: The Linode Type's label is for display purposes only.
         :param int memory: The amount of RAM included in this Linode Type.
         :param int network_out: The Mbits outbound bandwidth allocation.
+        :param Sequence['GetInstanceTypesTypePriceArgs'] prices: Cost in US dollars, broken down into hourly and monthly charges.
+        :param Sequence['GetInstanceTypesTypeRegionPriceArgs'] region_prices: A list of region-specific prices for this plan.
         :param int transfer: The monthly outbound transfer amount, in MB.
         :param int vcpus: The number of VCPU cores this Linode Type offers.
         """
@@ -6300,6 +6671,9 @@ class GetInstanceTypesTypeResult(dict):
     @property
     @pulumi.getter
     def addons(self) -> Sequence['outputs.GetInstanceTypesTypeAddonResult']:
+        """
+        Information about the optional Backup service offered for Linodes.
+        """
         return pulumi.get(self, "addons")
 
     @property
@@ -6353,11 +6727,17 @@ class GetInstanceTypesTypeResult(dict):
     @property
     @pulumi.getter
     def prices(self) -> Sequence['outputs.GetInstanceTypesTypePriceResult']:
+        """
+        Cost in US dollars, broken down into hourly and monthly charges.
+        """
         return pulumi.get(self, "prices")
 
     @property
     @pulumi.getter(name="regionPrices")
     def region_prices(self) -> Sequence['outputs.GetInstanceTypesTypeRegionPriceResult']:
+        """
+        A list of region-specific prices for this plan.
+        """
         return pulumi.get(self, "region_prices")
 
     @property
@@ -6577,8 +6957,13 @@ class GetInstancesInstanceResult(dict):
                  type: str,
                  watchdog_enabled: bool):
         """
+        :param Sequence['GetInstancesInstanceBackupArgs'] backups: Information about this Linode's backups status.
+        :param str boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
+        :param Sequence['GetInstancesInstanceConfigArgs'] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param Sequence['GetInstancesInstanceDiskArgs'] disks: Disks associated with this Linode.
         :param str group: The display group of the Linode instance.
         :param bool has_user_data: Whether this Instance was created with user-data.
+        :param str host_uuid: The Linode’s host machine, as a UUID.
         :param int id: The ID of the disk in the Linode API.
         :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param str ip_address: A string containing the Linode's public IP address.
@@ -6624,21 +7009,33 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter
     def backups(self) -> Sequence['outputs.GetInstancesInstanceBackupResult']:
+        """
+        Information about this Linode's backups status.
+        """
         return pulumi.get(self, "backups")
 
     @property
     @pulumi.getter(name="bootConfigLabel")
     def boot_config_label(self) -> str:
+        """
+        The Label of the Instance Config that should be used to boot the Linode instance.
+        """
         return pulumi.get(self, "boot_config_label")
 
     @property
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetInstancesInstanceConfigResult']:
+        """
+        Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        """
         return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetInstancesInstanceDiskResult']:
+        """
+        Disks associated with this Linode.
+        """
         return pulumi.get(self, "disks")
 
     @property
@@ -6660,6 +7057,9 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="hostUuid")
     def host_uuid(self) -> str:
+        """
+        The Linode’s host machine, as a UUID.
+        """
         return pulumi.get(self, "host_uuid")
 
     @property
@@ -6780,6 +7180,13 @@ class GetInstancesInstanceAlertsResult(dict):
                  network_in: int,
                  network_out: int,
                  transfer_quota: int):
+        """
+        :param int cpu: The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+        :param int io: The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        :param int network_in: The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param int network_out: The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param int transfer_quota: The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
         pulumi.set(__self__, "cpu", cpu)
         pulumi.set(__self__, "io", io)
         pulumi.set(__self__, "network_in", network_in)
@@ -6789,26 +7196,41 @@ class GetInstancesInstanceAlertsResult(dict):
     @property
     @pulumi.getter
     def cpu(self) -> int:
+        """
+        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter
     def io(self) -> int:
+        """
+        The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        """
         return pulumi.get(self, "io")
 
     @property
     @pulumi.getter(name="networkIn")
     def network_in(self) -> int:
+        """
+        The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "network_in")
 
     @property
     @pulumi.getter(name="networkOut")
     def network_out(self) -> int:
+        """
+        The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "network_out")
 
     @property
     @pulumi.getter(name="transferQuota")
     def transfer_quota(self) -> int:
+        """
+        The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
         return pulumi.get(self, "transfer_quota")
 
 
@@ -6819,6 +7241,7 @@ class GetInstancesInstanceBackupResult(dict):
                  enabled: bool,
                  schedules: Sequence['outputs.GetInstancesInstanceBackupScheduleResult']):
         """
+        :param bool available: Whether this Backup is available for restoration.
         :param bool enabled: If this Linode has the Backup service enabled.
         """
         pulumi.set(__self__, "available", available)
@@ -6828,6 +7251,9 @@ class GetInstancesInstanceBackupResult(dict):
     @property
     @pulumi.getter
     def available(self) -> bool:
+        """
+        Whether this Backup is available for restoration.
+        """
         return pulumi.get(self, "available")
 
     @property
@@ -6892,6 +7318,7 @@ class GetInstancesInstanceConfigResult(dict):
         :param Sequence['GetInstancesInstanceConfigDeviceArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param Sequence['GetInstancesInstanceConfigHelperArgs'] helpers: Helpers enabled when booting to this Linode Config.
         :param int id: The ID of the disk in the Linode API.
+        :param Sequence['GetInstancesInstanceConfigInterfaceArgs'] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
         :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param int memory_limit: Defaults to the total RAM of the Linode
@@ -6946,6 +7373,9 @@ class GetInstancesInstanceConfigResult(dict):
     @property
     @pulumi.getter
     def interfaces(self) -> Sequence['outputs.GetInstancesInstanceConfigInterfaceResult']:
+        """
+        An array of Network Interfaces for this Linode’s Configuration Profile.
+        """
         return pulumi.get(self, "interfaces")
 
     @property
@@ -7010,6 +7440,13 @@ class GetInstancesInstanceConfigDeviceResult(dict):
                  sdhs: Sequence['outputs.GetInstancesInstanceConfigDeviceSdhResult']):
         """
         :param Sequence['GetInstancesInstanceConfigDeviceSdaArgs'] sdas: ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        :param Sequence['GetInstancesInstanceConfigDeviceSdbArgs'] sdbs: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param Sequence['GetInstancesInstanceConfigDeviceSdcArgs'] sdcs: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param Sequence['GetInstancesInstanceConfigDeviceSddArgs'] sdds: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param Sequence['GetInstancesInstanceConfigDeviceSdeArgs'] sdes: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param Sequence['GetInstancesInstanceConfigDeviceSdfArgs'] sdfs: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param Sequence['GetInstancesInstanceConfigDeviceSdgArgs'] sdgs: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param Sequence['GetInstancesInstanceConfigDeviceSdhArgs'] sdhs: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         """
         pulumi.set(__self__, "sdas", sdas)
         pulumi.set(__self__, "sdbs", sdbs)
@@ -7031,36 +7468,57 @@ class GetInstancesInstanceConfigDeviceResult(dict):
     @property
     @pulumi.getter
     def sdbs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdbResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdbs")
 
     @property
     @pulumi.getter
     def sdcs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdcResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdcs")
 
     @property
     @pulumi.getter
     def sdds(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSddResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdds")
 
     @property
     @pulumi.getter
     def sdes(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdeResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdes")
 
     @property
     @pulumi.getter
     def sdfs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdfResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdfs")
 
     @property
     @pulumi.getter
     def sdgs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdgResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdgs")
 
     @property
     @pulumi.getter
     def sdhs(self) -> Sequence['outputs.GetInstancesInstanceConfigDeviceSdhResult']:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
         return pulumi.get(self, "sdhs")
 
 
@@ -7409,6 +7867,7 @@ class GetInstancesInstanceConfigHelperResult(dict):
                  network: bool,
                  updatedb_disabled: bool):
         """
+        :param bool devtmpfs_automount: Populates the /dev directory early during boot without udev. Defaults to false.
         :param bool distro: Controls the behavior of the Linode Config's Distribution Helper setting.
         :param bool modules_dep: Creates a modules dependency file for the Kernel you run.
         :param bool network: Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
@@ -7423,6 +7882,9 @@ class GetInstancesInstanceConfigHelperResult(dict):
     @property
     @pulumi.getter(name="devtmpfsAutomount")
     def devtmpfs_automount(self) -> bool:
+        """
+        Populates the /dev directory early during boot without udev. Defaults to false.
+        """
         return pulumi.get(self, "devtmpfs_automount")
 
     @property
@@ -7472,6 +7934,7 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
                  primary: Optional[bool] = None,
                  subnet_id: Optional[int] = None):
         """
+        :param bool active: Whether this interface is currently booted and active.
         :param int id: The ID of the disk in the Linode API.
         :param 'GetInstancesInstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
@@ -7501,6 +7964,9 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
     @property
     @pulumi.getter
     def active(self) -> bool:
+        """
+        Whether this interface is currently booted and active.
+        """
         return pulumi.get(self, "active")
 
     @property
@@ -7663,6 +8129,12 @@ class GetInstancesInstanceSpecResult(dict):
                  memory: int,
                  transfer: int,
                  vcpus: int):
+        """
+        :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        :param int memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+        :param int transfer: The amount of network transfer this Linode is allotted each month.
+        :param int vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+        """
         pulumi.set(__self__, "disk", disk)
         pulumi.set(__self__, "memory", memory)
         pulumi.set(__self__, "transfer", transfer)
@@ -7671,21 +8143,33 @@ class GetInstancesInstanceSpecResult(dict):
     @property
     @pulumi.getter
     def disk(self) -> int:
+        """
+        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        """
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter
     def memory(self) -> int:
+        """
+        The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
     def transfer(self) -> int:
+        """
+        The amount of network transfer this Linode is allotted each month.
+        """
         return pulumi.get(self, "transfer")
 
     @property
     @pulumi.getter
     def vcpus(self) -> int:
+        """
+        The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+        """
         return pulumi.get(self, "vcpus")
 
 
@@ -7744,6 +8228,7 @@ class GetKernelsKernelResult(dict):
                  xen: bool):
         """
         :param str architecture: The architecture of this Kernel.
+        :param str built: The date on which this Kernel was built.
         :param bool deprecated: Whether or not this Kernel is deprecated.
         :param str id: The unique ID of this Kernel.
         :param bool kvm: If this Kernel is suitable for KVM Linodes.
@@ -7773,6 +8258,9 @@ class GetKernelsKernelResult(dict):
     @property
     @pulumi.getter
     def built(self) -> str:
+        """
+        The date on which this Kernel was built.
+        """
         return pulumi.get(self, "built")
 
     @property
@@ -7836,11 +8324,17 @@ class GetKernelsKernelResult(dict):
 class GetLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
                  high_availability: bool):
+        """
+        :param bool high_availability: Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        """
         pulumi.set(__self__, "high_availability", high_availability)
 
     @property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> bool:
+        """
+        Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        """
         return pulumi.get(self, "high_availability")
 
 
@@ -8128,12 +8622,14 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
         :param str algorithm: What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
         :param str check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param int check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
+        :param str check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         :param int check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param bool check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param str check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         :param int check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param str cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
         :param int id: The config's ID.
+        :param Sequence['GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs'] node_statuses: A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         :param int nodebalancer_id: The ID of the NodeBalancer to access.
                
                * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
@@ -8190,6 +8686,9 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
     @property
     @pulumi.getter(name="checkBody")
     def check_body(self) -> str:
+        """
+        This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+        """
         return pulumi.get(self, "check_body")
 
     @property
@@ -8243,6 +8742,9 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
     @property
     @pulumi.getter(name="nodeStatuses")
     def node_statuses(self) -> Sequence['outputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusResult']:
+        """
+        A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+        """
         return pulumi.get(self, "node_statuses")
 
     @property
@@ -8398,6 +8900,7 @@ class GetNodebalancersNodebalancerResult(dict):
         :param str label: The label of the Linode NodeBalancer
         :param str region: The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
         :param Sequence[str] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence['GetNodebalancersNodebalancerTransferArgs'] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param str updated: When this Linode NodeBalancer was last updated
         """
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -8487,6 +8990,9 @@ class GetNodebalancersNodebalancerResult(dict):
     @property
     @pulumi.getter
     def transfers(self) -> Sequence['outputs.GetNodebalancersNodebalancerTransferResult']:
+        """
+        Information about the amount of transfer this NodeBalancer has had so far this month.
+        """
         return pulumi.get(self, "transfers")
 
     @property
@@ -8667,6 +9173,7 @@ class GetRegionsRegionResult(dict):
         """
         :param Sequence[str] capabilities: A list of capabilities of this region.
         :param str country: The country the region resides in.
+        :param str id: The unique ID of this Region.
         :param str label: Detailed location information for this Region, including city, state or region, and country.
         :param str status: This region’s current operational status (ok or outage).
         """
@@ -8697,6 +9204,9 @@ class GetRegionsRegionResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The unique ID of this Region.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -9749,14 +10259,24 @@ class GetUsersUserResult(dict):
                  verified_phone_number: str,
                  volume_grants: Sequence['outputs.GetUsersUserVolumeGrantResult']):
         """
+        :param Sequence['GetUsersUserDatabaseGrantArgs'] database_grants: A set containing all of the user's active grants.
+        :param Sequence['GetUsersUserDomainGrantArgs'] domain_grants: A set containing all of the user's active grants.
         :param str email: The email address for this User, for account management communications, and may be used for other communications as configured.
+        :param Sequence['GetUsersUserFirewallGrantArgs'] firewall_grants: A set containing all of the user's active grants.
+        :param Sequence['GetUsersUserGlobalGrantArgs'] global_grants: A structure containing the Account-level grants a User has.
         :param str id: The ID of entity this grant applies to.
+        :param Sequence['GetUsersUserImageGrantArgs'] image_grants: A set containing all of the user's active grants.
+        :param Sequence['GetUsersUserLinodeGrantArgs'] linode_grants: A set containing all of the user's active grants.
+        :param Sequence['GetUsersUserLongviewGrantArgs'] longview_grants: A set containing all of the user's active grants.
+        :param Sequence['GetUsersUserNodebalancerGrantArgs'] nodebalancer_grants: A set containing all of the user's active grants.
         :param str password_created: The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
         :param bool restricted: If true, this User must be granted access to perform actions or access entities on this Account.
         :param Sequence[str] ssh_keys: A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        :param Sequence['GetUsersUserStackscriptGrantArgs'] stackscript_grants: A set containing all of the user's active grants.
         :param bool tfa_enabled: A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
         :param str username: This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
         :param str verified_phone_number: The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+        :param Sequence['GetUsersUserVolumeGrantArgs'] volume_grants: A set containing all of the user's active grants.
         """
         pulumi.set(__self__, "database_grants", database_grants)
         pulumi.set(__self__, "domain_grants", domain_grants)
@@ -9780,11 +10300,17 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="databaseGrants")
     def database_grants(self) -> Sequence['outputs.GetUsersUserDatabaseGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "database_grants")
 
     @property
     @pulumi.getter(name="domainGrants")
     def domain_grants(self) -> Sequence['outputs.GetUsersUserDomainGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "domain_grants")
 
     @property
@@ -9798,11 +10324,17 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="firewallGrants")
     def firewall_grants(self) -> Sequence['outputs.GetUsersUserFirewallGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "firewall_grants")
 
     @property
     @pulumi.getter(name="globalGrants")
     def global_grants(self) -> Sequence['outputs.GetUsersUserGlobalGrantResult']:
+        """
+        A structure containing the Account-level grants a User has.
+        """
         return pulumi.get(self, "global_grants")
 
     @property
@@ -9816,21 +10348,33 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="imageGrants")
     def image_grants(self) -> Sequence['outputs.GetUsersUserImageGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "image_grants")
 
     @property
     @pulumi.getter(name="linodeGrants")
     def linode_grants(self) -> Sequence['outputs.GetUsersUserLinodeGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "linode_grants")
 
     @property
     @pulumi.getter(name="longviewGrants")
     def longview_grants(self) -> Sequence['outputs.GetUsersUserLongviewGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "longview_grants")
 
     @property
     @pulumi.getter(name="nodebalancerGrants")
     def nodebalancer_grants(self) -> Sequence['outputs.GetUsersUserNodebalancerGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "nodebalancer_grants")
 
     @property
@@ -9860,6 +10404,9 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="stackscriptGrants")
     def stackscript_grants(self) -> Sequence['outputs.GetUsersUserStackscriptGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "stackscript_grants")
 
     @property
@@ -9889,6 +10436,9 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="volumeGrants")
     def volume_grants(self) -> Sequence['outputs.GetUsersUserVolumeGrantResult']:
+        """
+        A set containing all of the user's active grants.
+        """
         return pulumi.get(self, "volume_grants")
 
 

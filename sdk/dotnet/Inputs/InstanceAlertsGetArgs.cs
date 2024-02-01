@@ -12,18 +12,33 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstanceAlertsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+        /// </summary>
         [Input("cpu")]
         public Input<int>? Cpu { get; set; }
 
+        /// <summary>
+        /// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        /// </summary>
         [Input("io")]
         public Input<int>? Io { get; set; }
 
+        /// <summary>
+        /// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        /// </summary>
         [Input("networkIn")]
         public Input<int>? NetworkIn { get; set; }
 
+        /// <summary>
+        /// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        /// </summary>
         [Input("networkOut")]
         public Input<int>? NetworkOut { get; set; }
 
+        /// <summary>
+        /// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        /// </summary>
         [Input("transferQuota")]
         public Input<int>? TransferQuota { get; set; }
 

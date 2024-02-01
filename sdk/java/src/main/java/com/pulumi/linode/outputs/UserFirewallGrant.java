@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class UserFirewallGrant {
+    /**
+     * @return The ID of the entity this grant applies to.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The level of access this User has to this entity. If null, this User has no access.
+     * 
+     */
     private String permissions;
 
     private UserFirewallGrant() {}
+    /**
+     * @return The ID of the entity this grant applies to.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The level of access this User has to this entity. If null, this User has no access.
+     * 
+     */
     public String permissions() {
         return this.permissions;
     }

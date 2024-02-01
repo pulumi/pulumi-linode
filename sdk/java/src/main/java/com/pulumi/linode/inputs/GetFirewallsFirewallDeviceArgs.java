@@ -15,9 +15,17 @@ public final class GetFirewallsFirewallDeviceArgs extends com.pulumi.resources.R
 
     public static final GetFirewallsFirewallDeviceArgs Empty = new GetFirewallsFirewallDeviceArgs();
 
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+     * 
+     */
     @Import(name="entityId", required=true)
     private Output<Integer> entityId;
 
+    /**
+     * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+     * 
+     */
     public Output<Integer> entityId() {
         return this.entityId;
     }
@@ -52,16 +60,32 @@ public final class GetFirewallsFirewallDeviceArgs extends com.pulumi.resources.R
         return this.label;
     }
 
+    /**
+     * The type of Firewall Device.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The type of Firewall Device.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
 
+    /**
+     * The URL of the underlying entity this device references.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -94,11 +118,23 @@ public final class GetFirewallsFirewallDeviceArgs extends com.pulumi.resources.R
             $ = new GetFirewallsFirewallDeviceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entityId The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityId(Output<Integer> entityId) {
             $.entityId = entityId;
             return this;
         }
 
+        /**
+         * @param entityId The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityId(Integer entityId) {
             return entityId(Output.of(entityId));
         }
@@ -145,20 +181,44 @@ public final class GetFirewallsFirewallDeviceArgs extends com.pulumi.resources.R
             return label(Output.of(label));
         }
 
+        /**
+         * @param type The type of Firewall Device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of Firewall Device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param url The URL of the underlying entity this device references.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The URL of the underlying entity this device references.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

@@ -30,12 +30,20 @@ public final class ObjectStorageBucketLifecycleRule {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Specifies a period in the object&#39;s expire.
+     * 
+     */
     private @Nullable ObjectStorageBucketLifecycleRuleExpiration expiration;
     /**
      * @return The unique identifier for the rule.
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Specifies when non-current object versions expire.
+     * 
+     */
     private @Nullable ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
     /**
      * @return The object key prefix identifying one or more objects to which the rule applies.
@@ -62,6 +70,10 @@ public final class ObjectStorageBucketLifecycleRule {
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Specifies a period in the object&#39;s expire.
+     * 
+     */
     public Optional<ObjectStorageBucketLifecycleRuleExpiration> expiration() {
         return Optional.ofNullable(this.expiration);
     }
@@ -72,6 +84,10 @@ public final class ObjectStorageBucketLifecycleRule {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Specifies when non-current object versions expire.
+     * 
+     */
     public Optional<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpiration() {
         return Optional.ofNullable(this.noncurrentVersionExpiration);
     }

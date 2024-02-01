@@ -16,9 +16,17 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
 
     public static final GetImagesImage Empty = new GetImagesImage();
 
+    /**
+     * The capabilities of this Image.
+     * 
+     */
     @Import(name="capabilities", required=true)
     private List<String> capabilities;
 
+    /**
+     * @return The capabilities of this Image.
+     * 
+     */
     public List<String> capabilities() {
         return this.capabilities;
     }
@@ -83,9 +91,17 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
         return this.description;
     }
 
+    /**
+     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     * 
+     */
     @Import(name="expiry", required=true)
     private String expiry;
 
+    /**
+     * @return Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     * 
+     */
     public String expiry() {
         return this.expiry;
     }
@@ -231,11 +247,23 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
             $ = new GetImagesImage(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capabilities(List<String> capabilities) {
             $.capabilities = capabilities;
             return this;
         }
 
+        /**
+         * @param capabilities The capabilities of this Image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder capabilities(String... capabilities) {
             return capabilities(List.of(capabilities));
         }
@@ -284,6 +312,12 @@ public final class GetImagesImage extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param expiry Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiry(String expiry) {
             $.expiry = expiry;
             return this;

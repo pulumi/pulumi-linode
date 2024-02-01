@@ -30,9 +30,17 @@ public final class GetKernelsKernelArgs extends com.pulumi.resources.ResourceArg
         return this.architecture;
     }
 
+    /**
+     * The date on which this Kernel was built.
+     * 
+     */
     @Import(name="built", required=true)
     private Output<String> built;
 
+    /**
+     * @return The date on which this Kernel was built.
+     * 
+     */
     public Output<String> built() {
         return this.built;
     }
@@ -195,11 +203,23 @@ public final class GetKernelsKernelArgs extends com.pulumi.resources.ResourceArg
             return architecture(Output.of(architecture));
         }
 
+        /**
+         * @param built The date on which this Kernel was built.
+         * 
+         * @return builder
+         * 
+         */
         public Builder built(Output<String> built) {
             $.built = built;
             return this;
         }
 
+        /**
+         * @param built The date on which this Kernel was built.
+         * 
+         * @return builder
+         * 
+         */
         public Builder built(String built) {
             return built(Output.of(built));
         }

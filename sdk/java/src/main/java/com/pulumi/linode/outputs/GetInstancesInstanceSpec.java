@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceSpec {
+    /**
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * 
+     */
     private Integer disk;
+    /**
+     * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     * 
+     */
     private Integer memory;
+    /**
+     * @return The amount of network transfer this Linode is allotted each month.
+     * 
+     */
     private Integer transfer;
+    /**
+     * @return The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     * 
+     */
     private Integer vcpus;
 
     private GetInstancesInstanceSpec() {}
+    /**
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * 
+     */
     public Integer disk() {
         return this.disk;
     }
+    /**
+     * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     * 
+     */
     public Integer memory() {
         return this.memory;
     }
+    /**
+     * @return The amount of network transfer this Linode is allotted each month.
+     * 
+     */
     public Integer transfer() {
         return this.transfer;
     }
+    /**
+     * @return The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     * 
+     */
     public Integer vcpus() {
         return this.vcpus;
     }

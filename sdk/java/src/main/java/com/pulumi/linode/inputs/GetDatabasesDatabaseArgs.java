@@ -137,9 +137,17 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
         return this.id;
     }
 
+    /**
+     * he API route for the database instance.
+     * 
+     */
     @Import(name="instanceUri", required=true)
     private Output<String> instanceUri;
 
+    /**
+     * @return he API route for the database instance.
+     * 
+     */
     public Output<String> instanceUri() {
         return this.instanceUri;
     }
@@ -482,11 +490,23 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
             return id(Output.of(id));
         }
 
+        /**
+         * @param instanceUri he API route for the database instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceUri(Output<String> instanceUri) {
             $.instanceUri = instanceUri;
             return this;
         }
 
+        /**
+         * @param instanceUri he API route for the database instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceUri(String instanceUri) {
             return instanceUri(Output.of(instanceUri));
         }

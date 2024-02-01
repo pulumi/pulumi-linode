@@ -11,24 +11,56 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFirewallsFirewallInbound {
+    /**
+     * @return Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     */
     private String action;
+    /**
+     * @return A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     */
     private List<String> ipv4s;
+    /**
+     * @return A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     */
     private List<String> ipv6s;
     /**
      * @return The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      * 
      */
     private String label;
+    /**
+     * @return A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     */
     private String ports;
+    /**
+     * @return The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     */
     private String protocol;
 
     private GetFirewallsFirewallInbound() {}
+    /**
+     * @return Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return A list of IPv4 addresses or networks in IP/mask format.
+     * 
+     */
     public List<String> ipv4s() {
         return this.ipv4s;
     }
+    /**
+     * @return A list of IPv6 addresses or networks in IP/mask format.
+     * 
+     */
     public List<String> ipv6s() {
         return this.ipv6s;
     }
@@ -39,9 +71,17 @@ public final class GetFirewallsFirewallInbound {
     public String label() {
         return this.label;
     }
+    /**
+     * @return A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
+     * 
+     */
     public String ports() {
         return this.ports;
     }
+    /**
+     * @return The network protocol this rule controls. (TCP, UDP, ICMP)
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }

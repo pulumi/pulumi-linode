@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceBackup {
+    /**
+     * @return Whether this Backup is available for restoration.
+     * 
+     */
     private Boolean available;
     /**
      * @return If this Linode has the Backup service enabled.
@@ -21,6 +25,10 @@ public final class GetInstancesInstanceBackup {
     private List<GetInstancesInstanceBackupSchedule> schedules;
 
     private GetInstancesInstanceBackup() {}
+    /**
+     * @return Whether this Backup is available for restoration.
+     * 
+     */
     public Boolean available() {
         return this.available;
     }

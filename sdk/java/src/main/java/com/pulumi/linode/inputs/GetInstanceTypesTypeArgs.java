@@ -19,9 +19,17 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
 
     public static final GetInstanceTypesTypeArgs Empty = new GetInstanceTypesTypeArgs();
 
+    /**
+     * Information about the optional Backup service offered for Linodes.
+     * 
+     */
     @Import(name="addons", required=true)
     private Output<List<GetInstanceTypesTypeAddonArgs>> addons;
 
+    /**
+     * @return Information about the optional Backup service offered for Linodes.
+     * 
+     */
     public Output<List<GetInstanceTypesTypeAddonArgs>> addons() {
         return this.addons;
     }
@@ -116,16 +124,32 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
         return this.networkOut;
     }
 
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     * 
+     */
     @Import(name="prices", required=true)
     private Output<List<GetInstanceTypesTypePriceArgs>> prices;
 
+    /**
+     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * 
+     */
     public Output<List<GetInstanceTypesTypePriceArgs>> prices() {
         return this.prices;
     }
 
+    /**
+     * A list of region-specific prices for this plan.
+     * 
+     */
     @Import(name="regionPrices", required=true)
     private Output<List<GetInstanceTypesTypeRegionPriceArgs>> regionPrices;
 
+    /**
+     * @return A list of region-specific prices for this plan.
+     * 
+     */
     public Output<List<GetInstanceTypesTypeRegionPriceArgs>> regionPrices() {
         return this.regionPrices;
     }
@@ -194,15 +218,33 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
             $ = new GetInstanceTypesTypeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addons Information about the optional Backup service offered for Linodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(Output<List<GetInstanceTypesTypeAddonArgs>> addons) {
             $.addons = addons;
             return this;
         }
 
+        /**
+         * @param addons Information about the optional Backup service offered for Linodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(List<GetInstanceTypesTypeAddonArgs> addons) {
             return addons(Output.of(addons));
         }
 
+        /**
+         * @param addons Information about the optional Backup service offered for Linodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(GetInstanceTypesTypeAddonArgs... addons) {
             return addons(List.of(addons));
         }
@@ -333,28 +375,64 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
             return networkOut(Output.of(networkOut));
         }
 
+        /**
+         * @param prices Cost in US dollars, broken down into hourly and monthly charges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prices(Output<List<GetInstanceTypesTypePriceArgs>> prices) {
             $.prices = prices;
             return this;
         }
 
+        /**
+         * @param prices Cost in US dollars, broken down into hourly and monthly charges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prices(List<GetInstanceTypesTypePriceArgs> prices) {
             return prices(Output.of(prices));
         }
 
+        /**
+         * @param prices Cost in US dollars, broken down into hourly and monthly charges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prices(GetInstanceTypesTypePriceArgs... prices) {
             return prices(List.of(prices));
         }
 
+        /**
+         * @param regionPrices A list of region-specific prices for this plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionPrices(Output<List<GetInstanceTypesTypeRegionPriceArgs>> regionPrices) {
             $.regionPrices = regionPrices;
             return this;
         }
 
+        /**
+         * @param regionPrices A list of region-specific prices for this plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionPrices(List<GetInstanceTypesTypeRegionPriceArgs> regionPrices) {
             return regionPrices(Output.of(regionPrices));
         }
 
+        /**
+         * @param regionPrices A list of region-specific prices for this plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionPrices(GetInstanceTypesTypeRegionPriceArgs... regionPrices) {
             return regionPrices(List.of(regionPrices));
         }

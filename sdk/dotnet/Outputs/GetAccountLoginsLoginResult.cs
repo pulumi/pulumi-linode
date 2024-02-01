@@ -29,6 +29,9 @@ namespace Pulumi.Linode.Outputs
         /// True if the User that was logged into was a restricted User, false otherwise.
         /// </summary>
         public readonly bool Restricted;
+        /// <summary>
+        /// Whether the login attempt succeeded or failed.
+        /// </summary>
         public readonly string Status;
         /// <summary>
         /// The username of the User that was logged into.

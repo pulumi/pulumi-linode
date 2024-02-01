@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstanceInterfaceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this interface is currently booted and active.
+        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 

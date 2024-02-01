@@ -19,9 +19,25 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstance {
     private GetInstancesInstanceAlerts alerts;
+    /**
+     * @return Information about this Linode&#39;s backups status.
+     * 
+     */
     private List<GetInstancesInstanceBackup> backups;
+    /**
+     * @return The Label of the Instance Config that should be used to boot the Linode instance.
+     * 
+     */
     private String bootConfigLabel;
+    /**
+     * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     * 
+     */
     private List<GetInstancesInstanceConfig> configs;
+    /**
+     * @return Disks associated with this Linode.
+     * 
+     */
     private List<GetInstancesInstanceDisk> disks;
     /**
      * @return The display group of the Linode instance.
@@ -33,6 +49,10 @@ public final class GetInstancesInstance {
      * 
      */
     private Boolean hasUserData;
+    /**
+     * @return The Linode’s host machine, as a UUID.
+     * 
+     */
     private String hostUuid;
     /**
      * @return The ID of the disk in the Linode API.
@@ -105,15 +125,31 @@ public final class GetInstancesInstance {
     public GetInstancesInstanceAlerts alerts() {
         return this.alerts;
     }
+    /**
+     * @return Information about this Linode&#39;s backups status.
+     * 
+     */
     public List<GetInstancesInstanceBackup> backups() {
         return this.backups;
     }
+    /**
+     * @return The Label of the Instance Config that should be used to boot the Linode instance.
+     * 
+     */
     public String bootConfigLabel() {
         return this.bootConfigLabel;
     }
+    /**
+     * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     * 
+     */
     public List<GetInstancesInstanceConfig> configs() {
         return this.configs;
     }
+    /**
+     * @return Disks associated with this Linode.
+     * 
+     */
     public List<GetInstancesInstanceDisk> disks() {
         return this.disks;
     }
@@ -131,6 +167,10 @@ public final class GetInstancesInstance {
     public Boolean hasUserData() {
         return this.hasUserData;
     }
+    /**
+     * @return The Linode’s host machine, as a UUID.
+     * 
+     */
     public String hostUuid() {
         return this.hostUuid;
     }

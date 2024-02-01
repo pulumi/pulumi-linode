@@ -47,9 +47,17 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
         return this.country;
     }
 
+    /**
+     * The unique ID of this Region.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return The unique ID of this Region.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -152,6 +160,12 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param id The unique ID of this Region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

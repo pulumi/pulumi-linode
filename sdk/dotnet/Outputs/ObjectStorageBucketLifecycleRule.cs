@@ -25,11 +25,17 @@ namespace Pulumi.Linode.Outputs
         /// Specifies whether the lifecycle rule is active.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Specifies a period in the object's expire.
+        /// </summary>
         public readonly Outputs.ObjectStorageBucketLifecycleRuleExpiration? Expiration;
         /// <summary>
         /// The unique identifier for the rule.
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Specifies when non-current object versions expire.
+        /// </summary>
         public readonly Outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration? NoncurrentVersionExpiration;
         /// <summary>
         /// The object key prefix identifying one or more objects to which the rule applies.

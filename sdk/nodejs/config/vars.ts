@@ -112,7 +112,7 @@ Object.defineProperty(exports, "skipImplicitReboots", {
 });
 
 /**
- * Skip waiting for a linode_instance resource to finish deleting.
+ * Skip waiting for a linode.Instance resource to finish deleting.
  */
 export declare const skipInstanceDeletePoll: boolean | undefined;
 Object.defineProperty(exports, "skipInstanceDeletePoll", {
@@ -123,7 +123,7 @@ Object.defineProperty(exports, "skipInstanceDeletePoll", {
 });
 
 /**
- * Skip waiting for a linode_instance resource to be running.
+ * Skip waiting for a linode.Instance resource to be running.
  */
 export declare const skipInstanceReadyPoll: boolean | undefined;
 Object.defineProperty(exports, "skipInstanceReadyPoll", {

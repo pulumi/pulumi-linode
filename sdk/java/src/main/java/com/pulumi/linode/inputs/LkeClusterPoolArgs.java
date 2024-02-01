@@ -20,9 +20,17 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final LkeClusterPoolArgs Empty = new LkeClusterPoolArgs();
 
+    /**
+     * When specified, the number of nodes autoscales within the defined minimum and maximum values.
+     * 
+     */
     @Import(name="autoscaler")
     private @Nullable Output<LkeClusterPoolAutoscalerArgs> autoscaler;
 
+    /**
+     * @return When specified, the number of nodes autoscales within the defined minimum and maximum values.
+     * 
+     */
     public Optional<Output<LkeClusterPoolAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -61,9 +69,17 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * The nodes in the node pool.
+     * 
+     */
     @Import(name="nodes")
     private @Nullable Output<List<LkeClusterPoolNodeArgs>> nodes;
 
+    /**
+     * @return The nodes in the node pool.
+     * 
+     */
     public Optional<Output<List<LkeClusterPoolNodeArgs>>> nodes() {
         return Optional.ofNullable(this.nodes);
     }
@@ -111,11 +127,23 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
             $ = new LkeClusterPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscaler When specified, the number of nodes autoscales within the defined minimum and maximum values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(@Nullable Output<LkeClusterPoolAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
+        /**
+         * @param autoscaler When specified, the number of nodes autoscales within the defined minimum and maximum values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(LkeClusterPoolAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
@@ -166,15 +194,33 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
             return id(Output.of(id));
         }
 
+        /**
+         * @param nodes The nodes in the node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(@Nullable Output<List<LkeClusterPoolNodeArgs>> nodes) {
             $.nodes = nodes;
             return this;
         }
 
+        /**
+         * @param nodes The nodes in the node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(List<LkeClusterPoolNodeArgs> nodes) {
             return nodes(Output.of(nodes));
         }
 
+        /**
+         * @param nodes The nodes in the node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(LkeClusterPoolNodeArgs... nodes) {
             return nodes(List.of(nodes));
         }

@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LkeClusterPool {
+    /**
+     * @return When specified, the number of nodes autoscales within the defined minimum and maximum values.
+     * 
+     */
     private @Nullable LkeClusterPoolAutoscaler autoscaler;
     /**
      * @return The number of nodes in the Node Pool.
@@ -29,6 +33,10 @@ public final class LkeClusterPool {
      * 
      */
     private @Nullable Integer id;
+    /**
+     * @return The nodes in the node pool.
+     * 
+     */
     private @Nullable List<LkeClusterPoolNode> nodes;
     /**
      * @return A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -37,6 +45,10 @@ public final class LkeClusterPool {
     private String type;
 
     private LkeClusterPool() {}
+    /**
+     * @return When specified, the number of nodes autoscales within the defined minimum and maximum values.
+     * 
+     */
     public Optional<LkeClusterPoolAutoscaler> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -56,6 +68,10 @@ public final class LkeClusterPool {
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The nodes in the node pool.
+     * 
+     */
     public List<LkeClusterPoolNode> nodes() {
         return this.nodes == null ? List.of() : this.nodes;
     }

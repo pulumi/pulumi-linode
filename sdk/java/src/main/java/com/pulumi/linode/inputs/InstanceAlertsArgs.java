@@ -15,37 +15,77 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final InstanceAlertsArgs Empty = new InstanceAlertsArgs();
 
+    /**
+     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     */
     @Import(name="cpu")
     private @Nullable Output<Integer> cpu;
 
+    /**
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     */
     public Optional<Output<Integer>> cpu() {
         return Optional.ofNullable(this.cpu);
     }
 
+    /**
+     * The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     */
     @Import(name="io")
     private @Nullable Output<Integer> io;
 
+    /**
+     * @return The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     */
     public Optional<Output<Integer>> io() {
         return Optional.ofNullable(this.io);
     }
 
+    /**
+     * The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     @Import(name="networkIn")
     private @Nullable Output<Integer> networkIn;
 
+    /**
+     * @return The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Optional<Output<Integer>> networkIn() {
         return Optional.ofNullable(this.networkIn);
     }
 
+    /**
+     * The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     @Import(name="networkOut")
     private @Nullable Output<Integer> networkOut;
 
+    /**
+     * @return The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Optional<Output<Integer>> networkOut() {
         return Optional.ofNullable(this.networkOut);
     }
 
+    /**
+     * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     @Import(name="transferQuota")
     private @Nullable Output<Integer> transferQuota;
 
+    /**
+     * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     */
     public Optional<Output<Integer>> transferQuota() {
         return Optional.ofNullable(this.transferQuota);
     }
@@ -78,47 +118,107 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
             $ = new InstanceAlertsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpu The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpu(@Nullable Output<Integer> cpu) {
             $.cpu = cpu;
             return this;
         }
 
+        /**
+         * @param cpu The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpu(Integer cpu) {
             return cpu(Output.of(cpu));
         }
 
+        /**
+         * @param io The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder io(@Nullable Output<Integer> io) {
             $.io = io;
             return this;
         }
 
+        /**
+         * @param io The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder io(Integer io) {
             return io(Output.of(io));
         }
 
+        /**
+         * @param networkIn The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkIn(@Nullable Output<Integer> networkIn) {
             $.networkIn = networkIn;
             return this;
         }
 
+        /**
+         * @param networkIn The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkIn(Integer networkIn) {
             return networkIn(Output.of(networkIn));
         }
 
+        /**
+         * @param networkOut The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkOut(@Nullable Output<Integer> networkOut) {
             $.networkOut = networkOut;
             return this;
         }
 
+        /**
+         * @param networkOut The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkOut(Integer networkOut) {
             return networkOut(Output.of(networkOut));
         }
 
+        /**
+         * @param transferQuota The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder transferQuota(@Nullable Output<Integer> transferQuota) {
             $.transferQuota = transferQuota;
             return this;
         }
 
+        /**
+         * @param transferQuota The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder transferQuota(Integer transferQuota) {
             return transferQuota(Output.of(transferQuota));
         }
