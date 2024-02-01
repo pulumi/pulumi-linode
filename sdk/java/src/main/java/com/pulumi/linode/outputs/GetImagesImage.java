@@ -13,6 +13,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetImagesImage {
+    /**
+     * @return The capabilities of this Image.
+     * 
+     */
     private List<String> capabilities;
     /**
      * @return When this Image was created.
@@ -34,6 +38,10 @@ public final class GetImagesImage {
      * 
      */
     private String description;
+    /**
+     * @return Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     * 
+     */
     private String expiry;
     /**
      * @return The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -72,6 +80,10 @@ public final class GetImagesImage {
     private String vendor;
 
     private GetImagesImage() {}
+    /**
+     * @return The capabilities of this Image.
+     * 
+     */
     public List<String> capabilities() {
         return this.capabilities;
     }
@@ -103,6 +115,10 @@ public final class GetImagesImage {
     public String description() {
         return this.description;
     }
+    /**
+     * @return Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     * 
+     */
     public String expiry() {
         return this.expiry;
     }

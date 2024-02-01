@@ -49,6 +49,9 @@ namespace Pulumi.Linode.Outputs
         /// A list of tags applied to this object. Tags are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Information about the amount of transfer this NodeBalancer has had so far this month.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodebalancersNodebalancerTransferResult> Transfers;
         /// <summary>
         /// When this Linode NodeBalancer was last updated

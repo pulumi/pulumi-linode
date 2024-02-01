@@ -18,9 +18,17 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
 
     public static final GetInstanceTypesType Empty = new GetInstanceTypesType();
 
+    /**
+     * Information about the optional Backup service offered for Linodes.
+     * 
+     */
     @Import(name="addons", required=true)
     private List<GetInstanceTypesTypeAddon> addons;
 
+    /**
+     * @return Information about the optional Backup service offered for Linodes.
+     * 
+     */
     public List<GetInstanceTypesTypeAddon> addons() {
         return this.addons;
     }
@@ -115,16 +123,32 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
         return this.networkOut;
     }
 
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     * 
+     */
     @Import(name="prices", required=true)
     private List<GetInstanceTypesTypePrice> prices;
 
+    /**
+     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * 
+     */
     public List<GetInstanceTypesTypePrice> prices() {
         return this.prices;
     }
 
+    /**
+     * A list of region-specific prices for this plan.
+     * 
+     */
     @Import(name="regionPrices", required=true)
     private List<GetInstanceTypesTypeRegionPrice> regionPrices;
 
+    /**
+     * @return A list of region-specific prices for this plan.
+     * 
+     */
     public List<GetInstanceTypesTypeRegionPrice> regionPrices() {
         return this.regionPrices;
     }
@@ -193,11 +217,23 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
             $ = new GetInstanceTypesType(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addons Information about the optional Backup service offered for Linodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(List<GetInstanceTypesTypeAddon> addons) {
             $.addons = addons;
             return this;
         }
 
+        /**
+         * @param addons Information about the optional Backup service offered for Linodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(GetInstanceTypesTypeAddon... addons) {
             return addons(List.of(addons));
         }
@@ -268,20 +304,44 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param prices Cost in US dollars, broken down into hourly and monthly charges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prices(List<GetInstanceTypesTypePrice> prices) {
             $.prices = prices;
             return this;
         }
 
+        /**
+         * @param prices Cost in US dollars, broken down into hourly and monthly charges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prices(GetInstanceTypesTypePrice... prices) {
             return prices(List.of(prices));
         }
 
+        /**
+         * @param regionPrices A list of region-specific prices for this plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionPrices(List<GetInstanceTypesTypeRegionPrice> regionPrices) {
             $.regionPrices = regionPrices;
             return this;
         }
 
+        /**
+         * @param regionPrices A list of region-specific prices for this plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionPrices(GetInstanceTypesTypeRegionPrice... regionPrices) {
             return regionPrices(List.of(regionPrices));
         }

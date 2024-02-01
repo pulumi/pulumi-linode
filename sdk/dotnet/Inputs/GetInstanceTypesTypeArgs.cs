@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Inputs
     {
         [Input("addons", required: true)]
         private InputList<Inputs.GetInstanceTypesTypeAddonInputArgs>? _addons;
+
+        /// <summary>
+        /// Information about the optional Backup service offered for Linodes.
+        /// </summary>
         public InputList<Inputs.GetInstanceTypesTypeAddonInputArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.GetInstanceTypesTypeAddonInputArgs>());
@@ -58,6 +62,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("prices", required: true)]
         private InputList<Inputs.GetInstanceTypesTypePriceInputArgs>? _prices;
+
+        /// <summary>
+        /// Cost in US dollars, broken down into hourly and monthly charges.
+        /// </summary>
         public InputList<Inputs.GetInstanceTypesTypePriceInputArgs> Prices
         {
             get => _prices ?? (_prices = new InputList<Inputs.GetInstanceTypesTypePriceInputArgs>());
@@ -66,6 +74,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("regionPrices", required: true)]
         private InputList<Inputs.GetInstanceTypesTypeRegionPriceInputArgs>? _regionPrices;
+
+        /// <summary>
+        /// A list of region-specific prices for this plan.
+        /// </summary>
         public InputList<Inputs.GetInstanceTypesTypeRegionPriceInputArgs> RegionPrices
         {
             get => _regionPrices ?? (_regionPrices = new InputList<Inputs.GetInstanceTypesTypeRegionPriceInputArgs>());

@@ -22,6 +22,10 @@ public final class GetFirewallsFirewall {
      * 
      */
     private String created;
+    /**
+     * @return The devices associated with this firewall.
+     * 
+     */
     private @Nullable List<GetFirewallsFirewallDevice> devices;
     /**
      * @return If true, the Firewall is inactive.
@@ -38,6 +42,10 @@ public final class GetFirewallsFirewall {
      * 
      */
     private String inboundPolicy;
+    /**
+     * @return A set of firewall rules that specify what inbound network traffic is allowed.
+     * 
+     */
     private @Nullable List<GetFirewallsFirewallInbound> inbounds;
     /**
      * @return The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -49,12 +57,20 @@ public final class GetFirewallsFirewall {
      * 
      */
     private List<Integer> linodes;
+    /**
+     * @return The IDs of NodeBalancers assigned to this Firewall..
+     * 
+     */
     private List<Integer> nodebalancers;
     /**
      * @return The default behavior for outbound traffic.
      * 
      */
     private String outboundPolicy;
+    /**
+     * @return A set of firewall rules that specify what outbound network traffic is allowed.
+     * 
+     */
     private @Nullable List<GetFirewallsFirewallOutbound> outbounds;
     /**
      * @return The status of the firewall.
@@ -80,6 +96,10 @@ public final class GetFirewallsFirewall {
     public String created() {
         return this.created;
     }
+    /**
+     * @return The devices associated with this firewall.
+     * 
+     */
     public List<GetFirewallsFirewallDevice> devices() {
         return this.devices == null ? List.of() : this.devices;
     }
@@ -104,6 +124,10 @@ public final class GetFirewallsFirewall {
     public String inboundPolicy() {
         return this.inboundPolicy;
     }
+    /**
+     * @return A set of firewall rules that specify what inbound network traffic is allowed.
+     * 
+     */
     public List<GetFirewallsFirewallInbound> inbounds() {
         return this.inbounds == null ? List.of() : this.inbounds;
     }
@@ -121,6 +145,10 @@ public final class GetFirewallsFirewall {
     public List<Integer> linodes() {
         return this.linodes;
     }
+    /**
+     * @return The IDs of NodeBalancers assigned to this Firewall..
+     * 
+     */
     public List<Integer> nodebalancers() {
         return this.nodebalancers;
     }
@@ -131,6 +159,10 @@ public final class GetFirewallsFirewall {
     public String outboundPolicy() {
         return this.outboundPolicy;
     }
+    /**
+     * @return A set of firewall rules that specify what outbound network traffic is allowed.
+     * 
+     */
     public List<GetFirewallsFirewallOutbound> outbounds() {
         return this.outbounds == null ? List.of() : this.outbounds;
     }

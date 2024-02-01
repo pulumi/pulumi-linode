@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLkeClusterControlPlane {
+    /**
+     * @return Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * 
+     */
     private Boolean highAvailability;
 
     private GetLkeClusterControlPlane() {}
+    /**
+     * @return Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * 
+     */
     public Boolean highAvailability() {
         return this.highAvailability;
     }

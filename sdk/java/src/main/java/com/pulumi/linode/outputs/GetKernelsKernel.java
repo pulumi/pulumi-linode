@@ -16,6 +16,10 @@ public final class GetKernelsKernel {
      * 
      */
     private String architecture;
+    /**
+     * @return The date on which this Kernel was built.
+     * 
+     */
     private String built;
     /**
      * @return Whether or not this Kernel is deprecated.
@@ -61,6 +65,10 @@ public final class GetKernelsKernel {
     public String architecture() {
         return this.architecture;
     }
+    /**
+     * @return The date on which this Kernel was built.
+     * 
+     */
     public String built() {
         return this.built;
     }

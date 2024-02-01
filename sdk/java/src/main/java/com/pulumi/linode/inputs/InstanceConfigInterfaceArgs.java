@@ -20,9 +20,17 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
 
     public static final InstanceConfigInterfaceArgs Empty = new InstanceConfigInterfaceArgs();
 
+    /**
+     * Whether this interface is currently booted and active.
+     * 
+     */
     @Import(name="active")
     private @Nullable Output<Boolean> active;
 
+    /**
+     * @return Whether this interface is currently booted and active.
+     * 
+     */
     public Optional<Output<Boolean>> active() {
         return Optional.ofNullable(this.active);
     }
@@ -203,11 +211,23 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
             $ = new InstanceConfigInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param active Whether this interface is currently booted and active.
+         * 
+         * @return builder
+         * 
+         */
         public Builder active(@Nullable Output<Boolean> active) {
             $.active = active;
             return this;
         }
 
+        /**
+         * @param active Whether this interface is currently booted and active.
+         * 
+         * @return builder
+         * 
+         */
         public Builder active(Boolean active) {
             return active(Output.of(active));
         }

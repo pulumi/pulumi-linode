@@ -25,16 +25,32 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUsersUser Empty = new GetUsersUser();
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="databaseGrants", required=true)
     private List<GetUsersUserDatabaseGrant> databaseGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserDatabaseGrant> databaseGrants() {
         return this.databaseGrants;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="domainGrants", required=true)
     private List<GetUsersUserDomainGrant> domainGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserDomainGrant> domainGrants() {
         return this.domainGrants;
     }
@@ -54,16 +70,32 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         return this.email;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="firewallGrants", required=true)
     private List<GetUsersUserFirewallGrant> firewallGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserFirewallGrant> firewallGrants() {
         return this.firewallGrants;
     }
 
+    /**
+     * A structure containing the Account-level grants a User has.
+     * 
+     */
     @Import(name="globalGrants", required=true)
     private List<GetUsersUserGlobalGrant> globalGrants;
 
+    /**
+     * @return A structure containing the Account-level grants a User has.
+     * 
+     */
     public List<GetUsersUserGlobalGrant> globalGrants() {
         return this.globalGrants;
     }
@@ -83,30 +115,62 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="imageGrants", required=true)
     private List<GetUsersUserImageGrant> imageGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserImageGrant> imageGrants() {
         return this.imageGrants;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="linodeGrants", required=true)
     private List<GetUsersUserLinodeGrant> linodeGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserLinodeGrant> linodeGrants() {
         return this.linodeGrants;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="longviewGrants", required=true)
     private List<GetUsersUserLongviewGrant> longviewGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserLongviewGrant> longviewGrants() {
         return this.longviewGrants;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="nodebalancerGrants", required=true)
     private List<GetUsersUserNodebalancerGrant> nodebalancerGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserNodebalancerGrant> nodebalancerGrants() {
         return this.nodebalancerGrants;
     }
@@ -156,9 +220,17 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         return this.sshKeys;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="stackscriptGrants", required=true)
     private List<GetUsersUserStackscriptGrant> stackscriptGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserStackscriptGrant> stackscriptGrants() {
         return this.stackscriptGrants;
     }
@@ -208,9 +280,17 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         return this.verifiedPhoneNumber;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
     @Import(name="volumeGrants", required=true)
     private List<GetUsersUserVolumeGrant> volumeGrants;
 
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
     public List<GetUsersUserVolumeGrant> volumeGrants() {
         return this.volumeGrants;
     }
@@ -256,20 +336,44 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
             $ = new GetUsersUser(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param databaseGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseGrants(List<GetUsersUserDatabaseGrant> databaseGrants) {
             $.databaseGrants = databaseGrants;
             return this;
         }
 
+        /**
+         * @param databaseGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseGrants(GetUsersUserDatabaseGrant... databaseGrants) {
             return databaseGrants(List.of(databaseGrants));
         }
 
+        /**
+         * @param domainGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainGrants(List<GetUsersUserDomainGrant> domainGrants) {
             $.domainGrants = domainGrants;
             return this;
         }
 
+        /**
+         * @param domainGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainGrants(GetUsersUserDomainGrant... domainGrants) {
             return domainGrants(List.of(domainGrants));
         }
@@ -285,20 +389,44 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param firewallGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder firewallGrants(List<GetUsersUserFirewallGrant> firewallGrants) {
             $.firewallGrants = firewallGrants;
             return this;
         }
 
+        /**
+         * @param firewallGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder firewallGrants(GetUsersUserFirewallGrant... firewallGrants) {
             return firewallGrants(List.of(firewallGrants));
         }
 
+        /**
+         * @param globalGrants A structure containing the Account-level grants a User has.
+         * 
+         * @return builder
+         * 
+         */
         public Builder globalGrants(List<GetUsersUserGlobalGrant> globalGrants) {
             $.globalGrants = globalGrants;
             return this;
         }
 
+        /**
+         * @param globalGrants A structure containing the Account-level grants a User has.
+         * 
+         * @return builder
+         * 
+         */
         public Builder globalGrants(GetUsersUserGlobalGrant... globalGrants) {
             return globalGrants(List.of(globalGrants));
         }
@@ -314,38 +442,86 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param imageGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageGrants(List<GetUsersUserImageGrant> imageGrants) {
             $.imageGrants = imageGrants;
             return this;
         }
 
+        /**
+         * @param imageGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageGrants(GetUsersUserImageGrant... imageGrants) {
             return imageGrants(List.of(imageGrants));
         }
 
+        /**
+         * @param linodeGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linodeGrants(List<GetUsersUserLinodeGrant> linodeGrants) {
             $.linodeGrants = linodeGrants;
             return this;
         }
 
+        /**
+         * @param linodeGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linodeGrants(GetUsersUserLinodeGrant... linodeGrants) {
             return linodeGrants(List.of(linodeGrants));
         }
 
+        /**
+         * @param longviewGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longviewGrants(List<GetUsersUserLongviewGrant> longviewGrants) {
             $.longviewGrants = longviewGrants;
             return this;
         }
 
+        /**
+         * @param longviewGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longviewGrants(GetUsersUserLongviewGrant... longviewGrants) {
             return longviewGrants(List.of(longviewGrants));
         }
 
+        /**
+         * @param nodebalancerGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodebalancerGrants(List<GetUsersUserNodebalancerGrant> nodebalancerGrants) {
             $.nodebalancerGrants = nodebalancerGrants;
             return this;
         }
 
+        /**
+         * @param nodebalancerGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodebalancerGrants(GetUsersUserNodebalancerGrant... nodebalancerGrants) {
             return nodebalancerGrants(List.of(nodebalancerGrants));
         }
@@ -393,11 +569,23 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
             return sshKeys(List.of(sshKeys));
         }
 
+        /**
+         * @param stackscriptGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stackscriptGrants(List<GetUsersUserStackscriptGrant> stackscriptGrants) {
             $.stackscriptGrants = stackscriptGrants;
             return this;
         }
 
+        /**
+         * @param stackscriptGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stackscriptGrants(GetUsersUserStackscriptGrant... stackscriptGrants) {
             return stackscriptGrants(List.of(stackscriptGrants));
         }
@@ -435,11 +623,23 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param volumeGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeGrants(List<GetUsersUserVolumeGrant> volumeGrants) {
             $.volumeGrants = volumeGrants;
             return this;
         }
 
+        /**
+         * @param volumeGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeGrants(GetUsersUserVolumeGrant... volumeGrants) {
             return volumeGrants(List.of(volumeGrants));
         }

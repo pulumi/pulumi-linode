@@ -82,14 +82,14 @@ class _ExportableConfig(types.ModuleType):
     @property
     def skip_instance_delete_poll(self) -> Optional[bool]:
         """
-        Skip waiting for a linode_instance resource to finish deleting.
+        Skip waiting for a Instance resource to finish deleting.
         """
         return __config__.get_bool('skipInstanceDeletePoll')
 
     @property
     def skip_instance_ready_poll(self) -> Optional[bool]:
         """
-        Skip waiting for a linode_instance resource to be running.
+        Skip waiting for a Instance resource to be running.
         """
         return __config__.get_bool('skipInstanceReadyPoll')
 

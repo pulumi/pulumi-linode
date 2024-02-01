@@ -74,6 +74,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("transfers", required: true)]
         private InputList<Inputs.GetNodebalancersNodebalancerTransferInputArgs>? _transfers;
+
+        /// <summary>
+        /// Information about the amount of transfer this NodeBalancer has had so far this month.
+        /// </summary>
         public InputList<Inputs.GetNodebalancersNodebalancerTransferInputArgs> Transfers
         {
             get => _transfers ?? (_transfers = new InputList<Inputs.GetNodebalancersNodebalancerTransferInputArgs>());

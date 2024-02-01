@@ -6,18 +6,48 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface DatabaseMysqlUpdates {
+    /**
+     * The day to perform maintenance.
+     */
     dayOfWeek: string;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: number;
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis.
+     */
     frequency: string;
+    /**
+     * The hour to begin maintenance based in UTC time.
+     */
     hourOfDay: number;
+    /**
+     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+     */
     weekOfMonth?: number;
 }
 
 export interface DatabasePostgresqlUpdates {
+    /**
+     * The day to perform maintenance.
+     */
     dayOfWeek: string;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: number;
+    /**
+     * Whether maintenance occurs on a weekly or monthly basis.
+     */
     frequency: string;
+    /**
+     * The hour to begin maintenance based in UTC time.
+     */
     hourOfDay: number;
+    /**
+     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+     */
     weekOfMonth?: number;
 }
 
@@ -156,6 +186,9 @@ export interface GetAccountLoginsLogin {
      * True if the User that was logged into was a restricted User, false otherwise.
      */
     restricted: boolean;
+    /**
+     * Whether the login attempt succeeded or failed.
+     */
     status: string;
     /**
      * The username of the User that was logged into.
@@ -310,6 +343,9 @@ export interface GetDatabasesDatabase {
      * The ID of the Managed Database.
      */
     id: number;
+    /**
+     * he API route for the database instance.
+     */
     instanceUri: string;
     /**
      * A unique, user-defined string referring to the Managed Database.
@@ -457,6 +493,9 @@ export interface GetFirewallsFirewall {
      * When this firewall was created.
      */
     created: string;
+    /**
+     * The devices associated with this firewall.
+     */
     devices?: outputs.GetFirewallsFirewallDevice[];
     /**
      * If true, the Firewall is inactive.
@@ -470,6 +509,9 @@ export interface GetFirewallsFirewall {
      * The default behavior for inbound traffic.
      */
     inboundPolicy: string;
+    /**
+     * A set of firewall rules that specify what inbound network traffic is allowed.
+     */
     inbounds?: outputs.GetFirewallsFirewallInbound[];
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -479,11 +521,17 @@ export interface GetFirewallsFirewall {
      * The IDs of Linodes this firewall is applied to.
      */
     linodes: number[];
+    /**
+     * The IDs of NodeBalancers assigned to this Firewall..
+     */
     nodebalancers: number[];
     /**
      * The default behavior for outbound traffic.
      */
     outboundPolicy: string;
+    /**
+     * A set of firewall rules that specify what outbound network traffic is allowed.
+     */
     outbounds?: outputs.GetFirewallsFirewallOutbound[];
     /**
      * The status of the firewall.
@@ -500,6 +548,9 @@ export interface GetFirewallsFirewall {
 }
 
 export interface GetFirewallsFirewallDevice {
+    /**
+     * The ID of the underlying entity this device references (i.e. the Linode's ID).
+     */
     entityId: number;
     /**
      * The unique ID assigned to this Firewall.
@@ -509,31 +560,67 @@ export interface GetFirewallsFirewallDevice {
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label: string;
+    /**
+     * The type of Firewall Device.
+     */
     type: string;
+    /**
+     * The URL of the underlying entity this device references.
+     */
     url: string;
 }
 
 export interface GetFirewallsFirewallInbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     */
     action: string;
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     */
     ipv4s: string[];
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     */
     ipv6s: string[];
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
     ports: string;
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     */
     protocol: string;
 }
 
 export interface GetFirewallsFirewallOutbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+     */
     action: string;
+    /**
+     * A list of IPv4 addresses or networks in IP/mask format.
+     */
     ipv4s: string[];
+    /**
+     * A list of IPv6 addresses or networks in IP/mask format.
+     */
     ipv6s: string[];
     /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
     ports: string;
+    /**
+     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     */
     protocol: string;
 }
 
@@ -553,6 +640,9 @@ export interface GetImagesFilter {
 }
 
 export interface GetImagesImage {
+    /**
+     * The capabilities of this Image.
+     */
     capabilities: string[];
     /**
      * When this Image was created.
@@ -570,6 +660,9 @@ export interface GetImagesImage {
      * A detailed description of this Image.
      */
     description: string;
+    /**
+     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+     */
     expiry: string;
     /**
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
@@ -1139,6 +1232,9 @@ export interface GetInstanceTypesFilter {
 }
 
 export interface GetInstanceTypesType {
+    /**
+     * Information about the optional Backup service offered for Linodes.
+     */
     addons: outputs.GetInstanceTypesTypeAddon[];
     /**
      * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
@@ -1164,7 +1260,13 @@ export interface GetInstanceTypesType {
      * The Mbits outbound bandwidth allocation.
      */
     networkOut: number;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
     prices: outputs.GetInstanceTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this plan.
+     */
     regionPrices: outputs.GetInstanceTypesTypeRegionPrice[];
     /**
      * The monthly outbound transfer amount, in MB.
@@ -1230,9 +1332,21 @@ export interface GetInstancesFilter {
 
 export interface GetInstancesInstance {
     alerts: outputs.GetInstancesInstanceAlerts;
+    /**
+     * Information about this Linode's backups status.
+     */
     backups: outputs.GetInstancesInstanceBackup[];
+    /**
+     * The Label of the Instance Config that should be used to boot the Linode instance.
+     */
     bootConfigLabel: string;
+    /**
+     * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     */
     configs: outputs.GetInstancesInstanceConfig[];
+    /**
+     * Disks associated with this Linode.
+     */
     disks: outputs.GetInstancesInstanceDisk[];
     /**
      * The display group of the Linode instance.
@@ -1242,6 +1356,9 @@ export interface GetInstancesInstance {
      * Whether this Instance was created with user-data.
      */
     hasUserData: boolean;
+    /**
+     * The Linode’s host machine, as a UUID.
+     */
     hostUuid: string;
     /**
      * The ID of the disk in the Linode API.
@@ -1299,14 +1416,32 @@ export interface GetInstancesInstance {
 }
 
 export interface GetInstancesInstanceAlerts {
+    /**
+     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+     */
     cpu: number;
+    /**
+     * The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+     */
     io: number;
+    /**
+     * The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkIn: number;
+    /**
+     * The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkOut: number;
+    /**
+     * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     */
     transferQuota: number;
 }
 
 export interface GetInstancesInstanceBackup {
+    /**
+     * Whether this Backup is available for restoration.
+     */
     available: boolean;
     /**
      * If this Linode has the Backup service enabled.
@@ -1343,6 +1478,9 @@ export interface GetInstancesInstanceConfig {
      * The ID of the disk in the Linode API.
      */
     id: number;
+    /**
+     * An array of Network Interfaces for this Linode’s Configuration Profile.
+     */
     interfaces: outputs.GetInstancesInstanceConfigInterface[];
     /**
      * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -1375,12 +1513,33 @@ export interface GetInstancesInstanceConfigDevice {
      * ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
     sdas: outputs.GetInstancesInstanceConfigDeviceSda[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdbs: outputs.GetInstancesInstanceConfigDeviceSdb[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdcs: outputs.GetInstancesInstanceConfigDeviceSdc[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdds: outputs.GetInstancesInstanceConfigDeviceSdd[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdes: outputs.GetInstancesInstanceConfigDeviceSde[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdfs: outputs.GetInstancesInstanceConfigDeviceSdf[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdgs: outputs.GetInstancesInstanceConfigDeviceSdg[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdhs: outputs.GetInstancesInstanceConfigDeviceSdh[];
 }
 
@@ -1505,6 +1664,9 @@ export interface GetInstancesInstanceConfigDeviceSdh {
 }
 
 export interface GetInstancesInstanceConfigHelper {
+    /**
+     * Populates the /dev directory early during boot without udev. Defaults to false.
+     */
     devtmpfsAutomount: boolean;
     /**
      * Controls the behavior of the Linode Config's Distribution Helper setting.
@@ -1525,6 +1687,9 @@ export interface GetInstancesInstanceConfigHelper {
 }
 
 export interface GetInstancesInstanceConfigInterface {
+    /**
+     * Whether this interface is currently booted and active.
+     */
     active: boolean;
     /**
      * The ID of the disk in the Linode API.
@@ -1595,9 +1760,21 @@ export interface GetInstancesInstanceDisk {
 }
 
 export interface GetInstancesInstanceSpec {
+    /**
+     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     */
     disk: number;
+    /**
+     * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     */
     memory: number;
+    /**
+     * The amount of network transfer this Linode is allotted each month.
+     */
     transfer: number;
+    /**
+     * The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     */
     vcpus: number;
 }
 
@@ -1621,6 +1798,9 @@ export interface GetKernelsKernel {
      * The architecture of this Kernel.
      */
     architecture: string;
+    /**
+     * The date on which this Kernel was built.
+     */
     built: string;
     /**
      * Whether or not this Kernel is deprecated.
@@ -1653,6 +1833,9 @@ export interface GetKernelsKernel {
 }
 
 export interface GetLkeClusterControlPlane {
+    /**
+     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     */
     highAvailability: boolean;
 }
 
@@ -1766,6 +1949,9 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
      * How many times to attempt a check before considering a backend to be down. (1-30)
      */
     checkAttempts: number;
+    /**
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+     */
     checkBody: string;
     /**
      * How often, in seconds, to check that backends are up and serving requests.
@@ -1791,6 +1977,9 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
      * The config's ID.
      */
     id: number;
+    /**
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+     */
     nodeStatuses: outputs.GetNodebalancerConfigsNodebalancerConfigNodeStatus[];
     /**
      * The ID of the NodeBalancer to access.
@@ -1887,6 +2076,9 @@ export interface GetNodebalancersNodebalancer {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     tags: string[];
+    /**
+     * Information about the amount of transfer this NodeBalancer has had so far this month.
+     */
     transfers: outputs.GetNodebalancersNodebalancerTransfer[];
     /**
      * When this Linode NodeBalancer was last updated
@@ -1953,6 +2145,9 @@ export interface GetRegionsRegion {
      * The country the region resides in.
      */
     country: string;
+    /**
+     * The unique ID of this Region.
+     */
     id: string;
     /**
      * Detailed location information for this Region, including city, state or region, and country.
@@ -2337,21 +2532,45 @@ export interface GetUsersFilter {
 }
 
 export interface GetUsersUser {
+    /**
+     * A set containing all of the user's active grants.
+     */
     databaseGrants: outputs.GetUsersUserDatabaseGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     domainGrants: outputs.GetUsersUserDomainGrant[];
     /**
      * The email address for this User, for account management communications, and may be used for other communications as configured.
      */
     email: string;
+    /**
+     * A set containing all of the user's active grants.
+     */
     firewallGrants: outputs.GetUsersUserFirewallGrant[];
+    /**
+     * A structure containing the Account-level grants a User has.
+     */
     globalGrants: outputs.GetUsersUserGlobalGrant[];
     /**
      * The ID of entity this grant applies to.
      */
     id: string;
+    /**
+     * A set containing all of the user's active grants.
+     */
     imageGrants: outputs.GetUsersUserImageGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     linodeGrants: outputs.GetUsersUserLinodeGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     longviewGrants: outputs.GetUsersUserLongviewGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     nodebalancerGrants: outputs.GetUsersUserNodebalancerGrant[];
     /**
      * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
@@ -2365,6 +2584,9 @@ export interface GetUsersUser {
      * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      */
     sshKeys: string[];
+    /**
+     * A set containing all of the user's active grants.
+     */
     stackscriptGrants: outputs.GetUsersUserStackscriptGrant[];
     /**
      * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
@@ -2378,6 +2600,9 @@ export interface GetUsersUser {
      * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
      */
     verifiedPhoneNumber: string;
+    /**
+     * A set containing all of the user's active grants.
+     */
     volumeGrants: outputs.GetUsersUserVolumeGrant[];
 }
 
@@ -2773,14 +2998,32 @@ export interface GetVpcsVpc {
 }
 
 export interface InstanceAlerts {
+    /**
+     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+     */
     cpu: number;
+    /**
+     * The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+     */
     io: number;
+    /**
+     * The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkIn: number;
+    /**
+     * The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     */
     networkOut: number;
+    /**
+     * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     */
     transferQuota: number;
 }
 
 export interface InstanceBackups {
+    /**
+     * Whether this Backup is available for restoration.
+     */
     available: boolean;
     /**
      * If this Linode has the Backup service enabled.
@@ -2817,6 +3060,9 @@ export interface InstanceConfig {
      * The ID of the disk in the Linode API.
      */
     id: number;
+    /**
+     * An array of Network Interfaces for this Linode’s Configuration Profile.
+     */
     interfaces?: outputs.InstanceConfigInterface[];
     /**
      * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
@@ -2851,12 +3097,33 @@ export interface InstanceConfigDevices {
      * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
     sda: outputs.InstanceConfigDevicesSda;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdb: outputs.InstanceConfigDevicesSdb;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdc: outputs.InstanceConfigDevicesSdc;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdd: outputs.InstanceConfigDevicesSdd;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sde: outputs.InstanceConfigDevicesSde;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdf: outputs.InstanceConfigDevicesSdf;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdg: outputs.InstanceConfigDevicesSdg;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdh: outputs.InstanceConfigDevicesSdh;
 }
 
@@ -2981,6 +3248,9 @@ export interface InstanceConfigDevicesSdh {
 }
 
 export interface InstanceConfigHelpers {
+    /**
+     * Populates the /dev directory early during boot without udev. Defaults to false.
+     */
     devtmpfsAutomount?: boolean;
     /**
      * Controls the behavior of the Linode Config's Distribution Helper setting.
@@ -3001,6 +3271,9 @@ export interface InstanceConfigHelpers {
 }
 
 export interface InstanceConfigInterface {
+    /**
+     * Whether this interface is currently booted and active.
+     */
     active: boolean;
     /**
      * The ID of the disk in the Linode API.
@@ -3103,6 +3376,9 @@ export interface InstanceDisk {
 }
 
 export interface InstanceInterface {
+    /**
+     * Whether this interface is currently booted and active.
+     */
     active: boolean;
     /**
      * The ID of the disk in the Linode API.
@@ -3167,13 +3443,28 @@ export interface InstanceIpVpcNat11 {
 }
 
 export interface InstanceMetadata {
+    /**
+     * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     */
     userData?: string;
 }
 
 export interface InstanceSpecs {
+    /**
+     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     */
     disk: number;
+    /**
+     * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     */
     memory: number;
+    /**
+     * The amount of network transfer this Linode is allotted each month.
+     */
     transfer: number;
+    /**
+     * The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     */
     vcpus: number;
 }
 
@@ -3185,6 +3476,9 @@ export interface LkeClusterControlPlane {
 }
 
 export interface LkeClusterPool {
+    /**
+     * When specified, the number of nodes autoscales within the defined minimum and maximum values.
+     */
     autoscaler?: outputs.LkeClusterPoolAutoscaler;
     /**
      * The number of nodes in the Node Pool.
@@ -3196,6 +3490,9 @@ export interface LkeClusterPool {
      * The ID of the node.
      */
     id: number;
+    /**
+     * The nodes in the node pool.
+     */
     nodes: outputs.LkeClusterPoolNode[];
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -3279,11 +3576,17 @@ export interface ObjectStorageBucketLifecycleRule {
      * Specifies whether the lifecycle rule is active.
      */
     enabled: boolean;
+    /**
+     * Specifies a period in the object's expire.
+     */
     expiration?: outputs.ObjectStorageBucketLifecycleRuleExpiration;
     /**
      * The unique identifier for the rule.
      */
     id: string;
+    /**
+     * Specifies when non-current object versions expire.
+     */
     noncurrentVersionExpiration?: outputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration;
     /**
      * The object key prefix identifying one or more objects to which the rule applies.
@@ -3356,57 +3659,141 @@ export interface StackScriptUserDefinedField {
 }
 
 export interface UserDomainGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserFirewallGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserGlobalGrants {
+    /**
+     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+     */
     accountAccess?: string;
+    /**
+     * If true, this User may add Databases.
+     */
     addDatabases?: boolean;
+    /**
+     * If true, this User may add Domains.
+     */
     addDomains?: boolean;
+    /**
+     * If true, this User may add Firewalls.
+     */
     addFirewalls?: boolean;
+    /**
+     * If true, this User may add Images.
+     */
     addImages?: boolean;
+    /**
+     * If true, this User may create Linodes.
+     */
     addLinodes?: boolean;
+    /**
+     * If true, this User may create Longview clients and view the current plan.
+     */
     addLongview?: boolean;
+    /**
+     * If true, this User may add NodeBalancers.
+     */
     addNodebalancers?: boolean;
+    /**
+     * If true, this User may add StackScripts.
+     */
     addStackscripts?: boolean;
+    /**
+     * If true, this User may add Volumes.
+     */
     addVolumes?: boolean;
+    /**
+     * If true, this User may cancel the entire Account.
+     */
     cancelAccount?: boolean;
+    /**
+     * If true, this User may manage the Account’s Longview subscription.
+     */
     longviewSubscription?: boolean;
 }
 
 export interface UserImageGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserLinodeGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserLongviewGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserNodebalancerGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserStackscriptGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 
 export interface UserVolumeGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
     id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
     permissions: string;
 }
 

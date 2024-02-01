@@ -30,6 +30,9 @@ namespace Pulumi.Linode.Inputs
         [Input("country", required: true)]
         public string Country { get; set; } = null!;
 
+        /// <summary>
+        /// The unique ID of this Region.
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 

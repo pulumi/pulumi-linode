@@ -17,6 +17,9 @@ namespace Pulumi.Linode.Outputs
         /// When this firewall was created.
         /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// The devices associated with this firewall.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallsFirewallDeviceResult> Devices;
         /// <summary>
         /// If true, the Firewall is inactive.
@@ -30,6 +33,9 @@ namespace Pulumi.Linode.Outputs
         /// The default behavior for inbound traffic.
         /// </summary>
         public readonly string InboundPolicy;
+        /// <summary>
+        /// A set of firewall rules that specify what inbound network traffic is allowed.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallsFirewallInboundResult> Inbounds;
         /// <summary>
         /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -39,11 +45,17 @@ namespace Pulumi.Linode.Outputs
         /// The IDs of Linodes this firewall is applied to.
         /// </summary>
         public readonly ImmutableArray<int> Linodes;
+        /// <summary>
+        /// The IDs of NodeBalancers assigned to this Firewall..
+        /// </summary>
         public readonly ImmutableArray<int> Nodebalancers;
         /// <summary>
         /// The default behavior for outbound traffic.
         /// </summary>
         public readonly string OutboundPolicy;
+        /// <summary>
+        /// A set of firewall rules that specify what outbound network traffic is allowed.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallsFirewallOutboundResult> Outbounds;
         /// <summary>
         /// The status of the firewall.

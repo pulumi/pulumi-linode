@@ -12,53 +12,149 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserGlobalGrants {
+    /**
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+     * 
+     */
     private @Nullable String accountAccess;
+    /**
+     * @return If true, this User may add Databases.
+     * 
+     */
     private @Nullable Boolean addDatabases;
+    /**
+     * @return If true, this User may add Domains.
+     * 
+     */
     private @Nullable Boolean addDomains;
+    /**
+     * @return If true, this User may add Firewalls.
+     * 
+     */
     private @Nullable Boolean addFirewalls;
+    /**
+     * @return If true, this User may add Images.
+     * 
+     */
     private @Nullable Boolean addImages;
+    /**
+     * @return If true, this User may create Linodes.
+     * 
+     */
     private @Nullable Boolean addLinodes;
+    /**
+     * @return If true, this User may create Longview clients and view the current plan.
+     * 
+     */
     private @Nullable Boolean addLongview;
+    /**
+     * @return If true, this User may add NodeBalancers.
+     * 
+     */
     private @Nullable Boolean addNodebalancers;
+    /**
+     * @return If true, this User may add StackScripts.
+     * 
+     */
     private @Nullable Boolean addStackscripts;
+    /**
+     * @return If true, this User may add Volumes.
+     * 
+     */
     private @Nullable Boolean addVolumes;
+    /**
+     * @return If true, this User may cancel the entire Account.
+     * 
+     */
     private @Nullable Boolean cancelAccount;
+    /**
+     * @return If true, this User may manage the Account’s Longview subscription.
+     * 
+     */
     private @Nullable Boolean longviewSubscription;
 
     private UserGlobalGrants() {}
+    /**
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+     * 
+     */
     public Optional<String> accountAccess() {
         return Optional.ofNullable(this.accountAccess);
     }
+    /**
+     * @return If true, this User may add Databases.
+     * 
+     */
     public Optional<Boolean> addDatabases() {
         return Optional.ofNullable(this.addDatabases);
     }
+    /**
+     * @return If true, this User may add Domains.
+     * 
+     */
     public Optional<Boolean> addDomains() {
         return Optional.ofNullable(this.addDomains);
     }
+    /**
+     * @return If true, this User may add Firewalls.
+     * 
+     */
     public Optional<Boolean> addFirewalls() {
         return Optional.ofNullable(this.addFirewalls);
     }
+    /**
+     * @return If true, this User may add Images.
+     * 
+     */
     public Optional<Boolean> addImages() {
         return Optional.ofNullable(this.addImages);
     }
+    /**
+     * @return If true, this User may create Linodes.
+     * 
+     */
     public Optional<Boolean> addLinodes() {
         return Optional.ofNullable(this.addLinodes);
     }
+    /**
+     * @return If true, this User may create Longview clients and view the current plan.
+     * 
+     */
     public Optional<Boolean> addLongview() {
         return Optional.ofNullable(this.addLongview);
     }
+    /**
+     * @return If true, this User may add NodeBalancers.
+     * 
+     */
     public Optional<Boolean> addNodebalancers() {
         return Optional.ofNullable(this.addNodebalancers);
     }
+    /**
+     * @return If true, this User may add StackScripts.
+     * 
+     */
     public Optional<Boolean> addStackscripts() {
         return Optional.ofNullable(this.addStackscripts);
     }
+    /**
+     * @return If true, this User may add Volumes.
+     * 
+     */
     public Optional<Boolean> addVolumes() {
         return Optional.ofNullable(this.addVolumes);
     }
+    /**
+     * @return If true, this User may cancel the entire Account.
+     * 
+     */
     public Optional<Boolean> cancelAccount() {
         return Optional.ofNullable(this.cancelAccount);
     }
+    /**
+     * @return If true, this User may manage the Account’s Longview subscription.
+     * 
+     */
     public Optional<Boolean> longviewSubscription() {
         return Optional.ofNullable(this.longviewSubscription);
     }

@@ -23,6 +23,10 @@ public final class GetRegionsRegion {
      * 
      */
     private String country;
+    /**
+     * @return The unique ID of this Region.
+     * 
+     */
     private String id;
     /**
      * @return Detailed location information for this Region, including city, state or region, and country.
@@ -51,6 +55,10 @@ public final class GetRegionsRegion {
     public String country() {
         return this.country;
     }
+    /**
+     * @return The unique ID of this Region.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstanceTypesTypeResult
     {
+        /// <summary>
+        /// Information about the optional Backup service offered for Linodes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonResult> Addons;
         /// <summary>
         /// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
@@ -38,7 +41,13 @@ namespace Pulumi.Linode.Outputs
         /// The Mbits outbound bandwidth allocation.
         /// </summary>
         public readonly int NetworkOut;
+        /// <summary>
+        /// Cost in US dollars, broken down into hourly and monthly charges.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypePriceResult> Prices;
+        /// <summary>
+        /// A list of region-specific prices for this plan.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeRegionPriceResult> RegionPrices;
         /// <summary>
         /// The monthly outbound transfer amount, in MB.

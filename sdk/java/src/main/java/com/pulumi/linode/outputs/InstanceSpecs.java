@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceSpecs {
+    /**
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * 
+     */
     private @Nullable Integer disk;
+    /**
+     * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     * 
+     */
     private @Nullable Integer memory;
+    /**
+     * @return The amount of network transfer this Linode is allotted each month.
+     * 
+     */
     private @Nullable Integer transfer;
+    /**
+     * @return The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     * 
+     */
     private @Nullable Integer vcpus;
 
     private InstanceSpecs() {}
+    /**
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * 
+     */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
+    /**
+     * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+     * 
+     */
     public Optional<Integer> memory() {
         return Optional.ofNullable(this.memory);
     }
+    /**
+     * @return The amount of network transfer this Linode is allotted each month.
+     * 
+     */
     public Optional<Integer> transfer() {
         return Optional.ofNullable(this.transfer);
     }
+    /**
+     * @return The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+     * 
+     */
     public Optional<Integer> vcpus() {
         return Optional.ofNullable(this.vcpus);
     }

@@ -15,9 +15,17 @@ public final class InstanceConfigHelpersArgs extends com.pulumi.resources.Resour
 
     public static final InstanceConfigHelpersArgs Empty = new InstanceConfigHelpersArgs();
 
+    /**
+     * Populates the /dev directory early during boot without udev. Defaults to false.
+     * 
+     */
     @Import(name="devtmpfsAutomount")
     private @Nullable Output<Boolean> devtmpfsAutomount;
 
+    /**
+     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * 
+     */
     public Optional<Output<Boolean>> devtmpfsAutomount() {
         return Optional.ofNullable(this.devtmpfsAutomount);
     }
@@ -110,11 +118,23 @@ public final class InstanceConfigHelpersArgs extends com.pulumi.resources.Resour
             $ = new InstanceConfigHelpersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param devtmpfsAutomount Populates the /dev directory early during boot without udev. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devtmpfsAutomount(@Nullable Output<Boolean> devtmpfsAutomount) {
             $.devtmpfsAutomount = devtmpfsAutomount;
             return this;
         }
 
+        /**
+         * @param devtmpfsAutomount Populates the /dev directory early during boot without udev. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder devtmpfsAutomount(Boolean devtmpfsAutomount) {
             return devtmpfsAutomount(Output.of(devtmpfsAutomount));
         }

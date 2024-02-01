@@ -29,9 +29,17 @@ public final class GetKernelsKernel extends com.pulumi.resources.InvokeArgs {
         return this.architecture;
     }
 
+    /**
+     * The date on which this Kernel was built.
+     * 
+     */
     @Import(name="built", required=true)
     private String built;
 
+    /**
+     * @return The date on which this Kernel was built.
+     * 
+     */
     public String built() {
         return this.built;
     }
@@ -184,6 +192,12 @@ public final class GetKernelsKernel extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param built The date on which this Kernel was built.
+         * 
+         * @return builder
+         * 
+         */
         public Builder built(String built) {
             $.built = built;
             return this;

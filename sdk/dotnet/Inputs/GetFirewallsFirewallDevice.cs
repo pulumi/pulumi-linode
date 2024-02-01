@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetFirewallsFirewallDeviceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the underlying entity this device references (i.e. the Linode's ID).
+        /// </summary>
         [Input("entityId", required: true)]
         public int EntityId { get; set; }
 
@@ -27,9 +30,15 @@ namespace Pulumi.Linode.Inputs
         [Input("label", required: true)]
         public string Label { get; set; } = null!;
 
+        /// <summary>
+        /// The type of Firewall Device.
+        /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
 
+        /// <summary>
+        /// The URL of the underlying entity this device references.
+        /// </summary>
         [Input("url", required: true)]
         public string Url { get; set; } = null!;
 

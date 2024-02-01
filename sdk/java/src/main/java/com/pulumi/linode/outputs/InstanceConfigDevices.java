@@ -23,12 +23,40 @@ public final class InstanceConfigDevices {
      * 
      */
     private @Nullable InstanceConfigDevicesSda sda;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdb sdb;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdc sdc;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdd sdd;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSde sde;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdf sdf;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdg sdg;
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdh sdh;
 
     private InstanceConfigDevices() {}
@@ -39,24 +67,52 @@ public final class InstanceConfigDevices {
     public Optional<InstanceConfigDevicesSda> sda() {
         return Optional.ofNullable(this.sda);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdb> sdb() {
         return Optional.ofNullable(this.sdb);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdc> sdc() {
         return Optional.ofNullable(this.sdc);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdd> sdd() {
         return Optional.ofNullable(this.sdd);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSde> sde() {
         return Optional.ofNullable(this.sde);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdf> sdf() {
         return Optional.ofNullable(this.sdf);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdg> sdg() {
         return Optional.ofNullable(this.sdg);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdh> sdh() {
         return Optional.ofNullable(this.sdh);
     }

@@ -128,7 +128,7 @@ namespace Pulumi.Linode
 
         private static readonly __Value<bool?> _skipInstanceDeletePoll = new __Value<bool?>(() => __config.GetBoolean("skipInstanceDeletePoll"));
         /// <summary>
-        /// Skip waiting for a linode_instance resource to finish deleting.
+        /// Skip waiting for a linode.Instance resource to finish deleting.
         /// </summary>
         public static bool? SkipInstanceDeletePoll
         {
@@ -138,7 +138,7 @@ namespace Pulumi.Linode
 
         private static readonly __Value<bool?> _skipInstanceReadyPoll = new __Value<bool?>(() => __config.GetBoolean("skipInstanceReadyPoll"));
         /// <summary>
-        /// Skip waiting for a linode_instance resource to be running.
+        /// Skip waiting for a linode.Instance resource to be running.
         /// </summary>
         public static bool? SkipInstanceReadyPoll
         {

@@ -30,6 +30,9 @@ namespace Pulumi.Linode.Inputs
         [Input("checkAttempts", required: true)]
         public Input<int> CheckAttempts { get; set; } = null!;
 
+        /// <summary>
+        /// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+        /// </summary>
         [Input("checkBody", required: true)]
         public Input<string> CheckBody { get; set; } = null!;
 
@@ -71,6 +74,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("nodeStatuses", required: true)]
         private InputList<Inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusInputArgs>? _nodeStatuses;
+
+        /// <summary>
+        /// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+        /// </summary>
         public InputList<Inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusInputArgs> NodeStatuses
         {
             get => _nodeStatuses ?? (_nodeStatuses = new InputList<Inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusInputArgs>());

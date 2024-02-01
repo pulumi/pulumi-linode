@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFirewallsFirewallDevice {
+    /**
+     * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+     * 
+     */
     private Integer entityId;
     /**
      * @return The unique ID assigned to this Firewall.
@@ -22,10 +26,22 @@ public final class GetFirewallsFirewallDevice {
      * 
      */
     private String label;
+    /**
+     * @return The type of Firewall Device.
+     * 
+     */
     private String type;
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     private String url;
 
     private GetFirewallsFirewallDevice() {}
+    /**
+     * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
+     * 
+     */
     public Integer entityId() {
         return this.entityId;
     }
@@ -43,9 +59,17 @@ public final class GetFirewallsFirewallDevice {
     public String label() {
         return this.label;
     }
+    /**
+     * @return The type of Firewall Device.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The URL of the underlying entity this device references.
+     * 
+     */
     public String url() {
         return this.url;
     }

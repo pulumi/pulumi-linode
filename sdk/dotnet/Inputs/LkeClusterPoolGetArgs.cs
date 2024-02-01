@@ -12,6 +12,9 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class LkeClusterPoolGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When specified, the number of nodes autoscales within the defined minimum and maximum values.
+        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.LkeClusterPoolAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -31,6 +34,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("nodes")]
         private InputList<Inputs.LkeClusterPoolNodeGetArgs>? _nodes;
+
+        /// <summary>
+        /// The nodes in the node pool.
+        /// </summary>
         public InputList<Inputs.LkeClusterPoolNodeGetArgs> Nodes
         {
             get => _nodes ?? (_nodes = new InputList<Inputs.LkeClusterPoolNodeGetArgs>());
