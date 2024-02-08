@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * Linode MySQL Databases can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
+ * $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
  * ```
  * 
  */

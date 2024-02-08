@@ -1143,12 +1143,16 @@ class Instance(pulumi.CustomResource):
         Linodes Instances can be imported using the Linode `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/instance:Instance mylinode 1234567
+        $ pulumi import linode:index/instance:Instance mylinode 1234567
         ```
 
-         When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.
+         When importing an instance, all `disk` and `config` values must be represented.
 
-        **Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
+         Imported disks must include their `label` value.
+
+        **Any disk that is not precisely represented may be removed resulting in data loss.**
+
+         Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
 
         The instance must include a `boot_config_label` referring to the correct configuration profile.
 
@@ -1232,12 +1236,16 @@ class Instance(pulumi.CustomResource):
         Linodes Instances can be imported using the Linode `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/instance:Instance mylinode 1234567
+        $ pulumi import linode:index/instance:Instance mylinode 1234567
         ```
 
-         When importing an instance, all `disk` and `config` values must be represented. Imported disks must include their `label` value.
+         When importing an instance, all `disk` and `config` values must be represented.
 
-        **Any disk that is not precisely represented may be removed resulting in data loss.** Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
+         Imported disks must include their `label` value.
+
+        **Any disk that is not precisely represented may be removed resulting in data loss.**
+
+         Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
 
         The instance must include a `boot_config_label` referring to the correct configuration profile.
 

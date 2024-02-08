@@ -475,7 +475,7 @@ class Firewall(pulumi.CustomResource):
         Firewalls can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+        $ pulumi import linode:index/firewall:Firewall my_firewall 12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -566,7 +566,7 @@ class Firewall(pulumi.CustomResource):
         Firewalls can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+        $ pulumi import linode:index/firewall:Firewall my_firewall 12345
         ```
 
         :param str resource_name: The name of the resource.

@@ -122,7 +122,7 @@ class SshKey(pulumi.CustomResource):
         Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
+        $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
         ```
 
         :param str resource_name: The name of the resource.
@@ -145,7 +145,7 @@ class SshKey(pulumi.CustomResource):
         Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
+        $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
         ```
 
         :param str resource_name: The name of the resource.

@@ -93,7 +93,7 @@ namespace Pulumi.Linode
     /// Linode MySQL Databases can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
+    /// $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databaseMysql:DatabaseMysql")]

@@ -328,7 +328,7 @@ class NodeBalancer(pulumi.CustomResource):
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+        $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
         ```
 
         :param str resource_name: The name of the resource.
@@ -371,7 +371,7 @@ class NodeBalancer(pulumi.CustomResource):
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
+        $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
         ```
 
         :param str resource_name: The name of the resource.

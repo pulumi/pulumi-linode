@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * Linodes Domains can be imported using the Linode Domain `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import linode:index/domain:Domain foobar 1234567
+ * $ pulumi import linode:index/domain:Domain foobar 1234567
  * ```
  * 
  */

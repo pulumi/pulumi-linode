@@ -683,7 +683,7 @@ class DatabasePostgresql(pulumi.CustomResource):
         Linode PostgreSQL Databases can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
+        $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
         ```
 
         :param str resource_name: The name of the resource.
@@ -783,7 +783,7 @@ class DatabasePostgresql(pulumi.CustomResource):
         Linode PostgreSQL Databases can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
+        $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
         ```
 
         :param str resource_name: The name of the resource.
