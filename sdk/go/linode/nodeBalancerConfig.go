@@ -64,9 +64,7 @@ import (
 // NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
 //
 // ```sh
-//
-//	$ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
-//
+// $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
 // ```
 type NodeBalancerConfig struct {
 	pulumi.CustomResourceState

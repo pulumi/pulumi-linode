@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * Linodes Images can be imported using the Linode Image `id`, e.g.
  *
  * ```sh
- *  $ pulumi import linode:index/image:Image myimage 1234567
+ * $ pulumi import linode:index/image:Image myimage 1234567
  * ```
  */
 export class Image extends pulumi.CustomResource {

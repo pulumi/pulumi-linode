@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * Linodes Domain Records can be imported using the Linode Domain `id` followed by the Domain Record `id` separated by a comma, e.g.
  *
  * ```sh
- *  $ pulumi import linode:index/domainRecord:DomainRecord www-foobar 1234567,7654321
+ * $ pulumi import linode:index/domainRecord:DomainRecord www-foobar 1234567,7654321
  * ```
  */
 export class DomainRecord extends pulumi.CustomResource {

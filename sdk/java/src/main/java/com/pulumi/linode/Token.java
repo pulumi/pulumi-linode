@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * The secret token will not be imported.
  * 
  * ```sh
- *  $ pulumi import linode:index/token:Token mytoken 1234567
+ * $ pulumi import linode:index/token:Token mytoken 1234567
  * ```
  * 
  */

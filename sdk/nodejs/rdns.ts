@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * Linodes RDNS resources can be imported using the address as the `id`.
  *
  * ```sh
- *  $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+ * $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
  * ```
  */
 export class Rdns extends pulumi.CustomResource {

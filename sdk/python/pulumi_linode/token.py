@@ -192,7 +192,7 @@ class Token(pulumi.CustomResource):
         The secret token will not be imported.
 
         ```sh
-         $ pulumi import linode:index/token:Token mytoken 1234567
+        $ pulumi import linode:index/token:Token mytoken 1234567
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +236,7 @@ class Token(pulumi.CustomResource):
         The secret token will not be imported.
 
         ```sh
-         $ pulumi import linode:index/token:Token mytoken 1234567
+        $ pulumi import linode:index/token:Token mytoken 1234567
         ```
 
         :param str resource_name: The name of the resource.

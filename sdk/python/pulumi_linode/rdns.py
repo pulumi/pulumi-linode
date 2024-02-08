@@ -142,7 +142,7 @@ class Rdns(pulumi.CustomResource):
         Linodes RDNS resources can be imported using the address as the `id`.
 
         ```sh
-         $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+        $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
         ```
 
         :param str resource_name: The name of the resource.
@@ -169,7 +169,7 @@ class Rdns(pulumi.CustomResource):
         Linodes RDNS resources can be imported using the address as the `id`.
 
         ```sh
-         $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
+        $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
         ```
 
         :param str resource_name: The name of the resource.
