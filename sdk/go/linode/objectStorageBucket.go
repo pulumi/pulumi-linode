@@ -99,9 +99,7 @@ import (
 // Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
-//
+// $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
 // ```
 type ObjectStorageBucket struct {
 	pulumi.CustomResourceState
