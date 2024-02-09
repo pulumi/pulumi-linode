@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * Firewalls can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import linode:index/firewall:Firewall my_firewall 12345
+ * $ pulumi import linode:index/firewall:Firewall my_firewall 12345
  * ```
  * 
  */

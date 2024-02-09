@@ -392,7 +392,7 @@ class StackScript(pulumi.CustomResource):
         Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+        $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
         ```
 
         :param str resource_name: The name of the resource.
@@ -455,7 +455,7 @@ class StackScript(pulumi.CustomResource):
         Linodes StackScripts can be imported using the Linode StackScript `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
+        $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
         ```
 
         :param str resource_name: The name of the resource.

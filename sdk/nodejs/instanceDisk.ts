@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  * Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.
  *
  * ```sh
- *  $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
+ * $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
  * ```
  */
 export class InstanceDisk extends pulumi.CustomResource {

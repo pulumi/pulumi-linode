@@ -94,7 +94,7 @@ namespace Pulumi.Linode
     /// Linode PostgreSQL Databases can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
+    /// $ pulumi import linode:index/databasePostgresql:DatabasePostgresql foobar 1234567
     /// ```
     /// </summary>
     [LinodeResourceType("linode:index/databasePostgresql:DatabasePostgresql")]

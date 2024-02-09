@@ -280,7 +280,7 @@ class Volume(pulumi.CustomResource):
         Linodes Volumes can be imported using the Linode Volume `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/volume:Volume myvolume 1234567
+        $ pulumi import linode:index/volume:Volume myvolume 1234567
         ```
 
         :param str resource_name: The name of the resource.
@@ -310,7 +310,7 @@ class Volume(pulumi.CustomResource):
         Linodes Volumes can be imported using the Linode Volume `id`, e.g.
 
         ```sh
-         $ pulumi import linode:index/volume:Volume myvolume 1234567
+        $ pulumi import linode:index/volume:Volume myvolume 1234567
         ```
 
         :param str resource_name: The name of the resource.

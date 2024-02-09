@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * LKE Clusters can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
+ * $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
  * ```
  * 
  */

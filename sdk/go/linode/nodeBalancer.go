@@ -52,9 +52,7 @@ import (
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
-//
+// $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
 // ```
 type NodeBalancer struct {
 	pulumi.CustomResourceState
