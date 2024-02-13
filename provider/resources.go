@@ -24,7 +24,7 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/linode/terraform-provider-linode/linode"
+	"github.com/linode/terraform-provider-linode/v2/linode"
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -108,16 +108,16 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:                p,
-		Name:             "linode",
-		Description:      "A Pulumi package for creating and managing linode cloud resources.",
-		Keywords:         []string{"pulumi", "linode"},
-		License:          "Apache-2.0",
-		Homepage:         "https://pulumi.io",
-		Repository:       "https://github.com/pulumi/pulumi-linode",
-		GitHubOrg:        "linode",
-		UpstreamRepoPath: "./upstream",
-		Version:          version.Version,
+		P:                       p,
+		Name:                    "linode",
+		Description:             "A Pulumi package for creating and managing linode cloud resources.",
+		Keywords:                []string{"pulumi", "linode"},
+		License:                 "Apache-2.0",
+		Homepage:                "https://pulumi.io",
+		Repository:              "https://github.com/pulumi/pulumi-linode",
+		GitHubOrg:               "linode",
+		TFProviderModuleVersion: "v2",
+		Version:                 version.Version,
 		DocRules: &tfbridge.DocRuleInfo{
 			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 				return append(defaults, stripTfFromDocs())

@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-linode/provider/v4
 go 1.21
 
 require (
-	github.com/linode/terraform-provider-linode v0.0.0
+	github.com/linode/terraform-provider-linode/v2 v2.14.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.27.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
 	github.com/pulumi/pulumi/sdk/v3 v3.105.0
@@ -12,7 +12,6 @@ require (
 replace (
 	github.com/hashicorp/go-cty => github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
-	github.com/linode/terraform-provider-linode => ../upstream
 )
 
 require (
@@ -162,7 +161,6 @@ require (
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/linode/linodego v1.28.0 // indirect
 	github.com/linode/linodego/k8s v1.25.2 // indirect
-	github.com/linode/terraform-provider-linode/v2 v2.14.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
