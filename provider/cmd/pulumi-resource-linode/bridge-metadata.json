@@ -305,6 +305,42 @@
                 "current": "linode:index/nodeBalancer:NodeBalancer",
                 "majorVersion": 4,
                 "fields": {
+                    "firewalls": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "inbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "outbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -650,6 +686,38 @@
                 "fields": {
                     "zone_file": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_domains": {
+                "current": "linode:index/getDomains:getDomains",
+                "majorVersion": 4,
+                "fields": {
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "axfr_ips": {
+                                    "maxItemsOne": false
+                                },
+                                "master_ips": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1065,6 +1133,25 @@
                     }
                 }
             },
+            "linode_ipv6_ranges": {
+                "current": "linode:index/getIpv6Ranges:getIpv6Ranges",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_kernel": {
                 "current": "linode:index/getKernel:getKernel",
                 "majorVersion": 4
@@ -1105,7 +1192,13 @@
                                 "autoscaler": {
                                     "maxItemsOne": false
                                 },
+                                "disks": {
+                                    "maxItemsOne": false
+                                },
                                 "nodes": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1113,6 +1206,32 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_lke_clusters": {
+                "current": "linode:index/getLkeClusters:getLkeClusters",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "lke_clusters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1133,6 +1252,42 @@
                 "current": "linode:index/getNodeBalancer:getNodeBalancer",
                 "majorVersion": 4,
                 "fields": {
+                    "firewalls": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "inbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "outbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -1616,7 +1771,7 @@
             "linode:index/stackScript:StackScript": 1,
             "linode:index/token:Token": 1,
             "linode:index/user:User": 0,
-            "linode:index/volume:Volume": 0,
+            "linode:index/volume:Volume": 1,
             "linode:index/vpc:Vpc": 1,
             "linode:index/vpcSubnet:VpcSubnet": 1
         },
@@ -1636,6 +1791,7 @@
             "linode:index/getDomain:getDomain": 1,
             "linode:index/getDomainRecord:getDomainRecord": 1,
             "linode:index/getDomainZonefile:getDomainZonefile": 1,
+            "linode:index/getDomains:getDomains": 1,
             "linode:index/getFirewall:getFirewall": 1,
             "linode:index/getFirewalls:getFirewalls": 1,
             "linode:index/getImage:getImage": 1,
@@ -1646,10 +1802,12 @@
             "linode:index/getInstanceTypes:getInstanceTypes": 1,
             "linode:index/getInstances:getInstances": 0,
             "linode:index/getIpv6Range:getIpv6Range": 1,
+            "linode:index/getIpv6Ranges:getIpv6Ranges": 1,
             "linode:index/getKernel:getKernel": 1,
             "linode:index/getKernels:getKernels": 1,
             "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": 1,
-            "linode:index/getLkeCluster:getLkeCluster": 0,
+            "linode:index/getLkeCluster:getLkeCluster": 1,
+            "linode:index/getLkeClusters:getLkeClusters": 1,
             "linode:index/getLkeVersions:getLkeVersions": 1,
             "linode:index/getNetworkingIp:getNetworkingIp": 1,
             "linode:index/getNodeBalancer:getNodeBalancer": 1,
@@ -1724,6 +1882,7 @@
             "linode:index/getDomain:getDomain": "linode_domain",
             "linode:index/getDomainRecord:getDomainRecord": "linode_domain_record",
             "linode:index/getDomainZonefile:getDomainZonefile": "linode_domain_zonefile",
+            "linode:index/getDomains:getDomains": "linode_domains",
             "linode:index/getFirewall:getFirewall": "linode_firewall",
             "linode:index/getFirewalls:getFirewalls": "linode_firewalls",
             "linode:index/getImage:getImage": "linode_image",
@@ -1734,10 +1893,12 @@
             "linode:index/getInstanceTypes:getInstanceTypes": "linode_instance_types",
             "linode:index/getInstances:getInstances": "linode_instances",
             "linode:index/getIpv6Range:getIpv6Range": "linode_ipv6_range",
+            "linode:index/getIpv6Ranges:getIpv6Ranges": "linode_ipv6_ranges",
             "linode:index/getKernel:getKernel": "linode_kernel",
             "linode:index/getKernels:getKernels": "linode_kernels",
             "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": "linode_object_storage_bucket",
             "linode:index/getLkeCluster:getLkeCluster": "linode_lke_cluster",
+            "linode:index/getLkeClusters:getLkeClusters": "linode_lke_clusters",
             "linode:index/getLkeVersions:getLkeVersions": "linode_lke_versions",
             "linode:index/getNetworkingIp:getNetworkingIp": "linode_networking_ip",
             "linode:index/getNodeBalancer:getNodeBalancer": "linode_nodebalancer",
@@ -1880,6 +2041,20 @@
             },
             "linode:index/LkeClusterPoolNode:LkeClusterPoolNode": {
                 "instanceId": "instance_id"
+            },
+            "linode:index/NodeBalancerFirewall:NodeBalancerFirewall": {
+                "inboundPolicy": "inbound_policy",
+                "inbounds": "inbound",
+                "outboundPolicy": "outbound_policy",
+                "outbounds": "outbound"
+            },
+            "linode:index/NodeBalancerFirewallInbound:NodeBalancerFirewallInbound": {
+                "ipv4s": "ipv4",
+                "ipv6s": "ipv6"
+            },
+            "linode:index/NodeBalancerFirewallOutbound:NodeBalancerFirewallOutbound": {
+                "ipv4s": "ipv4",
+                "ipv6s": "ipv6"
             },
             "linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert": {
                 "privateKey": "private_key"
@@ -2096,6 +2271,22 @@
             "linode:index/getDomainZonefile:getDomainZonefile": {
                 "domainId": "domain_id",
                 "zoneFiles": "zone_file"
+            },
+            "linode:index/getDomains:getDomains": {
+                "filters": "filter",
+                "orderBy": "order_by"
+            },
+            "linode:index/getDomainsDomain:getDomainsDomain": {
+                "axfrIps": "axfr_ips",
+                "expireSec": "expire_sec",
+                "masterIps": "master_ips",
+                "refreshSec": "refresh_sec",
+                "retrySec": "retry_sec",
+                "soaEmail": "soa_email",
+                "ttlSec": "ttl_sec"
+            },
+            "linode:index/getDomainsFilter:getDomainsFilter": {
+                "matchBy": "match_by"
             },
             "linode:index/getFirewall:getFirewall": {
                 "inboundPolicy": "inbound_policy",
@@ -2356,6 +2547,15 @@
             "linode:index/getIpv6Range:getIpv6Range": {
                 "isBgp": "is_bgp"
             },
+            "linode:index/getIpv6Ranges:getIpv6Ranges": {
+                "filters": "filter"
+            },
+            "linode:index/getIpv6RangesFilter:getIpv6RangesFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getIpv6RangesRange:getIpv6RangesRange": {
+                "routeTarget": "route_target"
+            },
             "linode:index/getKernels:getKernels": {
                 "filters": "filter",
                 "orderBy": "order_by"
@@ -2378,6 +2578,21 @@
             "linode:index/getLkeClusterPoolNode:getLkeClusterPoolNode": {
                 "instanceId": "instance_id"
             },
+            "linode:index/getLkeClusters:getLkeClusters": {
+                "filters": "filter",
+                "lkeClusters": "lke_clusters",
+                "orderBy": "order_by"
+            },
+            "linode:index/getLkeClustersFilter:getLkeClustersFilter": {
+                "matchBy": "match_by"
+            },
+            "linode:index/getLkeClustersLkeCluster:getLkeClustersLkeCluster": {
+                "controlPlane": "control_plane",
+                "k8sVersion": "k8s_version"
+            },
+            "linode:index/getLkeClustersLkeClusterControlPlane:getLkeClustersLkeClusterControlPlane": {
+                "highAvailability": "high_availability"
+            },
             "linode:index/getNetworkingIp:getNetworkingIp": {
                 "linodeId": "linode_id",
                 "subnetMask": "subnet_mask"
@@ -2399,6 +2614,20 @@
                 "proxyProtocol": "proxy_protocol",
                 "sslCommonname": "ssl_commonname",
                 "sslFingerprint": "ssl_fingerprint"
+            },
+            "linode:index/getNodeBalancerFirewall:getNodeBalancerFirewall": {
+                "inboundPolicy": "inbound_policy",
+                "inbounds": "inbound",
+                "outboundPolicy": "outbound_policy",
+                "outbounds": "outbound"
+            },
+            "linode:index/getNodeBalancerFirewallInbound:getNodeBalancerFirewallInbound": {
+                "ipv4s": "ipv4",
+                "ipv6s": "ipv6"
+            },
+            "linode:index/getNodeBalancerFirewallOutbound:getNodeBalancerFirewallOutbound": {
+                "ipv4s": "ipv4",
+                "ipv6s": "ipv6"
             },
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": {
                 "configId": "config_id",
@@ -2628,6 +2857,7 @@
                 "ipAddress": "ip_address",
                 "ipv4s": "ipv4",
                 "metadatas": "metadata",
+                "migrationType": "migration_type",
                 "privateIp": "private_ip",
                 "privateIpAddress": "private_ip_address",
                 "resizeDisk": "resize_disk",
