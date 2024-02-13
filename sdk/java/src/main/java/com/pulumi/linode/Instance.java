@@ -57,12 +57,63 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
  *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
- *             .group(&#34;foo&#34;)
- *             .image(&#34;linode/ubuntu18.04&#34;)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
  *             .label(&#34;simple_instance&#34;)
  *             .privateIp(true)
  *             .region(&#34;us-central&#34;)
- *             .rootPass(&#34;terr4form-test&#34;)
+ *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
+ *             .swapSize(256)
+ *             .tags(&#34;foo&#34;)
+ *             .type(&#34;g6-standard-1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Linode Instance with Explicit Networking Interfaces
+ * 
+ * You can add a VPC or VLAN interface directly to a Linode instance resource.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
+ * import com.pulumi.linode.inputs.InstanceInterfaceIpv4Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
+ *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
+ *             .interfaces(            
+ *                 InstanceInterfaceArgs.builder()
+ *                     .purpose(&#34;public&#34;)
+ *                     .build(),
+ *                 InstanceInterfaceArgs.builder()
+ *                     .ipv4(InstanceInterfaceIpv4Args.builder()
+ *                         .vpc(&#34;10.0.4.250&#34;)
+ *                         .build())
+ *                     .purpose(&#34;vpc&#34;)
+ *                     .subnetId(123)
+ *                     .build())
+ *             .label(&#34;simple_instance&#34;)
+ *             .privateIp(true)
+ *             .region(&#34;us-central&#34;)
+ *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
  *             .swapSize(256)
  *             .tags(&#34;foo&#34;)
  *             .type(&#34;g6-standard-1&#34;)
@@ -236,28 +287,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.disks;
     }
     /**
-     * The ID of the firewall applied to the Linode instance during creation.
+     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
      * 
      */
     @Export(name="firewallId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> firewallId;
 
     /**
-     * @return The ID of the firewall applied to the Linode instance during creation.
+     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
      * 
      */
     public Output<Optional<Integer>> firewallId() {
         return Codegen.optional(this.firewallId);
     }
     /**
-     * The display group of the Linode instance.
+     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+     * 
+     * @deprecated
+     * Group label is deprecated. We recommend using tags instead.
      * 
      */
+    @Deprecated /* Group label is deprecated. We recommend using tags instead. */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> group;
 
     /**
-     * @return The display group of the Linode instance.
+     * @return A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
      * 
      */
     public Output<Optional<String>> group() {
@@ -292,14 +347,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.hostUuid;
     }
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
     @Export(name="image", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> image;
 
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
     public Output<Optional<String>> image() {
@@ -390,6 +445,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<InstanceMetadata>>> metadatas() {
         return Codegen.optional(this.metadatas);
+    }
+    /**
+     * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    @Export(name="migrationType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> migrationType;
+
+    /**
+     * @return The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    public Output<Optional<String>> migrationType() {
+        return Codegen.optional(this.migrationType);
     }
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.

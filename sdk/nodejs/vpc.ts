@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const test = new linode.Vpc("test", {
  *     description: "My first VPC.",
  *     label: "test-vpc",
- *     region: "us-east",
+ *     region: "us-iad",
  * });
  * ```
  */

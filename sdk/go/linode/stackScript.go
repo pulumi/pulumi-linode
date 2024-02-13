@@ -37,8 +37,8 @@ import (
 //				Description: pulumi.String("Installs a Package"),
 //				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
 //				Images: pulumi.StringArray{
-//					pulumi.String("linode/ubuntu18.04"),
-//					pulumi.String("linode/ubuntu16.04lts"),
+//					pulumi.String("linode/ubuntu22.04"),
+//					pulumi.String("linode/ubuntu20.04"),
 //				},
 //				RevNote: pulumi.String("initial version"),
 //			})
@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
-//				Image:  pulumi.String("linode/ubuntu18.04"),
+//				Image:  pulumi.String("linode/ubuntu22.04"),
 //				Label:  pulumi.String("foo"),
 //				Region: pulumi.String("us-east"),
 //				Type:   pulumi.String("g6-nanode-1"),

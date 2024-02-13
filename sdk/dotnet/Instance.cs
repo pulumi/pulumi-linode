@@ -32,12 +32,60 @@ namespace Pulumi.Linode
     ///         {
     ///             "ssh-rsa AAAA...Gw== user@example.local",
     ///         },
-    ///         Group = "foo",
-    ///         Image = "linode/ubuntu18.04",
+    ///         Image = "linode/ubuntu22.04",
     ///         Label = "simple_instance",
     ///         PrivateIp = true,
     ///         Region = "us-central",
-    ///         RootPass = "terr4form-test",
+    ///         RootPass = "this-is-not-a-safe-password",
+    ///         SwapSize = 256,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///         },
+    ///         Type = "g6-standard-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Linode Instance with Explicit Networking Interfaces
+    /// 
+    /// You can add a VPC or VLAN interface directly to a Linode instance resource.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var web = new Linode.Instance("web", new()
+    ///     {
+    ///         AuthorizedKeys = new[]
+    ///         {
+    ///             "ssh-rsa AAAA...Gw== user@example.local",
+    ///         },
+    ///         Image = "linode/ubuntu22.04",
+    ///         Interfaces = new[]
+    ///         {
+    ///             new Linode.Inputs.InstanceInterfaceArgs
+    ///             {
+    ///                 Purpose = "public",
+    ///             },
+    ///             new Linode.Inputs.InstanceInterfaceArgs
+    ///             {
+    ///                 Ipv4 = new Linode.Inputs.InstanceInterfaceIpv4Args
+    ///                 {
+    ///                     Vpc = "10.0.4.250",
+    ///                 },
+    ///                 Purpose = "vpc",
+    ///                 SubnetId = 123,
+    ///             },
+    ///         },
+    ///         Label = "simple_instance",
+    ///         PrivateIp = true,
+    ///         Region = "us-central",
+    ///         RootPass = "this-is-not-a-safe-password",
     ///         SwapSize = 256,
     ///         Tags = new[]
     ///         {
@@ -128,13 +176,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the firewall applied to the Linode instance during creation.
+        /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         /// </summary>
         [Output("firewallId")]
         public Output<int?> FirewallId { get; private set; } = null!;
 
         /// <summary>
-        /// The display group of the Linode instance.
+        /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
@@ -152,7 +200,7 @@ namespace Pulumi.Linode
         public Output<string> HostUuid { get; private set; } = null!;
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Output("image")]
         public Output<string?> Image { get; private set; } = null!;
@@ -193,6 +241,14 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("metadatas")]
         public Output<ImmutableArray<Outputs.InstanceMetadata>> Metadatas { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        /// 
+        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        /// </summary>
+        [Output("migrationType")]
+        public Output<string?> MigrationType { get; private set; } = null!;
 
         /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
@@ -420,19 +476,19 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The ID of the firewall applied to the Linode instance during creation.
+        /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
 
         /// <summary>
-        /// The display group of the Linode instance.
+        /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -467,6 +523,14 @@ namespace Pulumi.Linode
             get => _metadatas ?? (_metadatas = new InputList<Inputs.InstanceMetadataArgs>());
             set => _metadatas = value;
         }
+
+        /// <summary>
+        /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        /// 
+        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        /// </summary>
+        [Input("migrationType")]
+        public Input<string>? MigrationType { get; set; }
 
         /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
@@ -671,13 +735,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The ID of the firewall applied to the Linode instance during creation.
+        /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
 
         /// <summary>
-        /// The display group of the Linode instance.
+        /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -695,7 +759,7 @@ namespace Pulumi.Linode
         public Input<string>? HostUuid { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -754,6 +818,14 @@ namespace Pulumi.Linode
             get => _metadatas ?? (_metadatas = new InputList<Inputs.InstanceMetadataGetArgs>());
             set => _metadatas = value;
         }
+
+        /// <summary>
+        /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        /// 
+        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        /// </summary>
+        [Input("migrationType")]
+        public Input<string>? MigrationType { get; set; }
 
         /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.

@@ -43,7 +43,8 @@ type Volume struct {
 	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	Tags     pulumi.StringArrayOutput `pulumi:"tags"`
+	Timeouts VolumeTimeoutsPtrOutput  `pulumi:"timeouts"`
 }
 
 // NewVolume registers a new resource with the given unique name, arguments, and options.
@@ -96,7 +97,8 @@ type volumeState struct {
 	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status *string `pulumi:"status"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags []string `pulumi:"tags"`
+	Tags     []string        `pulumi:"tags"`
+	Timeouts *VolumeTimeouts `pulumi:"timeouts"`
 }
 
 type VolumeState struct {
@@ -117,7 +119,8 @@ type VolumeState struct {
 	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags pulumi.StringArrayInput
+	Tags     pulumi.StringArrayInput
+	Timeouts VolumeTimeoutsPtrInput
 }
 
 func (VolumeState) ElementType() reflect.Type {
@@ -138,7 +141,8 @@ type volumeArgs struct {
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId *int `pulumi:"sourceVolumeId"`
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags []string `pulumi:"tags"`
+	Tags     []string        `pulumi:"tags"`
+	Timeouts *VolumeTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Volume resource.
@@ -156,7 +160,8 @@ type VolumeArgs struct {
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId pulumi.IntPtrInput
 	// A list of tags applied to this object. Tags are for organizational purposes only.
-	Tags pulumi.StringArrayInput
+	Tags     pulumi.StringArrayInput
+	Timeouts VolumeTimeoutsPtrInput
 }
 
 func (VolumeArgs) ElementType() reflect.Type {
@@ -286,6 +291,10 @@ func (o VolumeOutput) Status() pulumi.StringOutput {
 // A list of tags applied to this object. Tags are for organizational purposes only.
 func (o VolumeOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o VolumeOutput) Timeouts() VolumeTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeTimeoutsPtrOutput { return v.Timeouts }).(VolumeTimeoutsPtrOutput)
 }
 
 type VolumeArrayOutput struct{ *pulumi.OutputState }

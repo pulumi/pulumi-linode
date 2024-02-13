@@ -310,48 +310,6 @@ class LkeCluster(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Manages an LKE cluster.
-
-        ## Example Usage
-
-        Creating a basic LKE cluster:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.21",
-            label="my-cluster",
-            pools=[linode.LkeClusterPoolArgs(
-                count=3,
-                type="g6-standard-2",
-            )],
-            region="us-central",
-            tags=["prod"])
-        ```
-
-        Creating an LKE cluster with autoscaler:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
-            k8s_version="1.21",
-            region="us-central",
-            tags=["prod"],
-            pools=[linode.LkeClusterPoolArgs(
-                type="g6-standard-2",
-                count=3,
-                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
-                    min=3,
-                    max=10,
-                ),
-            )])
-        ```
-
         ## Import
 
         LKE Clusters can be imported using the `id`, e.g.
@@ -380,48 +338,6 @@ class LkeCluster(pulumi.CustomResource):
                  args: LkeClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an LKE cluster.
-
-        ## Example Usage
-
-        Creating a basic LKE cluster:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.21",
-            label="my-cluster",
-            pools=[linode.LkeClusterPoolArgs(
-                count=3,
-                type="g6-standard-2",
-            )],
-            region="us-central",
-            tags=["prod"])
-        ```
-
-        Creating an LKE cluster with autoscaler:
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
-            k8s_version="1.21",
-            region="us-central",
-            tags=["prod"],
-            pools=[linode.LkeClusterPoolArgs(
-                type="g6-standard-2",
-                count=3,
-                autoscaler=linode.LkeClusterPoolAutoscalerArgs(
-                    min=3,
-                    max=10,
-                ),
-            )])
-        ```
-
         ## Import
 
         LKE Clusters can be imported using the `id`, e.g.

@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     filters: [
  *         {
  *             name: "label",
- *             values: ["Debian 11"],
+ *             values: ["Debian 12"],
  *         },
  *         {
  *             name: "is_public",
@@ -125,7 +125,7 @@ export interface GetImagesResult {
  *     filters: [
  *         {
  *             name: "label",
- *             values: ["Debian 11"],
+ *             values: ["Debian 12"],
  *         },
  *         {
  *             name: "is_public",

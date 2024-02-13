@@ -594,6 +594,154 @@ export interface GetDatabasesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetDomainsDomain {
+    /**
+     * The list of IPs that may perform a zone transfer for this Domain.
+     */
+    axfrIps?: string[];
+    /**
+     * A description for this Domain.
+     */
+    description?: string;
+    /**
+     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+     */
+    domain?: string;
+    /**
+     * The amount of time in seconds that may pass before this Domain is no longer authoritative.
+     */
+    expireSec?: number;
+    /**
+     * The group this Domain belongs to.
+     */
+    group?: string;
+    /**
+     * The unique ID of this Domain.
+     */
+    id?: number;
+    /**
+     * The IP addresses representing the master DNS for this Domain.
+     */
+    masterIps?: string[];
+    /**
+     * The amount of time in seconds before this Domain should be refreshed.
+     */
+    refreshSec?: number;
+    /**
+     * The interval, in seconds, at which a failed refresh should be retried.
+     */
+    retrySec?: number;
+    /**
+     * Start of Authority email address.
+     */
+    soaEmail?: string;
+    /**
+     * Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+     */
+    status?: string;
+    /**
+     * An array of tags applied to this object.
+     */
+    tags?: string[];
+    /**
+     * 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+     */
+    ttlSec?: number;
+    /**
+     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+     */
+    type?: string;
+}
+
+export interface GetDomainsDomainArgs {
+    /**
+     * The list of IPs that may perform a zone transfer for this Domain.
+     */
+    axfrIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A description for this Domain.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+     */
+    domain?: pulumi.Input<string>;
+    /**
+     * The amount of time in seconds that may pass before this Domain is no longer authoritative.
+     */
+    expireSec?: pulumi.Input<number>;
+    /**
+     * The group this Domain belongs to.
+     */
+    group?: pulumi.Input<string>;
+    /**
+     * The unique ID of this Domain.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The IP addresses representing the master DNS for this Domain.
+     */
+    masterIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The amount of time in seconds before this Domain should be refreshed.
+     */
+    refreshSec?: pulumi.Input<number>;
+    /**
+     * The interval, in seconds, at which a failed refresh should be retried.
+     */
+    retrySec?: pulumi.Input<number>;
+    /**
+     * Start of Authority email address.
+     */
+    soaEmail?: pulumi.Input<string>;
+    /**
+     * Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * An array of tags applied to this object.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+     */
+    ttlSec?: pulumi.Input<number>;
+    /**
+     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface GetDomainsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetDomainsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetFirewallsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1264,6 +1412,74 @@ export interface GetInstancesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetIpv6RangesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetIpv6RangesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetIpv6RangesRange {
+    /**
+     * The prefix length of the address, denoting how many addresses can be assigned from this range.
+     */
+    prefix?: number;
+    /**
+     * The IPv6 address of this range.
+     */
+    range?: string;
+    /**
+     * The region for this range of IPv6 addresses.
+     */
+    region?: string;
+    /**
+     * The IPv6 SLAAC address.
+     */
+    routeTarget?: string;
+}
+
+export interface GetIpv6RangesRangeArgs {
+    /**
+     * The prefix length of the address, denoting how many addresses can be assigned from this range.
+     */
+    prefix?: pulumi.Input<number>;
+    /**
+     * The IPv6 address of this range.
+     */
+    range?: pulumi.Input<string>;
+    /**
+     * The region for this range of IPv6 addresses.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The IPv6 SLAAC address.
+     */
+    routeTarget?: pulumi.Input<string>;
+}
+
 export interface GetKernelsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1370,6 +1586,480 @@ export interface GetKernelsKernelArgs {
      * If this Kernel is suitable for Xen Linodes.
      */
     xen?: pulumi.Input<boolean>;
+}
+
+export interface GetLkeClusterControlPlane {
+    /**
+     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     */
+    highAvailability?: boolean;
+}
+
+export interface GetLkeClusterControlPlaneArgs {
+    /**
+     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     */
+    highAvailability?: pulumi.Input<boolean>;
+}
+
+export interface GetLkeClusterPool {
+    /**
+     * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+     */
+    autoscalers?: inputs.GetLkeClusterPoolAutoscaler[];
+    /**
+     * The number of nodes in the Node Pool.
+     */
+    count?: number;
+    /**
+     * This Node Pool’s custom disk layout.
+     */
+    disks?: inputs.GetLkeClusterPoolDisk[];
+    /**
+     * The LKE Cluster's ID.
+     */
+    id?: number;
+    /**
+     * The nodes in the Node Pool.
+     */
+    nodes?: inputs.GetLkeClusterPoolNode[];
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: string[];
+    /**
+     * This custom disk partition’s filesystem type.
+     */
+    type?: string;
+}
+
+export interface GetLkeClusterPoolArgs {
+    /**
+     * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+     */
+    autoscalers?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolAutoscalerArgs>[]>;
+    /**
+     * The number of nodes in the Node Pool.
+     */
+    count?: pulumi.Input<number>;
+    /**
+     * This Node Pool’s custom disk layout.
+     */
+    disks?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolDiskArgs>[]>;
+    /**
+     * The LKE Cluster's ID.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The nodes in the Node Pool.
+     */
+    nodes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolNodeArgs>[]>;
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This custom disk partition’s filesystem type.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface GetLkeClusterPoolAutoscaler {
+    /**
+     * Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     */
+    enabled?: boolean;
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
+    max?: number;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
+    min?: number;
+}
+
+export interface GetLkeClusterPoolAutoscalerArgs {
+    /**
+     * Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
+    min?: pulumi.Input<number>;
+}
+
+export interface GetLkeClusterPoolDisk {
+    /**
+     * The size of this custom disk partition in MB.
+     */
+    size?: number;
+    /**
+     * This custom disk partition’s filesystem type.
+     */
+    type?: string;
+}
+
+export interface GetLkeClusterPoolDiskArgs {
+    /**
+     * The size of this custom disk partition in MB.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * This custom disk partition’s filesystem type.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface GetLkeClusterPoolNode {
+    /**
+     * The LKE Cluster's ID.
+     */
+    id?: string;
+    /**
+     * The ID of the underlying Linode instance.
+     */
+    instanceId?: number;
+    /**
+     * The status of the node. (`ready`, `notReady`)
+     */
+    status?: string;
+}
+
+export interface GetLkeClusterPoolNodeArgs {
+    /**
+     * The LKE Cluster's ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The ID of the underlying Linode instance.
+     */
+    instanceId?: pulumi.Input<number>;
+    /**
+     * The status of the node. (`ready`, `notReady`)
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface GetLkeClustersFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetLkeClustersFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetLkeClustersLkeCluster {
+    /**
+     * Defines settings for the Kubernetes Control Plane.
+     */
+    controlPlane?: inputs.GetLkeClustersLkeClusterControlPlane;
+    /**
+     * When this Kubernetes cluster was created.
+     */
+    created?: string;
+    /**
+     * The LKE Cluster's ID.
+     */
+    id?: number;
+    /**
+     * The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+     */
+    k8sVersion?: string;
+    /**
+     * The unique label for the cluster.
+     */
+    label?: string;
+    /**
+     * This Kubernetes cluster's location.
+     */
+    region?: string;
+    /**
+     * The status of the cluster.
+     */
+    status?: string;
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: string[];
+    /**
+     * When this Kubernetes cluster was updated.
+     */
+    updated?: string;
+}
+
+export interface GetLkeClustersLkeClusterArgs {
+    /**
+     * Defines settings for the Kubernetes Control Plane.
+     */
+    controlPlane?: pulumi.Input<inputs.GetLkeClustersLkeClusterControlPlaneArgs>;
+    /**
+     * When this Kubernetes cluster was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The LKE Cluster's ID.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+     */
+    k8sVersion?: pulumi.Input<string>;
+    /**
+     * The unique label for the cluster.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * This Kubernetes cluster's location.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The status of the cluster.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * An array of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this Kubernetes cluster was updated.
+     */
+    updated?: pulumi.Input<string>;
+}
+
+export interface GetLkeClustersLkeClusterControlPlane {
+    /**
+     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     */
+    highAvailability?: boolean;
+}
+
+export interface GetLkeClustersLkeClusterControlPlaneArgs {
+    /**
+     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     */
+    highAvailability?: pulumi.Input<boolean>;
+}
+
+export interface GetNodeBalancerFirewall {
+    /**
+     * When this firewall was created.
+     */
+    created?: string;
+    /**
+     * The NodeBalancer's ID.
+     */
+    id?: number;
+    /**
+     * The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+     */
+    inboundPolicy?: string;
+    /**
+     * A set of firewall rules that specify what inbound network traffic is allowed.
+     */
+    inbounds?: inputs.GetNodeBalancerFirewallInbound[];
+    /**
+     * Used to identify this rule. For display purposes only.
+     */
+    label?: string;
+    /**
+     * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+     */
+    outboundPolicy?: string;
+    /**
+     * A set of firewall rules that specify what outbound network traffic is allowed.
+     */
+    outbounds?: inputs.GetNodeBalancerFirewallOutbound[];
+    /**
+     * The status of the firewall. (`enabled`, `disabled`, `deleted`)
+     */
+    status?: string;
+    /**
+     * The tags applied to the firewall.
+     */
+    tags?: string[];
+    /**
+     * When this firewall was last updated.
+     */
+    updated?: string;
+}
+
+export interface GetNodeBalancerFirewallArgs {
+    /**
+     * When this firewall was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The NodeBalancer's ID.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+     */
+    inboundPolicy?: pulumi.Input<string>;
+    /**
+     * A set of firewall rules that specify what inbound network traffic is allowed.
+     */
+    inbounds?: pulumi.Input<pulumi.Input<inputs.GetNodeBalancerFirewallInboundArgs>[]>;
+    /**
+     * Used to identify this rule. For display purposes only.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+     */
+    outboundPolicy?: pulumi.Input<string>;
+    /**
+     * A set of firewall rules that specify what outbound network traffic is allowed.
+     */
+    outbounds?: pulumi.Input<pulumi.Input<inputs.GetNodeBalancerFirewallOutboundArgs>[]>;
+    /**
+     * The status of the firewall. (`enabled`, `disabled`, `deleted`)
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags applied to the firewall.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this firewall was last updated.
+     */
+    updated?: pulumi.Input<string>;
+}
+
+export interface GetNodeBalancerFirewallInbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action?: string;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s?: string[];
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s?: string[];
+    /**
+     * Used to identify this rule. For display purposes only.
+     */
+    label?: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports?: string;
+    /**
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     */
+    protocol?: string;
+}
+
+export interface GetNodeBalancerFirewallInboundArgs {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Used to identify this rule. For display purposes only.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports?: pulumi.Input<string>;
+    /**
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     */
+    protocol?: pulumi.Input<string>;
+}
+
+export interface GetNodeBalancerFirewallOutbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action?: string;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s?: string[];
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s?: string[];
+    /**
+     * Used to identify this rule. For display purposes only.
+     */
+    label?: string;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports?: string;
+    /**
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     */
+    protocol?: string;
+}
+
+export interface GetNodeBalancerFirewallOutboundArgs {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Used to identify this rule. For display purposes only.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports?: pulumi.Input<string>;
+    /**
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     */
+    protocol?: pulumi.Input<string>;
 }
 
 export interface GetNodebalancerConfigsFilter {
@@ -3673,7 +4363,7 @@ export interface InstanceDisk {
      */
     id?: pulumi.Input<number>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      */
     image?: pulumi.Input<string>;
     /**
@@ -3808,11 +4498,11 @@ export interface LkeClusterPool {
      */
     autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      *
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
-    count: pulumi.Input<number>;
+    count?: pulumi.Input<number>;
     /**
      * The ID of the node.
      */
@@ -3862,6 +4552,97 @@ export interface NodeBalancerConfigNodeStatus {
      * The number of backends considered to be 'UP' and healthy, and that are serving requests.
      */
     up?: pulumi.Input<number>;
+}
+
+export interface NodeBalancerFirewall {
+    /**
+     * When this firewall was created.
+     */
+    created: pulumi.Input<string>;
+    /**
+     * (Required) The Firewall's ID.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+     */
+    inboundPolicy: pulumi.Input<string>;
+    inbounds: pulumi.Input<pulumi.Input<inputs.NodeBalancerFirewallInbound>[]>;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+     */
+    outboundPolicy: pulumi.Input<string>;
+    outbounds: pulumi.Input<pulumi.Input<inputs.NodeBalancerFirewallOutbound>[]>;
+    /**
+     * The status of the firewall. (`enabled`, `disabled`, `deleted`)
+     */
+    status: pulumi.Input<string>;
+    /**
+     * A list of tags applied to this object. Tags are for organizational purposes only.
+     */
+    tags: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this firewall was last updated.
+     */
+    updated: pulumi.Input<string>;
+}
+
+export interface NodeBalancerFirewallInbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports: pulumi.Input<string>;
+    /**
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     */
+    protocol: pulumi.Input<string>;
+}
+
+export interface NodeBalancerFirewallOutbound {
+    /**
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     */
+    ipv4s: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
+     */
+    ipv6s: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label: pulumi.Input<string>;
+    /**
+     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+     */
+    ports: pulumi.Input<string>;
+    /**
+     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     */
+    protocol: pulumi.Input<string>;
 }
 
 export interface NodeBalancerTransfer {
@@ -3956,6 +4737,17 @@ export interface ObjectStorageKeyBucketAccess {
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: pulumi.Input<string>;
+}
+
+export interface RdnsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface StackScriptUserDefinedField {
@@ -4122,6 +4914,21 @@ export interface UserVolumeGrant {
      * The level of access this User has to this entity. If null, this User has no access.
      */
     permissions: pulumi.Input<string>;
+}
+
+export interface VolumeTimeouts {
+    /**
+     * Used when creating the volume (until the volume is reaches the initial `active` state)
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Used when deleting the volume
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * Used when updating the volume when necessary during update - e.g. when resizing the volume
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface VpcSubnetLinode {

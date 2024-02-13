@@ -75,6 +75,9 @@ namespace Pulumi.Linode
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.VolumeTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Volume resource with the given unique name, arguments, and options.
@@ -165,6 +168,9 @@ namespace Pulumi.Linode
             set => _tags = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.VolumeTimeoutsArgs>? Timeouts { get; set; }
+
         public VolumeArgs()
         {
         }
@@ -228,6 +234,9 @@ namespace Pulumi.Linode
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.VolumeTimeoutsGetArgs>? Timeouts { get; set; }
 
         public VolumeState()
         {

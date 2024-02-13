@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.VolumeArgs;
 import com.pulumi.linode.inputs.VolumeState;
+import com.pulumi.linode.outputs.VolumeTimeouts;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -139,14 +140,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
      * @return A list of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
+    }
+    @Export(name="timeouts", refs={VolumeTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeTimeouts> timeouts;
+
+    public Output<Optional<VolumeTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

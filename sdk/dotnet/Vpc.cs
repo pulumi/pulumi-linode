@@ -30,7 +30,7 @@ namespace Pulumi.Linode
     ///     {
     ///         Description = "My first VPC.",
     ///         Label = "test-vpc",
-    ///         Region = "us-east",
+    ///         Region = "us-iad",
     ///     });
     /// 
     /// });

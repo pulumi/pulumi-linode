@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .label(&#34;myinstance&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
- *             .image(&#34;linode/alpine3.14&#34;)
+ *             .image(&#34;linode/alpine3.19&#34;)
  *             .build());
  * 
  *         var my_db = new DatabaseMysql(&#34;my-db&#34;, DatabaseMysqlArgs.builder()        

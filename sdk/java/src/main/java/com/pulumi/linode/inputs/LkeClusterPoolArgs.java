@@ -36,22 +36,22 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
-    @Import(name="count", required=true)
-    private Output<Integer> count;
+    @Import(name="count")
+    private @Nullable Output<Integer> count;
 
     /**
-     * @return The number of nodes in the Node Pool.
+     * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
-    public Output<Integer> count() {
-        return this.count;
+    public Optional<Output<Integer>> count() {
+        return Optional.ofNullable(this.count);
     }
 
     /**
@@ -149,20 +149,20 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param count The number of nodes in the Node Pool.
+         * @param count The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
          * 
          * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 
          */
-        public Builder count(Output<Integer> count) {
+        public Builder count(@Nullable Output<Integer> count) {
             $.count = count;
             return this;
         }
 
         /**
-         * @param count The number of nodes in the Node Pool.
+         * @param count The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
          * 
          * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
@@ -247,9 +247,6 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public LkeClusterPoolArgs build() {
-            if ($.count == null) {
-                throw new MissingRequiredPropertyException("LkeClusterPoolArgs", "count");
-            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("LkeClusterPoolArgs", "type");
             }

@@ -6,6 +6,7 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.VolumeTimeoutsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -112,6 +113,13 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<VolumeTimeoutsArgs> timeouts;
+
+    public Optional<Output<VolumeTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private VolumeArgs() {}
 
     private VolumeArgs(VolumeArgs $) {
@@ -121,6 +129,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.size = $.size;
         this.sourceVolumeId = $.sourceVolumeId;
         this.tags = $.tags;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -279,6 +288,15 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        public Builder timeouts(@Nullable Output<VolumeTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(VolumeTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public VolumeArgs build() {

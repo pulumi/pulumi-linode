@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.NodeBalancerArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.NodeBalancerState;
+import com.pulumi.linode.outputs.NodeBalancerFirewall;
 import com.pulumi.linode.outputs.NodeBalancerTransfer;
 import java.lang.Integer;
 import java.lang.String;
@@ -82,14 +83,14 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return this.clientConnThrottle;
     }
     /**
-     * When this NodeBalancer was created
+     * When this firewall was created.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return When this NodeBalancer was created
+     * @return When this firewall was created.
      * 
      */
     public Output<String> created() {
@@ -110,6 +111,20 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.firewallId);
     }
     /**
+     * A list of Firewalls assigned to this NodeBalancer.
+     * 
+     */
+    @Export(name="firewalls", refs={List.class,NodeBalancerFirewall.class}, tree="[0,1]")
+    private Output<List<NodeBalancerFirewall>> firewalls;
+
+    /**
+     * @return A list of Firewalls assigned to this NodeBalancer.
+     * 
+     */
+    public Output<List<NodeBalancerFirewall>> firewalls() {
+        return this.firewalls;
+    }
+    /**
      * This NodeBalancer&#39;s hostname, ending with .nodebalancer.linode.com
      * 
      */
@@ -124,28 +139,28 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return this.hostname;
     }
     /**
-     * The Public IPv4 Address of this NodeBalancer
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
      */
     @Export(name="ipv4", refs={String.class}, tree="[0]")
     private Output<String> ipv4;
 
     /**
-     * @return The Public IPv4 Address of this NodeBalancer
+     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
      */
     public Output<String> ipv4() {
         return this.ipv4;
     }
     /**
-     * The Public IPv6 Address of this NodeBalancer
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
      * 
      */
     @Export(name="ipv6", refs={String.class}, tree="[0]")
     private Output<String> ipv6;
 
     /**
-     * @return The Public IPv6 Address of this NodeBalancer
+     * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
      * 
      */
     public Output<String> ipv6() {
@@ -212,14 +227,14 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return this.transfers;
     }
     /**
-     * When this NodeBalancer was last updated.
+     * When this firewall was last updated.
      * 
      */
     @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**
-     * @return When this NodeBalancer was last updated.
+     * @return When this firewall was last updated.
      * 
      */
     public Output<String> updated() {

@@ -5,11 +5,17 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetLkeClusterPoolAutoscaler {
+    /**
+     * @return Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * 
+     */
+    private Boolean enabled;
     /**
      * @return The maximum number of nodes to autoscale to.
      * 
@@ -22,6 +28,13 @@ public final class GetLkeClusterPoolAutoscaler {
     private Integer min;
 
     private GetLkeClusterPoolAutoscaler() {}
+    /**
+     * @return Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
     /**
      * @return The maximum number of nodes to autoscale to.
      * 
@@ -46,15 +59,25 @@ public final class GetLkeClusterPoolAutoscaler {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enabled;
         private Integer max;
         private Integer min;
         public Builder() {}
         public Builder(GetLkeClusterPoolAutoscaler defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.max = defaults.max;
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPoolAutoscaler", "enabled");
+            }
+            this.enabled = enabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder max(Integer max) {
             if (max == null) {
@@ -73,6 +96,7 @@ public final class GetLkeClusterPoolAutoscaler {
         }
         public GetLkeClusterPoolAutoscaler build() {
             final var _resultValue = new GetLkeClusterPoolAutoscaler();
+            _resultValue.enabled = enabled;
             _resultValue.max = max;
             _resultValue.min = min;
             return _resultValue;

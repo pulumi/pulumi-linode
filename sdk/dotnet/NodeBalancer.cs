@@ -57,7 +57,7 @@ namespace Pulumi.Linode
         public Output<int> ClientConnThrottle { get; private set; } = null!;
 
         /// <summary>
-        /// When this NodeBalancer was created
+        /// When this firewall was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -69,19 +69,25 @@ namespace Pulumi.Linode
         public Output<int?> FirewallId { get; private set; } = null!;
 
         /// <summary>
+        /// A list of Firewalls assigned to this NodeBalancer.
+        /// </summary>
+        [Output("firewalls")]
+        public Output<ImmutableArray<Outputs.NodeBalancerFirewall>> Firewalls { get; private set; } = null!;
+
+        /// <summary>
         /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// The Public IPv4 Address of this NodeBalancer
+        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
         [Output("ipv4")]
         public Output<string> Ipv4 { get; private set; } = null!;
 
         /// <summary>
-        /// The Public IPv6 Address of this NodeBalancer
+        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
         /// </summary>
         [Output("ipv6")]
         public Output<string> Ipv6 { get; private set; } = null!;
@@ -113,7 +119,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.NodeBalancerTransfer>> Transfers { get; private set; } = null!;
 
         /// <summary>
-        /// When this NodeBalancer was last updated.
+        /// When this firewall was last updated.
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
@@ -217,7 +223,7 @@ namespace Pulumi.Linode
         public Input<int>? ClientConnThrottle { get; set; }
 
         /// <summary>
-        /// When this NodeBalancer was created
+        /// When this firewall was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -228,6 +234,18 @@ namespace Pulumi.Linode
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
 
+        [Input("firewalls")]
+        private InputList<Inputs.NodeBalancerFirewallGetArgs>? _firewalls;
+
+        /// <summary>
+        /// A list of Firewalls assigned to this NodeBalancer.
+        /// </summary>
+        public InputList<Inputs.NodeBalancerFirewallGetArgs> Firewalls
+        {
+            get => _firewalls ?? (_firewalls = new InputList<Inputs.NodeBalancerFirewallGetArgs>());
+            set => _firewalls = value;
+        }
+
         /// <summary>
         /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         /// </summary>
@@ -235,13 +253,13 @@ namespace Pulumi.Linode
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The Public IPv4 Address of this NodeBalancer
+        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
 
         /// <summary>
-        /// The Public IPv6 Address of this NodeBalancer
+        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
         /// </summary>
         [Input("ipv6")]
         public Input<string>? Ipv6 { get; set; }
@@ -285,7 +303,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// When this NodeBalancer was last updated.
+        /// When this firewall was last updated.
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }

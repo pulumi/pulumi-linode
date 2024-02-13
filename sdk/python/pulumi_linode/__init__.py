@@ -28,6 +28,7 @@ from .get_databases import *
 from .get_domain import *
 from .get_domain_record import *
 from .get_domain_zonefile import *
+from .get_domains import *
 from .get_firewall import *
 from .get_firewalls import *
 from .get_image import *
@@ -38,10 +39,12 @@ from .get_instance_type import *
 from .get_instance_types import *
 from .get_instances import *
 from .get_ipv6_range import *
+from .get_ipv6_ranges import *
 from .get_kernel import *
 from .get_kernels import *
 from .get_linode_object_storage_bucket import *
 from .get_lke_cluster import *
+from .get_lke_clusters import *
 from .get_lke_versions import *
 from .get_networking_ip import *
 from .get_node_balancer import *

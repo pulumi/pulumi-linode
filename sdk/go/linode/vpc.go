@@ -35,7 +35,7 @@ import (
 //			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
 //				Description: pulumi.String("My first VPC."),
 //				Label:       pulumi.String("test-vpc"),
-//				Region:      pulumi.String("us-east"),
+//				Region:      pulumi.String("us-iad"),
 //			})
 //			if err != nil {
 //				return err

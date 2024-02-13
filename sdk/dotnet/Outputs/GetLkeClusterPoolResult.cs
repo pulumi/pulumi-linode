@@ -22,6 +22,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Count;
         /// <summary>
+        /// This Node Pool’s custom disk layout.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> Disks;
+        /// <summary>
         /// The LKE Cluster's ID.
         /// </summary>
         public readonly int Id;
@@ -30,7 +34,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolNodeResult> Nodes;
         /// <summary>
-        /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        /// An array of tags applied to this object. Tags are for organizational purposes only.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// This custom disk partition’s filesystem type.
         /// </summary>
         public readonly string Type;
 
@@ -40,16 +48,22 @@ namespace Pulumi.Linode.Outputs
 
             int count,
 
+            ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> disks,
+
             int id,
 
             ImmutableArray<Outputs.GetLkeClusterPoolNodeResult> nodes,
+
+            ImmutableArray<string> tags,
 
             string type)
         {
             Autoscalers = autoscalers;
             Count = count;
+            Disks = disks;
             Id = id;
             Nodes = nodes;
+            Tags = tags;
             Type = type;
         }
     }

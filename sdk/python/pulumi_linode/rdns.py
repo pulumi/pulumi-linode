@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RdnsArgs', 'Rdns']
 
@@ -16,6 +18,7 @@ class RdnsArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
                  rdns: pulumi.Input[str],
+                 timeouts: Optional[pulumi.Input['RdnsTimeoutsArgs']] = None,
                  wait_for_available: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Rdns resource.
@@ -25,6 +28,8 @@ class RdnsArgs:
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "rdns", rdns)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if wait_for_available is not None:
             pulumi.set(__self__, "wait_for_available", wait_for_available)
 
@@ -53,6 +58,15 @@ class RdnsArgs:
         pulumi.set(self, "rdns", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['RdnsTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['RdnsTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="waitForAvailable")
     def wait_for_available(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -70,6 +84,7 @@ class _RdnsState:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['RdnsTimeoutsArgs']] = None,
                  wait_for_available: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Rdns resources.
@@ -81,6 +96,8 @@ class _RdnsState:
             pulumi.set(__self__, "address", address)
         if rdns is not None:
             pulumi.set(__self__, "rdns", rdns)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if wait_for_available is not None:
             pulumi.set(__self__, "wait_for_available", wait_for_available)
 
@@ -109,6 +126,15 @@ class _RdnsState:
         pulumi.set(self, "rdns", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['RdnsTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['RdnsTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="waitForAvailable")
     def wait_for_available(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -128,6 +154,7 @@ class Rdns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['RdnsTimeoutsArgs']]] = None,
                  wait_for_available: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -189,6 +216,7 @@ class Rdns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  rdns: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['RdnsTimeoutsArgs']]] = None,
                  wait_for_available: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -205,6 +233,7 @@ class Rdns(pulumi.CustomResource):
             if rdns is None and not opts.urn:
                 raise TypeError("Missing required property 'rdns'")
             __props__.__dict__["rdns"] = rdns
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["wait_for_available"] = wait_for_available
         super(Rdns, __self__).__init__(
             'linode:index/rdns:Rdns',
@@ -218,6 +247,7 @@ class Rdns(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
             rdns: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['RdnsTimeoutsArgs']]] = None,
             wait_for_available: Optional[pulumi.Input[bool]] = None) -> 'Rdns':
         """
         Get an existing Rdns resource's state with the given name, id, and optional extra
@@ -236,6 +266,7 @@ class Rdns(pulumi.CustomResource):
 
         __props__.__dict__["address"] = address
         __props__.__dict__["rdns"] = rdns
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["wait_for_available"] = wait_for_available
         return Rdns(resource_name, opts=opts, __props__=__props__)
 
@@ -254,6 +285,11 @@ class Rdns(pulumi.CustomResource):
         The name of the RDNS address.
         """
         return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.RdnsTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="waitForAvailable")

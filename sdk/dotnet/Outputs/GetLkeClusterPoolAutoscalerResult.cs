@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClusterPoolAutoscalerResult
     {
         /// <summary>
+        /// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// The maximum number of nodes to autoscale to.
         /// </summary>
         public readonly int Max;
@@ -24,10 +28,13 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetLkeClusterPoolAutoscalerResult(
+            bool enabled,
+
             int max,
 
             int min)
         {
+            Enabled = enabled;
             Max = max;
             Min = min;
         }

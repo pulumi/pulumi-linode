@@ -19,12 +19,12 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.LkeClusterPoolAutoscalerGetArgs>? Autoscaler { get; set; }
 
         /// <summary>
-        /// The number of nodes in the Node Pool.
+        /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// 
         /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
-        [Input("count", required: true)]
-        public Input<int> Count { get; set; } = null!;
+        [Input("count")]
+        public Input<int>? Count { get; set; }
 
         /// <summary>
         /// The ID of the node.

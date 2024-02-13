@@ -120,6 +120,11 @@ export const getDomainZonefile: typeof import("./getDomainZonefile").getDomainZo
 export const getDomainZonefileOutput: typeof import("./getDomainZonefile").getDomainZonefileOutput = null as any;
 utilities.lazyLoad(exports, ["getDomainZonefile","getDomainZonefileOutput"], () => require("./getDomainZonefile"));
 
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
 export { GetFirewallArgs, GetFirewallResult, GetFirewallOutputArgs } from "./getFirewall";
 export const getFirewall: typeof import("./getFirewall").getFirewall = null as any;
 export const getFirewallOutput: typeof import("./getFirewall").getFirewallOutput = null as any;
@@ -170,6 +175,11 @@ export const getIpv6Range: typeof import("./getIpv6Range").getIpv6Range = null a
 export const getIpv6RangeOutput: typeof import("./getIpv6Range").getIpv6RangeOutput = null as any;
 utilities.lazyLoad(exports, ["getIpv6Range","getIpv6RangeOutput"], () => require("./getIpv6Range"));
 
+export { GetIpv6RangesArgs, GetIpv6RangesResult, GetIpv6RangesOutputArgs } from "./getIpv6Ranges";
+export const getIpv6Ranges: typeof import("./getIpv6Ranges").getIpv6Ranges = null as any;
+export const getIpv6RangesOutput: typeof import("./getIpv6Ranges").getIpv6RangesOutput = null as any;
+utilities.lazyLoad(exports, ["getIpv6Ranges","getIpv6RangesOutput"], () => require("./getIpv6Ranges"));
+
 export { GetKernelArgs, GetKernelResult, GetKernelOutputArgs } from "./getKernel";
 export const getKernel: typeof import("./getKernel").getKernel = null as any;
 export const getKernelOutput: typeof import("./getKernel").getKernelOutput = null as any;
@@ -189,6 +199,11 @@ export { GetLkeClusterArgs, GetLkeClusterResult, GetLkeClusterOutputArgs } from 
 export const getLkeCluster: typeof import("./getLkeCluster").getLkeCluster = null as any;
 export const getLkeClusterOutput: typeof import("./getLkeCluster").getLkeClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeCluster","getLkeClusterOutput"], () => require("./getLkeCluster"));
+
+export { GetLkeClustersArgs, GetLkeClustersResult, GetLkeClustersOutputArgs } from "./getLkeClusters";
+export const getLkeClusters: typeof import("./getLkeClusters").getLkeClusters = null as any;
+export const getLkeClustersOutput: typeof import("./getLkeClusters").getLkeClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getLkeClusters","getLkeClustersOutput"], () => require("./getLkeClusters"));
 
 export { GetLkeVersionsResult } from "./getLkeVersions";
 export const getLkeVersions: typeof import("./getLkeVersions").getLkeVersions = null as any;

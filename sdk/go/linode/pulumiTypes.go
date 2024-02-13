@@ -3827,7 +3827,7 @@ type InstanceDiskType struct {
 	Filesystem *string `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id *int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label string `pulumi:"label"`
@@ -3863,7 +3863,7 @@ type InstanceDiskTypeArgs struct {
 	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -3950,7 +3950,7 @@ func (o InstanceDiskTypeOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceDiskTypeOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -4891,10 +4891,10 @@ func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput
 type LkeClusterPool struct {
 	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-	Count int `pulumi:"count"`
+	Count *int `pulumi:"count"`
 	// The ID of the node.
 	Id *int `pulumi:"id"`
 	// The nodes in the node pool.
@@ -4917,10 +4917,10 @@ type LkeClusterPoolInput interface {
 type LkeClusterPoolArgs struct {
 	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler LkeClusterPoolAutoscalerPtrInput `pulumi:"autoscaler"`
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-	Count pulumi.IntInput `pulumi:"count"`
+	Count pulumi.IntPtrInput `pulumi:"count"`
 	// The ID of the node.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The nodes in the node pool.
@@ -4985,11 +4985,11 @@ func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *LkeClusterPoolAutoscaler { return v.Autoscaler }).(LkeClusterPoolAutoscalerPtrOutput)
 }
 
-// The number of nodes in the Node Pool.
+// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 //
 // * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-func (o LkeClusterPoolOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v LkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
+func (o LkeClusterPoolOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the node.
@@ -5402,6 +5402,462 @@ func (o NodeBalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) NodeBa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeBalancerConfigNodeStatus {
 		return vs[0].([]NodeBalancerConfigNodeStatus)[vs[1].(int)]
 	}).(NodeBalancerConfigNodeStatusOutput)
+}
+
+type NodeBalancerFirewall struct {
+	// When this firewall was created.
+	Created string `pulumi:"created"`
+	// (Required) The Firewall's ID.
+	Id int `pulumi:"id"`
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+	InboundPolicy string                        `pulumi:"inboundPolicy"`
+	Inbounds      []NodeBalancerFirewallInbound `pulumi:"inbounds"`
+	// The label of the Linode NodeBalancer
+	Label string `pulumi:"label"`
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+	OutboundPolicy string                         `pulumi:"outboundPolicy"`
+	Outbounds      []NodeBalancerFirewallOutbound `pulumi:"outbounds"`
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+	Status string `pulumi:"status"`
+	// A list of tags applied to this object. Tags are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// NodeBalancerFirewallInput is an input type that accepts NodeBalancerFirewallArgs and NodeBalancerFirewallOutput values.
+// You can construct a concrete instance of `NodeBalancerFirewallInput` via:
+//
+//	NodeBalancerFirewallArgs{...}
+type NodeBalancerFirewallInput interface {
+	pulumi.Input
+
+	ToNodeBalancerFirewallOutput() NodeBalancerFirewallOutput
+	ToNodeBalancerFirewallOutputWithContext(context.Context) NodeBalancerFirewallOutput
+}
+
+type NodeBalancerFirewallArgs struct {
+	// When this firewall was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// (Required) The Firewall's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+	InboundPolicy pulumi.StringInput                    `pulumi:"inboundPolicy"`
+	Inbounds      NodeBalancerFirewallInboundArrayInput `pulumi:"inbounds"`
+	// The label of the Linode NodeBalancer
+	Label pulumi.StringInput `pulumi:"label"`
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+	OutboundPolicy pulumi.StringInput                     `pulumi:"outboundPolicy"`
+	Outbounds      NodeBalancerFirewallOutboundArrayInput `pulumi:"outbounds"`
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// A list of tags applied to this object. Tags are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (NodeBalancerFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerFirewall)(nil)).Elem()
+}
+
+func (i NodeBalancerFirewallArgs) ToNodeBalancerFirewallOutput() NodeBalancerFirewallOutput {
+	return i.ToNodeBalancerFirewallOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerFirewallArgs) ToNodeBalancerFirewallOutputWithContext(ctx context.Context) NodeBalancerFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerFirewallOutput)
+}
+
+// NodeBalancerFirewallArrayInput is an input type that accepts NodeBalancerFirewallArray and NodeBalancerFirewallArrayOutput values.
+// You can construct a concrete instance of `NodeBalancerFirewallArrayInput` via:
+//
+//	NodeBalancerFirewallArray{ NodeBalancerFirewallArgs{...} }
+type NodeBalancerFirewallArrayInput interface {
+	pulumi.Input
+
+	ToNodeBalancerFirewallArrayOutput() NodeBalancerFirewallArrayOutput
+	ToNodeBalancerFirewallArrayOutputWithContext(context.Context) NodeBalancerFirewallArrayOutput
+}
+
+type NodeBalancerFirewallArray []NodeBalancerFirewallInput
+
+func (NodeBalancerFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerFirewall)(nil)).Elem()
+}
+
+func (i NodeBalancerFirewallArray) ToNodeBalancerFirewallArrayOutput() NodeBalancerFirewallArrayOutput {
+	return i.ToNodeBalancerFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerFirewallArray) ToNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) NodeBalancerFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerFirewallArrayOutput)
+}
+
+type NodeBalancerFirewallOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerFirewall)(nil)).Elem()
+}
+
+func (o NodeBalancerFirewallOutput) ToNodeBalancerFirewallOutput() NodeBalancerFirewallOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallOutput) ToNodeBalancerFirewallOutputWithContext(ctx context.Context) NodeBalancerFirewallOutput {
+	return o
+}
+
+// When this firewall was created.
+func (o NodeBalancerFirewallOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// (Required) The Firewall's ID.
+func (o NodeBalancerFirewallOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+func (o NodeBalancerFirewallOutput) InboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.InboundPolicy }).(pulumi.StringOutput)
+}
+
+func (o NodeBalancerFirewallOutput) Inbounds() NodeBalancerFirewallInboundArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) []NodeBalancerFirewallInbound { return v.Inbounds }).(NodeBalancerFirewallInboundArrayOutput)
+}
+
+// The label of the Linode NodeBalancer
+func (o NodeBalancerFirewallOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+func (o NodeBalancerFirewallOutput) OutboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.OutboundPolicy }).(pulumi.StringOutput)
+}
+
+func (o NodeBalancerFirewallOutput) Outbounds() NodeBalancerFirewallOutboundArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) []NodeBalancerFirewallOutbound { return v.Outbounds }).(NodeBalancerFirewallOutboundArrayOutput)
+}
+
+// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+func (o NodeBalancerFirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to this object. Tags are for organizational purposes only.
+func (o NodeBalancerFirewallOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this firewall was last updated.
+func (o NodeBalancerFirewallOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type NodeBalancerFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerFirewall)(nil)).Elem()
+}
+
+func (o NodeBalancerFirewallArrayOutput) ToNodeBalancerFirewallArrayOutput() NodeBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallArrayOutput) ToNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) NodeBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallArrayOutput) Index(i pulumi.IntInput) NodeBalancerFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeBalancerFirewall {
+		return vs[0].([]NodeBalancerFirewall)[vs[1].(int)]
+	}).(NodeBalancerFirewallOutput)
+}
+
+type NodeBalancerFirewallInbound struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// The label of the Linode NodeBalancer
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol string `pulumi:"protocol"`
+}
+
+// NodeBalancerFirewallInboundInput is an input type that accepts NodeBalancerFirewallInboundArgs and NodeBalancerFirewallInboundOutput values.
+// You can construct a concrete instance of `NodeBalancerFirewallInboundInput` via:
+//
+//	NodeBalancerFirewallInboundArgs{...}
+type NodeBalancerFirewallInboundInput interface {
+	pulumi.Input
+
+	ToNodeBalancerFirewallInboundOutput() NodeBalancerFirewallInboundOutput
+	ToNodeBalancerFirewallInboundOutputWithContext(context.Context) NodeBalancerFirewallInboundOutput
+}
+
+type NodeBalancerFirewallInboundArgs struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// The label of the Linode NodeBalancer
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (NodeBalancerFirewallInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (i NodeBalancerFirewallInboundArgs) ToNodeBalancerFirewallInboundOutput() NodeBalancerFirewallInboundOutput {
+	return i.ToNodeBalancerFirewallInboundOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerFirewallInboundArgs) ToNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) NodeBalancerFirewallInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerFirewallInboundOutput)
+}
+
+// NodeBalancerFirewallInboundArrayInput is an input type that accepts NodeBalancerFirewallInboundArray and NodeBalancerFirewallInboundArrayOutput values.
+// You can construct a concrete instance of `NodeBalancerFirewallInboundArrayInput` via:
+//
+//	NodeBalancerFirewallInboundArray{ NodeBalancerFirewallInboundArgs{...} }
+type NodeBalancerFirewallInboundArrayInput interface {
+	pulumi.Input
+
+	ToNodeBalancerFirewallInboundArrayOutput() NodeBalancerFirewallInboundArrayOutput
+	ToNodeBalancerFirewallInboundArrayOutputWithContext(context.Context) NodeBalancerFirewallInboundArrayOutput
+}
+
+type NodeBalancerFirewallInboundArray []NodeBalancerFirewallInboundInput
+
+func (NodeBalancerFirewallInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (i NodeBalancerFirewallInboundArray) ToNodeBalancerFirewallInboundArrayOutput() NodeBalancerFirewallInboundArrayOutput {
+	return i.ToNodeBalancerFirewallInboundArrayOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerFirewallInboundArray) ToNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) NodeBalancerFirewallInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerFirewallInboundArrayOutput)
+}
+
+type NodeBalancerFirewallInboundOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerFirewallInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (o NodeBalancerFirewallInboundOutput) ToNodeBalancerFirewallInboundOutput() NodeBalancerFirewallInboundOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallInboundOutput) ToNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) NodeBalancerFirewallInboundOutput {
+	return o
+}
+
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o NodeBalancerFirewallInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o NodeBalancerFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o NodeBalancerFirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// The label of the Linode NodeBalancer
+func (o NodeBalancerFirewallInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o NodeBalancerFirewallInboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+func (o NodeBalancerFirewallInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type NodeBalancerFirewallInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerFirewallInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (o NodeBalancerFirewallInboundArrayOutput) ToNodeBalancerFirewallInboundArrayOutput() NodeBalancerFirewallInboundArrayOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallInboundArrayOutput) ToNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) NodeBalancerFirewallInboundArrayOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallInboundArrayOutput) Index(i pulumi.IntInput) NodeBalancerFirewallInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeBalancerFirewallInbound {
+		return vs[0].([]NodeBalancerFirewallInbound)[vs[1].(int)]
+	}).(NodeBalancerFirewallInboundOutput)
+}
+
+type NodeBalancerFirewallOutbound struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// The label of the Linode NodeBalancer
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol string `pulumi:"protocol"`
+}
+
+// NodeBalancerFirewallOutboundInput is an input type that accepts NodeBalancerFirewallOutboundArgs and NodeBalancerFirewallOutboundOutput values.
+// You can construct a concrete instance of `NodeBalancerFirewallOutboundInput` via:
+//
+//	NodeBalancerFirewallOutboundArgs{...}
+type NodeBalancerFirewallOutboundInput interface {
+	pulumi.Input
+
+	ToNodeBalancerFirewallOutboundOutput() NodeBalancerFirewallOutboundOutput
+	ToNodeBalancerFirewallOutboundOutputWithContext(context.Context) NodeBalancerFirewallOutboundOutput
+}
+
+type NodeBalancerFirewallOutboundArgs struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// The label of the Linode NodeBalancer
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (NodeBalancerFirewallOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (i NodeBalancerFirewallOutboundArgs) ToNodeBalancerFirewallOutboundOutput() NodeBalancerFirewallOutboundOutput {
+	return i.ToNodeBalancerFirewallOutboundOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerFirewallOutboundArgs) ToNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) NodeBalancerFirewallOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerFirewallOutboundOutput)
+}
+
+// NodeBalancerFirewallOutboundArrayInput is an input type that accepts NodeBalancerFirewallOutboundArray and NodeBalancerFirewallOutboundArrayOutput values.
+// You can construct a concrete instance of `NodeBalancerFirewallOutboundArrayInput` via:
+//
+//	NodeBalancerFirewallOutboundArray{ NodeBalancerFirewallOutboundArgs{...} }
+type NodeBalancerFirewallOutboundArrayInput interface {
+	pulumi.Input
+
+	ToNodeBalancerFirewallOutboundArrayOutput() NodeBalancerFirewallOutboundArrayOutput
+	ToNodeBalancerFirewallOutboundArrayOutputWithContext(context.Context) NodeBalancerFirewallOutboundArrayOutput
+}
+
+type NodeBalancerFirewallOutboundArray []NodeBalancerFirewallOutboundInput
+
+func (NodeBalancerFirewallOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (i NodeBalancerFirewallOutboundArray) ToNodeBalancerFirewallOutboundArrayOutput() NodeBalancerFirewallOutboundArrayOutput {
+	return i.ToNodeBalancerFirewallOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i NodeBalancerFirewallOutboundArray) ToNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) NodeBalancerFirewallOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeBalancerFirewallOutboundArrayOutput)
+}
+
+type NodeBalancerFirewallOutboundOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerFirewallOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (o NodeBalancerFirewallOutboundOutput) ToNodeBalancerFirewallOutboundOutput() NodeBalancerFirewallOutboundOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallOutboundOutput) ToNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) NodeBalancerFirewallOutboundOutput {
+	return o
+}
+
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o NodeBalancerFirewallOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o NodeBalancerFirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o NodeBalancerFirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// The label of the Linode NodeBalancer
+func (o NodeBalancerFirewallOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o NodeBalancerFirewallOutboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+func (o NodeBalancerFirewallOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type NodeBalancerFirewallOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeBalancerFirewallOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (o NodeBalancerFirewallOutboundArrayOutput) ToNodeBalancerFirewallOutboundArrayOutput() NodeBalancerFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallOutboundArrayOutput) ToNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) NodeBalancerFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o NodeBalancerFirewallOutboundArrayOutput) Index(i pulumi.IntInput) NodeBalancerFirewallOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeBalancerFirewallOutbound {
+		return vs[0].([]NodeBalancerFirewallOutbound)[vs[1].(int)]
+	}).(NodeBalancerFirewallOutboundOutput)
 }
 
 type NodeBalancerTransfer struct {
@@ -6258,6 +6714,162 @@ func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) Object
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageKeyBucketAccess {
 		return vs[0].([]ObjectStorageKeyBucketAccess)[vs[1].(int)]
 	}).(ObjectStorageKeyBucketAccessOutput)
+}
+
+type RdnsTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// RdnsTimeoutsInput is an input type that accepts RdnsTimeoutsArgs and RdnsTimeoutsOutput values.
+// You can construct a concrete instance of `RdnsTimeoutsInput` via:
+//
+//	RdnsTimeoutsArgs{...}
+type RdnsTimeoutsInput interface {
+	pulumi.Input
+
+	ToRdnsTimeoutsOutput() RdnsTimeoutsOutput
+	ToRdnsTimeoutsOutputWithContext(context.Context) RdnsTimeoutsOutput
+}
+
+type RdnsTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (RdnsTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdnsTimeouts)(nil)).Elem()
+}
+
+func (i RdnsTimeoutsArgs) ToRdnsTimeoutsOutput() RdnsTimeoutsOutput {
+	return i.ToRdnsTimeoutsOutputWithContext(context.Background())
+}
+
+func (i RdnsTimeoutsArgs) ToRdnsTimeoutsOutputWithContext(ctx context.Context) RdnsTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdnsTimeoutsOutput)
+}
+
+func (i RdnsTimeoutsArgs) ToRdnsTimeoutsPtrOutput() RdnsTimeoutsPtrOutput {
+	return i.ToRdnsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i RdnsTimeoutsArgs) ToRdnsTimeoutsPtrOutputWithContext(ctx context.Context) RdnsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdnsTimeoutsOutput).ToRdnsTimeoutsPtrOutputWithContext(ctx)
+}
+
+// RdnsTimeoutsPtrInput is an input type that accepts RdnsTimeoutsArgs, RdnsTimeoutsPtr and RdnsTimeoutsPtrOutput values.
+// You can construct a concrete instance of `RdnsTimeoutsPtrInput` via:
+//
+//	        RdnsTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RdnsTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToRdnsTimeoutsPtrOutput() RdnsTimeoutsPtrOutput
+	ToRdnsTimeoutsPtrOutputWithContext(context.Context) RdnsTimeoutsPtrOutput
+}
+
+type rdnsTimeoutsPtrType RdnsTimeoutsArgs
+
+func RdnsTimeoutsPtr(v *RdnsTimeoutsArgs) RdnsTimeoutsPtrInput {
+	return (*rdnsTimeoutsPtrType)(v)
+}
+
+func (*rdnsTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdnsTimeouts)(nil)).Elem()
+}
+
+func (i *rdnsTimeoutsPtrType) ToRdnsTimeoutsPtrOutput() RdnsTimeoutsPtrOutput {
+	return i.ToRdnsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *rdnsTimeoutsPtrType) ToRdnsTimeoutsPtrOutputWithContext(ctx context.Context) RdnsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdnsTimeoutsPtrOutput)
+}
+
+type RdnsTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (RdnsTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdnsTimeouts)(nil)).Elem()
+}
+
+func (o RdnsTimeoutsOutput) ToRdnsTimeoutsOutput() RdnsTimeoutsOutput {
+	return o
+}
+
+func (o RdnsTimeoutsOutput) ToRdnsTimeoutsOutputWithContext(ctx context.Context) RdnsTimeoutsOutput {
+	return o
+}
+
+func (o RdnsTimeoutsOutput) ToRdnsTimeoutsPtrOutput() RdnsTimeoutsPtrOutput {
+	return o.ToRdnsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o RdnsTimeoutsOutput) ToRdnsTimeoutsPtrOutputWithContext(ctx context.Context) RdnsTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdnsTimeouts) *RdnsTimeouts {
+		return &v
+	}).(RdnsTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RdnsTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RdnsTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RdnsTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RdnsTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type RdnsTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (RdnsTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdnsTimeouts)(nil)).Elem()
+}
+
+func (o RdnsTimeoutsPtrOutput) ToRdnsTimeoutsPtrOutput() RdnsTimeoutsPtrOutput {
+	return o
+}
+
+func (o RdnsTimeoutsPtrOutput) ToRdnsTimeoutsPtrOutputWithContext(ctx context.Context) RdnsTimeoutsPtrOutput {
+	return o
+}
+
+func (o RdnsTimeoutsPtrOutput) Elem() RdnsTimeoutsOutput {
+	return o.ApplyT(func(v *RdnsTimeouts) RdnsTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret RdnsTimeouts
+		return ret
+	}).(RdnsTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RdnsTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdnsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RdnsTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdnsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type StackScriptUserDefinedField struct {
@@ -7594,6 +8206,181 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserVolumeGrant {
 		return vs[0].([]UserVolumeGrant)[vs[1].(int)]
 	}).(UserVolumeGrantOutput)
+}
+
+type VolumeTimeouts struct {
+	// Used when creating the volume (until the volume is reaches the initial `active` state)
+	Create *string `pulumi:"create"`
+	// Used when deleting the volume
+	Delete *string `pulumi:"delete"`
+	// Used when updating the volume when necessary during update - e.g. when resizing the volume
+	Update *string `pulumi:"update"`
+}
+
+// VolumeTimeoutsInput is an input type that accepts VolumeTimeoutsArgs and VolumeTimeoutsOutput values.
+// You can construct a concrete instance of `VolumeTimeoutsInput` via:
+//
+//	VolumeTimeoutsArgs{...}
+type VolumeTimeoutsInput interface {
+	pulumi.Input
+
+	ToVolumeTimeoutsOutput() VolumeTimeoutsOutput
+	ToVolumeTimeoutsOutputWithContext(context.Context) VolumeTimeoutsOutput
+}
+
+type VolumeTimeoutsArgs struct {
+	// Used when creating the volume (until the volume is reaches the initial `active` state)
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// Used when deleting the volume
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// Used when updating the volume when necessary during update - e.g. when resizing the volume
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VolumeTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeTimeouts)(nil)).Elem()
+}
+
+func (i VolumeTimeoutsArgs) ToVolumeTimeoutsOutput() VolumeTimeoutsOutput {
+	return i.ToVolumeTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VolumeTimeoutsArgs) ToVolumeTimeoutsOutputWithContext(ctx context.Context) VolumeTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeTimeoutsOutput)
+}
+
+func (i VolumeTimeoutsArgs) ToVolumeTimeoutsPtrOutput() VolumeTimeoutsPtrOutput {
+	return i.ToVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeTimeoutsArgs) ToVolumeTimeoutsPtrOutputWithContext(ctx context.Context) VolumeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeTimeoutsOutput).ToVolumeTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VolumeTimeoutsPtrInput is an input type that accepts VolumeTimeoutsArgs, VolumeTimeoutsPtr and VolumeTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VolumeTimeoutsPtrInput` via:
+//
+//	        VolumeTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVolumeTimeoutsPtrOutput() VolumeTimeoutsPtrOutput
+	ToVolumeTimeoutsPtrOutputWithContext(context.Context) VolumeTimeoutsPtrOutput
+}
+
+type volumeTimeoutsPtrType VolumeTimeoutsArgs
+
+func VolumeTimeoutsPtr(v *VolumeTimeoutsArgs) VolumeTimeoutsPtrInput {
+	return (*volumeTimeoutsPtrType)(v)
+}
+
+func (*volumeTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeTimeouts)(nil)).Elem()
+}
+
+func (i *volumeTimeoutsPtrType) ToVolumeTimeoutsPtrOutput() VolumeTimeoutsPtrOutput {
+	return i.ToVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeTimeoutsPtrType) ToVolumeTimeoutsPtrOutputWithContext(ctx context.Context) VolumeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeTimeoutsPtrOutput)
+}
+
+type VolumeTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VolumeTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeTimeouts)(nil)).Elem()
+}
+
+func (o VolumeTimeoutsOutput) ToVolumeTimeoutsOutput() VolumeTimeoutsOutput {
+	return o
+}
+
+func (o VolumeTimeoutsOutput) ToVolumeTimeoutsOutputWithContext(ctx context.Context) VolumeTimeoutsOutput {
+	return o
+}
+
+func (o VolumeTimeoutsOutput) ToVolumeTimeoutsPtrOutput() VolumeTimeoutsPtrOutput {
+	return o.ToVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeTimeoutsOutput) ToVolumeTimeoutsPtrOutputWithContext(ctx context.Context) VolumeTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeTimeouts) *VolumeTimeouts {
+		return &v
+	}).(VolumeTimeoutsPtrOutput)
+}
+
+// Used when creating the volume (until the volume is reaches the initial `active` state)
+func (o VolumeTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// Used when deleting the volume
+func (o VolumeTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// Used when updating the volume when necessary during update - e.g. when resizing the volume
+func (o VolumeTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VolumeTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeTimeouts)(nil)).Elem()
+}
+
+func (o VolumeTimeoutsPtrOutput) ToVolumeTimeoutsPtrOutput() VolumeTimeoutsPtrOutput {
+	return o
+}
+
+func (o VolumeTimeoutsPtrOutput) ToVolumeTimeoutsPtrOutputWithContext(ctx context.Context) VolumeTimeoutsPtrOutput {
+	return o
+}
+
+func (o VolumeTimeoutsPtrOutput) Elem() VolumeTimeoutsOutput {
+	return o.ApplyT(func(v *VolumeTimeouts) VolumeTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeTimeouts
+		return ret
+	}).(VolumeTimeoutsOutput)
+}
+
+// Used when creating the volume (until the volume is reaches the initial `active` state)
+func (o VolumeTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// Used when deleting the volume
+func (o VolumeTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// Used when updating the volume when necessary during update - e.g. when resizing the volume
+func (o VolumeTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type VpcSubnetLinode struct {
@@ -9578,6 +10365,335 @@ func (o GetDatabasesFilterArrayOutput) Index(i pulumi.IntInput) GetDatabasesFilt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasesFilter {
 		return vs[0].([]GetDatabasesFilter)[vs[1].(int)]
 	}).(GetDatabasesFilterOutput)
+}
+
+type GetDomainsDomain struct {
+	// The list of IPs that may perform a zone transfer for this Domain.
+	AxfrIps []string `pulumi:"axfrIps"`
+	// A description for this Domain.
+	Description string `pulumi:"description"`
+	// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+	Domain *string `pulumi:"domain"`
+	// The amount of time in seconds that may pass before this Domain is no longer authoritative.
+	ExpireSec int `pulumi:"expireSec"`
+	// The group this Domain belongs to.
+	Group string `pulumi:"group"`
+	// The unique ID of this Domain.
+	Id *int `pulumi:"id"`
+	// The IP addresses representing the master DNS for this Domain.
+	MasterIps []string `pulumi:"masterIps"`
+	// The amount of time in seconds before this Domain should be refreshed.
+	RefreshSec int `pulumi:"refreshSec"`
+	// The interval, in seconds, at which a failed refresh should be retried.
+	RetrySec int `pulumi:"retrySec"`
+	// Start of Authority email address.
+	SoaEmail string `pulumi:"soaEmail"`
+	// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+	Status string `pulumi:"status"`
+	// An array of tags applied to this object.
+	Tags []string `pulumi:"tags"`
+	// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+	TtlSec int `pulumi:"ttlSec"`
+	// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+	Type string `pulumi:"type"`
+}
+
+// GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
+// You can construct a concrete instance of `GetDomainsDomainInput` via:
+//
+//	GetDomainsDomainArgs{...}
+type GetDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainOutput() GetDomainsDomainOutput
+	ToGetDomainsDomainOutputWithContext(context.Context) GetDomainsDomainOutput
+}
+
+type GetDomainsDomainArgs struct {
+	// The list of IPs that may perform a zone transfer for this Domain.
+	AxfrIps pulumi.StringArrayInput `pulumi:"axfrIps"`
+	// A description for this Domain.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The amount of time in seconds that may pass before this Domain is no longer authoritative.
+	ExpireSec pulumi.IntInput `pulumi:"expireSec"`
+	// The group this Domain belongs to.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The unique ID of this Domain.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The IP addresses representing the master DNS for this Domain.
+	MasterIps pulumi.StringArrayInput `pulumi:"masterIps"`
+	// The amount of time in seconds before this Domain should be refreshed.
+	RefreshSec pulumi.IntInput `pulumi:"refreshSec"`
+	// The interval, in seconds, at which a failed refresh should be retried.
+	RetrySec pulumi.IntInput `pulumi:"retrySec"`
+	// Start of Authority email address.
+	SoaEmail pulumi.StringInput `pulumi:"soaEmail"`
+	// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// An array of tags applied to this object.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+	TtlSec pulumi.IntInput `pulumi:"ttlSec"`
+	// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return i.ToGetDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
+}
+
+// GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
+//
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+type GetDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput
+	ToGetDomainsDomainArrayOutputWithContext(context.Context) GetDomainsDomainArrayOutput
+}
+
+type GetDomainsDomainArray []GetDomainsDomainInput
+
+func (GetDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return i.ToGetDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
+}
+
+type GetDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return o
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return o
+}
+
+// The list of IPs that may perform a zone transfer for this Domain.
+func (o GetDomainsDomainOutput) AxfrIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.AxfrIps }).(pulumi.StringArrayOutput)
+}
+
+// A description for this Domain.
+func (o GetDomainsDomainOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+func (o GetDomainsDomainOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsDomain) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time in seconds that may pass before this Domain is no longer authoritative.
+func (o GetDomainsDomainOutput) ExpireSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.ExpireSec }).(pulumi.IntOutput)
+}
+
+// The group this Domain belongs to.
+func (o GetDomainsDomainOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// The unique ID of this Domain.
+func (o GetDomainsDomainOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDomainsDomain) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The IP addresses representing the master DNS for this Domain.
+func (o GetDomainsDomainOutput) MasterIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.MasterIps }).(pulumi.StringArrayOutput)
+}
+
+// The amount of time in seconds before this Domain should be refreshed.
+func (o GetDomainsDomainOutput) RefreshSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.RefreshSec }).(pulumi.IntOutput)
+}
+
+// The interval, in seconds, at which a failed refresh should be retried.
+func (o GetDomainsDomainOutput) RetrySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.RetrySec }).(pulumi.IntOutput)
+}
+
+// Start of Authority email address.
+func (o GetDomainsDomainOutput) SoaEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.SoaEmail }).(pulumi.StringOutput)
+}
+
+// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+func (o GetDomainsDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// An array of tags applied to this object.
+func (o GetDomainsDomainOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+func (o GetDomainsDomainOutput) TtlSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.TtlSec }).(pulumi.IntOutput)
+}
+
+// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+func (o GetDomainsDomainOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
+		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
+	}).(GetDomainsDomainOutput)
+}
+
+type GetDomainsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetDomainsFilterInput is an input type that accepts GetDomainsFilterArgs and GetDomainsFilterOutput values.
+// You can construct a concrete instance of `GetDomainsFilterInput` via:
+//
+//	GetDomainsFilterArgs{...}
+type GetDomainsFilterInput interface {
+	pulumi.Input
+
+	ToGetDomainsFilterOutput() GetDomainsFilterOutput
+	ToGetDomainsFilterOutputWithContext(context.Context) GetDomainsFilterOutput
+}
+
+type GetDomainsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDomainsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsFilter)(nil)).Elem()
+}
+
+func (i GetDomainsFilterArgs) ToGetDomainsFilterOutput() GetDomainsFilterOutput {
+	return i.ToGetDomainsFilterOutputWithContext(context.Background())
+}
+
+func (i GetDomainsFilterArgs) ToGetDomainsFilterOutputWithContext(ctx context.Context) GetDomainsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsFilterOutput)
+}
+
+// GetDomainsFilterArrayInput is an input type that accepts GetDomainsFilterArray and GetDomainsFilterArrayOutput values.
+// You can construct a concrete instance of `GetDomainsFilterArrayInput` via:
+//
+//	GetDomainsFilterArray{ GetDomainsFilterArgs{...} }
+type GetDomainsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsFilterArrayOutput() GetDomainsFilterArrayOutput
+	ToGetDomainsFilterArrayOutputWithContext(context.Context) GetDomainsFilterArrayOutput
+}
+
+type GetDomainsFilterArray []GetDomainsFilterInput
+
+func (GetDomainsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsFilter)(nil)).Elem()
+}
+
+func (i GetDomainsFilterArray) ToGetDomainsFilterArrayOutput() GetDomainsFilterArrayOutput {
+	return i.ToGetDomainsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsFilterArray) ToGetDomainsFilterArrayOutputWithContext(ctx context.Context) GetDomainsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsFilterArrayOutput)
+}
+
+type GetDomainsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsFilter)(nil)).Elem()
+}
+
+func (o GetDomainsFilterOutput) ToGetDomainsFilterOutput() GetDomainsFilterOutput {
+	return o
+}
+
+func (o GetDomainsFilterOutput) ToGetDomainsFilterOutputWithContext(ctx context.Context) GetDomainsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetDomainsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetDomainsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetDomainsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDomainsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsFilter)(nil)).Elem()
+}
+
+func (o GetDomainsFilterArrayOutput) ToGetDomainsFilterArrayOutput() GetDomainsFilterArrayOutput {
+	return o
+}
+
+func (o GetDomainsFilterArrayOutput) ToGetDomainsFilterArrayOutputWithContext(ctx context.Context) GetDomainsFilterArrayOutput {
+	return o
+}
+
+func (o GetDomainsFilterArrayOutput) Index(i pulumi.IntInput) GetDomainsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsFilter {
+		return vs[0].([]GetDomainsFilter)[vs[1].(int)]
+	}).(GetDomainsFilterOutput)
 }
 
 type GetFirewallDeviceType struct {
@@ -15186,7 +16302,7 @@ type GetInstancesInstance struct {
 	HostUuid string `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
 	Id int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image string `pulumi:"image"`
 	// A string containing the Linode's public IP address.
 	IpAddress string `pulumi:"ipAddress"`
@@ -15242,7 +16358,7 @@ type GetInstancesInstanceArgs struct {
 	HostUuid pulumi.StringInput `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringInput `pulumi:"image"`
 	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
@@ -15364,7 +16480,7 @@ func (o GetInstancesInstanceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 func (o GetInstancesInstanceOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -17641,6 +18757,245 @@ func (o GetInstancesInstanceSpecArrayOutput) Index(i pulumi.IntInput) GetInstanc
 	}).(GetInstancesInstanceSpecOutput)
 }
 
+type GetIpv6RangesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetIpv6RangesFilterInput is an input type that accepts GetIpv6RangesFilterArgs and GetIpv6RangesFilterOutput values.
+// You can construct a concrete instance of `GetIpv6RangesFilterInput` via:
+//
+//	GetIpv6RangesFilterArgs{...}
+type GetIpv6RangesFilterInput interface {
+	pulumi.Input
+
+	ToGetIpv6RangesFilterOutput() GetIpv6RangesFilterOutput
+	ToGetIpv6RangesFilterOutputWithContext(context.Context) GetIpv6RangesFilterOutput
+}
+
+type GetIpv6RangesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetIpv6RangesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6RangesFilter)(nil)).Elem()
+}
+
+func (i GetIpv6RangesFilterArgs) ToGetIpv6RangesFilterOutput() GetIpv6RangesFilterOutput {
+	return i.ToGetIpv6RangesFilterOutputWithContext(context.Background())
+}
+
+func (i GetIpv6RangesFilterArgs) ToGetIpv6RangesFilterOutputWithContext(ctx context.Context) GetIpv6RangesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6RangesFilterOutput)
+}
+
+// GetIpv6RangesFilterArrayInput is an input type that accepts GetIpv6RangesFilterArray and GetIpv6RangesFilterArrayOutput values.
+// You can construct a concrete instance of `GetIpv6RangesFilterArrayInput` via:
+//
+//	GetIpv6RangesFilterArray{ GetIpv6RangesFilterArgs{...} }
+type GetIpv6RangesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6RangesFilterArrayOutput() GetIpv6RangesFilterArrayOutput
+	ToGetIpv6RangesFilterArrayOutputWithContext(context.Context) GetIpv6RangesFilterArrayOutput
+}
+
+type GetIpv6RangesFilterArray []GetIpv6RangesFilterInput
+
+func (GetIpv6RangesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6RangesFilter)(nil)).Elem()
+}
+
+func (i GetIpv6RangesFilterArray) ToGetIpv6RangesFilterArrayOutput() GetIpv6RangesFilterArrayOutput {
+	return i.ToGetIpv6RangesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6RangesFilterArray) ToGetIpv6RangesFilterArrayOutputWithContext(ctx context.Context) GetIpv6RangesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6RangesFilterArrayOutput)
+}
+
+type GetIpv6RangesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6RangesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6RangesFilter)(nil)).Elem()
+}
+
+func (o GetIpv6RangesFilterOutput) ToGetIpv6RangesFilterOutput() GetIpv6RangesFilterOutput {
+	return o
+}
+
+func (o GetIpv6RangesFilterOutput) ToGetIpv6RangesFilterOutputWithContext(ctx context.Context) GetIpv6RangesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetIpv6RangesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpv6RangesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetIpv6RangesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6RangesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetIpv6RangesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpv6RangesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetIpv6RangesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6RangesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6RangesFilter)(nil)).Elem()
+}
+
+func (o GetIpv6RangesFilterArrayOutput) ToGetIpv6RangesFilterArrayOutput() GetIpv6RangesFilterArrayOutput {
+	return o
+}
+
+func (o GetIpv6RangesFilterArrayOutput) ToGetIpv6RangesFilterArrayOutputWithContext(ctx context.Context) GetIpv6RangesFilterArrayOutput {
+	return o
+}
+
+func (o GetIpv6RangesFilterArrayOutput) Index(i pulumi.IntInput) GetIpv6RangesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6RangesFilter {
+		return vs[0].([]GetIpv6RangesFilter)[vs[1].(int)]
+	}).(GetIpv6RangesFilterOutput)
+}
+
+type GetIpv6RangesRange struct {
+	// The prefix length of the address, denoting how many addresses can be assigned from this range.
+	Prefix int `pulumi:"prefix"`
+	// The IPv6 address of this range.
+	Range string `pulumi:"range"`
+	// The region for this range of IPv6 addresses.
+	Region string `pulumi:"region"`
+	// The IPv6 SLAAC address.
+	RouteTarget string `pulumi:"routeTarget"`
+}
+
+// GetIpv6RangesRangeInput is an input type that accepts GetIpv6RangesRangeArgs and GetIpv6RangesRangeOutput values.
+// You can construct a concrete instance of `GetIpv6RangesRangeInput` via:
+//
+//	GetIpv6RangesRangeArgs{...}
+type GetIpv6RangesRangeInput interface {
+	pulumi.Input
+
+	ToGetIpv6RangesRangeOutput() GetIpv6RangesRangeOutput
+	ToGetIpv6RangesRangeOutputWithContext(context.Context) GetIpv6RangesRangeOutput
+}
+
+type GetIpv6RangesRangeArgs struct {
+	// The prefix length of the address, denoting how many addresses can be assigned from this range.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// The IPv6 address of this range.
+	Range pulumi.StringInput `pulumi:"range"`
+	// The region for this range of IPv6 addresses.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The IPv6 SLAAC address.
+	RouteTarget pulumi.StringInput `pulumi:"routeTarget"`
+}
+
+func (GetIpv6RangesRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6RangesRange)(nil)).Elem()
+}
+
+func (i GetIpv6RangesRangeArgs) ToGetIpv6RangesRangeOutput() GetIpv6RangesRangeOutput {
+	return i.ToGetIpv6RangesRangeOutputWithContext(context.Background())
+}
+
+func (i GetIpv6RangesRangeArgs) ToGetIpv6RangesRangeOutputWithContext(ctx context.Context) GetIpv6RangesRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6RangesRangeOutput)
+}
+
+// GetIpv6RangesRangeArrayInput is an input type that accepts GetIpv6RangesRangeArray and GetIpv6RangesRangeArrayOutput values.
+// You can construct a concrete instance of `GetIpv6RangesRangeArrayInput` via:
+//
+//	GetIpv6RangesRangeArray{ GetIpv6RangesRangeArgs{...} }
+type GetIpv6RangesRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6RangesRangeArrayOutput() GetIpv6RangesRangeArrayOutput
+	ToGetIpv6RangesRangeArrayOutputWithContext(context.Context) GetIpv6RangesRangeArrayOutput
+}
+
+type GetIpv6RangesRangeArray []GetIpv6RangesRangeInput
+
+func (GetIpv6RangesRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6RangesRange)(nil)).Elem()
+}
+
+func (i GetIpv6RangesRangeArray) ToGetIpv6RangesRangeArrayOutput() GetIpv6RangesRangeArrayOutput {
+	return i.ToGetIpv6RangesRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6RangesRangeArray) ToGetIpv6RangesRangeArrayOutputWithContext(ctx context.Context) GetIpv6RangesRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6RangesRangeArrayOutput)
+}
+
+type GetIpv6RangesRangeOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6RangesRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6RangesRange)(nil)).Elem()
+}
+
+func (o GetIpv6RangesRangeOutput) ToGetIpv6RangesRangeOutput() GetIpv6RangesRangeOutput {
+	return o
+}
+
+func (o GetIpv6RangesRangeOutput) ToGetIpv6RangesRangeOutputWithContext(ctx context.Context) GetIpv6RangesRangeOutput {
+	return o
+}
+
+// The prefix length of the address, denoting how many addresses can be assigned from this range.
+func (o GetIpv6RangesRangeOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpv6RangesRange) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// The IPv6 address of this range.
+func (o GetIpv6RangesRangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6RangesRange) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The region for this range of IPv6 addresses.
+func (o GetIpv6RangesRangeOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6RangesRange) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The IPv6 SLAAC address.
+func (o GetIpv6RangesRangeOutput) RouteTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6RangesRange) string { return v.RouteTarget }).(pulumi.StringOutput)
+}
+
+type GetIpv6RangesRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6RangesRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6RangesRange)(nil)).Elem()
+}
+
+func (o GetIpv6RangesRangeArrayOutput) ToGetIpv6RangesRangeArrayOutput() GetIpv6RangesRangeArrayOutput {
+	return o
+}
+
+func (o GetIpv6RangesRangeArrayOutput) ToGetIpv6RangesRangeArrayOutputWithContext(ctx context.Context) GetIpv6RangesRangeArrayOutput {
+	return o
+}
+
+func (o GetIpv6RangesRangeArrayOutput) Index(i pulumi.IntInput) GetIpv6RangesRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6RangesRange {
+		return vs[0].([]GetIpv6RangesRange)[vs[1].(int)]
+	}).(GetIpv6RangesRangeOutput)
+}
+
 type GetKernelsFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -18027,11 +19382,15 @@ type GetLkeClusterPool struct {
 	Autoscalers []GetLkeClusterPoolAutoscaler `pulumi:"autoscalers"`
 	// The number of nodes in the Node Pool.
 	Count int `pulumi:"count"`
+	// This Node Pool’s custom disk layout.
+	Disks []GetLkeClusterPoolDisk `pulumi:"disks"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
 	// The nodes in the Node Pool.
 	Nodes []GetLkeClusterPoolNode `pulumi:"nodes"`
-	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+	// An array of tags applied to this object. Tags are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
+	// This custom disk partition’s filesystem type.
 	Type string `pulumi:"type"`
 }
 
@@ -18051,11 +19410,15 @@ type GetLkeClusterPoolArgs struct {
 	Autoscalers GetLkeClusterPoolAutoscalerArrayInput `pulumi:"autoscalers"`
 	// The number of nodes in the Node Pool.
 	Count pulumi.IntInput `pulumi:"count"`
+	// This Node Pool’s custom disk layout.
+	Disks GetLkeClusterPoolDiskArrayInput `pulumi:"disks"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The nodes in the Node Pool.
 	Nodes GetLkeClusterPoolNodeArrayInput `pulumi:"nodes"`
-	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+	// An array of tags applied to this object. Tags are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// This custom disk partition’s filesystem type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -18120,6 +19483,11 @@ func (o GetLkeClusterPoolOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// This Node Pool’s custom disk layout.
+func (o GetLkeClusterPoolOutput) Disks() GetLkeClusterPoolDiskArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolDisk { return v.Disks }).(GetLkeClusterPoolDiskArrayOutput)
+}
+
 // The LKE Cluster's ID.
 func (o GetLkeClusterPoolOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Id }).(pulumi.IntOutput)
@@ -18130,7 +19498,12 @@ func (o GetLkeClusterPoolOutput) Nodes() GetLkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolNode { return v.Nodes }).(GetLkeClusterPoolNodeArrayOutput)
 }
 
-// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+// An array of tags applied to this object. Tags are for organizational purposes only.
+func (o GetLkeClusterPoolOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// This custom disk partition’s filesystem type.
 func (o GetLkeClusterPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18156,6 +19529,8 @@ func (o GetLkeClusterPoolArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPool
 }
 
 type GetLkeClusterPoolAutoscaler struct {
+	// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+	Enabled bool `pulumi:"enabled"`
 	// The maximum number of nodes to autoscale to.
 	Max int `pulumi:"max"`
 	// The minimum number of nodes to autoscale to.
@@ -18174,6 +19549,8 @@ type GetLkeClusterPoolAutoscalerInput interface {
 }
 
 type GetLkeClusterPoolAutoscalerArgs struct {
+	// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The maximum number of nodes to autoscale to.
 	Max pulumi.IntInput `pulumi:"max"`
 	// The minimum number of nodes to autoscale to.
@@ -18231,6 +19608,11 @@ func (o GetLkeClusterPoolAutoscalerOutput) ToGetLkeClusterPoolAutoscalerOutputWi
 	return o
 }
 
+// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+func (o GetLkeClusterPoolAutoscalerOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolAutoscaler) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // The maximum number of nodes to autoscale to.
 func (o GetLkeClusterPoolAutoscalerOutput) Max() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
@@ -18259,6 +19641,112 @@ func (o GetLkeClusterPoolAutoscalerArrayOutput) Index(i pulumi.IntInput) GetLkeC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolAutoscaler {
 		return vs[0].([]GetLkeClusterPoolAutoscaler)[vs[1].(int)]
 	}).(GetLkeClusterPoolAutoscalerOutput)
+}
+
+type GetLkeClusterPoolDisk struct {
+	// The size of this custom disk partition in MB.
+	Size int `pulumi:"size"`
+	// This custom disk partition’s filesystem type.
+	Type string `pulumi:"type"`
+}
+
+// GetLkeClusterPoolDiskInput is an input type that accepts GetLkeClusterPoolDiskArgs and GetLkeClusterPoolDiskOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolDiskInput` via:
+//
+//	GetLkeClusterPoolDiskArgs{...}
+type GetLkeClusterPoolDiskInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolDiskOutput() GetLkeClusterPoolDiskOutput
+	ToGetLkeClusterPoolDiskOutputWithContext(context.Context) GetLkeClusterPoolDiskOutput
+}
+
+type GetLkeClusterPoolDiskArgs struct {
+	// The size of this custom disk partition in MB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// This custom disk partition’s filesystem type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetLkeClusterPoolDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolDisk)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolDiskArgs) ToGetLkeClusterPoolDiskOutput() GetLkeClusterPoolDiskOutput {
+	return i.ToGetLkeClusterPoolDiskOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolDiskArgs) ToGetLkeClusterPoolDiskOutputWithContext(ctx context.Context) GetLkeClusterPoolDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolDiskOutput)
+}
+
+// GetLkeClusterPoolDiskArrayInput is an input type that accepts GetLkeClusterPoolDiskArray and GetLkeClusterPoolDiskArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolDiskArrayInput` via:
+//
+//	GetLkeClusterPoolDiskArray{ GetLkeClusterPoolDiskArgs{...} }
+type GetLkeClusterPoolDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolDiskArrayOutput() GetLkeClusterPoolDiskArrayOutput
+	ToGetLkeClusterPoolDiskArrayOutputWithContext(context.Context) GetLkeClusterPoolDiskArrayOutput
+}
+
+type GetLkeClusterPoolDiskArray []GetLkeClusterPoolDiskInput
+
+func (GetLkeClusterPoolDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolDisk)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolDiskArray) ToGetLkeClusterPoolDiskArrayOutput() GetLkeClusterPoolDiskArrayOutput {
+	return i.ToGetLkeClusterPoolDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolDiskArray) ToGetLkeClusterPoolDiskArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolDiskArrayOutput)
+}
+
+type GetLkeClusterPoolDiskOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolDisk)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolDiskOutput) ToGetLkeClusterPoolDiskOutput() GetLkeClusterPoolDiskOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolDiskOutput) ToGetLkeClusterPoolDiskOutputWithContext(ctx context.Context) GetLkeClusterPoolDiskOutput {
+	return o
+}
+
+// The size of this custom disk partition in MB.
+func (o GetLkeClusterPoolDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// This custom disk partition’s filesystem type.
+func (o GetLkeClusterPoolDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetLkeClusterPoolDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolDisk)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolDiskArrayOutput) ToGetLkeClusterPoolDiskArrayOutput() GetLkeClusterPoolDiskArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolDiskArrayOutput) ToGetLkeClusterPoolDiskArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolDiskArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolDiskArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPoolDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolDisk {
+		return vs[0].([]GetLkeClusterPoolDisk)[vs[1].(int)]
+	}).(GetLkeClusterPoolDiskOutput)
 }
 
 type GetLkeClusterPoolNode struct {
@@ -18374,6 +19862,427 @@ func (o GetLkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) GetLkeCluster
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolNode {
 		return vs[0].([]GetLkeClusterPoolNode)[vs[1].(int)]
 	}).(GetLkeClusterPoolNodeOutput)
+}
+
+type GetLkeClustersFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetLkeClustersFilterInput is an input type that accepts GetLkeClustersFilterArgs and GetLkeClustersFilterOutput values.
+// You can construct a concrete instance of `GetLkeClustersFilterInput` via:
+//
+//	GetLkeClustersFilterArgs{...}
+type GetLkeClustersFilterInput interface {
+	pulumi.Input
+
+	ToGetLkeClustersFilterOutput() GetLkeClustersFilterOutput
+	ToGetLkeClustersFilterOutputWithContext(context.Context) GetLkeClustersFilterOutput
+}
+
+type GetLkeClustersFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetLkeClustersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClustersFilter)(nil)).Elem()
+}
+
+func (i GetLkeClustersFilterArgs) ToGetLkeClustersFilterOutput() GetLkeClustersFilterOutput {
+	return i.ToGetLkeClustersFilterOutputWithContext(context.Background())
+}
+
+func (i GetLkeClustersFilterArgs) ToGetLkeClustersFilterOutputWithContext(ctx context.Context) GetLkeClustersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersFilterOutput)
+}
+
+// GetLkeClustersFilterArrayInput is an input type that accepts GetLkeClustersFilterArray and GetLkeClustersFilterArrayOutput values.
+// You can construct a concrete instance of `GetLkeClustersFilterArrayInput` via:
+//
+//	GetLkeClustersFilterArray{ GetLkeClustersFilterArgs{...} }
+type GetLkeClustersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClustersFilterArrayOutput() GetLkeClustersFilterArrayOutput
+	ToGetLkeClustersFilterArrayOutputWithContext(context.Context) GetLkeClustersFilterArrayOutput
+}
+
+type GetLkeClustersFilterArray []GetLkeClustersFilterInput
+
+func (GetLkeClustersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClustersFilter)(nil)).Elem()
+}
+
+func (i GetLkeClustersFilterArray) ToGetLkeClustersFilterArrayOutput() GetLkeClustersFilterArrayOutput {
+	return i.ToGetLkeClustersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClustersFilterArray) ToGetLkeClustersFilterArrayOutputWithContext(ctx context.Context) GetLkeClustersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersFilterArrayOutput)
+}
+
+type GetLkeClustersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClustersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClustersFilter)(nil)).Elem()
+}
+
+func (o GetLkeClustersFilterOutput) ToGetLkeClustersFilterOutput() GetLkeClustersFilterOutput {
+	return o
+}
+
+func (o GetLkeClustersFilterOutput) ToGetLkeClustersFilterOutputWithContext(ctx context.Context) GetLkeClustersFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetLkeClustersFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLkeClustersFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetLkeClustersFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetLkeClustersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLkeClustersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetLkeClustersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClustersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClustersFilter)(nil)).Elem()
+}
+
+func (o GetLkeClustersFilterArrayOutput) ToGetLkeClustersFilterArrayOutput() GetLkeClustersFilterArrayOutput {
+	return o
+}
+
+func (o GetLkeClustersFilterArrayOutput) ToGetLkeClustersFilterArrayOutputWithContext(ctx context.Context) GetLkeClustersFilterArrayOutput {
+	return o
+}
+
+func (o GetLkeClustersFilterArrayOutput) Index(i pulumi.IntInput) GetLkeClustersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClustersFilter {
+		return vs[0].([]GetLkeClustersFilter)[vs[1].(int)]
+	}).(GetLkeClustersFilterOutput)
+}
+
+type GetLkeClustersLkeCluster struct {
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane *GetLkeClustersLkeClusterControlPlane `pulumi:"controlPlane"`
+	// When this Kubernetes cluster was created.
+	Created string `pulumi:"created"`
+	// The LKE Cluster's ID.
+	Id int `pulumi:"id"`
+	// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+	K8sVersion string `pulumi:"k8sVersion"`
+	// The unique label for the cluster.
+	Label string `pulumi:"label"`
+	// This Kubernetes cluster's location.
+	Region string `pulumi:"region"`
+	// The status of the cluster.
+	Status string `pulumi:"status"`
+	// An array of tags applied to this object. Tags are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
+	// When this Kubernetes cluster was updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetLkeClustersLkeClusterInput is an input type that accepts GetLkeClustersLkeClusterArgs and GetLkeClustersLkeClusterOutput values.
+// You can construct a concrete instance of `GetLkeClustersLkeClusterInput` via:
+//
+//	GetLkeClustersLkeClusterArgs{...}
+type GetLkeClustersLkeClusterInput interface {
+	pulumi.Input
+
+	ToGetLkeClustersLkeClusterOutput() GetLkeClustersLkeClusterOutput
+	ToGetLkeClustersLkeClusterOutputWithContext(context.Context) GetLkeClustersLkeClusterOutput
+}
+
+type GetLkeClustersLkeClusterArgs struct {
+	// Defines settings for the Kubernetes Control Plane.
+	ControlPlane GetLkeClustersLkeClusterControlPlanePtrInput `pulumi:"controlPlane"`
+	// When this Kubernetes cluster was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The LKE Cluster's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+	K8sVersion pulumi.StringInput `pulumi:"k8sVersion"`
+	// The unique label for the cluster.
+	Label pulumi.StringInput `pulumi:"label"`
+	// This Kubernetes cluster's location.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The status of the cluster.
+	Status pulumi.StringInput `pulumi:"status"`
+	// An array of tags applied to this object. Tags are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// When this Kubernetes cluster was updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetLkeClustersLkeClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClustersLkeCluster)(nil)).Elem()
+}
+
+func (i GetLkeClustersLkeClusterArgs) ToGetLkeClustersLkeClusterOutput() GetLkeClustersLkeClusterOutput {
+	return i.ToGetLkeClustersLkeClusterOutputWithContext(context.Background())
+}
+
+func (i GetLkeClustersLkeClusterArgs) ToGetLkeClustersLkeClusterOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterOutput)
+}
+
+// GetLkeClustersLkeClusterArrayInput is an input type that accepts GetLkeClustersLkeClusterArray and GetLkeClustersLkeClusterArrayOutput values.
+// You can construct a concrete instance of `GetLkeClustersLkeClusterArrayInput` via:
+//
+//	GetLkeClustersLkeClusterArray{ GetLkeClustersLkeClusterArgs{...} }
+type GetLkeClustersLkeClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClustersLkeClusterArrayOutput() GetLkeClustersLkeClusterArrayOutput
+	ToGetLkeClustersLkeClusterArrayOutputWithContext(context.Context) GetLkeClustersLkeClusterArrayOutput
+}
+
+type GetLkeClustersLkeClusterArray []GetLkeClustersLkeClusterInput
+
+func (GetLkeClustersLkeClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClustersLkeCluster)(nil)).Elem()
+}
+
+func (i GetLkeClustersLkeClusterArray) ToGetLkeClustersLkeClusterArrayOutput() GetLkeClustersLkeClusterArrayOutput {
+	return i.ToGetLkeClustersLkeClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClustersLkeClusterArray) ToGetLkeClustersLkeClusterArrayOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterArrayOutput)
+}
+
+type GetLkeClustersLkeClusterOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClustersLkeClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClustersLkeCluster)(nil)).Elem()
+}
+
+func (o GetLkeClustersLkeClusterOutput) ToGetLkeClustersLkeClusterOutput() GetLkeClustersLkeClusterOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterOutput) ToGetLkeClustersLkeClusterOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterOutput {
+	return o
+}
+
+// Defines settings for the Kubernetes Control Plane.
+func (o GetLkeClustersLkeClusterOutput) ControlPlane() GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) *GetLkeClustersLkeClusterControlPlane { return v.ControlPlane }).(GetLkeClustersLkeClusterControlPlanePtrOutput)
+}
+
+// When this Kubernetes cluster was created.
+func (o GetLkeClustersLkeClusterOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The LKE Cluster's ID.
+func (o GetLkeClustersLkeClusterOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+func (o GetLkeClustersLkeClusterOutput) K8sVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
+// The unique label for the cluster.
+func (o GetLkeClustersLkeClusterOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// This Kubernetes cluster's location.
+func (o GetLkeClustersLkeClusterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of the cluster.
+func (o GetLkeClustersLkeClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// An array of tags applied to this object. Tags are for organizational purposes only.
+func (o GetLkeClustersLkeClusterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this Kubernetes cluster was updated.
+func (o GetLkeClustersLkeClusterOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetLkeClustersLkeClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClustersLkeClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClustersLkeCluster)(nil)).Elem()
+}
+
+func (o GetLkeClustersLkeClusterArrayOutput) ToGetLkeClustersLkeClusterArrayOutput() GetLkeClustersLkeClusterArrayOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterArrayOutput) ToGetLkeClustersLkeClusterArrayOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterArrayOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterArrayOutput) Index(i pulumi.IntInput) GetLkeClustersLkeClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClustersLkeCluster {
+		return vs[0].([]GetLkeClustersLkeCluster)[vs[1].(int)]
+	}).(GetLkeClustersLkeClusterOutput)
+}
+
+type GetLkeClustersLkeClusterControlPlane struct {
+	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+	HighAvailability bool `pulumi:"highAvailability"`
+}
+
+// GetLkeClustersLkeClusterControlPlaneInput is an input type that accepts GetLkeClustersLkeClusterControlPlaneArgs and GetLkeClustersLkeClusterControlPlaneOutput values.
+// You can construct a concrete instance of `GetLkeClustersLkeClusterControlPlaneInput` via:
+//
+//	GetLkeClustersLkeClusterControlPlaneArgs{...}
+type GetLkeClustersLkeClusterControlPlaneInput interface {
+	pulumi.Input
+
+	ToGetLkeClustersLkeClusterControlPlaneOutput() GetLkeClustersLkeClusterControlPlaneOutput
+	ToGetLkeClustersLkeClusterControlPlaneOutputWithContext(context.Context) GetLkeClustersLkeClusterControlPlaneOutput
+}
+
+type GetLkeClustersLkeClusterControlPlaneArgs struct {
+	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
+}
+
+func (GetLkeClustersLkeClusterControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClustersLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterControlPlaneOutput() GetLkeClustersLkeClusterControlPlaneOutput {
+	return i.ToGetLkeClustersLkeClusterControlPlaneOutputWithContext(context.Background())
+}
+
+func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterControlPlaneOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterControlPlaneOutput)
+}
+
+func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return i.ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterControlPlaneOutput).ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx)
+}
+
+// GetLkeClustersLkeClusterControlPlanePtrInput is an input type that accepts GetLkeClustersLkeClusterControlPlaneArgs, GetLkeClustersLkeClusterControlPlanePtr and GetLkeClustersLkeClusterControlPlanePtrOutput values.
+// You can construct a concrete instance of `GetLkeClustersLkeClusterControlPlanePtrInput` via:
+//
+//	        GetLkeClustersLkeClusterControlPlaneArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetLkeClustersLkeClusterControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput
+	ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput
+}
+
+type getLkeClustersLkeClusterControlPlanePtrType GetLkeClustersLkeClusterControlPlaneArgs
+
+func GetLkeClustersLkeClusterControlPlanePtr(v *GetLkeClustersLkeClusterControlPlaneArgs) GetLkeClustersLkeClusterControlPlanePtrInput {
+	return (*getLkeClustersLkeClusterControlPlanePtrType)(v)
+}
+
+func (*getLkeClustersLkeClusterControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetLkeClustersLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (i *getLkeClustersLkeClusterControlPlanePtrType) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return i.ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *getLkeClustersLkeClusterControlPlanePtrType) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterControlPlanePtrOutput)
+}
+
+type GetLkeClustersLkeClusterControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClustersLkeClusterControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClustersLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterControlPlaneOutput() GetLkeClustersLkeClusterControlPlaneOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterControlPlaneOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlaneOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return o.ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetLkeClustersLkeClusterControlPlane) *GetLkeClustersLkeClusterControlPlane {
+		return &v
+	}).(GetLkeClustersLkeClusterControlPlanePtrOutput)
+}
+
+// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+func (o GetLkeClustersLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
+}
+
+type GetLkeClustersLkeClusterControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClustersLkeClusterControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetLkeClustersLkeClusterControlPlane)(nil)).Elem()
+}
+
+func (o GetLkeClustersLkeClusterControlPlanePtrOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterControlPlanePtrOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o GetLkeClustersLkeClusterControlPlanePtrOutput) Elem() GetLkeClustersLkeClusterControlPlaneOutput {
+	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) GetLkeClustersLkeClusterControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret GetLkeClustersLkeClusterControlPlane
+		return ret
+	}).(GetLkeClustersLkeClusterControlPlaneOutput)
+}
+
+// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+func (o GetLkeClustersLkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.HighAvailability
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetLkeVersionsVersion struct {
@@ -18577,6 +20486,468 @@ func (o GetNodeBalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerConfigNodeStatus {
 		return vs[0].([]GetNodeBalancerConfigNodeStatus)[vs[1].(int)]
 	}).(GetNodeBalancerConfigNodeStatusOutput)
+}
+
+type GetNodeBalancerFirewall struct {
+	// When this firewall was created.
+	Created string `pulumi:"created"`
+	// The NodeBalancer's ID.
+	Id int `pulumi:"id"`
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+	InboundPolicy string `pulumi:"inboundPolicy"`
+	// A set of firewall rules that specify what inbound network traffic is allowed.
+	Inbounds []GetNodeBalancerFirewallInbound `pulumi:"inbounds"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+	OutboundPolicy string `pulumi:"outboundPolicy"`
+	// A set of firewall rules that specify what outbound network traffic is allowed.
+	Outbounds []GetNodeBalancerFirewallOutbound `pulumi:"outbounds"`
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+	Status string `pulumi:"status"`
+	// The tags applied to the firewall.
+	Tags []string `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetNodeBalancerFirewallInput is an input type that accepts GetNodeBalancerFirewallArgs and GetNodeBalancerFirewallOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallInput` via:
+//
+//	GetNodeBalancerFirewallArgs{...}
+type GetNodeBalancerFirewallInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput
+	ToGetNodeBalancerFirewallOutputWithContext(context.Context) GetNodeBalancerFirewallOutput
+}
+
+type GetNodeBalancerFirewallArgs struct {
+	// When this firewall was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The NodeBalancer's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+	InboundPolicy pulumi.StringInput `pulumi:"inboundPolicy"`
+	// A set of firewall rules that specify what inbound network traffic is allowed.
+	Inbounds GetNodeBalancerFirewallInboundArrayInput `pulumi:"inbounds"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+	OutboundPolicy pulumi.StringInput `pulumi:"outboundPolicy"`
+	// A set of firewall rules that specify what outbound network traffic is allowed.
+	Outbounds GetNodeBalancerFirewallOutboundArrayInput `pulumi:"outbounds"`
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tags applied to the firewall.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetNodeBalancerFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallArgs) ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput {
+	return i.ToGetNodeBalancerFirewallOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallArgs) ToGetNodeBalancerFirewallOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutput)
+}
+
+// GetNodeBalancerFirewallArrayInput is an input type that accepts GetNodeBalancerFirewallArray and GetNodeBalancerFirewallArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallArrayInput` via:
+//
+//	GetNodeBalancerFirewallArray{ GetNodeBalancerFirewallArgs{...} }
+type GetNodeBalancerFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput
+	ToGetNodeBalancerFirewallArrayOutputWithContext(context.Context) GetNodeBalancerFirewallArrayOutput
+}
+
+type GetNodeBalancerFirewallArray []GetNodeBalancerFirewallInput
+
+func (GetNodeBalancerFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallArray) ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput {
+	return i.ToGetNodeBalancerFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallArray) ToGetNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallArrayOutput)
+}
+
+type GetNodeBalancerFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallOutput) ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutput) ToGetNodeBalancerFirewallOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutput {
+	return o
+}
+
+// When this firewall was created.
+func (o GetNodeBalancerFirewallOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The NodeBalancer's ID.
+func (o GetNodeBalancerFirewallOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+func (o GetNodeBalancerFirewallOutput) InboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.InboundPolicy }).(pulumi.StringOutput)
+}
+
+// A set of firewall rules that specify what inbound network traffic is allowed.
+func (o GetNodeBalancerFirewallOutput) Inbounds() GetNodeBalancerFirewallInboundArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) []GetNodeBalancerFirewallInbound { return v.Inbounds }).(GetNodeBalancerFirewallInboundArrayOutput)
+}
+
+// Used to identify this rule. For display purposes only.
+func (o GetNodeBalancerFirewallOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+func (o GetNodeBalancerFirewallOutput) OutboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.OutboundPolicy }).(pulumi.StringOutput)
+}
+
+// A set of firewall rules that specify what outbound network traffic is allowed.
+func (o GetNodeBalancerFirewallOutput) Outbounds() GetNodeBalancerFirewallOutboundArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) []GetNodeBalancerFirewallOutbound { return v.Outbounds }).(GetNodeBalancerFirewallOutboundArrayOutput)
+}
+
+// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+func (o GetNodeBalancerFirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags applied to the firewall.
+func (o GetNodeBalancerFirewallOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this firewall was last updated.
+func (o GetNodeBalancerFirewallOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetNodeBalancerFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallArrayOutput) ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallArrayOutput) ToGetNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewall {
+		return vs[0].([]GetNodeBalancerFirewall)[vs[1].(int)]
+	}).(GetNodeBalancerFirewallOutput)
+}
+
+type GetNodeBalancerFirewallInbound struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetNodeBalancerFirewallInboundInput is an input type that accepts GetNodeBalancerFirewallInboundArgs and GetNodeBalancerFirewallInboundOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallInboundInput` via:
+//
+//	GetNodeBalancerFirewallInboundArgs{...}
+type GetNodeBalancerFirewallInboundInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput
+	ToGetNodeBalancerFirewallInboundOutputWithContext(context.Context) GetNodeBalancerFirewallInboundOutput
+}
+
+type GetNodeBalancerFirewallInboundArgs struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetNodeBalancerFirewallInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallInboundArgs) ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput {
+	return i.ToGetNodeBalancerFirewallInboundOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallInboundArgs) ToGetNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallInboundOutput)
+}
+
+// GetNodeBalancerFirewallInboundArrayInput is an input type that accepts GetNodeBalancerFirewallInboundArray and GetNodeBalancerFirewallInboundArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallInboundArrayInput` via:
+//
+//	GetNodeBalancerFirewallInboundArray{ GetNodeBalancerFirewallInboundArgs{...} }
+type GetNodeBalancerFirewallInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput
+	ToGetNodeBalancerFirewallInboundArrayOutputWithContext(context.Context) GetNodeBalancerFirewallInboundArrayOutput
+}
+
+type GetNodeBalancerFirewallInboundArray []GetNodeBalancerFirewallInboundInput
+
+func (GetNodeBalancerFirewallInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallInboundArray) ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput {
+	return i.ToGetNodeBalancerFirewallInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallInboundArray) ToGetNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallInboundArrayOutput)
+}
+
+type GetNodeBalancerFirewallInboundOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallInboundOutput) ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallInboundOutput) ToGetNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundOutput {
+	return o
+}
+
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o GetNodeBalancerFirewallInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// Used to identify this rule. For display purposes only.
+func (o GetNodeBalancerFirewallInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o GetNodeBalancerFirewallInboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+func (o GetNodeBalancerFirewallInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetNodeBalancerFirewallInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallInboundArrayOutput) ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallInboundArrayOutput) ToGetNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallInboundArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewallInbound {
+		return vs[0].([]GetNodeBalancerFirewallInbound)[vs[1].(int)]
+	}).(GetNodeBalancerFirewallInboundOutput)
+}
+
+type GetNodeBalancerFirewallOutbound struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetNodeBalancerFirewallOutboundInput is an input type that accepts GetNodeBalancerFirewallOutboundArgs and GetNodeBalancerFirewallOutboundOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallOutboundInput` via:
+//
+//	GetNodeBalancerFirewallOutboundArgs{...}
+type GetNodeBalancerFirewallOutboundInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput
+	ToGetNodeBalancerFirewallOutboundOutputWithContext(context.Context) GetNodeBalancerFirewallOutboundOutput
+}
+
+type GetNodeBalancerFirewallOutboundArgs struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// Used to identify this rule. For display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetNodeBalancerFirewallOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallOutboundArgs) ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput {
+	return i.ToGetNodeBalancerFirewallOutboundOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallOutboundArgs) ToGetNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutboundOutput)
+}
+
+// GetNodeBalancerFirewallOutboundArrayInput is an input type that accepts GetNodeBalancerFirewallOutboundArray and GetNodeBalancerFirewallOutboundArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallOutboundArrayInput` via:
+//
+//	GetNodeBalancerFirewallOutboundArray{ GetNodeBalancerFirewallOutboundArgs{...} }
+type GetNodeBalancerFirewallOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput
+	ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(context.Context) GetNodeBalancerFirewallOutboundArrayOutput
+}
+
+type GetNodeBalancerFirewallOutboundArray []GetNodeBalancerFirewallOutboundInput
+
+func (GetNodeBalancerFirewallOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallOutboundArray) ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput {
+	return i.ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallOutboundArray) ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutboundArrayOutput)
+}
+
+type GetNodeBalancerFirewallOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallOutboundOutput) ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutboundOutput) ToGetNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundOutput {
+	return o
+}
+
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o GetNodeBalancerFirewallOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// Used to identify this rule. For display purposes only.
+func (o GetNodeBalancerFirewallOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o GetNodeBalancerFirewallOutboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+func (o GetNodeBalancerFirewallOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetNodeBalancerFirewallOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallOutboundArrayOutput) ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutboundArrayOutput) ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewallOutbound {
+		return vs[0].([]GetNodeBalancerFirewallOutbound)[vs[1].(int)]
+	}).(GetNodeBalancerFirewallOutboundOutput)
 }
 
 type GetNodeBalancerTransfer struct {
@@ -25333,6 +27704,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeArrayInput)(nil)).Elem(), LkeClusterPoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInput)(nil)).Elem(), NodeBalancerFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallArrayInput)(nil)).Elem(), NodeBalancerFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInboundInput)(nil)).Elem(), NodeBalancerFirewallInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInboundArrayInput)(nil)).Elem(), NodeBalancerFirewallInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallOutboundInput)(nil)).Elem(), NodeBalancerFirewallOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallOutboundArrayInput)(nil)).Elem(), NodeBalancerFirewallOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerTransferInput)(nil)).Elem(), NodeBalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerTransferArrayInput)(nil)).Elem(), NodeBalancerTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketCertInput)(nil)).Elem(), ObjectStorageBucketCertArgs{})
@@ -25345,6 +27722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyBucketAccessInput)(nil)).Elem(), ObjectStorageKeyBucketAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyBucketAccessArrayInput)(nil)).Elem(), ObjectStorageKeyBucketAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsInput)(nil)).Elem(), RdnsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsPtrInput)(nil)).Elem(), RdnsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptUserDefinedFieldInput)(nil)).Elem(), StackScriptUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptUserDefinedFieldArrayInput)(nil)).Elem(), StackScriptUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserDomainGrantInput)(nil)).Elem(), UserDomainGrantArgs{})
@@ -25365,6 +27744,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantArrayInput)(nil)).Elem(), UserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantInput)(nil)).Elem(), UserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantArrayInput)(nil)).Elem(), UserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTimeoutsInput)(nil)).Elem(), VolumeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTimeoutsPtrInput)(nil)).Elem(), VolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInput)(nil)).Elem(), VpcSubnetLinodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeArrayInput)(nil)).Elem(), VpcSubnetLinodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInterfaceInput)(nil)).Elem(), VpcSubnetLinodeInterfaceArgs{})
@@ -25397,6 +27778,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesFilterInput)(nil)).Elem(), GetDatabasesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesFilterArrayInput)(nil)).Elem(), GetDatabasesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterInput)(nil)).Elem(), GetDomainsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterArrayInput)(nil)).Elem(), GetDomainsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceTypeInput)(nil)).Elem(), GetFirewallDeviceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallDeviceTypeArrayInput)(nil)).Elem(), GetFirewallDeviceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundInput)(nil)).Elem(), GetFirewallInboundArgs{})
@@ -25515,6 +27900,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskArrayInput)(nil)).Elem(), GetInstancesInstanceDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecInput)(nil)).Elem(), GetInstancesInstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecArrayInput)(nil)).Elem(), GetInstancesInstanceSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesFilterInput)(nil)).Elem(), GetIpv6RangesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesFilterArrayInput)(nil)).Elem(), GetIpv6RangesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesRangeInput)(nil)).Elem(), GetIpv6RangesRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesRangeArrayInput)(nil)).Elem(), GetIpv6RangesRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsFilterInput)(nil)).Elem(), GetKernelsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsFilterArrayInput)(nil)).Elem(), GetKernelsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsKernelInput)(nil)).Elem(), GetKernelsKernelArgs{})
@@ -25525,12 +27914,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolArrayInput)(nil)).Elem(), GetLkeClusterPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolAutoscalerInput)(nil)).Elem(), GetLkeClusterPoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolAutoscalerArrayInput)(nil)).Elem(), GetLkeClusterPoolAutoscalerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolDiskInput)(nil)).Elem(), GetLkeClusterPoolDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolDiskArrayInput)(nil)).Elem(), GetLkeClusterPoolDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolNodeInput)(nil)).Elem(), GetLkeClusterPoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolNodeArrayInput)(nil)).Elem(), GetLkeClusterPoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersFilterInput)(nil)).Elem(), GetLkeClustersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersFilterArrayInput)(nil)).Elem(), GetLkeClustersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterInput)(nil)).Elem(), GetLkeClustersLkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterArrayInput)(nil)).Elem(), GetLkeClustersLkeClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlanePtrInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionInput)(nil)).Elem(), GetLkeVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionArrayInput)(nil)).Elem(), GetLkeVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInput)(nil)).Elem(), GetNodeBalancerFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallArrayInput)(nil)).Elem(), GetNodeBalancerFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInboundInput)(nil)).Elem(), GetNodeBalancerFirewallInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInboundArrayInput)(nil)).Elem(), GetNodeBalancerFirewallInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallOutboundInput)(nil)).Elem(), GetNodeBalancerFirewallOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallOutboundArrayInput)(nil)).Elem(), GetNodeBalancerFirewallOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferInput)(nil)).Elem(), GetNodeBalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferArrayInput)(nil)).Elem(), GetNodeBalancerTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancerConfigsFilterInput)(nil)).Elem(), GetNodebalancerConfigsFilterArgs{})
@@ -25698,6 +28101,12 @@ func init() {
 	pulumi.RegisterOutputType(LkeClusterPoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusArrayOutput{})
+	pulumi.RegisterOutputType(NodeBalancerFirewallOutput{})
+	pulumi.RegisterOutputType(NodeBalancerFirewallArrayOutput{})
+	pulumi.RegisterOutputType(NodeBalancerFirewallInboundOutput{})
+	pulumi.RegisterOutputType(NodeBalancerFirewallInboundArrayOutput{})
+	pulumi.RegisterOutputType(NodeBalancerFirewallOutboundOutput{})
+	pulumi.RegisterOutputType(NodeBalancerFirewallOutboundArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(NodeBalancerTransferArrayOutput{})
 	pulumi.RegisterOutputType(ObjectStorageBucketCertOutput{})
@@ -25710,6 +28119,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessOutput{})
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessArrayOutput{})
+	pulumi.RegisterOutputType(RdnsTimeoutsOutput{})
+	pulumi.RegisterOutputType(RdnsTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(UserDomainGrantOutput{})
@@ -25730,6 +28141,8 @@ func init() {
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(VolumeTimeoutsOutput{})
+	pulumi.RegisterOutputType(VolumeTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeInterfaceOutput{})
@@ -25762,6 +28175,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesFilterOutput{})
 	pulumi.RegisterOutputType(GetDatabasesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsFilterOutput{})
+	pulumi.RegisterOutputType(GetDomainsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallDeviceTypeOutput{})
 	pulumi.RegisterOutputType(GetFirewallDeviceTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallInboundOutput{})
@@ -25880,6 +28297,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6RangesFilterOutput{})
+	pulumi.RegisterOutputType(GetIpv6RangesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6RangesRangeOutput{})
+	pulumi.RegisterOutputType(GetIpv6RangesRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetKernelsFilterOutput{})
 	pulumi.RegisterOutputType(GetKernelsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetKernelsKernelOutput{})
@@ -25890,12 +28311,26 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeClusterPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolAutoscalerOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolAutoscalerArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolDiskOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolNodeOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClustersFilterOutput{})
+	pulumi.RegisterOutputType(GetLkeClustersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClustersLkeClusterOutput{})
+	pulumi.RegisterOutputType(GetLkeClustersLkeClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallInboundOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutboundOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutboundArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetNodebalancerConfigsFilterOutput{})

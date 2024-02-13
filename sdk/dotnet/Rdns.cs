@@ -39,6 +39,9 @@ namespace Pulumi.Linode
         [Output("rdns")]
         public Output<string> RdnsName { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.RdnsTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// If true, the RDNS assignment will be retried within the operation timeout period.
         /// </summary>
@@ -103,6 +106,9 @@ namespace Pulumi.Linode
         [Input("rdns", required: true)]
         public Input<string> RdnsName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.RdnsTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// If true, the RDNS assignment will be retried within the operation timeout period.
         /// </summary>
@@ -128,6 +134,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("rdns")]
         public Input<string>? RdnsName { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.RdnsTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// If true, the RDNS assignment will be retried within the operation timeout period.

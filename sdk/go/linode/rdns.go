@@ -31,7 +31,8 @@ type Rdns struct {
 	// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The name of the RDNS address.
-	Rdns pulumi.StringOutput `pulumi:"rdns"`
+	Rdns     pulumi.StringOutput   `pulumi:"rdns"`
+	Timeouts RdnsTimeoutsPtrOutput `pulumi:"timeouts"`
 	// If true, the RDNS assignment will be retried within the operation timeout period.
 	WaitForAvailable pulumi.BoolOutput `pulumi:"waitForAvailable"`
 }
@@ -75,7 +76,8 @@ type rdnsState struct {
 	// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
 	Address *string `pulumi:"address"`
 	// The name of the RDNS address.
-	Rdns *string `pulumi:"rdns"`
+	Rdns     *string       `pulumi:"rdns"`
+	Timeouts *RdnsTimeouts `pulumi:"timeouts"`
 	// If true, the RDNS assignment will be retried within the operation timeout period.
 	WaitForAvailable *bool `pulumi:"waitForAvailable"`
 }
@@ -84,7 +86,8 @@ type RdnsState struct {
 	// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
 	Address pulumi.StringPtrInput
 	// The name of the RDNS address.
-	Rdns pulumi.StringPtrInput
+	Rdns     pulumi.StringPtrInput
+	Timeouts RdnsTimeoutsPtrInput
 	// If true, the RDNS assignment will be retried within the operation timeout period.
 	WaitForAvailable pulumi.BoolPtrInput
 }
@@ -97,7 +100,8 @@ type rdnsArgs struct {
 	// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
 	Address string `pulumi:"address"`
 	// The name of the RDNS address.
-	Rdns string `pulumi:"rdns"`
+	Rdns     string        `pulumi:"rdns"`
+	Timeouts *RdnsTimeouts `pulumi:"timeouts"`
 	// If true, the RDNS assignment will be retried within the operation timeout period.
 	WaitForAvailable *bool `pulumi:"waitForAvailable"`
 }
@@ -107,7 +111,8 @@ type RdnsArgs struct {
 	// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
 	Address pulumi.StringInput
 	// The name of the RDNS address.
-	Rdns pulumi.StringInput
+	Rdns     pulumi.StringInput
+	Timeouts RdnsTimeoutsPtrInput
 	// If true, the RDNS assignment will be retried within the operation timeout period.
 	WaitForAvailable pulumi.BoolPtrInput
 }
@@ -207,6 +212,10 @@ func (o RdnsOutput) Address() pulumi.StringOutput {
 // The name of the RDNS address.
 func (o RdnsOutput) Rdns() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rdns) pulumi.StringOutput { return v.Rdns }).(pulumi.StringOutput)
+}
+
+func (o RdnsOutput) Timeouts() RdnsTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Rdns) RdnsTimeoutsPtrOutput { return v.Timeouts }).(RdnsTimeoutsPtrOutput)
 }
 
 // If true, the RDNS assignment will be retried within the operation timeout period.

@@ -83,7 +83,7 @@ import (
 //				Size: my_instance.Specs.ApplyT(func(specs linode.InstanceSpecs) (*int, error) {
 //					return &specs.Disk, nil
 //				}).(pulumi.IntPtrOutput),
-//				Image:    pulumi.String("linode/ubuntu20.04"),
+//				Image:    pulumi.String("linode/ubuntu22.04"),
 //				RootPass: pulumi.String("myc00lpass!"),
 //				AuthorizedKeys: pulumi.StringArray{
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
@@ -112,9 +112,9 @@ import (
 type InstanceDisk struct {
 	pulumi.CustomResourceState
 
-	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
 	AuthorizedKeys pulumi.StringArrayOutput `pulumi:"authorizedKeys"`
-	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
 	AuthorizedUsers pulumi.StringArrayOutput `pulumi:"authorizedUsers"`
 	// When this disk was created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -126,15 +126,15 @@ type InstanceDisk struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of the Linode to create this Disk under.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
-	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+	// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
 	RootPass pulumi.StringPtrOutput `pulumi:"rootPass"`
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
 	//
 	// ***
 	Size pulumi.IntOutput `pulumi:"size"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
 	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
-	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId pulumi.IntPtrOutput `pulumi:"stackscriptId"`
 	// A brief description of this Disk's current state.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -192,9 +192,9 @@ func GetInstanceDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceDisk resources.
 type instanceDiskState struct {
-	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
-	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
 	// When this disk was created.
 	Created *string `pulumi:"created"`
@@ -206,15 +206,15 @@ type instanceDiskState struct {
 	Label *string `pulumi:"label"`
 	// The ID of the Linode to create this Disk under.
 	LinodeId *int `pulumi:"linodeId"`
-	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+	// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
 	//
 	// ***
 	Size *int `pulumi:"size"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
-	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId *int `pulumi:"stackscriptId"`
 	// A brief description of this Disk's current state.
 	Status *string `pulumi:"status"`
@@ -223,9 +223,9 @@ type instanceDiskState struct {
 }
 
 type InstanceDiskState struct {
-	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
 	AuthorizedKeys pulumi.StringArrayInput
-	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
 	AuthorizedUsers pulumi.StringArrayInput
 	// When this disk was created.
 	Created pulumi.StringPtrInput
@@ -237,15 +237,15 @@ type InstanceDiskState struct {
 	Label pulumi.StringPtrInput
 	// The ID of the Linode to create this Disk under.
 	LinodeId pulumi.IntPtrInput
-	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+	// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
 	RootPass pulumi.StringPtrInput
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
 	//
 	// ***
 	Size pulumi.IntPtrInput
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
 	StackscriptData pulumi.MapInput
-	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId pulumi.IntPtrInput
 	// A brief description of this Disk's current state.
 	Status pulumi.StringPtrInput
@@ -258,9 +258,9 @@ func (InstanceDiskState) ElementType() reflect.Type {
 }
 
 type instanceDiskArgs struct {
-	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
-	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
 	// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
 	Filesystem *string `pulumi:"filesystem"`
@@ -270,23 +270,23 @@ type instanceDiskArgs struct {
 	Label string `pulumi:"label"`
 	// The ID of the Linode to create this Disk under.
 	LinodeId int `pulumi:"linodeId"`
-	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+	// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
 	//
 	// ***
 	Size int `pulumi:"size"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
-	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId *int `pulumi:"stackscriptId"`
 }
 
 // The set of arguments for constructing a InstanceDisk resource.
 type InstanceDiskArgs struct {
-	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+	// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
 	AuthorizedKeys pulumi.StringArrayInput
-	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+	// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
 	AuthorizedUsers pulumi.StringArrayInput
 	// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
 	Filesystem pulumi.StringPtrInput
@@ -296,15 +296,15 @@ type InstanceDiskArgs struct {
 	Label pulumi.StringInput
 	// The ID of the Linode to create this Disk under.
 	LinodeId pulumi.IntInput
-	// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+	// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
 	RootPass pulumi.StringPtrInput
 	// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
 	//
 	// ***
 	Size pulumi.IntInput
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
 	StackscriptData pulumi.MapInput
-	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId pulumi.IntPtrInput
 }
 
@@ -395,12 +395,12 @@ func (o InstanceDiskOutput) ToInstanceDiskOutputWithContext(ctx context.Context)
 	return o
 }
 
-// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
 func (o InstanceDiskOutput) AuthorizedKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.StringArrayOutput { return v.AuthorizedKeys }).(pulumi.StringArrayOutput)
 }
 
-// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
 func (o InstanceDiskOutput) AuthorizedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.StringArrayOutput { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
 }
@@ -430,7 +430,7 @@ func (o InstanceDiskOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }
 
-// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
 func (o InstanceDiskOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.StringPtrOutput { return v.RootPass }).(pulumi.StringPtrOutput)
 }
@@ -442,12 +442,12 @@ func (o InstanceDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
 func (o InstanceDiskOutput) StackscriptData() pulumi.MapOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.MapOutput { return v.StackscriptData }).(pulumi.MapOutput)
 }
 
-// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 func (o InstanceDiskOutput) StackscriptId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.IntPtrOutput { return v.StackscriptId }).(pulumi.IntPtrOutput)
 }

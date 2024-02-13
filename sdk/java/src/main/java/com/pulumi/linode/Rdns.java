@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.RdnsArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.RdnsState;
+import com.pulumi.linode.outputs.RdnsTimeouts;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -59,6 +61,12 @@ public class Rdns extends com.pulumi.resources.CustomResource {
      */
     public Output<String> rdns() {
         return this.rdns;
+    }
+    @Export(name="timeouts", refs={RdnsTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ RdnsTimeouts> timeouts;
+
+    public Output<Optional<RdnsTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.

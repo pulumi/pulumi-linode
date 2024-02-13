@@ -178,7 +178,7 @@ class Vpc(pulumi.CustomResource):
         test = linode.Vpc("test",
             description="My first VPC.",
             label="test-vpc",
-            region="us-east")
+            region="us-iad")
         ```
 
         :param str resource_name: The name of the resource.
@@ -209,7 +209,7 @@ class Vpc(pulumi.CustomResource):
         test = linode.Vpc("test",
             description="My first VPC.",
             label="test-vpc",
-            region="us-east")
+            region="us-iad")
         ```
 
         :param str resource_name: The name of the resource.

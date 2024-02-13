@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *     label: "boot",
  *     linodeId: my_instance.id,
  *     size: my_instance.specs.apply(specs => specs.disk),
- *     image: "linode/ubuntu20.04",
+ *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
  *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
  *     stackscriptId: 12345,
@@ -92,11 +92,11 @@ export class InstanceDisk extends pulumi.CustomResource {
     }
 
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      */
     public readonly authorizedKeys!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
      */
     public readonly authorizedUsers!: pulumi.Output<string[] | undefined>;
     /**
@@ -120,7 +120,7 @@ export class InstanceDisk extends pulumi.CustomResource {
      */
     public readonly linodeId!: pulumi.Output<number>;
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      */
     public readonly rootPass!: pulumi.Output<string | undefined>;
     /**
@@ -130,11 +130,11 @@ export class InstanceDisk extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
     public readonly stackscriptData!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
     public readonly stackscriptId!: pulumi.Output<number | undefined>;
     /**
@@ -209,11 +209,11 @@ export class InstanceDisk extends pulumi.CustomResource {
  */
 export interface InstanceDiskState {
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -237,7 +237,7 @@ export interface InstanceDiskState {
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      */
     rootPass?: pulumi.Input<string>;
     /**
@@ -247,11 +247,11 @@ export interface InstanceDiskState {
      */
     size?: pulumi.Input<number>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
     stackscriptData?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
     stackscriptId?: pulumi.Input<number>;
     /**
@@ -269,11 +269,11 @@ export interface InstanceDiskState {
  */
 export interface InstanceDiskArgs {
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -293,7 +293,7 @@ export interface InstanceDiskArgs {
      */
     linodeId: pulumi.Input<number>;
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      */
     rootPass?: pulumi.Input<string>;
     /**
@@ -303,11 +303,11 @@ export interface InstanceDiskArgs {
      */
     size: pulumi.Input<number>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
     stackscriptData?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
     stackscriptId?: pulumi.Input<number>;
 }

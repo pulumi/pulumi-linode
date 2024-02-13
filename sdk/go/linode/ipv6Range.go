@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobarInstance, err := linode.NewInstance(ctx, "foobarInstance", &linode.InstanceArgs{
 //				Label:  pulumi.String("my-linode"),
-//				Image:  pulumi.String("linode/alpine3.14"),
+//				Image:  pulumi.String("linode/alpine3.19"),
 //				Type:   pulumi.String("g6-nanode-1"),
 //				Region: pulumi.String("us-southeast"),
 //			})

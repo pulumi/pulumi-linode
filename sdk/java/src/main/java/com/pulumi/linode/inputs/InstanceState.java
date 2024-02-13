@@ -190,14 +190,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the firewall applied to the Linode instance during creation.
+     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
      * 
      */
     @Import(name="firewallId")
     private @Nullable Output<Integer> firewallId;
 
     /**
-     * @return The ID of the firewall applied to the Linode instance during creation.
+     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
      * 
      */
     public Optional<Output<Integer>> firewallId() {
@@ -205,16 +205,24 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The display group of the Linode instance.
+     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+     * 
+     * @deprecated
+     * Group label is deprecated. We recommend using tags instead.
      * 
      */
+    @Deprecated /* Group label is deprecated. We recommend using tags instead. */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return The display group of the Linode instance.
+     * @return A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+     * 
+     * @deprecated
+     * Group label is deprecated. We recommend using tags instead.
      * 
      */
+    @Deprecated /* Group label is deprecated. We recommend using tags instead. */
     public Optional<Output<String>> group() {
         return Optional.ofNullable(this.group);
     }
@@ -250,14 +258,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
      * 
      */
     public Optional<Output<String>> image() {
@@ -354,6 +362,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<InstanceMetadataArgs>>> metadatas() {
         return Optional.ofNullable(this.metadatas);
+    }
+
+    /**
+     * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    @Import(name="migrationType")
+    private @Nullable Output<String> migrationType;
+
+    /**
+     * @return The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    public Optional<Output<String>> migrationType() {
+        return Optional.ofNullable(this.migrationType);
     }
 
     /**
@@ -618,6 +645,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.ipv6 = $.ipv6;
         this.label = $.label;
         this.metadatas = $.metadatas;
+        this.migrationType = $.migrationType;
         this.privateIp = $.privateIp;
         this.privateIpAddress = $.privateIpAddress;
         this.region = $.region;
@@ -921,7 +949,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallId The ID of the firewall applied to the Linode instance during creation.
+         * @param firewallId The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
          * 
          * @return builder
          * 
@@ -932,7 +960,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallId The ID of the firewall applied to the Linode instance during creation.
+         * @param firewallId The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
          * 
          * @return builder
          * 
@@ -942,22 +970,30 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group The display group of the Linode instance.
+         * @param group A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Group label is deprecated. We recommend using tags instead.
+         * 
          */
+        @Deprecated /* Group label is deprecated. We recommend using tags instead. */
         public Builder group(@Nullable Output<String> group) {
             $.group = group;
             return this;
         }
 
         /**
-         * @param group The display group of the Linode instance.
+         * @param group A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Group label is deprecated. We recommend using tags instead.
+         * 
          */
+        @Deprecated /* Group label is deprecated. We recommend using tags instead. */
         public Builder group(String group) {
             return group(Output.of(group));
         }
@@ -1005,7 +1041,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
          * 
          * @return builder
          * 
@@ -1016,7 +1052,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
          * 
          * @return builder
          * 
@@ -1182,6 +1218,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder metadatas(InstanceMetadataArgs... metadatas) {
             return metadatas(List.of(metadatas));
+        }
+
+        /**
+         * @param migrationType The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+         * 
+         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrationType(@Nullable Output<String> migrationType) {
+            $.migrationType = migrationType;
+            return this;
+        }
+
+        /**
+         * @param migrationType The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+         * 
+         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrationType(String migrationType) {
+            return migrationType(Output.of(migrationType));
         }
 
         /**

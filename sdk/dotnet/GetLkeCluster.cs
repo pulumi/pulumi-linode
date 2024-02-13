@@ -71,11 +71,31 @@ namespace Pulumi.Linode
 
     public sealed class GetLkeClusterArgs : global::Pulumi.InvokeArgs
     {
+        [Input("controlPlanes")]
+        private List<Inputs.GetLkeClusterControlPlaneArgs>? _controlPlanes;
+        public List<Inputs.GetLkeClusterControlPlaneArgs> ControlPlanes
+        {
+            get => _controlPlanes ?? (_controlPlanes = new List<Inputs.GetLkeClusterControlPlaneArgs>());
+            set => _controlPlanes = value;
+        }
+
         /// <summary>
         /// The LKE Cluster's ID.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
+
+        [Input("pools")]
+        private List<Inputs.GetLkeClusterPoolArgs>? _pools;
+
+        /// <summary>
+        /// Node pools associated with this cluster.
+        /// </summary>
+        public List<Inputs.GetLkeClusterPoolArgs> Pools
+        {
+            get => _pools ?? (_pools = new List<Inputs.GetLkeClusterPoolArgs>());
+            set => _pools = value;
+        }
 
         public GetLkeClusterArgs()
         {
@@ -85,11 +105,31 @@ namespace Pulumi.Linode
 
     public sealed class GetLkeClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("controlPlanes")]
+        private InputList<Inputs.GetLkeClusterControlPlaneInputArgs>? _controlPlanes;
+        public InputList<Inputs.GetLkeClusterControlPlaneInputArgs> ControlPlanes
+        {
+            get => _controlPlanes ?? (_controlPlanes = new InputList<Inputs.GetLkeClusterControlPlaneInputArgs>());
+            set => _controlPlanes = value;
+        }
+
         /// <summary>
         /// The LKE Cluster's ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
+
+        [Input("pools")]
+        private InputList<Inputs.GetLkeClusterPoolInputArgs>? _pools;
+
+        /// <summary>
+        /// Node pools associated with this cluster.
+        /// </summary>
+        public InputList<Inputs.GetLkeClusterPoolInputArgs> Pools
+        {
+            get => _pools ?? (_pools = new InputList<Inputs.GetLkeClusterPoolInputArgs>());
+            set => _pools = value;
+        }
 
         public GetLkeClusterInvokeArgs()
         {
@@ -107,6 +147,10 @@ namespace Pulumi.Linode
         public readonly ImmutableArray<string> ApiEndpoints;
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> ControlPlanes;
         /// <summary>
+        /// When this Kubernetes cluster was created.
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
         /// The Kubernetes Dashboard access URL for this cluster.
         /// </summary>
         public readonly string DashboardUrl;
@@ -122,6 +166,9 @@ namespace Pulumi.Linode
         /// The base64 encoded kubeconfig for the Kubernetes cluster.
         /// </summary>
         public readonly string Kubeconfig;
+        /// <summary>
+        /// The unique label for the cluster.
+        /// </summary>
         public readonly string Label;
         /// <summary>
         /// Node pools associated with this cluster.
@@ -136,15 +183,21 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tags applied to the cluster.
+        /// An array of tags applied to this object. Tags are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// When this Kubernetes cluster was updated.
+        /// </summary>
+        public readonly string Updated;
 
         [OutputConstructor]
         private GetLkeClusterResult(
             ImmutableArray<string> apiEndpoints,
 
             ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> controlPlanes,
+
+            string created,
 
             string dashboardUrl,
 
@@ -162,10 +215,13 @@ namespace Pulumi.Linode
 
             string status,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            string updated)
         {
             ApiEndpoints = apiEndpoints;
             ControlPlanes = controlPlanes;
+            Created = created;
             DashboardUrl = dashboardUrl;
             Id = id;
             K8sVersion = k8sVersion;
@@ -175,6 +231,7 @@ namespace Pulumi.Linode
             Region = region;
             Status = status;
             Tags = tags;
+            Updated = updated;
         }
     }
 }

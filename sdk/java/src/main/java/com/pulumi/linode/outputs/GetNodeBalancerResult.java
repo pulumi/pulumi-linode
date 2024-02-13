@@ -5,11 +5,13 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetNodeBalancerFirewall;
 import com.pulumi.linode.outputs.GetNodeBalancerTransfer;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeBalancerResult {
@@ -19,28 +21,33 @@ public final class GetNodeBalancerResult {
      */
     private Integer clientConnThrottle;
     /**
-     * @return When this Linode NodeBalancer was created
+     * @return When this firewall was created.
      * 
      */
     private String created;
+    private @Nullable List<GetNodeBalancerFirewall> firewalls;
     /**
      * @return This NodeBalancer&#39;s hostname, ending with .ip.linodeusercontent.com
      * 
      */
     private String hostname;
+    /**
+     * @return The Firewall&#39;s ID.
+     * 
+     */
     private Integer id;
     /**
-     * @return The Public IPv4 Address of this NodeBalancer
+     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
      */
     private String ipv4;
     /**
-     * @return The Public IPv6 Address of this NodeBalancer
+     * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
      * 
      */
     private String ipv6;
     /**
-     * @return The label of the Linode NodeBalancer
+     * @return Used to identify this rule. For display purposes only.
      * 
      */
     private String label;
@@ -50,13 +57,13 @@ public final class GetNodeBalancerResult {
      */
     private String region;
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return The tags applied to the firewall.
      * 
      */
     private List<String> tags;
     private List<GetNodeBalancerTransfer> transfers;
     /**
-     * @return When this Linode NodeBalancer was last updated
+     * @return When this firewall was last updated.
      * 
      */
     private String updated;
@@ -70,11 +77,14 @@ public final class GetNodeBalancerResult {
         return this.clientConnThrottle;
     }
     /**
-     * @return When this Linode NodeBalancer was created
+     * @return When this firewall was created.
      * 
      */
     public String created() {
         return this.created;
+    }
+    public List<GetNodeBalancerFirewall> firewalls() {
+        return this.firewalls == null ? List.of() : this.firewalls;
     }
     /**
      * @return This NodeBalancer&#39;s hostname, ending with .ip.linodeusercontent.com
@@ -83,25 +93,29 @@ public final class GetNodeBalancerResult {
     public String hostname() {
         return this.hostname;
     }
+    /**
+     * @return The Firewall&#39;s ID.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return The Public IPv4 Address of this NodeBalancer
+     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
      */
     public String ipv4() {
         return this.ipv4;
     }
     /**
-     * @return The Public IPv6 Address of this NodeBalancer
+     * @return A list of IPv6 addresses or networks. Must be in IP/mask format.
      * 
      */
     public String ipv6() {
         return this.ipv6;
     }
     /**
-     * @return The label of the Linode NodeBalancer
+     * @return Used to identify this rule. For display purposes only.
      * 
      */
     public String label() {
@@ -115,7 +129,7 @@ public final class GetNodeBalancerResult {
         return this.region;
     }
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return The tags applied to the firewall.
      * 
      */
     public List<String> tags() {
@@ -125,7 +139,7 @@ public final class GetNodeBalancerResult {
         return this.transfers;
     }
     /**
-     * @return When this Linode NodeBalancer was last updated
+     * @return When this firewall was last updated.
      * 
      */
     public String updated() {
@@ -143,6 +157,7 @@ public final class GetNodeBalancerResult {
     public static final class Builder {
         private Integer clientConnThrottle;
         private String created;
+        private @Nullable List<GetNodeBalancerFirewall> firewalls;
         private String hostname;
         private Integer id;
         private String ipv4;
@@ -157,6 +172,7 @@ public final class GetNodeBalancerResult {
     	      Objects.requireNonNull(defaults);
     	      this.clientConnThrottle = defaults.clientConnThrottle;
     	      this.created = defaults.created;
+    	      this.firewalls = defaults.firewalls;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.ipv4 = defaults.ipv4;
@@ -183,6 +199,15 @@ public final class GetNodeBalancerResult {
             }
             this.created = created;
             return this;
+        }
+        @CustomType.Setter
+        public Builder firewalls(@Nullable List<GetNodeBalancerFirewall> firewalls) {
+
+            this.firewalls = firewalls;
+            return this;
+        }
+        public Builder firewalls(GetNodeBalancerFirewall... firewalls) {
+            return firewalls(List.of(firewalls));
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
@@ -266,6 +291,7 @@ public final class GetNodeBalancerResult {
             final var _resultValue = new GetNodeBalancerResult();
             _resultValue.clientConnThrottle = clientConnThrottle;
             _resultValue.created = created;
+            _resultValue.firewalls = firewalls;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.ipv4 = ipv4;

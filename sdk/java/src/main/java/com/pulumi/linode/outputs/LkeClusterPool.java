@@ -22,12 +22,12 @@ public final class LkeClusterPool {
      */
     private @Nullable LkeClusterPoolAutoscaler autoscaler;
     /**
-     * @return The number of nodes in the Node Pool.
+     * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
-    private Integer count;
+    private @Nullable Integer count;
     /**
      * @return The ID of the node.
      * 
@@ -53,13 +53,13 @@ public final class LkeClusterPool {
         return Optional.ofNullable(this.autoscaler);
     }
     /**
-     * @return The number of nodes in the Node Pool.
+     * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
-    public Integer count() {
-        return this.count;
+    public Optional<Integer> count() {
+        return Optional.ofNullable(this.count);
     }
     /**
      * @return The ID of the node.
@@ -93,7 +93,7 @@ public final class LkeClusterPool {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable LkeClusterPoolAutoscaler autoscaler;
-        private Integer count;
+        private @Nullable Integer count;
         private @Nullable Integer id;
         private @Nullable List<LkeClusterPoolNode> nodes;
         private String type;
@@ -114,10 +114,8 @@ public final class LkeClusterPool {
             return this;
         }
         @CustomType.Setter
-        public Builder count(Integer count) {
-            if (count == null) {
-              throw new MissingRequiredPropertyException("LkeClusterPool", "count");
-            }
+        public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }

@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// {
         ///     var k8Master = Linode.GetImage.Invoke(new()
         ///     {
-        ///         Id = "linode/debian8",
+        ///         Id = "linode/debian12",
         ///     });
         /// 
         /// });
@@ -60,7 +60,7 @@ namespace Pulumi.Linode
         /// {
         ///     var k8Master = Linode.GetImage.Invoke(new()
         ///     {
-        ///         Id = "linode/debian8",
+        ///         Id = "linode/debian12",
         ///     });
         /// 
         /// });

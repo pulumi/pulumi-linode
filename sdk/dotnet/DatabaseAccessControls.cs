@@ -29,7 +29,7 @@ namespace Pulumi.Linode
     ///         Label = "myinstance",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
-    ///         Image = "linode/alpine3.14",
+    ///         Image = "linode/alpine3.19",
     ///     });
     /// 
     ///     var my_db = new Linode.DatabaseMysql("my-db", new()

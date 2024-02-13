@@ -192,7 +192,7 @@ def get_image(id: Optional[str] = None,
     import pulumi
     import pulumi_linode as linode
 
-    k8_master = linode.get_image(id="linode/debian8")
+    k8_master = linode.get_image(id="linode/debian12")
     ```
 
 
@@ -233,7 +233,7 @@ def get_image_output(id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    k8_master = linode.get_image(id="linode/debian8")
+    k8_master = linode.get_image(id="linode/debian12")
     ```
 
 

@@ -67,7 +67,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public readonly clientConnThrottle!: pulumi.Output<number>;
     /**
-     * When this NodeBalancer was created
+     * When this firewall was created.
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
@@ -75,15 +75,19 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public readonly firewallId!: pulumi.Output<number | undefined>;
     /**
+     * A list of Firewalls assigned to this NodeBalancer.
+     */
+    public /*out*/ readonly firewalls!: pulumi.Output<outputs.NodeBalancerFirewall[]>;
+    /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
     public /*out*/ readonly hostname!: pulumi.Output<string>;
     /**
-     * The Public IPv4 Address of this NodeBalancer
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
     public /*out*/ readonly ipv4!: pulumi.Output<string>;
     /**
-     * The Public IPv6 Address of this NodeBalancer
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
     public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
@@ -105,7 +109,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly transfers!: pulumi.Output<outputs.NodeBalancerTransfer[]>;
     /**
-     * When this NodeBalancer was last updated.
+     * When this firewall was last updated.
      */
     public /*out*/ readonly updated!: pulumi.Output<string>;
 
@@ -125,6 +129,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["firewallId"] = state ? state.firewallId : undefined;
+            resourceInputs["firewalls"] = state ? state.firewalls : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
             resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
@@ -141,6 +146,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["firewalls"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["ipv4"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
@@ -161,7 +167,7 @@ export interface NodeBalancerState {
      */
     clientConnThrottle?: pulumi.Input<number>;
     /**
-     * When this NodeBalancer was created
+     * When this firewall was created.
      */
     created?: pulumi.Input<string>;
     /**
@@ -169,15 +175,19 @@ export interface NodeBalancerState {
      */
     firewallId?: pulumi.Input<number>;
     /**
+     * A list of Firewalls assigned to this NodeBalancer.
+     */
+    firewalls?: pulumi.Input<pulumi.Input<inputs.NodeBalancerFirewall>[]>;
+    /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The Public IPv4 Address of this NodeBalancer
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
     ipv4?: pulumi.Input<string>;
     /**
-     * The Public IPv6 Address of this NodeBalancer
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
     ipv6?: pulumi.Input<string>;
     /**
@@ -199,7 +209,7 @@ export interface NodeBalancerState {
      */
     transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[]>;
     /**
-     * When this NodeBalancer was last updated.
+     * When this firewall was last updated.
      */
     updated?: pulumi.Input<string>;
 }

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *         var test = new Vpc(&#34;test&#34;, VpcArgs.builder()        
  *             .description(&#34;My first VPC.&#34;)
  *             .label(&#34;test-vpc&#34;)
- *             .region(&#34;us-east&#34;)
+ *             .region(&#34;us-iad&#34;)
  *             .build());
  * 
  *     }

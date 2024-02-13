@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const foobarInstance = new linode.Instance("foobarInstance", {
  *     label: "my-linode",
- *     image: "linode/alpine3.14",
+ *     image: "linode/alpine3.19",
  *     type: "g6-nanode-1",
  *     region: "us-southeast",
  * });

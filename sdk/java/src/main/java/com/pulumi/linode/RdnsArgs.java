@@ -6,6 +6,7 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.RdnsTimeoutsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,13 @@ public final class RdnsArgs extends com.pulumi.resources.ResourceArgs {
         return this.rdns;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<RdnsTimeoutsArgs> timeouts;
+
+    public Optional<Output<RdnsTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      * 
@@ -67,6 +75,7 @@ public final class RdnsArgs extends com.pulumi.resources.ResourceArgs {
     private RdnsArgs(RdnsArgs $) {
         this.address = $.address;
         this.rdns = $.rdns;
+        this.timeouts = $.timeouts;
         this.waitForAvailable = $.waitForAvailable;
     }
 
@@ -128,6 +137,15 @@ public final class RdnsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rdns(String rdns) {
             return rdns(Output.of(rdns));
+        }
+
+        public Builder timeouts(@Nullable Output<RdnsTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(RdnsTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

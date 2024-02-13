@@ -27,7 +27,7 @@ namespace Pulumi.Linode
     ///     var myInstance = new Linode.Instance("myInstance", new()
     ///     {
     ///         Label = "my_instance",
-    ///         Image = "linode/ubuntu18.04",
+    ///         Image = "linode/ubuntu22.04",
     ///         Region = "us-southeast",
     ///         Type = "g6-standard-1",
     ///         RootPass = "bogusPassword$",

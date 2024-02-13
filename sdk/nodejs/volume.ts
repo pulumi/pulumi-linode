@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -78,7 +80,8 @@ export class Volume extends pulumi.CustomResource {
     /**
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
+    public readonly timeouts!: pulumi.Output<outputs.VolumeTimeouts | undefined>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -101,6 +104,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["sourceVolumeId"] = state ? state.sourceVolumeId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if ((!args || args.label === undefined) && !opts.urn) {
@@ -112,6 +116,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sourceVolumeId"] = args ? args.sourceVolumeId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["filesystemPath"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -158,6 +163,7 @@ export interface VolumeState {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
 }
 
 /**
@@ -190,4 +196,5 @@ export interface VolumeArgs {
      * A list of tags applied to this object. Tags are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
 }

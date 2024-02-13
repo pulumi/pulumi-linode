@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const k8Master = linode.getImage({
- *     id: "linode/debian8",
+ *     id: "linode/debian12",
  * });
  * ```
  */
@@ -98,7 +98,7 @@ export interface GetImageResult {
  * import * as linode from "@pulumi/linode";
  *
  * const k8Master = linode.getImage({
- *     id: "linode/debian8",
+ *     id: "linode/debian12",
  * });
  * ```
  */
