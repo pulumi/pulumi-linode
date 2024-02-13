@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -55,6 +57,7 @@ export class Rdns extends pulumi.CustomResource {
      * The name of the RDNS address.
      */
     public readonly rdns!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.RdnsTimeouts | undefined>;
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */
@@ -75,6 +78,7 @@ export class Rdns extends pulumi.CustomResource {
             const state = argsOrState as RdnsState | undefined;
             resourceInputs["address"] = state ? state.address : undefined;
             resourceInputs["rdns"] = state ? state.rdns : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["waitForAvailable"] = state ? state.waitForAvailable : undefined;
         } else {
             const args = argsOrState as RdnsArgs | undefined;
@@ -86,6 +90,7 @@ export class Rdns extends pulumi.CustomResource {
             }
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["rdns"] = args ? args.rdns : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["waitForAvailable"] = args ? args.waitForAvailable : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -105,6 +110,7 @@ export interface RdnsState {
      * The name of the RDNS address.
      */
     rdns?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.RdnsTimeouts>;
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */
@@ -123,6 +129,7 @@ export interface RdnsArgs {
      * The name of the RDNS address.
      */
     rdns: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.RdnsTimeouts>;
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */

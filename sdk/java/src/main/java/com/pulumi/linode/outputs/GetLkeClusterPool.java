@@ -6,11 +6,13 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetLkeClusterPoolAutoscaler;
+import com.pulumi.linode.outputs.GetLkeClusterPoolDisk;
 import com.pulumi.linode.outputs.GetLkeClusterPoolNode;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClusterPool {
@@ -18,12 +20,17 @@ public final class GetLkeClusterPool {
      * @return The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      * 
      */
-    private List<GetLkeClusterPoolAutoscaler> autoscalers;
+    private @Nullable List<GetLkeClusterPoolAutoscaler> autoscalers;
     /**
      * @return The number of nodes in the Node Pool.
      * 
      */
     private Integer count;
+    /**
+     * @return This Node Pool’s custom disk layout.
+     * 
+     */
+    private @Nullable List<GetLkeClusterPoolDisk> disks;
     /**
      * @return The LKE Cluster&#39;s ID.
      * 
@@ -33,9 +40,14 @@ public final class GetLkeClusterPool {
      * @return The nodes in the Node Pool.
      * 
      */
-    private List<GetLkeClusterPoolNode> nodes;
+    private @Nullable List<GetLkeClusterPoolNode> nodes;
     /**
-     * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * 
+     */
+    private List<String> tags;
+    /**
+     * @return This custom disk partition’s filesystem type.
      * 
      */
     private String type;
@@ -46,7 +58,7 @@ public final class GetLkeClusterPool {
      * 
      */
     public List<GetLkeClusterPoolAutoscaler> autoscalers() {
-        return this.autoscalers;
+        return this.autoscalers == null ? List.of() : this.autoscalers;
     }
     /**
      * @return The number of nodes in the Node Pool.
@@ -54,6 +66,13 @@ public final class GetLkeClusterPool {
      */
     public Integer count() {
         return this.count;
+    }
+    /**
+     * @return This Node Pool’s custom disk layout.
+     * 
+     */
+    public List<GetLkeClusterPoolDisk> disks() {
+        return this.disks == null ? List.of() : this.disks;
     }
     /**
      * @return The LKE Cluster&#39;s ID.
@@ -67,10 +86,17 @@ public final class GetLkeClusterPool {
      * 
      */
     public List<GetLkeClusterPoolNode> nodes() {
-        return this.nodes;
+        return this.nodes == null ? List.of() : this.nodes;
     }
     /**
-     * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return This custom disk partition’s filesystem type.
      * 
      */
     public String type() {
@@ -86,26 +112,28 @@ public final class GetLkeClusterPool {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetLkeClusterPoolAutoscaler> autoscalers;
+        private @Nullable List<GetLkeClusterPoolAutoscaler> autoscalers;
         private Integer count;
+        private @Nullable List<GetLkeClusterPoolDisk> disks;
         private Integer id;
-        private List<GetLkeClusterPoolNode> nodes;
+        private @Nullable List<GetLkeClusterPoolNode> nodes;
+        private List<String> tags;
         private String type;
         public Builder() {}
         public Builder(GetLkeClusterPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalers = defaults.autoscalers;
     	      this.count = defaults.count;
+    	      this.disks = defaults.disks;
     	      this.id = defaults.id;
     	      this.nodes = defaults.nodes;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
         }
 
         @CustomType.Setter
-        public Builder autoscalers(List<GetLkeClusterPoolAutoscaler> autoscalers) {
-            if (autoscalers == null) {
-              throw new MissingRequiredPropertyException("GetLkeClusterPool", "autoscalers");
-            }
+        public Builder autoscalers(@Nullable List<GetLkeClusterPoolAutoscaler> autoscalers) {
+
             this.autoscalers = autoscalers;
             return this;
         }
@@ -121,6 +149,15 @@ public final class GetLkeClusterPool {
             return this;
         }
         @CustomType.Setter
+        public Builder disks(@Nullable List<GetLkeClusterPoolDisk> disks) {
+
+            this.disks = disks;
+            return this;
+        }
+        public Builder disks(GetLkeClusterPoolDisk... disks) {
+            return disks(List.of(disks));
+        }
+        @CustomType.Setter
         public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetLkeClusterPool", "id");
@@ -129,15 +166,24 @@ public final class GetLkeClusterPool {
             return this;
         }
         @CustomType.Setter
-        public Builder nodes(List<GetLkeClusterPoolNode> nodes) {
-            if (nodes == null) {
-              throw new MissingRequiredPropertyException("GetLkeClusterPool", "nodes");
-            }
+        public Builder nodes(@Nullable List<GetLkeClusterPoolNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetLkeClusterPoolNode... nodes) {
             return nodes(List.of(nodes));
+        }
+        @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
         @CustomType.Setter
         public Builder type(String type) {
@@ -151,8 +197,10 @@ public final class GetLkeClusterPool {
             final var _resultValue = new GetLkeClusterPool();
             _resultValue.autoscalers = autoscalers;
             _resultValue.count = count;
+            _resultValue.disks = disks;
             _resultValue.id = id;
             _resultValue.nodes = nodes;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             return _resultValue;
         }

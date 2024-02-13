@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var foobarInstance = new Instance(&#34;foobarInstance&#34;, InstanceArgs.builder()        
  *             .label(&#34;my-linode&#34;)
- *             .image(&#34;linode/alpine3.14&#34;)
+ *             .image(&#34;linode/alpine3.19&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .build());

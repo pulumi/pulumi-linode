@@ -71,6 +71,14 @@ namespace Pulumi.Linode
 
     public sealed class GetNodeBalancerArgs : global::Pulumi.InvokeArgs
     {
+        [Input("firewalls")]
+        private List<Inputs.GetNodeBalancerFirewallArgs>? _firewalls;
+        public List<Inputs.GetNodeBalancerFirewallArgs> Firewalls
+        {
+            get => _firewalls ?? (_firewalls = new List<Inputs.GetNodeBalancerFirewallArgs>());
+            set => _firewalls = value;
+        }
+
         /// <summary>
         /// The NodeBalancer's ID.
         /// </summary>
@@ -85,6 +93,14 @@ namespace Pulumi.Linode
 
     public sealed class GetNodeBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("firewalls")]
+        private InputList<Inputs.GetNodeBalancerFirewallInputArgs>? _firewalls;
+        public InputList<Inputs.GetNodeBalancerFirewallInputArgs> Firewalls
+        {
+            get => _firewalls ?? (_firewalls = new InputList<Inputs.GetNodeBalancerFirewallInputArgs>());
+            set => _firewalls = value;
+        }
+
         /// <summary>
         /// The NodeBalancer's ID.
         /// </summary>
@@ -106,24 +122,28 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int ClientConnThrottle;
         /// <summary>
-        /// When this Linode NodeBalancer was created
+        /// When this firewall was created.
         /// </summary>
         public readonly string Created;
+        public readonly ImmutableArray<Outputs.GetNodeBalancerFirewallResult> Firewalls;
         /// <summary>
         /// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
         /// </summary>
         public readonly string Hostname;
+        /// <summary>
+        /// The Firewall's ID.
+        /// </summary>
         public readonly int Id;
         /// <summary>
-        /// The Public IPv4 Address of this NodeBalancer
+        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
         public readonly string Ipv4;
         /// <summary>
-        /// The Public IPv6 Address of this NodeBalancer
+        /// A list of IPv6 addresses or networks. Must be in IP/mask format.
         /// </summary>
         public readonly string Ipv6;
         /// <summary>
-        /// The label of the Linode NodeBalancer
+        /// Used to identify this rule. For display purposes only.
         /// </summary>
         public readonly string Label;
         /// <summary>
@@ -131,12 +151,12 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// A list of tags applied to this object. Tags are for organizational purposes only.
+        /// The tags applied to the firewall.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetNodeBalancerTransferResult> Transfers;
         /// <summary>
-        /// When this Linode NodeBalancer was last updated
+        /// When this firewall was last updated.
         /// </summary>
         public readonly string Updated;
 
@@ -145,6 +165,8 @@ namespace Pulumi.Linode
             int clientConnThrottle,
 
             string created,
+
+            ImmutableArray<Outputs.GetNodeBalancerFirewallResult> firewalls,
 
             string hostname,
 
@@ -166,6 +188,7 @@ namespace Pulumi.Linode
         {
             ClientConnThrottle = clientConnThrottle;
             Created = created;
+            Firewalls = firewalls;
             Hostname = hostname;
             Id = id;
             Ipv4 = ipv4;

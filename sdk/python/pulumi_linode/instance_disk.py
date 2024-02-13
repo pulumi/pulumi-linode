@@ -31,13 +31,13 @@ class InstanceDiskInitArgs:
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
-        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image.
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
-        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "linode_id", linode_id)
@@ -99,7 +99,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -111,7 +111,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
@@ -147,7 +147,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[pulumi.Input[str]]:
         """
-        The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
@@ -159,7 +159,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -171,7 +171,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> Optional[pulumi.Input[int]]:
         """
-        A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -198,19 +198,19 @@ class _InstanceDiskState:
                  updated: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceDisk resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] created: When this disk was created.
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
-        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
-        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
         :param pulumi.Input[str] updated: When this disk was last updated.
         """
@@ -245,7 +245,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -257,7 +257,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
@@ -329,7 +329,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[pulumi.Input[str]]:
         """
-        The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
@@ -355,7 +355,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -367,7 +367,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> Optional[pulumi.Input[int]]:
         """
-        A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -454,7 +454,7 @@ class InstanceDisk(pulumi.CustomResource):
             label="boot",
             linode_id=my_instance.id,
             size=my_instance.specs.disk,
-            image="linode/ubuntu20.04",
+            image="linode/ubuntu22.04",
             root_pass="myc00lpass!",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             stackscript_id=12345,
@@ -473,18 +473,18 @@ class InstanceDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
-        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
-        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         ...
     @overload
@@ -530,7 +530,7 @@ class InstanceDisk(pulumi.CustomResource):
             label="boot",
             linode_id=my_instance.id,
             size=my_instance.specs.disk,
-            image="linode/ubuntu20.04",
+            image="linode/ubuntu22.04",
             root_pass="myc00lpass!",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             stackscript_id=12345,
@@ -632,19 +632,19 @@ class InstanceDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] created: When this disk was created.
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
-        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
-        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
         :param pulumi.Input[str] updated: When this disk was last updated.
         """
@@ -671,7 +671,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -679,7 +679,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
@@ -727,7 +727,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> pulumi.Output[Optional[str]]:
         """
-        The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
@@ -745,7 +745,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -753,7 +753,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> pulumi.Output[Optional[int]]:
         """
-        A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_id")
 

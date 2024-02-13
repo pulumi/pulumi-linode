@@ -66,7 +66,7 @@ namespace Pulumi.Linode
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,
     ///         Size = my_instance.Specs.Apply(specs =&gt; specs.Disk),
-    ///         Image = "linode/ubuntu20.04",
+    ///         Image = "linode/ubuntu22.04",
     ///         RootPass = "myc00lpass!",
     ///         AuthorizedKeys = new[]
     ///         {
@@ -94,13 +94,13 @@ namespace Pulumi.Linode
     public partial class InstanceDisk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         /// </summary>
         [Output("authorizedKeys")]
         public Output<ImmutableArray<string>> AuthorizedKeys { get; private set; } = null!;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         /// </summary>
         [Output("authorizedUsers")]
         public Output<ImmutableArray<string>> AuthorizedUsers { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         /// </summary>
         [Output("rootPass")]
         public Output<string?> RootPass { get; private set; } = null!;
@@ -150,13 +150,13 @@ namespace Pulumi.Linode
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         /// </summary>
         [Output("stackscriptData")]
         public Output<ImmutableDictionary<string, object>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
-        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         /// </summary>
         [Output("stackscriptId")]
         public Output<int?> StackscriptId { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -240,7 +240,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -276,7 +276,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         /// </summary>
         public Input<string>? RootPass
         {
@@ -300,7 +300,7 @@ namespace Pulumi.Linode
         private InputMap<object>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         /// </summary>
         public InputMap<object> StackscriptData
         {
@@ -313,7 +313,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -342,7 +342,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -384,7 +384,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image.
+        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         /// </summary>
         public Input<string>? RootPass
         {
@@ -408,7 +408,7 @@ namespace Pulumi.Linode
         private InputMap<object>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         /// </summary>
         public InputMap<object> StackscriptData
         {
@@ -421,7 +421,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }

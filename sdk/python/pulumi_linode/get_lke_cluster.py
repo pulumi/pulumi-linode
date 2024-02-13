@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetLkeClusterResult',
@@ -22,13 +23,16 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, control_planes=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None):
+    def __init__(__self__, api_endpoints=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None, updated=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
         if control_planes and not isinstance(control_planes, list):
             raise TypeError("Expected argument 'control_planes' to be a list")
         pulumi.set(__self__, "control_planes", control_planes)
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        pulumi.set(__self__, "created", created)
         if dashboard_url and not isinstance(dashboard_url, str):
             raise TypeError("Expected argument 'dashboard_url' to be a str")
         pulumi.set(__self__, "dashboard_url", dashboard_url)
@@ -56,6 +60,9 @@ class GetLkeClusterResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if updated and not isinstance(updated, str):
+            raise TypeError("Expected argument 'updated' to be a str")
+        pulumi.set(__self__, "updated", updated)
 
     @property
     @pulumi.getter(name="apiEndpoints")
@@ -67,8 +74,16 @@ class GetLkeClusterResult:
 
     @property
     @pulumi.getter(name="controlPlanes")
-    def control_planes(self) -> Sequence['outputs.GetLkeClusterControlPlaneResult']:
+    def control_planes(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneResult']]:
         return pulumi.get(self, "control_planes")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        When this Kubernetes cluster was created.
+        """
+        return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="dashboardUrl")
@@ -105,11 +120,14 @@ class GetLkeClusterResult:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        The unique label for the cluster.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def pools(self) -> Sequence['outputs.GetLkeClusterPoolResult']:
+    def pools(self) -> Optional[Sequence['outputs.GetLkeClusterPoolResult']]:
         """
         Node pools associated with this cluster.
         """
@@ -135,9 +153,17 @@ class GetLkeClusterResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        The tags applied to the cluster.
+        An array of tags applied to this object. Tags are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        When this Kubernetes cluster was updated.
+        """
+        return pulumi.get(self, "updated")
 
 
 class AwaitableGetLkeClusterResult(GetLkeClusterResult):
@@ -148,6 +174,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
         return GetLkeClusterResult(
             api_endpoints=self.api_endpoints,
             control_planes=self.control_planes,
+            created=self.created,
             dashboard_url=self.dashboard_url,
             id=self.id,
             k8s_version=self.k8s_version,
@@ -156,10 +183,13 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             pools=self.pools,
             region=self.region,
             status=self.status,
-            tags=self.tags)
+            tags=self.tags,
+            updated=self.updated)
 
 
-def get_lke_cluster(id: Optional[int] = None,
+def get_lke_cluster(control_planes: Optional[Sequence[pulumi.InputType['GetLkeClusterControlPlaneArgs']]] = None,
+                    id: Optional[int] = None,
+                    pools: Optional[Sequence[pulumi.InputType['GetLkeClusterPoolArgs']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeClusterResult:
     """
     Provides details about an LKE Cluster.
@@ -175,15 +205,19 @@ def get_lke_cluster(id: Optional[int] = None,
 
 
     :param int id: The LKE Cluster's ID.
+    :param Sequence[pulumi.InputType['GetLkeClusterPoolArgs']] pools: Node pools associated with this cluster.
     """
     __args__ = dict()
+    __args__['controlPlanes'] = control_planes
     __args__['id'] = id
+    __args__['pools'] = pools
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult).value
 
     return AwaitableGetLkeClusterResult(
         api_endpoints=pulumi.get(__ret__, 'api_endpoints'),
         control_planes=pulumi.get(__ret__, 'control_planes'),
+        created=pulumi.get(__ret__, 'created'),
         dashboard_url=pulumi.get(__ret__, 'dashboard_url'),
         id=pulumi.get(__ret__, 'id'),
         k8s_version=pulumi.get(__ret__, 'k8s_version'),
@@ -192,11 +226,14 @@ def get_lke_cluster(id: Optional[int] = None,
         pools=pulumi.get(__ret__, 'pools'),
         region=pulumi.get(__ret__, 'region'),
         status=pulumi.get(__ret__, 'status'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_lke_cluster)
-def get_lke_cluster_output(id: Optional[pulumi.Input[int]] = None,
+def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetLkeClusterControlPlaneArgs']]]]] = None,
+                           id: Optional[pulumi.Input[int]] = None,
+                           pools: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetLkeClusterPoolArgs']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClusterResult]:
     """
     Provides details about an LKE Cluster.
@@ -212,5 +249,6 @@ def get_lke_cluster_output(id: Optional[pulumi.Input[int]] = None,
 
 
     :param int id: The LKE Cluster's ID.
+    :param Sequence[pulumi.InputType['GetLkeClusterPoolArgs']] pools: Node pools associated with this cluster.
     """
     ...

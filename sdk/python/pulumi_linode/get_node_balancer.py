@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetNodeBalancerResult',
@@ -22,13 +23,16 @@ class GetNodeBalancerResult:
     """
     A collection of values returned by getNodeBalancer.
     """
-    def __init__(__self__, client_conn_throttle=None, created=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None):
+    def __init__(__self__, client_conn_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None):
         if client_conn_throttle and not isinstance(client_conn_throttle, int):
             raise TypeError("Expected argument 'client_conn_throttle' to be a int")
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
+        if firewalls and not isinstance(firewalls, list):
+            raise TypeError("Expected argument 'firewalls' to be a list")
+        pulumi.set(__self__, "firewalls", firewalls)
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
@@ -69,9 +73,14 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def created(self) -> str:
         """
-        When this Linode NodeBalancer was created
+        When this firewall was created.
         """
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def firewalls(self) -> Optional[Sequence['outputs.GetNodeBalancerFirewallResult']]:
+        return pulumi.get(self, "firewalls")
 
     @property
     @pulumi.getter
@@ -84,13 +93,16 @@ class GetNodeBalancerResult:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The Firewall's ID.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def ipv4(self) -> str:
         """
-        The Public IPv4 Address of this NodeBalancer
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv4")
 
@@ -98,7 +110,7 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def ipv6(self) -> str:
         """
-        The Public IPv6 Address of this NodeBalancer
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv6")
 
@@ -106,7 +118,7 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def label(self) -> str:
         """
-        The label of the Linode NodeBalancer
+        Used to identify this rule. For display purposes only.
         """
         return pulumi.get(self, "label")
 
@@ -122,7 +134,7 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        The tags applied to the firewall.
         """
         return pulumi.get(self, "tags")
 
@@ -135,7 +147,7 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def updated(self) -> str:
         """
-        When this Linode NodeBalancer was last updated
+        When this firewall was last updated.
         """
         return pulumi.get(self, "updated")
 
@@ -148,6 +160,7 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
         return GetNodeBalancerResult(
             client_conn_throttle=self.client_conn_throttle,
             created=self.created,
+            firewalls=self.firewalls,
             hostname=self.hostname,
             id=self.id,
             ipv4=self.ipv4,
@@ -159,7 +172,8 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             updated=self.updated)
 
 
-def get_node_balancer(id: Optional[int] = None,
+def get_node_balancer(firewalls: Optional[Sequence[pulumi.InputType['GetNodeBalancerFirewallArgs']]] = None,
+                      id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeBalancerResult:
     """
     Provides details about a Linode NodeBalancer.
@@ -177,6 +191,7 @@ def get_node_balancer(id: Optional[int] = None,
     :param int id: The NodeBalancer's ID.
     """
     __args__ = dict()
+    __args__['firewalls'] = firewalls
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult).value
@@ -184,6 +199,7 @@ def get_node_balancer(id: Optional[int] = None,
     return AwaitableGetNodeBalancerResult(
         client_conn_throttle=pulumi.get(__ret__, 'client_conn_throttle'),
         created=pulumi.get(__ret__, 'created'),
+        firewalls=pulumi.get(__ret__, 'firewalls'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         ipv4=pulumi.get(__ret__, 'ipv4'),
@@ -196,7 +212,8 @@ def get_node_balancer(id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_node_balancer)
-def get_node_balancer_output(id: Optional[pulumi.Input[int]] = None,
+def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodeBalancerFirewallArgs']]]]] = None,
+                             id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerResult]:
     """
     Provides details about a Linode NodeBalancer.

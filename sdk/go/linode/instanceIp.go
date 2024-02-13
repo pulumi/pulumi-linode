@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
-//				Image:  pulumi.String("linode/alpine3.16"),
+//				Image:  pulumi.String("linode/alpine3.19"),
 //				Label:  pulumi.String("foobar-test"),
 //				Type:   pulumi.String("g6-nanode-1"),
 //				Region: pulumi.String("us-east"),

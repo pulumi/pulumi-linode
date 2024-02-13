@@ -50,6 +50,7 @@ func LookupNodeBalancer(ctx *pulumi.Context, args *LookupNodeBalancerArgs, opts 
 
 // A collection of arguments for invoking getNodeBalancer.
 type LookupNodeBalancerArgs struct {
+	Firewalls []GetNodeBalancerFirewall `pulumi:"firewalls"`
 	// The NodeBalancer's ID.
 	Id int `pulumi:"id"`
 }
@@ -58,23 +59,25 @@ type LookupNodeBalancerArgs struct {
 type LookupNodeBalancerResult struct {
 	// Throttle connections per second (0-20).
 	ClientConnThrottle int `pulumi:"clientConnThrottle"`
-	// When this Linode NodeBalancer was created
-	Created string `pulumi:"created"`
+	// When this firewall was created.
+	Created   string                    `pulumi:"created"`
+	Firewalls []GetNodeBalancerFirewall `pulumi:"firewalls"`
 	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
 	Hostname string `pulumi:"hostname"`
-	Id       int    `pulumi:"id"`
-	// The Public IPv4 Address of this NodeBalancer
+	// The Firewall's ID.
+	Id int `pulumi:"id"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4 string `pulumi:"ipv4"`
-	// The Public IPv6 Address of this NodeBalancer
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 string `pulumi:"ipv6"`
-	// The label of the Linode NodeBalancer
+	// Used to identify this rule. For display purposes only.
 	Label string `pulumi:"label"`
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region string `pulumi:"region"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// The tags applied to the firewall.
 	Tags      []string                  `pulumi:"tags"`
 	Transfers []GetNodeBalancerTransfer `pulumi:"transfers"`
-	// When this Linode NodeBalancer was last updated
+	// When this firewall was last updated.
 	Updated string `pulumi:"updated"`
 }
 
@@ -93,6 +96,7 @@ func LookupNodeBalancerOutput(ctx *pulumi.Context, args LookupNodeBalancerOutput
 
 // A collection of arguments for invoking getNodeBalancer.
 type LookupNodeBalancerOutputArgs struct {
+	Firewalls GetNodeBalancerFirewallArrayInput `pulumi:"firewalls"`
 	// The NodeBalancer's ID.
 	Id pulumi.IntInput `pulumi:"id"`
 }
@@ -121,9 +125,13 @@ func (o LookupNodeBalancerResultOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.ClientConnThrottle }).(pulumi.IntOutput)
 }
 
-// When this Linode NodeBalancer was created
+// When this firewall was created.
 func (o LookupNodeBalancerResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Firewalls() GetNodeBalancerFirewallArrayOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerFirewall { return v.Firewalls }).(GetNodeBalancerFirewallArrayOutput)
 }
 
 // This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
@@ -131,21 +139,22 @@ func (o LookupNodeBalancerResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The Firewall's ID.
 func (o LookupNodeBalancerResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// The Public IPv4 Address of this NodeBalancer
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
 func (o LookupNodeBalancerResultOutput) Ipv4() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Ipv4 }).(pulumi.StringOutput)
 }
 
-// The Public IPv6 Address of this NodeBalancer
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
 func (o LookupNodeBalancerResultOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
-// The label of the Linode NodeBalancer
+// Used to identify this rule. For display purposes only.
 func (o LookupNodeBalancerResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -155,7 +164,7 @@ func (o LookupNodeBalancerResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// The tags applied to the firewall.
 func (o LookupNodeBalancerResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -164,7 +173,7 @@ func (o LookupNodeBalancerResultOutput) Transfers() GetNodeBalancerTransferArray
 	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerTransfer { return v.Transfers }).(GetNodeBalancerTransferArrayOutput)
 }
 
-// When this Linode NodeBalancer was last updated
+// When this firewall was last updated.
 func (o LookupNodeBalancerResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Updated }).(pulumi.StringOutput)
 }

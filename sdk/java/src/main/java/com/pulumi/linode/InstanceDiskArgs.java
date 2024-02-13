@@ -21,14 +21,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceDiskArgs Empty = new InstanceDiskArgs();
 
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      * 
      */
     @Import(name="authorizedKeys")
     private @Nullable Output<List<String>> authorizedKeys;
 
     /**
-     * @return A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * @return A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      * 
      */
     public Optional<Output<List<String>>> authorizedKeys() {
@@ -36,14 +36,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
      * 
      */
     @Import(name="authorizedUsers")
     private @Nullable Output<List<String>> authorizedUsers;
 
     /**
-     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
      * 
      */
     public Optional<Output<List<String>>> authorizedUsers() {
@@ -111,14 +111,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      * 
      */
     @Import(name="rootPass")
     private @Nullable Output<String> rootPass;
 
     /**
-     * @return The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * @return The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      * 
      */
     public Optional<Output<String>> rootPass() {
@@ -145,14 +145,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<Map<String,Object>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
     public Optional<Output<Map<String,Object>>> stackscriptData() {
@@ -160,14 +160,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      * 
      */
     @Import(name="stackscriptId")
     private @Nullable Output<Integer> stackscriptId;
 
     /**
-     * @return A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * @return A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      * 
      */
     public Optional<Output<Integer>> stackscriptId() {
@@ -208,7 +208,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The root user’s password on a newly-created Linode Disk when deploying from an Image.
+         * @param rootPass The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The root user’s password on a newly-created Linode Disk when deploying from an Image.
+         * @param rootPass The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+         * @param stackscriptId A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+         * @param stackscriptId A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
          * 
          * @return builder
          * 

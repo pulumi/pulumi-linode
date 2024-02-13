@@ -27,13 +27,13 @@ import * as utilities from "./utilities";
  * apt-get -q update && apt-get -q -y install $PACKAGE
  * `,
  *     images: [
- *         "linode/ubuntu18.04",
- *         "linode/ubuntu16.04lts",
+ *         "linode/ubuntu22.04",
+ *         "linode/ubuntu20.04",
  *     ],
  *     revNote: "initial version",
  * });
  * const fooInstance = new linode.Instance("fooInstance", {
- *     image: "linode/ubuntu18.04",
+ *     image: "linode/ubuntu22.04",
  *     label: "foo",
  *     region: "us-east",
  *     type: "g6-nanode-1",

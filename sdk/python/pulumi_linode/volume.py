@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['VolumeArgs', 'Volume']
 
@@ -19,7 +21,8 @@ class VolumeArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  source_volume_id: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[str] label: The label of the Linode Volume
@@ -42,6 +45,8 @@ class VolumeArgs:
             pulumi.set(__self__, "source_volume_id", source_volume_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -117,6 +122,15 @@ class VolumeArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['VolumeTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['VolumeTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _VolumeState:
@@ -128,7 +142,8 @@ class _VolumeState:
                  size: Optional[pulumi.Input[int]] = None,
                  source_volume_id: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
@@ -158,6 +173,8 @@ class _VolumeState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="filesystemPath")
@@ -257,6 +274,15 @@ class _VolumeState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['VolumeTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['VolumeTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 class Volume(pulumi.CustomResource):
     @overload
@@ -269,6 +295,7 @@ class Volume(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  source_volume_id: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
                  __props__=None):
         """
         Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.
@@ -334,6 +361,7 @@ class Volume(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  source_volume_id: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,6 +379,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["source_volume_id"] = source_volume_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["filesystem_path"] = None
             __props__.__dict__["status"] = None
         super(Volume, __self__).__init__(
@@ -370,7 +399,8 @@ class Volume(pulumi.CustomResource):
             size: Optional[pulumi.Input[int]] = None,
             source_volume_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Volume':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -401,6 +431,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["source_volume_id"] = source_volume_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         return Volume(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -463,9 +494,14 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def tags(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of tags applied to this object. Tags are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.VolumeTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

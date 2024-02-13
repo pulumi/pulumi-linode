@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     label: "myinstance",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
- *     image: "linode/alpine3.14",
+ *     image: "linode/alpine3.19",
  * });
  * const my_db = new linode.DatabaseMysql("my-db", {
  *     label: "mydatabase",

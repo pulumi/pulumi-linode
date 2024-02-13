@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *
  * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
- *     image: "linode/ubuntu18.04",
+ *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",
  *     type: "g6-standard-1",
  *     rootPass: "bogusPassword$",
@@ -97,7 +97,7 @@ export interface GetVlansResult {
  *
  * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
- *     image: "linode/ubuntu18.04",
+ *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",
  *     type: "g6-standard-1",
  *     rootPass: "bogusPassword$",

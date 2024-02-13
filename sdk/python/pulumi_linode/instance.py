@@ -32,6 +32,7 @@ class InstanceArgs:
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
+                 migration_type: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
@@ -53,13 +54,16 @@ class InstanceArgs:
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
-        :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
+        :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+               
+               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
                
@@ -113,6 +117,9 @@ class InstanceArgs:
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
         if group is not None:
+            warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
+            pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
+        if group is not None:
             pulumi.set(__self__, "group", group)
         if image is not None:
             pulumi.set(__self__, "image", image)
@@ -122,6 +129,8 @@ class InstanceArgs:
             pulumi.set(__self__, "label", label)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if migration_type is not None:
+            pulumi.set(__self__, "migration_type", migration_type)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
         if resize_disk is not None:
@@ -270,7 +279,7 @@ class InstanceArgs:
     @pulumi.getter(name="firewallId")
     def firewall_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the firewall applied to the Linode instance during creation.
+        The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "firewall_id")
 
@@ -282,8 +291,11 @@ class InstanceArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        The display group of the Linode instance.
+        A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         """
+        warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
+        pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
+
         return pulumi.get(self, "group")
 
     @group.setter
@@ -294,7 +306,7 @@ class InstanceArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -338,6 +350,20 @@ class InstanceArgs:
     @metadatas.setter
     def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        """
+        return pulumi.get(self, "migration_type")
+
+    @migration_type.setter
+    def migration_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "migration_type", value)
 
     @property
     @pulumi.getter(name="privateIp")
@@ -498,6 +524,7 @@ class _InstanceState:
                  ipv6: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
+                 migration_type: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -523,11 +550,11 @@ class _InstanceState:
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
-        :param pulumi.Input[str] group: The display group of the Linode instance.
+        :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[str] host_uuid: The Linode’s host machine, as a UUID.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] ip_address: A string containing the Linode's public IP address.
@@ -535,6 +562,9 @@ class _InstanceState:
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
+        :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+               
+               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
@@ -593,6 +623,9 @@ class _InstanceState:
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
         if group is not None:
+            warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
+            pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
+        if group is not None:
             pulumi.set(__self__, "group", group)
         if has_user_data is not None:
             pulumi.set(__self__, "has_user_data", has_user_data)
@@ -612,6 +645,8 @@ class _InstanceState:
             pulumi.set(__self__, "label", label)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if migration_type is not None:
+            pulumi.set(__self__, "migration_type", migration_type)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
         if private_ip_address is not None:
@@ -768,7 +803,7 @@ class _InstanceState:
     @pulumi.getter(name="firewallId")
     def firewall_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the firewall applied to the Linode instance during creation.
+        The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "firewall_id")
 
@@ -780,8 +815,11 @@ class _InstanceState:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        The display group of the Linode instance.
+        A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         """
+        warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
+        pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
+
         return pulumi.get(self, "group")
 
     @group.setter
@@ -816,7 +854,7 @@ class _InstanceState:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -896,6 +934,20 @@ class _InstanceState:
     @metadatas.setter
     def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        """
+        return pulumi.get(self, "migration_type")
+
+    @migration_type.setter
+    def migration_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "migration_type", value)
 
     @property
     @pulumi.getter(name="privateIp")
@@ -1100,6 +1152,7 @@ class Instance(pulumi.CustomResource):
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]]] = None,
+                 migration_type: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
@@ -1127,12 +1180,42 @@ class Instance(pulumi.CustomResource):
 
         web = linode.Instance("web",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            group="foo",
-            image="linode/ubuntu18.04",
+            image="linode/ubuntu22.04",
             label="simple_instance",
             private_ip=True,
             region="us-central",
-            root_pass="terr4form-test",
+            root_pass="this-is-not-a-safe-password",
+            swap_size=256,
+            tags=["foo"],
+            type="g6-standard-1")
+        ```
+        ### Linode Instance with Explicit Networking Interfaces
+
+        You can add a VPC or VLAN interface directly to a Linode instance resource.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        web = linode.Instance("web",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            image="linode/ubuntu22.04",
+            interfaces=[
+                linode.InstanceInterfaceArgs(
+                    purpose="public",
+                ),
+                linode.InstanceInterfaceArgs(
+                    ipv4=linode.InstanceInterfaceIpv4Args(
+                        vpc="10.0.4.250",
+                    ),
+                    purpose="vpc",
+                    subnet_id=123,
+                ),
+            ],
+            label="simple_instance",
+            private_ip=True,
+            region="us-central",
+            root_pass="this-is-not-a-safe-password",
             swap_size=256,
             tags=["foo"],
             type="g6-standard-1")
@@ -1166,13 +1249,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
-        :param pulumi.Input[str] group: The display group of the Linode instance.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]] metadatas: Various fields related to the Linode Metadata service.
+        :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+               
+               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
@@ -1220,12 +1306,42 @@ class Instance(pulumi.CustomResource):
 
         web = linode.Instance("web",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            group="foo",
-            image="linode/ubuntu18.04",
+            image="linode/ubuntu22.04",
             label="simple_instance",
             private_ip=True,
             region="us-central",
-            root_pass="terr4form-test",
+            root_pass="this-is-not-a-safe-password",
+            swap_size=256,
+            tags=["foo"],
+            type="g6-standard-1")
+        ```
+        ### Linode Instance with Explicit Networking Interfaces
+
+        You can add a VPC or VLAN interface directly to a Linode instance resource.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        web = linode.Instance("web",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            image="linode/ubuntu22.04",
+            interfaces=[
+                linode.InstanceInterfaceArgs(
+                    purpose="public",
+                ),
+                linode.InstanceInterfaceArgs(
+                    ipv4=linode.InstanceInterfaceIpv4Args(
+                        vpc="10.0.4.250",
+                    ),
+                    purpose="vpc",
+                    subnet_id=123,
+                ),
+            ],
+            label="simple_instance",
+            private_ip=True,
+            region="us-central",
+            root_pass="this-is-not-a-safe-password",
             swap_size=256,
             tags=["foo"],
             type="g6-standard-1")
@@ -1279,6 +1395,7 @@ class Instance(pulumi.CustomResource):
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]]] = None,
+                 migration_type: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
@@ -1314,6 +1431,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["interfaces"] = interfaces
             __props__.__dict__["label"] = label
             __props__.__dict__["metadatas"] = metadatas
+            __props__.__dict__["migration_type"] = migration_type
             __props__.__dict__["private_ip"] = private_ip
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1369,6 +1487,7 @@ class Instance(pulumi.CustomResource):
             ipv6: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]]] = None,
+            migration_type: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[bool]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1399,11 +1518,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-        :param pulumi.Input[int] firewall_id: The ID of the firewall applied to the Linode instance during creation.
-        :param pulumi.Input[str] group: The display group of the Linode instance.
+        :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[str] host_uuid: The Linode’s host machine, as a UUID.
-        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceInterfaceArgs']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] ip_address: A string containing the Linode's public IP address.
@@ -1411,6 +1530,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]] metadatas: Various fields related to the Linode Metadata service.
+        :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+               
+               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
@@ -1465,6 +1587,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["label"] = label
         __props__.__dict__["metadatas"] = metadatas
+        __props__.__dict__["migration_type"] = migration_type
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["region"] = region
@@ -1568,7 +1691,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="firewallId")
     def firewall_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the firewall applied to the Linode instance during creation.
+        The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "firewall_id")
 
@@ -1576,8 +1699,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[str]]:
         """
-        The display group of the Linode instance.
+        A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         """
+        warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
+        pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
+
         return pulumi.get(self, "group")
 
     @property
@@ -1600,7 +1726,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def image(self) -> pulumi.Output[Optional[str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -1652,6 +1778,16 @@ class Instance(pulumi.CustomResource):
         Various fields related to the Linode Metadata service.
         """
         return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter(name="migrationType")
+    def migration_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        """
+        return pulumi.get(self, "migration_type")
 
     @property
     @pulumi.getter(name="privateIp")

@@ -24,7 +24,9 @@ export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptio
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeCluster:getLkeCluster", {
+        "controlPlanes": args.controlPlanes,
         "id": args.id,
+        "pools": args.pools,
     }, opts);
 }
 
@@ -32,10 +34,15 @@ export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getLkeCluster.
  */
 export interface GetLkeClusterArgs {
+    controlPlanes?: inputs.GetLkeClusterControlPlane[];
     /**
      * The LKE Cluster's ID.
      */
     id: number;
+    /**
+     * Node pools associated with this cluster.
+     */
+    pools?: inputs.GetLkeClusterPool[];
 }
 
 /**
@@ -46,7 +53,11 @@ export interface GetLkeClusterResult {
      * The endpoints for the Kubernetes API server.
      */
     readonly apiEndpoints: string[];
-    readonly controlPlanes: outputs.GetLkeClusterControlPlane[];
+    readonly controlPlanes?: outputs.GetLkeClusterControlPlane[];
+    /**
+     * When this Kubernetes cluster was created.
+     */
+    readonly created: string;
     /**
      * The Kubernetes Dashboard access URL for this cluster.
      */
@@ -63,11 +74,14 @@ export interface GetLkeClusterResult {
      * The base64 encoded kubeconfig for the Kubernetes cluster.
      */
     readonly kubeconfig: string;
+    /**
+     * The unique label for the cluster.
+     */
     readonly label: string;
     /**
      * Node pools associated with this cluster.
      */
-    readonly pools: outputs.GetLkeClusterPool[];
+    readonly pools?: outputs.GetLkeClusterPool[];
     /**
      * This Kubernetes cluster's location.
      */
@@ -77,9 +91,13 @@ export interface GetLkeClusterResult {
      */
     readonly status: string;
     /**
-     * The tags applied to the cluster.
+     * An array of tags applied to this object. Tags are for organizational purposes only.
      */
     readonly tags: string[];
+    /**
+     * When this Kubernetes cluster was updated.
+     */
+    readonly updated: string;
 }
 /**
  * Provides details about an LKE Cluster.
@@ -103,8 +121,13 @@ export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getLkeCluster.
  */
 export interface GetLkeClusterOutputArgs {
+    controlPlanes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneArgs>[]>;
     /**
      * The LKE Cluster's ID.
      */
     id: pulumi.Input<number>;
+    /**
+     * Node pools associated with this cluster.
+     */
+    pools?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolArgs>[]>;
 }

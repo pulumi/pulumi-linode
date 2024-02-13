@@ -34,6 +34,8 @@ import com.pulumi.linode.inputs.GetDomainRecordArgs;
 import com.pulumi.linode.inputs.GetDomainRecordPlainArgs;
 import com.pulumi.linode.inputs.GetDomainZonefileArgs;
 import com.pulumi.linode.inputs.GetDomainZonefilePlainArgs;
+import com.pulumi.linode.inputs.GetDomainsArgs;
+import com.pulumi.linode.inputs.GetDomainsPlainArgs;
 import com.pulumi.linode.inputs.GetFirewallArgs;
 import com.pulumi.linode.inputs.GetFirewallPlainArgs;
 import com.pulumi.linode.inputs.GetFirewallsArgs;
@@ -54,6 +56,8 @@ import com.pulumi.linode.inputs.GetInstancesArgs;
 import com.pulumi.linode.inputs.GetInstancesPlainArgs;
 import com.pulumi.linode.inputs.GetIpv6RangeArgs;
 import com.pulumi.linode.inputs.GetIpv6RangePlainArgs;
+import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+import com.pulumi.linode.inputs.GetIpv6RangesPlainArgs;
 import com.pulumi.linode.inputs.GetKernelArgs;
 import com.pulumi.linode.inputs.GetKernelPlainArgs;
 import com.pulumi.linode.inputs.GetKernelsArgs;
@@ -62,6 +66,8 @@ import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
 import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketPlainArgs;
 import com.pulumi.linode.inputs.GetLkeClusterArgs;
 import com.pulumi.linode.inputs.GetLkeClusterPlainArgs;
+import com.pulumi.linode.inputs.GetLkeClustersArgs;
+import com.pulumi.linode.inputs.GetLkeClustersPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpPlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerArgs;
@@ -121,6 +127,7 @@ import com.pulumi.linode.outputs.GetDatabasesResult;
 import com.pulumi.linode.outputs.GetDomainRecordResult;
 import com.pulumi.linode.outputs.GetDomainResult;
 import com.pulumi.linode.outputs.GetDomainZonefileResult;
+import com.pulumi.linode.outputs.GetDomainsResult;
 import com.pulumi.linode.outputs.GetFirewallResult;
 import com.pulumi.linode.outputs.GetFirewallsResult;
 import com.pulumi.linode.outputs.GetImageResult;
@@ -131,10 +138,12 @@ import com.pulumi.linode.outputs.GetInstanceTypeResult;
 import com.pulumi.linode.outputs.GetInstanceTypesResult;
 import com.pulumi.linode.outputs.GetInstancesResult;
 import com.pulumi.linode.outputs.GetIpv6RangeResult;
+import com.pulumi.linode.outputs.GetIpv6RangesResult;
 import com.pulumi.linode.outputs.GetKernelResult;
 import com.pulumi.linode.outputs.GetKernelsResult;
 import com.pulumi.linode.outputs.GetLinodeObjectStorageBucketResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
+import com.pulumi.linode.outputs.GetLkeClustersResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
@@ -4478,6 +4487,426 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getDomainZonefile:getDomainZonefile", TypeShape.of(GetDomainZonefileResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides information about Linode Domains that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Domains with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `tags`
+     * 
+     * * `domain`
+     * 
+     * * `type`
+     * 
+     * * `status`
+     * 
+     * * `description`
+     * 
+     * * `master_ips`
+     * 
+     * * `axfr_ips`
+     * 
+     * * `ttl_sec`
+     * 
+     * * `retry_sec`
+     * 
+     * * `expire_sec`
+     * 
+     * * `refresh_sec`
+     * 
+     * * `soa_email`
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains() {
+        return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Domains that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Domains with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `tags`
+     * 
+     * * `domain`
+     * 
+     * * `type`
+     * 
+     * * `status`
+     * 
+     * * `description`
+     * 
+     * * `master_ips`
+     * 
+     * * `axfr_ips`
+     * 
+     * * `ttl_sec`
+     * 
+     * * `retry_sec`
+     * 
+     * * `expire_sec`
+     * 
+     * * `refresh_sec`
+     * 
+     * * `soa_email`
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
+        return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Domains that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Domains with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `tags`
+     * 
+     * * `domain`
+     * 
+     * * `type`
+     * 
+     * * `status`
+     * 
+     * * `description`
+     * 
+     * * `master_ips`
+     * 
+     * * `axfr_ips`
+     * 
+     * * `ttl_sec`
+     * 
+     * * `retry_sec`
+     * 
+     * * `expire_sec`
+     * 
+     * * `refresh_sec`
+     * 
+     * * `soa_email`
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
+        return getDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Domains that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Domains with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `tags`
+     * 
+     * * `domain`
+     * 
+     * * `type`
+     * 
+     * * `status`
+     * 
+     * * `description`
+     * 
+     * * `master_ips`
+     * 
+     * * `axfr_ips`
+     * 
+     * * `ttl_sec`
+     * 
+     * * `retry_sec`
+     * 
+     * * `expire_sec`
+     * 
+     * * `refresh_sec`
+     * 
+     * * `soa_email`
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
+        return getDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Domains that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Domains with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `tags`
+     * 
+     * * `domain`
+     * 
+     * * `type`
+     * 
+     * * `status`
+     * 
+     * * `description`
+     * 
+     * * `master_ips`
+     * 
+     * * `axfr_ips`
+     * 
+     * * `ttl_sec`
+     * 
+     * * `retry_sec`
+     * 
+     * * `expire_sec`
+     * 
+     * * `refresh_sec`
+     * 
+     * * `soa_email`
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Domains that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all Linode Cloud Domains with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `group`
+     * 
+     * * `tags`
+     * 
+     * * `domain`
+     * 
+     * * `type`
+     * 
+     * * `status`
+     * 
+     * * `description`
+     * 
+     * * `master_ips`
+     * 
+     * * `axfr_ips`
+     * 
+     * * `ttl_sec`
+     * 
+     * * `retry_sec`
+     * 
+     * * `expire_sec`
+     * 
+     * * `refresh_sec`
+     * 
+     * * `soa_email`
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides details about a Linode Firewall.
      * 
      * ## Example Usage
@@ -5325,7 +5754,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian8&#34;)
+     *             .id(&#34;linode/debian12&#34;)
      *             .build());
      * 
      *     }
@@ -5364,7 +5793,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian8&#34;)
+     *             .id(&#34;linode/debian12&#34;)
      *             .build());
      * 
      *     }
@@ -5403,7 +5832,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian8&#34;)
+     *             .id(&#34;linode/debian12&#34;)
      *             .build());
      * 
      *     }
@@ -5442,7 +5871,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian8&#34;)
+     *             .id(&#34;linode/debian12&#34;)
      *             .build());
      * 
      *     }
@@ -5484,7 +5913,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 11&#34;)
+     *                     .values(&#34;Debian 12&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -5580,7 +6009,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 11&#34;)
+     *                     .values(&#34;Debian 12&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -5676,7 +6105,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 11&#34;)
+     *                     .values(&#34;Debian 12&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -5772,7 +6201,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 11&#34;)
+     *                     .values(&#34;Debian 12&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -5868,7 +6297,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 11&#34;)
+     *                     .values(&#34;Debian 12&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -5964,7 +6393,7 @@ public final class LinodeFunctions {
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 11&#34;)
+     *                     .values(&#34;Debian 12&#34;)
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
      *                     .name(&#34;is_public&#34;)
@@ -7764,6 +8193,324 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getIpv6Range:getIpv6Range", TypeShape.of(GetIpv6RangeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides information about Linode IPv6 ranges that match a set of filters.
+     * 
+     * &gt; Some fields may not be accessible directly the results of this data source.
+     * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+     * data source.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
+     *             .filters(GetIpv6RangesFilterArgs.builder()
+     *                 .name(&#34;region&#34;)
+     *                 .values(&#34;us-mia&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `range`
+     * 
+     * * `route_target`
+     * 
+     * * `prefix`
+     * 
+     * * `region`
+     * 
+     */
+    public static Output<GetIpv6RangesResult> getIpv6Ranges() {
+        return getIpv6Ranges(GetIpv6RangesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode IPv6 ranges that match a set of filters.
+     * 
+     * &gt; Some fields may not be accessible directly the results of this data source.
+     * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+     * data source.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
+     *             .filters(GetIpv6RangesFilterArgs.builder()
+     *                 .name(&#34;region&#34;)
+     *                 .values(&#34;us-mia&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `range`
+     * 
+     * * `route_target`
+     * 
+     * * `prefix`
+     * 
+     * * `region`
+     * 
+     */
+    public static CompletableFuture<GetIpv6RangesResult> getIpv6RangesPlain() {
+        return getIpv6RangesPlain(GetIpv6RangesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode IPv6 ranges that match a set of filters.
+     * 
+     * &gt; Some fields may not be accessible directly the results of this data source.
+     * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+     * data source.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
+     *             .filters(GetIpv6RangesFilterArgs.builder()
+     *                 .name(&#34;region&#34;)
+     *                 .values(&#34;us-mia&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `range`
+     * 
+     * * `route_target`
+     * 
+     * * `prefix`
+     * 
+     * * `region`
+     * 
+     */
+    public static Output<GetIpv6RangesResult> getIpv6Ranges(GetIpv6RangesArgs args) {
+        return getIpv6Ranges(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode IPv6 ranges that match a set of filters.
+     * 
+     * &gt; Some fields may not be accessible directly the results of this data source.
+     * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+     * data source.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
+     *             .filters(GetIpv6RangesFilterArgs.builder()
+     *                 .name(&#34;region&#34;)
+     *                 .values(&#34;us-mia&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `range`
+     * 
+     * * `route_target`
+     * 
+     * * `prefix`
+     * 
+     * * `region`
+     * 
+     */
+    public static CompletableFuture<GetIpv6RangesResult> getIpv6RangesPlain(GetIpv6RangesPlainArgs args) {
+        return getIpv6RangesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode IPv6 ranges that match a set of filters.
+     * 
+     * &gt; Some fields may not be accessible directly the results of this data source.
+     * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+     * data source.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
+     *             .filters(GetIpv6RangesFilterArgs.builder()
+     *                 .name(&#34;region&#34;)
+     *                 .values(&#34;us-mia&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `range`
+     * 
+     * * `route_target`
+     * 
+     * * `prefix`
+     * 
+     * * `region`
+     * 
+     */
+    public static Output<GetIpv6RangesResult> getIpv6Ranges(GetIpv6RangesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getIpv6Ranges:getIpv6Ranges", TypeShape.of(GetIpv6RangesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode IPv6 ranges that match a set of filters.
+     * 
+     * &gt; Some fields may not be accessible directly the results of this data source.
+     * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+     * data source.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
+     *             .filters(GetIpv6RangesFilterArgs.builder()
+     *                 .name(&#34;region&#34;)
+     *                 .values(&#34;us-mia&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *     }
+     * }
+     * ```
+     * 
+     * ## Filterable Fields
+     * 
+     * * `range`
+     * 
+     * * `route_target`
+     * 
+     * * `prefix`
+     * 
+     * * `region`
+     * 
+     */
+    public static CompletableFuture<GetIpv6RangesResult> getIpv6RangesPlain(GetIpv6RangesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getIpv6Ranges:getIpv6Ranges", TypeShape.of(GetIpv6RangesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides information about a Linode kernel
      * 
      * ## Example Usage
@@ -8462,6 +9209,354 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetLkeClusterResult> getLkeClusterPlain(GetLkeClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeCluster:getLkeCluster", TypeShape.of(GetLkeClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all LKE clusters with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
+     *             .filters(GetLkeClustersFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `k8s_version`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `tags`
+     * 
+     * * `status`
+     * 
+     * * `created`
+     * 
+     * * `updated`
+     * 
+     */
+    public static Output<GetLkeClustersResult> getLkeClusters() {
+        return getLkeClusters(GetLkeClustersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all LKE clusters with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
+     *             .filters(GetLkeClustersFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `k8s_version`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `tags`
+     * 
+     * * `status`
+     * 
+     * * `created`
+     * 
+     * * `updated`
+     * 
+     */
+    public static CompletableFuture<GetLkeClustersResult> getLkeClustersPlain() {
+        return getLkeClustersPlain(GetLkeClustersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all LKE clusters with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
+     *             .filters(GetLkeClustersFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `k8s_version`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `tags`
+     * 
+     * * `status`
+     * 
+     * * `created`
+     * 
+     * * `updated`
+     * 
+     */
+    public static Output<GetLkeClustersResult> getLkeClusters(GetLkeClustersArgs args) {
+        return getLkeClusters(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all LKE clusters with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
+     *             .filters(GetLkeClustersFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `k8s_version`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `tags`
+     * 
+     * * `status`
+     * 
+     * * `created`
+     * 
+     * * `updated`
+     * 
+     */
+    public static CompletableFuture<GetLkeClustersResult> getLkeClustersPlain(GetLkeClustersPlainArgs args) {
+        return getLkeClustersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all LKE clusters with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
+     *             .filters(GetLkeClustersFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `k8s_version`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `tags`
+     * 
+     * * `status`
+     * 
+     * * `created`
+     * 
+     * * `updated`
+     * 
+     */
+    public static Output<GetLkeClustersResult> getLkeClusters(GetLkeClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeClusters:getLkeClusters", TypeShape.of(GetLkeClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about all LKE clusters with a specific tag:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
+     *             .filters(GetLkeClustersFilterArgs.builder()
+     *                 .name(&#34;tags&#34;)
+     *                 .values(&#34;test-tag&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * ## Filterable Fields
+     * 
+     * * `k8s_version`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `tags`
+     * 
+     * * `status`
+     * 
+     * * `created`
+     * 
+     * * `updated`
+     * 
+     */
+    public static CompletableFuture<GetLkeClustersResult> getLkeClustersPlain(GetLkeClustersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLkeClusters:getLkeClusters", TypeShape.of(GetLkeClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -12227,7 +13322,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
      *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu18.04&#34;)
+     *             .image(&#34;linode/ubuntu22.04&#34;)
      *             .region(&#34;us-southeast&#34;)
      *             .type(&#34;g6-standard-1&#34;)
      *             .rootPass(&#34;bogusPassword$&#34;)
@@ -12292,7 +13387,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
      *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu18.04&#34;)
+     *             .image(&#34;linode/ubuntu22.04&#34;)
      *             .region(&#34;us-southeast&#34;)
      *             .type(&#34;g6-standard-1&#34;)
      *             .rootPass(&#34;bogusPassword$&#34;)
@@ -12357,7 +13452,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
      *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu18.04&#34;)
+     *             .image(&#34;linode/ubuntu22.04&#34;)
      *             .region(&#34;us-southeast&#34;)
      *             .type(&#34;g6-standard-1&#34;)
      *             .rootPass(&#34;bogusPassword$&#34;)
@@ -12422,7 +13517,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
      *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu18.04&#34;)
+     *             .image(&#34;linode/ubuntu22.04&#34;)
      *             .region(&#34;us-southeast&#34;)
      *             .type(&#34;g6-standard-1&#34;)
      *             .rootPass(&#34;bogusPassword$&#34;)
@@ -12487,7 +13582,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
      *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu18.04&#34;)
+     *             .image(&#34;linode/ubuntu22.04&#34;)
      *             .region(&#34;us-southeast&#34;)
      *             .type(&#34;g6-standard-1&#34;)
      *             .rootPass(&#34;bogusPassword$&#34;)
@@ -12552,7 +13647,7 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
      *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu18.04&#34;)
+     *             .image(&#34;linode/ubuntu22.04&#34;)
      *             .region(&#34;us-southeast&#34;)
      *             .type(&#34;g6-standard-1&#34;)
      *             .rootPass(&#34;bogusPassword$&#34;)

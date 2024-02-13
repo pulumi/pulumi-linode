@@ -11,6 +11,7 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClusterResult {
@@ -19,7 +20,12 @@ public final class GetLkeClusterResult {
      * 
      */
     private List<String> apiEndpoints;
-    private List<GetLkeClusterControlPlane> controlPlanes;
+    private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
+    /**
+     * @return When this Kubernetes cluster was created.
+     * 
+     */
+    private String created;
     /**
      * @return The Kubernetes Dashboard access URL for this cluster.
      * 
@@ -40,12 +46,16 @@ public final class GetLkeClusterResult {
      * 
      */
     private String kubeconfig;
+    /**
+     * @return The unique label for the cluster.
+     * 
+     */
     private String label;
     /**
      * @return Node pools associated with this cluster.
      * 
      */
-    private List<GetLkeClusterPool> pools;
+    private @Nullable List<GetLkeClusterPool> pools;
     /**
      * @return This Kubernetes cluster&#39;s location.
      * 
@@ -57,10 +67,15 @@ public final class GetLkeClusterResult {
      */
     private String status;
     /**
-     * @return The tags applied to the cluster.
+     * @return An array of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
     private List<String> tags;
+    /**
+     * @return When this Kubernetes cluster was updated.
+     * 
+     */
+    private String updated;
 
     private GetLkeClusterResult() {}
     /**
@@ -71,7 +86,14 @@ public final class GetLkeClusterResult {
         return this.apiEndpoints;
     }
     public List<GetLkeClusterControlPlane> controlPlanes() {
-        return this.controlPlanes;
+        return this.controlPlanes == null ? List.of() : this.controlPlanes;
+    }
+    /**
+     * @return When this Kubernetes cluster was created.
+     * 
+     */
+    public String created() {
+        return this.created;
     }
     /**
      * @return The Kubernetes Dashboard access URL for this cluster.
@@ -101,6 +123,10 @@ public final class GetLkeClusterResult {
     public String kubeconfig() {
         return this.kubeconfig;
     }
+    /**
+     * @return The unique label for the cluster.
+     * 
+     */
     public String label() {
         return this.label;
     }
@@ -109,7 +135,7 @@ public final class GetLkeClusterResult {
      * 
      */
     public List<GetLkeClusterPool> pools() {
-        return this.pools;
+        return this.pools == null ? List.of() : this.pools;
     }
     /**
      * @return This Kubernetes cluster&#39;s location.
@@ -126,11 +152,18 @@ public final class GetLkeClusterResult {
         return this.status;
     }
     /**
-     * @return The tags applied to the cluster.
+     * @return An array of tags applied to this object. Tags are for organizational purposes only.
      * 
      */
     public List<String> tags() {
         return this.tags;
+    }
+    /**
+     * @return When this Kubernetes cluster was updated.
+     * 
+     */
+    public String updated() {
+        return this.updated;
     }
 
     public static Builder builder() {
@@ -143,21 +176,24 @@ public final class GetLkeClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> apiEndpoints;
-        private List<GetLkeClusterControlPlane> controlPlanes;
+        private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
+        private String created;
         private String dashboardUrl;
         private Integer id;
         private String k8sVersion;
         private String kubeconfig;
         private String label;
-        private List<GetLkeClusterPool> pools;
+        private @Nullable List<GetLkeClusterPool> pools;
         private String region;
         private String status;
         private List<String> tags;
+        private String updated;
         public Builder() {}
         public Builder(GetLkeClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiEndpoints = defaults.apiEndpoints;
     	      this.controlPlanes = defaults.controlPlanes;
+    	      this.created = defaults.created;
     	      this.dashboardUrl = defaults.dashboardUrl;
     	      this.id = defaults.id;
     	      this.k8sVersion = defaults.k8sVersion;
@@ -167,6 +203,7 @@ public final class GetLkeClusterResult {
     	      this.region = defaults.region;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
+    	      this.updated = defaults.updated;
         }
 
         @CustomType.Setter
@@ -181,15 +218,21 @@ public final class GetLkeClusterResult {
             return apiEndpoints(List.of(apiEndpoints));
         }
         @CustomType.Setter
-        public Builder controlPlanes(List<GetLkeClusterControlPlane> controlPlanes) {
-            if (controlPlanes == null) {
-              throw new MissingRequiredPropertyException("GetLkeClusterResult", "controlPlanes");
-            }
+        public Builder controlPlanes(@Nullable List<GetLkeClusterControlPlane> controlPlanes) {
+
             this.controlPlanes = controlPlanes;
             return this;
         }
         public Builder controlPlanes(GetLkeClusterControlPlane... controlPlanes) {
             return controlPlanes(List.of(controlPlanes));
+        }
+        @CustomType.Setter
+        public Builder created(String created) {
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "created");
+            }
+            this.created = created;
+            return this;
         }
         @CustomType.Setter
         public Builder dashboardUrl(String dashboardUrl) {
@@ -232,10 +275,8 @@ public final class GetLkeClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder pools(List<GetLkeClusterPool> pools) {
-            if (pools == null) {
-              throw new MissingRequiredPropertyException("GetLkeClusterResult", "pools");
-            }
+        public Builder pools(@Nullable List<GetLkeClusterPool> pools) {
+
             this.pools = pools;
             return this;
         }
@@ -269,10 +310,19 @@ public final class GetLkeClusterResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "updated");
+            }
+            this.updated = updated;
+            return this;
+        }
         public GetLkeClusterResult build() {
             final var _resultValue = new GetLkeClusterResult();
             _resultValue.apiEndpoints = apiEndpoints;
             _resultValue.controlPlanes = controlPlanes;
+            _resultValue.created = created;
             _resultValue.dashboardUrl = dashboardUrl;
             _resultValue.id = id;
             _resultValue.k8sVersion = k8sVersion;
@@ -282,6 +332,7 @@ public final class GetLkeClusterResult {
             _resultValue.region = region;
             _resultValue.status = status;
             _resultValue.tags = tags;
+            _resultValue.updated = updated;
             return _resultValue;
         }
     }

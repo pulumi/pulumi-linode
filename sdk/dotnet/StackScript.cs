@@ -36,15 +36,15 @@ namespace Pulumi.Linode
     /// ",
     ///         Images = new[]
     ///         {
-    ///             "linode/ubuntu18.04",
-    ///             "linode/ubuntu16.04lts",
+    ///             "linode/ubuntu22.04",
+    ///             "linode/ubuntu20.04",
     ///         },
     ///         RevNote = "initial version",
     ///     });
     /// 
     ///     var fooInstance = new Linode.Instance("fooInstance", new()
     ///     {
-    ///         Image = "linode/ubuntu18.04",
+    ///         Image = "linode/ubuntu22.04",
     ///         Label = "foo",
     ///         Region = "us-east",
     ///         Type = "g6-nanode-1",

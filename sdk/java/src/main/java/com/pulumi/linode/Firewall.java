@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
  *             .label(&#34;my_instance&#34;)
- *             .image(&#34;linode/ubuntu18.04&#34;)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .type(&#34;g6-standard-1&#34;)
  *             .rootPass(&#34;bogusPassword$&#34;)

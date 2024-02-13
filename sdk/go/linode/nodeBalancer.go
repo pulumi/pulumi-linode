@@ -59,15 +59,17 @@ type NodeBalancer struct {
 
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntOutput `pulumi:"clientConnThrottle"`
-	// When this NodeBalancer was created
+	// When this firewall was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
+	// A list of Firewalls assigned to this NodeBalancer.
+	Firewalls NodeBalancerFirewallArrayOutput `pulumi:"firewalls"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// The Public IPv4 Address of this NodeBalancer
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4 pulumi.StringOutput `pulumi:"ipv4"`
-	// The Public IPv6 Address of this NodeBalancer
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrOutput `pulumi:"label"`
@@ -79,7 +81,7 @@ type NodeBalancer struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers NodeBalancerTransferArrayOutput `pulumi:"transfers"`
-	// When this NodeBalancer was last updated.
+	// When this firewall was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 }
 
@@ -115,15 +117,17 @@ func GetNodeBalancer(ctx *pulumi.Context,
 type nodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
-	// When this NodeBalancer was created
+	// When this firewall was created.
 	Created *string `pulumi:"created"`
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId *int `pulumi:"firewallId"`
+	// A list of Firewalls assigned to this NodeBalancer.
+	Firewalls []NodeBalancerFirewall `pulumi:"firewalls"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname *string `pulumi:"hostname"`
-	// The Public IPv4 Address of this NodeBalancer
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4 *string `pulumi:"ipv4"`
-	// The Public IPv6 Address of this NodeBalancer
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 *string `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
@@ -135,22 +139,24 @@ type nodeBalancerState struct {
 	Tags []string `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers []NodeBalancerTransfer `pulumi:"transfers"`
-	// When this NodeBalancer was last updated.
+	// When this firewall was last updated.
 	Updated *string `pulumi:"updated"`
 }
 
 type NodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
-	// When this NodeBalancer was created
+	// When this firewall was created.
 	Created pulumi.StringPtrInput
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId pulumi.IntPtrInput
+	// A list of Firewalls assigned to this NodeBalancer.
+	Firewalls NodeBalancerFirewallArrayInput
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringPtrInput
-	// The Public IPv4 Address of this NodeBalancer
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4 pulumi.StringPtrInput
-	// The Public IPv6 Address of this NodeBalancer
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 pulumi.StringPtrInput
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput
@@ -162,7 +168,7 @@ type NodeBalancerState struct {
 	Tags pulumi.StringArrayInput
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers NodeBalancerTransferArrayInput
-	// When this NodeBalancer was last updated.
+	// When this firewall was last updated.
 	Updated pulumi.StringPtrInput
 }
 
@@ -293,7 +299,7 @@ func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.IntOutput { return v.ClientConnThrottle }).(pulumi.IntOutput)
 }
 
-// When this NodeBalancer was created
+// When this firewall was created.
 func (o NodeBalancerOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
@@ -303,17 +309,22 @@ func (o NodeBalancerOutput) FirewallId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.IntPtrOutput { return v.FirewallId }).(pulumi.IntPtrOutput)
 }
 
+// A list of Firewalls assigned to this NodeBalancer.
+func (o NodeBalancerOutput) Firewalls() NodeBalancerFirewallArrayOutput {
+	return o.ApplyT(func(v *NodeBalancer) NodeBalancerFirewallArrayOutput { return v.Firewalls }).(NodeBalancerFirewallArrayOutput)
+}
+
 // This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 func (o NodeBalancerOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// The Public IPv4 Address of this NodeBalancer
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
 func (o NodeBalancerOutput) Ipv4() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Ipv4 }).(pulumi.StringOutput)
 }
 
-// The Public IPv6 Address of this NodeBalancer
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
 func (o NodeBalancerOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
 }
@@ -340,7 +351,7 @@ func (o NodeBalancerOutput) Transfers() NodeBalancerTransferArrayOutput {
 	return o.ApplyT(func(v *NodeBalancer) NodeBalancerTransferArrayOutput { return v.Transfers }).(NodeBalancerTransferArrayOutput)
 }
 
-// When this NodeBalancer was last updated.
+// When this firewall was last updated.
 func (o NodeBalancerOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }

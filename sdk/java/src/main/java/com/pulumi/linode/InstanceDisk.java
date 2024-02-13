@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .label(&#34;boot&#34;)
  *             .linodeId(my_instance.id())
  *             .size(my_instance.specs().applyValue(specs -&gt; specs.disk()))
- *             .image(&#34;linode/ubuntu20.04&#34;)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
  *             .rootPass(&#34;myc00lpass!&#34;)
  *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
  *             .stackscriptId(12345)
@@ -123,28 +123,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/instanceDisk:InstanceDisk")
 public class InstanceDisk extends com.pulumi.resources.CustomResource {
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      * 
      */
     @Export(name="authorizedKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
-     * @return A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image.
+     * @return A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      * 
      */
     public Output<Optional<List<String>>> authorizedKeys() {
         return Codegen.optional(this.authorizedKeys);
     }
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
      * 
      */
     @Export(name="authorizedUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedUsers;
 
     /**
-     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the
+     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
      * 
      */
     public Output<Optional<List<String>>> authorizedUsers() {
@@ -221,14 +221,14 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
         return this.linodeId;
     }
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      * 
      */
     @Export(name="rootPass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rootPass;
 
     /**
-     * @return The root user’s password on a newly-created Linode Disk when deploying from an Image.
+     * @return The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      * 
      */
     public Output<Optional<String>> rootPass() {
@@ -253,28 +253,28 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
         return this.size;
     }
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
     @Export(name="stackscriptData", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
     public Output<Optional<Map<String,Object>>> stackscriptData() {
         return Codegen.optional(this.stackscriptData);
     }
     /**
-     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      * 
      */
     @Export(name="stackscriptId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stackscriptId;
 
     /**
-     * @return A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk.
+     * @return A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      * 
      */
     public Output<Optional<Integer>> stackscriptId() {

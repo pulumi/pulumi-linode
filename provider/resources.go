@@ -17,14 +17,13 @@ package linode
 import (
 	"context"
 	"fmt"
-	"path/filepath"
+	"path"
 	"regexp"
-	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/linode/terraform-provider-linode/linode"
+	"github.com/linode/terraform-provider-linode/v2/linode"
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -43,30 +42,12 @@ const (
 	mainMod = "index" // the y module
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
+func makeDataSource(name string) tokens.ModuleMember {
+	return tfbridge.MakeDataSource(mainPkg, mainMod, name)
 }
 
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-// makeDataSource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the data source's
-// first character.
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeMember(mod+"/"+fn, res)
-}
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
+func makeResource(name string) tokens.Type {
+	return tfbridge.MakeResource(mainPkg, mainMod, name)
 }
 
 func stripTfFromDocs() tfbridge.DocsEdit {
@@ -108,16 +89,17 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:                p,
-		Name:             "linode",
-		Description:      "A Pulumi package for creating and managing linode cloud resources.",
-		Keywords:         []string{"pulumi", "linode"},
-		License:          "Apache-2.0",
-		Homepage:         "https://pulumi.io",
-		Repository:       "https://github.com/pulumi/pulumi-linode",
-		GitHubOrg:        "linode",
-		UpstreamRepoPath: "./upstream",
-		Version:          version.Version,
+		P:                       p,
+		Name:                    "linode",
+		Description:             "A Pulumi package for creating and managing linode cloud resources.",
+		Keywords:                []string{"pulumi", "linode"},
+		License:                 "Apache-2.0",
+		Homepage:                "https://pulumi.io",
+		Repository:              "https://github.com/pulumi/pulumi-linode",
+		GitHubOrg:               "linode",
+		TFProviderModuleVersion: "v2",
+		Version:                 version.Version,
+		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules: &tfbridge.DocRuleInfo{
 			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 				return append(defaults, stripTfFromDocs())
@@ -153,13 +135,13 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"linode_nodebalancer": {
-				Tok: makeResource(mainMod, "NodeBalancer"),
+				Tok: makeResource("NodeBalancer"),
 			},
 			"linode_nodebalancer_config": {
-				Tok: makeResource(mainMod, "NodeBalancerConfig"),
+				Tok: makeResource("NodeBalancerConfig"),
 			},
 			"linode_nodebalancer_node": {
-				Tok: makeResource(mainMod, "NodeBalancerNode"),
+				Tok: makeResource("NodeBalancerNode"),
 			},
 			"linode_rdns": {
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -167,13 +149,13 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"linode_sshkey": {
-				Tok: makeResource(mainMod, "SshKey"),
+				Tok: makeResource("SshKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"ssh_key": {CSharpName: "SshKeyName"},
 				},
 			},
 			"linode_stackscript": {
-				Tok: makeResource(mainMod, "StackScript"),
+				Tok: makeResource("StackScript"),
 			},
 			"linode_token": {
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -182,15 +164,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"linode_sshkey":              {Tok: makeDataSource(mainMod, "getSshKey")},
-			"linode_stackscript":         {Tok: makeDataSource(mainMod, "getStackScript")},
-			"linode_nodebalancer":        {Tok: makeDataSource(mainMod, "getNodeBalancer")},
-			"linode_nodebalancer_config": {Tok: makeDataSource(mainMod, "getNodeBalancerConfig")},
-			"linode_nodebalancer_node":   {Tok: makeDataSource(mainMod, "getNodeBalancerNode")},
-			"linode_stackscripts":        {Tok: makeDataSource(mainMod, "getStackScripts")},
+			"linode_sshkey":              {Tok: makeDataSource("getSshKey")},
+			"linode_stackscript":         {Tok: makeDataSource("getStackScript")},
+			"linode_nodebalancer":        {Tok: makeDataSource("getNodeBalancer")},
+			"linode_nodebalancer_config": {Tok: makeDataSource("getNodeBalancerConfig")},
+			"linode_nodebalancer_node":   {Tok: makeDataSource("getNodeBalancerNode")},
+			"linode_stackscripts":        {Tok: makeDataSource("getStackScripts")},
 			"linode_object_storage_bucket": {
-				Tok:  makeDataSource(mainMod, "getLinodeObjectStorageBucket"),
-				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
+				Tok:  makeDataSource("getLinodeObjectStorageBucket"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -202,17 +184,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -228,7 +208,6 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "Linode",
 			},
 		},
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule(

@@ -36,12 +36,62 @@ import (
 //				AuthorizedKeys: pulumi.StringArray{
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
 //				},
-//				Group:     pulumi.String("foo"),
-//				Image:     pulumi.String("linode/ubuntu18.04"),
+//				Image:     pulumi.String("linode/ubuntu22.04"),
 //				Label:     pulumi.String("simple_instance"),
 //				PrivateIp: pulumi.Bool(true),
 //				Region:    pulumi.String("us-central"),
-//				RootPass:  pulumi.String("terr4form-test"),
+//				RootPass:  pulumi.String("this-is-not-a-safe-password"),
+//				SwapSize:  pulumi.Int(256),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//				},
+//				Type: pulumi.String("g6-standard-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Linode Instance with Explicit Networking Interfaces
+//
+// You can add a VPC or VLAN interface directly to a Linode instance resource.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+//				AuthorizedKeys: pulumi.StringArray{
+//					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+//				},
+//				Image: pulumi.String("linode/ubuntu22.04"),
+//				Interfaces: linode.InstanceInterfaceArray{
+//					&linode.InstanceInterfaceArgs{
+//						Purpose: pulumi.String("public"),
+//					},
+//					&linode.InstanceInterfaceArgs{
+//						Ipv4: &linode.InstanceInterfaceIpv4Args{
+//							Vpc: pulumi.String("10.0.4.250"),
+//						},
+//						Purpose:  pulumi.String("vpc"),
+//						SubnetId: pulumi.Int(123),
+//					},
+//				},
+//				Label:     pulumi.String("simple_instance"),
+//				PrivateIp: pulumi.Bool(true),
+//				Region:    pulumi.String("us-central"),
+//				RootPass:  pulumi.String("this-is-not-a-safe-password"),
 //				SwapSize:  pulumi.Int(256),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo"),
@@ -99,15 +149,17 @@ type Instance struct {
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks InstanceDiskTypeArrayOutput `pulumi:"disks"`
-	// The ID of the firewall applied to the Linode instance during creation.
+	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
-	// The display group of the Linode instance.
+	// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+	//
+	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// Whether this Instance was created with user-data.
 	HasUserData pulumi.BoolOutput `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringOutput `pulumi:"hostUuid"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrOutput `pulumi:"image"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -122,6 +174,10 @@ type Instance struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayOutput `pulumi:"metadatas"`
+	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrOutput `pulumi:"privateIp"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -232,15 +288,17 @@ type instanceState struct {
 	Configs []InstanceConfig `pulumi:"configs"`
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
-	// The ID of the firewall applied to the Linode instance during creation.
+	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId *int `pulumi:"firewallId"`
-	// The display group of the Linode instance.
+	// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+	//
+	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group *string `pulumi:"group"`
 	// Whether this Instance was created with user-data.
 	HasUserData *bool `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid *string `pulumi:"hostUuid"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -255,6 +313,10 @@ type instanceState struct {
 	Label *string `pulumi:"label"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
+	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+	MigrationType *string `pulumi:"migrationType"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -322,15 +384,17 @@ type InstanceState struct {
 	Configs InstanceConfigArrayInput
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks InstanceDiskTypeArrayInput
-	// The ID of the firewall applied to the Linode instance during creation.
+	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId pulumi.IntPtrInput
-	// The display group of the Linode instance.
+	// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+	//
+	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group pulumi.StringPtrInput
 	// Whether this Instance was created with user-data.
 	HasUserData pulumi.BoolPtrInput
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringPtrInput
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -345,6 +409,10 @@ type InstanceState struct {
 	Label pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
+	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+	MigrationType pulumi.StringPtrInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -414,11 +482,13 @@ type instanceArgs struct {
 	Configs []InstanceConfig `pulumi:"configs"`
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
-	// The ID of the firewall applied to the Linode instance during creation.
+	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId *int `pulumi:"firewallId"`
-	// The display group of the Linode instance.
+	// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+	//
+	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group *string `pulumi:"group"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image *string `pulumi:"image"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -427,6 +497,10 @@ type instanceArgs struct {
 	Label *string `pulumi:"label"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
+	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+	MigrationType *string `pulumi:"migrationType"`
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp *bool `pulumi:"privateIp"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
@@ -487,11 +561,13 @@ type InstanceArgs struct {
 	Configs InstanceConfigArrayInput
 	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
 	Disks InstanceDiskTypeArrayInput
-	// The ID of the firewall applied to the Linode instance during creation.
+	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId pulumi.IntPtrInput
-	// The display group of the Linode instance.
+	// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+	//
+	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group pulumi.StringPtrInput
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringPtrInput
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
@@ -500,6 +576,10 @@ type InstanceArgs struct {
 	Label pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
+	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	//
+	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+	MigrationType pulumi.StringPtrInput
 	// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
 	PrivateIp pulumi.BoolPtrInput
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
@@ -677,12 +757,14 @@ func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDiskTypeArrayOutput { return v.Disks }).(InstanceDiskTypeArrayOutput)
 }
 
-// The ID of the firewall applied to the Linode instance during creation.
+// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 func (o InstanceOutput) FirewallId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.FirewallId }).(pulumi.IntPtrOutput)
 }
 
-// The display group of the Linode instance.
+// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+//
+// Deprecated: Group label is deprecated. We recommend using tags instead.
 func (o InstanceOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
@@ -697,7 +779,7 @@ func (o InstanceOutput) HostUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HostUuid }).(pulumi.StringOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian9`, `linode/fedora28`, `linode/ubuntu16.04lts`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
 func (o InstanceOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -731,6 +813,13 @@ func (o InstanceOutput) Label() pulumi.StringOutput {
 // Various fields related to the Linode Metadata service.
 func (o InstanceOutput) Metadatas() InstanceMetadataArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMetadataArrayOutput { return v.Metadatas }).(InstanceMetadataArrayOutput)
+}
+
+// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+//
+// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+func (o InstanceOutput) MigrationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
 }
 
 // If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.

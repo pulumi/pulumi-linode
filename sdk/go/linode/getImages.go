@@ -34,7 +34,7 @@ import (
 //					{
 //						Name: "label",
 //						Values: []string{
-//							"Debian 11",
+//							"Debian 12",
 //						},
 //					},
 //					{

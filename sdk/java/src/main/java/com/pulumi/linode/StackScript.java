@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  * apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
  *             &#34;&#34;&#34;)
  *             .images(            
- *                 &#34;linode/ubuntu18.04&#34;,
- *                 &#34;linode/ubuntu16.04lts&#34;)
+ *                 &#34;linode/ubuntu22.04&#34;,
+ *                 &#34;linode/ubuntu20.04&#34;)
  *             .revNote(&#34;initial version&#34;)
  *             .build());
  * 
  *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
- *             .image(&#34;linode/ubuntu18.04&#34;)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
  *             .label(&#34;foo&#34;)
  *             .region(&#34;us-east&#34;)
  *             .type(&#34;g6-nanode-1&#34;)

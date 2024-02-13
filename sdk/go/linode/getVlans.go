@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
 //				Label:    pulumi.String("my_instance"),
-//				Image:    pulumi.String("linode/ubuntu18.04"),
+//				Image:    pulumi.String("linode/ubuntu22.04"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-standard-1"),
 //				RootPass: pulumi.String("bogusPassword$"),

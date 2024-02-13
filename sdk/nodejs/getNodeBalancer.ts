@@ -24,6 +24,7 @@ export function getNodeBalancer(args: GetNodeBalancerArgs, opts?: pulumi.InvokeO
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodeBalancer:getNodeBalancer", {
+        "firewalls": args.firewalls,
         "id": args.id,
     }, opts);
 }
@@ -32,6 +33,7 @@ export function getNodeBalancer(args: GetNodeBalancerArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getNodeBalancer.
  */
 export interface GetNodeBalancerArgs {
+    firewalls?: inputs.GetNodeBalancerFirewall[];
     /**
      * The NodeBalancer's ID.
      */
@@ -47,24 +49,28 @@ export interface GetNodeBalancerResult {
      */
     readonly clientConnThrottle: number;
     /**
-     * When this Linode NodeBalancer was created
+     * When this firewall was created.
      */
     readonly created: string;
+    readonly firewalls?: outputs.GetNodeBalancerFirewall[];
     /**
      * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
      */
     readonly hostname: string;
+    /**
+     * The Firewall's ID.
+     */
     readonly id: number;
     /**
-     * The Public IPv4 Address of this NodeBalancer
+     * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
     readonly ipv4: string;
     /**
-     * The Public IPv6 Address of this NodeBalancer
+     * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
     readonly ipv6: string;
     /**
-     * The label of the Linode NodeBalancer
+     * Used to identify this rule. For display purposes only.
      */
     readonly label: string;
     /**
@@ -72,12 +78,12 @@ export interface GetNodeBalancerResult {
      */
     readonly region: string;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * The tags applied to the firewall.
      */
     readonly tags: string[];
     readonly transfers: outputs.GetNodeBalancerTransfer[];
     /**
-     * When this Linode NodeBalancer was last updated
+     * When this firewall was last updated.
      */
     readonly updated: string;
 }
@@ -103,6 +109,7 @@ export function getNodeBalancerOutput(args: GetNodeBalancerOutputArgs, opts?: pu
  * A collection of arguments for invoking getNodeBalancer.
  */
 export interface GetNodeBalancerOutputArgs {
+    firewalls?: pulumi.Input<pulumi.Input<inputs.GetNodeBalancerFirewallArgs>[]>;
     /**
      * The NodeBalancer's ID.
      */

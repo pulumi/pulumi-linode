@@ -204,7 +204,7 @@ class Ipv6Range(pulumi.CustomResource):
 
         foobar_instance = linode.Instance("foobarInstance",
             label="my-linode",
-            image="linode/alpine3.14",
+            image="linode/alpine3.19",
             type="g6-nanode-1",
             region="us-southeast")
         foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
@@ -233,7 +233,7 @@ class Ipv6Range(pulumi.CustomResource):
 
         foobar_instance = linode.Instance("foobarInstance",
             label="my-linode",
-            image="linode/alpine3.14",
+            image="linode/alpine3.19",
             type="g6-nanode-1",
             region="us-southeast")
         foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",

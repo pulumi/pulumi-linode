@@ -111,7 +111,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     specific_images = linode.get_images(filters=[
         linode.GetImagesFilterArgs(
             name="label",
-            values=["Debian 11"],
+            values=["Debian 12"],
         ),
         linode.GetImagesFilterArgs(
             name="is_public",
@@ -196,7 +196,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     specific_images = linode.get_images(filters=[
         linode.GetImagesFilterArgs(
             name="label",
-            values=["Debian 11"],
+            values=["Debian 12"],
         ),
         linode.GetImagesFilterArgs(
             name="is_public",

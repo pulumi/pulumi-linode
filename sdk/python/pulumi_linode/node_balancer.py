@@ -111,6 +111,7 @@ class _NodeBalancerState:
                  client_conn_throttle: Optional[pulumi.Input[int]] = None,
                  created: Optional[pulumi.Input[str]] = None,
                  firewall_id: Optional[pulumi.Input[int]] = None,
+                 firewalls: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ipv4: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[str]] = None,
@@ -122,18 +123,19 @@ class _NodeBalancerState:
         """
         Input properties used for looking up and filtering NodeBalancer resources.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-        :param pulumi.Input[str] created: When this NodeBalancer was created
+        :param pulumi.Input[str] created: When this firewall was created.
         :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]] firewalls: A list of Firewalls assigned to this NodeBalancer.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-        :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
-        :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
+        :param pulumi.Input[str] ipv4: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[str] ipv6: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
-        :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
+        :param pulumi.Input[str] updated: When this firewall was last updated.
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -141,6 +143,8 @@ class _NodeBalancerState:
             pulumi.set(__self__, "created", created)
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
+        if firewalls is not None:
+            pulumi.set(__self__, "firewalls", firewalls)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if ipv4 is not None:
@@ -174,7 +178,7 @@ class _NodeBalancerState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
         """
-        When this NodeBalancer was created
+        When this firewall was created.
         """
         return pulumi.get(self, "created")
 
@@ -196,6 +200,18 @@ class _NodeBalancerState:
 
     @property
     @pulumi.getter
+    def firewalls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]]]:
+        """
+        A list of Firewalls assigned to this NodeBalancer.
+        """
+        return pulumi.get(self, "firewalls")
+
+    @firewalls.setter
+    def firewalls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]]]):
+        pulumi.set(self, "firewalls", value)
+
+    @property
+    @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
         This NodeBalancer's hostname, ending with .nodebalancer.linode.com
@@ -210,7 +226,7 @@ class _NodeBalancerState:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input[str]]:
         """
-        The Public IPv4 Address of this NodeBalancer
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv4")
 
@@ -222,7 +238,7 @@ class _NodeBalancerState:
     @pulumi.getter
     def ipv6(self) -> Optional[pulumi.Input[str]]:
         """
-        The Public IPv6 Address of this NodeBalancer
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv6")
 
@@ -284,7 +300,7 @@ class _NodeBalancerState:
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[str]]:
         """
-        When this NodeBalancer was last updated.
+        When this firewall was last updated.
         """
         return pulumi.get(self, "updated")
 
@@ -409,6 +425,7 @@ class NodeBalancer(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
             __props__.__dict__["created"] = None
+            __props__.__dict__["firewalls"] = None
             __props__.__dict__["hostname"] = None
             __props__.__dict__["ipv4"] = None
             __props__.__dict__["ipv6"] = None
@@ -427,6 +444,7 @@ class NodeBalancer(pulumi.CustomResource):
             client_conn_throttle: Optional[pulumi.Input[int]] = None,
             created: Optional[pulumi.Input[str]] = None,
             firewall_id: Optional[pulumi.Input[int]] = None,
+            firewalls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerFirewallArgs']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             ipv4: Optional[pulumi.Input[str]] = None,
             ipv6: Optional[pulumi.Input[str]] = None,
@@ -443,18 +461,19 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
-        :param pulumi.Input[str] created: When this NodeBalancer was created
+        :param pulumi.Input[str] created: When this firewall was created.
         :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerFirewallArgs']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-        :param pulumi.Input[str] ipv4: The Public IPv4 Address of this NodeBalancer
-        :param pulumi.Input[str] ipv6: The Public IPv6 Address of this NodeBalancer
+        :param pulumi.Input[str] ipv4: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[str] ipv6: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
-        :param pulumi.Input[str] updated: When this NodeBalancer was last updated.
+        :param pulumi.Input[str] updated: When this firewall was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -463,6 +482,7 @@ class NodeBalancer(pulumi.CustomResource):
         __props__.__dict__["client_conn_throttle"] = client_conn_throttle
         __props__.__dict__["created"] = created
         __props__.__dict__["firewall_id"] = firewall_id
+        __props__.__dict__["firewalls"] = firewalls
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ipv4"] = ipv4
         __props__.__dict__["ipv6"] = ipv6
@@ -485,7 +505,7 @@ class NodeBalancer(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
         """
-        When this NodeBalancer was created
+        When this firewall was created.
         """
         return pulumi.get(self, "created")
 
@@ -499,6 +519,14 @@ class NodeBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def firewalls(self) -> pulumi.Output[Sequence['outputs.NodeBalancerFirewall']]:
+        """
+        A list of Firewalls assigned to this NodeBalancer.
+        """
+        return pulumi.get(self, "firewalls")
+
+    @property
+    @pulumi.getter
     def hostname(self) -> pulumi.Output[str]:
         """
         This NodeBalancer's hostname, ending with .nodebalancer.linode.com
@@ -509,7 +537,7 @@ class NodeBalancer(pulumi.CustomResource):
     @pulumi.getter
     def ipv4(self) -> pulumi.Output[str]:
         """
-        The Public IPv4 Address of this NodeBalancer
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv4")
 
@@ -517,7 +545,7 @@ class NodeBalancer(pulumi.CustomResource):
     @pulumi.getter
     def ipv6(self) -> pulumi.Output[str]:
         """
-        The Public IPv6 Address of this NodeBalancer
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
         """
         return pulumi.get(self, "ipv6")
 
@@ -559,7 +587,7 @@ class NodeBalancer(pulumi.CustomResource):
     @pulumi.getter
     def updated(self) -> pulumi.Output[str]:
         """
-        When this NodeBalancer was last updated.
+        When this firewall was last updated.
         """
         return pulumi.get(self, "updated")
 

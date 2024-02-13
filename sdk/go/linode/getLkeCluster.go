@@ -50,8 +50,11 @@ func LookupLkeCluster(ctx *pulumi.Context, args *LookupLkeClusterArgs, opts ...p
 
 // A collection of arguments for invoking getLkeCluster.
 type LookupLkeClusterArgs struct {
+	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
+	// Node pools associated with this cluster.
+	Pools []GetLkeClusterPool `pulumi:"pools"`
 }
 
 // A collection of values returned by getLkeCluster.
@@ -59,6 +62,8 @@ type LookupLkeClusterResult struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints  []string                    `pulumi:"apiEndpoints"`
 	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
+	// When this Kubernetes cluster was created.
+	Created string `pulumi:"created"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl string `pulumi:"dashboardUrl"`
 	// The ID of the node.
@@ -67,15 +72,18 @@ type LookupLkeClusterResult struct {
 	K8sVersion string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig string `pulumi:"kubeconfig"`
-	Label      string `pulumi:"label"`
+	// The unique label for the cluster.
+	Label string `pulumi:"label"`
 	// Node pools associated with this cluster.
 	Pools []GetLkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	Region string `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status string `pulumi:"status"`
-	// The tags applied to the cluster.
+	// An array of tags applied to this object. Tags are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// When this Kubernetes cluster was updated.
+	Updated string `pulumi:"updated"`
 }
 
 func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupLkeClusterResultOutput {
@@ -93,8 +101,11 @@ func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs
 
 // A collection of arguments for invoking getLkeCluster.
 type LookupLkeClusterOutputArgs struct {
+	ControlPlanes GetLkeClusterControlPlaneArrayInput `pulumi:"controlPlanes"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
+	// Node pools associated with this cluster.
+	Pools GetLkeClusterPoolArrayInput `pulumi:"pools"`
 }
 
 func (LookupLkeClusterOutputArgs) ElementType() reflect.Type {
@@ -125,6 +136,11 @@ func (o LookupLkeClusterResultOutput) ControlPlanes() GetLkeClusterControlPlaneA
 	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterControlPlane { return v.ControlPlanes }).(GetLkeClusterControlPlaneArrayOutput)
 }
 
+// When this Kubernetes cluster was created.
+func (o LookupLkeClusterResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
 // The Kubernetes Dashboard access URL for this cluster.
 func (o LookupLkeClusterResultOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
@@ -145,6 +161,7 @@ func (o LookupLkeClusterResultOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
+// The unique label for the cluster.
 func (o LookupLkeClusterResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -164,9 +181,14 @@ func (o LookupLkeClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags applied to the cluster.
+// An array of tags applied to this object. Tags are for organizational purposes only.
 func (o LookupLkeClusterResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this Kubernetes cluster was updated.
+func (o LookupLkeClusterResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Updated }).(pulumi.StringOutput)
 }
 
 func init() {

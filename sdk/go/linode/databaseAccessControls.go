@@ -34,7 +34,7 @@ import (
 //				Label:  pulumi.String("myinstance"),
 //				Region: pulumi.String("us-southeast"),
 //				Type:   pulumi.String("g6-nanode-1"),
-//				Image:  pulumi.String("linode/alpine3.14"),
+//				Image:  pulumi.String("linode/alpine3.19"),
 //			})
 //			if err != nil {
 //				return err

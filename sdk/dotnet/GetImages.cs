@@ -37,7 +37,7 @@ namespace Pulumi.Linode
         ///                 Name = "label",
         ///                 Values = new[]
         ///                 {
-        ///                     "Debian 11",
+        ///                     "Debian 12",
         ///                 },
         ///             },
         ///             new Linode.Inputs.GetImagesFilterInputArgs
@@ -127,7 +127,7 @@ namespace Pulumi.Linode
         ///                 Name = "label",
         ///                 Values = new[]
         ///                 {
-        ///                     "Debian 11",
+        ///                     "Debian 12",
         ///                 },
         ///             },
         ///             new Linode.Inputs.GetImagesFilterInputArgs
