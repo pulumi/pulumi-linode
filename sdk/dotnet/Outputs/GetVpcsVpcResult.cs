@@ -24,7 +24,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The unique id of this VPC.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// The label of the VPC.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Linode.Outputs
 
             string description,
 
-            int id,
+            string id,
 
             string label,
 

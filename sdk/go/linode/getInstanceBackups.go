@@ -12,6 +12,32 @@ import (
 )
 
 // Provides details about the backups of an Instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetInstanceBackups(ctx, &linode.GetInstanceBackupsArgs{
+//				LinodeId: 123,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceBackups(ctx *pulumi.Context, args *GetInstanceBackupsArgs, opts ...pulumi.InvokeOption) (*GetInstanceBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceBackupsResult

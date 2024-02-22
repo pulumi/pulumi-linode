@@ -31,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := linode.LookupVpcSubnet(ctx, &linode.LookupVpcSubnetArgs{
 //				VpcId: 123,
-//				Id:    12345,
+//				Id:    "12345",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ func LookupVpcSubnet(ctx *pulumi.Context, args *LookupVpcSubnetArgs, opts ...pul
 // A collection of arguments for invoking getVpcSubnet.
 type LookupVpcSubnetArgs struct {
 	// The unique id of this VPC subnet.
-	Id int `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// The id of the parent VPC for this VPC Subnet.
 	VpcId int `pulumi:"vpcId"`
 }
@@ -64,7 +64,7 @@ type LookupVpcSubnetArgs struct {
 type LookupVpcSubnetResult struct {
 	// The date and time when the VPC Subnet was created.
 	Created string `pulumi:"created"`
-	Id      int    `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4 string `pulumi:"ipv4"`
 	// The label of the VPC subnet.
@@ -92,7 +92,7 @@ func LookupVpcSubnetOutput(ctx *pulumi.Context, args LookupVpcSubnetOutputArgs, 
 // A collection of arguments for invoking getVpcSubnet.
 type LookupVpcSubnetOutputArgs struct {
 	// The unique id of this VPC subnet.
-	Id pulumi.IntInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
 	// The id of the parent VPC for this VPC Subnet.
 	VpcId pulumi.IntInput `pulumi:"vpcId"`
 }
@@ -121,8 +121,8 @@ func (o LookupVpcSubnetResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-func (o LookupVpcSubnetResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupVpcSubnetResult) int { return v.Id }).(pulumi.IntOutput)
+func (o LookupVpcSubnetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The IPv4 range of this subnet in CIDR format.

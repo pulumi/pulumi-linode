@@ -3271,7 +3271,7 @@ export interface GetVpcsVpc {
     /**
      * The unique id of this VPC.
      */
-    id: number;
+    id: string;
     /**
      * The label of the VPC.
      */

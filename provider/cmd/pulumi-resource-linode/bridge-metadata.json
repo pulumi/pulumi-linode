@@ -1757,7 +1757,7 @@
             "linode:index/instance:Instance": 0,
             "linode:index/instanceDisk:InstanceDisk": 0,
             "linode:index/instanceIp:InstanceIp": 1,
-            "linode:index/instanceSharedIps:InstanceSharedIps": 0,
+            "linode:index/instanceSharedIps:InstanceSharedIps": 1,
             "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
             "linode:index/nodeBalancer:NodeBalancer": 1,

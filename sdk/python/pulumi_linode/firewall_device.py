@@ -194,6 +194,14 @@ class FirewallDevice(pulumi.CustomResource):
             entity_id=my_instance.id)
         ```
 
+        ## Import
+
+        Firewall Device can be imported using the `firewall_id` followed by the Firewall Device `id` separated by a comma, e.g.
+
+        ```sh
+        $ pulumi import linode:index/firewallDevice:FirewallDevice my_device_duplicated 1234567,7654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] entity_id: The unique ID of the entity to attach.
@@ -236,6 +244,14 @@ class FirewallDevice(pulumi.CustomResource):
         my_device = linode.FirewallDevice("myDevice",
             firewall_id=my_firewall.id,
             entity_id=my_instance.id)
+        ```
+
+        ## Import
+
+        Firewall Device can be imported using the `firewall_id` followed by the Firewall Device `id` separated by a comma, e.g.
+
+        ```sh
+        $ pulumi import linode:index/firewallDevice:FirewallDevice my_device_duplicated 1234567,7654321
         ```
 
         :param str resource_name: The name of the resource.

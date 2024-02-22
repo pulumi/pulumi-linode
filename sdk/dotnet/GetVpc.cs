@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// {
         ///     var foo = Linode.GetVpc.Invoke(new()
         ///     {
-        ///         Id = 123,
+        ///         Id = "123",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -64,7 +64,7 @@ namespace Pulumi.Linode
         /// {
         ///     var foo = Linode.GetVpc.Invoke(new()
         ///     {
-        ///         Id = 123,
+        ///         Id = "123",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -87,7 +87,7 @@ namespace Pulumi.Linode
         /// The unique id of this VPC.
         /// </summary>
         [Input("id", required: true)]
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
         public GetVpcArgs()
         {
@@ -101,7 +101,7 @@ namespace Pulumi.Linode
         /// The unique id of this VPC.
         /// </summary>
         [Input("id", required: true)]
-        public Input<int> Id { get; set; } = null!;
+        public Input<string> Id { get; set; } = null!;
 
         public GetVpcInvokeArgs()
         {
@@ -121,7 +121,7 @@ namespace Pulumi.Linode
         /// The user-defined description of this VPC.
         /// </summary>
         public readonly string Description;
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// The label of the VPC.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Pulumi.Linode
 
             string description,
 
-            int id,
+            string id,
 
             string label,
 

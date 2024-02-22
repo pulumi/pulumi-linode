@@ -27503,7 +27503,7 @@ type GetVpcsVpc struct {
 	// The user-defined description of this VPC.
 	Description string `pulumi:"description"`
 	// The unique id of this VPC.
-	Id int `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// The label of the VPC.
 	Label string `pulumi:"label"`
 	// The region where the VPC is deployed.
@@ -27529,7 +27529,7 @@ type GetVpcsVpcArgs struct {
 	// The user-defined description of this VPC.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The unique id of this VPC.
-	Id pulumi.IntInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
 	// The label of the VPC.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The region where the VPC is deployed.
@@ -27600,8 +27600,8 @@ func (o GetVpcsVpcOutput) Description() pulumi.StringOutput {
 }
 
 // The unique id of this VPC.
-func (o GetVpcsVpcOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVpcsVpc) int { return v.Id }).(pulumi.IntOutput)
+func (o GetVpcsVpcOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpc) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The label of the VPC.

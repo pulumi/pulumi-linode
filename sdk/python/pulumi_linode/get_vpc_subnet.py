@@ -26,8 +26,8 @@ class GetVpcSubnetResult:
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ipv4 and not isinstance(ipv4, str):
             raise TypeError("Expected argument 'ipv4' to be a str")
@@ -55,7 +55,7 @@ class GetVpcSubnetResult:
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         return pulumi.get(self, "id")
 
     @property
@@ -111,7 +111,7 @@ class AwaitableGetVpcSubnetResult(GetVpcSubnetResult):
             vpc_id=self.vpc_id)
 
 
-def get_vpc_subnet(id: Optional[int] = None,
+def get_vpc_subnet(id: Optional[str] = None,
                    vpc_id: Optional[int] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcSubnetResult:
     """
@@ -126,12 +126,12 @@ def get_vpc_subnet(id: Optional[int] = None,
     import pulumi_linode as linode
 
     foo = linode.get_vpc_subnet(vpc_id=123,
-        id=12345)
+        id="12345")
     pulumi.export("vpcSubnet", foo)
     ```
 
 
-    :param int id: The unique id of this VPC subnet.
+    :param str id: The unique id of this VPC subnet.
     :param int vpc_id: The id of the parent VPC for this VPC Subnet.
     """
     __args__ = dict()
@@ -151,7 +151,7 @@ def get_vpc_subnet(id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_vpc_subnet)
-def get_vpc_subnet_output(id: Optional[pulumi.Input[int]] = None,
+def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
                           vpc_id: Optional[pulumi.Input[int]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetResult]:
     """
@@ -166,12 +166,12 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[int]] = None,
     import pulumi_linode as linode
 
     foo = linode.get_vpc_subnet(vpc_id=123,
-        id=12345)
+        id="12345")
     pulumi.export("vpcSubnet", foo)
     ```
 
 
-    :param int id: The unique id of this VPC subnet.
+    :param str id: The unique id of this VPC subnet.
     :param int vpc_id: The id of the parent VPC for this VPC Subnet.
     """
     ...

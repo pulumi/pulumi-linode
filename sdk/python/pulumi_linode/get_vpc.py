@@ -28,8 +28,8 @@ class GetVpcResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
@@ -59,7 +59,7 @@ class GetVpcResult:
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         return pulumi.get(self, "id")
 
     @property
@@ -101,7 +101,7 @@ class AwaitableGetVpcResult(GetVpcResult):
             updated=self.updated)
 
 
-def get_vpc(id: Optional[int] = None,
+def get_vpc(id: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcResult:
     """
     Provides information about a Linode VPC.
@@ -114,12 +114,12 @@ def get_vpc(id: Optional[int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    foo = linode.get_vpc(id=123)
+    foo = linode.get_vpc(id="123")
     pulumi.export("vpc", foo)
     ```
 
 
-    :param int id: The unique id of this VPC.
+    :param str id: The unique id of this VPC.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -136,7 +136,7 @@ def get_vpc(id: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_vpc)
-def get_vpc_output(id: Optional[pulumi.Input[int]] = None,
+def get_vpc_output(id: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcResult]:
     """
     Provides information about a Linode VPC.
@@ -149,11 +149,11 @@ def get_vpc_output(id: Optional[pulumi.Input[int]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    foo = linode.get_vpc(id=123)
+    foo = linode.get_vpc(id="123")
     pulumi.export("vpc", foo)
     ```
 
 
-    :param int id: The unique id of this VPC.
+    :param str id: The unique id of this VPC.
     """
     ...

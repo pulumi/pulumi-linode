@@ -18,7 +18,7 @@ public final class GetVpcSubnetResult {
      * 
      */
     private String created;
-    private Integer id;
+    private String id;
     /**
      * @return The IPv4 range of this subnet in CIDR format.
      * 
@@ -49,7 +49,7 @@ public final class GetVpcSubnetResult {
     public String created() {
         return this.created;
     }
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
@@ -94,7 +94,7 @@ public final class GetVpcSubnetResult {
     @CustomType.Builder
     public static final class Builder {
         private String created;
-        private Integer id;
+        private String id;
         private String ipv4;
         private String label;
         private List<GetVpcSubnetLinode> linodes;
@@ -121,7 +121,7 @@ public final class GetVpcSubnetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetVpcSubnetResult", "id");
             }

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = linode.getVpc({
- *     id: 123,
+ *     id: "123",
  * });
  * export const vpc = foo;
  * ```
@@ -36,7 +36,7 @@ export interface GetVpcArgs {
     /**
      * The unique id of this VPC.
      */
-    id: number;
+    id: string;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface GetVpcResult {
      * The user-defined description of this VPC.
      */
     readonly description: string;
-    readonly id: number;
+    readonly id: string;
     /**
      * The label of the VPC.
      */
@@ -77,7 +77,7 @@ export interface GetVpcResult {
  * import * as linode from "@pulumi/linode";
  *
  * const foo = linode.getVpc({
- *     id: 123,
+ *     id: "123",
  * });
  * export const vpc = foo;
  * ```
@@ -93,5 +93,5 @@ export interface GetVpcOutputArgs {
     /**
      * The unique id of this VPC.
      */
-    id: pulumi.Input<number>;
+    id: pulumi.Input<string>;
 }
