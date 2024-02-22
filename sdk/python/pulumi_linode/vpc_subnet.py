@@ -196,6 +196,14 @@ class VpcSubnet(pulumi.CustomResource):
             vpc_id=123)
         ```
 
+        ## Import
+
+        Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
+
+        ```sh
+        $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ipv4: The IPv4 range of this subnet in CIDR format.
@@ -223,6 +231,14 @@ class VpcSubnet(pulumi.CustomResource):
             ipv4="10.0.0.0/24",
             label="test-subnet",
             vpc_id=123)
+        ```
+
+        ## Import
+
+        Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
+
+        ```sh
+        $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321
         ```
 
         :param str resource_name: The name of the resource.

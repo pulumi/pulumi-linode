@@ -5,7 +5,6 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -25,7 +24,7 @@ public final class GetVpcsVpc {
      * @return The unique id of this VPC.
      * 
      */
-    private Integer id;
+    private String id;
     /**
      * @return The label of the VPC.
      * 
@@ -61,7 +60,7 @@ public final class GetVpcsVpc {
      * @return The unique id of this VPC.
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
@@ -97,7 +96,7 @@ public final class GetVpcsVpc {
     public static final class Builder {
         private String created;
         private String description;
-        private Integer id;
+        private String id;
         private String label;
         private String region;
         private String updated;
@@ -129,7 +128,7 @@ public final class GetVpcsVpc {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetVpcsVpc", "id");
             }

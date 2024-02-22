@@ -12604,14 +12604,14 @@ class GetVpcsVpcResult(dict):
     def __init__(__self__, *,
                  created: str,
                  description: str,
-                 id: int,
+                 id: str,
                  label: str,
                  region: str,
                  updated: str):
         """
         :param str created: The date and time when the VPC was created.
         :param str description: The user-defined description of this VPC.
-        :param int id: The unique id of this VPC.
+        :param str id: The unique id of this VPC.
         :param str label: The label of the VPC.
         :param str region: The region where the VPC is deployed.
         :param str updated: The date and time when the VPC was last updated.
@@ -12641,7 +12641,7 @@ class GetVpcsVpcResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         """
         The unique id of this VPC.
         """

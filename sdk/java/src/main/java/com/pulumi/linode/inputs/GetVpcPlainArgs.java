@@ -5,7 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 
@@ -18,13 +18,13 @@ public final class GetVpcPlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="id", required=true)
-    private Integer id;
+    private String id;
 
     /**
      * @return The unique id of this VPC.
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
 
@@ -58,7 +58,7 @@ public final class GetVpcPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             $.id = id;
             return this;
         }

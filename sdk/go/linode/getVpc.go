@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := linode.LookupVpc(ctx, &linode.LookupVpcArgs{
-//				Id: 123,
+//				Id: "123",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,7 +54,7 @@ func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getVpc.
 type LookupVpcArgs struct {
 	// The unique id of this VPC.
-	Id int `pulumi:"id"`
+	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getVpc.
@@ -63,7 +63,7 @@ type LookupVpcResult struct {
 	Created string `pulumi:"created"`
 	// The user-defined description of this VPC.
 	Description string `pulumi:"description"`
-	Id          int    `pulumi:"id"`
+	Id          string `pulumi:"id"`
 	// The label of the VPC.
 	Label string `pulumi:"label"`
 	// The region where the VPC is deployed.
@@ -88,7 +88,7 @@ func LookupVpcOutput(ctx *pulumi.Context, args LookupVpcOutputArgs, opts ...pulu
 // A collection of arguments for invoking getVpc.
 type LookupVpcOutputArgs struct {
 	// The unique id of this VPC.
-	Id pulumi.IntInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (LookupVpcOutputArgs) ElementType() reflect.Type {
@@ -120,8 +120,8 @@ func (o LookupVpcResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o LookupVpcResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupVpcResult) int { return v.Id }).(pulumi.IntOutput)
+func (o LookupVpcResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The label of the VPC.

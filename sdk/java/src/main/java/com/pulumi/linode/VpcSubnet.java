@@ -53,6 +53,14 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
+ * 
+ * ```sh
+ * $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321
+ * ```
+ * 
  */
 @ResourceType(type="linode:index/vpcSubnet:VpcSubnet")
 public class VpcSubnet extends com.pulumi.resources.CustomResource {

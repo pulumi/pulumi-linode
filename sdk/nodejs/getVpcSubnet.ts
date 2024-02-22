@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const foo = linode.getVpcSubnet({
  *     vpcId: 123,
- *     id: 12345,
+ *     id: "12345",
  * });
  * export const vpcSubnet = foo;
  * ```
@@ -40,7 +40,7 @@ export interface GetVpcSubnetArgs {
     /**
      * The unique id of this VPC subnet.
      */
-    id: number;
+    id: string;
     /**
      * The id of the parent VPC for this VPC Subnet.
      */
@@ -55,7 +55,7 @@ export interface GetVpcSubnetResult {
      * The date and time when the VPC Subnet was created.
      */
     readonly created: string;
-    readonly id: number;
+    readonly id: string;
     /**
      * The IPv4 range of this subnet in CIDR format.
      */
@@ -87,7 +87,7 @@ export interface GetVpcSubnetResult {
  *
  * const foo = linode.getVpcSubnet({
  *     vpcId: 123,
- *     id: 12345,
+ *     id: "12345",
  * });
  * export const vpcSubnet = foo;
  * ```
@@ -103,7 +103,7 @@ export interface GetVpcSubnetOutputArgs {
     /**
      * The unique id of this VPC subnet.
      */
-    id: pulumi.Input<number>;
+    id: pulumi.Input<string>;
     /**
      * The id of the parent VPC for this VPC Subnet.
      */

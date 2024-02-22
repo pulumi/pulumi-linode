@@ -28,7 +28,7 @@ namespace Pulumi.Linode.Inputs
         /// The unique id of this VPC.
         /// </summary>
         [Input("id", required: true)]
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
         /// <summary>
         /// The label of the VPC.

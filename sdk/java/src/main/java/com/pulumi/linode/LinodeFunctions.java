@@ -6462,7 +6462,6 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -6485,7 +6484,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backups = LinodeFunctions.getInstanceBackups(GetInstanceBackupsArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -6500,7 +6499,6 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -6523,7 +6521,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backups = LinodeFunctions.getInstanceBackups(GetInstanceBackupsArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -6538,7 +6536,6 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -6561,7 +6558,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backups = LinodeFunctions.getInstanceBackups(GetInstanceBackupsArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }
@@ -6576,7 +6573,6 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
-     * 
      * ```java
      * package generated_program;
      * 
@@ -6599,7 +6595,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-backups = LinodeFunctions.getInstanceBackups(GetInstanceBackupsArgs.builder()
-     *             .id(123)
+     *             .linodeId(123)
      *             .build());
      * 
      *     }

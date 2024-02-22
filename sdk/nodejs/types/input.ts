@@ -3972,7 +3972,7 @@ export interface GetVpcsVpc {
     /**
      * The unique id of this VPC.
      */
-    id: number;
+    id: string;
     /**
      * The label of the VPC.
      */
@@ -3999,7 +3999,7 @@ export interface GetVpcsVpcArgs {
     /**
      * The unique id of this VPC.
      */
-    id: pulumi.Input<number>;
+    id: pulumi.Input<string>;
     /**
      * The label of the VPC.
      */

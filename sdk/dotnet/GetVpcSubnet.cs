@@ -31,7 +31,7 @@ namespace Pulumi.Linode
         ///     var foo = Linode.GetVpcSubnet.Invoke(new()
         ///     {
         ///         VpcId = 123,
-        ///         Id = 12345,
+        ///         Id = "12345",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -66,7 +66,7 @@ namespace Pulumi.Linode
         ///     var foo = Linode.GetVpcSubnet.Invoke(new()
         ///     {
         ///         VpcId = 123,
-        ///         Id = 12345,
+        ///         Id = "12345",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -89,7 +89,7 @@ namespace Pulumi.Linode
         /// The unique id of this VPC subnet.
         /// </summary>
         [Input("id", required: true)]
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
         /// <summary>
         /// The id of the parent VPC for this VPC Subnet.
@@ -109,7 +109,7 @@ namespace Pulumi.Linode
         /// The unique id of this VPC subnet.
         /// </summary>
         [Input("id", required: true)]
-        public Input<int> Id { get; set; } = null!;
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// The id of the parent VPC for this VPC Subnet.
@@ -131,7 +131,7 @@ namespace Pulumi.Linode
         /// The date and time when the VPC Subnet was created.
         /// </summary>
         public readonly string Created;
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// </summary>
@@ -154,7 +154,7 @@ namespace Pulumi.Linode
         private GetVpcSubnetResult(
             string created,
 
-            int id,
+            string id,
 
             string ipv4,
 

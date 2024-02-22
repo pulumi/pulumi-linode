@@ -75,6 +75,14 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * Firewall Device can be imported using the `firewall_id` followed by the Firewall Device `id` separated by a comma, e.g.
+ * 
+ * ```sh
+ * $ pulumi import linode:index/firewallDevice:FirewallDevice my_device_duplicated 1234567,7654321
+ * ```
+ * 
  */
 @ResourceType(type="linode:index/firewallDevice:FirewallDevice")
 public class FirewallDevice extends com.pulumi.resources.CustomResource {
