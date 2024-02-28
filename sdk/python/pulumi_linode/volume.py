@@ -32,7 +32,7 @@ class VolumeArgs:
                - - -
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "label", label)
         if linode_id is not None:
@@ -114,7 +114,7 @@ class VolumeArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -155,7 +155,7 @@ class _VolumeState:
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         if filesystem_path is not None:
             pulumi.set(__self__, "filesystem_path", filesystem_path)
@@ -266,7 +266,7 @@ class _VolumeState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -319,7 +319,7 @@ class Volume(pulumi.CustomResource):
                - - -
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         ...
     @overload
@@ -417,7 +417,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[int] size: Size of the Volume in GB.
         :param pulumi.Input[int] source_volume_id: The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
         :param pulumi.Input[str] status: The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -496,7 +496,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 

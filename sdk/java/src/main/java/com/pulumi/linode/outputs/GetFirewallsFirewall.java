@@ -78,7 +78,7 @@ public final class GetFirewallsFirewall {
      */
     private String status;
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -174,7 +174,7 @@ public final class GetFirewallsFirewall {
         return this.status;
     }
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

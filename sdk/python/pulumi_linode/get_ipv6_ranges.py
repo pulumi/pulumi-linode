@@ -79,7 +79,7 @@ def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFi
         name="region",
         values=["us-mia"],
     )])
-    pulumi.export("ranges", data["linode_ipv4_ranges"]["filtered-ranges"]["ranges"])
+    pulumi.export("ranges", filtered_ranges)
     ```
 
     ## Filterable Fields
@@ -123,7 +123,7 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
         name="region",
         values=["us-mia"],
     )])
-    pulumi.export("ranges", data["linode_ipv4_ranges"]["filtered-ranges"]["ranges"])
+    pulumi.export("ranges", filtered_ranges)
     ```
 
     ## Filterable Fields

@@ -162,14 +162,14 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -427,7 +427,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

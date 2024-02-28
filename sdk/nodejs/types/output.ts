@@ -442,7 +442,7 @@ export interface GetDomainsDomain {
      */
     status: string;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -612,7 +612,7 @@ export interface GetFirewallsFirewall {
      */
     status: string;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -1476,7 +1476,7 @@ export interface GetInstancesInstance {
      */
     swapSize: number;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -1969,7 +1969,7 @@ export interface GetLkeClusterPool {
      */
     nodes?: outputs.GetLkeClusterPoolNode[];
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -2064,7 +2064,7 @@ export interface GetLkeClustersLkeCluster {
      */
     status: string;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -2132,7 +2132,7 @@ export interface GetNodeBalancerFirewall {
      */
     status: string;
     /**
-     * The tags applied to the firewall.
+     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -2362,7 +2362,7 @@ export interface GetNodebalancersNodebalancer {
      */
     region: string;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -3161,7 +3161,7 @@ export interface GetVolumesVolume {
      */
     status: string;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**
@@ -3854,7 +3854,7 @@ export interface NodeBalancerFirewall {
      */
     status: string;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: string[];
     /**

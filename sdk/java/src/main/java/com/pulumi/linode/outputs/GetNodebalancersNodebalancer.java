@@ -54,7 +54,7 @@ public final class GetNodebalancersNodebalancer {
      */
     private String region;
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -127,7 +127,7 @@ public final class GetNodebalancersNodebalancer {
         return this.region;
     }
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

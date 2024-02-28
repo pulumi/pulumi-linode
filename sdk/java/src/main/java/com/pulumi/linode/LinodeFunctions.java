@@ -8222,7 +8222,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
      *     }
      * }
      * ```
@@ -8275,7 +8275,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
      *     }
      * }
      * ```
@@ -8328,7 +8328,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
      *     }
      * }
      * ```
@@ -8381,7 +8381,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
      *     }
      * }
      * ```
@@ -8434,7 +8434,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
      *     }
      * }
      * ```
@@ -8487,7 +8487,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, data.linode_ipv4_ranges().filtered-ranges().ranges());
+     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
      *     }
      * }
      * ```

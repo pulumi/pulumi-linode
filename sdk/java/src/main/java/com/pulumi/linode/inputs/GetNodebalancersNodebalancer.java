@@ -137,14 +137,14 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
     }
 
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags", required=true)
     private List<String> tags;
 
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {
@@ -304,7 +304,7 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param tags A list of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param tags A list of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

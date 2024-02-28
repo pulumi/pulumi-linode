@@ -42,7 +42,7 @@ type Volume struct {
 	SourceVolumeId pulumi.IntPtrOutput `pulumi:"sourceVolumeId"`
 	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags     pulumi.StringArrayOutput `pulumi:"tags"`
 	Timeouts VolumeTimeoutsPtrOutput  `pulumi:"timeouts"`
 }
@@ -96,7 +96,7 @@ type volumeState struct {
 	SourceVolumeId *int `pulumi:"sourceVolumeId"`
 	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status *string `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags     []string        `pulumi:"tags"`
 	Timeouts *VolumeTimeouts `pulumi:"timeouts"`
 }
@@ -118,7 +118,7 @@ type VolumeState struct {
 	SourceVolumeId pulumi.IntPtrInput
 	// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringPtrInput
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags     pulumi.StringArrayInput
 	Timeouts VolumeTimeoutsPtrInput
 }
@@ -140,7 +140,7 @@ type volumeArgs struct {
 	Size *int `pulumi:"size"`
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId *int `pulumi:"sourceVolumeId"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags     []string        `pulumi:"tags"`
 	Timeouts *VolumeTimeouts `pulumi:"timeouts"`
 }
@@ -159,7 +159,7 @@ type VolumeArgs struct {
 	Size pulumi.IntPtrInput
 	// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
 	SourceVolumeId pulumi.IntPtrInput
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags     pulumi.StringArrayInput
 	Timeouts VolumeTimeoutsPtrInput
 }
@@ -288,7 +288,7 @@ func (o VolumeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o VolumeOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

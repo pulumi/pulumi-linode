@@ -1200,7 +1200,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -2257,7 +2257,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object.\n"
+                    "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "ttlSec": {
                     "type": "integer",
@@ -2540,7 +2540,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -4163,7 +4163,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "type": {
                     "type": "string",
@@ -5020,7 +5020,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "type": {
                     "type": "string",
@@ -5175,7 +5175,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -5300,7 +5300,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The tags applied to the firewall.\n"
+                    "description": "The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -5659,7 +5659,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "transfers": {
                     "type": "array",
@@ -6933,7 +6933,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object.\n"
+                    "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -8076,7 +8076,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "ttlSec": {
                     "type": "integer",
@@ -8090,6 +8090,7 @@
             "required": [
                 "domain",
                 "status",
+                "tags",
                 "type"
             ],
             "inputProperties": {
@@ -8149,7 +8150,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "ttlSec": {
                     "type": "integer",
@@ -8224,7 +8225,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                        "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "ttlSec": {
                         "type": "integer",
@@ -8466,7 +8467,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -8482,6 +8483,7 @@
                 "nodebalancers",
                 "outboundPolicy",
                 "status",
+                "tags",
                 "updated"
             ],
             "inputProperties": {
@@ -8534,7 +8536,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                 }
             },
             "requiredInputs": [
@@ -8609,7 +8611,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                        "description": "A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "updated": {
                         "type": "string",
@@ -9088,7 +9090,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9118,7 +9120,8 @@
                 "sharedIpv4s",
                 "specs",
                 "status",
-                "swapSize"
+                "swapSize",
+                "tags"
             ],
             "inputProperties": {
                 "alerts": {
@@ -9258,7 +9261,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9451,7 +9454,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                        "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "type": {
                         "type": "string",
@@ -10026,7 +10029,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                 }
             },
             "required": [
@@ -10038,7 +10041,8 @@
                 "label",
                 "pools",
                 "region",
-                "status"
+                "status",
+                "tags"
             ],
             "inputProperties": {
                 "controlPlane": {
@@ -10070,7 +10074,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                 }
             },
             "requiredInputs": [
@@ -10131,7 +10135,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.\n"
+                        "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                     }
                 },
                 "type": "object"
@@ -10184,7 +10188,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "transfers": {
                     "type": "array",
@@ -10232,7 +10236,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 }
             },
             "stateInputs": {
@@ -10282,7 +10286,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                        "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "transfers": {
                         "type": "array",
@@ -11919,7 +11923,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/linode:index/VolumeTimeouts:VolumeTimeouts"
@@ -11960,7 +11964,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/linode:index/VolumeTimeouts:VolumeTimeouts"
@@ -12005,7 +12009,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags applied to this object. Tags are for organizational purposes only.\n"
+                        "description": "A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/linode:index/VolumeTimeouts:VolumeTimeouts"
@@ -13137,7 +13141,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags applied to this object.\n"
+                        "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "ttlSec": {
                         "type": "integer",
@@ -13439,7 +13443,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The tags applied to the firewall.\n"
+                        "description": "The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "updated": {
                         "type": "string",
@@ -14035,7 +14039,7 @@
             }
         },
         "linode:index/getIpv6Ranges:getIpv6Ranges": {
-            "description": "Provides information about Linode IPv6 ranges that match a set of filters.\n\n\u003e Some fields may not be accessible directly the results of this data source.\nFor additional information about a specific IPv6 range consider using the linode.Ipv6Range\ndata source.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-ranges = linode.getIpv6Ranges({\n    filters: [{\n        name: \"region\",\n        values: [\"us-mia\"],\n    }],\n});\nexport const ranges = data.linode_ipv4_ranges[\"filtered-ranges\"].ranges;\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_ranges = linode.get_ipv6_ranges(filters=[linode.GetIpv6RangesFilterArgs(\n    name=\"region\",\n    values=[\"us-mia\"],\n)])\npulumi.export(\"ranges\", data[\"linode_ipv4_ranges\"][\"filtered-ranges\"][\"ranges\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_ranges = Linode.GetIpv6Ranges.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetIpv6RangesFilterInputArgs\n            {\n                Name = \"region\",\n                Values = new[]\n                {\n                    \"us-mia\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ranges\"] = data.Linode_ipv4_ranges.Filtered_ranges.Ranges,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetIpv6Ranges(ctx, \u0026linode.GetIpv6RangesArgs{\n\t\t\tFilters: []linode.GetIpv6RangesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"region\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"us-mia\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ranges\", data.Linode_ipv4_ranges.FilteredRanges.Ranges)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetIpv6RangesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()\n            .filters(GetIpv6RangesFilterArgs.builder()\n                .name(\"region\")\n                .values(\"us-mia\")\n                .build())\n            .build());\n\n        ctx.export(\"ranges\", data.linode_ipv4_ranges().filtered-ranges().ranges());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-ranges:\n    fn::invoke:\n      Function: linode:getIpv6Ranges\n      Arguments:\n        filters:\n          - name: region\n            values:\n              - us-mia\noutputs:\n  ranges: ${data.linode_ipv4_ranges\"filtered-ranges\"[%!s(MISSING)].ranges}\n```\n\n## Filterable Fields\n\n* `range`\n\n* `route_target`\n\n* `prefix`\n\n* `region`\n",
+            "description": "Provides information about Linode IPv6 ranges that match a set of filters.\n\n\u003e Some fields may not be accessible directly the results of this data source.\nFor additional information about a specific IPv6 range consider using the linode.Ipv6Range\ndata source.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-ranges = linode.getIpv6Ranges({\n    filters: [{\n        name: \"region\",\n        values: [\"us-mia\"],\n    }],\n});\nexport const ranges = filtered_ranges;\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_ranges = linode.get_ipv6_ranges(filters=[linode.GetIpv6RangesFilterArgs(\n    name=\"region\",\n    values=[\"us-mia\"],\n)])\npulumi.export(\"ranges\", filtered_ranges)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_ranges = Linode.GetIpv6Ranges.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetIpv6RangesFilterInputArgs\n            {\n                Name = \"region\",\n                Values = new[]\n                {\n                    \"us-mia\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ranges\"] = filtered_ranges,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_ranges, err := linode.GetIpv6Ranges(ctx, \u0026linode.GetIpv6RangesArgs{\n\t\t\tFilters: []linode.GetIpv6RangesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"region\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"us-mia\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ranges\", filtered_ranges)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetIpv6RangesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()\n            .filters(GetIpv6RangesFilterArgs.builder()\n                .name(\"region\")\n                .values(\"us-mia\")\n                .build())\n            .build());\n\n        ctx.export(\"ranges\", filtered_ranges);\n    }\n}\n```\n```yaml\nvariables:\n  filtered-ranges:\n    fn::invoke:\n      Function: linode:getIpv6Ranges\n      Arguments:\n        filters:\n          - name: region\n            values:\n              - us-mia\noutputs:\n  ranges: ${[\"filtered-ranges\"]}\n```\n\n## Filterable Fields\n\n* `range`\n\n* `route_target`\n\n* `prefix`\n\n* `region`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getIpv6Ranges.\n",
                 "properties": {
@@ -14349,7 +14353,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                        "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "updated": {
                         "type": "string",
@@ -14595,7 +14599,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The tags applied to the firewall.\n"
+                        "description": "The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "transfers": {
                         "type": "array",
@@ -15805,7 +15809,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags applied to this object.\n"
+                        "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                     },
                     "updated": {
                         "type": "string",

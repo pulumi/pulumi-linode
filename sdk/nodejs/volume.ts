@@ -78,7 +78,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[]>;
     public readonly timeouts!: pulumi.Output<outputs.VolumeTimeouts | undefined>;
@@ -160,7 +160,7 @@ export interface VolumeState {
      */
     status?: pulumi.Input<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
@@ -193,7 +193,7 @@ export interface VolumeArgs {
      */
     sourceVolumeId?: pulumi.Input<number>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     timeouts?: pulumi.Input<inputs.VolumeTimeouts>;

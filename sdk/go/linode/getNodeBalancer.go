@@ -74,7 +74,7 @@ type LookupNodeBalancerResult struct {
 	Label string `pulumi:"label"`
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region string `pulumi:"region"`
-	// The tags applied to the firewall.
+	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 	Tags      []string                  `pulumi:"tags"`
 	Transfers []GetNodeBalancerTransfer `pulumi:"transfers"`
 	// When this firewall was last updated.
@@ -164,7 +164,7 @@ func (o LookupNodeBalancerResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The tags applied to the firewall.
+// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 func (o LookupNodeBalancerResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

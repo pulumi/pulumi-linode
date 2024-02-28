@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetIpv6Ranges(ctx, &linode.GetIpv6RangesArgs{
+//			filtered_ranges, err := linode.GetIpv6Ranges(ctx, &linode.GetIpv6RangesArgs{
 //				Filters: []linode.GetIpv6RangesFilter{
 //					{
 //						Name: "region",
@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("ranges", data.Linode_ipv4_ranges.FilteredRanges.Ranges)
+//			ctx.Export("ranges", filtered_ranges)
 //			return nil
 //		})
 //	}

@@ -74,7 +74,7 @@ type LookupVolumeResult struct {
 	Size int `pulumi:"size"`
 	// The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this Volume was last updated.
 	Updated string `pulumi:"updated"`
@@ -158,7 +158,7 @@ func (o LookupVolumeResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o LookupVolumeResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVolumeResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

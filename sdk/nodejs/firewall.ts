@@ -154,9 +154,9 @@ export class Firewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     /**
      * When this firewall was last updated
      */
@@ -271,7 +271,7 @@ export interface FirewallState {
      */
     status?: pulumi.Input<string>;
     /**
-     * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -321,7 +321,7 @@ export interface FirewallArgs {
      */
     outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
     /**
-     * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

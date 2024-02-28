@@ -183,7 +183,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// An array of tags applied to this object. Tags are for organizational purposes only.
+        /// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

@@ -75,7 +75,7 @@ export interface GetVolumeResult {
      */
     readonly status: string;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     readonly tags: string[];
     /**

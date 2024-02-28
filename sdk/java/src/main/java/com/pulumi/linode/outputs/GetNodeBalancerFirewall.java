@@ -56,7 +56,7 @@ public final class GetNodeBalancerFirewall {
      */
     private String status;
     /**
-     * @return The tags applied to the firewall.
+     * @return The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -124,7 +124,7 @@ public final class GetNodeBalancerFirewall {
         return this.status;
     }
     /**
-     * @return The tags applied to the firewall.
+     * @return The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

@@ -76,7 +76,7 @@ namespace Pulumi.Linode.Inputs
         private List<string>? _tags;
 
         /// <summary>
-        /// The tags applied to the firewall.
+        /// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public List<string> Tags
         {

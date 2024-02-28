@@ -78,7 +78,7 @@ export interface GetNodeBalancerResult {
      */
     readonly region: string;
     /**
-     * The tags applied to the firewall.
+     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      */
     readonly tags: string[];
     readonly transfers: outputs.GetNodeBalancerTransfer[];

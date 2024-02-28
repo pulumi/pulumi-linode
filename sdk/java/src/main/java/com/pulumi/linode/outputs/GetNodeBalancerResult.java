@@ -57,7 +57,7 @@ public final class GetNodeBalancerResult {
      */
     private String region;
     /**
-     * @return The tags applied to the firewall.
+     * @return The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -129,7 +129,7 @@ public final class GetNodeBalancerResult {
         return this.region;
     }
     /**
-     * @return The tags applied to the firewall.
+     * @return The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {
