@@ -2595,7 +2595,7 @@ class NodeBalancerFirewall(dict):
         :param str label: The label of the Linode NodeBalancer
         :param str outbound_policy: The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
         :param str status: The status of the firewall. (`enabled`, `disabled`, `deleted`)
-        :param Sequence[str] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence[str] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param str updated: When this firewall was last updated.
         """
         pulumi.set(__self__, "created", created)
@@ -2671,7 +2671,7 @@ class NodeBalancerFirewall(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -4602,7 +4602,7 @@ class GetDomainsDomainResult(dict):
         :param int retry_sec: The interval, in seconds, at which a failed refresh should be retried.
         :param str soa_email: Start of Authority email address.
         :param str status: Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-        :param Sequence[str] tags: An array of tags applied to this object.
+        :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param int ttl_sec: 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
         :param str type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
         :param str domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
@@ -4701,7 +4701,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        An array of tags applied to this object.
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -5055,7 +5055,7 @@ class GetFirewallsFirewallResult(dict):
         :param Sequence[int] nodebalancers: The IDs of NodeBalancers assigned to this Firewall..
         :param str outbound_policy: The default behavior for outbound traffic.
         :param str status: The status of the firewall.
-        :param Sequence[str] tags: An array of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param str updated: When this firewall was last updated.
         :param Sequence['GetFirewallsFirewallDeviceArgs'] devices: The devices associated with this firewall.
         :param Sequence['GetFirewallsFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
@@ -5155,7 +5155,7 @@ class GetFirewallsFirewallResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        An array of tags applied to this object. Tags are for organizational purposes only.
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -7543,7 +7543,7 @@ class GetInstancesInstanceResult(dict):
         :param str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         :param str status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
         :param int swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
-        :param Sequence[str] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence[str] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param str type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         :param bool watchdog_enabled: The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
         """
@@ -7720,7 +7720,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -9012,7 +9012,7 @@ class GetLkeClusterPoolResult(dict):
         """
         :param int count: The number of nodes in the Node Pool.
         :param int id: The LKE Cluster's ID.
-        :param Sequence[str] tags: An array of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param str type: This custom disk partition’s filesystem type.
         :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
@@ -9049,7 +9049,7 @@ class GetLkeClusterPoolResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        An array of tags applied to this object. Tags are for organizational purposes only.
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -9255,7 +9255,7 @@ class GetLkeClustersLkeClusterResult(dict):
         :param str label: The unique label for the cluster.
         :param str region: This Kubernetes cluster's location.
         :param str status: The status of the cluster.
-        :param Sequence[str] tags: An array of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param str updated: When this Kubernetes cluster was updated.
         :param 'GetLkeClustersLkeClusterControlPlaneArgs' control_plane: Defines settings for the Kubernetes Control Plane.
         """
@@ -9322,7 +9322,7 @@ class GetLkeClustersLkeClusterResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        An array of tags applied to this object. Tags are for organizational purposes only.
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -9428,7 +9428,7 @@ class GetNodeBalancerFirewallResult(dict):
         :param str label: Used to identify this rule. For display purposes only.
         :param str outbound_policy: The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
         :param str status: The status of the firewall. (`enabled`, `disabled`, `deleted`)
-        :param Sequence[str] tags: The tags applied to the firewall.
+        :param Sequence[str] tags: The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         :param str updated: When this firewall was last updated.
         :param Sequence['GetNodeBalancerFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
         :param Sequence['GetNodeBalancerFirewallOutboundArgs'] outbounds: A set of firewall rules that specify what outbound network traffic is allowed.
@@ -9498,7 +9498,7 @@ class GetNodeBalancerFirewallResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        The tags applied to the firewall.
+        The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -10056,7 +10056,7 @@ class GetNodebalancersNodebalancerResult(dict):
         :param str ipv6: The Public IPv6 Address of this NodeBalancer
         :param str label: The label of the Linode NodeBalancer
         :param str region: The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
-        :param Sequence[str] tags: A list of tags applied to this object. Tags are for organizational purposes only.
+        :param Sequence[str] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param Sequence['GetNodebalancersNodebalancerTransferArgs'] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param str updated: When this Linode NodeBalancer was last updated
         """
@@ -10140,7 +10140,7 @@ class GetNodebalancersNodebalancerResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        A list of tags applied to this object. Tags are for organizational purposes only.
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -12249,7 +12249,7 @@ class GetVolumesVolumeResult(dict):
         :param str region: The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
         :param int size: The Volume's size, in GiB.
         :param str status: The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
-        :param Sequence[str] tags: An array of tags applied to this object.
+        :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param str updated: When this Volume was last updated.
         """
         pulumi.set(__self__, "created", created)
@@ -12331,7 +12331,7 @@ class GetVolumesVolumeResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        An array of tags applied to this object.
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 

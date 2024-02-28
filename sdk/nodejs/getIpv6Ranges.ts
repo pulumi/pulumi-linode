@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         values: ["us-mia"],
  *     }],
  * });
- * export const ranges = data.linode_ipv4_ranges["filtered-ranges"].ranges;
+ * export const ranges = filtered_ranges;
  * ```
  *
  * ## Filterable Fields
@@ -79,7 +79,7 @@ export interface GetIpv6RangesResult {
  *         values: ["us-mia"],
  *     }],
  * });
- * export const ranges = data.linode_ipv4_ranges["filtered-ranges"].ranges;
+ * export const ranges = filtered_ranges;
  * ```
  *
  * ## Filterable Fields

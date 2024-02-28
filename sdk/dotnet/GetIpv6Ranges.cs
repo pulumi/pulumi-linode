@@ -43,7 +43,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ranges"] = data.Linode_ipv4_ranges.Filtered_ranges.Ranges,
+        ///         ["ranges"] = filtered_ranges,
         ///     };
         /// });
         /// ```
@@ -93,7 +93,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ranges"] = data.Linode_ipv4_ranges.Filtered_ranges.Ranges,
+        ///         ["ranges"] = filtered_ranges,
         ///     };
         /// });
         /// ```

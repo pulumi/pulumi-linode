@@ -33,7 +33,7 @@ class LkeClusterArgs:
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "label", label)
@@ -112,7 +112,7 @@ class LkeClusterArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -149,7 +149,7 @@ class _LkeClusterState:
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         if api_endpoints is not None:
             pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -288,7 +288,7 @@ class _LkeClusterState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -329,7 +329,7 @@ class LkeCluster(pulumi.CustomResource):
                * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         ...
     @overload
@@ -436,7 +436,7 @@ class LkeCluster(pulumi.CustomResource):
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -532,9 +532,9 @@ class LkeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 

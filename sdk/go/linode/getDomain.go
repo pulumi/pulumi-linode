@@ -88,7 +88,7 @@ type LookupDomainResult struct {
 	SoaEmail string `pulumi:"soaEmail"`
 	// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
 	TtlSec int `pulumi:"ttlSec"`
@@ -191,7 +191,7 @@ func (o LookupDomainResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o LookupDomainResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

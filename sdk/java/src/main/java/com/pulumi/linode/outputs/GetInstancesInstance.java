@@ -106,7 +106,7 @@ public final class GetInstancesInstance {
      */
     private Integer swapSize;
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -248,7 +248,7 @@ public final class GetInstancesInstance {
         return this.swapSize;
     }
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

@@ -39,7 +39,7 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "inbound_policy", inbound_policy)
         pulumi.set(__self__, "label", label)
@@ -161,7 +161,7 @@ class FirewallArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -203,7 +203,7 @@ class _FirewallState:
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[str] updated: When this firewall was last updated
         """
         if created is not None:
@@ -373,7 +373,7 @@ class _FirewallState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
@@ -492,7 +492,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         ...
     @overload
@@ -666,7 +666,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[str] updated: When this firewall was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -782,9 +782,9 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 

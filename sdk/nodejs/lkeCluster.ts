@@ -84,9 +84,9 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
 
     /**
      * Create a LkeCluster resource with the given unique name, arguments, and options.
@@ -188,7 +188,7 @@ export interface LkeClusterState {
      */
     status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -222,7 +222,7 @@ export interface LkeClusterArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

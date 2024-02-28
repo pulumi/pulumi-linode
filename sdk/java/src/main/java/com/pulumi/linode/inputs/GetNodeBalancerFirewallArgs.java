@@ -141,14 +141,14 @@ public final class GetNodeBalancerFirewallArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The tags applied to the firewall.
+     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags", required=true)
     private Output<List<String>> tags;
 
     /**
-     * @return The tags applied to the firewall.
+     * @return The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public Output<List<String>> tags() {
@@ -392,7 +392,7 @@ public final class GetNodeBalancerFirewallArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags The tags applied to the firewall.
+         * @param tags The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class GetNodeBalancerFirewallArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags The tags applied to the firewall.
+         * @param tags The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class GetNodeBalancerFirewallArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags The tags applied to the firewall.
+         * @param tags The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

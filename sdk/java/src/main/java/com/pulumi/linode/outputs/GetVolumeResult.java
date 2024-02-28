@@ -53,7 +53,7 @@ public final class GetVolumeResult {
      */
     private String status;
     /**
-     * @return An array of tags applied to this object.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -121,7 +121,7 @@ public final class GetVolumeResult {
         return this.status;
     }
     /**
-     * @return An array of tags applied to this object.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

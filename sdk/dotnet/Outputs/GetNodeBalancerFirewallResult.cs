@@ -46,7 +46,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tags applied to the firewall.
+        /// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

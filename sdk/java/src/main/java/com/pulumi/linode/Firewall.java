@@ -279,18 +279,18 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
-     * @return A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * @return A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     /**
      * When this firewall was last updated

@@ -90,7 +90,7 @@ type Domain struct {
 	SoaEmail pulumi.StringPtrOutput `pulumi:"soaEmail"`
 	// Used to control whether this Domain is currently being rendered (defaults to "active").
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrOutput `pulumi:"ttlSec"`
@@ -156,7 +156,7 @@ type domainState struct {
 	SoaEmail *string `pulumi:"soaEmail"`
 	// Used to control whether this Domain is currently being rendered (defaults to "active").
 	Status *string `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec *int `pulumi:"ttlSec"`
@@ -187,7 +187,7 @@ type DomainState struct {
 	SoaEmail pulumi.StringPtrInput
 	// Used to control whether this Domain is currently being rendered (defaults to "active").
 	Status pulumi.StringPtrInput
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrInput
@@ -222,7 +222,7 @@ type domainArgs struct {
 	SoaEmail *string `pulumi:"soaEmail"`
 	// Used to control whether this Domain is currently being rendered (defaults to "active").
 	Status *string `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec *int `pulumi:"ttlSec"`
@@ -254,7 +254,7 @@ type DomainArgs struct {
 	SoaEmail pulumi.StringPtrInput
 	// Used to control whether this Domain is currently being rendered (defaults to "active").
 	Status pulumi.StringPtrInput
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	TtlSec pulumi.IntPtrInput
@@ -401,7 +401,7 @@ func (o DomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o DomainOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

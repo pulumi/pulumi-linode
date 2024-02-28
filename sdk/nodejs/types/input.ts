@@ -640,7 +640,7 @@ export interface GetDomainsDomain {
      */
     status?: string;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -699,7 +699,7 @@ export interface GetDomainsDomainArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -822,7 +822,7 @@ export interface GetFirewallsFirewall {
      */
     status?: string;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -881,7 +881,7 @@ export interface GetFirewallsFirewallArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1624,7 +1624,7 @@ export interface GetLkeClusterPool {
      */
     nodes?: inputs.GetLkeClusterPoolNode[];
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -1655,7 +1655,7 @@ export interface GetLkeClusterPoolArgs {
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolNodeArgs>[]>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1806,7 +1806,7 @@ export interface GetLkeClustersLkeCluster {
      */
     status?: string;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -1845,7 +1845,7 @@ export interface GetLkeClustersLkeClusterArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1902,7 +1902,7 @@ export interface GetNodeBalancerFirewall {
      */
     status?: string;
     /**
-     * The tags applied to the firewall.
+     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -1945,7 +1945,7 @@ export interface GetNodeBalancerFirewallArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags applied to the firewall.
+     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2332,7 +2332,7 @@ export interface GetNodebalancersNodebalancer {
      */
     region?: string;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -2379,7 +2379,7 @@ export interface GetNodebalancersNodebalancerArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3762,7 +3762,7 @@ export interface GetVolumesVolume {
      */
     status?: string;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
     /**
@@ -3805,7 +3805,7 @@ export interface GetVolumesVolumeArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -4582,7 +4582,7 @@ export interface NodeBalancerFirewall {
      */
     status: pulumi.Input<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags: pulumi.Input<pulumi.Input<string>[]>;
     /**

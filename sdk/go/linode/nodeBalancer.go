@@ -77,7 +77,7 @@ type NodeBalancer struct {
 	//
 	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers NodeBalancerTransferArrayOutput `pulumi:"transfers"`
@@ -135,7 +135,7 @@ type nodeBalancerState struct {
 	//
 	// ***
 	Region *string `pulumi:"region"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers []NodeBalancerTransfer `pulumi:"transfers"`
@@ -164,7 +164,7 @@ type NodeBalancerState struct {
 	//
 	// ***
 	Region pulumi.StringPtrInput
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers NodeBalancerTransferArrayInput
@@ -187,7 +187,7 @@ type nodeBalancerArgs struct {
 	//
 	// ***
 	Region *string `pulumi:"region"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -203,7 +203,7 @@ type NodeBalancerArgs struct {
 	//
 	// ***
 	Region pulumi.StringPtrInput
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 }
 
@@ -341,7 +341,7 @@ func (o NodeBalancerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o NodeBalancerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

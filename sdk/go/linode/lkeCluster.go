@@ -44,7 +44,7 @@ type LkeCluster struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringOutput `pulumi:"status"`
-	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -116,7 +116,7 @@ type lkeClusterState struct {
 	Region *string `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status *string `pulumi:"status"`
-	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -143,7 +143,7 @@ type LkeClusterState struct {
 	Region pulumi.StringPtrInput
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringPtrInput
-	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 }
 
@@ -166,7 +166,7 @@ type lkeClusterArgs struct {
 	//
 	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region string `pulumi:"region"`
-	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -186,7 +186,7 @@ type LkeClusterArgs struct {
 	//
 	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
 	Region pulumi.StringInput
-	// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 }
 
@@ -326,7 +326,7 @@ func (o LkeClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 func (o LkeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

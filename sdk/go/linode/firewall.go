@@ -146,7 +146,7 @@ type Firewall struct {
 	Outbounds FirewallOutboundArrayOutput `pulumi:"outbounds"`
 	// The status of the Firewall.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// When this firewall was last updated
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -217,7 +217,7 @@ type firewallState struct {
 	Outbounds []FirewallOutbound `pulumi:"outbounds"`
 	// The status of the Firewall.
 	Status *string `pulumi:"status"`
-	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated
 	Updated *string `pulumi:"updated"`
@@ -250,7 +250,7 @@ type FirewallState struct {
 	Outbounds FirewallOutboundArrayInput
 	// The status of the Firewall.
 	Status pulumi.StringPtrInput
-	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 	// When this firewall was last updated
 	Updated pulumi.StringPtrInput
@@ -281,7 +281,7 @@ type firewallArgs struct {
 	OutboundPolicy string `pulumi:"outboundPolicy"`
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds []FirewallOutbound `pulumi:"outbounds"`
-	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -307,7 +307,7 @@ type FirewallArgs struct {
 	OutboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what outbound network traffic is allowed.
 	Outbounds FirewallOutboundArrayInput
-	// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+	// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
 }
 
@@ -457,7 +457,7 @@ func (o FirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 func (o FirewallOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

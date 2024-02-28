@@ -202,14 +202,14 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags", required=true)
     private List<String> tags;
 
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {
@@ -451,7 +451,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

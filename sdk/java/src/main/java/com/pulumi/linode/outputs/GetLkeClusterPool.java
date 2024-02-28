@@ -42,7 +42,7 @@ public final class GetLkeClusterPool {
      */
     private @Nullable List<GetLkeClusterPoolNode> nodes;
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -89,7 +89,7 @@ public final class GetLkeClusterPool {
         return this.nodes == null ? List.of() : this.nodes;
     }
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

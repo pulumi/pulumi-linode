@@ -101,7 +101,7 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
@@ -201,7 +201,7 @@ export interface NodeBalancerState {
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -237,7 +237,7 @@ export interface NodeBalancerArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

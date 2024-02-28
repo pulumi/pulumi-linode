@@ -80,7 +80,7 @@ type LookupLkeClusterResult struct {
 	Region string `pulumi:"region"`
 	// The status of the node. (`ready`, `notReady`)
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
@@ -181,7 +181,7 @@ func (o LookupLkeClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object. Tags are for organizational purposes only.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o LookupLkeClusterResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

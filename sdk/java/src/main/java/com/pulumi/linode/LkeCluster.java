@@ -14,7 +14,6 @@ import com.pulumi.linode.outputs.LkeClusterControlPlane;
 import com.pulumi.linode.outputs.LkeClusterPool;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -164,18 +163,18 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
 
     /**

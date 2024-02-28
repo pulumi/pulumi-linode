@@ -172,14 +172,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -489,7 +489,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

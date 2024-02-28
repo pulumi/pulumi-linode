@@ -70,7 +70,7 @@ namespace Pulumi.Linode
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A list of tags applied to this object. Tags are for organizational purposes only.
+        /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Linode
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags applied to this object. Tags are for organizational purposes only.
+        /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public InputList<string> Tags
         {
@@ -227,7 +227,7 @@ namespace Pulumi.Linode
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags applied to this object. Tags are for organizational purposes only.
+        /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public InputList<string> Tags
         {

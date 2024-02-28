@@ -80,7 +80,7 @@ namespace Pulumi.Linode
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Linode
         private InputList<string>? _tags;
 
         /// <summary>
-        /// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public InputList<string> Tags
         {
@@ -279,7 +279,7 @@ namespace Pulumi.Linode
         private InputList<string>? _tags;
 
         /// <summary>
-        /// An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+        /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public InputList<string> Tags
         {

@@ -77,7 +77,7 @@ type LookupFirewallResult struct {
 	Outbounds      []GetFirewallOutbound `pulumi:"outbounds"`
 	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
 	Status string `pulumi:"status"`
-	// The tags applied to the firewall.
+	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated string `pulumi:"updated"`
@@ -178,7 +178,7 @@ func (o LookupFirewallResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags applied to the firewall.
+// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 func (o LookupFirewallResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFirewallResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -64,7 +64,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// An array of tags applied to this object. Tags are for organizational purposes only.
+        /// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public InputList<string> Tags
         {

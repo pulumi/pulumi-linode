@@ -157,7 +157,7 @@ class GetDomainResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        An array of tags applied to this object.
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 

@@ -125,14 +125,14 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags", required=true)
     private Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public Output<List<String>> tags() {
@@ -334,7 +334,7 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

@@ -134,7 +134,7 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        The tags applied to the firewall.
+        The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 

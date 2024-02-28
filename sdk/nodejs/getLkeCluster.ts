@@ -91,7 +91,7 @@ export interface GetLkeClusterResult {
      */
     readonly status: string;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     readonly tags: string[];
     /**

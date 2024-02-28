@@ -47,7 +47,7 @@ public final class NodeBalancerFirewall {
      */
     private String status;
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     private List<String> tags;
@@ -107,7 +107,7 @@ public final class NodeBalancerFirewall {
         return this.status;
     }
     /**
-     * @return A list of tags applied to this object. Tags are for organizational purposes only.
+     * @return A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public List<String> tags() {

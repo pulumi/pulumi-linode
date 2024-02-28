@@ -151,7 +151,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The tags applied to the firewall.
+        /// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetNodeBalancerTransferResult> Transfers;

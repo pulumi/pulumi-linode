@@ -184,14 +184,14 @@ public final class GetDomainsDomainArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * An array of tags applied to this object.
+     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     @Import(name="tags", required=true)
     private Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to this object.
+     * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
     public Output<List<String>> tags() {
@@ -517,7 +517,7 @@ public final class GetDomainsDomainArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags An array of tags applied to this object.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class GetDomainsDomainArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags An array of tags applied to this object.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class GetDomainsDomainArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags An array of tags applied to this object.
+         * @param tags An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
          * 

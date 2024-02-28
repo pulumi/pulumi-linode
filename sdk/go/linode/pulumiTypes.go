@@ -5419,7 +5419,7 @@ type NodeBalancerFirewall struct {
 	Outbounds      []NodeBalancerFirewallOutbound `pulumi:"outbounds"`
 	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
 	Status string `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated string `pulumi:"updated"`
@@ -5451,7 +5451,7 @@ type NodeBalancerFirewallArgs struct {
 	Outbounds      NodeBalancerFirewallOutboundArrayInput `pulumi:"outbounds"`
 	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -5546,7 +5546,7 @@ func (o NodeBalancerFirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeBalancerFirewall) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o NodeBalancerFirewallOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeBalancerFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -10390,7 +10390,7 @@ type GetDomainsDomain struct {
 	SoaEmail string `pulumi:"soaEmail"`
 	// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
 	TtlSec int `pulumi:"ttlSec"`
@@ -10432,7 +10432,7 @@ type GetDomainsDomainArgs struct {
 	SoaEmail pulumi.StringInput `pulumi:"soaEmail"`
 	// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// An array of tags applied to this object.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
 	TtlSec pulumi.IntInput `pulumi:"ttlSec"`
@@ -10546,7 +10546,7 @@ func (o GetDomainsDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetDomainsDomainOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDomainsDomain) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -11253,7 +11253,7 @@ type GetFirewallsFirewall struct {
 	Outbounds []GetFirewallsFirewallOutbound `pulumi:"outbounds"`
 	// The status of the firewall.
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated string `pulumi:"updated"`
@@ -11295,7 +11295,7 @@ type GetFirewallsFirewallArgs struct {
 	Outbounds GetFirewallsFirewallOutboundArrayInput `pulumi:"outbounds"`
 	// The status of the firewall.
 	Status pulumi.StringInput `pulumi:"status"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -11412,7 +11412,7 @@ func (o GetFirewallsFirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object. Tags are for organizational purposes only.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetFirewallsFirewallOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -16321,7 +16321,7 @@ type GetInstancesInstance struct {
 	Status string `pulumi:"status"`
 	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize int `pulumi:"swapSize"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
@@ -16377,7 +16377,7 @@ type GetInstancesInstanceArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize pulumi.IntInput `pulumi:"swapSize"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
@@ -16529,7 +16529,7 @@ func (o GetInstancesInstanceOutput) SwapSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.SwapSize }).(pulumi.IntOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -19388,7 +19388,7 @@ type GetLkeClusterPool struct {
 	Id int `pulumi:"id"`
 	// The nodes in the Node Pool.
 	Nodes []GetLkeClusterPoolNode `pulumi:"nodes"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// This custom disk partition’s filesystem type.
 	Type string `pulumi:"type"`
@@ -19416,7 +19416,7 @@ type GetLkeClusterPoolArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The nodes in the Node Pool.
 	Nodes GetLkeClusterPoolNodeArrayInput `pulumi:"nodes"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// This custom disk partition’s filesystem type.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -19498,7 +19498,7 @@ func (o GetLkeClusterPoolOutput) Nodes() GetLkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolNode { return v.Nodes }).(GetLkeClusterPoolNodeArrayOutput)
 }
 
-// An array of tags applied to this object. Tags are for organizational purposes only.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetLkeClusterPoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -19994,7 +19994,7 @@ type GetLkeClustersLkeCluster struct {
 	Region string `pulumi:"region"`
 	// The status of the cluster.
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
@@ -20026,7 +20026,7 @@ type GetLkeClustersLkeClusterArgs struct {
 	Region pulumi.StringInput `pulumi:"region"`
 	// The status of the cluster.
 	Status pulumi.StringInput `pulumi:"status"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// When this Kubernetes cluster was updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -20118,7 +20118,7 @@ func (o GetLkeClustersLkeClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object. Tags are for organizational purposes only.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetLkeClustersLkeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -20505,7 +20505,7 @@ type GetNodeBalancerFirewall struct {
 	Outbounds []GetNodeBalancerFirewallOutbound `pulumi:"outbounds"`
 	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
 	Status string `pulumi:"status"`
-	// The tags applied to the firewall.
+	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated string `pulumi:"updated"`
@@ -20539,7 +20539,7 @@ type GetNodeBalancerFirewallArgs struct {
 	Outbounds GetNodeBalancerFirewallOutboundArrayInput `pulumi:"outbounds"`
 	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tags applied to the firewall.
+	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -20636,7 +20636,7 @@ func (o GetNodeBalancerFirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags applied to the firewall.
+// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 func (o GetNodeBalancerFirewallOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodeBalancerFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -21676,7 +21676,7 @@ type GetNodebalancersNodebalancer struct {
 	Label string `pulumi:"label"`
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region string `pulumi:"region"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers []GetNodebalancersNodebalancerTransfer `pulumi:"transfers"`
@@ -21712,7 +21712,7 @@ type GetNodebalancersNodebalancerArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region pulumi.StringInput `pulumi:"region"`
-	// A list of tags applied to this object. Tags are for organizational purposes only.
+	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers GetNodebalancersNodebalancerTransferArrayInput `pulumi:"transfers"`
@@ -21811,7 +21811,7 @@ func (o GetNodebalancersNodebalancerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// A list of tags applied to this object. Tags are for organizational purposes only.
+// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetNodebalancersNodebalancerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodebalancersNodebalancer) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -26552,7 +26552,7 @@ type GetVolumesVolume struct {
 	Size int `pulumi:"size"`
 	// The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status string `pulumi:"status"`
-	// An array of tags applied to this object.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// When this Volume was last updated.
 	Updated string `pulumi:"updated"`
@@ -26586,7 +26586,7 @@ type GetVolumesVolumeArgs struct {
 	Size pulumi.IntInput `pulumi:"size"`
 	// The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
 	Status pulumi.StringInput `pulumi:"status"`
-	// An array of tags applied to this object.
+	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// When this Volume was last updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -26683,7 +26683,7 @@ func (o GetVolumesVolumeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// An array of tags applied to this object.
+// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetVolumesVolumeOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVolumesVolume) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

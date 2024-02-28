@@ -40,7 +40,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A list of tags applied to this object. Tags are for organizational purposes only.
+        /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

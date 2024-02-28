@@ -262,9 +262,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly swapSize!: pulumi.Output<number>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      *
@@ -530,7 +530,7 @@ export interface InstanceState {
      */
     swapSize?: pulumi.Input<number>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -665,7 +665,7 @@ export interface InstanceArgs {
      */
     swapSize?: pulumi.Input<number>;
     /**
-     * A list of tags applied to this object. Tags are for organizational purposes only.
+     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
