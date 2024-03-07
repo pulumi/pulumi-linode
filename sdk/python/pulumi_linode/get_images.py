@@ -104,6 +104,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
     Get information about all Linode images with a certain label and visibility:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -120,9 +121,11 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     ])
     pulumi.export("imageId", specific_images.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all Linode images associated with the current token:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -130,6 +133,8 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     all_images = linode.get_images()
     pulumi.export("imageIds", [__item.id for __item in all_images.images])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `created_by`
@@ -189,6 +194,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
 
     Get information about all Linode images with a certain label and visibility:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -205,9 +211,11 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     ])
     pulumi.export("imageId", specific_images.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all Linode images associated with the current token:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -215,6 +223,8 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     all_images = linode.get_images()
     pulumi.export("imageIds", [__item.id for __item in all_images.images])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `created_by`

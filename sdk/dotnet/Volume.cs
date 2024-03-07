@@ -14,6 +14,43 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobaz = new Linode.Instance("foobaz", new()
+    ///     {
+    ///         RootPass = "3X4mp13",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "us-west",
+    ///         Tags = new[]
+    ///         {
+    ///             "foobaz",
+    ///         },
+    ///     });
+    /// 
+    ///     var foobar = new Linode.Volume("foobar", new()
+    ///     {
+    ///         Label = "foo-volume",
+    ///         Region = foobaz.Region,
+    ///         LinodeId = foobaz.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Volumes can also be attached using the Linode Instance config device map.
+    /// 
     /// ## Import
     /// 
     /// Linodes Volumes can be imported using the Linode Volume `id`, e.g.

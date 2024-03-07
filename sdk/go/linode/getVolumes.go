@@ -13,6 +13,7 @@ import (
 
 // Provides information about Linode volumes that match a set of filters.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Filterable Fields
 //

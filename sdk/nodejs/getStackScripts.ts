@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode StackScript.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -33,6 +34,8 @@ import * as utilities from "./utilities";
  * });
  * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `deploymentsActive`
@@ -111,6 +114,7 @@ export interface GetStackScriptsResult {
  *
  * The following example shows how one might use this data source to access information about a Linode StackScript.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -129,6 +133,8 @@ export interface GetStackScriptsResult {
  * });
  * export const stackscriptId = specific_stackscripts.then(specific_stackscripts => specific_stackscripts.stackscripts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `deploymentsActive`

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how the resource might be used to obtain additional information about a Linode region.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     id: "us-east",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
 
@@ -72,6 +74,7 @@ export interface GetRegionResult {
  *
  * The following example shows how the resource might be used to obtain additional information about a Linode region.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -80,6 +83,7 @@ export interface GetRegionResult {
  *     id: "us-east",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
     return pulumi.output(args).apply((a: any) => getRegion(a, opts))

@@ -17,6 +17,7 @@ import (
 //
 // Get information about all Linode Managed Database engines:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,9 +44,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Get information about all Linode MySQL Database engines:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,9 +84,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Create a Linode MySQL Database using the latest support MySQL version:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,6 +129,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseEnginesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseEnginesResult

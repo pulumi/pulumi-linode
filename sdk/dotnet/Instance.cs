@@ -14,10 +14,12 @@ namespace Pulumi.Linode
     /// For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
     /// 
     /// ## Example Usage
+    /// 
     /// ### Simple Linode Instance
     /// 
     /// The following example shows how one might use this resource to configure a Linode instance.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,10 +49,13 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Linode Instance with Explicit Networking Interfaces
     /// 
     /// You can add a VPC or VLAN interface directly to a Linode instance resource.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,6 +101,7 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -105,15 +111,11 @@ namespace Pulumi.Linode
     /// $ pulumi import linode:index/instance:Instance mylinode 1234567
     /// ```
     /// 
-    ///  When importing an instance, all `disk` and `config` values must be represented.
+    /// When importing an instance, all `disk` and `config` values must be represented.
     /// 
-    ///  Imported disks must include their `label` value.
+    /// Imported disks must include their `label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**
     /// 
-    /// **Any disk that is not precisely represented may be removed resulting in data loss.**
-    /// 
-    ///  Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
-    /// 
-    /// The instance must include a `boot_config_label` referring to the correct configuration profile.
+    /// Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.  The instance must include a `boot_config_label` referring to the correct configuration profile.
     /// </summary>
     [LinodeResourceType("linode:index/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource

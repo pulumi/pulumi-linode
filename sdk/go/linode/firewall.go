@@ -18,6 +18,7 @@ import (
 //
 // Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -109,6 +110,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode Cloud Firewalls with a certain label and visibility:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -31,9 +32,11 @@ import * as utilities from "./utilities";
  * });
  * export const firewallId = specific.then(specific => specific.firewalls?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode images associated with the current token:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -41,6 +44,8 @@ import * as utilities from "./utilities";
  * const all = linode.getFirewalls({});
  * export const firewallIds = all.then(all => all.firewalls.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Firewall Rule
  *
  * * `label` - The label of this rule for display purposes only.
@@ -125,6 +130,7 @@ export interface GetFirewallsResult {
  *
  * Get information about all Linode Cloud Firewalls with a certain label and visibility:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -143,9 +149,11 @@ export interface GetFirewallsResult {
  * });
  * export const firewallId = specific.then(specific => specific.firewalls?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode images associated with the current token:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -153,6 +161,8 @@ export interface GetFirewallsResult {
  * const all = linode.getFirewalls({});
  * export const firewallIds = all.then(all => all.firewalls.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Firewall Rule
  *
  * * `label` - The label of this rule for display purposes only.

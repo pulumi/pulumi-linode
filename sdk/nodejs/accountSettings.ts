@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to change their Linode account settings.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,6 +21,8 @@ import * as utilities from "./utilities";
  *     longviewSubscription: "longview-40",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Additional Results
  *
  * * `managed` - Enables monitoring for connectivity, response, and total request time.

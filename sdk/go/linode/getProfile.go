@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to access profile details.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProfile(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProfileResult

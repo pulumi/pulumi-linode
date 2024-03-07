@@ -171,6 +171,7 @@ class Vpc(pulumi.CustomResource):
 
         Create a VPC:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -180,6 +181,7 @@ class Vpc(pulumi.CustomResource):
             label="test-vpc",
             region="us-iad")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,6 +204,7 @@ class Vpc(pulumi.CustomResource):
 
         Create a VPC:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -211,6 +214,7 @@ class Vpc(pulumi.CustomResource):
             label="test-vpc",
             region="us-iad")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param VpcArgs args: The arguments to use to populate this resource's properties.

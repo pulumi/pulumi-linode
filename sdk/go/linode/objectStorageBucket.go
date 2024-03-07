@@ -18,6 +18,7 @@ import (
 //
 // The following example shows how one might use this resource to create an Object Storage Bucket:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,9 +49,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating an Object Storage Bucket with Lifecycle rules:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,6 +96,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

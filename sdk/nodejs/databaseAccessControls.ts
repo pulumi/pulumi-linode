@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * Grant a Linode access to a database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -33,6 +34,7 @@ import * as utilities from "./utilities";
  *     allowLists: [my_instance.ipAddress],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class DatabaseAccessControls extends pulumi.CustomResource {
     /**

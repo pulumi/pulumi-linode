@@ -14,12 +14,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how the resource might be used to obtain additional information about a Linode region.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithDefaults());
@@ -44,12 +42,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how the resource might be used to obtain additional information about a Linode region.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());

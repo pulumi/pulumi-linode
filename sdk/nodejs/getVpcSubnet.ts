@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode VPC subnet.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  * });
  * export const vpcSubnet = foo;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcSubnet(args: GetVpcSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcSubnetResult> {
 
@@ -81,6 +83,7 @@ export interface GetVpcSubnetResult {
  *
  * The following example shows how one might use this data source to access information about a Linode VPC subnet.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -91,6 +94,7 @@ export interface GetVpcSubnetResult {
  * });
  * export const vpcSubnet = foo;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcSubnetOutput(args: GetVpcSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSubnetResult> {
     return pulumi.output(args).apply((a: any) => getVpcSubnet(a, opts))

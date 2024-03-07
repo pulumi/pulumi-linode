@@ -23,6 +23,52 @@ import javax.annotation.Nullable;
  * 
  * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
  * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure an RDNS address for an IP address.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Rdns;
+ * import com.pulumi.linode.RdnsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+ *             .image(&#34;linode/alpine3.19&#34;)
+ *             .region(&#34;ca-east&#34;)
+ *             .type(&#34;g6-dedicated-2&#34;)
+ *             .build());
+ * 
+ *         var fooRdns = new Rdns(&#34;fooRdns&#34;, RdnsArgs.builder()        
+ *             .address(fooInstance.ipAddress())
+ *             .rdns(fooInstance.ipAddress().applyValue(ipAddress -&gt; String.format(&#34;%s.nip.io&#34;, ipAddress)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+ * 
  * ## Import
  * 
  * Linodes RDNS resources can be imported using the address as the `id`.

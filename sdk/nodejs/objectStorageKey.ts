@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to create an Object Storage Key.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = new linode.ObjectStorageKey("foo", {label: "image-access"});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class ObjectStorageKey extends pulumi.CustomResource {
     /**

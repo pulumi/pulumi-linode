@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode account login.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -31,6 +32,8 @@ import * as utilities from "./utilities";
  * });
  * export const loginIds = filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `ip`
@@ -75,6 +78,7 @@ export interface GetAccountLoginsResult {
  *
  * The following example shows how one might use this data source to access information about a Linode account login.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -93,6 +97,8 @@ export interface GetAccountLoginsResult {
  * });
  * export const loginIds = filtered_account_logins.then(filtered_account_logins => filtered_account_logins.logins.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `ip`

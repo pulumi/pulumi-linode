@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about Linode account settings.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const example = linode.getAccountSettings({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountSettings(opts?: pulumi.InvokeOptions): Promise<GetAccountSettingsResult> {
 
@@ -58,12 +60,14 @@ export interface GetAccountSettingsResult {
  *
  * The following example shows how one might use this data source to access information about Linode account settings.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const example = linode.getAccountSettings({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountSettingsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountSettingsResult> {
     return pulumi.output(getAccountSettings(opts))

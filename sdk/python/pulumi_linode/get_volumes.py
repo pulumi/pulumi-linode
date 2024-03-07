@@ -90,6 +90,7 @@ def get_volumes(filters: Optional[Sequence[pulumi.InputType['GetVolumesFilterArg
     """
     Provides information about Linode volumes that match a set of filters.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -100,6 +101,7 @@ def get_volumes(filters: Optional[Sequence[pulumi.InputType['GetVolumesFilterArg
     )])
     pulumi.export("volumes", filtered_volumes.volumes)
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -136,6 +138,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     """
     Provides information about Linode volumes that match a set of filters.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -146,6 +149,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     )])
     pulumi.export("volumes", filtered_volumes.volumes)
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

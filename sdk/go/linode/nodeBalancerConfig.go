@@ -19,6 +19,7 @@ import (
 //
 // The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,6 +59,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

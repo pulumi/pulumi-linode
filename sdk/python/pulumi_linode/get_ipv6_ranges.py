@@ -71,6 +71,7 @@ def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFi
     For additional information about a specific IPv6 range consider using the Ipv6Range
     data source.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -81,6 +82,7 @@ def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFi
     )])
     pulumi.export("ranges", filtered_ranges)
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -115,6 +117,7 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     For additional information about a specific IPv6 range consider using the Ipv6Range
     data source.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -125,6 +128,7 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     )])
     pulumi.export("ranges", filtered_ranges)
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
