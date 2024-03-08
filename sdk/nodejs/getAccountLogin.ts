@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode account login.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: 123456,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountLogin(args: GetAccountLoginArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountLoginResult> {
 
@@ -71,6 +73,7 @@ export interface GetAccountLoginResult {
  *
  * The following example shows how one might use this data source to access information about a Linode account login.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -79,6 +82,7 @@ export interface GetAccountLoginResult {
  *     id: 123456,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountLoginOutput(args: GetAccountLoginOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountLoginResult> {
     return pulumi.output(args).apply((a: any) => getAccountLogin(a, opts))

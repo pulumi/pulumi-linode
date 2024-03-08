@@ -180,6 +180,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -205,6 +207,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount() {
@@ -218,6 +221,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -243,6 +248,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain() {
@@ -256,6 +262,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -281,6 +289,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args) {
@@ -294,6 +303,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -319,6 +330,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args) {
@@ -332,6 +344,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -357,6 +371,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOptions options) {
@@ -370,6 +385,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -395,6 +412,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
@@ -406,6 +424,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to discover regions without specific service availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -438,6 +458,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `region`
@@ -454,6 +476,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to discover regions without specific service availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +510,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `region`
@@ -502,6 +528,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to discover regions without specific service availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -534,6 +562,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `region`
@@ -550,6 +580,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to discover regions without specific service availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -582,6 +614,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `region`
@@ -598,6 +632,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to discover regions without specific service availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -630,6 +666,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `region`
@@ -646,6 +684,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to discover regions without specific service availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -678,6 +718,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `region`
@@ -694,6 +736,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -722,6 +766,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountAvailabilityResult> getAccountAvailability(GetAccountAvailabilityArgs args) {
@@ -733,6 +778,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -761,6 +808,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountAvailabilityResult> getAccountAvailabilityPlain(GetAccountAvailabilityPlainArgs args) {
@@ -772,6 +820,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -800,6 +850,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountAvailabilityResult> getAccountAvailability(GetAccountAvailabilityArgs args, InvokeOptions options) {
@@ -811,6 +862,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account availability.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -839,6 +892,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountAvailabilityResult> getAccountAvailabilityPlain(GetAccountAvailabilityPlainArgs args, InvokeOptions options) {
@@ -850,6 +904,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -878,6 +934,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountLoginResult> getAccountLogin(GetAccountLoginArgs args) {
@@ -889,6 +946,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -917,6 +976,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountLoginResult> getAccountLoginPlain(GetAccountLoginPlainArgs args) {
@@ -928,6 +988,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -956,6 +1018,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountLoginResult> getAccountLogin(GetAccountLoginArgs args, InvokeOptions options) {
@@ -967,6 +1030,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -995,6 +1060,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountLoginResult> getAccountLoginPlain(GetAccountLoginPlainArgs args, InvokeOptions options) {
@@ -1006,6 +1072,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1043,6 +1111,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `ip`
@@ -1061,6 +1131,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1098,6 +1170,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `ip`
@@ -1116,6 +1190,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1153,6 +1229,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `ip`
@@ -1171,6 +1249,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1208,6 +1288,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `ip`
@@ -1226,6 +1308,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1263,6 +1347,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `ip`
@@ -1281,6 +1367,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode account login.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1318,6 +1406,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `ip`
@@ -1336,6 +1426,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about Linode account settings.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1361,6 +1453,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountSettingsResult> getAccountSettings() {
@@ -1372,6 +1465,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about Linode account settings.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1397,6 +1492,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain() {
@@ -1408,6 +1504,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about Linode account settings.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1433,6 +1531,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountSettingsResult> getAccountSettings(InvokeArgs args) {
@@ -1444,6 +1543,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about Linode account settings.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1469,6 +1570,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain(InvokeArgs args) {
@@ -1480,6 +1582,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about Linode account settings.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1505,6 +1609,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountSettingsResult> getAccountSettings(InvokeArgs args, InvokeOptions options) {
@@ -1516,6 +1621,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about Linode account settings.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1541,6 +1648,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain(InvokeArgs args, InvokeOptions options) {
@@ -1552,6 +1660,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1581,8 +1691,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1616,6 +1729,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args) {
@@ -1627,6 +1741,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1656,8 +1772,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1691,6 +1810,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseBackupsResult> getDatabaseBackupsPlain(GetDatabaseBackupsPlainArgs args) {
@@ -1702,6 +1822,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1731,8 +1853,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1766,6 +1891,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args, InvokeOptions options) {
@@ -1777,6 +1903,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1806,8 +1934,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1841,6 +1972,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseBackupsResult> getDatabaseBackupsPlain(GetDatabaseBackupsPlainArgs args, InvokeOptions options) {
@@ -1852,6 +1984,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1879,8 +2013,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1913,8 +2050,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1956,6 +2096,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseEnginesResult> getDatabaseEngines() {
@@ -1967,6 +2108,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1994,8 +2137,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2028,8 +2174,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2071,6 +2220,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain() {
@@ -2082,6 +2232,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2109,8 +2261,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2143,8 +2298,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2186,6 +2344,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseEnginesResult> getDatabaseEngines(GetDatabaseEnginesArgs args) {
@@ -2197,6 +2356,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2224,8 +2385,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2258,8 +2422,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2301,6 +2468,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain(GetDatabaseEnginesPlainArgs args) {
@@ -2312,6 +2480,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2339,8 +2509,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2373,8 +2546,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2416,6 +2592,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseEnginesResult> getDatabaseEngines(GetDatabaseEnginesArgs args, InvokeOptions options) {
@@ -2427,6 +2604,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2454,8 +2633,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2488,8 +2670,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2531,6 +2716,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain(GetDatabaseEnginesPlainArgs args, InvokeOptions options) {
@@ -2542,6 +2728,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2570,6 +2758,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2594,6 +2784,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2622,6 +2814,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2646,6 +2840,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2674,6 +2870,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2698,6 +2896,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2726,6 +2926,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2750,6 +2952,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2778,6 +2982,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2802,6 +3008,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2830,6 +3038,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -2856,6 +3066,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2884,8 +3096,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2918,6 +3133,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args) {
@@ -2931,6 +3147,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2959,8 +3177,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2993,6 +3214,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackupsPlain(GetDatabaseMysqlBackupsPlainArgs args) {
@@ -3006,6 +3228,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3034,8 +3258,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3068,6 +3295,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args, InvokeOptions options) {
@@ -3081,6 +3309,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all backups for a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3109,8 +3339,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3143,6 +3376,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackupsPlain(GetDatabaseMysqlBackupsPlainArgs args, InvokeOptions options) {
@@ -3154,6 +3388,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3182,6 +3418,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3206,6 +3444,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3234,6 +3474,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3258,6 +3500,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3286,6 +3530,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3310,6 +3556,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3338,6 +3586,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3362,6 +3612,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3390,6 +3642,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3414,6 +3668,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3442,6 +3698,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## updates
      * 
      * The following arguments are exported by the `updates` specification block:
@@ -3466,6 +3724,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3493,8 +3753,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3527,6 +3790,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases() {
@@ -3538,6 +3802,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3565,8 +3831,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3599,6 +3868,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain() {
@@ -3610,6 +3880,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3637,8 +3909,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3671,6 +3946,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
@@ -3682,6 +3958,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3709,8 +3987,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3743,6 +4024,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -3754,6 +4036,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3781,8 +4065,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3815,6 +4102,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
@@ -3826,6 +4114,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Managed Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3853,8 +4143,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3887,6 +4180,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
@@ -3898,6 +4192,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode domain.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3930,6 +4226,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainResult> getDomain() {
@@ -3941,6 +4238,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode domain.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3973,6 +4272,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain() {
@@ -3984,6 +4284,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode domain.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4016,6 +4318,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args) {
@@ -4027,6 +4330,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode domain.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4059,6 +4364,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args) {
@@ -4070,6 +4376,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode domain.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4102,6 +4410,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOptions options) {
@@ -4113,6 +4422,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode domain.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4145,6 +4456,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args, InvokeOptions options) {
@@ -4156,6 +4468,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4190,6 +4504,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainRecordResult> getDomainRecord(GetDomainRecordArgs args) {
@@ -4201,6 +4516,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4235,6 +4552,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainRecordResult> getDomainRecordPlain(GetDomainRecordPlainArgs args) {
@@ -4246,6 +4564,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4280,6 +4600,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainRecordResult> getDomainRecord(GetDomainRecordArgs args, InvokeOptions options) {
@@ -4291,6 +4612,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4325,6 +4648,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainRecordResult> getDomainRecordPlain(GetDomainRecordPlainArgs args, InvokeOptions options) {
@@ -4336,6 +4660,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4364,6 +4690,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainZonefileResult> getDomainZonefile(GetDomainZonefileArgs args) {
@@ -4375,6 +4702,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4403,6 +4732,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainZonefileResult> getDomainZonefilePlain(GetDomainZonefilePlainArgs args) {
@@ -4414,6 +4744,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4442,6 +4774,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainZonefileResult> getDomainZonefile(GetDomainZonefileArgs args, InvokeOptions options) {
@@ -4453,6 +4786,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4481,6 +4816,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainZonefileResult> getDomainZonefilePlain(GetDomainZonefilePlainArgs args, InvokeOptions options) {
@@ -4492,6 +4828,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Domains with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4524,6 +4862,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -4562,6 +4902,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Domains with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4594,6 +4936,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -4632,6 +4976,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Domains with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4664,6 +5010,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -4702,6 +5050,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Domains with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4734,6 +5084,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -4772,6 +5124,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Domains with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4804,6 +5158,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -4842,6 +5198,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Domains with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4874,6 +5232,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -4910,6 +5270,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode Firewall.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4938,6 +5300,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args) {
@@ -4947,6 +5310,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode Firewall.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4975,6 +5340,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args) {
@@ -4984,6 +5350,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode Firewall.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5012,6 +5380,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args, InvokeOptions options) {
@@ -5021,6 +5390,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode Firewall.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5049,6 +5420,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args, InvokeOptions options) {
@@ -5060,6 +5432,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5097,8 +5471,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5126,6 +5503,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Firewall Rule
      * 
      * * `label` - The label of this rule for display purposes only.
@@ -5172,6 +5551,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5209,8 +5590,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5238,6 +5622,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Firewall Rule
      * 
      * * `label` - The label of this rule for display purposes only.
@@ -5284,6 +5670,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5321,8 +5709,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5350,6 +5741,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Firewall Rule
      * 
      * * `label` - The label of this rule for display purposes only.
@@ -5396,6 +5789,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5433,8 +5828,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5462,6 +5860,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Firewall Rule
      * 
      * * `label` - The label of this rule for display purposes only.
@@ -5508,6 +5908,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5545,8 +5947,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5574,6 +5979,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Firewall Rule
      * 
      * * `label` - The label of this rule for display purposes only.
@@ -5620,6 +6027,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5657,8 +6066,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5686,6 +6098,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Firewall Rule
      * 
      * * `label` - The label of this rule for display purposes only.
@@ -5732,6 +6146,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode image.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5760,6 +6176,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args) {
@@ -5771,6 +6188,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode image.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5799,6 +6218,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args) {
@@ -5810,6 +6230,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode image.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5838,6 +6260,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOptions options) {
@@ -5849,6 +6272,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode image.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5877,6 +6302,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
@@ -5888,6 +6314,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode images with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5925,8 +6353,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5954,6 +6385,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -5984,6 +6417,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode images with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6021,8 +6456,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6050,6 +6488,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -6080,6 +6520,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode images with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6117,8 +6559,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6146,6 +6591,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -6176,6 +6623,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode images with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6213,8 +6662,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6242,6 +6694,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -6272,6 +6726,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode images with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6309,8 +6765,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6338,6 +6797,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -6368,6 +6829,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode images with a certain label and visibility:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6405,8 +6868,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6434,6 +6900,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `created_by`
@@ -6462,6 +6930,8 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6490,6 +6960,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceBackupsResult> getInstanceBackups(GetInstanceBackupsArgs args) {
@@ -6499,6 +6970,8 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6527,6 +7000,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceBackupsResult> getInstanceBackupsPlain(GetInstanceBackupsPlainArgs args) {
@@ -6536,6 +7010,8 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6564,6 +7040,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceBackupsResult> getInstanceBackups(GetInstanceBackupsArgs args, InvokeOptions options) {
@@ -6573,6 +7050,8 @@ public final class LinodeFunctions {
      * Provides details about the backups of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6601,6 +7080,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceBackupsResult> getInstanceBackupsPlain(GetInstanceBackupsPlainArgs args, InvokeOptions options) {
@@ -6610,6 +7090,8 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6638,6 +7120,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceNetworkingResult> getInstanceNetworking(GetInstanceNetworkingArgs args) {
@@ -6647,6 +7130,8 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6675,6 +7160,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceNetworkingResult> getInstanceNetworkingPlain(GetInstanceNetworkingPlainArgs args) {
@@ -6684,6 +7170,8 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6712,6 +7200,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceNetworkingResult> getInstanceNetworking(GetInstanceNetworkingArgs args, InvokeOptions options) {
@@ -6721,6 +7210,8 @@ public final class LinodeFunctions {
      * Provides details about the networking configuration of an Instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6749,6 +7240,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceNetworkingResult> getInstanceNetworkingPlain(GetInstanceNetworkingPlainArgs args, InvokeOptions options) {
@@ -6760,6 +7252,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Instance type.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6788,6 +7282,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypeResult> getInstanceType(GetInstanceTypeArgs args) {
@@ -6799,6 +7294,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Instance type.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6827,6 +7324,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypeResult> getInstanceTypePlain(GetInstanceTypePlainArgs args) {
@@ -6838,6 +7336,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Instance type.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6866,6 +7366,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypeResult> getInstanceType(GetInstanceTypeArgs args, InvokeOptions options) {
@@ -6877,6 +7378,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Instance type.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6905,6 +7408,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypeResult> getInstanceTypePlain(GetInstanceTypePlainArgs args, InvokeOptions options) {
@@ -6916,6 +7420,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Instance types with a certain number of VCPUs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6948,8 +7454,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6977,6 +7486,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -7005,6 +7516,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Instance types with a certain number of VCPUs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7037,8 +7550,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7066,6 +7582,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -7094,6 +7612,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Instance types with a certain number of VCPUs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7126,8 +7646,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7155,6 +7678,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -7183,6 +7708,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Instance types with a certain number of VCPUs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7215,8 +7742,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7244,6 +7774,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -7272,6 +7804,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Instance types with a certain number of VCPUs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7304,8 +7838,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7333,6 +7870,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -7361,6 +7900,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode Instance types with a certain number of VCPUs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7393,8 +7934,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7422,6 +7966,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `class`
@@ -7450,6 +7996,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode instances with a certain label and tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7489,8 +8037,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7518,6 +8069,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -7548,6 +8101,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode instances with a certain label and tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7587,8 +8142,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7616,6 +8174,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -7646,6 +8206,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode instances with a certain label and tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7685,8 +8247,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7714,6 +8279,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -7744,6 +8311,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode instances with a certain label and tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7783,8 +8352,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7812,6 +8384,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -7842,6 +8416,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode instances with a certain label and tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7881,8 +8457,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7910,6 +8489,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -7940,6 +8521,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all Linode instances with a certain label and tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7979,8 +8562,11 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8008,6 +8594,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `group`
@@ -8038,6 +8626,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about an IPv6 range assigned to a Linode:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8066,6 +8656,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6RangeResult> getIpv6Range(GetIpv6RangeArgs args) {
@@ -8077,6 +8668,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about an IPv6 range assigned to a Linode:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8105,6 +8698,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6RangeResult> getIpv6RangePlain(GetIpv6RangePlainArgs args) {
@@ -8116,6 +8710,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about an IPv6 range assigned to a Linode:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8144,6 +8740,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6RangeResult> getIpv6Range(GetIpv6RangeArgs args, InvokeOptions options) {
@@ -8155,6 +8752,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about an IPv6 range assigned to a Linode:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8183,6 +8782,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6RangeResult> getIpv6RangePlain(GetIpv6RangePlainArgs args, InvokeOptions options) {
@@ -8194,6 +8794,8 @@ public final class LinodeFunctions {
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
      * data source.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8226,6 +8828,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -8247,6 +8850,8 @@ public final class LinodeFunctions {
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
      * data source.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8279,6 +8884,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -8300,6 +8906,8 @@ public final class LinodeFunctions {
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
      * data source.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8332,6 +8940,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -8353,6 +8962,8 @@ public final class LinodeFunctions {
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
      * data source.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8385,6 +8996,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -8406,6 +9018,8 @@ public final class LinodeFunctions {
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
      * data source.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8438,6 +9052,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -8459,6 +9074,8 @@ public final class LinodeFunctions {
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
      * data source.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8491,6 +9108,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -8512,6 +9130,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8540,6 +9160,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKernelResult> getKernel(GetKernelArgs args) {
@@ -8551,6 +9172,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8579,6 +9202,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKernelResult> getKernelPlain(GetKernelPlainArgs args) {
@@ -8590,6 +9214,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8618,6 +9244,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKernelResult> getKernel(GetKernelArgs args, InvokeOptions options) {
@@ -8629,6 +9256,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8657,6 +9286,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKernelResult> getKernelPlain(GetKernelPlainArgs args, InvokeOptions options) {
@@ -8668,6 +9298,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8704,6 +9336,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -8732,6 +9366,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8768,6 +9404,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -8796,6 +9434,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8832,6 +9472,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -8860,6 +9502,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8896,6 +9540,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -8924,6 +9570,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8960,6 +9608,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -8988,6 +9638,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9024,6 +9676,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -9062,6 +9716,8 @@ public final class LinodeFunctions {
      * Provides details about an LKE Cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9090,6 +9746,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLkeClusterResult> getLkeCluster(GetLkeClusterArgs args) {
@@ -9099,6 +9756,8 @@ public final class LinodeFunctions {
      * Provides details about an LKE Cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9127,6 +9786,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLkeClusterResult> getLkeClusterPlain(GetLkeClusterPlainArgs args) {
@@ -9136,6 +9796,8 @@ public final class LinodeFunctions {
      * Provides details about an LKE Cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9164,6 +9826,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLkeClusterResult> getLkeCluster(GetLkeClusterArgs args, InvokeOptions options) {
@@ -9173,6 +9836,8 @@ public final class LinodeFunctions {
      * Provides details about an LKE Cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9201,6 +9866,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLkeClusterResult> getLkeClusterPlain(GetLkeClusterPlainArgs args, InvokeOptions options) {
@@ -9212,6 +9878,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all LKE clusters with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9244,6 +9912,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `k8s_version`
@@ -9270,6 +9940,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all LKE clusters with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9302,6 +9974,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `k8s_version`
@@ -9328,6 +10002,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all LKE clusters with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9360,6 +10036,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `k8s_version`
@@ -9386,6 +10064,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all LKE clusters with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9418,6 +10098,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `k8s_version`
@@ -9444,6 +10126,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all LKE clusters with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9476,6 +10160,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `k8s_version`
@@ -9502,6 +10188,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * Get information about all LKE clusters with a specific tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9534,6 +10222,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `k8s_version`
@@ -9560,6 +10250,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9585,6 +10277,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLkeVersionsResult> getLkeVersions() {
@@ -9596,6 +10289,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9621,6 +10316,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain() {
@@ -9632,6 +10328,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9657,6 +10355,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args) {
@@ -9668,6 +10367,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9693,6 +10394,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args) {
@@ -9704,6 +10406,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9729,6 +10433,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args, InvokeOptions options) {
@@ -9740,6 +10445,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9765,6 +10472,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args, InvokeOptions options) {
@@ -9776,6 +10484,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9804,6 +10514,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkingIpResult> getNetworkingIp(GetNetworkingIpArgs args) {
@@ -9815,6 +10526,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9843,6 +10556,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkingIpResult> getNetworkingIpPlain(GetNetworkingIpPlainArgs args) {
@@ -9854,6 +10568,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9882,6 +10598,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkingIpResult> getNetworkingIp(GetNetworkingIpArgs args, InvokeOptions options) {
@@ -9893,6 +10610,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9921,6 +10640,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkingIpResult> getNetworkingIpPlain(GetNetworkingIpPlainArgs args, InvokeOptions options) {
@@ -9930,6 +10650,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9958,6 +10680,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeBalancerResult> getNodeBalancer(GetNodeBalancerArgs args) {
@@ -9967,6 +10690,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9995,6 +10720,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeBalancerResult> getNodeBalancerPlain(GetNodeBalancerPlainArgs args) {
@@ -10004,6 +10730,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10032,6 +10760,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeBalancerResult> getNodeBalancer(GetNodeBalancerArgs args, InvokeOptions options) {
@@ -10041,6 +10770,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10069,6 +10800,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeBalancerResult> getNodeBalancerPlain(GetNodeBalancerPlainArgs args, InvokeOptions options) {
@@ -10078,6 +10810,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10107,6 +10841,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeBalancerConfigResult> getNodeBalancerConfig(GetNodeBalancerConfigArgs args) {
@@ -10116,6 +10851,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10145,6 +10882,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeBalancerConfigResult> getNodeBalancerConfigPlain(GetNodeBalancerConfigPlainArgs args) {
@@ -10154,6 +10892,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10183,6 +10923,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeBalancerConfigResult> getNodeBalancerConfig(GetNodeBalancerConfigArgs args, InvokeOptions options) {
@@ -10192,6 +10933,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10221,6 +10964,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeBalancerConfigResult> getNodeBalancerConfigPlain(GetNodeBalancerConfigPlainArgs args, InvokeOptions options) {
@@ -10230,6 +10974,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10260,6 +11006,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeBalancerNodeResult> getNodeBalancerNode(GetNodeBalancerNodeArgs args) {
@@ -10269,6 +11016,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10299,6 +11048,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeBalancerNodeResult> getNodeBalancerNodePlain(GetNodeBalancerNodePlainArgs args) {
@@ -10308,6 +11058,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10338,6 +11090,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeBalancerNodeResult> getNodeBalancerNode(GetNodeBalancerNodeArgs args, InvokeOptions options) {
@@ -10347,6 +11100,8 @@ public final class LinodeFunctions {
      * Provides details about a Linode NodeBalancer node.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10377,6 +11132,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeBalancerNodeResult> getNodeBalancerNodePlain(GetNodeBalancerNodePlainArgs args, InvokeOptions options) {
@@ -10388,6 +11144,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10421,6 +11179,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `algorithm`
@@ -10457,6 +11217,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10490,6 +11252,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `algorithm`
@@ -10526,6 +11290,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10559,6 +11325,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `algorithm`
@@ -10595,6 +11363,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10628,6 +11398,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `algorithm`
@@ -10664,6 +11436,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10701,6 +11475,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10727,6 +11503,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10764,6 +11542,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10790,6 +11570,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10827,6 +11609,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10853,6 +11637,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10890,6 +11676,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10916,6 +11704,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10953,6 +11743,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -10979,6 +11771,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11016,6 +11810,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -11042,6 +11838,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11070,6 +11868,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args) {
@@ -11081,6 +11880,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11109,6 +11910,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args) {
@@ -11120,6 +11922,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11148,6 +11952,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args, InvokeOptions options) {
@@ -11159,6 +11964,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11187,6 +11994,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args, InvokeOptions options) {
@@ -11198,6 +12006,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access profile details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11223,6 +12033,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProfileResult> getProfile() {
@@ -11234,6 +12045,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access profile details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11259,6 +12072,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProfileResult> getProfilePlain() {
@@ -11270,6 +12084,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access profile details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11295,6 +12111,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProfileResult> getProfile(InvokeArgs args) {
@@ -11306,6 +12123,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access profile details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11331,6 +12150,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProfileResult> getProfilePlain(InvokeArgs args) {
@@ -11342,6 +12162,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access profile details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11367,6 +12189,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProfileResult> getProfile(InvokeArgs args, InvokeOptions options) {
@@ -11378,6 +12201,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access profile details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11403,6 +12228,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProfileResult> getProfilePlain(InvokeArgs args, InvokeOptions options) {
@@ -11414,6 +12240,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11442,6 +12270,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args) {
@@ -11453,6 +12282,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11481,6 +12312,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args) {
@@ -11492,6 +12324,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11520,6 +12354,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args, InvokeOptions options) {
@@ -11531,6 +12366,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11559,6 +12396,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args, InvokeOptions options) {
@@ -11566,6 +12404,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11603,6 +12443,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -11618,6 +12459,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11655,6 +12498,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -11670,6 +12514,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11707,6 +12553,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -11722,6 +12569,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11759,6 +12608,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -11774,6 +12624,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11811,6 +12663,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -11826,6 +12679,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11863,6 +12718,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -11882,6 +12738,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11910,6 +12768,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args) {
@@ -11921,6 +12780,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11949,6 +12810,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args) {
@@ -11960,6 +12822,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11988,6 +12852,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args, InvokeOptions options) {
@@ -11999,6 +12864,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12027,6 +12894,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args, InvokeOptions options) {
@@ -12040,6 +12908,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12076,6 +12946,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -12096,6 +12968,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12132,6 +13006,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -12152,6 +13028,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12188,6 +13066,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -12208,6 +13088,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12244,6 +13126,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -12264,6 +13148,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12300,6 +13186,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -12320,6 +13208,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
      * 
      * The following example shows how one might use this data source to access information about a Linode Kernel.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12356,6 +13246,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -12374,6 +13266,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12402,6 +13296,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackScriptResult> getStackScript(GetStackScriptArgs args) {
@@ -12413,6 +13308,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12441,6 +13338,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackScriptResult> getStackScriptPlain(GetStackScriptPlainArgs args) {
@@ -12452,6 +13350,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12480,6 +13380,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackScriptResult> getStackScript(GetStackScriptArgs args, InvokeOptions options) {
@@ -12491,6 +13392,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12519,6 +13422,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackScriptResult> getStackScriptPlain(GetStackScriptPlainArgs args, InvokeOptions options) {
@@ -12532,6 +13436,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12569,6 +13475,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -12601,6 +13509,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12638,6 +13548,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -12670,6 +13582,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12707,6 +13621,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -12739,6 +13655,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12776,6 +13694,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -12808,6 +13728,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12845,6 +13767,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -12877,6 +13801,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode StackScript.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -12914,6 +13840,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `deployments_active`
@@ -12941,12 +13869,86 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode user
      * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode user.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows a sample grant.
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
     }
     /**
      * Provides information about a Linode user
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode user.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows a sample grant.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -12955,6 +13957,43 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode user
      * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode user.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows a sample grant.
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
@@ -12962,12 +14001,51 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode user
      * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode user.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
+     *             .username(&#34;foo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows a sample grant.
+     * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13000,6 +14078,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13021,6 +14100,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13053,6 +14134,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13074,6 +14156,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13106,6 +14190,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13127,6 +14212,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13159,6 +14246,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13180,6 +14268,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13212,6 +14302,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13233,6 +14324,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13265,6 +14358,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13292,6 +14386,8 @@ public final class LinodeFunctions {
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13339,6 +14435,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -13357,6 +14455,8 @@ public final class LinodeFunctions {
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13404,6 +14504,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -13422,6 +14524,8 @@ public final class LinodeFunctions {
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13469,6 +14573,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -13487,6 +14593,8 @@ public final class LinodeFunctions {
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13534,6 +14642,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -13552,6 +14662,8 @@ public final class LinodeFunctions {
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13599,6 +14711,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -13617,6 +14731,8 @@ public final class LinodeFunctions {
      * Provides details about Linode VLANs.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13664,6 +14780,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `label`
@@ -13680,6 +14798,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Volume.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13708,6 +14828,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
@@ -13719,6 +14840,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Volume.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13747,6 +14870,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
@@ -13758,6 +14882,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Volume.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13786,6 +14912,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
@@ -13797,6 +14924,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode Volume.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13825,6 +14954,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
@@ -13832,6 +14962,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13864,6 +14996,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13877,6 +15010,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13909,6 +15044,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13922,6 +15058,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13954,6 +15092,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -13967,6 +15106,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -13999,6 +15140,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -14012,6 +15154,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14044,6 +15188,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -14057,6 +15202,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14089,6 +15236,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
      * 
@@ -14106,6 +15254,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14135,6 +15285,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args) {
@@ -14146,6 +15297,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14175,6 +15328,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args) {
@@ -14186,6 +15340,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14215,6 +15371,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOptions options) {
@@ -14226,6 +15383,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14255,6 +15414,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
@@ -14266,6 +15426,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14296,6 +15458,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args) {
@@ -14307,6 +15470,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14337,6 +15502,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcSubnetResult> getVpcSubnetPlain(GetVpcSubnetPlainArgs args) {
@@ -14348,6 +15514,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14378,6 +15546,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args, InvokeOptions options) {
@@ -14389,6 +15558,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14419,6 +15590,7 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcSubnetResult> getVpcSubnetPlain(GetVpcSubnetPlainArgs args, InvokeOptions options) {
@@ -14430,6 +15602,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC subnets.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14463,6 +15637,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14481,6 +15657,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC subnets.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14514,6 +15692,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14532,6 +15712,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC subnets.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14565,6 +15747,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14583,6 +15767,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC subnets.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14616,6 +15802,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14634,6 +15822,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPCs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14666,6 +15856,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14686,6 +15878,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPCs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14718,6 +15912,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14738,6 +15934,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPCs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14770,6 +15968,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14790,6 +15990,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPCs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14822,6 +16024,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14842,6 +16046,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPCs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14874,6 +16080,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -14894,6 +16102,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPCs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -14926,6 +16136,8 @@ public final class LinodeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Filterable Fields
      * 
      * * `id`

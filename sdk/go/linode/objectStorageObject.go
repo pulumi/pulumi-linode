@@ -15,8 +15,10 @@ import (
 // Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
 //
 // ## Example Usage
+//
 // ### Uploading plaintext to a bucket
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type ObjectStorageObject struct {
 	pulumi.CustomResourceState
 

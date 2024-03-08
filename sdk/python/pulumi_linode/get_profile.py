@@ -170,12 +170,14 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
 
     The following example shows how one might use this data source to access profile details.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     profile = linode.get_profile()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -204,11 +206,13 @@ def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
 
     The following example shows how one might use this data source to access profile details.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     profile = linode.get_profile()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

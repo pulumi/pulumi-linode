@@ -11,10 +11,12 @@ import * as utilities from "./utilities";
  * For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
  *
  * ## Example Usage
+ *
  * ### Simple Linode Instance
  *
  * The following example shows how one might use this resource to configure a Linode instance.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -31,10 +33,13 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Linode Instance with Explicit Networking Interfaces
  *
  * You can add a VPC or VLAN interface directly to a Linode instance resource.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -63,6 +68,7 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -72,15 +78,11 @@ import * as utilities from "./utilities";
  * $ pulumi import linode:index/instance:Instance mylinode 1234567
  * ```
  *
- *  When importing an instance, all `disk` and `config` values must be represented.
+ * When importing an instance, all `disk` and `config` values must be represented.
  *
- *  Imported disks must include their `label` value.
+ * Imported disks must include their `label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**
  *
- * **Any disk that is not precisely represented may be removed resulting in data loss.**
- *
- *  Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.
- *
- * The instance must include a `boot_config_label` referring to the correct configuration profile.
+ * Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.  The instance must include a `boot_config_label` referring to the correct configuration profile.
  */
 export class Instance extends pulumi.CustomResource {
     /**

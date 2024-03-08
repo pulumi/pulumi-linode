@@ -322,12 +322,15 @@ def get_database_postgresql(database_id: Optional[int] = None,
 
     Get information about a PostgreSQL database:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_db = linode.get_database_postgresql(id=12345)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## updates
 
     The following arguments are exported by the `updates` specification block:
@@ -390,12 +393,15 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[i
 
     Get information about a PostgreSQL database:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_db = linode.get_database_postgresql(id=12345)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## updates
 
     The following arguments are exported by the `updates` specification block:

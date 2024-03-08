@@ -198,6 +198,7 @@ class Ipv6Range(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -211,6 +212,7 @@ class Ipv6Range(pulumi.CustomResource):
             linode_id=foobar_instance.id,
             prefix_length=64)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,6 +229,7 @@ class Ipv6Range(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -240,6 +243,7 @@ class Ipv6Range(pulumi.CustomResource):
             linode_id=foobar_instance.id,
             prefix_length=64)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param Ipv6RangeArgs args: The arguments to use to populate this resource's properties.

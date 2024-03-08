@@ -18,6 +18,51 @@ import (
 //
 // For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
 //
+// ## Example Usage
+//
+// The following example shows how one might use this resource to configure an RDNS address for an IP address.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//				Image:  pulumi.String("linode/alpine3.19"),
+//				Region: pulumi.String("ca-east"),
+//				Type:   pulumi.String("g6-dedicated-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewRdns(ctx, "fooRdns", &linode.RdnsArgs{
+//				Address: fooInstance.IpAddress,
+//				Rdns: fooInstance.IpAddress.ApplyT(func(ipAddress string) (string, error) {
+//					return fmt.Sprintf("%v.nip.io", ipAddress), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+//
 // ## Import
 //
 // Linodes RDNS resources can be imported using the address as the `id`.

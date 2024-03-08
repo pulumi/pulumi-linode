@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -68,6 +69,7 @@ import * as utilities from "./utilities";
  *     linodes: [myInstance.id],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

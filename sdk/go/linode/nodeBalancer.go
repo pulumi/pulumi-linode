@@ -18,6 +18,7 @@ import (
 //
 // The following example shows how one might use this resource to configure a NodeBalancer.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

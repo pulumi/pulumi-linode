@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this resource to change their Linode account settings.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Additional Results
 //
 // * `managed` - Enables monitoring for connectivity, response, and total request time.

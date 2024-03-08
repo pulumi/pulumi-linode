@@ -19,6 +19,7 @@ namespace Pulumi.Linode
     /// 
     /// Creating a simple MySQL database instance:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,9 +38,11 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating a complex MySQL database instance:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,6 +77,8 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## updates
     /// 
     /// The following arguments are supported in the `updates` specification block:

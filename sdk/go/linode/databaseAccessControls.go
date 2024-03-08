@@ -18,6 +18,7 @@ import (
 //
 // Grant a Linode access to a database:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,6 +64,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type DatabaseAccessControls struct {
 	pulumi.CustomResourceState
 

@@ -425,6 +425,7 @@ class InstanceDisk(pulumi.CustomResource):
 
         Creating a simple 512 MB Linode Instance Disk:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -439,9 +440,11 @@ class InstanceDisk(pulumi.CustomResource):
             size=512,
             filesystem="ext4")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating a complex bootable Instance Disk:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -462,6 +465,7 @@ class InstanceDisk(pulumi.CustomResource):
                 "my_var": "my_value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -501,6 +505,7 @@ class InstanceDisk(pulumi.CustomResource):
 
         Creating a simple 512 MB Linode Instance Disk:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -515,9 +520,11 @@ class InstanceDisk(pulumi.CustomResource):
             size=512,
             filesystem="ext4")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating a complex bootable Instance Disk:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -538,6 +545,7 @@ class InstanceDisk(pulumi.CustomResource):
                 "my_var": "my_value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode account availability.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     region: "us-east",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountAvailability(args: GetAccountAvailabilityArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAvailabilityResult> {
 
@@ -62,6 +64,7 @@ export interface GetAccountAvailabilityResult {
  *
  * The following example shows how one might use this data source to access information about a Linode account availability.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -70,6 +73,7 @@ export interface GetAccountAvailabilityResult {
  *     region: "us-east",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountAvailabilityOutput(args: GetAccountAvailabilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAvailabilityResult> {
     return pulumi.output(args).apply((a: any) => getAccountAvailability(a, opts))

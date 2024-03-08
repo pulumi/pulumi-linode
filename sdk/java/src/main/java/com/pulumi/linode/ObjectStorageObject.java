@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.
  * 
  * ## Example Usage
+ * 
  * ### Uploading plaintext to a bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -56,6 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="linode:index/objectStorageObject:ObjectStorageObject")

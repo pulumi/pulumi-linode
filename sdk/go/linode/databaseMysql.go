@@ -21,6 +21,7 @@ import (
 //
 // Creating a simple MySQL database instance:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,9 +48,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating a complex MySQL database instance:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,6 +93,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## updates
 //
 // The following arguments are supported in the `updates` specification block:

@@ -161,12 +161,14 @@ def get_volume(id: Optional[int] = None,
 
     The following example shows how one might use this data source to access information about a Linode Volume.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_volume(id=1234567)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int id: The unique numeric ID of the Volume record to query.
@@ -199,12 +201,14 @@ def get_volume_output(id: Optional[pulumi.Input[int]] = None,
 
     The following example shows how one might use this data source to access information about a Linode Volume.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_volume(id=1234567)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int id: The unique numeric ID of the Volume record to query.

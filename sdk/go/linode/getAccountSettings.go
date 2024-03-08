@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to access information about Linode account settings.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupAccountSettings(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAccountSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountSettingsResult

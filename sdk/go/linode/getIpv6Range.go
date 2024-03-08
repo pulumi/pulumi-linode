@@ -17,6 +17,7 @@ import (
 //
 // Get information about an IPv6 range assigned to a Linode:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupIpv6Range(ctx *pulumi.Context, args *LookupIpv6RangeArgs, opts ...pulumi.InvokeOption) (*LookupIpv6RangeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpv6RangeResult

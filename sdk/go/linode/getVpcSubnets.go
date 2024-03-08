@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to list VPC subnets.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Filterable Fields
 //
 // * `id`

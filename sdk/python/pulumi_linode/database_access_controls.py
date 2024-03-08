@@ -136,6 +136,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
 
         Grant a Linode access to a database:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -155,6 +156,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -175,6 +177,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
 
         Grant a Linode access to a database:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -194,6 +197,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param DatabaseAccessControlsArgs args: The arguments to use to populate this resource's properties.

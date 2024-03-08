@@ -16,6 +16,60 @@ import (
 //
 // For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 //
+// ## Example Usage
+//
+// Creating an image from an existing Linode Instance and deploying another instance with that image:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
+//				Type:     pulumi.String("g6-nanode-1"),
+//				Region:   pulumi.String("us-central"),
+//				Image:    pulumi.String("linode/ubuntu22.04"),
+//				RootPass: pulumi.String("insecure-p4ssw0rd!!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := linode.NewImage(ctx, "bar", &linode.ImageArgs{
+//				Label:       pulumi.String("foo-sda-image"),
+//				Description: pulumi.String("Image taken from foo"),
+//				DiskId: foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
+//					return &disks[0].Id, nil
+//				}).(pulumi.IntPtrOutput),
+//				LinodeId: foo.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstance(ctx, "barBased", &linode.InstanceArgs{
+//				Type:   foo.Type,
+//				Region: pulumi.String("eu-west"),
+//				Image:  bar.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// Creating and uploading an image from a local file:
+//
 // ## Import
 //
 // Linodes Images can be imported using the Linode Image `id`, e.g.

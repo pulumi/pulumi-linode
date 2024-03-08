@@ -115,15 +115,18 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
 
     Get information about all backups for a MySQL database:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     all_backups = linode.get_database_mysql_backups(database_id=12345)
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all automatic MySQL Database Backups:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -134,6 +137,7 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
             values=["auto"],
         )])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int database_id: The ID of the database to retrieve backups for.
@@ -178,15 +182,18 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
 
     Get information about all backups for a MySQL database:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     all_backups = linode.get_database_mysql_backups(database_id=12345)
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all automatic MySQL Database Backups:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -197,6 +204,7 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
             values=["auto"],
         )])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int database_id: The ID of the database to retrieve backups for.

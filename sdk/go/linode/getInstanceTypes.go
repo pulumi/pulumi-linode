@@ -17,6 +17,7 @@ import (
 //
 // Get information about all Linode Instance types with a certain number of VCPUs:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,9 +53,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Get information about all Linode Instance types:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,6 +84,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Filterable Fields
 //
 // * `class`

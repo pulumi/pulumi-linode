@@ -121,6 +121,7 @@ def get_vpc_subnet(id: Optional[str] = None,
 
     The following example shows how one might use this data source to access information about a Linode VPC subnet.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -129,6 +130,7 @@ def get_vpc_subnet(id: Optional[str] = None,
         id="12345")
     pulumi.export("vpcSubnet", foo)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique id of this VPC subnet.
@@ -161,6 +163,7 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
 
     The following example shows how one might use this data source to access information about a Linode VPC subnet.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -169,6 +172,7 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
         id="12345")
     pulumi.export("vpcSubnet", foo)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique id of this VPC subnet.

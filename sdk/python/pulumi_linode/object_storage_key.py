@@ -163,12 +163,14 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         The following example shows how one might use this resource to create an Object Storage Key.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foo = linode.ObjectStorageKey("foo", label="image-access")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -190,12 +192,14 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         The following example shows how one might use this resource to create an Object Storage Key.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foo = linode.ObjectStorageKey("foo", label="image-access")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageKeyArgs args: The arguments to use to populate this resource's properties.

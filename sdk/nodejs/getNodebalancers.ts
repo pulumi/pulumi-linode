@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -31,6 +32,8 @@ import * as utilities from "./utilities";
  * });
  * export const nodebalancerId = specific_nodebalancers.then(specific_nodebalancers => specific_nodebalancers.nodebalancers?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `label`
@@ -95,6 +98,7 @@ export interface GetNodebalancersResult {
  *
  * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -113,6 +117,8 @@ export interface GetNodebalancersResult {
  * });
  * export const nodebalancerId = specific_nodebalancers.then(specific_nodebalancers => specific_nodebalancers.nodebalancers?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `label`

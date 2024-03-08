@@ -501,6 +501,34 @@ class Image(pulumi.CustomResource):
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
 
+        ## Example Usage
+
+        Creating an image from an existing Linode Instance and deploying another instance with that image:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.Instance("foo",
+            type="g6-nanode-1",
+            region="us-central",
+            image="linode/ubuntu22.04",
+            root_pass="insecure-p4ssw0rd!!")
+        bar = linode.Image("bar",
+            label="foo-sda-image",
+            description="Image taken from foo",
+            disk_id=foo.disks[0].id,
+            linode_id=foo.id)
+        bar_based = linode.Instance("barBased",
+            type=foo.type,
+            region="eu-west",
+            image=bar.id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Creating and uploading an image from a local file:
+
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -540,6 +568,34 @@ class Image(pulumi.CustomResource):
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
 
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
+
+        ## Example Usage
+
+        Creating an image from an existing Linode Instance and deploying another instance with that image:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.Instance("foo",
+            type="g6-nanode-1",
+            region="us-central",
+            image="linode/ubuntu22.04",
+            root_pass="insecure-p4ssw0rd!!")
+        bar = linode.Image("bar",
+            label="foo-sda-image",
+            description="Image taken from foo",
+            disk_id=foo.disks[0].id,
+            linode_id=foo.id)
+        bar_based = linode.Instance("barBased",
+            type=foo.type,
+            region="eu-west",
+            image=bar.id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Creating and uploading an image from a local file:
 
         ## Import
 

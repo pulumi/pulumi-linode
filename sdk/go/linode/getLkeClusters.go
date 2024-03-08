@@ -17,6 +17,7 @@ import (
 //
 // Get information about all LKE clusters with a specific tag:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Filterable Fields
 //
 // * `k8sVersion`

@@ -166,12 +166,14 @@ def get_instance_type(id: Optional[str] = None,
 
     The following example shows how one might use this data source to access information about a Linode Instance type.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     default = linode.get_instance_type(id="g6-standard-2")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: Label used to identify instance type
@@ -208,12 +210,14 @@ def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
 
     The following example shows how one might use this data source to access information about a Linode Instance type.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     default = linode.get_instance_type(id="g6-standard-2")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: Label used to identify instance type

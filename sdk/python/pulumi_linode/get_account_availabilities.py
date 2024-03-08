@@ -71,6 +71,7 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
 
     The following example shows how one might use this data source to discover regions without specific service availability.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -81,6 +82,8 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
     )])
     pulumi.export("regions-without-linodes", [__item.region for __item in filtered_availabilities.availabilities])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `region`
@@ -110,6 +113,7 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
 
     The following example shows how one might use this data source to discover regions without specific service availability.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -120,6 +124,8 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
     )])
     pulumi.export("regions-without-linodes", [__item.region for __item in filtered_availabilities.availabilities])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `region`

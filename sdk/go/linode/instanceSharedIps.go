@@ -19,6 +19,67 @@ import (
 // > **Notice** This resource should only be defined once per-instance and should not be used alongside the `sharedIpv4` field in `Instance`.
 //
 // Manages IPs shared to a Linode instance.
+//
+// ## Example Usage
+//
+// Share in IPv4 address between two instances:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a single primary node
+//			primaryInstance, err := linode.NewInstance(ctx, "primaryInstance", &linode.InstanceArgs{
+//				Label:  pulumi.String("node-primary"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				Region: pulumi.String("eu-central"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Allocate an IP under the primary node
+//			primaryInstanceIp, err := linode.NewInstanceIp(ctx, "primaryInstanceIp", &linode.InstanceIpArgs{
+//				LinodeId: primaryInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a secondary node
+//			secondary, err := linode.NewInstance(ctx, "secondary", &linode.InstanceArgs{
+//				Label:  pulumi.String("node-secondary"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//				Region: pulumi.String("eu-central"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Share the IP with the secondary node
+//			_, err = linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
+//				LinodeId: secondary.ID(),
+//				Addresses: pulumi.StringArray{
+//					primaryInstanceIp.Address,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// Share an IPv6 address among a primary node and its replicas:
 type InstanceSharedIps struct {
 	pulumi.CustomResourceState
 

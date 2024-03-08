@@ -67,6 +67,7 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     """
     Provides information about Linode regions that match a set of filters.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -83,6 +84,7 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     ])
     pulumi.export("regions", filtered_regions.regions)
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -111,6 +113,7 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     """
     Provides information about Linode regions that match a set of filters.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -127,6 +130,7 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     ])
     pulumi.export("regions", filtered_regions.regions)
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

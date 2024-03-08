@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to list VPC subnets.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,6 +27,8 @@ import * as utilities from "./utilities";
  * });
  * export const vpcSubnets = filtered_subnets.then(filtered_subnets => filtered_subnets.vpcSubnets);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `id`
@@ -77,6 +80,7 @@ export interface GetVpcSubnetsResult {
  *
  * The following example shows how one might use this data source to list VPC subnets.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -90,6 +94,8 @@ export interface GetVpcSubnetsResult {
  * });
  * export const vpcSubnets = filtered_subnets.then(filtered_subnets => filtered_subnets.vpcSubnets);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Filterable Fields
  *
  * * `id`
