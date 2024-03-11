@@ -484,6 +484,7 @@ class User(pulumi.CustomResource):
 
         Create an unrestricted user:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -492,9 +493,11 @@ class User(pulumi.CustomResource):
             email="john@acme.io",
             username="john123")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create a restricted user with grants:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -512,6 +515,8 @@ class User(pulumi.CustomResource):
             restricted=True,
             username="cooluser123")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Global Grants
 
         * `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
@@ -574,6 +579,7 @@ class User(pulumi.CustomResource):
 
         Create an unrestricted user:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -582,9 +588,11 @@ class User(pulumi.CustomResource):
             email="john@acme.io",
             username="john123")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create a restricted user with grants:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -602,6 +610,8 @@ class User(pulumi.CustomResource):
             restricted=True,
             username="cooluser123")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Global Grants
 
         * `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)

@@ -74,6 +74,7 @@ def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] 
 
     The following example shows how one might use this data source to list VPCs.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -84,6 +85,8 @@ def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] 
     )])
     pulumi.export("vpcs", filtered_vpcs.vpcs)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `id`
@@ -117,6 +120,7 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
 
     The following example shows how one might use this data source to list VPCs.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -127,6 +131,8 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
     )])
     pulumi.export("vpcs", filtered_vpcs.vpcs)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `id`

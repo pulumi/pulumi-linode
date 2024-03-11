@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Get information about a PostgreSQL database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,6 +22,8 @@ import * as utilities from "./utilities";
  *     id: 12345,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:
@@ -160,6 +163,7 @@ export interface GetDatabasePostgresqlResult {
  *
  * Get information about a PostgreSQL database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -168,6 +172,8 @@ export interface GetDatabasePostgresqlResult {
  *     id: 12345,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:

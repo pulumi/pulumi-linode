@@ -14,12 +14,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get information about all LKE clusters with a specific tag:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,8 +48,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `k8s_version`
@@ -73,12 +72,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get information about all LKE clusters with a specific tag:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -108,8 +106,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `k8s_version`

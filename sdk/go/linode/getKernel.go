@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to access information about a Linode kernel.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetKernel(ctx *pulumi.Context, args *GetKernelArgs, opts ...pulumi.InvokeOption) (*GetKernelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKernelResult

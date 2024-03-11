@@ -20,6 +20,7 @@ import (
 //
 // Create a VPC:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Vpc struct {
 	pulumi.CustomResourceState
 

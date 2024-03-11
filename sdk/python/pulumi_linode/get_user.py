@@ -231,6 +231,21 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
     """
     Provides information about a Linode user
 
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode user.
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_user(username="foo")
+    ```
+    <!--End PulumiCodeChooser -->
+
+    The following example shows a sample grant.
+
 
     :param str username: The unique username of this User.
     """
@@ -283,6 +298,21 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[pul
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
     Provides information about a Linode user
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode user.
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    foo = linode.get_user(username="foo")
+    ```
+    <!--End PulumiCodeChooser -->
+
+    The following example shows a sample grant.
 
 
     :param str username: The unique username of this User.

@@ -104,12 +104,14 @@ def get_ipv6_range(range: Optional[str] = None,
 
     Get information about an IPv6 range assigned to a Linode:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     range_info = linode.get_ipv6_range(range="2001:0db8::")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str range: The IPv6 range to retrieve information about.
@@ -138,12 +140,14 @@ def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
 
     Get information about an IPv6 range assigned to a Linode:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     range_info = linode.get_ipv6_range(range="2001:0db8::")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str range: The IPv6 range to retrieve information about.

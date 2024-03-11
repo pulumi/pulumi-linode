@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access account details.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const account = linode.getAccount({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
@@ -90,12 +92,14 @@ export interface GetAccountResult {
  *
  * The following example shows how one might use this data source to access account details.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const account = linode.getAccount({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(getAccount(opts))

@@ -17,6 +17,7 @@ import (
 //
 // Get information about all backups for a MySQL database:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,9 +42,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Get information about all automatic PostgreSQL Database Backups:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,6 +79,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDatabaseBackups(ctx *pulumi.Context, args *GetDatabaseBackupsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseBackupsResult

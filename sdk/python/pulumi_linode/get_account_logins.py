@@ -74,6 +74,7 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
 
     The following example shows how one might use this data source to access information about a Linode account login.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -90,6 +91,8 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
     ])
     pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `ip`
@@ -121,6 +124,7 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
 
     The following example shows how one might use this data source to access information about a Linode account login.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -137,6 +141,8 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     ])
     pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `ip`

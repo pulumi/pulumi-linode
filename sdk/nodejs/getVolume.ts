@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode Volume.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: 1234567,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
 
@@ -90,6 +92,7 @@ export interface GetVolumeResult {
  *
  * The following example shows how one might use this data source to access information about a Linode Volume.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -98,6 +101,7 @@ export interface GetVolumeResult {
  *     id: 1234567,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
     return pulumi.output(args).apply((a: any) => getVolume(a, opts))

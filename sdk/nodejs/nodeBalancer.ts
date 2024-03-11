@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to configure a NodeBalancer.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -25,6 +26,7 @@ import * as utilities from "./utilities";
  *     tags: ["foobar"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

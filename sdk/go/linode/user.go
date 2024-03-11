@@ -18,6 +18,7 @@ import (
 //
 // Create an unrestricted user:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,9 +43,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Create a restricted user with grants:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,6 +83,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Global Grants
 //
 // * `accountAccess` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)

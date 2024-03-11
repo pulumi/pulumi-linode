@@ -17,6 +17,7 @@ import (
 //
 // Get information about all Linode Cloud Firewalls with a certain label and visibility:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,9 +55,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Get information about all Linode images associated with the current token:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,6 +86,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Firewall Rule
 //
 // * `label` - The label of this rule for display purposes only.

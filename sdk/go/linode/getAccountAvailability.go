@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to access information about a Linode account availability.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAccountAvailability(ctx *pulumi.Context, args *GetAccountAvailabilityArgs, opts ...pulumi.InvokeOption) (*GetAccountAvailabilityResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountAvailabilityResult

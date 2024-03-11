@@ -84,6 +84,7 @@ def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFi
 
     The following example shows how one might use this data source to list VPC subnets.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -95,6 +96,8 @@ def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFi
         )])
     pulumi.export("vpcSubnets", filtered_subnets.vpc_subnets)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `id`
@@ -134,6 +137,7 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
 
     The following example shows how one might use this data source to list VPC subnets.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -145,6 +149,8 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
         )])
     pulumi.export("vpcSubnets", filtered_subnets.vpc_subnets)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `id`

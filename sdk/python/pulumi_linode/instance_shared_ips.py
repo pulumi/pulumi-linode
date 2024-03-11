@@ -106,6 +106,36 @@ class InstanceSharedIps(pulumi.CustomResource):
 
         Manages IPs shared to a Linode instance.
 
+        ## Example Usage
+
+        Share in IPv4 address between two instances:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # Create a single primary node
+        primary_instance = linode.Instance("primaryInstance",
+            label="node-primary",
+            type="g6-nanode-1",
+            region="eu-central")
+        # Allocate an IP under the primary node
+        primary_instance_ip = linode.InstanceIp("primaryInstanceIp", linode_id=primary_instance.id)
+        # Create a secondary node
+        secondary = linode.Instance("secondary",
+            label="node-secondary",
+            type="g6-nanode-1",
+            region="eu-central")
+        # Share the IP with the secondary node
+        share_primary = linode.InstanceSharedIps("share-primary",
+            linode_id=secondary.id,
+            addresses=[primary_instance_ip.address])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Share an IPv6 address among a primary node and its replicas:
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: The set of IPs to share with the Linode.
@@ -125,6 +155,36 @@ class InstanceSharedIps(pulumi.CustomResource):
         > **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `Instance`.
 
         Manages IPs shared to a Linode instance.
+
+        ## Example Usage
+
+        Share in IPv4 address between two instances:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # Create a single primary node
+        primary_instance = linode.Instance("primaryInstance",
+            label="node-primary",
+            type="g6-nanode-1",
+            region="eu-central")
+        # Allocate an IP under the primary node
+        primary_instance_ip = linode.InstanceIp("primaryInstanceIp", linode_id=primary_instance.id)
+        # Create a secondary node
+        secondary = linode.Instance("secondary",
+            label="node-secondary",
+            type="g6-nanode-1",
+            region="eu-central")
+        # Share the IP with the secondary node
+        share_primary = linode.InstanceSharedIps("share-primary",
+            linode_id=secondary.id,
+            addresses=[primary_instance_ip.address])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Share an IPv6 address among a primary node and its replicas:
 
         :param str resource_name: The name of the resource.
         :param InstanceSharedIpsArgs args: The arguments to use to populate this resource's properties.

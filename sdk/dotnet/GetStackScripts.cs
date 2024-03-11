@@ -16,12 +16,11 @@ namespace Pulumi.Linode
         /// 
         /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how one might use this data source to access information about a Linode StackScript.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,8 +58,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `deployments_active`
@@ -89,12 +88,11 @@ namespace Pulumi.Linode
         /// 
         /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how one might use this data source to access information about a Linode StackScript.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,8 +130,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `deployments_active`

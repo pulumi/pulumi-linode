@@ -104,6 +104,7 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
 
     Get information about all Linode Managed Database engines:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -111,9 +112,11 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     all = linode.get_database_engines()
     pulumi.export("engineIds", [__item.id for __item in all.engines])
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all Linode MySQL Database engines:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -124,9 +127,11 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     )])
     pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
+    <!--End PulumiCodeChooser -->
 
     Create a Linode MySQL Database using the latest support MySQL version:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -142,6 +147,7 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
         region="us-southeast",
         type="g6-nanode-1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool latest: If true, only the latest engine version will be returned.
@@ -182,6 +188,7 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
 
     Get information about all Linode Managed Database engines:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -189,9 +196,11 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     all = linode.get_database_engines()
     pulumi.export("engineIds", [__item.id for __item in all.engines])
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all Linode MySQL Database engines:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -202,9 +211,11 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     )])
     pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
+    <!--End PulumiCodeChooser -->
 
     Create a Linode MySQL Database using the latest support MySQL version:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -220,6 +231,7 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
         region="us-southeast",
         type="g6-nanode-1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool latest: If true, only the latest engine version will be returned.

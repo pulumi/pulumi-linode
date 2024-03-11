@@ -20,6 +20,7 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,12 +40,11 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// Linodes Tokens can be imported using the Linode Token `id`, e.g.
-    /// 
-    /// The secret token will not be imported.
+    /// Linodes Tokens can be imported using the Linode Token `id`, e.g.  The secret token will not be imported.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/token:Token mytoken 1234567

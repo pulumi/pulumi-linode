@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,12 +27,11 @@ import * as utilities from "./utilities";
  * });
  * const fooInstance = new linode.Instance("fooInstance", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Linodes Tokens can be imported using the Linode Token `id`, e.g.
- *
- * The secret token will not be imported.
+ * Linodes Tokens can be imported using the Linode Token `id`, e.g.  The secret token will not be imported.
  *
  * ```sh
  * $ pulumi import linode:index/token:Token mytoken 1234567

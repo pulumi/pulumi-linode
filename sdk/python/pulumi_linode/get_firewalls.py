@@ -94,6 +94,7 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
 
     Get information about all Linode Cloud Firewalls with a certain label and visibility:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -110,9 +111,11 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
     ])
     pulumi.export("firewallId", specific.firewalls[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all Linode images associated with the current token:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -120,6 +123,8 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
     all = linode.get_firewalls()
     pulumi.export("firewallIds", [__item.id for __item in all.firewalls])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Firewall Rule
 
     * `label` - The label of this rule for display purposes only.
@@ -189,6 +194,7 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
 
     Get information about all Linode Cloud Firewalls with a certain label and visibility:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -205,9 +211,11 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     ])
     pulumi.export("firewallId", specific.firewalls[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Get information about all Linode images associated with the current token:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -215,6 +223,8 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     all = linode.get_firewalls()
     pulumi.export("firewallIds", [__item.id for __item in all.firewalls])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Firewall Rule
 
     * `label` - The label of this rule for display purposes only.

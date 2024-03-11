@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The following example shows how one might use this resource to change their Linode account settings.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,6 +51,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Additional Results
  * 
  * * `managed` - Enables monitoring for connectivity, response, and total request time.
