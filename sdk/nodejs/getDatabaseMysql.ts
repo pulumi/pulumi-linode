@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Get information about a MySQL database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,6 +22,8 @@ import * as utilities from "./utilities";
  *     id: 12345,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:
@@ -155,6 +158,7 @@ export interface GetDatabaseMysqlResult {
  *
  * Get information about a MySQL database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -163,6 +167,8 @@ export interface GetDatabaseMysqlResult {
  *     id: 12345,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## updates
  *
  * The following arguments are exported by the `updates` specification block:

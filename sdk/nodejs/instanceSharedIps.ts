@@ -12,6 +12,39 @@ import * as utilities from "./utilities";
  * > **Notice** This resource should only be defined once per-instance and should not be used alongside the `sharedIpv4` field in `linode.Instance`.
  *
  * Manages IPs shared to a Linode instance.
+ *
+ * ## Example Usage
+ *
+ * Share in IPv4 address between two instances:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // Create a single primary node
+ * const primaryInstance = new linode.Instance("primaryInstance", {
+ *     label: "node-primary",
+ *     type: "g6-nanode-1",
+ *     region: "eu-central",
+ * });
+ * // Allocate an IP under the primary node
+ * const primaryInstanceIp = new linode.InstanceIp("primaryInstanceIp", {linodeId: primaryInstance.id});
+ * // Create a secondary node
+ * const secondary = new linode.Instance("secondary", {
+ *     label: "node-secondary",
+ *     type: "g6-nanode-1",
+ *     region: "eu-central",
+ * });
+ * // Share the IP with the secondary node
+ * const share_primary = new linode.InstanceSharedIps("share-primary", {
+ *     linodeId: secondary.id,
+ *     addresses: [primaryInstanceIp.address],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Share an IPv6 address among a primary node and its replicas:
  */
 export class InstanceSharedIps extends pulumi.CustomResource {
     /**

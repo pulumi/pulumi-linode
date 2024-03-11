@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode user
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode user.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = linode.getUser({
+ *     username: "foo",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * The following example shows a sample grant.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
@@ -91,6 +108,23 @@ export interface GetUserResult {
 }
 /**
  * Provides information about a Linode user
+ *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this data source to access information about a Linode user.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = linode.getUser({
+ *     username: "foo",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * The following example shows a sample grant.
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))

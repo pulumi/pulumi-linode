@@ -22,6 +22,61 @@ import javax.annotation.Nullable;
  * 
  * For more information, see [Linode&#39;s documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
  * 
+ * ## Example Usage
+ * 
+ * Creating an image from an existing Linode Instance and deploying another instance with that image:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Image;
+ * import com.pulumi.linode.ImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .region(&#34;us-central&#34;)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
+ *             .rootPass(&#34;insecure-p4ssw0rd!!&#34;)
+ *             .build());
+ * 
+ *         var bar = new Image(&#34;bar&#34;, ImageArgs.builder()        
+ *             .label(&#34;foo-sda-image&#34;)
+ *             .description(&#34;Image taken from foo&#34;)
+ *             .diskId(foo.disks().applyValue(disks -&gt; disks[0].id()))
+ *             .linodeId(foo.id())
+ *             .build());
+ * 
+ *         var barBased = new Instance(&#34;barBased&#34;, InstanceArgs.builder()        
+ *             .type(foo.type())
+ *             .region(&#34;eu-west&#34;)
+ *             .image(bar.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating and uploading an image from a local file:
+ * 
  * ## Import
  * 
  * Linodes Images can be imported using the Linode Image `id`, e.g.

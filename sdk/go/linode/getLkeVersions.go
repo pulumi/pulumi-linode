@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to access information about a Linode LKE Version.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLkeVersions(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLkeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLkeVersionsResult

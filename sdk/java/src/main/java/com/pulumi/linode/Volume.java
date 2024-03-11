@@ -22,6 +22,54 @@ import javax.annotation.Nullable;
  * 
  * For more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createVolume).
  * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Volume;
+ * import com.pulumi.linode.VolumeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobaz = new Instance(&#34;foobaz&#34;, InstanceArgs.builder()        
+ *             .rootPass(&#34;3X4mp13&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .region(&#34;us-west&#34;)
+ *             .tags(&#34;foobaz&#34;)
+ *             .build());
+ * 
+ *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
+ *             .label(&#34;foo-volume&#34;)
+ *             .region(foobaz.region())
+ *             .linodeId(foobaz.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Volumes can also be attached using the Linode Instance config device map.
+ * 
  * ## Import
  * 
  * Linodes Volumes can be imported using the Linode Volume `id`, e.g.

@@ -14,10 +14,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides details about a Linode NodeBalancer.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeBalancerResult> InvokeAsync(GetNodeBalancerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeBalancerResult>("linode:index/getNodeBalancer:getNodeBalancer", args ?? new GetNodeBalancerArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides details about a Linode NodeBalancer.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeBalancerResult> Invoke(GetNodeBalancerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeBalancerResult>("linode:index/getNodeBalancer:getNodeBalancer", args ?? new GetNodeBalancerInvokeArgs(), options.WithDefaults());

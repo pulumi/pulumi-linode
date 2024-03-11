@@ -17,6 +17,7 @@ import (
 //
 // Get information about a MySQL database:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## updates
 //
 // The following arguments are exported by the `updates` specification block:

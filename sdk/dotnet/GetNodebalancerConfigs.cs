@@ -14,12 +14,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode NodeBalancer Configs that match a set of filters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `algorithm`
@@ -84,12 +83,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode NodeBalancer Configs that match a set of filters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,8 +118,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `algorithm`

@@ -14,14 +14,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
         /// 
         /// The following example shows how one might use this data source to access information about a Linode Kernel.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,8 +54,8 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `id`
@@ -71,14 +70,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
         /// 
         /// The following example shows how one might use this data source to access information about a Linode Kernel.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -112,8 +110,8 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `id`

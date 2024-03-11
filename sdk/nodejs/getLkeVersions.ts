@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode LKE Version.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const example = linode.getLkeVersions({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLkeVersions(opts?: pulumi.InvokeOptions): Promise<GetLkeVersionsResult> {
 
@@ -44,12 +46,14 @@ export interface GetLkeVersionsResult {
  *
  * The following example shows how one might use this data source to access information about a Linode LKE Version.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const example = linode.getLkeVersions({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLkeVersionsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeVersionsResult> {
     return pulumi.output(getLkeVersions(opts))

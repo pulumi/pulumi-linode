@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -104,6 +106,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

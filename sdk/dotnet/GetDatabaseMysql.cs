@@ -14,12 +14,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode MySQL Database.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get information about a MySQL database:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,8 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## updates
         /// 
         /// The following arguments are exported by the `updates` specification block:
@@ -57,12 +56,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode MySQL Database.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get information about a MySQL database:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,8 +76,8 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## updates
         /// 
         /// The following arguments are exported by the `updates` specification block:

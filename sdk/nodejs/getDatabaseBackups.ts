@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Get information about all backups for a MySQL database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -22,9 +23,11 @@ import * as utilities from "./utilities";
  *     databaseType: "mysql",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get information about all automatic PostgreSQL Database Backups:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -38,6 +41,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseBackupsResult> {
 
@@ -106,6 +110,7 @@ export interface GetDatabaseBackupsResult {
  *
  * Get information about all backups for a MySQL database:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -115,9 +120,11 @@ export interface GetDatabaseBackupsResult {
  *     databaseType: "mysql",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get information about all automatic PostgreSQL Database Backups:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -131,6 +138,7 @@ export interface GetDatabaseBackupsResult {
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseBackupsResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseBackups(a, opts))

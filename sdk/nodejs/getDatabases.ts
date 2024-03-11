@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode Managed Databases:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,9 +21,11 @@ import * as utilities from "./utilities";
  * const all = linode.getDatabases({});
  * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode MySQL Databases:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -35,6 +38,7 @@ import * as utilities from "./utilities";
  * });
  * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
     args = args || {};
@@ -84,6 +88,7 @@ export interface GetDatabasesResult {
  *
  * Get information about all Linode Managed Databases:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -91,9 +96,11 @@ export interface GetDatabasesResult {
  * const all = linode.getDatabases({});
  * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode MySQL Databases:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -106,6 +113,7 @@ export interface GetDatabasesResult {
  * });
  * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getDatabases(a, opts))

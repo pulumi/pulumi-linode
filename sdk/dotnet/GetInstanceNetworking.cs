@@ -14,10 +14,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceNetworkingResult> InvokeAsync(GetInstanceNetworkingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceNetworkingResult>("linode:index/getInstanceNetworking:getInstanceNetworking", args ?? new GetInstanceNetworkingArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceNetworkingResult> Invoke(GetInstanceNetworkingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceNetworkingResult>("linode:index/getInstanceNetworking:getInstanceNetworking", args ?? new GetInstanceNetworkingInvokeArgs(), options.WithDefaults());

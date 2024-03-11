@@ -17,6 +17,57 @@ namespace Pulumi.Linode
     /// &gt; **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.
     /// 
     /// Manages IPs shared to a Linode instance.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Share in IPv4 address between two instances:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a single primary node
+    ///     var primaryInstance = new Linode.Instance("primaryInstance", new()
+    ///     {
+    ///         Label = "node-primary",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "eu-central",
+    ///     });
+    /// 
+    ///     // Allocate an IP under the primary node
+    ///     var primaryInstanceIp = new Linode.InstanceIp("primaryInstanceIp", new()
+    ///     {
+    ///         LinodeId = primaryInstance.Id,
+    ///     });
+    /// 
+    ///     // Create a secondary node
+    ///     var secondary = new Linode.Instance("secondary", new()
+    ///     {
+    ///         Label = "node-secondary",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "eu-central",
+    ///     });
+    /// 
+    ///     // Share the IP with the secondary node
+    ///     var share_primary = new Linode.InstanceSharedIps("share-primary", new()
+    ///     {
+    ///         LinodeId = secondary.Id,
+    ///         Addresses = new[]
+    ///         {
+    ///             primaryInstanceIp.Address,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Share an IPv6 address among a primary node and its replicas:
     /// </summary>
     [LinodeResourceType("linode:index/instanceSharedIps:InstanceSharedIps")]
     public partial class InstanceSharedIps : global::Pulumi.CustomResource

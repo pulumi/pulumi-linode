@@ -18,10 +18,9 @@ namespace Pulumi.Linode
         /// 
         /// Provides details about Linode VLANs.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,8 +67,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `label`
@@ -86,10 +85,9 @@ namespace Pulumi.Linode
         /// 
         /// Provides details about Linode VLANs.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -136,8 +134,8 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `label`

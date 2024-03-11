@@ -563,6 +563,7 @@ class DatabaseMysql(pulumi.CustomResource):
 
         Creating a simple MySQL database instance:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -573,9 +574,11 @@ class DatabaseMysql(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating a complex MySQL database instance:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -598,6 +601,8 @@ class DatabaseMysql(pulumi.CustomResource):
                 week_of_month=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## updates
 
         The following arguments are supported in the `updates` specification block:
@@ -657,6 +662,7 @@ class DatabaseMysql(pulumi.CustomResource):
 
         Creating a simple MySQL database instance:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -667,9 +673,11 @@ class DatabaseMysql(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating a complex MySQL database instance:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -692,6 +700,8 @@ class DatabaseMysql(pulumi.CustomResource):
                 week_of_month=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## updates
 
         The following arguments are supported in the `updates` specification block:

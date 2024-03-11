@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to discover regions without specific service availability.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Filterable Fields
 //
 // * `region`

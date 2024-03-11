@@ -87,12 +87,14 @@ def get_ssh_key(id: Optional[str] = None,
 
     The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_ssh_key(label="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the SSH Key
@@ -122,12 +124,14 @@ def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_ssh_key(label="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the SSH Key

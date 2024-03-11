@@ -13,6 +13,29 @@ import * as utilities from "./utilities";
  *
  * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this resource to configure an RDNS address for an IP address.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const fooInstance = new linode.Instance("fooInstance", {
+ *     image: "linode/alpine3.19",
+ *     region: "ca-east",
+ *     type: "g6-dedicated-2",
+ * });
+ * const fooRdns = new linode.Rdns("fooRdns", {
+ *     address: fooInstance.ipAddress,
+ *     rdns: pulumi.interpolate`${fooInstance.ipAddress}.nip.io`,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+ *
  * ## Import
  *
  * Linodes RDNS resources can be imported using the address as the `id`.

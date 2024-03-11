@@ -14,6 +14,48 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createImage).
     /// 
+    /// ## Example Usage
+    /// 
+    /// Creating an image from an existing Linode Instance and deploying another instance with that image:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Linode.Instance("foo", new()
+    ///     {
+    ///         Type = "g6-nanode-1",
+    ///         Region = "us-central",
+    ///         Image = "linode/ubuntu22.04",
+    ///         RootPass = "insecure-p4ssw0rd!!",
+    ///     });
+    /// 
+    ///     var bar = new Linode.Image("bar", new()
+    ///     {
+    ///         Label = "foo-sda-image",
+    ///         Description = "Image taken from foo",
+    ///         DiskId = foo.Disks.Apply(disks =&gt; disks[0].Id),
+    ///         LinodeId = foo.Id,
+    ///     });
+    /// 
+    ///     var barBased = new Linode.Instance("barBased", new()
+    ///     {
+    ///         Type = foo.Type,
+    ///         Region = "eu-west",
+    ///         Image = bar.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Creating and uploading an image from a local file:
+    /// 
     /// ## Import
     /// 
     /// Linodes Images can be imported using the Linode Image `id`, e.g.

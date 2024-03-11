@@ -180,12 +180,14 @@ def get_node_balancer(firewalls: Optional[Sequence[pulumi.InputType['GetNodeBala
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_nodebalancer = linode.get_node_balancer(id=123)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int id: The NodeBalancer's ID.
@@ -220,12 +222,14 @@ def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_nodebalancer = linode.get_node_balancer(id=123)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int id: The NodeBalancer's ID.

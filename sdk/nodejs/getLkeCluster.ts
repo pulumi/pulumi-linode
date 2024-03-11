@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: 123,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClusterResult> {
 
@@ -104,6 +106,7 @@ export interface GetLkeClusterResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -112,6 +115,7 @@ export interface GetLkeClusterResult {
  *     id: 123,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClusterResult> {
     return pulumi.output(args).apply((a: any) => getLkeCluster(a, opts))

@@ -94,6 +94,7 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
 
     The following example shows how one might use this data source to access information about a Linode NodeBalancer.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -110,6 +111,8 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
     ])
     pulumi.export("nodebalancerId", specific_nodebalancers.nodebalancers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `label`
@@ -159,6 +162,7 @@ def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
 
     The following example shows how one might use this data source to access information about a Linode NodeBalancer.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -175,6 +179,8 @@ def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     ])
     pulumi.export("nodebalancerId", specific_nodebalancers.nodebalancers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Filterable Fields
 
     * `label`

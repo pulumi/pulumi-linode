@@ -24,6 +24,64 @@ import javax.annotation.Nullable;
  * 
  * Manages IPs shared to a Linode instance.
  * 
+ * ## Example Usage
+ * 
+ * Share in IPv4 address between two instances:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.InstanceIp;
+ * import com.pulumi.linode.InstanceIpArgs;
+ * import com.pulumi.linode.InstanceSharedIps;
+ * import com.pulumi.linode.InstanceSharedIpsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primaryInstance = new Instance(&#34;primaryInstance&#34;, InstanceArgs.builder()        
+ *             .label(&#34;node-primary&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .region(&#34;eu-central&#34;)
+ *             .build());
+ * 
+ *         var primaryInstanceIp = new InstanceIp(&#34;primaryInstanceIp&#34;, InstanceIpArgs.builder()        
+ *             .linodeId(primaryInstance.id())
+ *             .build());
+ * 
+ *         var secondary = new Instance(&#34;secondary&#34;, InstanceArgs.builder()        
+ *             .label(&#34;node-secondary&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .region(&#34;eu-central&#34;)
+ *             .build());
+ * 
+ *         var share_primary = new InstanceSharedIps(&#34;share-primary&#34;, InstanceSharedIpsArgs.builder()        
+ *             .linodeId(secondary.id())
+ *             .addresses(primaryInstanceIp.address())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Share an IPv6 address among a primary node and its replicas:
+ * 
  */
 @ResourceType(type="linode:index/instanceSharedIps:InstanceSharedIps")
 public class InstanceSharedIps extends com.pulumi.resources.CustomResource {

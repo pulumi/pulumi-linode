@@ -17,6 +17,7 @@ import (
 //
 // The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetObjectStorageCluster(ctx *pulumi.Context, args *GetObjectStorageClusterArgs, opts ...pulumi.InvokeOption) (*GetObjectStorageClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetObjectStorageClusterResult

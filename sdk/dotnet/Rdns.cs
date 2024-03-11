@@ -16,6 +16,38 @@ namespace Pulumi.Linode
     /// 
     /// For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4/networking-ips-address/#put) and the [Configure your Linode for Reverse DNS](https://www.linode.com/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example shows how one might use this resource to configure an RDNS address for an IP address.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooInstance = new Linode.Instance("fooInstance", new()
+    ///     {
+    ///         Image = "linode/alpine3.19",
+    ///         Region = "ca-east",
+    ///         Type = "g6-dedicated-2",
+    ///     });
+    /// 
+    ///     var fooRdns = new Linode.Rdns("fooRdns", new()
+    ///     {
+    ///         Address = fooInstance.IpAddress,
+    ///         RdnsName = fooInstance.IpAddress.Apply(ipAddress =&gt; $"{ipAddress}.nip.io"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+    /// 
     /// ## Import
     /// 
     /// Linodes RDNS resources can be imported using the address as the `id`.
