@@ -28,6 +28,8 @@ type LkeCluster struct {
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
+	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	ExternalPoolTags pulumi.StringArrayOutput `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -100,6 +102,8 @@ type lkeClusterState struct {
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl *string `pulumi:"dashboardUrl"`
+	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	ExternalPoolTags []string `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -127,6 +131,8 @@ type LkeClusterState struct {
 	ControlPlane LkeClusterControlPlanePtrInput
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl pulumi.StringPtrInput
+	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	ExternalPoolTags pulumi.StringArrayInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringPtrInput
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -154,6 +160,8 @@ func (LkeClusterState) ElementType() reflect.Type {
 type lkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
+	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	ExternalPoolTags []string `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// This Kubernetes cluster's unique label.
@@ -174,6 +182,8 @@ type lkeClusterArgs struct {
 type LkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
+	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	ExternalPoolTags pulumi.StringArrayInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringInput
 	// This Kubernetes cluster's unique label.
@@ -290,6 +300,11 @@ func (o LkeClusterOutput) ControlPlane() LkeClusterControlPlaneOutput {
 // The Kubernetes Dashboard access URL for this cluster.
 func (o LkeClusterOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.DashboardUrl }).(pulumi.StringOutput)
+}
+
+// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+func (o LkeClusterOutput) ExternalPoolTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.ExternalPoolTags }).(pulumi.StringArrayOutput)
 }
 
 // The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.

@@ -4005,6 +4005,181 @@ func (o InstanceDiskTypeArrayOutput) Index(i pulumi.IntInput) InstanceDiskTypeOu
 	}).(InstanceDiskTypeOutput)
 }
 
+type InstanceDiskTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// InstanceDiskTimeoutsInput is an input type that accepts InstanceDiskTimeoutsArgs and InstanceDiskTimeoutsOutput values.
+// You can construct a concrete instance of `InstanceDiskTimeoutsInput` via:
+//
+//	InstanceDiskTimeoutsArgs{...}
+type InstanceDiskTimeoutsInput interface {
+	pulumi.Input
+
+	ToInstanceDiskTimeoutsOutput() InstanceDiskTimeoutsOutput
+	ToInstanceDiskTimeoutsOutputWithContext(context.Context) InstanceDiskTimeoutsOutput
+}
+
+type InstanceDiskTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (InstanceDiskTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDiskTimeouts)(nil)).Elem()
+}
+
+func (i InstanceDiskTimeoutsArgs) ToInstanceDiskTimeoutsOutput() InstanceDiskTimeoutsOutput {
+	return i.ToInstanceDiskTimeoutsOutputWithContext(context.Background())
+}
+
+func (i InstanceDiskTimeoutsArgs) ToInstanceDiskTimeoutsOutputWithContext(ctx context.Context) InstanceDiskTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskTimeoutsOutput)
+}
+
+func (i InstanceDiskTimeoutsArgs) ToInstanceDiskTimeoutsPtrOutput() InstanceDiskTimeoutsPtrOutput {
+	return i.ToInstanceDiskTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceDiskTimeoutsArgs) ToInstanceDiskTimeoutsPtrOutputWithContext(ctx context.Context) InstanceDiskTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskTimeoutsOutput).ToInstanceDiskTimeoutsPtrOutputWithContext(ctx)
+}
+
+// InstanceDiskTimeoutsPtrInput is an input type that accepts InstanceDiskTimeoutsArgs, InstanceDiskTimeoutsPtr and InstanceDiskTimeoutsPtrOutput values.
+// You can construct a concrete instance of `InstanceDiskTimeoutsPtrInput` via:
+//
+//	        InstanceDiskTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceDiskTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceDiskTimeoutsPtrOutput() InstanceDiskTimeoutsPtrOutput
+	ToInstanceDiskTimeoutsPtrOutputWithContext(context.Context) InstanceDiskTimeoutsPtrOutput
+}
+
+type instanceDiskTimeoutsPtrType InstanceDiskTimeoutsArgs
+
+func InstanceDiskTimeoutsPtr(v *InstanceDiskTimeoutsArgs) InstanceDiskTimeoutsPtrInput {
+	return (*instanceDiskTimeoutsPtrType)(v)
+}
+
+func (*instanceDiskTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDiskTimeouts)(nil)).Elem()
+}
+
+func (i *instanceDiskTimeoutsPtrType) ToInstanceDiskTimeoutsPtrOutput() InstanceDiskTimeoutsPtrOutput {
+	return i.ToInstanceDiskTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceDiskTimeoutsPtrType) ToInstanceDiskTimeoutsPtrOutputWithContext(ctx context.Context) InstanceDiskTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDiskTimeoutsPtrOutput)
+}
+
+type InstanceDiskTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (InstanceDiskTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDiskTimeouts)(nil)).Elem()
+}
+
+func (o InstanceDiskTimeoutsOutput) ToInstanceDiskTimeoutsOutput() InstanceDiskTimeoutsOutput {
+	return o
+}
+
+func (o InstanceDiskTimeoutsOutput) ToInstanceDiskTimeoutsOutputWithContext(ctx context.Context) InstanceDiskTimeoutsOutput {
+	return o
+}
+
+func (o InstanceDiskTimeoutsOutput) ToInstanceDiskTimeoutsPtrOutput() InstanceDiskTimeoutsPtrOutput {
+	return o.ToInstanceDiskTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceDiskTimeoutsOutput) ToInstanceDiskTimeoutsPtrOutputWithContext(ctx context.Context) InstanceDiskTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDiskTimeouts) *InstanceDiskTimeouts {
+		return &v
+	}).(InstanceDiskTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceDiskTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDiskTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o InstanceDiskTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDiskTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceDiskTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDiskTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type InstanceDiskTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceDiskTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDiskTimeouts)(nil)).Elem()
+}
+
+func (o InstanceDiskTimeoutsPtrOutput) ToInstanceDiskTimeoutsPtrOutput() InstanceDiskTimeoutsPtrOutput {
+	return o
+}
+
+func (o InstanceDiskTimeoutsPtrOutput) ToInstanceDiskTimeoutsPtrOutputWithContext(ctx context.Context) InstanceDiskTimeoutsPtrOutput {
+	return o
+}
+
+func (o InstanceDiskTimeoutsPtrOutput) Elem() InstanceDiskTimeoutsOutput {
+	return o.ApplyT(func(v *InstanceDiskTimeouts) InstanceDiskTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDiskTimeouts
+		return ret
+	}).(InstanceDiskTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceDiskTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDiskTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o InstanceDiskTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDiskTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceDiskTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDiskTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceInterface struct {
 	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
@@ -5296,6 +5471,260 @@ func (o LkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolNo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterPoolNode {
 		return vs[0].([]LkeClusterPoolNode)[vs[1].(int)]
 	}).(LkeClusterPoolNodeOutput)
+}
+
+type LkeNodePoolAutoscaler struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+// LkeNodePoolAutoscalerInput is an input type that accepts LkeNodePoolAutoscalerArgs and LkeNodePoolAutoscalerOutput values.
+// You can construct a concrete instance of `LkeNodePoolAutoscalerInput` via:
+//
+//	LkeNodePoolAutoscalerArgs{...}
+type LkeNodePoolAutoscalerInput interface {
+	pulumi.Input
+
+	ToLkeNodePoolAutoscalerOutput() LkeNodePoolAutoscalerOutput
+	ToLkeNodePoolAutoscalerOutputWithContext(context.Context) LkeNodePoolAutoscalerOutput
+}
+
+type LkeNodePoolAutoscalerArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (LkeNodePoolAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeNodePoolAutoscaler)(nil)).Elem()
+}
+
+func (i LkeNodePoolAutoscalerArgs) ToLkeNodePoolAutoscalerOutput() LkeNodePoolAutoscalerOutput {
+	return i.ToLkeNodePoolAutoscalerOutputWithContext(context.Background())
+}
+
+func (i LkeNodePoolAutoscalerArgs) ToLkeNodePoolAutoscalerOutputWithContext(ctx context.Context) LkeNodePoolAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolAutoscalerOutput)
+}
+
+func (i LkeNodePoolAutoscalerArgs) ToLkeNodePoolAutoscalerPtrOutput() LkeNodePoolAutoscalerPtrOutput {
+	return i.ToLkeNodePoolAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i LkeNodePoolAutoscalerArgs) ToLkeNodePoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeNodePoolAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolAutoscalerOutput).ToLkeNodePoolAutoscalerPtrOutputWithContext(ctx)
+}
+
+// LkeNodePoolAutoscalerPtrInput is an input type that accepts LkeNodePoolAutoscalerArgs, LkeNodePoolAutoscalerPtr and LkeNodePoolAutoscalerPtrOutput values.
+// You can construct a concrete instance of `LkeNodePoolAutoscalerPtrInput` via:
+//
+//	        LkeNodePoolAutoscalerArgs{...}
+//
+//	or:
+//
+//	        nil
+type LkeNodePoolAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToLkeNodePoolAutoscalerPtrOutput() LkeNodePoolAutoscalerPtrOutput
+	ToLkeNodePoolAutoscalerPtrOutputWithContext(context.Context) LkeNodePoolAutoscalerPtrOutput
+}
+
+type lkeNodePoolAutoscalerPtrType LkeNodePoolAutoscalerArgs
+
+func LkeNodePoolAutoscalerPtr(v *LkeNodePoolAutoscalerArgs) LkeNodePoolAutoscalerPtrInput {
+	return (*lkeNodePoolAutoscalerPtrType)(v)
+}
+
+func (*lkeNodePoolAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeNodePoolAutoscaler)(nil)).Elem()
+}
+
+func (i *lkeNodePoolAutoscalerPtrType) ToLkeNodePoolAutoscalerPtrOutput() LkeNodePoolAutoscalerPtrOutput {
+	return i.ToLkeNodePoolAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *lkeNodePoolAutoscalerPtrType) ToLkeNodePoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeNodePoolAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolAutoscalerPtrOutput)
+}
+
+type LkeNodePoolAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (LkeNodePoolAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeNodePoolAutoscaler)(nil)).Elem()
+}
+
+func (o LkeNodePoolAutoscalerOutput) ToLkeNodePoolAutoscalerOutput() LkeNodePoolAutoscalerOutput {
+	return o
+}
+
+func (o LkeNodePoolAutoscalerOutput) ToLkeNodePoolAutoscalerOutputWithContext(ctx context.Context) LkeNodePoolAutoscalerOutput {
+	return o
+}
+
+func (o LkeNodePoolAutoscalerOutput) ToLkeNodePoolAutoscalerPtrOutput() LkeNodePoolAutoscalerPtrOutput {
+	return o.ToLkeNodePoolAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o LkeNodePoolAutoscalerOutput) ToLkeNodePoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeNodePoolAutoscalerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LkeNodePoolAutoscaler) *LkeNodePoolAutoscaler {
+		return &v
+	}).(LkeNodePoolAutoscalerPtrOutput)
+}
+
+func (o LkeNodePoolAutoscalerOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v LkeNodePoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o LkeNodePoolAutoscalerOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v LkeNodePoolAutoscaler) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type LkeNodePoolAutoscalerPtrOutput struct{ *pulumi.OutputState }
+
+func (LkeNodePoolAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeNodePoolAutoscaler)(nil)).Elem()
+}
+
+func (o LkeNodePoolAutoscalerPtrOutput) ToLkeNodePoolAutoscalerPtrOutput() LkeNodePoolAutoscalerPtrOutput {
+	return o
+}
+
+func (o LkeNodePoolAutoscalerPtrOutput) ToLkeNodePoolAutoscalerPtrOutputWithContext(ctx context.Context) LkeNodePoolAutoscalerPtrOutput {
+	return o
+}
+
+func (o LkeNodePoolAutoscalerPtrOutput) Elem() LkeNodePoolAutoscalerOutput {
+	return o.ApplyT(func(v *LkeNodePoolAutoscaler) LkeNodePoolAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret LkeNodePoolAutoscaler
+		return ret
+	}).(LkeNodePoolAutoscalerOutput)
+}
+
+func (o LkeNodePoolAutoscalerPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeNodePoolAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o LkeNodePoolAutoscalerPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeNodePoolAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type LkeNodePoolNode struct {
+	Id         string `pulumi:"id"`
+	InstanceId int    `pulumi:"instanceId"`
+	Status     string `pulumi:"status"`
+}
+
+// LkeNodePoolNodeInput is an input type that accepts LkeNodePoolNodeArgs and LkeNodePoolNodeOutput values.
+// You can construct a concrete instance of `LkeNodePoolNodeInput` via:
+//
+//	LkeNodePoolNodeArgs{...}
+type LkeNodePoolNodeInput interface {
+	pulumi.Input
+
+	ToLkeNodePoolNodeOutput() LkeNodePoolNodeOutput
+	ToLkeNodePoolNodeOutputWithContext(context.Context) LkeNodePoolNodeOutput
+}
+
+type LkeNodePoolNodeArgs struct {
+	Id         pulumi.StringInput `pulumi:"id"`
+	InstanceId pulumi.IntInput    `pulumi:"instanceId"`
+	Status     pulumi.StringInput `pulumi:"status"`
+}
+
+func (LkeNodePoolNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeNodePoolNode)(nil)).Elem()
+}
+
+func (i LkeNodePoolNodeArgs) ToLkeNodePoolNodeOutput() LkeNodePoolNodeOutput {
+	return i.ToLkeNodePoolNodeOutputWithContext(context.Background())
+}
+
+func (i LkeNodePoolNodeArgs) ToLkeNodePoolNodeOutputWithContext(ctx context.Context) LkeNodePoolNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolNodeOutput)
+}
+
+// LkeNodePoolNodeArrayInput is an input type that accepts LkeNodePoolNodeArray and LkeNodePoolNodeArrayOutput values.
+// You can construct a concrete instance of `LkeNodePoolNodeArrayInput` via:
+//
+//	LkeNodePoolNodeArray{ LkeNodePoolNodeArgs{...} }
+type LkeNodePoolNodeArrayInput interface {
+	pulumi.Input
+
+	ToLkeNodePoolNodeArrayOutput() LkeNodePoolNodeArrayOutput
+	ToLkeNodePoolNodeArrayOutputWithContext(context.Context) LkeNodePoolNodeArrayOutput
+}
+
+type LkeNodePoolNodeArray []LkeNodePoolNodeInput
+
+func (LkeNodePoolNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeNodePoolNode)(nil)).Elem()
+}
+
+func (i LkeNodePoolNodeArray) ToLkeNodePoolNodeArrayOutput() LkeNodePoolNodeArrayOutput {
+	return i.ToLkeNodePoolNodeArrayOutputWithContext(context.Background())
+}
+
+func (i LkeNodePoolNodeArray) ToLkeNodePoolNodeArrayOutputWithContext(ctx context.Context) LkeNodePoolNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolNodeArrayOutput)
+}
+
+type LkeNodePoolNodeOutput struct{ *pulumi.OutputState }
+
+func (LkeNodePoolNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeNodePoolNode)(nil)).Elem()
+}
+
+func (o LkeNodePoolNodeOutput) ToLkeNodePoolNodeOutput() LkeNodePoolNodeOutput {
+	return o
+}
+
+func (o LkeNodePoolNodeOutput) ToLkeNodePoolNodeOutputWithContext(ctx context.Context) LkeNodePoolNodeOutput {
+	return o
+}
+
+func (o LkeNodePoolNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeNodePoolNode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LkeNodePoolNodeOutput) InstanceId() pulumi.IntOutput {
+	return o.ApplyT(func(v LkeNodePoolNode) int { return v.InstanceId }).(pulumi.IntOutput)
+}
+
+func (o LkeNodePoolNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeNodePoolNode) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type LkeNodePoolNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (LkeNodePoolNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeNodePoolNode)(nil)).Elem()
+}
+
+func (o LkeNodePoolNodeArrayOutput) ToLkeNodePoolNodeArrayOutput() LkeNodePoolNodeArrayOutput {
+	return o
+}
+
+func (o LkeNodePoolNodeArrayOutput) ToLkeNodePoolNodeArrayOutputWithContext(ctx context.Context) LkeNodePoolNodeArrayOutput {
+	return o
+}
+
+func (o LkeNodePoolNodeArrayOutput) Index(i pulumi.IntInput) LkeNodePoolNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeNodePoolNode {
+		return vs[0].([]LkeNodePoolNode)[vs[1].(int)]
+	}).(LkeNodePoolNodeOutput)
 }
 
 type NodeBalancerConfigNodeStatus struct {
@@ -27684,6 +28113,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInterfaceIpv4PtrInput)(nil)).Elem(), InstanceConfigInterfaceIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiskTypeInput)(nil)).Elem(), InstanceDiskTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiskTypeArrayInput)(nil)).Elem(), InstanceDiskTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiskTimeoutsInput)(nil)).Elem(), InstanceDiskTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiskTimeoutsPtrInput)(nil)).Elem(), InstanceDiskTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceInput)(nil)).Elem(), InstanceInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceArrayInput)(nil)).Elem(), InstanceInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceIpv4Input)(nil)).Elem(), InstanceInterfaceIpv4Args{})
@@ -27702,6 +28133,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolAutoscalerPtrInput)(nil)).Elem(), LkeClusterPoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeInput)(nil)).Elem(), LkeClusterPoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeArrayInput)(nil)).Elem(), LkeClusterPoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolAutoscalerInput)(nil)).Elem(), LkeNodePoolAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolAutoscalerPtrInput)(nil)).Elem(), LkeNodePoolAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolNodeInput)(nil)).Elem(), LkeNodePoolNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolNodeArrayInput)(nil)).Elem(), LkeNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInput)(nil)).Elem(), NodeBalancerFirewallArgs{})
@@ -28081,6 +28516,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceConfigInterfaceIpv4PtrOutput{})
 	pulumi.RegisterOutputType(InstanceDiskTypeOutput{})
 	pulumi.RegisterOutputType(InstanceDiskTypeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceDiskTimeoutsOutput{})
+	pulumi.RegisterOutputType(InstanceDiskTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceInterfaceOutput{})
 	pulumi.RegisterOutputType(InstanceInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceInterfaceIpv4Output{})
@@ -28099,6 +28536,10 @@ func init() {
 	pulumi.RegisterOutputType(LkeClusterPoolAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolNodeOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(LkeNodePoolAutoscalerOutput{})
+	pulumi.RegisterOutputType(LkeNodePoolAutoscalerPtrOutput{})
+	pulumi.RegisterOutputType(LkeNodePoolNodeOutput{})
+	pulumi.RegisterOutputType(LkeNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerFirewallOutput{})

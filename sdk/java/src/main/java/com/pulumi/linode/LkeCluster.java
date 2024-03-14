@@ -14,6 +14,7 @@ import com.pulumi.linode.outputs.LkeClusterControlPlane;
 import com.pulumi.linode.outputs.LkeClusterPool;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -69,6 +70,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dashboardUrl() {
         return this.dashboardUrl;
+    }
+    /**
+     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * 
+     */
+    @Export(name="externalPoolTags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> externalPoolTags;
+
+    /**
+     * @return An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * 
+     */
+    public Output<Optional<List<String>>> externalPoolTags() {
+        return Codegen.optional(this.externalPoolTags);
     }
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.

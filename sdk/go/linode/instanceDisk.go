@@ -92,8 +92,8 @@ import (
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
 //				},
 //				StackscriptId: pulumi.Int(12345),
-//				StackscriptData: pulumi.Map{
-//					"my_var": pulumi.Any("my_value"),
+//				StackscriptData: pulumi.StringMap{
+//					"my_var": pulumi.String("my_value"),
 //				},
 //			})
 //			if err != nil {
@@ -137,11 +137,12 @@ type InstanceDisk struct {
 	// ***
 	Size pulumi.IntOutput `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
-	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
+	StackscriptData pulumi.StringMapOutput `pulumi:"stackscriptData"`
 	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId pulumi.IntPtrOutput `pulumi:"stackscriptId"`
 	// A brief description of this Disk's current state.
-	Status pulumi.StringOutput `pulumi:"status"`
+	Status   pulumi.StringOutput           `pulumi:"status"`
+	Timeouts InstanceDiskTimeoutsPtrOutput `pulumi:"timeouts"`
 	// When this disk was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 }
@@ -166,7 +167,7 @@ func NewInstanceDisk(ctx *pulumi.Context,
 		args.RootPass = pulumi.ToSecret(args.RootPass).(pulumi.StringPtrInput)
 	}
 	if args.StackscriptData != nil {
-		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.MapInput)
+		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.StringMapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"rootPass",
@@ -217,11 +218,12 @@ type instanceDiskState struct {
 	// ***
 	Size *int `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
-	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
+	StackscriptData map[string]string `pulumi:"stackscriptData"`
 	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId *int `pulumi:"stackscriptId"`
 	// A brief description of this Disk's current state.
-	Status *string `pulumi:"status"`
+	Status   *string               `pulumi:"status"`
+	Timeouts *InstanceDiskTimeouts `pulumi:"timeouts"`
 	// When this disk was last updated.
 	Updated *string `pulumi:"updated"`
 }
@@ -248,11 +250,12 @@ type InstanceDiskState struct {
 	// ***
 	Size pulumi.IntPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
-	StackscriptData pulumi.MapInput
+	StackscriptData pulumi.StringMapInput
 	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId pulumi.IntPtrInput
 	// A brief description of this Disk's current state.
-	Status pulumi.StringPtrInput
+	Status   pulumi.StringPtrInput
+	Timeouts InstanceDiskTimeoutsPtrInput
 	// When this disk was last updated.
 	Updated pulumi.StringPtrInput
 }
@@ -281,9 +284,10 @@ type instanceDiskArgs struct {
 	// ***
 	Size int `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
-	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
+	StackscriptData map[string]string `pulumi:"stackscriptData"`
 	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
-	StackscriptId *int `pulumi:"stackscriptId"`
+	StackscriptId *int                  `pulumi:"stackscriptId"`
+	Timeouts      *InstanceDiskTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a InstanceDisk resource.
@@ -307,9 +311,10 @@ type InstanceDiskArgs struct {
 	// ***
 	Size pulumi.IntInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
-	StackscriptData pulumi.MapInput
+	StackscriptData pulumi.StringMapInput
 	// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
 	StackscriptId pulumi.IntPtrInput
+	Timeouts      InstanceDiskTimeoutsPtrInput
 }
 
 func (InstanceDiskArgs) ElementType() reflect.Type {
@@ -447,8 +452,8 @@ func (o InstanceDiskOutput) Size() pulumi.IntOutput {
 }
 
 // An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
-func (o InstanceDiskOutput) StackscriptData() pulumi.MapOutput {
-	return o.ApplyT(func(v *InstanceDisk) pulumi.MapOutput { return v.StackscriptData }).(pulumi.MapOutput)
+func (o InstanceDiskOutput) StackscriptData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceDisk) pulumi.StringMapOutput { return v.StackscriptData }).(pulumi.StringMapOutput)
 }
 
 // A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
@@ -459,6 +464,10 @@ func (o InstanceDiskOutput) StackscriptId() pulumi.IntPtrOutput {
 // A brief description of this Disk's current state.
 func (o InstanceDiskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o InstanceDiskOutput) Timeouts() InstanceDiskTimeoutsPtrOutput {
+	return o.ApplyT(func(v *InstanceDisk) InstanceDiskTimeoutsPtrOutput { return v.Timeouts }).(InstanceDiskTimeoutsPtrOutput)
 }
 
 // When this disk was last updated.

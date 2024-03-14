@@ -65,7 +65,7 @@ type Ipv6Range struct {
 	// The region for this range of IPv6 addresses.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The IPv6 SLAAC address to assign this range to.
-	RouteTarget pulumi.StringPtrOutput `pulumi:"routeTarget"`
+	RouteTarget pulumi.StringOutput `pulumi:"routeTarget"`
 }
 
 // NewIpv6Range registers a new resource with the given unique name, arguments, and options.
@@ -275,8 +275,8 @@ func (o Ipv6RangeOutput) Region() pulumi.StringOutput {
 }
 
 // The IPv6 SLAAC address to assign this range to.
-func (o Ipv6RangeOutput) RouteTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ipv6Range) pulumi.StringPtrOutput { return v.RouteTarget }).(pulumi.StringPtrOutput)
+func (o Ipv6RangeOutput) RouteTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Range) pulumi.StringOutput { return v.RouteTarget }).(pulumi.StringOutput)
 }
 
 type Ipv6RangeArrayOutput struct{ *pulumi.OutputState }

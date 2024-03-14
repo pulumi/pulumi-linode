@@ -21,6 +21,7 @@ class LkeClusterArgs:
                  pools: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]],
                  region: pulumi.Input[str],
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
+                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LkeCluster resource.
@@ -33,6 +34,7 @@ class LkeClusterArgs:
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
@@ -41,6 +43,8 @@ class LkeClusterArgs:
         pulumi.set(__self__, "region", region)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
+        if external_pool_tags is not None:
+            pulumi.set(__self__, "external_pool_tags", external_pool_tags)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -109,6 +113,18 @@ class LkeClusterArgs:
         pulumi.set(self, "control_plane", value)
 
     @property
+    @pulumi.getter(name="externalPoolTags")
+    def external_pool_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        """
+        return pulumi.get(self, "external_pool_tags")
+
+    @external_pool_tags.setter
+    def external_pool_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_pool_tags", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -127,6 +143,7 @@ class _LkeClusterState:
                  api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  dashboard_url: Optional[pulumi.Input[str]] = None,
+                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  kubeconfig: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -139,6 +156,7 @@ class _LkeClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -157,6 +175,8 @@ class _LkeClusterState:
             pulumi.set(__self__, "control_plane", control_plane)
         if dashboard_url is not None:
             pulumi.set(__self__, "dashboard_url", dashboard_url)
+        if external_pool_tags is not None:
+            pulumi.set(__self__, "external_pool_tags", external_pool_tags)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
         if kubeconfig is not None:
@@ -207,6 +227,18 @@ class _LkeClusterState:
     @dashboard_url.setter
     def dashboard_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dashboard_url", value)
+
+    @property
+    @pulumi.getter(name="externalPoolTags")
+    def external_pool_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        """
+        return pulumi.get(self, "external_pool_tags")
+
+    @external_pool_tags.setter
+    def external_pool_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_pool_tags", value)
 
     @property
     @pulumi.getter(name="k8sVersion")
@@ -303,6 +335,7 @@ class LkeCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
+                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
@@ -321,6 +354,7 @@ class LkeCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
@@ -362,6 +396,7 @@ class LkeCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
+                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  k8s_version: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]]] = None,
@@ -377,6 +412,7 @@ class LkeCluster(pulumi.CustomResource):
             __props__ = LkeClusterArgs.__new__(LkeClusterArgs)
 
             __props__.__dict__["control_plane"] = control_plane
+            __props__.__dict__["external_pool_tags"] = external_pool_tags
             if k8s_version is None and not opts.urn:
                 raise TypeError("Missing required property 'k8s_version'")
             __props__.__dict__["k8s_version"] = k8s_version
@@ -409,6 +445,7 @@ class LkeCluster(pulumi.CustomResource):
             api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             control_plane: Optional[pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']]] = None,
             dashboard_url: Optional[pulumi.Input[str]] = None,
+            external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             k8s_version: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
@@ -426,6 +463,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -445,6 +483,7 @@ class LkeCluster(pulumi.CustomResource):
         __props__.__dict__["api_endpoints"] = api_endpoints
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["dashboard_url"] = dashboard_url
+        __props__.__dict__["external_pool_tags"] = external_pool_tags
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["kubeconfig"] = kubeconfig
         __props__.__dict__["label"] = label
@@ -477,6 +516,14 @@ class LkeCluster(pulumi.CustomResource):
         The Kubernetes Dashboard access URL for this cluster.
         """
         return pulumi.get(self, "dashboard_url")
+
+    @property
+    @pulumi.getter(name="externalPoolTags")
+    def external_pool_tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        """
+        return pulumi.get(self, "external_pool_tags")
 
     @property
     @pulumi.getter(name="k8sVersion")

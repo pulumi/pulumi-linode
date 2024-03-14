@@ -3664,6 +3664,21 @@ export interface InstanceDisk {
     stackscriptId: number;
 }
 
+export interface InstanceDiskTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface InstanceInterface {
     /**
      * Whether this interface is currently booted and active.
@@ -3812,6 +3827,17 @@ export interface LkeClusterPoolNode {
     /**
      * The status of the node. (`ready`, `notReady`)
      */
+    status: string;
+}
+
+export interface LkeNodePoolAutoscaler {
+    max: number;
+    min: number;
+}
+
+export interface LkeNodePoolNode {
+    id: string;
+    instanceId: number;
     status: string;
 }
 

@@ -360,6 +360,11 @@ export type LkeCluster = import("./lkeCluster").LkeCluster;
 export const LkeCluster: typeof import("./lkeCluster").LkeCluster = null as any;
 utilities.lazyLoad(exports, ["LkeCluster"], () => require("./lkeCluster"));
 
+export { LkeNodePoolArgs, LkeNodePoolState } from "./lkeNodePool";
+export type LkeNodePool = import("./lkeNodePool").LkeNodePool;
+export const LkeNodePool: typeof import("./lkeNodePool").LkeNodePool = null as any;
+utilities.lazyLoad(exports, ["LkeNodePool"], () => require("./lkeNodePool"));
+
 export { NodeBalancerArgs, NodeBalancerState } from "./nodeBalancer";
 export type NodeBalancer = import("./nodeBalancer").NodeBalancer;
 export const NodeBalancer: typeof import("./nodeBalancer").NodeBalancer = null as any;
@@ -479,6 +484,8 @@ const _module = {
                 return new Ipv6Range(name, <any>undefined, { urn })
             case "linode:index/lkeCluster:LkeCluster":
                 return new LkeCluster(name, <any>undefined, { urn })
+            case "linode:index/lkeNodePool:LkeNodePool":
+                return new LkeNodePool(name, <any>undefined, { urn })
             case "linode:index/nodeBalancer:NodeBalancer":
                 return new NodeBalancer(name, <any>undefined, { urn })
             case "linode:index/nodeBalancerConfig:NodeBalancerConfig":
@@ -527,6 +534,7 @@ pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _module)
 pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
+pulumi.runtime.registerResourceModule("linode", "index/lkeNodePool", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerConfig", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerNode", _module)

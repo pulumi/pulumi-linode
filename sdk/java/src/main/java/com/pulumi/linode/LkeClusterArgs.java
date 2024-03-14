@@ -35,6 +35,21 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * 
+     */
+    @Import(name="externalPoolTags")
+    private @Nullable Output<List<String>> externalPoolTags;
+
+    /**
+     * @return An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * 
+     */
+    public Optional<Output<List<String>>> externalPoolTags() {
+        return Optional.ofNullable(this.externalPoolTags);
+    }
+
+    /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      * 
      */
@@ -121,6 +136,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     private LkeClusterArgs(LkeClusterArgs $) {
         this.controlPlane = $.controlPlane;
+        this.externalPoolTags = $.externalPoolTags;
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.pools = $.pools;
@@ -165,6 +181,37 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder controlPlane(LkeClusterControlPlaneArgs controlPlane) {
             return controlPlane(Output.of(controlPlane));
+        }
+
+        /**
+         * @param externalPoolTags An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPoolTags(@Nullable Output<List<String>> externalPoolTags) {
+            $.externalPoolTags = externalPoolTags;
+            return this;
+        }
+
+        /**
+         * @param externalPoolTags An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPoolTags(List<String> externalPoolTags) {
+            return externalPoolTags(Output.of(externalPoolTags));
+        }
+
+        /**
+         * @param externalPoolTags An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPoolTags(String... externalPoolTags) {
+            return externalPoolTags(List.of(externalPoolTags));
         }
 
         /**

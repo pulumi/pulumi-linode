@@ -153,14 +153,14 @@ public class Ipv6Range extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="routeTarget", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routeTarget;
+    private Output<String> routeTarget;
 
     /**
      * @return The IPv6 SLAAC address to assign this range to.
      * 
      */
-    public Output<Optional<String>> routeTarget() {
-        return Codegen.optional(this.routeTarget);
+    public Output<String> routeTarget() {
+        return this.routeTarget;
     }
 
     /**

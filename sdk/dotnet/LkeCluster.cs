@@ -40,6 +40,12 @@ namespace Pulumi.Linode
         public Output<string> DashboardUrl { get; private set; } = null!;
 
         /// <summary>
+        /// An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+        /// </summary>
+        [Output("externalPoolTags")]
+        public Output<ImmutableArray<string>> ExternalPoolTags { get; private set; } = null!;
+
+        /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         /// </summary>
         [Output("k8sVersion")]
@@ -141,6 +147,18 @@ namespace Pulumi.Linode
         [Input("controlPlane")]
         public Input<Inputs.LkeClusterControlPlaneArgs>? ControlPlane { get; set; }
 
+        [Input("externalPoolTags")]
+        private InputList<string>? _externalPoolTags;
+
+        /// <summary>
+        /// An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+        /// </summary>
+        public InputList<string> ExternalPoolTags
+        {
+            get => _externalPoolTags ?? (_externalPoolTags = new InputList<string>());
+            set => _externalPoolTags = value;
+        }
+
         /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         /// </summary>
@@ -218,6 +236,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("dashboardUrl")]
         public Input<string>? DashboardUrl { get; set; }
+
+        [Input("externalPoolTags")]
+        private InputList<string>? _externalPoolTags;
+
+        /// <summary>
+        /// An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+        /// </summary>
+        public InputList<string> ExternalPoolTags
+        {
+            get => _externalPoolTags ?? (_externalPoolTags = new InputList<string>());
+            set => _externalPoolTags = value;
+        }
 
         /// <summary>
         /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.

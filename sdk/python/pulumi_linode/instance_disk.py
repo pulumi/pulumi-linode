@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceDiskInitArgs', 'InstanceDisk']
 
@@ -22,8 +24,9 @@ class InstanceDiskInitArgs:
                  filesystem: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 stackscript_id: Optional[pulumi.Input[int]] = None):
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 stackscript_id: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a InstanceDisk resource.
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
@@ -36,7 +39,7 @@ class InstanceDiskInitArgs:
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         pulumi.set(__self__, "label", label)
@@ -56,6 +59,8 @@ class InstanceDiskInitArgs:
             pulumi.set(__self__, "stackscript_data", stackscript_data)
         if stackscript_id is not None:
             pulumi.set(__self__, "stackscript_id", stackscript_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -157,14 +162,14 @@ class InstanceDiskInitArgs:
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @property
@@ -179,6 +184,15 @@ class InstanceDiskInitArgs:
     def stackscript_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "stackscript_id", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _InstanceDiskState:
@@ -192,9 +206,10 @@ class _InstanceDiskState:
                  linode_id: Optional[pulumi.Input[int]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']] = None,
                  updated: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceDisk resources.
@@ -209,7 +224,7 @@ class _InstanceDiskState:
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
         :param pulumi.Input[str] updated: When this disk was last updated.
@@ -238,6 +253,8 @@ class _InstanceDiskState:
             pulumi.set(__self__, "stackscript_id", stackscript_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
 
@@ -353,14 +370,14 @@ class _InstanceDiskState:
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @property
@@ -389,6 +406,15 @@ class _InstanceDiskState:
 
     @property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
+    @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[str]]:
         """
         When this disk was last updated.
@@ -413,8 +439,9 @@ class InstanceDisk(pulumi.CustomResource):
                  linode_id: Optional[pulumi.Input[int]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceDiskTimeoutsArgs']]] = None,
                  __props__=None):
         """
         Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
@@ -487,7 +514,7 @@ class InstanceDisk(pulumi.CustomResource):
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         ...
@@ -578,8 +605,9 @@ class InstanceDisk(pulumi.CustomResource):
                  linode_id: Optional[pulumi.Input[int]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceDiskTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -605,6 +633,7 @@ class InstanceDisk(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["stackscript_data"] = None if stackscript_data is None else pulumi.Output.secret(stackscript_data)
             __props__.__dict__["stackscript_id"] = stackscript_id
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["created"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated"] = None
@@ -629,9 +658,10 @@ class InstanceDisk(pulumi.CustomResource):
             linode_id: Optional[pulumi.Input[int]] = None,
             root_pass: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
-            stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             stackscript_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceDiskTimeoutsArgs']]] = None,
             updated: Optional[pulumi.Input[str]] = None) -> 'InstanceDisk':
         """
         Get an existing InstanceDisk resource's state with the given name, id, and optional extra
@@ -651,7 +681,7 @@ class InstanceDisk(pulumi.CustomResource):
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                - - -
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
         :param pulumi.Input[str] updated: When this disk was last updated.
@@ -672,6 +702,7 @@ class InstanceDisk(pulumi.CustomResource):
         __props__.__dict__["stackscript_data"] = stackscript_data
         __props__.__dict__["stackscript_id"] = stackscript_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["updated"] = updated
         return InstanceDisk(resource_name, opts=opts, __props__=__props__)
 
@@ -751,7 +782,7 @@ class InstanceDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
@@ -772,6 +803,11 @@ class InstanceDisk(pulumi.CustomResource):
         A brief description of this Disk's current state.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.InstanceDiskTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter

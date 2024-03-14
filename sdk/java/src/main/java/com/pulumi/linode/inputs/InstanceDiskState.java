@@ -5,8 +5,8 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.InstanceDiskTimeoutsArgs;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -163,13 +163,13 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="stackscriptData")
-    private @Nullable Output<Map<String,Object>> stackscriptData;
+    private @Nullable Output<Map<String,String>> stackscriptData;
 
     /**
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
-    public Optional<Output<Map<String,Object>>> stackscriptData() {
+    public Optional<Output<Map<String,String>>> stackscriptData() {
         return Optional.ofNullable(this.stackscriptData);
     }
 
@@ -203,6 +203,13 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<InstanceDiskTimeoutsArgs> timeouts;
+
+    public Optional<Output<InstanceDiskTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * When this disk was last updated.
      * 
@@ -233,6 +240,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         this.stackscriptData = $.stackscriptData;
         this.stackscriptId = $.stackscriptId;
         this.status = $.status;
+        this.timeouts = $.timeouts;
         this.updated = $.updated;
     }
 
@@ -473,7 +481,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder stackscriptData(@Nullable Output<Map<String,Object>> stackscriptData) {
+        public Builder stackscriptData(@Nullable Output<Map<String,String>> stackscriptData) {
             $.stackscriptData = stackscriptData;
             return this;
         }
@@ -484,7 +492,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder stackscriptData(Map<String,Object> stackscriptData) {
+        public Builder stackscriptData(Map<String,String> stackscriptData) {
             return stackscriptData(Output.of(stackscriptData));
         }
 
@@ -528,6 +536,15 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        public Builder timeouts(@Nullable Output<InstanceDiskTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(InstanceDiskTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

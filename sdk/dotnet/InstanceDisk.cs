@@ -157,7 +157,7 @@ namespace Pulumi.Linode
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         /// </summary>
         [Output("stackscriptData")]
-        public Output<ImmutableDictionary<string, object>?> StackscriptData { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
         /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
@@ -170,6 +170,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.InstanceDiskTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// When this disk was last updated.
@@ -301,17 +304,17 @@ namespace Pulumi.Linode
         public Input<int> Size { get; set; } = null!;
 
         [Input("stackscriptData")]
-        private InputMap<object>? _stackscriptData;
+        private InputMap<string>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         /// </summary>
-        public InputMap<object> StackscriptData
+        public InputMap<string> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -321,6 +324,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.InstanceDiskTimeoutsArgs>? Timeouts { get; set; }
 
         public InstanceDiskArgs()
         {
@@ -409,17 +415,17 @@ namespace Pulumi.Linode
         public Input<int>? Size { get; set; }
 
         [Input("stackscriptData")]
-        private InputMap<object>? _stackscriptData;
+        private InputMap<string>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         /// </summary>
-        public InputMap<object> StackscriptData
+        public InputMap<string> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -435,6 +441,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.InstanceDiskTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// When this disk was last updated.

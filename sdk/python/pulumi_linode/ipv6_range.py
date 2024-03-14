@@ -376,7 +376,7 @@ class Ipv6Range(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTarget")
-    def route_target(self) -> pulumi.Output[Optional[str]]:
+    def route_target(self) -> pulumi.Output[str]:
         """
         The IPv6 SLAAC address to assign this range to.
         """
