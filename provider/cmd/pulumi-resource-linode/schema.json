@@ -892,6 +892,23 @@
                 }
             }
         },
+        "linode:index/InstanceDiskTimeouts:InstanceDiskTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "linode:index/InstanceInterface:InstanceInterface": {
             "properties": {
                 "active": {
@@ -1135,6 +1152,40 @@
                     ]
                 }
             }
+        },
+        "linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler": {
+            "properties": {
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "max",
+                "min"
+            ]
+        },
+        "linode:index/LkeNodePoolNode:LkeNodePoolNode": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "instanceId",
+                "status"
+            ]
         },
         "linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus": {
             "properties": {
@@ -9469,7 +9520,7 @@
             }
         },
         "linode:index/instanceDisk:InstanceDisk": {
-            "description": "Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.\n\n**NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.\n\n## Example Usage\n\nCreating a simple 512 MB Linode Instance Disk:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    type: \"g6-standard-1\",\n    region: \"us-southeast\",\n});\nconst boot = new linode.InstanceDisk(\"boot\", {\n    label: \"boot\",\n    linodeId: my_instance.id,\n    size: 512,\n    filesystem: \"ext4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    type=\"g6-standard-1\",\n    region=\"us-southeast\")\nboot = linode.InstanceDisk(\"boot\",\n    label=\"boot\",\n    linode_id=my_instance.id,\n    size=512,\n    filesystem=\"ext4\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Type = \"g6-standard-1\",\n        Region = \"us-southeast\",\n    });\n\n    var boot = new Linode.InstanceDisk(\"boot\", new()\n    {\n        Label = \"boot\",\n        LinodeId = my_instance.Id,\n        Size = 512,\n        Filesystem = \"ext4\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceDisk(ctx, \"boot\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:      pulumi.String(\"boot\"),\n\t\t\tLinodeId:   my_instance.ID(),\n\t\t\tSize:       pulumi.Int(512),\n\t\t\tFilesystem: pulumi.String(\"ext4\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"my-instance\")\n            .type(\"g6-standard-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var boot = new InstanceDisk(\"boot\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(my_instance.id())\n            .size(512)\n            .filesystem(\"ext4\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  boot:\n    type: linode:InstanceDisk\n    properties:\n      label: boot\n      linodeId: ${[\"my-instance\"].id}\n      size: 512\n      filesystem: ext4\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: my-instance\n      type: g6-standard-1\n      region: us-southeast\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating a complex bootable Instance Disk:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    type: \"g6-standard-1\",\n    region: \"us-southeast\",\n});\nconst boot = new linode.InstanceDisk(\"boot\", {\n    label: \"boot\",\n    linodeId: my_instance.id,\n    size: my_instance.specs.apply(specs =\u003e specs.disk),\n    image: \"linode/ubuntu22.04\",\n    rootPass: \"myc00lpass!\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    stackscriptId: 12345,\n    stackscriptData: {\n        my_var: \"my_value\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    type=\"g6-standard-1\",\n    region=\"us-southeast\")\nboot = linode.InstanceDisk(\"boot\",\n    label=\"boot\",\n    linode_id=my_instance.id,\n    size=my_instance.specs.disk,\n    image=\"linode/ubuntu22.04\",\n    root_pass=\"myc00lpass!\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    stackscript_id=12345,\n    stackscript_data={\n        \"my_var\": \"my_value\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Type = \"g6-standard-1\",\n        Region = \"us-southeast\",\n    });\n\n    var boot = new Linode.InstanceDisk(\"boot\", new()\n    {\n        Label = \"boot\",\n        LinodeId = my_instance.Id,\n        Size = my_instance.Specs.Apply(specs =\u003e specs.Disk),\n        Image = \"linode/ubuntu22.04\",\n        RootPass = \"myc00lpass!\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        StackscriptId = 12345,\n        StackscriptData = \n        {\n            { \"my_var\", \"my_value\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceDisk(ctx, \"boot\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: my_instance.ID(),\n\t\t\tSize: my_instance.Specs.ApplyT(func(specs linode.InstanceSpecs) (*int, error) {\n\t\t\t\treturn \u0026specs.Disk, nil\n\t\t\t}).(pulumi.IntPtrOutput),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRootPass: pulumi.String(\"myc00lpass!\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tStackscriptId: pulumi.Int(12345),\n\t\t\tStackscriptData: pulumi.Map{\n\t\t\t\t\"my_var\": pulumi.Any(\"my_value\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"my-instance\")\n            .type(\"g6-standard-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var boot = new InstanceDisk(\"boot\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(my_instance.id())\n            .size(my_instance.specs().applyValue(specs -\u003e specs.disk()))\n            .image(\"linode/ubuntu22.04\")\n            .rootPass(\"myc00lpass!\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .stackscriptId(12345)\n            .stackscriptData(Map.of(\"my_var\", \"my_value\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  boot:\n    type: linode:InstanceDisk\n    properties:\n      label: boot\n      linodeId: ${[\"my-instance\"].id}\n      size: ${[\"my-instance\"].specs.disk}\n      image: linode/ubuntu22.04\n      rootPass: myc00lpass!\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      # Optional StackScript to run on first boot\n      stackscriptId: 12345\n      stackscriptData:\n        my_var: my_value\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: my-instance\n      type: g6-standard-1\n      region: us-southeast\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nInstance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.\n\n```sh\n$ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321\n```\n\n",
+            "description": "Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.\n\n**NOTE:** Deleting a disk will shut down the attached instance if the instance is booted. If the disk was not in use by the booted configuration profile, the instance will be automatically rebooted.\n\n## Example Usage\n\nCreating a simple 512 MB Linode Instance Disk:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    type: \"g6-standard-1\",\n    region: \"us-southeast\",\n});\nconst boot = new linode.InstanceDisk(\"boot\", {\n    label: \"boot\",\n    linodeId: my_instance.id,\n    size: 512,\n    filesystem: \"ext4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    type=\"g6-standard-1\",\n    region=\"us-southeast\")\nboot = linode.InstanceDisk(\"boot\",\n    label=\"boot\",\n    linode_id=my_instance.id,\n    size=512,\n    filesystem=\"ext4\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Type = \"g6-standard-1\",\n        Region = \"us-southeast\",\n    });\n\n    var boot = new Linode.InstanceDisk(\"boot\", new()\n    {\n        Label = \"boot\",\n        LinodeId = my_instance.Id,\n        Size = 512,\n        Filesystem = \"ext4\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceDisk(ctx, \"boot\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:      pulumi.String(\"boot\"),\n\t\t\tLinodeId:   my_instance.ID(),\n\t\t\tSize:       pulumi.Int(512),\n\t\t\tFilesystem: pulumi.String(\"ext4\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"my-instance\")\n            .type(\"g6-standard-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var boot = new InstanceDisk(\"boot\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(my_instance.id())\n            .size(512)\n            .filesystem(\"ext4\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  boot:\n    type: linode:InstanceDisk\n    properties:\n      label: boot\n      linodeId: ${[\"my-instance\"].id}\n      size: 512\n      filesystem: ext4\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: my-instance\n      type: g6-standard-1\n      region: us-southeast\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating a complex bootable Instance Disk:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    type: \"g6-standard-1\",\n    region: \"us-southeast\",\n});\nconst boot = new linode.InstanceDisk(\"boot\", {\n    label: \"boot\",\n    linodeId: my_instance.id,\n    size: my_instance.specs.apply(specs =\u003e specs.disk),\n    image: \"linode/ubuntu22.04\",\n    rootPass: \"myc00lpass!\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    stackscriptId: 12345,\n    stackscriptData: {\n        my_var: \"my_value\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    type=\"g6-standard-1\",\n    region=\"us-southeast\")\nboot = linode.InstanceDisk(\"boot\",\n    label=\"boot\",\n    linode_id=my_instance.id,\n    size=my_instance.specs.disk,\n    image=\"linode/ubuntu22.04\",\n    root_pass=\"myc00lpass!\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    stackscript_id=12345,\n    stackscript_data={\n        \"my_var\": \"my_value\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Type = \"g6-standard-1\",\n        Region = \"us-southeast\",\n    });\n\n    var boot = new Linode.InstanceDisk(\"boot\", new()\n    {\n        Label = \"boot\",\n        LinodeId = my_instance.Id,\n        Size = my_instance.Specs.Apply(specs =\u003e specs.Disk),\n        Image = \"linode/ubuntu22.04\",\n        RootPass = \"myc00lpass!\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        StackscriptId = 12345,\n        StackscriptData = \n        {\n            { \"my_var\", \"my_value\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tRegion: pulumi.String(\"us-southeast\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceDisk(ctx, \"boot\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: my_instance.ID(),\n\t\t\tSize: my_instance.Specs.ApplyT(func(specs linode.InstanceSpecs) (*int, error) {\n\t\t\t\treturn \u0026specs.Disk, nil\n\t\t\t}).(pulumi.IntPtrOutput),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRootPass: pulumi.String(\"myc00lpass!\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tStackscriptId: pulumi.Int(12345),\n\t\t\tStackscriptData: pulumi.StringMap{\n\t\t\t\t\"my_var\": pulumi.String(\"my_value\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()        \n            .label(\"my-instance\")\n            .type(\"g6-standard-1\")\n            .region(\"us-southeast\")\n            .build());\n\n        var boot = new InstanceDisk(\"boot\", InstanceDiskArgs.builder()        \n            .label(\"boot\")\n            .linodeId(my_instance.id())\n            .size(my_instance.specs().applyValue(specs -\u003e specs.disk()))\n            .image(\"linode/ubuntu22.04\")\n            .rootPass(\"myc00lpass!\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .stackscriptId(12345)\n            .stackscriptData(Map.of(\"my_var\", \"my_value\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  boot:\n    type: linode:InstanceDisk\n    properties:\n      label: boot\n      linodeId: ${[\"my-instance\"].id}\n      size: ${[\"my-instance\"].specs.disk}\n      image: linode/ubuntu22.04\n      rootPass: myc00lpass!\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      # Optional StackScript to run on first boot\n      stackscriptId: 12345\n      stackscriptData:\n        my_var: my_value\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: my-instance\n      type: g6-standard-1\n      region: us-southeast\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nInstance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.\n\n```sh\n$ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321\n```\n\n",
             "properties": {
                 "authorizedKeys": {
                     "type": "array",
@@ -9517,7 +9568,7 @@
                 "stackscriptData": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)\n",
                     "secret": true
@@ -9529,6 +9580,9 @@
                 "status": {
                     "type": "string",
                     "description": "A brief description of this Disk's current state.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/linode:index/InstanceDiskTimeouts:InstanceDiskTimeouts"
                 },
                 "updated": {
                     "type": "string",
@@ -9550,26 +9604,22 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)\n"
                 },
                 "authorizedUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)\n"
                 },
                 "filesystem": {
                     "type": "string",
-                    "description": "The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)\n"
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Linode Disk from.\n",
-                    "willReplaceOnChanges": true
+                    "description": "An Image ID to deploy the Linode Disk from.\n"
                 },
                 "label": {
                     "type": "string",
@@ -9577,14 +9627,12 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode to create this Disk under.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Linode to create this Disk under.\n"
                 },
                 "rootPass": {
                     "type": "string",
                     "description": "The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)\n",
-                    "secret": true,
-                    "willReplaceOnChanges": true
+                    "secret": true
                 },
                 "size": {
                     "type": "integer",
@@ -9593,16 +9641,17 @@
                 "stackscriptData": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)\n",
-                    "secret": true,
-                    "willReplaceOnChanges": true
+                    "secret": true
                 },
                 "stackscriptId": {
                     "type": "integer",
-                    "description": "A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)\n",
-                    "willReplaceOnChanges": true
+                    "description": "A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/linode:index/InstanceDiskTimeouts:InstanceDiskTimeouts"
                 }
             },
             "requiredInputs": [
@@ -9618,16 +9667,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)\n",
-                        "willReplaceOnChanges": true
+                        "description": "A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)\n"
                     },
                     "authorizedUsers": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)\n",
-                        "willReplaceOnChanges": true
+                        "description": "A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)\n"
                     },
                     "created": {
                         "type": "string",
@@ -9635,13 +9682,11 @@
                     },
                     "filesystem": {
                         "type": "string",
-                        "description": "The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)\n",
-                        "willReplaceOnChanges": true
+                        "description": "The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)\n"
                     },
                     "image": {
                         "type": "string",
-                        "description": "An Image ID to deploy the Linode Disk from.\n",
-                        "willReplaceOnChanges": true
+                        "description": "An Image ID to deploy the Linode Disk from.\n"
                     },
                     "label": {
                         "type": "string",
@@ -9649,14 +9694,12 @@
                     },
                     "linodeId": {
                         "type": "integer",
-                        "description": "The ID of the Linode to create this Disk under.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Linode to create this Disk under.\n"
                     },
                     "rootPass": {
                         "type": "string",
                         "description": "The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)\n",
-                        "secret": true,
-                        "willReplaceOnChanges": true
+                        "secret": true
                     },
                     "size": {
                         "type": "integer",
@@ -9665,20 +9708,21 @@
                     "stackscriptData": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)\n",
-                        "secret": true,
-                        "willReplaceOnChanges": true
+                        "secret": true
                     },
                     "stackscriptId": {
                         "type": "integer",
-                        "description": "A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)\n",
-                        "willReplaceOnChanges": true
+                        "description": "A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)\n"
                     },
                     "status": {
                         "type": "string",
                         "description": "A brief description of this Disk's current state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/linode:index/InstanceDiskTimeouts:InstanceDiskTimeouts"
                     },
                     "updated": {
                         "type": "string",
@@ -9921,7 +9965,8 @@
                 "linodes",
                 "prefixLength",
                 "range",
-                "region"
+                "region",
+                "routeTarget"
             ],
             "inputProperties": {
                 "linodeId": {
@@ -9996,6 +10041,13 @@
                     "type": "string",
                     "description": "The Kubernetes Dashboard access URL for this cluster.\n"
                 },
+                "externalPoolTags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.\n"
+                },
                 "k8sVersion": {
                     "type": "string",
                     "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.\n"
@@ -10049,6 +10101,13 @@
                     "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
                     "description": "Defines settings for the Kubernetes Control Plane.\n"
                 },
+                "externalPoolTags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.\n"
+                },
                 "k8sVersion": {
                     "type": "string",
                     "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.\n"
@@ -10101,6 +10160,13 @@
                         "type": "string",
                         "description": "The Kubernetes Dashboard access URL for this cluster.\n"
                     },
+                    "externalPoolTags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.\n"
+                    },
                     "k8sVersion": {
                         "type": "string",
                         "description": "The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.\n"
@@ -10136,6 +10202,109 @@
                             "type": "string"
                         },
                         "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/lkeNodePool:LkeNodePool": {
+            "properties": {
+                "autoscaler": {
+                    "$ref": "#/types/linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler"
+                },
+                "clusterId": {
+                    "type": "integer",
+                    "description": "The ID of the cluster to associate this node pool with.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The number of nodes in the Node Pool.\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/LkeNodePoolNode:LkeNodePoolNode"
+                    },
+                    "description": "A list of nodes in the node pool.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of node pool.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "nodeCount",
+                "nodes",
+                "tags",
+                "type"
+            ],
+            "inputProperties": {
+                "autoscaler": {
+                    "$ref": "#/types/linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler"
+                },
+                "clusterId": {
+                    "type": "integer",
+                    "description": "The ID of the cluster to associate this node pool with.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The number of nodes in the Node Pool.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of node pool.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LkeNodePool resources.\n",
+                "properties": {
+                    "autoscaler": {
+                        "$ref": "#/types/linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler"
+                    },
+                    "clusterId": {
+                        "type": "integer",
+                        "description": "The ID of the cluster to associate this node pool with.\n"
+                    },
+                    "nodeCount": {
+                        "type": "integer",
+                        "description": "The number of nodes in the Node Pool.\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/LkeNodePoolNode:LkeNodePoolNode"
+                        },
+                        "description": "A list of nodes in the node pool.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of node pool.\n"
                     }
                 },
                 "type": "object"
@@ -11284,7 +11453,7 @@
             }
         },
         "linode:index/sshKey:SshKey": {
-            "description": "Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.\nFor more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).\n\n## Import\n\nLinodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.\n\n```sh\n$ pulumi import linode:index/sshKey:SshKey mysshkey 1234567\n```\n\n",
+            "description": "Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.\nFor more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).\n**NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.\n\n## Import\n\nLinodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.\n\n```sh\n$ pulumi import linode:index/sshKey:SshKey mysshkey 1234567\n```\n\n",
             "properties": {
                 "created": {
                     "type": "string",

@@ -283,6 +283,9 @@
                     "control_plane": {
                         "maxItemsOne": true
                     },
+                    "external_pool_tags": {
+                        "maxItemsOne": false
+                    },
                     "pool": {
                         "maxItemsOne": false,
                         "elem": {
@@ -295,6 +298,21 @@
                                 }
                             }
                         }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_lke_node_pool": {
+                "current": "linode:index/lkeNodePool:LkeNodePool",
+                "majorVersion": 4,
+                "fields": {
+                    "autoscaler": {
+                        "maxItemsOne": true
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -1755,11 +1773,12 @@
             "linode:index/firewallDevice:FirewallDevice": 1,
             "linode:index/image:Image": 0,
             "linode:index/instance:Instance": 0,
-            "linode:index/instanceDisk:InstanceDisk": 0,
+            "linode:index/instanceDisk:InstanceDisk": 1,
             "linode:index/instanceIp:InstanceIp": 1,
             "linode:index/instanceSharedIps:InstanceSharedIps": 1,
             "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
+            "linode:index/lkeNodePool:LkeNodePool": 1,
             "linode:index/nodeBalancer:NodeBalancer": 1,
             "linode:index/nodeBalancerConfig:NodeBalancerConfig": 0,
             "linode:index/nodeBalancerNode:NodeBalancerNode": 0,
