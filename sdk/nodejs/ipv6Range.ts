@@ -80,7 +80,7 @@ export class Ipv6Range extends pulumi.CustomResource {
     /**
      * The IPv6 SLAAC address to assign this range to.
      */
-    public readonly routeTarget!: pulumi.Output<string | undefined>;
+    public readonly routeTarget!: pulumi.Output<string>;
 
     /**
      * Create a Ipv6Range resource with the given unique name, arguments, and options.

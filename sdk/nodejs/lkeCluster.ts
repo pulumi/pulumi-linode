@@ -56,6 +56,10 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly dashboardUrl!: pulumi.Output<string>;
     /**
+     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     */
+    public readonly externalPoolTags!: pulumi.Output<string[] | undefined>;
+    /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
     public readonly k8sVersion!: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
             resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
             resourceInputs["dashboardUrl"] = state ? state.dashboardUrl : undefined;
+            resourceInputs["externalPoolTags"] = state ? state.externalPoolTags : undefined;
             resourceInputs["k8sVersion"] = state ? state.k8sVersion : undefined;
             resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
@@ -126,6 +131,7 @@ export class LkeCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
+            resourceInputs["externalPoolTags"] = args ? args.externalPoolTags : undefined;
             resourceInputs["k8sVersion"] = args ? args.k8sVersion : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["pools"] = args ? args.pools : undefined;
@@ -159,6 +165,10 @@ export interface LkeClusterState {
      * The Kubernetes Dashboard access URL for this cluster.
      */
     dashboardUrl?: pulumi.Input<string>;
+    /**
+     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     */
+    externalPoolTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
@@ -201,6 +211,10 @@ export interface LkeClusterArgs {
      * Defines settings for the Kubernetes Control Plane.
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
+    /**
+     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     */
+    externalPoolTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */

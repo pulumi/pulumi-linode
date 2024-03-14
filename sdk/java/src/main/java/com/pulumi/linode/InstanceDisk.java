@@ -10,8 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.InstanceDiskArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.InstanceDiskState;
+import com.pulumi.linode.outputs.InstanceDiskTimeouts;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -262,14 +262,14 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
-    @Export(name="stackscriptData", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> stackscriptData;
+    @Export(name="stackscriptData", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> stackscriptData;
 
     /**
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
      * 
      */
-    public Output<Optional<Map<String,Object>>> stackscriptData() {
+    public Output<Optional<Map<String,String>>> stackscriptData() {
         return Codegen.optional(this.stackscriptData);
     }
     /**
@@ -299,6 +299,12 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    @Export(name="timeouts", refs={InstanceDiskTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceDiskTimeouts> timeouts;
+
+    public Output<Optional<InstanceDiskTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * When this disk was last updated.

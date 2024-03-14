@@ -162,6 +162,8 @@ func Provider() tfbridge.ProviderInfo {
 					"token": {CSharpName: "ApiToken"},
 				},
 			},
+
+			"linode_lke_node_pool": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_sshkey":              {Tok: makeDataSource("getSshKey")},

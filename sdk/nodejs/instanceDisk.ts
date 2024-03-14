@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -136,7 +138,7 @@ export class InstanceDisk extends pulumi.CustomResource {
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
-    public readonly stackscriptData!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly stackscriptData!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
@@ -145,6 +147,7 @@ export class InstanceDisk extends pulumi.CustomResource {
      * A brief description of this Disk's current state.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.InstanceDiskTimeouts | undefined>;
     /**
      * When this disk was last updated.
      */
@@ -175,6 +178,7 @@ export class InstanceDisk extends pulumi.CustomResource {
             resourceInputs["stackscriptData"] = state ? state.stackscriptData : undefined;
             resourceInputs["stackscriptId"] = state ? state.stackscriptId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as InstanceDiskArgs | undefined;
@@ -197,6 +201,7 @@ export class InstanceDisk extends pulumi.CustomResource {
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["stackscriptData"] = args?.stackscriptData ? pulumi.secret(args.stackscriptData) : undefined;
             resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
@@ -253,7 +258,7 @@ export interface InstanceDiskState {
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
-    stackscriptData?: pulumi.Input<{[key: string]: any}>;
+    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
@@ -262,6 +267,7 @@ export interface InstanceDiskState {
      * A brief description of this Disk's current state.
      */
     status?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.InstanceDiskTimeouts>;
     /**
      * When this disk was last updated.
      */
@@ -309,9 +315,10 @@ export interface InstanceDiskArgs {
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
-    stackscriptData?: pulumi.Input<{[key: string]: any}>;
+    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
     stackscriptId?: pulumi.Input<number>;
+    timeouts?: pulumi.Input<inputs.InstanceDiskTimeouts>;
 }

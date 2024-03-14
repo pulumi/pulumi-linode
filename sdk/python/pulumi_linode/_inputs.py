@@ -32,6 +32,7 @@ __all__ = [
     'InstanceConfigInterfaceArgs',
     'InstanceConfigInterfaceIpv4Args',
     'InstanceDiskArgs',
+    'InstanceDiskTimeoutsArgs',
     'InstanceInterfaceArgs',
     'InstanceInterfaceIpv4Args',
     'InstanceIpVpcNat11Args',
@@ -41,6 +42,8 @@ __all__ = [
     'LkeClusterPoolArgs',
     'LkeClusterPoolAutoscalerArgs',
     'LkeClusterPoolNodeArgs',
+    'LkeNodePoolAutoscalerArgs',
+    'LkeNodePoolNodeArgs',
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerFirewallArgs',
     'NodeBalancerFirewallInboundArgs',
@@ -2030,6 +2033,61 @@ class InstanceDiskArgs:
 
 
 @pulumi.input_type
+class InstanceDiskTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+@pulumi.input_type
 class InstanceInterfaceArgs:
     def __init__(__self__, *,
                  purpose: pulumi.Input[str],
@@ -2582,6 +2640,71 @@ class LkeClusterPoolNodeArgs:
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class LkeNodePoolAutoscalerArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[int],
+                 min: pulumi.Input[int]):
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min", value)
+
+
+@pulumi.input_type
+class LkeNodePoolNodeArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 instance_id: pulumi.Input[int],
+                 status: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
         pulumi.set(self, "status", value)
 
 

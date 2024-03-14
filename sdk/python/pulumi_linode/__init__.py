@@ -76,6 +76,7 @@ from .instance_ip import *
 from .instance_shared_ips import *
 from .ipv6_range import *
 from .lke_cluster import *
+from .lke_node_pool import *
 from .node_balancer import *
 from .node_balancer_config import *
 from .node_balancer_node import *
@@ -222,6 +223,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/lkeCluster:LkeCluster": "LkeCluster"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/lkeNodePool",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/lkeNodePool:LkeNodePool": "LkeNodePool"
   }
  },
  {

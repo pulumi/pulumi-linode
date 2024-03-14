@@ -87,6 +87,7 @@
         "instanceSharedIps.ts",
         "ipv6Range.ts",
         "lkeCluster.ts",
+        "lkeNodePool.ts",
         "nodeBalancer.ts",
         "nodeBalancerConfig.ts",
         "nodeBalancerNode.ts",

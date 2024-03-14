@@ -82,7 +82,7 @@ namespace Pulumi.Linode
         /// The IPv6 SLAAC address to assign this range to.
         /// </summary>
         [Output("routeTarget")]
-        public Output<string?> RouteTarget { get; private set; } = null!;
+        public Output<string> RouteTarget { get; private set; } = null!;
 
 
         /// <summary>

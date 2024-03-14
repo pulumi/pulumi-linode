@@ -4392,6 +4392,21 @@ export interface InstanceDisk {
     stackscriptId?: pulumi.Input<number>;
 }
 
+export interface InstanceDiskTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface InstanceInterface {
     /**
      * Whether this interface is currently booted and active.
@@ -4541,6 +4556,17 @@ export interface LkeClusterPoolNode {
      * The status of the node. (`ready`, `notReady`)
      */
     status?: pulumi.Input<string>;
+}
+
+export interface LkeNodePoolAutoscaler {
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
+}
+
+export interface LkeNodePoolNode {
+    id: pulumi.Input<string>;
+    instanceId: pulumi.Input<number>;
+    status: pulumi.Input<string>;
 }
 
 export interface NodeBalancerConfigNodeStatus {
