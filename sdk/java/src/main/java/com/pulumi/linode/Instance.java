@@ -280,10 +280,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+     * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      * 
      */
-    @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
+    @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
     @Export(name="disks", refs={List.class,InstanceDisk.class}, tree="[0,1]")
     private Output<List<InstanceDisk>> disks;
 

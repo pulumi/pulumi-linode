@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
-//				Cluster: *pulumi.String(primary.Id),
+//				Cluster: pulumi.String(primary.Id),
 //				Label:   pulumi.String("mybucket"),
 //			})
 //			if err != nil {
