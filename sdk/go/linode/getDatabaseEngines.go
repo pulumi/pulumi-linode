@@ -117,7 +117,7 @@ import (
 //			}
 //			_, err = linode.NewDatabaseMysql(ctx, "myDb", &linode.DatabaseMysqlArgs{
 //				Label:    pulumi.String("mydb"),
-//				EngineId: *pulumi.String(mysql.Engines[0].Id),
+//				EngineId: pulumi.String(mysql.Engines[0].Id),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})

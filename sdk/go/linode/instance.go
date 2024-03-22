@@ -147,9 +147,9 @@ type Instance struct {
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
-	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks InstanceDiskTypeArrayOutput `pulumi:"disks"`
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
@@ -286,9 +286,9 @@ type instanceState struct {
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs []InstanceConfig `pulumi:"configs"`
-	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId *int `pulumi:"firewallId"`
@@ -382,9 +382,9 @@ type InstanceState struct {
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs InstanceConfigArrayInput
-	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks InstanceDiskTypeArrayInput
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId pulumi.IntPtrInput
@@ -480,9 +480,9 @@ type instanceArgs struct {
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs []InstanceConfig `pulumi:"configs"`
-	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId *int `pulumi:"firewallId"`
@@ -559,9 +559,9 @@ type InstanceArgs struct {
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs InstanceConfigArrayInput
-	// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks InstanceDiskTypeArrayInput
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
 	FirewallId pulumi.IntPtrInput
@@ -749,12 +749,12 @@ func (o InstanceOutput) Booted() pulumi.BoolOutput {
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 //
-// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 func (o InstanceOutput) Configs() InstanceConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceConfigArrayOutput { return v.Configs }).(InstanceConfigArrayOutput)
 }
 
-// Deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
+// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDiskTypeArrayOutput { return v.Disks }).(InstanceDiskTypeArrayOutput)
 }
