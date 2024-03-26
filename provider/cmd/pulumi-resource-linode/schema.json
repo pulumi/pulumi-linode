@@ -9024,7 +9024,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
                     },
-                    "deprecationMessage": "The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource."
+                    "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                 },
                 "firewallId": {
                     "type": "integer",
@@ -9225,7 +9225,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
                     },
-                    "deprecationMessage": "The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource."
+                    "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                 },
                 "firewallId": {
                     "type": "integer",
@@ -9383,7 +9383,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceDisk:InstanceDisk"
                         },
-                        "deprecationMessage": "The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource."
+                        "deprecationMessage": "The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource."
                     },
                     "firewallId": {
                         "type": "integer",

@@ -147,11 +147,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
-     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
      */
     public readonly configs!: pulumi.Output<outputs.InstanceConfig[]>;
     /**
-     * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * @deprecated The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
      */
     public readonly disks!: pulumi.Output<outputs.InstanceDisk[]>;
     /**
@@ -415,11 +415,11 @@ export interface InstanceState {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
-     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
     /**
-     * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * @deprecated The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
      */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**
@@ -582,11 +582,11 @@ export interface InstanceArgs {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
-     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
     /**
-     * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * @deprecated The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
      */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
     /**

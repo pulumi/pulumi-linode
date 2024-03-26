@@ -172,19 +172,19 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
      * 
      */
-    @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+    @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
     @Import(name="disks")
     private @Nullable Output<List<InstanceDiskArgs>> disks;
 
     /**
      * @deprecated
-     * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
      * 
      */
-    @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+    @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
     public Optional<Output<List<InstanceDiskArgs>>> disks() {
         return Optional.ofNullable(this.disks);
     }
@@ -915,10 +915,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+         * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
          * 
          */
-        @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+        @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
         public Builder disks(@Nullable Output<List<InstanceDiskArgs>> disks) {
             $.disks = disks;
             return this;
@@ -928,10 +928,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+         * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
          * 
          */
-        @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+        @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
         public Builder disks(List<InstanceDiskArgs> disks) {
             return disks(Output.of(disks));
         }
@@ -940,10 +940,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+         * The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.
          * 
          */
-        @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+        @Deprecated /* The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource. */
         public Builder disks(InstanceDiskArgs... disks) {
             return disks(List.of(disks));
         }
