@@ -110,8 +110,8 @@ class InstanceArgs:
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if disks is not None:
-            warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-            pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
+            warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+            pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
         if firewall_id is not None:
@@ -266,8 +266,8 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
-        warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-        pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
+        warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+        pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
 
         return pulumi.get(self, "disks")
 
@@ -616,8 +616,8 @@ class _InstanceState:
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if disks is not None:
-            warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-            pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
+            warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+            pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
         if firewall_id is not None:
@@ -790,8 +790,8 @@ class _InstanceState:
     @property
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
-        warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-        pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
+        warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+        pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
 
         return pulumi.get(self, "disks")
 
@@ -1686,8 +1686,8 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def disks(self) -> pulumi.Output[Sequence['outputs.InstanceDisk']]:
-        warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-        pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
+        warnings.warn("""The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""", DeprecationWarning)
+        pulumi.log.warn("""disks is deprecated: The embedded disk block in linode_instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode_instance_disk resource.""")
 
         return pulumi.get(self, "disks")
 
