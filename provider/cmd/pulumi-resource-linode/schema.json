@@ -92,6 +92,19 @@
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
             },
+            "objAccessKey": {
+                "type": "string",
+                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
+            },
+            "objSecretKey": {
+                "type": "string",
+                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
+                "secret": true
+            },
+            "objUseTempKeys": {
+                "type": "boolean",
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and\nlinode_object_sorage_bucket resource.\n"
+            },
             "skipImplicitReboots": {
                 "type": "boolean",
                 "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
@@ -1156,10 +1169,12 @@
         "linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler": {
             "properties": {
                 "max": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of nodes to autoscale to.\n"
                 },
                 "min": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum number of nodes to autoscale to.\n"
                 }
             },
             "type": "object",
@@ -1171,13 +1186,16 @@
         "linode:index/LkeNodePoolNode:LkeNodePoolNode": {
             "properties": {
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the node.\n"
                 },
                 "instanceId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the underlying Linode instance.\n"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The status of the node. (`ready`, `not_ready`)\n"
                 }
             },
             "type": "object",
@@ -7267,6 +7285,19 @@
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
             },
+            "objAccessKey": {
+                "type": "string",
+                "description": "The access key to be used in linode_object_storage_bucket and linode_object_storage_object.\n"
+            },
+            "objSecretKey": {
+                "type": "string",
+                "description": "The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.\n",
+                "secret": true
+            },
+            "objUseTempKeys": {
+                "type": "boolean",
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and\nlinode_object_sorage_bucket resource.\n"
+            },
             "skipImplicitReboots": {
                 "type": "boolean",
                 "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
@@ -7331,6 +7362,19 @@
             "minRetryDelayMs": {
                 "type": "integer",
                 "description": "Minimum delay in milliseconds before retrying a request.\n"
+            },
+            "objAccessKey": {
+                "type": "string",
+                "description": "The access key to be used in linode_object_storage_bucket and linode_object_storage_object.\n"
+            },
+            "objSecretKey": {
+                "type": "string",
+                "description": "The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.\n",
+                "secret": true
+            },
+            "objUseTempKeys": {
+                "type": "boolean",
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and\nlinode_object_sorage_bucket resource.\n"
             },
             "skipImplicitReboots": {
                 "type": "boolean",
@@ -10046,7 +10090,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.\n"
+                    "description": "A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.\n"
                 },
                 "k8sVersion": {
                     "type": "string",
@@ -10106,7 +10150,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.\n"
+                    "description": "A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.\n"
                 },
                 "k8sVersion": {
                     "type": "string",
@@ -10165,7 +10209,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.\n"
+                        "description": "A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.\n"
                     },
                     "k8sVersion": {
                         "type": "string",
@@ -10208,17 +10252,18 @@
             }
         },
         "linode:index/lkeNodePool:LkeNodePool": {
+            "description": "\n\n## Import\n\nLKE Node Pools can be imported using the `cluster_id,id`, e.g.\n\n```sh\n$ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345\n```\n\n",
             "properties": {
                 "autoscaler": {
                     "$ref": "#/types/linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler"
                 },
                 "clusterId": {
                     "type": "integer",
-                    "description": "The ID of the cluster to associate this node pool with.\n"
+                    "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                 },
                 "nodeCount": {
                     "type": "integer",
-                    "description": "The number of nodes in the Node Pool.\n"
+                    "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
                 },
                 "nodes": {
                     "type": "array",
@@ -10232,11 +10277,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of node pool.\n"
+                    "description": "A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
                 }
             },
             "required": [
@@ -10252,22 +10297,22 @@
                 },
                 "clusterId": {
                     "type": "integer",
-                    "description": "The ID of the cluster to associate this node pool with.\n"
+                    "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                 },
                 "nodeCount": {
                     "type": "integer",
-                    "description": "The number of nodes in the Node Pool.\n"
+                    "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                    "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of node pool.\n"
+                    "description": "A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
                 }
             },
             "requiredInputs": [
@@ -10282,11 +10327,11 @@
                     },
                     "clusterId": {
                         "type": "integer",
-                        "description": "The ID of the cluster to associate this node pool with.\n"
+                        "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                     },
                     "nodeCount": {
                         "type": "integer",
-                        "description": "The number of nodes in the Node Pool.\n"
+                        "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
                     },
                     "nodes": {
                         "type": "array",
@@ -10300,11 +10345,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags applied to this object. Tags are for organizational purposes only.\n"
+                        "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of node pool.\n"
+                        "description": "A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
                     }
                 },
                 "type": "object"
@@ -10847,11 +10892,11 @@
             }
         },
         "linode:index/objectStorageBucket:ObjectStorageBucket": {
-            "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n## Example Usage\n\nThe following example shows how one might use this resource to create an Object Storage Bucket:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: \"mybucket\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"mybucket\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var primary = Linode.GetObjectStorageCluster.Invoke(new()\n    {\n        Id = \"us-east-1\",\n    });\n\n    var foobar = new Linode.ObjectStorageBucket(\"foobar\", new()\n    {\n        Cluster = primary.Apply(getObjectStorageClusterResult =\u003e getObjectStorageClusterResult.Id),\n        Label = \"mybucket\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(\"mybucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageClusterArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()\n            .id(\"us-east-1\")\n            .build());\n\n        var foobar = new ObjectStorageBucket(\"foobar\", ObjectStorageBucketArgs.builder()        \n            .cluster(primary.applyValue(getObjectStorageClusterResult -\u003e getObjectStorageClusterResult.id()))\n            .label(\"mybucket\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:ObjectStorageBucket\n    properties:\n      cluster: ${primary.id}\n      label: mybucket\nvariables:\n  primary:\n    fn::invoke:\n      Function: linode:getObjectStorageCluster\n      Arguments:\n        id: us-east-1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst mykey = new linode.ObjectStorageKey(\"mykey\", {label: \"image-access\"});\nconst mybucket = new linode.ObjectStorageBucket(\"mybucket\", {\n    accessKey: mykey.accessKey,\n    secretKey: mykey.secretKey,\n    cluster: \"us-east-1\",\n    label: \"mybucket\",\n    lifecycleRules: [{\n        id: \"my-rule\",\n        enabled: true,\n        abortIncompleteMultipartUploadDays: 5,\n        expiration: {\n            date: \"2021-06-21\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmykey = linode.ObjectStorageKey(\"mykey\", label=\"image-access\")\nmybucket = linode.ObjectStorageBucket(\"mybucket\",\n    access_key=mykey.access_key,\n    secret_key=mykey.secret_key,\n    cluster=\"us-east-1\",\n    label=\"mybucket\",\n    lifecycle_rules=[linode.ObjectStorageBucketLifecycleRuleArgs(\n        id=\"my-rule\",\n        enabled=True,\n        abort_incomplete_multipart_upload_days=5,\n        expiration=linode.ObjectStorageBucketLifecycleRuleExpirationArgs(\n            date=\"2021-06-21\",\n        ),\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Linode.ObjectStorageKey(\"mykey\", new()\n    {\n        Label = \"image-access\",\n    });\n\n    var mybucket = new Linode.ObjectStorageBucket(\"mybucket\", new()\n    {\n        AccessKey = mykey.AccessKey,\n        SecretKey = mykey.SecretKey,\n        Cluster = \"us-east-1\",\n        Label = \"mybucket\",\n        LifecycleRules = new[]\n        {\n            new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs\n            {\n                Id = \"my-rule\",\n                Enabled = true,\n                AbortIncompleteMultipartUploadDays = 5,\n                Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs\n                {\n                    Date = \"2021-06-21\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmykey, err := linode.NewObjectStorageKey(ctx, \"mykey\", \u0026linode.ObjectStorageKeyArgs{\n\t\t\tLabel: pulumi.String(\"image-access\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"mybucket\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tAccessKey: mykey.AccessKey,\n\t\t\tSecretKey: mykey.SecretKey,\n\t\t\tCluster:   pulumi.String(\"us-east-1\"),\n\t\t\tLabel:     pulumi.String(\"mybucket\"),\n\t\t\tLifecycleRules: linode.ObjectStorageBucketLifecycleRuleArray{\n\t\t\t\t\u0026linode.ObjectStorageBucketLifecycleRuleArgs{\n\t\t\t\t\tId:                                 pulumi.String(\"my-rule\"),\n\t\t\t\t\tEnabled:                            pulumi.Bool(true),\n\t\t\t\t\tAbortIncompleteMultipartUploadDays: pulumi.Int(5),\n\t\t\t\t\tExpiration: \u0026linode.ObjectStorageBucketLifecycleRuleExpirationArgs{\n\t\t\t\t\t\tDate: pulumi.String(\"2021-06-21\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageKey;\nimport com.pulumi.linode.ObjectStorageKeyArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleExpirationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new ObjectStorageKey(\"mykey\", ObjectStorageKeyArgs.builder()        \n            .label(\"image-access\")\n            .build());\n\n        var mybucket = new ObjectStorageBucket(\"mybucket\", ObjectStorageBucketArgs.builder()        \n            .accessKey(mykey.accessKey())\n            .secretKey(mykey.secretKey())\n            .cluster(\"us-east-1\")\n            .label(\"mybucket\")\n            .lifecycleRules(ObjectStorageBucketLifecycleRuleArgs.builder()\n                .id(\"my-rule\")\n                .enabled(true)\n                .abortIncompleteMultipartUploadDays(5)\n                .expiration(ObjectStorageBucketLifecycleRuleExpirationArgs.builder()\n                    .date(\"2021-06-21\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: linode:ObjectStorageKey\n    properties:\n      label: image-access\n  mybucket:\n    type: linode:ObjectStorageBucket\n    properties:\n      accessKey: ${mykey.accessKey}\n      secretKey: ${mykey.secretKey}\n      cluster: us-east-1\n      label: mybucket\n      lifecycleRules:\n        - id: my-rule\n          enabled: true\n          abortIncompleteMultipartUploadDays: 5\n          expiration:\n            date: 2021-06-21\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.\n\n```sh\n$ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar\n```\n\n",
+            "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\n\n## Example Usage\n\nThe following example shows how one might use this resource to create an Object Storage Bucket:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: \"mybucket\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"mybucket\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var primary = Linode.GetObjectStorageCluster.Invoke(new()\n    {\n        Id = \"us-east-1\",\n    });\n\n    var foobar = new Linode.ObjectStorageBucket(\"foobar\", new()\n    {\n        Cluster = primary.Apply(getObjectStorageClusterResult =\u003e getObjectStorageClusterResult.Id),\n        Label = \"mybucket\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(\"mybucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageClusterArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()\n            .id(\"us-east-1\")\n            .build());\n\n        var foobar = new ObjectStorageBucket(\"foobar\", ObjectStorageBucketArgs.builder()        \n            .cluster(primary.applyValue(getObjectStorageClusterResult -\u003e getObjectStorageClusterResult.id()))\n            .label(\"mybucket\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:ObjectStorageBucket\n    properties:\n      cluster: ${primary.id}\n      label: mybucket\nvariables:\n  primary:\n    fn::invoke:\n      Function: linode:getObjectStorageCluster\n      Arguments:\n        id: us-east-1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst mykey = new linode.ObjectStorageKey(\"mykey\", {label: \"image-access\"});\nconst mybucket = new linode.ObjectStorageBucket(\"mybucket\", {\n    accessKey: mykey.accessKey,\n    secretKey: mykey.secretKey,\n    cluster: \"us-east-1\",\n    label: \"mybucket\",\n    lifecycleRules: [{\n        id: \"my-rule\",\n        enabled: true,\n        abortIncompleteMultipartUploadDays: 5,\n        expiration: {\n            date: \"2021-06-21\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmykey = linode.ObjectStorageKey(\"mykey\", label=\"image-access\")\nmybucket = linode.ObjectStorageBucket(\"mybucket\",\n    access_key=mykey.access_key,\n    secret_key=mykey.secret_key,\n    cluster=\"us-east-1\",\n    label=\"mybucket\",\n    lifecycle_rules=[linode.ObjectStorageBucketLifecycleRuleArgs(\n        id=\"my-rule\",\n        enabled=True,\n        abort_incomplete_multipart_upload_days=5,\n        expiration=linode.ObjectStorageBucketLifecycleRuleExpirationArgs(\n            date=\"2021-06-21\",\n        ),\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Linode.ObjectStorageKey(\"mykey\", new()\n    {\n        Label = \"image-access\",\n    });\n\n    var mybucket = new Linode.ObjectStorageBucket(\"mybucket\", new()\n    {\n        AccessKey = mykey.AccessKey,\n        SecretKey = mykey.SecretKey,\n        Cluster = \"us-east-1\",\n        Label = \"mybucket\",\n        LifecycleRules = new[]\n        {\n            new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs\n            {\n                Id = \"my-rule\",\n                Enabled = true,\n                AbortIncompleteMultipartUploadDays = 5,\n                Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs\n                {\n                    Date = \"2021-06-21\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmykey, err := linode.NewObjectStorageKey(ctx, \"mykey\", \u0026linode.ObjectStorageKeyArgs{\n\t\t\tLabel: pulumi.String(\"image-access\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"mybucket\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tAccessKey: mykey.AccessKey,\n\t\t\tSecretKey: mykey.SecretKey,\n\t\t\tCluster:   pulumi.String(\"us-east-1\"),\n\t\t\tLabel:     pulumi.String(\"mybucket\"),\n\t\t\tLifecycleRules: linode.ObjectStorageBucketLifecycleRuleArray{\n\t\t\t\t\u0026linode.ObjectStorageBucketLifecycleRuleArgs{\n\t\t\t\t\tId:                                 pulumi.String(\"my-rule\"),\n\t\t\t\t\tEnabled:                            pulumi.Bool(true),\n\t\t\t\t\tAbortIncompleteMultipartUploadDays: pulumi.Int(5),\n\t\t\t\t\tExpiration: \u0026linode.ObjectStorageBucketLifecycleRuleExpirationArgs{\n\t\t\t\t\t\tDate: pulumi.String(\"2021-06-21\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageKey;\nimport com.pulumi.linode.ObjectStorageKeyArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleExpirationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new ObjectStorageKey(\"mykey\", ObjectStorageKeyArgs.builder()        \n            .label(\"image-access\")\n            .build());\n\n        var mybucket = new ObjectStorageBucket(\"mybucket\", ObjectStorageBucketArgs.builder()        \n            .accessKey(mykey.accessKey())\n            .secretKey(mykey.secretKey())\n            .cluster(\"us-east-1\")\n            .label(\"mybucket\")\n            .lifecycleRules(ObjectStorageBucketLifecycleRuleArgs.builder()\n                .id(\"my-rule\")\n                .enabled(true)\n                .abortIncompleteMultipartUploadDays(5)\n                .expiration(ObjectStorageBucketLifecycleRuleExpirationArgs.builder()\n                    .date(\"2021-06-21\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: linode:ObjectStorageKey\n    properties:\n      label: image-access\n  mybucket:\n    type: linode:ObjectStorageBucket\n    properties:\n      accessKey: ${mykey.accessKey}\n      secretKey: ${mykey.secretKey}\n      cluster: us-east-1\n      label: mybucket\n      lifecycleRules:\n        - id: my-rule\n          enabled: true\n          abortIncompleteMultipartUploadDays: 5\n          expiration:\n            date: 2021-06-21\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules using provider-level object credentials\n\n## Import\n\nLinodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.\n\n```sh\n$ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar\n```\n\n",
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "The access key to authenticate with.\n"
+                    "description": "The access key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_access_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n"
                 },
                 "acl": {
                     "type": "string",
@@ -10890,7 +10935,8 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "The secret key to authenticate with.\n"
+                    "description": "The secret key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_secret_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n",
+                    "secret": true
                 },
                 "versioning": {
                     "type": "boolean",
@@ -10907,7 +10953,7 @@
             "inputProperties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "The access key to authenticate with.\n"
+                    "description": "The access key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_access_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n"
                 },
                 "acl": {
                     "type": "string",
@@ -10940,7 +10986,8 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "The secret key to authenticate with.\n"
+                    "description": "The secret key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_secret_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n",
+                    "secret": true
                 },
                 "versioning": {
                     "type": "boolean",
@@ -10956,7 +11003,7 @@
                 "properties": {
                     "accessKey": {
                         "type": "string",
-                        "description": "The access key to authenticate with.\n"
+                        "description": "The access key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_access_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n"
                     },
                     "acl": {
                         "type": "string",
@@ -10997,7 +11044,8 @@
                     },
                     "secretKey": {
                         "type": "string",
-                        "description": "The secret key to authenticate with.\n"
+                        "description": "The secret key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_secret_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n",
+                        "secret": true
                     },
                     "versioning": {
                         "type": "boolean",
@@ -11089,11 +11137,11 @@
             }
         },
         "linode:index/objectStorageObject:ObjectStorageObject": {
-            "description": "Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.\n\n## Example Usage\n\n### Uploading plaintext to a bucket\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    cluster: \"us-east-1\",\n    key: \"my-object\",\n    secretKey: linode_object_storage_key.my_key.secret_key,\n    accessKey: linode_object_storage_key.my_key.access_key,\n    content: \"This is the content of the Object...\",\n    contentType: \"text/plain\",\n    contentLanguage: \"en\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    cluster=\"us-east-1\",\n    key=\"my-object\",\n    secret_key=linode_object_storage_key[\"my_key\"][\"secret_key\"],\n    access_key=linode_object_storage_key[\"my_key\"][\"access_key\"],\n    content=\"This is the content of the Object...\",\n    content_type=\"text/plain\",\n    content_language=\"en\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Cluster = \"us-east-1\",\n        Key = \"my-object\",\n        SecretKey = linode_object_storage_key.My_key.Secret_key,\n        AccessKey = linode_object_storage_key.My_key.Access_key,\n        Content = \"This is the content of the Object...\",\n        ContentType = \"text/plain\",\n        ContentLanguage = \"en\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:          pulumi.String(\"my-bucket\"),\n\t\t\tCluster:         pulumi.String(\"us-east-1\"),\n\t\t\tKey:             pulumi.String(\"my-object\"),\n\t\t\tSecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),\n\t\t\tAccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),\n\t\t\tContent:         pulumi.String(\"This is the content of the Object...\"),\n\t\t\tContentType:     pulumi.String(\"text/plain\"),\n\t\t\tContentLanguage: pulumi.String(\"en\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()        \n            .bucket(\"my-bucket\")\n            .cluster(\"us-east-1\")\n            .key(\"my-object\")\n            .secretKey(linode_object_storage_key.my_key().secret_key())\n            .accessKey(linode_object_storage_key.my_key().access_key())\n            .content(\"This is the content of the Object...\")\n            .contentType(\"text/plain\")\n            .contentLanguage(\"en\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      cluster: us-east-1\n      key: my-object\n      secretKey: ${linode_object_storage_key.my_key.secret_key}\n      accessKey: ${linode_object_storage_key.my_key.access_key}\n      content: This is the content of the Object...\n      contentType: text/plain\n      contentLanguage: en\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.\n\n## Example Usage\n\n### Uploading plaintext to a bucket\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    cluster: \"us-east-1\",\n    key: \"my-object\",\n    secretKey: linode_object_storage_key.my_key.secret_key,\n    accessKey: linode_object_storage_key.my_key.access_key,\n    content: \"This is the content of the Object...\",\n    contentType: \"text/plain\",\n    contentLanguage: \"en\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    cluster=\"us-east-1\",\n    key=\"my-object\",\n    secret_key=linode_object_storage_key[\"my_key\"][\"secret_key\"],\n    access_key=linode_object_storage_key[\"my_key\"][\"access_key\"],\n    content=\"This is the content of the Object...\",\n    content_type=\"text/plain\",\n    content_language=\"en\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Cluster = \"us-east-1\",\n        Key = \"my-object\",\n        SecretKey = linode_object_storage_key.My_key.Secret_key,\n        AccessKey = linode_object_storage_key.My_key.Access_key,\n        Content = \"This is the content of the Object...\",\n        ContentType = \"text/plain\",\n        ContentLanguage = \"en\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:          pulumi.String(\"my-bucket\"),\n\t\t\tCluster:         pulumi.String(\"us-east-1\"),\n\t\t\tKey:             pulumi.String(\"my-object\"),\n\t\t\tSecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),\n\t\t\tAccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),\n\t\t\tContent:         pulumi.String(\"This is the content of the Object...\"),\n\t\t\tContentType:     pulumi.String(\"text/plain\"),\n\t\t\tContentLanguage: pulumi.String(\"en\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()        \n            .bucket(\"my-bucket\")\n            .cluster(\"us-east-1\")\n            .key(\"my-object\")\n            .secretKey(linode_object_storage_key.my_key().secret_key())\n            .accessKey(linode_object_storage_key.my_key().access_key())\n            .content(\"This is the content of the Object...\")\n            .contentType(\"text/plain\")\n            .contentLanguage(\"en\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      cluster: us-east-1\n      key: my-object\n      secretKey: ${linode_object_storage_key.my_key.secret_key}\n      accessKey: ${linode_object_storage_key.my_key.access_key}\n      content: This is the content of the Object...\n      contentType: text/plain\n      contentLanguage: en\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n",
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "The access key to authenticate with.\n"
+                    "description": "The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by\n* configuring the `obj_access_key` in the provider configuration;\n* or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.\n"
                 },
                 "acl": {
                     "type": "string",
@@ -11160,7 +11208,8 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "The secret key to authenitcate with.\n"
+                    "description": "The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by\n* configuring the `obj_secret_key` in the provider configuration;\n* or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.\n",
+                    "secret": true
                 },
                 "source": {
                     "type": "string",
@@ -11176,20 +11225,18 @@
                 }
             },
             "required": [
-                "accessKey",
                 "bucket",
                 "cluster",
                 "contentType",
                 "endpoint",
                 "etag",
                 "key",
-                "secretKey",
                 "versionId"
             ],
             "inputProperties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "The access key to authenticate with.\n"
+                    "description": "The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by\n* configuring the `obj_access_key` in the provider configuration;\n* or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.\n"
                 },
                 "acl": {
                     "type": "string",
@@ -11259,7 +11306,8 @@
                 },
                 "secretKey": {
                     "type": "string",
-                    "description": "The secret key to authenitcate with.\n"
+                    "description": "The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by\n* configuring the `obj_secret_key` in the provider configuration;\n* or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.\n",
+                    "secret": true
                 },
                 "source": {
                     "type": "string",
@@ -11271,18 +11319,16 @@
                 }
             },
             "requiredInputs": [
-                "accessKey",
                 "bucket",
                 "cluster",
-                "key",
-                "secretKey"
+                "key"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ObjectStorageObject resources.\n",
                 "properties": {
                     "accessKey": {
                         "type": "string",
-                        "description": "The access key to authenticate with.\n"
+                        "description": "The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by\n* configuring the `obj_access_key` in the provider configuration;\n* or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.\n"
                     },
                     "acl": {
                         "type": "string",
@@ -11352,7 +11398,8 @@
                     },
                     "secretKey": {
                         "type": "string",
-                        "description": "The secret key to authenitcate with.\n"
+                        "description": "The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by\n* configuring the `obj_secret_key` in the provider configuration;\n* or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.\n",
+                        "secret": true
                     },
                     "source": {
                         "type": "string",
