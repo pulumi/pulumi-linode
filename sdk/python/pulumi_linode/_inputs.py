@@ -2648,12 +2648,19 @@ class LkeNodePoolAutoscalerArgs:
     def __init__(__self__, *,
                  max: pulumi.Input[int],
                  min: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max: The maximum number of nodes to autoscale to.
+        :param pulumi.Input[int] min: The minimum number of nodes to autoscale to.
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> pulumi.Input[int]:
+        """
+        The maximum number of nodes to autoscale to.
+        """
         return pulumi.get(self, "max")
 
     @max.setter
@@ -2663,6 +2670,9 @@ class LkeNodePoolAutoscalerArgs:
     @property
     @pulumi.getter
     def min(self) -> pulumi.Input[int]:
+        """
+        The minimum number of nodes to autoscale to.
+        """
         return pulumi.get(self, "min")
 
     @min.setter
@@ -2676,6 +2686,11 @@ class LkeNodePoolNodeArgs:
                  id: pulumi.Input[str],
                  instance_id: pulumi.Input[int],
                  status: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of the node.
+        :param pulumi.Input[int] instance_id: The ID of the underlying Linode instance.
+        :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "status", status)
@@ -2683,6 +2698,9 @@ class LkeNodePoolNodeArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
+        """
+        The ID of the node.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -2692,6 +2710,9 @@ class LkeNodePoolNodeArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the underlying Linode instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -2701,6 +2722,9 @@ class LkeNodePoolNodeArgs:
     @property
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
+        """
+        The status of the node. (`ready`, `not_ready`)
+        """
         return pulumi.get(self, "status")
 
     @status.setter

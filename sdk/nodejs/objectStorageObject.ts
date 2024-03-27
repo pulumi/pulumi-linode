@@ -58,9 +58,11 @@ export class ObjectStorageObject extends pulumi.CustomResource {
     }
 
     /**
-     * The access key to authenticate with.
+     * The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      */
-    public readonly accessKey!: pulumi.Output<string>;
+    public readonly accessKey!: pulumi.Output<string | undefined>;
     /**
      * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
@@ -122,9 +124,11 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The secret key to authenitcate with.
+     * The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      */
-    public readonly secretKey!: pulumi.Output<string>;
+    public readonly secretKey!: pulumi.Output<string | undefined>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
      */
@@ -173,9 +177,6 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             resourceInputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
         } else {
             const args = argsOrState as ObjectStorageObjectArgs | undefined;
-            if ((!args || args.accessKey === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessKey'");
-            }
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
@@ -184,9 +185,6 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             }
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
-            }
-            if ((!args || args.secretKey === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secretKey'");
             }
             resourceInputs["accessKey"] = args ? args.accessKey : undefined;
             resourceInputs["acl"] = args ? args.acl : undefined;
@@ -204,12 +202,14 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["websiteRedirect"] = args ? args.websiteRedirect : undefined;
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secretKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ObjectStorageObject.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -219,7 +219,9 @@ export class ObjectStorageObject extends pulumi.CustomResource {
  */
 export interface ObjectStorageObjectState {
     /**
-     * The access key to authenticate with.
+     * The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -283,7 +285,9 @@ export interface ObjectStorageObjectState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The secret key to authenitcate with.
+     * The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      */
     secretKey?: pulumi.Input<string>;
     /**
@@ -305,9 +309,11 @@ export interface ObjectStorageObjectState {
  */
 export interface ObjectStorageObjectArgs {
     /**
-     * The access key to authenticate with.
+     * The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      */
-    accessKey: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
@@ -369,9 +375,11 @@ export interface ObjectStorageObjectArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The secret key to authenitcate with.
+     * The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      */
-    secretKey: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
      */

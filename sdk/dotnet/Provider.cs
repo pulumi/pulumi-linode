@@ -31,6 +31,18 @@ namespace Pulumi.Linode
         public Output<string?> ConfigProfile { get; private set; } = null!;
 
         /// <summary>
+        /// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// </summary>
+        [Output("objAccessKey")]
+        public Output<string?> ObjAccessKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// </summary>
+        [Output("objSecretKey")]
+        public Output<string?> ObjSecretKey { get; private set; } = null!;
+
+        /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
         [Output("token")]
@@ -66,6 +78,10 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "objSecretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -123,6 +139,35 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("minRetryDelayMs", json: true)]
         public Input<int>? MinRetryDelayMs { get; set; }
+
+        /// <summary>
+        /// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// </summary>
+        [Input("objAccessKey")]
+        public Input<string>? ObjAccessKey { get; set; }
+
+        [Input("objSecretKey")]
+        private Input<string>? _objSecretKey;
+
+        /// <summary>
+        /// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// </summary>
+        public Input<string>? ObjSecretKey
+        {
+            get => _objSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _objSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+        /// linode_object_sorage_bucket resource.
+        /// </summary>
+        [Input("objUseTempKeys", json: true)]
+        public Input<bool>? ObjUseTempKeys { get; set; }
 
         /// <summary>
         /// If true, Linode Instances will not be rebooted on config and interface changes.

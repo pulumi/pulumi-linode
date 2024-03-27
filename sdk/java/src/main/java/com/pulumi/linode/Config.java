@@ -68,6 +68,28 @@ public final class Config {
         return Codegen.integerProp("minRetryDelayMs").config(config).get();
     }
 /**
+ * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
+ * 
+ */
+    public Optional<String> objAccessKey() {
+        return Codegen.stringProp("objAccessKey").config(config).get();
+    }
+/**
+ * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
+ * 
+ */
+    public Optional<String> objSecretKey() {
+        return Codegen.stringProp("objSecretKey").config(config).get();
+    }
+/**
+ * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
+ * linode_object_sorage_bucket resource.
+ * 
+ */
+    public Optional<Boolean> objUseTempKeys() {
+        return Codegen.booleanProp("objUseTempKeys").config(config).get();
+    }
+/**
  * If true, Linode Instances will not be rebooted on config and interface changes.
  * 
  */

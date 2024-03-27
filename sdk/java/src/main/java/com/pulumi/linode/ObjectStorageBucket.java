@@ -115,6 +115,8 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
+ * 
  * ## Import
  * 
  * Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
@@ -127,14 +129,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/objectStorageBucket:ObjectStorageBucket")
 public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**
-     * The access key to authenticate with.
+     * The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_access_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
-     * @return The access key to authenticate with.
+     * @return The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_access_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     public Output<Optional<String>> accessKey() {
@@ -255,14 +261,18 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lifecycleRules);
     }
     /**
-     * The secret key to authenticate with.
+     * The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_secret_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
-     * @return The secret key to authenticate with.
+     * @return The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_secret_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     public Output<Optional<String>> secretKey() {
@@ -323,6 +333,9 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secretKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -18,6 +18,16 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * LKE Node Pools can be imported using the `cluster_id,id`, e.g.
+ * 
+ * ```sh
+ * $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
+ * ```
+ * 
+ */
 @ResourceType(type="linode:index/lkeNodePool:LkeNodePool")
 public class LkeNodePool extends com.pulumi.resources.CustomResource {
     @Export(name="autoscaler", refs={LkeNodePoolAutoscaler.class}, tree="[0]")
@@ -27,28 +37,28 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoscaler);
     }
     /**
-     * The ID of the cluster to associate this node pool with.
+     * ID of the LKE Cluster where to create the current Node Pool.
      * 
      */
     @Export(name="clusterId", refs={Integer.class}, tree="[0]")
     private Output<Integer> clusterId;
 
     /**
-     * @return The ID of the cluster to associate this node pool with.
+     * @return ID of the LKE Cluster where to create the current Node Pool.
      * 
      */
     public Output<Integer> clusterId() {
         return this.clusterId;
     }
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      */
     @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
-     * @return The number of nodes in the Node Pool.
+     * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      */
     public Output<Integer> nodeCount() {
@@ -69,28 +79,32 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
         return this.nodes;
     }
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Output<List<String>> tags() {
         return this.tags;
     }
     /**
-     * The type of node pool.
+     * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of node pool.
+     * @return A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     public Output<String> type() {

@@ -15,23 +15,47 @@ public final class LkeNodePoolNodeArgs extends com.pulumi.resources.ResourceArgs
 
     public static final LkeNodePoolNodeArgs Empty = new LkeNodePoolNodeArgs();
 
+    /**
+     * The ID of the node.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return The ID of the node.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
 
+    /**
+     * The ID of the underlying Linode instance.
+     * 
+     */
     @Import(name="instanceId", required=true)
     private Output<Integer> instanceId;
 
+    /**
+     * @return The ID of the underlying Linode instance.
+     * 
+     */
     public Output<Integer> instanceId() {
         return this.instanceId;
     }
 
+    /**
+     * The status of the node. (`ready`, `not_ready`)
+     * 
+     */
     @Import(name="status", required=true)
     private Output<String> status;
 
+    /**
+     * @return The status of the node. (`ready`, `not_ready`)
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
@@ -62,29 +86,65 @@ public final class LkeNodePoolNodeArgs extends com.pulumi.resources.ResourceArgs
             $ = new LkeNodePoolNodeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The ID of the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID of the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param instanceId The ID of the underlying Linode instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(Output<Integer> instanceId) {
             $.instanceId = instanceId;
             return this;
         }
 
+        /**
+         * @param instanceId The ID of the underlying Linode instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(Integer instanceId) {
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param status The status of the node. (`ready`, `not_ready`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the node. (`ready`, `not_ready`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

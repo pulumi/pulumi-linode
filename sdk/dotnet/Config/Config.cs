@@ -116,6 +116,37 @@ namespace Pulumi.Linode
             set => _minRetryDelayMs.Set(value);
         }
 
+        private static readonly __Value<string?> _objAccessKey = new __Value<string?>(() => __config.Get("objAccessKey"));
+        /// <summary>
+        /// The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
+        /// </summary>
+        public static string? ObjAccessKey
+        {
+            get => _objAccessKey.Get();
+            set => _objAccessKey.Set(value);
+        }
+
+        private static readonly __Value<string?> _objSecretKey = new __Value<string?>(() => __config.Get("objSecretKey"));
+        /// <summary>
+        /// The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
+        /// </summary>
+        public static string? ObjSecretKey
+        {
+            get => _objSecretKey.Get();
+            set => _objSecretKey.Set(value);
+        }
+
+        private static readonly __Value<bool?> _objUseTempKeys = new __Value<bool?>(() => __config.GetBoolean("objUseTempKeys"));
+        /// <summary>
+        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
+        /// linode_object_sorage_bucket resource.
+        /// </summary>
+        public static bool? ObjUseTempKeys
+        {
+            get => _objUseTempKeys.Get();
+            set => _objUseTempKeys.Set(value);
+        }
+
         private static readonly __Value<bool?> _skipImplicitReboots = new __Value<bool?>(() => __config.GetBoolean("skipImplicitReboots"));
         /// <summary>
         /// If true, Linode Instances will not be rebooted on config and interface changes.

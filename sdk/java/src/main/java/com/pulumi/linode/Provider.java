@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.ProviderArgs;
 import com.pulumi.linode.Utilities;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -47,6 +48,34 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> configProfile() {
         return Codegen.optional(this.configProfile);
+    }
+    /**
+     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    @Export(name="objAccessKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> objAccessKey;
+
+    /**
+     * @return The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    public Output<Optional<String>> objAccessKey() {
+        return Codegen.optional(this.objAccessKey);
+    }
+    /**
+     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    @Export(name="objSecretKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> objSecretKey;
+
+    /**
+     * @return The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    public Output<Optional<String>> objSecretKey() {
+        return Codegen.optional(this.objSecretKey);
     }
     /**
      * The token that allows you access to your Linode account
@@ -119,6 +148,9 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "objSecretKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

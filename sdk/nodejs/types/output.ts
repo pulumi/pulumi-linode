@@ -3831,13 +3831,28 @@ export interface LkeClusterPoolNode {
 }
 
 export interface LkeNodePoolAutoscaler {
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
     max: number;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
     min: number;
 }
 
 export interface LkeNodePoolNode {
+    /**
+     * The ID of the node.
+     */
     id: string;
+    /**
+     * The ID of the underlying Linode instance.
+     */
     instanceId: number;
+    /**
+     * The status of the node. (`ready`, `notReady`)
+     */
     status: string;
 }
 

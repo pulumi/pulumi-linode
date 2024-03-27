@@ -53,6 +53,8 @@ import * as utilities from "./utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
+ *
  * ## Import
  *
  * Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
@@ -90,7 +92,9 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
     }
 
     /**
-     * The access key to authenticate with.
+     * The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
     public readonly accessKey!: pulumi.Output<string | undefined>;
     /**
@@ -127,7 +131,9 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     public readonly lifecycleRules!: pulumi.Output<outputs.ObjectStorageBucketLifecycleRule[] | undefined>;
     /**
-     * The secret key to authenticate with.
+     * The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
     public readonly secretKey!: pulumi.Output<string | undefined>;
     /**
@@ -178,12 +184,14 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["corsEnabled"] = args ? args.corsEnabled : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secretKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ObjectStorageBucket.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -193,7 +201,9 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
  */
 export interface ObjectStorageBucketState {
     /**
-     * The access key to authenticate with.
+     * The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -230,7 +240,9 @@ export interface ObjectStorageBucketState {
      */
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
     /**
-     * The secret key to authenticate with.
+     * The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
     secretKey?: pulumi.Input<string>;
     /**
@@ -248,7 +260,9 @@ export interface ObjectStorageBucketState {
  */
 export interface ObjectStorageBucketArgs {
     /**
-     * The access key to authenticate with.
+     * The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -276,7 +290,9 @@ export interface ObjectStorageBucketArgs {
      */
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
     /**
-     * The secret key to authenticate with.
+     * The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
     secretKey?: pulumi.Input<string>;
     /**

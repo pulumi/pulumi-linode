@@ -48,6 +48,22 @@ minRetryDelayMs: Optional[int]
 Minimum delay in milliseconds before retrying a request.
 """
 
+objAccessKey: Optional[str]
+"""
+The access key to be used in ObjectStorageBucket and linode_object_storage_object.
+"""
+
+objSecretKey: Optional[str]
+"""
+The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
+"""
+
+objUseTempKeys: Optional[bool]
+"""
+If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
+linode_object_sorage_bucket resource.
+"""
+
 skipImplicitReboots: Optional[bool]
 """
 If true, Linode Instances will not be rebooted on config and interface changes.

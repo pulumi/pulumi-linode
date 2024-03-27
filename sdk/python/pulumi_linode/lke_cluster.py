@@ -34,7 +34,7 @@ class LkeClusterArgs:
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
@@ -116,7 +116,7 @@ class LkeClusterArgs:
     @pulumi.getter(name="externalPoolTags")
     def external_pool_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "external_pool_tags")
 
@@ -156,7 +156,7 @@ class _LkeClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -232,7 +232,7 @@ class _LkeClusterState:
     @pulumi.getter(name="externalPoolTags")
     def external_pool_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "external_pool_tags")
 
@@ -354,7 +354,7 @@ class LkeCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeClusterPoolArgs']]]] pools: Additional nested attributes:
@@ -463,7 +463,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[pulumi.InputType['LkeClusterControlPlaneArgs']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[str] label: This Kubernetes cluster's unique label.
@@ -521,7 +521,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter(name="externalPoolTags")
     def external_pool_tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+        A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "external_pool_tags")
 

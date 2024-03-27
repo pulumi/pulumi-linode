@@ -73,6 +73,28 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('minRetryDelayMs')
 
     @property
+    def obj_access_key(self) -> Optional[str]:
+        """
+        The access key to be used in ObjectStorageBucket and linode_object_storage_object.
+        """
+        return __config__.get('objAccessKey')
+
+    @property
+    def obj_secret_key(self) -> Optional[str]:
+        """
+        The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
+        """
+        return __config__.get('objSecretKey')
+
+    @property
+    def obj_use_temp_keys(self) -> Optional[bool]:
+        """
+        If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
+        linode_object_sorage_bucket resource.
+        """
+        return __config__.get_bool('objUseTempKeys')
+
+    @property
     def skip_implicit_reboots(self) -> Optional[bool]:
         """
         If true, Linode Instances will not be rebooted on config and interface changes.

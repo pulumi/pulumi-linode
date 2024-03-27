@@ -101,6 +101,40 @@ Object.defineProperty(exports, "minRetryDelayMs", {
 });
 
 /**
+ * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
+ */
+export declare const objAccessKey: string | undefined;
+Object.defineProperty(exports, "objAccessKey", {
+    get() {
+        return __config.get("objAccessKey");
+    },
+    enumerable: true,
+});
+
+/**
+ * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
+ */
+export declare const objSecretKey: string | undefined;
+Object.defineProperty(exports, "objSecretKey", {
+    get() {
+        return __config.get("objSecretKey");
+    },
+    enumerable: true,
+});
+
+/**
+ * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
+ * linodeObjectSorageBucket resource.
+ */
+export declare const objUseTempKeys: boolean | undefined;
+Object.defineProperty(exports, "objUseTempKeys", {
+    get() {
+        return __config.getObject<boolean>("objUseTempKeys");
+    },
+    enumerable: true,
+});
+
+/**
  * If true, Linode Instances will not be rebooted on config and interface changes.
  */
 export declare const skipImplicitReboots: boolean | undefined;

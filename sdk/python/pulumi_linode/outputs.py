@@ -2576,17 +2576,27 @@ class LkeNodePoolAutoscaler(dict):
     def __init__(__self__, *,
                  max: int,
                  min: int):
+        """
+        :param int max: The maximum number of nodes to autoscale to.
+        :param int min: The minimum number of nodes to autoscale to.
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> int:
+        """
+        The maximum number of nodes to autoscale to.
+        """
         return pulumi.get(self, "max")
 
     @property
     @pulumi.getter
     def min(self) -> int:
+        """
+        The minimum number of nodes to autoscale to.
+        """
         return pulumi.get(self, "min")
 
 
@@ -2613,6 +2623,11 @@ class LkeNodePoolNode(dict):
                  id: str,
                  instance_id: int,
                  status: str):
+        """
+        :param str id: The ID of the node.
+        :param int instance_id: The ID of the underlying Linode instance.
+        :param str status: The status of the node. (`ready`, `not_ready`)
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "status", status)
@@ -2620,16 +2635,25 @@ class LkeNodePoolNode(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the node.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> int:
+        """
+        The ID of the underlying Linode instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The status of the node. (`ready`, `not_ready`)
+        """
         return pulumi.get(self, "status")
 
 

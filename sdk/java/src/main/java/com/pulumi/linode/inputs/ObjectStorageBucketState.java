@@ -20,14 +20,18 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     public static final ObjectStorageBucketState Empty = new ObjectStorageBucketState();
 
     /**
-     * The access key to authenticate with.
+     * The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_access_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The access key to authenticate with.
+     * @return The access key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_access_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -157,14 +161,18 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The secret key to authenticate with.
+     * The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_secret_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return The secret key to authenticate with.
+     * @return The secret key to authenticate with. If not specified with the resource, its value can be
+     * * configured by `obj_secret_key` in the provider configuration;
+     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -229,7 +237,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessKey The access key to authenticate with.
+         * @param accessKey The access key to authenticate with. If not specified with the resource, its value can be
+         * * configured by `obj_access_key` in the provider configuration;
+         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -240,7 +250,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessKey The access key to authenticate with.
+         * @param accessKey The access key to authenticate with. If not specified with the resource, its value can be
+         * * configured by `obj_access_key` in the provider configuration;
+         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -430,7 +442,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretKey The secret key to authenticate with.
+         * @param secretKey The secret key to authenticate with. If not specified with the resource, its value can be
+         * * configured by `obj_secret_key` in the provider configuration;
+         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -441,7 +455,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretKey The secret key to authenticate with.
+         * @param secretKey The secret key to authenticate with. If not specified with the resource, its value can be
+         * * configured by `obj_secret_key` in the provider configuration;
+         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
          * 
          * @return builder
          * 

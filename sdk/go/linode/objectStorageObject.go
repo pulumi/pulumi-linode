@@ -53,8 +53,10 @@ import (
 type ObjectStorageObject struct {
 	pulumi.CustomResourceState
 
-	// The access key to authenticate with.
-	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
+	// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objAccessKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
 	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The name of the bucket to put the object in.
@@ -85,8 +87,10 @@ type ObjectStorageObject struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A map of keys/values to provision metadata.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The secret key to authenitcate with.
-	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
+	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objSecretKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 	// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// A unique version ID value for the object.
@@ -102,9 +106,6 @@ func NewObjectStorageObject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessKey == nil {
-		return nil, errors.New("invalid value for required argument 'AccessKey'")
-	}
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
@@ -114,9 +115,13 @@ func NewObjectStorageObject(ctx *pulumi.Context,
 	if args.Key == nil {
 		return nil, errors.New("invalid value for required argument 'Key'")
 	}
-	if args.SecretKey == nil {
-		return nil, errors.New("invalid value for required argument 'SecretKey'")
+	if args.SecretKey != nil {
+		args.SecretKey = pulumi.ToSecret(args.SecretKey).(pulumi.StringPtrInput)
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secretKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObjectStorageObject
 	err := ctx.RegisterResource("linode:index/objectStorageObject:ObjectStorageObject", name, args, &resource, opts...)
@@ -140,7 +145,9 @@ func GetObjectStorageObject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObjectStorageObject resources.
 type objectStorageObjectState struct {
-	// The access key to authenticate with.
+	// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objAccessKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
 	AccessKey *string `pulumi:"accessKey"`
 	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl *string `pulumi:"acl"`
@@ -172,7 +179,9 @@ type objectStorageObjectState struct {
 	Key *string `pulumi:"key"`
 	// A map of keys/values to provision metadata.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The secret key to authenitcate with.
+	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objSecretKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
 	SecretKey *string `pulumi:"secretKey"`
 	// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
 	Source *string `pulumi:"source"`
@@ -183,7 +192,9 @@ type objectStorageObjectState struct {
 }
 
 type ObjectStorageObjectState struct {
-	// The access key to authenticate with.
+	// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objAccessKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
 	AccessKey pulumi.StringPtrInput
 	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl pulumi.StringPtrInput
@@ -215,7 +226,9 @@ type ObjectStorageObjectState struct {
 	Key pulumi.StringPtrInput
 	// A map of keys/values to provision metadata.
 	Metadata pulumi.StringMapInput
-	// The secret key to authenitcate with.
+	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objSecretKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
 	SecretKey pulumi.StringPtrInput
 	// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
 	Source pulumi.StringPtrInput
@@ -230,8 +243,10 @@ func (ObjectStorageObjectState) ElementType() reflect.Type {
 }
 
 type objectStorageObjectArgs struct {
-	// The access key to authenticate with.
-	AccessKey string `pulumi:"accessKey"`
+	// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objAccessKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+	AccessKey *string `pulumi:"accessKey"`
 	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl *string `pulumi:"acl"`
 	// The name of the bucket to put the object in.
@@ -262,8 +277,10 @@ type objectStorageObjectArgs struct {
 	Key string `pulumi:"key"`
 	// A map of keys/values to provision metadata.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The secret key to authenitcate with.
-	SecretKey string `pulumi:"secretKey"`
+	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objSecretKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+	SecretKey *string `pulumi:"secretKey"`
 	// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
 	Source *string `pulumi:"source"`
 	// Specifies a target URL for website redirect.
@@ -272,8 +289,10 @@ type objectStorageObjectArgs struct {
 
 // The set of arguments for constructing a ObjectStorageObject resource.
 type ObjectStorageObjectArgs struct {
-	// The access key to authenticate with.
-	AccessKey pulumi.StringInput
+	// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objAccessKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+	AccessKey pulumi.StringPtrInput
 	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
 	Acl pulumi.StringPtrInput
 	// The name of the bucket to put the object in.
@@ -304,8 +323,10 @@ type ObjectStorageObjectArgs struct {
 	Key pulumi.StringInput
 	// A map of keys/values to provision metadata.
 	Metadata pulumi.StringMapInput
-	// The secret key to authenitcate with.
-	SecretKey pulumi.StringInput
+	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+	// * configuring the `objSecretKey` in the provider configuration;
+	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+	SecretKey pulumi.StringPtrInput
 	// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
 	Source pulumi.StringPtrInput
 	// Specifies a target URL for website redirect.
@@ -399,9 +420,11 @@ func (o ObjectStorageObjectOutput) ToObjectStorageObjectOutputWithContext(ctx co
 	return o
 }
 
-// The access key to authenticate with.
-func (o ObjectStorageObjectOutput) AccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+// * configuring the `objAccessKey` in the provider configuration;
+// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+func (o ObjectStorageObjectOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
 // The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
@@ -479,9 +502,11 @@ func (o ObjectStorageObjectOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The secret key to authenitcate with.
-func (o ObjectStorageObjectOutput) SecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
+// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+// * configuring the `objSecretKey` in the provider configuration;
+// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
+func (o ObjectStorageObjectOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
 // The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.

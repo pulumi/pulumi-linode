@@ -81,6 +81,8 @@ namespace Pulumi.Linode
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
+    /// 
     /// ## Import
     /// 
     /// Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
@@ -93,7 +95,9 @@ namespace Pulumi.Linode
     public partial class ObjectStorageBucket : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access key to authenticate with.
+        /// The access key to authenticate with. If not specified with the resource, its value can be
+        /// * configured by `obj_access_key` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         /// </summary>
         [Output("accessKey")]
         public Output<string?> AccessKey { get; private set; } = null!;
@@ -148,7 +152,9 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.ObjectStorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
-        /// The secret key to authenticate with.
+        /// The secret key to authenticate with. If not specified with the resource, its value can be
+        /// * configured by `obj_secret_key` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         /// </summary>
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
@@ -186,6 +192,10 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -210,7 +220,9 @@ namespace Pulumi.Linode
     public sealed class ObjectStorageBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access key to authenticate with.
+        /// The access key to authenticate with. If not specified with the resource, its value can be
+        /// * configured by `obj_access_key` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -257,11 +269,23 @@ namespace Pulumi.Linode
             set => _lifecycleRules = value;
         }
 
-        /// <summary>
-        /// The secret key to authenticate with.
-        /// </summary>
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// The secret key to authenticate with. If not specified with the resource, its value can be
+        /// * configured by `obj_secret_key` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
@@ -282,7 +306,9 @@ namespace Pulumi.Linode
     public sealed class ObjectStorageBucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access key to authenticate with.
+        /// The access key to authenticate with. If not specified with the resource, its value can be
+        /// * configured by `obj_access_key` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -342,11 +368,23 @@ namespace Pulumi.Linode
             set => _lifecycleRules = value;
         }
 
-        /// <summary>
-        /// The secret key to authenticate with.
-        /// </summary>
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// The secret key to authenticate with. If not specified with the resource, its value can be
+        /// * configured by `obj_secret_key` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)

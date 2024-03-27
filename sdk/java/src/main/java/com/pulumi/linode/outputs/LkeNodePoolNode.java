@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class LkeNodePoolNode {
+    /**
+     * @return The ID of the node.
+     * 
+     */
     private String id;
+    /**
+     * @return The ID of the underlying Linode instance.
+     * 
+     */
     private Integer instanceId;
+    /**
+     * @return The status of the node. (`ready`, `not_ready`)
+     * 
+     */
     private String status;
 
     private LkeNodePoolNode() {}
+    /**
+     * @return The ID of the node.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the underlying Linode instance.
+     * 
+     */
     public Integer instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The status of the node. (`ready`, `not_ready`)
+     * 
+     */
     public String status() {
         return this.status;
     }

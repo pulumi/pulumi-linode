@@ -56,7 +56,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly dashboardUrl!: pulumi.Output<string>;
     /**
-     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
     public readonly externalPoolTags!: pulumi.Output<string[] | undefined>;
     /**
@@ -166,7 +166,7 @@ export interface LkeClusterState {
      */
     dashboardUrl?: pulumi.Input<string>;
     /**
-     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
     externalPoolTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -212,7 +212,7 @@ export interface LkeClusterArgs {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
-     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
     externalPoolTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -5474,7 +5474,9 @@ func (o LkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolNo
 }
 
 type LkeNodePoolAutoscaler struct {
+	// The maximum number of nodes to autoscale to.
 	Max int `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
 	Min int `pulumi:"min"`
 }
 
@@ -5490,7 +5492,9 @@ type LkeNodePoolAutoscalerInput interface {
 }
 
 type LkeNodePoolAutoscalerArgs struct {
+	// The maximum number of nodes to autoscale to.
 	Max pulumi.IntInput `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
 	Min pulumi.IntInput `pulumi:"min"`
 }
 
@@ -5571,10 +5575,12 @@ func (o LkeNodePoolAutoscalerOutput) ToLkeNodePoolAutoscalerPtrOutputWithContext
 	}).(LkeNodePoolAutoscalerPtrOutput)
 }
 
+// The maximum number of nodes to autoscale to.
 func (o LkeNodePoolAutoscalerOutput) Max() pulumi.IntOutput {
 	return o.ApplyT(func(v LkeNodePoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
 }
 
+// The minimum number of nodes to autoscale to.
 func (o LkeNodePoolAutoscalerOutput) Min() pulumi.IntOutput {
 	return o.ApplyT(func(v LkeNodePoolAutoscaler) int { return v.Min }).(pulumi.IntOutput)
 }
@@ -5603,6 +5609,7 @@ func (o LkeNodePoolAutoscalerPtrOutput) Elem() LkeNodePoolAutoscalerOutput {
 	}).(LkeNodePoolAutoscalerOutput)
 }
 
+// The maximum number of nodes to autoscale to.
 func (o LkeNodePoolAutoscalerPtrOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LkeNodePoolAutoscaler) *int {
 		if v == nil {
@@ -5612,6 +5619,7 @@ func (o LkeNodePoolAutoscalerPtrOutput) Max() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of nodes to autoscale to.
 func (o LkeNodePoolAutoscalerPtrOutput) Min() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LkeNodePoolAutoscaler) *int {
 		if v == nil {
@@ -5622,9 +5630,12 @@ func (o LkeNodePoolAutoscalerPtrOutput) Min() pulumi.IntPtrOutput {
 }
 
 type LkeNodePoolNode struct {
-	Id         string `pulumi:"id"`
-	InstanceId int    `pulumi:"instanceId"`
-	Status     string `pulumi:"status"`
+	// The ID of the node.
+	Id string `pulumi:"id"`
+	// The ID of the underlying Linode instance.
+	InstanceId int `pulumi:"instanceId"`
+	// The status of the node. (`ready`, `notReady`)
+	Status string `pulumi:"status"`
 }
 
 // LkeNodePoolNodeInput is an input type that accepts LkeNodePoolNodeArgs and LkeNodePoolNodeOutput values.
@@ -5639,9 +5650,12 @@ type LkeNodePoolNodeInput interface {
 }
 
 type LkeNodePoolNodeArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
-	InstanceId pulumi.IntInput    `pulumi:"instanceId"`
-	Status     pulumi.StringInput `pulumi:"status"`
+	// The ID of the node.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the underlying Linode instance.
+	InstanceId pulumi.IntInput `pulumi:"instanceId"`
+	// The status of the node. (`ready`, `notReady`)
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (LkeNodePoolNodeArgs) ElementType() reflect.Type {
@@ -5695,14 +5709,17 @@ func (o LkeNodePoolNodeOutput) ToLkeNodePoolNodeOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the node.
 func (o LkeNodePoolNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LkeNodePoolNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the underlying Linode instance.
 func (o LkeNodePoolNodeOutput) InstanceId() pulumi.IntOutput {
 	return o.ApplyT(func(v LkeNodePoolNode) int { return v.InstanceId }).(pulumi.IntOutput)
 }
 
+// The status of the node. (`ready`, `notReady`)
 func (o LkeNodePoolNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LkeNodePoolNode) string { return v.Status }).(pulumi.StringOutput)
 }

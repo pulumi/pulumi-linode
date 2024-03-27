@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class LkeNodePoolAutoscaler {
+    /**
+     * @return The maximum number of nodes to autoscale to.
+     * 
+     */
     private Integer max;
+    /**
+     * @return The minimum number of nodes to autoscale to.
+     * 
+     */
     private Integer min;
 
     private LkeNodePoolAutoscaler() {}
+    /**
+     * @return The maximum number of nodes to autoscale to.
+     * 
+     */
     public Integer max() {
         return this.max;
     }
+    /**
+     * @return The minimum number of nodes to autoscale to.
+     * 
+     */
     public Integer min() {
         return this.min;
     }

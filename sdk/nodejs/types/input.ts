@@ -4559,13 +4559,28 @@ export interface LkeClusterPoolNode {
 }
 
 export interface LkeNodePoolAutoscaler {
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
     max: pulumi.Input<number>;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
     min: pulumi.Input<number>;
 }
 
 export interface LkeNodePoolNode {
+    /**
+     * The ID of the node.
+     */
     id: pulumi.Input<string>;
+    /**
+     * The ID of the underlying Linode instance.
+     */
     instanceId: pulumi.Input<number>;
+    /**
+     * The status of the node. (`ready`, `notReady`)
+     */
     status: pulumi.Input<string>;
 }
 
