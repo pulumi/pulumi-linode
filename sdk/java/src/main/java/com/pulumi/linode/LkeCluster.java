@@ -72,14 +72,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.dashboardUrl;
     }
     /**
-     * An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      * 
      */
     @Export(name="externalPoolTags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> externalPoolTags;
 
     /**
-     * @return An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+     * @return A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      * 
      */
     public Output<Optional<List<String>>> externalPoolTags() {

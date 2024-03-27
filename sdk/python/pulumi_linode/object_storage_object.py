@@ -14,11 +14,10 @@ __all__ = ['ObjectStorageObjectArgs', 'ObjectStorageObject']
 @pulumi.input_type
 class ObjectStorageObjectArgs:
     def __init__(__self__, *,
-                 access_key: pulumi.Input[str],
                  bucket: pulumi.Input[str],
                  cluster: pulumi.Input[str],
                  key: pulumi.Input[str],
-                 secret_key: pulumi.Input[str],
+                 access_key: Optional[pulumi.Input[str]] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
@@ -31,15 +30,17 @@ class ObjectStorageObjectArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  website_redirect: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ObjectStorageObject resource.
-        :param pulumi.Input[str] access_key: The access key to authenticate with.
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cluster: The cluster the bucket is in.
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
-        :param pulumi.Input[str] secret_key: The secret key to authenitcate with.
+        :param pulumi.Input[str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_access_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -52,14 +53,17 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
+        :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_secret_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
         """
-        pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "secret_key", secret_key)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if cache_control is not None:
@@ -84,22 +88,12 @@ class ObjectStorageObjectArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if website_redirect is not None:
             pulumi.set(__self__, "website_redirect", website_redirect)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> pulumi.Input[str]:
-        """
-        The access key to authenticate with.
-        """
-        return pulumi.get(self, "access_key")
-
-    @access_key.setter
-    def access_key(self, value: pulumi.Input[str]):
-        pulumi.set(self, "access_key", value)
 
     @property
     @pulumi.getter
@@ -138,16 +132,18 @@ class ObjectStorageObjectArgs:
         pulumi.set(self, "key", value)
 
     @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The secret key to authenitcate with.
+        The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+        * configuring the `obj_access_key` in the provider configuration;
+        * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         """
-        return pulumi.get(self, "secret_key")
+        return pulumi.get(self, "access_key")
 
-    @secret_key.setter
-    def secret_key(self, value: pulumi.Input[str]):
-        pulumi.set(self, "secret_key", value)
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
 
     @property
     @pulumi.getter
@@ -294,6 +290,20 @@ class ObjectStorageObjectArgs:
         pulumi.set(self, "metadata", value)
 
     @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+        * configuring the `obj_secret_key` in the provider configuration;
+        * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
@@ -343,7 +353,9 @@ class _ObjectStorageObjectState:
                  website_redirect: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageObject resources.
-        :param pulumi.Input[str] access_key: The access key to authenticate with.
+        :param pulumi.Input[str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_access_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
@@ -359,7 +371,9 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
-        :param pulumi.Input[str] secret_key: The secret key to authenitcate with.
+        :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_secret_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
         :param pulumi.Input[str] version_id: A unique version ID value for the object.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
@@ -409,7 +423,9 @@ class _ObjectStorageObjectState:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The access key to authenticate with.
+        The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+        * configuring the `obj_access_key` in the provider configuration;
+        * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         """
         return pulumi.get(self, "access_key")
 
@@ -601,7 +617,9 @@ class _ObjectStorageObjectState:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The secret key to authenitcate with.
+        The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+        * configuring the `obj_secret_key` in the provider configuration;
+        * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         """
         return pulumi.get(self, "secret_key")
 
@@ -697,7 +715,9 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key: The access key to authenticate with.
+        :param pulumi.Input[str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_access_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
@@ -713,7 +733,9 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
-        :param pulumi.Input[str] secret_key: The secret key to authenitcate with.
+        :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_secret_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
         """
@@ -790,8 +812,6 @@ class ObjectStorageObject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ObjectStorageObjectArgs.__new__(ObjectStorageObjectArgs)
 
-            if access_key is None and not opts.urn:
-                raise TypeError("Missing required property 'access_key'")
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["acl"] = acl
             if bucket is None and not opts.urn:
@@ -814,12 +834,12 @@ class ObjectStorageObject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
             __props__.__dict__["metadata"] = metadata
-            if secret_key is None and not opts.urn:
-                raise TypeError("Missing required property 'secret_key'")
-            __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
             __props__.__dict__["source"] = source
             __props__.__dict__["website_redirect"] = website_redirect
             __props__.__dict__["version_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ObjectStorageObject, __self__).__init__(
             'linode:index/objectStorageObject:ObjectStorageObject',
             resource_name,
@@ -857,7 +877,9 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key: The access key to authenticate with.
+        :param pulumi.Input[str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_access_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
@@ -873,7 +895,9 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
-        :param pulumi.Input[str] secret_key: The secret key to authenitcate with.
+        :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+               * configuring the `obj_secret_key` in the provider configuration;
+               * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
         :param pulumi.Input[str] version_id: A unique version ID value for the object.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
@@ -906,9 +930,11 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> pulumi.Output[str]:
+    def access_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The access key to authenticate with.
+        The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+        * configuring the `obj_access_key` in the provider configuration;
+        * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         """
         return pulumi.get(self, "access_key")
 
@@ -1034,9 +1060,11 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> pulumi.Output[str]:
+    def secret_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The secret key to authenitcate with.
+        The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+        * configuring the `obj_secret_key` in the provider configuration;
+        * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         """
         return pulumi.get(self, "secret_key")
 

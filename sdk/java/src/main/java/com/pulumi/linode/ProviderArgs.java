@@ -138,6 +138,53 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    @Import(name="objAccessKey")
+    private @Nullable Output<String> objAccessKey;
+
+    /**
+     * @return The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    public Optional<Output<String>> objAccessKey() {
+        return Optional.ofNullable(this.objAccessKey);
+    }
+
+    /**
+     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    @Import(name="objSecretKey")
+    private @Nullable Output<String> objSecretKey;
+
+    /**
+     * @return The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * 
+     */
+    public Optional<Output<String>> objSecretKey() {
+        return Optional.ofNullable(this.objSecretKey);
+    }
+
+    /**
+     * If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+     * linode_object_sorage_bucket resource.
+     * 
+     */
+    @Import(name="objUseTempKeys", json=true)
+    private @Nullable Output<Boolean> objUseTempKeys;
+
+    /**
+     * @return If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+     * linode_object_sorage_bucket resource.
+     * 
+     */
+    public Optional<Output<Boolean>> objUseTempKeys() {
+        return Optional.ofNullable(this.objUseTempKeys);
+    }
+
+    /**
      * If true, Linode Instances will not be rebooted on config and interface changes.
      * 
      */
@@ -239,6 +286,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.lkeNodeReadyPollMs = $.lkeNodeReadyPollMs;
         this.maxRetryDelayMs = $.maxRetryDelayMs;
         this.minRetryDelayMs = $.minRetryDelayMs;
+        this.objAccessKey = $.objAccessKey;
+        this.objSecretKey = $.objSecretKey;
+        this.objUseTempKeys = $.objUseTempKeys;
         this.skipImplicitReboots = $.skipImplicitReboots;
         this.skipInstanceDeletePoll = $.skipInstanceDeletePoll;
         this.skipInstanceReadyPoll = $.skipInstanceReadyPoll;
@@ -428,6 +478,71 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder minRetryDelayMs(Integer minRetryDelayMs) {
             return minRetryDelayMs(Output.of(minRetryDelayMs));
+        }
+
+        /**
+         * @param objAccessKey The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objAccessKey(@Nullable Output<String> objAccessKey) {
+            $.objAccessKey = objAccessKey;
+            return this;
+        }
+
+        /**
+         * @param objAccessKey The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objAccessKey(String objAccessKey) {
+            return objAccessKey(Output.of(objAccessKey));
+        }
+
+        /**
+         * @param objSecretKey The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objSecretKey(@Nullable Output<String> objSecretKey) {
+            $.objSecretKey = objSecretKey;
+            return this;
+        }
+
+        /**
+         * @param objSecretKey The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objSecretKey(String objSecretKey) {
+            return objSecretKey(Output.of(objSecretKey));
+        }
+
+        /**
+         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+         * linode_object_sorage_bucket resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objUseTempKeys(@Nullable Output<Boolean> objUseTempKeys) {
+            $.objUseTempKeys = objUseTempKeys;
+            return this;
+        }
+
+        /**
+         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+         * linode_object_sorage_bucket resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objUseTempKeys(Boolean objUseTempKeys) {
+            return objUseTempKeys(Output.of(objUseTempKeys));
         }
 
         /**

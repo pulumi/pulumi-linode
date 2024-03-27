@@ -23,10 +23,12 @@ class LkeNodePoolArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LkeNodePool resource.
-        :param pulumi.Input[int] cluster_id: The ID of the cluster to associate this node pool with.
-        :param pulumi.Input[str] type: The type of node pool.
-        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to this object. Tags are for organizational purposes only.
+        :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "type", type)
@@ -41,7 +43,7 @@ class LkeNodePoolArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[int]:
         """
-        The ID of the cluster to associate this node pool with.
+        ID of the LKE Cluster where to create the current Node Pool.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -53,7 +55,7 @@ class LkeNodePoolArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of node pool.
+        A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -74,7 +76,7 @@ class LkeNodePoolArgs:
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes in the Node Pool.
+        The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         """
         return pulumi.get(self, "node_count")
 
@@ -86,7 +88,9 @@ class LkeNodePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of tags applied to this object. Tags are for organizational purposes only.
+        An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "tags")
 
@@ -106,11 +110,13 @@ class _LkeNodePoolState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LkeNodePool resources.
-        :param pulumi.Input[int] cluster_id: The ID of the cluster to associate this node pool with.
-        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool.
+        :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]] nodes: A list of nodes in the node pool.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to this object. Tags are for organizational purposes only.
-        :param pulumi.Input[str] type: The type of node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        :param pulumi.Input[str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
@@ -138,7 +144,7 @@ class _LkeNodePoolState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the cluster to associate this node pool with.
+        ID of the LKE Cluster where to create the current Node Pool.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -150,7 +156,7 @@ class _LkeNodePoolState:
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes in the Node Pool.
+        The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         """
         return pulumi.get(self, "node_count")
 
@@ -174,7 +180,9 @@ class _LkeNodePoolState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of tags applied to this object. Tags are for organizational purposes only.
+        An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "tags")
 
@@ -186,7 +194,7 @@ class _LkeNodePoolState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of node pool.
+        A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -207,13 +215,22 @@ class LkeNodePool(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LkeNodePool resource with the given unique name, props, and options.
+        ## Import
+
+        LKE Node Pools can be imported using the `cluster_id,id`, e.g.
+
+        ```sh
+        $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] cluster_id: The ID of the cluster to associate this node pool with.
-        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to this object. Tags are for organizational purposes only.
-        :param pulumi.Input[str] type: The type of node pool.
+        :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        :param pulumi.Input[str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         ...
     @overload
@@ -222,7 +239,14 @@ class LkeNodePool(pulumi.CustomResource):
                  args: LkeNodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LkeNodePool resource with the given unique name, props, and options.
+        ## Import
+
+        LKE Node Pools can be imported using the `cluster_id,id`, e.g.
+
+        ```sh
+        $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param LkeNodePoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -285,11 +309,13 @@ class LkeNodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] cluster_id: The ID of the cluster to associate this node pool with.
-        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool.
+        :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeNodePoolNodeArgs']]]] nodes: A list of nodes in the node pool.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to this object. Tags are for organizational purposes only.
-        :param pulumi.Input[str] type: The type of node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        :param pulumi.Input[str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -312,7 +338,7 @@ class LkeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[int]:
         """
-        The ID of the cluster to associate this node pool with.
+        ID of the LKE Cluster where to create the current Node Pool.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -320,7 +346,7 @@ class LkeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[int]:
         """
-        The number of nodes in the Node Pool.
+        The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         """
         return pulumi.get(self, "node_count")
 
@@ -336,7 +362,9 @@ class LkeNodePool(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        An array of tags applied to this object. Tags are for organizational purposes only.
+        An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "tags")
 
@@ -344,7 +372,7 @@ class LkeNodePool(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of node pool.
+        A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 

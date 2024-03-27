@@ -12,9 +12,15 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class LkeNodePoolAutoscalerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum number of nodes to autoscale to.
+        /// </summary>
         [Input("max", required: true)]
         public Input<int> Max { get; set; } = null!;
 
+        /// <summary>
+        /// The minimum number of nodes to autoscale to.
+        /// </summary>
         [Input("min", required: true)]
         public Input<int> Min { get; set; } = null!;
 

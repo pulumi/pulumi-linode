@@ -12,6 +12,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.ObjectStorageObjectState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -65,18 +66,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/objectStorageObject:ObjectStorageObject")
 public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
     /**
-     * The access key to authenticate with.
+     * The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_access_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
-    private Output<String> accessKey;
+    private Output</* @Nullable */ String> accessKey;
 
     /**
-     * @return The access key to authenticate with.
+     * @return The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_access_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
-    public Output<String> accessKey() {
-        return this.accessKey;
+    public Output<Optional<String>> accessKey() {
+        return Codegen.optional(this.accessKey);
     }
     /**
      * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
@@ -289,18 +294,22 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * The secret key to authenitcate with.
+     * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_secret_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
-    private Output<String> secretKey;
+    private Output</* @Nullable */ String> secretKey;
 
     /**
-     * @return The secret key to authenitcate with.
+     * @return The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_secret_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
-    public Output<String> secretKey() {
-        return this.secretKey;
+    public Output<Optional<String>> secretKey() {
+        return Codegen.optional(this.secretKey);
     }
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
@@ -377,6 +386,9 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secretKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

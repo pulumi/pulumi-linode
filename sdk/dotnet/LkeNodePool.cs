@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// LKE Node Pools can be imported using the `cluster_id,id`, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
+    /// ```
+    /// </summary>
     [LinodeResourceType("linode:index/lkeNodePool:LkeNodePool")]
     public partial class LkeNodePool : global::Pulumi.CustomResource
     {
@@ -16,13 +25,13 @@ namespace Pulumi.Linode
         public Output<Outputs.LkeNodePoolAutoscaler?> Autoscaler { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the cluster to associate this node pool with.
+        /// ID of the LKE Cluster where to create the current Node Pool.
         /// </summary>
         [Output("clusterId")]
         public Output<int> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes in the Node Pool.
+        /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -34,13 +43,15 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.LkeNodePoolNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
-        /// An array of tags applied to this object. Tags are for organizational purposes only.
+        /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The type of node pool.
+        /// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -95,13 +106,13 @@ namespace Pulumi.Linode
         public Input<Inputs.LkeNodePoolAutoscalerArgs>? Autoscaler { get; set; }
 
         /// <summary>
-        /// The ID of the cluster to associate this node pool with.
+        /// ID of the LKE Cluster where to create the current Node Pool.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<int> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The number of nodes in the Node Pool.
+        /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -110,7 +121,9 @@ namespace Pulumi.Linode
         private InputList<string>? _tags;
 
         /// <summary>
-        /// An array of tags applied to this object. Tags are for organizational purposes only.
+        /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         public InputList<string> Tags
         {
@@ -119,7 +132,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The type of node pool.
+        /// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -136,13 +149,13 @@ namespace Pulumi.Linode
         public Input<Inputs.LkeNodePoolAutoscalerGetArgs>? Autoscaler { get; set; }
 
         /// <summary>
-        /// The ID of the cluster to associate this node pool with.
+        /// ID of the LKE Cluster where to create the current Node Pool.
         /// </summary>
         [Input("clusterId")]
         public Input<int>? ClusterId { get; set; }
 
         /// <summary>
-        /// The number of nodes in the Node Pool.
+        /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -163,7 +176,9 @@ namespace Pulumi.Linode
         private InputList<string>? _tags;
 
         /// <summary>
-        /// An array of tags applied to this object. Tags are for organizational purposes only.
+        /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         public InputList<string> Tags
         {
@@ -172,7 +187,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The type of node pool.
+        /// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

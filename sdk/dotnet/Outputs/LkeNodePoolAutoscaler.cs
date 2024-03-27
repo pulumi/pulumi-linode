@@ -13,7 +13,13 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class LkeNodePoolAutoscaler
     {
+        /// <summary>
+        /// The maximum number of nodes to autoscale to.
+        /// </summary>
         public readonly int Max;
+        /// <summary>
+        /// The minimum number of nodes to autoscale to.
+        /// </summary>
         public readonly int Min;
 
         [OutputConstructor]

@@ -13,8 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class LkeNodePoolNode
     {
+        /// <summary>
+        /// The ID of the node.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the underlying Linode instance.
+        /// </summary>
         public readonly int InstanceId;
+        /// <summary>
+        /// The status of the node. (`ready`, `not_ready`)
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -14,16 +14,32 @@ public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.Resour
 
     public static final LkeNodePoolAutoscalerArgs Empty = new LkeNodePoolAutoscalerArgs();
 
+    /**
+     * The maximum number of nodes to autoscale to.
+     * 
+     */
     @Import(name="max", required=true)
     private Output<Integer> max;
 
+    /**
+     * @return The maximum number of nodes to autoscale to.
+     * 
+     */
     public Output<Integer> max() {
         return this.max;
     }
 
+    /**
+     * The minimum number of nodes to autoscale to.
+     * 
+     */
     @Import(name="min", required=true)
     private Output<Integer> min;
 
+    /**
+     * @return The minimum number of nodes to autoscale to.
+     * 
+     */
     public Output<Integer> min() {
         return this.min;
     }
@@ -53,20 +69,44 @@ public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.Resour
             $ = new LkeNodePoolAutoscalerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param max The maximum number of nodes to autoscale to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(Output<Integer> max) {
             $.max = max;
             return this;
         }
 
+        /**
+         * @param max The maximum number of nodes to autoscale to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(Integer max) {
             return max(Output.of(max));
         }
 
+        /**
+         * @param min The minimum number of nodes to autoscale to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(Output<Integer> min) {
             $.min = min;
             return this;
         }
 
+        /**
+         * @param min The minimum number of nodes to autoscale to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(Integer min) {
             return min(Output.of(min));
         }

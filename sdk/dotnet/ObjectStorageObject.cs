@@ -45,10 +45,12 @@ namespace Pulumi.Linode
     public partial class ObjectStorageObject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access key to authenticate with.
+        /// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+        /// * configuring the `obj_access_key` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         /// </summary>
         [Output("accessKey")]
-        public Output<string> AccessKey { get; private set; } = null!;
+        public Output<string?> AccessKey { get; private set; } = null!;
 
         /// <summary>
         /// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
@@ -141,10 +143,12 @@ namespace Pulumi.Linode
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The secret key to authenitcate with.
+        /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+        /// * configuring the `obj_secret_key` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         /// </summary>
         [Output("secretKey")]
-        public Output<string> SecretKey { get; private set; } = null!;
+        public Output<string?> SecretKey { get; private set; } = null!;
 
         /// <summary>
         /// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
@@ -187,6 +191,10 @@ namespace Pulumi.Linode
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -211,10 +219,12 @@ namespace Pulumi.Linode
     public sealed class ObjectStorageObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access key to authenticate with.
+        /// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+        /// * configuring the `obj_access_key` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         /// </summary>
-        [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
 
         /// <summary>
         /// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
@@ -312,11 +322,23 @@ namespace Pulumi.Linode
             set => _metadata = value;
         }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
-        /// The secret key to authenitcate with.
+        /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+        /// * configuring the `obj_secret_key` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
@@ -339,7 +361,9 @@ namespace Pulumi.Linode
     public sealed class ObjectStorageObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access key to authenticate with.
+        /// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
+        /// * configuring the `obj_access_key` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -440,11 +464,23 @@ namespace Pulumi.Linode
             set => _metadata = value;
         }
 
-        /// <summary>
-        /// The secret key to authenitcate with.
-        /// </summary>
         [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
+        /// * configuring the `obj_secret_key` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.

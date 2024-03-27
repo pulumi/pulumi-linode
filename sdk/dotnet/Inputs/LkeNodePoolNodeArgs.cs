@@ -12,12 +12,21 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class LkeNodePoolNodeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the node.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the underlying Linode instance.
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<int> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// The status of the node. (`ready`, `not_ready`)
+        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 

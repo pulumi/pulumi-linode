@@ -40,7 +40,7 @@ namespace Pulumi.Linode
         public Output<string> DashboardUrl { get; private set; } = null!;
 
         /// <summary>
-        /// An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+        /// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         /// </summary>
         [Output("externalPoolTags")]
         public Output<ImmutableArray<string>> ExternalPoolTags { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Linode
         private InputList<string>? _externalPoolTags;
 
         /// <summary>
-        /// An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+        /// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         /// </summary>
         public InputList<string> ExternalPoolTags
         {
@@ -241,7 +241,7 @@ namespace Pulumi.Linode
         private InputList<string>? _externalPoolTags;
 
         /// <summary>
-        /// An array of tags indicating that node pools having those tags are defined with a separate `linode.LkeNodePool` resource, rather than inside the current cluster resource.
+        /// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         /// </summary>
         public InputList<string> ExternalPoolTags
         {

@@ -18,14 +18,18 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     public static final ObjectStorageObjectState Empty = new ObjectStorageObjectState();
 
     /**
-     * The access key to authenticate with.
+     * The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_access_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The access key to authenticate with.
+     * @return The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_access_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -258,14 +262,18 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The secret key to authenitcate with.
+     * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_secret_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return The secret key to authenitcate with.
+     * @return The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+     * * configuring the `obj_secret_key` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -361,7 +369,9 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessKey The access key to authenticate with.
+         * @param accessKey The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+         * * configuring the `obj_access_key` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
          * 
          * @return builder
          * 
@@ -372,7 +382,9 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessKey The access key to authenticate with.
+         * @param accessKey The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+         * * configuring the `obj_access_key` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
          * 
          * @return builder
          * 
@@ -697,7 +709,9 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretKey The secret key to authenitcate with.
+         * @param secretKey The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+         * * configuring the `obj_secret_key` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
          * 
          * @return builder
          * 
@@ -708,7 +722,9 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretKey The secret key to authenitcate with.
+         * @param secretKey The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
+         * * configuring the `obj_secret_key` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
          * 
          * @return builder
          * 

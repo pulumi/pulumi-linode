@@ -6,6 +6,15 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * LKE Node Pools can be imported using the `cluster_id,id`, e.g.
+ *
+ * ```sh
+ * $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
+ * ```
+ */
 export class LkeNodePool extends pulumi.CustomResource {
     /**
      * Get an existing LkeNodePool resource's state with the given name, ID, and optional extra
@@ -36,11 +45,11 @@ export class LkeNodePool extends pulumi.CustomResource {
 
     public readonly autoscaler!: pulumi.Output<outputs.LkeNodePoolAutoscaler | undefined>;
     /**
-     * The ID of the cluster to associate this node pool with.
+     * ID of the LKE Cluster where to create the current Node Pool.
      */
     public readonly clusterId!: pulumi.Output<number>;
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -48,11 +57,13 @@ export class LkeNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodes!: pulumi.Output<outputs.LkeNodePoolNode[]>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     *
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
-     * The type of node pool.
+     * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -101,11 +112,11 @@ export class LkeNodePool extends pulumi.CustomResource {
 export interface LkeNodePoolState {
     autoscaler?: pulumi.Input<inputs.LkeNodePoolAutoscaler>;
     /**
-     * The ID of the cluster to associate this node pool with.
+     * ID of the LKE Cluster where to create the current Node Pool.
      */
     clusterId?: pulumi.Input<number>;
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -113,11 +124,13 @@ export interface LkeNodePoolState {
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolNode>[]>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     *
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of node pool.
+     * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: pulumi.Input<string>;
 }
@@ -128,19 +141,21 @@ export interface LkeNodePoolState {
 export interface LkeNodePoolArgs {
     autoscaler?: pulumi.Input<inputs.LkeNodePoolAutoscaler>;
     /**
-     * The ID of the cluster to associate this node pool with.
+     * ID of the LKE Cluster where to create the current Node Pool.
      */
     clusterId: pulumi.Input<number>;
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
     nodeCount?: pulumi.Input<number>;
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     *
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of node pool.
+     * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: pulumi.Input<string>;
 }

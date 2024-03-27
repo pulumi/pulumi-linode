@@ -28,7 +28,7 @@ type LkeCluster struct {
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
-	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayOutput `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
@@ -102,7 +102,7 @@ type lkeClusterState struct {
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl *string `pulumi:"dashboardUrl"`
-	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags []string `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion *string `pulumi:"k8sVersion"`
@@ -131,7 +131,7 @@ type LkeClusterState struct {
 	ControlPlane LkeClusterControlPlanePtrInput
 	// The Kubernetes Dashboard access URL for this cluster.
 	DashboardUrl pulumi.StringPtrInput
-	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringPtrInput
@@ -160,7 +160,7 @@ func (LkeClusterState) ElementType() reflect.Type {
 type lkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags []string `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion string `pulumi:"k8sVersion"`
@@ -182,7 +182,7 @@ type lkeClusterArgs struct {
 type LkeClusterArgs struct {
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
 	K8sVersion pulumi.StringInput
@@ -302,7 +302,7 @@ func (o LkeClusterOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
-// An array of tags indicating that node pools having those tags are defined with a separate `LkeNodePool` resource, rather than inside the current cluster resource.
+// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 func (o LkeClusterOutput) ExternalPoolTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.ExternalPoolTags }).(pulumi.StringArrayOutput)
 }

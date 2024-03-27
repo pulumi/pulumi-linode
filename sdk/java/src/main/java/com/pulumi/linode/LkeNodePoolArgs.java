@@ -27,14 +27,14 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the cluster to associate this node pool with.
+     * ID of the LKE Cluster where to create the current Node Pool.
      * 
      */
     @Import(name="clusterId", required=true)
     private Output<Integer> clusterId;
 
     /**
-     * @return The ID of the cluster to associate this node pool with.
+     * @return ID of the LKE Cluster where to create the current Node Pool.
      * 
      */
     public Output<Integer> clusterId() {
@@ -42,14 +42,14 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of nodes in the Node Pool.
+     * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      */
     @Import(name="nodeCount")
     private @Nullable Output<Integer> nodeCount;
 
     /**
-     * @return The number of nodes in the Node Pool.
+     * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -57,14 +57,18 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of tags applied to this object. Tags are for organizational purposes only.
+     * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to this object. Tags are for organizational purposes only.
+     * @return An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -72,14 +76,14 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of node pool.
+     * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of node pool.
+     * @return A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     public Output<String> type() {
@@ -124,7 +128,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The ID of the cluster to associate this node pool with.
+         * @param clusterId ID of the LKE Cluster where to create the current Node Pool.
          * 
          * @return builder
          * 
@@ -135,7 +139,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The ID of the cluster to associate this node pool with.
+         * @param clusterId ID of the LKE Cluster where to create the current Node Pool.
          * 
          * @return builder
          * 
@@ -145,7 +149,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeCount The number of nodes in the Node Pool.
+         * @param nodeCount The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
          * 
          * @return builder
          * 
@@ -156,7 +160,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeCount The number of nodes in the Node Pool.
+         * @param nodeCount The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
          * 
          * @return builder
          * 
@@ -166,7 +170,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 
@@ -177,7 +183,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 
@@ -187,7 +195,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags An array of tags applied to this object. Tags are for organizational purposes only.
+         * @param tags An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 
@@ -197,7 +207,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of node pool.
+         * @param type A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
          * 
          * @return builder
          * 
@@ -208,7 +218,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of node pool.
+         * @param type A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
          * 
          * @return builder
          * 

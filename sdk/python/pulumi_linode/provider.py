@@ -23,6 +23,9 @@ class ProviderArgs:
                  lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
+                 obj_access_key: Optional[pulumi.Input[str]] = None,
+                 obj_secret_key: Optional[pulumi.Input[str]] = None,
+                 obj_use_temp_keys: Optional[pulumi.Input[bool]] = None,
                  skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
                  skip_instance_delete_poll: Optional[pulumi.Input[bool]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
@@ -38,6 +41,10 @@ class ProviderArgs:
         :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
+        :param pulumi.Input[str] obj_access_key: The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        :param pulumi.Input[str] obj_secret_key: The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+               linode_object_sorage_bucket resource.
         :param pulumi.Input[bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
         :param pulumi.Input[bool] skip_instance_delete_poll: Skip waiting for a linode_instance resource to finish deleting.
         :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
@@ -65,6 +72,12 @@ class ProviderArgs:
             pulumi.set(__self__, "max_retry_delay_ms", max_retry_delay_ms)
         if min_retry_delay_ms is not None:
             pulumi.set(__self__, "min_retry_delay_ms", min_retry_delay_ms)
+        if obj_access_key is not None:
+            pulumi.set(__self__, "obj_access_key", obj_access_key)
+        if obj_secret_key is not None:
+            pulumi.set(__self__, "obj_secret_key", obj_secret_key)
+        if obj_use_temp_keys is not None:
+            pulumi.set(__self__, "obj_use_temp_keys", obj_use_temp_keys)
         if skip_implicit_reboots is not None:
             pulumi.set(__self__, "skip_implicit_reboots", skip_implicit_reboots)
         if skip_instance_delete_poll is not None:
@@ -185,6 +198,43 @@ class ProviderArgs:
         pulumi.set(self, "min_retry_delay_ms", value)
 
     @property
+    @pulumi.getter(name="objAccessKey")
+    def obj_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        """
+        return pulumi.get(self, "obj_access_key")
+
+    @obj_access_key.setter
+    def obj_access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "obj_access_key", value)
+
+    @property
+    @pulumi.getter(name="objSecretKey")
+    def obj_secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        """
+        return pulumi.get(self, "obj_secret_key")
+
+    @obj_secret_key.setter
+    def obj_secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "obj_secret_key", value)
+
+    @property
+    @pulumi.getter(name="objUseTempKeys")
+    def obj_use_temp_keys(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+        linode_object_sorage_bucket resource.
+        """
+        return pulumi.get(self, "obj_use_temp_keys")
+
+    @obj_use_temp_keys.setter
+    def obj_use_temp_keys(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "obj_use_temp_keys", value)
+
+    @property
     @pulumi.getter(name="skipImplicitReboots")
     def skip_implicit_reboots(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -271,6 +321,9 @@ class Provider(pulumi.ProviderResource):
                  lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
+                 obj_access_key: Optional[pulumi.Input[str]] = None,
+                 obj_secret_key: Optional[pulumi.Input[str]] = None,
+                 obj_use_temp_keys: Optional[pulumi.Input[bool]] = None,
                  skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
                  skip_instance_delete_poll: Optional[pulumi.Input[bool]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
@@ -293,6 +346,10 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
+        :param pulumi.Input[str] obj_access_key: The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        :param pulumi.Input[str] obj_secret_key: The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+               linode_object_sorage_bucket resource.
         :param pulumi.Input[bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
         :param pulumi.Input[bool] skip_instance_delete_poll: Skip waiting for a linode_instance resource to finish deleting.
         :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
@@ -336,6 +393,9 @@ class Provider(pulumi.ProviderResource):
                  lke_node_ready_poll_ms: Optional[pulumi.Input[int]] = None,
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
+                 obj_access_key: Optional[pulumi.Input[str]] = None,
+                 obj_secret_key: Optional[pulumi.Input[str]] = None,
+                 obj_use_temp_keys: Optional[pulumi.Input[bool]] = None,
                  skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
                  skip_instance_delete_poll: Optional[pulumi.Input[bool]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[bool]] = None,
@@ -362,6 +422,9 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["lke_node_ready_poll_ms"] = pulumi.Output.from_input(lke_node_ready_poll_ms).apply(pulumi.runtime.to_json) if lke_node_ready_poll_ms is not None else None
             __props__.__dict__["max_retry_delay_ms"] = pulumi.Output.from_input(max_retry_delay_ms).apply(pulumi.runtime.to_json) if max_retry_delay_ms is not None else None
             __props__.__dict__["min_retry_delay_ms"] = pulumi.Output.from_input(min_retry_delay_ms).apply(pulumi.runtime.to_json) if min_retry_delay_ms is not None else None
+            __props__.__dict__["obj_access_key"] = obj_access_key
+            __props__.__dict__["obj_secret_key"] = None if obj_secret_key is None else pulumi.Output.secret(obj_secret_key)
+            __props__.__dict__["obj_use_temp_keys"] = pulumi.Output.from_input(obj_use_temp_keys).apply(pulumi.runtime.to_json) if obj_use_temp_keys is not None else None
             __props__.__dict__["skip_implicit_reboots"] = pulumi.Output.from_input(skip_implicit_reboots).apply(pulumi.runtime.to_json) if skip_implicit_reboots is not None else None
             __props__.__dict__["skip_instance_delete_poll"] = pulumi.Output.from_input(skip_instance_delete_poll).apply(pulumi.runtime.to_json) if skip_instance_delete_poll is not None else None
             __props__.__dict__["skip_instance_ready_poll"] = pulumi.Output.from_input(skip_instance_ready_poll).apply(pulumi.runtime.to_json) if skip_instance_ready_poll is not None else None
@@ -372,6 +435,8 @@ class Provider(pulumi.ProviderResource):
             if url is None:
                 url = _utilities.get_env('LINODE_URL')
             __props__.__dict__["url"] = url
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["objSecretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'linode',
             resource_name,
@@ -395,6 +460,22 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="configProfile")
     def config_profile(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "config_profile")
+
+    @property
+    @pulumi.getter(name="objAccessKey")
+    def obj_access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        """
+        return pulumi.get(self, "obj_access_key")
+
+    @property
+    @pulumi.getter(name="objSecretKey")
+    def obj_secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        """
+        return pulumi.get(self, "obj_secret_key")
 
     @property
     @pulumi.getter

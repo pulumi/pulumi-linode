@@ -12,19 +12,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// LKE Node Pools can be imported using the `cluster_id,id`, e.g.
+//
+// ```sh
+// $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
+// ```
 type LkeNodePool struct {
 	pulumi.CustomResourceState
 
 	Autoscaler LkeNodePoolAutoscalerPtrOutput `pulumi:"autoscaler"`
-	// The ID of the cluster to associate this node pool with.
+	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId pulumi.IntOutput `pulumi:"clusterId"`
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// A list of nodes in the node pool.
 	Nodes LkeNodePoolNodeArrayOutput `pulumi:"nodes"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The type of node pool.
+	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -65,29 +74,33 @@ func GetLkeNodePool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LkeNodePool resources.
 type lkeNodePoolState struct {
 	Autoscaler *LkeNodePoolAutoscaler `pulumi:"autoscaler"`
-	// The ID of the cluster to associate this node pool with.
+	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId *int `pulumi:"clusterId"`
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	NodeCount *int `pulumi:"nodeCount"`
 	// A list of nodes in the node pool.
 	Nodes []LkeNodePoolNode `pulumi:"nodes"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Tags []string `pulumi:"tags"`
-	// The type of node pool.
+	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type *string `pulumi:"type"`
 }
 
 type LkeNodePoolState struct {
 	Autoscaler LkeNodePoolAutoscalerPtrInput
-	// The ID of the cluster to associate this node pool with.
+	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId pulumi.IntPtrInput
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	NodeCount pulumi.IntPtrInput
 	// A list of nodes in the node pool.
 	Nodes LkeNodePoolNodeArrayInput
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Tags pulumi.StringArrayInput
-	// The type of node pool.
+	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringPtrInput
 }
 
@@ -97,26 +110,30 @@ func (LkeNodePoolState) ElementType() reflect.Type {
 
 type lkeNodePoolArgs struct {
 	Autoscaler *LkeNodePoolAutoscaler `pulumi:"autoscaler"`
-	// The ID of the cluster to associate this node pool with.
+	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId int `pulumi:"clusterId"`
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	NodeCount *int `pulumi:"nodeCount"`
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Tags []string `pulumi:"tags"`
-	// The type of node pool.
+	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a LkeNodePool resource.
 type LkeNodePoolArgs struct {
 	Autoscaler LkeNodePoolAutoscalerPtrInput
-	// The ID of the cluster to associate this node pool with.
+	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId pulumi.IntInput
-	// The number of nodes in the Node Pool.
+	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 	NodeCount pulumi.IntPtrInput
-	// An array of tags applied to this object. Tags are for organizational purposes only.
+	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Tags pulumi.StringArrayInput
-	// The type of node pool.
+	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput
 }
 
@@ -211,12 +228,12 @@ func (o LkeNodePoolOutput) Autoscaler() LkeNodePoolAutoscalerPtrOutput {
 	return o.ApplyT(func(v *LkeNodePool) LkeNodePoolAutoscalerPtrOutput { return v.Autoscaler }).(LkeNodePoolAutoscalerPtrOutput)
 }
 
-// The ID of the cluster to associate this node pool with.
+// ID of the LKE Cluster where to create the current Node Pool.
 func (o LkeNodePoolOutput) ClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.IntOutput { return v.ClusterId }).(pulumi.IntOutput)
 }
 
-// The number of nodes in the Node Pool.
+// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
 func (o LkeNodePoolOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -226,12 +243,14 @@ func (o LkeNodePoolOutput) Nodes() LkeNodePoolNodeArrayOutput {
 	return o.ApplyT(func(v *LkeNodePool) LkeNodePoolNodeArrayOutput { return v.Nodes }).(LkeNodePoolNodeArrayOutput)
 }
 
-// An array of tags applied to this object. Tags are for organizational purposes only.
+// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
+//
+// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The type of node pool.
+// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o LkeNodePoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

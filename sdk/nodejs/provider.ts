@@ -32,6 +32,14 @@ export class Provider extends pulumi.ProviderResource {
     public readonly configPath!: pulumi.Output<string | undefined>;
     public readonly configProfile!: pulumi.Output<string | undefined>;
     /**
+     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     */
+    public readonly objAccessKey!: pulumi.Output<string | undefined>;
+    /**
+     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     */
+    public readonly objSecretKey!: pulumi.Output<string | undefined>;
+    /**
      * The token that allows you access to your Linode account
      */
     public readonly token!: pulumi.Output<string | undefined>;
@@ -64,6 +72,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
             resourceInputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
             resourceInputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
+            resourceInputs["objAccessKey"] = args ? args.objAccessKey : undefined;
+            resourceInputs["objSecretKey"] = args?.objSecretKey ? pulumi.secret(args.objSecretKey) : undefined;
+            resourceInputs["objUseTempKeys"] = pulumi.output(args ? args.objUseTempKeys : undefined).apply(JSON.stringify);
             resourceInputs["skipImplicitReboots"] = pulumi.output(args ? args.skipImplicitReboots : undefined).apply(JSON.stringify);
             resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args ? args.skipInstanceDeletePoll : undefined).apply(JSON.stringify);
             resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
@@ -72,6 +83,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("LINODE_URL");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["objSecretKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -110,6 +123,19 @@ export interface ProviderArgs {
      * Minimum delay in milliseconds before retrying a request.
      */
     minRetryDelayMs?: pulumi.Input<number>;
+    /**
+     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     */
+    objAccessKey?: pulumi.Input<string>;
+    /**
+     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     */
+    objSecretKey?: pulumi.Input<string>;
+    /**
+     * If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+     * linode_object_sorage_bucket resource.
+     */
+    objUseTempKeys?: pulumi.Input<boolean>;
     /**
      * If true, Linode Instances will not be rebooted on config and interface changes.
      */
