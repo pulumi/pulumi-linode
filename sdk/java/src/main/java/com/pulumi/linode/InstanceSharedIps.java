@@ -54,22 +54,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a single primary node
  *         var primaryInstance = new Instance(&#34;primaryInstance&#34;, InstanceArgs.builder()        
  *             .label(&#34;node-primary&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
  *             .region(&#34;eu-central&#34;)
  *             .build());
  * 
+ *         // Allocate an IP under the primary node
  *         var primaryInstanceIp = new InstanceIp(&#34;primaryInstanceIp&#34;, InstanceIpArgs.builder()        
  *             .linodeId(primaryInstance.id())
  *             .build());
  * 
+ *         // Create a secondary node
  *         var secondary = new Instance(&#34;secondary&#34;, InstanceArgs.builder()        
  *             .label(&#34;node-secondary&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
  *             .region(&#34;eu-central&#34;)
  *             .build());
  * 
+ *         // Share the IP with the secondary node
  *         var share_primary = new InstanceSharedIps(&#34;share-primary&#34;, InstanceSharedIpsArgs.builder()        
  *             .linodeId(secondary.id())
  *             .addresses(primaryInstanceIp.address())
