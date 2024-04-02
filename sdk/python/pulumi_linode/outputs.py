@@ -7192,17 +7192,27 @@ class GetInstanceTypeAddonsBackupPriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
 
@@ -7243,17 +7253,27 @@ class GetInstanceTypePriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
 
@@ -7494,17 +7514,27 @@ class GetInstanceTypesTypeAddonBackupPriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
 
@@ -7545,17 +7575,27 @@ class GetInstanceTypesTypePriceResult(dict):
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
 
@@ -7882,7 +7922,7 @@ class GetInstancesInstanceAlertsResult(dict):
                  network_out: int,
                  transfer_quota: int):
         """
-        :param int cpu: The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+        :param int cpu: The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
         :param int io: The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
         :param int network_in: The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
         :param int network_out: The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
@@ -7898,7 +7938,7 @@ class GetInstancesInstanceAlertsResult(dict):
     @pulumi.getter
     def cpu(self) -> int:
         """
-        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
         """
         return pulumi.get(self, "cpu")
 
@@ -8831,7 +8871,7 @@ class GetInstancesInstanceSpecResult(dict):
                  transfer: int,
                  vcpus: int):
         """
-        :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         :param int memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
         :param int transfer: The amount of network transfer this Linode is allotted each month.
         :param int vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
@@ -8845,7 +8885,7 @@ class GetInstancesInstanceSpecResult(dict):
     @pulumi.getter
     def disk(self) -> int:
         """
-        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         """
         return pulumi.get(self, "disk")
 
@@ -9118,7 +9158,7 @@ class GetLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
                  high_availability: bool):
         """
-        :param bool high_availability: Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
         """
         pulumi.set(__self__, "high_availability", high_availability)
 
@@ -9126,7 +9166,7 @@ class GetLkeClusterControlPlaneResult(dict):
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> bool:
         """
-        Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        Whether High Availability is enabled for the cluster Control Plane.
         """
         return pulumi.get(self, "high_availability")
 
@@ -9480,7 +9520,7 @@ class GetLkeClustersLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
                  high_availability: bool):
         """
-        :param bool high_availability: Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
         """
         pulumi.set(__self__, "high_availability", high_availability)
 
@@ -9488,7 +9528,7 @@ class GetLkeClustersLkeClusterControlPlaneResult(dict):
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> bool:
         """
-        Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        Whether High Availability is enabled for the cluster Control Plane.
         """
         return pulumi.get(self, "high_availability")
 
@@ -10342,6 +10382,14 @@ class GetProfileReferralsResult(dict):
                  pending: int,
                  total: int,
                  url: str):
+        """
+        :param str code: The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+        :param int completed: The number of completed signups with the referral code.
+        :param float credit: The amount of account credit in US Dollars issued to the account through the referral program.
+        :param int pending: The number of pending signups for the referral code. To receive credit the signups must be completed.
+        :param int total: The number of users who have signed up with the referral code.
+        :param str url: The referral URL.
+        """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "completed", completed)
         pulumi.set(__self__, "credit", credit)
@@ -10352,31 +10400,49 @@ class GetProfileReferralsResult(dict):
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
     def completed(self) -> int:
+        """
+        The number of completed signups with the referral code.
+        """
         return pulumi.get(self, "completed")
 
     @property
     @pulumi.getter
     def credit(self) -> float:
+        """
+        The amount of account credit in US Dollars issued to the account through the referral program.
+        """
         return pulumi.get(self, "credit")
 
     @property
     @pulumi.getter
     def pending(self) -> int:
+        """
+        The number of pending signups for the referral code. To receive credit the signups must be completed.
+        """
         return pulumi.get(self, "pending")
 
     @property
     @pulumi.getter
     def total(self) -> int:
+        """
+        The number of users who have signed up with the referral code.
+        """
         return pulumi.get(self, "total")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The referral URL.
+        """
         return pulumi.get(self, "url")
 
 

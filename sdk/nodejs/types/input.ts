@@ -1327,12 +1327,24 @@ export interface GetInstanceTypesTypeAddonBackupArgs {
 }
 
 export interface GetInstanceTypesTypeAddonBackupPrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
 export interface GetInstanceTypesTypeAddonBackupPriceArgs {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: pulumi.Input<number>;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: pulumi.Input<number>;
 }
 
@@ -1355,12 +1367,24 @@ export interface GetInstanceTypesTypeAddonBackupRegionPriceArgs {
 }
 
 export interface GetInstanceTypesTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
 export interface GetInstanceTypesTypePriceArgs {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: pulumi.Input<number>;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: pulumi.Input<number>;
 }
 
@@ -1590,14 +1614,14 @@ export interface GetKernelsKernelArgs {
 
 export interface GetLkeClusterControlPlane {
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability?: boolean;
 }
 
 export interface GetLkeClusterControlPlaneArgs {
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability?: pulumi.Input<boolean>;
 }
@@ -1856,14 +1880,14 @@ export interface GetLkeClustersLkeClusterArgs {
 
 export interface GetLkeClustersLkeClusterControlPlane {
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability?: boolean;
 }
 
 export interface GetLkeClustersLkeClusterControlPlaneArgs {
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability?: pulumi.Input<boolean>;
 }

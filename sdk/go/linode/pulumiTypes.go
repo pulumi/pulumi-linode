@@ -15327,7 +15327,9 @@ func (o GetInstanceTypeAddonsBackupArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 type GetInstanceTypeAddonsBackupPrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -15343,7 +15345,9 @@ type GetInstanceTypeAddonsBackupPriceInput interface {
 }
 
 type GetInstanceTypeAddonsBackupPriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -15398,10 +15402,12 @@ func (o GetInstanceTypeAddonsBackupPriceOutput) ToGetInstanceTypeAddonsBackupPri
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetInstanceTypeAddonsBackupPriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetInstanceTypeAddonsBackupPriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -15536,7 +15542,9 @@ func (o GetInstanceTypeAddonsBackupRegionPriceArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetInstanceTypePrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -15552,7 +15560,9 @@ type GetInstanceTypePriceInput interface {
 }
 
 type GetInstanceTypePriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -15582,10 +15592,12 @@ func (o GetInstanceTypePriceOutput) ToGetInstanceTypePriceOutputWithContext(ctx 
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetInstanceTypePriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetInstanceTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -16198,7 +16210,9 @@ func (o GetInstanceTypesTypeAddonBackupArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetInstanceTypesTypeAddonBackupPrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -16214,7 +16228,9 @@ type GetInstanceTypesTypeAddonBackupPriceInput interface {
 }
 
 type GetInstanceTypesTypeAddonBackupPriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -16269,10 +16285,12 @@ func (o GetInstanceTypesTypeAddonBackupPriceOutput) ToGetInstanceTypesTypeAddonB
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetInstanceTypesTypeAddonBackupPriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetInstanceTypesTypeAddonBackupPriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -16407,7 +16425,9 @@ func (o GetInstanceTypesTypeAddonBackupRegionPriceArrayOutput) Index(i pulumi.In
 }
 
 type GetInstanceTypesTypePrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -16423,7 +16443,9 @@ type GetInstanceTypesTypePriceInput interface {
 }
 
 type GetInstanceTypesTypePriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -16478,10 +16500,12 @@ func (o GetInstanceTypesTypePriceOutput) ToGetInstanceTypesTypePriceOutputWithCo
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetInstanceTypesTypePriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetInstanceTypesTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -17011,7 +17035,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceAlerts struct {
-	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 	Cpu int `pulumi:"cpu"`
 	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	Io int `pulumi:"io"`
@@ -17035,7 +17059,7 @@ type GetInstancesInstanceAlertsInput interface {
 }
 
 type GetInstancesInstanceAlertsArgs struct {
-	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 	Cpu pulumi.IntInput `pulumi:"cpu"`
 	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	Io pulumi.IntInput `pulumi:"io"`
@@ -17073,7 +17097,7 @@ func (o GetInstancesInstanceAlertsOutput) ToGetInstancesInstanceAlertsOutputWith
 	return o
 }
 
-// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.Cpu }).(pulumi.IntOutput)
 }
@@ -19080,7 +19104,7 @@ func (o GetInstancesInstanceDiskArrayOutput) Index(i pulumi.IntInput) GetInstanc
 }
 
 type GetInstancesInstanceSpec struct {
-	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk int `pulumi:"disk"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory int `pulumi:"memory"`
@@ -19102,7 +19126,7 @@ type GetInstancesInstanceSpecInput interface {
 }
 
 type GetInstancesInstanceSpecArgs struct {
-	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk pulumi.IntInput `pulumi:"disk"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory pulumi.IntInput `pulumi:"memory"`
@@ -19163,7 +19187,7 @@ func (o GetInstancesInstanceSpecOutput) ToGetInstancesInstanceSpecOutputWithCont
 	return o
 }
 
-// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 func (o GetInstancesInstanceSpecOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Disk }).(pulumi.IntOutput)
 }
@@ -19727,7 +19751,7 @@ func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOu
 }
 
 type GetLkeClusterControlPlane struct {
-	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
 }
 
@@ -19743,7 +19767,7 @@ type GetLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClusterControlPlaneArgs struct {
-	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 }
 
@@ -19798,7 +19822,7 @@ func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithCo
 	return o
 }
 
-// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+// Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
 }
@@ -20595,7 +20619,7 @@ func (o GetLkeClustersLkeClusterArrayOutput) Index(i pulumi.IntInput) GetLkeClus
 }
 
 type GetLkeClustersLkeClusterControlPlane struct {
-	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
 }
 
@@ -20611,7 +20635,7 @@ type GetLkeClustersLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClustersLkeClusterControlPlaneArgs struct {
-	// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 }
 
@@ -20692,7 +20716,7 @@ func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterCo
 	}).(GetLkeClustersLkeClusterControlPlanePtrOutput)
 }
 
-// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+// Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClustersLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
 }
@@ -20721,7 +20745,7 @@ func (o GetLkeClustersLkeClusterControlPlanePtrOutput) Elem() GetLkeClustersLkeC
 	}).(GetLkeClustersLkeClusterControlPlaneOutput)
 }
 
-// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+// Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClustersLkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) *bool {
 		if v == nil {
@@ -22408,12 +22432,18 @@ func (o GetNodebalancersNodebalancerTransferArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetProfileReferrals struct {
-	Code      string  `pulumi:"code"`
-	Completed int     `pulumi:"completed"`
-	Credit    float64 `pulumi:"credit"`
-	Pending   int     `pulumi:"pending"`
-	Total     int     `pulumi:"total"`
-	Url       string  `pulumi:"url"`
+	// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+	Code string `pulumi:"code"`
+	// The number of completed signups with the referral code.
+	Completed int `pulumi:"completed"`
+	// The amount of account credit in US Dollars issued to the account through the referral program.
+	Credit float64 `pulumi:"credit"`
+	// The number of pending signups for the referral code. To receive credit the signups must be completed.
+	Pending int `pulumi:"pending"`
+	// The number of users who have signed up with the referral code.
+	Total int `pulumi:"total"`
+	// The referral URL.
+	Url string `pulumi:"url"`
 }
 
 // GetProfileReferralsInput is an input type that accepts GetProfileReferralsArgs and GetProfileReferralsOutput values.
@@ -22428,12 +22458,18 @@ type GetProfileReferralsInput interface {
 }
 
 type GetProfileReferralsArgs struct {
-	Code      pulumi.StringInput  `pulumi:"code"`
-	Completed pulumi.IntInput     `pulumi:"completed"`
-	Credit    pulumi.Float64Input `pulumi:"credit"`
-	Pending   pulumi.IntInput     `pulumi:"pending"`
-	Total     pulumi.IntInput     `pulumi:"total"`
-	Url       pulumi.StringInput  `pulumi:"url"`
+	// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+	Code pulumi.StringInput `pulumi:"code"`
+	// The number of completed signups with the referral code.
+	Completed pulumi.IntInput `pulumi:"completed"`
+	// The amount of account credit in US Dollars issued to the account through the referral program.
+	Credit pulumi.Float64Input `pulumi:"credit"`
+	// The number of pending signups for the referral code. To receive credit the signups must be completed.
+	Pending pulumi.IntInput `pulumi:"pending"`
+	// The number of users who have signed up with the referral code.
+	Total pulumi.IntInput `pulumi:"total"`
+	// The referral URL.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetProfileReferralsArgs) ElementType() reflect.Type {
@@ -22462,26 +22498,32 @@ func (o GetProfileReferralsOutput) ToGetProfileReferralsOutputWithContext(ctx co
 	return o
 }
 
+// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
 func (o GetProfileReferralsOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProfileReferrals) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// The number of completed signups with the referral code.
 func (o GetProfileReferralsOutput) Completed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProfileReferrals) int { return v.Completed }).(pulumi.IntOutput)
 }
 
+// The amount of account credit in US Dollars issued to the account through the referral program.
 func (o GetProfileReferralsOutput) Credit() pulumi.Float64Output {
 	return o.ApplyT(func(v GetProfileReferrals) float64 { return v.Credit }).(pulumi.Float64Output)
 }
 
+// The number of pending signups for the referral code. To receive credit the signups must be completed.
 func (o GetProfileReferralsOutput) Pending() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProfileReferrals) int { return v.Pending }).(pulumi.IntOutput)
 }
 
+// The number of users who have signed up with the referral code.
 func (o GetProfileReferralsOutput) Total() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProfileReferrals) int { return v.Total }).(pulumi.IntOutput)
 }
 
+// The referral URL.
 func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
 }
