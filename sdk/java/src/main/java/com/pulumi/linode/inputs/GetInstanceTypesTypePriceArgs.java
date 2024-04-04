@@ -14,16 +14,32 @@ public final class GetInstanceTypesTypePriceArgs extends com.pulumi.resources.Re
 
     public static final GetInstanceTypesTypePriceArgs Empty = new GetInstanceTypesTypePriceArgs();
 
+    /**
+     * Cost (in US dollars) per hour.
+     * 
+     */
     @Import(name="hourly", required=true)
     private Output<Double> hourly;
 
+    /**
+     * @return Cost (in US dollars) per hour.
+     * 
+     */
     public Output<Double> hourly() {
         return this.hourly;
     }
 
+    /**
+     * Cost (in US dollars) per month.
+     * 
+     */
     @Import(name="monthly", required=true)
     private Output<Double> monthly;
 
+    /**
+     * @return Cost (in US dollars) per month.
+     * 
+     */
     public Output<Double> monthly() {
         return this.monthly;
     }
@@ -53,20 +69,44 @@ public final class GetInstanceTypesTypePriceArgs extends com.pulumi.resources.Re
             $ = new GetInstanceTypesTypePriceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hourly Cost (in US dollars) per hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hourly(Output<Double> hourly) {
             $.hourly = hourly;
             return this;
         }
 
+        /**
+         * @param hourly Cost (in US dollars) per hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hourly(Double hourly) {
             return hourly(Output.of(hourly));
         }
 
+        /**
+         * @param monthly Cost (in US dollars) per month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder monthly(Output<Double> monthly) {
             $.monthly = monthly;
             return this;
         }
 
+        /**
+         * @param monthly Cost (in US dollars) per month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder monthly(Double monthly) {
             return monthly(Output.of(monthly));
         }

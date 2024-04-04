@@ -13,16 +13,32 @@ public final class GetInstanceTypesTypeAddonBackupPrice extends com.pulumi.resou
 
     public static final GetInstanceTypesTypeAddonBackupPrice Empty = new GetInstanceTypesTypeAddonBackupPrice();
 
+    /**
+     * Cost (in US dollars) per hour.
+     * 
+     */
     @Import(name="hourly", required=true)
     private Double hourly;
 
+    /**
+     * @return Cost (in US dollars) per hour.
+     * 
+     */
     public Double hourly() {
         return this.hourly;
     }
 
+    /**
+     * Cost (in US dollars) per month.
+     * 
+     */
     @Import(name="monthly", required=true)
     private Double monthly;
 
+    /**
+     * @return Cost (in US dollars) per month.
+     * 
+     */
     public Double monthly() {
         return this.monthly;
     }
@@ -52,11 +68,23 @@ public final class GetInstanceTypesTypeAddonBackupPrice extends com.pulumi.resou
             $ = new GetInstanceTypesTypeAddonBackupPrice(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hourly Cost (in US dollars) per hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hourly(Double hourly) {
             $.hourly = hourly;
             return this;
         }
 
+        /**
+         * @param monthly Cost (in US dollars) per month.
+         * 
+         * @return builder
+         * 
+         */
         public Builder monthly(Double monthly) {
             $.monthly = monthly;
             return this;

@@ -15,14 +15,14 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
     public static final GetLkeClustersLkeClusterControlPlaneArgs Empty = new GetLkeClustersLkeClusterControlPlaneArgs();
 
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
     @Import(name="highAvailability", required=true)
     private Output<Boolean> highAvailability;
 
     /**
-     * @return Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
     public Output<Boolean> highAvailability() {
@@ -54,7 +54,7 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
         }
 
         /**
-         * @param highAvailability Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+         * @param highAvailability Whether High Availability is enabled for the cluster Control Plane.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
         }
 
         /**
-         * @param highAvailability Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+         * @param highAvailability Whether High Availability is enabled for the cluster Control Plane.
          * 
          * @return builder
          * 

@@ -13,11 +13,29 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetProfileReferralsResult
     {
+        /// <summary>
+        /// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+        /// </summary>
         public readonly string Code;
+        /// <summary>
+        /// The number of completed signups with the referral code.
+        /// </summary>
         public readonly int Completed;
+        /// <summary>
+        /// The amount of account credit in US Dollars issued to the account through the referral program.
+        /// </summary>
         public readonly double Credit;
+        /// <summary>
+        /// The number of pending signups for the referral code. To receive credit the signups must be completed.
+        /// </summary>
         public readonly int Pending;
+        /// <summary>
+        /// The number of users who have signed up with the referral code.
+        /// </summary>
         public readonly int Total;
+        /// <summary>
+        /// The referral URL.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceAlertsResult
     {
         /// <summary>
-        /// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+        /// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
         /// </summary>
         public readonly int Cpu;
         /// <summary>

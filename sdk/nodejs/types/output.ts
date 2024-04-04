@@ -1263,7 +1263,13 @@ export interface GetInstanceTypeAddonsBackup {
 }
 
 export interface GetInstanceTypeAddonsBackupPrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
@@ -1277,7 +1283,13 @@ export interface GetInstanceTypeAddonsBackupRegionPrice {
 }
 
 export interface GetInstanceTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
@@ -1362,7 +1374,13 @@ export interface GetInstanceTypesTypeAddonBackup {
 }
 
 export interface GetInstanceTypesTypeAddonBackupPrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
@@ -1376,7 +1394,13 @@ export interface GetInstanceTypesTypeAddonBackupRegionPrice {
 }
 
 export interface GetInstanceTypesTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
@@ -1491,7 +1515,7 @@ export interface GetInstancesInstance {
 
 export interface GetInstancesInstanceAlerts {
     /**
-     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+     * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
      */
     cpu: number;
     /**
@@ -1835,7 +1859,7 @@ export interface GetInstancesInstanceDisk {
 
 export interface GetInstancesInstanceSpec {
     /**
-     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      */
     disk: number;
     /**
@@ -1942,7 +1966,7 @@ export interface GetKernelsKernel {
 
 export interface GetLkeClusterControlPlane {
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability: boolean;
 }
@@ -2075,7 +2099,7 @@ export interface GetLkeClustersLkeCluster {
 
 export interface GetLkeClustersLkeClusterControlPlane {
     /**
-     * Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability: boolean;
 }
@@ -2391,11 +2415,29 @@ export interface GetNodebalancersNodebalancerTransfer {
 }
 
 export interface GetProfileReferrals {
+    /**
+     * The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+     */
     code: string;
+    /**
+     * The number of completed signups with the referral code.
+     */
     completed: number;
+    /**
+     * The amount of account credit in US Dollars issued to the account through the referral program.
+     */
     credit: number;
+    /**
+     * The number of pending signups for the referral code. To receive credit the signups must be completed.
+     */
     pending: number;
+    /**
+     * The number of users who have signed up with the referral code.
+     */
     total: number;
+    /**
+     * The referral URL.
+     */
     url: string;
 }
 

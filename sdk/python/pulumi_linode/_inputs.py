@@ -6376,12 +6376,19 @@ class GetInstanceTypesTypeAddonBackupPriceArgs:
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @hourly.setter
@@ -6391,6 +6398,9 @@ class GetInstanceTypesTypeAddonBackupPriceArgs:
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
     @monthly.setter
@@ -6447,12 +6457,19 @@ class GetInstanceTypesTypePriceArgs:
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @hourly.setter
@@ -6462,6 +6479,9 @@ class GetInstanceTypesTypePriceArgs:
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
     @monthly.setter
@@ -6886,7 +6906,7 @@ class GetLkeClusterControlPlaneArgs:
     def __init__(__self__, *,
                  high_availability: bool):
         """
-        :param bool high_availability: Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
         """
         pulumi.set(__self__, "high_availability", high_availability)
 
@@ -6894,7 +6914,7 @@ class GetLkeClusterControlPlaneArgs:
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> bool:
         """
-        Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        Whether High Availability is enabled for the cluster Control Plane.
         """
         return pulumi.get(self, "high_availability")
 
@@ -7360,7 +7380,7 @@ class GetLkeClustersLkeClusterControlPlaneArgs:
     def __init__(__self__, *,
                  high_availability: bool):
         """
-        :param bool high_availability: Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
         """
         pulumi.set(__self__, "high_availability", high_availability)
 
@@ -7368,7 +7388,7 @@ class GetLkeClustersLkeClusterControlPlaneArgs:
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> bool:
         """
-        Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        Whether High Availability is enabled for the cluster Control Plane.
         """
         return pulumi.get(self, "high_availability")
 
