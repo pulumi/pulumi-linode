@@ -13,7 +13,13 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstanceTypesTypeAddonBackupPriceResult
     {
+        /// <summary>
+        /// Cost (in US dollars) per hour.
+        /// </summary>
         public readonly double Hourly;
+        /// <summary>
+        /// Cost (in US dollars) per month.
+        /// </summary>
         public readonly double Monthly;
 
         [OutputConstructor]

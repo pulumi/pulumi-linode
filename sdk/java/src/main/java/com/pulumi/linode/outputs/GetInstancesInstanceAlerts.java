@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstanceAlerts {
     /**
-     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
      * 
      */
     private Integer cpu;
@@ -38,7 +38,7 @@ public final class GetInstancesInstanceAlerts {
 
     private GetInstancesInstanceAlerts() {}
     /**
-     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.
+     * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
      * 
      */
     public Integer cpu() {

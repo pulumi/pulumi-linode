@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetLkeClustersLkeClusterControlPlaneArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+        /// Whether High Availability is enabled for the cluster Control Plane.
         /// </summary>
         [Input("highAvailability", required: true)]
         public bool HighAvailability { get; set; }

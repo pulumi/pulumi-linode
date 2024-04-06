@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeClustersLkeClusterControlPlane {
     /**
-     * @return Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
     private Boolean highAvailability;
 
     private GetLkeClustersLkeClusterControlPlane() {}
     /**
-     * @return Defines whether High Availability is enabled for the Control Plane Components of the cluster.
+     * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
     public Boolean highAvailability() {
