@@ -3818,10 +3818,12 @@
         "linode:index/getInstanceTypeAddonsBackupPrice:getInstanceTypeAddonsBackupPrice": {
             "properties": {
                 "hourly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per hour.\n"
                 },
                 "monthly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per month.\n"
                 }
             },
             "type": "object",
@@ -3863,10 +3865,12 @@
         "linode:index/getInstanceTypePrice:getInstanceTypePrice": {
             "properties": {
                 "hourly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per hour.\n"
                 },
                 "monthly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per month.\n"
                 }
             },
             "type": "object",
@@ -4045,10 +4049,12 @@
         "linode:index/getInstanceTypesTypeAddonBackupPrice:getInstanceTypesTypeAddonBackupPrice": {
             "properties": {
                 "hourly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per hour.\n"
                 },
                 "monthly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per month.\n"
                 }
             },
             "type": "object",
@@ -4080,10 +4086,12 @@
         "linode:index/getInstanceTypesTypePrice:getInstanceTypesTypePrice": {
             "properties": {
                 "hourly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per hour.\n"
                 },
                 "monthly": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Cost (in US dollars) per month.\n"
                 }
             },
             "type": "object",
@@ -4278,7 +4286,7 @@
             "properties": {
                 "cpu": {
                     "type": "integer",
-                    "description": "The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.send you an alert. If this is set to 0, the alert is disabled.\n"
+                    "description": "The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.\n"
                 },
                 "io": {
                     "type": "integer",
@@ -4869,7 +4877,7 @@
             "properties": {
                 "disk": {
                     "type": "integer",
-                    "description": "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.\n"
+                    "description": "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.\n"
                 },
                 "memory": {
                     "type": "integer",
@@ -5040,7 +5048,7 @@
             "properties": {
                 "highAvailability": {
                     "type": "boolean",
-                    "description": "Defines whether High Availability is enabled for the Control Plane Components of the cluster.\n"
+                    "description": "Whether High Availability is enabled for the cluster Control Plane.\n"
                 }
             },
             "type": "object",
@@ -5272,7 +5280,7 @@
             "properties": {
                 "highAvailability": {
                     "type": "boolean",
-                    "description": "Defines whether High Availability is enabled for the Control Plane Components of the cluster.\n"
+                    "description": "Whether High Availability is enabled for the cluster Control Plane.\n"
                 }
             },
             "type": "object",
@@ -5789,22 +5797,28 @@
         "linode:index/getProfileReferrals:getProfileReferrals": {
             "properties": {
                 "code": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.\n"
                 },
                 "completed": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of completed signups with the referral code.\n"
                 },
                 "credit": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The amount of account credit in US Dollars issued to the account through the referral program.\n"
                 },
                 "pending": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of pending signups for the referral code. To receive credit the signups must be completed.\n"
                 },
                 "total": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of users who have signed up with the referral code.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The referral URL.\n"
                 }
             },
             "type": "object",
