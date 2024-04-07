@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstanceSpec {
     /**
-     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     private Integer disk;
@@ -33,7 +33,7 @@ public final class GetInstancesInstanceSpec {
 
     private GetInstancesInstanceSpec() {}
     /**
-     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     public Integer disk() {

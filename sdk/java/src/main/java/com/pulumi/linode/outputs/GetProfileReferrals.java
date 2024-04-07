@@ -12,29 +12,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProfileReferrals {
+    /**
+     * @return The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+     * 
+     */
     private String code;
+    /**
+     * @return The number of completed signups with the referral code.
+     * 
+     */
     private Integer completed;
+    /**
+     * @return The amount of account credit in US Dollars issued to the account through the referral program.
+     * 
+     */
     private Double credit;
+    /**
+     * @return The number of pending signups for the referral code. To receive credit the signups must be completed.
+     * 
+     */
     private Integer pending;
+    /**
+     * @return The number of users who have signed up with the referral code.
+     * 
+     */
     private Integer total;
+    /**
+     * @return The referral URL.
+     * 
+     */
     private String url;
 
     private GetProfileReferrals() {}
+    /**
+     * @return The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
+     * 
+     */
     public String code() {
         return this.code;
     }
+    /**
+     * @return The number of completed signups with the referral code.
+     * 
+     */
     public Integer completed() {
         return this.completed;
     }
+    /**
+     * @return The amount of account credit in US Dollars issued to the account through the referral program.
+     * 
+     */
     public Double credit() {
         return this.credit;
     }
+    /**
+     * @return The number of pending signups for the referral code. To receive credit the signups must be completed.
+     * 
+     */
     public Integer pending() {
         return this.pending;
     }
+    /**
+     * @return The number of users who have signed up with the referral code.
+     * 
+     */
     public Integer total() {
         return this.total;
     }
+    /**
+     * @return The referral URL.
+     * 
+     */
     public String url() {
         return this.url;
     }
