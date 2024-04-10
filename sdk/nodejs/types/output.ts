@@ -932,6 +932,7 @@ export interface GetInstanceNetworkingIpv4 {
     publics: outputs.GetInstanceNetworkingIpv4Public[];
     reserveds: outputs.GetInstanceNetworkingIpv4Reserved[];
     shareds: outputs.GetInstanceNetworkingIpv4Shared[];
+    vpcs: outputs.GetInstanceNetworkingIpv4Vpc[];
 }
 
 export interface GetInstanceNetworkingIpv4Private {
@@ -971,6 +972,9 @@ export interface GetInstanceNetworkingIpv4Private {
      * The type of address this is.
      */
     type: string;
+    /**
+     * IPv4 address configured as a 1:1 NAT for this Interface.
+     */
     vpcNat11: outputs.GetInstanceNetworkingIpv4PrivateVpcNat11;
 }
 
@@ -979,7 +983,13 @@ export interface GetInstanceNetworkingIpv4PrivateVpcNat11 {
      * The address.
      */
     address: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
     subnetId: number;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
     vpcId: number;
 }
 
@@ -1020,6 +1030,9 @@ export interface GetInstanceNetworkingIpv4Public {
      * The type of address this is.
      */
     type: string;
+    /**
+     * IPv4 address configured as a 1:1 NAT for this Interface.
+     */
     vpcNat11: outputs.GetInstanceNetworkingIpv4PublicVpcNat11;
 }
 
@@ -1028,7 +1041,13 @@ export interface GetInstanceNetworkingIpv4PublicVpcNat11 {
      * The address.
      */
     address: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
     subnetId: number;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
     vpcId: number;
 }
 
@@ -1069,6 +1088,9 @@ export interface GetInstanceNetworkingIpv4Reserved {
      * The type of address this is.
      */
     type: string;
+    /**
+     * IPv4 address configured as a 1:1 NAT for this Interface.
+     */
     vpcNat11: outputs.GetInstanceNetworkingIpv4ReservedVpcNat11;
 }
 
@@ -1077,7 +1099,13 @@ export interface GetInstanceNetworkingIpv4ReservedVpcNat11 {
      * The address.
      */
     address: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
     subnetId: number;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
     vpcId: number;
 }
 
@@ -1118,6 +1146,9 @@ export interface GetInstanceNetworkingIpv4Shared {
      * The type of address this is.
      */
     type: string;
+    /**
+     * IPv4 address configured as a 1:1 NAT for this Interface.
+     */
     vpcNat11: outputs.GetInstanceNetworkingIpv4SharedVpcNat11;
 }
 
@@ -1126,7 +1157,68 @@ export interface GetInstanceNetworkingIpv4SharedVpcNat11 {
      * The address.
      */
     address: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
     subnetId: number;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
+    vpcId: number;
+}
+
+export interface GetInstanceNetworkingIpv4Vpc {
+    /**
+     * Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `configId` to which the interface belongs. Otherwise returns `false`.
+     */
+    active: boolean;
+    /**
+     * The address.
+     */
+    address: string;
+    /**
+     * A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
+     */
+    addressRange: string;
+    /**
+     * The globally general entity identifier for the Linode configuration profile where the VPC is included.
+     */
+    configId: number;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
+    /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
+     * The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `addressRange` or NAT 1:1 isn't used.
+     */
+    nat11: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
+    subnetId: number;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
     vpcId: number;
 }
 
@@ -1192,6 +1284,9 @@ export interface GetInstanceNetworkingIpv6LinkLocal {
      * The type of address this is.
      */
     type: string;
+    /**
+     * IPv4 address configured as a 1:1 NAT for this Interface.
+     */
     vpcNat11: outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11;
 }
 
@@ -1200,7 +1295,13 @@ export interface GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
      * The address.
      */
     address: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
     subnetId: number;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
     vpcId: number;
 }
 
@@ -1241,6 +1342,9 @@ export interface GetInstanceNetworkingIpv6Slaac {
      * The type of address this is.
      */
     type: string;
+    /**
+     * IPv4 address configured as a 1:1 NAT for this Interface.
+     */
     vpcNat11: outputs.GetInstanceNetworkingIpv6SlaacVpcNat11;
 }
 
@@ -1249,7 +1353,13 @@ export interface GetInstanceNetworkingIpv6SlaacVpcNat11 {
      * The address.
      */
     address: string;
+    /**
+     * The unique globally general API entity identifier for the VPC subnet.
+     */
     subnetId: number;
+    /**
+     * The unique globally general API entity identifier for the VPC.
+     */
     vpcId: number;
 }
 
@@ -2486,6 +2596,10 @@ export interface GetRegionsRegion {
     label: string;
     resolvers?: outputs.GetRegionsRegionResolver[];
     /**
+     * The type of this region.
+     */
+    siteType: string;
+    /**
      * This region’s current operational status (ok or outage).
      */
     status: string;
@@ -3326,6 +3440,13 @@ export interface GetVpcsVpc {
      * The date and time when the VPC was last updated.
      */
     updated: string;
+}
+
+export interface ImageTimeouts {
+    /**
+     * Used when creating the instance image (until the instance is available)
+     */
+    create?: string;
 }
 
 export interface InstanceAlerts {

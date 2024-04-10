@@ -24,9 +24,15 @@ namespace Pulumi.Linode
         [Output("apiVersion")]
         public Output<string?> ApiVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The path to the Linode config file to use. (default `~/.config/linode`)
+        /// </summary>
         [Output("configPath")]
         public Output<string?> ConfigPath { get; private set; } = null!;
 
+        /// <summary>
+        /// The Linode config profile to use. (default `default`)
+        /// </summary>
         [Output("configProfile")]
         public Output<string?> ConfigProfile { get; private set; } = null!;
 
@@ -98,9 +104,15 @@ namespace Pulumi.Linode
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
+        /// <summary>
+        /// The path to the Linode config file to use. (default `~/.config/linode`)
+        /// </summary>
         [Input("configPath")]
         public Input<string>? ConfigPath { get; set; }
 
+        /// <summary>
+        /// The Linode config profile to use. (default `default`)
+        /// </summary>
         [Input("configProfile")]
         public Input<string>? ConfigProfile { get; set; }
 

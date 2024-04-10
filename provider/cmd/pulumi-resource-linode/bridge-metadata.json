@@ -943,6 +943,9 @@
                                 },
                                 "shared": {
                                     "maxItemsOne": false
+                                },
+                                "vpc": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -1771,7 +1774,7 @@
             "linode:index/domainRecord:DomainRecord": 0,
             "linode:index/firewall:Firewall": 0,
             "linode:index/firewallDevice:FirewallDevice": 1,
-            "linode:index/image:Image": 0,
+            "linode:index/image:Image": 1,
             "linode:index/instance:Instance": 0,
             "linode:index/instanceDisk:InstanceDisk": 1,
             "linode:index/instanceIp:InstanceIp": 1,

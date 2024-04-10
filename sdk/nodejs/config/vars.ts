@@ -18,6 +18,9 @@ Object.defineProperty(exports, "apiVersion", {
     enumerable: true,
 });
 
+/**
+ * The path to the Linode config file to use. (default `~/.config/linode`)
+ */
 export declare const configPath: string | undefined;
 Object.defineProperty(exports, "configPath", {
     get() {
@@ -26,6 +29,9 @@ Object.defineProperty(exports, "configPath", {
     enumerable: true,
 });
 
+/**
+ * The Linode config profile to use. (default `default`)
+ */
 export declare const configProfile: string | undefined;
 Object.defineProperty(exports, "configProfile", {
     get() {

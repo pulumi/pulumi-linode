@@ -19,9 +19,17 @@ public final class Config {
     public Optional<String> apiVersion() {
         return Codegen.stringProp("apiVersion").config(config).env("LINODE_API_VERSION").get();
     }
+/**
+ * The path to the Linode config file to use. (default `~/.config/linode`)
+ * 
+ */
     public Optional<String> configPath() {
         return Codegen.stringProp("configPath").config(config).get();
     }
+/**
+ * The Linode config profile to use. (default `default`)
+ * 
+ */
     public Optional<String> configProfile() {
         return Codegen.stringProp("configProfile").config(config).get();
     }

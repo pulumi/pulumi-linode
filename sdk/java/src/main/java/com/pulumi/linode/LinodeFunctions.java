@@ -12453,6 +12453,8 @@ public final class LinodeFunctions {
      * 
      * * `capabilities`
      * 
+     * * `site_type`
+     * 
      */
     public static Output<GetRegionsResult> getRegions() {
         return getRegions(GetRegionsArgs.Empty, InvokeOptions.Empty);
@@ -12507,6 +12509,8 @@ public final class LinodeFunctions {
      * * `country`
      * 
      * * `capabilities`
+     * 
+     * * `site_type`
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -12563,6 +12567,8 @@ public final class LinodeFunctions {
      * 
      * * `capabilities`
      * 
+     * * `site_type`
+     * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
         return getRegions(args, InvokeOptions.Empty);
@@ -12617,6 +12623,8 @@ public final class LinodeFunctions {
      * * `country`
      * 
      * * `capabilities`
+     * 
+     * * `site_type`
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -12673,6 +12681,8 @@ public final class LinodeFunctions {
      * 
      * * `capabilities`
      * 
+     * * `site_type`
+     * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
@@ -12727,6 +12737,8 @@ public final class LinodeFunctions {
      * * `country`
      * 
      * * `capabilities`
+     * 
+     * * `site_type`
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {

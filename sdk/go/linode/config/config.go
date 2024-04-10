@@ -23,9 +23,13 @@ func GetApiVersion(ctx *pulumi.Context) string {
 	}
 	return value
 }
+
+// The path to the Linode config file to use. (default `~/.config/linode`)
 func GetConfigPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:configPath")
 }
+
+// The Linode config profile to use. (default `default`)
 func GetConfigProfile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:configProfile")
 }

@@ -9,6 +9,7 @@ import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Private;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Public;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Reserved;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Shared;
+import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4Vpc;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +23,7 @@ public final class GetInstanceNetworkingIpv4 {
     private List<GetInstanceNetworkingIpv4Public> publics;
     private List<GetInstanceNetworkingIpv4Reserved> reserveds;
     private List<GetInstanceNetworkingIpv4Shared> shareds;
+    private List<GetInstanceNetworkingIpv4Vpc> vpcs;
 
     private GetInstanceNetworkingIpv4() {}
     public List<GetInstanceNetworkingIpv4Private> privates() {
@@ -40,6 +42,9 @@ public final class GetInstanceNetworkingIpv4 {
     public List<GetInstanceNetworkingIpv4Shared> shareds() {
         return this.shareds;
     }
+    public List<GetInstanceNetworkingIpv4Vpc> vpcs() {
+        return this.vpcs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,6 +59,7 @@ public final class GetInstanceNetworkingIpv4 {
         private List<GetInstanceNetworkingIpv4Public> publics;
         private List<GetInstanceNetworkingIpv4Reserved> reserveds;
         private List<GetInstanceNetworkingIpv4Shared> shareds;
+        private List<GetInstanceNetworkingIpv4Vpc> vpcs;
         public Builder() {}
         public Builder(GetInstanceNetworkingIpv4 defaults) {
     	      Objects.requireNonNull(defaults);
@@ -61,6 +67,7 @@ public final class GetInstanceNetworkingIpv4 {
     	      this.publics = defaults.publics;
     	      this.reserveds = defaults.reserveds;
     	      this.shareds = defaults.shareds;
+    	      this.vpcs = defaults.vpcs;
         }
 
         @CustomType.Setter
@@ -107,12 +114,24 @@ public final class GetInstanceNetworkingIpv4 {
         public Builder shareds(GetInstanceNetworkingIpv4Shared... shareds) {
             return shareds(List.of(shareds));
         }
+        @CustomType.Setter
+        public Builder vpcs(List<GetInstanceNetworkingIpv4Vpc> vpcs) {
+            if (vpcs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4", "vpcs");
+            }
+            this.vpcs = vpcs;
+            return this;
+        }
+        public Builder vpcs(GetInstanceNetworkingIpv4Vpc... vpcs) {
+            return vpcs(List.of(vpcs));
+        }
         public GetInstanceNetworkingIpv4 build() {
             final var _resultValue = new GetInstanceNetworkingIpv4();
             _resultValue.privates = privates;
             _resultValue.publics = publics;
             _resultValue.reserveds = reserveds;
             _resultValue.shareds = shareds;
+            _resultValue.vpcs = vpcs;
             return _resultValue;
         }
     }

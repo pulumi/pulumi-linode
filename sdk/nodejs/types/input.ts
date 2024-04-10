@@ -2517,6 +2517,10 @@ export interface GetRegionsRegion {
     label?: string;
     resolvers?: inputs.GetRegionsRegionResolver[];
     /**
+     * The type of this region.
+     */
+    siteType?: string;
+    /**
      * This region’s current operational status (ok or outage).
      */
     status?: string;
@@ -2540,6 +2544,10 @@ export interface GetRegionsRegionArgs {
      */
     label?: pulumi.Input<string>;
     resolvers?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionResolverArgs>[]>;
+    /**
+     * The type of this region.
+     */
+    siteType?: pulumi.Input<string>;
     /**
      * This region’s current operational status (ok or outage).
      */
@@ -4036,6 +4044,13 @@ export interface GetVpcsVpcArgs {
      * The date and time when the VPC was last updated.
      */
     updated?: pulumi.Input<string>;
+}
+
+export interface ImageTimeouts {
+    /**
+     * Used when creating the instance image (until the instance is available)
+     */
+    create?: pulumi.Input<string>;
 }
 
 export interface InstanceAlerts {

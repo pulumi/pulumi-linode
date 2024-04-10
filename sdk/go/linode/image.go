@@ -83,7 +83,7 @@ type Image struct {
 	// The capabilities of this Image.
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// Whether this image supports cloud-init.
-	CloudInit pulumi.BoolPtrOutput `pulumi:"cloudInit"`
+	CloudInit pulumi.BoolOutput `pulumi:"cloudInit"`
 	// When this Image was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The name of the User who created this Image.
@@ -121,7 +121,8 @@ type Image struct {
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The current status of this Image.
-	Status pulumi.StringOutput `pulumi:"status"`
+	Status   pulumi.StringOutput    `pulumi:"status"`
+	Timeouts ImageTimeoutsPtrOutput `pulumi:"timeouts"`
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The upstream distribution vendor. Nil for private Images.
@@ -202,7 +203,8 @@ type imageState struct {
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size *int `pulumi:"size"`
 	// The current status of this Image.
-	Status *string `pulumi:"status"`
+	Status   *string        `pulumi:"status"`
+	Timeouts *ImageTimeouts `pulumi:"timeouts"`
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
 	Type *string `pulumi:"type"`
 	// The upstream distribution vendor. Nil for private Images.
@@ -251,7 +253,8 @@ type ImageState struct {
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntPtrInput
 	// The current status of this Image.
-	Status pulumi.StringPtrInput
+	Status   pulumi.StringPtrInput
+	Timeouts ImageTimeoutsPtrInput
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
 	Type pulumi.StringPtrInput
 	// The upstream distribution vendor. Nil for private Images.
@@ -288,7 +291,8 @@ type imageArgs struct {
 	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
-	Region *string `pulumi:"region"`
+	Region   *string        `pulumi:"region"`
+	Timeouts *ImageTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -318,7 +322,8 @@ type ImageArgs struct {
 	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
+	Timeouts ImageTimeoutsPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -414,8 +419,8 @@ func (o ImageOutput) Capabilities() pulumi.StringArrayOutput {
 }
 
 // Whether this image supports cloud-init.
-func (o ImageOutput) CloudInit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.CloudInit }).(pulumi.BoolPtrOutput)
+func (o ImageOutput) CloudInit() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.CloudInit }).(pulumi.BoolOutput)
 }
 
 // When this Image was created.
@@ -496,6 +501,10 @@ func (o ImageOutput) Size() pulumi.IntOutput {
 // The current status of this Image.
 func (o ImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o ImageOutput) Timeouts() ImageTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Image) ImageTimeoutsPtrOutput { return v.Timeouts }).(ImageTimeoutsPtrOutput)
 }
 
 // How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.

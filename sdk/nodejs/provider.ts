@@ -29,7 +29,13 @@ export class Provider extends pulumi.ProviderResource {
      * The version of Linode API.
      */
     public readonly apiVersion!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the Linode config file to use. (default `~/.config/linode`)
+     */
     public readonly configPath!: pulumi.Output<string | undefined>;
+    /**
+     * The Linode config profile to use. (default `default`)
+     */
     public readonly configProfile!: pulumi.Output<string | undefined>;
     /**
      * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
@@ -97,7 +103,13 @@ export interface ProviderArgs {
      * The version of Linode API.
      */
     apiVersion?: pulumi.Input<string>;
+    /**
+     * The path to the Linode config file to use. (default `~/.config/linode`)
+     */
     configPath?: pulumi.Input<string>;
+    /**
+     * The Linode config profile to use. (default `default`)
+     */
     configProfile?: pulumi.Input<string>;
     /**
      * Disable the internal caching system that backs certain Linode API requests.

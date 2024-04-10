@@ -35,6 +35,11 @@ public final class GetRegionsRegion {
     private String label;
     private @Nullable List<GetRegionsRegionResolver> resolvers;
     /**
+     * @return The type of this region.
+     * 
+     */
+    private String siteType;
+    /**
      * @return This region’s current operational status (ok or outage).
      * 
      */
@@ -73,6 +78,13 @@ public final class GetRegionsRegion {
         return this.resolvers == null ? List.of() : this.resolvers;
     }
     /**
+     * @return The type of this region.
+     * 
+     */
+    public String siteType() {
+        return this.siteType;
+    }
+    /**
      * @return This region’s current operational status (ok or outage).
      * 
      */
@@ -94,6 +106,7 @@ public final class GetRegionsRegion {
         private String id;
         private String label;
         private @Nullable List<GetRegionsRegionResolver> resolvers;
+        private String siteType;
         private String status;
         public Builder() {}
         public Builder(GetRegionsRegion defaults) {
@@ -103,6 +116,7 @@ public final class GetRegionsRegion {
     	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.resolvers = defaults.resolvers;
+    	      this.siteType = defaults.siteType;
     	      this.status = defaults.status;
         }
 
@@ -151,6 +165,14 @@ public final class GetRegionsRegion {
             return resolvers(List.of(resolvers));
         }
         @CustomType.Setter
+        public Builder siteType(String siteType) {
+            if (siteType == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "siteType");
+            }
+            this.siteType = siteType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetRegionsRegion", "status");
@@ -165,6 +187,7 @@ public final class GetRegionsRegion {
             _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.resolvers = resolvers;
+            _resultValue.siteType = siteType;
             _resultValue.status = status;
             return _resultValue;
         }

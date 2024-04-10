@@ -58,6 +58,10 @@ public final class GetInstanceNetworkingIpv6Slaac {
      * 
      */
     private String type;
+    /**
+     * @return IPv4 address configured as a 1:1 NAT for this Interface.
+     * 
+     */
     private GetInstanceNetworkingIpv6SlaacVpcNat11 vpcNat11;
 
     private GetInstanceNetworkingIpv6Slaac() {}
@@ -124,6 +128,10 @@ public final class GetInstanceNetworkingIpv6Slaac {
     public String type() {
         return this.type;
     }
+    /**
+     * @return IPv4 address configured as a 1:1 NAT for this Interface.
+     * 
+     */
     public GetInstanceNetworkingIpv6SlaacVpcNat11 vpcNat11() {
         return this.vpcNat11;
     }

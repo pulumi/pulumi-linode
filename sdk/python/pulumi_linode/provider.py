@@ -35,6 +35,8 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] api_version: The version of Linode API.
+        :param pulumi.Input[str] config_path: The path to the Linode config file to use. (default `~/.config/linode`)
+        :param pulumi.Input[str] config_profile: The Linode config profile to use. (default `default`)
         :param pulumi.Input[bool] disable_internal_cache: Disable the internal caching system that backs certain Linode API requests.
         :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
         :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
@@ -110,6 +112,9 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="configPath")
     def config_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the Linode config file to use. (default `~/.config/linode`)
+        """
         return pulumi.get(self, "config_path")
 
     @config_path.setter
@@ -119,6 +124,9 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="configProfile")
     def config_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Linode config profile to use. (default `default`)
+        """
         return pulumi.get(self, "config_profile")
 
     @config_profile.setter
@@ -340,6 +348,8 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: The version of Linode API.
+        :param pulumi.Input[str] config_path: The path to the Linode config file to use. (default `~/.config/linode`)
+        :param pulumi.Input[str] config_profile: The Linode config profile to use. (default `default`)
         :param pulumi.Input[bool] disable_internal_cache: Disable the internal caching system that backs certain Linode API requests.
         :param pulumi.Input[int] event_poll_ms: The rate in milliseconds to poll for events.
         :param pulumi.Input[int] lke_event_poll_ms: The rate in milliseconds to poll for LKE events.
@@ -454,11 +464,17 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter(name="configPath")
     def config_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to the Linode config file to use. (default `~/.config/linode`)
+        """
         return pulumi.get(self, "config_path")
 
     @property
     @pulumi.getter(name="configProfile")
     def config_profile(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Linode config profile to use. (default `default`)
+        """
         return pulumi.get(self, "config_profile")
 
     @property

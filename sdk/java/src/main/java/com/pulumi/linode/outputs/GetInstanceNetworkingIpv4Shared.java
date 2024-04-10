@@ -58,6 +58,10 @@ public final class GetInstanceNetworkingIpv4Shared {
      * 
      */
     private String type;
+    /**
+     * @return IPv4 address configured as a 1:1 NAT for this Interface.
+     * 
+     */
     private GetInstanceNetworkingIpv4SharedVpcNat11 vpcNat11;
 
     private GetInstanceNetworkingIpv4Shared() {}
@@ -124,6 +128,10 @@ public final class GetInstanceNetworkingIpv4Shared {
     public String type() {
         return this.type;
     }
+    /**
+     * @return IPv4 address configured as a 1:1 NAT for this Interface.
+     * 
+     */
     public GetInstanceNetworkingIpv4SharedVpcNat11 vpcNat11() {
         return this.vpcNat11;
     }

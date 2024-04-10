@@ -31,6 +31,11 @@ public final class GetRegionResult {
     private String label;
     private @Nullable List<GetRegionResolver> resolvers;
     /**
+     * @return The type of this region.
+     * 
+     */
+    private String siteType;
+    /**
      * @return This region’s current operational status (ok or outage).
      * 
      */
@@ -65,6 +70,13 @@ public final class GetRegionResult {
         return this.resolvers == null ? List.of() : this.resolvers;
     }
     /**
+     * @return The type of this region.
+     * 
+     */
+    public String siteType() {
+        return this.siteType;
+    }
+    /**
      * @return This region’s current operational status (ok or outage).
      * 
      */
@@ -86,6 +98,7 @@ public final class GetRegionResult {
         private String id;
         private String label;
         private @Nullable List<GetRegionResolver> resolvers;
+        private String siteType;
         private String status;
         public Builder() {}
         public Builder(GetRegionResult defaults) {
@@ -95,6 +108,7 @@ public final class GetRegionResult {
     	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.resolvers = defaults.resolvers;
+    	      this.siteType = defaults.siteType;
     	      this.status = defaults.status;
         }
 
@@ -143,6 +157,14 @@ public final class GetRegionResult {
             return resolvers(List.of(resolvers));
         }
         @CustomType.Setter
+        public Builder siteType(String siteType) {
+            if (siteType == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "siteType");
+            }
+            this.siteType = siteType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetRegionResult", "status");
@@ -157,6 +179,7 @@ public final class GetRegionResult {
             _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.resolvers = resolvers;
+            _resultValue.siteType = siteType;
             _resultValue.status = status;
             return _resultValue;
         }

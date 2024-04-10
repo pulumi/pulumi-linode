@@ -16,7 +16,15 @@ public final class GetInstanceNetworkingIpv4SharedVpcNat11 {
      * 
      */
     private String address;
+    /**
+     * @return The unique globally general API entity identifier for the VPC subnet.
+     * 
+     */
     private Integer subnetId;
+    /**
+     * @return The unique globally general API entity identifier for the VPC.
+     * 
+     */
     private Integer vpcId;
 
     private GetInstanceNetworkingIpv4SharedVpcNat11() {}
@@ -27,9 +35,17 @@ public final class GetInstanceNetworkingIpv4SharedVpcNat11 {
     public String address() {
         return this.address;
     }
+    /**
+     * @return The unique globally general API entity identifier for the VPC subnet.
+     * 
+     */
     public Integer subnetId() {
         return this.subnetId;
     }
+    /**
+     * @return The unique globally general API entity identifier for the VPC.
+     * 
+     */
     public Integer vpcId() {
         return this.vpcId;
     }

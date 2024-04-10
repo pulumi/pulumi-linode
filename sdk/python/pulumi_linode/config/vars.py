@@ -24,10 +24,16 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def config_path(self) -> Optional[str]:
+        """
+        The path to the Linode config file to use. (default `~/.config/linode`)
+        """
         return __config__.get('configPath')
 
     @property
     def config_profile(self) -> Optional[str]:
+        """
+        The Linode config profile to use. (default `default`)
+        """
         return __config__.get('configProfile')
 
     @property

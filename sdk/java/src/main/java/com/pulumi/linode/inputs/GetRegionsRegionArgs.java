@@ -86,6 +86,21 @@ public final class GetRegionsRegionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The type of this region.
+     * 
+     */
+    @Import(name="siteType", required=true)
+    private Output<String> siteType;
+
+    /**
+     * @return The type of this region.
+     * 
+     */
+    public Output<String> siteType() {
+        return this.siteType;
+    }
+
+    /**
      * This region’s current operational status (ok or outage).
      * 
      */
@@ -108,6 +123,7 @@ public final class GetRegionsRegionArgs extends com.pulumi.resources.ResourceArg
         this.id = $.id;
         this.label = $.label;
         this.resolvers = $.resolvers;
+        this.siteType = $.siteType;
         this.status = $.status;
     }
 
@@ -237,6 +253,27 @@ public final class GetRegionsRegionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param siteType The type of this region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteType(Output<String> siteType) {
+            $.siteType = siteType;
+            return this;
+        }
+
+        /**
+         * @param siteType The type of this region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteType(String siteType) {
+            return siteType(Output.of(siteType));
+        }
+
+        /**
          * @param status This region’s current operational status (ok or outage).
          * 
          * @return builder
@@ -269,6 +306,9 @@ public final class GetRegionsRegionArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetRegionsRegionArgs", "label");
+            }
+            if ($.siteType == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegionArgs", "siteType");
             }
             if ($.status == null) {
                 throw new MissingRequiredPropertyException("GetRegionsRegionArgs", "status");

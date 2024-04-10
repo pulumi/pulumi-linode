@@ -69,6 +69,8 @@ type GetRegionResult struct {
 	// Detailed location information for this Region, including city, state or region, and country.
 	Label     string              `pulumi:"label"`
 	Resolvers []GetRegionResolver `pulumi:"resolvers"`
+	// The type of this region.
+	SiteType string `pulumi:"siteType"`
 	// This region’s current operational status (ok or outage).
 	Status string `pulumi:"status"`
 }
@@ -133,6 +135,11 @@ func (o GetRegionResultOutput) Label() pulumi.StringOutput {
 
 func (o GetRegionResultOutput) Resolvers() GetRegionResolverArrayOutput {
 	return o.ApplyT(func(v GetRegionResult) []GetRegionResolver { return v.Resolvers }).(GetRegionResolverArrayOutput)
+}
+
+// The type of this region.
+func (o GetRegionResultOutput) SiteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.SiteType }).(pulumi.StringOutput)
 }
 
 // This region’s current operational status (ok or outage).

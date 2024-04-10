@@ -23,7 +23,7 @@ class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, capabilities=None, country=None, id=None, label=None, resolvers=None, status=None):
+    def __init__(__self__, capabilities=None, country=None, id=None, label=None, resolvers=None, site_type=None, status=None):
         if capabilities and not isinstance(capabilities, list):
             raise TypeError("Expected argument 'capabilities' to be a list")
         pulumi.set(__self__, "capabilities", capabilities)
@@ -39,6 +39,9 @@ class GetRegionResult:
         if resolvers and not isinstance(resolvers, list):
             raise TypeError("Expected argument 'resolvers' to be a list")
         pulumi.set(__self__, "resolvers", resolvers)
+        if site_type and not isinstance(site_type, str):
+            raise TypeError("Expected argument 'site_type' to be a str")
+        pulumi.set(__self__, "site_type", site_type)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -78,6 +81,14 @@ class GetRegionResult:
         return pulumi.get(self, "resolvers")
 
     @property
+    @pulumi.getter(name="siteType")
+    def site_type(self) -> str:
+        """
+        The type of this region.
+        """
+        return pulumi.get(self, "site_type")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
@@ -97,6 +108,7 @@ class AwaitableGetRegionResult(GetRegionResult):
             id=self.id,
             label=self.label,
             resolvers=self.resolvers,
+            site_type=self.site_type,
             status=self.status)
 
 
@@ -134,6 +146,7 @@ def get_region(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         resolvers=pulumi.get(__ret__, 'resolvers'),
+        site_type=pulumi.get(__ret__, 'site_type'),
         status=pulumi.get(__ret__, 'status'))
 
 

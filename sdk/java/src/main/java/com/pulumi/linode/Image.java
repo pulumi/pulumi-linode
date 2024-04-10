@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.ImageArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.ImageState;
+import com.pulumi.linode.outputs.ImageTimeouts;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -107,14 +108,14 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cloudInit", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> cloudInit;
+    private Output<Boolean> cloudInit;
 
     /**
      * @return Whether this image supports cloud-init.
      * 
      */
-    public Output<Optional<Boolean>> cloudInit() {
-        return Codegen.optional(this.cloudInit);
+    public Output<Boolean> cloudInit() {
+        return this.cloudInit;
     }
     /**
      * When this Image was created.
@@ -331,6 +332,12 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    @Export(name="timeouts", refs={ImageTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ ImageTimeouts> timeouts;
+
+    public Output<Optional<ImageTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.

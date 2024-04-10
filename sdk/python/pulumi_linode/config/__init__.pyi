@@ -15,8 +15,14 @@ The version of Linode API.
 """
 
 configPath: Optional[str]
+"""
+The path to the Linode config file to use. (default `~/.config/linode`)
+"""
 
 configProfile: Optional[str]
+"""
+The Linode config profile to use. (default `default`)
+"""
 
 disableInternalCache: Optional[bool]
 """
