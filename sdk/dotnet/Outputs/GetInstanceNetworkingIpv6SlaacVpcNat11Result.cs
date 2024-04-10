@@ -17,7 +17,13 @@ namespace Pulumi.Linode.Outputs
         /// The address.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The unique globally general API entity identifier for the VPC subnet.
+        /// </summary>
         public readonly int SubnetId;
+        /// <summary>
+        /// The unique globally general API entity identifier for the VPC.
+        /// </summary>
         public readonly int VpcId;
 
         [OutputConstructor]

@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ImageArgs', 'Image']
 
@@ -21,7 +23,8 @@ class ImageArgs:
                  file_hash: Optional[pulumi.Input[str]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['ImageTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] label: A short description of the Image. Labels cannot contain special characters.
@@ -58,6 +61,8 @@ class ImageArgs:
             pulumi.set(__self__, "linode_id", linode_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -165,6 +170,15 @@ class ImageArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ImageTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ImageTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _ImageState:
@@ -185,6 +199,7 @@ class _ImageState:
                  region: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['ImageTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vendor: Optional[pulumi.Input[str]] = None):
         """
@@ -250,6 +265,8 @@ class _ImageState:
             pulumi.set(__self__, "size", size)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vendor is not None:
@@ -459,6 +476,15 @@ class _ImageState:
 
     @property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ImageTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ImageTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
@@ -495,6 +521,7 @@ class Image(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['ImageTimeoutsArgs']]] = None,
                  __props__=None):
         """
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
@@ -628,6 +655,7 @@ class Image(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['ImageTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -647,6 +675,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["label"] = label
             __props__.__dict__["linode_id"] = linode_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["capabilities"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["created_by"] = None
@@ -683,6 +712,7 @@ class Image(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['ImageTimeoutsArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vendor: Optional[pulumi.Input[str]] = None) -> 'Image':
         """
@@ -741,6 +771,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
         __props__.__dict__["status"] = status
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         __props__.__dict__["vendor"] = vendor
         return Image(resource_name, opts=opts, __props__=__props__)
@@ -755,7 +786,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudInit")
-    def cloud_init(self) -> pulumi.Output[Optional[bool]]:
+    def cloud_init(self) -> pulumi.Output[bool]:
         """
         Whether this image supports cloud-init.
         """
@@ -882,6 +913,11 @@ class Image(pulumi.CustomResource):
         The current status of this Image.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ImageTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter

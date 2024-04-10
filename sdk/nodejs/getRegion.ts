@@ -63,6 +63,10 @@ export interface GetRegionResult {
     readonly label: string;
     readonly resolvers?: outputs.GetRegionResolver[];
     /**
+     * The type of this region.
+     */
+    readonly siteType: string;
+    /**
      * This region’s current operational status (ok or outage).
      */
     readonly status: string;

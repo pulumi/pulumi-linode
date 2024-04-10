@@ -37,6 +37,8 @@ import * as utilities from "./utilities";
  * * `country`
  *
  * * `capabilities`
+ *
+ * * `siteType`
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -95,6 +97,8 @@ export interface GetRegionsResult {
  * * `country`
  *
  * * `capabilities`
+ *
+ * * `siteType`
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

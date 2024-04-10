@@ -16,6 +16,7 @@ __all__ = [
     'FirewallDevice',
     'FirewallInbound',
     'FirewallOutbound',
+    'ImageTimeouts',
     'InstanceAlerts',
     'InstanceBackups',
     'InstanceBackupsSchedule',
@@ -110,6 +111,7 @@ __all__ = [
     'GetInstanceNetworkingIpv4ReservedVpcNat11Result',
     'GetInstanceNetworkingIpv4SharedResult',
     'GetInstanceNetworkingIpv4SharedVpcNat11Result',
+    'GetInstanceNetworkingIpv4VpcResult',
     'GetInstanceNetworkingIpv6Result',
     'GetInstanceNetworkingIpv6GlobalResult',
     'GetInstanceNetworkingIpv6LinkLocalResult',
@@ -623,6 +625,25 @@ class FirewallOutbound(dict):
         A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
         return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class ImageTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None):
+        """
+        :param str create: Used when creating the instance image (until the instance is available)
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        Used when creating the instance image (until the instance is available)
+        """
+        return pulumi.get(self, "create")
 
 
 @pulumi.output_type
@@ -6176,7 +6197,8 @@ class GetInstanceNetworkingIpv4Result(dict):
                  privates: Sequence['outputs.GetInstanceNetworkingIpv4PrivateResult'],
                  publics: Sequence['outputs.GetInstanceNetworkingIpv4PublicResult'],
                  reserveds: Sequence['outputs.GetInstanceNetworkingIpv4ReservedResult'],
-                 shareds: Sequence['outputs.GetInstanceNetworkingIpv4SharedResult']):
+                 shareds: Sequence['outputs.GetInstanceNetworkingIpv4SharedResult'],
+                 vpcs: Sequence['outputs.GetInstanceNetworkingIpv4VpcResult']):
         """
         :param Sequence['GetInstanceNetworkingIpv4PublicArgs'] publics: Whether this is a public or private IP address.
         """
@@ -6184,6 +6206,7 @@ class GetInstanceNetworkingIpv4Result(dict):
         pulumi.set(__self__, "publics", publics)
         pulumi.set(__self__, "reserveds", reserveds)
         pulumi.set(__self__, "shareds", shareds)
+        pulumi.set(__self__, "vpcs", vpcs)
 
     @property
     @pulumi.getter
@@ -6207,6 +6230,11 @@ class GetInstanceNetworkingIpv4Result(dict):
     @pulumi.getter
     def shareds(self) -> Sequence['outputs.GetInstanceNetworkingIpv4SharedResult']:
         return pulumi.get(self, "shareds")
+
+    @property
+    @pulumi.getter
+    def vpcs(self) -> Sequence['outputs.GetInstanceNetworkingIpv4VpcResult']:
+        return pulumi.get(self, "vpcs")
 
 
 @pulumi.output_type
@@ -6232,6 +6260,7 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
+        :param 'GetInstanceNetworkingIpv4PrivateVpcNat11Args' vpc_nat11: IPv4 address configured as a 1:1 NAT for this Interface.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -6319,6 +6348,9 @@ class GetInstanceNetworkingIpv4PrivateResult(dict):
     @property
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4PrivateVpcNat11Result':
+        """
+        IPv4 address configured as a 1:1 NAT for this Interface.
+        """
         return pulumi.get(self, "vpc_nat11")
 
 
@@ -6330,6 +6362,8 @@ class GetInstanceNetworkingIpv4PrivateVpcNat11Result(dict):
                  vpc_id: int):
         """
         :param str address: The address.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -6346,11 +6380,17 @@ class GetInstanceNetworkingIpv4PrivateVpcNat11Result(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -6377,6 +6417,7 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
+        :param 'GetInstanceNetworkingIpv4PublicVpcNat11Args' vpc_nat11: IPv4 address configured as a 1:1 NAT for this Interface.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -6464,6 +6505,9 @@ class GetInstanceNetworkingIpv4PublicResult(dict):
     @property
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4PublicVpcNat11Result':
+        """
+        IPv4 address configured as a 1:1 NAT for this Interface.
+        """
         return pulumi.get(self, "vpc_nat11")
 
 
@@ -6475,6 +6519,8 @@ class GetInstanceNetworkingIpv4PublicVpcNat11Result(dict):
                  vpc_id: int):
         """
         :param str address: The address.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -6491,11 +6537,17 @@ class GetInstanceNetworkingIpv4PublicVpcNat11Result(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -6522,6 +6574,7 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
+        :param 'GetInstanceNetworkingIpv4ReservedVpcNat11Args' vpc_nat11: IPv4 address configured as a 1:1 NAT for this Interface.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -6609,6 +6662,9 @@ class GetInstanceNetworkingIpv4ReservedResult(dict):
     @property
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4ReservedVpcNat11Result':
+        """
+        IPv4 address configured as a 1:1 NAT for this Interface.
+        """
         return pulumi.get(self, "vpc_nat11")
 
 
@@ -6620,6 +6676,8 @@ class GetInstanceNetworkingIpv4ReservedVpcNat11Result(dict):
                  vpc_id: int):
         """
         :param str address: The address.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -6636,11 +6694,17 @@ class GetInstanceNetworkingIpv4ReservedVpcNat11Result(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -6667,6 +6731,7 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
+        :param 'GetInstanceNetworkingIpv4SharedVpcNat11Args' vpc_nat11: IPv4 address configured as a 1:1 NAT for this Interface.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -6754,6 +6819,9 @@ class GetInstanceNetworkingIpv4SharedResult(dict):
     @property
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result':
+        """
+        IPv4 address configured as a 1:1 NAT for this Interface.
+        """
         return pulumi.get(self, "vpc_nat11")
 
 
@@ -6765,6 +6833,8 @@ class GetInstanceNetworkingIpv4SharedVpcNat11Result(dict):
                  vpc_id: int):
         """
         :param str address: The address.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -6781,11 +6851,167 @@ class GetInstanceNetworkingIpv4SharedVpcNat11Result(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetInstanceNetworkingIpv4VpcResult(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 address: str,
+                 address_range: str,
+                 config_id: int,
+                 gateway: str,
+                 interface_id: int,
+                 linode_id: int,
+                 nat11: str,
+                 prefix: int,
+                 region: str,
+                 subnet_id: int,
+                 subnet_mask: str,
+                 vpc_id: int):
+        """
+        :param bool active: Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+        :param str address: The address.
+        :param str address_range: A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
+        :param int config_id: The globally general entity identifier for the Linode configuration profile where the VPC is included.
+        :param str gateway: The default gateway for this address.
+        :param int interface_id: The globally general API entity identifier for the Linode interface.
+        :param int linode_id: The Linode instance's ID.
+        :param str nat11: The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
+        :param int prefix: The network prefix.
+        :param str region: (Filterable) The Region this address resides in.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param str subnet_mask: The subnet mask.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_range", address_range)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "interface_id", interface_id)
+        pulumi.set(__self__, "linode_id", linode_id)
+        pulumi.set(__self__, "nat11", nat11)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+        """
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressRange")
+    def address_range(self) -> str:
+        """
+        A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
+        """
+        return pulumi.get(self, "address_range")
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> int:
+        """
+        The globally general entity identifier for the Linode configuration profile where the VPC is included.
+        """
+        return pulumi.get(self, "config_id")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter(name="interfaceId")
+    def interface_id(self) -> int:
+        """
+        The globally general API entity identifier for the Linode interface.
+        """
+        return pulumi.get(self, "interface_id")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The Linode instance's ID.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
+    @pulumi.getter
+    def nat11(self) -> str:
+        """
+        The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
+        """
+        return pulumi.get(self, "nat11")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The network prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        (Filterable) The Region this address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -6889,6 +7115,7 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
+        :param 'GetInstanceNetworkingIpv6LinkLocalVpcNat11Args' vpc_nat11: IPv4 address configured as a 1:1 NAT for this Interface.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -6976,6 +7203,9 @@ class GetInstanceNetworkingIpv6LinkLocalResult(dict):
     @property
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11Result':
+        """
+        IPv4 address configured as a 1:1 NAT for this Interface.
+        """
         return pulumi.get(self, "vpc_nat11")
 
 
@@ -6987,6 +7217,8 @@ class GetInstanceNetworkingIpv6LinkLocalVpcNat11Result(dict):
                  vpc_id: int):
         """
         :param str address: The address.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -7003,11 +7235,17 @@ class GetInstanceNetworkingIpv6LinkLocalVpcNat11Result(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -7034,6 +7272,7 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
         :param str region: (Filterable) The Region this address resides in.
         :param str subnet_mask: The subnet mask.
         :param str type: The type of address this is.
+        :param 'GetInstanceNetworkingIpv6SlaacVpcNat11Args' vpc_nat11: IPv4 address configured as a 1:1 NAT for this Interface.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -7121,6 +7360,9 @@ class GetInstanceNetworkingIpv6SlaacResult(dict):
     @property
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetInstanceNetworkingIpv6SlaacVpcNat11Result':
+        """
+        IPv4 address configured as a 1:1 NAT for this Interface.
+        """
         return pulumi.get(self, "vpc_nat11")
 
 
@@ -7132,6 +7374,8 @@ class GetInstanceNetworkingIpv6SlaacVpcNat11Result(dict):
                  vpc_id: int):
         """
         :param str address: The address.
+        :param int subnet_id: The unique globally general API entity identifier for the VPC subnet.
+        :param int vpc_id: The unique globally general API entity identifier for the VPC.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -7148,11 +7392,17 @@ class GetInstanceNetworkingIpv6SlaacVpcNat11Result(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> int:
+        """
+        The unique globally general API entity identifier for the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -10523,6 +10773,7 @@ class GetRegionsRegionResult(dict):
                  country: str,
                  id: str,
                  label: str,
+                 site_type: str,
                  status: str,
                  resolvers: Optional[Sequence['outputs.GetRegionsRegionResolverResult']] = None):
         """
@@ -10530,12 +10781,14 @@ class GetRegionsRegionResult(dict):
         :param str country: The country the region resides in.
         :param str id: The unique ID of this Region.
         :param str label: Detailed location information for this Region, including city, state or region, and country.
+        :param str site_type: The type of this region.
         :param str status: This region’s current operational status (ok or outage).
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "site_type", site_type)
         pulumi.set(__self__, "status", status)
         if resolvers is not None:
             pulumi.set(__self__, "resolvers", resolvers)
@@ -10571,6 +10824,14 @@ class GetRegionsRegionResult(dict):
         Detailed location information for this Region, including city, state or region, and country.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="siteType")
+    def site_type(self) -> str:
+        """
+        The type of this region.
+        """
+        return pulumi.get(self, "site_type")
 
     @property
     @pulumi.getter

@@ -60,6 +60,8 @@ import (
 // * `country`
 //
 // * `capabilities`
+//
+// * `siteType`
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult

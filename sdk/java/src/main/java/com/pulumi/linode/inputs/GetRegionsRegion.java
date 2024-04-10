@@ -85,6 +85,21 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The type of this region.
+     * 
+     */
+    @Import(name="siteType", required=true)
+    private String siteType;
+
+    /**
+     * @return The type of this region.
+     * 
+     */
+    public String siteType() {
+        return this.siteType;
+    }
+
+    /**
      * This region’s current operational status (ok or outage).
      * 
      */
@@ -107,6 +122,7 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
         this.id = $.id;
         this.label = $.label;
         this.resolvers = $.resolvers;
+        this.siteType = $.siteType;
         this.status = $.status;
     }
 
@@ -192,6 +208,17 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param siteType The type of this region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteType(String siteType) {
+            $.siteType = siteType;
+            return this;
+        }
+
+        /**
          * @param status This region’s current operational status (ok or outage).
          * 
          * @return builder
@@ -214,6 +241,9 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetRegionsRegion", "label");
+            }
+            if ($.siteType == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "siteType");
             }
             if ($.status == null) {
                 throw new MissingRequiredPropertyException("GetRegionsRegion", "status");

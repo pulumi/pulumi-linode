@@ -49,6 +49,9 @@ namespace Pulumi.Linode.Outputs
         /// The type of address this is.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// IPv4 address configured as a 1:1 NAT for this Interface.
+        /// </summary>
         public readonly Outputs.GetInstanceNetworkingIpv4ReservedVpcNat11Result VpcNat11;
 
         [OutputConstructor]

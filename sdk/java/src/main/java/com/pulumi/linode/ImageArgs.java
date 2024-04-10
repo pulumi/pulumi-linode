@@ -6,6 +6,7 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.ImageTimeoutsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -158,6 +159,13 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<ImageTimeoutsArgs> timeouts;
+
+    public Optional<Output<ImageTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private ImageArgs() {}
 
     private ImageArgs(ImageArgs $) {
@@ -169,6 +177,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.linodeId = $.linodeId;
         this.region = $.region;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -375,6 +384,15 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        public Builder timeouts(@Nullable Output<ImageTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ImageTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public ImageArgs build() {

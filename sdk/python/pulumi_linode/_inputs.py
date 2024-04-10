@@ -15,6 +15,7 @@ __all__ = [
     'FirewallDeviceArgs',
     'FirewallInboundArgs',
     'FirewallOutboundArgs',
+    'ImageTimeoutsArgs',
     'InstanceAlertsArgs',
     'InstanceBackupsArgs',
     'InstanceBackupsScheduleArgs',
@@ -611,6 +612,29 @@ class FirewallOutboundArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ports", value)
+
+
+@pulumi.input_type
+class ImageTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: Used when creating the instance image (until the instance is available)
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used when creating the instance image (until the instance is available)
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
 
 
 @pulumi.input_type
@@ -8495,6 +8519,7 @@ class GetRegionsRegionArgs:
                  country: str,
                  id: str,
                  label: str,
+                 site_type: str,
                  status: str,
                  resolvers: Optional[Sequence['GetRegionsRegionResolverArgs']] = None):
         """
@@ -8502,12 +8527,14 @@ class GetRegionsRegionArgs:
         :param str country: The country the region resides in.
         :param str id: The unique ID of this Region.
         :param str label: Detailed location information for this Region, including city, state or region, and country.
+        :param str site_type: The type of this region.
         :param str status: This region’s current operational status (ok or outage).
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "site_type", site_type)
         pulumi.set(__self__, "status", status)
         if resolvers is not None:
             pulumi.set(__self__, "resolvers", resolvers)
@@ -8559,6 +8586,18 @@ class GetRegionsRegionArgs:
     @label.setter
     def label(self, value: str):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="siteType")
+    def site_type(self) -> str:
+        """
+        The type of this region.
+        """
+        return pulumi.get(self, "site_type")
+
+    @site_type.setter
+    def site_type(self, value: str):
+        pulumi.set(self, "site_type", value)
 
     @property
     @pulumi.getter

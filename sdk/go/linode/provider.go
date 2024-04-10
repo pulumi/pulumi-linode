@@ -19,8 +19,10 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// The version of Linode API.
-	ApiVersion    pulumi.StringPtrOutput `pulumi:"apiVersion"`
-	ConfigPath    pulumi.StringPtrOutput `pulumi:"configPath"`
+	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
+	// The path to the Linode config file to use. (default `~/.config/linode`)
+	ConfigPath pulumi.StringPtrOutput `pulumi:"configPath"`
+	// The Linode config profile to use. (default `default`)
 	ConfigProfile pulumi.StringPtrOutput `pulumi:"configProfile"`
 	// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
 	ObjAccessKey pulumi.StringPtrOutput `pulumi:"objAccessKey"`
@@ -74,8 +76,10 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	// The version of Linode API.
-	ApiVersion    *string `pulumi:"apiVersion"`
-	ConfigPath    *string `pulumi:"configPath"`
+	ApiVersion *string `pulumi:"apiVersion"`
+	// The path to the Linode config file to use. (default `~/.config/linode`)
+	ConfigPath *string `pulumi:"configPath"`
+	// The Linode config profile to use. (default `default`)
 	ConfigProfile *string `pulumi:"configProfile"`
 	// Disable the internal caching system that backs certain Linode API requests.
 	DisableInternalCache *bool `pulumi:"disableInternalCache"`
@@ -113,8 +117,10 @@ type providerArgs struct {
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// The version of Linode API.
-	ApiVersion    pulumi.StringPtrInput
-	ConfigPath    pulumi.StringPtrInput
+	ApiVersion pulumi.StringPtrInput
+	// The path to the Linode config file to use. (default `~/.config/linode`)
+	ConfigPath pulumi.StringPtrInput
+	// The Linode config profile to use. (default `default`)
 	ConfigProfile pulumi.StringPtrInput
 	// Disable the internal caching system that backs certain Linode API requests.
 	DisableInternalCache pulumi.BoolPtrInput
@@ -191,10 +197,12 @@ func (o ProviderOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
+// The path to the Linode config file to use. (default `~/.config/linode`)
 func (o ProviderOutput) ConfigPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigPath }).(pulumi.StringPtrOutput)
 }
 
+// The Linode config profile to use. (default `default`)
 func (o ProviderOutput) ConfigProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigProfile }).(pulumi.StringPtrOutput)
 }

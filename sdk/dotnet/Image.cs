@@ -77,7 +77,7 @@ namespace Pulumi.Linode
         /// Whether this image supports cloud-init.
         /// </summary>
         [Output("cloudInit")]
-        public Output<bool?> CloudInit { get; private set; } = null!;
+        public Output<bool> CloudInit { get; private set; } = null!;
 
         /// <summary>
         /// When this Image was created.
@@ -172,6 +172,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.ImageTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
@@ -288,6 +291,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ImageTimeoutsArgs>? Timeouts { get; set; }
 
         public ImageArgs()
         {
@@ -408,6 +414,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ImageTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.

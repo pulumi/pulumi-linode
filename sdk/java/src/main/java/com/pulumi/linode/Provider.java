@@ -37,15 +37,31 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> apiVersion() {
         return Codegen.optional(this.apiVersion);
     }
+    /**
+     * The path to the Linode config file to use. (default `~/.config/linode`)
+     * 
+     */
     @Export(name="configPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configPath;
 
+    /**
+     * @return The path to the Linode config file to use. (default `~/.config/linode`)
+     * 
+     */
     public Output<Optional<String>> configPath() {
         return Codegen.optional(this.configPath);
     }
+    /**
+     * The Linode config profile to use. (default `default`)
+     * 
+     */
     @Export(name="configProfile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configProfile;
 
+    /**
+     * @return The Linode config profile to use. (default `default`)
+     * 
+     */
     public Output<Optional<String>> configProfile() {
         return Codegen.optional(this.configProfile);
     }

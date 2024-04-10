@@ -31,6 +31,10 @@ namespace Pulumi.Linode.Outputs
         public readonly string Label;
         public readonly ImmutableArray<Outputs.GetRegionsRegionResolverResult> Resolvers;
         /// <summary>
+        /// The type of this region.
+        /// </summary>
+        public readonly string SiteType;
+        /// <summary>
         /// This region’s current operational status (ok or outage).
         /// </summary>
         public readonly string Status;
@@ -47,6 +51,8 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetRegionsRegionResolverResult> resolvers,
 
+            string siteType,
+
             string status)
         {
             Capabilities = capabilities;
@@ -54,6 +60,7 @@ namespace Pulumi.Linode.Outputs
             Id = id;
             Label = label;
             Resolvers = resolvers;
+            SiteType = siteType;
             Status = status;
         }
     }

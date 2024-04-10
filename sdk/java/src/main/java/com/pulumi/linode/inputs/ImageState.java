@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.ImageTimeoutsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -278,6 +279,13 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<ImageTimeoutsArgs> timeouts;
+
+    public Optional<Output<ImageTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.
      * 
@@ -327,6 +335,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.size = $.size;
         this.status = $.status;
+        this.timeouts = $.timeouts;
         this.type = $.type;
         this.vendor = $.vendor;
     }
@@ -713,6 +722,15 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        public Builder timeouts(@Nullable Output<ImageTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ImageTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

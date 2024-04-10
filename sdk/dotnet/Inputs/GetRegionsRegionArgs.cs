@@ -51,6 +51,12 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
+        /// The type of this region.
+        /// </summary>
+        [Input("siteType", required: true)]
+        public Input<string> SiteType { get; set; } = null!;
+
+        /// <summary>
         /// This region’s current operational status (ok or outage).
         /// </summary>
         [Input("status", required: true)]

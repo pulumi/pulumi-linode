@@ -43,6 +43,9 @@ namespace Pulumi.Linode
         }
 
         private static readonly __Value<string?> _configPath = new __Value<string?>(() => __config.Get("configPath"));
+        /// <summary>
+        /// The path to the Linode config file to use. (default `~/.config/linode`)
+        /// </summary>
         public static string? ConfigPath
         {
             get => _configPath.Get();
@@ -50,6 +53,9 @@ namespace Pulumi.Linode
         }
 
         private static readonly __Value<string?> _configProfile = new __Value<string?>(() => __config.Get("configProfile"));
+        /// <summary>
+        /// The Linode config profile to use. (default `default`)
+        /// </summary>
         public static string? ConfigProfile
         {
             get => _configProfile.Get();

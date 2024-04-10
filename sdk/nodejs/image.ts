@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -83,7 +85,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Whether this image supports cloud-init.
      */
-    public readonly cloudInit!: pulumi.Output<boolean | undefined>;
+    public readonly cloudInit!: pulumi.Output<boolean>;
     /**
      * When this Image was created.
      */
@@ -150,6 +152,7 @@ export class Image extends pulumi.CustomResource {
      * The current status of this Image.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.ImageTimeouts | undefined>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
@@ -188,6 +191,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vendor"] = state ? state.vendor : undefined;
         } else {
@@ -203,6 +207,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["capabilities"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -297,6 +302,7 @@ export interface ImageState {
      * The current status of this Image.
      */
     status?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ImageTimeouts>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
@@ -353,4 +359,5 @@ export interface ImageArgs {
      * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
      */
     region?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ImageTimeouts>;
 }

@@ -33,16 +33,32 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.apiVersion);
     }
 
+    /**
+     * The path to the Linode config file to use. (default `~/.config/linode`)
+     * 
+     */
     @Import(name="configPath")
     private @Nullable Output<String> configPath;
 
+    /**
+     * @return The path to the Linode config file to use. (default `~/.config/linode`)
+     * 
+     */
     public Optional<Output<String>> configPath() {
         return Optional.ofNullable(this.configPath);
     }
 
+    /**
+     * The Linode config profile to use. (default `default`)
+     * 
+     */
     @Import(name="configProfile")
     private @Nullable Output<String> configProfile;
 
+    /**
+     * @return The Linode config profile to use. (default `default`)
+     * 
+     */
     public Optional<Output<String>> configProfile() {
         return Optional.ofNullable(this.configProfile);
     }
@@ -336,20 +352,44 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return apiVersion(Output.of(apiVersion));
         }
 
+        /**
+         * @param configPath The path to the Linode config file to use. (default `~/.config/linode`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configPath(@Nullable Output<String> configPath) {
             $.configPath = configPath;
             return this;
         }
 
+        /**
+         * @param configPath The path to the Linode config file to use. (default `~/.config/linode`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configPath(String configPath) {
             return configPath(Output.of(configPath));
         }
 
+        /**
+         * @param configProfile The Linode config profile to use. (default `default`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configProfile(@Nullable Output<String> configProfile) {
             $.configProfile = configProfile;
             return this;
         }
 
+        /**
+         * @param configProfile The Linode config profile to use. (default `default`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configProfile(String configProfile) {
             return configProfile(Output.of(configProfile));
         }

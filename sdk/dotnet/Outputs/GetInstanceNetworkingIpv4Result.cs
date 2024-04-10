@@ -20,6 +20,7 @@ namespace Pulumi.Linode.Outputs
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4PublicResult> Publics;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4ReservedResult> Reserveds;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4SharedResult> Shareds;
+        public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4VpcResult> Vpcs;
 
         [OutputConstructor]
         private GetInstanceNetworkingIpv4Result(
@@ -29,12 +30,15 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetInstanceNetworkingIpv4ReservedResult> reserveds,
 
-            ImmutableArray<Outputs.GetInstanceNetworkingIpv4SharedResult> shareds)
+            ImmutableArray<Outputs.GetInstanceNetworkingIpv4SharedResult> shareds,
+
+            ImmutableArray<Outputs.GetInstanceNetworkingIpv4VpcResult> vpcs)
         {
             Privates = privates;
             Publics = publics;
             Reserveds = reserveds;
             Shareds = shareds;
+            Vpcs = vpcs;
         }
     }
 }

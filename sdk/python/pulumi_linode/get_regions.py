@@ -93,6 +93,8 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     * `country`
 
     * `capabilities`
+
+    * `site_type`
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -139,5 +141,7 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     * `country`
 
     * `capabilities`
+
+    * `site_type`
     """
     ...
