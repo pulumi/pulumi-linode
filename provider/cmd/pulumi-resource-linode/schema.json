@@ -63,10 +63,12 @@
                 }
             },
             "configPath": {
-                "type": "string"
+                "type": "string",
+                "description": "The path to the Linode config file to use. (default `~/.config/linode`)\n"
             },
             "configProfile": {
-                "type": "string"
+                "type": "string",
+                "description": "The Linode config profile to use. (default `default`)\n"
             },
             "disableInternalCache": {
                 "type": "boolean",
@@ -319,6 +321,15 @@
                 "label",
                 "protocol"
             ]
+        },
+        "linode:index/ImageTimeouts:ImageTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "Used when creating the instance image (until the instance is available)\n"
+                }
+            },
+            "type": "object"
         },
         "linode:index/InstanceAlerts:InstanceAlerts": {
             "properties": {
@@ -3180,6 +3191,12 @@
                     "items": {
                         "$ref": "#/types/linode:index/getInstanceNetworkingIpv4Shared:getInstanceNetworkingIpv4Shared"
                     }
+                },
+                "vpcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstanceNetworkingIpv4Vpc:getInstanceNetworkingIpv4Vpc"
+                    }
                 }
             },
             "type": "object",
@@ -3187,7 +3204,8 @@
                 "privates",
                 "publics",
                 "reserveds",
-                "shareds"
+                "shareds",
+                "vpcs"
             ],
             "language": {
                 "nodejs": {
@@ -3234,7 +3252,8 @@
                     "description": "The type of address this is.\n"
                 },
                 "vpcNat11": {
-                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4PrivateVpcNat11:getInstanceNetworkingIpv4PrivateVpcNat11"
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4PrivateVpcNat11:getInstanceNetworkingIpv4PrivateVpcNat11",
+                    "description": "IPv4 address configured as a 1:1 NAT for this Interface.\n"
                 }
             },
             "type": "object",
@@ -3263,10 +3282,12 @@
                     "description": "The address.\n"
                 },
                 "subnetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
                 },
                 "vpcId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
                 }
             },
             "type": "object",
@@ -3320,7 +3341,8 @@
                     "description": "The type of address this is.\n"
                 },
                 "vpcNat11": {
-                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4PublicVpcNat11:getInstanceNetworkingIpv4PublicVpcNat11"
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4PublicVpcNat11:getInstanceNetworkingIpv4PublicVpcNat11",
+                    "description": "IPv4 address configured as a 1:1 NAT for this Interface.\n"
                 }
             },
             "type": "object",
@@ -3349,10 +3371,12 @@
                     "description": "The address.\n"
                 },
                 "subnetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
                 },
                 "vpcId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
                 }
             },
             "type": "object",
@@ -3406,7 +3430,8 @@
                     "description": "The type of address this is.\n"
                 },
                 "vpcNat11": {
-                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4ReservedVpcNat11:getInstanceNetworkingIpv4ReservedVpcNat11"
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4ReservedVpcNat11:getInstanceNetworkingIpv4ReservedVpcNat11",
+                    "description": "IPv4 address configured as a 1:1 NAT for this Interface.\n"
                 }
             },
             "type": "object",
@@ -3435,10 +3460,12 @@
                     "description": "The address.\n"
                 },
                 "subnetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
                 },
                 "vpcId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
                 }
             },
             "type": "object",
@@ -3492,7 +3519,8 @@
                     "description": "The type of address this is.\n"
                 },
                 "vpcNat11": {
-                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4SharedVpcNat11:getInstanceNetworkingIpv4SharedVpcNat11"
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv4SharedVpcNat11:getInstanceNetworkingIpv4SharedVpcNat11",
+                    "description": "IPv4 address configured as a 1:1 NAT for this Interface.\n"
                 }
             },
             "type": "object",
@@ -3521,16 +3549,95 @@
                     "description": "The address.\n"
                 },
                 "subnetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
                 },
                 "vpcId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
                 }
             },
             "type": "object",
             "required": [
                 "address",
                 "subnetId",
+                "vpcId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstanceNetworkingIpv4Vpc:getInstanceNetworkingIpv4Vpc": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.\n"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "The address.\n"
+                },
+                "addressRange": {
+                    "type": "string",
+                    "description": "A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.\n"
+                },
+                "configId": {
+                    "type": "integer",
+                    "description": "The globally general entity identifier for the Linode configuration profile where the VPC is included.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "The default gateway for this address.\n"
+                },
+                "interfaceId": {
+                    "type": "integer",
+                    "description": "The globally general API entity identifier for the Linode interface.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The Linode instance's ID.\n"
+                },
+                "nat11": {
+                    "type": "string",
+                    "description": "The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "The network prefix.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "(Filterable) The Region this address resides in.\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
+                },
+                "subnetMask": {
+                    "type": "string",
+                    "description": "The subnet mask.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "address",
+                "addressRange",
+                "configId",
+                "gateway",
+                "interfaceId",
+                "linodeId",
+                "nat11",
+                "prefix",
+                "region",
+                "subnetId",
+                "subnetMask",
                 "vpcId"
             ],
             "language": {
@@ -3637,7 +3744,8 @@
                     "description": "The type of address this is.\n"
                 },
                 "vpcNat11": {
-                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6LinkLocalVpcNat11:getInstanceNetworkingIpv6LinkLocalVpcNat11"
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6LinkLocalVpcNat11:getInstanceNetworkingIpv6LinkLocalVpcNat11",
+                    "description": "IPv4 address configured as a 1:1 NAT for this Interface.\n"
                 }
             },
             "type": "object",
@@ -3666,10 +3774,12 @@
                     "description": "The address.\n"
                 },
                 "subnetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
                 },
                 "vpcId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
                 }
             },
             "type": "object",
@@ -3723,7 +3833,8 @@
                     "description": "The type of address this is.\n"
                 },
                 "vpcNat11": {
-                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6SlaacVpcNat11:getInstanceNetworkingIpv6SlaacVpcNat11"
+                    "$ref": "#/types/linode:index/getInstanceNetworkingIpv6SlaacVpcNat11:getInstanceNetworkingIpv6SlaacVpcNat11",
+                    "description": "IPv4 address configured as a 1:1 NAT for this Interface.\n"
                 }
             },
             "type": "object",
@@ -3752,10 +3863,12 @@
                     "description": "The address.\n"
                 },
                 "subnetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC subnet.\n"
                 },
                 "vpcId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The unique globally general API entity identifier for the VPC.\n"
                 }
             },
             "type": "object",
@@ -5909,6 +6022,10 @@
                         "$ref": "#/types/linode:index/getRegionsRegionResolver:getRegionsRegionResolver"
                     }
                 },
+                "siteType": {
+                    "type": "string",
+                    "description": "The type of this region.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "This region’s current operational status (ok or outage).\n"
@@ -5920,6 +6037,7 @@
                 "country",
                 "id",
                 "label",
+                "siteType",
                 "status"
             ],
             "language": {
@@ -7270,10 +7388,12 @@
                 "description": "The version of Linode API.\n"
             },
             "configPath": {
-                "type": "string"
+                "type": "string",
+                "description": "The path to the Linode config file to use. (default `~/.config/linode`)\n"
             },
             "configProfile": {
-                "type": "string"
+                "type": "string",
+                "description": "The Linode config profile to use. (default `default`)\n"
             },
             "disableInternalCache": {
                 "type": "boolean",
@@ -7348,10 +7468,12 @@
                 }
             },
             "configPath": {
-                "type": "string"
+                "type": "string",
+                "description": "The path to the Linode config file to use. (default `~/.config/linode`)\n"
             },
             "configProfile": {
-                "type": "string"
+                "type": "string",
+                "description": "The Linode config profile to use. (default `default`)\n"
             },
             "disableInternalCache": {
                 "type": "boolean",
@@ -8876,6 +8998,9 @@
                     "type": "string",
                     "description": "The current status of this Image.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/linode:index/ImageTimeouts:ImageTimeouts"
+                },
                 "type": {
                     "type": "string",
                     "description": "How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.\n"
@@ -8887,6 +9012,7 @@
             },
             "required": [
                 "capabilities",
+                "cloudInit",
                 "created",
                 "createdBy",
                 "deprecated",
@@ -8902,8 +9028,7 @@
             "inputProperties": {
                 "cloudInit": {
                     "type": "boolean",
-                    "description": "Whether this image supports cloud-init.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether this image supports cloud-init.\n"
                 },
                 "description": {
                     "type": "string",
@@ -8911,18 +9036,15 @@
                 },
                 "diskId": {
                     "type": "integer",
-                    "description": "The ID of the Linode Disk that this Image will be created from.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Linode Disk that this Image will be created from.\n"
                 },
                 "fileHash": {
                     "type": "string",
-                    "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n"
                 },
                 "filePath": {
                     "type": "string",
-                    "description": "The path of the image file to be uploaded.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The path of the image file to be uploaded.\n"
                 },
                 "label": {
                     "type": "string",
@@ -8930,12 +9052,14 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/linode:index/ImageTimeouts:ImageTimeouts"
                 }
             },
             "requiredInputs": [
@@ -8953,8 +9077,7 @@
                     },
                     "cloudInit": {
                         "type": "boolean",
-                        "description": "Whether this image supports cloud-init.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Whether this image supports cloud-init.\n"
                     },
                     "created": {
                         "type": "string",
@@ -8974,8 +9097,7 @@
                     },
                     "diskId": {
                         "type": "integer",
-                        "description": "The ID of the Linode Disk that this Image will be created from.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Linode Disk that this Image will be created from.\n"
                     },
                     "expiry": {
                         "type": "string",
@@ -8983,13 +9105,11 @@
                     },
                     "fileHash": {
                         "type": "string",
-                        "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The MD5 hash of the file to be uploaded. This is used to trigger file updates.\n"
                     },
                     "filePath": {
                         "type": "string",
-                        "description": "The path of the image file to be uploaded.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The path of the image file to be uploaded.\n"
                     },
                     "isPublic": {
                         "type": "boolean",
@@ -9001,8 +9121,7 @@
                     },
                     "linodeId": {
                         "type": "integer",
-                        "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n"
                     },
                     "region": {
                         "type": "string",
@@ -9015,6 +9134,9 @@
                     "status": {
                         "type": "string",
                         "description": "The current status of this Image.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/linode:index/ImageTimeouts:ImageTimeouts"
                     },
                     "type": {
                         "type": "string",
@@ -15343,6 +15465,10 @@
                             "$ref": "#/types/linode:index/getRegionResolver:getRegionResolver"
                         }
                     },
+                    "siteType": {
+                        "type": "string",
+                        "description": "The type of this region.\n"
+                    },
                     "status": {
                         "type": "string",
                         "description": "This region’s current operational status (ok or outage).\n"
@@ -15354,12 +15480,13 @@
                     "country",
                     "id",
                     "label",
+                    "siteType",
                     "status"
                 ]
             }
         },
         "linode:index/getRegions:getRegions": {
-            "description": "Provides information about Linode regions that match a set of filters.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-regions = linode.getRegions({\n    filters: [\n        {\n            name: \"status\",\n            values: [\"ok\"],\n        },\n        {\n            name: \"capabilities\",\n            values: [\"NodeBalancers\"],\n        },\n    ],\n});\nexport const regions = filtered_regions.then(filtered_regions =\u003e filtered_regions.regions);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_regions = linode.get_regions(filters=[\n    linode.GetRegionsFilterArgs(\n        name=\"status\",\n        values=[\"ok\"],\n    ),\n    linode.GetRegionsFilterArgs(\n        name=\"capabilities\",\n        values=[\"NodeBalancers\"],\n    ),\n])\npulumi.export(\"regions\", filtered_regions.regions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_regions = Linode.GetRegions.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetRegionsFilterInputArgs\n            {\n                Name = \"status\",\n                Values = new[]\n                {\n                    \"ok\",\n                },\n            },\n            new Linode.Inputs.GetRegionsFilterInputArgs\n            {\n                Name = \"capabilities\",\n                Values = new[]\n                {\n                    \"NodeBalancers\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"regions\"] = filtered_regions.Apply(filtered_regions =\u003e filtered_regions.Apply(getRegionsResult =\u003e getRegionsResult.Regions)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_regions, err := linode.GetRegions(ctx, \u0026linode.GetRegionsArgs{\n\t\t\tFilters: []linode.GetRegionsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"status\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"ok\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"capabilities\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"NodeBalancers\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"regions\", filtered_regions.Regions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetRegionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()\n            .filters(            \n                GetRegionsFilterArgs.builder()\n                    .name(\"status\")\n                    .values(\"ok\")\n                    .build(),\n                GetRegionsFilterArgs.builder()\n                    .name(\"capabilities\")\n                    .values(\"NodeBalancers\")\n                    .build())\n            .build());\n\n        ctx.export(\"regions\", filtered_regions.regions());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-regions:\n    fn::invoke:\n      Function: linode:getRegions\n      Arguments:\n        filters:\n          - name: status\n            values:\n              - ok\n          - name: capabilities\n            values:\n              - NodeBalancers\noutputs:\n  regions: ${[\"filtered-regions\"].regions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `status`\n\n* `country`\n\n* `capabilities`\n",
+            "description": "Provides information about Linode regions that match a set of filters.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-regions = linode.getRegions({\n    filters: [\n        {\n            name: \"status\",\n            values: [\"ok\"],\n        },\n        {\n            name: \"capabilities\",\n            values: [\"NodeBalancers\"],\n        },\n    ],\n});\nexport const regions = filtered_regions.then(filtered_regions =\u003e filtered_regions.regions);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_regions = linode.get_regions(filters=[\n    linode.GetRegionsFilterArgs(\n        name=\"status\",\n        values=[\"ok\"],\n    ),\n    linode.GetRegionsFilterArgs(\n        name=\"capabilities\",\n        values=[\"NodeBalancers\"],\n    ),\n])\npulumi.export(\"regions\", filtered_regions.regions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_regions = Linode.GetRegions.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetRegionsFilterInputArgs\n            {\n                Name = \"status\",\n                Values = new[]\n                {\n                    \"ok\",\n                },\n            },\n            new Linode.Inputs.GetRegionsFilterInputArgs\n            {\n                Name = \"capabilities\",\n                Values = new[]\n                {\n                    \"NodeBalancers\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"regions\"] = filtered_regions.Apply(filtered_regions =\u003e filtered_regions.Apply(getRegionsResult =\u003e getRegionsResult.Regions)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_regions, err := linode.GetRegions(ctx, \u0026linode.GetRegionsArgs{\n\t\t\tFilters: []linode.GetRegionsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"status\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"ok\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"capabilities\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"NodeBalancers\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"regions\", filtered_regions.Regions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetRegionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()\n            .filters(            \n                GetRegionsFilterArgs.builder()\n                    .name(\"status\")\n                    .values(\"ok\")\n                    .build(),\n                GetRegionsFilterArgs.builder()\n                    .name(\"capabilities\")\n                    .values(\"NodeBalancers\")\n                    .build())\n            .build());\n\n        ctx.export(\"regions\", filtered_regions.regions());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-regions:\n    fn::invoke:\n      Function: linode:getRegions\n      Arguments:\n        filters:\n          - name: status\n            values:\n              - ok\n          - name: capabilities\n            values:\n              - NodeBalancers\noutputs:\n  regions: ${[\"filtered-regions\"].regions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `status`\n\n* `country`\n\n* `capabilities`\n\n* `site_type`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRegions.\n",
                 "properties": {
