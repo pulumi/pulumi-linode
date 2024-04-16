@@ -547,7 +547,7 @@ class Image(pulumi.CustomResource):
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
             linode_id=foo.id)
-        bar_based = linode.Instance("barBased",
+        bar_based = linode.Instance("bar_based",
             type=foo.type,
             region="eu-west",
             image=bar.id)
@@ -615,7 +615,7 @@ class Image(pulumi.CustomResource):
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
             linode_id=foo.id)
-        bar_based = linode.Instance("barBased",
+        bar_based = linode.Instance("bar_based",
             type=foo.type,
             region="eu-west",
             image=bar.id)

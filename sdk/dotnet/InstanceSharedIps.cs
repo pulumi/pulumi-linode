@@ -32,7 +32,7 @@ namespace Pulumi.Linode
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a single primary node
-    ///     var primaryInstance = new Linode.Instance("primaryInstance", new()
+    ///     var primaryInstance = new Linode.Instance("primary", new()
     ///     {
     ///         Label = "node-primary",
     ///         Type = "g6-nanode-1",
@@ -40,7 +40,7 @@ namespace Pulumi.Linode
     ///     });
     /// 
     ///     // Allocate an IP under the primary node
-    ///     var primaryInstanceIp = new Linode.InstanceIp("primaryInstanceIp", new()
+    ///     var primary = new Linode.InstanceIp("primary", new()
     ///     {
     ///         LinodeId = primaryInstance.Id,
     ///     });
@@ -59,7 +59,7 @@ namespace Pulumi.Linode
     ///         LinodeId = secondary.Id,
     ///         Addresses = new[]
     ///         {
-    ///             primaryInstanceIp.Address,
+    ///             primary.Address,
     ///         },
     ///     });
     /// 
@@ -68,6 +68,78 @@ namespace Pulumi.Linode
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Share an IPv6 address among a primary node and its replicas:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a single primary node
+    ///     var primary = new Linode.Instance("primary", new()
+    ///     {
+    ///         Label = "node-primary",
+    ///         Type = "g6-nanode-1",
+    ///         Region = "eu-central",
+    ///     });
+    /// 
+    ///     // Allocate an IPv6 range pointing at the primary node
+    ///     var rangeIpv6Range = new Linode.Ipv6Range("range", new()
+    ///     {
+    ///         PrefixLength = 64,
+    ///         LinodeId = primary.Id,
+    ///     });
+    /// 
+    ///     // Share with primary node
+    ///     var share_primary = new Linode.InstanceSharedIps("share-primary", new()
+    ///     {
+    ///         LinodeId = primary.Id,
+    ///         Addresses = new[]
+    ///         {
+    ///             rangeIpv6Range.Range,
+    ///         },
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var numberReplicas = config.GetDouble("numberReplicas") ?? 2;
+    ///     // Create two secondary nodes
+    ///     var secondary = new List&lt;Linode.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; numberReplicas; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         secondary.Add(new Linode.Instance($"secondary-{range.Value}", new()
+    ///         {
+    ///             Label = $"node-secondary-{range.Value}",
+    ///             Type = "g6-nanode-1",
+    ///             Region = "eu-central",
+    ///         }));
+    ///     }
+    ///     // Share with secondary nodes
+    ///     var share_secondary = new List&lt;Linode.InstanceSharedIps&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; numberReplicas; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         share_secondary.Add(new Linode.InstanceSharedIps($"share-secondary-{range.Value}", new()
+    ///         {
+    ///             LinodeId = secondary[range.Value].Id,
+    ///             Addresses = new[]
+    ///             {
+    ///                 rangeIpv6Range.Range,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn =
+    ///             {
+    ///                 share_primary, 
+    ///             },
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/instanceSharedIps:InstanceSharedIps")]
     public partial class InstanceSharedIps : global::Pulumi.CustomResource

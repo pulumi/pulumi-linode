@@ -17,13 +17,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foobarDomain = new linode.Domain("foobarDomain", {
+ * const foobar = new linode.Domain("foobar", {
  *     type: "master",
  *     domain: "foobar.example",
  *     soaEmail: "example@foobar.example",
  * });
- * const foobarDomainRecord = new linode.DomainRecord("foobarDomainRecord", {
- *     domainId: foobarDomain.id,
+ * const foobarDomainRecord = new linode.DomainRecord("foobar", {
+ *     domainId: foobar.id,
  *     name: "www",
  *     recordType: "CNAME",
  *     target: "foobar.example",

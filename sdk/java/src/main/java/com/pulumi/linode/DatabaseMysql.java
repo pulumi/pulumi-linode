@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysql(&#34;foobar&#34;, DatabaseMysqlArgs.builder()        
- *             .engineId(&#34;mysql/8.0.30&#34;)
  *             .label(&#34;mydatabase&#34;)
+ *             .engineId(&#34;mysql/8.0.30&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
  *             .build());
@@ -88,15 +88,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysql(&#34;foobar&#34;, DatabaseMysqlArgs.builder()        
+ *             .label(&#34;mydatabase&#34;)
+ *             .engineId(&#34;mysql/8.0.30&#34;)
+ *             .region(&#34;us-southeast&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
  *             .allowLists(&#34;0.0.0.0/0&#34;)
  *             .clusterSize(3)
  *             .encrypted(true)
- *             .engineId(&#34;mysql/8.0.30&#34;)
- *             .label(&#34;mydatabase&#34;)
- *             .region(&#34;us-southeast&#34;)
  *             .replicationType(&#34;asynch&#34;)
  *             .sslConnection(true)
- *             .type(&#34;g6-nanode-1&#34;)
  *             .updates(DatabaseMysqlUpdatesArgs.builder()
  *                 .dayOfWeek(&#34;saturday&#34;)
  *                 .duration(1)

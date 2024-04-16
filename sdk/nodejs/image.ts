@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     diskId: foo.disks.apply(disks => disks[0].id),
  *     linodeId: foo.id,
  * });
- * const barBased = new linode.Instance("barBased", {
+ * const barBased = new linode.Instance("bar_based", {
  *     type: foo.type,
  *     region: "eu-west",
  *     image: bar.id,

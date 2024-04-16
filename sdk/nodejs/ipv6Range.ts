@@ -12,14 +12,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foobarInstance = new linode.Instance("foobarInstance", {
+ * const foobar = new linode.Instance("foobar", {
  *     label: "my-linode",
  *     image: "linode/alpine3.19",
  *     type: "g6-nanode-1",
  *     region: "us-southeast",
  * });
- * const foobarIpv6Range = new linode.Ipv6Range("foobarIpv6Range", {
- *     linodeId: foobarInstance.id,
+ * const foobarIpv6Range = new linode.Ipv6Range("foobar", {
+ *     linodeId: foobar.id,
  *     prefixLength: 64,
  * });
  * ```

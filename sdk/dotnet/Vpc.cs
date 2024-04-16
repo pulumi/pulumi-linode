@@ -29,9 +29,9 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.Vpc("test", new()
     ///     {
-    ///         Description = "My first VPC.",
     ///         Label = "test-vpc",
     ///         Region = "us-iad",
+    ///         Description = "My first VPC.",
     ///     });
     /// 
     /// });

@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("myInstance", {
+ * const myInstance = new linode.Instance("my_instance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",
@@ -99,7 +99,7 @@ export interface GetVlansResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("myInstance", {
+ * const myInstance = new linode.Instance("my_instance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",

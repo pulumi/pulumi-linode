@@ -43,7 +43,7 @@ namespace Pulumi.Linode
     ///         LinodeId = foo.Id,
     ///     });
     /// 
-    ///     var barBased = new Linode.Instance("barBased", new()
+    ///     var barBased = new Linode.Instance("bar_based", new()
     ///     {
     ///         Type = foo.Type,
     ///         Region = "eu-west",

@@ -28,9 +28,9 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.NodeBalancer("foobar", new()
     ///     {
-    ///         ClientConnThrottle = 20,
     ///         Label = "mynodebalancer",
     ///         Region = "us-east",
+    ///         ClientConnThrottle = 20,
     ///         Tags = new[]
     ///         {
     ///             "foobar",

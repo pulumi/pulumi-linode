@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myFirewall = new Linode.Firewall("myFirewall", new()
+    ///     var myFirewall = new Linode.Firewall("my_firewall", new()
     ///     {
     ///         Label = "my_firewall",
     ///         Inbounds = new[]
@@ -50,14 +50,14 @@ namespace Pulumi.Linode
     ///         OutboundPolicy = "ACCEPT",
     ///     });
     /// 
-    ///     var myInstance = new Linode.Instance("myInstance", new()
+    ///     var myInstance = new Linode.Instance("my_instance", new()
     ///     {
     ///         Label = "my_instance",
     ///         Region = "us-southeast",
     ///         Type = "g6-standard-1",
     ///     });
     /// 
-    ///     var myDevice = new Linode.FirewallDevice("myDevice", new()
+    ///     var myDevice = new Linode.FirewallDevice("my_device", new()
     ///     {
     ///         FirewallId = myFirewall.Id,
     ///         EntityId = myInstance.Id,

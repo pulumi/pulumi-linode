@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+//			_, err := linode.NewInstance(ctx, "my_instance", &linode.InstanceArgs{
 //				Label:    pulumi.String("my_instance"),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				Region:   pulumi.String("us-southeast"),

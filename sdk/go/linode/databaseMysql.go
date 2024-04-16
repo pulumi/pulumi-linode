@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
-//				EngineId: pulumi.String("mysql/8.0.30"),
 //				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8.0.30"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -66,17 +66,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysql(ctx, "foobar", &linode.DatabaseMysqlArgs{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8.0.30"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},
 //				ClusterSize:     pulumi.Int(3),
 //				Encrypted:       pulumi.Bool(true),
-//				EngineId:        pulumi.String("mysql/8.0.30"),
-//				Label:           pulumi.String("mydatabase"),
-//				Region:          pulumi.String("us-southeast"),
 //				ReplicationType: pulumi.String("asynch"),
 //				SslConnection:   pulumi.Bool(true),
-//				Type:            pulumi.String("g6-nanode-1"),
 //				Updates: &linode.DatabaseMysqlUpdatesArgs{
 //					DayOfWeek:   pulumi.String("saturday"),
 //					Duration:    pulumi.Int(1),

@@ -192,9 +192,9 @@ class VpcSubnet(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.VpcSubnet("test",
-            ipv4="10.0.0.0/24",
+            vpc_id=123,
             label="test-subnet",
-            vpc_id=123)
+            ipv4="10.0.0.0/24")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -231,9 +231,9 @@ class VpcSubnet(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.VpcSubnet("test",
-            ipv4="10.0.0.0/24",
+            vpc_id=123,
             label="test-subnet",
-            vpc_id=123)
+            ipv4="10.0.0.0/24")
         ```
         <!--End PulumiCodeChooser -->
 

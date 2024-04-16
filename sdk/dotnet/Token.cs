@@ -29,14 +29,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooToken = new Linode.Token("fooToken", new()
+    ///     var foo = new Linode.Token("foo", new()
     ///     {
-    ///         Expiry = "2100-01-02T03:04:05Z",
     ///         Label = "token",
     ///         Scopes = "linodes:read_only",
+    ///         Expiry = "2100-01-02T03:04:05Z",
     ///     });
     /// 
-    ///     var fooInstance = new Linode.Instance("fooInstance");
+    ///     var fooInstance = new Linode.Instance("foo");
     /// 
     /// });
     /// ```

@@ -45,9 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Vpc(&#34;test&#34;, VpcArgs.builder()        
- *             .description(&#34;My first VPC.&#34;)
  *             .label(&#34;test-vpc&#34;)
  *             .region(&#34;us-iad&#34;)
+ *             .description(&#34;My first VPC.&#34;)
  *             .build());
  * 
  *     }

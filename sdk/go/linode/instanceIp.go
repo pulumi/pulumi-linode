@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//			foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
 //				Image:  pulumi.String("linode/alpine3.19"),
 //				Label:  pulumi.String("foobar-test"),
 //				Type:   pulumi.String("g6-nanode-1"),
@@ -42,8 +42,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstanceIp(ctx, "fooInstanceIp", &linode.InstanceIpArgs{
-//				LinodeId: fooInstance.ID(),
+//			_, err = linode.NewInstanceIp(ctx, "foo", &linode.InstanceIpArgs{
+//				LinodeId: foo.ID(),
 //				Public:   pulumi.Bool(true),
 //			})
 //			if err != nil {

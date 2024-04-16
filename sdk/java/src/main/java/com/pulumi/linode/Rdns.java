@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .type(&#34;g6-dedicated-2&#34;)
  *             .build());
  * 
- *         var fooRdns = new Rdns(&#34;fooRdns&#34;, RdnsArgs.builder()        
+ *         var foo = new Rdns(&#34;foo&#34;, RdnsArgs.builder()        
  *             .address(fooInstance.ipAddress())
  *             .rdns(fooInstance.ipAddress().applyValue(ipAddress -&gt; String.format(&#34;%s.nip.io&#34;, ipAddress)))
  *             .build());
@@ -68,6 +68,55 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Rdns;
+ * import com.pulumi.linode.RdnsArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         for (var i = 0; i &lt; 3; i++) {
+ *             new Instance(&#34;myInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .label(String.format(&#34;simple_instance-%s&#34;, range.value() + 1))
+ *                 .image(&#34;linode/ubuntu22.04&#34;)
+ *                 .region(&#34;us-central&#34;)
+ *                 .type(&#34;g6-standard-1&#34;)
+ *                 .rootPass(&#34;terr4form-test&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; myInstance.length(); i++) {
+ *             new Rdns(&#34;myRdns-&#34; + i, RdnsArgs.builder()            
+ *                 .address(myInstance[range.value()].ipAddress())
+ *                 .rdns(myInstance[range.value()].ipAddress().applyValue(ipAddress -&gt; String.format(&#34;%s.nip.io&#34;, ipAddress)))
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

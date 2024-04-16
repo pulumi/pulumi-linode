@@ -4492,13 +4492,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .id(&#34;14950401&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .name(&#34;www&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *     }
@@ -4540,13 +4540,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .id(&#34;14950401&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .name(&#34;www&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *     }
@@ -4588,13 +4588,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .id(&#34;14950401&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .name(&#34;www&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *     }
@@ -4636,13 +4636,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .id(&#34;14950401&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(&#34;3150401&#34;)
      *             .name(&#34;www&#34;)
+     *             .domainId(&#34;3150401&#34;)
      *             .build());
      * 
      *     }
@@ -10998,9 +10998,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -11040,9 +11040,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -11082,9 +11082,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -11124,9 +11124,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }

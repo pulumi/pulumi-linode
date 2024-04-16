@@ -27,9 +27,9 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
         ///     {
-        ///         ConfigId = 789,
         ///         Id = 123,
         ///         NodebalancerId = 456,
+        ///         ConfigId = 789,
         ///     });
         /// 
         /// });
@@ -55,9 +55,9 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
         ///     {
-        ///         ConfigId = 789,
         ///         Id = 123,
         ///         NodebalancerId = 456,
+        ///         ConfigId = 789,
         ///     });
         /// 
         /// });

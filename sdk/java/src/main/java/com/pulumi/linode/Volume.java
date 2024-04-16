@@ -70,6 +70,82 @@ import javax.annotation.Nullable;
  * 
  * Volumes can also be attached using the Linode Instance config device map.
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.instanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
+ *             .region(&#34;us-east&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .build());
+ * 
+ *         var fooInstanceConfig = new InstanceConfig(&#34;fooInstanceConfig&#34;, InstanceConfigArgs.builder()        
+ *             .linodeId(foo.id())
+ *             .label(&#34;boot-existing-volume&#34;)
+ *             .kernel(&#34;linode/grub2&#34;)
+ *             .devices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .booted(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Volumes may also be cloned from existing volumes.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Volume;
+ * import com.pulumi.linode.VolumeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
+ *             .label(&#34;my-cloned-volume&#34;)
+ *             .sourceVolumeId(12345)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Linodes Volumes can be imported using the Linode Volume `id`, e.g.

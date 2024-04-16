@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-//				ClientConnThrottle: pulumi.Int(20),
 //				Label:              pulumi.String("mynodebalancer"),
 //				Region:             pulumi.String("us-east"),
+//				ClientConnThrottle: pulumi.Int(20),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foobar"),
 //				},

@@ -1181,15 +1181,15 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            image="linode/ubuntu22.04",
             label="simple_instance",
-            private_ip=True,
+            image="linode/ubuntu22.04",
             region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1203,27 +1203,74 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            label="simple_instance",
             image="linode/ubuntu22.04",
+            region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            root_pass="this-is-not-a-safe-password",
             interfaces=[
                 linode.InstanceInterfaceArgs(
                     purpose="public",
                 ),
                 linode.InstanceInterfaceArgs(
+                    purpose="vpc",
+                    subnet_id=123,
                     ipv4=linode.InstanceInterfaceIpv4Args(
                         vpc="10.0.4.250",
                     ),
-                    purpose="vpc",
-                    subnet_id=123,
                 ),
             ],
-            label="simple_instance",
-            private_ip=True,
-            region="us-central",
-            root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Linode Instance with Explicit Configs and Disks
+
+        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        me = linode.get_profile()
+        web = linode.Instance("web",
+            label="complex_instance",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True)
+        web_volume = linode.Volume("web_volume",
+            label="web_volume",
+            size=20,
+            region="us-central")
+        boot_disk = linode.InstanceDisk("boot_disk",
+            label="boot",
+            linode_id=web.id,
+            size=3000,
+            image="linode/ubuntu22.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            authorized_users=[me.username],
+            root_pass="terr4form-test")
+        boot_config = linode.index.InstanceConfig("boot_config",
+            label=boot_config,
+            linode_id=web.id,
+            devices=[
+                {
+                    deviceName: sda,
+                    diskId: boot_disk.id,
+                },
+                {
+                    deviceName: sdb,
+                    volumeId: web_volume.id,
+                },
+            ],
+            root_device=/dev/sda,
+            kernel=linode/latest-64bit,
+            booted=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1309,15 +1356,15 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            image="linode/ubuntu22.04",
             label="simple_instance",
-            private_ip=True,
+            image="linode/ubuntu22.04",
             region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1331,27 +1378,74 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            label="simple_instance",
             image="linode/ubuntu22.04",
+            region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            root_pass="this-is-not-a-safe-password",
             interfaces=[
                 linode.InstanceInterfaceArgs(
                     purpose="public",
                 ),
                 linode.InstanceInterfaceArgs(
+                    purpose="vpc",
+                    subnet_id=123,
                     ipv4=linode.InstanceInterfaceIpv4Args(
                         vpc="10.0.4.250",
                     ),
-                    purpose="vpc",
-                    subnet_id=123,
                 ),
             ],
-            label="simple_instance",
-            private_ip=True,
-            region="us-central",
-            root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Linode Instance with Explicit Configs and Disks
+
+        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        me = linode.get_profile()
+        web = linode.Instance("web",
+            label="complex_instance",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True)
+        web_volume = linode.Volume("web_volume",
+            label="web_volume",
+            size=20,
+            region="us-central")
+        boot_disk = linode.InstanceDisk("boot_disk",
+            label="boot",
+            linode_id=web.id,
+            size=3000,
+            image="linode/ubuntu22.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            authorized_users=[me.username],
+            root_pass="terr4form-test")
+        boot_config = linode.index.InstanceConfig("boot_config",
+            label=boot_config,
+            linode_id=web.id,
+            devices=[
+                {
+                    deviceName: sda,
+                    diskId: boot_disk.id,
+                },
+                {
+                    deviceName: sdb,
+                    volumeId: web_volume.id,
+                },
+            ],
+            root_device=/dev/sda,
+            kernel=linode/latest-64bit,
+            booted=True)
         ```
         <!--End PulumiCodeChooser -->
 

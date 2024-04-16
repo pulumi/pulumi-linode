@@ -27,8 +27,8 @@ namespace Pulumi.Linode
     /// {
     ///     var myaccount = new Linode.AccountSettings("myaccount", new()
     ///     {
-    ///         BackupsEnabled = true,
     ///         LongviewSubscription = "longview-40",
+    ///         BackupsEnabled = true,
     ///     });
     /// 
     /// });

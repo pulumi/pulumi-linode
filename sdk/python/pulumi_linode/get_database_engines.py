@@ -141,7 +141,7 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
             name="engine",
             values=["mysql"],
         )])
-    my_db = linode.DatabaseMysql("myDb",
+    my_db = linode.DatabaseMysql("my_db",
         label="mydb",
         engine_id=mysql.engines[0].id,
         region="us-southeast",
@@ -225,7 +225,7 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
             name="engine",
             values=["mysql"],
         )])
-    my_db = linode.DatabaseMysql("myDb",
+    my_db = linode.DatabaseMysql("my_db",
         label="mydb",
         engine_id=mysql.engines[0].id,
         region="us-southeast",

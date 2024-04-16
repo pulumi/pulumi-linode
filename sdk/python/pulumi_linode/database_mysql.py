@@ -569,8 +569,8 @@ class DatabaseMysql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysql("foobar",
-            engine_id="mysql/8.0.30",
             label="mydatabase",
+            engine_id="mysql/8.0.30",
             region="us-southeast",
             type="g6-nanode-1")
         ```
@@ -584,15 +584,15 @@ class DatabaseMysql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysql("foobar",
+            label="mydatabase",
+            engine_id="mysql/8.0.30",
+            region="us-southeast",
+            type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"],
             cluster_size=3,
             encrypted=True,
-            engine_id="mysql/8.0.30",
-            label="mydatabase",
-            region="us-southeast",
             replication_type="asynch",
             ssl_connection=True,
-            type="g6-nanode-1",
             updates=linode.DatabaseMysqlUpdatesArgs(
                 day_of_week="saturday",
                 duration=1,
@@ -668,8 +668,8 @@ class DatabaseMysql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysql("foobar",
-            engine_id="mysql/8.0.30",
             label="mydatabase",
+            engine_id="mysql/8.0.30",
             region="us-southeast",
             type="g6-nanode-1")
         ```
@@ -683,15 +683,15 @@ class DatabaseMysql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysql("foobar",
+            label="mydatabase",
+            engine_id="mysql/8.0.30",
+            region="us-southeast",
+            type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"],
             cluster_size=3,
             encrypted=True,
-            engine_id="mysql/8.0.30",
-            label="mydatabase",
-            region="us-southeast",
             replication_type="asynch",
             ssl_connection=True,
-            type="g6-nanode-1",
             updates=linode.DatabaseMysqlUpdatesArgs(
                 day_of_week="saturday",
                 duration=1,

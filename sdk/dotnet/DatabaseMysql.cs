@@ -30,8 +30,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysql("foobar", new()
     ///     {
-    ///         EngineId = "mysql/8.0.30",
     ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8.0.30",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
     ///     });
@@ -53,18 +53,18 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysql("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8.0.30",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "0.0.0.0/0",
     ///         },
     ///         ClusterSize = 3,
     ///         Encrypted = true,
-    ///         EngineId = "mysql/8.0.30",
-    ///         Label = "mydatabase",
-    ///         Region = "us-southeast",
     ///         ReplicationType = "asynch",
     ///         SslConnection = true,
-    ///         Type = "g6-nanode-1",
     ///         Updates = new Linode.Inputs.DatabaseMysqlUpdatesArgs
     ///         {
     ///             DayOfWeek = "saturday",

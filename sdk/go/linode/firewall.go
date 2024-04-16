@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+//			myInstance, err := linode.NewInstance(ctx, "my_instance", &linode.InstanceArgs{
 //				Label:    pulumi.String("my_instance"),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				Region:   pulumi.String("us-southeast"),
@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
+//			_, err = linode.NewFirewall(ctx, "my_firewall", &linode.FirewallArgs{
 //				Label: pulumi.String("my_firewall"),
 //				Inbounds: linode.FirewallInboundArray{
 //					&linode.FirewallInboundArgs{

@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my-node = linode.getNodeBalancerNode({
- *     configId: 789,
  *     id: 123,
  *     nodebalancerId: 456,
+ *     configId: 789,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -89,9 +89,9 @@ export interface GetNodeBalancerNodeResult {
  * import * as linode from "@pulumi/linode";
  *
  * const my-node = linode.getNodeBalancerNode({
- *     configId: 789,
  *     id: 123,
  *     nodebalancerId: 456,
+ *     configId: 789,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

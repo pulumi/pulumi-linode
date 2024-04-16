@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFirewall, err := linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
+//			myFirewall, err := linode.NewFirewall(ctx, "my_firewall", &linode.FirewallArgs{
 //				Label: pulumi.String("my_firewall"),
 //				Inbounds: linode.FirewallInboundArray{
 //					&linode.FirewallInboundArgs{
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
+//			myInstance, err := linode.NewInstance(ctx, "my_instance", &linode.InstanceArgs{
 //				Label:  pulumi.String("my_instance"),
 //				Region: pulumi.String("us-southeast"),
 //				Type:   pulumi.String("g6-standard-1"),
@@ -61,7 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewFirewallDevice(ctx, "myDevice", &linode.FirewallDeviceArgs{
+//			_, err = linode.NewFirewallDevice(ctx, "my_device", &linode.FirewallDeviceArgs{
 //				FirewallId: myFirewall.ID(),
 //				EntityId:   myInstance.ID(),
 //			})

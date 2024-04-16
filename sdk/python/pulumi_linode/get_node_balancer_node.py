@@ -133,9 +133,9 @@ def get_node_balancer_node(config_id: Optional[int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_node = linode.get_node_balancer_node(config_id=789,
-        id=123,
-        nodebalancer_id=456)
+    my_node = linode.get_node_balancer_node(id=123,
+        nodebalancer_id=456,
+        config_id=789)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -177,9 +177,9 @@ def get_node_balancer_node_output(config_id: Optional[pulumi.Input[int]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_node = linode.get_node_balancer_node(config_id=789,
-        id=123,
-        nodebalancer_id=456)
+    my_node = linode.get_node_balancer_node(id=123,
+        nodebalancer_id=456,
+        config_id=789)
     ```
     <!--End PulumiCodeChooser -->
 

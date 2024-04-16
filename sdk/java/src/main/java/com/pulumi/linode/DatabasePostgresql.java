@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresql(&#34;foobar&#34;, DatabasePostgresqlArgs.builder()        
- *             .engineId(&#34;postgresql/13.2&#34;)
  *             .label(&#34;mydatabase&#34;)
+ *             .engineId(&#34;postgresql/13.2&#34;)
  *             .region(&#34;us-southeast&#34;)
  *             .type(&#34;g6-nanode-1&#34;)
  *             .build());
@@ -88,16 +88,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresql(&#34;foobar&#34;, DatabasePostgresqlArgs.builder()        
+ *             .label(&#34;mydatabase&#34;)
+ *             .engineId(&#34;postgresql/13.2&#34;)
+ *             .region(&#34;us-southeast&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
  *             .allowLists(&#34;0.0.0.0/0&#34;)
  *             .clusterSize(3)
  *             .encrypted(true)
- *             .engineId(&#34;postgresql/13.2&#34;)
- *             .label(&#34;mydatabase&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .replicationCommitType(&#34;remote_write&#34;)
  *             .replicationType(&#34;semi_synch&#34;)
+ *             .replicationCommitType(&#34;remote_write&#34;)
  *             .sslConnection(true)
- *             .type(&#34;g6-nanode-1&#34;)
  *             .updates(DatabasePostgresqlUpdatesArgs.builder()
  *                 .dayOfWeek(&#34;saturday&#34;)
  *                 .duration(1)

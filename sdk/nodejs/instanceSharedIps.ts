@@ -23,13 +23,13 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * // Create a single primary node
- * const primaryInstance = new linode.Instance("primaryInstance", {
+ * const primaryInstance = new linode.Instance("primary", {
  *     label: "node-primary",
  *     type: "g6-nanode-1",
  *     region: "eu-central",
  * });
  * // Allocate an IP under the primary node
- * const primaryInstanceIp = new linode.InstanceIp("primaryInstanceIp", {linodeId: primaryInstance.id});
+ * const primary = new linode.InstanceIp("primary", {linodeId: primaryInstance.id});
  * // Create a secondary node
  * const secondary = new linode.Instance("secondary", {
  *     label: "node-secondary",
@@ -39,12 +39,57 @@ import * as utilities from "./utilities";
  * // Share the IP with the secondary node
  * const share_primary = new linode.InstanceSharedIps("share-primary", {
  *     linodeId: secondary.id,
- *     addresses: [primaryInstanceIp.address],
+ *     addresses: [primary.address],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
  * Share an IPv6 address among a primary node and its replicas:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // Create a single primary node
+ * const primary = new linode.Instance("primary", {
+ *     label: "node-primary",
+ *     type: "g6-nanode-1",
+ *     region: "eu-central",
+ * });
+ * // Allocate an IPv6 range pointing at the primary node
+ * const rangeIpv6Range = new linode.Ipv6Range("range", {
+ *     prefixLength: 64,
+ *     linodeId: primary.id,
+ * });
+ * // Share with primary node
+ * const share_primary = new linode.InstanceSharedIps("share-primary", {
+ *     linodeId: primary.id,
+ *     addresses: [rangeIpv6Range.range],
+ * });
+ * const config = new pulumi.Config();
+ * const numberReplicas = config.getNumber("numberReplicas") || 2;
+ * // Create two secondary nodes
+ * const secondary: linode.Instance[] = [];
+ * for (const range = {value: 0}; range.value < numberReplicas; range.value++) {
+ *     secondary.push(new linode.Instance(`secondary-${range.value}`, {
+ *         label: `node-secondary-${range.value}`,
+ *         type: "g6-nanode-1",
+ *         region: "eu-central",
+ *     }));
+ * }
+ * // Share with secondary nodes
+ * const share_secondary: linode.InstanceSharedIps[] = [];
+ * for (const range = {value: 0}; range.value < numberReplicas; range.value++) {
+ *     share_secondary.push(new linode.InstanceSharedIps(`share-secondary-${range.value}`, {
+ *         linodeId: secondary[range.value].id,
+ *         addresses: [rangeIpv6Range.range],
+ *     }, {
+ *     dependsOn: [share_primary],
+ * }));
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class InstanceSharedIps extends pulumi.CustomResource {
     /**

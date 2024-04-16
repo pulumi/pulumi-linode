@@ -116,12 +116,12 @@ class InstanceSharedIps(pulumi.CustomResource):
         import pulumi_linode as linode
 
         # Create a single primary node
-        primary_instance = linode.Instance("primaryInstance",
+        primary_instance = linode.Instance("primary",
             label="node-primary",
             type="g6-nanode-1",
             region="eu-central")
         # Allocate an IP under the primary node
-        primary_instance_ip = linode.InstanceIp("primaryInstanceIp", linode_id=primary_instance.id)
+        primary = linode.InstanceIp("primary", linode_id=primary_instance.id)
         # Create a secondary node
         secondary = linode.Instance("secondary",
             label="node-secondary",
@@ -130,11 +130,50 @@ class InstanceSharedIps(pulumi.CustomResource):
         # Share the IP with the secondary node
         share_primary = linode.InstanceSharedIps("share-primary",
             linode_id=secondary.id,
-            addresses=[primary_instance_ip.address])
+            addresses=[primary.address])
         ```
         <!--End PulumiCodeChooser -->
 
         Share an IPv6 address among a primary node and its replicas:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # Create a single primary node
+        primary = linode.Instance("primary",
+            label="node-primary",
+            type="g6-nanode-1",
+            region="eu-central")
+        # Allocate an IPv6 range pointing at the primary node
+        range_ipv6_range = linode.Ipv6Range("range",
+            prefix_length=64,
+            linode_id=primary.id)
+        # Share with primary node
+        share_primary = linode.InstanceSharedIps("share-primary",
+            linode_id=primary.id,
+            addresses=[range_ipv6_range.range])
+        config = pulumi.Config()
+        number_replicas = config.get_float("numberReplicas")
+        if number_replicas is None:
+            number_replicas = 2
+        # Create two secondary nodes
+        secondary = []
+        for range in [{"value": i} for i in range(0, number_replicas)]:
+            secondary.append(linode.Instance(f"secondary-{range['value']}",
+                label=f"node-secondary-{range['value']}",
+                type="g6-nanode-1",
+                region="eu-central"))
+        # Share with secondary nodes
+        share_secondary = []
+        for range in [{"value": i} for i in range(0, number_replicas)]:
+            share_secondary.append(linode.InstanceSharedIps(f"share-secondary-{range['value']}",
+                linode_id=secondary[range["value"]].id,
+                addresses=[range_ipv6_range.range],
+                opts=pulumi.ResourceOptions(depends_on=[share_primary])))
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -166,12 +205,12 @@ class InstanceSharedIps(pulumi.CustomResource):
         import pulumi_linode as linode
 
         # Create a single primary node
-        primary_instance = linode.Instance("primaryInstance",
+        primary_instance = linode.Instance("primary",
             label="node-primary",
             type="g6-nanode-1",
             region="eu-central")
         # Allocate an IP under the primary node
-        primary_instance_ip = linode.InstanceIp("primaryInstanceIp", linode_id=primary_instance.id)
+        primary = linode.InstanceIp("primary", linode_id=primary_instance.id)
         # Create a secondary node
         secondary = linode.Instance("secondary",
             label="node-secondary",
@@ -180,11 +219,50 @@ class InstanceSharedIps(pulumi.CustomResource):
         # Share the IP with the secondary node
         share_primary = linode.InstanceSharedIps("share-primary",
             linode_id=secondary.id,
-            addresses=[primary_instance_ip.address])
+            addresses=[primary.address])
         ```
         <!--End PulumiCodeChooser -->
 
         Share an IPv6 address among a primary node and its replicas:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # Create a single primary node
+        primary = linode.Instance("primary",
+            label="node-primary",
+            type="g6-nanode-1",
+            region="eu-central")
+        # Allocate an IPv6 range pointing at the primary node
+        range_ipv6_range = linode.Ipv6Range("range",
+            prefix_length=64,
+            linode_id=primary.id)
+        # Share with primary node
+        share_primary = linode.InstanceSharedIps("share-primary",
+            linode_id=primary.id,
+            addresses=[range_ipv6_range.range])
+        config = pulumi.Config()
+        number_replicas = config.get_float("numberReplicas")
+        if number_replicas is None:
+            number_replicas = 2
+        # Create two secondary nodes
+        secondary = []
+        for range in [{"value": i} for i in range(0, number_replicas)]:
+            secondary.append(linode.Instance(f"secondary-{range['value']}",
+                label=f"node-secondary-{range['value']}",
+                type="g6-nanode-1",
+                region="eu-central"))
+        # Share with secondary nodes
+        share_secondary = []
+        for range in [{"value": i} for i in range(0, number_replicas)]:
+            share_secondary.append(linode.InstanceSharedIps(f"share-secondary-{range['value']}",
+                linode_id=secondary[range["value"]].id,
+                addresses=[range_ipv6_range.range],
+                opts=pulumi.ResourceOptions(depends_on=[share_primary])))
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param InstanceSharedIpsArgs args: The arguments to use to populate this resource's properties.

@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const john = new linode.User("john", {
- *     email: "john@acme.io",
  *     username: "john123",
+ *     email: "john@acme.io",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -33,17 +33,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const fooser = new linode.User("fooser", {
+ *     username: "cooluser123",
  *     email: "cool@acme.io",
+ *     restricted: true,
  *     globalGrants: {
- *         addImages: true,
  *         addLinodes: true,
+ *         addImages: true,
  *     },
  *     linodeGrants: [{
  *         id: 12345,
  *         permissions: "read_write",
  *     }],
- *     restricted: true,
- *     username: "cooluser123",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

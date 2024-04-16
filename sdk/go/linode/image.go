@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "barBased", &linode.InstanceArgs{
+//			_, err = linode.NewInstance(ctx, "bar_based", &linode.InstanceArgs{
 //				Type:   foo.Type,
 //				Region: pulumi.String("eu-west"),
 //				Image:  bar.ID(),

@@ -325,6 +325,39 @@ class Volume(pulumi.CustomResource):
 
         Volumes can also be attached using the Linode Instance config device map.
 
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.Instance("foo",
+            region="us-east",
+            type="g6-nanode-1")
+        foo_instance_config = linode.index.InstanceConfig("foo",
+            linode_id=foo.id,
+            label=boot-existing-volume,
+            kernel=linode/grub2,
+            devices=[{
+                deviceName: sda,
+                volumeId: 12345,
+            }],
+            booted=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Volumes may also be cloned from existing volumes.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.Volume("foobar",
+            label="my-cloned-volume",
+            source_volume_id=12345)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Linodes Volumes can be imported using the Linode Volume `id`, e.g.
@@ -377,6 +410,39 @@ class Volume(pulumi.CustomResource):
         <!--End PulumiCodeChooser -->
 
         Volumes can also be attached using the Linode Instance config device map.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.Instance("foo",
+            region="us-east",
+            type="g6-nanode-1")
+        foo_instance_config = linode.index.InstanceConfig("foo",
+            linode_id=foo.id,
+            label=boot-existing-volume,
+            kernel=linode/grub2,
+            devices=[{
+                deviceName: sda,
+                volumeId: 12345,
+            }],
+            booted=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Volumes may also be cloned from existing volumes.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.Volume("foobar",
+            label="my-cloned-volume",
+            source_volume_id=12345)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -30,8 +30,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresql("foobar", new()
     ///     {
-    ///         EngineId = "postgresql/13.2",
     ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/13.2",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
     ///     });
@@ -53,19 +53,19 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresql("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/13.2",
+    ///         Region = "us-southeast",
+    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "0.0.0.0/0",
     ///         },
     ///         ClusterSize = 3,
     ///         Encrypted = true,
-    ///         EngineId = "postgresql/13.2",
-    ///         Label = "mydatabase",
-    ///         Region = "us-southeast",
-    ///         ReplicationCommitType = "remote_write",
     ///         ReplicationType = "semi_synch",
+    ///         ReplicationCommitType = "remote_write",
     ///         SslConnection = true,
-    ///         Type = "g6-nanode-1",
     ///         Updates = new Linode.Inputs.DatabasePostgresqlUpdatesArgs
     ///         {
     ///             DayOfWeek = "saturday",

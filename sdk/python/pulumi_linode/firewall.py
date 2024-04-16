@@ -421,14 +421,14 @@ class Firewall(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        my_instance = linode.Instance("myInstance",
+        my_instance = linode.Instance("my_instance",
             label="my_instance",
             image="linode/ubuntu22.04",
             region="us-southeast",
             type="g6-standard-1",
             root_pass="bogusPassword$",
             swap_size=256)
-        my_firewall = linode.Firewall("myFirewall",
+        my_firewall = linode.Firewall("my_firewall",
             label="my_firewall",
             inbounds=[
                 linode.FirewallInboundArgs(
@@ -514,14 +514,14 @@ class Firewall(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        my_instance = linode.Instance("myInstance",
+        my_instance = linode.Instance("my_instance",
             label="my_instance",
             image="linode/ubuntu22.04",
             region="us-southeast",
             type="g6-standard-1",
             root_pass="bogusPassword$",
             swap_size=256)
-        my_firewall = linode.Firewall("myFirewall",
+        my_firewall = linode.Firewall("my_firewall",
             label="my_firewall",
             inbounds=[
                 linode.FirewallInboundArgs(
