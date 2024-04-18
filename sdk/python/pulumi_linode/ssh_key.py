@@ -118,6 +118,29 @@ class SshKey(pulumi.CustomResource):
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
         **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
 
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foo = linode.SshKey("foo",
+            label="foo",
+            ssh_key=std.chomp(input=std.file(input="~/.ssh/id_rsa.pub").result).result)
+        foo_instance = linode.Instance("foo",
+            image="linode/ubuntu22.04",
+            label="foo",
+            region="us-east",
+            type="g6-nanode-1",
+            authorized_keys=[foo.ssh_key],
+            root_pass="...")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
@@ -141,6 +164,29 @@ class SshKey(pulumi.CustomResource):
         Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account's `~/.ssh/authorized_keys` file.
         For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
         **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
+
+        ## Example Usage
+
+        The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foo = linode.SshKey("foo",
+            label="foo",
+            ssh_key=std.chomp(input=std.file(input="~/.ssh/id_rsa.pub").result).result)
+        foo_instance = linode.Instance("foo",
+            image="linode/ubuntu22.04",
+            label="foo",
+            region="us-east",
+            type="g6-nanode-1",
+            authorized_keys=[foo.ssh_key],
+            root_pass="...")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

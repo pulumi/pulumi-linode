@@ -16,6 +16,46 @@ import (
 //
 // ## Example Usage
 //
+// ### Uploading a file to a bucket
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokePathexpand, err := std.Pathexpand(ctx, &std.PathexpandArgs{
+//				Input: "~/files/log.txt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
+//				Bucket:    pulumi.String("my-bucket"),
+//				Cluster:   pulumi.String("us-east-1"),
+//				Key:       pulumi.String("my-object"),
+//				SecretKey: pulumi.Any(myKey.SecretKey),
+//				AccessKey: pulumi.Any(myKey.AccessKey),
+//				Source:    invokePathexpand.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Uploading plaintext to a bucket
 //
 // <!--Start PulumiCodeChooser -->
@@ -40,6 +80,44 @@ import (
 //				Content:         pulumi.String("This is the content of the Object..."),
 //				ContentType:     pulumi.String("text/plain"),
 //				ContentLanguage: pulumi.String("en"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### Creating an object using implicitly created object credentials
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokePathexpand, err := std.Pathexpand(ctx, &std.PathexpandArgs{
+//				Input: "~/files/log.txt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
+//				Bucket:  pulumi.String("my-bucket"),
+//				Cluster: pulumi.String("us-east-1"),
+//				Key:     pulumi.String("my-object"),
+//				Source:  invokePathexpand.Result,
 //			})
 //			if err != nil {
 //				return err

@@ -556,6 +556,21 @@ class Image(pulumi.CustomResource):
 
         Creating and uploading an image from a local file:
 
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -623,6 +638,21 @@ class Image(pulumi.CustomResource):
         <!--End PulumiCodeChooser -->
 
         Creating and uploading an image from a local file:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

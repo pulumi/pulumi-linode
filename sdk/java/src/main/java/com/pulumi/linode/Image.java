@@ -78,6 +78,43 @@ import javax.annotation.Nullable;
  * 
  * Creating and uploading an image from a local file:
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Image;
+ * import com.pulumi.linode.ImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Image(&#34;foobar&#34;, ImageArgs.builder()        
+ *             .label(&#34;foobar-image&#34;)
+ *             .description(&#34;An image uploaded from Terraform!&#34;)
+ *             .region(&#34;us-southeast&#34;)
+ *             .filePath(&#34;path/to/image.img.gz&#34;)
+ *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
+ *                 .input(&#34;path/to/image.img.gz&#34;)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Linodes Images can be imported using the Linode Image `id`, e.g.

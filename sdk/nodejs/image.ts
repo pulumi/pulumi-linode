@@ -42,6 +42,24 @@ import * as utilities from "./utilities";
  *
  * Creating and uploading an image from a local file:
  *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * import * as std from "@pulumi/std";
+ *
+ * const foobar = new linode.Image("foobar", {
+ *     label: "foobar-image",
+ *     description: "An image uploaded from Terraform!",
+ *     region: "us-southeast",
+ *     filePath: "path/to/image.img.gz",
+ *     fileHash: std.filemd5({
+ *         input: "path/to/image.img.gz",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Linodes Images can be imported using the Linode Image `id`, e.g.

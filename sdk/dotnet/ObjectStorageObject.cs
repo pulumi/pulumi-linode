@@ -14,6 +14,35 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
+    /// ### Uploading a file to a bucket
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     {
+    ///         Bucket = "my-bucket",
+    ///         Cluster = "us-east-1",
+    ///         Key = "my-object",
+    ///         SecretKey = myKey.SecretKey,
+    ///         AccessKey = myKey.AccessKey,
+    ///         Source = Std.Pathexpand.Invoke(new()
+    ///         {
+    ///             Input = "~/files/log.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Uploading plaintext to a bucket
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -35,6 +64,33 @@ namespace Pulumi.Linode
     ///         Content = "This is the content of the Object...",
     ///         ContentType = "text/plain",
     ///         ContentLanguage = "en",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Creating an object using implicitly created object credentials
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     {
+    ///         Bucket = "my-bucket",
+    ///         Cluster = "us-east-1",
+    ///         Key = "my-object",
+    ///         Source = Std.Pathexpand.Invoke(new()
+    ///         {
+    ///             Input = "~/files/log.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

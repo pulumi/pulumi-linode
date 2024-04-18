@@ -9,6 +9,35 @@ import * as utilities from "./utilities";
  * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
  * **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
  *
+ * ## Example Usage
+ *
+ * The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * import * as std from "@pulumi/std";
+ *
+ * const foo = new linode.SshKey("foo", {
+ *     label: "foo",
+ *     sshKey: std.file({
+ *         input: "~/.ssh/id_rsa.pub",
+ *     }).then(invoke => std.chomp({
+ *         input: invoke.result,
+ *     })).then(invoke => invoke.result),
+ * });
+ * const fooInstance = new linode.Instance("foo", {
+ *     image: "linode/ubuntu22.04",
+ *     label: "foo",
+ *     region: "us-east",
+ *     type: "g6-nanode-1",
+ *     authorizedKeys: [foo.sshKey],
+ *     rootPass: "...",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
