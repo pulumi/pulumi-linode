@@ -24,7 +24,6 @@ import (
 //
 // Share in IPv4 address between two instances:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,7 +76,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Share an IPv6 address among a primary node and its replicas:
 type InstanceSharedIps struct {

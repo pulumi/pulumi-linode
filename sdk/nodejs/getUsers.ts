@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode users that match a set of filters.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  * });
  * export const users = filtered_users.then(filtered_users => filtered_users.users);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -82,7 +80,6 @@ export interface GetUsersResult {
 /**
  * Provides information about Linode users that match a set of filters.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -95,7 +92,6 @@ export interface GetUsersResult {
  * });
  * export const users = filtered_users.then(filtered_users => filtered_users.users);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

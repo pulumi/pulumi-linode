@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -39,7 +38,6 @@ import * as utilities from "./utilities";
  * });
  * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?.[0]?.linodes);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -94,7 +92,6 @@ export interface GetVlansResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -118,7 +115,6 @@ export interface GetVlansResult {
  * });
  * export const vlanLinodes = my_vlans.then(my_vlans => my_vlans.vlans?.[0]?.linodes);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

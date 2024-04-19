@@ -94,7 +94,6 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
 
     Get information about all Linode Managed Databases:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -102,11 +101,9 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
     all = linode.get_databases()
     pulumi.export("databaseIds", [__item.id for __item in all.databases])
     ```
-    <!--End PulumiCodeChooser -->
 
     Get information about all Linode MySQL Databases:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -117,7 +114,6 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
     )])
     pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -152,7 +148,6 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
 
     Get information about all Linode Managed Databases:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -160,11 +155,9 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
     all = linode.get_databases()
     pulumi.export("databaseIds", [__item.id for __item in all.databases])
     ```
-    <!--End PulumiCodeChooser -->
 
     Get information about all Linode MySQL Databases:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -175,7 +168,6 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
     )])
     pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)

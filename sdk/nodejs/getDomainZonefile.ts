@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     domainId: 3150401,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainZonefile(args: GetDomainZonefileArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainZonefileResult> {
 
@@ -61,7 +59,6 @@ export interface GetDomainZonefileResult {
  *
  * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -70,7 +67,6 @@ export interface GetDomainZonefileResult {
  *     domainId: 3150401,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainZonefileOutput(args: GetDomainZonefileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainZonefileResult> {
     return pulumi.output(args).apply((a: any) => getDomainZonefile(a, opts))

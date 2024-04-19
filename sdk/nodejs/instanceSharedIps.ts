@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * Share in IPv4 address between two instances:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -42,7 +41,6 @@ import * as utilities from "./utilities";
  *     addresses: [primaryInstanceIp.address],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Share an IPv6 address among a primary node and its replicas:
  */

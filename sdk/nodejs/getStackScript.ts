@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode StackScript.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     id: "355872",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
 
@@ -107,7 +105,6 @@ export interface GetStackScriptResult {
  *
  * The following example shows how one might use this data source to access information about a Linode StackScript.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -116,7 +113,6 @@ export interface GetStackScriptResult {
  *     id: "355872",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStackScriptOutput(args: GetStackScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptResult> {
     return pulumi.output(args).apply((a: any) => getStackScript(a, opts))

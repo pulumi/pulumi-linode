@@ -22,7 +22,6 @@ namespace Pulumi.Linode
     /// 
     /// Share in IPv4 address between two instances:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,7 +64,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Share an IPv6 address among a primary node and its replicas:
     /// </summary>

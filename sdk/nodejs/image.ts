@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * Creating an image from an existing Linode Instance and deploying another instance with that image:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -38,7 +37,6 @@ import * as utilities from "./utilities";
  *     image: bar.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating and uploading an image from a local file:
  *

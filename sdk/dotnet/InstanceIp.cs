@@ -18,7 +18,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/instanceIp:InstanceIp")]
     public partial class InstanceIp : global::Pulumi.CustomResource

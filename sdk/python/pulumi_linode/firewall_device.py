@@ -169,7 +169,6 @@ class FirewallDevice(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -194,7 +193,6 @@ class FirewallDevice(pulumi.CustomResource):
             firewall_id=my_firewall.id,
             entity_id=my_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -223,7 +221,6 @@ class FirewallDevice(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -248,7 +245,6 @@ class FirewallDevice(pulumi.CustomResource):
             firewall_id=my_firewall.id,
             entity_id=my_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

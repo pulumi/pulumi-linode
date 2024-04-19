@@ -484,7 +484,6 @@ class User(pulumi.CustomResource):
 
         Create an unrestricted user:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -493,11 +492,9 @@ class User(pulumi.CustomResource):
             email="john@acme.io",
             username="john123")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create a restricted user with grants:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -515,7 +512,6 @@ class User(pulumi.CustomResource):
             restricted=True,
             username="cooluser123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Global Grants
 
@@ -579,7 +575,6 @@ class User(pulumi.CustomResource):
 
         Create an unrestricted user:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -588,11 +583,9 @@ class User(pulumi.CustomResource):
             email="john@acme.io",
             username="john123")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create a restricted user with grants:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -610,7 +603,6 @@ class User(pulumi.CustomResource):
             restricted=True,
             username="cooluser123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Global Grants
 

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     address: "162.159.27.72",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> {
 
@@ -89,7 +87,6 @@ export interface GetNetworkingIpResult {
  *
  * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -98,7 +95,6 @@ export interface GetNetworkingIpResult {
  *     address: "162.159.27.72",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkingIpOutput(args: GetNetworkingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkingIpResult> {
     return pulumi.output(args).apply((a: any) => getNetworkingIp(a, opts))

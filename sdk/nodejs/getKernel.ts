@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode kernel.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "linode/latest-64bit",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKernel(args: GetKernelArgs, opts?: pulumi.InvokeOptions): Promise<GetKernelResult> {
 
@@ -82,7 +80,6 @@ export interface GetKernelResult {
  *
  * The following example shows how one might use this data source to access information about a Linode kernel.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -91,7 +88,6 @@ export interface GetKernelResult {
  *     id: "linode/latest-64bit",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKernelOutput(args: GetKernelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelResult> {
     return pulumi.output(args).apply((a: any) => getKernel(a, opts))

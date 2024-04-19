@@ -409,7 +409,6 @@ class DomainRecord(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -424,7 +423,6 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             target="foobar.example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -464,7 +462,6 @@ class DomainRecord(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -479,7 +476,6 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             target="foobar.example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

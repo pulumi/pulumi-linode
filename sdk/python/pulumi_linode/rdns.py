@@ -168,7 +168,6 @@ class Rdns(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure an RDNS address for an IP address.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -181,7 +180,6 @@ class Rdns(pulumi.CustomResource):
             address=foo_instance.ip_address,
             rdns=foo_instance.ip_address.apply(lambda ip_address: f"{ip_address}.nip.io"))
         ```
-        <!--End PulumiCodeChooser -->
 
         The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
 
@@ -216,7 +214,6 @@ class Rdns(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure an RDNS address for an IP address.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -229,7 +226,6 @@ class Rdns(pulumi.CustomResource):
             address=foo_instance.ip_address,
             rdns=foo_instance.ip_address.apply(lambda ip_address: f"{ip_address}.nip.io"))
         ```
-        <!--End PulumiCodeChooser -->
 
         The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
 

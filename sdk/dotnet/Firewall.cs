@@ -16,7 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -114,7 +113,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

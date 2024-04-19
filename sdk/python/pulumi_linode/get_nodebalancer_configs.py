@@ -107,7 +107,6 @@ def get_nodebalancer_configs(filters: Optional[Sequence[pulumi.InputType['GetNod
 
     The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -119,7 +118,6 @@ def get_nodebalancer_configs(filters: Optional[Sequence[pulumi.InputType['GetNod
         )])
     pulumi.export("nodebalancerConfigId", filter_nb_configs.nodebalancer_configs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -186,7 +184,6 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
 
     The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -198,7 +195,6 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
         )])
     pulumi.export("nodebalancerConfigId", filter_nb_configs.nodebalancer_configs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

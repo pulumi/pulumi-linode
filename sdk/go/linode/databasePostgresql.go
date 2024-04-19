@@ -21,7 +21,6 @@ import (
 //
 // Creating a simple PostgreSQL database instance:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,11 +47,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating a complex PostgreSQL database instance:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +91,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## updates
 //

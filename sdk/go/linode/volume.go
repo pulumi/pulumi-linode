@@ -20,7 +20,6 @@ import (
 //
 // The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Volumes can also be attached using the Linode Instance config device map.
 //

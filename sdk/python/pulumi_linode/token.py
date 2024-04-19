@@ -174,7 +174,6 @@ class Token(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -185,7 +184,6 @@ class Token(pulumi.CustomResource):
             scopes="linodes:read_only")
         foo_instance = linode.Instance("fooInstance")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,7 +216,6 @@ class Token(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -229,7 +226,6 @@ class Token(pulumi.CustomResource):
             scopes="linodes:read_only")
         foo_instance = linode.Instance("fooInstance")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -110,7 +110,6 @@ class InstanceSharedIps(pulumi.CustomResource):
 
         Share in IPv4 address between two instances:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -132,7 +131,6 @@ class InstanceSharedIps(pulumi.CustomResource):
             linode_id=secondary.id,
             addresses=[primary_instance_ip.address])
         ```
-        <!--End PulumiCodeChooser -->
 
         Share an IPv6 address among a primary node and its replicas:
 
@@ -160,7 +158,6 @@ class InstanceSharedIps(pulumi.CustomResource):
 
         Share in IPv4 address between two instances:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -182,7 +179,6 @@ class InstanceSharedIps(pulumi.CustomResource):
             linode_id=secondary.id,
             addresses=[primary_instance_ip.address])
         ```
-        <!--End PulumiCodeChooser -->
 
         Share an IPv6 address among a primary node and its replicas:
 

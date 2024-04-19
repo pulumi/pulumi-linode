@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Create a VPC:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     region: "us-iad",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Vpc extends pulumi.CustomResource {
     /**

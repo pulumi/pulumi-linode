@@ -122,14 +122,12 @@ def get_region(id: Optional[str] = None,
 
     The following example shows how the resource might be used to obtain additional information about a Linode region.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     region = linode.get_region(id="us-east")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The code name of the region to select.
@@ -161,14 +159,12 @@ def get_region_output(id: Optional[pulumi.Input[str]] = None,
 
     The following example shows how the resource might be used to obtain additional information about a Linode region.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     region = linode.get_region(id="us-east")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The code name of the region to select.

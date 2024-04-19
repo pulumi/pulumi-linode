@@ -20,7 +20,6 @@ import (
 //
 // Creating an image from an existing Linode Instance and deploying another instance with that image:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,7 +65,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating and uploading an image from a local file:
 //

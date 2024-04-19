@@ -403,7 +403,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         The following example shows how one might use this resource to create an Object Storage Bucket:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -413,11 +412,9 @@ class ObjectStorageBucket(pulumi.CustomResource):
             cluster=primary.id,
             label="mybucket")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating an Object Storage Bucket with Lifecycle rules:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -437,7 +434,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
 
@@ -482,7 +478,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         The following example shows how one might use this resource to create an Object Storage Bucket:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -492,11 +487,9 @@ class ObjectStorageBucket(pulumi.CustomResource):
             cluster=primary.id,
             label="mybucket")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating an Object Storage Bucket with Lifecycle rules:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -516,7 +509,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
 

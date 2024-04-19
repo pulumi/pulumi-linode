@@ -18,7 +18,6 @@ import (
 //
 // ### Uploading plaintext to a bucket
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ObjectStorageObject struct {
 	pulumi.CustomResourceState
 

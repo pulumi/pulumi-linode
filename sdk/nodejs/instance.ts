@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to configure a Linode instance.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -33,13 +32,11 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Linode Instance with Explicit Networking Interfaces
  *
  * You can add a VPC or VLAN interface directly to a Linode instance resource.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -68,7 +65,6 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

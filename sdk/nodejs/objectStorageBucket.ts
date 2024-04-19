@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to create an Object Storage Bucket:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,11 +25,9 @@ import * as utilities from "./utilities";
  *     label: "mybucket",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating an Object Storage Bucket with Lifecycle rules:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -51,7 +48,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
  *

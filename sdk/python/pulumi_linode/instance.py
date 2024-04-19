@@ -1175,7 +1175,6 @@ class Instance(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a Linode instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1191,13 +1190,11 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             type="g6-standard-1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Linode Instance with Explicit Networking Interfaces
 
         You can add a VPC or VLAN interface directly to a Linode instance resource.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1225,7 +1222,6 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             type="g6-standard-1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1303,7 +1299,6 @@ class Instance(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a Linode instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1319,13 +1314,11 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             type="g6-standard-1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Linode Instance with Explicit Networking Interfaces
 
         You can add a VPC or VLAN interface directly to a Linode instance resource.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1353,7 +1346,6 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             type="g6-standard-1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

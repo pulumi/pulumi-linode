@@ -16,7 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// ### Uploading plaintext to a bucket
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageObject:ObjectStorageObject")]
     public partial class ObjectStorageObject : global::Pulumi.CustomResource

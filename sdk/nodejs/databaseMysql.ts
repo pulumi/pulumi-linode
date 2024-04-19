@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * Creating a simple MySQL database instance:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -28,11 +27,9 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating a complex MySQL database instance:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -56,7 +53,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## updates
  *

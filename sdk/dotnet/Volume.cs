@@ -18,7 +18,6 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,7 +46,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Volumes can also be attached using the Linode Instance config device map.
     /// 

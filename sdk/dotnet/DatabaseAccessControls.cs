@@ -16,7 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// Grant a Linode access to a database:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/databaseAccessControls:DatabaseAccessControls")]
     public partial class DatabaseAccessControls : global::Pulumi.CustomResource

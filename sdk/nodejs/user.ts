@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Create an unrestricted user:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -23,11 +22,9 @@ import * as utilities from "./utilities";
  *     username: "john123",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create a restricted user with grants:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -46,7 +43,6 @@ import * as utilities from "./utilities";
  *     username: "cooluser123",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Global Grants
  *

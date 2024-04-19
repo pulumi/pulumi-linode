@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode VPC.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * });
  * export const vpc = foo;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpc(args: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
 
@@ -74,7 +72,6 @@ export interface GetVpcResult {
  *
  * The following example shows how one might use this data source to access information about a Linode VPC.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -84,7 +81,6 @@ export interface GetVpcResult {
  * });
  * export const vpc = foo;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcOutput(args: GetVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcResult> {
     return pulumi.output(args).apply((a: any) => getVpc(a, opts))

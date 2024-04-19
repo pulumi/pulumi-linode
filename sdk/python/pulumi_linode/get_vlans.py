@@ -93,7 +93,6 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -114,7 +113,6 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     )])
     pulumi.export("vlanLinodes", my_vlans.vlans[0].linodes)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -157,7 +155,6 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -178,7 +175,6 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     )])
     pulumi.export("vlanLinodes", my_vlans.vlans[0].linodes)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

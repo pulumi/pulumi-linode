@@ -171,7 +171,6 @@ class AccountSettings(pulumi.CustomResource):
 
         The following example shows how one might use this resource to change their Linode account settings.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -180,7 +179,6 @@ class AccountSettings(pulumi.CustomResource):
             backups_enabled=True,
             longview_subscription="longview-40")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Additional Results
 
@@ -207,7 +205,6 @@ class AccountSettings(pulumi.CustomResource):
 
         The following example shows how one might use this resource to change their Linode account settings.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -216,7 +213,6 @@ class AccountSettings(pulumi.CustomResource):
             backups_enabled=True,
             longview_subscription="longview-40")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Additional Results
 

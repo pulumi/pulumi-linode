@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupNodeBalancerConfig(ctx *pulumi.Context, args *LookupNodeBalancerConfigArgs, opts ...pulumi.InvokeOption) (*LookupNodeBalancerConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeBalancerConfigResult

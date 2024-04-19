@@ -306,7 +306,6 @@ class Volume(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -321,7 +320,6 @@ class Volume(pulumi.CustomResource):
             region=foobaz.region,
             linode_id=foobaz.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Volumes can also be attached using the Linode Instance config device map.
 
@@ -359,7 +357,6 @@ class Volume(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -374,7 +371,6 @@ class Volume(pulumi.CustomResource):
             region=foobaz.region,
             linode_id=foobaz.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Volumes can also be attached using the Linode Instance config device map.
 

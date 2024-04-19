@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     label: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
 
@@ -70,7 +68,6 @@ export interface GetSshKeyResult {
  *
  * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -79,7 +76,6 @@ export interface GetSshKeyResult {
  *     label: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeyResult> {
     return pulumi.output(args).apply((a: any) => getSshKey(a, opts))

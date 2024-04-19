@@ -245,7 +245,6 @@ def get_node_balancer_config(id: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -253,7 +252,6 @@ def get_node_balancer_config(id: Optional[int] = None,
     my_config = linode.get_node_balancer_config(id=123,
         nodebalancer_id=456)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The config's ID.
@@ -295,7 +293,6 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -303,7 +300,6 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
     my_config = linode.get_node_balancer_config(id=123,
         nodebalancer_id=456)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The config's ID.

@@ -17,7 +17,6 @@ import (
 //
 // Get information about all Linode instances with a certain label and tag:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,11 +55,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Get information about all Linode instances associated with the current token:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -87,7 +84,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Filterable Fields
 //
