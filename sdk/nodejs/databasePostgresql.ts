@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresql("foobar", {
- *     engineId: "postgresql/13.2",
  *     label: "mydatabase",
+ *     engineId: "postgresql/13.2",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
  * });
@@ -38,16 +38,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresql("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/13.2",
+ *     region: "us-southeast",
+ *     type: "g6-nanode-1",
  *     allowLists: ["0.0.0.0/0"],
  *     clusterSize: 3,
  *     encrypted: true,
- *     engineId: "postgresql/13.2",
- *     label: "mydatabase",
- *     region: "us-southeast",
- *     replicationCommitType: "remote_write",
  *     replicationType: "semi_synch",
+ *     replicationCommitType: "remote_write",
  *     sslConnection: true,
- *     type: "g6-nanode-1",
  *     updates: {
  *         dayOfWeek: "saturday",
  *         duration: 1,

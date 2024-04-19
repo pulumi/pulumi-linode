@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooStackScript = new StackScript(&#34;fooStackScript&#34;, StackScriptArgs.builder()        
+ *         var foo = new StackScript(&#34;foo&#34;, StackScriptArgs.builder()        
  *             .label(&#34;foo&#34;)
  *             .description(&#34;Installs a Package&#34;)
  *             .script(&#34;&#34;&#34;
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .type(&#34;g6-nanode-1&#34;)
  *             .authorizedKeys(&#34;...&#34;)
  *             .rootPass(&#34;...&#34;)
- *             .stackscriptId(fooStackScript.id())
+ *             .stackscriptId(foo.id())
  *             .stackscriptData(Map.of(&#34;package&#34;, &#34;nginx&#34;))
  *             .build());
  * 

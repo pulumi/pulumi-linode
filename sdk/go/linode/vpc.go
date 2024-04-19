@@ -34,9 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
-//				Description: pulumi.String("My first VPC."),
 //				Label:       pulumi.String("test-vpc"),
 //				Region:      pulumi.String("us-iad"),
+//				Description: pulumi.String("My first VPC."),
 //			})
 //			if err != nil {
 //				return err

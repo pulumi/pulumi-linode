@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
+//			foo, err := linode.NewStackScript(ctx, "foo", &linode.StackScriptArgs{
 //				Label:       pulumi.String("foo"),
 //				Description: pulumi.String("Installs a Package"),
 //				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//			_, err = linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
 //				Image:  pulumi.String("linode/ubuntu22.04"),
 //				Label:  pulumi.String("foo"),
 //				Region: pulumi.String("us-east"),
@@ -55,7 +55,7 @@ import (
 //					pulumi.String("..."),
 //				},
 //				RootPass:      pulumi.String("..."),
-//				StackscriptId: fooStackScript.ID(),
+//				StackscriptId: foo.ID(),
 //				StackscriptData: pulumi.Map{
 //					"package": pulumi.Any("nginx"),
 //				},

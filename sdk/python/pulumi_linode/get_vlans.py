@@ -98,7 +98,7 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
     import pulumi
     import pulumi_linode as linode
 
-    my_instance = linode.Instance("myInstance",
+    my_instance = linode.Instance("my_instance",
         label="my_instance",
         image="linode/ubuntu22.04",
         region="us-southeast",
@@ -162,7 +162,7 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     import pulumi
     import pulumi_linode as linode
 
-    my_instance = linode.Instance("myInstance",
+    my_instance = linode.Instance("my_instance",
         label="my_instance",
         image="linode/ubuntu22.04",
         region="us-southeast",

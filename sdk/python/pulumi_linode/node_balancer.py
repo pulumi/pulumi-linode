@@ -334,9 +334,9 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
             label="mynodebalancer",
             region="us-east",
+            client_conn_throttle=20,
             tags=["foobar"])
         ```
         <!--End PulumiCodeChooser -->
@@ -379,9 +379,9 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
             label="mynodebalancer",
             region="us-east",
+            client_conn_throttle=20,
             tags=["foobar"])
         ```
         <!--End PulumiCodeChooser -->

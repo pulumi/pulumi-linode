@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewVpcSubnet(ctx, "test", &linode.VpcSubnetArgs{
-//				Ipv4:  pulumi.String("10.0.0.0/24"),
-//				Label: pulumi.String("test-subnet"),
 //				VpcId: pulumi.Int(123),
+//				Label: pulumi.String("test-subnet"),
+//				Ipv4:  pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
 //				return err

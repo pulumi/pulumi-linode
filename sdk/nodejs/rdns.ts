@@ -22,12 +22,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooInstance = new linode.Instance("fooInstance", {
+ * const fooInstance = new linode.Instance("foo", {
  *     image: "linode/alpine3.19",
  *     region: "ca-east",
  *     type: "g6-dedicated-2",
  * });
- * const fooRdns = new linode.Rdns("fooRdns", {
+ * const foo = new linode.Rdns("foo", {
  *     address: fooInstance.ipAddress,
  *     rdns: pulumi.interpolate`${fooInstance.ipAddress}.nip.io`,
  * });
@@ -35,6 +35,33 @@ import * as utilities from "./utilities";
  * <!--End PulumiCodeChooser -->
  *
  * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myInstance: linode.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 3; range.value++) {
+ *     myInstance.push(new linode.Instance(`my_instance-${range.value}`, {
+ *         label: `simple_instance-${range.value + 1}`,
+ *         image: "linode/ubuntu22.04",
+ *         region: "us-central",
+ *         type: "g6-standard-1",
+ *         rootPass: "terr4form-test",
+ *     }));
+ * }
+ * const myRdns: linode.Rdns[] = [];
+ * myInstance.length.apply(rangeBody => {
+ *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
+ *         myRdns.push(new linode.Rdns(`my_rdns-${range.value}`, {
+ *             address: myInstance[range.value].ipAddress,
+ *             rdns: pulumi.interpolate`${myInstance[range.value].ipAddress}.nip.io`,
+ *         }));
+ *     }
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

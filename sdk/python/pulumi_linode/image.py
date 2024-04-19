@@ -547,7 +547,7 @@ class Image(pulumi.CustomResource):
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
             linode_id=foo.id)
-        bar_based = linode.Instance("barBased",
+        bar_based = linode.Instance("bar_based",
             type=foo.type,
             region="eu-west",
             image=bar.id)
@@ -555,6 +555,21 @@ class Image(pulumi.CustomResource):
         <!--End PulumiCodeChooser -->
 
         Creating and uploading an image from a local file:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -615,7 +630,7 @@ class Image(pulumi.CustomResource):
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
             linode_id=foo.id)
-        bar_based = linode.Instance("barBased",
+        bar_based = linode.Instance("bar_based",
             type=foo.type,
             region="eu-west",
             image=bar.id)
@@ -623,6 +638,21 @@ class Image(pulumi.CustomResource):
         <!--End PulumiCodeChooser -->
 
         Creating and uploading an image from a local file:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -490,8 +490,8 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         john = linode.User("john",
-            email="john@acme.io",
-            username="john123")
+            username="john123",
+            email="john@acme.io")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -503,17 +503,17 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         fooser = linode.User("fooser",
+            username="cooluser123",
             email="cool@acme.io",
+            restricted=True,
             global_grants=linode.UserGlobalGrantsArgs(
-                add_images=True,
                 add_linodes=True,
+                add_images=True,
             ),
             linode_grants=[linode.UserLinodeGrantArgs(
                 id=12345,
                 permissions="read_write",
-            )],
-            restricted=True,
-            username="cooluser123")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -585,8 +585,8 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         john = linode.User("john",
-            email="john@acme.io",
-            username="john123")
+            username="john123",
+            email="john@acme.io")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -598,17 +598,17 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         fooser = linode.User("fooser",
+            username="cooluser123",
             email="cool@acme.io",
+            restricted=True,
             global_grants=linode.UserGlobalGrantsArgs(
-                add_images=True,
                 add_linodes=True,
+                add_images=True,
             ),
             linode_grants=[linode.UserLinodeGrantArgs(
                 id=12345,
                 permissions="read_write",
-            )],
-            restricted=True,
-            username="cooluser123")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

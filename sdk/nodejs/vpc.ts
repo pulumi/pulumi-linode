@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.Vpc("test", {
- *     description: "My first VPC.",
  *     label: "test-vpc",
  *     region: "us-iad",
+ *     description: "My first VPC.",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

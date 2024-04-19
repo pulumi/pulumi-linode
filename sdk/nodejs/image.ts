@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     diskId: foo.disks.apply(disks => disks[0].id),
  *     linodeId: foo.id,
  * });
- * const barBased = new linode.Instance("barBased", {
+ * const barBased = new linode.Instance("bar_based", {
  *     type: foo.type,
  *     region: "eu-west",
  *     image: bar.id,
@@ -41,6 +41,24 @@ import * as utilities from "./utilities";
  * <!--End PulumiCodeChooser -->
  *
  * Creating and uploading an image from a local file:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * import * as std from "@pulumi/std";
+ *
+ * const foobar = new linode.Image("foobar", {
+ *     label: "foobar-image",
+ *     description: "An image uploaded from Terraform!",
+ *     region: "us-southeast",
+ *     filePath: "path/to/image.img.gz",
+ *     fileHash: std.filemd5({
+ *         input: "path/to/image.img.gz",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

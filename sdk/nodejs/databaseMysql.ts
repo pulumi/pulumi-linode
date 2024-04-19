@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysql("foobar", {
- *     engineId: "mysql/8.0.30",
  *     label: "mydatabase",
+ *     engineId: "mysql/8.0.30",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
  * });
@@ -38,15 +38,15 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysql("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8.0.30",
+ *     region: "us-southeast",
+ *     type: "g6-nanode-1",
  *     allowLists: ["0.0.0.0/0"],
  *     clusterSize: 3,
  *     encrypted: true,
- *     engineId: "mysql/8.0.30",
- *     label: "mydatabase",
- *     region: "us-southeast",
  *     replicationType: "asynch",
  *     sslConnection: true,
- *     type: "g6-nanode-1",
  *     updates: {
  *         dayOfWeek: "saturday",
  *         duration: 1,

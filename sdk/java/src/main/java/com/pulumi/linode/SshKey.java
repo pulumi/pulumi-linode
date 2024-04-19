@@ -18,6 +18,57 @@ import javax.annotation.Nullable;
  * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
  * **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
  * 
+ * ## Example Usage
+ * 
+ * The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.SshKey;
+ * import com.pulumi.linode.SshKeyArgs;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new SshKey(&#34;foo&#34;, SshKeyArgs.builder()        
+ *             .label(&#34;foo&#34;)
+ *             .sshKey(StdFunctions.chomp(ChompArgs.builder()
+ *                 .input(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;~/.ssh/id_rsa.pub&#34;)
+ *                     .build()).result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+ *             .image(&#34;linode/ubuntu22.04&#34;)
+ *             .label(&#34;foo&#34;)
+ *             .region(&#34;us-east&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .authorizedKeys(foo.sshKey())
+ *             .rootPass(&#34;...&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.

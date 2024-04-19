@@ -29,14 +29,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooInstance = new Linode.Instance("fooInstance", new()
+    ///     var fooInstance = new Linode.Instance("foo", new()
     ///     {
     ///         Image = "linode/alpine3.19",
     ///         Region = "ca-east",
     ///         Type = "g6-dedicated-2",
     ///     });
     /// 
-    ///     var fooRdns = new Linode.Rdns("fooRdns", new()
+    ///     var foo = new Linode.Rdns("foo", new()
     ///     {
     ///         Address = fooInstance.IpAddress,
     ///         RdnsName = fooInstance.IpAddress.Apply(ipAddress =&gt; $"{ipAddress}.nip.io"),
@@ -47,6 +47,42 @@ namespace Pulumi.Linode
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myInstance = new List&lt;Linode.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         myInstance.Add(new Linode.Instance($"my_instance-{range.Value}", new()
+    ///         {
+    ///             Label = $"simple_instance-{range.Value + 1}",
+    ///             Image = "linode/ubuntu22.04",
+    ///             Region = "us-central",
+    ///             Type = "g6-standard-1",
+    ///             RootPass = "terr4form-test",
+    ///         }));
+    ///     }
+    ///     var myRdns = new List&lt;Linode.Rdns&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; myInstance.Length; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         myRdns.Add(new Linode.Rdns($"my_rdns-{range.Value}", new()
+    ///         {
+    ///             Address = myInstance[range.Value].IpAddress,
+    ///             RdnsName = myInstance[range.Value].IpAddress.Apply(ipAddress =&gt; $"{ipAddress}.nip.io"),
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarInstance, err := linode.NewInstance(ctx, "foobarInstance", &linode.InstanceArgs{
+//			foobar, err := linode.NewInstance(ctx, "foobar", &linode.InstanceArgs{
 //				Label:  pulumi.String("my-linode"),
 //				Image:  pulumi.String("linode/alpine3.19"),
 //				Type:   pulumi.String("g6-nanode-1"),
@@ -36,8 +36,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewIpv6Range(ctx, "foobarIpv6Range", &linode.Ipv6RangeArgs{
-//				LinodeId:     foobarInstance.ID(),
+//			_, err = linode.NewIpv6Range(ctx, "foobar", &linode.Ipv6RangeArgs{
+//				LinodeId:     foobar.ID(),
 //				PrefixLength: pulumi.Int(64),
 //			})
 //			if err != nil {

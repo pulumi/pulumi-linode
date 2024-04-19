@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "barBased", &linode.InstanceArgs{
+//			_, err = linode.NewInstance(ctx, "bar_based", &linode.InstanceArgs{
 //				Type:   foo.Type,
 //				Region: pulumi.String("eu-west"),
 //				Image:  bar.ID(),
@@ -69,6 +69,43 @@ import (
 // <!--End PulumiCodeChooser -->
 //
 // Creating and uploading an image from a local file:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilemd5, err := std.Filemd5(ctx, &std.Filemd5Args{
+//				Input: "path/to/image.img.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewImage(ctx, "foobar", &linode.ImageArgs{
+//				Label:       pulumi.String("foobar-image"),
+//				Description: pulumi.String("An image uploaded from Terraform!"),
+//				Region:      pulumi.String("us-southeast"),
+//				FilePath:    pulumi.String("path/to/image.img.gz"),
+//				FileHash:    invokeFilemd5.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

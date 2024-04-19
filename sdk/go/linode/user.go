@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewUser(ctx, "john", &linode.UserArgs{
-//				Email:    pulumi.String("john@acme.io"),
 //				Username: pulumi.String("john123"),
+//				Email:    pulumi.String("john@acme.io"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,10 +61,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
-//				Email: pulumi.String("cool@acme.io"),
+//				Username:   pulumi.String("cooluser123"),
+//				Email:      pulumi.String("cool@acme.io"),
+//				Restricted: pulumi.Bool(true),
 //				GlobalGrants: &linode.UserGlobalGrantsArgs{
-//					AddImages:  pulumi.Bool(true),
 //					AddLinodes: pulumi.Bool(true),
+//					AddImages:  pulumi.Bool(true),
 //				},
 //				LinodeGrants: linode.UserLinodeGrantArray{
 //					&linode.UserLinodeGrantArgs{
@@ -72,8 +74,6 @@ import (
 //						Permissions: pulumi.String("read_write"),
 //					},
 //				},
-//				Restricted: pulumi.Bool(true),
-//				Username:   pulumi.String("cooluser123"),
 //			})
 //			if err != nil {
 //				return err

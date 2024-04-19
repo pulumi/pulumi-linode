@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const myaccount = new linode.AccountSettings("myaccount", {
- *     backupsEnabled: true,
  *     longviewSubscription: "longview-40",
+ *     backupsEnabled: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.VpcSubnet("test", {
- *     ipv4: "10.0.0.0/24",
- *     label: "test-subnet",
  *     vpcId: 123,
+ *     label: "test-subnet",
+ *     ipv4: "10.0.0.0/24",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -35,19 +35,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+//				Label:  pulumi.String("simple_instance"),
+//				Image:  pulumi.String("linode/ubuntu22.04"),
+//				Region: pulumi.String("us-central"),
+//				Type:   pulumi.String("g6-standard-1"),
 //				AuthorizedKeys: pulumi.StringArray{
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
 //				},
-//				Image:     pulumi.String("linode/ubuntu22.04"),
-//				Label:     pulumi.String("simple_instance"),
-//				PrivateIp: pulumi.Bool(true),
-//				Region:    pulumi.String("us-central"),
-//				RootPass:  pulumi.String("this-is-not-a-safe-password"),
-//				SwapSize:  pulumi.Int(256),
+//				RootPass: pulumi.String("this-is-not-a-safe-password"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo"),
 //				},
-//				Type: pulumi.String("g6-standard-1"),
+//				SwapSize:  pulumi.Int(256),
+//				PrivateIp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -77,31 +77,115 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+//				Label:  pulumi.String("simple_instance"),
+//				Image:  pulumi.String("linode/ubuntu22.04"),
+//				Region: pulumi.String("us-central"),
+//				Type:   pulumi.String("g6-standard-1"),
 //				AuthorizedKeys: pulumi.StringArray{
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
 //				},
-//				Image: pulumi.String("linode/ubuntu22.04"),
+//				RootPass: pulumi.String("this-is-not-a-safe-password"),
 //				Interfaces: linode.InstanceInterfaceArray{
 //					&linode.InstanceInterfaceArgs{
 //						Purpose: pulumi.String("public"),
 //					},
 //					&linode.InstanceInterfaceArgs{
+//						Purpose:  pulumi.String("vpc"),
+//						SubnetId: pulumi.Int(123),
 //						Ipv4: &linode.InstanceInterfaceIpv4Args{
 //							Vpc: pulumi.String("10.0.4.250"),
 //						},
-//						Purpose:  pulumi.String("vpc"),
-//						SubnetId: pulumi.Int(123),
 //					},
 //				},
-//				Label:     pulumi.String("simple_instance"),
-//				PrivateIp: pulumi.Bool(true),
-//				Region:    pulumi.String("us-central"),
-//				RootPass:  pulumi.String("this-is-not-a-safe-password"),
-//				SwapSize:  pulumi.Int(256),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo"),
 //				},
-//				Type: pulumi.String("g6-standard-1"),
+//				SwapSize:  pulumi.Int(256),
+//				PrivateIp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### Linode Instance with Explicit Configs and Disks
+//
+// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := linode.GetProfile(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			web, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
+//				Label: pulumi.String("complex_instance"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//				},
+//				Region:    pulumi.String("us-central"),
+//				Type:      pulumi.String("g6-nanode-1"),
+//				PrivateIp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			webVolume, err := linode.NewVolume(ctx, "web_volume", &linode.VolumeArgs{
+//				Label:  pulumi.String("web_volume"),
+//				Size:   pulumi.Int(20),
+//				Region: pulumi.String("us-central"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bootDisk, err := linode.NewInstanceDisk(ctx, "boot_disk", &linode.InstanceDiskArgs{
+//				Label:    pulumi.String("boot"),
+//				LinodeId: web.ID(),
+//				Size:     pulumi.Int(3000),
+//				Image:    pulumi.String("linode/ubuntu22.04"),
+//				AuthorizedKeys: pulumi.StringArray{
+//					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
+//				},
+//				AuthorizedUsers: pulumi.StringArray{
+//					pulumi.String(me.Username),
+//				},
+//				RootPass: pulumi.String("terr4form-test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceConfig(ctx, "boot_config", &linode.InstanceConfigArgs{
+//				Label:    "boot_config",
+//				LinodeId: web.ID(),
+//				Devices: []interface{}{
+//					map[string]interface{}{
+//						"deviceName": "sda",
+//						"diskId":     bootDisk.ID(),
+//					},
+//					map[string]interface{}{
+//						"deviceName": "sdb",
+//						"volumeId":   webVolume.ID(),
+//					},
+//				},
+//				RootDevice: "/dev/sda",
+//				Kernel:     "linode/latest-64bit",
+//				Booted:     true,
 //			})
 //			if err != nil {
 //				return err

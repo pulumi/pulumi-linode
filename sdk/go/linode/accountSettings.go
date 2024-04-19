@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewAccountSettings(ctx, "myaccount", &linode.AccountSettingsArgs{
-//				BackupsEnabled:       pulumi.Bool(true),
 //				LongviewSubscription: pulumi.String("longview-40"),
+//				BackupsEnabled:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

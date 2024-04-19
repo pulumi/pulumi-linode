@@ -26,7 +26,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarDomain = new Linode.Domain("foobarDomain", new()
+    ///     var foobar = new Linode.Domain("foobar", new()
     ///     {
     ///         Type = "master",
     ///         DomainName = "foobar.example",
@@ -38,9 +38,9 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new()
+    ///     var foobarDomainRecord = new Linode.DomainRecord("foobar", new()
     ///     {
-    ///         DomainId = foobarDomain.Id,
+    ///         DomainId = foobar.Id,
     ///         Name = "www",
     ///         RecordType = "CNAME",
     ///         Target = "foobar.example",

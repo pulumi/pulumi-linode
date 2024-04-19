@@ -27,9 +27,9 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.VpcSubnet("test", new()
     ///     {
-    ///         Ipv4 = "10.0.0.0/24",
-    ///         Label = "test-subnet",
     ///         VpcId = 123,
+    ///         Label = "test-subnet",
+    ///         Ipv4 = "10.0.0.0/24",
     ///     });
     /// 
     /// });

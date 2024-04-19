@@ -115,7 +115,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDatabaseMysql(ctx, "myDb", &linode.DatabaseMysqlArgs{
+//			_, err = linode.NewDatabaseMysql(ctx, "my_db", &linode.DatabaseMysqlArgs{
 //				Label:    pulumi.String("mydb"),
 //				EngineId: pulumi.String(mysql.Engines[0].Id),
 //				Region:   pulumi.String("us-southeast"),

@@ -27,8 +27,8 @@ namespace Pulumi.Linode
     /// {
     ///     var john = new Linode.User("john", new()
     ///     {
-    ///         Email = "john@acme.io",
     ///         Username = "john123",
+    ///         Email = "john@acme.io",
     ///     });
     /// 
     /// });
@@ -48,11 +48,13 @@ namespace Pulumi.Linode
     /// {
     ///     var fooser = new Linode.User("fooser", new()
     ///     {
+    ///         Username = "cooluser123",
     ///         Email = "cool@acme.io",
+    ///         Restricted = true,
     ///         GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs
     ///         {
-    ///             AddImages = true,
     ///             AddLinodes = true,
+    ///             AddImages = true,
     ///         },
     ///         LinodeGrants = new[]
     ///         {
@@ -62,8 +64,6 @@ namespace Pulumi.Linode
     ///                 Permissions = "read_write",
     ///             },
     ///         },
-    ///         Restricted = true,
-    ///         Username = "cooluser123",
     ///     });
     /// 
     /// });

@@ -20,14 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooInstance = new linode.Instance("fooInstance", {
+ * const foo = new linode.Instance("foo", {
  *     image: "linode/alpine3.19",
  *     label: "foobar-test",
  *     type: "g6-nanode-1",
  *     region: "us-east",
  * });
- * const fooInstanceIp = new linode.InstanceIp("fooInstanceIp", {
- *     linodeId: fooInstance.id,
+ * const fooInstanceIp = new linode.InstanceIp("foo", {
+ *     linodeId: foo.id,
  *     "public": true,
  * });
  * ```

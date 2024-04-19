@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresql(ctx, "foobar", &linode.DatabasePostgresqlArgs{
-//				EngineId: pulumi.String("postgresql/13.2"),
 //				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/13.2"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -66,18 +66,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresql(ctx, "foobar", &linode.DatabasePostgresqlArgs{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/13.2"),
+//				Region:   pulumi.String("us-southeast"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},
 //				ClusterSize:           pulumi.Int(3),
 //				Encrypted:             pulumi.Bool(true),
-//				EngineId:              pulumi.String("postgresql/13.2"),
-//				Label:                 pulumi.String("mydatabase"),
-//				Region:                pulumi.String("us-southeast"),
-//				ReplicationCommitType: pulumi.String("remote_write"),
 //				ReplicationType:       pulumi.String("semi_synch"),
+//				ReplicationCommitType: pulumi.String("remote_write"),
 //				SslConnection:         pulumi.Bool(true),
-//				Type:                  pulumi.String("g6-nanode-1"),
 //				Updates: &linode.DatabasePostgresqlUpdatesArgs{
 //					DayOfWeek:   pulumi.String("saturday"),
 //					Duration:    pulumi.Int(1),

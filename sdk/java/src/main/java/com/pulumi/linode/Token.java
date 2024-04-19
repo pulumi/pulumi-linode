@@ -49,10 +49,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooToken = new Token(&#34;fooToken&#34;, TokenArgs.builder()        
- *             .expiry(&#34;2100-01-02T03:04:05Z&#34;)
+ *         var foo = new Token(&#34;foo&#34;, TokenArgs.builder()        
  *             .label(&#34;token&#34;)
  *             .scopes(&#34;linodes:read_only&#34;)
+ *             .expiry(&#34;2100-01-02T03:04:05Z&#34;)
  *             .build());
  * 
  *         var fooInstance = new Instance(&#34;fooInstance&#34;);

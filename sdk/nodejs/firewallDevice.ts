@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myFirewall = new linode.Firewall("myFirewall", {
+ * const myFirewall = new linode.Firewall("my_firewall", {
  *     label: "my_firewall",
  *     inbounds: [{
  *         label: "http",
@@ -29,12 +29,12 @@ import * as utilities from "./utilities";
  *     inboundPolicy: "DROP",
  *     outboundPolicy: "ACCEPT",
  * });
- * const myInstance = new linode.Instance("myInstance", {
+ * const myInstance = new linode.Instance("my_instance", {
  *     label: "my_instance",
  *     region: "us-southeast",
  *     type: "g6-standard-1",
  * });
- * const myDevice = new linode.FirewallDevice("myDevice", {
+ * const myDevice = new linode.FirewallDevice("my_device", {
  *     firewallId: myFirewall.id,
  *     entityId: myInstance.id,
  * });

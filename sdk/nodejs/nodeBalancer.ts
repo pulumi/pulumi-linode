@@ -20,9 +20,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.NodeBalancer("foobar", {
- *     clientConnThrottle: 20,
  *     label: "mynodebalancer",
  *     region: "us-east",
+ *     clientConnThrottle: 20,
  *     tags: ["foobar"],
  * });
  * ```

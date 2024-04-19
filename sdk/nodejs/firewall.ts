@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("myInstance", {
+ * const myInstance = new linode.Instance("my_instance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     rootPass: "bogusPassword$",
  *     swapSize: 256,
  * });
- * const myFirewall = new linode.Firewall("myFirewall", {
+ * const myFirewall = new linode.Firewall("my_firewall", {
  *     label: "my_firewall",
  *     inbounds: [
  *         {

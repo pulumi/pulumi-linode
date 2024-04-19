@@ -59,15 +59,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
- *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
- *             .image(&#34;linode/ubuntu22.04&#34;)
  *             .label(&#34;simple_instance&#34;)
- *             .privateIp(true)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
  *             .region(&#34;us-central&#34;)
- *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
- *             .swapSize(256)
- *             .tags(&#34;foo&#34;)
  *             .type(&#34;g6-standard-1&#34;)
+ *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
+ *             .tags(&#34;foo&#34;)
+ *             .swapSize(256)
+ *             .privateIp(true)
  *             .build());
  * 
  *     }
@@ -104,26 +104,101 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
- *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .label(&#34;simple_instance&#34;)
  *             .image(&#34;linode/ubuntu22.04&#34;)
+ *             .region(&#34;us-central&#34;)
+ *             .type(&#34;g6-standard-1&#34;)
+ *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
  *             .interfaces(            
  *                 InstanceInterfaceArgs.builder()
  *                     .purpose(&#34;public&#34;)
  *                     .build(),
  *                 InstanceInterfaceArgs.builder()
+ *                     .purpose(&#34;vpc&#34;)
+ *                     .subnetId(123)
  *                     .ipv4(InstanceInterfaceIpv4Args.builder()
  *                         .vpc(&#34;10.0.4.250&#34;)
  *                         .build())
- *                     .purpose(&#34;vpc&#34;)
- *                     .subnetId(123)
  *                     .build())
- *             .label(&#34;simple_instance&#34;)
- *             .privateIp(true)
- *             .region(&#34;us-central&#34;)
- *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
- *             .swapSize(256)
  *             .tags(&#34;foo&#34;)
- *             .type(&#34;g6-standard-1&#34;)
+ *             .swapSize(256)
+ *             .privateIp(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Linode Instance with Explicit Configs and Disks
+ * 
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LinodeFunctions;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Volume;
+ * import com.pulumi.linode.VolumeArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import com.pulumi.linode.instanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = LinodeFunctions.getProfile();
+ * 
+ *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
+ *             .label(&#34;complex_instance&#34;)
+ *             .tags(&#34;foo&#34;)
+ *             .region(&#34;us-central&#34;)
+ *             .type(&#34;g6-nanode-1&#34;)
+ *             .privateIp(true)
+ *             .build());
+ * 
+ *         var webVolume = new Volume(&#34;webVolume&#34;, VolumeArgs.builder()        
+ *             .label(&#34;web_volume&#34;)
+ *             .size(20)
+ *             .region(&#34;us-central&#34;)
+ *             .build());
+ * 
+ *         var bootDisk = new InstanceDisk(&#34;bootDisk&#34;, InstanceDiskArgs.builder()        
+ *             .label(&#34;boot&#34;)
+ *             .linodeId(web.id())
+ *             .size(3000)
+ *             .image(&#34;linode/ubuntu22.04&#34;)
+ *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .authorizedUsers(me.applyValue(getProfileResult -&gt; getProfileResult.username()))
+ *             .rootPass(&#34;terr4form-test&#34;)
+ *             .build());
+ * 
+ *         var bootConfig = new InstanceConfig(&#34;bootConfig&#34;, InstanceConfigArgs.builder()        
+ *             .label(&#34;boot_config&#34;)
+ *             .linodeId(web.id())
+ *             .devices(            
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .rootDevice(&#34;/dev/sda&#34;)
+ *             .kernel(&#34;linode/latest-64bit&#34;)
+ *             .booted(true)
  *             .build());
  * 
  *     }

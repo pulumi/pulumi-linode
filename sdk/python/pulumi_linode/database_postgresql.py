@@ -634,8 +634,8 @@ class DatabasePostgresql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresql("foobar",
-            engine_id="postgresql/13.2",
             label="mydatabase",
+            engine_id="postgresql/13.2",
             region="us-southeast",
             type="g6-nanode-1")
         ```
@@ -649,16 +649,16 @@ class DatabasePostgresql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresql("foobar",
+            label="mydatabase",
+            engine_id="postgresql/13.2",
+            region="us-southeast",
+            type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"],
             cluster_size=3,
             encrypted=True,
-            engine_id="postgresql/13.2",
-            label="mydatabase",
-            region="us-southeast",
-            replication_commit_type="remote_write",
             replication_type="semi_synch",
+            replication_commit_type="remote_write",
             ssl_connection=True,
-            type="g6-nanode-1",
             updates=linode.DatabasePostgresqlUpdatesArgs(
                 day_of_week="saturday",
                 duration=1,
@@ -739,8 +739,8 @@ class DatabasePostgresql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresql("foobar",
-            engine_id="postgresql/13.2",
             label="mydatabase",
+            engine_id="postgresql/13.2",
             region="us-southeast",
             type="g6-nanode-1")
         ```
@@ -754,16 +754,16 @@ class DatabasePostgresql(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresql("foobar",
+            label="mydatabase",
+            engine_id="postgresql/13.2",
+            region="us-southeast",
+            type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"],
             cluster_size=3,
             encrypted=True,
-            engine_id="postgresql/13.2",
-            label="mydatabase",
-            region="us-southeast",
-            replication_commit_type="remote_write",
             replication_type="semi_synch",
+            replication_commit_type="remote_write",
             ssl_connection=True,
-            type="g6-nanode-1",
             updates=linode.DatabasePostgresqlUpdatesArgs(
                 day_of_week="saturday",
                 duration=1,

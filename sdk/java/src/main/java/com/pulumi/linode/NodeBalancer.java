@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new NodeBalancer(&#34;foobar&#34;, NodeBalancerArgs.builder()        
- *             .clientConnThrottle(20)
  *             .label(&#34;mynodebalancer&#34;)
  *             .region(&#34;us-east&#34;)
+ *             .clientConnThrottle(20)
  *             .tags(&#34;foobar&#34;)
  *             .build());
  * 

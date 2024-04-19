@@ -43,7 +43,7 @@ namespace Pulumi.Linode
     ///         LinodeId = foo.Id,
     ///     });
     /// 
-    ///     var barBased = new Linode.Instance("barBased", new()
+    ///     var barBased = new Linode.Instance("bar_based", new()
     ///     {
     ///         Type = foo.Type,
     ///         Region = "eu-west",
@@ -55,6 +55,32 @@ namespace Pulumi.Linode
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating and uploading an image from a local file:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.Image("foobar", new()
+    ///     {
+    ///         Label = "foobar-image",
+    ///         Description = "An image uploaded from Terraform!",
+    ///         Region = "us-southeast",
+    ///         FilePath = "path/to/image.img.gz",
+    ///         FileHash = Std.Filemd5.Invoke(new()
+    ///         {
+    ///             Input = "path/to/image.img.gz",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

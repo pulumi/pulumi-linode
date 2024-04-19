@@ -177,9 +177,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.Vpc("test",
-            description="My first VPC.",
             label="test-vpc",
-            region="us-iad")
+            region="us-iad",
+            description="My first VPC.")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -210,9 +210,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.Vpc("test",
-            description="My first VPC.",
             label="test-vpc",
-            region="us-iad")
+            region="us-iad",
+            description="My first VPC.")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -177,8 +177,8 @@ class AccountSettings(pulumi.CustomResource):
         import pulumi_linode as linode
 
         myaccount = linode.AccountSettings("myaccount",
-            backups_enabled=True,
-            longview_subscription="longview-40")
+            longview_subscription="longview-40",
+            backups_enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -213,8 +213,8 @@ class AccountSettings(pulumi.CustomResource):
         import pulumi_linode as linode
 
         myaccount = linode.AccountSettings("myaccount",
-            backups_enabled=True,
-            longview_subscription="longview-40")
+            longview_subscription="longview-40",
+            backups_enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
