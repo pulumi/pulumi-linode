@@ -133,7 +133,7 @@ namespace Pulumi.Linode
     ///         {
     ///             DependsOn =
     ///             {
-    ///                 share_primary, 
+    ///                 share_primary,
     ///             },
     ///         }));
     ///     }
