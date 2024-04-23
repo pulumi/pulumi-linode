@@ -17,7 +17,6 @@ import (
 //
 // The following example shows how one might use this resource to change their Linode account settings.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Additional Results
 //

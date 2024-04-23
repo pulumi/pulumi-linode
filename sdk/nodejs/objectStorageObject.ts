@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ### Uploading a file to a bucket
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -28,11 +27,9 @@ import * as utilities from "./utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Uploading plaintext to a bucket
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -48,11 +45,9 @@ import * as utilities from "./utilities";
  *     contentLanguage: "en",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating an object using implicitly created object credentials
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -67,7 +62,6 @@ import * as utilities from "./utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ObjectStorageObject extends pulumi.CustomResource {
     /**

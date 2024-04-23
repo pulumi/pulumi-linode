@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigDevicesSdaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Disk ID of the associated `disk_label`, if used.
+        /// The Disk ID to map to this disk slot
         /// </summary>
         [Input("diskId")]
         public Input<int>? DiskId { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? DiskLabel { get; set; }
 
         /// <summary>
-        /// The Volume ID to map to this `device` slot.
+        /// The Block Storage volume ID to map to this disk slot
         /// </summary>
         [Input("volumeId")]
         public Input<int>? VolumeId { get; set; }

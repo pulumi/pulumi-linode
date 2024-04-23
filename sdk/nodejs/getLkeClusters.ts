@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about all LKE clusters with a specific tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  * });
  * export const lkeCluster = specific.then(specific => specific.lkeClusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -92,7 +90,6 @@ export interface GetLkeClustersResult {
  *
  * Get information about all LKE clusters with a specific tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -105,7 +102,6 @@ export interface GetLkeClustersResult {
  * });
  * export const lkeCluster = specific.then(specific => specific.lkeClusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

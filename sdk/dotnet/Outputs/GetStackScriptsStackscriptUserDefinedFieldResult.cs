@@ -30,7 +30,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string ManyOf;
         /// <summary>
-        /// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        /// The name of the field.
         /// </summary>
         public readonly string Name;
         /// <summary>

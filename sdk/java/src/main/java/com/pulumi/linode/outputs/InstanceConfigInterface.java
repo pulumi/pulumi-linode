@@ -22,7 +22,7 @@ public final class InstanceConfigInterface {
      */
     private @Nullable Boolean active;
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the interface.
      * 
      */
     private @Nullable Integer id;
@@ -80,7 +80,7 @@ public final class InstanceConfigInterface {
         return Optional.ofNullable(this.active);
     }
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the interface.
      * 
      */
     public Optional<Integer> id() {

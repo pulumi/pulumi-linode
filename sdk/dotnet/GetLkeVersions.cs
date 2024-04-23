@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access information about a Linode LKE Version.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLkeVersionsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", InvokeArgs.Empty, options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access information about a Linode LKE Version.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +53,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLkeVersionsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", InvokeArgs.Empty, options.WithDefaults());

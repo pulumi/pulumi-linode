@@ -17,14 +17,14 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
     public static final InstanceConfigDevicesSdaArgs Empty = new InstanceConfigDevicesSdaArgs();
 
     /**
-     * The Disk ID of the associated `disk_label`, if used.
+     * The Disk ID to map to this disk slot
      * 
      */
     @Import(name="diskId")
     private @Nullable Output<Integer> diskId;
 
     /**
-     * @return The Disk ID of the associated `disk_label`, if used.
+     * @return The Disk ID to map to this disk slot
      * 
      */
     public Optional<Output<Integer>> diskId() {
@@ -47,14 +47,14 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      * 
      */
     @Import(name="volumeId")
     private @Nullable Output<Integer> volumeId;
 
     /**
-     * @return The Volume ID to map to this `device` slot.
+     * @return The Block Storage volume ID to map to this disk slot
      * 
      */
     public Optional<Output<Integer>> volumeId() {
@@ -88,7 +88,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskId The Disk ID of the associated `disk_label`, if used.
+         * @param diskId The Disk ID to map to this disk slot
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskId The Disk ID of the associated `disk_label`, if used.
+         * @param diskId The Disk ID to map to this disk slot
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param volumeId The Volume ID to map to this `device` slot.
+         * @param volumeId The Block Storage volume ID to map to this disk slot
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param volumeId The Volume ID to map to this `device` slot.
+         * @param volumeId The Block Storage volume ID to map to this disk slot
          * 
          * @return builder
          * 

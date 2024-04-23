@@ -110,7 +110,6 @@ class InstanceSharedIps(pulumi.CustomResource):
 
         Share in IPv4 address between two instances:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -132,11 +131,9 @@ class InstanceSharedIps(pulumi.CustomResource):
             linode_id=secondary.id,
             addresses=[primary.address])
         ```
-        <!--End PulumiCodeChooser -->
 
         Share an IPv6 address among a primary node and its replicas:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -173,7 +170,6 @@ class InstanceSharedIps(pulumi.CustomResource):
                 addresses=[range_ipv6_range.range],
                 opts=pulumi.ResourceOptions(depends_on=[share_primary])))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -199,7 +195,6 @@ class InstanceSharedIps(pulumi.CustomResource):
 
         Share in IPv4 address between two instances:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -221,11 +216,9 @@ class InstanceSharedIps(pulumi.CustomResource):
             linode_id=secondary.id,
             addresses=[primary.address])
         ```
-        <!--End PulumiCodeChooser -->
 
         Share an IPv6 address among a primary node and its replicas:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -262,7 +255,6 @@ class InstanceSharedIps(pulumi.CustomResource):
                 addresses=[range_ipv6_range.range],
                 opts=pulumi.ResourceOptions(depends_on=[share_primary])))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param InstanceSharedIpsArgs args: The arguments to use to populate this resource's properties.

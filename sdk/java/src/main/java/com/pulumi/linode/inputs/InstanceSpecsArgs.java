@@ -16,14 +16,14 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceSpecsArgs Empty = new InstanceSpecsArgs();
 
     /**
-     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<Integer> disk;
 
     /**
-     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     public Optional<Output<Integer>> disk() {
@@ -103,7 +103,7 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disk The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+         * @param disk The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disk The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+         * @param disk The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
          * 
          * @return builder
          * 

@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access information about a Linode account availability.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountAvailabilityResult> InvokeAsync(GetAccountAvailabilityArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAvailabilityResult>("linode:index/getAccountAvailability:getAccountAvailability", args ?? new GetAccountAvailabilityArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access information about a Linode account availability.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountAvailabilityResult> Invoke(GetAccountAvailabilityInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAvailabilityResult>("linode:index/getAccountAvailability:getAccountAvailability", args ?? new GetAccountAvailabilityInvokeArgs(), options.WithDefaults());

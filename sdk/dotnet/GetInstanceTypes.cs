@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all Linode Instance types with a certain number of VCPUs:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,11 +47,9 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get information about all Linode Instance types:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,7 +66,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 
@@ -99,7 +95,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all Linode Instance types with a certain number of VCPUs:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -129,11 +124,9 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get information about all Linode Instance types:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -150,7 +143,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 

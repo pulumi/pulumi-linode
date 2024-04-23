@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to configure an RDNS address for an IP address.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -32,11 +31,9 @@ import * as utilities from "./utilities";
  *     rdns: pulumi.interpolate`${fooInstance.ipAddress}.nip.io`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -61,7 +58,6 @@ import * as utilities from "./utilities";
  *     }
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

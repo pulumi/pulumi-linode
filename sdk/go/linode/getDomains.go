@@ -17,7 +17,6 @@ import (
 //
 // Get information about all Linode Cloud Domains with a specific tag:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Filterable Fields
 //

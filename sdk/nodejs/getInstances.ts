@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode instances with a certain label and tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -35,11 +34,9 @@ import * as utilities from "./utilities";
  * });
  * export const instanceId = my_instances.then(my_instances => my_instances.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode instances associated with the current token:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -47,7 +44,6 @@ import * as utilities from "./utilities";
  * const all-instances = linode.getInstances({});
  * export const instanceIds = all_instances.then(all_instances => all_instances.instances.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -115,7 +111,6 @@ export interface GetInstancesResult {
  *
  * Get information about all Linode instances with a certain label and tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -137,11 +132,9 @@ export interface GetInstancesResult {
  * });
  * export const instanceId = my_instances.then(my_instances => my_instances.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode instances associated with the current token:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -149,7 +142,6 @@ export interface GetInstancesResult {
  * const all-instances = linode.getInstances({});
  * export const instanceIds = all_instances.then(all_instances => all_instances.instances.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

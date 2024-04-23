@@ -31,7 +31,7 @@ public final class GetStackScriptsStackscriptUserDefinedField {
      */
     private String manyOf;
     /**
-     * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     * @return The name of the field.
      * 
      */
     private String name;
@@ -71,7 +71,7 @@ public final class GetStackScriptsStackscriptUserDefinedField {
         return this.manyOf;
     }
     /**
-     * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     * @return The name of the field.
      * 
      */
     public String name() {

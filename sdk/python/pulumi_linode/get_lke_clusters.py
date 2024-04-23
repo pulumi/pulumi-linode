@@ -94,7 +94,6 @@ def get_lke_clusters(filters: Optional[Sequence[pulumi.InputType['GetLkeClusters
 
     Get information about all LKE clusters with a specific tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -105,7 +104,6 @@ def get_lke_clusters(filters: Optional[Sequence[pulumi.InputType['GetLkeClusters
     )])
     pulumi.export("lkeCluster", specific.lke_clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -156,7 +154,6 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[pul
 
     Get information about all LKE clusters with a specific tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -167,7 +164,6 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[pul
     )])
     pulumi.export("lkeCluster", specific.lke_clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

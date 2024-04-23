@@ -77,14 +77,12 @@ def get_account_availability(region: Optional[str] = None,
 
     The following example shows how one might use this data source to access information about a Linode account availability.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_account_availability = linode.get_account_availability(region="us-east")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str region: The region ID.
@@ -110,14 +108,12 @@ def get_account_availability_output(region: Optional[pulumi.Input[str]] = None,
 
     The following example shows how one might use this data source to access information about a Linode account availability.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_account_availability = linode.get_account_availability(region="us-east")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str region: The region ID.

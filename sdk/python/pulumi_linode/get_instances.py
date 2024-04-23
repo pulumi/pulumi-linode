@@ -93,7 +93,6 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
 
     Get information about all Linode instances with a certain label and tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -113,11 +112,9 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     ])
     pulumi.export("instanceId", my_instances.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get information about all Linode instances associated with the current token:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -125,7 +122,6 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     all_instances = linode.get_instances()
     pulumi.export("instanceIds", [__item.id for __item in all_instances.instances])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -178,7 +174,6 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
 
     Get information about all Linode instances with a certain label and tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -198,11 +193,9 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     ])
     pulumi.export("instanceId", my_instances.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get information about all Linode instances associated with the current token:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -210,7 +203,6 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     all_instances = linode.get_instances()
     pulumi.export("instanceIds", [__item.id for __item in all_instances.instances])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

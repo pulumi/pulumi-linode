@@ -122,7 +122,6 @@ class SshKey(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -139,7 +138,6 @@ class SshKey(pulumi.CustomResource):
             authorized_keys=[foo.ssh_key],
             root_pass="...")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -169,7 +167,6 @@ class SshKey(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -186,7 +183,6 @@ class SshKey(pulumi.CustomResource):
             authorized_keys=[foo.ssh_key],
             root_pass="...")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

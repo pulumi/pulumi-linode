@@ -624,7 +624,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -644,7 +643,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
             stickiness="http_cookie",
             algorithm="source")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -688,7 +686,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -708,7 +705,6 @@ class NodeBalancerConfig(pulumi.CustomResource):
             stickiness="http_cookie",
             algorithm="source")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

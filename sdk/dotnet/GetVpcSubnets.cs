@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to list VPC subnets.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 
@@ -69,7 +67,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to list VPC subnets.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 

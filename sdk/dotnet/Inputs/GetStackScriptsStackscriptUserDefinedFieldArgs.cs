@@ -37,7 +37,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> ManyOf { get; set; } = null!;
 
         /// <summary>
-        /// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        /// The name of the field.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

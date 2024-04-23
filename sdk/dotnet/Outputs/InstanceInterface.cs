@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool? Active;
         /// <summary>
-        /// The ID of the disk in the Linode API.
+        /// The ID of the interface.
         /// </summary>
         public readonly int? Id;
         /// <summary>

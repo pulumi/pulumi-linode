@@ -158,14 +158,12 @@ def get_networking_ip(address: Optional[str] = None,
 
     The following example shows how one might use this data source to access information about a Linode Networking IP Address.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     ns1_linode_com = linode.get_networking_ip(address="162.159.27.72")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
@@ -198,14 +196,12 @@ def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
 
     The following example shows how one might use this data source to access information about a Linode Networking IP Address.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     ns1_linode_com = linode.get_networking_ip(address="162.159.27.72")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.

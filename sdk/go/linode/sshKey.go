@@ -20,7 +20,6 @@ import (
 //
 // The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,7 +68,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

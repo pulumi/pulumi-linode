@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access profile details.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProfileResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access profile details.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +53,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProfileResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to list VPCs.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  * });
  * export const vpcs = filtered_vpcs.then(filtered_vpcs => filtered_vpcs.vpcs);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -74,7 +72,6 @@ export interface GetVpcsResult {
  *
  * The following example shows how one might use this data source to list VPCs.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -87,7 +84,6 @@ export interface GetVpcsResult {
  * });
  * export const vpcs = filtered_vpcs.then(filtered_vpcs => filtered_vpcs.vpcs);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode Managed Database engines:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,11 +20,9 @@ import * as utilities from "./utilities";
  * const all = linode.getDatabaseEngines({});
  * export const engineIds = all.then(all => all.engines.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode MySQL Database engines:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -38,11 +35,9 @@ import * as utilities from "./utilities";
  * });
  * export const engineIds = mysql.then(mysql => mysql.engines.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create a Linode MySQL Database using the latest support MySQL version:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -61,7 +56,6 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseEnginesResult> {
     args = args || {};
@@ -119,7 +113,6 @@ export interface GetDatabaseEnginesResult {
  *
  * Get information about all Linode Managed Database engines:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -127,11 +120,9 @@ export interface GetDatabaseEnginesResult {
  * const all = linode.getDatabaseEngines({});
  * export const engineIds = all.then(all => all.engines.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode MySQL Database engines:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -144,11 +135,9 @@ export interface GetDatabaseEnginesResult {
  * });
  * export const engineIds = mysql.then(mysql => mysql.engines.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create a Linode MySQL Database using the latest support MySQL version:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -167,7 +156,6 @@ export interface GetDatabaseEnginesResult {
  *     type: "g6-nanode-1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseEnginesResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseEngines(a, opts))

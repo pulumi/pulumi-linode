@@ -96,7 +96,6 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
 
     The following example shows how one might use this data source to access information about a Linode Kernel.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -112,7 +111,6 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
         ),
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -157,7 +155,6 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     The following example shows how one might use this data source to access information about a Linode Kernel.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -173,7 +170,6 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
         ),
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

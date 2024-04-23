@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Arbitrary user comments about this `config`.
+        /// Optional field for arbitrary User comments on this Config.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
         /// <summary>
-        /// A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
+        /// Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
         /// </summary>
         [Input("devices")]
         public Input<Inputs.InstanceConfigDevicesGetArgs>? Devices { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.InstanceConfigHelpersGetArgs>? Helpers { get; set; }
 
         /// <summary>
-        /// The ID of the disk in the Linode API.
+        /// The unique ID of this Config.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        /// A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
         /// </summary>
         [Input("kernel")]
         public Input<string>? Kernel { get; set; }
@@ -62,26 +62,24 @@ namespace Pulumi.Linode.Inputs
 
         /// <summary>
         /// Defaults to the total RAM of the Linode
-        /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        /// The root device to boot. The corresponding disk must be attached.
         /// </summary>
         [Input("rootDevice")]
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// Defines the state of your Linode after booting. Defaults to `"default"`.
+        /// Defines the state of your Linode after booting. Defaults to default.
         /// </summary>
         [Input("runLevel")]
         public Input<string>? RunLevel { get; set; }
 
         /// <summary>
-        /// Controls the virtualization mode. Defaults to `"paravirt"`.
+        /// Controls the virtualization mode. Defaults to paravirt.
         /// </summary>
         [Input("virtMode")]
         public Input<string>? VirtMode { get; set; }

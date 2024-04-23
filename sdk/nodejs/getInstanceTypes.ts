@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode Instance types with a certain number of VCPUs:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,11 +25,9 @@ import * as utilities from "./utilities";
  * });
  * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode Instance types:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -38,7 +35,6 @@ import * as utilities from "./utilities";
  * const all-types = linode.getInstanceTypes({});
  * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -106,7 +102,6 @@ export interface GetInstanceTypesResult {
  *
  * Get information about all Linode Instance types with a certain number of VCPUs:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -119,11 +114,9 @@ export interface GetInstanceTypesResult {
  * });
  * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode Instance types:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -131,7 +124,6 @@ export interface GetInstanceTypesResult {
  * const all-types = linode.getInstanceTypes({});
  * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

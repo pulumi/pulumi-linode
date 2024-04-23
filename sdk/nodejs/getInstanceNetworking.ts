@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     linodeId: 123,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceNetworking(args: GetInstanceNetworkingArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceNetworkingResult> {
 
@@ -57,7 +55,6 @@ export interface GetInstanceNetworkingResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -66,7 +63,6 @@ export interface GetInstanceNetworkingResult {
  *     linodeId: 123,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceNetworkingOutput(args: GetInstanceNetworkingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceNetworkingResult> {
     return pulumi.output(args).apply((a: any) => getInstanceNetworking(a, opts))

@@ -17,7 +17,6 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to configure a NodeBalancer.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

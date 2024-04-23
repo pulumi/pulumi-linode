@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode image.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "linode/debian12",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
 
@@ -95,7 +93,6 @@ export interface GetImageResult {
  *
  * The following example shows how one might use this data source to access information about a Linode image.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -104,7 +101,6 @@ export interface GetImageResult {
  *     id: "linode/debian12",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
     return pulumi.output(args).apply((a: any) => getImage(a, opts))

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode regions that match a set of filters.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  * });
  * export const regions = filtered_regions.then(filtered_regions => filtered_regions.regions);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -69,7 +67,6 @@ export interface GetRegionsResult {
 /**
  * Provides information about Linode regions that match a set of filters.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -88,7 +85,6 @@ export interface GetRegionsResult {
  * });
  * export const regions = filtered_regions.then(filtered_regions => filtered_regions.regions);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

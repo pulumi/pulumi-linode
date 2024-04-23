@@ -328,7 +328,6 @@ class NodeBalancer(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a NodeBalancer.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -339,7 +338,6 @@ class NodeBalancer(pulumi.CustomResource):
             client_conn_throttle=20,
             tags=["foobar"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -373,7 +371,6 @@ class NodeBalancer(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a NodeBalancer.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -384,7 +381,6 @@ class NodeBalancer(pulumi.CustomResource):
             client_conn_throttle=20,
             tags=["foobar"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

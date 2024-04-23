@@ -199,14 +199,12 @@ def get_firewall(id: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_firewall = linode.get_firewall(id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The Firewall's ID.
@@ -241,14 +239,12 @@ def get_firewall_output(id: Optional[pulumi.Input[int]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_firewall = linode.get_firewall(id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The Firewall's ID.

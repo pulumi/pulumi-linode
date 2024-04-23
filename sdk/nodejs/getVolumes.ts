@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode volumes that match a set of filters.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  * });
  * export const volumes = filtered_volumes.then(filtered_volumes => filtered_volumes.volumes);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -74,7 +72,6 @@ export interface GetVolumesResult {
 /**
  * Provides information about Linode volumes that match a set of filters.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -87,7 +84,6 @@ export interface GetVolumesResult {
  * });
  * export const volumes = filtered_volumes.then(filtered_volumes => filtered_volumes.volumes);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

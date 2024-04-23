@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceSpecsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        /// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
