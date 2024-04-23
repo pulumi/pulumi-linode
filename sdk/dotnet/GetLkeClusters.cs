@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all LKE clusters with a specific tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +47,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 
@@ -76,7 +74,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all LKE clusters with a specific tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,7 +103,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 

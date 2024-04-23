@@ -15,14 +15,14 @@ public final class GetInstanceTypesTypeAddonBackupPriceArgs extends com.pulumi.r
     public static final GetInstanceTypesTypeAddonBackupPriceArgs Empty = new GetInstanceTypesTypeAddonBackupPriceArgs();
 
     /**
-     * Cost (in US dollars) per hour.
+     * The cost (in US dollars) per hour to add Backups service.
      * 
      */
     @Import(name="hourly", required=true)
     private Output<Double> hourly;
 
     /**
-     * @return Cost (in US dollars) per hour.
+     * @return The cost (in US dollars) per hour to add Backups service.
      * 
      */
     public Output<Double> hourly() {
@@ -30,14 +30,14 @@ public final class GetInstanceTypesTypeAddonBackupPriceArgs extends com.pulumi.r
     }
 
     /**
-     * Cost (in US dollars) per month.
+     * The cost (in US dollars) per month to add Backups service.
      * 
      */
     @Import(name="monthly", required=true)
     private Output<Double> monthly;
 
     /**
-     * @return Cost (in US dollars) per month.
+     * @return The cost (in US dollars) per month to add Backups service.
      * 
      */
     public Output<Double> monthly() {
@@ -70,7 +70,7 @@ public final class GetInstanceTypesTypeAddonBackupPriceArgs extends com.pulumi.r
         }
 
         /**
-         * @param hourly Cost (in US dollars) per hour.
+         * @param hourly The cost (in US dollars) per hour to add Backups service.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetInstanceTypesTypeAddonBackupPriceArgs extends com.pulumi.r
         }
 
         /**
-         * @param hourly Cost (in US dollars) per hour.
+         * @param hourly The cost (in US dollars) per hour to add Backups service.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetInstanceTypesTypeAddonBackupPriceArgs extends com.pulumi.r
         }
 
         /**
-         * @param monthly Cost (in US dollars) per month.
+         * @param monthly The cost (in US dollars) per month to add Backups service.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetInstanceTypesTypeAddonBackupPriceArgs extends com.pulumi.r
         }
 
         /**
-         * @param monthly Cost (in US dollars) per month.
+         * @param monthly The cost (in US dollars) per month to add Backups service.
          * 
          * @return builder
          * 

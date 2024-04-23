@@ -94,7 +94,6 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
 
     Get information about all Linode Instance types with a certain number of VCPUs:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -105,11 +104,9 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
     )])
     pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
-    <!--End PulumiCodeChooser -->
 
     Get information about all Linode Instance types:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -117,7 +114,6 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
     all_types = linode.get_instance_types()
     pulumi.export("typeIds", [__item.id for __item in all_types.types])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -170,7 +166,6 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
 
     Get information about all Linode Instance types with a certain number of VCPUs:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -181,11 +176,9 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     )])
     pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
-    <!--End PulumiCodeChooser -->
 
     Get information about all Linode Instance types:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -193,7 +186,6 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     all_types = linode.get_instance_types()
     pulumi.export("typeIds", [__item.id for __item in all_types.types])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

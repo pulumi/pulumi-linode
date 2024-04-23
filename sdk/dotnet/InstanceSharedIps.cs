@@ -22,7 +22,6 @@ namespace Pulumi.Linode
     /// 
     /// Share in IPv4 address between two instances:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,11 +64,9 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Share an IPv6 address among a primary node and its replicas:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -133,13 +130,12 @@ namespace Pulumi.Linode
     ///         {
     ///             DependsOn =
     ///             {
-    ///                 share_primary, 
+    ///                 share_primary,
     ///             },
     ///         }));
     ///     }
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/instanceSharedIps:InstanceSharedIps")]
     public partial class InstanceSharedIps : global::Pulumi.CustomResource

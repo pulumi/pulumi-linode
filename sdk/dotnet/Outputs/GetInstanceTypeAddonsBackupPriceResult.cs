@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceTypeAddonsBackupPriceResult
     {
         /// <summary>
-        /// Cost (in US dollars) per hour.
+        /// The cost (in US dollars) per hour to add Backups service.
         /// </summary>
         public readonly double Hourly;
         /// <summary>
-        /// Cost (in US dollars) per month.
+        /// The cost (in US dollars) per month to add Backups service.
         /// </summary>
         public readonly double Monthly;
 

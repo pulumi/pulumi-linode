@@ -17,7 +17,6 @@ import (
 //
 // The following example shows how one might use this data source to access information about a Linode account login.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAccountLogin(ctx *pulumi.Context, args *GetAccountLoginArgs, opts ...pulumi.InvokeOption) (*GetAccountLoginResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountLoginResult

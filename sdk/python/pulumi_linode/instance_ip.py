@@ -287,7 +287,6 @@ class InstanceIp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -301,7 +300,6 @@ class InstanceIp(pulumi.CustomResource):
             linode_id=foo.id,
             public=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -325,7 +323,6 @@ class InstanceIp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -339,7 +336,6 @@ class InstanceIp(pulumi.CustomResource):
             linode_id=foo.id,
             public=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param InstanceIpArgs args: The arguments to use to populate this resource's properties.

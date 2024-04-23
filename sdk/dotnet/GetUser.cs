@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access information about a Linode user.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The following example shows a sample grant.
         /// </summary>
@@ -48,7 +46,6 @@ namespace Pulumi.Linode
         /// 
         /// The following example shows how one might use this data source to access information about a Linode user.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The following example shows a sample grant.
         /// </summary>

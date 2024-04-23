@@ -74,14 +74,12 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
 
     The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_zonefile = linode.get_domain_zonefile(domain_id=3150401)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int domain_id: The associated domain's unique ID.
@@ -107,14 +105,12 @@ def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
 
     The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_zonefile = linode.get_domain_zonefile(domain_id=3150401)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int domain_id: The associated domain's unique ID.

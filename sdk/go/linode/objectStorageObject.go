@@ -18,7 +18,6 @@ import (
 //
 // ### Uploading a file to a bucket
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,11 +53,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Uploading plaintext to a bucket
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,11 +86,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating an object using implicitly created object credentials
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,7 +122,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ObjectStorageObject struct {
 	pulumi.CustomResourceState
 

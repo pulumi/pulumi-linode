@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceSpecs {
     /**
-     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     private @Nullable Integer disk;
@@ -34,7 +34,7 @@ public final class InstanceSpecs {
 
     private InstanceSpecs() {}
     /**
-     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     public Optional<Integer> disk() {

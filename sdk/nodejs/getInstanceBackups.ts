@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     linodeId: 123,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceBackups(args: GetInstanceBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceBackupsResult> {
 
@@ -58,7 +56,6 @@ export interface GetInstanceBackupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -67,7 +64,6 @@ export interface GetInstanceBackupsResult {
  *     linodeId: 123,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceBackupsOutput(args: GetInstanceBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceBackupsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceBackups(a, opts))

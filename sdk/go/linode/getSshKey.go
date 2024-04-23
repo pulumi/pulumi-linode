@@ -17,7 +17,6 @@ import (
 //
 // The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSshKeyResult

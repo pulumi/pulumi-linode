@@ -17,7 +17,6 @@ import (
 //
 // Get information about a PostgreSQL database:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## updates
 //

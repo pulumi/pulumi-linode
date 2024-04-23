@@ -301,14 +301,12 @@ def get_database_mysql(database_id: Optional[int] = None,
 
     Get information about a MySQL database:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_db = linode.get_database_mysql(id=12345)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## updates
 
@@ -370,14 +368,12 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[int]]]
 
     Get information about a MySQL database:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_db = linode.get_database_mysql(id=12345)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## updates
 

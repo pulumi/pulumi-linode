@@ -196,14 +196,12 @@ def get_lke_cluster(control_planes: Optional[Sequence[pulumi.InputType['GetLkeCl
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_cluster = linode.get_lke_cluster(id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The LKE Cluster's ID.
@@ -242,14 +240,12 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_cluster = linode.get_lke_cluster(id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The LKE Cluster's ID.

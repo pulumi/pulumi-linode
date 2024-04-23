@@ -235,14 +235,12 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
 
     The following example shows how one might use this data source to access information about a Linode user.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_user(username="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
     The following example shows a sample grant.
 
@@ -303,14 +301,12 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[pul
 
     The following example shows how one might use this data source to access information about a Linode user.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_user(username="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
     The following example shows a sample grant.
 

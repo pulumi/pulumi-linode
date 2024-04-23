@@ -16,7 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to create an Object Storage Key.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageKey:ObjectStorageKey")]
     public partial class ObjectStorageKey : global::Pulumi.CustomResource

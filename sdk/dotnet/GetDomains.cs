@@ -18,7 +18,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all Linode Cloud Domains with a specific tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +47,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 
@@ -88,7 +86,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all Linode Cloud Domains with a specific tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -118,7 +115,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Filterable Fields
         /// 

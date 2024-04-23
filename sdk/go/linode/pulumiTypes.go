@@ -715,17 +715,17 @@ func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutp
 }
 
 type FirewallOutbound struct {
-	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action string `pulumi:"action"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+	// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
 	Ipv4s []string `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+	// A list of IPv6 addresses or networks this rule applies to.
 	Ipv6s []string `pulumi:"ipv6s"`
 	// This Firewall's unique label.
 	Label string `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports *string `pulumi:"ports"`
-	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	// The network protocol this rule controls.
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -741,17 +741,17 @@ type FirewallOutboundInput interface {
 }
 
 type FirewallOutboundArgs struct {
-	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action pulumi.StringInput `pulumi:"action"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+	// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+	// A list of IPv6 addresses or networks this rule applies to.
 	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
 	// This Firewall's unique label.
 	Label pulumi.StringInput `pulumi:"label"`
 	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 	Ports pulumi.StringPtrInput `pulumi:"ports"`
-	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	// The network protocol this rule controls.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -806,17 +806,17 @@ func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.
 	return o
 }
 
-// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 func (o FirewallOutboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
 func (o FirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
-// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+// A list of IPv6 addresses or networks this rule applies to.
 func (o FirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
 }
@@ -831,7 +831,7 @@ func (o FirewallOutboundOutput) Ports() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallOutbound) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
-// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+// The network protocol this rule controls.
 func (o FirewallOutboundOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1534,29 +1534,27 @@ func (o InstanceBackupsSchedulePtrOutput) Window() pulumi.StringPtrOutput {
 }
 
 type InstanceConfig struct {
-	// Arbitrary user comments about this `config`.
+	// Optional field for arbitrary User comments on this Config.
 	Comments *string `pulumi:"comments"`
-	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+	// Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
-	// The ID of the disk in the Linode API.
+	// The unique ID of this Config.
 	Id *int `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces []InstanceConfigInterface `pulumi:"interfaces"`
-	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+	// A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
 	Kernel *string `pulumi:"kernel"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label string `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+	// The root device to boot. The corresponding disk must be attached.
 	RootDevice *string `pulumi:"rootDevice"`
-	// Defines the state of your Linode after booting. Defaults to `"default"`.
+	// Defines the state of your Linode after booting. Defaults to default.
 	RunLevel *string `pulumi:"runLevel"`
-	// Controls the virtualization mode. Defaults to `"paravirt"`.
+	// Controls the virtualization mode. Defaults to paravirt.
 	VirtMode *string `pulumi:"virtMode"`
 }
 
@@ -1572,29 +1570,27 @@ type InstanceConfigInput interface {
 }
 
 type InstanceConfigArgs struct {
-	// Arbitrary user comments about this `config`.
+	// Optional field for arbitrary User comments on this Config.
 	Comments pulumi.StringPtrInput `pulumi:"comments"`
-	// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+	// Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
-	// The ID of the disk in the Linode API.
+	// The unique ID of this Config.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces InstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
-	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+	// A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
 	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
-	//
-	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 	MemoryLimit pulumi.IntPtrInput `pulumi:"memoryLimit"`
-	// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+	// The root device to boot. The corresponding disk must be attached.
 	RootDevice pulumi.StringPtrInput `pulumi:"rootDevice"`
-	// Defines the state of your Linode after booting. Defaults to `"default"`.
+	// Defines the state of your Linode after booting. Defaults to default.
 	RunLevel pulumi.StringPtrInput `pulumi:"runLevel"`
-	// Controls the virtualization mode. Defaults to `"paravirt"`.
+	// Controls the virtualization mode. Defaults to paravirt.
 	VirtMode pulumi.StringPtrInput `pulumi:"virtMode"`
 }
 
@@ -1649,12 +1645,12 @@ func (o InstanceConfigOutput) ToInstanceConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Arbitrary user comments about this `config`.
+// Optional field for arbitrary User comments on this Config.
 func (o InstanceConfigOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.Comments }).(pulumi.StringPtrOutput)
 }
 
-// A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+// Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
 func (o InstanceConfigOutput) Devices() InstanceConfigDevicesPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigDevices { return v.Devices }).(InstanceConfigDevicesPtrOutput)
 }
@@ -1664,7 +1660,7 @@ func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The unique ID of this Config.
 func (o InstanceConfigOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -1674,7 +1670,7 @@ func (o InstanceConfigOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
 	return o.ApplyT(func(v InstanceConfig) []InstanceConfigInterface { return v.Interfaces }).(InstanceConfigInterfaceArrayOutput)
 }
 
-// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+// A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
 func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
@@ -1685,23 +1681,21 @@ func (o InstanceConfigOutput) Label() pulumi.StringOutput {
 }
 
 // Defaults to the total RAM of the Linode
-//
-// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
 func (o InstanceConfigOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
 
-// The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+// The root device to boot. The corresponding disk must be attached.
 func (o InstanceConfigOutput) RootDevice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.RootDevice }).(pulumi.StringPtrOutput)
 }
 
-// Defines the state of your Linode after booting. Defaults to `"default"`.
+// Defines the state of your Linode after booting. Defaults to default.
 func (o InstanceConfigOutput) RunLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.RunLevel }).(pulumi.StringPtrOutput)
 }
 
-// Controls the virtualization mode. Defaults to `"paravirt"`.
+// Controls the virtualization mode. Defaults to paravirt.
 func (o InstanceConfigOutput) VirtMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.VirtMode }).(pulumi.StringPtrOutput)
 }
@@ -1727,7 +1721,7 @@ func (o InstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceConfigOutput
 }
 
 type InstanceConfigDevices struct {
-	// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sda *InstanceConfigDevicesSda `pulumi:"sda"`
 	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdb *InstanceConfigDevicesSdb `pulumi:"sdb"`
@@ -1757,7 +1751,7 @@ type InstanceConfigDevicesInput interface {
 }
 
 type InstanceConfigDevicesArgs struct {
-	// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sda InstanceConfigDevicesSdaPtrInput `pulumi:"sda"`
 	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdb InstanceConfigDevicesSdbPtrInput `pulumi:"sdb"`
@@ -1852,7 +1846,7 @@ func (o InstanceConfigDevicesOutput) ToInstanceConfigDevicesPtrOutputWithContext
 	}).(InstanceConfigDevicesPtrOutput)
 }
 
-// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
 }
@@ -1916,7 +1910,7 @@ func (o InstanceConfigDevicesPtrOutput) Elem() InstanceConfigDevicesOutput {
 	}).(InstanceConfigDevicesOutput)
 }
 
-// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 func (o InstanceConfigDevicesPtrOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSda {
 		if v == nil {
@@ -1997,11 +1991,11 @@ func (o InstanceConfigDevicesPtrOutput) Sdh() InstanceConfigDevicesSdhPtrOutput 
 }
 
 type InstanceConfigDevicesSda struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2017,11 +2011,11 @@ type InstanceConfigDevicesSdaInput interface {
 }
 
 type InstanceConfigDevicesSdaArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2102,7 +2096,7 @@ func (o InstanceConfigDevicesSdaOutput) ToInstanceConfigDevicesSdaPtrOutputWithC
 	}).(InstanceConfigDevicesSdaPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdaOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -2112,7 +2106,7 @@ func (o InstanceConfigDevicesSdaOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdaOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -2141,7 +2135,7 @@ func (o InstanceConfigDevicesSdaPtrOutput) Elem() InstanceConfigDevicesSdaOutput
 	}).(InstanceConfigDevicesSdaOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdaPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSda) *int {
 		if v == nil {
@@ -2161,7 +2155,7 @@ func (o InstanceConfigDevicesSdaPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdaPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSda) *int {
 		if v == nil {
@@ -2172,11 +2166,11 @@ func (o InstanceConfigDevicesSdaPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSdb struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2192,11 +2186,11 @@ type InstanceConfigDevicesSdbInput interface {
 }
 
 type InstanceConfigDevicesSdbArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2277,7 +2271,7 @@ func (o InstanceConfigDevicesSdbOutput) ToInstanceConfigDevicesSdbPtrOutputWithC
 	}).(InstanceConfigDevicesSdbPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdbOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -2287,7 +2281,7 @@ func (o InstanceConfigDevicesSdbOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdbOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -2316,7 +2310,7 @@ func (o InstanceConfigDevicesSdbPtrOutput) Elem() InstanceConfigDevicesSdbOutput
 	}).(InstanceConfigDevicesSdbOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdbPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdb) *int {
 		if v == nil {
@@ -2336,7 +2330,7 @@ func (o InstanceConfigDevicesSdbPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdbPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdb) *int {
 		if v == nil {
@@ -2347,11 +2341,11 @@ func (o InstanceConfigDevicesSdbPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSdc struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2367,11 +2361,11 @@ type InstanceConfigDevicesSdcInput interface {
 }
 
 type InstanceConfigDevicesSdcArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2452,7 +2446,7 @@ func (o InstanceConfigDevicesSdcOutput) ToInstanceConfigDevicesSdcPtrOutputWithC
 	}).(InstanceConfigDevicesSdcPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdcOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -2462,7 +2456,7 @@ func (o InstanceConfigDevicesSdcOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdcOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -2491,7 +2485,7 @@ func (o InstanceConfigDevicesSdcPtrOutput) Elem() InstanceConfigDevicesSdcOutput
 	}).(InstanceConfigDevicesSdcOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdcPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdc) *int {
 		if v == nil {
@@ -2511,7 +2505,7 @@ func (o InstanceConfigDevicesSdcPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdcPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdc) *int {
 		if v == nil {
@@ -2522,11 +2516,11 @@ func (o InstanceConfigDevicesSdcPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSdd struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2542,11 +2536,11 @@ type InstanceConfigDevicesSddInput interface {
 }
 
 type InstanceConfigDevicesSddArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2627,7 +2621,7 @@ func (o InstanceConfigDevicesSddOutput) ToInstanceConfigDevicesSddPtrOutputWithC
 	}).(InstanceConfigDevicesSddPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSddOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -2637,7 +2631,7 @@ func (o InstanceConfigDevicesSddOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSddOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -2666,7 +2660,7 @@ func (o InstanceConfigDevicesSddPtrOutput) Elem() InstanceConfigDevicesSddOutput
 	}).(InstanceConfigDevicesSddOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSddPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdd) *int {
 		if v == nil {
@@ -2686,7 +2680,7 @@ func (o InstanceConfigDevicesSddPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSddPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdd) *int {
 		if v == nil {
@@ -2697,11 +2691,11 @@ func (o InstanceConfigDevicesSddPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSde struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2717,11 +2711,11 @@ type InstanceConfigDevicesSdeInput interface {
 }
 
 type InstanceConfigDevicesSdeArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2802,7 +2796,7 @@ func (o InstanceConfigDevicesSdeOutput) ToInstanceConfigDevicesSdePtrOutputWithC
 	}).(InstanceConfigDevicesSdePtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdeOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -2812,7 +2806,7 @@ func (o InstanceConfigDevicesSdeOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdeOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -2841,7 +2835,7 @@ func (o InstanceConfigDevicesSdePtrOutput) Elem() InstanceConfigDevicesSdeOutput
 	}).(InstanceConfigDevicesSdeOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdePtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSde) *int {
 		if v == nil {
@@ -2861,7 +2855,7 @@ func (o InstanceConfigDevicesSdePtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdePtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSde) *int {
 		if v == nil {
@@ -2872,11 +2866,11 @@ func (o InstanceConfigDevicesSdePtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSdf struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2892,11 +2886,11 @@ type InstanceConfigDevicesSdfInput interface {
 }
 
 type InstanceConfigDevicesSdfArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2977,7 +2971,7 @@ func (o InstanceConfigDevicesSdfOutput) ToInstanceConfigDevicesSdfPtrOutputWithC
 	}).(InstanceConfigDevicesSdfPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdfOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -2987,7 +2981,7 @@ func (o InstanceConfigDevicesSdfOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdfOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -3016,7 +3010,7 @@ func (o InstanceConfigDevicesSdfPtrOutput) Elem() InstanceConfigDevicesSdfOutput
 	}).(InstanceConfigDevicesSdfOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdfPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdf) *int {
 		if v == nil {
@@ -3036,7 +3030,7 @@ func (o InstanceConfigDevicesSdfPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdfPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdf) *int {
 		if v == nil {
@@ -3047,11 +3041,11 @@ func (o InstanceConfigDevicesSdfPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSdg struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -3067,11 +3061,11 @@ type InstanceConfigDevicesSdgInput interface {
 }
 
 type InstanceConfigDevicesSdgArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -3152,7 +3146,7 @@ func (o InstanceConfigDevicesSdgOutput) ToInstanceConfigDevicesSdgPtrOutputWithC
 	}).(InstanceConfigDevicesSdgPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdgOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -3162,7 +3156,7 @@ func (o InstanceConfigDevicesSdgOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdgOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -3191,7 +3185,7 @@ func (o InstanceConfigDevicesSdgPtrOutput) Elem() InstanceConfigDevicesSdgOutput
 	}).(InstanceConfigDevicesSdgOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdgPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdg) *int {
 		if v == nil {
@@ -3211,7 +3205,7 @@ func (o InstanceConfigDevicesSdgPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdgPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdg) *int {
 		if v == nil {
@@ -3222,11 +3216,11 @@ func (o InstanceConfigDevicesSdgPtrOutput) VolumeId() pulumi.IntPtrOutput {
 }
 
 type InstanceConfigDevicesSdh struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel *string `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -3242,11 +3236,11 @@ type InstanceConfigDevicesSdhInput interface {
 }
 
 type InstanceConfigDevicesSdhArgs struct {
-	// The Disk ID of the associated `diskLabel`, if used.
+	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
 	// The `label` of the `disk` to map to this `device` slot.
 	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Volume ID to map to this `device` slot.
+	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -3327,7 +3321,7 @@ func (o InstanceConfigDevicesSdhOutput) ToInstanceConfigDevicesSdhPtrOutputWithC
 	}).(InstanceConfigDevicesSdhPtrOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdhOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
@@ -3337,7 +3331,7 @@ func (o InstanceConfigDevicesSdhOutput) DiskLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdhOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -3366,7 +3360,7 @@ func (o InstanceConfigDevicesSdhPtrOutput) Elem() InstanceConfigDevicesSdhOutput
 	}).(InstanceConfigDevicesSdhOutput)
 }
 
-// The Disk ID of the associated `diskLabel`, if used.
+// The Disk ID to map to this disk slot
 func (o InstanceConfigDevicesSdhPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdh) *int {
 		if v == nil {
@@ -3386,7 +3380,7 @@ func (o InstanceConfigDevicesSdhPtrOutput) DiskLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Volume ID to map to this `device` slot.
+// The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdhPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdh) *int {
 		if v == nil {
@@ -3612,7 +3606,7 @@ func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput 
 type InstanceConfigInterface struct {
 	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
-	// The ID of the disk in the Linode API.
+	// The ID of the interface.
 	Id *int `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges []string `pulumi:"ipRanges"`
@@ -3650,7 +3644,7 @@ type InstanceConfigInterfaceInput interface {
 type InstanceConfigInterfaceArgs struct {
 	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
-	// The ID of the disk in the Linode API.
+	// The ID of the interface.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
@@ -3730,7 +3724,7 @@ func (o InstanceConfigInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the interface.
 func (o InstanceConfigInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -3956,27 +3950,27 @@ func (o InstanceConfigInterfaceIpv4PtrOutput) Vpc() pulumi.StringPtrOutput {
 }
 
 type InstanceDiskType struct {
-	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+	// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
 	Filesystem *string `pulumi:"filesystem"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
 	Id *int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
 	Image *string `pulumi:"image"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label string `pulumi:"label"`
 	// If true, this Disk is read-only.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+	// The password that will be initialially assigned to the 'root' user account.
 	RootPass *string `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId *int `pulumi:"stackscriptId"`
 }
 
@@ -3992,27 +3986,27 @@ type InstanceDiskTypeInput interface {
 }
 
 type InstanceDiskTypeArgs struct {
-	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys pulumi.StringArrayInput `pulumi:"authorizedKeys"`
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayInput `pulumi:"authorizedUsers"`
-	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+	// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
 	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// If true, this Disk is read-only.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+	// The password that will be initialially assigned to the 'root' user account.
 	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData pulumi.MapInput `pulumi:"stackscriptData"`
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrInput `pulumi:"stackscriptId"`
 }
 
@@ -4067,27 +4061,27 @@ func (o InstanceDiskTypeOutput) ToInstanceDiskTypeOutputWithContext(ctx context.
 	return o
 }
 
-// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 func (o InstanceDiskTypeOutput) AuthorizedKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceDiskType) []string { return v.AuthorizedKeys }).(pulumi.StringArrayOutput)
 }
 
-// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
+// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 func (o InstanceDiskTypeOutput) AuthorizedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceDiskType) []string { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
 }
 
-// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
 func (o InstanceDiskTypeOutput) Filesystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.Filesystem }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
 func (o InstanceDiskTypeOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
 func (o InstanceDiskTypeOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -4102,7 +4096,7 @@ func (o InstanceDiskTypeOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+// The password that will be initialially assigned to the 'root' user account.
 func (o InstanceDiskTypeOutput) RootPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.RootPass }).(pulumi.StringPtrOutput)
 }
@@ -4112,12 +4106,12 @@ func (o InstanceDiskTypeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceDiskType) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
+// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 func (o InstanceDiskTypeOutput) StackscriptData() pulumi.MapOutput {
 	return o.ApplyT(func(v InstanceDiskType) map[string]interface{} { return v.StackscriptData }).(pulumi.MapOutput)
 }
 
-// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
+// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 func (o InstanceDiskTypeOutput) StackscriptId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *int { return v.StackscriptId }).(pulumi.IntPtrOutput)
 }
@@ -4320,7 +4314,7 @@ func (o InstanceDiskTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type InstanceInterface struct {
 	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
-	// The ID of the disk in the Linode API.
+	// The ID of the interface.
 	Id *int `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges []string `pulumi:"ipRanges"`
@@ -4358,7 +4352,7 @@ type InstanceInterfaceInput interface {
 type InstanceInterfaceArgs struct {
 	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
-	// The ID of the disk in the Linode API.
+	// The ID of the interface.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
@@ -4438,7 +4432,7 @@ func (o InstanceInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the interface.
 func (o InstanceInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -4870,7 +4864,7 @@ func (o InstanceMetadataArrayOutput) Index(i pulumi.IntInput) InstanceMetadataOu
 }
 
 type InstanceSpecs struct {
-	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk *int `pulumi:"disk"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory *int `pulumi:"memory"`
@@ -4892,7 +4886,7 @@ type InstanceSpecsInput interface {
 }
 
 type InstanceSpecsArgs struct {
-	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory pulumi.IntPtrInput `pulumi:"memory"`
@@ -4979,7 +4973,7 @@ func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Con
 	}).(InstanceSpecsPtrOutput)
 }
 
-// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
@@ -5023,7 +5017,7 @@ func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
 	}).(InstanceSpecsOutput)
 }
 
-// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSpecs) *int {
 		if v == nil {
@@ -15729,9 +15723,9 @@ func (o GetInstanceTypeAddonsBackupArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 type GetInstanceTypeAddonsBackupPrice struct {
-	// Cost (in US dollars) per hour.
+	// The cost (in US dollars) per hour to add Backups service.
 	Hourly float64 `pulumi:"hourly"`
-	// Cost (in US dollars) per month.
+	// The cost (in US dollars) per month to add Backups service.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -15747,9 +15741,9 @@ type GetInstanceTypeAddonsBackupPriceInput interface {
 }
 
 type GetInstanceTypeAddonsBackupPriceArgs struct {
-	// Cost (in US dollars) per hour.
+	// The cost (in US dollars) per hour to add Backups service.
 	Hourly pulumi.Float64Input `pulumi:"hourly"`
-	// Cost (in US dollars) per month.
+	// The cost (in US dollars) per month to add Backups service.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -15804,12 +15798,12 @@ func (o GetInstanceTypeAddonsBackupPriceOutput) ToGetInstanceTypeAddonsBackupPri
 	return o
 }
 
-// Cost (in US dollars) per hour.
+// The cost (in US dollars) per hour to add Backups service.
 func (o GetInstanceTypeAddonsBackupPriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
-// Cost (in US dollars) per month.
+// The cost (in US dollars) per month to add Backups service.
 func (o GetInstanceTypeAddonsBackupPriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -16612,9 +16606,9 @@ func (o GetInstanceTypesTypeAddonBackupArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetInstanceTypesTypeAddonBackupPrice struct {
-	// Cost (in US dollars) per hour.
+	// The cost (in US dollars) per hour to add Backups service.
 	Hourly float64 `pulumi:"hourly"`
-	// Cost (in US dollars) per month.
+	// The cost (in US dollars) per month to add Backups service.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -16630,9 +16624,9 @@ type GetInstanceTypesTypeAddonBackupPriceInput interface {
 }
 
 type GetInstanceTypesTypeAddonBackupPriceArgs struct {
-	// Cost (in US dollars) per hour.
+	// The cost (in US dollars) per hour to add Backups service.
 	Hourly pulumi.Float64Input `pulumi:"hourly"`
-	// Cost (in US dollars) per month.
+	// The cost (in US dollars) per month to add Backups service.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -16687,12 +16681,12 @@ func (o GetInstanceTypesTypeAddonBackupPriceOutput) ToGetInstanceTypesTypeAddonB
 	return o
 }
 
-// Cost (in US dollars) per hour.
+// The cost (in US dollars) per hour to add Backups service.
 func (o GetInstanceTypesTypeAddonBackupPriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
-// Cost (in US dollars) per month.
+// The cost (in US dollars) per month to add Backups service.
 func (o GetInstanceTypesTypeAddonBackupPriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesTypeAddonBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -24126,7 +24120,7 @@ type GetStackScriptsStackscriptUserDefinedField struct {
 	Label string `pulumi:"label"`
 	// A list of acceptable values for the field in any quantity, combination or order.
 	ManyOf string `pulumi:"manyOf"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	// The name of the field.
 	Name string `pulumi:"name"`
 	// A list of acceptable single values for the field.
 	OneOf string `pulumi:"oneOf"`
@@ -24152,7 +24146,7 @@ type GetStackScriptsStackscriptUserDefinedFieldArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// A list of acceptable values for the field in any quantity, combination or order.
 	ManyOf pulumi.StringInput `pulumi:"manyOf"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	// The name of the field.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of acceptable single values for the field.
 	OneOf pulumi.StringInput `pulumi:"oneOf"`
@@ -24229,7 +24223,7 @@ func (o GetStackScriptsStackscriptUserDefinedFieldOutput) ManyOf() pulumi.String
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.ManyOf }).(pulumi.StringOutput)
 }
 
-// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+// The name of the field.
 func (o GetStackScriptsStackscriptUserDefinedFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackScriptsStackscriptUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
 }

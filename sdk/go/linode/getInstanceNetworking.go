@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetInstanceNetworking(ctx *pulumi.Context, args *GetInstanceNetworkingArgs, opts ...pulumi.InvokeOption) (*GetInstanceNetworkingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceNetworkingResult

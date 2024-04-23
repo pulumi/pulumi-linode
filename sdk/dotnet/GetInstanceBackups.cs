@@ -16,7 +16,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceBackupsResult> InvokeAsync(GetInstanceBackupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceBackupsResult> Invoke(GetInstanceBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsInvokeArgs(), options.WithDefaults());

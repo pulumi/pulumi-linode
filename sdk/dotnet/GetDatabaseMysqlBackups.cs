@@ -20,7 +20,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all backups for a MySQL database:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,11 +35,9 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get information about all automatic MySQL Database Backups:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,7 +64,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseMysqlBackupsResult> InvokeAsync(GetDatabaseMysqlBackupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsArgs(), options.WithDefaults());
@@ -81,7 +77,6 @@ namespace Pulumi.Linode
         /// 
         /// Get information about all backups for a MySQL database:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,11 +92,9 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get information about all automatic MySQL Database Backups:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -128,7 +121,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseMysqlBackupsResult> Invoke(GetDatabaseMysqlBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsInvokeArgs(), options.WithDefaults());

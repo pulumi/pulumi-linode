@@ -195,14 +195,12 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
 
     The following example shows how one might use this data source to access account details.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     account = linode.get_account()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -235,13 +233,11 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
 
     The following example shows how one might use this data source to access account details.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     account = linode.get_account()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

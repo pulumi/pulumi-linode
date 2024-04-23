@@ -109,14 +109,12 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 
     The following example shows how one might use this data source to access information about Linode account settings.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     example = linode.get_account_settings()
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -140,13 +138,11 @@ def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> 
 
     The following example shows how one might use this data source to access information about Linode account settings.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     example = linode.get_account_settings()
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

@@ -94,7 +94,6 @@ def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArg
 
     The following example shows how one might use this data source to access information about a Linode Kernel.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -110,7 +109,6 @@ def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArg
         ),
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -163,7 +161,6 @@ def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     The following example shows how one might use this data source to access information about a Linode Kernel.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -179,7 +176,6 @@ def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
         ),
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  * });
  * export const nodebalancerConfigId = filterNbConfigs.then(filterNbConfigs => filterNbConfigs.nodebalancerConfigs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -113,7 +111,6 @@ export interface GetNodebalancerConfigsResult {
  *
  * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -127,7 +124,6 @@ export interface GetNodebalancerConfigsResult {
  * });
  * export const nodebalancerConfigId = filterNbConfigs.then(filterNbConfigs => filterNbConfigs.nodebalancerConfigs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

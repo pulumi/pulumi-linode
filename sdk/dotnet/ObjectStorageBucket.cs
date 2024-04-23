@@ -16,7 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to create an Object Storage Bucket:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,11 +37,9 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating an Object Storage Bucket with Lifecycle rules:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,7 +76,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials
     /// 

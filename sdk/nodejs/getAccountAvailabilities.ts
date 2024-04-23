@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to discover regions without specific service availability.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -30,7 +29,6 @@ import * as utilities from "./utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -71,7 +69,6 @@ export interface GetAccountAvailabilitiesResult {
  *
  * The following example shows how one might use this data source to discover regions without specific service availability.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -88,7 +85,6 @@ export interface GetAccountAvailabilitiesResult {
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

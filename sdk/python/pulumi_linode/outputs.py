@@ -561,11 +561,11 @@ class FirewallOutbound(dict):
                  ipv6s: Optional[Sequence[str]] = None,
                  ports: Optional[str] = None):
         """
-        :param str action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param str label: This Firewall's unique label.
-        :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-        :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
-        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+        :param str protocol: The network protocol this rule controls.
+        :param Sequence[str] ipv4s: A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
+        :param Sequence[str] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
         pulumi.set(__self__, "action", action)
@@ -582,7 +582,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -598,7 +598,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        The network protocol this rule controls.
         """
         return pulumi.get(self, "protocol")
 
@@ -606,7 +606,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def ipv4s(self) -> Optional[Sequence[str]]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+        A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
         """
         return pulumi.get(self, "ipv4s")
 
@@ -614,7 +614,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def ipv6s(self) -> Optional[Sequence[str]]:
         """
-        A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+        A list of IPv6 addresses or networks this rule applies to.
         """
         return pulumi.get(self, "ipv6s")
 
@@ -843,18 +843,16 @@ class InstanceConfig(dict):
                  virt_mode: Optional[str] = None):
         """
         :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        :param str comments: Arbitrary user comments about this `config`.
-        :param 'InstanceConfigDevicesArgs' devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
+        :param str comments: Optional field for arbitrary User comments on this Config.
+        :param 'InstanceConfigDevicesArgs' devices: Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
-        :param int id: The ID of the disk in the Linode API.
+        :param int id: The unique ID of this Config.
         :param Sequence['InstanceConfigInterfaceArgs'] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
-        :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
         :param int memory_limit: Defaults to the total RAM of the Linode
-               
-               * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
-        :param str root_device: The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
-        :param str run_level: Defines the state of your Linode after booting. Defaults to `"default"`.
-        :param str virt_mode: Controls the virtualization mode. Defaults to `"paravirt"`.
+        :param str root_device: The root device to boot. The corresponding disk must be attached.
+        :param str run_level: Defines the state of your Linode after booting. Defaults to default.
+        :param str virt_mode: Controls the virtualization mode. Defaults to paravirt.
         """
         pulumi.set(__self__, "label", label)
         if comments is not None:
@@ -890,7 +888,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def comments(self) -> Optional[str]:
         """
-        Arbitrary user comments about this `config`.
+        Optional field for arbitrary User comments on this Config.
         """
         return pulumi.get(self, "comments")
 
@@ -898,7 +896,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def devices(self) -> Optional['outputs.InstanceConfigDevices']:
         """
-        A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
+        Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
         """
         return pulumi.get(self, "devices")
 
@@ -914,7 +912,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the disk in the Linode API.
+        The unique ID of this Config.
         """
         return pulumi.get(self, "id")
 
@@ -930,7 +928,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def kernel(self) -> Optional[str]:
         """
-        A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
         """
         return pulumi.get(self, "kernel")
 
@@ -939,8 +937,6 @@ class InstanceConfig(dict):
     def memory_limit(self) -> Optional[int]:
         """
         Defaults to the total RAM of the Linode
-
-        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -948,7 +944,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> Optional[str]:
         """
-        The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+        The root device to boot. The corresponding disk must be attached.
         """
         return pulumi.get(self, "root_device")
 
@@ -956,7 +952,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="runLevel")
     def run_level(self) -> Optional[str]:
         """
-        Defines the state of your Linode after booting. Defaults to `"default"`.
+        Defines the state of your Linode after booting. Defaults to default.
         """
         return pulumi.get(self, "run_level")
 
@@ -964,7 +960,7 @@ class InstanceConfig(dict):
     @pulumi.getter(name="virtMode")
     def virt_mode(self) -> Optional[str]:
         """
-        Controls the virtualization mode. Defaults to `"paravirt"`.
+        Controls the virtualization mode. Defaults to paravirt.
         """
         return pulumi.get(self, "virt_mode")
 
@@ -981,7 +977,7 @@ class InstanceConfigDevices(dict):
                  sdg: Optional['outputs.InstanceConfigDevicesSdg'] = None,
                  sdh: Optional['outputs.InstanceConfigDevicesSdh'] = None):
         """
-        :param 'InstanceConfigDevicesSdaArgs' sda: ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        :param 'InstanceConfigDevicesSdaArgs' sda: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param 'InstanceConfigDevicesSdbArgs' sdb: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param 'InstanceConfigDevicesSdcArgs' sdc: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param 'InstanceConfigDevicesSddArgs' sdd: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
@@ -1011,7 +1007,7 @@ class InstanceConfigDevices(dict):
     @pulumi.getter
     def sda(self) -> Optional['outputs.InstanceConfigDevicesSda']:
         """
-        ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         """
         return pulumi.get(self, "sda")
 
@@ -1100,9 +1096,9 @@ class InstanceConfigDevicesSda(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1115,7 +1111,7 @@ class InstanceConfigDevicesSda(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1131,7 +1127,7 @@ class InstanceConfigDevicesSda(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1164,9 +1160,9 @@ class InstanceConfigDevicesSdb(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1179,7 +1175,7 @@ class InstanceConfigDevicesSdb(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1195,7 +1191,7 @@ class InstanceConfigDevicesSdb(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1228,9 +1224,9 @@ class InstanceConfigDevicesSdc(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1243,7 +1239,7 @@ class InstanceConfigDevicesSdc(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1259,7 +1255,7 @@ class InstanceConfigDevicesSdc(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1292,9 +1288,9 @@ class InstanceConfigDevicesSdd(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1307,7 +1303,7 @@ class InstanceConfigDevicesSdd(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1323,7 +1319,7 @@ class InstanceConfigDevicesSdd(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1356,9 +1352,9 @@ class InstanceConfigDevicesSde(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1371,7 +1367,7 @@ class InstanceConfigDevicesSde(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1387,7 +1383,7 @@ class InstanceConfigDevicesSde(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1420,9 +1416,9 @@ class InstanceConfigDevicesSdf(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1435,7 +1431,7 @@ class InstanceConfigDevicesSdf(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1451,7 +1447,7 @@ class InstanceConfigDevicesSdf(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1484,9 +1480,9 @@ class InstanceConfigDevicesSdg(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1499,7 +1495,7 @@ class InstanceConfigDevicesSdg(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1515,7 +1511,7 @@ class InstanceConfigDevicesSdg(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1548,9 +1544,9 @@ class InstanceConfigDevicesSdh(dict):
                  disk_label: Optional[str] = None,
                  volume_id: Optional[int] = None):
         """
-        :param int disk_id: The Disk ID of the associated `disk_label`, if used.
+        :param int disk_id: The Disk ID to map to this disk slot
         :param str disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param int volume_id: The Volume ID to map to this `device` slot.
+        :param int volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
@@ -1563,7 +1559,7 @@ class InstanceConfigDevicesSdh(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[int]:
         """
-        The Disk ID of the associated `disk_label`, if used.
+        The Disk ID to map to this disk slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1579,7 +1575,7 @@ class InstanceConfigDevicesSdh(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[int]:
         """
-        The Volume ID to map to this `device` slot.
+        The Block Storage volume ID to map to this disk slot
         """
         return pulumi.get(self, "volume_id")
 
@@ -1711,7 +1707,7 @@ class InstanceConfigInterface(dict):
         """
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param bool active: Whether this interface is currently booted and active.
-        :param int id: The ID of the disk in the Linode API.
+        :param int id: The ID of the interface.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         :param 'InstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -1764,7 +1760,7 @@ class InstanceConfigInterface(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the disk in the Linode API.
+        The ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -1904,15 +1900,15 @@ class InstanceDisk(dict):
         """
         :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param int size: The size of the Disk in MB.
-        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
-        :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
-        :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-        :param int id: The ID of the disk in the Linode API.
-        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
+        :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        :param str filesystem: The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
+        :param int id: The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
         :param bool read_only: If true, this Disk is read-only.
-        :param str root_pass: The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
-        :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
-        :param int stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        :param str root_pass: The password that will be initialially assigned to the 'root' user account.
+        :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param int stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "size", size)
@@ -1955,7 +1951,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> Optional[Sequence[str]]:
         """
-        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -1963,7 +1959,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> Optional[Sequence[str]]:
         """
-        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         """
         return pulumi.get(self, "authorized_users")
 
@@ -1971,7 +1967,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def filesystem(self) -> Optional[str]:
         """
-        The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+        The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
         """
         return pulumi.get(self, "filesystem")
 
@@ -1979,7 +1975,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the disk in the Linode API.
+        The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
         """
         return pulumi.get(self, "id")
 
@@ -1987,7 +1983,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
         """
         return pulumi.get(self, "image")
 
@@ -2003,7 +1999,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[str]:
         """
-        The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+        The password that will be initialially assigned to the 'root' user account.
         """
         return pulumi.get(self, "root_pass")
 
@@ -2011,7 +2007,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[Mapping[str, Any]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -2019,7 +2015,7 @@ class InstanceDisk(dict):
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> Optional[int]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -2106,7 +2102,7 @@ class InstanceInterface(dict):
         """
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param bool active: Whether this interface is currently booted and active.
-        :param int id: The ID of the disk in the Linode API.
+        :param int id: The ID of the interface.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         :param 'InstanceInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -2159,7 +2155,7 @@ class InstanceInterface(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the disk in the Linode API.
+        The ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -2350,7 +2346,7 @@ class InstanceSpecs(dict):
                  transfer: Optional[int] = None,
                  vcpus: Optional[int] = None):
         """
-        :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         :param int memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
         :param int transfer: The amount of network transfer this Linode is allotted each month.
         :param int vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
@@ -2368,7 +2364,7 @@ class InstanceSpecs(dict):
     @pulumi.getter
     def disk(self) -> Optional[int]:
         """
-        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         """
         return pulumi.get(self, "disk")
 
@@ -7443,8 +7439,8 @@ class GetInstanceTypeAddonsBackupPriceResult(dict):
                  hourly: float,
                  monthly: float):
         """
-        :param float hourly: Cost (in US dollars) per hour.
-        :param float monthly: Cost (in US dollars) per month.
+        :param float hourly: The cost (in US dollars) per hour to add Backups service.
+        :param float monthly: The cost (in US dollars) per month to add Backups service.
         """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
@@ -7453,7 +7449,7 @@ class GetInstanceTypeAddonsBackupPriceResult(dict):
     @pulumi.getter
     def hourly(self) -> float:
         """
-        Cost (in US dollars) per hour.
+        The cost (in US dollars) per hour to add Backups service.
         """
         return pulumi.get(self, "hourly")
 
@@ -7461,7 +7457,7 @@ class GetInstanceTypeAddonsBackupPriceResult(dict):
     @pulumi.getter
     def monthly(self) -> float:
         """
-        Cost (in US dollars) per month.
+        The cost (in US dollars) per month to add Backups service.
         """
         return pulumi.get(self, "monthly")
 
@@ -7765,8 +7761,8 @@ class GetInstanceTypesTypeAddonBackupPriceResult(dict):
                  hourly: float,
                  monthly: float):
         """
-        :param float hourly: Cost (in US dollars) per hour.
-        :param float monthly: Cost (in US dollars) per month.
+        :param float hourly: The cost (in US dollars) per hour to add Backups service.
+        :param float monthly: The cost (in US dollars) per month to add Backups service.
         """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
@@ -7775,7 +7771,7 @@ class GetInstanceTypesTypeAddonBackupPriceResult(dict):
     @pulumi.getter
     def hourly(self) -> float:
         """
-        Cost (in US dollars) per hour.
+        The cost (in US dollars) per hour to add Backups service.
         """
         return pulumi.get(self, "hourly")
 
@@ -7783,7 +7779,7 @@ class GetInstanceTypesTypeAddonBackupPriceResult(dict):
     @pulumi.getter
     def monthly(self) -> float:
         """
-        Cost (in US dollars) per month.
+        The cost (in US dollars) per month to add Backups service.
         """
         return pulumi.get(self, "monthly")
 
@@ -11258,7 +11254,7 @@ class GetStackScriptsStackscriptUserDefinedFieldResult(dict):
         :param str example: An example value for the field.
         :param str label: A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
         :param str many_of: A list of acceptable values for the field in any quantity, combination or order.
-        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param str name: The name of the field.
         :param str one_of: A list of acceptable single values for the field.
         """
         pulumi.set(__self__, "default", default)
@@ -11304,7 +11300,7 @@ class GetStackScriptsStackscriptUserDefinedFieldResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        The name of the field.
         """
         return pulumi.get(self, "name")
 

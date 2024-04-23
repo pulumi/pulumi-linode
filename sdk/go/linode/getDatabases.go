@@ -17,7 +17,6 @@ import (
 //
 // Get information about all Linode Managed Databases:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,11 +43,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Get information about all Linode MySQL Databases:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,7 +81,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabasesResult

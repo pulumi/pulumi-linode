@@ -18,27 +18,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceDisk {
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
      * 
      */
     private @Nullable List<String> authorizedKeys;
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     private @Nullable List<String> authorizedUsers;
     /**
-     * @return The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * @return The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
      * 
      */
     private @Nullable String filesystem;
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
      * 
      */
     private @Nullable Integer id;
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
      * 
      */
     private @Nullable String image;
@@ -53,7 +53,7 @@ public final class InstanceDisk {
      */
     private @Nullable Boolean readOnly;
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * @return The password that will be initialially assigned to the &#39;root&#39; user account.
      * 
      */
     private @Nullable String rootPass;
@@ -63,47 +63,47 @@ public final class InstanceDisk {
      */
     private Integer size;
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     private @Nullable Map<String,Object> stackscriptData;
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
      */
     private @Nullable Integer stackscriptId;
 
     private InstanceDisk() {}
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public List<String> authorizedKeys() {
         return this.authorizedKeys == null ? List.of() : this.authorizedKeys;
     }
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public List<String> authorizedUsers() {
         return this.authorizedUsers == null ? List.of() : this.authorizedUsers;
     }
     /**
-     * @return The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * @return The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
      * 
      */
     public Optional<String> filesystem() {
         return Optional.ofNullable(this.filesystem);
     }
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
      * 
      */
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
      * 
      */
     public Optional<String> image() {
@@ -124,7 +124,7 @@ public final class InstanceDisk {
         return Optional.ofNullable(this.readOnly);
     }
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * @return The password that will be initialially assigned to the &#39;root&#39; user account.
      * 
      */
     public Optional<String> rootPass() {
@@ -138,14 +138,14 @@ public final class InstanceDisk {
         return this.size;
     }
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     public Map<String,Object> stackscriptData() {
         return this.stackscriptData == null ? Map.of() : this.stackscriptData;
     }
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
      */
     public Optional<Integer> stackscriptId() {

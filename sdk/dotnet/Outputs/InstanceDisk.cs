@@ -14,23 +14,23 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceDisk
     {
         /// <summary>
-        /// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+        /// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedKeys;
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedUsers;
         /// <summary>
-        /// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+        /// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
         /// </summary>
         public readonly string? Filesystem;
         /// <summary>
-        /// The ID of the disk in the Linode API.
+        /// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>
-        /// The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+        /// The password that will be initialially assigned to the 'root' user account.
         /// </summary>
         public readonly string? RootPass;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? StackscriptData;
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         /// </summary>
         public readonly int? StackscriptId;
 

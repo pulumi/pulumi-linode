@@ -19,7 +19,6 @@ namespace Pulumi.Linode
     /// 
     /// Creating a simple PostgreSQL database instance:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,11 +37,9 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating a complex PostgreSQL database instance:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## updates
     /// 

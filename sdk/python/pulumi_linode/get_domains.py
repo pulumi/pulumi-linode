@@ -94,7 +94,6 @@ def get_domains(domains: Optional[Sequence[pulumi.InputType['GetDomainsDomainArg
 
     Get information about all Linode Cloud Domains with a specific tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -105,7 +104,6 @@ def get_domains(domains: Optional[Sequence[pulumi.InputType['GetDomainsDomainArg
     )])
     pulumi.export("domain", specific.domains[0].domain)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -168,7 +166,6 @@ def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     Get information about all Linode Cloud Domains with a specific tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -179,7 +176,6 @@ def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     )])
     pulumi.export("domain", specific.domains[0].domain)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
