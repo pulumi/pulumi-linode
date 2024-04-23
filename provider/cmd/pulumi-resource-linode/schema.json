@@ -286,21 +286,21 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
+                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
                 },
                 "ipv4s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.\n"
+                    "description": "A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.\n"
                 },
                 "ipv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.\n"
+                    "description": "A list of IPv6 addresses or networks this rule applies to.\n"
                 },
                 "label": {
                     "type": "string",
@@ -312,7 +312,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)\n"
+                    "description": "The network protocol this rule controls.\n"
                 }
             },
             "type": "object",
@@ -417,11 +417,11 @@
             "properties": {
                 "comments": {
                     "type": "string",
-                    "description": "Arbitrary user comments about this `config`.\n"
+                    "description": "Optional field for arbitrary User comments on this Config.\n"
                 },
                 "devices": {
                     "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
-                    "description": "A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.\n"
+                    "description": "Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.\n"
                 },
                 "helpers": {
                     "$ref": "#/types/linode:index/InstanceConfigHelpers:InstanceConfigHelpers",
@@ -429,7 +429,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The unique ID of this Config.\n"
                 },
                 "interfaces": {
                     "type": "array",
@@ -440,7 +440,7 @@
                 },
                 "kernel": {
                     "type": "string",
-                    "description": "A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).\n"
+                    "description": "A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)\n"
                 },
                 "label": {
                     "type": "string",
@@ -448,19 +448,19 @@
                 },
                 "memoryLimit": {
                     "type": "integer",
-                    "description": "Defaults to the total RAM of the Linode\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode.\n"
+                    "description": "Defaults to the total RAM of the Linode\n"
                 },
                 "rootDevice": {
                     "type": "string",
-                    "description": "The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `\"/dev/sda\"`\n"
+                    "description": "The root device to boot. The corresponding disk must be attached.\n"
                 },
                 "runLevel": {
                     "type": "string",
-                    "description": "Defines the state of your Linode after booting. Defaults to `\"default\"`.\n"
+                    "description": "Defines the state of your Linode after booting. Defaults to default.\n"
                 },
                 "virtMode": {
                     "type": "string",
-                    "description": "Controls the virtualization mode. Defaults to `\"paravirt\"`.\n"
+                    "description": "Controls the virtualization mode. Defaults to paravirt.\n"
                 }
             },
             "type": "object",
@@ -483,7 +483,7 @@
             "properties": {
                 "sda": {
                     "$ref": "#/types/linode:index/InstanceConfigDevicesSda:InstanceConfigDevicesSda",
-                    "description": "... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `\"fullvirt\"` `virt_mode`.\n"
+                    "description": "Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.\n"
                 },
                 "sdb": {
                     "$ref": "#/types/linode:index/InstanceConfigDevicesSdb:InstanceConfigDevicesSdb",
@@ -534,7 +534,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -542,7 +542,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -558,7 +558,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -566,7 +566,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -582,7 +582,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -590,7 +590,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -606,7 +606,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -614,7 +614,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -630,7 +630,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -638,7 +638,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -654,7 +654,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -662,7 +662,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -678,7 +678,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -686,7 +686,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -702,7 +702,7 @@
             "properties": {
                 "diskId": {
                     "type": "integer",
-                    "description": "The Disk ID of the associated `disk_label`, if used.\n"
+                    "description": "The Disk ID to map to this disk slot\n"
                 },
                 "diskLabel": {
                     "type": "string",
@@ -710,7 +710,7 @@
                 },
                 "volumeId": {
                     "type": "integer",
-                    "description": "The Volume ID to map to this `device` slot.\n"
+                    "description": "The Block Storage volume ID to map to this disk slot\n"
                 }
             },
             "type": "object",
@@ -755,7 +755,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the interface.\n"
                 },
                 "ipRanges": {
                     "type": "array",
@@ -837,7 +837,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*\n",
+                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n",
                     "willReplaceOnChanges": true
                 },
                 "authorizedUsers": {
@@ -845,21 +845,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*\n",
+                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n",
                     "willReplaceOnChanges": true
                 },
                 "filesystem": {
                     "type": "string",
-                    "description": "The Disk filesystem can be one of: `\"raw\"`, `\"swap\"`, `\"ext3\"`, `\"ext4\"`, or `\"initrd\"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).\n",
+                    "description": "The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)\n",
                     "willReplaceOnChanges": true
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)\n"
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n",
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\n",
                     "willReplaceOnChanges": true
                 },
                 "label": {
@@ -873,7 +873,7 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*\n",
+                    "description": "The password that will be initialially assigned to the 'root' user account.\n",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
@@ -886,13 +886,13 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "stackscriptId": {
                     "type": "integer",
-                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*\n",
+                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -941,7 +941,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the interface.\n"
                 },
                 "ipRanges": {
                     "type": "array",
@@ -1050,7 +1050,7 @@
             "properties": {
                 "disk": {
                     "type": "integer",
-                    "description": "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.\n"
+                    "description": "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.\n"
                 },
                 "memory": {
                     "type": "integer",
@@ -3932,11 +3932,11 @@
             "properties": {
                 "hourly": {
                     "type": "number",
-                    "description": "Cost (in US dollars) per hour.\n"
+                    "description": "The cost (in US dollars) per hour to add Backups service.\n"
                 },
                 "monthly": {
                     "type": "number",
-                    "description": "Cost (in US dollars) per month.\n"
+                    "description": "The cost (in US dollars) per month to add Backups service.\n"
                 }
             },
             "type": "object",
@@ -4163,11 +4163,11 @@
             "properties": {
                 "hourly": {
                     "type": "number",
-                    "description": "Cost (in US dollars) per hour.\n"
+                    "description": "The cost (in US dollars) per hour to add Backups service.\n"
                 },
                 "monthly": {
                     "type": "number",
-                    "description": "Cost (in US dollars) per month.\n"
+                    "description": "The cost (in US dollars) per month to add Backups service.\n"
                 }
             },
             "type": "object",
@@ -6301,7 +6301,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                    "description": "The name of the field.\n"
                 },
                 "oneOf": {
                     "type": "string",
@@ -9162,18 +9162,18 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*\n"
+                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n"
                 },
                 "authorizedUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*\n"
+                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's\n`~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n"
                 },
                 "backupId": {
                     "type": "integer",
-                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*\n"
+                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup\nmust have a status of successful, and the Linode must be deployed to the same region as the Backup. See\n/linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually\nexclusive.\n"
                 },
                 "backups": {
                     "$ref": "#/types/linode:index/InstanceBackups:InstanceBackups",
@@ -9185,7 +9185,7 @@
                 },
                 "bootConfigLabel": {
                     "type": "string",
-                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*\n"
+                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
                 },
                 "booted": {
                     "type": "boolean",
@@ -9225,7 +9225,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n"
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\nSee /images for more information on the Images available for you to use.\n"
                 },
                 "interfaces": {
                     "type": "array",
@@ -9282,7 +9282,7 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*\n",
+                    "description": "The password that will be initially assigned to the 'root' user account.\n",
                     "secret": true
                 },
                 "sharedIpv4s": {
@@ -9301,12 +9301,12 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only\naccepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
                     "secret": true
                 },
                 "stackscriptId": {
                     "type": "integer",
-                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*\n"
+                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image\nthat is compatible with this StackScript.\n"
                 },
                 "status": {
                     "type": "string",
@@ -9314,7 +9314,7 @@
                 },
                 "swapSize": {
                     "type": "integer",
-                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.\n"
+                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This\nis used to set the swap disk size for the newly-created Linode.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9364,7 +9364,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*\n",
+                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n",
                     "willReplaceOnChanges": true
                 },
                 "authorizedUsers": {
@@ -9372,12 +9372,12 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*\n",
+                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's\n`~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n",
                     "willReplaceOnChanges": true
                 },
                 "backupId": {
                     "type": "integer",
-                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*\n",
+                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup\nmust have a status of successful, and the Linode must be deployed to the same region as the Backup. See\n/linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually\nexclusive.\n",
                     "willReplaceOnChanges": true
                 },
                 "backupsEnabled": {
@@ -9386,7 +9386,7 @@
                 },
                 "bootConfigLabel": {
                     "type": "string",
-                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*\n"
+                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
                 },
                 "booted": {
                     "type": "boolean",
@@ -9419,7 +9419,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n",
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\nSee /images for more information on the Images available for you to use.\n",
                     "willReplaceOnChanges": true
                 },
                 "interfaces": {
@@ -9458,7 +9458,7 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*\n",
+                    "description": "The password that will be initially assigned to the 'root' user account.\n",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
@@ -9474,18 +9474,18 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only\naccepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "stackscriptId": {
                     "type": "integer",
-                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*\n",
+                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image\nthat is compatible with this StackScript.\n",
                     "willReplaceOnChanges": true
                 },
                 "swapSize": {
                     "type": "integer",
-                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.\n"
+                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This\nis used to set the swap disk size for the newly-created Linode.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9518,7 +9518,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*\n",
+                        "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n",
                         "willReplaceOnChanges": true
                     },
                     "authorizedUsers": {
@@ -9526,12 +9526,12 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*\n",
+                        "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's\n`~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n",
                         "willReplaceOnChanges": true
                     },
                     "backupId": {
                         "type": "integer",
-                        "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*\n",
+                        "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup\nmust have a status of successful, and the Linode must be deployed to the same region as the Backup. See\n/linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually\nexclusive.\n",
                         "willReplaceOnChanges": true
                     },
                     "backups": {
@@ -9544,7 +9544,7 @@
                     },
                     "bootConfigLabel": {
                         "type": "string",
-                        "description": "The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*\n"
+                        "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
                     },
                     "booted": {
                         "type": "boolean",
@@ -9585,7 +9585,7 @@
                     },
                     "image": {
                         "type": "string",
-                        "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*\n",
+                        "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\nSee /images for more information on the Images available for you to use.\n",
                         "willReplaceOnChanges": true
                     },
                     "interfaces": {
@@ -9643,7 +9643,7 @@
                     },
                     "rootPass": {
                         "type": "string",
-                        "description": "The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*\n",
+                        "description": "The password that will be initially assigned to the 'root' user account.\n",
                         "secret": true,
                         "willReplaceOnChanges": true
                     },
@@ -9663,13 +9663,13 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*\n",
+                        "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only\naccepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
                         "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "stackscriptId": {
                         "type": "integer",
-                        "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*\n",
+                        "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image\nthat is compatible with this StackScript.\n",
                         "willReplaceOnChanges": true
                     },
                     "status": {
@@ -9678,7 +9678,7 @@
                     },
                     "swapSize": {
                         "type": "integer",
-                        "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.\n"
+                        "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This\nis used to set the swap disk size for the newly-created Linode.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -10052,7 +10052,7 @@
             }
         },
         "linode:index/instanceSharedIps:InstanceSharedIps": {
-            "description": "\u003e **Beta Notice** IPv6 sharing is currently available through early access.\nTo use early access resources, the `api_version` provider argument must be set to `v4beta`.\nTo learn more, see the early access documentation.\n\n\u003e **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.\n\nManages IPs shared to a Linode instance.\n\n## Example Usage\n\nShare in IPv4 address between two instances:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\n// Create a single primary node\nconst primaryInstance = new linode.Instance(\"primary\", {\n    label: \"node-primary\",\n    type: \"g6-nanode-1\",\n    region: \"eu-central\",\n});\n// Allocate an IP under the primary node\nconst primary = new linode.InstanceIp(\"primary\", {linodeId: primaryInstance.id});\n// Create a secondary node\nconst secondary = new linode.Instance(\"secondary\", {\n    label: \"node-secondary\",\n    type: \"g6-nanode-1\",\n    region: \"eu-central\",\n});\n// Share the IP with the secondary node\nconst share_primary = new linode.InstanceSharedIps(\"share-primary\", {\n    linodeId: secondary.id,\n    addresses: [primary.address],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\n# Create a single primary node\nprimary_instance = linode.Instance(\"primary\",\n    label=\"node-primary\",\n    type=\"g6-nanode-1\",\n    region=\"eu-central\")\n# Allocate an IP under the primary node\nprimary = linode.InstanceIp(\"primary\", linode_id=primary_instance.id)\n# Create a secondary node\nsecondary = linode.Instance(\"secondary\",\n    label=\"node-secondary\",\n    type=\"g6-nanode-1\",\n    region=\"eu-central\")\n# Share the IP with the secondary node\nshare_primary = linode.InstanceSharedIps(\"share-primary\",\n    linode_id=secondary.id,\n    addresses=[primary.address])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a single primary node\n    var primaryInstance = new Linode.Instance(\"primary\", new()\n    {\n        Label = \"node-primary\",\n        Type = \"g6-nanode-1\",\n        Region = \"eu-central\",\n    });\n\n    // Allocate an IP under the primary node\n    var primary = new Linode.InstanceIp(\"primary\", new()\n    {\n        LinodeId = primaryInstance.Id,\n    });\n\n    // Create a secondary node\n    var secondary = new Linode.Instance(\"secondary\", new()\n    {\n        Label = \"node-secondary\",\n        Type = \"g6-nanode-1\",\n        Region = \"eu-central\",\n    });\n\n    // Share the IP with the secondary node\n    var share_primary = new Linode.InstanceSharedIps(\"share-primary\", new()\n    {\n        LinodeId = secondary.Id,\n        Addresses = new[]\n        {\n            primary.Address,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a single primary node\n\t\tprimaryInstance, err := linode.NewInstance(ctx, \"primary\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"node-primary\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Allocate an IP under the primary node\n\t\tprimary, err := linode.NewInstanceIp(ctx, \"primary\", \u0026linode.InstanceIpArgs{\n\t\t\tLinodeId: primaryInstance.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a secondary node\n\t\tsecondary, err := linode.NewInstance(ctx, \"secondary\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"node-secondary\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Share the IP with the secondary node\n\t\t_, err = linode.NewInstanceSharedIps(ctx, \"share-primary\", \u0026linode.InstanceSharedIpsArgs{\n\t\t\tLinodeId: secondary.ID(),\n\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\tprimary.Address,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceIp;\nimport com.pulumi.linode.InstanceIpArgs;\nimport com.pulumi.linode.InstanceSharedIps;\nimport com.pulumi.linode.InstanceSharedIpsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a single primary node\n        var primaryInstance = new Instance(\"primaryInstance\", InstanceArgs.builder()        \n            .label(\"node-primary\")\n            .type(\"g6-nanode-1\")\n            .region(\"eu-central\")\n            .build());\n\n        // Allocate an IP under the primary node\n        var primary = new InstanceIp(\"primary\", InstanceIpArgs.builder()        \n            .linodeId(primaryInstance.id())\n            .build());\n\n        // Create a secondary node\n        var secondary = new Instance(\"secondary\", InstanceArgs.builder()        \n            .label(\"node-secondary\")\n            .type(\"g6-nanode-1\")\n            .region(\"eu-central\")\n            .build());\n\n        // Share the IP with the secondary node\n        var share_primary = new InstanceSharedIps(\"share-primary\", InstanceSharedIpsArgs.builder()        \n            .linodeId(secondary.id())\n            .addresses(primary.address())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Share the IP with the secondary node\n  share-primary:\n    type: linode:InstanceSharedIps\n    properties:\n      linodeId: ${secondary.id}\n      addresses:\n        - ${primary.address}\n  # Allocate an IP under the primary node\n  primary:\n    type: linode:InstanceIp\n    properties:\n      linodeId: ${primaryInstance.id}\n  # Create a single primary node\n  primaryInstance:\n    type: linode:Instance\n    name: primary\n    properties:\n      label: node-primary\n      type: g6-nanode-1\n      region: eu-central\n  # Create a secondary node\n  secondary:\n    type: linode:Instance\n    properties:\n      label: node-secondary\n      type: g6-nanode-1\n      region: eu-central\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nShare an IPv6 address among a primary node and its replicas:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\n// Create a single primary node\nconst primary = new linode.Instance(\"primary\", {\n    label: \"node-primary\",\n    type: \"g6-nanode-1\",\n    region: \"eu-central\",\n});\n// Allocate an IPv6 range pointing at the primary node\nconst rangeIpv6Range = new linode.Ipv6Range(\"range\", {\n    prefixLength: 64,\n    linodeId: primary.id,\n});\n// Share with primary node\nconst share_primary = new linode.InstanceSharedIps(\"share-primary\", {\n    linodeId: primary.id,\n    addresses: [rangeIpv6Range.range],\n});\nconst config = new pulumi.Config();\nconst numberReplicas = config.getNumber(\"numberReplicas\") || 2;\n// Create two secondary nodes\nconst secondary: linode.Instance[] = [];\nfor (const range = {value: 0}; range.value \u003c numberReplicas; range.value++) {\n    secondary.push(new linode.Instance(`secondary-${range.value}`, {\n        label: `node-secondary-${range.value}`,\n        type: \"g6-nanode-1\",\n        region: \"eu-central\",\n    }));\n}\n// Share with secondary nodes\nconst share_secondary: linode.InstanceSharedIps[] = [];\nfor (const range = {value: 0}; range.value \u003c numberReplicas; range.value++) {\n    share_secondary.push(new linode.InstanceSharedIps(`share-secondary-${range.value}`, {\n        linodeId: secondary[range.value].id,\n        addresses: [rangeIpv6Range.range],\n    }, {\n    dependsOn: [share_primary],\n}));\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\n# Create a single primary node\nprimary = linode.Instance(\"primary\",\n    label=\"node-primary\",\n    type=\"g6-nanode-1\",\n    region=\"eu-central\")\n# Allocate an IPv6 range pointing at the primary node\nrange_ipv6_range = linode.Ipv6Range(\"range\",\n    prefix_length=64,\n    linode_id=primary.id)\n# Share with primary node\nshare_primary = linode.InstanceSharedIps(\"share-primary\",\n    linode_id=primary.id,\n    addresses=[range_ipv6_range.range])\nconfig = pulumi.Config()\nnumber_replicas = config.get_float(\"numberReplicas\")\nif number_replicas is None:\n    number_replicas = 2\n# Create two secondary nodes\nsecondary = []\nfor range in [{\"value\": i} for i in range(0, number_replicas)]:\n    secondary.append(linode.Instance(f\"secondary-{range['value']}\",\n        label=f\"node-secondary-{range['value']}\",\n        type=\"g6-nanode-1\",\n        region=\"eu-central\"))\n# Share with secondary nodes\nshare_secondary = []\nfor range in [{\"value\": i} for i in range(0, number_replicas)]:\n    share_secondary.append(linode.InstanceSharedIps(f\"share-secondary-{range['value']}\",\n        linode_id=secondary[range[\"value\"]].id,\n        addresses=[range_ipv6_range.range],\n        opts=pulumi.ResourceOptions(depends_on=[share_primary])))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a single primary node\n    var primary = new Linode.Instance(\"primary\", new()\n    {\n        Label = \"node-primary\",\n        Type = \"g6-nanode-1\",\n        Region = \"eu-central\",\n    });\n\n    // Allocate an IPv6 range pointing at the primary node\n    var rangeIpv6Range = new Linode.Ipv6Range(\"range\", new()\n    {\n        PrefixLength = 64,\n        LinodeId = primary.Id,\n    });\n\n    // Share with primary node\n    var share_primary = new Linode.InstanceSharedIps(\"share-primary\", new()\n    {\n        LinodeId = primary.Id,\n        Addresses = new[]\n        {\n            rangeIpv6Range.Range,\n        },\n    });\n\n    var config = new Config();\n    var numberReplicas = config.GetDouble(\"numberReplicas\") ?? 2;\n    // Create two secondary nodes\n    var secondary = new List\u003cLinode.Instance\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c numberReplicas; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        secondary.Add(new Linode.Instance($\"secondary-{range.Value}\", new()\n        {\n            Label = $\"node-secondary-{range.Value}\",\n            Type = \"g6-nanode-1\",\n            Region = \"eu-central\",\n        }));\n    }\n    // Share with secondary nodes\n    var share_secondary = new List\u003cLinode.InstanceSharedIps\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c numberReplicas; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        share_secondary.Add(new Linode.InstanceSharedIps($\"share-secondary-{range.Value}\", new()\n        {\n            LinodeId = secondary[range.Value].Id,\n            Addresses = new[]\n            {\n                rangeIpv6Range.Range,\n            },\n        }, new CustomResourceOptions\n        {\n            DependsOn =\n            {\n                share_primary, \n            },\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a single primary node\n\t\tprimary, err := linode.NewInstance(ctx, \"primary\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"node-primary\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Allocate an IPv6 range pointing at the primary node\n\t\trangeIpv6Range, err := linode.NewIpv6Range(ctx, \"range\", \u0026linode.Ipv6RangeArgs{\n\t\t\tPrefixLength: pulumi.Int(64),\n\t\t\tLinodeId:     primary.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Share with primary node\n\t\t_, err = linode.NewInstanceSharedIps(ctx, \"share-primary\", \u0026linode.InstanceSharedIpsArgs{\n\t\t\tLinodeId: primary.ID(),\n\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\trangeIpv6Range.Range,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcfg := config.New(ctx, \"\")\n\t\tnumberReplicas := float64(2)\n\t\tif param := cfg.GetFloat64(\"numberReplicas\"); param != 0 {\n\t\t\tnumberReplicas = param\n\t\t}\n\t\t// Create two secondary nodes\n\t\tvar secondary []*linode.Instance\n\t\tfor index := 0; index \u003c numberReplicas; index++ {\n\t\t\tkey0 := index\n\t\t\tval0 := index\n\t\t\t__res, err := linode.NewInstance(ctx, fmt.Sprintf(\"secondary-%v\", key0), \u0026linode.InstanceArgs{\n\t\t\t\tLabel:  pulumi.String(fmt.Sprintf(\"node-secondary-%v\", val0)),\n\t\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tsecondary = append(secondary, __res)\n\t\t}\n\t\t// Share with secondary nodes\n\t\tvar share_secondary []*linode.InstanceSharedIps\n\t\tfor index := 0; index \u003c numberReplicas; index++ {\n\t\t\tkey0 := index\n\t\t\tval0 := index\n\t\t\t__res, err := linode.NewInstanceSharedIps(ctx, fmt.Sprintf(\"share-secondary-%v\", key0), \u0026linode.InstanceSharedIpsArgs{\n\t\t\t\tLinodeId: secondary[val0].ID(),\n\t\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\t\trangeIpv6Range.Range,\n\t\t\t\t},\n\t\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\t\tshare_primary,\n\t\t\t}))\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tshare_secondary = append(share_secondary, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Ipv6Range;\nimport com.pulumi.linode.Ipv6RangeArgs;\nimport com.pulumi.linode.InstanceSharedIps;\nimport com.pulumi.linode.InstanceSharedIpsArgs;\nimport com.pulumi.codegen.internal.KeyedValue;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        // Create a single primary node\n        var primary = new Instance(\"primary\", InstanceArgs.builder()        \n            .label(\"node-primary\")\n            .type(\"g6-nanode-1\")\n            .region(\"eu-central\")\n            .build());\n\n        // Allocate an IPv6 range pointing at the primary node\n        var rangeIpv6Range = new Ipv6Range(\"rangeIpv6Range\", Ipv6RangeArgs.builder()        \n            .prefixLength(64)\n            .linodeId(primary.id())\n            .build());\n\n        // Share with primary node\n        var share_primary = new InstanceSharedIps(\"share-primary\", InstanceSharedIpsArgs.builder()        \n            .linodeId(primary.id())\n            .addresses(rangeIpv6Range.range())\n            .build());\n\n        final var numberReplicas = config.get(\"numberReplicas\").orElse(2);\n        // Create two secondary nodes\n        for (var i = 0; i \u003c numberReplicas; i++) {\n            new Instance(\"secondary-\" + i, InstanceArgs.builder()            \n                .label(String.format(\"node-secondary-%s\", range.value()))\n                .type(\"g6-nanode-1\")\n                .region(\"eu-central\")\n                .build());\n\n        \n}\n        // Share with secondary nodes\n        for (var i = 0; i \u003c numberReplicas; i++) {\n            new InstanceSharedIps(\"share-secondary-\" + i, InstanceSharedIpsArgs.builder()            \n                .linodeId(secondary[range.value()].id())\n                .addresses(rangeIpv6Range.range())\n                .build(), CustomResourceOptions.builder()\n                    .dependsOn(share_primary)\n                    .build());\n\n        \n}\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "\u003e **Beta Notice** IPv6 sharing is currently available through early access.\nTo use early access resources, the `api_version` provider argument must be set to `v4beta`.\nTo learn more, see the early access documentation.\n\n\u003e **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.\n\nManages IPs shared to a Linode instance.\n\n## Example Usage\n\nShare in IPv4 address between two instances:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\n// Create a single primary node\nconst primaryInstance = new linode.Instance(\"primary\", {\n    label: \"node-primary\",\n    type: \"g6-nanode-1\",\n    region: \"eu-central\",\n});\n// Allocate an IP under the primary node\nconst primary = new linode.InstanceIp(\"primary\", {linodeId: primaryInstance.id});\n// Create a secondary node\nconst secondary = new linode.Instance(\"secondary\", {\n    label: \"node-secondary\",\n    type: \"g6-nanode-1\",\n    region: \"eu-central\",\n});\n// Share the IP with the secondary node\nconst share_primary = new linode.InstanceSharedIps(\"share-primary\", {\n    linodeId: secondary.id,\n    addresses: [primary.address],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\n# Create a single primary node\nprimary_instance = linode.Instance(\"primary\",\n    label=\"node-primary\",\n    type=\"g6-nanode-1\",\n    region=\"eu-central\")\n# Allocate an IP under the primary node\nprimary = linode.InstanceIp(\"primary\", linode_id=primary_instance.id)\n# Create a secondary node\nsecondary = linode.Instance(\"secondary\",\n    label=\"node-secondary\",\n    type=\"g6-nanode-1\",\n    region=\"eu-central\")\n# Share the IP with the secondary node\nshare_primary = linode.InstanceSharedIps(\"share-primary\",\n    linode_id=secondary.id,\n    addresses=[primary.address])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a single primary node\n    var primaryInstance = new Linode.Instance(\"primary\", new()\n    {\n        Label = \"node-primary\",\n        Type = \"g6-nanode-1\",\n        Region = \"eu-central\",\n    });\n\n    // Allocate an IP under the primary node\n    var primary = new Linode.InstanceIp(\"primary\", new()\n    {\n        LinodeId = primaryInstance.Id,\n    });\n\n    // Create a secondary node\n    var secondary = new Linode.Instance(\"secondary\", new()\n    {\n        Label = \"node-secondary\",\n        Type = \"g6-nanode-1\",\n        Region = \"eu-central\",\n    });\n\n    // Share the IP with the secondary node\n    var share_primary = new Linode.InstanceSharedIps(\"share-primary\", new()\n    {\n        LinodeId = secondary.Id,\n        Addresses = new[]\n        {\n            primary.Address,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a single primary node\n\t\tprimaryInstance, err := linode.NewInstance(ctx, \"primary\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"node-primary\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Allocate an IP under the primary node\n\t\tprimary, err := linode.NewInstanceIp(ctx, \"primary\", \u0026linode.InstanceIpArgs{\n\t\t\tLinodeId: primaryInstance.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a secondary node\n\t\tsecondary, err := linode.NewInstance(ctx, \"secondary\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"node-secondary\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Share the IP with the secondary node\n\t\t_, err = linode.NewInstanceSharedIps(ctx, \"share-primary\", \u0026linode.InstanceSharedIpsArgs{\n\t\t\tLinodeId: secondary.ID(),\n\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\tprimary.Address,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.InstanceIp;\nimport com.pulumi.linode.InstanceIpArgs;\nimport com.pulumi.linode.InstanceSharedIps;\nimport com.pulumi.linode.InstanceSharedIpsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a single primary node\n        var primaryInstance = new Instance(\"primaryInstance\", InstanceArgs.builder()        \n            .label(\"node-primary\")\n            .type(\"g6-nanode-1\")\n            .region(\"eu-central\")\n            .build());\n\n        // Allocate an IP under the primary node\n        var primary = new InstanceIp(\"primary\", InstanceIpArgs.builder()        \n            .linodeId(primaryInstance.id())\n            .build());\n\n        // Create a secondary node\n        var secondary = new Instance(\"secondary\", InstanceArgs.builder()        \n            .label(\"node-secondary\")\n            .type(\"g6-nanode-1\")\n            .region(\"eu-central\")\n            .build());\n\n        // Share the IP with the secondary node\n        var share_primary = new InstanceSharedIps(\"share-primary\", InstanceSharedIpsArgs.builder()        \n            .linodeId(secondary.id())\n            .addresses(primary.address())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Share the IP with the secondary node\n  share-primary:\n    type: linode:InstanceSharedIps\n    properties:\n      linodeId: ${secondary.id}\n      addresses:\n        - ${primary.address}\n  # Allocate an IP under the primary node\n  primary:\n    type: linode:InstanceIp\n    properties:\n      linodeId: ${primaryInstance.id}\n  # Create a single primary node\n  primaryInstance:\n    type: linode:Instance\n    name: primary\n    properties:\n      label: node-primary\n      type: g6-nanode-1\n      region: eu-central\n  # Create a secondary node\n  secondary:\n    type: linode:Instance\n    properties:\n      label: node-secondary\n      type: g6-nanode-1\n      region: eu-central\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nShare an IPv6 address among a primary node and its replicas:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\n// Create a single primary node\nconst primary = new linode.Instance(\"primary\", {\n    label: \"node-primary\",\n    type: \"g6-nanode-1\",\n    region: \"eu-central\",\n});\n// Allocate an IPv6 range pointing at the primary node\nconst rangeIpv6Range = new linode.Ipv6Range(\"range\", {\n    prefixLength: 64,\n    linodeId: primary.id,\n});\n// Share with primary node\nconst share_primary = new linode.InstanceSharedIps(\"share-primary\", {\n    linodeId: primary.id,\n    addresses: [rangeIpv6Range.range],\n});\nconst config = new pulumi.Config();\nconst numberReplicas = config.getNumber(\"numberReplicas\") || 2;\n// Create two secondary nodes\nconst secondary: linode.Instance[] = [];\nfor (const range = {value: 0}; range.value \u003c numberReplicas; range.value++) {\n    secondary.push(new linode.Instance(`secondary-${range.value}`, {\n        label: `node-secondary-${range.value}`,\n        type: \"g6-nanode-1\",\n        region: \"eu-central\",\n    }));\n}\n// Share with secondary nodes\nconst share_secondary: linode.InstanceSharedIps[] = [];\nfor (const range = {value: 0}; range.value \u003c numberReplicas; range.value++) {\n    share_secondary.push(new linode.InstanceSharedIps(`share-secondary-${range.value}`, {\n        linodeId: secondary[range.value].id,\n        addresses: [rangeIpv6Range.range],\n    }, {\n    dependsOn: [share_primary],\n}));\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\n# Create a single primary node\nprimary = linode.Instance(\"primary\",\n    label=\"node-primary\",\n    type=\"g6-nanode-1\",\n    region=\"eu-central\")\n# Allocate an IPv6 range pointing at the primary node\nrange_ipv6_range = linode.Ipv6Range(\"range\",\n    prefix_length=64,\n    linode_id=primary.id)\n# Share with primary node\nshare_primary = linode.InstanceSharedIps(\"share-primary\",\n    linode_id=primary.id,\n    addresses=[range_ipv6_range.range])\nconfig = pulumi.Config()\nnumber_replicas = config.get_float(\"numberReplicas\")\nif number_replicas is None:\n    number_replicas = 2\n# Create two secondary nodes\nsecondary = []\nfor range in [{\"value\": i} for i in range(0, number_replicas)]:\n    secondary.append(linode.Instance(f\"secondary-{range['value']}\",\n        label=f\"node-secondary-{range['value']}\",\n        type=\"g6-nanode-1\",\n        region=\"eu-central\"))\n# Share with secondary nodes\nshare_secondary = []\nfor range in [{\"value\": i} for i in range(0, number_replicas)]:\n    share_secondary.append(linode.InstanceSharedIps(f\"share-secondary-{range['value']}\",\n        linode_id=secondary[range[\"value\"]].id,\n        addresses=[range_ipv6_range.range],\n        opts=pulumi.ResourceOptions(depends_on=[share_primary])))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a single primary node\n    var primary = new Linode.Instance(\"primary\", new()\n    {\n        Label = \"node-primary\",\n        Type = \"g6-nanode-1\",\n        Region = \"eu-central\",\n    });\n\n    // Allocate an IPv6 range pointing at the primary node\n    var rangeIpv6Range = new Linode.Ipv6Range(\"range\", new()\n    {\n        PrefixLength = 64,\n        LinodeId = primary.Id,\n    });\n\n    // Share with primary node\n    var share_primary = new Linode.InstanceSharedIps(\"share-primary\", new()\n    {\n        LinodeId = primary.Id,\n        Addresses = new[]\n        {\n            rangeIpv6Range.Range,\n        },\n    });\n\n    var config = new Config();\n    var numberReplicas = config.GetDouble(\"numberReplicas\") ?? 2;\n    // Create two secondary nodes\n    var secondary = new List\u003cLinode.Instance\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c numberReplicas; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        secondary.Add(new Linode.Instance($\"secondary-{range.Value}\", new()\n        {\n            Label = $\"node-secondary-{range.Value}\",\n            Type = \"g6-nanode-1\",\n            Region = \"eu-central\",\n        }));\n    }\n    // Share with secondary nodes\n    var share_secondary = new List\u003cLinode.InstanceSharedIps\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c numberReplicas; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        share_secondary.Add(new Linode.InstanceSharedIps($\"share-secondary-{range.Value}\", new()\n        {\n            LinodeId = secondary[range.Value].Id,\n            Addresses = new[]\n            {\n                rangeIpv6Range.Range,\n            },\n        }, new CustomResourceOptions\n        {\n            DependsOn =\n            {\n                share_primary,\n            },\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a single primary node\n\t\tprimary, err := linode.NewInstance(ctx, \"primary\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"node-primary\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Allocate an IPv6 range pointing at the primary node\n\t\trangeIpv6Range, err := linode.NewIpv6Range(ctx, \"range\", \u0026linode.Ipv6RangeArgs{\n\t\t\tPrefixLength: pulumi.Int(64),\n\t\t\tLinodeId:     primary.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Share with primary node\n\t\t_, err = linode.NewInstanceSharedIps(ctx, \"share-primary\", \u0026linode.InstanceSharedIpsArgs{\n\t\t\tLinodeId: primary.ID(),\n\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\trangeIpv6Range.Range,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcfg := config.New(ctx, \"\")\n\t\tnumberReplicas := float64(2)\n\t\tif param := cfg.GetFloat64(\"numberReplicas\"); param != 0 {\n\t\t\tnumberReplicas = param\n\t\t}\n\t\t// Create two secondary nodes\n\t\tvar secondary []*linode.Instance\n\t\tfor index := 0; index \u003c numberReplicas; index++ {\n\t\t\tkey0 := index\n\t\t\tval0 := index\n\t\t\t__res, err := linode.NewInstance(ctx, fmt.Sprintf(\"secondary-%v\", key0), \u0026linode.InstanceArgs{\n\t\t\t\tLabel:  pulumi.String(fmt.Sprintf(\"node-secondary-%v\", val0)),\n\t\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\t\tRegion: pulumi.String(\"eu-central\"),\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tsecondary = append(secondary, __res)\n\t\t}\n\t\t// Share with secondary nodes\n\t\tvar share_secondary []*linode.InstanceSharedIps\n\t\tfor index := 0; index \u003c numberReplicas; index++ {\n\t\t\tkey0 := index\n\t\t\tval0 := index\n\t\t\t__res, err := linode.NewInstanceSharedIps(ctx, fmt.Sprintf(\"share-secondary-%v\", key0), \u0026linode.InstanceSharedIpsArgs{\n\t\t\t\tLinodeId: secondary[val0].ID(),\n\t\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\t\trangeIpv6Range.Range,\n\t\t\t\t},\n\t\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\t\tshare_primary,\n\t\t\t}))\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tshare_secondary = append(share_secondary, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Ipv6Range;\nimport com.pulumi.linode.Ipv6RangeArgs;\nimport com.pulumi.linode.InstanceSharedIps;\nimport com.pulumi.linode.InstanceSharedIpsArgs;\nimport com.pulumi.codegen.internal.KeyedValue;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        // Create a single primary node\n        var primary = new Instance(\"primary\", InstanceArgs.builder()        \n            .label(\"node-primary\")\n            .type(\"g6-nanode-1\")\n            .region(\"eu-central\")\n            .build());\n\n        // Allocate an IPv6 range pointing at the primary node\n        var rangeIpv6Range = new Ipv6Range(\"rangeIpv6Range\", Ipv6RangeArgs.builder()        \n            .prefixLength(64)\n            .linodeId(primary.id())\n            .build());\n\n        // Share with primary node\n        var share_primary = new InstanceSharedIps(\"share-primary\", InstanceSharedIpsArgs.builder()        \n            .linodeId(primary.id())\n            .addresses(rangeIpv6Range.range())\n            .build());\n\n        final var numberReplicas = config.get(\"numberReplicas\").orElse(2);\n        // Create two secondary nodes\n        for (var i = 0; i \u003c numberReplicas; i++) {\n            new Instance(\"secondary-\" + i, InstanceArgs.builder()            \n                .label(String.format(\"node-secondary-%s\", range.value()))\n                .type(\"g6-nanode-1\")\n                .region(\"eu-central\")\n                .build());\n\n        \n}\n        // Share with secondary nodes\n        for (var i = 0; i \u003c numberReplicas; i++) {\n            new InstanceSharedIps(\"share-secondary-\" + i, InstanceSharedIpsArgs.builder()            \n                .linodeId(secondary[range.value()].id())\n                .addresses(rangeIpv6Range.range())\n                .build(), CustomResourceOptions.builder()\n                    .dependsOn(share_primary)\n                    .build());\n\n        \n}\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "addresses": {
                     "type": "array",
@@ -11705,7 +11705,7 @@
             }
         },
         "linode:index/stackScript:StackScript": {
-            "description": "Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  \n\nFor more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).\n\n## Example Usage\n\nThe following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `\u003cUDF ...\u003e` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.StackScript(\"foo\", {\n    label: \"foo\",\n    description: \"Installs a Package\",\n    script: `#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n`,\n    images: [\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    revNote: \"initial version\",\n});\nconst fooInstance = new linode.Instance(\"foo\", {\n    image: \"linode/ubuntu22.04\",\n    label: \"foo\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    authorizedKeys: [\"...\"],\n    rootPass: \"...\",\n    stackscriptId: foo.id,\n    stackscriptData: {\n        \"package\": \"nginx\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.StackScript(\"foo\",\n    label=\"foo\",\n    description=\"Installs a Package\",\n    script=\"\"\"#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\"\"\",\n    images=[\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    rev_note=\"initial version\")\nfoo_instance = linode.Instance(\"foo\",\n    image=\"linode/ubuntu22.04\",\n    label=\"foo\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    authorized_keys=[\"...\"],\n    root_pass=\"...\",\n    stackscript_id=foo.id,\n    stackscript_data={\n        \"package\": \"nginx\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.StackScript(\"foo\", new()\n    {\n        Label = \"foo\",\n        Description = \"Installs a Package\",\n        Script = @\"#!/bin/bash\n# \u003cUDF name=\"\"package\"\" label=\"\"System Package to Install\"\" example=\"\"nginx\"\" default=\"\"\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\",\n        Images = new[]\n        {\n            \"linode/ubuntu22.04\",\n            \"linode/ubuntu20.04\",\n        },\n        RevNote = \"initial version\",\n    });\n\n    var fooInstance = new Linode.Instance(\"foo\", new()\n    {\n        Image = \"linode/ubuntu22.04\",\n        Label = \"foo\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        AuthorizedKeys = new[]\n        {\n            \"...\",\n        },\n        RootPass = \"...\",\n        StackscriptId = foo.Id,\n        StackscriptData = \n        {\n            { \"package\", \"nginx\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewStackScript(ctx, \"foo\", \u0026linode.StackScriptArgs{\n\t\t\tLabel:       pulumi.String(\"foo\"),\n\t\t\tDescription: pulumi.String(\"Installs a Package\"),\n\t\t\tScript:      pulumi.String(\"#!/bin/bash\\n# \u003cUDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\"\u003e\\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\\n\"),\n\t\t\tImages: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"linode/ubuntu22.04\"),\n\t\t\t\tpulumi.String(\"linode/ubuntu20.04\"),\n\t\t\t},\n\t\t\tRevNote: pulumi.String(\"initial version\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tLabel:  pulumi.String(\"foo\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"...\"),\n\t\t\t},\n\t\t\tRootPass:      pulumi.String(\"...\"),\n\t\t\tStackscriptId: foo.ID(),\n\t\t\tStackscriptData: pulumi.Map{\n\t\t\t\t\"package\": pulumi.Any(\"nginx\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.StackScript;\nimport com.pulumi.linode.StackScriptArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new StackScript(\"foo\", StackScriptArgs.builder()        \n            .label(\"foo\")\n            .description(\"Installs a Package\")\n            .script(\"\"\"\n#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n            \"\"\")\n            .images(            \n                \"linode/ubuntu22.04\",\n                \"linode/ubuntu20.04\")\n            .revNote(\"initial version\")\n            .build());\n\n        var fooInstance = new Instance(\"fooInstance\", InstanceArgs.builder()        \n            .image(\"linode/ubuntu22.04\")\n            .label(\"foo\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .authorizedKeys(\"...\")\n            .rootPass(\"...\")\n            .stackscriptId(foo.id())\n            .stackscriptData(Map.of(\"package\", \"nginx\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:StackScript\n    properties:\n      label: foo\n      description: Installs a Package\n      script: |\n        #!/bin/bash\n        # \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\n        apt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n      images:\n        - linode/ubuntu22.04\n        - linode/ubuntu20.04\n      revNote: initial version\n  fooInstance:\n    type: linode:Instance\n    name: foo\n    properties:\n      image: linode/ubuntu22.04\n      label: foo\n      region: us-east\n      type: g6-nanode-1\n      authorizedKeys:\n        - '...'\n      rootPass: '...'\n      stackscriptId: ${foo.id}\n      stackscriptData:\n        package: nginx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes StackScripts can be imported using the Linode StackScript `id`, e.g.\n\n```sh\n$ pulumi import linode:index/stackScript:StackScript mystackscript 1234567\n```\n\n",
+            "description": "Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  \n\nFor more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).\n\n## Example Usage\n\nThe following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `\u003cUDF ...\u003e` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.StackScript(\"foo\", {\n    label: \"foo\",\n    description: \"Installs a Package\",\n    script: `#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install PACKAGE\n`,\n    images: [\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    revNote: \"initial version\",\n});\nconst fooInstance = new linode.Instance(\"foo\", {\n    image: \"linode/ubuntu22.04\",\n    label: \"foo\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    authorizedKeys: [\"...\"],\n    rootPass: \"...\",\n    stackscriptId: foo.id,\n    stackscriptData: {\n        \"package\": \"nginx\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.StackScript(\"foo\",\n    label=\"foo\",\n    description=\"Installs a Package\",\n    script=\"\"\"#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\"\"\",\n    images=[\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    rev_note=\"initial version\")\nfoo_instance = linode.Instance(\"foo\",\n    image=\"linode/ubuntu22.04\",\n    label=\"foo\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    authorized_keys=[\"...\"],\n    root_pass=\"...\",\n    stackscript_id=foo.id,\n    stackscript_data={\n        \"package\": \"nginx\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.StackScript(\"foo\", new()\n    {\n        Label = \"foo\",\n        Description = \"Installs a Package\",\n        Script = @\"#!/bin/bash\n# \u003cUDF name=\"\"package\"\" label=\"\"System Package to Install\"\" example=\"\"nginx\"\" default=\"\"\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\",\n        Images = new[]\n        {\n            \"linode/ubuntu22.04\",\n            \"linode/ubuntu20.04\",\n        },\n        RevNote = \"initial version\",\n    });\n\n    var fooInstance = new Linode.Instance(\"foo\", new()\n    {\n        Image = \"linode/ubuntu22.04\",\n        Label = \"foo\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        AuthorizedKeys = new[]\n        {\n            \"...\",\n        },\n        RootPass = \"...\",\n        StackscriptId = foo.Id,\n        StackscriptData = \n        {\n            { \"package\", \"nginx\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewStackScript(ctx, \"foo\", \u0026linode.StackScriptArgs{\n\t\t\tLabel:       pulumi.String(\"foo\"),\n\t\t\tDescription: pulumi.String(\"Installs a Package\"),\n\t\t\tScript:      pulumi.String(\"#!/bin/bash\\n# \u003cUDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\"\u003e\\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\\n\"),\n\t\t\tImages: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"linode/ubuntu22.04\"),\n\t\t\t\tpulumi.String(\"linode/ubuntu20.04\"),\n\t\t\t},\n\t\t\tRevNote: pulumi.String(\"initial version\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tLabel:  pulumi.String(\"foo\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"...\"),\n\t\t\t},\n\t\t\tRootPass:      pulumi.String(\"...\"),\n\t\t\tStackscriptId: foo.ID(),\n\t\t\tStackscriptData: pulumi.Map{\n\t\t\t\t\"package\": pulumi.Any(\"nginx\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.StackScript;\nimport com.pulumi.linode.StackScriptArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new StackScript(\"foo\", StackScriptArgs.builder()        \n            .label(\"foo\")\n            .description(\"Installs a Package\")\n            .script(\"\"\"\n#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n            \"\"\")\n            .images(            \n                \"linode/ubuntu22.04\",\n                \"linode/ubuntu20.04\")\n            .revNote(\"initial version\")\n            .build());\n\n        var fooInstance = new Instance(\"fooInstance\", InstanceArgs.builder()        \n            .image(\"linode/ubuntu22.04\")\n            .label(\"foo\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .authorizedKeys(\"...\")\n            .rootPass(\"...\")\n            .stackscriptId(foo.id())\n            .stackscriptData(Map.of(\"package\", \"nginx\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:StackScript\n    properties:\n      label: foo\n      description: Installs a Package\n      script: |\n        #!/bin/bash\n        # \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\n        apt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n      images:\n        - linode/ubuntu22.04\n        - linode/ubuntu20.04\n      revNote: initial version\n  fooInstance:\n    type: linode:Instance\n    name: foo\n    properties:\n      image: linode/ubuntu22.04\n      label: foo\n      region: us-east\n      type: g6-nanode-1\n      authorizedKeys:\n        - '...'\n      rootPass: '...'\n      stackscriptId: ${foo.id}\n      stackscriptData:\n        package: nginx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes StackScripts can be imported using the Linode StackScript `id`, e.g.\n\n```sh\n$ pulumi import linode:index/stackScript:StackScript mystackscript 1234567\n```\n\n",
             "properties": {
                 "created": {
                     "type": "string",
