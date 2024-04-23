@@ -106,7 +106,6 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
 
     The following example shows how one might use this data source to access information about a Linode StackScript.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -123,7 +122,6 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
     ])
     pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 
@@ -186,7 +184,6 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
 
     The following example shows how one might use this data source to access information about a Linode StackScript.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -203,7 +200,6 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     ])
     pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Filterable Fields
 

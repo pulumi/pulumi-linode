@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class FirewallOutboundArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+        /// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
         /// </summary>
         public InputList<string> Ipv4s
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _ipv6s;
 
         /// <summary>
-        /// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+        /// A list of IPv6 addresses or networks this rule applies to.
         /// </summary>
         public InputList<string> Ipv6s
         {
@@ -55,7 +55,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Ports { get; set; }
 
         /// <summary>
-        /// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        /// The network protocol this rule controls.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

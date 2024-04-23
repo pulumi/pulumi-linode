@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetInstanceTypesTypeAddonBackupPriceInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cost (in US dollars) per hour.
+        /// The cost (in US dollars) per hour to add Backups service.
         /// </summary>
         [Input("hourly", required: true)]
         public Input<double> Hourly { get; set; } = null!;
 
         /// <summary>
-        /// Cost (in US dollars) per month.
+        /// The cost (in US dollars) per month to add Backups service.
         /// </summary>
         [Input("monthly", required: true)]
         public Input<double> Monthly { get; set; } = null!;

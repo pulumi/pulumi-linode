@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * Get information about an IPv6 range assigned to a Linode:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     range: "2001:0db8::",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpv6Range(args: GetIpv6RangeArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6RangeResult> {
 
@@ -67,7 +65,6 @@ export interface GetIpv6RangeResult {
  *
  * Get information about an IPv6 range assigned to a Linode:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -76,7 +73,6 @@ export interface GetIpv6RangeResult {
  *     range: "2001:0db8::",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpv6RangeOutput(args: GetIpv6RangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6RangeResult> {
     return pulumi.output(args).apply((a: any) => getIpv6Range(a, opts))

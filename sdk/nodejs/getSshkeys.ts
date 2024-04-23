@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this data source to access information about a Linode Kernel.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -33,7 +32,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -93,7 +91,6 @@ export interface GetSshkeysResult {
  *
  * The following example shows how one might use this data source to access information about a Linode Kernel.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -111,7 +108,6 @@ export interface GetSshkeysResult {
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

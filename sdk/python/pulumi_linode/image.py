@@ -532,7 +532,6 @@ class Image(pulumi.CustomResource):
 
         Creating an image from an existing Linode Instance and deploying another instance with that image:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -552,11 +551,9 @@ class Image(pulumi.CustomResource):
             region="eu-west",
             image=bar.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating and uploading an image from a local file:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -569,7 +566,6 @@ class Image(pulumi.CustomResource):
             file_path="path/to/image.img.gz",
             file_hash=std.filemd5(input="path/to/image.img.gz").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -615,7 +611,6 @@ class Image(pulumi.CustomResource):
 
         Creating an image from an existing Linode Instance and deploying another instance with that image:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -635,11 +630,9 @@ class Image(pulumi.CustomResource):
             region="eu-west",
             image=bar.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating and uploading an image from a local file:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -652,7 +645,6 @@ class Image(pulumi.CustomResource):
             file_path="path/to/image.img.gz",
             file_hash=std.filemd5(input="path/to/image.img.gz").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

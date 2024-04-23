@@ -17,7 +17,6 @@ import (
 // For additional information about a specific IPv6 range consider using the Ipv6Range
 // data source.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Filterable Fields
 //

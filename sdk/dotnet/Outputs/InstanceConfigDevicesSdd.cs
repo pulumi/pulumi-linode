@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigDevicesSdd
     {
         /// <summary>
-        /// The Disk ID of the associated `disk_label`, if used.
+        /// The Disk ID to map to this disk slot
         /// </summary>
         public readonly int? DiskId;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? DiskLabel;
         /// <summary>
-        /// The Volume ID to map to this `device` slot.
+        /// The Block Storage volume ID to map to this disk slot
         /// </summary>
         public readonly int? VolumeId;
 

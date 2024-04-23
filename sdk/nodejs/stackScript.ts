@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `<UDF ...>` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscriptData` field.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -25,7 +24,7 @@ import * as utilities from "./utilities";
  *     description: "Installs a Package",
  *     script: `#!/bin/bash
  * # <UDF name="package" label="System Package to Install" example="nginx" default="">
- * apt-get -q update && apt-get -q -y install $PACKAGE
+ * apt-get -q update && apt-get -q -y install PACKAGE
  * `,
  *     images: [
  *         "linode/ubuntu22.04",
@@ -46,7 +45,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -74,14 +74,14 @@ public final class GetStackScriptsStackscriptUserDefinedField extends com.pulumi
     }
 
     /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     * The name of the field.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     * @return The name of the field.
      * 
      */
     public String name() {
@@ -177,7 +177,7 @@ public final class GetStackScriptsStackscriptUserDefinedField extends com.pulumi
         }
 
         /**
-         * @param name The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+         * @param name The name of the field.
          * 
          * @return builder
          * 

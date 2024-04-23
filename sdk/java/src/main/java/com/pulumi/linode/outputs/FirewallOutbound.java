@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallOutbound {
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     private String action;
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+     * @return A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      * 
      */
     private @Nullable List<String> ipv4s;
     /**
-     * @return A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+     * @return A list of IPv6 addresses or networks this rule applies to.
      * 
      */
     private @Nullable List<String> ipv6s;
@@ -39,28 +39,28 @@ public final class FirewallOutbound {
      */
     private @Nullable String ports;
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls.
      * 
      */
     private String protocol;
 
     private FirewallOutbound() {}
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     public String action() {
         return this.action;
     }
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+     * @return A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      * 
      */
     public List<String> ipv4s() {
         return this.ipv4s == null ? List.of() : this.ipv4s;
     }
     /**
-     * @return A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+     * @return A list of IPv6 addresses or networks this rule applies to.
      * 
      */
     public List<String> ipv6s() {
@@ -81,7 +81,7 @@ public final class FirewallOutbound {
         return Optional.ofNullable(this.ports);
     }
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls.
      * 
      */
     public String protocol() {

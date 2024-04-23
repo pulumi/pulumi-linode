@@ -103,15 +103,15 @@ export interface FirewallInbound {
 
 export interface FirewallOutbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+     * A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+     * A list of IPv6 addresses or networks this rule applies to.
      */
     ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -123,7 +123,7 @@ export interface FirewallOutbound {
      */
     ports?: pulumi.Input<string>;
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls.
      */
     protocol: pulumi.Input<string>;
 }
@@ -1328,22 +1328,22 @@ export interface GetInstanceTypesTypeAddonBackupArgs {
 
 export interface GetInstanceTypesTypeAddonBackupPrice {
     /**
-     * Cost (in US dollars) per hour.
+     * The cost (in US dollars) per hour to add Backups service.
      */
     hourly: number;
     /**
-     * Cost (in US dollars) per month.
+     * The cost (in US dollars) per month to add Backups service.
      */
     monthly: number;
 }
 
 export interface GetInstanceTypesTypeAddonBackupPriceArgs {
     /**
-     * Cost (in US dollars) per hour.
+     * The cost (in US dollars) per hour to add Backups service.
      */
     hourly: pulumi.Input<number>;
     /**
-     * Cost (in US dollars) per month.
+     * The cost (in US dollars) per month to add Backups service.
      */
     monthly: pulumi.Input<number>;
 }
@@ -2810,7 +2810,7 @@ export interface GetStackScriptsStackscriptUserDefinedField {
      */
     manyOf: string;
     /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     * The name of the field.
      */
     name: string;
     /**
@@ -2837,7 +2837,7 @@ export interface GetStackScriptsStackscriptUserDefinedFieldArgs {
      */
     manyOf: pulumi.Input<string>;
     /**
-     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     * The name of the field.
      */
     name: pulumi.Input<string>;
     /**
@@ -4101,11 +4101,11 @@ export interface InstanceBackupsSchedule {
 
 export interface InstanceConfig {
     /**
-     * Arbitrary user comments about this `config`.
+     * Optional field for arbitrary User comments on this Config.
      */
     comments?: pulumi.Input<string>;
     /**
-     * A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+     * Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      */
     devices?: pulumi.Input<inputs.InstanceConfigDevices>;
     /**
@@ -4113,7 +4113,7 @@ export interface InstanceConfig {
      */
     helpers?: pulumi.Input<inputs.InstanceConfigHelpers>;
     /**
-     * The ID of the disk in the Linode API.
+     * The unique ID of this Config.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4121,7 +4121,7 @@ export interface InstanceConfig {
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
     /**
-     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
      */
     kernel?: pulumi.Input<string>;
     /**
@@ -4130,27 +4130,25 @@ export interface InstanceConfig {
     label: pulumi.Input<string>;
     /**
      * Defaults to the total RAM of the Linode
-     *
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
-     * The root device to boot. The corresponding disk must be attached to a `device` slot.  Example: `"/dev/sda"`
+     * The root device to boot. The corresponding disk must be attached.
      */
     rootDevice?: pulumi.Input<string>;
     /**
-     * Defines the state of your Linode after booting. Defaults to `"default"`.
+     * Defines the state of your Linode after booting. Defaults to default.
      */
     runLevel?: pulumi.Input<string>;
     /**
-     * Controls the virtualization mode. Defaults to `"paravirt"`.
+     * Controls the virtualization mode. Defaults to paravirt.
      */
     virtMode?: pulumi.Input<string>;
 }
 
 export interface InstanceConfigDevices {
     /**
-     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
     sda?: pulumi.Input<inputs.InstanceConfigDevicesSda>;
     /**
@@ -4185,7 +4183,7 @@ export interface InstanceConfigDevices {
 
 export interface InstanceConfigDevicesSda {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4193,14 +4191,14 @@ export interface InstanceConfigDevicesSda {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSdb {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4208,14 +4206,14 @@ export interface InstanceConfigDevicesSdb {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSdc {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4223,14 +4221,14 @@ export interface InstanceConfigDevicesSdc {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSdd {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4238,14 +4236,14 @@ export interface InstanceConfigDevicesSdd {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSde {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4253,14 +4251,14 @@ export interface InstanceConfigDevicesSde {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSdf {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4268,14 +4266,14 @@ export interface InstanceConfigDevicesSdf {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSdg {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4283,14 +4281,14 @@ export interface InstanceConfigDevicesSdg {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
 
 export interface InstanceConfigDevicesSdh {
     /**
-     * The Disk ID of the associated `diskLabel`, if used.
+     * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
     /**
@@ -4298,7 +4296,7 @@ export interface InstanceConfigDevicesSdh {
      */
     diskLabel?: pulumi.Input<string>;
     /**
-     * The Volume ID to map to this `device` slot.
+     * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
 }
@@ -4332,7 +4330,7 @@ export interface InstanceConfigInterface {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the interface.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4386,23 +4384,23 @@ export interface InstanceConfigInterfaceIpv4 {
 
 export interface InstanceDisk {
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorizedKeys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorizedUsers` forces the creation of a new Linode Instance.*
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
      */
     filesystem?: pulumi.Input<string>;
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
      */
     id?: pulumi.Input<number>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
      */
     image?: pulumi.Input<string>;
     /**
@@ -4414,7 +4412,7 @@ export interface InstanceDisk {
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `rootPass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * The password that will be initialially assigned to the 'root' user account.
      */
     rootPass?: pulumi.Input<string>;
     /**
@@ -4422,11 +4420,11 @@ export interface InstanceDisk {
      */
     size: pulumi.Input<number>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscriptData` forces the creation of a new Linode Instance.*
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
      */
     stackscriptData?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscriptId` forces the creation of a new Linode Instance.*
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
      */
     stackscriptId?: pulumi.Input<number>;
 }
@@ -4452,7 +4450,7 @@ export interface InstanceInterface {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the interface.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4522,7 +4520,7 @@ export interface InstanceMetadata {
 
 export interface InstanceSpecs {
     /**
-     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
+     * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      */
     disk?: pulumi.Input<number>;
     /**

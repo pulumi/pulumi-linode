@@ -18,14 +18,14 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     public static final FirewallOutboundArgs Empty = new FirewallOutboundArgs();
 
     /**
-     * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     public Output<String> action() {
@@ -33,14 +33,14 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+     * A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      * 
      */
     @Import(name="ipv4s")
     private @Nullable Output<List<String>> ipv4s;
 
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+     * @return A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      * 
      */
     public Optional<Output<List<String>>> ipv4s() {
@@ -48,14 +48,14 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+     * A list of IPv6 addresses or networks this rule applies to.
      * 
      */
     @Import(name="ipv6s")
     private @Nullable Output<List<String>> ipv6s;
 
     /**
-     * @return A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+     * @return A list of IPv6 addresses or networks this rule applies to.
      * 
      */
     public Optional<Output<List<String>>> ipv6s() {
@@ -93,14 +93,14 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls.
      * 
      */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls.
      * 
      */
     public Output<String> protocol() {
@@ -137,7 +137,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+         * @param ipv4s A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+         * @param ipv4s A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+         * @param ipv4s A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+         * @param ipv6s A list of IPv6 addresses or networks this rule applies to.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+         * @param ipv6s A list of IPv6 addresses or networks this rule applies to.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv6s A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+         * @param ipv6s A list of IPv6 addresses or networks this rule applies to.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param protocol The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+         * @param protocol The network protocol this rule controls.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param protocol The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+         * @param protocol The network protocol this rule controls.
          * 
          * @return builder
          * 

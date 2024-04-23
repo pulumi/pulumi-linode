@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode images with a certain label and visibility:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -32,11 +31,9 @@ import * as utilities from "./utilities";
  * });
  * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode images associated with the current token:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -44,7 +41,6 @@ import * as utilities from "./utilities";
  * const all-images = linode.getImages({});
  * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -122,7 +118,6 @@ export interface GetImagesResult {
  *
  * Get information about all Linode images with a certain label and visibility:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -141,11 +136,9 @@ export interface GetImagesResult {
  * });
  * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get information about all Linode images associated with the current token:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -153,7 +146,6 @@ export interface GetImagesResult {
  * const all-images = linode.getImages({});
  * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

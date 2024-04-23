@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     configId: 789,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeBalancerNode(args: GetNodeBalancerNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerNodeResult> {
 
@@ -83,7 +81,6 @@ export interface GetNodeBalancerNodeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -94,7 +91,6 @@ export interface GetNodeBalancerNodeResult {
  *     configId: 789,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeBalancerNodeOutput(args: GetNodeBalancerNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerNodeResult> {
     return pulumi.output(args).apply((a: any) => getNodeBalancerNode(a, opts))

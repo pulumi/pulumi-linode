@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// The ID of the disk in the Linode API.
+        /// The ID of the interface.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }

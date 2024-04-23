@@ -22,14 +22,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceDiskArgs Empty = new InstanceDiskArgs();
 
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
      * 
      */
     @Import(name="authorizedKeys")
     private @Nullable Output<List<String>> authorizedKeys;
 
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public Optional<Output<List<String>>> authorizedKeys() {
@@ -37,14 +37,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     @Import(name="authorizedUsers")
     private @Nullable Output<List<String>> authorizedUsers;
 
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public Optional<Output<List<String>>> authorizedUsers() {
@@ -52,14 +52,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
      * 
      */
     @Import(name="filesystem")
     private @Nullable Output<String> filesystem;
 
     /**
-     * @return The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+     * @return The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
      * 
      */
     public Optional<Output<String>> filesystem() {
@@ -67,14 +67,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -82,14 +82,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
      * 
      */
     public Optional<Output<String>> image() {
@@ -127,14 +127,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * The password that will be initialially assigned to the &#39;root&#39; user account.
      * 
      */
     @Import(name="rootPass")
     private @Nullable Output<String> rootPass;
 
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * @return The password that will be initialially assigned to the &#39;root&#39; user account.
      * 
      */
     public Optional<Output<String>> rootPass() {
@@ -157,14 +157,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<Map<String,Object>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     public Optional<Output<Map<String,Object>>> stackscriptData() {
@@ -172,14 +172,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
      */
     @Import(name="stackscriptId")
     private @Nullable Output<Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
      */
     public Optional<Output<Integer>> stackscriptId() {
@@ -221,7 +221,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesystem The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+         * @param filesystem The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesystem The Disk filesystem can be one of: `&#34;raw&#34;`, `&#34;swap&#34;`, `&#34;ext3&#34;`, `&#34;ext4&#34;`, or `&#34;initrd&#34;` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+         * @param filesystem The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id The ID of the disk in the Linode API.
+         * @param id The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id The ID of the disk in the Linode API.
+         * @param id The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+         * @param rootPass The password that will be initialially assigned to the &#39;root&#39; user account.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+         * @param rootPass The password that will be initialially assigned to the &#39;root&#39; user account.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
          * 
          * @return builder
          * 

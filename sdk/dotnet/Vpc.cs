@@ -18,7 +18,6 @@ namespace Pulumi.Linode
     /// 
     /// Create a VPC:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [LinodeResourceType("linode:index/vpc:Vpc")]
     public partial class Vpc : global::Pulumi.CustomResource

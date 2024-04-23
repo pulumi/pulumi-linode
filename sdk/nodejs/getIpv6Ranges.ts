@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
  * data source.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  * });
  * export const ranges = filtered_ranges;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -71,7 +69,6 @@ export interface GetIpv6RangesResult {
  * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
  * data source.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -84,7 +81,6 @@ export interface GetIpv6RangesResult {
  * });
  * export const ranges = filtered_ranges;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *

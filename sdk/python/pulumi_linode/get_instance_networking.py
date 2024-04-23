@@ -79,14 +79,12 @@ def get_instance_networking(linode_id: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     example = linode.get_instance_networking(linode_id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int linode_id: The Linode instance's ID.
@@ -111,14 +109,12 @@ def get_instance_networking_output(linode_id: Optional[pulumi.Input[int]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     example = linode.get_instance_networking(linode_id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int linode_id: The Linode instance's ID.

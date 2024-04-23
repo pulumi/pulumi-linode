@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfigDevicesSdf {
     /**
-     * @return The Disk ID of the associated `disk_label`, if used.
+     * @return The Disk ID to map to this disk slot
      * 
      */
     private @Nullable Integer diskId;
@@ -23,14 +23,14 @@ public final class InstanceConfigDevicesSdf {
      */
     private @Nullable String diskLabel;
     /**
-     * @return The Volume ID to map to this `device` slot.
+     * @return The Block Storage volume ID to map to this disk slot
      * 
      */
     private @Nullable Integer volumeId;
 
     private InstanceConfigDevicesSdf() {}
     /**
-     * @return The Disk ID of the associated `disk_label`, if used.
+     * @return The Disk ID to map to this disk slot
      * 
      */
     public Optional<Integer> diskId() {
@@ -44,7 +44,7 @@ public final class InstanceConfigDevicesSdf {
         return Optional.ofNullable(this.diskLabel);
     }
     /**
-     * @return The Volume ID to map to this `device` slot.
+     * @return The Block Storage volume ID to map to this disk slot
      * 
      */
     public Optional<Integer> volumeId() {

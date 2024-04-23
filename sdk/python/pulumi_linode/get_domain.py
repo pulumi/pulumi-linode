@@ -210,7 +210,6 @@ def get_domain(domain: Optional[str] = None,
 
     The following example shows how one might use this data source to access information about a Linode domain.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -218,7 +217,6 @@ def get_domain(domain: Optional[str] = None,
     foo = linode.get_domain(id=1234567)
     bar = linode.get_domain(domain="bar.example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain: The unique domain name of the Domain record to query.
@@ -258,7 +256,6 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
 
     The following example shows how one might use this data source to access information about a Linode domain.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -266,7 +263,6 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
     foo = linode.get_domain(id=1234567)
     bar = linode.get_domain(domain="bar.example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain: The unique domain name of the Domain record to query.

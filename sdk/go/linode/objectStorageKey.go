@@ -18,7 +18,6 @@ import (
 //
 // The following example shows how one might use this resource to create an Object Storage Key.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ObjectStorageKey struct {
 	pulumi.CustomResourceState
 

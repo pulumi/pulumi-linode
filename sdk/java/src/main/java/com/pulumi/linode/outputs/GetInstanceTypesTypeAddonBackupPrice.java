@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceTypesTypeAddonBackupPrice {
     /**
-     * @return Cost (in US dollars) per hour.
+     * @return The cost (in US dollars) per hour to add Backups service.
      * 
      */
     private Double hourly;
     /**
-     * @return Cost (in US dollars) per month.
+     * @return The cost (in US dollars) per month to add Backups service.
      * 
      */
     private Double monthly;
 
     private GetInstanceTypesTypeAddonBackupPrice() {}
     /**
-     * @return Cost (in US dollars) per hour.
+     * @return The cost (in US dollars) per hour to add Backups service.
      * 
      */
     public Double hourly() {
         return this.hourly;
     }
     /**
-     * @return Cost (in US dollars) per month.
+     * @return The cost (in US dollars) per month to add Backups service.
      * 
      */
     public Double monthly() {

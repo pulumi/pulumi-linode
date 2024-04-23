@@ -88,14 +88,12 @@ def get_instance_backups(linode_id: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_backups = linode.get_instance_backups(linode_id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int linode_id: The Linode instance's ID.
@@ -121,14 +119,12 @@ def get_instance_backups_output(linode_id: Optional[pulumi.Input[int]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
 
     my_backups = linode.get_instance_backups(linode_id=123)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int linode_id: The Linode instance's ID.

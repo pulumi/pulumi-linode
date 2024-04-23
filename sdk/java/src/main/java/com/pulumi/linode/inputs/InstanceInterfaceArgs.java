@@ -36,14 +36,14 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the interface.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the interface.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -233,7 +233,7 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id The ID of the disk in the Linode API.
+         * @param id The ID of the interface.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id The ID of the disk in the Linode API.
+         * @param id The ID of the interface.
          * 
          * @return builder
          * 

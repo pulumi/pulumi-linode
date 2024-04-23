@@ -238,42 +238,50 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.alerts;
     }
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
      * 
      */
     @Export(name="authorizedKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if `image` is provided. *This value can not be imported.* *Changing `authorized_keys` forces the creation of a new Linode Instance.*
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public Output<Optional<List<String>>> authorizedKeys() {
         return Codegen.optional(this.authorizedKeys);
     }
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
+     * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     @Export(name="authorizedUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedUsers;
 
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. *This value can not be imported.* *Changing `authorized_users` forces the creation of a new Linode Instance.*
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
+     * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public Output<Optional<List<String>>> authorizedUsers() {
         return Codegen.optional(this.authorizedUsers);
     }
     /**
-     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup
+     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
+     * /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually
+     * exclusive.
      * 
      */
     @Export(name="backupId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupId;
 
     /**
-     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive. *This value can not be imported.* *Changing `backup_id` forces the creation of a new Linode Instance.*
+     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup
+     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
+     * /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually
+     * exclusive.
      * 
      */
     public Output<Optional<Integer>> backupId() {
@@ -308,14 +316,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.backupsEnabled;
     }
     /**
-     * The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+     * The Label of the Instance Config that should be used to boot the Linode instance.
      * 
      */
     @Export(name="bootConfigLabel", refs={String.class}, tree="[0]")
     private Output<String> bootConfigLabel;
 
     /**
-     * @return The Label of the Instance Config that should be used to boot the Linode instance.  If there is only one `config`, the `label` of that `config` will be used as the `boot_config_label`. *This value can not be imported.*
+     * @return The Label of the Instance Config that should be used to boot the Linode instance.
      * 
      */
     public Output<String> bootConfigLabel() {
@@ -426,14 +434,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.hostUuid;
     }
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
+     * See /images for more information on the Images available for you to use.
      * 
      */
     @Export(name="image", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> image;
 
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/images). *Changing `image` forces the creation of a new Linode Instance.*
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
+     * See /images for more information on the Images available for you to use.
      * 
      */
     public Output<Optional<String>> image() {
@@ -620,14 +630,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resizeDisk);
     }
     /**
-     * The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * The password that will be initially assigned to the &#39;root&#39; user account.
      * 
      */
     @Export(name="rootPass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rootPass;
 
     /**
-     * @return The initial password for the `root` user account. *This value can not be imported.* *Changing `root_pass` forces the creation of a new Linode Instance.* *If omitted, a random password will be generated but will not be stored in Pulumi state.*
+     * @return The password that will be initially assigned to the &#39;root&#39; user account.
      * 
      */
     public Output<Optional<String>> rootPass() {
@@ -666,28 +676,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.specs;
     }
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
+     * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     @Export(name="stackscriptData", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.  *This value can not be imported.* *Changing `stackscript_data` forces the creation of a new Linode Instance.*
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
+     * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     public Output<Optional<Map<String,Object>>> stackscriptData() {
         return Codegen.optional(this.stackscriptData);
     }
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image
+     * that is compatible with this StackScript.
      * 
      */
     @Export(name="stackscriptId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. *This value can not be imported.* *Changing `stackscript_id` forces the creation of a new Linode Instance.*
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image
+     * that is compatible with this StackScript.
      * 
      */
     public Output<Optional<Integer>> stackscriptId() {
@@ -708,14 +722,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
+     * is used to set the swap disk size for the newly-created Linode.
      * 
      */
     @Export(name="swapSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> swapSize;
 
     /**
-     * @return When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
+     * @return When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
+     * is used to set the swap disk size for the newly-created Linode.
      * 
      */
     public Output<Integer> swapSize() {

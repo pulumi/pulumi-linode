@@ -110,7 +110,6 @@ def get_vpc(id: Optional[str] = None,
 
     The following example shows how one might use this data source to access information about a Linode VPC.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -118,7 +117,6 @@ def get_vpc(id: Optional[str] = None,
     foo = linode.get_vpc(id="123")
     pulumi.export("vpc", foo)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique id of this VPC.
@@ -147,7 +145,6 @@ def get_vpc_output(id: Optional[pulumi.Input[str]] = None,
 
     The following example shows how one might use this data source to access information about a Linode VPC.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -155,7 +152,6 @@ def get_vpc_output(id: Optional[pulumi.Input[str]] = None,
     foo = linode.get_vpc(id="123")
     pulumi.export("vpc", foo)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique id of this VPC.

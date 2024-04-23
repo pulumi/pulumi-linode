@@ -416,7 +416,6 @@ class Firewall(pulumi.CustomResource):
 
         Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -470,7 +469,6 @@ class Firewall(pulumi.CustomResource):
             outbound_policy="ACCEPT",
             linodes=[my_instance.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -509,7 +507,6 @@ class Firewall(pulumi.CustomResource):
 
         Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -563,7 +560,6 @@ class Firewall(pulumi.CustomResource):
             outbound_policy="ACCEPT",
             linodes=[my_instance.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about a PostgreSQL database:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     id: 12345,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## updates
  *
@@ -163,7 +161,6 @@ export interface GetDatabasePostgresqlResult {
  *
  * Get information about a PostgreSQL database:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -172,7 +169,6 @@ export interface GetDatabasePostgresqlResult {
  *     id: 12345,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## updates
  *

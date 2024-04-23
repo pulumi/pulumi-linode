@@ -13,7 +13,6 @@ import (
 
 // Provides information about Linode regions that match a set of filters.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,7 +50,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Filterable Fields
 //

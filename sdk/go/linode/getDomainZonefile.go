@@ -17,7 +17,6 @@ import (
 //
 // The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDomainZonefile(ctx *pulumi.Context, args *GetDomainZonefileArgs, opts ...pulumi.InvokeOption) (*GetDomainZonefileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainZonefileResult

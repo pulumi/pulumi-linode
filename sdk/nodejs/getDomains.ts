@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get information about all Linode Cloud Domains with a specific tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  * });
  * export const domain = specific.then(specific => specific.domains?.[0]?.domain);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
@@ -104,7 +102,6 @@ export interface GetDomainsResult {
  *
  * Get information about all Linode Cloud Domains with a specific tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -117,7 +114,6 @@ export interface GetDomainsResult {
  * });
  * export const domain = specific.then(specific => specific.domains?.[0]?.domain);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Filterable Fields
  *
