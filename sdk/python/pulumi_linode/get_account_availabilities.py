@@ -65,7 +65,7 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
                                filters: Optional[Sequence[pulumi.InputType['GetAccountAvailabilitiesFilterArgs']]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAvailabilitiesResult:
     """
-    Provides information about services which are unavailable for the current Linode account.
+    Provides information about services availabilities for the current Linode account.
 
     ## Example Usage
 
@@ -87,6 +87,8 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
     * `region`
 
     * `unavailable`
+
+    * `available`
     """
     __args__ = dict()
     __args__['availabilities'] = availabilities
@@ -105,7 +107,7 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
                                       filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountAvailabilitiesFilterArgs']]]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilitiesResult]:
     """
-    Provides information about services which are unavailable for the current Linode account.
+    Provides information about services availabilities for the current Linode account.
 
     ## Example Usage
 
@@ -127,5 +129,7 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
     * `region`
 
     * `unavailable`
+
+    * `available`
     """
     ...

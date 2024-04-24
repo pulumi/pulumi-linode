@@ -16,6 +16,21 @@ public final class GetAccountAvailabilitiesAvailabilityArgs extends com.pulumi.r
     public static final GetAccountAvailabilitiesAvailabilityArgs Empty = new GetAccountAvailabilitiesAvailabilityArgs();
 
     /**
+     * A set of services which are available for the given region.
+     * 
+     */
+    @Import(name="availables", required=true)
+    private Output<List<String>> availables;
+
+    /**
+     * @return A set of services which are available for the given region.
+     * 
+     */
+    public Output<List<String>> availables() {
+        return this.availables;
+    }
+
+    /**
      * The region this availability entry refers to.
      * 
      */
@@ -48,6 +63,7 @@ public final class GetAccountAvailabilitiesAvailabilityArgs extends com.pulumi.r
     private GetAccountAvailabilitiesAvailabilityArgs() {}
 
     private GetAccountAvailabilitiesAvailabilityArgs(GetAccountAvailabilitiesAvailabilityArgs $) {
+        this.availables = $.availables;
         this.region = $.region;
         this.unavailables = $.unavailables;
     }
@@ -68,6 +84,37 @@ public final class GetAccountAvailabilitiesAvailabilityArgs extends com.pulumi.r
 
         public Builder(GetAccountAvailabilitiesAvailabilityArgs defaults) {
             $ = new GetAccountAvailabilitiesAvailabilityArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availables A set of services which are available for the given region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availables(Output<List<String>> availables) {
+            $.availables = availables;
+            return this;
+        }
+
+        /**
+         * @param availables A set of services which are available for the given region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availables(List<String> availables) {
+            return availables(Output.of(availables));
+        }
+
+        /**
+         * @param availables A set of services which are available for the given region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availables(String... availables) {
+            return availables(List.of(availables));
         }
 
         /**
@@ -123,6 +170,9 @@ public final class GetAccountAvailabilitiesAvailabilityArgs extends com.pulumi.r
         }
 
         public GetAccountAvailabilitiesAvailabilityArgs build() {
+            if ($.availables == null) {
+                throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailabilityArgs", "availables");
+            }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailabilityArgs", "region");
             }

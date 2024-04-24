@@ -16,17 +16,17 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
         /// </summary>
-        public readonly int? Down;
+        public readonly int Down;
         /// <summary>
         /// The number of backends considered to be 'UP' and healthy, and that are serving requests.
         /// </summary>
-        public readonly int? Up;
+        public readonly int Up;
 
         [OutputConstructor]
         private NodeBalancerConfigNodeStatus(
-            int? down,
+            int down,
 
-            int? up)
+            int up)
         {
             Down = down;
             Up = up;

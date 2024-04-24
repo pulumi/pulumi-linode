@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountAvailabilitiesAvailability {
     /**
+     * @return A set of services which are available for the given region.
+     * 
+     */
+    private List<String> availables;
+    /**
      * @return The region this availability entry refers to.
      * 
      */
@@ -23,6 +28,13 @@ public final class GetAccountAvailabilitiesAvailability {
     private List<String> unavailables;
 
     private GetAccountAvailabilitiesAvailability() {}
+    /**
+     * @return A set of services which are available for the given region.
+     * 
+     */
+    public List<String> availables() {
+        return this.availables;
+    }
     /**
      * @return The region this availability entry refers to.
      * 
@@ -47,15 +59,28 @@ public final class GetAccountAvailabilitiesAvailability {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> availables;
         private String region;
         private List<String> unavailables;
         public Builder() {}
         public Builder(GetAccountAvailabilitiesAvailability defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availables = defaults.availables;
     	      this.region = defaults.region;
     	      this.unavailables = defaults.unavailables;
         }
 
+        @CustomType.Setter
+        public Builder availables(List<String> availables) {
+            if (availables == null) {
+              throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "availables");
+            }
+            this.availables = availables;
+            return this;
+        }
+        public Builder availables(String... availables) {
+            return availables(List.of(availables));
+        }
         @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
@@ -77,6 +102,7 @@ public final class GetAccountAvailabilitiesAvailability {
         }
         public GetAccountAvailabilitiesAvailability build() {
             final var _resultValue = new GetAccountAvailabilitiesAvailability();
+            _resultValue.availables = availables;
             _resultValue.region = region;
             _resultValue.unavailables = unavailables;
             return _resultValue;

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides details about resource availability in a region to an account specifically.
+// Provides details about service availability in a region to an account specifically.
 //
 // ## Example Usage
 //
@@ -58,11 +58,13 @@ type GetAccountAvailabilityArgs struct {
 
 // A collection of values returned by getAccountAvailability.
 type GetAccountAvailabilityResult struct {
+	// A set of services which are available to the account in a region.
+	Availables []string `pulumi:"availables"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The region ID.
 	Region string `pulumi:"region"`
-	// A list of resources which are NOT available to the account in a region.
+	// A set of services which are unavailable to the account in a region.
 	Unavailables []string `pulumi:"unavailables"`
 }
 
@@ -104,6 +106,11 @@ func (o GetAccountAvailabilityResultOutput) ToGetAccountAvailabilityResultOutput
 	return o
 }
 
+// A set of services which are available to the account in a region.
+func (o GetAccountAvailabilityResultOutput) Availables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountAvailabilityResult) []string { return v.Availables }).(pulumi.StringArrayOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetAccountAvailabilityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountAvailabilityResult) string { return v.Id }).(pulumi.StringOutput)
@@ -114,7 +121,7 @@ func (o GetAccountAvailabilityResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountAvailabilityResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// A list of resources which are NOT available to the account in a region.
+// A set of services which are unavailable to the account in a region.
 func (o GetAccountAvailabilityResultOutput) Unavailables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountAvailabilityResult) []string { return v.Unavailables }).(pulumi.StringArrayOutput)
 }

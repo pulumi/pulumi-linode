@@ -15,6 +15,21 @@ public final class GetAccountAvailabilitiesAvailability extends com.pulumi.resou
     public static final GetAccountAvailabilitiesAvailability Empty = new GetAccountAvailabilitiesAvailability();
 
     /**
+     * A set of services which are available for the given region.
+     * 
+     */
+    @Import(name="availables", required=true)
+    private List<String> availables;
+
+    /**
+     * @return A set of services which are available for the given region.
+     * 
+     */
+    public List<String> availables() {
+        return this.availables;
+    }
+
+    /**
      * The region this availability entry refers to.
      * 
      */
@@ -47,6 +62,7 @@ public final class GetAccountAvailabilitiesAvailability extends com.pulumi.resou
     private GetAccountAvailabilitiesAvailability() {}
 
     private GetAccountAvailabilitiesAvailability(GetAccountAvailabilitiesAvailability $) {
+        this.availables = $.availables;
         this.region = $.region;
         this.unavailables = $.unavailables;
     }
@@ -67,6 +83,27 @@ public final class GetAccountAvailabilitiesAvailability extends com.pulumi.resou
 
         public Builder(GetAccountAvailabilitiesAvailability defaults) {
             $ = new GetAccountAvailabilitiesAvailability(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availables A set of services which are available for the given region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availables(List<String> availables) {
+            $.availables = availables;
+            return this;
+        }
+
+        /**
+         * @param availables A set of services which are available for the given region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availables(String... availables) {
+            return availables(List.of(availables));
         }
 
         /**
@@ -102,6 +139,9 @@ public final class GetAccountAvailabilitiesAvailability extends com.pulumi.resou
         }
 
         public GetAccountAvailabilitiesAvailability build() {
+            if ($.availables == null) {
+                throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "availables");
+            }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetAccountAvailabilitiesAvailability", "region");
             }

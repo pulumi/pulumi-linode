@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides information about services which are unavailable for the current Linode account.
+// Provides information about services availabilities for the current Linode account.
 //
 // ## Example Usage
 //
@@ -58,6 +58,8 @@ import (
 // * `region`
 //
 // * `unavailable`
+//
+// * `available`
 func GetAccountAvailabilities(ctx *pulumi.Context, args *GetAccountAvailabilitiesArgs, opts ...pulumi.InvokeOption) (*GetAccountAvailabilitiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountAvailabilitiesResult

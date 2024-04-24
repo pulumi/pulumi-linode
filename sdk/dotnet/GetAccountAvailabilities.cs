@@ -12,7 +12,7 @@ namespace Pulumi.Linode
     public static class GetAccountAvailabilities
     {
         /// <summary>
-        /// Provides information about services which are unavailable for the current Linode account.
+        /// Provides information about services availabilities for the current Linode account.
         /// 
         /// ## Example Usage
         /// 
@@ -53,12 +53,14 @@ namespace Pulumi.Linode
         /// * `region`
         /// 
         /// * `unavailable`
+        /// 
+        /// * `available`
         /// </summary>
         public static Task<GetAccountAvailabilitiesResult> InvokeAsync(GetAccountAvailabilitiesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAvailabilitiesResult>("linode:index/getAccountAvailabilities:getAccountAvailabilities", args ?? new GetAccountAvailabilitiesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides information about services which are unavailable for the current Linode account.
+        /// Provides information about services availabilities for the current Linode account.
         /// 
         /// ## Example Usage
         /// 
@@ -99,6 +101,8 @@ namespace Pulumi.Linode
         /// * `region`
         /// 
         /// * `unavailable`
+        /// 
+        /// * `available`
         /// </summary>
         public static Output<GetAccountAvailabilitiesResult> Invoke(GetAccountAvailabilitiesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAvailabilitiesResult>("linode:index/getAccountAvailabilities:getAccountAvailabilities", args ?? new GetAccountAvailabilitiesInvokeArgs(), options.WithDefaults());

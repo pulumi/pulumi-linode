@@ -15,14 +15,14 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
         /// </summary>
-        [Input("down")]
-        public Input<int>? Down { get; set; }
+        [Input("down", required: true)]
+        public Input<int> Down { get; set; } = null!;
 
         /// <summary>
         /// The number of backends considered to be 'UP' and healthy, and that are serving requests.
         /// </summary>
-        [Input("up")]
-        public Input<int>? Up { get; set; }
+        [Input("up", required: true)]
+        public Input<int> Up { get; set; } = null!;
 
         public NodeBalancerConfigNodeStatusArgs()
         {

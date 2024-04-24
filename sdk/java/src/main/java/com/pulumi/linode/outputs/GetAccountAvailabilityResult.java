@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountAvailabilityResult {
     /**
+     * @return A set of services which are available to the account in a region.
+     * 
+     */
+    private List<String> availables;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -22,12 +27,19 @@ public final class GetAccountAvailabilityResult {
      */
     private String region;
     /**
-     * @return A list of resources which are NOT available to the account in a region.
+     * @return A set of services which are unavailable to the account in a region.
      * 
      */
     private List<String> unavailables;
 
     private GetAccountAvailabilityResult() {}
+    /**
+     * @return A set of services which are available to the account in a region.
+     * 
+     */
+    public List<String> availables() {
+        return this.availables;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,7 +55,7 @@ public final class GetAccountAvailabilityResult {
         return this.region;
     }
     /**
-     * @return A list of resources which are NOT available to the account in a region.
+     * @return A set of services which are unavailable to the account in a region.
      * 
      */
     public List<String> unavailables() {
@@ -59,17 +71,30 @@ public final class GetAccountAvailabilityResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> availables;
         private String id;
         private String region;
         private List<String> unavailables;
         public Builder() {}
         public Builder(GetAccountAvailabilityResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availables = defaults.availables;
     	      this.id = defaults.id;
     	      this.region = defaults.region;
     	      this.unavailables = defaults.unavailables;
         }
 
+        @CustomType.Setter
+        public Builder availables(List<String> availables) {
+            if (availables == null) {
+              throw new MissingRequiredPropertyException("GetAccountAvailabilityResult", "availables");
+            }
+            this.availables = availables;
+            return this;
+        }
+        public Builder availables(String... availables) {
+            return availables(List.of(availables));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -99,6 +124,7 @@ public final class GetAccountAvailabilityResult {
         }
         public GetAccountAvailabilityResult build() {
             final var _resultValue = new GetAccountAvailabilityResult();
+            _resultValue.availables = availables;
             _resultValue.id = id;
             _resultValue.region = region;
             _resultValue.unavailables = unavailables;

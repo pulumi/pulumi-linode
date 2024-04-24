@@ -247,42 +247,42 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> port;
+    private Output<Integer> port;
 
     /**
      * @return The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can&#39;t have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      * 
      */
-    public Output<Optional<Integer>> port() {
-        return Codegen.optional(this.port);
+    public Output<Integer> port() {
+        return this.port;
     }
     /**
      * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> protocol;
+    private Output<String> protocol;
 
     /**
      * @return The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
-    public Output<Optional<String>> protocol() {
-        return Codegen.optional(this.protocol);
+    public Output<String> protocol() {
+        return this.protocol;
     }
     /**
      * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      * 
      */
     @Export(name="proxyProtocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> proxyProtocol;
+    private Output<String> proxyProtocol;
 
     /**
      * @return The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      * 
      */
-    public Output<Optional<String>> proxyProtocol() {
-        return Codegen.optional(this.proxyProtocol);
+    public Output<String> proxyProtocol() {
+        return this.proxyProtocol;
     }
     /**
      * The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.

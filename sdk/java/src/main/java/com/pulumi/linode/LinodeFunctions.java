@@ -419,7 +419,7 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides information about services which are unavailable for the current Linode account.
+     * Provides information about services availabilities for the current Linode account.
      * 
      * ## Example Usage
      * 
@@ -465,13 +465,15 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `unavailable`
+     * 
+     * * `available`
      * 
      */
     public static Output<GetAccountAvailabilitiesResult> getAccountAvailabilities() {
         return getAccountAvailabilities(GetAccountAvailabilitiesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides information about services which are unavailable for the current Linode account.
+     * Provides information about services availabilities for the current Linode account.
      * 
      * ## Example Usage
      * 
@@ -517,13 +519,15 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `unavailable`
+     * 
+     * * `available`
      * 
      */
     public static CompletableFuture<GetAccountAvailabilitiesResult> getAccountAvailabilitiesPlain() {
         return getAccountAvailabilitiesPlain(GetAccountAvailabilitiesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides information about services which are unavailable for the current Linode account.
+     * Provides information about services availabilities for the current Linode account.
      * 
      * ## Example Usage
      * 
@@ -569,13 +573,15 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `unavailable`
+     * 
+     * * `available`
      * 
      */
     public static Output<GetAccountAvailabilitiesResult> getAccountAvailabilities(GetAccountAvailabilitiesArgs args) {
         return getAccountAvailabilities(args, InvokeOptions.Empty);
     }
     /**
-     * Provides information about services which are unavailable for the current Linode account.
+     * Provides information about services availabilities for the current Linode account.
      * 
      * ## Example Usage
      * 
@@ -621,13 +627,15 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `unavailable`
+     * 
+     * * `available`
      * 
      */
     public static CompletableFuture<GetAccountAvailabilitiesResult> getAccountAvailabilitiesPlain(GetAccountAvailabilitiesPlainArgs args) {
         return getAccountAvailabilitiesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides information about services which are unavailable for the current Linode account.
+     * Provides information about services availabilities for the current Linode account.
      * 
      * ## Example Usage
      * 
@@ -673,13 +681,15 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `unavailable`
+     * 
+     * * `available`
      * 
      */
     public static Output<GetAccountAvailabilitiesResult> getAccountAvailabilities(GetAccountAvailabilitiesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getAccountAvailabilities:getAccountAvailabilities", TypeShape.of(GetAccountAvailabilitiesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides information about services which are unavailable for the current Linode account.
+     * Provides information about services availabilities for the current Linode account.
      * 
      * ## Example Usage
      * 
@@ -726,12 +736,14 @@ public final class LinodeFunctions {
      * 
      * * `unavailable`
      * 
+     * * `available`
+     * 
      */
     public static CompletableFuture<GetAccountAvailabilitiesResult> getAccountAvailabilitiesPlain(GetAccountAvailabilitiesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getAccountAvailabilities:getAccountAvailabilities", TypeShape.of(GetAccountAvailabilitiesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides details about resource availability in a region to an account specifically.
+     * Provides details about service availability in a region to an account specifically.
      * 
      * ## Example Usage
      * 
@@ -773,7 +785,7 @@ public final class LinodeFunctions {
         return getAccountAvailability(args, InvokeOptions.Empty);
     }
     /**
-     * Provides details about resource availability in a region to an account specifically.
+     * Provides details about service availability in a region to an account specifically.
      * 
      * ## Example Usage
      * 
@@ -815,7 +827,7 @@ public final class LinodeFunctions {
         return getAccountAvailabilityPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides details about resource availability in a region to an account specifically.
+     * Provides details about service availability in a region to an account specifically.
      * 
      * ## Example Usage
      * 
@@ -857,7 +869,7 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getAccountAvailability:getAccountAvailability", TypeShape.of(GetAccountAvailabilityResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides details about resource availability in a region to an account specifically.
+     * Provides details about service availability in a region to an account specifically.
      * 
      * ## Example Usage
      * 

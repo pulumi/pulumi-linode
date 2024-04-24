@@ -952,7 +952,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[int]]:
+    def port(self) -> pulumi.Output[int]:
         """
         The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         """
@@ -960,7 +960,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> pulumi.Output[Optional[str]]:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
@@ -968,7 +968,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> pulumi.Output[Optional[str]]:
+    def proxy_protocol(self) -> pulumi.Output[str]:
         """
         The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         """

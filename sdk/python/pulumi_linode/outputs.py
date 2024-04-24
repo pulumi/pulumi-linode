@@ -2677,20 +2677,18 @@ class LkeNodePoolNode(dict):
 @pulumi.output_type
 class NodeBalancerConfigNodeStatus(dict):
     def __init__(__self__, *,
-                 down: Optional[int] = None,
-                 up: Optional[int] = None):
+                 down: int,
+                 up: int):
         """
         :param int down: The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
         :param int up: The number of backends considered to be 'UP' and healthy, and that are serving requests.
         """
-        if down is not None:
-            pulumi.set(__self__, "down", down)
-        if up is not None:
-            pulumi.set(__self__, "up", up)
+        pulumi.set(__self__, "down", down)
+        pulumi.set(__self__, "up", up)
 
     @property
     @pulumi.getter
-    def down(self) -> Optional[int]:
+    def down(self) -> int:
         """
         The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
         """
@@ -2698,7 +2696,7 @@ class NodeBalancerConfigNodeStatus(dict):
 
     @property
     @pulumi.getter
-    def up(self) -> Optional[int]:
+    def up(self) -> int:
         """
         The number of backends considered to be 'UP' and healthy, and that are serving requests.
         """
@@ -3963,14 +3961,25 @@ class VpcSubnetLinodeInterface(dict):
 @pulumi.output_type
 class GetAccountAvailabilitiesAvailabilityResult(dict):
     def __init__(__self__, *,
+                 availables: Sequence[str],
                  region: str,
                  unavailables: Sequence[str]):
         """
+        :param Sequence[str] availables: A set of services which are available for the given region.
         :param str region: The region this availability entry refers to.
         :param Sequence[str] unavailables: A set of services that are unavailable for the given region.
         """
+        pulumi.set(__self__, "availables", availables)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "unavailables", unavailables)
+
+    @property
+    @pulumi.getter
+    def availables(self) -> Sequence[str]:
+        """
+        A set of services which are available for the given region.
+        """
+        return pulumi.get(self, "availables")
 
     @property
     @pulumi.getter
