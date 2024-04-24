@@ -4,10 +4,9 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class NodeBalancerConfigNodeStatus {
@@ -15,27 +14,27 @@ public final class NodeBalancerConfigNodeStatus {
      * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
      * 
      */
-    private @Nullable Integer down;
+    private Integer down;
     /**
      * @return The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
      * 
      */
-    private @Nullable Integer up;
+    private Integer up;
 
     private NodeBalancerConfigNodeStatus() {}
     /**
      * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
      * 
      */
-    public Optional<Integer> down() {
-        return Optional.ofNullable(this.down);
+    public Integer down() {
+        return this.down;
     }
     /**
      * @return The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
      * 
      */
-    public Optional<Integer> up() {
-        return Optional.ofNullable(this.up);
+    public Integer up() {
+        return this.up;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class NodeBalancerConfigNodeStatus {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer down;
-        private @Nullable Integer up;
+        private Integer down;
+        private Integer up;
         public Builder() {}
         public Builder(NodeBalancerConfigNodeStatus defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class NodeBalancerConfigNodeStatus {
         }
 
         @CustomType.Setter
-        public Builder down(@Nullable Integer down) {
-
+        public Builder down(Integer down) {
+            if (down == null) {
+              throw new MissingRequiredPropertyException("NodeBalancerConfigNodeStatus", "down");
+            }
             this.down = down;
             return this;
         }
         @CustomType.Setter
-        public Builder up(@Nullable Integer up) {
-
+        public Builder up(Integer up) {
+            if (up == null) {
+              throw new MissingRequiredPropertyException("NodeBalancerConfigNodeStatus", "up");
+            }
             this.up = up;
             return this;
         }

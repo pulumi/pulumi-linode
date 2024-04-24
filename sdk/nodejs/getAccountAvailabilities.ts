@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides information about services which are unavailable for the current Linode account.
+ * Provides information about services availabilities for the current Linode account.
  *
  * ## Example Usage
  *
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * * `region`
  *
  * * `unavailable`
+ *
+ * * `available`
  */
 export function getAccountAvailabilities(args?: GetAccountAvailabilitiesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAvailabilitiesResult> {
     args = args || {};
@@ -63,7 +65,7 @@ export interface GetAccountAvailabilitiesResult {
     readonly id: string;
 }
 /**
- * Provides information about services which are unavailable for the current Linode account.
+ * Provides information about services availabilities for the current Linode account.
  *
  * ## Example Usage
  *
@@ -91,6 +93,8 @@ export interface GetAccountAvailabilitiesResult {
  * * `region`
  *
  * * `unavailable`
+ *
+ * * `available`
  */
 export function getAccountAvailabilitiesOutput(args?: GetAccountAvailabilitiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAvailabilitiesResult> {
     return pulumi.output(args).apply((a: any) => getAccountAvailabilities(a, opts))

@@ -12,6 +12,18 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetAccountAvailabilitiesAvailabilityArgs : global::Pulumi.InvokeArgs
     {
+        [Input("availables", required: true)]
+        private List<string>? _availables;
+
+        /// <summary>
+        /// A set of services which are available for the given region.
+        /// </summary>
+        public List<string> Availables
+        {
+            get => _availables ?? (_availables = new List<string>());
+            set => _availables = value;
+        }
+
         /// <summary>
         /// The region this availability entry refers to.
         /// </summary>

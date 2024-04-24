@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides details about resource availability in a region to an account specifically.
+ * Provides details about service availability in a region to an account specifically.
  *
  * ## Example Usage
  *
@@ -43,6 +43,10 @@ export interface GetAccountAvailabilityArgs {
  */
 export interface GetAccountAvailabilityResult {
     /**
+     * A set of services which are available to the account in a region.
+     */
+    readonly availables: string[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -51,12 +55,12 @@ export interface GetAccountAvailabilityResult {
      */
     readonly region: string;
     /**
-     * A list of resources which are NOT available to the account in a region.
+     * A set of services which are unavailable to the account in a region.
      */
     readonly unavailables: string[];
 }
 /**
- * Provides details about resource availability in a region to an account specifically.
+ * Provides details about service availability in a region to an account specifically.
  *
  * ## Example Usage
  *

@@ -5,10 +5,9 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class NodeBalancerConfigNodeStatusArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,30 +18,30 @@ public final class NodeBalancerConfigNodeStatusArgs extends com.pulumi.resources
      * The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
      * 
      */
-    @Import(name="down")
-    private @Nullable Output<Integer> down;
+    @Import(name="down", required=true)
+    private Output<Integer> down;
 
     /**
      * @return The number of backends considered to be &#39;DOWN&#39; and unhealthy. These are not in rotation, and not serving requests.
      * 
      */
-    public Optional<Output<Integer>> down() {
-        return Optional.ofNullable(this.down);
+    public Output<Integer> down() {
+        return this.down;
     }
 
     /**
      * The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
      * 
      */
-    @Import(name="up")
-    private @Nullable Output<Integer> up;
+    @Import(name="up", required=true)
+    private Output<Integer> up;
 
     /**
      * @return The number of backends considered to be &#39;UP&#39; and healthy, and that are serving requests.
      * 
      */
-    public Optional<Output<Integer>> up() {
-        return Optional.ofNullable(this.up);
+    public Output<Integer> up() {
+        return this.up;
     }
 
     private NodeBalancerConfigNodeStatusArgs() {}
@@ -76,7 +75,7 @@ public final class NodeBalancerConfigNodeStatusArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder down(@Nullable Output<Integer> down) {
+        public Builder down(Output<Integer> down) {
             $.down = down;
             return this;
         }
@@ -97,7 +96,7 @@ public final class NodeBalancerConfigNodeStatusArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder up(@Nullable Output<Integer> up) {
+        public Builder up(Output<Integer> up) {
             $.up = up;
             return this;
         }
@@ -113,6 +112,12 @@ public final class NodeBalancerConfigNodeStatusArgs extends com.pulumi.resources
         }
 
         public NodeBalancerConfigNodeStatusArgs build() {
+            if ($.down == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerConfigNodeStatusArgs", "down");
+            }
+            if ($.up == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerConfigNodeStatusArgs", "up");
+            }
             return $;
         }
     }

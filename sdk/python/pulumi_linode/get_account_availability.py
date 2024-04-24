@@ -21,7 +21,10 @@ class GetAccountAvailabilityResult:
     """
     A collection of values returned by getAccountAvailability.
     """
-    def __init__(__self__, id=None, region=None, unavailables=None):
+    def __init__(__self__, availables=None, id=None, region=None, unavailables=None):
+        if availables and not isinstance(availables, list):
+            raise TypeError("Expected argument 'availables' to be a list")
+        pulumi.set(__self__, "availables", availables)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -31,6 +34,14 @@ class GetAccountAvailabilityResult:
         if unavailables and not isinstance(unavailables, list):
             raise TypeError("Expected argument 'unavailables' to be a list")
         pulumi.set(__self__, "unavailables", unavailables)
+
+    @property
+    @pulumi.getter
+    def availables(self) -> Sequence[str]:
+        """
+        A set of services which are available to the account in a region.
+        """
+        return pulumi.get(self, "availables")
 
     @property
     @pulumi.getter
@@ -52,7 +63,7 @@ class GetAccountAvailabilityResult:
     @pulumi.getter
     def unavailables(self) -> Sequence[str]:
         """
-        A list of resources which are NOT available to the account in a region.
+        A set of services which are unavailable to the account in a region.
         """
         return pulumi.get(self, "unavailables")
 
@@ -63,6 +74,7 @@ class AwaitableGetAccountAvailabilityResult(GetAccountAvailabilityResult):
         if False:
             yield self
         return GetAccountAvailabilityResult(
+            availables=self.availables,
             id=self.id,
             region=self.region,
             unavailables=self.unavailables)
@@ -71,7 +83,7 @@ class AwaitableGetAccountAvailabilityResult(GetAccountAvailabilityResult):
 def get_account_availability(region: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAvailabilityResult:
     """
-    Provides details about resource availability in a region to an account specifically.
+    Provides details about service availability in a region to an account specifically.
 
     ## Example Usage
 
@@ -93,6 +105,7 @@ def get_account_availability(region: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getAccountAvailability:getAccountAvailability', __args__, opts=opts, typ=GetAccountAvailabilityResult).value
 
     return AwaitableGetAccountAvailabilityResult(
+        availables=pulumi.get(__ret__, 'availables'),
         id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
         unavailables=pulumi.get(__ret__, 'unavailables'))
@@ -102,7 +115,7 @@ def get_account_availability(region: Optional[str] = None,
 def get_account_availability_output(region: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilityResult]:
     """
-    Provides details about resource availability in a region to an account specifically.
+    Provides details about service availability in a region to an account specifically.
 
     ## Example Usage
 

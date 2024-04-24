@@ -121,15 +121,15 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
     /**
      * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    public readonly port!: pulumi.Output<number>;
     /**
      * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      */
-    public readonly proxyProtocol!: pulumi.Output<string | undefined>;
+    public readonly proxyProtocol!: pulumi.Output<string>;
     /**
      * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */

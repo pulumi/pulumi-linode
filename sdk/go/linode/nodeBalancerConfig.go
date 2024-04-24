@@ -94,11 +94,11 @@ type NodeBalancerConfig struct {
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
-	Port pulumi.IntPtrOutput `pulumi:"port"`
+	Port pulumi.IntOutput `pulumi:"port"`
 	// The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
-	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
+	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
-	ProxyProtocol pulumi.StringPtrOutput `pulumi:"proxyProtocol"`
+	ProxyProtocol pulumi.StringOutput `pulumi:"proxyProtocol"`
 	// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
 	SslCert pulumi.StringPtrOutput `pulumi:"sslCert"`
 	// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
@@ -462,18 +462,18 @@ func (o NodeBalancerConfigOutput) NodebalancerId() pulumi.IntOutput {
 }
 
 // The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
-func (o NodeBalancerConfigOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+func (o NodeBalancerConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
 // The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
-func (o NodeBalancerConfigOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o NodeBalancerConfigOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
-func (o NodeBalancerConfigOutput) ProxyProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringPtrOutput { return v.ProxyProtocol }).(pulumi.StringPtrOutput)
+func (o NodeBalancerConfigOutput) ProxyProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.ProxyProtocol }).(pulumi.StringOutput)
 }
 
 // The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.

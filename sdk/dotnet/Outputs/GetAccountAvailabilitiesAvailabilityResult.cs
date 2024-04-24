@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetAccountAvailabilitiesAvailabilityResult
     {
         /// <summary>
+        /// A set of services which are available for the given region.
+        /// </summary>
+        public readonly ImmutableArray<string> Availables;
+        /// <summary>
         /// The region this availability entry refers to.
         /// </summary>
         public readonly string Region;
@@ -24,10 +28,13 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetAccountAvailabilitiesAvailabilityResult(
+            ImmutableArray<string> availables,
+
             string region,
 
             ImmutableArray<string> unavailables)
         {
+            Availables = availables;
             Region = region;
             Unavailables = unavailables;
         }

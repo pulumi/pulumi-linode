@@ -12,7 +12,7 @@ namespace Pulumi.Linode
     public static class GetAccountAvailability
     {
         /// <summary>
-        /// Provides details about resource availability in a region to an account specifically.
+        /// Provides details about service availability in a region to an account specifically.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAvailabilityResult>("linode:index/getAccountAvailability:getAccountAvailability", args ?? new GetAccountAvailabilityArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about resource availability in a region to an account specifically.
+        /// Provides details about service availability in a region to an account specifically.
         /// 
         /// ## Example Usage
         /// 
@@ -98,6 +98,10 @@ namespace Pulumi.Linode
     public sealed class GetAccountAvailabilityResult
     {
         /// <summary>
+        /// A set of services which are available to the account in a region.
+        /// </summary>
+        public readonly ImmutableArray<string> Availables;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -106,18 +110,21 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// A list of resources which are NOT available to the account in a region.
+        /// A set of services which are unavailable to the account in a region.
         /// </summary>
         public readonly ImmutableArray<string> Unavailables;
 
         [OutputConstructor]
         private GetAccountAvailabilityResult(
+            ImmutableArray<string> availables,
+
             string id,
 
             string region,
 
             ImmutableArray<string> unavailables)
         {
+            Availables = availables;
             Id = id;
             Region = region;
             Unavailables = unavailables;

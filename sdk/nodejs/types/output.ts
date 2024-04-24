@@ -130,6 +130,10 @@ export interface FirewallOutbound {
 
 export interface GetAccountAvailabilitiesAvailability {
     /**
+     * A set of services which are available for the given region.
+     */
+    availables: string[];
+    /**
      * The region this availability entry refers to.
      */
     region: string;

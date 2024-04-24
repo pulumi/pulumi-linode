@@ -5877,9 +5877,9 @@ func (o LkeNodePoolNodeArrayOutput) Index(i pulumi.IntInput) LkeNodePoolNodeOutp
 
 type NodeBalancerConfigNodeStatus struct {
 	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-	Down *int `pulumi:"down"`
+	Down int `pulumi:"down"`
 	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
-	Up *int `pulumi:"up"`
+	Up int `pulumi:"up"`
 }
 
 // NodeBalancerConfigNodeStatusInput is an input type that accepts NodeBalancerConfigNodeStatusArgs and NodeBalancerConfigNodeStatusOutput values.
@@ -5895,9 +5895,9 @@ type NodeBalancerConfigNodeStatusInput interface {
 
 type NodeBalancerConfigNodeStatusArgs struct {
 	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-	Down pulumi.IntPtrInput `pulumi:"down"`
+	Down pulumi.IntInput `pulumi:"down"`
 	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
-	Up pulumi.IntPtrInput `pulumi:"up"`
+	Up pulumi.IntInput `pulumi:"up"`
 }
 
 func (NodeBalancerConfigNodeStatusArgs) ElementType() reflect.Type {
@@ -5952,13 +5952,13 @@ func (o NodeBalancerConfigNodeStatusOutput) ToNodeBalancerConfigNodeStatusOutput
 }
 
 // The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-func (o NodeBalancerConfigNodeStatusOutput) Down() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.Down }).(pulumi.IntPtrOutput)
+func (o NodeBalancerConfigNodeStatusOutput) Down() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) int { return v.Down }).(pulumi.IntOutput)
 }
 
 // The number of backends considered to be 'UP' and healthy, and that are serving requests.
-func (o NodeBalancerConfigNodeStatusOutput) Up() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) *int { return v.Up }).(pulumi.IntPtrOutput)
+func (o NodeBalancerConfigNodeStatusOutput) Up() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeBalancerConfigNodeStatus) int { return v.Up }).(pulumi.IntOutput)
 }
 
 type NodeBalancerConfigNodeStatusArrayOutput struct{ *pulumi.OutputState }
@@ -9167,6 +9167,8 @@ func (o VpcSubnetLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) VpcSubnetL
 }
 
 type GetAccountAvailabilitiesAvailability struct {
+	// A set of services which are available for the given region.
+	Availables []string `pulumi:"availables"`
 	// The region this availability entry refers to.
 	Region string `pulumi:"region"`
 	// A set of services that are unavailable for the given region.
@@ -9185,6 +9187,8 @@ type GetAccountAvailabilitiesAvailabilityInput interface {
 }
 
 type GetAccountAvailabilitiesAvailabilityArgs struct {
+	// A set of services which are available for the given region.
+	Availables pulumi.StringArrayInput `pulumi:"availables"`
 	// The region this availability entry refers to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// A set of services that are unavailable for the given region.
@@ -9240,6 +9244,11 @@ func (o GetAccountAvailabilitiesAvailabilityOutput) ToGetAccountAvailabilitiesAv
 
 func (o GetAccountAvailabilitiesAvailabilityOutput) ToGetAccountAvailabilitiesAvailabilityOutputWithContext(ctx context.Context) GetAccountAvailabilitiesAvailabilityOutput {
 	return o
+}
+
+// A set of services which are available for the given region.
+func (o GetAccountAvailabilitiesAvailabilityOutput) Availables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountAvailabilitiesAvailability) []string { return v.Availables }).(pulumi.StringArrayOutput)
 }
 
 // The region this availability entry refers to.

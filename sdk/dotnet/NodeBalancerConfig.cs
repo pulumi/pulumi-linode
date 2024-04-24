@@ -131,19 +131,19 @@ namespace Pulumi.Linode
         /// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         /// </summary>
         [Output("port")]
-        public Output<int?> Port { get; private set; } = null!;
+        public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
         /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         /// </summary>
         [Output("protocol")]
-        public Output<string?> Protocol { get; private set; } = null!;
+        public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
         /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         /// </summary>
         [Output("proxyProtocol")]
-        public Output<string?> ProxyProtocol { get; private set; } = null!;
+        public Output<string> ProxyProtocol { get; private set; } = null!;
 
         /// <summary>
         /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.

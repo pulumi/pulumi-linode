@@ -518,6 +518,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "available": {
+                                    "maxItemsOne": false
+                                },
                                 "unavailable": {
                                     "maxItemsOne": false
                                 }
@@ -540,6 +543,9 @@
                 "current": "linode:index/getAccountAvailability:getAccountAvailability",
                 "majorVersion": 4,
                 "fields": {
+                    "available": {
+                        "maxItemsOne": false
+                    },
                     "unavailable": {
                         "maxItemsOne": false
                     }
@@ -1783,7 +1789,7 @@
             "linode:index/lkeCluster:LkeCluster": 0,
             "linode:index/lkeNodePool:LkeNodePool": 1,
             "linode:index/nodeBalancer:NodeBalancer": 1,
-            "linode:index/nodeBalancerConfig:NodeBalancerConfig": 0,
+            "linode:index/nodeBalancerConfig:NodeBalancerConfig": 1,
             "linode:index/nodeBalancerNode:NodeBalancerNode": 0,
             "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
             "linode:index/objectStorageKey:ObjectStorageKey": 1,

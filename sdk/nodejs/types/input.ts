@@ -130,6 +130,10 @@ export interface FirewallOutbound {
 
 export interface GetAccountAvailabilitiesAvailability {
     /**
+     * A set of services which are available for the given region.
+     */
+    availables?: string[];
+    /**
      * The region this availability entry refers to.
      */
     region: string;
@@ -140,6 +144,10 @@ export interface GetAccountAvailabilitiesAvailability {
 }
 
 export interface GetAccountAvailabilitiesAvailabilityArgs {
+    /**
+     * A set of services which are available for the given region.
+     */
+    availables?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region this availability entry refers to.
      */
@@ -4625,11 +4633,11 @@ export interface NodeBalancerConfigNodeStatus {
     /**
      * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
      */
-    down?: pulumi.Input<number>;
+    down: pulumi.Input<number>;
     /**
      * The number of backends considered to be 'UP' and healthy, and that are serving requests.
      */
-    up?: pulumi.Input<number>;
+    up: pulumi.Input<number>;
 }
 
 export interface NodeBalancerFirewall {
