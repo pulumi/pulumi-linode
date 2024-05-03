@@ -37,13 +37,13 @@ namespace Pulumi.Linode
         public Output<string?> ConfigProfile { get; private set; } = null!;
 
         /// <summary>
-        /// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
         /// </summary>
         [Output("objAccessKey")]
         public Output<string?> ObjAccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
         /// </summary>
         [Output("objSecretKey")]
         public Output<string?> ObjSecretKey { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Linode
         public Input<int>? MinRetryDelayMs { get; set; }
 
         /// <summary>
-        /// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
         /// </summary>
         [Input("objAccessKey")]
         public Input<string>? ObjAccessKey { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.Linode
         private Input<string>? _objSecretKey;
 
         /// <summary>
-        /// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        /// The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
         /// </summary>
         public Input<string>? ObjSecretKey
         {
@@ -175,7 +175,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
         /// linode_object_sorage_bucket resource.
         /// </summary>
         [Input("objUseTempKeys", json: true)]
@@ -188,13 +188,13 @@ namespace Pulumi.Linode
         public Input<bool>? SkipImplicitReboots { get; set; }
 
         /// <summary>
-        /// Skip waiting for a linode_instance resource to finish deleting.
+        /// Skip waiting for a linode.Instance resource to finish deleting.
         /// </summary>
         [Input("skipInstanceDeletePoll", json: true)]
         public Input<bool>? SkipInstanceDeletePoll { get; set; }
 
         /// <summary>
-        /// Skip waiting for a linode_instance resource to be running.
+        /// Skip waiting for a linode.Instance resource to be running.
         /// </summary>
         [Input("skipInstanceReadyPoll", json: true)]
         public Input<bool>? SkipInstanceReadyPoll { get; set; }
