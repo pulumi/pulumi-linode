@@ -43,13 +43,13 @@ class ProviderArgs:
         :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
-        :param pulumi.Input[str] obj_access_key: The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
-        :param pulumi.Input[str] obj_secret_key: The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
-        :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+        :param pulumi.Input[str] obj_access_key: The access key to be used in ObjectStorageBucket and linode_object_storage_object.
+        :param pulumi.Input[str] obj_secret_key: The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
+        :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
                linode_object_sorage_bucket resource.
         :param pulumi.Input[bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
-        :param pulumi.Input[bool] skip_instance_delete_poll: Skip waiting for a linode_instance resource to finish deleting.
-        :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
+        :param pulumi.Input[bool] skip_instance_delete_poll: Skip waiting for a Instance resource to finish deleting.
+        :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a Instance resource to be running.
         :param pulumi.Input[str] token: The token that allows you access to your Linode account
         :param pulumi.Input[str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[str] url: The HTTP(S) API address of the Linode API to use.
@@ -209,7 +209,7 @@ class ProviderArgs:
     @pulumi.getter(name="objAccessKey")
     def obj_access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        The access key to be used in ObjectStorageBucket and linode_object_storage_object.
         """
         return pulumi.get(self, "obj_access_key")
 
@@ -221,7 +221,7 @@ class ProviderArgs:
     @pulumi.getter(name="objSecretKey")
     def obj_secret_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
         """
         return pulumi.get(self, "obj_secret_key")
 
@@ -233,7 +233,7 @@ class ProviderArgs:
     @pulumi.getter(name="objUseTempKeys")
     def obj_use_temp_keys(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+        If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
         linode_object_sorage_bucket resource.
         """
         return pulumi.get(self, "obj_use_temp_keys")
@@ -258,7 +258,7 @@ class ProviderArgs:
     @pulumi.getter(name="skipInstanceDeletePoll")
     def skip_instance_delete_poll(self) -> Optional[pulumi.Input[bool]]:
         """
-        Skip waiting for a linode_instance resource to finish deleting.
+        Skip waiting for a Instance resource to finish deleting.
         """
         return pulumi.get(self, "skip_instance_delete_poll")
 
@@ -270,7 +270,7 @@ class ProviderArgs:
     @pulumi.getter(name="skipInstanceReadyPoll")
     def skip_instance_ready_poll(self) -> Optional[pulumi.Input[bool]]:
         """
-        Skip waiting for a linode_instance resource to be running.
+        Skip waiting for a Instance resource to be running.
         """
         return pulumi.get(self, "skip_instance_ready_poll")
 
@@ -356,13 +356,13 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[int] lke_node_ready_poll_ms: The rate in milliseconds to poll for an LKE node to be ready.
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
-        :param pulumi.Input[str] obj_access_key: The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
-        :param pulumi.Input[str] obj_secret_key: The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
-        :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+        :param pulumi.Input[str] obj_access_key: The access key to be used in ObjectStorageBucket and linode_object_storage_object.
+        :param pulumi.Input[str] obj_secret_key: The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
+        :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
                linode_object_sorage_bucket resource.
         :param pulumi.Input[bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
-        :param pulumi.Input[bool] skip_instance_delete_poll: Skip waiting for a linode_instance resource to finish deleting.
-        :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a linode_instance resource to be running.
+        :param pulumi.Input[bool] skip_instance_delete_poll: Skip waiting for a Instance resource to finish deleting.
+        :param pulumi.Input[bool] skip_instance_ready_poll: Skip waiting for a Instance resource to be running.
         :param pulumi.Input[str] token: The token that allows you access to your Linode account
         :param pulumi.Input[str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[str] url: The HTTP(S) API address of the Linode API to use.
@@ -481,7 +481,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="objAccessKey")
     def obj_access_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        The access key to be used in ObjectStorageBucket and linode_object_storage_object.
         """
         return pulumi.get(self, "obj_access_key")
 
@@ -489,7 +489,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="objSecretKey")
     def obj_secret_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+        The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
         """
         return pulumi.get(self, "obj_secret_key")
 

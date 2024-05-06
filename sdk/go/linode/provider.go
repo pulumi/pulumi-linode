@@ -24,9 +24,9 @@ type Provider struct {
 	ConfigPath pulumi.StringPtrOutput `pulumi:"configPath"`
 	// The Linode config profile to use. (default `default`)
 	ConfigProfile pulumi.StringPtrOutput `pulumi:"configProfile"`
-	// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+	// The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjAccessKey pulumi.StringPtrOutput `pulumi:"objAccessKey"`
-	// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey pulumi.StringPtrOutput `pulumi:"objSecretKey"`
 	// The token that allows you access to your Linode account
 	Token pulumi.StringPtrOutput `pulumi:"token"`
@@ -93,18 +93,18 @@ type providerArgs struct {
 	MaxRetryDelayMs *int `pulumi:"maxRetryDelayMs"`
 	// Minimum delay in milliseconds before retrying a request.
 	MinRetryDelayMs *int `pulumi:"minRetryDelayMs"`
-	// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+	// The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjAccessKey *string `pulumi:"objAccessKey"`
-	// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey *string `pulumi:"objSecretKey"`
-	// If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
-	// linode_object_sorage_bucket resource.
+	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
+	// linodeObjectSorageBucket resource.
 	ObjUseTempKeys *bool `pulumi:"objUseTempKeys"`
 	// If true, Linode Instances will not be rebooted on config and interface changes.
 	SkipImplicitReboots *bool `pulumi:"skipImplicitReboots"`
-	// Skip waiting for a linode_instance resource to finish deleting.
+	// Skip waiting for a Instance resource to finish deleting.
 	SkipInstanceDeletePoll *bool `pulumi:"skipInstanceDeletePoll"`
-	// Skip waiting for a linode_instance resource to be running.
+	// Skip waiting for a Instance resource to be running.
 	SkipInstanceReadyPoll *bool `pulumi:"skipInstanceReadyPoll"`
 	// The token that allows you access to your Linode account
 	Token *string `pulumi:"token"`
@@ -134,18 +134,18 @@ type ProviderArgs struct {
 	MaxRetryDelayMs pulumi.IntPtrInput
 	// Minimum delay in milliseconds before retrying a request.
 	MinRetryDelayMs pulumi.IntPtrInput
-	// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+	// The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjAccessKey pulumi.StringPtrInput
-	// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey pulumi.StringPtrInput
-	// If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
-	// linode_object_sorage_bucket resource.
+	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
+	// linodeObjectSorageBucket resource.
 	ObjUseTempKeys pulumi.BoolPtrInput
 	// If true, Linode Instances will not be rebooted on config and interface changes.
 	SkipImplicitReboots pulumi.BoolPtrInput
-	// Skip waiting for a linode_instance resource to finish deleting.
+	// Skip waiting for a Instance resource to finish deleting.
 	SkipInstanceDeletePoll pulumi.BoolPtrInput
-	// Skip waiting for a linode_instance resource to be running.
+	// Skip waiting for a Instance resource to be running.
 	SkipInstanceReadyPoll pulumi.BoolPtrInput
 	// The token that allows you access to your Linode account
 	Token pulumi.StringPtrInput
@@ -207,12 +207,12 @@ func (o ProviderOutput) ConfigProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigProfile }).(pulumi.StringPtrOutput)
 }
 
-// The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+// The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 func (o ProviderOutput) ObjAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ObjAccessKey }).(pulumi.StringPtrOutput)
 }
 
-// The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 func (o ProviderOutput) ObjSecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ObjSecretKey }).(pulumi.StringPtrOutput)
 }

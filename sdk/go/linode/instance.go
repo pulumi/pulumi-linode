@@ -214,7 +214,7 @@ type Instance struct {
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
 	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayOutput `pulumi:"authorizedUsers"`
-	// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
 	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
 	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
 	// exclusive.
@@ -361,7 +361,7 @@ type instanceState struct {
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
 	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
 	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
 	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
 	// exclusive.
@@ -465,7 +465,7 @@ type InstanceState struct {
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
 	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayInput
-	// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
 	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
 	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
 	// exclusive.
@@ -573,7 +573,7 @@ type instanceArgs struct {
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
 	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
 	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
 	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
 	// exclusive.
@@ -660,7 +660,7 @@ type InstanceArgs struct {
 	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
 	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayInput
-	// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
 	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
 	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
 	// exclusive.
@@ -841,7 +841,7 @@ func (o InstanceOutput) AuthorizedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
 }
 
-// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
 // must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
 // /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
 // exclusive.
