@@ -7425,16 +7425,16 @@
             },
             "objAccessKey": {
                 "type": "string",
-                "description": "The access key to be used in linode_object_storage_bucket and linode_object_storage_object.\n"
+                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
             },
             "objSecretKey": {
                 "type": "string",
-                "description": "The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.\n",
+                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
                 "secret": true
             },
             "objUseTempKeys": {
                 "type": "boolean",
-                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and\nlinode_object_sorage_bucket resource.\n"
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and\nlinode_object_sorage_bucket resource.\n"
             },
             "skipImplicitReboots": {
                 "type": "boolean",
@@ -7442,11 +7442,11 @@
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
+                "description": "Skip waiting for a linode.Instance resource to finish deleting.\n"
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode_instance resource to be running.\n"
+                "description": "Skip waiting for a linode.Instance resource to be running.\n"
             },
             "token": {
                 "type": "string",
@@ -7505,16 +7505,16 @@
             },
             "objAccessKey": {
                 "type": "string",
-                "description": "The access key to be used in linode_object_storage_bucket and linode_object_storage_object.\n"
+                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
             },
             "objSecretKey": {
                 "type": "string",
-                "description": "The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.\n",
+                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
                 "secret": true
             },
             "objUseTempKeys": {
                 "type": "boolean",
-                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and\nlinode_object_sorage_bucket resource.\n"
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and\nlinode_object_sorage_bucket resource.\n"
             },
             "skipImplicitReboots": {
                 "type": "boolean",
@@ -7522,11 +7522,11 @@
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode_instance resource to finish deleting.\n"
+                "description": "Skip waiting for a linode.Instance resource to finish deleting.\n"
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode_instance resource to be running.\n"
+                "description": "Skip waiting for a linode.Instance resource to be running.\n"
             },
             "token": {
                 "type": "string",
