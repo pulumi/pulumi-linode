@@ -66,28 +66,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.configProfile);
     }
     /**
-     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     @Export(name="objAccessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> objAccessKey;
 
     /**
-     * @return The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * @return The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     public Output<Optional<String>> objAccessKey() {
         return Codegen.optional(this.objAccessKey);
     }
     /**
-     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     @Export(name="objSecretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> objSecretKey;
 
     /**
-     * @return The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * @return The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     public Output<Optional<String>> objSecretKey() {
