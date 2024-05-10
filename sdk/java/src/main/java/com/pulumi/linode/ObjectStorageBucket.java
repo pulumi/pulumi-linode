@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to create an Object Storage Bucket:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
- *             .id(&#34;us-east-1&#34;)
+ *             .id("us-east-1")
  *             .build());
  * 
- *         var foobar = new ObjectStorageBucket(&#34;foobar&#34;, ObjectStorageBucketArgs.builder()        
- *             .cluster(primary.applyValue(getObjectStorageClusterResult -&gt; getObjectStorageClusterResult.id()))
- *             .label(&#34;mybucket&#34;)
+ *         var foobar = new ObjectStorageBucket("foobar", ObjectStorageBucketArgs.builder()        
+ *             .cluster(primary.applyValue(getObjectStorageClusterResult -> getObjectStorageClusterResult.id()))
+ *             .label("mybucket")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating an Object Storage Bucket with Lifecycle rules:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,28 +94,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mykey = new ObjectStorageKey(&#34;mykey&#34;, ObjectStorageKeyArgs.builder()        
- *             .label(&#34;image-access&#34;)
+ *         var mykey = new ObjectStorageKey("mykey", ObjectStorageKeyArgs.builder()        
+ *             .label("image-access")
  *             .build());
  * 
- *         var mybucket = new ObjectStorageBucket(&#34;mybucket&#34;, ObjectStorageBucketArgs.builder()        
+ *         var mybucket = new ObjectStorageBucket("mybucket", ObjectStorageBucketArgs.builder()        
  *             .accessKey(mykey.accessKey())
  *             .secretKey(mykey.secretKey())
- *             .cluster(&#34;us-east-1&#34;)
- *             .label(&#34;mybucket&#34;)
+ *             .cluster("us-east-1")
+ *             .label("mybucket")
  *             .lifecycleRules(ObjectStorageBucketLifecycleRuleArgs.builder()
- *                 .id(&#34;my-rule&#34;)
+ *                 .id("my-rule")
  *                 .enabled(true)
  *                 .abortIncompleteMultipartUploadDays(5)
  *                 .expiration(ObjectStorageBucketLifecycleRuleExpirationArgs.builder()
- *                     .date(&#34;2021-06-21&#34;)
+ *                     .date("2021-06-21")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating an Object Storage Bucket with Lifecycle rules using provider-level object credentials

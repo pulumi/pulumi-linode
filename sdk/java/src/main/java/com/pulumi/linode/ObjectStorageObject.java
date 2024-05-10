@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Uploading a file to a bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,26 +47,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject(&#34;object&#34;, ObjectStorageObjectArgs.builder()        
- *             .bucket(&#34;my-bucket&#34;)
- *             .cluster(&#34;us-east-1&#34;)
- *             .key(&#34;my-object&#34;)
+ *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()        
+ *             .bucket("my-bucket")
+ *             .cluster("us-east-1")
+ *             .key("my-object")
  *             .secretKey(myKey.secretKey())
  *             .accessKey(myKey.accessKey())
  *             .source(StdFunctions.pathexpand(PathexpandArgs.builder()
- *                 .input(&#34;~/files/log.txt&#34;)
+ *                 .input("~/files/log.txt")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Uploading plaintext to a bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -86,26 +89,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject(&#34;object&#34;, ObjectStorageObjectArgs.builder()        
- *             .bucket(&#34;my-bucket&#34;)
- *             .cluster(&#34;us-east-1&#34;)
- *             .key(&#34;my-object&#34;)
+ *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()        
+ *             .bucket("my-bucket")
+ *             .cluster("us-east-1")
+ *             .key("my-object")
  *             .secretKey(myKey.secretKey())
  *             .accessKey(myKey.accessKey())
- *             .content(&#34;This is the content of the Object...&#34;)
- *             .contentType(&#34;text/plain&#34;)
- *             .contentLanguage(&#34;en&#34;)
+ *             .content("This is the content of the Object...")
+ *             .contentType("text/plain")
+ *             .contentLanguage("en")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating an object using implicitly created object credentials
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -126,18 +131,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject(&#34;object&#34;, ObjectStorageObjectArgs.builder()        
- *             .bucket(&#34;my-bucket&#34;)
- *             .cluster(&#34;us-east-1&#34;)
- *             .key(&#34;my-object&#34;)
+ *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()        
+ *             .bucket("my-bucket")
+ *             .cluster("us-east-1")
+ *             .key("my-object")
  *             .source(StdFunctions.pathexpand(PathexpandArgs.builder()
- *                 .input(&#34;~/files/log.txt&#34;)
+ *                 .input("~/files/log.txt")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

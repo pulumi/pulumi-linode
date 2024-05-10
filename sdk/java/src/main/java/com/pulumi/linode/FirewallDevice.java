@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,34 +49,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFirewall = new Firewall(&#34;myFirewall&#34;, FirewallArgs.builder()        
- *             .label(&#34;my_firewall&#34;)
+ *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()        
+ *             .label("my_firewall")
  *             .inbounds(FirewallInboundArgs.builder()
- *                 .label(&#34;http&#34;)
- *                 .action(&#34;ACCEPT&#34;)
- *                 .protocol(&#34;TCP&#34;)
- *                 .ports(&#34;80&#34;)
- *                 .ipv4s(&#34;0.0.0.0/0&#34;)
- *                 .ipv6s(&#34;::/0&#34;)
+ *                 .label("http")
+ *                 .action("ACCEPT")
+ *                 .protocol("TCP")
+ *                 .ports("80")
+ *                 .ipv4s("0.0.0.0/0")
+ *                 .ipv6s("::/0")
  *                 .build())
- *             .inboundPolicy(&#34;DROP&#34;)
- *             .outboundPolicy(&#34;ACCEPT&#34;)
+ *             .inboundPolicy("DROP")
+ *             .outboundPolicy("ACCEPT")
  *             .build());
  * 
- *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
- *             .label(&#34;my_instance&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-standard-1&#34;)
+ *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+ *             .label("my_instance")
+ *             .region("us-southeast")
+ *             .type("g6-standard-1")
  *             .build());
  * 
- *         var myDevice = new FirewallDevice(&#34;myDevice&#34;, FirewallDeviceArgs.builder()        
+ *         var myDevice = new FirewallDevice("myDevice", FirewallDeviceArgs.builder()        
  *             .firewallId(myFirewall.id())
  *             .entityId(myInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

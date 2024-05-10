@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a Linode instance.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,21 +59,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
- *             .label(&#34;simple_instance&#34;)
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .region(&#34;us-central&#34;)
- *             .type(&#34;g6-standard-1&#34;)
- *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
- *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
- *             .tags(&#34;foo&#34;)
+ *         var web = new Instance("web", InstanceArgs.builder()        
+ *             .label("simple_instance")
+ *             .image("linode/ubuntu22.04")
+ *             .region("us-central")
+ *             .type("g6-standard-1")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user{@literal @}example.local")
+ *             .rootPass("this-is-not-a-safe-password")
+ *             .tags("foo")
  *             .swapSize(256)
  *             .privateIp(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Linode Instance with Explicit Networking Interfaces
@@ -80,7 +82,8 @@ import javax.annotation.Nullable;
  * You can add a VPC or VLAN interface directly to a Linode instance resource.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -103,32 +106,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
- *             .label(&#34;simple_instance&#34;)
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .region(&#34;us-central&#34;)
- *             .type(&#34;g6-standard-1&#34;)
- *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
- *             .rootPass(&#34;this-is-not-a-safe-password&#34;)
+ *         var web = new Instance("web", InstanceArgs.builder()        
+ *             .label("simple_instance")
+ *             .image("linode/ubuntu22.04")
+ *             .region("us-central")
+ *             .type("g6-standard-1")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user{@literal @}example.local")
+ *             .rootPass("this-is-not-a-safe-password")
  *             .interfaces(            
  *                 InstanceInterfaceArgs.builder()
- *                     .purpose(&#34;public&#34;)
+ *                     .purpose("public")
  *                     .build(),
  *                 InstanceInterfaceArgs.builder()
- *                     .purpose(&#34;vpc&#34;)
+ *                     .purpose("vpc")
  *                     .subnetId(123)
  *                     .ipv4(InstanceInterfaceIpv4Args.builder()
- *                         .vpc(&#34;10.0.4.250&#34;)
+ *                         .vpc("10.0.4.250")
  *                         .build())
  *                     .build())
- *             .tags(&#34;foo&#34;)
+ *             .tags("foo")
  *             .swapSize(256)
  *             .privateIp(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Linode Instance with Explicit Configs and Disks
@@ -136,7 +140,8 @@ import javax.annotation.Nullable;
  * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -166,44 +171,45 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = LinodeFunctions.getProfile();
  * 
- *         var web = new Instance(&#34;web&#34;, InstanceArgs.builder()        
- *             .label(&#34;complex_instance&#34;)
- *             .tags(&#34;foo&#34;)
- *             .region(&#34;us-central&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
+ *         var web = new Instance("web", InstanceArgs.builder()        
+ *             .label("complex_instance")
+ *             .tags("foo")
+ *             .region("us-central")
+ *             .type("g6-nanode-1")
  *             .privateIp(true)
  *             .build());
  * 
- *         var webVolume = new Volume(&#34;webVolume&#34;, VolumeArgs.builder()        
- *             .label(&#34;web_volume&#34;)
+ *         var webVolume = new Volume("webVolume", VolumeArgs.builder()        
+ *             .label("web_volume")
  *             .size(20)
- *             .region(&#34;us-central&#34;)
+ *             .region("us-central")
  *             .build());
  * 
- *         var bootDisk = new InstanceDisk(&#34;bootDisk&#34;, InstanceDiskArgs.builder()        
- *             .label(&#34;boot&#34;)
+ *         var bootDisk = new InstanceDisk("bootDisk", InstanceDiskArgs.builder()        
+ *             .label("boot")
  *             .linodeId(web.id())
  *             .size(3000)
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
- *             .authorizedUsers(me.applyValue(getProfileResult -&gt; getProfileResult.username()))
- *             .rootPass(&#34;terr4form-test&#34;)
+ *             .image("linode/ubuntu22.04")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user{@literal @}example.local")
+ *             .authorizedUsers(me.applyValue(getProfileResult -> getProfileResult.username()))
+ *             .rootPass("terr4form-test")
  *             .build());
  * 
- *         var bootConfig = new InstanceConfig(&#34;bootConfig&#34;, InstanceConfigArgs.builder()        
- *             .label(&#34;boot_config&#34;)
+ *         var bootConfig = new InstanceConfig("bootConfig", InstanceConfigArgs.builder()        
+ *             .label("boot_config")
  *             .linodeId(web.id())
  *             .devices(            
  *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
  *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .rootDevice(&#34;/dev/sda&#34;)
- *             .kernel(&#34;linode/latest-64bit&#34;)
+ *             .rootDevice("/dev/sda")
+ *             .kernel("linode/latest-64bit")
  *             .booted(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

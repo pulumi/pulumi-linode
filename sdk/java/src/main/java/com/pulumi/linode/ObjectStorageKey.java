@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to create an Object Storage Key.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,13 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new ObjectStorageKey(&#34;foo&#34;, ObjectStorageKeyArgs.builder()        
- *             .label(&#34;image-access&#34;)
+ *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()        
+ *             .label("image-access")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,27 +47,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new SshKey(&#34;foo&#34;, SshKeyArgs.builder()        
- *             .label(&#34;foo&#34;)
+ *         var foo = new SshKey("foo", SshKeyArgs.builder()        
+ *             .label("foo")
  *             .sshKey(StdFunctions.chomp(ChompArgs.builder()
  *                 .input(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;~/.ssh/id_rsa.pub&#34;)
+ *                     .input("~/.ssh/id_rsa.pub")
  *                     .build()).result())
  *                 .build()).result())
  *             .build());
  * 
- *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .label(&#34;foo&#34;)
- *             .region(&#34;us-east&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *             .image("linode/ubuntu22.04")
+ *             .label("foo")
+ *             .region("us-east")
+ *             .type("g6-nanode-1")
  *             .authorizedKeys(foo.sshKey())
- *             .rootPass(&#34;...&#34;)
+ *             .rootPass("...")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

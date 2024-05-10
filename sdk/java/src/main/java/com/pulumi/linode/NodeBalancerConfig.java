@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a NodeBalancer Config attached to a Linode instance.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,27 +51,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new NodeBalancer(&#34;foobar&#34;, NodeBalancerArgs.builder()        
- *             .label(&#34;mynodebalancer&#34;)
- *             .region(&#34;us-east&#34;)
+ *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()        
+ *             .label("mynodebalancer")
+ *             .region("us-east")
  *             .clientConnThrottle(20)
  *             .build());
  * 
- *         var foofig = new NodeBalancerConfig(&#34;foofig&#34;, NodeBalancerConfigArgs.builder()        
+ *         var foofig = new NodeBalancerConfig("foofig", NodeBalancerConfigArgs.builder()        
  *             .nodebalancerId(foobar.id())
  *             .port(8088)
- *             .protocol(&#34;http&#34;)
- *             .check(&#34;http&#34;)
- *             .checkPath(&#34;/foo&#34;)
+ *             .protocol("http")
+ *             .check("http")
+ *             .checkPath("/foo")
  *             .checkAttempts(3)
  *             .checkTimeout(30)
- *             .stickiness(&#34;http_cookie&#34;)
- *             .algorithm(&#34;source&#34;)
+ *             .stickiness("http_cookie")
+ *             .algorithm("source")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

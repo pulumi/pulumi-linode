@@ -154,14 +154,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     @Import(name="objAccessKey")
     private @Nullable Output<String> objAccessKey;
 
     /**
-     * @return The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * @return The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     public Optional<Output<String>> objAccessKey() {
@@ -169,14 +169,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     @Import(name="objSecretKey")
     private @Nullable Output<String> objSecretKey;
 
     /**
-     * @return The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * @return The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
     public Optional<Output<String>> objSecretKey() {
@@ -184,7 +184,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+     * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
      * linode_object_sorage_bucket resource.
      * 
      */
@@ -192,7 +192,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> objUseTempKeys;
 
     /**
-     * @return If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+     * @return If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
      * linode_object_sorage_bucket resource.
      * 
      */
@@ -216,14 +216,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Skip waiting for a linode_instance resource to finish deleting.
+     * Skip waiting for a linode.Instance resource to finish deleting.
      * 
      */
     @Import(name="skipInstanceDeletePoll", json=true)
     private @Nullable Output<Boolean> skipInstanceDeletePoll;
 
     /**
-     * @return Skip waiting for a linode_instance resource to finish deleting.
+     * @return Skip waiting for a linode.Instance resource to finish deleting.
      * 
      */
     public Optional<Output<Boolean>> skipInstanceDeletePoll() {
@@ -231,14 +231,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Skip waiting for a linode_instance resource to be running.
+     * Skip waiting for a linode.Instance resource to be running.
      * 
      */
     @Import(name="skipInstanceReadyPoll", json=true)
     private @Nullable Output<Boolean> skipInstanceReadyPoll;
 
     /**
-     * @return Skip waiting for a linode_instance resource to be running.
+     * @return Skip waiting for a linode.Instance resource to be running.
      * 
      */
     public Optional<Output<Boolean>> skipInstanceReadyPoll() {
@@ -521,7 +521,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objAccessKey The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * @param objAccessKey The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objAccessKey The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * @param objAccessKey The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objSecretKey The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * @param objSecretKey The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objSecretKey The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+         * @param objSecretKey The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
          * linode_object_sorage_bucket resource.
          * 
          * @return builder
@@ -575,7 +575,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
+         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
          * linode_object_sorage_bucket resource.
          * 
          * @return builder
@@ -607,7 +607,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipInstanceDeletePoll Skip waiting for a linode_instance resource to finish deleting.
+         * @param skipInstanceDeletePoll Skip waiting for a linode.Instance resource to finish deleting.
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipInstanceDeletePoll Skip waiting for a linode_instance resource to finish deleting.
+         * @param skipInstanceDeletePoll Skip waiting for a linode.Instance resource to finish deleting.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipInstanceReadyPoll Skip waiting for a linode_instance resource to be running.
+         * @param skipInstanceReadyPoll Skip waiting for a linode.Instance resource to be running.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipInstanceReadyPoll Skip waiting for a linode_instance resource to be running.
+         * @param skipInstanceReadyPoll Skip waiting for a linode.Instance resource to be running.
          * 
          * @return builder
          * 

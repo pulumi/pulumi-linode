@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,59 +54,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
- *             .label(&#34;my_instance&#34;)
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-standard-1&#34;)
- *             .rootPass(&#34;bogusPassword$&#34;)
+ *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+ *             .label("my_instance")
+ *             .image("linode/ubuntu22.04")
+ *             .region("us-southeast")
+ *             .type("g6-standard-1")
+ *             .rootPass("bogusPassword$")
  *             .swapSize(256)
  *             .build());
  * 
- *         var myFirewall = new Firewall(&#34;myFirewall&#34;, FirewallArgs.builder()        
- *             .label(&#34;my_firewall&#34;)
+ *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()        
+ *             .label("my_firewall")
  *             .inbounds(            
  *                 FirewallInboundArgs.builder()
- *                     .label(&#34;allow-http&#34;)
- *                     .action(&#34;ACCEPT&#34;)
- *                     .protocol(&#34;TCP&#34;)
- *                     .ports(&#34;80&#34;)
- *                     .ipv4s(&#34;0.0.0.0/0&#34;)
- *                     .ipv6s(&#34;::/0&#34;)
+ *                     .label("allow-http")
+ *                     .action("ACCEPT")
+ *                     .protocol("TCP")
+ *                     .ports("80")
+ *                     .ipv4s("0.0.0.0/0")
+ *                     .ipv6s("::/0")
  *                     .build(),
  *                 FirewallInboundArgs.builder()
- *                     .label(&#34;allow-https&#34;)
- *                     .action(&#34;ACCEPT&#34;)
- *                     .protocol(&#34;TCP&#34;)
- *                     .ports(&#34;443&#34;)
- *                     .ipv4s(&#34;0.0.0.0/0&#34;)
- *                     .ipv6s(&#34;::/0&#34;)
+ *                     .label("allow-https")
+ *                     .action("ACCEPT")
+ *                     .protocol("TCP")
+ *                     .ports("443")
+ *                     .ipv4s("0.0.0.0/0")
+ *                     .ipv6s("::/0")
  *                     .build())
- *             .inboundPolicy(&#34;DROP&#34;)
+ *             .inboundPolicy("DROP")
  *             .outbounds(            
  *                 FirewallOutboundArgs.builder()
- *                     .label(&#34;reject-http&#34;)
- *                     .action(&#34;DROP&#34;)
- *                     .protocol(&#34;TCP&#34;)
- *                     .ports(&#34;80&#34;)
- *                     .ipv4s(&#34;0.0.0.0/0&#34;)
- *                     .ipv6s(&#34;::/0&#34;)
+ *                     .label("reject-http")
+ *                     .action("DROP")
+ *                     .protocol("TCP")
+ *                     .ports("80")
+ *                     .ipv4s("0.0.0.0/0")
+ *                     .ipv6s("::/0")
  *                     .build(),
  *                 FirewallOutboundArgs.builder()
- *                     .label(&#34;reject-https&#34;)
- *                     .action(&#34;DROP&#34;)
- *                     .protocol(&#34;TCP&#34;)
- *                     .ports(&#34;443&#34;)
- *                     .ipv4s(&#34;0.0.0.0/0&#34;)
- *                     .ipv6s(&#34;::/0&#34;)
+ *                     .label("reject-https")
+ *                     .action("DROP")
+ *                     .protocol("TCP")
+ *                     .ports("443")
+ *                     .ipv4s("0.0.0.0/0")
+ *                     .ipv6s("::/0")
  *                     .build())
- *             .outboundPolicy(&#34;ACCEPT&#34;)
+ *             .outboundPolicy("ACCEPT")
  *             .linodes(myInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

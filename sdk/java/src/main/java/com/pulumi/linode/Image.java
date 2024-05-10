@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Creating an image from an existing Linode Instance and deploying another instance with that image:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,35 +52,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
- *             .type(&#34;g6-nanode-1&#34;)
- *             .region(&#34;us-central&#34;)
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .rootPass(&#34;insecure-p4ssw0rd!!&#34;)
+ *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *             .type("g6-nanode-1")
+ *             .region("us-central")
+ *             .image("linode/ubuntu22.04")
+ *             .rootPass("insecure-p4ssw0rd!!")
  *             .build());
  * 
- *         var bar = new Image(&#34;bar&#34;, ImageArgs.builder()        
- *             .label(&#34;foo-sda-image&#34;)
- *             .description(&#34;Image taken from foo&#34;)
- *             .diskId(foo.disks().applyValue(disks -&gt; disks[0].id()))
+ *         var bar = new Image("bar", ImageArgs.builder()        
+ *             .label("foo-sda-image")
+ *             .description("Image taken from foo")
+ *             .diskId(foo.disks().applyValue(disks -> disks[0].id()))
  *             .linodeId(foo.id())
  *             .build());
  * 
- *         var barBased = new Instance(&#34;barBased&#34;, InstanceArgs.builder()        
+ *         var barBased = new Instance("barBased", InstanceArgs.builder()        
  *             .type(foo.type())
- *             .region(&#34;eu-west&#34;)
+ *             .region("eu-west")
  *             .image(bar.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating and uploading an image from a local file:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,19 +103,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Image(&#34;foobar&#34;, ImageArgs.builder()        
- *             .label(&#34;foobar-image&#34;)
- *             .description(&#34;An image uploaded from Terraform!&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .filePath(&#34;path/to/image.img.gz&#34;)
+ *         var foobar = new Image("foobar", ImageArgs.builder()        
+ *             .label("foobar-image")
+ *             .description("An image uploaded from Terraform!")
+ *             .region("us-southeast")
+ *             .filePath("path/to/image.img.gz")
  *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
- *                 .input(&#34;path/to/image.img.gz&#34;)
+ *                 .input("path/to/image.img.gz")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

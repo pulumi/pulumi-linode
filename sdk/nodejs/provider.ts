@@ -38,11 +38,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly configProfile!: pulumi.Output<string | undefined>;
     /**
-     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
     public readonly objAccessKey!: pulumi.Output<string | undefined>;
     /**
-     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
     public readonly objSecretKey!: pulumi.Output<string | undefined>;
     /**
@@ -136,16 +136,16 @@ export interface ProviderArgs {
      */
     minRetryDelayMs?: pulumi.Input<number>;
     /**
-     * The access key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
     objAccessKey?: pulumi.Input<string>;
     /**
-     * The secret key to be used in linode_object_storage_bucket and linode_object_storage_object.
+     * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
     objSecretKey?: pulumi.Input<string>;
     /**
-     * If true, temporary object keys will be created implicitly at apply-time for the linode_object_storage_object and
-     * linode_object_sorage_bucket resource.
+     * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
+     * linodeObjectSorageBucket resource.
      */
     objUseTempKeys?: pulumi.Input<boolean>;
     /**
@@ -153,11 +153,11 @@ export interface ProviderArgs {
      */
     skipImplicitReboots?: pulumi.Input<boolean>;
     /**
-     * Skip waiting for a linode_instance resource to finish deleting.
+     * Skip waiting for a linode.Instance resource to finish deleting.
      */
     skipInstanceDeletePoll?: pulumi.Input<boolean>;
     /**
-     * Skip waiting for a linode_instance resource to be running.
+     * Skip waiting for a linode.Instance resource to be running.
      */
     skipInstanceReadyPoll?: pulumi.Input<boolean>;
     /**

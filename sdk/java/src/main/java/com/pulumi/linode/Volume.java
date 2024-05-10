@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,28 +51,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobaz = new Instance(&#34;foobaz&#34;, InstanceArgs.builder()        
- *             .rootPass(&#34;3X4mp13&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .region(&#34;us-west&#34;)
- *             .tags(&#34;foobaz&#34;)
+ *         var foobaz = new Instance("foobaz", InstanceArgs.builder()        
+ *             .rootPass("3X4mp13")
+ *             .type("g6-nanode-1")
+ *             .region("us-west")
+ *             .tags("foobaz")
  *             .build());
  * 
- *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
- *             .label(&#34;foo-volume&#34;)
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+ *             .label("foo-volume")
  *             .region(foobaz.region())
  *             .linodeId(foobaz.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Volumes can also be attached using the Linode Instance config device map.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,28 +97,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
- *             .region(&#34;us-east&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
+ *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *             .region("us-east")
+ *             .type("g6-nanode-1")
  *             .build());
  * 
- *         var fooInstanceConfig = new InstanceConfig(&#34;fooInstanceConfig&#34;, InstanceConfigArgs.builder()        
+ *         var fooInstanceConfig = new InstanceConfig("fooInstanceConfig", InstanceConfigArgs.builder()        
  *             .linodeId(foo.id())
- *             .label(&#34;boot-existing-volume&#34;)
- *             .kernel(&#34;linode/grub2&#34;)
+ *             .label("boot-existing-volume")
+ *             .kernel("linode/grub2")
  *             .devices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .booted(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Volumes may also be cloned from existing volumes.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -136,14 +141,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
- *             .label(&#34;my-cloned-volume&#34;)
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+ *             .label("my-cloned-volume")
  *             .sourceVolumeId(12345)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

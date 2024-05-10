@@ -171,7 +171,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizedUsers!: pulumi.Output<string[] | undefined>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
      * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
      * /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
      * exclusive.
@@ -447,7 +447,7 @@ export interface InstanceState {
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
      * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
      * /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
      * exclusive.
@@ -626,7 +626,7 @@ export interface InstanceArgs {
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
      * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
      * /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
      * exclusive.

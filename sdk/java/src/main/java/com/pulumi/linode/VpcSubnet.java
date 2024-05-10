@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Create a VPC subnet:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,15 +46,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new VpcSubnet(&#34;test&#34;, VpcSubnetArgs.builder()        
+ *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()        
  *             .vpcId(123)
- *             .label(&#34;test-subnet&#34;)
- *             .ipv4(&#34;10.0.0.0/24&#34;)
+ *             .label("test-subnet")
+ *             .ipv4("10.0.0.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
