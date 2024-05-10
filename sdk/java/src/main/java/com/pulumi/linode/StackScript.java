@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,34 +51,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new StackScript(&#34;foo&#34;, StackScriptArgs.builder()        
- *             .label(&#34;foo&#34;)
- *             .description(&#34;Installs a Package&#34;)
- *             .script(&#34;&#34;&#34;
+ *         var foo = new StackScript("foo", StackScriptArgs.builder()        
+ *             .label("foo")
+ *             .description("Installs a Package")
+ *             .script("""
  * #!/bin/bash
- * # &lt;UDF name=&#34;package&#34; label=&#34;System Package to Install&#34; example=&#34;nginx&#34; default=&#34;&#34;&gt;
- * apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
- *             &#34;&#34;&#34;)
+ * # <UDF name="package" label="System Package to Install" example="nginx" default="">
+ * apt-get -q update && apt-get -q -y install $PACKAGE
+ *             """)
  *             .images(            
- *                 &#34;linode/ubuntu22.04&#34;,
- *                 &#34;linode/ubuntu20.04&#34;)
- *             .revNote(&#34;initial version&#34;)
+ *                 "linode/ubuntu22.04",
+ *                 "linode/ubuntu20.04")
+ *             .revNote("initial version")
  *             .build());
  * 
- *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .label(&#34;foo&#34;)
- *             .region(&#34;us-east&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .authorizedKeys(&#34;...&#34;)
- *             .rootPass(&#34;...&#34;)
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *             .image("linode/ubuntu22.04")
+ *             .label("foo")
+ *             .region("us-east")
+ *             .type("g6-nanode-1")
+ *             .authorizedKeys("...")
+ *             .rootPass("...")
  *             .stackscriptId(foo.id())
- *             .stackscriptData(Map.of(&#34;package&#34;, &#34;nginx&#34;))
+ *             .stackscriptData(Map.of("package", "nginx"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

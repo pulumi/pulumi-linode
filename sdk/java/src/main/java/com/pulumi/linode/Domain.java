@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a Domain Record attached to a Linode Domain.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,25 +49,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Domain(&#34;foobar&#34;, DomainArgs.builder()        
- *             .type(&#34;master&#34;)
- *             .domain(&#34;foobar.example&#34;)
- *             .soaEmail(&#34;example@foobar.example&#34;)
+ *         var foobar = new Domain("foobar", DomainArgs.builder()        
+ *             .type("master")
+ *             .domain("foobar.example")
+ *             .soaEmail("example{@literal @}foobar.example")
  *             .tags(            
- *                 &#34;foo&#34;,
- *                 &#34;bar&#34;)
+ *                 "foo",
+ *                 "bar")
  *             .build());
  * 
- *         var foobarDomainRecord = new DomainRecord(&#34;foobarDomainRecord&#34;, DomainRecordArgs.builder()        
+ *         var foobarDomainRecord = new DomainRecord("foobarDomainRecord", DomainRecordArgs.builder()        
  *             .domainId(foobar.id())
- *             .name(&#34;www&#34;)
- *             .recordType(&#34;CNAME&#34;)
- *             .target(&#34;foobar.example&#34;)
+ *             .name("www")
+ *             .recordType("CNAME")
+ *             .target("foobar.example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

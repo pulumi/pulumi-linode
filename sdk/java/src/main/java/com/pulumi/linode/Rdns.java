@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure an RDNS address for an IP address.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,26 +52,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
- *             .image(&#34;linode/alpine3.19&#34;)
- *             .region(&#34;ca-east&#34;)
- *             .type(&#34;g6-dedicated-2&#34;)
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *             .image("linode/alpine3.19")
+ *             .region("ca-east")
+ *             .type("g6-dedicated-2")
  *             .build());
  * 
- *         var foo = new Rdns(&#34;foo&#34;, RdnsArgs.builder()        
+ *         var foo = new Rdns("foo", RdnsArgs.builder()        
  *             .address(fooInstance.ipAddress())
- *             .rdns(fooInstance.ipAddress().applyValue(ipAddress -&gt; String.format(&#34;%s.nip.io&#34;, ipAddress)))
+ *             .rdns(fooInstance.ipAddress().applyValue(ipAddress -> String.format("%s.nip.io", ipAddress)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,28 +97,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         for (var i = 0; i &lt; 3; i++) {
- *             new Instance(&#34;myInstance-&#34; + i, InstanceArgs.builder()            
- *                 .label(String.format(&#34;simple_instance-%s&#34;, range.value() + 1))
- *                 .image(&#34;linode/ubuntu22.04&#34;)
- *                 .region(&#34;us-central&#34;)
- *                 .type(&#34;g6-standard-1&#34;)
- *                 .rootPass(&#34;terr4form-test&#34;)
+ *         for (var i = 0; i < 3; i++) {
+ *             new Instance("myInstance-" + i, InstanceArgs.builder()            
+ *                 .label(String.format("simple_instance-%s", range.value() + 1))
+ *                 .image("linode/ubuntu22.04")
+ *                 .region("us-central")
+ *                 .type("g6-standard-1")
+ *                 .rootPass("terr4form-test")
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i &lt; myInstance.length(); i++) {
- *             new Rdns(&#34;myRdns-&#34; + i, RdnsArgs.builder()            
+ *         for (var i = 0; i < myInstance.length(); i++) {
+ *             new Rdns("myRdns-" + i, RdnsArgs.builder()            
  *                 .address(myInstance[range.value()].ipAddress())
- *                 .rdns(myInstance[range.value()].ipAddress().applyValue(ipAddress -&gt; String.format(&#34;%s.nip.io&#34;, ipAddress)))
+ *                 .rdns(myInstance[range.value()].ipAddress().applyValue(ipAddress -> String.format("%s.nip.io", ipAddress)))
  *                 .build());
  * 
  *         
  * }
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

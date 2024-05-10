@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Grant a Linode access to a database:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,29 +49,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_instance = new Instance(&#34;my-instance&#34;, InstanceArgs.builder()        
- *             .label(&#34;myinstance&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .image(&#34;linode/alpine3.19&#34;)
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()        
+ *             .label("myinstance")
+ *             .region("us-southeast")
+ *             .type("g6-nanode-1")
+ *             .image("linode/alpine3.19")
  *             .build());
  * 
- *         var my_db = new DatabaseMysql(&#34;my-db&#34;, DatabaseMysqlArgs.builder()        
- *             .label(&#34;mydatabase&#34;)
- *             .engineId(&#34;mysql/8.0.30&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
+ *         var my_db = new DatabaseMysql("my-db", DatabaseMysqlArgs.builder()        
+ *             .label("mydatabase")
+ *             .engineId("mysql/8.0.30")
+ *             .region("us-southeast")
+ *             .type("g6-nanode-1")
  *             .build());
  * 
- *         var my_access = new DatabaseAccessControls(&#34;my-access&#34;, DatabaseAccessControlsArgs.builder()        
+ *         var my_access = new DatabaseAccessControls("my-access", DatabaseAccessControlsArgs.builder()        
  *             .databaseId(my_db.id())
- *             .databaseType(&#34;mysql&#34;)
+ *             .databaseType("mysql")
  *             .allowLists(my_instance.ipAddress())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

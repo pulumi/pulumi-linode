@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Create a VPC:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,15 +45,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Vpc(&#34;test&#34;, VpcArgs.builder()        
- *             .label(&#34;test-vpc&#34;)
- *             .region(&#34;us-iad&#34;)
- *             .description(&#34;My first VPC.&#34;)
+ *         var test = new Vpc("test", VpcArgs.builder()        
+ *             .label("test-vpc")
+ *             .region("us-iad")
+ *             .description("My first VPC.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

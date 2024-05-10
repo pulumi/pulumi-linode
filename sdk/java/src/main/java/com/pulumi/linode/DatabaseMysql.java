@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Creating a simple MySQL database instance:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,22 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabaseMysql(&#34;foobar&#34;, DatabaseMysqlArgs.builder()        
- *             .label(&#34;mydatabase&#34;)
- *             .engineId(&#34;mysql/8.0.30&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
+ *         var foobar = new DatabaseMysql("foobar", DatabaseMysqlArgs.builder()        
+ *             .label("mydatabase")
+ *             .engineId("mysql/8.0.30")
+ *             .region("us-southeast")
+ *             .type("g6-nanode-1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a complex MySQL database instance:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,20 +90,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabaseMysql(&#34;foobar&#34;, DatabaseMysqlArgs.builder()        
- *             .label(&#34;mydatabase&#34;)
- *             .engineId(&#34;mysql/8.0.30&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .allowLists(&#34;0.0.0.0/0&#34;)
+ *         var foobar = new DatabaseMysql("foobar", DatabaseMysqlArgs.builder()        
+ *             .label("mydatabase")
+ *             .engineId("mysql/8.0.30")
+ *             .region("us-southeast")
+ *             .type("g6-nanode-1")
+ *             .allowLists("0.0.0.0/0")
  *             .clusterSize(3)
  *             .encrypted(true)
- *             .replicationType(&#34;asynch&#34;)
+ *             .replicationType("asynch")
  *             .sslConnection(true)
  *             .updates(DatabaseMysqlUpdatesArgs.builder()
- *                 .dayOfWeek(&#34;saturday&#34;)
+ *                 .dayOfWeek("saturday")
  *                 .duration(1)
- *                 .frequency(&#34;monthly&#34;)
+ *                 .frequency("monthly")
  *                 .hourOfDay(22)
  *                 .weekOfMonth(2)
  *                 .build())
@@ -108,7 +111,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## updates

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to change their Linode account settings.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,14 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myaccount = new AccountSettings(&#34;myaccount&#34;, AccountSettingsArgs.builder()        
- *             .longviewSubscription(&#34;longview-40&#34;)
- *             .backupsEnabled(&#34;true&#34;)
+ *         var myaccount = new AccountSettings("myaccount", AccountSettingsArgs.builder()        
+ *             .longviewSubscription("longview-40")
+ *             .backupsEnabled("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Additional Results

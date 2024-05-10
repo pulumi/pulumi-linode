@@ -182,7 +182,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access account details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -206,7 +207,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -223,7 +225,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access account details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -247,7 +250,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +268,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access account details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -288,7 +293,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -305,7 +311,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access account details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -329,7 +336,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -346,7 +354,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access account details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -370,7 +379,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -387,7 +397,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access account details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -411,7 +422,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -426,7 +438,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to discover regions without specific service availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,15 +462,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
      *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
-     *                 .name(&#34;unavailable&#34;)
-     *                 .values(&#34;Linodes&#34;)
+     *                 .name("unavailable")
+     *                 .values("Linodes")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *         ctx.export("regions-without-linodes", filtered_availabilities.availabilities().stream().map(element -> element.region()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -480,7 +494,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to discover regions without specific service availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -503,15 +518,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
      *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
-     *                 .name(&#34;unavailable&#34;)
-     *                 .values(&#34;Linodes&#34;)
+     *                 .name("unavailable")
+     *                 .values("Linodes")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *         ctx.export("regions-without-linodes", filtered_availabilities.availabilities().stream().map(element -> element.region()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -534,7 +550,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to discover regions without specific service availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -557,15 +574,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
      *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
-     *                 .name(&#34;unavailable&#34;)
-     *                 .values(&#34;Linodes&#34;)
+     *                 .name("unavailable")
+     *                 .values("Linodes")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *         ctx.export("regions-without-linodes", filtered_availabilities.availabilities().stream().map(element -> element.region()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -588,7 +606,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to discover regions without specific service availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -611,15 +630,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
      *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
-     *                 .name(&#34;unavailable&#34;)
-     *                 .values(&#34;Linodes&#34;)
+     *                 .name("unavailable")
+     *                 .values("Linodes")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *         ctx.export("regions-without-linodes", filtered_availabilities.availabilities().stream().map(element -> element.region()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -642,7 +662,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to discover regions without specific service availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -665,15 +686,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
      *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
-     *                 .name(&#34;unavailable&#34;)
-     *                 .values(&#34;Linodes&#34;)
+     *                 .name("unavailable")
+     *                 .values("Linodes")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *         ctx.export("regions-without-linodes", filtered_availabilities.availabilities().stream().map(element -> element.region()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -696,7 +718,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to discover regions without specific service availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -719,15 +742,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-availabilities = LinodeFunctions.getAccountAvailabilities(GetAccountAvailabilitiesArgs.builder()
      *             .filters(GetAccountAvailabilitiesFilterArgs.builder()
-     *                 .name(&#34;unavailable&#34;)
-     *                 .values(&#34;Linodes&#34;)
+     *                 .name("unavailable")
+     *                 .values("Linodes")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions-without-linodes&#34;, filtered_availabilities.availabilities().stream().map(element -&gt; element.region()).collect(toList()));
+     *         ctx.export("regions-without-linodes", filtered_availabilities.availabilities().stream().map(element -> element.region()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -750,7 +774,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -772,12 +797,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
-     *             .region(&#34;us-east&#34;)
+     *             .region("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -792,7 +818,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -814,12 +841,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
-     *             .region(&#34;us-east&#34;)
+     *             .region("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -834,7 +862,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,12 +885,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
-     *             .region(&#34;us-east&#34;)
+     *             .region("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -876,7 +906,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account availability.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -898,12 +929,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myAccountAvailability = LinodeFunctions.getAccountAvailability(GetAccountAvailabilityArgs.builder()
-     *             .region(&#34;us-east&#34;)
+     *             .region("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -918,7 +950,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -945,7 +978,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -960,7 +994,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -987,7 +1022,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1038,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1029,7 +1066,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1044,7 +1082,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1071,7 +1110,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1086,7 +1126,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1110,19 +1151,20 @@ public final class LinodeFunctions {
      *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
      *             .filters(            
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;restricted&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("restricted")
+     *                     .values("true")
      *                     .build(),
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;username&#34;)
-     *                     .values(&#34;myUsername&#34;)
+     *                     .name("username")
+     *                     .values("myUsername")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("loginIds", filtered_account_logins.logins().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -1145,7 +1187,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1169,19 +1212,20 @@ public final class LinodeFunctions {
      *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
      *             .filters(            
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;restricted&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("restricted")
+     *                     .values("true")
      *                     .build(),
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;username&#34;)
-     *                     .values(&#34;myUsername&#34;)
+     *                     .name("username")
+     *                     .values("myUsername")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("loginIds", filtered_account_logins.logins().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -1204,7 +1248,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1228,19 +1273,20 @@ public final class LinodeFunctions {
      *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
      *             .filters(            
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;restricted&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("restricted")
+     *                     .values("true")
      *                     .build(),
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;username&#34;)
-     *                     .values(&#34;myUsername&#34;)
+     *                     .name("username")
+     *                     .values("myUsername")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("loginIds", filtered_account_logins.logins().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -1263,7 +1309,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1287,19 +1334,20 @@ public final class LinodeFunctions {
      *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
      *             .filters(            
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;restricted&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("restricted")
+     *                     .values("true")
      *                     .build(),
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;username&#34;)
-     *                     .values(&#34;myUsername&#34;)
+     *                     .name("username")
+     *                     .values("myUsername")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("loginIds", filtered_account_logins.logins().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -1322,7 +1370,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1346,19 +1395,20 @@ public final class LinodeFunctions {
      *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
      *             .filters(            
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;restricted&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("restricted")
+     *                     .values("true")
      *                     .build(),
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;username&#34;)
-     *                     .values(&#34;myUsername&#34;)
+     *                     .name("username")
+     *                     .values("myUsername")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("loginIds", filtered_account_logins.logins().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -1381,7 +1431,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode account login.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1405,19 +1456,20 @@ public final class LinodeFunctions {
      *         final var filtered-account-logins = LinodeFunctions.getAccountLogins(GetAccountLoginsArgs.builder()
      *             .filters(            
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;restricted&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("restricted")
+     *                     .values("true")
      *                     .build(),
      *                 GetAccountLoginsFilterArgs.builder()
-     *                     .name(&#34;username&#34;)
-     *                     .values(&#34;myUsername&#34;)
+     *                     .name("username")
+     *                     .values("myUsername")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;loginIds&#34;, filtered_account_logins.logins().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("loginIds", filtered_account_logins.logins().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -1440,7 +1492,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about Linode account settings.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1464,7 +1517,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1479,7 +1533,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about Linode account settings.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1503,7 +1558,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1518,7 +1574,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about Linode account settings.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1542,7 +1599,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1557,7 +1615,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about Linode account settings.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1581,7 +1640,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1596,7 +1656,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about Linode account settings.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1620,7 +1681,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1635,7 +1697,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about Linode account settings.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1659,7 +1722,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1674,7 +1738,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1697,18 +1762,20 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mysql&#34;)
+     *             .databaseType("mysql")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1731,16 +1798,17 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;postgresql&#34;)
+     *             .databaseType("postgresql")
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1755,7 +1823,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1778,18 +1847,20 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mysql&#34;)
+     *             .databaseType("mysql")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1812,16 +1883,17 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;postgresql&#34;)
+     *             .databaseType("postgresql")
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1836,7 +1908,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1859,18 +1932,20 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mysql&#34;)
+     *             .databaseType("mysql")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1893,16 +1968,17 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;postgresql&#34;)
+     *             .databaseType("postgresql")
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1917,7 +1993,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1940,18 +2017,20 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;mysql&#34;)
+     *             .databaseType("mysql")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic PostgreSQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1974,16 +2053,17 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
      *             .databaseId(12345)
-     *             .databaseType(&#34;postgresql&#34;)
+     *             .databaseType("postgresql")
      *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1998,7 +2078,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2021,16 +2102,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
-     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2053,21 +2136,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2093,21 +2178,22 @@ public final class LinodeFunctions {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .latest(true)
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql(&#34;myDb&#34;, DatabaseMysqlArgs.builder()        
-     *             .label(&#34;mydb&#34;)
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()[0].id()))
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-nanode-1&#34;)
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *             .label("mydb")
+     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .region("us-southeast")
+     *             .type("g6-nanode-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2122,7 +2208,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2145,16 +2232,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
-     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2177,21 +2266,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2217,21 +2308,22 @@ public final class LinodeFunctions {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .latest(true)
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql(&#34;myDb&#34;, DatabaseMysqlArgs.builder()        
-     *             .label(&#34;mydb&#34;)
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()[0].id()))
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-nanode-1&#34;)
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *             .label("mydb")
+     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .region("us-southeast")
+     *             .type("g6-nanode-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2246,7 +2338,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2269,16 +2362,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
-     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2301,21 +2396,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2341,21 +2438,22 @@ public final class LinodeFunctions {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .latest(true)
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql(&#34;myDb&#34;, DatabaseMysqlArgs.builder()        
-     *             .label(&#34;mydb&#34;)
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()[0].id()))
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-nanode-1&#34;)
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *             .label("mydb")
+     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .region("us-southeast")
+     *             .type("g6-nanode-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2370,7 +2468,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2393,16 +2492,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
-     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2425,21 +2526,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2465,21 +2568,22 @@ public final class LinodeFunctions {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .latest(true)
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql(&#34;myDb&#34;, DatabaseMysqlArgs.builder()        
-     *             .label(&#34;mydb&#34;)
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()[0].id()))
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-nanode-1&#34;)
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *             .label("mydb")
+     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .region("us-southeast")
+     *             .type("g6-nanode-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2494,7 +2598,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2517,16 +2622,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
-     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2549,21 +2656,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2589,21 +2698,22 @@ public final class LinodeFunctions {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .latest(true)
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql(&#34;myDb&#34;, DatabaseMysqlArgs.builder()        
-     *             .label(&#34;mydb&#34;)
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()[0].id()))
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-nanode-1&#34;)
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *             .label("mydb")
+     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .region("us-southeast")
+     *             .type("g6-nanode-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2618,7 +2728,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2641,16 +2752,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabaseEngines();
      * 
-     *         ctx.export(&#34;engineIds&#34;, all.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Database engines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2673,21 +2786,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;engineIds&#34;, mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create a Linode MySQL Database using the latest support MySQL version:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2713,21 +2828,22 @@ public final class LinodeFunctions {
      *         final var mysql = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
      *             .latest(true)
      *             .filters(GetDatabaseEnginesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql(&#34;myDb&#34;, DatabaseMysqlArgs.builder()        
-     *             .label(&#34;mydb&#34;)
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -&gt; getDatabaseEnginesResult.engines()[0].id()))
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-nanode-1&#34;)
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *             .label("mydb")
+     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .region("us-southeast")
+     *             .type("g6-nanode-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2742,7 +2858,8 @@ public final class LinodeFunctions {
      * Get information about a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2769,7 +2886,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -2798,7 +2916,8 @@ public final class LinodeFunctions {
      * Get information about a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2825,7 +2944,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -2854,7 +2974,8 @@ public final class LinodeFunctions {
      * Get information about a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2881,7 +3002,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -2910,7 +3032,8 @@ public final class LinodeFunctions {
      * Get information about a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2937,7 +3060,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -2966,7 +3090,8 @@ public final class LinodeFunctions {
      * Get information about a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2993,7 +3118,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3022,7 +3148,8 @@ public final class LinodeFunctions {
      * Get information about a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3049,7 +3176,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3080,7 +3208,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3107,13 +3236,15 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3137,14 +3268,15 @@ public final class LinodeFunctions {
      *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
      *             .databaseId(12345)
      *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3161,7 +3293,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3188,13 +3321,15 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3218,14 +3353,15 @@ public final class LinodeFunctions {
      *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
      *             .databaseId(12345)
      *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3242,7 +3378,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3269,13 +3406,15 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3299,14 +3438,15 @@ public final class LinodeFunctions {
      *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
      *             .databaseId(12345)
      *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3323,7 +3463,8 @@ public final class LinodeFunctions {
      * Get information about all backups for a MySQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3350,13 +3491,15 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all automatic MySQL Database Backups:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3380,14 +3523,15 @@ public final class LinodeFunctions {
      *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
      *             .databaseId(12345)
      *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name(&#34;type&#34;)
-     *                 .values(&#34;auto&#34;)
+     *                 .name("type")
+     *                 .values("auto")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3402,7 +3546,8 @@ public final class LinodeFunctions {
      * Get information about a PostgreSQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3429,7 +3574,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3458,7 +3604,8 @@ public final class LinodeFunctions {
      * Get information about a PostgreSQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3485,7 +3632,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3514,7 +3662,8 @@ public final class LinodeFunctions {
      * Get information about a PostgreSQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3541,7 +3690,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3570,7 +3720,8 @@ public final class LinodeFunctions {
      * Get information about a PostgreSQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3597,7 +3748,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3626,7 +3778,8 @@ public final class LinodeFunctions {
      * Get information about a PostgreSQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3653,7 +3806,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3682,7 +3836,8 @@ public final class LinodeFunctions {
      * Get information about a PostgreSQL database:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3709,7 +3864,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## updates
@@ -3738,7 +3894,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3761,16 +3918,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
-     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3793,15 +3952,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .filters(GetDatabasesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3816,7 +3976,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3839,16 +4000,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
-     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3871,15 +4034,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .filters(GetDatabasesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3894,7 +4058,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3917,16 +4082,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
-     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3949,15 +4116,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .filters(GetDatabasesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3972,7 +4140,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3995,16 +4164,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
-     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4027,15 +4198,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .filters(GetDatabasesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4050,7 +4222,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4073,16 +4246,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
-     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4105,15 +4280,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .filters(GetDatabasesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4128,7 +4304,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Managed Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4151,16 +4328,18 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getDatabases();
      * 
-     *         ctx.export(&#34;databaseIds&#34;, all.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode MySQL Databases:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4183,15 +4362,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .filters(GetDatabasesFilterArgs.builder()
-     *                 .name(&#34;engine&#34;)
-     *                 .values(&#34;mysql&#34;)
+     *                 .name("engine")
+     *                 .values("mysql")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;databaseIds&#34;, mysql.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4206,7 +4386,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode domain.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4228,16 +4409,17 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .domain(&#34;bar.example.com&#34;)
+     *             .domain("bar.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4252,7 +4434,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode domain.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4274,16 +4457,17 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .domain(&#34;bar.example.com&#34;)
+     *             .domain("bar.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4298,7 +4482,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode domain.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4320,16 +4505,17 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .domain(&#34;bar.example.com&#34;)
+     *             .domain("bar.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4344,7 +4530,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode domain.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4366,16 +4553,17 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .domain(&#34;bar.example.com&#34;)
+     *             .domain("bar.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4390,7 +4578,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode domain.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4412,16 +4601,17 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .domain(&#34;bar.example.com&#34;)
+     *             .domain("bar.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4436,7 +4626,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode domain.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4458,16 +4649,17 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .domain(&#34;bar.example.com&#34;)
+     *             .domain("bar.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4482,7 +4674,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4504,18 +4697,19 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(&#34;14950401&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .id("14950401")
+     *             .domainId("3150401")
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name(&#34;www&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .name("www")
+     *             .domainId("3150401")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4530,7 +4724,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4552,18 +4747,19 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(&#34;14950401&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .id("14950401")
+     *             .domainId("3150401")
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name(&#34;www&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .name("www")
+     *             .domainId("3150401")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4578,7 +4774,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4600,18 +4797,19 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(&#34;14950401&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .id("14950401")
+     *             .domainId("3150401")
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name(&#34;www&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .name("www")
+     *             .domainId("3150401")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4626,7 +4824,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Record.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4648,18 +4847,19 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(&#34;14950401&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .id("14950401")
+     *             .domainId("3150401")
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name(&#34;www&#34;)
-     *             .domainId(&#34;3150401&#34;)
+     *             .name("www")
+     *             .domainId("3150401")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4674,7 +4874,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4701,7 +4902,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4716,7 +4918,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4743,7 +4946,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4758,7 +4962,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4785,7 +4990,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4800,7 +5006,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4827,7 +5034,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4842,7 +5050,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4865,15 +5074,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -4916,7 +5126,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4939,15 +5150,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -4990,7 +5202,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5013,15 +5226,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -5064,7 +5278,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5087,15 +5302,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -5138,7 +5354,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5161,15 +5378,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -5212,7 +5430,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5235,15 +5454,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;domain&#34;, specific.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -5284,7 +5504,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5311,7 +5532,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5324,7 +5546,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5351,7 +5574,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5364,7 +5588,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5391,7 +5616,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5404,7 +5630,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5431,7 +5658,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5446,7 +5674,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5470,25 +5699,27 @@ public final class LinodeFunctions {
      *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
      *             .filters(            
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-firewalls&#34;)
+     *                     .name("label")
+     *                     .values("my-firewalls")
      *                     .build(),
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5511,10 +5742,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getFirewalls();
      * 
-     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Firewall Rule
@@ -5565,7 +5797,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5589,25 +5822,27 @@ public final class LinodeFunctions {
      *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
      *             .filters(            
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-firewalls&#34;)
+     *                     .name("label")
+     *                     .values("my-firewalls")
      *                     .build(),
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5630,10 +5865,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getFirewalls();
      * 
-     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Firewall Rule
@@ -5684,7 +5920,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5708,25 +5945,27 @@ public final class LinodeFunctions {
      *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
      *             .filters(            
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-firewalls&#34;)
+     *                     .name("label")
+     *                     .values("my-firewalls")
      *                     .build(),
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5749,10 +5988,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getFirewalls();
      * 
-     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Firewall Rule
@@ -5803,7 +6043,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5827,25 +6068,27 @@ public final class LinodeFunctions {
      *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
      *             .filters(            
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-firewalls&#34;)
+     *                     .name("label")
+     *                     .values("my-firewalls")
      *                     .build(),
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5868,10 +6111,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getFirewalls();
      * 
-     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Firewall Rule
@@ -5922,7 +6166,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5946,25 +6191,27 @@ public final class LinodeFunctions {
      *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
      *             .filters(            
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-firewalls&#34;)
+     *                     .name("label")
+     *                     .values("my-firewalls")
      *                     .build(),
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5987,10 +6234,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getFirewalls();
      * 
-     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Firewall Rule
@@ -6041,7 +6289,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Cloud Firewalls with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6065,25 +6314,27 @@ public final class LinodeFunctions {
      *         final var specific = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
      *             .filters(            
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-firewalls&#34;)
+     *                     .name("label")
+     *                     .values("my-firewalls")
      *                     .build(),
      *                 GetFirewallsFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;firewallId&#34;, specific.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6106,10 +6357,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = LinodeFunctions.getFirewalls();
      * 
-     *         ctx.export(&#34;firewallIds&#34;, all.applyValue(getFirewallsResult -&gt; getFirewallsResult.firewalls()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Firewall Rule
@@ -6160,7 +6412,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode image.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6182,12 +6435,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian12&#34;)
+     *             .id("linode/debian12")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6202,7 +6456,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode image.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6224,12 +6479,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian12&#34;)
+     *             .id("linode/debian12")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6244,7 +6500,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode image.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6266,12 +6523,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian12&#34;)
+     *             .id("linode/debian12")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6286,7 +6544,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode image.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6308,12 +6567,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var k8Master = LinodeFunctions.getImage(GetImageArgs.builder()
-     *             .id(&#34;linode/debian12&#34;)
+     *             .id("linode/debian12")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6328,7 +6588,8 @@ public final class LinodeFunctions {
      * Get information about all Linode images with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6352,25 +6613,27 @@ public final class LinodeFunctions {
      *         final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 12&#34;)
+     *                     .name("label")
+     *                     .values("Debian 12")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("is_public")
+     *                     .values("true")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
+     *         ctx.export("imageId", specific_images.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6393,10 +6656,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
-     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -6431,7 +6695,8 @@ public final class LinodeFunctions {
      * Get information about all Linode images with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6455,25 +6720,27 @@ public final class LinodeFunctions {
      *         final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 12&#34;)
+     *                     .name("label")
+     *                     .values("Debian 12")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("is_public")
+     *                     .values("true")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
+     *         ctx.export("imageId", specific_images.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6496,10 +6763,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
-     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -6534,7 +6802,8 @@ public final class LinodeFunctions {
      * Get information about all Linode images with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6558,25 +6827,27 @@ public final class LinodeFunctions {
      *         final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 12&#34;)
+     *                     .name("label")
+     *                     .values("Debian 12")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("is_public")
+     *                     .values("true")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
+     *         ctx.export("imageId", specific_images.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6599,10 +6870,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
-     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -6637,7 +6909,8 @@ public final class LinodeFunctions {
      * Get information about all Linode images with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6661,25 +6934,27 @@ public final class LinodeFunctions {
      *         final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 12&#34;)
+     *                     .name("label")
+     *                     .values("Debian 12")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("is_public")
+     *                     .values("true")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
+     *         ctx.export("imageId", specific_images.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6702,10 +6977,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
-     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -6740,7 +7016,8 @@ public final class LinodeFunctions {
      * Get information about all Linode images with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6764,25 +7041,27 @@ public final class LinodeFunctions {
      *         final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 12&#34;)
+     *                     .name("label")
+     *                     .values("Debian 12")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("is_public")
+     *                     .values("true")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
+     *         ctx.export("imageId", specific_images.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6805,10 +7084,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
-     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -6843,7 +7123,8 @@ public final class LinodeFunctions {
      * Get information about all Linode images with a certain label and visibility:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6867,25 +7148,27 @@ public final class LinodeFunctions {
      *         final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;Debian 12&#34;)
+     *                     .name("label")
+     *                     .values("Debian 12")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .name("is_public")
+     *                     .values("true")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;imageId&#34;, specific_images.images()[0].id());
+     *         ctx.export("imageId", specific_images.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode images associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6908,10 +7191,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-images = LinodeFunctions.getImages();
      * 
-     *         ctx.export(&#34;imageIds&#34;, all_images.images().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -6944,7 +7228,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6971,7 +7256,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6984,7 +7270,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7011,7 +7298,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7024,7 +7312,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7051,7 +7340,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7064,7 +7354,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7091,7 +7382,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7104,7 +7396,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7131,7 +7424,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7144,7 +7438,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7171,7 +7466,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7184,7 +7480,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7211,7 +7508,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7224,7 +7522,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7251,7 +7550,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7266,7 +7566,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Instance type.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7288,12 +7589,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = LinodeFunctions.getInstanceType(GetInstanceTypeArgs.builder()
-     *             .id(&#34;g6-standard-2&#34;)
+     *             .id("g6-standard-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7308,7 +7610,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Instance type.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7330,12 +7633,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = LinodeFunctions.getInstanceType(GetInstanceTypeArgs.builder()
-     *             .id(&#34;g6-standard-2&#34;)
+     *             .id("g6-standard-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7350,7 +7654,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Instance type.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7372,12 +7677,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = LinodeFunctions.getInstanceType(GetInstanceTypeArgs.builder()
-     *             .id(&#34;g6-standard-2&#34;)
+     *             .id("g6-standard-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7392,7 +7698,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Instance type.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7414,12 +7721,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = LinodeFunctions.getInstanceType(GetInstanceTypeArgs.builder()
-     *             .id(&#34;g6-standard-2&#34;)
+     *             .id("g6-standard-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7434,7 +7742,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Instance types with a certain number of VCPUs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7457,21 +7766,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
-     *                 .name(&#34;vcpus&#34;)
+     *                 .name("vcpus")
      *                 .values(2)
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", specific_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7494,10 +7805,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -7530,7 +7842,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Instance types with a certain number of VCPUs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7553,21 +7866,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
-     *                 .name(&#34;vcpus&#34;)
+     *                 .name("vcpus")
      *                 .values(2)
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", specific_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7590,10 +7905,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -7626,7 +7942,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Instance types with a certain number of VCPUs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7649,21 +7966,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
-     *                 .name(&#34;vcpus&#34;)
+     *                 .name("vcpus")
      *                 .values(2)
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", specific_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7686,10 +8005,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -7722,7 +8042,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Instance types with a certain number of VCPUs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7745,21 +8066,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
-     *                 .name(&#34;vcpus&#34;)
+     *                 .name("vcpus")
      *                 .values(2)
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", specific_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7782,10 +8105,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -7818,7 +8142,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Instance types with a certain number of VCPUs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7841,21 +8166,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
-     *                 .name(&#34;vcpus&#34;)
+     *                 .name("vcpus")
      *                 .values(2)
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", specific_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7878,10 +8205,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -7914,7 +8242,8 @@ public final class LinodeFunctions {
      * Get information about all Linode Instance types with a certain number of VCPUs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7937,21 +8266,23 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
-     *                 .name(&#34;vcpus&#34;)
+     *                 .name("vcpus")
      *                 .values(2)
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;typeIds&#34;, specific_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", specific_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode Instance types:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7974,10 +8305,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-types = LinodeFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;typeIds&#34;, all_types.types().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8010,7 +8342,8 @@ public final class LinodeFunctions {
      * Get information about all Linode instances with a certain label and tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8034,27 +8367,29 @@ public final class LinodeFunctions {
      *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
      *             .filters(            
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
+     *                     .name("label")
      *                     .values(                    
-     *                         &#34;my-label&#34;,
-     *                         &#34;my-other-label&#34;)
+     *                         "my-label",
+     *                         "my-other-label")
      *                     .build(),
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
+     *         ctx.export("instanceId", my_instances.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8077,10 +8412,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8115,7 +8451,8 @@ public final class LinodeFunctions {
      * Get information about all Linode instances with a certain label and tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8139,27 +8476,29 @@ public final class LinodeFunctions {
      *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
      *             .filters(            
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
+     *                     .name("label")
      *                     .values(                    
-     *                         &#34;my-label&#34;,
-     *                         &#34;my-other-label&#34;)
+     *                         "my-label",
+     *                         "my-other-label")
      *                     .build(),
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
+     *         ctx.export("instanceId", my_instances.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8182,10 +8521,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8220,7 +8560,8 @@ public final class LinodeFunctions {
      * Get information about all Linode instances with a certain label and tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8244,27 +8585,29 @@ public final class LinodeFunctions {
      *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
      *             .filters(            
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
+     *                     .name("label")
      *                     .values(                    
-     *                         &#34;my-label&#34;,
-     *                         &#34;my-other-label&#34;)
+     *                         "my-label",
+     *                         "my-other-label")
      *                     .build(),
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
+     *         ctx.export("instanceId", my_instances.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8287,10 +8630,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8325,7 +8669,8 @@ public final class LinodeFunctions {
      * Get information about all Linode instances with a certain label and tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8349,27 +8694,29 @@ public final class LinodeFunctions {
      *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
      *             .filters(            
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
+     *                     .name("label")
      *                     .values(                    
-     *                         &#34;my-label&#34;,
-     *                         &#34;my-other-label&#34;)
+     *                         "my-label",
+     *                         "my-other-label")
      *                     .build(),
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
+     *         ctx.export("instanceId", my_instances.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8392,10 +8739,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8430,7 +8778,8 @@ public final class LinodeFunctions {
      * Get information about all Linode instances with a certain label and tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8454,27 +8803,29 @@ public final class LinodeFunctions {
      *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
      *             .filters(            
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
+     *                     .name("label")
      *                     .values(                    
-     *                         &#34;my-label&#34;,
-     *                         &#34;my-other-label&#34;)
+     *                         "my-label",
+     *                         "my-other-label")
      *                     .build(),
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
+     *         ctx.export("instanceId", my_instances.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8497,10 +8848,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8535,7 +8887,8 @@ public final class LinodeFunctions {
      * Get information about all Linode instances with a certain label and tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8559,27 +8912,29 @@ public final class LinodeFunctions {
      *         final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
      *             .filters(            
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
+     *                     .name("label")
      *                     .values(                    
-     *                         &#34;my-label&#34;,
-     *                         &#34;my-other-label&#34;)
+     *                         "my-label",
+     *                         "my-other-label")
      *                     .build(),
      *                 GetInstancesFilterArgs.builder()
-     *                     .name(&#34;tags&#34;)
-     *                     .values(&#34;my-tag&#34;)
+     *                     .name("tags")
+     *                     .values("my-tag")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;instanceId&#34;, my_instances.instances()[0].id());
+     *         ctx.export("instanceId", my_instances.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get information about all Linode instances associated with the current token:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8602,10 +8957,11 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var all-instances = LinodeFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceIds&#34;, all_instances.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8640,7 +8996,8 @@ public final class LinodeFunctions {
      * Get information about an IPv6 range assigned to a Linode:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8662,12 +9019,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var range-info = LinodeFunctions.getIpv6Range(GetIpv6RangeArgs.builder()
-     *             .range(&#34;2001:0db8::&#34;)
+     *             .range("2001:0db8::")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8682,7 +9040,8 @@ public final class LinodeFunctions {
      * Get information about an IPv6 range assigned to a Linode:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8704,12 +9063,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var range-info = LinodeFunctions.getIpv6Range(GetIpv6RangeArgs.builder()
-     *             .range(&#34;2001:0db8::&#34;)
+     *             .range("2001:0db8::")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8724,7 +9084,8 @@ public final class LinodeFunctions {
      * Get information about an IPv6 range assigned to a Linode:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8746,12 +9107,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var range-info = LinodeFunctions.getIpv6Range(GetIpv6RangeArgs.builder()
-     *             .range(&#34;2001:0db8::&#34;)
+     *             .range("2001:0db8::")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8766,7 +9128,8 @@ public final class LinodeFunctions {
      * Get information about an IPv6 range assigned to a Linode:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8788,12 +9151,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var range-info = LinodeFunctions.getIpv6Range(GetIpv6RangeArgs.builder()
-     *             .range(&#34;2001:0db8::&#34;)
+     *             .range("2001:0db8::")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8808,7 +9172,8 @@ public final class LinodeFunctions {
      * data source.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8831,15 +9196,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
      *             .filters(GetIpv6RangesFilterArgs.builder()
-     *                 .name(&#34;region&#34;)
-     *                 .values(&#34;us-mia&#34;)
+     *                 .name("region")
+     *                 .values("us-mia")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
+     *         ctx.export("ranges", filtered_ranges);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8864,7 +9230,8 @@ public final class LinodeFunctions {
      * data source.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8887,15 +9254,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
      *             .filters(GetIpv6RangesFilterArgs.builder()
-     *                 .name(&#34;region&#34;)
-     *                 .values(&#34;us-mia&#34;)
+     *                 .name("region")
+     *                 .values("us-mia")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
+     *         ctx.export("ranges", filtered_ranges);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8920,7 +9288,8 @@ public final class LinodeFunctions {
      * data source.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8943,15 +9312,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
      *             .filters(GetIpv6RangesFilterArgs.builder()
-     *                 .name(&#34;region&#34;)
-     *                 .values(&#34;us-mia&#34;)
+     *                 .name("region")
+     *                 .values("us-mia")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
+     *         ctx.export("ranges", filtered_ranges);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -8976,7 +9346,8 @@ public final class LinodeFunctions {
      * data source.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8999,15 +9370,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
      *             .filters(GetIpv6RangesFilterArgs.builder()
-     *                 .name(&#34;region&#34;)
-     *                 .values(&#34;us-mia&#34;)
+     *                 .name("region")
+     *                 .values("us-mia")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
+     *         ctx.export("ranges", filtered_ranges);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9032,7 +9404,8 @@ public final class LinodeFunctions {
      * data source.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9055,15 +9428,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
      *             .filters(GetIpv6RangesFilterArgs.builder()
-     *                 .name(&#34;region&#34;)
-     *                 .values(&#34;us-mia&#34;)
+     *                 .name("region")
+     *                 .values("us-mia")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
+     *         ctx.export("ranges", filtered_ranges);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9088,7 +9462,8 @@ public final class LinodeFunctions {
      * data source.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9111,15 +9486,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-ranges = LinodeFunctions.getIpv6Ranges(GetIpv6RangesArgs.builder()
      *             .filters(GetIpv6RangesFilterArgs.builder()
-     *                 .name(&#34;region&#34;)
-     *                 .values(&#34;us-mia&#34;)
+     *                 .name("region")
+     *                 .values("us-mia")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;ranges&#34;, filtered_ranges);
+     *         ctx.export("ranges", filtered_ranges);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9144,7 +9520,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9166,12 +9543,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var latest = LinodeFunctions.getKernel(GetKernelArgs.builder()
-     *             .id(&#34;linode/latest-64bit&#34;)
+     *             .id("linode/latest-64bit")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9186,7 +9564,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9208,12 +9587,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var latest = LinodeFunctions.getKernel(GetKernelArgs.builder()
-     *             .id(&#34;linode/latest-64bit&#34;)
+     *             .id("linode/latest-64bit")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9228,7 +9608,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9250,12 +9631,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var latest = LinodeFunctions.getKernel(GetKernelArgs.builder()
-     *             .id(&#34;linode/latest-64bit&#34;)
+     *             .id("linode/latest-64bit")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9270,7 +9652,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9292,12 +9675,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var latest = LinodeFunctions.getKernel(GetKernelArgs.builder()
-     *             .id(&#34;linode/latest-64bit&#34;)
+     *             .id("linode/latest-64bit")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9312,7 +9696,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9336,18 +9721,19 @@ public final class LinodeFunctions {
      *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
      *             .filters(            
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-kernel&#34;)
+     *                     .name("label")
+     *                     .values("my-kernel")
      *                     .build(),
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;architecture&#34;)
-     *                     .values(&#34;x86_64&#34;)
+     *                     .name("architecture")
+     *                     .values("x86_64")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9380,7 +9766,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9404,18 +9791,19 @@ public final class LinodeFunctions {
      *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
      *             .filters(            
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-kernel&#34;)
+     *                     .name("label")
+     *                     .values("my-kernel")
      *                     .build(),
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;architecture&#34;)
-     *                     .values(&#34;x86_64&#34;)
+     *                     .name("architecture")
+     *                     .values("x86_64")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9448,7 +9836,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9472,18 +9861,19 @@ public final class LinodeFunctions {
      *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
      *             .filters(            
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-kernel&#34;)
+     *                     .name("label")
+     *                     .values("my-kernel")
      *                     .build(),
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;architecture&#34;)
-     *                     .values(&#34;x86_64&#34;)
+     *                     .name("architecture")
+     *                     .values("x86_64")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9516,7 +9906,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9540,18 +9931,19 @@ public final class LinodeFunctions {
      *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
      *             .filters(            
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-kernel&#34;)
+     *                     .name("label")
+     *                     .values("my-kernel")
      *                     .build(),
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;architecture&#34;)
-     *                     .values(&#34;x86_64&#34;)
+     *                     .name("architecture")
+     *                     .values("x86_64")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9584,7 +9976,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9608,18 +10001,19 @@ public final class LinodeFunctions {
      *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
      *             .filters(            
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-kernel&#34;)
+     *                     .name("label")
+     *                     .values("my-kernel")
      *                     .build(),
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;architecture&#34;)
-     *                     .values(&#34;x86_64&#34;)
+     *                     .name("architecture")
+     *                     .values("x86_64")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9652,7 +10046,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9676,18 +10071,19 @@ public final class LinodeFunctions {
      *         final var filteredKernels = LinodeFunctions.getKernels(GetKernelsArgs.builder()
      *             .filters(            
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-kernel&#34;)
+     *                     .name("label")
+     *                     .values("my-kernel")
      *                     .build(),
      *                 GetKernelsFilterArgs.builder()
-     *                     .name(&#34;architecture&#34;)
-     *                     .values(&#34;x86_64&#34;)
+     *                     .name("architecture")
+     *                     .values("x86_64")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9730,7 +10126,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9757,7 +10154,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9770,7 +10168,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9797,7 +10196,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9810,7 +10210,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9837,7 +10238,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9850,7 +10252,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9877,7 +10280,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9892,7 +10296,8 @@ public final class LinodeFunctions {
      * Get information about all LKE clusters with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9915,15 +10320,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
      *             .filters(GetLkeClustersFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -9954,7 +10360,8 @@ public final class LinodeFunctions {
      * Get information about all LKE clusters with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9977,15 +10384,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
      *             .filters(GetLkeClustersFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -10016,7 +10424,8 @@ public final class LinodeFunctions {
      * Get information about all LKE clusters with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10039,15 +10448,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
      *             .filters(GetLkeClustersFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -10078,7 +10488,8 @@ public final class LinodeFunctions {
      * Get information about all LKE clusters with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10101,15 +10512,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
      *             .filters(GetLkeClustersFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -10140,7 +10552,8 @@ public final class LinodeFunctions {
      * Get information about all LKE clusters with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10163,15 +10576,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
      *             .filters(GetLkeClustersFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -10202,7 +10616,8 @@ public final class LinodeFunctions {
      * Get information about all LKE clusters with a specific tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10225,15 +10640,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var specific = LinodeFunctions.getLkeClusters(GetLkeClustersArgs.builder()
      *             .filters(GetLkeClustersFilterArgs.builder()
-     *                 .name(&#34;tags&#34;)
-     *                 .values(&#34;test-tag&#34;)
+     *                 .name("tags")
+     *                 .values("test-tag")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;lkeCluster&#34;, specific.applyValue(getLkeClustersResult -&gt; getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -10264,7 +10680,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10288,7 +10705,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10303,7 +10721,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10327,7 +10746,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10342,7 +10762,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10366,7 +10787,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10381,7 +10803,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10405,7 +10828,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10420,7 +10844,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10444,7 +10869,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10459,7 +10885,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode LKE Version.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10483,7 +10910,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10498,7 +10926,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10520,12 +10949,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ns1LinodeCom = LinodeFunctions.getNetworkingIp(GetNetworkingIpArgs.builder()
-     *             .address(&#34;162.159.27.72&#34;)
+     *             .address("162.159.27.72")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10540,7 +10970,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10562,12 +10993,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ns1LinodeCom = LinodeFunctions.getNetworkingIp(GetNetworkingIpArgs.builder()
-     *             .address(&#34;162.159.27.72&#34;)
+     *             .address("162.159.27.72")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10582,7 +11014,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10604,12 +11037,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ns1LinodeCom = LinodeFunctions.getNetworkingIp(GetNetworkingIpArgs.builder()
-     *             .address(&#34;162.159.27.72&#34;)
+     *             .address("162.159.27.72")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10624,7 +11058,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Networking IP Address.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10646,12 +11081,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ns1LinodeCom = LinodeFunctions.getNetworkingIp(GetNetworkingIpArgs.builder()
-     *             .address(&#34;162.159.27.72&#34;)
+     *             .address("162.159.27.72")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10664,7 +11100,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10691,7 +11128,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10704,7 +11142,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10731,7 +11170,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10744,7 +11184,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10771,7 +11212,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10784,7 +11226,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10811,7 +11254,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10824,7 +11268,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10852,7 +11297,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10865,7 +11311,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10893,7 +11340,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10906,7 +11354,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10934,7 +11383,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10947,7 +11397,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10975,7 +11426,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10988,7 +11440,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11017,7 +11470,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11030,7 +11484,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11059,7 +11514,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11072,7 +11528,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11101,7 +11558,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11114,7 +11572,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11143,7 +11602,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11158,7 +11618,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11182,15 +11643,16 @@ public final class LinodeFunctions {
      *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
      *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerConfigsFilterArgs.builder()
-     *                 .name(&#34;port&#34;)
-     *                 .values(&#34;80&#34;)
+     *                 .name("port")
+     *                 .values("80")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11231,7 +11693,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11255,15 +11718,16 @@ public final class LinodeFunctions {
      *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
      *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerConfigsFilterArgs.builder()
-     *                 .name(&#34;port&#34;)
-     *                 .values(&#34;80&#34;)
+     *                 .name("port")
+     *                 .values("80")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11304,7 +11768,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11328,15 +11793,16 @@ public final class LinodeFunctions {
      *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
      *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerConfigsFilterArgs.builder()
-     *                 .name(&#34;port&#34;)
-     *                 .values(&#34;80&#34;)
+     *                 .name("port")
+     *                 .values("80")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11377,7 +11843,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11401,15 +11868,16 @@ public final class LinodeFunctions {
      *         final var filterNbConfigs = LinodeFunctions.getNodebalancerConfigs(GetNodebalancerConfigsArgs.builder()
      *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerConfigsFilterArgs.builder()
-     *                 .name(&#34;port&#34;)
-     *                 .values(&#34;80&#34;)
+     *                 .name("port")
+     *                 .values("80")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerConfigId&#34;, filterNbConfigs.applyValue(getNodebalancerConfigsResult -&gt; getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11450,7 +11918,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11474,19 +11943,20 @@ public final class LinodeFunctions {
      *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
      *             .filters(            
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .name("label")
+     *                     .values("my-nodebalancer")
      *                     .build(),
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;region&#34;)
-     *                     .values(&#34;us-iad&#34;)
+     *                     .name("region")
+     *                     .values("us-iad")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *         ctx.export("nodebalancerId", specific_nodebalancers.nodebalancers()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11517,7 +11987,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11541,19 +12012,20 @@ public final class LinodeFunctions {
      *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
      *             .filters(            
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .name("label")
+     *                     .values("my-nodebalancer")
      *                     .build(),
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;region&#34;)
-     *                     .values(&#34;us-iad&#34;)
+     *                     .name("region")
+     *                     .values("us-iad")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *         ctx.export("nodebalancerId", specific_nodebalancers.nodebalancers()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11584,7 +12056,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11608,19 +12081,20 @@ public final class LinodeFunctions {
      *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
      *             .filters(            
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .name("label")
+     *                     .values("my-nodebalancer")
      *                     .build(),
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;region&#34;)
-     *                     .values(&#34;us-iad&#34;)
+     *                     .name("region")
+     *                     .values("us-iad")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *         ctx.export("nodebalancerId", specific_nodebalancers.nodebalancers()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11651,7 +12125,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11675,19 +12150,20 @@ public final class LinodeFunctions {
      *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
      *             .filters(            
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .name("label")
+     *                     .values("my-nodebalancer")
      *                     .build(),
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;region&#34;)
-     *                     .values(&#34;us-iad&#34;)
+     *                     .name("region")
+     *                     .values("us-iad")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *         ctx.export("nodebalancerId", specific_nodebalancers.nodebalancers()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11718,7 +12194,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11742,19 +12219,20 @@ public final class LinodeFunctions {
      *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
      *             .filters(            
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .name("label")
+     *                     .values("my-nodebalancer")
      *                     .build(),
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;region&#34;)
-     *                     .values(&#34;us-iad&#34;)
+     *                     .name("region")
+     *                     .values("us-iad")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *         ctx.export("nodebalancerId", specific_nodebalancers.nodebalancers()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11785,7 +12263,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode NodeBalancer.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11809,19 +12288,20 @@ public final class LinodeFunctions {
      *         final var specific-nodebalancers = LinodeFunctions.getNodebalancers(GetNodebalancersArgs.builder()
      *             .filters(            
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-nodebalancer&#34;)
+     *                     .name("label")
+     *                     .values("my-nodebalancer")
      *                     .build(),
      *                 GetNodebalancersFilterArgs.builder()
-     *                     .name(&#34;region&#34;)
-     *                     .values(&#34;us-iad&#34;)
+     *                     .name("region")
+     *                     .values("us-iad")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;nodebalancerId&#34;, specific_nodebalancers.nodebalancers()[0].id());
+     *         ctx.export("nodebalancerId", specific_nodebalancers.nodebalancers()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -11852,7 +12332,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11874,12 +12355,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id(&#34;us-east-1&#34;)
+     *             .id("us-east-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11894,7 +12376,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11916,12 +12399,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id(&#34;us-east-1&#34;)
+     *             .id("us-east-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11936,7 +12420,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11958,12 +12443,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id(&#34;us-east-1&#34;)
+     *             .id("us-east-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11978,7 +12464,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12000,12 +12487,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id(&#34;us-east-1&#34;)
+     *             .id("us-east-1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12020,7 +12508,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access profile details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12044,7 +12533,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12059,7 +12549,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access profile details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12083,7 +12574,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12098,7 +12590,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access profile details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12122,7 +12615,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12137,7 +12631,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access profile details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12161,7 +12656,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12176,7 +12672,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access profile details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12200,7 +12697,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12215,7 +12713,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access profile details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12239,7 +12738,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12254,7 +12754,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12276,12 +12777,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var region = LinodeFunctions.getRegion(GetRegionArgs.builder()
-     *             .id(&#34;us-east&#34;)
+     *             .id("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12296,7 +12798,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12318,12 +12821,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var region = LinodeFunctions.getRegion(GetRegionArgs.builder()
-     *             .id(&#34;us-east&#34;)
+     *             .id("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12338,7 +12842,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12360,12 +12865,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var region = LinodeFunctions.getRegion(GetRegionArgs.builder()
-     *             .id(&#34;us-east&#34;)
+     *             .id("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12380,7 +12886,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain additional information about a Linode region.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12402,12 +12909,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var region = LinodeFunctions.getRegion(GetRegionArgs.builder()
-     *             .id(&#34;us-east&#34;)
+     *             .id("us-east")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12418,7 +12926,8 @@ public final class LinodeFunctions {
      * Provides information about Linode regions that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12442,19 +12951,20 @@ public final class LinodeFunctions {
      *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;status&#34;)
-     *                     .values(&#34;ok&#34;)
+     *                     .name("status")
+     *                     .values("ok")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;capabilities&#34;)
-     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .name("capabilities")
+     *                     .values("NodeBalancers")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *         ctx.export("regions", filtered_regions.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12475,7 +12985,8 @@ public final class LinodeFunctions {
      * Provides information about Linode regions that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12499,19 +13010,20 @@ public final class LinodeFunctions {
      *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;status&#34;)
-     *                     .values(&#34;ok&#34;)
+     *                     .name("status")
+     *                     .values("ok")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;capabilities&#34;)
-     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .name("capabilities")
+     *                     .values("NodeBalancers")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *         ctx.export("regions", filtered_regions.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12532,7 +13044,8 @@ public final class LinodeFunctions {
      * Provides information about Linode regions that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12556,19 +13069,20 @@ public final class LinodeFunctions {
      *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;status&#34;)
-     *                     .values(&#34;ok&#34;)
+     *                     .name("status")
+     *                     .values("ok")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;capabilities&#34;)
-     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .name("capabilities")
+     *                     .values("NodeBalancers")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *         ctx.export("regions", filtered_regions.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12589,7 +13103,8 @@ public final class LinodeFunctions {
      * Provides information about Linode regions that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12613,19 +13128,20 @@ public final class LinodeFunctions {
      *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;status&#34;)
-     *                     .values(&#34;ok&#34;)
+     *                     .name("status")
+     *                     .values("ok")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;capabilities&#34;)
-     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .name("capabilities")
+     *                     .values("NodeBalancers")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *         ctx.export("regions", filtered_regions.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12646,7 +13162,8 @@ public final class LinodeFunctions {
      * Provides information about Linode regions that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12670,19 +13187,20 @@ public final class LinodeFunctions {
      *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;status&#34;)
-     *                     .values(&#34;ok&#34;)
+     *                     .name("status")
+     *                     .values("ok")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;capabilities&#34;)
-     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .name("capabilities")
+     *                     .values("NodeBalancers")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *         ctx.export("regions", filtered_regions.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12703,7 +13221,8 @@ public final class LinodeFunctions {
      * Provides information about Linode regions that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12727,19 +13246,20 @@ public final class LinodeFunctions {
      *         final var filtered-regions = LinodeFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;status&#34;)
-     *                     .values(&#34;ok&#34;)
+     *                     .name("status")
+     *                     .values("ok")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .name(&#34;capabilities&#34;)
-     *                     .values(&#34;NodeBalancers&#34;)
+     *                     .name("capabilities")
+     *                     .values("NodeBalancers")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, filtered_regions.regions());
+     *         ctx.export("regions", filtered_regions.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12764,7 +13284,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12786,12 +13307,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .label(&#34;foo&#34;)
+     *             .label("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12806,7 +13328,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12828,12 +13351,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .label(&#34;foo&#34;)
+     *             .label("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12848,7 +13372,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12870,12 +13395,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .label(&#34;foo&#34;)
+     *             .label("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12890,7 +13416,8 @@ public final class LinodeFunctions {
      * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12912,12 +13439,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .label(&#34;foo&#34;)
+     *             .label("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12934,7 +13462,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12958,18 +13487,19 @@ public final class LinodeFunctions {
      *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
      *             .filters(            
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-ssh&#34;)
+     *                     .name("label")
+     *                     .values("my-ssh")
      *                     .build(),
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;ssh_key&#34;)
-     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .name("ssh_key")
+     *                     .values("RSA-6522525")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -12994,7 +13524,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13018,18 +13549,19 @@ public final class LinodeFunctions {
      *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
      *             .filters(            
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-ssh&#34;)
+     *                     .name("label")
+     *                     .values("my-ssh")
      *                     .build(),
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;ssh_key&#34;)
-     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .name("ssh_key")
+     *                     .values("RSA-6522525")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13054,7 +13586,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13078,18 +13611,19 @@ public final class LinodeFunctions {
      *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
      *             .filters(            
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-ssh&#34;)
+     *                     .name("label")
+     *                     .values("my-ssh")
      *                     .build(),
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;ssh_key&#34;)
-     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .name("ssh_key")
+     *                     .values("RSA-6522525")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13114,7 +13648,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13138,18 +13673,19 @@ public final class LinodeFunctions {
      *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
      *             .filters(            
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-ssh&#34;)
+     *                     .name("label")
+     *                     .values("my-ssh")
      *                     .build(),
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;ssh_key&#34;)
-     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .name("ssh_key")
+     *                     .values("RSA-6522525")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13174,7 +13710,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13198,18 +13735,19 @@ public final class LinodeFunctions {
      *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
      *             .filters(            
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-ssh&#34;)
+     *                     .name("label")
+     *                     .values("my-ssh")
      *                     .build(),
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;ssh_key&#34;)
-     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .name("ssh_key")
+     *                     .values("RSA-6522525")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13234,7 +13772,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Kernel.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13258,18 +13797,19 @@ public final class LinodeFunctions {
      *         final var filteredSsh = LinodeFunctions.getSshkeys(GetSshkeysArgs.builder()
      *             .filters(            
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-ssh&#34;)
+     *                     .name("label")
+     *                     .values("my-ssh")
      *                     .build(),
      *                 GetSshkeysFilterArgs.builder()
-     *                     .name(&#34;ssh_key&#34;)
-     *                     .values(&#34;RSA-6522525&#34;)
+     *                     .name("ssh_key")
+     *                     .values("RSA-6522525")
      *                     .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13292,7 +13832,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13319,7 +13860,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13334,7 +13876,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13361,7 +13904,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13376,7 +13920,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13403,7 +13948,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13418,7 +13964,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13445,7 +13992,8 @@ public final class LinodeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13462,7 +14010,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13486,19 +14035,20 @@ public final class LinodeFunctions {
      *         final var specific-stackscripts = LinodeFunctions.getStackScripts(GetStackScriptsArgs.builder()
      *             .filters(            
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-cool-stackscript&#34;)
+     *                     .name("label")
+     *                     .values("my-cool-stackscript")
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
+     *                     .name("is_public")
      *                     .values(false)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
+     *         ctx.export("stackscriptId", specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13535,7 +14085,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13559,19 +14110,20 @@ public final class LinodeFunctions {
      *         final var specific-stackscripts = LinodeFunctions.getStackScripts(GetStackScriptsArgs.builder()
      *             .filters(            
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-cool-stackscript&#34;)
+     *                     .name("label")
+     *                     .values("my-cool-stackscript")
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
+     *                     .name("is_public")
      *                     .values(false)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
+     *         ctx.export("stackscriptId", specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13608,7 +14160,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13632,19 +14185,20 @@ public final class LinodeFunctions {
      *         final var specific-stackscripts = LinodeFunctions.getStackScripts(GetStackScriptsArgs.builder()
      *             .filters(            
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-cool-stackscript&#34;)
+     *                     .name("label")
+     *                     .values("my-cool-stackscript")
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
+     *                     .name("is_public")
      *                     .values(false)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
+     *         ctx.export("stackscriptId", specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13681,7 +14235,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13705,19 +14260,20 @@ public final class LinodeFunctions {
      *         final var specific-stackscripts = LinodeFunctions.getStackScripts(GetStackScriptsArgs.builder()
      *             .filters(            
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-cool-stackscript&#34;)
+     *                     .name("label")
+     *                     .values("my-cool-stackscript")
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
+     *                     .name("is_public")
      *                     .values(false)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
+     *         ctx.export("stackscriptId", specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13754,7 +14310,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13778,19 +14335,20 @@ public final class LinodeFunctions {
      *         final var specific-stackscripts = LinodeFunctions.getStackScripts(GetStackScriptsArgs.builder()
      *             .filters(            
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-cool-stackscript&#34;)
+     *                     .name("label")
+     *                     .values("my-cool-stackscript")
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
+     *                     .name("is_public")
      *                     .values(false)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
+     *         ctx.export("stackscriptId", specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13827,7 +14385,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode StackScript.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13851,19 +14410,20 @@ public final class LinodeFunctions {
      *         final var specific-stackscripts = LinodeFunctions.getStackScripts(GetStackScriptsArgs.builder()
      *             .filters(            
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;label&#34;)
-     *                     .values(&#34;my-cool-stackscript&#34;)
+     *                     .name("label")
+     *                     .values("my-cool-stackscript")
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
-     *                     .name(&#34;is_public&#34;)
+     *                     .name("is_public")
      *                     .values(false)
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;stackscriptId&#34;, specific_stackscripts.stackscripts()[0].id());
+     *         ctx.export("stackscriptId", specific_stackscripts.stackscripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -13898,7 +14458,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode user.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13920,12 +14481,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following example shows a sample grant.
@@ -13942,7 +14504,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode user.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -13964,12 +14527,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following example shows a sample grant.
@@ -13986,7 +14550,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode user.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14008,12 +14573,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following example shows a sample grant.
@@ -14030,7 +14596,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode user.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14052,12 +14619,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following example shows a sample grant.
@@ -14070,7 +14638,8 @@ public final class LinodeFunctions {
      * Provides information about Linode users that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14093,15 +14662,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
      *             .filters(GetUsersFilterArgs.builder()
-     *                 .name(&#34;username&#34;)
-     *                 .values(&#34;test-user&#34;)
+     *                 .name("username")
+     *                 .values("test-user")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *         ctx.export("users", filtered_users.users());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14126,7 +14696,8 @@ public final class LinodeFunctions {
      * Provides information about Linode users that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14149,15 +14720,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
      *             .filters(GetUsersFilterArgs.builder()
-     *                 .name(&#34;username&#34;)
-     *                 .values(&#34;test-user&#34;)
+     *                 .name("username")
+     *                 .values("test-user")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *         ctx.export("users", filtered_users.users());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14182,7 +14754,8 @@ public final class LinodeFunctions {
      * Provides information about Linode users that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14205,15 +14778,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
      *             .filters(GetUsersFilterArgs.builder()
-     *                 .name(&#34;username&#34;)
-     *                 .values(&#34;test-user&#34;)
+     *                 .name("username")
+     *                 .values("test-user")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *         ctx.export("users", filtered_users.users());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14238,7 +14812,8 @@ public final class LinodeFunctions {
      * Provides information about Linode users that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14261,15 +14836,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
      *             .filters(GetUsersFilterArgs.builder()
-     *                 .name(&#34;username&#34;)
-     *                 .values(&#34;test-user&#34;)
+     *                 .name("username")
+     *                 .values("test-user")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *         ctx.export("users", filtered_users.users());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14294,7 +14870,8 @@ public final class LinodeFunctions {
      * Provides information about Linode users that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14317,15 +14894,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
      *             .filters(GetUsersFilterArgs.builder()
-     *                 .name(&#34;username&#34;)
-     *                 .values(&#34;test-user&#34;)
+     *                 .name("username")
+     *                 .values("test-user")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *         ctx.export("users", filtered_users.users());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14350,7 +14928,8 @@ public final class LinodeFunctions {
      * Provides information about Linode users that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14373,15 +14952,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()
      *             .filters(GetUsersFilterArgs.builder()
-     *                 .name(&#34;username&#34;)
-     *                 .values(&#34;test-user&#34;)
+     *                 .name("username")
+     *                 .values("test-user")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;users&#34;, filtered_users.users());
+     *         ctx.export("users", filtered_users.users());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14412,7 +14992,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14436,29 +15017,30 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu22.04&#34;)
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-standard-1&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *             .label("my_instance")
+     *             .image("linode/ubuntu22.04")
+     *             .region("us-southeast")
+     *             .type("g6-standard-1")
+     *             .rootPass("bogusPassword$")
      *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .label(&#34;my-vlan&#34;)
+     *                 .purpose("vlan")
+     *                 .label("my-vlan")
      *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
      *             .filters(GetVlansFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;my-vlan&#34;)
+     *                 .name("label")
+     *                 .values("my-vlan")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
+     *         ctx.export("vlanLinodes", my_vlans.vlans()[0].linodes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14481,7 +15063,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14505,29 +15088,30 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu22.04&#34;)
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-standard-1&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *             .label("my_instance")
+     *             .image("linode/ubuntu22.04")
+     *             .region("us-southeast")
+     *             .type("g6-standard-1")
+     *             .rootPass("bogusPassword$")
      *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .label(&#34;my-vlan&#34;)
+     *                 .purpose("vlan")
+     *                 .label("my-vlan")
      *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
      *             .filters(GetVlansFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;my-vlan&#34;)
+     *                 .name("label")
+     *                 .values("my-vlan")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
+     *         ctx.export("vlanLinodes", my_vlans.vlans()[0].linodes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14550,7 +15134,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14574,29 +15159,30 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu22.04&#34;)
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-standard-1&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *             .label("my_instance")
+     *             .image("linode/ubuntu22.04")
+     *             .region("us-southeast")
+     *             .type("g6-standard-1")
+     *             .rootPass("bogusPassword$")
      *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .label(&#34;my-vlan&#34;)
+     *                 .purpose("vlan")
+     *                 .label("my-vlan")
      *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
      *             .filters(GetVlansFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;my-vlan&#34;)
+     *                 .name("label")
+     *                 .values("my-vlan")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
+     *         ctx.export("vlanLinodes", my_vlans.vlans()[0].linodes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14619,7 +15205,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14643,29 +15230,30 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu22.04&#34;)
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-standard-1&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *             .label("my_instance")
+     *             .image("linode/ubuntu22.04")
+     *             .region("us-southeast")
+     *             .type("g6-standard-1")
+     *             .rootPass("bogusPassword$")
      *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .label(&#34;my-vlan&#34;)
+     *                 .purpose("vlan")
+     *                 .label("my-vlan")
      *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
      *             .filters(GetVlansFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;my-vlan&#34;)
+     *                 .name("label")
+     *                 .values("my-vlan")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
+     *         ctx.export("vlanLinodes", my_vlans.vlans()[0].linodes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14688,7 +15276,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14712,29 +15301,30 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu22.04&#34;)
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-standard-1&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *             .label("my_instance")
+     *             .image("linode/ubuntu22.04")
+     *             .region("us-southeast")
+     *             .type("g6-standard-1")
+     *             .rootPass("bogusPassword$")
      *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .label(&#34;my-vlan&#34;)
+     *                 .purpose("vlan")
+     *                 .label("my-vlan")
      *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
      *             .filters(GetVlansFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;my-vlan&#34;)
+     *                 .name("label")
+     *                 .values("my-vlan")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
+     *         ctx.export("vlanLinodes", my_vlans.vlans()[0].linodes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14757,7 +15347,8 @@ public final class LinodeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14781,29 +15372,30 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance(&#34;myInstance&#34;, InstanceArgs.builder()        
-     *             .label(&#34;my_instance&#34;)
-     *             .image(&#34;linode/ubuntu22.04&#34;)
-     *             .region(&#34;us-southeast&#34;)
-     *             .type(&#34;g6-standard-1&#34;)
-     *             .rootPass(&#34;bogusPassword$&#34;)
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *             .label("my_instance")
+     *             .image("linode/ubuntu22.04")
+     *             .region("us-southeast")
+     *             .type("g6-standard-1")
+     *             .rootPass("bogusPassword$")
      *             .interfaces(InstanceInterfaceArgs.builder()
-     *                 .purpose(&#34;vlan&#34;)
-     *                 .label(&#34;my-vlan&#34;)
+     *                 .purpose("vlan")
+     *                 .label("my-vlan")
      *                 .build())
      *             .build());
      * 
      *         final var my-vlans = LinodeFunctions.getVlans(GetVlansArgs.builder()
      *             .filters(GetVlansFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;my-vlan&#34;)
+     *                 .name("label")
+     *                 .values("my-vlan")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vlanLinodes&#34;, my_vlans.vlans()[0].linodes());
+     *         ctx.export("vlanLinodes", my_vlans.vlans()[0].linodes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -14824,7 +15416,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Volume.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14846,12 +15439,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14866,7 +15460,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Volume.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14888,12 +15483,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14908,7 +15504,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Volume.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14930,12 +15527,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14950,7 +15548,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode Volume.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -14972,12 +15571,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id(&#34;1234567&#34;)
+     *             .id("1234567")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14988,7 +15588,8 @@ public final class LinodeFunctions {
      * Provides information about Linode volumes that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15011,15 +15612,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
      *             .filters(GetVolumesFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test-volume&#34;)
+     *                 .name("label")
+     *                 .values("test-volume")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *         ctx.export("volumes", filtered_volumes.volumes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15036,7 +15638,8 @@ public final class LinodeFunctions {
      * Provides information about Linode volumes that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15059,15 +15662,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
      *             .filters(GetVolumesFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test-volume&#34;)
+     *                 .name("label")
+     *                 .values("test-volume")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *         ctx.export("volumes", filtered_volumes.volumes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15084,7 +15688,8 @@ public final class LinodeFunctions {
      * Provides information about Linode volumes that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15107,15 +15712,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
      *             .filters(GetVolumesFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test-volume&#34;)
+     *                 .name("label")
+     *                 .values("test-volume")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *         ctx.export("volumes", filtered_volumes.volumes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15132,7 +15738,8 @@ public final class LinodeFunctions {
      * Provides information about Linode volumes that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15155,15 +15762,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
      *             .filters(GetVolumesFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test-volume&#34;)
+     *                 .name("label")
+     *                 .values("test-volume")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *         ctx.export("volumes", filtered_volumes.volumes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15180,7 +15788,8 @@ public final class LinodeFunctions {
      * Provides information about Linode volumes that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15203,15 +15812,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
      *             .filters(GetVolumesFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test-volume&#34;)
+     *                 .name("label")
+     *                 .values("test-volume")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *         ctx.export("volumes", filtered_volumes.volumes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15228,7 +15838,8 @@ public final class LinodeFunctions {
      * Provides information about Linode volumes that match a set of filters.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15251,15 +15862,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-volumes = LinodeFunctions.getVolumes(GetVolumesArgs.builder()
      *             .filters(GetVolumesFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test-volume&#34;)
+     *                 .name("label")
+     *                 .values("test-volume")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;volumes&#34;, filtered_volumes.volumes());
+     *         ctx.export("volumes", filtered_volumes.volumes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15280,7 +15892,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15305,10 +15918,11 @@ public final class LinodeFunctions {
      *             .id(123)
      *             .build());
      * 
-     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15323,7 +15937,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15348,10 +15963,11 @@ public final class LinodeFunctions {
      *             .id(123)
      *             .build());
      * 
-     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15366,7 +15982,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15391,10 +16008,11 @@ public final class LinodeFunctions {
      *             .id(123)
      *             .build());
      * 
-     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15409,7 +16027,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15434,10 +16053,11 @@ public final class LinodeFunctions {
      *             .id(123)
      *             .build());
      * 
-     *         ctx.export(&#34;vpc&#34;, foo.applyValue(getVpcResult -&gt; getVpcResult));
+     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15452,7 +16072,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15478,10 +16099,11 @@ public final class LinodeFunctions {
      *             .id(12345)
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15496,7 +16118,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15522,10 +16145,11 @@ public final class LinodeFunctions {
      *             .id(12345)
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15540,7 +16164,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15566,10 +16191,11 @@ public final class LinodeFunctions {
      *             .id(12345)
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15584,7 +16210,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to access information about a Linode VPC subnet.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15610,10 +16237,11 @@ public final class LinodeFunctions {
      *             .id(12345)
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnet&#34;, foo.applyValue(getVpcSubnetResult -&gt; getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -15628,7 +16256,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPC subnets.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15652,15 +16281,16 @@ public final class LinodeFunctions {
      *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
      *             .vpcId(123)
      *             .filters(GetVpcSubnetsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *         ctx.export("vpcSubnets", filtered_subnets.vpcSubnets());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15683,7 +16313,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPC subnets.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15707,15 +16338,16 @@ public final class LinodeFunctions {
      *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
      *             .vpcId(123)
      *             .filters(GetVpcSubnetsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *         ctx.export("vpcSubnets", filtered_subnets.vpcSubnets());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15738,7 +16370,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPC subnets.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15762,15 +16395,16 @@ public final class LinodeFunctions {
      *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
      *             .vpcId(123)
      *             .filters(GetVpcSubnetsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *         ctx.export("vpcSubnets", filtered_subnets.vpcSubnets());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15793,7 +16427,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPC subnets.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15817,15 +16452,16 @@ public final class LinodeFunctions {
      *         final var filtered-subnets = LinodeFunctions.getVpcSubnets(GetVpcSubnetsArgs.builder()
      *             .vpcId(123)
      *             .filters(GetVpcSubnetsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcSubnets&#34;, filtered_subnets.vpcSubnets());
+     *         ctx.export("vpcSubnets", filtered_subnets.vpcSubnets());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15848,7 +16484,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPCs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15871,15 +16508,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
      *             .filters(GetVpcsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *         ctx.export("vpcs", filtered_vpcs.vpcs());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15904,7 +16542,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPCs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15927,15 +16566,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
      *             .filters(GetVpcsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *         ctx.export("vpcs", filtered_vpcs.vpcs());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -15960,7 +16600,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPCs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -15983,15 +16624,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
      *             .filters(GetVpcsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *         ctx.export("vpcs", filtered_vpcs.vpcs());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -16016,7 +16658,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPCs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -16039,15 +16682,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
      *             .filters(GetVpcsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *         ctx.export("vpcs", filtered_vpcs.vpcs());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -16072,7 +16716,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPCs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -16095,15 +16740,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
      *             .filters(GetVpcsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *         ctx.export("vpcs", filtered_vpcs.vpcs());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields
@@ -16128,7 +16774,8 @@ public final class LinodeFunctions {
      * The following example shows how one might use this data source to list VPCs.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -16151,15 +16798,16 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var filtered-vpcs = LinodeFunctions.getVpcs(GetVpcsArgs.builder()
      *             .filters(GetVpcsFilterArgs.builder()
-     *                 .name(&#34;label&#34;)
-     *                 .values(&#34;test&#34;)
+     *                 .name("label")
+     *                 .values("test")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;vpcs&#34;, filtered_vpcs.vpcs());
+     *         ctx.export("vpcs", filtered_vpcs.vpcs());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Filterable Fields

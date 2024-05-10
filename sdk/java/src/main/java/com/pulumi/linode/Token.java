@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a token for use in another tool that needs access to Linode resources.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,17 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Token(&#34;foo&#34;, TokenArgs.builder()        
- *             .label(&#34;token&#34;)
- *             .scopes(&#34;linodes:read_only&#34;)
- *             .expiry(&#34;2100-01-02T03:04:05Z&#34;)
+ *         var foo = new Token("foo", TokenArgs.builder()        
+ *             .label("token")
+ *             .scopes("linodes:read_only")
+ *             .expiry("2100-01-02T03:04:05Z")
  *             .build());
  * 
- *         var fooInstance = new Instance(&#34;fooInstance&#34;);
+ *         var fooInstance = new Instance("fooInstance");
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

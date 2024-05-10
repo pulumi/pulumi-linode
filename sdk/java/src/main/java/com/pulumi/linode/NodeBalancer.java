@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * The following example shows how one might use this resource to configure a NodeBalancer.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new NodeBalancer(&#34;foobar&#34;, NodeBalancerArgs.builder()        
- *             .label(&#34;mynodebalancer&#34;)
- *             .region(&#34;us-east&#34;)
+ *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()        
+ *             .label("mynodebalancer")
+ *             .region("us-east")
  *             .clientConnThrottle(20)
- *             .tags(&#34;foobar&#34;)
+ *             .tags("foobar")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

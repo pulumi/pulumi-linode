@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Create an unrestricted user:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var john = new User(&#34;john&#34;, UserArgs.builder()        
- *             .username(&#34;john123&#34;)
- *             .email(&#34;john@acme.io&#34;)
+ *         var john = new User("john", UserArgs.builder()        
+ *             .username("john123")
+ *             .email("john{@literal @}acme.io")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create a restricted user with grants:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,9 +93,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooser = new User(&#34;fooser&#34;, UserArgs.builder()        
- *             .username(&#34;cooluser123&#34;)
- *             .email(&#34;cool@acme.io&#34;)
+ *         var fooser = new User("fooser", UserArgs.builder()        
+ *             .username("cooluser123")
+ *             .email("cool{@literal @}acme.io")
  *             .restricted(true)
  *             .globalGrants(UserGlobalGrantsArgs.builder()
  *                 .addLinodes(true)
@@ -100,13 +103,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .linodeGrants(UserLinodeGrantArgs.builder()
  *                 .id(12345)
- *                 .permissions(&#34;read_write&#34;)
+ *                 .permissions("read_write")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Global Grants

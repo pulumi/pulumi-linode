@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Creating a simple 512 MB Linode Instance Disk:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,28 +52,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_instance = new Instance(&#34;my-instance&#34;, InstanceArgs.builder()        
- *             .label(&#34;my-instance&#34;)
- *             .type(&#34;g6-standard-1&#34;)
- *             .region(&#34;us-southeast&#34;)
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()        
+ *             .label("my-instance")
+ *             .type("g6-standard-1")
+ *             .region("us-southeast")
  *             .build());
  * 
- *         var boot = new InstanceDisk(&#34;boot&#34;, InstanceDiskArgs.builder()        
- *             .label(&#34;boot&#34;)
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()        
+ *             .label("boot")
  *             .linodeId(my_instance.id())
  *             .size(512)
- *             .filesystem(&#34;ext4&#34;)
+ *             .filesystem("ext4")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a complex bootable Instance Disk:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -95,26 +98,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_instance = new Instance(&#34;my-instance&#34;, InstanceArgs.builder()        
- *             .label(&#34;my-instance&#34;)
- *             .type(&#34;g6-standard-1&#34;)
- *             .region(&#34;us-southeast&#34;)
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()        
+ *             .label("my-instance")
+ *             .type("g6-standard-1")
+ *             .region("us-southeast")
  *             .build());
  * 
- *         var boot = new InstanceDisk(&#34;boot&#34;, InstanceDiskArgs.builder()        
- *             .label(&#34;boot&#34;)
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()        
+ *             .label("boot")
  *             .linodeId(my_instance.id())
- *             .size(my_instance.specs().applyValue(specs -&gt; specs.disk()))
- *             .image(&#34;linode/ubuntu22.04&#34;)
- *             .rootPass(&#34;myc00lpass!&#34;)
- *             .authorizedKeys(&#34;ssh-rsa AAAA...Gw== user@example.local&#34;)
+ *             .size(my_instance.specs().applyValue(specs -> specs.disk()))
+ *             .image("linode/ubuntu22.04")
+ *             .rootPass("myc00lpass!")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user{@literal @}example.local")
  *             .stackscriptId(12345)
- *             .stackscriptData(Map.of(&#34;my_var&#34;, &#34;my_value&#34;))
+ *             .stackscriptData(Map.of("my_var", "my_value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

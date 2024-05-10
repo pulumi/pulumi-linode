@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Creating a simple PostgreSQL database instance:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,22 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabasePostgresql(&#34;foobar&#34;, DatabasePostgresqlArgs.builder()        
- *             .label(&#34;mydatabase&#34;)
- *             .engineId(&#34;postgresql/13.2&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
+ *         var foobar = new DatabasePostgresql("foobar", DatabasePostgresqlArgs.builder()        
+ *             .label("mydatabase")
+ *             .engineId("postgresql/13.2")
+ *             .region("us-southeast")
+ *             .type("g6-nanode-1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a complex PostgreSQL database instance:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,21 +90,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabasePostgresql(&#34;foobar&#34;, DatabasePostgresqlArgs.builder()        
- *             .label(&#34;mydatabase&#34;)
- *             .engineId(&#34;postgresql/13.2&#34;)
- *             .region(&#34;us-southeast&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .allowLists(&#34;0.0.0.0/0&#34;)
+ *         var foobar = new DatabasePostgresql("foobar", DatabasePostgresqlArgs.builder()        
+ *             .label("mydatabase")
+ *             .engineId("postgresql/13.2")
+ *             .region("us-southeast")
+ *             .type("g6-nanode-1")
+ *             .allowLists("0.0.0.0/0")
  *             .clusterSize(3)
  *             .encrypted(true)
- *             .replicationType(&#34;semi_synch&#34;)
- *             .replicationCommitType(&#34;remote_write&#34;)
+ *             .replicationType("semi_synch")
+ *             .replicationCommitType("remote_write")
  *             .sslConnection(true)
  *             .updates(DatabasePostgresqlUpdatesArgs.builder()
- *                 .dayOfWeek(&#34;saturday&#34;)
+ *                 .dayOfWeek("saturday")
  *                 .duration(1)
- *                 .frequency(&#34;monthly&#34;)
+ *                 .frequency("monthly")
  *                 .hourOfDay(22)
  *                 .weekOfMonth(2)
  *                 .build())
@@ -109,7 +112,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## updates

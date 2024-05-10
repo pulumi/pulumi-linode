@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Share in IPv4 address between two instances:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,39 +56,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a single primary node
- *         var primaryInstance = new Instance(&#34;primaryInstance&#34;, InstanceArgs.builder()        
- *             .label(&#34;node-primary&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .region(&#34;eu-central&#34;)
+ *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()        
+ *             .label("node-primary")
+ *             .type("g6-nanode-1")
+ *             .region("eu-central")
  *             .build());
  * 
  *         // Allocate an IP under the primary node
- *         var primary = new InstanceIp(&#34;primary&#34;, InstanceIpArgs.builder()        
+ *         var primary = new InstanceIp("primary", InstanceIpArgs.builder()        
  *             .linodeId(primaryInstance.id())
  *             .build());
  * 
  *         // Create a secondary node
- *         var secondary = new Instance(&#34;secondary&#34;, InstanceArgs.builder()        
- *             .label(&#34;node-secondary&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .region(&#34;eu-central&#34;)
+ *         var secondary = new Instance("secondary", InstanceArgs.builder()        
+ *             .label("node-secondary")
+ *             .type("g6-nanode-1")
+ *             .region("eu-central")
  *             .build());
  * 
  *         // Share the IP with the secondary node
- *         var share_primary = new InstanceSharedIps(&#34;share-primary&#34;, InstanceSharedIpsArgs.builder()        
+ *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()        
  *             .linodeId(secondary.id())
  *             .addresses(primary.address())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Share an IPv6 address among a primary node and its replicas:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -116,38 +119,38 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         // Create a single primary node
- *         var primary = new Instance(&#34;primary&#34;, InstanceArgs.builder()        
- *             .label(&#34;node-primary&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .region(&#34;eu-central&#34;)
+ *         var primary = new Instance("primary", InstanceArgs.builder()        
+ *             .label("node-primary")
+ *             .type("g6-nanode-1")
+ *             .region("eu-central")
  *             .build());
  * 
  *         // Allocate an IPv6 range pointing at the primary node
- *         var rangeIpv6Range = new Ipv6Range(&#34;rangeIpv6Range&#34;, Ipv6RangeArgs.builder()        
+ *         var rangeIpv6Range = new Ipv6Range("rangeIpv6Range", Ipv6RangeArgs.builder()        
  *             .prefixLength(64)
  *             .linodeId(primary.id())
  *             .build());
  * 
  *         // Share with primary node
- *         var share_primary = new InstanceSharedIps(&#34;share-primary&#34;, InstanceSharedIpsArgs.builder()        
+ *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()        
  *             .linodeId(primary.id())
  *             .addresses(rangeIpv6Range.range())
  *             .build());
  * 
- *         final var numberReplicas = config.get(&#34;numberReplicas&#34;).orElse(2);
+ *         final var numberReplicas = config.get("numberReplicas").orElse(2);
  *         // Create two secondary nodes
- *         for (var i = 0; i &lt; numberReplicas; i++) {
- *             new Instance(&#34;secondary-&#34; + i, InstanceArgs.builder()            
- *                 .label(String.format(&#34;node-secondary-%s&#34;, range.value()))
- *                 .type(&#34;g6-nanode-1&#34;)
- *                 .region(&#34;eu-central&#34;)
+ *         for (var i = 0; i < numberReplicas; i++) {
+ *             new Instance("secondary-" + i, InstanceArgs.builder()            
+ *                 .label(String.format("node-secondary-%s", range.value()))
+ *                 .type("g6-nanode-1")
+ *                 .region("eu-central")
  *                 .build());
  * 
  *         
  * }
  *         // Share with secondary nodes
- *         for (var i = 0; i &lt; numberReplicas; i++) {
- *             new InstanceSharedIps(&#34;share-secondary-&#34; + i, InstanceSharedIpsArgs.builder()            
+ *         for (var i = 0; i < numberReplicas; i++) {
+ *             new InstanceSharedIps("share-secondary-" + i, InstanceSharedIpsArgs.builder()            
  *                 .linodeId(secondary[range.value()].id())
  *                 .addresses(rangeIpv6Range.range())
  *                 .build(), CustomResourceOptions.builder()
@@ -158,7 +161,8 @@ import javax.annotation.Nullable;
  * }
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,21 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
- *             .image(&#34;linode/alpine3.19&#34;)
- *             .label(&#34;foobar-test&#34;)
- *             .type(&#34;g6-nanode-1&#34;)
- *             .region(&#34;us-east&#34;)
+ *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *             .image("linode/alpine3.19")
+ *             .label("foobar-test")
+ *             .type("g6-nanode-1")
+ *             .region("us-east")
  *             .build());
  * 
- *         var fooInstanceIp = new InstanceIp(&#34;fooInstanceIp&#34;, InstanceIpArgs.builder()        
+ *         var fooInstanceIp = new InstanceIp("fooInstanceIp", InstanceIpArgs.builder()        
  *             .linodeId(foo.id())
  *             .public_(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
