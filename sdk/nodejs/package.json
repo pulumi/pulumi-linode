@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/linode",
-    "version": "${VERSION}",
+    "version": "4.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing linode cloud resources.",
     "keywords": [
         "pulumi",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "linode"
+        "name": "linode",
+        "version": "4.0.0-alpha.0+dev"
     }
 }
