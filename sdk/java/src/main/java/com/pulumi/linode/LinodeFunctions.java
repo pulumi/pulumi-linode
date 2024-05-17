@@ -2183,7 +2183,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
      *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
      *             .region("us-southeast")
@@ -2313,7 +2313,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
      *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
      *             .region("us-southeast")
@@ -2443,7 +2443,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
      *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
      *             .region("us-southeast")
@@ -2573,7 +2573,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
      *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
      *             .region("us-southeast")
@@ -2703,7 +2703,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
      *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
      *             .region("us-southeast")
@@ -2833,7 +2833,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()        
+     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
      *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
      *             .region("us-southeast")
@@ -15017,7 +15017,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
      *             .label("my_instance")
      *             .image("linode/ubuntu22.04")
      *             .region("us-southeast")
@@ -15088,7 +15088,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
      *             .label("my_instance")
      *             .image("linode/ubuntu22.04")
      *             .region("us-southeast")
@@ -15159,7 +15159,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
      *             .label("my_instance")
      *             .image("linode/ubuntu22.04")
      *             .region("us-southeast")
@@ -15230,7 +15230,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
      *             .label("my_instance")
      *             .image("linode/ubuntu22.04")
      *             .region("us-southeast")
@@ -15301,7 +15301,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
      *             .label("my_instance")
      *             .image("linode/ubuntu22.04")
      *             .region("us-southeast")
@@ -15372,7 +15372,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+     *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
      *             .label("my_instance")
      *             .image("linode/ubuntu22.04")
      *             .region("us-southeast")

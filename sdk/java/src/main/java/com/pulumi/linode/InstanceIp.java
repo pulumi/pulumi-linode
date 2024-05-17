@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *         var foo = new Instance("foo", InstanceArgs.builder()
  *             .image("linode/alpine3.19")
  *             .label("foobar-test")
  *             .type("g6-nanode-1")
  *             .region("us-east")
  *             .build());
  * 
- *         var fooInstanceIp = new InstanceIp("fooInstanceIp", InstanceIpArgs.builder()        
+ *         var fooInstanceIp = new InstanceIp("fooInstanceIp", InstanceIpArgs.builder()
  *             .linodeId(foo.id())
  *             .public_(true)
  *             .build());

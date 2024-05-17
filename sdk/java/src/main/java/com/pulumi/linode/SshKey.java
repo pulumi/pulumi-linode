@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new SshKey("foo", SshKeyArgs.builder()        
+ *         var foo = new SshKey("foo", SshKeyArgs.builder()
  *             .label("foo")
  *             .sshKey(StdFunctions.chomp(ChompArgs.builder()
  *                 .input(StdFunctions.file(FileArgs.builder()
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
  *             .image("linode/ubuntu22.04")
  *             .label("foo")
  *             .region("us-east")

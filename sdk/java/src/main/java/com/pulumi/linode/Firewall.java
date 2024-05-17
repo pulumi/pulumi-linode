@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+ *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
  *             .label("my_instance")
  *             .image("linode/ubuntu22.04")
  *             .region("us-southeast")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .swapSize(256)
  *             .build());
  * 
- *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()        
+ *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()
  *             .label("my_firewall")
  *             .inbounds(            
  *                 FirewallInboundArgs.builder()

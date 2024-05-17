@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobaz = new Instance("foobaz", InstanceArgs.builder()        
+ *         var foobaz = new Instance("foobaz", InstanceArgs.builder()
  *             .rootPass("3X4mp13")
  *             .type("g6-nanode-1")
  *             .region("us-west")
  *             .tags("foobaz")
  *             .build());
  * 
- *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()
  *             .label("foo-volume")
  *             .region(foobaz.region())
  *             .linodeId(foobaz.id())
@@ -97,12 +97,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *         var foo = new Instance("foo", InstanceArgs.builder()
  *             .region("us-east")
  *             .type("g6-nanode-1")
  *             .build());
  * 
- *         var fooInstanceConfig = new InstanceConfig("fooInstanceConfig", InstanceConfigArgs.builder()        
+ *         var fooInstanceConfig = new InstanceConfig("fooInstanceConfig", InstanceConfigArgs.builder()
  *             .linodeId(foo.id())
  *             .label("boot-existing-volume")
  *             .kernel("linode/grub2")
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()
  *             .label("my-cloned-volume")
  *             .sourceVolumeId(12345)
  *             .build());

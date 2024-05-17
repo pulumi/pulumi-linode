@@ -52,21 +52,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *         var foo = new Instance("foo", InstanceArgs.builder()
  *             .type("g6-nanode-1")
  *             .region("us-central")
  *             .image("linode/ubuntu22.04")
  *             .rootPass("insecure-p4ssw0rd!!")
  *             .build());
  * 
- *         var bar = new Image("bar", ImageArgs.builder()        
+ *         var bar = new Image("bar", ImageArgs.builder()
  *             .label("foo-sda-image")
  *             .description("Image taken from foo")
  *             .diskId(foo.disks().applyValue(disks -> disks[0].id()))
  *             .linodeId(foo.id())
  *             .build());
  * 
- *         var barBased = new Instance("barBased", InstanceArgs.builder()        
+ *         var barBased = new Instance("barBased", InstanceArgs.builder()
  *             .type(foo.type())
  *             .region("eu-west")
  *             .image(bar.id())
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Image("foobar", ImageArgs.builder()        
+ *         var foobar = new Image("foobar", ImageArgs.builder()
  *             .label("foobar-image")
  *             .description("An image uploaded from Terraform!")
  *             .region("us-southeast")

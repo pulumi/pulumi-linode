@@ -56,26 +56,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a single primary node
- *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()        
+ *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
  *             .label("node-primary")
  *             .type("g6-nanode-1")
  *             .region("eu-central")
  *             .build());
  * 
  *         // Allocate an IP under the primary node
- *         var primary = new InstanceIp("primary", InstanceIpArgs.builder()        
+ *         var primary = new InstanceIp("primary", InstanceIpArgs.builder()
  *             .linodeId(primaryInstance.id())
  *             .build());
  * 
  *         // Create a secondary node
- *         var secondary = new Instance("secondary", InstanceArgs.builder()        
+ *         var secondary = new Instance("secondary", InstanceArgs.builder()
  *             .label("node-secondary")
  *             .type("g6-nanode-1")
  *             .region("eu-central")
  *             .build());
  * 
  *         // Share the IP with the secondary node
- *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()        
+ *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()
  *             .linodeId(secondary.id())
  *             .addresses(primary.address())
  *             .build());
@@ -119,20 +119,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         // Create a single primary node
- *         var primary = new Instance("primary", InstanceArgs.builder()        
+ *         var primary = new Instance("primary", InstanceArgs.builder()
  *             .label("node-primary")
  *             .type("g6-nanode-1")
  *             .region("eu-central")
  *             .build());
  * 
  *         // Allocate an IPv6 range pointing at the primary node
- *         var rangeIpv6Range = new Ipv6Range("rangeIpv6Range", Ipv6RangeArgs.builder()        
+ *         var rangeIpv6Range = new Ipv6Range("rangeIpv6Range", Ipv6RangeArgs.builder()
  *             .prefixLength(64)
  *             .linodeId(primary.id())
  *             .build());
  * 
  *         // Share with primary node
- *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()        
+ *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()
  *             .linodeId(primary.id())
  *             .addresses(rangeIpv6Range.range())
  *             .build());
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *         final var numberReplicas = config.get("numberReplicas").orElse(2);
  *         // Create two secondary nodes
  *         for (var i = 0; i < numberReplicas; i++) {
- *             new Instance("secondary-" + i, InstanceArgs.builder()            
+ *             new Instance("secondary-" + i, InstanceArgs.builder()
  *                 .label(String.format("node-secondary-%s", range.value()))
  *                 .type("g6-nanode-1")
  *                 .region("eu-central")
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * }
  *         // Share with secondary nodes
  *         for (var i = 0; i < numberReplicas; i++) {
- *             new InstanceSharedIps("share-secondary-" + i, InstanceSharedIpsArgs.builder()            
+ *             new InstanceSharedIps("share-secondary-" + i, InstanceSharedIpsArgs.builder()
  *                 .linodeId(secondary[range.value()].id())
  *                 .addresses(rangeIpv6Range.range())
  *                 .build(), CustomResourceOptions.builder()

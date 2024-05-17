@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()        
+ *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()
  *             .label("my_firewall")
  *             .inbounds(FirewallInboundArgs.builder()
  *                 .label("http")
@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *             .outboundPolicy("ACCEPT")
  *             .build());
  * 
- *         var myInstance = new Instance("myInstance", InstanceArgs.builder()        
+ *         var myInstance = new Instance("myInstance", InstanceArgs.builder()
  *             .label("my_instance")
  *             .region("us-southeast")
  *             .type("g6-standard-1")
  *             .build());
  * 
- *         var myDevice = new FirewallDevice("myDevice", FirewallDeviceArgs.builder()        
+ *         var myDevice = new FirewallDevice("myDevice", FirewallDeviceArgs.builder()
  *             .firewallId(myFirewall.id())
  *             .entityId(myInstance.id())
  *             .build());

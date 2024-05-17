@@ -49,21 +49,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_instance = new Instance("my-instance", InstanceArgs.builder()        
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
  *             .label("myinstance")
  *             .region("us-southeast")
  *             .type("g6-nanode-1")
  *             .image("linode/alpine3.19")
  *             .build());
  * 
- *         var my_db = new DatabaseMysql("my-db", DatabaseMysqlArgs.builder()        
+ *         var my_db = new DatabaseMysql("my-db", DatabaseMysqlArgs.builder()
  *             .label("mydatabase")
  *             .engineId("mysql/8.0.30")
  *             .region("us-southeast")
  *             .type("g6-nanode-1")
  *             .build());
  * 
- *         var my_access = new DatabaseAccessControls("my-access", DatabaseAccessControlsArgs.builder()        
+ *         var my_access = new DatabaseAccessControls("my-access", DatabaseAccessControlsArgs.builder()
  *             .databaseId(my_db.id())
  *             .databaseType("mysql")
  *             .allowLists(my_instance.ipAddress())

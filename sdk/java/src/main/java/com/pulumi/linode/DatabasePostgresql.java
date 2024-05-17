@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabasePostgresql("foobar", DatabasePostgresqlArgs.builder()        
+ *         var foobar = new DatabasePostgresql("foobar", DatabasePostgresqlArgs.builder()
  *             .label("mydatabase")
  *             .engineId("postgresql/13.2")
  *             .region("us-southeast")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabasePostgresql("foobar", DatabasePostgresqlArgs.builder()        
+ *         var foobar = new DatabasePostgresql("foobar", DatabasePostgresqlArgs.builder()
  *             .label("mydatabase")
  *             .engineId("postgresql/13.2")
  *             .region("us-southeast")
