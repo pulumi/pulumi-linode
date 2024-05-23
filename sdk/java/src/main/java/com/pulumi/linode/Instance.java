@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Instance("web", InstanceArgs.builder()        
+ *         var web = new Instance("web", InstanceArgs.builder()
  *             .label("simple_instance")
  *             .image("linode/ubuntu22.04")
  *             .region("us-central")
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Instance("web", InstanceArgs.builder()        
+ *         var web = new Instance("web", InstanceArgs.builder()
  *             .label("simple_instance")
  *             .image("linode/ubuntu22.04")
  *             .region("us-central")
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var me = LinodeFunctions.getProfile();
  * 
- *         var web = new Instance("web", InstanceArgs.builder()        
+ *         var web = new Instance("web", InstanceArgs.builder()
  *             .label("complex_instance")
  *             .tags("foo")
  *             .region("us-central")
@@ -179,13 +179,13 @@ import javax.annotation.Nullable;
  *             .privateIp(true)
  *             .build());
  * 
- *         var webVolume = new Volume("webVolume", VolumeArgs.builder()        
+ *         var webVolume = new Volume("webVolume", VolumeArgs.builder()
  *             .label("web_volume")
  *             .size(20)
  *             .region("us-central")
  *             .build());
  * 
- *         var bootDisk = new InstanceDisk("bootDisk", InstanceDiskArgs.builder()        
+ *         var bootDisk = new InstanceDisk("bootDisk", InstanceDiskArgs.builder()
  *             .label("boot")
  *             .linodeId(web.id())
  *             .size(3000)
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  *             .rootPass("terr4form-test")
  *             .build());
  * 
- *         var bootConfig = new InstanceConfig("bootConfig", InstanceConfigArgs.builder()        
+ *         var bootConfig = new InstanceConfig("bootConfig", InstanceConfigArgs.builder()
  *             .label("boot_config")
  *             .linodeId(web.id())
  *             .devices(            

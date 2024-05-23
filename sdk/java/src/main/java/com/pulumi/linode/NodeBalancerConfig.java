@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()        
+ *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()
  *             .label("mynodebalancer")
  *             .region("us-east")
  *             .clientConnThrottle(20)
  *             .build());
  * 
- *         var foofig = new NodeBalancerConfig("foofig", NodeBalancerConfigArgs.builder()        
+ *         var foofig = new NodeBalancerConfig("foofig", NodeBalancerConfigArgs.builder()
  *             .nodebalancerId(foobar.id())
  *             .port(8088)
  *             .protocol("http")

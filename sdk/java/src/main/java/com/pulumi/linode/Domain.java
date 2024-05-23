@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Domain("foobar", DomainArgs.builder()        
+ *         var foobar = new Domain("foobar", DomainArgs.builder()
  *             .type("master")
  *             .domain("foobar.example")
  *             .soaEmail("example{@literal @}foobar.example")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 "bar")
  *             .build());
  * 
- *         var foobarDomainRecord = new DomainRecord("foobarDomainRecord", DomainRecordArgs.builder()        
+ *         var foobarDomainRecord = new DomainRecord("foobarDomainRecord", DomainRecordArgs.builder()
  *             .domainId(foobar.id())
  *             .name("www")
  *             .recordType("CNAME")

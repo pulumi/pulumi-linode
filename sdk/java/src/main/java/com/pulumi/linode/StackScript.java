@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new StackScript("foo", StackScriptArgs.builder()        
+ *         var foo = new StackScript("foo", StackScriptArgs.builder()
  *             .label("foo")
  *             .description("Installs a Package")
  *             .script("""
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .revNote("initial version")
  *             .build());
  * 
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
  *             .image("linode/ubuntu22.04")
  *             .label("foo")
  *             .region("us-east")

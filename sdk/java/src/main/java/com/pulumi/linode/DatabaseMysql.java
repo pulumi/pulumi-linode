@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabaseMysql("foobar", DatabaseMysqlArgs.builder()        
+ *         var foobar = new DatabaseMysql("foobar", DatabaseMysqlArgs.builder()
  *             .label("mydatabase")
  *             .engineId("mysql/8.0.30")
  *             .region("us-southeast")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DatabaseMysql("foobar", DatabaseMysqlArgs.builder()        
+ *         var foobar = new DatabaseMysql("foobar", DatabaseMysqlArgs.builder()
  *             .label("mydatabase")
  *             .engineId("mysql/8.0.30")
  *             .region("us-southeast")

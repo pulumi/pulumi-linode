@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()        
+ *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()
  *             .vpcId(123)
  *             .label("test-subnet")
  *             .ipv4("10.0.0.0/24")

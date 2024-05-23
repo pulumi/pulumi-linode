@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Vpc("test", VpcArgs.builder()        
+ *         var test = new Vpc("test", VpcArgs.builder()
  *             .label("test-vpc")
  *             .region("us-iad")
  *             .description("My first VPC.")
