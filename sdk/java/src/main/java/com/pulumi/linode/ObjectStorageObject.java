@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()        
+ *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
  *             .bucket("my-bucket")
  *             .cluster("us-east-1")
  *             .key("my-object")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()        
+ *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
  *             .bucket("my-bucket")
  *             .cluster("us-east-1")
  *             .key("my-object")
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()        
+ *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
  *             .bucket("my-bucket")
  *             .cluster("us-east-1")
  *             .key("my-object")

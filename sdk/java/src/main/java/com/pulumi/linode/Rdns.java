@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
  *             .image("linode/alpine3.19")
  *             .region("ca-east")
  *             .type("g6-dedicated-2")
  *             .build());
  * 
- *         var foo = new Rdns("foo", RdnsArgs.builder()        
+ *         var foo = new Rdns("foo", RdnsArgs.builder()
  *             .address(fooInstance.ipAddress())
  *             .rdns(fooInstance.ipAddress().applyValue(ipAddress -> String.format("%s.nip.io", ipAddress)))
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         for (var i = 0; i < 3; i++) {
- *             new Instance("myInstance-" + i, InstanceArgs.builder()            
+ *             new Instance("myInstance-" + i, InstanceArgs.builder()
  *                 .label(String.format("simple_instance-%s", range.value() + 1))
  *                 .image("linode/ubuntu22.04")
  *                 .region("us-central")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < myInstance.length(); i++) {
- *             new Rdns("myRdns-" + i, RdnsArgs.builder()            
+ *             new Rdns("myRdns-" + i, RdnsArgs.builder()
  *                 .address(myInstance[range.value()].ipAddress())
  *                 .rdns(myInstance[range.value()].ipAddress().applyValue(ipAddress -> String.format("%s.nip.io", ipAddress)))
  *                 .build());

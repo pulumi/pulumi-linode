@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()        
+ *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()
  *             .label("image-access")
  *             .build());
  * 

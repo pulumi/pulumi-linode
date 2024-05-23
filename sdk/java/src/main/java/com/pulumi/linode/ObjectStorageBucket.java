@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .id("us-east-1")
  *             .build());
  * 
- *         var foobar = new ObjectStorageBucket("foobar", ObjectStorageBucketArgs.builder()        
+ *         var foobar = new ObjectStorageBucket("foobar", ObjectStorageBucketArgs.builder()
  *             .cluster(primary.applyValue(getObjectStorageClusterResult -> getObjectStorageClusterResult.id()))
  *             .label("mybucket")
  *             .build());
@@ -94,11 +94,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mykey = new ObjectStorageKey("mykey", ObjectStorageKeyArgs.builder()        
+ *         var mykey = new ObjectStorageKey("mykey", ObjectStorageKeyArgs.builder()
  *             .label("image-access")
  *             .build());
  * 
- *         var mybucket = new ObjectStorageBucket("mybucket", ObjectStorageBucketArgs.builder()        
+ *         var mybucket = new ObjectStorageBucket("mybucket", ObjectStorageBucketArgs.builder()
  *             .accessKey(mykey.accessKey())
  *             .secretKey(mykey.secretKey())
  *             .cluster("us-east-1")

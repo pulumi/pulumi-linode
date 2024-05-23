@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_instance = new Instance("my-instance", InstanceArgs.builder()        
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
  *             .label("my-instance")
  *             .type("g6-standard-1")
  *             .region("us-southeast")
  *             .build());
  * 
- *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()        
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
  *             .label("boot")
  *             .linodeId(my_instance.id())
  *             .size(512)
@@ -98,13 +98,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_instance = new Instance("my-instance", InstanceArgs.builder()        
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
  *             .label("my-instance")
  *             .type("g6-standard-1")
  *             .region("us-southeast")
  *             .build());
  * 
- *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()        
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
  *             .label("boot")
  *             .linodeId(my_instance.id())
  *             .size(my_instance.specs().applyValue(specs -> specs.disk()))
