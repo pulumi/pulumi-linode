@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Token("foo", TokenArgs.builder()        
+ *         var foo = new Token("foo", TokenArgs.builder()
  *             .label("token")
  *             .scopes("linodes:read_only")
  *             .expiry("2100-01-02T03:04:05Z")
