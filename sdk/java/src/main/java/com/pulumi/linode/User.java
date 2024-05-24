@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var john = new User("john", UserArgs.builder()        
+ *         var john = new User("john", UserArgs.builder()
  *             .username("john123")
  *             .email("john{@literal @}acme.io")
  *             .build());
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooser = new User("fooser", UserArgs.builder()        
+ *         var fooser = new User("fooser", UserArgs.builder()
  *             .username("cooluser123")
  *             .email("cool{@literal @}acme.io")
  *             .restricted(true)
