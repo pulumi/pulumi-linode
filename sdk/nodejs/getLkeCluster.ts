@@ -34,6 +34,9 @@ export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getLkeCluster.
  */
 export interface GetLkeClusterArgs {
+    /**
+     * The settings for the Kubernetes Control Plane.
+     */
     controlPlanes?: inputs.GetLkeClusterControlPlane[];
     /**
      * The LKE Cluster's ID.
@@ -53,6 +56,9 @@ export interface GetLkeClusterResult {
      * The endpoints for the Kubernetes API server.
      */
     readonly apiEndpoints: string[];
+    /**
+     * The settings for the Kubernetes Control Plane.
+     */
     readonly controlPlanes?: outputs.GetLkeClusterControlPlane[];
     /**
      * When this Kubernetes cluster was created.
@@ -121,6 +127,9 @@ export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getLkeCluster.
  */
 export interface GetLkeClusterOutputArgs {
+    /**
+     * The settings for the Kubernetes Control Plane.
+     */
     controlPlanes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneArgs>[]>;
     /**
      * The LKE Cluster's ID.

@@ -75,6 +75,9 @@ class GetLkeClusterResult:
     @property
     @pulumi.getter(name="controlPlanes")
     def control_planes(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneResult']]:
+        """
+        The settings for the Kubernetes Control Plane.
+        """
         return pulumi.get(self, "control_planes")
 
     @property
@@ -204,6 +207,7 @@ def get_lke_cluster(control_planes: Optional[Sequence[pulumi.InputType['GetLkeCl
     ```
 
 
+    :param Sequence[pulumi.InputType['GetLkeClusterControlPlaneArgs']] control_planes: The settings for the Kubernetes Control Plane.
     :param int id: The LKE Cluster's ID.
     :param Sequence[pulumi.InputType['GetLkeClusterPoolArgs']] pools: Node pools associated with this cluster.
     """
@@ -248,6 +252,7 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
     ```
 
 
+    :param Sequence[pulumi.InputType['GetLkeClusterControlPlaneArgs']] control_planes: The settings for the Kubernetes Control Plane.
     :param int id: The LKE Cluster's ID.
     :param Sequence[pulumi.InputType['GetLkeClusterPoolArgs']] pools: Node pools associated with this cluster.
     """

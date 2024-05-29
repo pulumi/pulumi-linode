@@ -281,7 +281,31 @@
                         "maxItemsOne": false
                     },
                     "control_plane": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "acl": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "addresses": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ipv4": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ipv6": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "external_pool_tags": {
                         "maxItemsOne": false
@@ -1210,7 +1234,31 @@
                         "maxItemsOne": false
                     },
                     "control_plane": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "acl": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "addresses": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ipv4": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ipv6": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "pools": {
                         "maxItemsOne": false,

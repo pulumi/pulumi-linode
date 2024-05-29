@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetLkeClusterPoolAutoscalerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+        /// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
         /// </summary>
         [Input("enabled", required: true)]
         public bool Enabled { get; set; }

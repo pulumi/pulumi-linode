@@ -50,6 +50,7 @@ func LookupLkeCluster(ctx *pulumi.Context, args *LookupLkeClusterArgs, opts ...p
 
 // A collection of arguments for invoking getLkeCluster.
 type LookupLkeClusterArgs struct {
+	// The settings for the Kubernetes Control Plane.
 	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
@@ -60,7 +61,8 @@ type LookupLkeClusterArgs struct {
 // A collection of values returned by getLkeCluster.
 type LookupLkeClusterResult struct {
 	// The endpoints for the Kubernetes API server.
-	ApiEndpoints  []string                    `pulumi:"apiEndpoints"`
+	ApiEndpoints []string `pulumi:"apiEndpoints"`
+	// The settings for the Kubernetes Control Plane.
 	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// When this Kubernetes cluster was created.
 	Created string `pulumi:"created"`
@@ -101,6 +103,7 @@ func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs
 
 // A collection of arguments for invoking getLkeCluster.
 type LookupLkeClusterOutputArgs struct {
+	// The settings for the Kubernetes Control Plane.
 	ControlPlanes GetLkeClusterControlPlaneArrayInput `pulumi:"controlPlanes"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
@@ -132,6 +135,7 @@ func (o LookupLkeClusterResultOutput) ApiEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
 }
 
+// The settings for the Kubernetes Control Plane.
 func (o LookupLkeClusterResultOutput) ControlPlanes() GetLkeClusterControlPlaneArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterControlPlane { return v.ControlPlanes }).(GetLkeClusterControlPlaneArrayOutput)
 }

@@ -20,6 +20,10 @@ public final class GetLkeClusterResult {
      * 
      */
     private List<String> apiEndpoints;
+    /**
+     * @return The settings for the Kubernetes Control Plane.
+     * 
+     */
     private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
     /**
      * @return When this Kubernetes cluster was created.
@@ -85,6 +89,10 @@ public final class GetLkeClusterResult {
     public List<String> apiEndpoints() {
         return this.apiEndpoints;
     }
+    /**
+     * @return The settings for the Kubernetes Control Plane.
+     * 
+     */
     public List<GetLkeClusterControlPlane> controlPlanes() {
         return this.controlPlanes == null ? List.of() : this.controlPlanes;
     }

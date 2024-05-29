@@ -16,14 +16,14 @@ public final class GetLkeClusterPoolAutoscalerArgs extends com.pulumi.resources.
     public static final GetLkeClusterPoolAutoscalerArgs Empty = new GetLkeClusterPoolAutoscalerArgs();
 
     /**
-     * Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * @return The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      * 
      */
     public Output<Boolean> enabled() {
@@ -87,7 +87,7 @@ public final class GetLkeClusterPoolAutoscalerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Whether autoscaling is enabled for this Node Pool. Defaults to false.
+         * @param enabled The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetLkeClusterPoolAutoscalerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Whether autoscaling is enabled for this Node Pool. Defaults to false.
+         * @param enabled The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
          * 
          * @return builder
          * 

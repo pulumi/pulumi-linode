@@ -6,13 +6,32 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetLkeClusterControlPlaneAclArgs;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetLkeClusterControlPlaneArgs Empty = new GetLkeClusterControlPlaneArgs();
+
+    /**
+     * The ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    @Import(name="acls")
+    private @Nullable Output<List<GetLkeClusterControlPlaneAclArgs>> acls;
+
+    /**
+     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    public Optional<Output<List<GetLkeClusterControlPlaneAclArgs>>> acls() {
+        return Optional.ofNullable(this.acls);
+    }
 
     /**
      * Whether High Availability is enabled for the cluster Control Plane.
@@ -32,6 +51,7 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
     private GetLkeClusterControlPlaneArgs() {}
 
     private GetLkeClusterControlPlaneArgs(GetLkeClusterControlPlaneArgs $) {
+        this.acls = $.acls;
         this.highAvailability = $.highAvailability;
     }
 
@@ -51,6 +71,37 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
 
         public Builder(GetLkeClusterControlPlaneArgs defaults) {
             $ = new GetLkeClusterControlPlaneArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acls(@Nullable Output<List<GetLkeClusterControlPlaneAclArgs>> acls) {
+            $.acls = acls;
+            return this;
+        }
+
+        /**
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acls(List<GetLkeClusterControlPlaneAclArgs> acls) {
+            return acls(Output.of(acls));
+        }
+
+        /**
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acls(GetLkeClusterControlPlaneAclArgs... acls) {
+            return acls(List.of(acls));
         }
 
         /**

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeClusterPoolAutoscaler {
     /**
-     * @return Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * @return The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      * 
      */
     private Boolean enabled;
@@ -29,7 +29,7 @@ public final class GetLkeClusterPoolAutoscaler {
 
     private GetLkeClusterPoolAutoscaler() {}
     /**
-     * @return Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * @return The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      * 
      */
     public Boolean enabled() {

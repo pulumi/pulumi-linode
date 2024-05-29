@@ -12,6 +12,18 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetLkeClusterControlPlaneInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acls")]
+        private InputList<Inputs.GetLkeClusterControlPlaneAclInputArgs>? _acls;
+
+        /// <summary>
+        /// The ACL configuration for an LKE cluster's control plane.
+        /// </summary>
+        public InputList<Inputs.GetLkeClusterControlPlaneAclInputArgs> Acls
+        {
+            get => _acls ?? (_acls = new InputList<Inputs.GetLkeClusterControlPlaneAclInputArgs>());
+            set => _acls = value;
+        }
+
         /// <summary>
         /// Whether High Availability is enabled for the cluster Control Plane.
         /// </summary>

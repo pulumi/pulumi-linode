@@ -65,6 +65,10 @@ namespace Pulumi.Linode
     {
         [Input("controlPlanes")]
         private List<Inputs.GetLkeClusterControlPlaneArgs>? _controlPlanes;
+
+        /// <summary>
+        /// The settings for the Kubernetes Control Plane.
+        /// </summary>
         public List<Inputs.GetLkeClusterControlPlaneArgs> ControlPlanes
         {
             get => _controlPlanes ?? (_controlPlanes = new List<Inputs.GetLkeClusterControlPlaneArgs>());
@@ -99,6 +103,10 @@ namespace Pulumi.Linode
     {
         [Input("controlPlanes")]
         private InputList<Inputs.GetLkeClusterControlPlaneInputArgs>? _controlPlanes;
+
+        /// <summary>
+        /// The settings for the Kubernetes Control Plane.
+        /// </summary>
         public InputList<Inputs.GetLkeClusterControlPlaneInputArgs> ControlPlanes
         {
             get => _controlPlanes ?? (_controlPlanes = new InputList<Inputs.GetLkeClusterControlPlaneInputArgs>());
@@ -137,6 +145,9 @@ namespace Pulumi.Linode
         /// The endpoints for the Kubernetes API server.
         /// </summary>
         public readonly ImmutableArray<string> ApiEndpoints;
+        /// <summary>
+        /// The settings for the Kubernetes Control Plane.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> ControlPlanes;
         /// <summary>
         /// When this Kubernetes cluster was created.

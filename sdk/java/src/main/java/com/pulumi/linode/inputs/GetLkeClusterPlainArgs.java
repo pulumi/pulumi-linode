@@ -18,9 +18,17 @@ public final class GetLkeClusterPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetLkeClusterPlainArgs Empty = new GetLkeClusterPlainArgs();
 
+    /**
+     * The settings for the Kubernetes Control Plane.
+     * 
+     */
     @Import(name="controlPlanes")
     private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
 
+    /**
+     * @return The settings for the Kubernetes Control Plane.
+     * 
+     */
     public Optional<List<GetLkeClusterControlPlane>> controlPlanes() {
         return Optional.ofNullable(this.controlPlanes);
     }
@@ -81,11 +89,23 @@ public final class GetLkeClusterPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetLkeClusterPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param controlPlanes The settings for the Kubernetes Control Plane.
+         * 
+         * @return builder
+         * 
+         */
         public Builder controlPlanes(@Nullable List<GetLkeClusterControlPlane> controlPlanes) {
             $.controlPlanes = controlPlanes;
             return this;
         }
 
+        /**
+         * @param controlPlanes The settings for the Kubernetes Control Plane.
+         * 
+         * @return builder
+         * 
+         */
         public Builder controlPlanes(GetLkeClusterControlPlane... controlPlanes) {
             return controlPlanes(List.of(controlPlanes));
         }
