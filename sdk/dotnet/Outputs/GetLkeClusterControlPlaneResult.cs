@@ -14,13 +14,21 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClusterControlPlaneResult
     {
         /// <summary>
+        /// The ACL configuration for an LKE cluster's control plane.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneAclResult> Acls;
+        /// <summary>
         /// Whether High Availability is enabled for the cluster Control Plane.
         /// </summary>
         public readonly bool HighAvailability;
 
         [OutputConstructor]
-        private GetLkeClusterControlPlaneResult(bool highAvailability)
+        private GetLkeClusterControlPlaneResult(
+            ImmutableArray<Outputs.GetLkeClusterControlPlaneAclResult> acls,
+
+            bool highAvailability)
         {
+            Acls = acls;
             HighAvailability = highAvailability;
         }
     }

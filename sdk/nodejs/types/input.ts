@@ -1622,6 +1622,10 @@ export interface GetKernelsKernelArgs {
 
 export interface GetLkeClusterControlPlane {
     /**
+     * The ACL configuration for an LKE cluster's control plane.
+     */
+    acls?: inputs.GetLkeClusterControlPlaneAcl[];
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability?: boolean;
@@ -1629,9 +1633,57 @@ export interface GetLkeClusterControlPlane {
 
 export interface GetLkeClusterControlPlaneArgs {
     /**
+     * The ACL configuration for an LKE cluster's control plane.
+     */
+    acls?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneAclArgs>[]>;
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability?: pulumi.Input<boolean>;
+}
+
+export interface GetLkeClusterControlPlaneAcl {
+    /**
+     * A list of ip addresses to allow.
+     */
+    addresses?: inputs.GetLkeClusterControlPlaneAclAddress[];
+    /**
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+     */
+    enabled?: boolean;
+}
+
+export interface GetLkeClusterControlPlaneAclArgs {
+    /**
+     * A list of ip addresses to allow.
+     */
+    addresses?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneAclAddressArgs>[]>;
+    /**
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetLkeClusterControlPlaneAclAddress {
+    /**
+     * A set of individual ipv4 addresses or CIDRs to ALLOW.
+     */
+    ipv4s?: string[];
+    /**
+     * A set of individual ipv6 addresses or CIDRs to ALLOW.
+     */
+    ipv6s?: string[];
+}
+
+export interface GetLkeClusterControlPlaneAclAddressArgs {
+    /**
+     * A set of individual ipv4 addresses or CIDRs to ALLOW.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of individual ipv6 addresses or CIDRs to ALLOW.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetLkeClusterPool {
@@ -1698,7 +1750,7 @@ export interface GetLkeClusterPoolArgs {
 
 export interface GetLkeClusterPoolAutoscaler {
     /**
-     * Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      */
     enabled?: boolean;
     /**
@@ -1713,7 +1765,7 @@ export interface GetLkeClusterPoolAutoscaler {
 
 export interface GetLkeClusterPoolAutoscalerArgs {
     /**
-     * Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -4547,9 +4599,39 @@ export interface InstanceSpecs {
 
 export interface LkeClusterControlPlane {
     /**
+     * Defines the ACL configuration for an LKE cluster's control plane.
+     */
+    acl?: pulumi.Input<inputs.LkeClusterControlPlaneAcl>;
+    /**
      * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     *
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
      */
     highAvailability?: pulumi.Input<boolean>;
+}
+
+export interface LkeClusterControlPlaneAcl {
+    /**
+     * A list of ip addresses to allow.
+     */
+    addresses?: pulumi.Input<pulumi.Input<inputs.LkeClusterControlPlaneAclAddress>[]>;
+    /**
+     * Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+     *
+     * * `addresses` - (Optional) A list of ip addresses to allow.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface LkeClusterControlPlaneAclAddress {
+    /**
+     * A set of individual ipv4 addresses or CIDRs to ALLOW.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of individual ipv6 addresses or CIDRs to ALLOW.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface LkeClusterPool {

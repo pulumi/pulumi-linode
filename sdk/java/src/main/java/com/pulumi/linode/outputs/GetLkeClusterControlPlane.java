@@ -5,11 +5,19 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetLkeClusterControlPlaneAcl;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClusterControlPlane {
+    /**
+     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
     /**
      * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
@@ -17,6 +25,13 @@ public final class GetLkeClusterControlPlane {
     private Boolean highAvailability;
 
     private GetLkeClusterControlPlane() {}
+    /**
+     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    public List<GetLkeClusterControlPlaneAcl> acls() {
+        return this.acls == null ? List.of() : this.acls;
+    }
     /**
      * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
@@ -34,13 +49,24 @@ public final class GetLkeClusterControlPlane {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
         private Boolean highAvailability;
         public Builder() {}
         public Builder(GetLkeClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acls = defaults.acls;
     	      this.highAvailability = defaults.highAvailability;
         }
 
+        @CustomType.Setter
+        public Builder acls(@Nullable List<GetLkeClusterControlPlaneAcl> acls) {
+
+            this.acls = acls;
+            return this;
+        }
+        public Builder acls(GetLkeClusterControlPlaneAcl... acls) {
+            return acls(List.of(acls));
+        }
         @CustomType.Setter
         public Builder highAvailability(Boolean highAvailability) {
             if (highAvailability == null) {
@@ -51,6 +77,7 @@ public final class GetLkeClusterControlPlane {
         }
         public GetLkeClusterControlPlane build() {
             final var _resultValue = new GetLkeClusterControlPlane();
+            _resultValue.acls = acls;
             _resultValue.highAvailability = highAvailability;
             return _resultValue;
         }

@@ -5058,7 +5058,11 @@ func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
 }
 
 type LkeClusterControlPlane struct {
+	// Defines the ACL configuration for an LKE cluster's control plane.
+	Acl *LkeClusterControlPlaneAcl `pulumi:"acl"`
 	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+	//
+	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 	HighAvailability *bool `pulumi:"highAvailability"`
 }
 
@@ -5074,7 +5078,11 @@ type LkeClusterControlPlaneInput interface {
 }
 
 type LkeClusterControlPlaneArgs struct {
+	// Defines the ACL configuration for an LKE cluster's control plane.
+	Acl LkeClusterControlPlaneAclPtrInput `pulumi:"acl"`
 	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+	//
+	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
 }
 
@@ -5155,7 +5163,14 @@ func (o LkeClusterControlPlaneOutput) ToLkeClusterControlPlanePtrOutputWithConte
 	}).(LkeClusterControlPlanePtrOutput)
 }
 
+// Defines the ACL configuration for an LKE cluster's control plane.
+func (o LkeClusterControlPlaneOutput) Acl() LkeClusterControlPlaneAclPtrOutput {
+	return o.ApplyT(func(v LkeClusterControlPlane) *LkeClusterControlPlaneAcl { return v.Acl }).(LkeClusterControlPlaneAclPtrOutput)
+}
+
 // Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+//
+// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 func (o LkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
 }
@@ -5184,7 +5199,19 @@ func (o LkeClusterControlPlanePtrOutput) Elem() LkeClusterControlPlaneOutput {
 	}).(LkeClusterControlPlaneOutput)
 }
 
+// Defines the ACL configuration for an LKE cluster's control plane.
+func (o LkeClusterControlPlanePtrOutput) Acl() LkeClusterControlPlaneAclPtrOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlane) *LkeClusterControlPlaneAcl {
+		if v == nil {
+			return nil
+		}
+		return v.Acl
+	}).(LkeClusterControlPlaneAclPtrOutput)
+}
+
 // Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+//
+// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
 		if v == nil {
@@ -5192,6 +5219,276 @@ func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput
 		}
 		return v.HighAvailability
 	}).(pulumi.BoolPtrOutput)
+}
+
+type LkeClusterControlPlaneAcl struct {
+	// A list of ip addresses to allow.
+	Addresses []LkeClusterControlPlaneAclAddress `pulumi:"addresses"`
+	// Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+	//
+	// * `addresses` - (Optional) A list of ip addresses to allow.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// LkeClusterControlPlaneAclInput is an input type that accepts LkeClusterControlPlaneAclArgs and LkeClusterControlPlaneAclOutput values.
+// You can construct a concrete instance of `LkeClusterControlPlaneAclInput` via:
+//
+//	LkeClusterControlPlaneAclArgs{...}
+type LkeClusterControlPlaneAclInput interface {
+	pulumi.Input
+
+	ToLkeClusterControlPlaneAclOutput() LkeClusterControlPlaneAclOutput
+	ToLkeClusterControlPlaneAclOutputWithContext(context.Context) LkeClusterControlPlaneAclOutput
+}
+
+type LkeClusterControlPlaneAclArgs struct {
+	// A list of ip addresses to allow.
+	Addresses LkeClusterControlPlaneAclAddressArrayInput `pulumi:"addresses"`
+	// Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+	//
+	// * `addresses` - (Optional) A list of ip addresses to allow.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (LkeClusterControlPlaneAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (i LkeClusterControlPlaneAclArgs) ToLkeClusterControlPlaneAclOutput() LkeClusterControlPlaneAclOutput {
+	return i.ToLkeClusterControlPlaneAclOutputWithContext(context.Background())
+}
+
+func (i LkeClusterControlPlaneAclArgs) ToLkeClusterControlPlaneAclOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneAclOutput)
+}
+
+func (i LkeClusterControlPlaneAclArgs) ToLkeClusterControlPlaneAclPtrOutput() LkeClusterControlPlaneAclPtrOutput {
+	return i.ToLkeClusterControlPlaneAclPtrOutputWithContext(context.Background())
+}
+
+func (i LkeClusterControlPlaneAclArgs) ToLkeClusterControlPlaneAclPtrOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneAclOutput).ToLkeClusterControlPlaneAclPtrOutputWithContext(ctx)
+}
+
+// LkeClusterControlPlaneAclPtrInput is an input type that accepts LkeClusterControlPlaneAclArgs, LkeClusterControlPlaneAclPtr and LkeClusterControlPlaneAclPtrOutput values.
+// You can construct a concrete instance of `LkeClusterControlPlaneAclPtrInput` via:
+//
+//	        LkeClusterControlPlaneAclArgs{...}
+//
+//	or:
+//
+//	        nil
+type LkeClusterControlPlaneAclPtrInput interface {
+	pulumi.Input
+
+	ToLkeClusterControlPlaneAclPtrOutput() LkeClusterControlPlaneAclPtrOutput
+	ToLkeClusterControlPlaneAclPtrOutputWithContext(context.Context) LkeClusterControlPlaneAclPtrOutput
+}
+
+type lkeClusterControlPlaneAclPtrType LkeClusterControlPlaneAclArgs
+
+func LkeClusterControlPlaneAclPtr(v *LkeClusterControlPlaneAclArgs) LkeClusterControlPlaneAclPtrInput {
+	return (*lkeClusterControlPlaneAclPtrType)(v)
+}
+
+func (*lkeClusterControlPlaneAclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (i *lkeClusterControlPlaneAclPtrType) ToLkeClusterControlPlaneAclPtrOutput() LkeClusterControlPlaneAclPtrOutput {
+	return i.ToLkeClusterControlPlaneAclPtrOutputWithContext(context.Background())
+}
+
+func (i *lkeClusterControlPlaneAclPtrType) ToLkeClusterControlPlaneAclPtrOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneAclPtrOutput)
+}
+
+type LkeClusterControlPlaneAclOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterControlPlaneAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (o LkeClusterControlPlaneAclOutput) ToLkeClusterControlPlaneAclOutput() LkeClusterControlPlaneAclOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclOutput) ToLkeClusterControlPlaneAclOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclOutput) ToLkeClusterControlPlaneAclPtrOutput() LkeClusterControlPlaneAclPtrOutput {
+	return o.ToLkeClusterControlPlaneAclPtrOutputWithContext(context.Background())
+}
+
+func (o LkeClusterControlPlaneAclOutput) ToLkeClusterControlPlaneAclPtrOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LkeClusterControlPlaneAcl) *LkeClusterControlPlaneAcl {
+		return &v
+	}).(LkeClusterControlPlaneAclPtrOutput)
+}
+
+// A list of ip addresses to allow.
+func (o LkeClusterControlPlaneAclOutput) Addresses() LkeClusterControlPlaneAclAddressArrayOutput {
+	return o.ApplyT(func(v LkeClusterControlPlaneAcl) []LkeClusterControlPlaneAclAddress { return v.Addresses }).(LkeClusterControlPlaneAclAddressArrayOutput)
+}
+
+// Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+//
+// * `addresses` - (Optional) A list of ip addresses to allow.
+func (o LkeClusterControlPlaneAclOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LkeClusterControlPlaneAcl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type LkeClusterControlPlaneAclPtrOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterControlPlaneAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (o LkeClusterControlPlaneAclPtrOutput) ToLkeClusterControlPlaneAclPtrOutput() LkeClusterControlPlaneAclPtrOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclPtrOutput) ToLkeClusterControlPlaneAclPtrOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclPtrOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclPtrOutput) Elem() LkeClusterControlPlaneAclOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlaneAcl) LkeClusterControlPlaneAcl {
+		if v != nil {
+			return *v
+		}
+		var ret LkeClusterControlPlaneAcl
+		return ret
+	}).(LkeClusterControlPlaneAclOutput)
+}
+
+// A list of ip addresses to allow.
+func (o LkeClusterControlPlaneAclPtrOutput) Addresses() LkeClusterControlPlaneAclAddressArrayOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlaneAcl) []LkeClusterControlPlaneAclAddress {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(LkeClusterControlPlaneAclAddressArrayOutput)
+}
+
+// Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+//
+// * `addresses` - (Optional) A list of ip addresses to allow.
+func (o LkeClusterControlPlaneAclPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlaneAcl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type LkeClusterControlPlaneAclAddress struct {
+	// A set of individual ipv4 addresses or CIDRs to ALLOW.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A set of individual ipv6 addresses or CIDRs to ALLOW.
+	Ipv6s []string `pulumi:"ipv6s"`
+}
+
+// LkeClusterControlPlaneAclAddressInput is an input type that accepts LkeClusterControlPlaneAclAddressArgs and LkeClusterControlPlaneAclAddressOutput values.
+// You can construct a concrete instance of `LkeClusterControlPlaneAclAddressInput` via:
+//
+//	LkeClusterControlPlaneAclAddressArgs{...}
+type LkeClusterControlPlaneAclAddressInput interface {
+	pulumi.Input
+
+	ToLkeClusterControlPlaneAclAddressOutput() LkeClusterControlPlaneAclAddressOutput
+	ToLkeClusterControlPlaneAclAddressOutputWithContext(context.Context) LkeClusterControlPlaneAclAddressOutput
+}
+
+type LkeClusterControlPlaneAclAddressArgs struct {
+	// A set of individual ipv4 addresses or CIDRs to ALLOW.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A set of individual ipv6 addresses or CIDRs to ALLOW.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+}
+
+func (LkeClusterControlPlaneAclAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (i LkeClusterControlPlaneAclAddressArgs) ToLkeClusterControlPlaneAclAddressOutput() LkeClusterControlPlaneAclAddressOutput {
+	return i.ToLkeClusterControlPlaneAclAddressOutputWithContext(context.Background())
+}
+
+func (i LkeClusterControlPlaneAclAddressArgs) ToLkeClusterControlPlaneAclAddressOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneAclAddressOutput)
+}
+
+// LkeClusterControlPlaneAclAddressArrayInput is an input type that accepts LkeClusterControlPlaneAclAddressArray and LkeClusterControlPlaneAclAddressArrayOutput values.
+// You can construct a concrete instance of `LkeClusterControlPlaneAclAddressArrayInput` via:
+//
+//	LkeClusterControlPlaneAclAddressArray{ LkeClusterControlPlaneAclAddressArgs{...} }
+type LkeClusterControlPlaneAclAddressArrayInput interface {
+	pulumi.Input
+
+	ToLkeClusterControlPlaneAclAddressArrayOutput() LkeClusterControlPlaneAclAddressArrayOutput
+	ToLkeClusterControlPlaneAclAddressArrayOutputWithContext(context.Context) LkeClusterControlPlaneAclAddressArrayOutput
+}
+
+type LkeClusterControlPlaneAclAddressArray []LkeClusterControlPlaneAclAddressInput
+
+func (LkeClusterControlPlaneAclAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (i LkeClusterControlPlaneAclAddressArray) ToLkeClusterControlPlaneAclAddressArrayOutput() LkeClusterControlPlaneAclAddressArrayOutput {
+	return i.ToLkeClusterControlPlaneAclAddressArrayOutputWithContext(context.Background())
+}
+
+func (i LkeClusterControlPlaneAclAddressArray) ToLkeClusterControlPlaneAclAddressArrayOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterControlPlaneAclAddressArrayOutput)
+}
+
+type LkeClusterControlPlaneAclAddressOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterControlPlaneAclAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (o LkeClusterControlPlaneAclAddressOutput) ToLkeClusterControlPlaneAclAddressOutput() LkeClusterControlPlaneAclAddressOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclAddressOutput) ToLkeClusterControlPlaneAclAddressOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclAddressOutput {
+	return o
+}
+
+// A set of individual ipv4 addresses or CIDRs to ALLOW.
+func (o LkeClusterControlPlaneAclAddressOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LkeClusterControlPlaneAclAddress) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A set of individual ipv6 addresses or CIDRs to ALLOW.
+func (o LkeClusterControlPlaneAclAddressOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LkeClusterControlPlaneAclAddress) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+type LkeClusterControlPlaneAclAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterControlPlaneAclAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (o LkeClusterControlPlaneAclAddressArrayOutput) ToLkeClusterControlPlaneAclAddressArrayOutput() LkeClusterControlPlaneAclAddressArrayOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclAddressArrayOutput) ToLkeClusterControlPlaneAclAddressArrayOutputWithContext(ctx context.Context) LkeClusterControlPlaneAclAddressArrayOutput {
+	return o
+}
+
+func (o LkeClusterControlPlaneAclAddressArrayOutput) Index(i pulumi.IntInput) LkeClusterControlPlaneAclAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterControlPlaneAclAddress {
+		return vs[0].([]LkeClusterControlPlaneAclAddress)[vs[1].(int)]
+	}).(LkeClusterControlPlaneAclAddressOutput)
 }
 
 type LkeClusterPool struct {
@@ -20156,6 +20453,8 @@ func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOu
 }
 
 type GetLkeClusterControlPlane struct {
+	// The ACL configuration for an LKE cluster's control plane.
+	Acls []GetLkeClusterControlPlaneAcl `pulumi:"acls"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
 }
@@ -20172,6 +20471,8 @@ type GetLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClusterControlPlaneArgs struct {
+	// The ACL configuration for an LKE cluster's control plane.
+	Acls GetLkeClusterControlPlaneAclArrayInput `pulumi:"acls"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 }
@@ -20227,6 +20528,11 @@ func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithCo
 	return o
 }
 
+// The ACL configuration for an LKE cluster's control plane.
+func (o GetLkeClusterControlPlaneOutput) Acls() GetLkeClusterControlPlaneAclArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlane) []GetLkeClusterControlPlaneAcl { return v.Acls }).(GetLkeClusterControlPlaneAclArrayOutput)
+}
+
 // Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
@@ -20250,6 +20556,218 @@ func (o GetLkeClusterControlPlaneArrayOutput) Index(i pulumi.IntInput) GetLkeClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterControlPlane {
 		return vs[0].([]GetLkeClusterControlPlane)[vs[1].(int)]
 	}).(GetLkeClusterControlPlaneOutput)
+}
+
+type GetLkeClusterControlPlaneAcl struct {
+	// A list of ip addresses to allow.
+	Addresses []GetLkeClusterControlPlaneAclAddress `pulumi:"addresses"`
+	// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetLkeClusterControlPlaneAclInput is an input type that accepts GetLkeClusterControlPlaneAclArgs and GetLkeClusterControlPlaneAclOutput values.
+// You can construct a concrete instance of `GetLkeClusterControlPlaneAclInput` via:
+//
+//	GetLkeClusterControlPlaneAclArgs{...}
+type GetLkeClusterControlPlaneAclInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterControlPlaneAclOutput() GetLkeClusterControlPlaneAclOutput
+	ToGetLkeClusterControlPlaneAclOutputWithContext(context.Context) GetLkeClusterControlPlaneAclOutput
+}
+
+type GetLkeClusterControlPlaneAclArgs struct {
+	// A list of ip addresses to allow.
+	Addresses GetLkeClusterControlPlaneAclAddressArrayInput `pulumi:"addresses"`
+	// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetLkeClusterControlPlaneAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (i GetLkeClusterControlPlaneAclArgs) ToGetLkeClusterControlPlaneAclOutput() GetLkeClusterControlPlaneAclOutput {
+	return i.ToGetLkeClusterControlPlaneAclOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterControlPlaneAclArgs) ToGetLkeClusterControlPlaneAclOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterControlPlaneAclOutput)
+}
+
+// GetLkeClusterControlPlaneAclArrayInput is an input type that accepts GetLkeClusterControlPlaneAclArray and GetLkeClusterControlPlaneAclArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterControlPlaneAclArrayInput` via:
+//
+//	GetLkeClusterControlPlaneAclArray{ GetLkeClusterControlPlaneAclArgs{...} }
+type GetLkeClusterControlPlaneAclArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterControlPlaneAclArrayOutput() GetLkeClusterControlPlaneAclArrayOutput
+	ToGetLkeClusterControlPlaneAclArrayOutputWithContext(context.Context) GetLkeClusterControlPlaneAclArrayOutput
+}
+
+type GetLkeClusterControlPlaneAclArray []GetLkeClusterControlPlaneAclInput
+
+func (GetLkeClusterControlPlaneAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (i GetLkeClusterControlPlaneAclArray) ToGetLkeClusterControlPlaneAclArrayOutput() GetLkeClusterControlPlaneAclArrayOutput {
+	return i.ToGetLkeClusterControlPlaneAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterControlPlaneAclArray) ToGetLkeClusterControlPlaneAclArrayOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterControlPlaneAclArrayOutput)
+}
+
+type GetLkeClusterControlPlaneAclOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterControlPlaneAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (o GetLkeClusterControlPlaneAclOutput) ToGetLkeClusterControlPlaneAclOutput() GetLkeClusterControlPlaneAclOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneAclOutput) ToGetLkeClusterControlPlaneAclOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclOutput {
+	return o
+}
+
+// A list of ip addresses to allow.
+func (o GetLkeClusterControlPlaneAclOutput) Addresses() GetLkeClusterControlPlaneAclAddressArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlaneAcl) []GetLkeClusterControlPlaneAclAddress { return v.Addresses }).(GetLkeClusterControlPlaneAclAddressArrayOutput)
+}
+
+// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+func (o GetLkeClusterControlPlaneAclOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlaneAcl) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetLkeClusterControlPlaneAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterControlPlaneAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterControlPlaneAcl)(nil)).Elem()
+}
+
+func (o GetLkeClusterControlPlaneAclArrayOutput) ToGetLkeClusterControlPlaneAclArrayOutput() GetLkeClusterControlPlaneAclArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneAclArrayOutput) ToGetLkeClusterControlPlaneAclArrayOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneAclArrayOutput) Index(i pulumi.IntInput) GetLkeClusterControlPlaneAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterControlPlaneAcl {
+		return vs[0].([]GetLkeClusterControlPlaneAcl)[vs[1].(int)]
+	}).(GetLkeClusterControlPlaneAclOutput)
+}
+
+type GetLkeClusterControlPlaneAclAddress struct {
+	// A set of individual ipv4 addresses or CIDRs to ALLOW.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A set of individual ipv6 addresses or CIDRs to ALLOW.
+	Ipv6s []string `pulumi:"ipv6s"`
+}
+
+// GetLkeClusterControlPlaneAclAddressInput is an input type that accepts GetLkeClusterControlPlaneAclAddressArgs and GetLkeClusterControlPlaneAclAddressOutput values.
+// You can construct a concrete instance of `GetLkeClusterControlPlaneAclAddressInput` via:
+//
+//	GetLkeClusterControlPlaneAclAddressArgs{...}
+type GetLkeClusterControlPlaneAclAddressInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterControlPlaneAclAddressOutput() GetLkeClusterControlPlaneAclAddressOutput
+	ToGetLkeClusterControlPlaneAclAddressOutputWithContext(context.Context) GetLkeClusterControlPlaneAclAddressOutput
+}
+
+type GetLkeClusterControlPlaneAclAddressArgs struct {
+	// A set of individual ipv4 addresses or CIDRs to ALLOW.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A set of individual ipv6 addresses or CIDRs to ALLOW.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+}
+
+func (GetLkeClusterControlPlaneAclAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (i GetLkeClusterControlPlaneAclAddressArgs) ToGetLkeClusterControlPlaneAclAddressOutput() GetLkeClusterControlPlaneAclAddressOutput {
+	return i.ToGetLkeClusterControlPlaneAclAddressOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterControlPlaneAclAddressArgs) ToGetLkeClusterControlPlaneAclAddressOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterControlPlaneAclAddressOutput)
+}
+
+// GetLkeClusterControlPlaneAclAddressArrayInput is an input type that accepts GetLkeClusterControlPlaneAclAddressArray and GetLkeClusterControlPlaneAclAddressArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterControlPlaneAclAddressArrayInput` via:
+//
+//	GetLkeClusterControlPlaneAclAddressArray{ GetLkeClusterControlPlaneAclAddressArgs{...} }
+type GetLkeClusterControlPlaneAclAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterControlPlaneAclAddressArrayOutput() GetLkeClusterControlPlaneAclAddressArrayOutput
+	ToGetLkeClusterControlPlaneAclAddressArrayOutputWithContext(context.Context) GetLkeClusterControlPlaneAclAddressArrayOutput
+}
+
+type GetLkeClusterControlPlaneAclAddressArray []GetLkeClusterControlPlaneAclAddressInput
+
+func (GetLkeClusterControlPlaneAclAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (i GetLkeClusterControlPlaneAclAddressArray) ToGetLkeClusterControlPlaneAclAddressArrayOutput() GetLkeClusterControlPlaneAclAddressArrayOutput {
+	return i.ToGetLkeClusterControlPlaneAclAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterControlPlaneAclAddressArray) ToGetLkeClusterControlPlaneAclAddressArrayOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterControlPlaneAclAddressArrayOutput)
+}
+
+type GetLkeClusterControlPlaneAclAddressOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterControlPlaneAclAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (o GetLkeClusterControlPlaneAclAddressOutput) ToGetLkeClusterControlPlaneAclAddressOutput() GetLkeClusterControlPlaneAclAddressOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneAclAddressOutput) ToGetLkeClusterControlPlaneAclAddressOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclAddressOutput {
+	return o
+}
+
+// A set of individual ipv4 addresses or CIDRs to ALLOW.
+func (o GetLkeClusterControlPlaneAclAddressOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlaneAclAddress) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A set of individual ipv6 addresses or CIDRs to ALLOW.
+func (o GetLkeClusterControlPlaneAclAddressOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlaneAclAddress) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+type GetLkeClusterControlPlaneAclAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterControlPlaneAclAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterControlPlaneAclAddress)(nil)).Elem()
+}
+
+func (o GetLkeClusterControlPlaneAclAddressArrayOutput) ToGetLkeClusterControlPlaneAclAddressArrayOutput() GetLkeClusterControlPlaneAclAddressArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneAclAddressArrayOutput) ToGetLkeClusterControlPlaneAclAddressArrayOutputWithContext(ctx context.Context) GetLkeClusterControlPlaneAclAddressArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterControlPlaneAclAddressArrayOutput) Index(i pulumi.IntInput) GetLkeClusterControlPlaneAclAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterControlPlaneAclAddress {
+		return vs[0].([]GetLkeClusterControlPlaneAclAddress)[vs[1].(int)]
+	}).(GetLkeClusterControlPlaneAclAddressOutput)
 }
 
 type GetLkeClusterPool struct {
@@ -20404,7 +20922,7 @@ func (o GetLkeClusterPoolArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPool
 }
 
 type GetLkeClusterPoolAutoscaler struct {
-	// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+	// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
 	Enabled bool `pulumi:"enabled"`
 	// The maximum number of nodes to autoscale to.
 	Max int `pulumi:"max"`
@@ -20424,7 +20942,7 @@ type GetLkeClusterPoolAutoscalerInput interface {
 }
 
 type GetLkeClusterPoolAutoscalerArgs struct {
-	// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+	// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The maximum number of nodes to autoscale to.
 	Max pulumi.IntInput `pulumi:"max"`
@@ -20483,7 +21001,7 @@ func (o GetLkeClusterPoolAutoscalerOutput) ToGetLkeClusterPoolAutoscalerOutputWi
 	return o
 }
 
-// Whether autoscaling is enabled for this Node Pool. Defaults to false.
+// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
 func (o GetLkeClusterPoolAutoscalerOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClusterPoolAutoscaler) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -28602,6 +29120,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsPtrInput)(nil)).Elem(), InstanceSpecsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlanePtrInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclInput)(nil)).Elem(), LkeClusterControlPlaneAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclPtrInput)(nil)).Elem(), LkeClusterControlPlaneAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclAddressInput)(nil)).Elem(), LkeClusterControlPlaneAclAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclAddressArrayInput)(nil)).Elem(), LkeClusterControlPlaneAclAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolInput)(nil)).Elem(), LkeClusterPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolArrayInput)(nil)).Elem(), LkeClusterPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolAutoscalerInput)(nil)).Elem(), LkeClusterPoolAutoscalerArgs{})
@@ -28822,6 +29344,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKernelsKernelArrayInput)(nil)).Elem(), GetKernelsKernelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclInput)(nil)).Elem(), GetLkeClusterControlPlaneAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclAddressInput)(nil)).Elem(), GetLkeClusterControlPlaneAclAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclAddressArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneAclAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolInput)(nil)).Elem(), GetLkeClusterPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolArrayInput)(nil)).Elem(), GetLkeClusterPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolAutoscalerInput)(nil)).Elem(), GetLkeClusterPoolAutoscalerArgs{})
@@ -29009,6 +29535,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(LkeClusterControlPlaneAclOutput{})
+	pulumi.RegisterOutputType(LkeClusterControlPlaneAclPtrOutput{})
+	pulumi.RegisterOutputType(LkeClusterControlPlaneAclAddressOutput{})
+	pulumi.RegisterOutputType(LkeClusterControlPlaneAclAddressArrayOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolArrayOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolAutoscalerOutput{})
@@ -29229,6 +29759,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKernelsKernelArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclAddressOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolAutoscalerOutput{})

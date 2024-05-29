@@ -40,6 +40,8 @@ __all__ = [
     'InstanceMetadataArgs',
     'InstanceSpecsArgs',
     'LkeClusterControlPlaneArgs',
+    'LkeClusterControlPlaneAclArgs',
+    'LkeClusterControlPlaneAclAddressArgs',
     'LkeClusterPoolArgs',
     'LkeClusterPoolAutoscalerArgs',
     'LkeClusterPoolNodeArgs',
@@ -103,6 +105,8 @@ __all__ = [
     'GetKernelsFilterArgs',
     'GetKernelsKernelArgs',
     'GetLkeClusterControlPlaneArgs',
+    'GetLkeClusterControlPlaneAclArgs',
+    'GetLkeClusterControlPlaneAclAddressArgs',
     'GetLkeClusterPoolArgs',
     'GetLkeClusterPoolAutoscalerArgs',
     'GetLkeClusterPoolDiskArgs',
@@ -2461,24 +2465,126 @@ class InstanceSpecsArgs:
 @pulumi.input_type
 class LkeClusterControlPlaneArgs:
     def __init__(__self__, *,
+                 acl: Optional[pulumi.Input['LkeClusterControlPlaneAclArgs']] = None,
                  high_availability: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input['LkeClusterControlPlaneAclArgs'] acl: Defines the ACL configuration for an LKE cluster's control plane.
         :param pulumi.Input[bool] high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+               
+               * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
         """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input['LkeClusterControlPlaneAclArgs']]:
+        """
+        Defines the ACL configuration for an LKE cluster's control plane.
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input['LkeClusterControlPlaneAclArgs']]):
+        pulumi.set(self, "acl", value)
 
     @property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> Optional[pulumi.Input[bool]]:
         """
         Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+
+        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
         """
         return pulumi.get(self, "high_availability")
 
     @high_availability.setter
     def high_availability(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "high_availability", value)
+
+
+@pulumi.input_type
+class LkeClusterControlPlaneAclArgs:
+    def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgs']]] addresses: A list of ip addresses to allow.
+        :param pulumi.Input[bool] enabled: Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+               
+               * `addresses` - (Optional) A list of ip addresses to allow.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgs']]]]:
+        """
+        A list of ip addresses to allow.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgs']]]]):
+        pulumi.set(self, "addresses", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+
+        * `addresses` - (Optional) A list of ip addresses to allow.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class LkeClusterControlPlaneAclAddressArgs:
+    def __init__(__self__, *,
+                 ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A set of individual ipv4 addresses or CIDRs to ALLOW.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A set of individual ipv6 addresses or CIDRs to ALLOW.
+        """
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of individual ipv4 addresses or CIDRs to ALLOW.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4s", value)
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of individual ipv6 addresses or CIDRs to ALLOW.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6s", value)
 
 
 @pulumi.input_type
@@ -6937,11 +7043,15 @@ class GetKernelsKernelArgs:
 @pulumi.input_type
 class GetLkeClusterControlPlaneArgs:
     def __init__(__self__, *,
-                 high_availability: bool):
+                 high_availability: bool,
+                 acls: Optional[Sequence['GetLkeClusterControlPlaneAclArgs']] = None):
         """
         :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
+        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane.
         """
         pulumi.set(__self__, "high_availability", high_availability)
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
 
     @property
     @pulumi.getter(name="highAvailability")
@@ -6954,6 +7064,93 @@ class GetLkeClusterControlPlaneArgs:
     @high_availability.setter
     def high_availability(self, value: bool):
         pulumi.set(self, "high_availability", value)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[Sequence['GetLkeClusterControlPlaneAclArgs']]:
+        """
+        The ACL configuration for an LKE cluster's control plane.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: Optional[Sequence['GetLkeClusterControlPlaneAclArgs']]):
+        pulumi.set(self, "acls", value)
+
+
+@pulumi.input_type
+class GetLkeClusterControlPlaneAclArgs:
+    def __init__(__self__, *,
+                 enabled: bool,
+                 addresses: Optional[Sequence['GetLkeClusterControlPlaneAclAddressArgs']] = None):
+        """
+        :param bool enabled: The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+        :param Sequence['GetLkeClusterControlPlaneAclAddressArgs'] addresses: A list of ip addresses to allow.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: bool):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence['GetLkeClusterControlPlaneAclAddressArgs']]:
+        """
+        A list of ip addresses to allow.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[Sequence['GetLkeClusterControlPlaneAclAddressArgs']]):
+        pulumi.set(self, "addresses", value)
+
+
+@pulumi.input_type
+class GetLkeClusterControlPlaneAclAddressArgs:
+    def __init__(__self__, *,
+                 ipv4s: Sequence[str],
+                 ipv6s: Sequence[str]):
+        """
+        :param Sequence[str] ipv4s: A set of individual ipv4 addresses or CIDRs to ALLOW.
+        :param Sequence[str] ipv6s: A set of individual ipv6 addresses or CIDRs to ALLOW.
+        """
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[str]:
+        """
+        A set of individual ipv4 addresses or CIDRs to ALLOW.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Sequence[str]):
+        pulumi.set(self, "ipv4s", value)
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[str]:
+        """
+        A set of individual ipv6 addresses or CIDRs to ALLOW.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Sequence[str]):
+        pulumi.set(self, "ipv6s", value)
 
 
 @pulumi.input_type
@@ -7078,7 +7275,7 @@ class GetLkeClusterPoolAutoscalerArgs:
                  max: int,
                  min: int):
         """
-        :param bool enabled: Whether autoscaling is enabled for this Node Pool. Defaults to false.
+        :param bool enabled: The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
         :param int max: The maximum number of nodes to autoscale to.
         :param int min: The minimum number of nodes to autoscale to.
         """
@@ -7090,7 +7287,7 @@ class GetLkeClusterPoolAutoscalerArgs:
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether autoscaling is enabled for this Node Pool. Defaults to false.
+        The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
         """
         return pulumi.get(self, "enabled")
 

@@ -2080,9 +2080,35 @@ export interface GetKernelsKernel {
 
 export interface GetLkeClusterControlPlane {
     /**
+     * The ACL configuration for an LKE cluster's control plane.
+     */
+    acls?: outputs.GetLkeClusterControlPlaneAcl[];
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability: boolean;
+}
+
+export interface GetLkeClusterControlPlaneAcl {
+    /**
+     * A list of ip addresses to allow.
+     */
+    addresses?: outputs.GetLkeClusterControlPlaneAclAddress[];
+    /**
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+     */
+    enabled: boolean;
+}
+
+export interface GetLkeClusterControlPlaneAclAddress {
+    /**
+     * A set of individual ipv4 addresses or CIDRs to ALLOW.
+     */
+    ipv4s: string[];
+    /**
+     * A set of individual ipv6 addresses or CIDRs to ALLOW.
+     */
+    ipv6s: string[];
 }
 
 export interface GetLkeClusterPool {
@@ -2118,7 +2144,7 @@ export interface GetLkeClusterPool {
 
 export interface GetLkeClusterPoolAutoscaler {
     /**
-     * Whether autoscaling is enabled for this Node Pool. Defaults to false.
+     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      */
     enabled: boolean;
     /**
@@ -3939,9 +3965,39 @@ export interface InstanceSpecs {
 
 export interface LkeClusterControlPlane {
     /**
+     * Defines the ACL configuration for an LKE cluster's control plane.
+     */
+    acl: outputs.LkeClusterControlPlaneAcl;
+    /**
      * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     *
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
      */
     highAvailability: boolean;
+}
+
+export interface LkeClusterControlPlaneAcl {
+    /**
+     * A list of ip addresses to allow.
+     */
+    addresses: outputs.LkeClusterControlPlaneAclAddress[];
+    /**
+     * Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+     *
+     * * `addresses` - (Optional) A list of ip addresses to allow.
+     */
+    enabled: boolean;
+}
+
+export interface LkeClusterControlPlaneAclAddress {
+    /**
+     * A set of individual ipv4 addresses or CIDRs to ALLOW.
+     */
+    ipv4s: string[];
+    /**
+     * A set of individual ipv6 addresses or CIDRs to ALLOW.
+     */
+    ipv6s: string[];
 }
 
 export interface LkeClusterPool {
