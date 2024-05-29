@@ -1083,16 +1083,72 @@
         },
         "linode:index/LkeClusterControlPlane:LkeClusterControlPlane": {
             "properties": {
+                "acl": {
+                    "$ref": "#/types/linode:index/LkeClusterControlPlaneAcl:LkeClusterControlPlaneAcl",
+                    "description": "Defines the ACL configuration for an LKE cluster's control plane.\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
-                    "description": "Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.\n"
+                    "description": "Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.\n\n* `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "acl",
                         "highAvailability"
+                    ]
+                }
+            }
+        },
+        "linode:index/LkeClusterControlPlaneAcl:LkeClusterControlPlaneAcl": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/LkeClusterControlPlaneAclAddress:LkeClusterControlPlaneAclAddress"
+                    },
+                    "description": "A list of ip addresses to allow.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.\n\n* `addresses` - (Optional) A list of ip addresses to allow.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "addresses",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "linode:index/LkeClusterControlPlaneAclAddress:LkeClusterControlPlaneAclAddress": {
+            "properties": {
+                "ipv4s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of individual ipv4 addresses or CIDRs to ALLOW.\n"
+                },
+                "ipv6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of individual ipv6 addresses or CIDRs to ALLOW.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ipv4s",
+                        "ipv6s"
                     ]
                 }
             }
@@ -5167,6 +5223,13 @@
         },
         "linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane": {
             "properties": {
+                "acls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeClusterControlPlaneAcl:getLkeClusterControlPlaneAcl"
+                    },
+                    "description": "The ACL configuration for an LKE cluster's control plane.\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
                     "description": "Whether High Availability is enabled for the cluster Control Plane.\n"
@@ -5175,6 +5238,58 @@
             "type": "object",
             "required": [
                 "highAvailability"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getLkeClusterControlPlaneAcl:getLkeClusterControlPlaneAcl": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeClusterControlPlaneAclAddress:getLkeClusterControlPlaneAclAddress"
+                    },
+                    "description": "A list of ip addresses to allow.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getLkeClusterControlPlaneAclAddress:getLkeClusterControlPlaneAclAddress": {
+            "properties": {
+                "ipv4s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of individual ipv4 addresses or CIDRs to ALLOW.\n"
+                },
+                "ipv6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of individual ipv6 addresses or CIDRs to ALLOW.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipv4s",
+                "ipv6s"
             ],
             "language": {
                 "nodejs": {
@@ -5242,7 +5357,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether autoscaling is enabled for this Node Pool. Defaults to false.\n"
+                    "description": "The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.\n"
                 },
                 "max": {
                     "type": "integer",
@@ -14642,7 +14757,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane"
-                        }
+                        },
+                        "description": "The settings for the Kubernetes Control Plane.\n"
                     },
                     "id": {
                         "type": "integer",
@@ -14672,6 +14788,7 @@
                         "type": "array"
                     },
                     "controlPlanes": {
+                        "description": "The settings for the Kubernetes Control Plane.\n",
                         "items": {
                             "$ref": "#/types/linode:index/getLkeClusterControlPlane:getLkeClusterControlPlane"
                         },
