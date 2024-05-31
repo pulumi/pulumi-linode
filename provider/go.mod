@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-linode/provider/v4
 go 1.21
 
 require (
-	github.com/linode/terraform-provider-linode/v2 v2.21.0
+	github.com/linode/terraform-provider-linode/v2 v2.21.1
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.36.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.83.0
 	github.com/pulumi/pulumi/sdk/v3 v3.116.1
