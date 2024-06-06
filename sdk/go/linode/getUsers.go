@@ -53,6 +53,8 @@ import (
 //
 // * `restricted`
 //
+// * `userType`
+//
 // * `passwordCreated`
 //
 // * `tfaEnabled`

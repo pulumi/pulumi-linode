@@ -14,7 +14,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode account.
         /// 
-        /// This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+        /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 
         /// ## Example Usage
         /// 
@@ -39,7 +39,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about a Linode account.
         /// 
-        /// This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+        /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 
         /// ## Example Usage
         /// 
@@ -67,6 +67,10 @@ namespace Pulumi.Linode
     public sealed class GetAccountResult
     {
         /// <summary>
+        /// When this account was first activated.
+        /// </summary>
+        public readonly string ActiveSince;
+        /// <summary>
         /// First line of this Account's billing address.
         /// </summary>
         public readonly string Address1;
@@ -78,6 +82,10 @@ namespace Pulumi.Linode
         /// This Account's balance, in US dollars.
         /// </summary>
         public readonly double Balance;
+        /// <summary>
+        /// A set containing all the capabilities of the current Account.
+        /// </summary>
+        public readonly ImmutableArray<string> Capabilities;
         /// <summary>
         /// The city for this Account's billing address.
         /// </summary>
@@ -94,6 +102,7 @@ namespace Pulumi.Linode
         /// The email address for this Account, for account management communications, and may be used for other communications as configured.
         /// </summary>
         public readonly string Email;
+        public readonly string Euuid;
         /// <summary>
         /// The first name of the person associated with this Account.
         /// </summary>
@@ -118,11 +127,15 @@ namespace Pulumi.Linode
 
         [OutputConstructor]
         private GetAccountResult(
+            string activeSince,
+
             string address1,
 
             string address2,
 
             double balance,
+
+            ImmutableArray<string> capabilities,
 
             string city,
 
@@ -131,6 +144,8 @@ namespace Pulumi.Linode
             string country,
 
             string email,
+
+            string euuid,
 
             string firstName,
 
@@ -144,13 +159,16 @@ namespace Pulumi.Linode
 
             string zip)
         {
+            ActiveSince = activeSince;
             Address1 = address1;
             Address2 = address2;
             Balance = balance;
+            Capabilities = capabilities;
             City = city;
             Company = company;
             Country = country;
             Email = email;
+            Euuid = euuid;
             FirstName = firstName;
             Id = id;
             LastName = lastName;

@@ -75,6 +75,16 @@ export const getAccountSettings: typeof import("./getAccountSettings").getAccoun
 export const getAccountSettingsOutput: typeof import("./getAccountSettings").getAccountSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountSettings","getAccountSettingsOutput"], () => require("./getAccountSettings"));
 
+export { GetChildAccountArgs, GetChildAccountResult, GetChildAccountOutputArgs } from "./getChildAccount";
+export const getChildAccount: typeof import("./getChildAccount").getChildAccount = null as any;
+export const getChildAccountOutput: typeof import("./getChildAccount").getChildAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getChildAccount","getChildAccountOutput"], () => require("./getChildAccount"));
+
+export { GetChildAccountsArgs, GetChildAccountsResult, GetChildAccountsOutputArgs } from "./getChildAccounts";
+export const getChildAccounts: typeof import("./getChildAccounts").getChildAccounts = null as any;
+export const getChildAccountsOutput: typeof import("./getChildAccounts").getChildAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getChildAccounts","getChildAccountsOutput"], () => require("./getChildAccounts"));
+
 export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
 export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
 export const getDatabaseBackupsOutput: typeof import("./getDatabaseBackups").getDatabaseBackupsOutput = null as any;

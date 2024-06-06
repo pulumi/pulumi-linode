@@ -52,6 +52,8 @@ namespace Pulumi.Linode
         /// 
         /// * `restricted`
         /// 
+        /// * `user_type`
+        /// 
         /// * `password_created`
         /// 
         /// * `tfa_enabled`
@@ -101,6 +103,8 @@ namespace Pulumi.Linode
         /// * `email`
         /// 
         /// * `restricted`
+        /// 
+        /// * `user_type`
         /// 
         /// * `password_created`
         /// 

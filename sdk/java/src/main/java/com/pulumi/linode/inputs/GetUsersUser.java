@@ -251,6 +251,21 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The type of this user.
+     * 
+     */
+    @Import(name="userType", required=true)
+    private String userType;
+
+    /**
+     * @return The type of this user.
+     * 
+     */
+    public String userType() {
+        return this.userType;
+    }
+
+    /**
      * This User&#39;s username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
      * 
      */
@@ -313,6 +328,7 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         this.sshKeys = $.sshKeys;
         this.stackscriptGrants = $.stackscriptGrants;
         this.tfaEnabled = $.tfaEnabled;
+        this.userType = $.userType;
         this.username = $.username;
         this.verifiedPhoneNumber = $.verifiedPhoneNumber;
         this.volumeGrants = $.volumeGrants;
@@ -602,6 +618,17 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param userType The type of this user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userType(String userType) {
+            $.userType = userType;
+            return this;
+        }
+
+        /**
          * @param username This User&#39;s username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
          * 
          * @return builder
@@ -689,6 +716,9 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
             }
             if ($.tfaEnabled == null) {
                 throw new MissingRequiredPropertyException("GetUsersUser", "tfaEnabled");
+            }
+            if ($.userType == null) {
+                throw new MissingRequiredPropertyException("GetUsersUser", "userType");
             }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("GetUsersUser", "username");

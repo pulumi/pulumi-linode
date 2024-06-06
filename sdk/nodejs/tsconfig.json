@@ -29,6 +29,8 @@
         "getAccountLogin.ts",
         "getAccountLogins.ts",
         "getAccountSettings.ts",
+        "getChildAccount.ts",
+        "getChildAccounts.ts",
         "getDatabaseBackups.ts",
         "getDatabaseEngines.ts",
         "getDatabaseMysql.ts",

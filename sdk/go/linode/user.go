@@ -141,6 +141,8 @@ type User struct {
 	StackscriptGrants UserStackscriptGrantArrayOutput `pulumi:"stackscriptGrants"`
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled pulumi.BoolOutput `pulumi:"tfaEnabled"`
+	// The type of this user.
+	UserType pulumi.StringOutput `pulumi:"userType"`
 	// The username of the user.
 	Username pulumi.StringOutput `pulumi:"username"`
 	// The volumes the user has permissions access to.
@@ -211,6 +213,8 @@ type userState struct {
 	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled *bool `pulumi:"tfaEnabled"`
+	// The type of this user.
+	UserType *string `pulumi:"userType"`
 	// The username of the user.
 	Username *string `pulumi:"username"`
 	// The volumes the user has permissions access to.
@@ -246,6 +250,8 @@ type UserState struct {
 	StackscriptGrants UserStackscriptGrantArrayInput
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled pulumi.BoolPtrInput
+	// The type of this user.
+	UserType pulumi.StringPtrInput
 	// The username of the user.
 	Username pulumi.StringPtrInput
 	// The volumes the user has permissions access to.
@@ -468,6 +474,11 @@ func (o UserOutput) StackscriptGrants() UserStackscriptGrantArrayOutput {
 // Whether the user has two-factor-authentication enabled.
 func (o UserOutput) TfaEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.TfaEnabled }).(pulumi.BoolOutput)
+}
+
+// The type of this user.
+func (o UserOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
 }
 
 // The username of the user.

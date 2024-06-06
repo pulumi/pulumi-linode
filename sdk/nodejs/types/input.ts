@@ -272,6 +272,170 @@ export interface GetAccountLoginsLoginArgs {
     username?: pulumi.Input<string>;
 }
 
+export interface GetChildAccountsChildAccount {
+    /**
+     * When this account was first activated
+     */
+    activeSince?: string;
+    /**
+     * First line of this Account's billing address.
+     */
+    address1?: string;
+    /**
+     * Second line of this Account's billing address.
+     */
+    address2?: string;
+    /**
+     * This Account's balance, in US dollars.
+     */
+    balance?: number;
+    /**
+     * A set containing all the capabilities of this Account.
+     */
+    capabilities?: string[];
+    /**
+     * The city for this Account's billing address.
+     */
+    city?: string;
+    /**
+     * The company name associated with this Account.
+     */
+    company?: string;
+    /**
+     * The two-letter country code of this Account's billing address.
+     */
+    country?: string;
+    /**
+     * The email address for this Account, for account management communications, and may be used for other communications as configured.
+     */
+    email?: string;
+    /**
+     * The unique ID of this Account.
+     */
+    euuid?: string;
+    /**
+     * The first name of the person associated with this Account.
+     */
+    firstName?: string;
+    /**
+     * The Email of the Account.
+     */
+    id?: string;
+    /**
+     * The last name of the person associated with this Account.
+     */
+    lastName?: string;
+    /**
+     * The phone number associated with this Account.
+     */
+    phone?: string;
+    /**
+     * If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+     */
+    state?: string;
+    /**
+     * The zip code of this Account's billing address.
+     */
+    zip?: string;
+}
+
+export interface GetChildAccountsChildAccountArgs {
+    /**
+     * When this account was first activated
+     */
+    activeSince?: pulumi.Input<string>;
+    /**
+     * First line of this Account's billing address.
+     */
+    address1?: pulumi.Input<string>;
+    /**
+     * Second line of this Account's billing address.
+     */
+    address2?: pulumi.Input<string>;
+    /**
+     * This Account's balance, in US dollars.
+     */
+    balance?: pulumi.Input<number>;
+    /**
+     * A set containing all the capabilities of this Account.
+     */
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The city for this Account's billing address.
+     */
+    city?: pulumi.Input<string>;
+    /**
+     * The company name associated with this Account.
+     */
+    company?: pulumi.Input<string>;
+    /**
+     * The two-letter country code of this Account's billing address.
+     */
+    country?: pulumi.Input<string>;
+    /**
+     * The email address for this Account, for account management communications, and may be used for other communications as configured.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * The unique ID of this Account.
+     */
+    euuid?: pulumi.Input<string>;
+    /**
+     * The first name of the person associated with this Account.
+     */
+    firstName?: pulumi.Input<string>;
+    /**
+     * The Email of the Account.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The last name of the person associated with this Account.
+     */
+    lastName?: pulumi.Input<string>;
+    /**
+     * The phone number associated with this Account.
+     */
+    phone?: pulumi.Input<string>;
+    /**
+     * If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The zip code of this Account's billing address.
+     */
+    zip?: pulumi.Input<string>;
+}
+
+export interface GetChildAccountsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetChildAccountsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetDatabaseBackupsBackup {
     /**
      * A time value given in a combined date and time format that represents when the database backup was created.
@@ -3268,6 +3432,10 @@ export interface GetUsersUser {
      */
     tfaEnabled?: boolean;
     /**
+     * The type of this user.
+     */
+    userType?: string;
+    /**
      * This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
      */
     username: string;
@@ -3342,6 +3510,10 @@ export interface GetUsersUserArgs {
      * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
      */
     tfaEnabled?: pulumi.Input<boolean>;
+    /**
+     * The type of this user.
+     */
+    userType?: pulumi.Input<string>;
     /**
      * This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
      */

@@ -21,7 +21,10 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, address1=None, address2=None, balance=None, city=None, company=None, country=None, email=None, first_name=None, id=None, last_name=None, phone=None, state=None, zip=None):
+    def __init__(__self__, active_since=None, address1=None, address2=None, balance=None, capabilities=None, city=None, company=None, country=None, email=None, euuid=None, first_name=None, id=None, last_name=None, phone=None, state=None, zip=None):
+        if active_since and not isinstance(active_since, str):
+            raise TypeError("Expected argument 'active_since' to be a str")
+        pulumi.set(__self__, "active_since", active_since)
         if address1 and not isinstance(address1, str):
             raise TypeError("Expected argument 'address1' to be a str")
         pulumi.set(__self__, "address1", address1)
@@ -31,6 +34,9 @@ class GetAccountResult:
         if balance and not isinstance(balance, float):
             raise TypeError("Expected argument 'balance' to be a float")
         pulumi.set(__self__, "balance", balance)
+        if capabilities and not isinstance(capabilities, list):
+            raise TypeError("Expected argument 'capabilities' to be a list")
+        pulumi.set(__self__, "capabilities", capabilities)
         if city and not isinstance(city, str):
             raise TypeError("Expected argument 'city' to be a str")
         pulumi.set(__self__, "city", city)
@@ -43,6 +49,9 @@ class GetAccountResult:
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
+        if euuid and not isinstance(euuid, str):
+            raise TypeError("Expected argument 'euuid' to be a str")
+        pulumi.set(__self__, "euuid", euuid)
         if first_name and not isinstance(first_name, str):
             raise TypeError("Expected argument 'first_name' to be a str")
         pulumi.set(__self__, "first_name", first_name)
@@ -61,6 +70,14 @@ class GetAccountResult:
         if zip and not isinstance(zip, str):
             raise TypeError("Expected argument 'zip' to be a str")
         pulumi.set(__self__, "zip", zip)
+
+    @property
+    @pulumi.getter(name="activeSince")
+    def active_since(self) -> str:
+        """
+        When this account was first activated.
+        """
+        return pulumi.get(self, "active_since")
 
     @property
     @pulumi.getter
@@ -85,6 +102,14 @@ class GetAccountResult:
         This Account's balance, in US dollars.
         """
         return pulumi.get(self, "balance")
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[str]:
+        """
+        A set containing all the capabilities of the current Account.
+        """
+        return pulumi.get(self, "capabilities")
 
     @property
     @pulumi.getter
@@ -117,6 +142,11 @@ class GetAccountResult:
         The email address for this Account, for account management communications, and may be used for other communications as configured.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def euuid(self) -> str:
+        return pulumi.get(self, "euuid")
 
     @property
     @pulumi.getter(name="firstName")
@@ -170,13 +200,16 @@ class AwaitableGetAccountResult(GetAccountResult):
         if False:
             yield self
         return GetAccountResult(
+            active_since=self.active_since,
             address1=self.address1,
             address2=self.address2,
             balance=self.balance,
+            capabilities=self.capabilities,
             city=self.city,
             company=self.company,
             country=self.country,
             email=self.email,
+            euuid=self.euuid,
             first_name=self.first_name,
             id=self.id,
             last_name=self.last_name,
@@ -189,7 +222,7 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     """
     Provides information about a Linode account.
 
-    This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+    Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
 
     ## Example Usage
 
@@ -207,13 +240,16 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
+        active_since=pulumi.get(__ret__, 'active_since'),
         address1=pulumi.get(__ret__, 'address1'),
         address2=pulumi.get(__ret__, 'address2'),
         balance=pulumi.get(__ret__, 'balance'),
+        capabilities=pulumi.get(__ret__, 'capabilities'),
         city=pulumi.get(__ret__, 'city'),
         company=pulumi.get(__ret__, 'company'),
         country=pulumi.get(__ret__, 'country'),
         email=pulumi.get(__ret__, 'email'),
+        euuid=pulumi.get(__ret__, 'euuid'),
         first_name=pulumi.get(__ret__, 'first_name'),
         id=pulumi.get(__ret__, 'id'),
         last_name=pulumi.get(__ret__, 'last_name'),
@@ -227,7 +263,7 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     """
     Provides information about a Linode account.
 
-    This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+    Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
 
     ## Example Usage
 

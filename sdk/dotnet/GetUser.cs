@@ -278,6 +278,10 @@ namespace Pulumi.Linode
         /// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
         /// </summary>
         public readonly bool TfaEnabled;
+        /// <summary>
+        /// The type of this user.
+        /// </summary>
+        public readonly string UserType;
         public readonly string Username;
         /// <summary>
         /// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
@@ -317,6 +321,8 @@ namespace Pulumi.Linode
 
             bool tfaEnabled,
 
+            string userType,
+
             string username,
 
             string verifiedPhoneNumber,
@@ -338,6 +344,7 @@ namespace Pulumi.Linode
             SshKeys = sshKeys;
             StackscriptGrants = stackscriptGrants;
             TfaEnabled = tfaEnabled;
+            UserType = userType;
             Username = username;
             VerifiedPhoneNumber = verifiedPhoneNumber;
             VolumeGrants = volumeGrants;

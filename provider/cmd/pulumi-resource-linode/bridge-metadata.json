@@ -532,7 +532,12 @@
         "datasources": {
             "linode_account": {
                 "current": "linode:index/getAccount:getAccount",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_account_availabilities": {
                 "current": "linode:index/getAccountAvailabilities:getAccountAvailabilities",
@@ -601,6 +606,41 @@
             "linode_account_settings": {
                 "current": "linode:index/getAccountSettings:getAccountSettings",
                 "majorVersion": 4
+            },
+            "linode_child_account": {
+                "current": "linode:index/getChildAccount:getChildAccount",
+                "majorVersion": 4,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_child_accounts": {
+                "current": "linode:index/getChildAccounts:getChildAccounts",
+                "majorVersion": 4,
+                "fields": {
+                    "child_accounts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "capabilities": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "linode_database_backups": {
                 "current": "linode:index/getDatabaseBackups:getDatabaseBackups",
@@ -1858,6 +1898,8 @@
             "linode:index/getAccountLogin:getAccountLogin": 1,
             "linode:index/getAccountLogins:getAccountLogins": 1,
             "linode:index/getAccountSettings:getAccountSettings": 1,
+            "linode:index/getChildAccount:getChildAccount": 1,
+            "linode:index/getChildAccounts:getChildAccounts": 1,
             "linode:index/getDatabaseBackups:getDatabaseBackups": 1,
             "linode:index/getDatabaseEngines:getDatabaseEngines": 1,
             "linode:index/getDatabaseMysql:getDatabaseMysql": 1,

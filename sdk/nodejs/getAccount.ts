@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides information about a Linode account.
  *
- * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+ * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
  *
  * ## Example Usage
  *
@@ -32,6 +32,10 @@ export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResul
  */
 export interface GetAccountResult {
     /**
+     * When this account was first activated.
+     */
+    readonly activeSince: string;
+    /**
      * First line of this Account's billing address.
      */
     readonly address1: string;
@@ -43,6 +47,10 @@ export interface GetAccountResult {
      * This Account's balance, in US dollars.
      */
     readonly balance: number;
+    /**
+     * A set containing all the capabilities of the current Account.
+     */
+    readonly capabilities: string[];
     /**
      * The city for this Account's billing address.
      */
@@ -59,6 +67,7 @@ export interface GetAccountResult {
      * The email address for this Account, for account management communications, and may be used for other communications as configured.
      */
     readonly email: string;
+    readonly euuid: string;
     /**
      * The first name of the person associated with this Account.
      */
@@ -84,7 +93,7 @@ export interface GetAccountResult {
 /**
  * Provides information about a Linode account.
  *
- * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+ * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
  *
  * ## Example Usage
  *

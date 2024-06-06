@@ -7,10 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetAccountResult {
+    /**
+     * @return When this account was first activated.
+     * 
+     */
+    private String activeSince;
     /**
      * @return First line of this Account&#39;s billing address.
      * 
@@ -26,6 +32,11 @@ public final class GetAccountResult {
      * 
      */
     private Double balance;
+    /**
+     * @return A set containing all the capabilities of the current Account.
+     * 
+     */
+    private List<String> capabilities;
     /**
      * @return The city for this Account&#39;s billing address.
      * 
@@ -46,6 +57,7 @@ public final class GetAccountResult {
      * 
      */
     private String email;
+    private String euuid;
     /**
      * @return The first name of the person associated with this Account.
      * 
@@ -75,6 +87,13 @@ public final class GetAccountResult {
 
     private GetAccountResult() {}
     /**
+     * @return When this account was first activated.
+     * 
+     */
+    public String activeSince() {
+        return this.activeSince;
+    }
+    /**
      * @return First line of this Account&#39;s billing address.
      * 
      */
@@ -94,6 +113,13 @@ public final class GetAccountResult {
      */
     public Double balance() {
         return this.balance;
+    }
+    /**
+     * @return A set containing all the capabilities of the current Account.
+     * 
+     */
+    public List<String> capabilities() {
+        return this.capabilities;
     }
     /**
      * @return The city for this Account&#39;s billing address.
@@ -122,6 +148,9 @@ public final class GetAccountResult {
      */
     public String email() {
         return this.email;
+    }
+    public String euuid() {
+        return this.euuid;
     }
     /**
      * @return The first name of the person associated with this Account.
@@ -171,13 +200,16 @@ public final class GetAccountResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String activeSince;
         private String address1;
         private String address2;
         private Double balance;
+        private List<String> capabilities;
         private String city;
         private String company;
         private String country;
         private String email;
+        private String euuid;
         private String firstName;
         private String id;
         private String lastName;
@@ -187,13 +219,16 @@ public final class GetAccountResult {
         public Builder() {}
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeSince = defaults.activeSince;
     	      this.address1 = defaults.address1;
     	      this.address2 = defaults.address2;
     	      this.balance = defaults.balance;
+    	      this.capabilities = defaults.capabilities;
     	      this.city = defaults.city;
     	      this.company = defaults.company;
     	      this.country = defaults.country;
     	      this.email = defaults.email;
+    	      this.euuid = defaults.euuid;
     	      this.firstName = defaults.firstName;
     	      this.id = defaults.id;
     	      this.lastName = defaults.lastName;
@@ -202,6 +237,14 @@ public final class GetAccountResult {
     	      this.zip = defaults.zip;
         }
 
+        @CustomType.Setter
+        public Builder activeSince(String activeSince) {
+            if (activeSince == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "activeSince");
+            }
+            this.activeSince = activeSince;
+            return this;
+        }
         @CustomType.Setter
         public Builder address1(String address1) {
             if (address1 == null) {
@@ -225,6 +268,17 @@ public final class GetAccountResult {
             }
             this.balance = balance;
             return this;
+        }
+        @CustomType.Setter
+        public Builder capabilities(List<String> capabilities) {
+            if (capabilities == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "capabilities");
+            }
+            this.capabilities = capabilities;
+            return this;
+        }
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
         }
         @CustomType.Setter
         public Builder city(String city) {
@@ -256,6 +310,14 @@ public final class GetAccountResult {
               throw new MissingRequiredPropertyException("GetAccountResult", "email");
             }
             this.email = email;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder euuid(String euuid) {
+            if (euuid == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "euuid");
+            }
+            this.euuid = euuid;
             return this;
         }
         @CustomType.Setter
@@ -308,13 +370,16 @@ public final class GetAccountResult {
         }
         public GetAccountResult build() {
             final var _resultValue = new GetAccountResult();
+            _resultValue.activeSince = activeSince;
             _resultValue.address1 = address1;
             _resultValue.address2 = address2;
             _resultValue.balance = balance;
+            _resultValue.capabilities = capabilities;
             _resultValue.city = city;
             _resultValue.company = company;
             _resultValue.country = country;
             _resultValue.email = email;
+            _resultValue.euuid = euuid;
             _resultValue.firstName = firstName;
             _resultValue.id = id;
             _resultValue.lastName = lastName;

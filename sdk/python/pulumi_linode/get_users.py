@@ -109,6 +109,8 @@ def get_users(filters: Optional[Sequence[pulumi.InputType['GetUsersFilterArgs']]
 
     * `restricted`
 
+    * `user_type`
+
     * `password_created`
 
     * `tfa_enabled`
@@ -162,6 +164,8 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     * `email`
 
     * `restricted`
+
+    * `user_type`
 
     * `password_created`
 

@@ -176,6 +176,12 @@ namespace Pulumi.Linode
         public Output<bool> TfaEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The type of this user.
+        /// </summary>
+        [Output("userType")]
+        public Output<string> UserType { get; private set; } = null!;
+
+        /// <summary>
         /// The username of the user.
         /// </summary>
         [Output("username")]
@@ -488,6 +494,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("tfaEnabled")]
         public Input<bool>? TfaEnabled { get; set; }
+
+        /// <summary>
+        /// The type of this user.
+        /// </summary>
+        [Input("userType")]
+        public Input<string>? UserType { get; set; }
 
         /// <summary>
         /// The username of the user.

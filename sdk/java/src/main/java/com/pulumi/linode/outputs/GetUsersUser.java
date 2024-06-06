@@ -98,6 +98,11 @@ public final class GetUsersUser {
      */
     private Boolean tfaEnabled;
     /**
+     * @return The type of this user.
+     * 
+     */
+    private String userType;
+    /**
      * @return This User&#39;s username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
      * 
      */
@@ -220,6 +225,13 @@ public final class GetUsersUser {
         return this.tfaEnabled;
     }
     /**
+     * @return The type of this user.
+     * 
+     */
+    public String userType() {
+        return this.userType;
+    }
+    /**
      * @return This User&#39;s username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
      * 
      */
@@ -265,6 +277,7 @@ public final class GetUsersUser {
         private List<String> sshKeys;
         private List<GetUsersUserStackscriptGrant> stackscriptGrants;
         private Boolean tfaEnabled;
+        private String userType;
         private String username;
         private String verifiedPhoneNumber;
         private List<GetUsersUserVolumeGrant> volumeGrants;
@@ -286,6 +299,7 @@ public final class GetUsersUser {
     	      this.sshKeys = defaults.sshKeys;
     	      this.stackscriptGrants = defaults.stackscriptGrants;
     	      this.tfaEnabled = defaults.tfaEnabled;
+    	      this.userType = defaults.userType;
     	      this.username = defaults.username;
     	      this.verifiedPhoneNumber = defaults.verifiedPhoneNumber;
     	      this.volumeGrants = defaults.volumeGrants;
@@ -442,6 +456,14 @@ public final class GetUsersUser {
             return this;
         }
         @CustomType.Setter
+        public Builder userType(String userType) {
+            if (userType == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "userType");
+            }
+            this.userType = userType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetUsersUser", "username");
@@ -485,6 +507,7 @@ public final class GetUsersUser {
             _resultValue.sshKeys = sshKeys;
             _resultValue.stackscriptGrants = stackscriptGrants;
             _resultValue.tfaEnabled = tfaEnabled;
+            _resultValue.userType = userType;
             _resultValue.username = username;
             _resultValue.verifiedPhoneNumber = verifiedPhoneNumber;
             _resultValue.volumeGrants = volumeGrants;
