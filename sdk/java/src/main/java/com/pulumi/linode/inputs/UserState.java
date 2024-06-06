@@ -215,6 +215,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of this user.
+     * 
+     */
+    @Import(name="userType")
+    private @Nullable Output<String> userType;
+
+    /**
+     * @return The type of this user.
+     * 
+     */
+    public Optional<Output<String>> userType() {
+        return Optional.ofNullable(this.userType);
+    }
+
+    /**
      * The username of the user.
      * 
      */
@@ -259,6 +274,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.sshKeys = $.sshKeys;
         this.stackscriptGrants = $.stackscriptGrants;
         this.tfaEnabled = $.tfaEnabled;
+        this.userType = $.userType;
         this.username = $.username;
         this.volumeGrants = $.volumeGrants;
     }
@@ -619,6 +635,27 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tfaEnabled(Boolean tfaEnabled) {
             return tfaEnabled(Output.of(tfaEnabled));
+        }
+
+        /**
+         * @param userType The type of this user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userType(@Nullable Output<String> userType) {
+            $.userType = userType;
+            return this;
+        }
+
+        /**
+         * @param userType The type of this user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userType(String userType) {
+            return userType(Output.of(userType));
         }
 
         /**

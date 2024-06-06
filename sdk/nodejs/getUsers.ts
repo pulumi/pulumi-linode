@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  *
  * * `restricted`
  *
+ * * `userType`
+ *
  * * `passwordCreated`
  *
  * * `tfaEnabled`
@@ -100,6 +102,8 @@ export interface GetUsersResult {
  * * `email`
  *
  * * `restricted`
+ *
+ * * `userType`
  *
  * * `passwordCreated`
  *

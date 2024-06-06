@@ -89,8 +89,10 @@ type LookupUserResult struct {
 	SshKeys           []string                  `pulumi:"sshKeys"`
 	StackscriptGrants []GetUserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
-	TfaEnabled bool   `pulumi:"tfaEnabled"`
-	Username   string `pulumi:"username"`
+	TfaEnabled bool `pulumi:"tfaEnabled"`
+	// The type of this user.
+	UserType string `pulumi:"userType"`
+	Username string `pulumi:"username"`
 	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
 	VerifiedPhoneNumber string               `pulumi:"verifiedPhoneNumber"`
 	VolumeGrants        []GetUserVolumeGrant `pulumi:"volumeGrants"`
@@ -207,6 +209,11 @@ func (o LookupUserResultOutput) StackscriptGrants() GetUserStackscriptGrantArray
 // A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
 func (o LookupUserResultOutput) TfaEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.TfaEnabled }).(pulumi.BoolOutput)
+}
+
+// The type of this user.
+func (o LookupUserResultOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.UserType }).(pulumi.StringOutput)
 }
 
 func (o LookupUserResultOutput) Username() pulumi.StringOutput {

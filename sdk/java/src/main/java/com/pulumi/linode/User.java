@@ -323,6 +323,20 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.tfaEnabled;
     }
     /**
+     * The type of this user.
+     * 
+     */
+    @Export(name="userType", refs={String.class}, tree="[0]")
+    private Output<String> userType;
+
+    /**
+     * @return The type of this user.
+     * 
+     */
+    public Output<String> userType() {
+        return this.userType;
+    }
+    /**
      * The username of the user.
      * 
      */

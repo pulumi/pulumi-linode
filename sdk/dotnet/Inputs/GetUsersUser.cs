@@ -163,6 +163,12 @@ namespace Pulumi.Linode.Inputs
         public bool TfaEnabled { get; set; }
 
         /// <summary>
+        /// The type of this user.
+        /// </summary>
+        [Input("userType", required: true)]
+        public string UserType { get; set; } = null!;
+
+        /// <summary>
         /// This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
         /// </summary>
         [Input("username", required: true)]

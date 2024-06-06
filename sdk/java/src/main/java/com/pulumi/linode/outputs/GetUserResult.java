@@ -61,6 +61,11 @@ public final class GetUserResult {
      * 
      */
     private Boolean tfaEnabled;
+    /**
+     * @return The type of this user.
+     * 
+     */
+    private String userType;
     private String username;
     /**
      * @return The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
@@ -139,6 +144,13 @@ public final class GetUserResult {
     public Boolean tfaEnabled() {
         return this.tfaEnabled;
     }
+    /**
+     * @return The type of this user.
+     * 
+     */
+    public String userType() {
+        return this.userType;
+    }
     public String username() {
         return this.username;
     }
@@ -177,6 +189,7 @@ public final class GetUserResult {
         private List<String> sshKeys;
         private List<GetUserStackscriptGrant> stackscriptGrants;
         private Boolean tfaEnabled;
+        private String userType;
         private String username;
         private String verifiedPhoneNumber;
         private List<GetUserVolumeGrant> volumeGrants;
@@ -198,6 +211,7 @@ public final class GetUserResult {
     	      this.sshKeys = defaults.sshKeys;
     	      this.stackscriptGrants = defaults.stackscriptGrants;
     	      this.tfaEnabled = defaults.tfaEnabled;
+    	      this.userType = defaults.userType;
     	      this.username = defaults.username;
     	      this.verifiedPhoneNumber = defaults.verifiedPhoneNumber;
     	      this.volumeGrants = defaults.volumeGrants;
@@ -354,6 +368,14 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder userType(String userType) {
+            if (userType == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userType");
+            }
+            this.userType = userType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "username");
@@ -397,6 +419,7 @@ public final class GetUserResult {
             _resultValue.sshKeys = sshKeys;
             _resultValue.stackscriptGrants = stackscriptGrants;
             _resultValue.tfaEnabled = tfaEnabled;
+            _resultValue.userType = userType;
             _resultValue.username = username;
             _resultValue.verifiedPhoneNumber = verifiedPhoneNumber;
             _resultValue.volumeGrants = volumeGrants;

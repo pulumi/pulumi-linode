@@ -252,6 +252,21 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of this user.
+     * 
+     */
+    @Import(name="userType", required=true)
+    private Output<String> userType;
+
+    /**
+     * @return The type of this user.
+     * 
+     */
+    public Output<String> userType() {
+        return this.userType;
+    }
+
+    /**
      * This User&#39;s username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
      * 
      */
@@ -314,6 +329,7 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
         this.sshKeys = $.sshKeys;
         this.stackscriptGrants = $.stackscriptGrants;
         this.tfaEnabled = $.tfaEnabled;
+        this.userType = $.userType;
         this.username = $.username;
         this.verifiedPhoneNumber = $.verifiedPhoneNumber;
         this.volumeGrants = $.volumeGrants;
@@ -753,6 +769,27 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param userType The type of this user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userType(Output<String> userType) {
+            $.userType = userType;
+            return this;
+        }
+
+        /**
+         * @param userType The type of this user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userType(String userType) {
+            return userType(Output.of(userType));
+        }
+
+        /**
          * @param username This User&#39;s username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
          * 
          * @return builder
@@ -870,6 +907,9 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.tfaEnabled == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserArgs", "tfaEnabled");
+            }
+            if ($.userType == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserArgs", "userType");
             }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserArgs", "username");

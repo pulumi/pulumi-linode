@@ -23,7 +23,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, password_created=None, restricted=None, ssh_keys=None, stackscript_grants=None, tfa_enabled=None, username=None, verified_phone_number=None, volume_grants=None):
+    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, password_created=None, restricted=None, ssh_keys=None, stackscript_grants=None, tfa_enabled=None, user_type=None, username=None, verified_phone_number=None, volume_grants=None):
         if database_grants and not isinstance(database_grants, list):
             raise TypeError("Expected argument 'database_grants' to be a list")
         pulumi.set(__self__, "database_grants", database_grants)
@@ -69,6 +69,9 @@ class GetUserResult:
         if tfa_enabled and not isinstance(tfa_enabled, bool):
             raise TypeError("Expected argument 'tfa_enabled' to be a bool")
         pulumi.set(__self__, "tfa_enabled", tfa_enabled)
+        if user_type and not isinstance(user_type, str):
+            raise TypeError("Expected argument 'user_type' to be a str")
+        pulumi.set(__self__, "user_type", user_type)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
@@ -173,6 +176,14 @@ class GetUserResult:
         return pulumi.get(self, "tfa_enabled")
 
     @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> str:
+        """
+        The type of this user.
+        """
+        return pulumi.get(self, "user_type")
+
+    @property
     @pulumi.getter
     def username(self) -> str:
         return pulumi.get(self, "username")
@@ -212,6 +223,7 @@ class AwaitableGetUserResult(GetUserResult):
             ssh_keys=self.ssh_keys,
             stackscript_grants=self.stackscript_grants,
             tfa_enabled=self.tfa_enabled,
+            user_type=self.user_type,
             username=self.username,
             verified_phone_number=self.verified_phone_number,
             volume_grants=self.volume_grants)
@@ -277,6 +289,7 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
         ssh_keys=pulumi.get(__ret__, 'ssh_keys'),
         stackscript_grants=pulumi.get(__ret__, 'stackscript_grants'),
         tfa_enabled=pulumi.get(__ret__, 'tfa_enabled'),
+        user_type=pulumi.get(__ret__, 'user_type'),
         username=pulumi.get(__ret__, 'username'),
         verified_phone_number=pulumi.get(__ret__, 'verified_phone_number'),
         volume_grants=pulumi.get(__ret__, 'volume_grants'))

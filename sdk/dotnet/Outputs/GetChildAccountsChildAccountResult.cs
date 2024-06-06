@@ -7,67 +7,14 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Linode
+namespace Pulumi.Linode.Outputs
 {
-    public static class GetAccount
-    {
-        /// <summary>
-        /// Provides information about a Linode account.
-        /// 
-        /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// The following example shows how one might use this data source to access account details.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var account = Linode.GetAccount.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
-        public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
-
-        /// <summary>
-        /// Provides information about a Linode account.
-        /// 
-        /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// The following example shows how one might use this data source to access account details.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Linode = Pulumi.Linode;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var account = Linode.GetAccount.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
-        public static Output<GetAccountResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
-    }
-
 
     [OutputType]
-    public sealed class GetAccountResult
+    public sealed class GetChildAccountsChildAccountResult
     {
         /// <summary>
-        /// When this account was first activated.
+        /// When this account was first activated
         /// </summary>
         public readonly string ActiveSince;
         /// <summary>
@@ -83,7 +30,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly double Balance;
         /// <summary>
-        /// A set containing all the capabilities of the current Account.
+        /// A set containing all the capabilities of this Account.
         /// </summary>
         public readonly ImmutableArray<string> Capabilities;
         /// <summary>
@@ -102,11 +49,17 @@ namespace Pulumi.Linode
         /// The email address for this Account, for account management communications, and may be used for other communications as configured.
         /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// The unique ID of this Account.
+        /// </summary>
         public readonly string Euuid;
         /// <summary>
         /// The first name of the person associated with this Account.
         /// </summary>
         public readonly string FirstName;
+        /// <summary>
+        /// The Email of the Account.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The last name of the person associated with this Account.
@@ -126,7 +79,7 @@ namespace Pulumi.Linode
         public readonly string Zip;
 
         [OutputConstructor]
-        private GetAccountResult(
+        private GetChildAccountsChildAccountResult(
             string activeSince,
 
             string address1,

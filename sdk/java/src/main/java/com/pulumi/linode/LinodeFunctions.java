@@ -16,6 +16,10 @@ import com.pulumi.linode.inputs.GetAccountLoginArgs;
 import com.pulumi.linode.inputs.GetAccountLoginPlainArgs;
 import com.pulumi.linode.inputs.GetAccountLoginsArgs;
 import com.pulumi.linode.inputs.GetAccountLoginsPlainArgs;
+import com.pulumi.linode.inputs.GetChildAccountArgs;
+import com.pulumi.linode.inputs.GetChildAccountPlainArgs;
+import com.pulumi.linode.inputs.GetChildAccountsArgs;
+import com.pulumi.linode.inputs.GetChildAccountsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
@@ -118,6 +122,8 @@ import com.pulumi.linode.outputs.GetAccountLoginResult;
 import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
 import com.pulumi.linode.outputs.GetAccountSettingsResult;
+import com.pulumi.linode.outputs.GetChildAccountResult;
+import com.pulumi.linode.outputs.GetChildAccountsResult;
 import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsResult;
@@ -175,7 +181,7 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
      * 
-     * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
      * 
@@ -218,7 +224,7 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
      * 
-     * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
      * 
@@ -261,7 +267,7 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
      * 
-     * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
      * 
@@ -304,7 +310,7 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
      * 
-     * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
      * 
@@ -347,7 +353,7 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
      * 
-     * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
      * 
@@ -390,7 +396,7 @@ public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
      * 
-     * This data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
      * ## Example Usage
      * 
@@ -1729,6 +1735,730 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getAccountSettings:getAccountSettings", TypeShape.of(GetAccountSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Child Account.
+     * 
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access child account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getChildAccount(GetChildAccountArgs.builder()
+     *             .euuid("FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChildAccountResult> getChildAccount(GetChildAccountArgs args) {
+        return getChildAccount(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Child Account.
+     * 
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access child account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getChildAccount(GetChildAccountArgs.builder()
+     *             .euuid("FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetChildAccountResult> getChildAccountPlain(GetChildAccountPlainArgs args) {
+        return getChildAccountPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Child Account.
+     * 
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access child account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getChildAccount(GetChildAccountArgs.builder()
+     *             .euuid("FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChildAccountResult> getChildAccount(GetChildAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getChildAccount:getChildAccount", TypeShape.of(GetChildAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Child Account.
+     * 
+     * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access child account details.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = LinodeFunctions.getChildAccount(GetChildAccountArgs.builder()
+     *             .euuid("FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetChildAccountResult> getChildAccountPlain(GetChildAccountPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getChildAccount:getChildAccount", TypeShape.of(GetChildAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access Child Accounts under the current Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getChildAccounts();
+     * 
+     *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .filters(            
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("email")
+     *                     .values("example{@literal @}linode.com")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("first_name")
+     *                     .values("John")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("last_name")
+     *                     .values("Smith")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `euuid`
+     * 
+     * * `email`
+     * 
+     * * `first_name`
+     * 
+     * * `last_name`
+     * 
+     * * `company`
+     * 
+     * * `address_1`
+     * 
+     * * `address_2`
+     * 
+     * * `phone`
+     * 
+     * * `city`
+     * 
+     * * `state`
+     * 
+     * * `country`
+     * 
+     * * `zip`
+     * 
+     * * `capabilities`
+     * 
+     * * `active_since`
+     * 
+     */
+    public static Output<GetChildAccountsResult> getChildAccounts() {
+        return getChildAccounts(GetChildAccountsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access Child Accounts under the current Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getChildAccounts();
+     * 
+     *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .filters(            
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("email")
+     *                     .values("example{@literal @}linode.com")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("first_name")
+     *                     .values("John")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("last_name")
+     *                     .values("Smith")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `euuid`
+     * 
+     * * `email`
+     * 
+     * * `first_name`
+     * 
+     * * `last_name`
+     * 
+     * * `company`
+     * 
+     * * `address_1`
+     * 
+     * * `address_2`
+     * 
+     * * `phone`
+     * 
+     * * `city`
+     * 
+     * * `state`
+     * 
+     * * `country`
+     * 
+     * * `zip`
+     * 
+     * * `capabilities`
+     * 
+     * * `active_since`
+     * 
+     */
+    public static CompletableFuture<GetChildAccountsResult> getChildAccountsPlain() {
+        return getChildAccountsPlain(GetChildAccountsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access Child Accounts under the current Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getChildAccounts();
+     * 
+     *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .filters(            
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("email")
+     *                     .values("example{@literal @}linode.com")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("first_name")
+     *                     .values("John")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("last_name")
+     *                     .values("Smith")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `euuid`
+     * 
+     * * `email`
+     * 
+     * * `first_name`
+     * 
+     * * `last_name`
+     * 
+     * * `company`
+     * 
+     * * `address_1`
+     * 
+     * * `address_2`
+     * 
+     * * `phone`
+     * 
+     * * `city`
+     * 
+     * * `state`
+     * 
+     * * `country`
+     * 
+     * * `zip`
+     * 
+     * * `capabilities`
+     * 
+     * * `active_since`
+     * 
+     */
+    public static Output<GetChildAccountsResult> getChildAccounts(GetChildAccountsArgs args) {
+        return getChildAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access Child Accounts under the current Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getChildAccounts();
+     * 
+     *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .filters(            
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("email")
+     *                     .values("example{@literal @}linode.com")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("first_name")
+     *                     .values("John")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("last_name")
+     *                     .values("Smith")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `euuid`
+     * 
+     * * `email`
+     * 
+     * * `first_name`
+     * 
+     * * `last_name`
+     * 
+     * * `company`
+     * 
+     * * `address_1`
+     * 
+     * * `address_2`
+     * 
+     * * `phone`
+     * 
+     * * `city`
+     * 
+     * * `state`
+     * 
+     * * `country`
+     * 
+     * * `zip`
+     * 
+     * * `capabilities`
+     * 
+     * * `active_since`
+     * 
+     */
+    public static CompletableFuture<GetChildAccountsResult> getChildAccountsPlain(GetChildAccountsPlainArgs args) {
+        return getChildAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access Child Accounts under the current Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getChildAccounts();
+     * 
+     *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .filters(            
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("email")
+     *                     .values("example{@literal @}linode.com")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("first_name")
+     *                     .values("John")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("last_name")
+     *                     .values("Smith")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `euuid`
+     * 
+     * * `email`
+     * 
+     * * `first_name`
+     * 
+     * * `last_name`
+     * 
+     * * `company`
+     * 
+     * * `address_1`
+     * 
+     * * `address_2`
+     * 
+     * * `phone`
+     * 
+     * * `city`
+     * 
+     * * `state`
+     * 
+     * * `country`
+     * 
+     * * `zip`
+     * 
+     * * `capabilities`
+     * 
+     * * `active_since`
+     * 
+     */
+    public static Output<GetChildAccountsResult> getChildAccounts(GetChildAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getChildAccounts:getChildAccounts", TypeShape.of(GetChildAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access Child Accounts under the current Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetChildAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getChildAccounts();
+     * 
+     *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .filters(            
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("email")
+     *                     .values("example{@literal @}linode.com")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("first_name")
+     *                     .values("John")
+     *                     .build(),
+     *                 GetChildAccountsFilterArgs.builder()
+     *                     .name("last_name")
+     *                     .values("Smith")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `euuid`
+     * 
+     * * `email`
+     * 
+     * * `first_name`
+     * 
+     * * `last_name`
+     * 
+     * * `company`
+     * 
+     * * `address_1`
+     * 
+     * * `address_2`
+     * 
+     * * `phone`
+     * 
+     * * `city`
+     * 
+     * * `state`
+     * 
+     * * `country`
+     * 
+     * * `zip`
+     * 
+     * * `capabilities`
+     * 
+     * * `active_since`
+     * 
+     */
+    public static CompletableFuture<GetChildAccountsResult> getChildAccountsPlain(GetChildAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getChildAccounts:getChildAccounts", TypeShape.of(GetChildAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
@@ -14682,6 +15412,8 @@ public final class LinodeFunctions {
      * 
      * * `restricted`
      * 
+     * * `user_type`
+     * 
      * * `password_created`
      * 
      * * `tfa_enabled`
@@ -14739,6 +15471,8 @@ public final class LinodeFunctions {
      * * `email`
      * 
      * * `restricted`
+     * 
+     * * `user_type`
      * 
      * * `password_created`
      * 
@@ -14798,6 +15532,8 @@ public final class LinodeFunctions {
      * 
      * * `restricted`
      * 
+     * * `user_type`
+     * 
      * * `password_created`
      * 
      * * `tfa_enabled`
@@ -14855,6 +15591,8 @@ public final class LinodeFunctions {
      * * `email`
      * 
      * * `restricted`
+     * 
+     * * `user_type`
      * 
      * * `password_created`
      * 
@@ -14914,6 +15652,8 @@ public final class LinodeFunctions {
      * 
      * * `restricted`
      * 
+     * * `user_type`
+     * 
      * * `password_created`
      * 
      * * `tfa_enabled`
@@ -14971,6 +15711,8 @@ public final class LinodeFunctions {
      * * `email`
      * 
      * * `restricted`
+     * 
+     * * `user_type`
      * 
      * * `password_created`
      * 

@@ -155,6 +155,10 @@ export class User extends pulumi.CustomResource {
      */
     public /*out*/ readonly tfaEnabled!: pulumi.Output<boolean>;
     /**
+     * The type of this user.
+     */
+    public /*out*/ readonly userType!: pulumi.Output<string>;
+    /**
      * The username of the user.
      */
     public readonly username!: pulumi.Output<string>;
@@ -188,6 +192,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
             resourceInputs["stackscriptGrants"] = state ? state.stackscriptGrants : undefined;
             resourceInputs["tfaEnabled"] = state ? state.tfaEnabled : undefined;
+            resourceInputs["userType"] = state ? state.userType : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
             resourceInputs["volumeGrants"] = state ? state.volumeGrants : undefined;
         } else {
@@ -212,6 +217,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["volumeGrants"] = args ? args.volumeGrants : undefined;
             resourceInputs["sshKeys"] = undefined /*out*/;
             resourceInputs["tfaEnabled"] = undefined /*out*/;
+            resourceInputs["userType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);
@@ -274,6 +280,10 @@ export interface UserState {
      * Whether the user has two-factor-authentication enabled.
      */
     tfaEnabled?: pulumi.Input<boolean>;
+    /**
+     * The type of this user.
+     */
+    userType?: pulumi.Input<string>;
     /**
      * The username of the user.
      */

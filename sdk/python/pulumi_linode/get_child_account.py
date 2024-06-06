@@ -10,16 +10,16 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'GetAccountResult',
-    'AwaitableGetAccountResult',
-    'get_account',
-    'get_account_output',
+    'GetChildAccountResult',
+    'AwaitableGetChildAccountResult',
+    'get_child_account',
+    'get_child_account_output',
 ]
 
 @pulumi.output_type
-class GetAccountResult:
+class GetChildAccountResult:
     """
-    A collection of values returned by getAccount.
+    A collection of values returned by getChildAccount.
     """
     def __init__(__self__, active_since=None, address1=None, address2=None, balance=None, capabilities=None, city=None, company=None, country=None, email=None, euuid=None, first_name=None, id=None, last_name=None, phone=None, state=None, zip=None):
         if active_since and not isinstance(active_since, str):
@@ -107,7 +107,7 @@ class GetAccountResult:
     @pulumi.getter
     def capabilities(self) -> Sequence[str]:
         """
-        A set containing all the capabilities of the current Account.
+        A set containing all the capabilities of this Account.
         """
         return pulumi.get(self, "capabilities")
 
@@ -194,12 +194,12 @@ class GetAccountResult:
         return pulumi.get(self, "zip")
 
 
-class AwaitableGetAccountResult(GetAccountResult):
+class AwaitableGetChildAccountResult(GetChildAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetAccountResult(
+        return GetChildAccountResult(
             active_since=self.active_since,
             address1=self.address1,
             address2=self.address2,
@@ -218,28 +218,33 @@ class AwaitableGetAccountResult(GetAccountResult):
             zip=self.zip)
 
 
-def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
+def get_child_account(euuid: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetChildAccountResult:
     """
-    Provides information about a Linode account.
+    Provides information about a Linode Child Account.
 
     Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
 
     ## Example Usage
 
-    The following example shows how one might use this data source to access account details.
+    The following example shows how one might use this data source to access child account details.
 
     ```python
     import pulumi
     import pulumi_linode as linode
 
-    account = linode.get_account()
+    account = linode.get_child_account(euuid="FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF")
     ```
+
+
+    :param str euuid: The unique EUUID of this Child Account.
     """
     __args__ = dict()
+    __args__['euuid'] = euuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('linode:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
+    __ret__ = pulumi.runtime.invoke('linode:index/getChildAccount:getChildAccount', __args__, opts=opts, typ=GetChildAccountResult).value
 
-    return AwaitableGetAccountResult(
+    return AwaitableGetChildAccountResult(
         active_since=pulumi.get(__ret__, 'active_since'),
         address1=pulumi.get(__ret__, 'address1'),
         address2=pulumi.get(__ret__, 'address2'),
@@ -258,22 +263,26 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
         zip=pulumi.get(__ret__, 'zip'))
 
 
-@_utilities.lift_output_func(get_account)
-def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+@_utilities.lift_output_func(get_child_account)
+def get_child_account_output(euuid: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountResult]:
     """
-    Provides information about a Linode account.
+    Provides information about a Linode Child Account.
 
     Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
 
     ## Example Usage
 
-    The following example shows how one might use this data source to access account details.
+    The following example shows how one might use this data source to access child account details.
 
     ```python
     import pulumi
     import pulumi_linode as linode
 
-    account = linode.get_account()
+    account = linode.get_child_account(euuid="FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF")
     ```
+
+
+    :param str euuid: The unique EUUID of this Child Account.
     """
     ...

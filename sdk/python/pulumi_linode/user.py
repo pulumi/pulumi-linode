@@ -234,6 +234,7 @@ class _UserState:
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
                  tfa_enabled: Optional[pulumi.Input[bool]] = None,
+                 user_type: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None):
         """
@@ -254,6 +255,7 @@ class _UserState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of the User's SSH keys.
         :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
+        :param pulumi.Input[str] user_type: The type of this user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
         """
@@ -281,6 +283,8 @@ class _UserState:
             pulumi.set(__self__, "stackscript_grants", stackscript_grants)
         if tfa_enabled is not None:
             pulumi.set(__self__, "tfa_enabled", tfa_enabled)
+        if user_type is not None:
+            pulumi.set(__self__, "user_type", user_type)
         if username is not None:
             pulumi.set(__self__, "username", username)
         if volume_grants is not None:
@@ -433,6 +437,18 @@ class _UserState:
     @tfa_enabled.setter
     def tfa_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tfa_enabled", value)
+
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of this user.
+        """
+        return pulumi.get(self, "user_type")
+
+    @user_type.setter
+    def user_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_type", value)
 
     @property
     @pulumi.getter
@@ -688,6 +704,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["volume_grants"] = volume_grants
             __props__.__dict__["ssh_keys"] = None
             __props__.__dict__["tfa_enabled"] = None
+            __props__.__dict__["user_type"] = None
         super(User, __self__).__init__(
             'linode:index/user:User',
             resource_name,
@@ -710,6 +727,7 @@ class User(pulumi.CustomResource):
             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]]] = None,
             tfa_enabled: Optional[pulumi.Input[bool]] = None,
+            user_type: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
             volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]]] = None) -> 'User':
         """
@@ -735,6 +753,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of the User's SSH keys.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
+        :param pulumi.Input[str] user_type: The type of this user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]] volume_grants: The volumes the user has permissions access to.
         """
@@ -754,6 +773,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["ssh_keys"] = ssh_keys
         __props__.__dict__["stackscript_grants"] = stackscript_grants
         __props__.__dict__["tfa_enabled"] = tfa_enabled
+        __props__.__dict__["user_type"] = user_type
         __props__.__dict__["username"] = username
         __props__.__dict__["volume_grants"] = volume_grants
         return User(resource_name, opts=opts, __props__=__props__)
@@ -857,6 +877,14 @@ class User(pulumi.CustomResource):
         Whether the user has two-factor-authentication enabled.
         """
         return pulumi.get(self, "tfa_enabled")
+
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> pulumi.Output[str]:
+        """
+        The type of this user.
+        """
+        return pulumi.get(self, "user_type")
 
     @property
     @pulumi.getter

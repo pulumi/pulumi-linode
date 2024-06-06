@@ -97,6 +97,10 @@ export interface GetUserResult {
      * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
      */
     readonly tfaEnabled: boolean;
+    /**
+     * The type of this user.
+     */
+    readonly userType: string;
     readonly username: string;
     /**
      * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.

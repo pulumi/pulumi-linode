@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetAccountResult {
+public final class GetChildAccountResult {
     /**
      * @return When this account was first activated.
      * 
@@ -33,7 +33,7 @@ public final class GetAccountResult {
      */
     private Double balance;
     /**
-     * @return A set containing all the capabilities of the current Account.
+     * @return A set containing all the capabilities of this Account.
      * 
      */
     private List<String> capabilities;
@@ -85,7 +85,7 @@ public final class GetAccountResult {
      */
     private String zip;
 
-    private GetAccountResult() {}
+    private GetChildAccountResult() {}
     /**
      * @return When this account was first activated.
      * 
@@ -115,7 +115,7 @@ public final class GetAccountResult {
         return this.balance;
     }
     /**
-     * @return A set containing all the capabilities of the current Account.
+     * @return A set containing all the capabilities of this Account.
      * 
      */
     public List<String> capabilities() {
@@ -195,7 +195,7 @@ public final class GetAccountResult {
         return new Builder();
     }
 
-    public static Builder builder(GetAccountResult defaults) {
+    public static Builder builder(GetChildAccountResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -217,7 +217,7 @@ public final class GetAccountResult {
         private String state;
         private String zip;
         public Builder() {}
-        public Builder(GetAccountResult defaults) {
+        public Builder(GetChildAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeSince = defaults.activeSince;
     	      this.address1 = defaults.address1;
@@ -240,7 +240,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder activeSince(String activeSince) {
             if (activeSince == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "activeSince");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "activeSince");
             }
             this.activeSince = activeSince;
             return this;
@@ -248,7 +248,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder address1(String address1) {
             if (address1 == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "address1");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "address1");
             }
             this.address1 = address1;
             return this;
@@ -256,7 +256,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder address2(String address2) {
             if (address2 == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "address2");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "address2");
             }
             this.address2 = address2;
             return this;
@@ -264,7 +264,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder balance(Double balance) {
             if (balance == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "balance");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "balance");
             }
             this.balance = balance;
             return this;
@@ -272,7 +272,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder capabilities(List<String> capabilities) {
             if (capabilities == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "capabilities");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "capabilities");
             }
             this.capabilities = capabilities;
             return this;
@@ -283,7 +283,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder city(String city) {
             if (city == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "city");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "city");
             }
             this.city = city;
             return this;
@@ -291,7 +291,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder company(String company) {
             if (company == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "company");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "company");
             }
             this.company = company;
             return this;
@@ -299,7 +299,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder country(String country) {
             if (country == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "country");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "country");
             }
             this.country = country;
             return this;
@@ -307,7 +307,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder email(String email) {
             if (email == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "email");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "email");
             }
             this.email = email;
             return this;
@@ -315,7 +315,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder euuid(String euuid) {
             if (euuid == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "euuid");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "euuid");
             }
             this.euuid = euuid;
             return this;
@@ -323,7 +323,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder firstName(String firstName) {
             if (firstName == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "firstName");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "firstName");
             }
             this.firstName = firstName;
             return this;
@@ -331,7 +331,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "id");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "id");
             }
             this.id = id;
             return this;
@@ -339,7 +339,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder lastName(String lastName) {
             if (lastName == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "lastName");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "lastName");
             }
             this.lastName = lastName;
             return this;
@@ -347,7 +347,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder phone(String phone) {
             if (phone == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "phone");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "phone");
             }
             this.phone = phone;
             return this;
@@ -355,7 +355,7 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder state(String state) {
             if (state == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "state");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "state");
             }
             this.state = state;
             return this;
@@ -363,13 +363,13 @@ public final class GetAccountResult {
         @CustomType.Setter
         public Builder zip(String zip) {
             if (zip == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "zip");
+              throw new MissingRequiredPropertyException("GetChildAccountResult", "zip");
             }
             this.zip = zip;
             return this;
         }
-        public GetAccountResult build() {
-            final var _resultValue = new GetAccountResult();
+        public GetChildAccountResult build() {
+            final var _resultValue = new GetChildAccountResult();
             _resultValue.activeSince = activeSince;
             _resultValue.address1 = address1;
             _resultValue.address2 = address2;

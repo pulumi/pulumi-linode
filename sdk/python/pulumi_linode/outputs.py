@@ -76,6 +76,8 @@ __all__ = [
     'GetAccountAvailabilitiesFilterResult',
     'GetAccountLoginsFilterResult',
     'GetAccountLoginsLoginResult',
+    'GetChildAccountsChildAccountResult',
+    'GetChildAccountsFilterResult',
     'GetDatabaseBackupsBackupResult',
     'GetDatabaseBackupsFilterResult',
     'GetDatabaseEnginesEngineResult',
@@ -4237,6 +4239,230 @@ class GetAccountLoginsLoginResult(dict):
         The username of the User that was logged into.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetChildAccountsChildAccountResult(dict):
+    def __init__(__self__, *,
+                 active_since: str,
+                 address1: str,
+                 address2: str,
+                 balance: float,
+                 capabilities: Sequence[str],
+                 city: str,
+                 company: str,
+                 country: str,
+                 email: str,
+                 euuid: str,
+                 first_name: str,
+                 id: str,
+                 last_name: str,
+                 phone: str,
+                 state: str,
+                 zip: str):
+        """
+        :param str active_since: When this account was first activated
+        :param str address1: First line of this Account's billing address.
+        :param str address2: Second line of this Account's billing address.
+        :param float balance: This Account's balance, in US dollars.
+        :param Sequence[str] capabilities: A set containing all the capabilities of this Account.
+        :param str city: The city for this Account's billing address.
+        :param str company: The company name associated with this Account.
+        :param str country: The two-letter country code of this Account's billing address.
+        :param str email: The email address for this Account, for account management communications, and may be used for other communications as configured.
+        :param str euuid: The unique ID of this Account.
+        :param str first_name: The first name of the person associated with this Account.
+        :param str id: The Email of the Account.
+        :param str last_name: The last name of the person associated with this Account.
+        :param str phone: The phone number associated with this Account.
+        :param str state: If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+        :param str zip: The zip code of this Account's billing address.
+        """
+        pulumi.set(__self__, "active_since", active_since)
+        pulumi.set(__self__, "address1", address1)
+        pulumi.set(__self__, "address2", address2)
+        pulumi.set(__self__, "balance", balance)
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "company", company)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "euuid", euuid)
+        pulumi.set(__self__, "first_name", first_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_name", last_name)
+        pulumi.set(__self__, "phone", phone)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "zip", zip)
+
+    @property
+    @pulumi.getter(name="activeSince")
+    def active_since(self) -> str:
+        """
+        When this account was first activated
+        """
+        return pulumi.get(self, "active_since")
+
+    @property
+    @pulumi.getter
+    def address1(self) -> str:
+        """
+        First line of this Account's billing address.
+        """
+        return pulumi.get(self, "address1")
+
+    @property
+    @pulumi.getter
+    def address2(self) -> str:
+        """
+        Second line of this Account's billing address.
+        """
+        return pulumi.get(self, "address2")
+
+    @property
+    @pulumi.getter
+    def balance(self) -> float:
+        """
+        This Account's balance, in US dollars.
+        """
+        return pulumi.get(self, "balance")
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[str]:
+        """
+        A set containing all the capabilities of this Account.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter
+    def city(self) -> str:
+        """
+        The city for this Account's billing address.
+        """
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter
+    def company(self) -> str:
+        """
+        The company name associated with this Account.
+        """
+        return pulumi.get(self, "company")
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        The two-letter country code of this Account's billing address.
+        """
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The email address for this Account, for account management communications, and may be used for other communications as configured.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def euuid(self) -> str:
+        """
+        The unique ID of this Account.
+        """
+        return pulumi.get(self, "euuid")
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> str:
+        """
+        The first name of the person associated with this Account.
+        """
+        return pulumi.get(self, "first_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The Email of the Account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> str:
+        """
+        The last name of the person associated with this Account.
+        """
+        return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter
+    def phone(self) -> str:
+        """
+        The phone number associated with this Account.
+        """
+        return pulumi.get(self, "phone")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def zip(self) -> str:
+        """
+        The zip code of this Account's billing address.
+        """
+        return pulumi.get(self, "zip")
+
+
+@pulumi.output_type
+class GetChildAccountsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
 
 
 @pulumi.output_type
@@ -12033,6 +12259,7 @@ class GetUsersUserResult(dict):
                  ssh_keys: Sequence[str],
                  stackscript_grants: Sequence['outputs.GetUsersUserStackscriptGrantResult'],
                  tfa_enabled: bool,
+                 user_type: str,
                  username: str,
                  verified_phone_number: str,
                  volume_grants: Sequence['outputs.GetUsersUserVolumeGrantResult']):
@@ -12052,6 +12279,7 @@ class GetUsersUserResult(dict):
         :param Sequence[str] ssh_keys: A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
         :param Sequence['GetUsersUserStackscriptGrantArgs'] stackscript_grants: A set containing all of the user's active grants.
         :param bool tfa_enabled: A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+        :param str user_type: The type of this user.
         :param str username: This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
         :param str verified_phone_number: The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
         :param Sequence['GetUsersUserVolumeGrantArgs'] volume_grants: A set containing all of the user's active grants.
@@ -12071,6 +12299,7 @@ class GetUsersUserResult(dict):
         pulumi.set(__self__, "ssh_keys", ssh_keys)
         pulumi.set(__self__, "stackscript_grants", stackscript_grants)
         pulumi.set(__self__, "tfa_enabled", tfa_enabled)
+        pulumi.set(__self__, "user_type", user_type)
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "verified_phone_number", verified_phone_number)
         pulumi.set(__self__, "volume_grants", volume_grants)
@@ -12194,6 +12423,14 @@ class GetUsersUserResult(dict):
         A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
         """
         return pulumi.get(self, "tfa_enabled")
+
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> str:
+        """
+        The type of this user.
+        """
+        return pulumi.get(self, "user_type")
 
     @property
     @pulumi.getter

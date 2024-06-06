@@ -9950,6 +9950,353 @@ func (o GetAccountLoginsLoginArrayOutput) Index(i pulumi.IntInput) GetAccountLog
 	}).(GetAccountLoginsLoginOutput)
 }
 
+type GetChildAccountsChildAccount struct {
+	// When this account was first activated
+	ActiveSince string `pulumi:"activeSince"`
+	// First line of this Account's billing address.
+	Address1 string `pulumi:"address1"`
+	// Second line of this Account's billing address.
+	Address2 string `pulumi:"address2"`
+	// This Account's balance, in US dollars.
+	Balance float64 `pulumi:"balance"`
+	// A set containing all the capabilities of this Account.
+	Capabilities []string `pulumi:"capabilities"`
+	// The city for this Account's billing address.
+	City string `pulumi:"city"`
+	// The company name associated with this Account.
+	Company string `pulumi:"company"`
+	// The two-letter country code of this Account's billing address.
+	Country string `pulumi:"country"`
+	// The email address for this Account, for account management communications, and may be used for other communications as configured.
+	Email string `pulumi:"email"`
+	// The unique ID of this Account.
+	Euuid string `pulumi:"euuid"`
+	// The first name of the person associated with this Account.
+	FirstName string `pulumi:"firstName"`
+	// The Email of the Account.
+	Id string `pulumi:"id"`
+	// The last name of the person associated with this Account.
+	LastName string `pulumi:"lastName"`
+	// The phone number associated with this Account.
+	Phone string `pulumi:"phone"`
+	// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+	State string `pulumi:"state"`
+	// The zip code of this Account's billing address.
+	Zip string `pulumi:"zip"`
+}
+
+// GetChildAccountsChildAccountInput is an input type that accepts GetChildAccountsChildAccountArgs and GetChildAccountsChildAccountOutput values.
+// You can construct a concrete instance of `GetChildAccountsChildAccountInput` via:
+//
+//	GetChildAccountsChildAccountArgs{...}
+type GetChildAccountsChildAccountInput interface {
+	pulumi.Input
+
+	ToGetChildAccountsChildAccountOutput() GetChildAccountsChildAccountOutput
+	ToGetChildAccountsChildAccountOutputWithContext(context.Context) GetChildAccountsChildAccountOutput
+}
+
+type GetChildAccountsChildAccountArgs struct {
+	// When this account was first activated
+	ActiveSince pulumi.StringInput `pulumi:"activeSince"`
+	// First line of this Account's billing address.
+	Address1 pulumi.StringInput `pulumi:"address1"`
+	// Second line of this Account's billing address.
+	Address2 pulumi.StringInput `pulumi:"address2"`
+	// This Account's balance, in US dollars.
+	Balance pulumi.Float64Input `pulumi:"balance"`
+	// A set containing all the capabilities of this Account.
+	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
+	// The city for this Account's billing address.
+	City pulumi.StringInput `pulumi:"city"`
+	// The company name associated with this Account.
+	Company pulumi.StringInput `pulumi:"company"`
+	// The two-letter country code of this Account's billing address.
+	Country pulumi.StringInput `pulumi:"country"`
+	// The email address for this Account, for account management communications, and may be used for other communications as configured.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The unique ID of this Account.
+	Euuid pulumi.StringInput `pulumi:"euuid"`
+	// The first name of the person associated with this Account.
+	FirstName pulumi.StringInput `pulumi:"firstName"`
+	// The Email of the Account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last name of the person associated with this Account.
+	LastName pulumi.StringInput `pulumi:"lastName"`
+	// The phone number associated with this Account.
+	Phone pulumi.StringInput `pulumi:"phone"`
+	// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+	State pulumi.StringInput `pulumi:"state"`
+	// The zip code of this Account's billing address.
+	Zip pulumi.StringInput `pulumi:"zip"`
+}
+
+func (GetChildAccountsChildAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChildAccountsChildAccount)(nil)).Elem()
+}
+
+func (i GetChildAccountsChildAccountArgs) ToGetChildAccountsChildAccountOutput() GetChildAccountsChildAccountOutput {
+	return i.ToGetChildAccountsChildAccountOutputWithContext(context.Background())
+}
+
+func (i GetChildAccountsChildAccountArgs) ToGetChildAccountsChildAccountOutputWithContext(ctx context.Context) GetChildAccountsChildAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChildAccountsChildAccountOutput)
+}
+
+// GetChildAccountsChildAccountArrayInput is an input type that accepts GetChildAccountsChildAccountArray and GetChildAccountsChildAccountArrayOutput values.
+// You can construct a concrete instance of `GetChildAccountsChildAccountArrayInput` via:
+//
+//	GetChildAccountsChildAccountArray{ GetChildAccountsChildAccountArgs{...} }
+type GetChildAccountsChildAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetChildAccountsChildAccountArrayOutput() GetChildAccountsChildAccountArrayOutput
+	ToGetChildAccountsChildAccountArrayOutputWithContext(context.Context) GetChildAccountsChildAccountArrayOutput
+}
+
+type GetChildAccountsChildAccountArray []GetChildAccountsChildAccountInput
+
+func (GetChildAccountsChildAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChildAccountsChildAccount)(nil)).Elem()
+}
+
+func (i GetChildAccountsChildAccountArray) ToGetChildAccountsChildAccountArrayOutput() GetChildAccountsChildAccountArrayOutput {
+	return i.ToGetChildAccountsChildAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetChildAccountsChildAccountArray) ToGetChildAccountsChildAccountArrayOutputWithContext(ctx context.Context) GetChildAccountsChildAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChildAccountsChildAccountArrayOutput)
+}
+
+type GetChildAccountsChildAccountOutput struct{ *pulumi.OutputState }
+
+func (GetChildAccountsChildAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChildAccountsChildAccount)(nil)).Elem()
+}
+
+func (o GetChildAccountsChildAccountOutput) ToGetChildAccountsChildAccountOutput() GetChildAccountsChildAccountOutput {
+	return o
+}
+
+func (o GetChildAccountsChildAccountOutput) ToGetChildAccountsChildAccountOutputWithContext(ctx context.Context) GetChildAccountsChildAccountOutput {
+	return o
+}
+
+// When this account was first activated
+func (o GetChildAccountsChildAccountOutput) ActiveSince() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.ActiveSince }).(pulumi.StringOutput)
+}
+
+// First line of this Account's billing address.
+func (o GetChildAccountsChildAccountOutput) Address1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Address1 }).(pulumi.StringOutput)
+}
+
+// Second line of this Account's billing address.
+func (o GetChildAccountsChildAccountOutput) Address2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Address2 }).(pulumi.StringOutput)
+}
+
+// This Account's balance, in US dollars.
+func (o GetChildAccountsChildAccountOutput) Balance() pulumi.Float64Output {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) float64 { return v.Balance }).(pulumi.Float64Output)
+}
+
+// A set containing all the capabilities of this Account.
+func (o GetChildAccountsChildAccountOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// The city for this Account's billing address.
+func (o GetChildAccountsChildAccountOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.City }).(pulumi.StringOutput)
+}
+
+// The company name associated with this Account.
+func (o GetChildAccountsChildAccountOutput) Company() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Company }).(pulumi.StringOutput)
+}
+
+// The two-letter country code of this Account's billing address.
+func (o GetChildAccountsChildAccountOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// The email address for this Account, for account management communications, and may be used for other communications as configured.
+func (o GetChildAccountsChildAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The unique ID of this Account.
+func (o GetChildAccountsChildAccountOutput) Euuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Euuid }).(pulumi.StringOutput)
+}
+
+// The first name of the person associated with this Account.
+func (o GetChildAccountsChildAccountOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.FirstName }).(pulumi.StringOutput)
+}
+
+// The Email of the Account.
+func (o GetChildAccountsChildAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last name of the person associated with this Account.
+func (o GetChildAccountsChildAccountOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+// The phone number associated with this Account.
+func (o GetChildAccountsChildAccountOutput) Phone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Phone }).(pulumi.StringOutput)
+}
+
+// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+func (o GetChildAccountsChildAccountOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The zip code of this Account's billing address.
+func (o GetChildAccountsChildAccountOutput) Zip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsChildAccount) string { return v.Zip }).(pulumi.StringOutput)
+}
+
+type GetChildAccountsChildAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChildAccountsChildAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChildAccountsChildAccount)(nil)).Elem()
+}
+
+func (o GetChildAccountsChildAccountArrayOutput) ToGetChildAccountsChildAccountArrayOutput() GetChildAccountsChildAccountArrayOutput {
+	return o
+}
+
+func (o GetChildAccountsChildAccountArrayOutput) ToGetChildAccountsChildAccountArrayOutputWithContext(ctx context.Context) GetChildAccountsChildAccountArrayOutput {
+	return o
+}
+
+func (o GetChildAccountsChildAccountArrayOutput) Index(i pulumi.IntInput) GetChildAccountsChildAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChildAccountsChildAccount {
+		return vs[0].([]GetChildAccountsChildAccount)[vs[1].(int)]
+	}).(GetChildAccountsChildAccountOutput)
+}
+
+type GetChildAccountsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetChildAccountsFilterInput is an input type that accepts GetChildAccountsFilterArgs and GetChildAccountsFilterOutput values.
+// You can construct a concrete instance of `GetChildAccountsFilterInput` via:
+//
+//	GetChildAccountsFilterArgs{...}
+type GetChildAccountsFilterInput interface {
+	pulumi.Input
+
+	ToGetChildAccountsFilterOutput() GetChildAccountsFilterOutput
+	ToGetChildAccountsFilterOutputWithContext(context.Context) GetChildAccountsFilterOutput
+}
+
+type GetChildAccountsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetChildAccountsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChildAccountsFilter)(nil)).Elem()
+}
+
+func (i GetChildAccountsFilterArgs) ToGetChildAccountsFilterOutput() GetChildAccountsFilterOutput {
+	return i.ToGetChildAccountsFilterOutputWithContext(context.Background())
+}
+
+func (i GetChildAccountsFilterArgs) ToGetChildAccountsFilterOutputWithContext(ctx context.Context) GetChildAccountsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChildAccountsFilterOutput)
+}
+
+// GetChildAccountsFilterArrayInput is an input type that accepts GetChildAccountsFilterArray and GetChildAccountsFilterArrayOutput values.
+// You can construct a concrete instance of `GetChildAccountsFilterArrayInput` via:
+//
+//	GetChildAccountsFilterArray{ GetChildAccountsFilterArgs{...} }
+type GetChildAccountsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetChildAccountsFilterArrayOutput() GetChildAccountsFilterArrayOutput
+	ToGetChildAccountsFilterArrayOutputWithContext(context.Context) GetChildAccountsFilterArrayOutput
+}
+
+type GetChildAccountsFilterArray []GetChildAccountsFilterInput
+
+func (GetChildAccountsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChildAccountsFilter)(nil)).Elem()
+}
+
+func (i GetChildAccountsFilterArray) ToGetChildAccountsFilterArrayOutput() GetChildAccountsFilterArrayOutput {
+	return i.ToGetChildAccountsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetChildAccountsFilterArray) ToGetChildAccountsFilterArrayOutputWithContext(ctx context.Context) GetChildAccountsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChildAccountsFilterArrayOutput)
+}
+
+type GetChildAccountsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetChildAccountsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChildAccountsFilter)(nil)).Elem()
+}
+
+func (o GetChildAccountsFilterOutput) ToGetChildAccountsFilterOutput() GetChildAccountsFilterOutput {
+	return o
+}
+
+func (o GetChildAccountsFilterOutput) ToGetChildAccountsFilterOutputWithContext(ctx context.Context) GetChildAccountsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetChildAccountsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetChildAccountsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetChildAccountsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChildAccountsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetChildAccountsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetChildAccountsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetChildAccountsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChildAccountsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChildAccountsFilter)(nil)).Elem()
+}
+
+func (o GetChildAccountsFilterArrayOutput) ToGetChildAccountsFilterArrayOutput() GetChildAccountsFilterArrayOutput {
+	return o
+}
+
+func (o GetChildAccountsFilterArrayOutput) ToGetChildAccountsFilterArrayOutputWithContext(ctx context.Context) GetChildAccountsFilterArrayOutput {
+	return o
+}
+
+func (o GetChildAccountsFilterArrayOutput) Index(i pulumi.IntInput) GetChildAccountsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChildAccountsFilter {
+		return vs[0].([]GetChildAccountsFilter)[vs[1].(int)]
+	}).(GetChildAccountsFilterOutput)
+}
+
 type GetDatabaseBackupsBackup struct {
 	// A time value given in a combined date and time format that represents when the database backup was created.
 	Created string `pulumi:"created"`
@@ -26154,6 +26501,8 @@ type GetUsersUser struct {
 	StackscriptGrants []GetUsersUserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
 	TfaEnabled bool `pulumi:"tfaEnabled"`
+	// The type of this user.
+	UserType string `pulumi:"userType"`
 	// This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
 	Username string `pulumi:"username"`
 	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
@@ -26204,6 +26553,8 @@ type GetUsersUserArgs struct {
 	StackscriptGrants GetUsersUserStackscriptGrantArrayInput `pulumi:"stackscriptGrants"`
 	// A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
 	TfaEnabled pulumi.BoolInput `pulumi:"tfaEnabled"`
+	// The type of this user.
+	UserType pulumi.StringInput `pulumi:"userType"`
 	// This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
 	Username pulumi.StringInput `pulumi:"username"`
 	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
@@ -26336,6 +26687,11 @@ func (o GetUsersUserOutput) StackscriptGrants() GetUsersUserStackscriptGrantArra
 // A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
 func (o GetUsersUserOutput) TfaEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.TfaEnabled }).(pulumi.BoolOutput)
+}
+
+// The type of this user.
+func (o GetUsersUserOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserType }).(pulumi.StringOutput)
 }
 
 // This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
@@ -29190,6 +29546,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsFilterArrayInput)(nil)).Elem(), GetAccountLoginsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsLoginInput)(nil)).Elem(), GetAccountLoginsLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsLoginArrayInput)(nil)).Elem(), GetAccountLoginsLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsChildAccountInput)(nil)).Elem(), GetChildAccountsChildAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsChildAccountArrayInput)(nil)).Elem(), GetChildAccountsChildAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsFilterInput)(nil)).Elem(), GetChildAccountsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsFilterArrayInput)(nil)).Elem(), GetChildAccountsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupInput)(nil)).Elem(), GetDatabaseBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsFilterInput)(nil)).Elem(), GetDatabaseBackupsFilterArgs{})
@@ -29605,6 +29965,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountLoginsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsLoginOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetChildAccountsChildAccountOutput{})
+	pulumi.RegisterOutputType(GetChildAccountsChildAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetChildAccountsFilterOutput{})
+	pulumi.RegisterOutputType(GetChildAccountsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetDatabaseBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseBackupsFilterOutput{})

@@ -9,16 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static class GetAccount
+    public static class GetChildAccount
     {
         /// <summary>
-        /// Provides information about a Linode account.
+        /// Provides information about a Linode Child Account.
         /// 
         /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to access account details.
+        /// The following example shows how one might use this data source to access child account details.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -28,22 +28,25 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var account = Linode.GetAccount.Invoke();
+        ///     var account = Linode.GetChildAccount.Invoke(new()
+        ///     {
+        ///         Euuid = "FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF",
+        ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetChildAccountResult> InvokeAsync(GetChildAccountArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChildAccountResult>("linode:index/getChildAccount:getChildAccount", args ?? new GetChildAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides information about a Linode account.
+        /// Provides information about a Linode Child Account.
         /// 
         /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to access account details.
+        /// The following example shows how one might use this data source to access child account details.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -53,18 +56,50 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var account = Linode.GetAccount.Invoke();
+        ///     var account = Linode.GetChildAccount.Invoke(new()
+        ///     {
+        ///         Euuid = "FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF",
+        ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetChildAccountResult> Invoke(GetChildAccountInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetChildAccountResult>("linode:index/getChildAccount:getChildAccount", args ?? new GetChildAccountInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetChildAccountArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The unique EUUID of this Child Account.
+        /// </summary>
+        [Input("euuid", required: true)]
+        public string Euuid { get; set; } = null!;
+
+        public GetChildAccountArgs()
+        {
+        }
+        public static new GetChildAccountArgs Empty => new GetChildAccountArgs();
+    }
+
+    public sealed class GetChildAccountInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The unique EUUID of this Child Account.
+        /// </summary>
+        [Input("euuid", required: true)]
+        public Input<string> Euuid { get; set; } = null!;
+
+        public GetChildAccountInvokeArgs()
+        {
+        }
+        public static new GetChildAccountInvokeArgs Empty => new GetChildAccountInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetAccountResult
+    public sealed class GetChildAccountResult
     {
         /// <summary>
         /// When this account was first activated.
@@ -83,7 +118,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly double Balance;
         /// <summary>
-        /// A set containing all the capabilities of the current Account.
+        /// A set containing all the capabilities of this Account.
         /// </summary>
         public readonly ImmutableArray<string> Capabilities;
         /// <summary>
@@ -126,7 +161,7 @@ namespace Pulumi.Linode
         public readonly string Zip;
 
         [OutputConstructor]
-        private GetAccountResult(
+        private GetChildAccountResult(
             string activeSince,
 
             string address1,

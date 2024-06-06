@@ -5,32 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides information about a Linode account.
+ * Provides information about a Linode Child Account.
  *
  * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
  *
  * ## Example Usage
  *
- * The following example shows how one might use this data source to access account details.
+ * The following example shows how one might use this data source to access child account details.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const account = linode.getAccount({});
+ * const account = linode.getChildAccount({
+ *     euuid: "FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF",
+ * });
  * ```
  */
-export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
+export function getChildAccount(args: GetChildAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetChildAccountResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("linode:index/getAccount:getAccount", {
+    return pulumi.runtime.invoke("linode:index/getChildAccount:getChildAccount", {
+        "euuid": args.euuid,
     }, opts);
 }
 
 /**
- * A collection of values returned by getAccount.
+ * A collection of arguments for invoking getChildAccount.
  */
-export interface GetAccountResult {
+export interface GetChildAccountArgs {
+    /**
+     * The unique EUUID of this Child Account.
+     */
+    euuid: string;
+}
+
+/**
+ * A collection of values returned by getChildAccount.
+ */
+export interface GetChildAccountResult {
     /**
      * When this account was first activated.
      */
@@ -48,7 +61,7 @@ export interface GetAccountResult {
      */
     readonly balance: number;
     /**
-     * A set containing all the capabilities of the current Account.
+     * A set containing all the capabilities of this Account.
      */
     readonly capabilities: string[];
     /**
@@ -91,21 +104,33 @@ export interface GetAccountResult {
     readonly zip: string;
 }
 /**
- * Provides information about a Linode account.
+ * Provides information about a Linode Child Account.
  *
  * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
  *
  * ## Example Usage
  *
- * The following example shows how one might use this data source to access account details.
+ * The following example shows how one might use this data source to access child account details.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const account = linode.getAccount({});
+ * const account = linode.getChildAccount({
+ *     euuid: "FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF",
+ * });
  * ```
  */
-export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(getAccount(opts))
+export function getChildAccountOutput(args: GetChildAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildAccountResult> {
+    return pulumi.output(args).apply((a: any) => getChildAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getChildAccount.
+ */
+export interface GetChildAccountOutputArgs {
+    /**
+     * The unique EUUID of this Child Account.
+     */
+    euuid: pulumi.Input<string>;
 }

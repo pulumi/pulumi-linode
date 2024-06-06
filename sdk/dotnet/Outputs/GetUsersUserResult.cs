@@ -74,6 +74,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool TfaEnabled;
         /// <summary>
+        /// The type of this user.
+        /// </summary>
+        public readonly string UserType;
+        /// <summary>
         /// This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
         /// </summary>
         public readonly string Username;
@@ -118,6 +122,8 @@ namespace Pulumi.Linode.Outputs
 
             bool tfaEnabled,
 
+            string userType,
+
             string username,
 
             string verifiedPhoneNumber,
@@ -139,6 +145,7 @@ namespace Pulumi.Linode.Outputs
             SshKeys = sshKeys;
             StackscriptGrants = stackscriptGrants;
             TfaEnabled = tfaEnabled;
+            UserType = userType;
             Username = username;
             VerifiedPhoneNumber = verifiedPhoneNumber;
             VolumeGrants = volumeGrants;
