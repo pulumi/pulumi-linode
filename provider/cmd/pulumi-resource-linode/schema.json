@@ -1993,6 +1993,125 @@
                 }
             }
         },
+        "linode:index/getChildAccountsChildAccount:getChildAccountsChildAccount": {
+            "properties": {
+                "activeSince": {
+                    "type": "string",
+                    "description": "When this account was first activated\n"
+                },
+                "address1": {
+                    "type": "string",
+                    "description": "First line of this Account's billing address.\n"
+                },
+                "address2": {
+                    "type": "string",
+                    "description": "Second line of this Account's billing address.\n"
+                },
+                "balance": {
+                    "type": "number",
+                    "description": "This Account's balance, in US dollars.\n"
+                },
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set containing all the capabilities of this Account.\n"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "The city for this Account's billing address.\n"
+                },
+                "company": {
+                    "type": "string",
+                    "description": "The company name associated with this Account.\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "The two-letter country code of this Account's billing address.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email address for this Account, for account management communications, and may be used for other communications as configured.\n"
+                },
+                "euuid": {
+                    "type": "string",
+                    "description": "The unique ID of this Account.\n"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The first name of the person associated with this Account.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The Email of the Account.\n"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The last name of the person associated with this Account.\n"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "The phone number associated with this Account.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.\n"
+                },
+                "zip": {
+                    "type": "string",
+                    "description": "The zip code of this Account's billing address.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "activeSince",
+                "address1",
+                "address2",
+                "balance",
+                "capabilities",
+                "city",
+                "company",
+                "country",
+                "email",
+                "euuid",
+                "firstName",
+                "id",
+                "lastName",
+                "phone",
+                "state",
+                "zip"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getChildAccountsFilter:getChildAccountsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
         "linode:index/getDatabaseBackupsBackup:getDatabaseBackupsBackup": {
             "properties": {
                 "created": {
@@ -6826,6 +6945,10 @@
                     "type": "boolean",
                     "description": "A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.\n"
                 },
+                "userType": {
+                    "type": "string",
+                    "description": "The type of this user.\n"
+                },
                 "username": {
                     "type": "string",
                     "description": "This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).\n"
@@ -6859,6 +6982,7 @@
                 "sshKeys",
                 "stackscriptGrants",
                 "tfaEnabled",
+                "userType",
                 "username",
                 "verifiedPhoneNumber",
                 "volumeGrants"
@@ -12166,6 +12290,10 @@
                     "type": "boolean",
                     "description": "Whether the user has two-factor-authentication enabled.\n"
                 },
+                "userType": {
+                    "type": "string",
+                    "description": "The type of this user.\n"
+                },
                 "username": {
                     "type": "string",
                     "description": "The username of the user.\n"
@@ -12190,6 +12318,7 @@
                 "sshKeys",
                 "stackscriptGrants",
                 "tfaEnabled",
+                "userType",
                 "username",
                 "volumeGrants"
             ],
@@ -12347,6 +12476,10 @@
                     "tfaEnabled": {
                         "type": "boolean",
                         "description": "Whether the user has two-factor-authentication enabled.\n"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "description": "The type of this user.\n"
                     },
                     "username": {
                         "type": "string",
@@ -12665,10 +12798,14 @@
     },
     "functions": {
         "linode:index/getAccount:getAccount": {
-            "description": "Provides information about a Linode account.\n\nThis data source should not be used in conjuction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.\n\n## Example Usage\n\nThe following example shows how one might use this data source to access account details.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst account = linode.getAccount({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\naccount = linode.get_account()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account = Linode.GetAccount.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetAccount(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account = LinodeFunctions.getAccount();\n\n    }\n}\n```\n```yaml\nvariables:\n  account:\n    fn::invoke:\n      Function: linode:getAccount\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides information about a Linode account.\n\nDue to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.\n\n## Example Usage\n\nThe following example shows how one might use this data source to access account details.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst account = linode.getAccount({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\naccount = linode.get_account()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account = Linode.GetAccount.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetAccount(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account = LinodeFunctions.getAccount();\n\n    }\n}\n```\n```yaml\nvariables:\n  account:\n    fn::invoke:\n      Function: linode:getAccount\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getAccount.\n",
                 "properties": {
+                    "activeSince": {
+                        "description": "When this account was first activated.\n",
+                        "type": "string"
+                    },
                     "address1": {
                         "description": "First line of this Account's billing address.\n",
                         "type": "string"
@@ -12680,6 +12817,13 @@
                     "balance": {
                         "description": "This Account's balance, in US dollars.\n",
                         "type": "number"
+                    },
+                    "capabilities": {
+                        "description": "A set containing all the capabilities of the current Account.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "city": {
                         "description": "The city for this Account's billing address.\n",
@@ -12695,6 +12839,9 @@
                     },
                     "email": {
                         "description": "The email address for this Account, for account management communications, and may be used for other communications as configured.\n",
+                        "type": "string"
+                    },
+                    "euuid": {
                         "type": "string"
                     },
                     "firstName": {
@@ -12722,13 +12869,16 @@
                     }
                 },
                 "required": [
+                    "activeSince",
                     "address1",
                     "address2",
                     "balance",
+                    "capabilities",
                     "city",
                     "company",
                     "country",
                     "email",
+                    "euuid",
                     "firstName",
                     "id",
                     "lastName",
@@ -12969,6 +13119,156 @@
                     "managed",
                     "networkHelper",
                     "objectStorage"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getChildAccount:getChildAccount": {
+            "description": "Provides information about a Linode Child Account.\n\nDue to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.\n\n## Example Usage\n\nThe following example shows how one might use this data source to access child account details.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst account = linode.getChildAccount({\n    euuid: \"FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\naccount = linode.get_child_account(euuid=\"FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account = Linode.GetChildAccount.Invoke(new()\n    {\n        Euuid = \"FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetChildAccount(ctx, \u0026linode.GetChildAccountArgs{\n\t\t\tEuuid: \"FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetChildAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account = LinodeFunctions.getChildAccount(GetChildAccountArgs.builder()\n            .euuid(\"FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  account:\n    fn::invoke:\n      Function: linode:getChildAccount\n      Arguments:\n        euuid: FFFFFFFF-FFFF-FFFF-FFFFFFFFFFFFFFFF\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getChildAccount.\n",
+                "properties": {
+                    "euuid": {
+                        "type": "string",
+                        "description": "The unique EUUID of this Child Account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "euuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getChildAccount.\n",
+                "properties": {
+                    "activeSince": {
+                        "description": "When this account was first activated.\n",
+                        "type": "string"
+                    },
+                    "address1": {
+                        "description": "First line of this Account's billing address.\n",
+                        "type": "string"
+                    },
+                    "address2": {
+                        "description": "Second line of this Account's billing address.\n",
+                        "type": "string"
+                    },
+                    "balance": {
+                        "description": "This Account's balance, in US dollars.\n",
+                        "type": "number"
+                    },
+                    "capabilities": {
+                        "description": "A set containing all the capabilities of this Account.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "city": {
+                        "description": "The city for this Account's billing address.\n",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "The company name associated with this Account.\n",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "The two-letter country code of this Account's billing address.\n",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The email address for this Account, for account management communications, and may be used for other communications as configured.\n",
+                        "type": "string"
+                    },
+                    "euuid": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "description": "The first name of the person associated with this Account.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "description": "The last name of the person associated with this Account.\n",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The phone number associated with this Account.\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.\n",
+                        "type": "string"
+                    },
+                    "zip": {
+                        "description": "The zip code of this Account's billing address.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "activeSince",
+                    "address1",
+                    "address2",
+                    "balance",
+                    "capabilities",
+                    "city",
+                    "company",
+                    "country",
+                    "email",
+                    "euuid",
+                    "firstName",
+                    "id",
+                    "lastName",
+                    "phone",
+                    "state",
+                    "zip"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getChildAccounts:getChildAccounts": {
+            "description": "Provides information about Linode Child Accounts that match a set of filters.\n\n## Example Usage\n\nThe following example shows how one might use this data source to access Child Accounts under the current Account.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all = linode.getChildAccounts({});\nconst filtered = linode.getChildAccounts({\n    filters: [\n        {\n            name: \"email\",\n            values: [\"example@linode.com\"],\n        },\n        {\n            name: \"first_name\",\n            values: [\"John\"],\n        },\n        {\n            name: \"last_name\",\n            values: [\"Smith\"],\n        },\n    ],\n});\nexport const allAccounts = all.then(all =\u003e all.childAccounts.map(__item =\u003e __item.euuid));\nexport const filteredAccounts = filtered.then(filtered =\u003e filtered.childAccounts.map(__item =\u003e __item.euuid));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall = linode.get_child_accounts()\nfiltered = linode.get_child_accounts(filters=[\n    linode.GetChildAccountsFilterArgs(\n        name=\"email\",\n        values=[\"example@linode.com\"],\n    ),\n    linode.GetChildAccountsFilterArgs(\n        name=\"first_name\",\n        values=[\"John\"],\n    ),\n    linode.GetChildAccountsFilterArgs(\n        name=\"last_name\",\n        values=[\"Smith\"],\n    ),\n])\npulumi.export(\"allAccounts\", [__item.euuid for __item in all.child_accounts])\npulumi.export(\"filteredAccounts\", [__item.euuid for __item in filtered.child_accounts])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Linode.GetChildAccounts.Invoke();\n\n    var filtered = Linode.GetChildAccounts.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetChildAccountsFilterInputArgs\n            {\n                Name = \"email\",\n                Values = new[]\n                {\n                    \"example@linode.com\",\n                },\n            },\n            new Linode.Inputs.GetChildAccountsFilterInputArgs\n            {\n                Name = \"first_name\",\n                Values = new[]\n                {\n                    \"John\",\n                },\n            },\n            new Linode.Inputs.GetChildAccountsFilterInputArgs\n            {\n                Name = \"last_name\",\n                Values = new[]\n                {\n                    \"Smith\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allAccounts\"] = all.Apply(getChildAccountsResult =\u003e getChildAccountsResult.ChildAccounts).Select(__item =\u003e __item.Euuid).ToList(),\n        [\"filteredAccounts\"] = filtered.Apply(getChildAccountsResult =\u003e getChildAccountsResult.ChildAccounts).Select(__item =\u003e __item.Euuid).ToList(),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := linode.GetChildAccounts(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfiltered, err := linode.GetChildAccounts(ctx, \u0026linode.GetChildAccountsArgs{\n\t\t\tFilters: []linode.GetChildAccountsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"email\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"example@linode.com\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"first_name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"John\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"last_name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Smith\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvar splat0 []*string\n\t\tfor _, val0 := range all.ChildAccounts {\n\t\t\tsplat0 = append(splat0, val0.Euuid)\n\t\t}\n\t\tctx.Export(\"allAccounts\", splat0)\n\t\tvar splat1 []*string\n\t\tfor _, val0 := range filtered.ChildAccounts {\n\t\t\tsplat1 = append(splat1, val0.Euuid)\n\t\t}\n\t\tctx.Export(\"filteredAccounts\", splat1)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetChildAccountsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = LinodeFunctions.getChildAccounts();\n\n        final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()\n            .filters(            \n                GetChildAccountsFilterArgs.builder()\n                    .name(\"email\")\n                    .values(\"example@linode.com\")\n                    .build(),\n                GetChildAccountsFilterArgs.builder()\n                    .name(\"first_name\")\n                    .values(\"John\")\n                    .build(),\n                GetChildAccountsFilterArgs.builder()\n                    .name(\"last_name\")\n                    .values(\"Smith\")\n                    .build())\n            .build());\n\n        ctx.export(\"allAccounts\", all.applyValue(getChildAccountsResult -\u003e getChildAccountsResult.childAccounts()).stream().map(element -\u003e element.euuid()).collect(toList()));\n        ctx.export(\"filteredAccounts\", filtered.applyValue(getChildAccountsResult -\u003e getChildAccountsResult.childAccounts()).stream().map(element -\u003e element.euuid()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `euuid`\n\n* `email`\n\n* `first_name`\n\n* `last_name`\n\n* `company`\n\n* `address_1`\n\n* `address_2`\n\n* `phone`\n\n* `city`\n\n* `state`\n\n* `country`\n\n* `zip`\n\n* `capabilities`\n\n* `active_since`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getChildAccounts.\n",
+                "properties": {
+                    "childAccounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getChildAccountsChildAccount:getChildAccountsChildAccount"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getChildAccountsFilter:getChildAccountsFilter"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getChildAccounts.\n",
+                "properties": {
+                    "childAccounts": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getChildAccountsChildAccount:getChildAccountsChildAccount"
+                        },
+                        "type": "array"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getChildAccountsFilter:getChildAccountsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
                 ],
                 "type": "object"
             }
@@ -16089,6 +16389,10 @@
                         "description": "A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.\n",
                         "type": "boolean"
                     },
+                    "userType": {
+                        "description": "The type of this user.\n",
+                        "type": "string"
+                    },
                     "username": {
                         "type": "string"
                     },
@@ -16119,6 +16423,7 @@
                     "sshKeys",
                     "stackscriptGrants",
                     "tfaEnabled",
+                    "userType",
                     "username",
                     "verifiedPhoneNumber",
                     "volumeGrants"
@@ -16127,7 +16432,7 @@
             }
         },
         "linode:index/getUsers:getUsers": {
-            "description": "Provides information about Linode users that match a set of filters.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-users = linode.getUsers({\n    filters: [{\n        name: \"username\",\n        values: [\"test-user\"],\n    }],\n});\nexport const users = filtered_users.then(filtered_users =\u003e filtered_users.users);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_users = linode.get_users(filters=[linode.GetUsersFilterArgs(\n    name=\"username\",\n    values=[\"test-user\"],\n)])\npulumi.export(\"users\", filtered_users.users)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_users = Linode.GetUsers.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetUsersFilterInputArgs\n            {\n                Name = \"username\",\n                Values = new[]\n                {\n                    \"test-user\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"users\"] = filtered_users.Apply(filtered_users =\u003e filtered_users.Apply(getUsersResult =\u003e getUsersResult.Users)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_users, err := linode.GetUsers(ctx, \u0026linode.GetUsersArgs{\n\t\t\tFilters: []linode.GetUsersFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"username\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"test-user\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"users\", filtered_users.Users)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()\n            .filters(GetUsersFilterArgs.builder()\n                .name(\"username\")\n                .values(\"test-user\")\n                .build())\n            .build());\n\n        ctx.export(\"users\", filtered_users.users());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-users:\n    fn::invoke:\n      Function: linode:getUsers\n      Arguments:\n        filters:\n          - name: username\n            values:\n              - test-user\noutputs:\n  users: ${[\"filtered-users\"].users}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `username`\n\n* `email`\n\n* `restricted`\n\n* `password_created`\n\n* `tfa_enabled`\n\n* `verfied_phone_number`\n",
+            "description": "Provides information about Linode users that match a set of filters.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-users = linode.getUsers({\n    filters: [{\n        name: \"username\",\n        values: [\"test-user\"],\n    }],\n});\nexport const users = filtered_users.then(filtered_users =\u003e filtered_users.users);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_users = linode.get_users(filters=[linode.GetUsersFilterArgs(\n    name=\"username\",\n    values=[\"test-user\"],\n)])\npulumi.export(\"users\", filtered_users.users)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_users = Linode.GetUsers.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetUsersFilterInputArgs\n            {\n                Name = \"username\",\n                Values = new[]\n                {\n                    \"test-user\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"users\"] = filtered_users.Apply(filtered_users =\u003e filtered_users.Apply(getUsersResult =\u003e getUsersResult.Users)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_users, err := linode.GetUsers(ctx, \u0026linode.GetUsersArgs{\n\t\t\tFilters: []linode.GetUsersFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"username\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"test-user\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"users\", filtered_users.Users)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-users = LinodeFunctions.getUsers(GetUsersArgs.builder()\n            .filters(GetUsersFilterArgs.builder()\n                .name(\"username\")\n                .values(\"test-user\")\n                .build())\n            .build());\n\n        ctx.export(\"users\", filtered_users.users());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-users:\n    fn::invoke:\n      Function: linode:getUsers\n      Arguments:\n        filters:\n          - name: username\n            values:\n              - test-user\noutputs:\n  users: ${[\"filtered-users\"].users}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `username`\n\n* `email`\n\n* `restricted`\n\n* `user_type`\n\n* `password_created`\n\n* `tfa_enabled`\n\n* `verfied_phone_number`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUsers.\n",
                 "properties": {
