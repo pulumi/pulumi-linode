@@ -168,7 +168,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             share_secondary.append(linode.InstanceSharedIps(f"share-secondary-{range['value']}",
                 linode_id=secondary[range["value"]].id,
                 addresses=[range_ipv6_range.range],
-                opts=pulumi.ResourceOptions(depends_on=[share_primary])))
+                opts = pulumi.ResourceOptions(depends_on=[share_primary])))
         ```
 
         :param str resource_name: The name of the resource.
@@ -253,7 +253,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             share_secondary.append(linode.InstanceSharedIps(f"share-secondary-{range['value']}",
                 linode_id=secondary[range["value"]].id,
                 addresses=[range_ipv6_range.range],
-                opts=pulumi.ResourceOptions(depends_on=[share_primary])))
+                opts = pulumi.ResourceOptions(depends_on=[share_primary])))
         ```
 
         :param str resource_name: The name of the resource.
