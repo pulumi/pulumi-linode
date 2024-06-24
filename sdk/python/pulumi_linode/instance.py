@@ -262,13 +262,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
-        warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
-        pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
-
         return pulumi.get(self, "configs")
 
     @configs.setter
@@ -277,10 +275,8 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
-        warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-        pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
-
         return pulumi.get(self, "disks")
 
     @disks.setter
@@ -301,13 +297,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Group label is deprecated. We recommend using tags instead.""")
     def group(self) -> Optional[pulumi.Input[str]]:
         """
         A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         """
-        warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
-        pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
-
         return pulumi.get(self, "group")
 
     @group.setter
@@ -802,13 +796,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
-        warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
-        pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
-
         return pulumi.get(self, "configs")
 
     @configs.setter
@@ -817,10 +809,8 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
-        warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-        pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
-
         return pulumi.get(self, "disks")
 
     @disks.setter
@@ -841,13 +831,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Group label is deprecated. We recommend using tags instead.""")
     def group(self) -> Optional[pulumi.Input[str]]:
         """
         A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         """
-        warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
-        pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
-
         return pulumi.get(self, "group")
 
     @group.setter
@@ -1808,21 +1796,17 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
     def configs(self) -> pulumi.Output[Sequence['outputs.InstanceConfig']]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
-        warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
-        pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
-
         return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
     def disks(self) -> pulumi.Output[Sequence['outputs.InstanceDisk']]:
-        warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
-        pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
-
         return pulumi.get(self, "disks")
 
     @property
@@ -1835,13 +1819,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Group label is deprecated. We recommend using tags instead.""")
     def group(self) -> pulumi.Output[Optional[str]]:
         """
         A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         """
-        warnings.warn("""Group label is deprecated. We recommend using tags instead.""", DeprecationWarning)
-        pulumi.log.warn("""group is deprecated: Group label is deprecated. We recommend using tags instead.""")
-
         return pulumi.get(self, "group")
 
     @property
