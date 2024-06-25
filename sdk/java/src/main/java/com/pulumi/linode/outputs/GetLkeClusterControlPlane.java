@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLkeClusterControlPlane {
     /**
-     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * @return The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
      * 
      */
     private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
@@ -26,7 +26,7 @@ public final class GetLkeClusterControlPlane {
 
     private GetLkeClusterControlPlane() {}
     /**
-     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * @return The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
      * 
      */
     public List<GetLkeClusterControlPlaneAcl> acls() {

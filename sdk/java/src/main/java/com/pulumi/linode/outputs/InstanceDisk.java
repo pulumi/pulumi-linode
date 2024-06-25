@@ -33,7 +33,7 @@ public final class InstanceDisk {
      */
     private @Nullable String filesystem;
     /**
-     * @return The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+     * @return The ID of the Placement Group.
      * 
      */
     private @Nullable Integer id;
@@ -96,7 +96,7 @@ public final class InstanceDisk {
         return Optional.ofNullable(this.filesystem);
     }
     /**
-     * @return The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+     * @return The ID of the Placement Group.
      * 
      */
     public Optional<Integer> id() {

@@ -11,6 +11,7 @@ import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
 import com.pulumi.linode.inputs.InstanceInterfaceArgs;
 import com.pulumi.linode.inputs.InstanceMetadataArgs;
+import com.pulumi.linode.inputs.InstancePlacementGroupArgs;
 import com.pulumi.linode.inputs.InstanceSpecsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -394,6 +395,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * 
+     */
+    @Import(name="placementGroup")
+    private @Nullable Output<InstancePlacementGroupArgs> placementGroup;
+
+    /**
+     * @return Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * 
+     */
+    public Optional<Output<InstancePlacementGroupArgs>> placementGroup() {
+        return Optional.ofNullable(this.placementGroup);
+    }
+
+    /**
+     * If true, changes to the Linode&#39;s assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     * 
+     */
+    @Import(name="placementGroupExternallyManaged")
+    private @Nullable Output<Boolean> placementGroupExternallyManaged;
+
+    /**
+     * @return If true, changes to the Linode&#39;s assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     * 
+     */
+    public Optional<Output<Boolean>> placementGroupExternallyManaged() {
+        return Optional.ofNullable(this.placementGroupExternallyManaged);
+    }
+
+    /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.
      * 
      */
@@ -493,6 +524,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
+     * 
      */
     @Import(name="sharedIpv4s")
     private @Nullable Output<List<String>> sharedIpv4s;
@@ -501,6 +534,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      * 
      */
     public Optional<Output<List<String>>> sharedIpv4s() {
@@ -662,6 +697,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.metadatas = $.metadatas;
         this.migrationType = $.migrationType;
+        this.placementGroup = $.placementGroup;
+        this.placementGroupExternallyManaged = $.placementGroupExternallyManaged;
         this.privateIp = $.privateIp;
         this.privateIpAddress = $.privateIpAddress;
         this.region = $.region;
@@ -1273,6 +1310,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param placementGroup Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroup(@Nullable Output<InstancePlacementGroupArgs> placementGroup) {
+            $.placementGroup = placementGroup;
+            return this;
+        }
+
+        /**
+         * @param placementGroup Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroup(InstancePlacementGroupArgs placementGroup) {
+            return placementGroup(Output.of(placementGroup));
+        }
+
+        /**
+         * @param placementGroupExternallyManaged If true, changes to the Linode&#39;s assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupExternallyManaged(@Nullable Output<Boolean> placementGroupExternallyManaged) {
+            $.placementGroupExternallyManaged = placementGroupExternallyManaged;
+            return this;
+        }
+
+        /**
+         * @param placementGroupExternallyManaged If true, changes to the Linode&#39;s assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupExternallyManaged(Boolean placementGroupExternallyManaged) {
+            return placementGroupExternallyManaged(Output.of(placementGroupExternallyManaged));
+        }
+
+        /**
          * @param privateIp If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.
          * 
          * @return builder
@@ -1402,6 +1481,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
+         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
+         * 
          * @return builder
          * 
          */
@@ -1415,6 +1496,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
+         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
+         * 
          * @return builder
          * 
          */
@@ -1426,6 +1509,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
          * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+         * 
+         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
          * 
          * @return builder
          * 

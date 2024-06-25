@@ -83,6 +83,13 @@ public final class Config {
         return Codegen.stringProp("objAccessKey").config(config).get();
     }
 /**
+ * If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+ * 
+ */
+    public Optional<Boolean> objBucketForceDelete() {
+        return Codegen.booleanProp("objBucketForceDelete").config(config).get();
+    }
+/**
  * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
  * 
  */

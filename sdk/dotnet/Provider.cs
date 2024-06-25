@@ -158,6 +158,12 @@ namespace Pulumi.Linode
         [Input("objAccessKey")]
         public Input<string>? ObjAccessKey { get; set; }
 
+        /// <summary>
+        /// If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+        /// </summary>
+        [Input("objBucketForceDelete", json: true)]
+        public Input<bool>? ObjBucketForceDelete { get; set; }
+
         [Input("objSecretKey")]
         private Input<string>? _objSecretKey;
 

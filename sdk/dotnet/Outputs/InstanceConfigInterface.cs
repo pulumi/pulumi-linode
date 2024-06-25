@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool? Active;
         /// <summary>
-        /// The ID of the interface.
+        /// The ID of the Placement Group.
         /// </summary>
         public readonly int? Id;
         /// <summary>

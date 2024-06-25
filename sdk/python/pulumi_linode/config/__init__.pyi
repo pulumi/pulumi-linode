@@ -59,6 +59,11 @@ objAccessKey: Optional[str]
 The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 """
 
+objBucketForceDelete: Optional[bool]
+"""
+If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
+"""
+
 objSecretKey: Optional[str]
 """
 The secret key to be used in ObjectStorageBucket and linode_object_storage_object.

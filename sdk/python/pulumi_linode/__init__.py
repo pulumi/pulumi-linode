@@ -55,6 +55,8 @@ from .get_node_balancer_node import *
 from .get_nodebalancer_configs import *
 from .get_nodebalancers import *
 from .get_object_storage_cluster import *
+from .get_placement_group import *
+from .get_placement_groups import *
 from .get_profile import *
 from .get_region import *
 from .get_regions import *
@@ -85,6 +87,8 @@ from .node_balancer_node import *
 from .object_storage_bucket import *
 from .object_storage_key import *
 from .object_storage_object import *
+from .placement_group import *
+from .placement_group_assignment import *
 from .provider import *
 from .rdns import *
 from .ssh_key import *
@@ -281,6 +285,22 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/objectStorageObject:ObjectStorageObject": "ObjectStorageObject"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/placementGroup",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/placementGroup:PlacementGroup": "PlacementGroup"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/placementGroupAssignment",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/placementGroupAssignment:PlacementGroupAssignment": "PlacementGroupAssignment"
   }
  },
  {

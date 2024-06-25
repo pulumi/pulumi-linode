@@ -31,7 +31,7 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.InstanceConfigHelpersArgs>? Helpers { get; set; }
 
         /// <summary>
-        /// The unique ID of this Config.
+        /// The ID of the Placement Group.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }

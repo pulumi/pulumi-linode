@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Filesystem;
         /// <summary>
-        /// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+        /// The ID of the Placement Group.
         /// </summary>
         public readonly int? Id;
         /// <summary>

@@ -118,6 +118,17 @@ Object.defineProperty(exports, "objAccessKey", {
 });
 
 /**
+ * If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+ */
+export declare const objBucketForceDelete: boolean | undefined;
+Object.defineProperty(exports, "objBucketForceDelete", {
+    get() {
+        return __config.getObject<boolean>("objBucketForceDelete");
+    },
+    enumerable: true,
+});
+
+/**
  * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
  */
 export declare const objSecretKey: string | undefined;

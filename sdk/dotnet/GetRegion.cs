@@ -126,6 +126,7 @@ namespace Pulumi.Linode
         /// Detailed location information for this Region, including city, state or region, and country.
         /// </summary>
         public readonly string Label;
+        public readonly ImmutableArray<Outputs.GetRegionPlacementGroupLimitResult> PlacementGroupLimits;
         public readonly ImmutableArray<Outputs.GetRegionResolverResult> Resolvers;
         /// <summary>
         /// The type of this region.
@@ -146,6 +147,8 @@ namespace Pulumi.Linode
 
             string label,
 
+            ImmutableArray<Outputs.GetRegionPlacementGroupLimitResult> placementGroupLimits,
+
             ImmutableArray<Outputs.GetRegionResolverResult> resolvers,
 
             string siteType,
@@ -156,6 +159,7 @@ namespace Pulumi.Linode
             Country = country;
             Id = id;
             Label = label;
+            PlacementGroupLimits = placementGroupLimits;
             Resolvers = resolvers;
             SiteType = siteType;
             Status = status;

@@ -34,7 +34,7 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
     /**
      * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
      * 
      */
     @Import(name="highAvailability")
@@ -43,7 +43,7 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
     /**
      * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
      * 
      */
     public Optional<Output<Boolean>> highAvailability() {
@@ -99,7 +99,7 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
         /**
          * @param highAvailability Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
          * 
-         * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+         * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
         /**
          * @param highAvailability Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
          * 
-         * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+         * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
          * 
          * @return builder
          * 

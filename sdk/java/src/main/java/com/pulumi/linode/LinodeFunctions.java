@@ -86,6 +86,10 @@ import com.pulumi.linode.inputs.GetNodebalancersArgs;
 import com.pulumi.linode.inputs.GetNodebalancersPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterPlainArgs;
+import com.pulumi.linode.inputs.GetPlacementGroupArgs;
+import com.pulumi.linode.inputs.GetPlacementGroupPlainArgs;
+import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+import com.pulumi.linode.inputs.GetPlacementGroupsPlainArgs;
 import com.pulumi.linode.inputs.GetRegionArgs;
 import com.pulumi.linode.inputs.GetRegionPlainArgs;
 import com.pulumi.linode.inputs.GetRegionsArgs;
@@ -158,6 +162,8 @@ import com.pulumi.linode.outputs.GetNodeBalancerResult;
 import com.pulumi.linode.outputs.GetNodebalancerConfigsResult;
 import com.pulumi.linode.outputs.GetNodebalancersResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
+import com.pulumi.linode.outputs.GetPlacementGroupResult;
+import com.pulumi.linode.outputs.GetPlacementGroupsResult;
 import com.pulumi.linode.outputs.GetProfileResult;
 import com.pulumi.linode.outputs.GetRegionResult;
 import com.pulumi.linode.outputs.GetRegionsResult;
@@ -13229,6 +13235,592 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageCluster:getObjectStorageCluster", TypeShape.of(GetObjectStorageClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * `linode.PlacementGroup` provides details about a Linode placement group.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode placement group.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pg = LinodeFunctions.getPlacementGroup(GetPlacementGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPlacementGroupResult> getPlacementGroup(GetPlacementGroupArgs args) {
+        return getPlacementGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * `linode.PlacementGroup` provides details about a Linode placement group.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode placement group.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pg = LinodeFunctions.getPlacementGroup(GetPlacementGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPlacementGroupResult> getPlacementGroupPlain(GetPlacementGroupPlainArgs args) {
+        return getPlacementGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * `linode.PlacementGroup` provides details about a Linode placement group.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode placement group.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pg = LinodeFunctions.getPlacementGroup(GetPlacementGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPlacementGroupResult> getPlacementGroup(GetPlacementGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getPlacementGroup:getPlacementGroup", TypeShape.of(GetPlacementGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * `linode.PlacementGroup` provides details about a Linode placement group.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode placement group.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pg = LinodeFunctions.getPlacementGroup(GetPlacementGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPlacementGroupResult> getPlacementGroupPlain(GetPlacementGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getPlacementGroup:getPlacementGroup", TypeShape.of(GetPlacementGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Placement Groups.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getPlacementGroups();
+     * 
+     *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .filters(GetPlacementGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `affinity_type`
+     * 
+     * * `is_strict`
+     * 
+     * * `is_compliant`
+     * 
+     */
+    public static Output<GetPlacementGroupsResult> getPlacementGroups() {
+        return getPlacementGroups(GetPlacementGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Placement Groups.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getPlacementGroups();
+     * 
+     *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .filters(GetPlacementGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `affinity_type`
+     * 
+     * * `is_strict`
+     * 
+     * * `is_compliant`
+     * 
+     */
+    public static CompletableFuture<GetPlacementGroupsResult> getPlacementGroupsPlain() {
+        return getPlacementGroupsPlain(GetPlacementGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Placement Groups.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getPlacementGroups();
+     * 
+     *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .filters(GetPlacementGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `affinity_type`
+     * 
+     * * `is_strict`
+     * 
+     * * `is_compliant`
+     * 
+     */
+    public static Output<GetPlacementGroupsResult> getPlacementGroups(GetPlacementGroupsArgs args) {
+        return getPlacementGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Placement Groups.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getPlacementGroups();
+     * 
+     *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .filters(GetPlacementGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `affinity_type`
+     * 
+     * * `is_strict`
+     * 
+     * * `is_compliant`
+     * 
+     */
+    public static CompletableFuture<GetPlacementGroupsResult> getPlacementGroupsPlain(GetPlacementGroupsPlainArgs args) {
+        return getPlacementGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Placement Groups.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getPlacementGroups();
+     * 
+     *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .filters(GetPlacementGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `affinity_type`
+     * 
+     * * `is_strict`
+     * 
+     * * `is_compliant`
+     * 
+     */
+    public static Output<GetPlacementGroupsResult> getPlacementGroups(GetPlacementGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getPlacementGroups:getPlacementGroups", TypeShape.of(GetPlacementGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **NOTE: Placement Groups may not currently be available to all users.**
+     * 
+     * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Placement Groups.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getPlacementGroups();
+     * 
+     *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .filters(GetPlacementGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `region`
+     * 
+     * * `affinity_type`
+     * 
+     * * `is_strict`
+     * 
+     * * `is_compliant`
+     * 
+     */
+    public static CompletableFuture<GetPlacementGroupsResult> getPlacementGroupsPlain(GetPlacementGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getPlacementGroups:getPlacementGroups", TypeShape.of(GetPlacementGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode profile.

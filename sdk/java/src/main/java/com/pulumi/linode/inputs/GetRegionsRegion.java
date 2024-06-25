@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetRegionsRegionPlacementGroupLimit;
 import com.pulumi.linode.inputs.GetRegionsRegionResolver;
 import java.lang.String;
 import java.util.List;
@@ -77,6 +78,21 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
         return this.label;
     }
 
+    /**
+     * Information about placement groups limits for this region.
+     * 
+     */
+    @Import(name="placementGroupLimits", required=true)
+    private List<GetRegionsRegionPlacementGroupLimit> placementGroupLimits;
+
+    /**
+     * @return Information about placement groups limits for this region.
+     * 
+     */
+    public List<GetRegionsRegionPlacementGroupLimit> placementGroupLimits() {
+        return this.placementGroupLimits;
+    }
+
     @Import(name="resolvers")
     private @Nullable List<GetRegionsRegionResolver> resolvers;
 
@@ -121,6 +137,7 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
         this.country = $.country;
         this.id = $.id;
         this.label = $.label;
+        this.placementGroupLimits = $.placementGroupLimits;
         this.resolvers = $.resolvers;
         this.siteType = $.siteType;
         this.status = $.status;
@@ -198,6 +215,27 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param placementGroupLimits Information about placement groups limits for this region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupLimits(List<GetRegionsRegionPlacementGroupLimit> placementGroupLimits) {
+            $.placementGroupLimits = placementGroupLimits;
+            return this;
+        }
+
+        /**
+         * @param placementGroupLimits Information about placement groups limits for this region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupLimits(GetRegionsRegionPlacementGroupLimit... placementGroupLimits) {
+            return placementGroupLimits(List.of(placementGroupLimits));
+        }
+
         public Builder resolvers(@Nullable List<GetRegionsRegionResolver> resolvers) {
             $.resolvers = resolvers;
             return this;
@@ -241,6 +279,9 @@ public final class GetRegionsRegion extends com.pulumi.resources.InvokeArgs {
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetRegionsRegion", "label");
+            }
+            if ($.placementGroupLimits == null) {
+                throw new MissingRequiredPropertyException("GetRegionsRegion", "placementGroupLimits");
             }
             if ($.siteType == null) {
                 throw new MissingRequiredPropertyException("GetRegionsRegion", "siteType");

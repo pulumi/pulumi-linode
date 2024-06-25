@@ -18,14 +18,14 @@ public final class GetLkeClusterControlPlane extends com.pulumi.resources.Invoke
     public static final GetLkeClusterControlPlane Empty = new GetLkeClusterControlPlane();
 
     /**
-     * The ACL configuration for an LKE cluster&#39;s control plane.
+     * The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
      * 
      */
     @Import(name="acls")
     private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
 
     /**
-     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * @return The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
      * 
      */
     public Optional<List<GetLkeClusterControlPlaneAcl>> acls() {
@@ -73,7 +73,7 @@ public final class GetLkeClusterControlPlane extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetLkeClusterControlPlane extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
          * 
          * @return builder
          * 

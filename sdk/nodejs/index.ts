@@ -255,6 +255,16 @@ export const getObjectStorageCluster: typeof import("./getObjectStorageCluster")
 export const getObjectStorageClusterOutput: typeof import("./getObjectStorageCluster").getObjectStorageClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getObjectStorageCluster","getObjectStorageClusterOutput"], () => require("./getObjectStorageCluster"));
 
+export { GetPlacementGroupArgs, GetPlacementGroupResult, GetPlacementGroupOutputArgs } from "./getPlacementGroup";
+export const getPlacementGroup: typeof import("./getPlacementGroup").getPlacementGroup = null as any;
+export const getPlacementGroupOutput: typeof import("./getPlacementGroup").getPlacementGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getPlacementGroup","getPlacementGroupOutput"], () => require("./getPlacementGroup"));
+
+export { GetPlacementGroupsArgs, GetPlacementGroupsResult, GetPlacementGroupsOutputArgs } from "./getPlacementGroups";
+export const getPlacementGroups: typeof import("./getPlacementGroups").getPlacementGroups = null as any;
+export const getPlacementGroupsOutput: typeof import("./getPlacementGroups").getPlacementGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getPlacementGroups","getPlacementGroupsOutput"], () => require("./getPlacementGroups"));
+
 export { GetProfileResult } from "./getProfile";
 export const getProfile: typeof import("./getProfile").getProfile = null as any;
 export const getProfileOutput: typeof import("./getProfile").getProfileOutput = null as any;
@@ -405,6 +415,16 @@ export type ObjectStorageObject = import("./objectStorageObject").ObjectStorageO
 export const ObjectStorageObject: typeof import("./objectStorageObject").ObjectStorageObject = null as any;
 utilities.lazyLoad(exports, ["ObjectStorageObject"], () => require("./objectStorageObject"));
 
+export { PlacementGroupArgs, PlacementGroupState } from "./placementGroup";
+export type PlacementGroup = import("./placementGroup").PlacementGroup;
+export const PlacementGroup: typeof import("./placementGroup").PlacementGroup = null as any;
+utilities.lazyLoad(exports, ["PlacementGroup"], () => require("./placementGroup"));
+
+export { PlacementGroupAssignmentArgs, PlacementGroupAssignmentState } from "./placementGroupAssignment";
+export type PlacementGroupAssignment = import("./placementGroupAssignment").PlacementGroupAssignment;
+export const PlacementGroupAssignment: typeof import("./placementGroupAssignment").PlacementGroupAssignment = null as any;
+utilities.lazyLoad(exports, ["PlacementGroupAssignment"], () => require("./placementGroupAssignment"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -508,6 +528,10 @@ const _module = {
                 return new ObjectStorageKey(name, <any>undefined, { urn })
             case "linode:index/objectStorageObject:ObjectStorageObject":
                 return new ObjectStorageObject(name, <any>undefined, { urn })
+            case "linode:index/placementGroup:PlacementGroup":
+                return new PlacementGroup(name, <any>undefined, { urn })
+            case "linode:index/placementGroupAssignment:PlacementGroupAssignment":
+                return new PlacementGroupAssignment(name, <any>undefined, { urn })
             case "linode:index/rdns:Rdns":
                 return new Rdns(name, <any>undefined, { urn })
             case "linode:index/sshKey:SshKey":
@@ -551,6 +575,8 @@ pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerNode", _modul
 pulumi.runtime.registerResourceModule("linode", "index/objectStorageBucket", _module)
 pulumi.runtime.registerResourceModule("linode", "index/objectStorageKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/objectStorageObject", _module)
+pulumi.runtime.registerResourceModule("linode", "index/placementGroup", _module)
+pulumi.runtime.registerResourceModule("linode", "index/placementGroupAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)

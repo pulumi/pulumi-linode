@@ -69,6 +69,11 @@ func GetObjAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:objAccessKey")
 }
 
+// If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
+func GetObjBucketForceDelete(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "linode:objBucketForceDelete")
+}
+
 // The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 func GetObjSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:objSecretKey")

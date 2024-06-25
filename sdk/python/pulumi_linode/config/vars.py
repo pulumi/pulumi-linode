@@ -86,6 +86,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('objAccessKey')
 
     @property
+    def obj_bucket_force_delete(self) -> Optional[bool]:
+        """
+        If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
+        """
+        return __config__.get_bool('objBucketForceDelete')
+
+    @property
     def obj_secret_key(self) -> Optional[str]:
         """
         The secret key to be used in ObjectStorageBucket and linode_object_storage_object.

@@ -33,6 +33,8 @@ class InstanceArgs:
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
+                 placement_group: Optional[pulumi.Input['InstancePlacementGroupArgs']] = None,
+                 placement_group_externally_managed: Optional[pulumi.Input[bool]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
@@ -69,6 +71,8 @@ class InstanceArgs:
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        :param pulumi.Input['InstancePlacementGroupArgs'] placement_group: Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        :param pulumi.Input[bool] placement_group_externally_managed: If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
                
@@ -85,6 +89,8 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
                
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+               
+               * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
@@ -139,6 +145,10 @@ class InstanceArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if migration_type is not None:
             pulumi.set(__self__, "migration_type", migration_type)
+        if placement_group is not None:
+            pulumi.set(__self__, "placement_group", placement_group)
+        if placement_group_externally_managed is not None:
+            pulumi.set(__self__, "placement_group_externally_managed", placement_group_externally_managed)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
         if resize_disk is not None:
@@ -373,6 +383,30 @@ class InstanceArgs:
         pulumi.set(self, "migration_type", value)
 
     @property
+    @pulumi.getter(name="placementGroup")
+    def placement_group(self) -> Optional[pulumi.Input['InstancePlacementGroupArgs']]:
+        """
+        Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        """
+        return pulumi.get(self, "placement_group")
+
+    @placement_group.setter
+    def placement_group(self, value: Optional[pulumi.Input['InstancePlacementGroupArgs']]):
+        pulumi.set(self, "placement_group", value)
+
+    @property
+    @pulumi.getter(name="placementGroupExternallyManaged")
+    def placement_group_externally_managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
+        """
+        return pulumi.get(self, "placement_group_externally_managed")
+
+    @placement_group_externally_managed.setter
+    def placement_group_externally_managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "placement_group_externally_managed", value)
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -425,6 +459,8 @@ class InstanceArgs:
         A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 
         * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+
+        * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         """
         return pulumi.get(self, "shared_ipv4s")
 
@@ -535,6 +571,8 @@ class _InstanceState:
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
+                 placement_group: Optional[pulumi.Input['InstancePlacementGroupArgs']] = None,
+                 placement_group_externally_managed: Optional[pulumi.Input[bool]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -580,6 +618,8 @@ class _InstanceState:
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        :param pulumi.Input['InstancePlacementGroupArgs'] placement_group: Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        :param pulumi.Input[bool] placement_group_externally_managed: If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
@@ -598,6 +638,8 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
                
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+               
+               * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input['InstanceSpecsArgs'] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
@@ -665,6 +707,10 @@ class _InstanceState:
             pulumi.set(__self__, "metadatas", metadatas)
         if migration_type is not None:
             pulumi.set(__self__, "migration_type", migration_type)
+        if placement_group is not None:
+            pulumi.set(__self__, "placement_group", placement_group)
+        if placement_group_externally_managed is not None:
+            pulumi.set(__self__, "placement_group_externally_managed", placement_group_externally_managed)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
         if private_ip_address is not None:
@@ -967,6 +1013,30 @@ class _InstanceState:
         pulumi.set(self, "migration_type", value)
 
     @property
+    @pulumi.getter(name="placementGroup")
+    def placement_group(self) -> Optional[pulumi.Input['InstancePlacementGroupArgs']]:
+        """
+        Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        """
+        return pulumi.get(self, "placement_group")
+
+    @placement_group.setter
+    def placement_group(self, value: Optional[pulumi.Input['InstancePlacementGroupArgs']]):
+        pulumi.set(self, "placement_group", value)
+
+    @property
+    @pulumi.getter(name="placementGroupExternallyManaged")
+    def placement_group_externally_managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
+        """
+        return pulumi.get(self, "placement_group_externally_managed")
+
+    @placement_group_externally_managed.setter
+    def placement_group_externally_managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "placement_group_externally_managed", value)
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1043,6 +1113,8 @@ class _InstanceState:
         A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 
         * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+
+        * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         """
         return pulumi.get(self, "shared_ipv4s")
 
@@ -1173,6 +1245,8 @@ class Instance(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
+                 placement_group: Optional[pulumi.Input[pulumi.InputType['InstancePlacementGroupArgs']]] = None,
+                 placement_group_externally_managed: Optional[pulumi.Input[bool]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
@@ -1288,6 +1362,26 @@ class Instance(pulumi.CustomResource):
             booted=True)
         ```
 
+        ### Linode Instance Assigned to a Placement Group
+
+        **NOTE: Placement Groups may not currently be available to all users.**
+
+        The following example shows how one might use this resource to configure a Linode instance assigned to a
+        Placement Group.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            region="us-mia",
+            type="g6-standard-1",
+            placement_group=linode.InstancePlacementGroupArgs(
+                id=12345,
+            ))
+        ```
+
         ## Import
 
         Linodes Instances can be imported using the Linode `id`, e.g.
@@ -1327,6 +1421,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        :param pulumi.Input[pulumi.InputType['InstancePlacementGroupArgs']] placement_group: Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        :param pulumi.Input[bool] placement_group_externally_managed: If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         :param pulumi.Input[bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
@@ -1344,6 +1440,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
                
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+               
+               * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
@@ -1465,6 +1563,26 @@ class Instance(pulumi.CustomResource):
             booted=True)
         ```
 
+        ### Linode Instance Assigned to a Placement Group
+
+        **NOTE: Placement Groups may not currently be available to all users.**
+
+        The following example shows how one might use this resource to configure a Linode instance assigned to a
+        Placement Group.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            region="us-mia",
+            type="g6-standard-1",
+            placement_group=linode.InstancePlacementGroupArgs(
+                id=12345,
+            ))
+        ```
+
         ## Import
 
         Linodes Instances can be imported using the Linode `id`, e.g.
@@ -1510,6 +1628,8 @@ class Instance(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
+                 placement_group: Optional[pulumi.Input[pulumi.InputType['InstancePlacementGroupArgs']]] = None,
+                 placement_group_externally_managed: Optional[pulumi.Input[bool]] = None,
                  private_ip: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resize_disk: Optional[pulumi.Input[bool]] = None,
@@ -1546,6 +1666,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["label"] = label
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["migration_type"] = migration_type
+            __props__.__dict__["placement_group"] = placement_group
+            __props__.__dict__["placement_group_externally_managed"] = placement_group_externally_managed
             __props__.__dict__["private_ip"] = private_ip
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1602,6 +1724,8 @@ class Instance(pulumi.CustomResource):
             label: Optional[pulumi.Input[str]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]]]] = None,
             migration_type: Optional[pulumi.Input[str]] = None,
+            placement_group: Optional[pulumi.Input[pulumi.InputType['InstancePlacementGroupArgs']]] = None,
+            placement_group_externally_managed: Optional[pulumi.Input[bool]] = None,
             private_ip: Optional[pulumi.Input[bool]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1652,6 +1776,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        :param pulumi.Input[pulumi.InputType['InstancePlacementGroupArgs']] placement_group: Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        :param pulumi.Input[bool] placement_group_externally_managed: If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
         :param pulumi.Input[bool] private_ip: If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         :param pulumi.Input[str] private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param pulumi.Input[str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
@@ -1670,6 +1796,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
                
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+               
+               * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[pulumi.InputType['InstanceSpecsArgs']] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
@@ -1710,6 +1838,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["label"] = label
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["migration_type"] = migration_type
+        __props__.__dict__["placement_group"] = placement_group
+        __props__.__dict__["placement_group_externally_managed"] = placement_group_externally_managed
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["region"] = region
@@ -1911,6 +2041,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "migration_type")
 
     @property
+    @pulumi.getter(name="placementGroup")
+    def placement_group(self) -> pulumi.Output[Optional['outputs.InstancePlacementGroup']]:
+        """
+        Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        """
+        return pulumi.get(self, "placement_group")
+
+    @property
+    @pulumi.getter(name="placementGroupExternallyManaged")
+    def placement_group_externally_managed(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
+        """
+        return pulumi.get(self, "placement_group_externally_managed")
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1967,6 +2113,8 @@ class Instance(pulumi.CustomResource):
         A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
 
         * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+
+        * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         """
         return pulumi.get(self, "shared_ipv4s")
 

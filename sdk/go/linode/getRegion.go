@@ -65,8 +65,9 @@ type GetRegionResult struct {
 	Country string `pulumi:"country"`
 	Id      string `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
-	Label     string              `pulumi:"label"`
-	Resolvers []GetRegionResolver `pulumi:"resolvers"`
+	Label                string                         `pulumi:"label"`
+	PlacementGroupLimits []GetRegionPlacementGroupLimit `pulumi:"placementGroupLimits"`
+	Resolvers            []GetRegionResolver            `pulumi:"resolvers"`
 	// The type of this region.
 	SiteType string `pulumi:"siteType"`
 	// This region’s current operational status (ok or outage).
@@ -129,6 +130,10 @@ func (o GetRegionResultOutput) Id() pulumi.StringOutput {
 // Detailed location information for this Region, including city, state or region, and country.
 func (o GetRegionResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetRegionResultOutput) PlacementGroupLimits() GetRegionPlacementGroupLimitArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []GetRegionPlacementGroupLimit { return v.PlacementGroupLimits }).(GetRegionPlacementGroupLimitArrayOutput)
 }
 
 func (o GetRegionResultOutput) Resolvers() GetRegionResolverArrayOutput {

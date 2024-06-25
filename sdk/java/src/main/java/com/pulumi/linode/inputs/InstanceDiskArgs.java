@@ -67,14 +67,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+     * The ID of the Placement Group.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+     * @return The ID of the Placement Group.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -304,7 +304,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+         * @param id The ID of the Placement Group.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+         * @param id The ID of the Placement Group.
          * 
          * @return builder
          * 

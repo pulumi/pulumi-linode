@@ -102,6 +102,10 @@
                 "type": "string",
                 "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
             },
+            "objBucketForceDelete": {
+                "type": "boolean",
+                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.\n"
+            },
             "objSecretKey": {
                 "type": "string",
                 "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
@@ -433,7 +437,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The unique ID of this Config.\n"
+                    "description": "The ID of the Placement Group.\n"
                 },
                 "interfaces": {
                     "type": "array",
@@ -759,7 +763,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the interface.\n"
+                    "description": "The ID of the Placement Group.\n"
                 },
                 "ipRanges": {
                     "type": "array",
@@ -859,7 +863,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)\n"
+                    "description": "The ID of the Placement Group.\n"
                 },
                 "image": {
                     "type": "string",
@@ -945,7 +949,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the interface.\n"
+                    "description": "The ID of the Placement Group.\n"
                 },
                 "ipRanges": {
                     "type": "array",
@@ -1050,6 +1054,43 @@
             },
             "type": "object"
         },
+        "linode:index/InstancePlacementGroup:InstancePlacementGroup": {
+            "properties": {
+                "affinityType": {
+                    "type": "string",
+                    "description": "The affinity policy enforced by the Placement Group.\n"
+                },
+                "compliantOnly": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the Placement Group.\n"
+                },
+                "isStrict": {
+                    "type": "boolean",
+                    "description": "Whether the Placement Group enforces strict compliance.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "affinityType",
+                        "id",
+                        "isStrict",
+                        "label"
+                    ]
+                }
+            }
+        },
         "linode:index/InstanceSpecs:InstanceSpecs": {
             "properties": {
                 "disk": {
@@ -1089,7 +1130,7 @@
                 },
                 "highAvailability": {
                     "type": "boolean",
-                    "description": "Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.\n\n* `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.\n"
+                    "description": "Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.\n\n* `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**\n"
                 }
             },
             "type": "object",
@@ -1573,6 +1614,23 @@
                 "bucketName",
                 "cluster",
                 "permissions"
+            ]
+        },
+        "linode:index/PlacementGroupMember:PlacementGroupMember": {
+            "properties": {
+                "isCompliant": {
+                    "type": "boolean",
+                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isCompliant",
+                "linodeId"
             ]
         },
         "linode:index/RdnsTimeouts:RdnsTimeouts": {
@@ -5347,7 +5405,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/getLkeClusterControlPlaneAcl:getLkeClusterControlPlaneAcl"
                     },
-                    "description": "The ACL configuration for an LKE cluster's control plane.\n"
+                    "description": "The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**\n"
                 },
                 "highAvailability": {
                     "type": "boolean",
@@ -6149,6 +6207,125 @@
                 "total"
             ]
         },
+        "linode:index/getPlacementGroupMember:getPlacementGroupMember": {
+            "properties": {
+                "isCompliant": {
+                    "type": "boolean",
+                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isCompliant",
+                "linodeId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getPlacementGroupsFilter:getPlacementGroupsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getPlacementGroupsPlacementGroup:getPlacementGroupsPlacementGroup": {
+            "properties": {
+                "affinityType": {
+                    "type": "string",
+                    "description": "The affinity policy to use when placing Linodes in this group.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the placement group.\n"
+                },
+                "isCompliant": {
+                    "type": "boolean",
+                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                },
+                "isStrict": {
+                    "type": "boolean",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getPlacementGroupsPlacementGroupMember:getPlacementGroupsPlacementGroupMember"
+                    },
+                    "description": "A set of Linodes currently assigned to this Placement Group.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the Placement Group.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "affinityType",
+                "id",
+                "isCompliant",
+                "isStrict",
+                "label",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getPlacementGroupsPlacementGroupMember:getPlacementGroupsPlacementGroupMember": {
+            "properties": {
+                "isCompliant": {
+                    "type": "boolean",
+                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isCompliant",
+                "linodeId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getProfileReferrals:getProfileReferrals": {
             "properties": {
                 "code": {
@@ -6184,6 +6361,28 @@
                 "pending",
                 "total",
                 "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getRegionPlacementGroupLimit:getRegionPlacementGroupLimit": {
+            "properties": {
+                "maximumLinodesPerPg": {
+                    "type": "integer",
+                    "description": "The maximum number of Linodes allowed to be assigned to a placement group in this region.\n"
+                },
+                "maximumPgsPerCustomer": {
+                    "type": "integer",
+                    "description": "The maximum number of placement groups allowed for the current user in this region.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maximumLinodesPerPg",
+                "maximumPgsPerCustomer"
             ],
             "language": {
                 "nodejs": {
@@ -6258,6 +6457,13 @@
                     "type": "string",
                     "description": "Detailed location information for this Region, including city, state or region, and country.\n"
                 },
+                "placementGroupLimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getRegionsRegionPlacementGroupLimit:getRegionsRegionPlacementGroupLimit"
+                    },
+                    "description": "Information about placement groups limits for this region.\n"
+                },
                 "resolvers": {
                     "type": "array",
                     "items": {
@@ -6279,14 +6485,34 @@
                 "country",
                 "id",
                 "label",
+                "placementGroupLimits",
                 "siteType",
                 "status"
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
+        },
+        "linode:index/getRegionsRegionPlacementGroupLimit:getRegionsRegionPlacementGroupLimit": {
+            "properties": {
+                "maximumLinodesPerPg": {
+                    "type": "integer",
+                    "description": "The maximum number of Linodes allowed to be assigned to a placement group in this region.\n"
+                },
+                "maximumPgsPerCustomer": {
+                    "type": "integer",
+                    "description": "The maximum number of placement groups allowed for the current user in this region.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maximumLinodesPerPg",
+                "maximumPgsPerCustomer"
+            ]
         },
         "linode:index/getRegionsRegionResolver:getRegionsRegionResolver": {
             "properties": {
@@ -7670,6 +7896,10 @@
                 "type": "string",
                 "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
             },
+            "objBucketForceDelete": {
+                "type": "boolean",
+                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.\n"
+            },
             "objSecretKey": {
                 "type": "string",
                 "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
@@ -7749,6 +7979,10 @@
             "objAccessKey": {
                 "type": "string",
                 "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
+            },
+            "objBucketForceDelete": {
+                "type": "boolean",
+                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.\n"
             },
             "objSecretKey": {
                 "type": "string",
@@ -9398,7 +9632,7 @@
             }
         },
         "linode:index/instance:Instance": {
-            "description": "Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.\nFor more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).\n\n## Example Usage\n\n### Simple Linode Instance\n\nThe following example shows how one might use this resource to configure a Linode instance.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    label: \"simple_instance\",\n    image: \"linode/ubuntu22.04\",\n    region: \"us-central\",\n    type: \"g6-standard-1\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    rootPass: \"this-is-not-a-safe-password\",\n    tags: [\"foo\"],\n    swapSize: 256,\n    privateIp: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    label=\"simple_instance\",\n    image=\"linode/ubuntu22.04\",\n    region=\"us-central\",\n    type=\"g6-standard-1\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    root_pass=\"this-is-not-a-safe-password\",\n    tags=[\"foo\"],\n    swap_size=256,\n    private_ip=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"simple_instance\",\n        Image = \"linode/ubuntu22.04\",\n        Region = \"us-central\",\n        Type = \"g6-standard-1\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        RootPass = \"this-is-not-a-safe-password\",\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        SwapSize = 256,\n        PrivateIp = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"simple_instance\"),\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"this-is-not-a-safe-password\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Instance(\"web\", InstanceArgs.builder()\n            .label(\"simple_instance\")\n            .image(\"linode/ubuntu22.04\")\n            .region(\"us-central\")\n            .type(\"g6-standard-1\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .rootPass(\"this-is-not-a-safe-password\")\n            .tags(\"foo\")\n            .swapSize(256)\n            .privateIp(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: simple_instance\n      image: linode/ubuntu22.04\n      region: us-central\n      type: g6-standard-1\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      rootPass: this-is-not-a-safe-password\n      tags:\n        - foo\n      swapSize: 256\n      privateIp: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Linode Instance with Explicit Networking Interfaces\n\nYou can add a VPC or VLAN interface directly to a Linode instance resource.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    label: \"simple_instance\",\n    image: \"linode/ubuntu22.04\",\n    region: \"us-central\",\n    type: \"g6-standard-1\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    rootPass: \"this-is-not-a-safe-password\",\n    interfaces: [\n        {\n            purpose: \"public\",\n        },\n        {\n            purpose: \"vpc\",\n            subnetId: 123,\n            ipv4: {\n                vpc: \"10.0.4.250\",\n            },\n        },\n    ],\n    tags: [\"foo\"],\n    swapSize: 256,\n    privateIp: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    label=\"simple_instance\",\n    image=\"linode/ubuntu22.04\",\n    region=\"us-central\",\n    type=\"g6-standard-1\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    root_pass=\"this-is-not-a-safe-password\",\n    interfaces=[\n        linode.InstanceInterfaceArgs(\n            purpose=\"public\",\n        ),\n        linode.InstanceInterfaceArgs(\n            purpose=\"vpc\",\n            subnet_id=123,\n            ipv4=linode.InstanceInterfaceIpv4Args(\n                vpc=\"10.0.4.250\",\n            ),\n        ),\n    ],\n    tags=[\"foo\"],\n    swap_size=256,\n    private_ip=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"simple_instance\",\n        Image = \"linode/ubuntu22.04\",\n        Region = \"us-central\",\n        Type = \"g6-standard-1\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        RootPass = \"this-is-not-a-safe-password\",\n        Interfaces = new[]\n        {\n            new Linode.Inputs.InstanceInterfaceArgs\n            {\n                Purpose = \"public\",\n            },\n            new Linode.Inputs.InstanceInterfaceArgs\n            {\n                Purpose = \"vpc\",\n                SubnetId = 123,\n                Ipv4 = new Linode.Inputs.InstanceInterfaceIpv4Args\n                {\n                    Vpc = \"10.0.4.250\",\n                },\n            },\n        },\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        SwapSize = 256,\n        PrivateIp = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"simple_instance\"),\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"this-is-not-a-safe-password\"),\n\t\t\tInterfaces: linode.InstanceInterfaceArray{\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tPurpose: pulumi.String(\"public\"),\n\t\t\t\t},\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tPurpose:  pulumi.String(\"vpc\"),\n\t\t\t\t\tSubnetId: pulumi.Int(123),\n\t\t\t\t\tIpv4: \u0026linode.InstanceInterfaceIpv4Args{\n\t\t\t\t\t\tVpc: pulumi.String(\"10.0.4.250\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceInterfaceArgs;\nimport com.pulumi.linode.inputs.InstanceInterfaceIpv4Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Instance(\"web\", InstanceArgs.builder()\n            .label(\"simple_instance\")\n            .image(\"linode/ubuntu22.04\")\n            .region(\"us-central\")\n            .type(\"g6-standard-1\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .rootPass(\"this-is-not-a-safe-password\")\n            .interfaces(            \n                InstanceInterfaceArgs.builder()\n                    .purpose(\"public\")\n                    .build(),\n                InstanceInterfaceArgs.builder()\n                    .purpose(\"vpc\")\n                    .subnetId(123)\n                    .ipv4(InstanceInterfaceIpv4Args.builder()\n                        .vpc(\"10.0.4.250\")\n                        .build())\n                    .build())\n            .tags(\"foo\")\n            .swapSize(256)\n            .privateIp(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: simple_instance\n      image: linode/ubuntu22.04\n      region: us-central\n      type: g6-standard-1\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      rootPass: this-is-not-a-safe-password\n      interfaces:\n        - purpose: public\n        - purpose: vpc\n          subnetId: 123\n          ipv4:\n            vpc: 10.0.4.250\n      tags:\n        - foo\n      swapSize: 256\n      privateIp: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Linode Instance with Explicit Configs and Disks\n\nUsing explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst me = linode.getProfile({});\nconst web = new linode.Instance(\"web\", {\n    label: \"complex_instance\",\n    tags: [\"foo\"],\n    region: \"us-central\",\n    type: \"g6-nanode-1\",\n    privateIp: true,\n});\nconst webVolume = new linode.Volume(\"web_volume\", {\n    label: \"web_volume\",\n    size: 20,\n    region: \"us-central\",\n});\nconst bootDisk = new linode.InstanceDisk(\"boot_disk\", {\n    label: \"boot\",\n    linodeId: web.id,\n    size: 3000,\n    image: \"linode/ubuntu22.04\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    authorizedUsers: [me.then(me =\u003e me.username)],\n    rootPass: \"terr4form-test\",\n});\nconst bootConfig = new linode.index.InstanceConfig(\"boot_config\", {\n    label: \"boot_config\",\n    linodeId: web.id,\n    devices: [\n        {\n            deviceName: \"sda\",\n            diskId: bootDisk.id,\n        },\n        {\n            deviceName: \"sdb\",\n            volumeId: webVolume.id,\n        },\n    ],\n    rootDevice: \"/dev/sda\",\n    kernel: \"linode/latest-64bit\",\n    booted: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nme = linode.get_profile()\nweb = linode.Instance(\"web\",\n    label=\"complex_instance\",\n    tags=[\"foo\"],\n    region=\"us-central\",\n    type=\"g6-nanode-1\",\n    private_ip=True)\nweb_volume = linode.Volume(\"web_volume\",\n    label=\"web_volume\",\n    size=20,\n    region=\"us-central\")\nboot_disk = linode.InstanceDisk(\"boot_disk\",\n    label=\"boot\",\n    linode_id=web.id,\n    size=3000,\n    image=\"linode/ubuntu22.04\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    authorized_users=[me.username],\n    root_pass=\"terr4form-test\")\nboot_config = linode.index.InstanceConfig(\"boot_config\",\n    label=boot_config,\n    linode_id=web.id,\n    devices=[\n        {\n            deviceName: sda,\n            diskId: boot_disk.id,\n        },\n        {\n            deviceName: sdb,\n            volumeId: web_volume.id,\n        },\n    ],\n    root_device=/dev/sda,\n    kernel=linode/latest-64bit,\n    booted=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = Linode.GetProfile.Invoke();\n\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"complex_instance\",\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        Region = \"us-central\",\n        Type = \"g6-nanode-1\",\n        PrivateIp = true,\n    });\n\n    var webVolume = new Linode.Volume(\"web_volume\", new()\n    {\n        Label = \"web_volume\",\n        Size = 20,\n        Region = \"us-central\",\n    });\n\n    var bootDisk = new Linode.InstanceDisk(\"boot_disk\", new()\n    {\n        Label = \"boot\",\n        LinodeId = web.Id,\n        Size = 3000,\n        Image = \"linode/ubuntu22.04\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        AuthorizedUsers = new[]\n        {\n            me.Apply(getProfileResult =\u003e getProfileResult.Username),\n        },\n        RootPass = \"terr4form-test\",\n    });\n\n    var bootConfig = new Linode.Index.InstanceConfig(\"boot_config\", new()\n    {\n        Label = \"boot_config\",\n        LinodeId = web.Id,\n        Devices = new[]\n        {\n            \n            {\n                { \"deviceName\", \"sda\" },\n                { \"diskId\", bootDisk.Id },\n            },\n            \n            {\n                { \"deviceName\", \"sdb\" },\n                { \"volumeId\", webVolume.Id },\n            },\n        },\n        RootDevice = \"/dev/sda\",\n        Kernel = \"linode/latest-64bit\",\n        Booted = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tme, err := linode.GetProfile(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tweb, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel: pulumi.String(\"complex_instance\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tType:      pulumi.String(\"g6-nanode-1\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\twebVolume, err := linode.NewVolume(ctx, \"web_volume\", \u0026linode.VolumeArgs{\n\t\t\tLabel:  pulumi.String(\"web_volume\"),\n\t\t\tSize:   pulumi.Int(20),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbootDisk, err := linode.NewInstanceDisk(ctx, \"boot_disk\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: web.ID(),\n\t\t\tSize:     pulumi.Int(3000),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tAuthorizedUsers: pulumi.StringArray{\n\t\t\t\tpulumi.String(me.Username),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"terr4form-test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceConfig(ctx, \"boot_config\", \u0026linode.InstanceConfigArgs{\n\t\t\tLabel:    \"boot_config\",\n\t\t\tLinodeId: web.ID(),\n\t\t\tDevices: []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"deviceName\": \"sda\",\n\t\t\t\t\t\"diskId\":     bootDisk.ID(),\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"deviceName\": \"sdb\",\n\t\t\t\t\t\"volumeId\":   webVolume.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRootDevice: \"/dev/sda\",\n\t\t\tKernel:     \"linode/latest-64bit\",\n\t\t\tBooted:     true,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport com.pulumi.linode.instanceConfig;\nimport com.pulumi.linode.InstanceConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var me = LinodeFunctions.getProfile();\n\n        var web = new Instance(\"web\", InstanceArgs.builder()\n            .label(\"complex_instance\")\n            .tags(\"foo\")\n            .region(\"us-central\")\n            .type(\"g6-nanode-1\")\n            .privateIp(true)\n            .build());\n\n        var webVolume = new Volume(\"webVolume\", VolumeArgs.builder()\n            .label(\"web_volume\")\n            .size(20)\n            .region(\"us-central\")\n            .build());\n\n        var bootDisk = new InstanceDisk(\"bootDisk\", InstanceDiskArgs.builder()\n            .label(\"boot\")\n            .linodeId(web.id())\n            .size(3000)\n            .image(\"linode/ubuntu22.04\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .authorizedUsers(me.applyValue(getProfileResult -\u003e getProfileResult.username()))\n            .rootPass(\"terr4form-test\")\n            .build());\n\n        var bootConfig = new InstanceConfig(\"bootConfig\", InstanceConfigArgs.builder()\n            .label(\"boot_config\")\n            .linodeId(web.id())\n            .devices(            \n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .rootDevice(\"/dev/sda\")\n            .kernel(\"linode/latest-64bit\")\n            .booted(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: complex_instance\n      tags:\n        - foo\n      region: us-central\n      type: g6-nanode-1\n      privateIp: true\n  webVolume:\n    type: linode:Volume\n    name: web_volume\n    properties:\n      label: web_volume\n      size: 20\n      region: us-central\n  bootDisk:\n    type: linode:InstanceDisk\n    name: boot_disk\n    properties:\n      label: boot\n      linodeId: ${web.id}\n      size: 3000\n      image: linode/ubuntu22.04\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      authorizedUsers:\n        - ${me.username}\n      rootPass: terr4form-test\n  bootConfig:\n    type: linode:instanceConfig\n    name: boot_config\n    properties:\n      label: boot_config\n      linodeId: ${web.id}\n      devices:\n        - deviceName: sda\n          diskId: ${bootDisk.id}\n        - deviceName: sdb\n          volumeId: ${webVolume.id}\n      rootDevice: /dev/sda\n      kernel: linode/latest-64bit\n      booted: true\nvariables:\n  me:\n    fn::invoke:\n      Function: linode:getProfile\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes Instances can be imported using the Linode `id`, e.g.\n\n```sh\n$ pulumi import linode:index/instance:Instance mylinode 1234567\n```\n\nWhen importing an instance, all `disk` and `config` values must be represented.\n\nImported disks must include their `label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**\n\nImported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.  The instance must include a `boot_config_label` referring to the correct configuration profile.\n\n",
+            "description": "Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.\nFor more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).\n\n## Example Usage\n\n### Simple Linode Instance\n\nThe following example shows how one might use this resource to configure a Linode instance.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    label: \"simple_instance\",\n    image: \"linode/ubuntu22.04\",\n    region: \"us-central\",\n    type: \"g6-standard-1\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    rootPass: \"this-is-not-a-safe-password\",\n    tags: [\"foo\"],\n    swapSize: 256,\n    privateIp: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    label=\"simple_instance\",\n    image=\"linode/ubuntu22.04\",\n    region=\"us-central\",\n    type=\"g6-standard-1\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    root_pass=\"this-is-not-a-safe-password\",\n    tags=[\"foo\"],\n    swap_size=256,\n    private_ip=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"simple_instance\",\n        Image = \"linode/ubuntu22.04\",\n        Region = \"us-central\",\n        Type = \"g6-standard-1\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        RootPass = \"this-is-not-a-safe-password\",\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        SwapSize = 256,\n        PrivateIp = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"simple_instance\"),\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"this-is-not-a-safe-password\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Instance(\"web\", InstanceArgs.builder()\n            .label(\"simple_instance\")\n            .image(\"linode/ubuntu22.04\")\n            .region(\"us-central\")\n            .type(\"g6-standard-1\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .rootPass(\"this-is-not-a-safe-password\")\n            .tags(\"foo\")\n            .swapSize(256)\n            .privateIp(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: simple_instance\n      image: linode/ubuntu22.04\n      region: us-central\n      type: g6-standard-1\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      rootPass: this-is-not-a-safe-password\n      tags:\n        - foo\n      swapSize: 256\n      privateIp: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Linode Instance with Explicit Networking Interfaces\n\nYou can add a VPC or VLAN interface directly to a Linode instance resource.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst web = new linode.Instance(\"web\", {\n    label: \"simple_instance\",\n    image: \"linode/ubuntu22.04\",\n    region: \"us-central\",\n    type: \"g6-standard-1\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    rootPass: \"this-is-not-a-safe-password\",\n    interfaces: [\n        {\n            purpose: \"public\",\n        },\n        {\n            purpose: \"vpc\",\n            subnetId: 123,\n            ipv4: {\n                vpc: \"10.0.4.250\",\n            },\n        },\n    ],\n    tags: [\"foo\"],\n    swapSize: 256,\n    privateIp: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nweb = linode.Instance(\"web\",\n    label=\"simple_instance\",\n    image=\"linode/ubuntu22.04\",\n    region=\"us-central\",\n    type=\"g6-standard-1\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    root_pass=\"this-is-not-a-safe-password\",\n    interfaces=[\n        linode.InstanceInterfaceArgs(\n            purpose=\"public\",\n        ),\n        linode.InstanceInterfaceArgs(\n            purpose=\"vpc\",\n            subnet_id=123,\n            ipv4=linode.InstanceInterfaceIpv4Args(\n                vpc=\"10.0.4.250\",\n            ),\n        ),\n    ],\n    tags=[\"foo\"],\n    swap_size=256,\n    private_ip=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"simple_instance\",\n        Image = \"linode/ubuntu22.04\",\n        Region = \"us-central\",\n        Type = \"g6-standard-1\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        RootPass = \"this-is-not-a-safe-password\",\n        Interfaces = new[]\n        {\n            new Linode.Inputs.InstanceInterfaceArgs\n            {\n                Purpose = \"public\",\n            },\n            new Linode.Inputs.InstanceInterfaceArgs\n            {\n                Purpose = \"vpc\",\n                SubnetId = 123,\n                Ipv4 = new Linode.Inputs.InstanceInterfaceIpv4Args\n                {\n                    Vpc = \"10.0.4.250\",\n                },\n            },\n        },\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        SwapSize = 256,\n        PrivateIp = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"simple_instance\"),\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"this-is-not-a-safe-password\"),\n\t\t\tInterfaces: linode.InstanceInterfaceArray{\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tPurpose: pulumi.String(\"public\"),\n\t\t\t\t},\n\t\t\t\t\u0026linode.InstanceInterfaceArgs{\n\t\t\t\t\tPurpose:  pulumi.String(\"vpc\"),\n\t\t\t\t\tSubnetId: pulumi.Int(123),\n\t\t\t\t\tIpv4: \u0026linode.InstanceInterfaceIpv4Args{\n\t\t\t\t\t\tVpc: pulumi.String(\"10.0.4.250\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tSwapSize:  pulumi.Int(256),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstanceInterfaceArgs;\nimport com.pulumi.linode.inputs.InstanceInterfaceIpv4Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Instance(\"web\", InstanceArgs.builder()\n            .label(\"simple_instance\")\n            .image(\"linode/ubuntu22.04\")\n            .region(\"us-central\")\n            .type(\"g6-standard-1\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .rootPass(\"this-is-not-a-safe-password\")\n            .interfaces(            \n                InstanceInterfaceArgs.builder()\n                    .purpose(\"public\")\n                    .build(),\n                InstanceInterfaceArgs.builder()\n                    .purpose(\"vpc\")\n                    .subnetId(123)\n                    .ipv4(InstanceInterfaceIpv4Args.builder()\n                        .vpc(\"10.0.4.250\")\n                        .build())\n                    .build())\n            .tags(\"foo\")\n            .swapSize(256)\n            .privateIp(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: simple_instance\n      image: linode/ubuntu22.04\n      region: us-central\n      type: g6-standard-1\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      rootPass: this-is-not-a-safe-password\n      interfaces:\n        - purpose: public\n        - purpose: vpc\n          subnetId: 123\n          ipv4:\n            vpc: 10.0.4.250\n      tags:\n        - foo\n      swapSize: 256\n      privateIp: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Linode Instance with Explicit Configs and Disks\n\nUsing explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst me = linode.getProfile({});\nconst web = new linode.Instance(\"web\", {\n    label: \"complex_instance\",\n    tags: [\"foo\"],\n    region: \"us-central\",\n    type: \"g6-nanode-1\",\n    privateIp: true,\n});\nconst webVolume = new linode.Volume(\"web_volume\", {\n    label: \"web_volume\",\n    size: 20,\n    region: \"us-central\",\n});\nconst bootDisk = new linode.InstanceDisk(\"boot_disk\", {\n    label: \"boot\",\n    linodeId: web.id,\n    size: 3000,\n    image: \"linode/ubuntu22.04\",\n    authorizedKeys: [\"ssh-rsa AAAA...Gw== user@example.local\"],\n    authorizedUsers: [me.then(me =\u003e me.username)],\n    rootPass: \"terr4form-test\",\n});\nconst bootConfig = new linode.index.InstanceConfig(\"boot_config\", {\n    label: \"boot_config\",\n    linodeId: web.id,\n    devices: [\n        {\n            deviceName: \"sda\",\n            diskId: bootDisk.id,\n        },\n        {\n            deviceName: \"sdb\",\n            volumeId: webVolume.id,\n        },\n    ],\n    rootDevice: \"/dev/sda\",\n    kernel: \"linode/latest-64bit\",\n    booted: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nme = linode.get_profile()\nweb = linode.Instance(\"web\",\n    label=\"complex_instance\",\n    tags=[\"foo\"],\n    region=\"us-central\",\n    type=\"g6-nanode-1\",\n    private_ip=True)\nweb_volume = linode.Volume(\"web_volume\",\n    label=\"web_volume\",\n    size=20,\n    region=\"us-central\")\nboot_disk = linode.InstanceDisk(\"boot_disk\",\n    label=\"boot\",\n    linode_id=web.id,\n    size=3000,\n    image=\"linode/ubuntu22.04\",\n    authorized_keys=[\"ssh-rsa AAAA...Gw== user@example.local\"],\n    authorized_users=[me.username],\n    root_pass=\"terr4form-test\")\nboot_config = linode.index.InstanceConfig(\"boot_config\",\n    label=boot_config,\n    linode_id=web.id,\n    devices=[\n        {\n            deviceName: sda,\n            diskId: boot_disk.id,\n        },\n        {\n            deviceName: sdb,\n            volumeId: web_volume.id,\n        },\n    ],\n    root_device=/dev/sda,\n    kernel=linode/latest-64bit,\n    booted=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = Linode.GetProfile.Invoke();\n\n    var web = new Linode.Instance(\"web\", new()\n    {\n        Label = \"complex_instance\",\n        Tags = new[]\n        {\n            \"foo\",\n        },\n        Region = \"us-central\",\n        Type = \"g6-nanode-1\",\n        PrivateIp = true,\n    });\n\n    var webVolume = new Linode.Volume(\"web_volume\", new()\n    {\n        Label = \"web_volume\",\n        Size = 20,\n        Region = \"us-central\",\n    });\n\n    var bootDisk = new Linode.InstanceDisk(\"boot_disk\", new()\n    {\n        Label = \"boot\",\n        LinodeId = web.Id,\n        Size = 3000,\n        Image = \"linode/ubuntu22.04\",\n        AuthorizedKeys = new[]\n        {\n            \"ssh-rsa AAAA...Gw== user@example.local\",\n        },\n        AuthorizedUsers = new[]\n        {\n            me.Apply(getProfileResult =\u003e getProfileResult.Username),\n        },\n        RootPass = \"terr4form-test\",\n    });\n\n    var bootConfig = new Linode.Index.InstanceConfig(\"boot_config\", new()\n    {\n        Label = \"boot_config\",\n        LinodeId = web.Id,\n        Devices = new[]\n        {\n            \n            {\n                { \"deviceName\", \"sda\" },\n                { \"diskId\", bootDisk.Id },\n            },\n            \n            {\n                { \"deviceName\", \"sdb\" },\n                { \"volumeId\", webVolume.Id },\n            },\n        },\n        RootDevice = \"/dev/sda\",\n        Kernel = \"linode/latest-64bit\",\n        Booted = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tme, err := linode.GetProfile(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tweb, err := linode.NewInstance(ctx, \"web\", \u0026linode.InstanceArgs{\n\t\t\tLabel: pulumi.String(\"complex_instance\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo\"),\n\t\t\t},\n\t\t\tRegion:    pulumi.String(\"us-central\"),\n\t\t\tType:      pulumi.String(\"g6-nanode-1\"),\n\t\t\tPrivateIp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\twebVolume, err := linode.NewVolume(ctx, \"web_volume\", \u0026linode.VolumeArgs{\n\t\t\tLabel:  pulumi.String(\"web_volume\"),\n\t\t\tSize:   pulumi.Int(20),\n\t\t\tRegion: pulumi.String(\"us-central\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbootDisk, err := linode.NewInstanceDisk(ctx, \"boot_disk\", \u0026linode.InstanceDiskArgs{\n\t\t\tLabel:    pulumi.String(\"boot\"),\n\t\t\tLinodeId: web.ID(),\n\t\t\tSize:     pulumi.Int(3000),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa AAAA...Gw== user@example.local\"),\n\t\t\t},\n\t\t\tAuthorizedUsers: pulumi.StringArray{\n\t\t\t\tpulumi.String(me.Username),\n\t\t\t},\n\t\t\tRootPass: pulumi.String(\"terr4form-test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceConfig(ctx, \"boot_config\", \u0026linode.InstanceConfigArgs{\n\t\t\tLabel:    \"boot_config\",\n\t\t\tLinodeId: web.ID(),\n\t\t\tDevices: []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"deviceName\": \"sda\",\n\t\t\t\t\t\"diskId\":     bootDisk.ID(),\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"deviceName\": \"sdb\",\n\t\t\t\t\t\"volumeId\":   webVolume.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRootDevice: \"/dev/sda\",\n\t\t\tKernel:     \"linode/latest-64bit\",\n\t\t\tBooted:     true,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport com.pulumi.linode.InstanceDisk;\nimport com.pulumi.linode.InstanceDiskArgs;\nimport com.pulumi.linode.instanceConfig;\nimport com.pulumi.linode.InstanceConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var me = LinodeFunctions.getProfile();\n\n        var web = new Instance(\"web\", InstanceArgs.builder()\n            .label(\"complex_instance\")\n            .tags(\"foo\")\n            .region(\"us-central\")\n            .type(\"g6-nanode-1\")\n            .privateIp(true)\n            .build());\n\n        var webVolume = new Volume(\"webVolume\", VolumeArgs.builder()\n            .label(\"web_volume\")\n            .size(20)\n            .region(\"us-central\")\n            .build());\n\n        var bootDisk = new InstanceDisk(\"bootDisk\", InstanceDiskArgs.builder()\n            .label(\"boot\")\n            .linodeId(web.id())\n            .size(3000)\n            .image(\"linode/ubuntu22.04\")\n            .authorizedKeys(\"ssh-rsa AAAA...Gw== user@example.local\")\n            .authorizedUsers(me.applyValue(getProfileResult -\u003e getProfileResult.username()))\n            .rootPass(\"terr4form-test\")\n            .build());\n\n        var bootConfig = new InstanceConfig(\"bootConfig\", InstanceConfigArgs.builder()\n            .label(\"boot_config\")\n            .linodeId(web.id())\n            .devices(            \n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .rootDevice(\"/dev/sda\")\n            .kernel(\"linode/latest-64bit\")\n            .booted(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: linode:Instance\n    properties:\n      label: complex_instance\n      tags:\n        - foo\n      region: us-central\n      type: g6-nanode-1\n      privateIp: true\n  webVolume:\n    type: linode:Volume\n    name: web_volume\n    properties:\n      label: web_volume\n      size: 20\n      region: us-central\n  bootDisk:\n    type: linode:InstanceDisk\n    name: boot_disk\n    properties:\n      label: boot\n      linodeId: ${web.id}\n      size: 3000\n      image: linode/ubuntu22.04\n      authorizedKeys:\n        - ssh-rsa AAAA...Gw== user@example.local\n      authorizedUsers:\n        - ${me.username}\n      rootPass: terr4form-test\n  bootConfig:\n    type: linode:instanceConfig\n    name: boot_config\n    properties:\n      label: boot_config\n      linodeId: ${web.id}\n      devices:\n        - deviceName: sda\n          diskId: ${bootDisk.id}\n        - deviceName: sdb\n          volumeId: ${webVolume.id}\n      rootDevice: /dev/sda\n      kernel: linode/latest-64bit\n      booted: true\nvariables:\n  me:\n    fn::invoke:\n      Function: linode:getProfile\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Linode Instance Assigned to a Placement Group\n\n**NOTE: Placement Groups may not currently be available to all users.**\n\nThe following example shows how one might use this resource to configure a Linode instance assigned to a\nPlacement Group.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {\n    label: \"my-instance\",\n    region: \"us-mia\",\n    type: \"g6-standard-1\",\n    placementGroup: {\n        id: 12345,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\",\n    label=\"my-instance\",\n    region=\"us-mia\",\n    type=\"g6-standard-1\",\n    placement_group=linode.InstancePlacementGroupArgs(\n        id=12345,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        Label = \"my-instance\",\n        Region = \"us-mia\",\n        Type = \"g6-standard-1\",\n        PlacementGroup = new Linode.Inputs.InstancePlacementGroupArgs\n        {\n            Id = 12345,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tLabel:  pulumi.String(\"my-instance\"),\n\t\t\tRegion: pulumi.String(\"us-mia\"),\n\t\t\tType:   pulumi.String(\"g6-standard-1\"),\n\t\t\tPlacementGroup: \u0026linode.InstancePlacementGroupArgs{\n\t\t\t\tId: pulumi.Int(12345),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.inputs.InstancePlacementGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()\n            .label(\"my-instance\")\n            .region(\"us-mia\")\n            .type(\"g6-standard-1\")\n            .placementGroup(InstancePlacementGroupArgs.builder()\n                .id(12345)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-instance:\n    type: linode:Instance\n    properties:\n      label: my-instance\n      region: us-mia\n      type: g6-standard-1\n      placementGroup:\n        id: 12345\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes Instances can be imported using the Linode `id`, e.g.\n\n```sh\n$ pulumi import linode:index/instance:Instance mylinode 1234567\n```\n\nWhen importing an instance, all `disk` and `config` values must be represented.\n\nImported disks must include their `label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**\n\nImported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.  The instance must include a `boot_config_label` referring to the correct configuration profile.\n\n",
             "properties": {
                 "alerts": {
                     "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
@@ -9511,6 +9745,14 @@
                     "type": "string",
                     "description": "The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.\n"
                 },
+                "placementGroup": {
+                    "$ref": "#/types/linode:index/InstancePlacementGroup:InstancePlacementGroup",
+                    "description": "Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.\n"
+                },
+                "placementGroupExternallyManaged": {
+                    "type": "boolean",
+                    "description": "If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.\n"
+                },
                 "privateIp": {
                     "type": "boolean",
                     "description": "If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.\n"
@@ -9537,7 +9779,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n"
+                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n\n* `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.\n"
                 },
                 "specs": {
                     "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs",
@@ -9691,6 +9933,14 @@
                     "type": "string",
                     "description": "The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.\n"
                 },
+                "placementGroup": {
+                    "$ref": "#/types/linode:index/InstancePlacementGroup:InstancePlacementGroup",
+                    "description": "Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.\n"
+                },
+                "placementGroupExternallyManaged": {
+                    "type": "boolean",
+                    "description": "If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.\n"
+                },
                 "privateIp": {
                     "type": "boolean",
                     "description": "If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.\n"
@@ -9714,7 +9964,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n"
+                    "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n\n* `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.\n"
                 },
                 "stackscriptData": {
                     "type": "object",
@@ -9872,6 +10122,14 @@
                         "type": "string",
                         "description": "The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)\n\n* `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.\n"
                     },
+                    "placementGroup": {
+                        "$ref": "#/types/linode:index/InstancePlacementGroup:InstancePlacementGroup",
+                        "description": "Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.\n"
+                    },
+                    "placementGroupExternallyManaged": {
+                        "type": "boolean",
+                        "description": "If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.\n"
+                    },
                     "privateIp": {
                         "type": "boolean",
                         "description": "If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.\n"
@@ -9899,7 +10157,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n"
+                        "description": "A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.\n\n* `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.\n\n* `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.\n"
                     },
                     "specs": {
                         "$ref": "#/types/linode:index/InstanceSpecs:InstanceSpecs",
@@ -11796,6 +12054,156 @@
                     "websiteRedirect": {
                         "type": "string",
                         "description": "Specifies a target URL for website redirect.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/placementGroup:PlacementGroup": {
+            "description": "**NOTE: Placement Groups may not currently be available to all users.**\n\nManages a Linode Placement Group.\n\n## Example Usage\n\nCreate a Placement Group with the local anti-affinity policy:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst test = new linode.PlacementGroup(\"test\", {\n    label: \"my-placement-group\",\n    region: \"us-mia\",\n    affinityType: \"anti_affinity:local\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.PlacementGroup(\"test\",\n    label=\"my-placement-group\",\n    region=\"us-mia\",\n    affinity_type=\"anti_affinity:local\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Linode.PlacementGroup(\"test\", new()\n    {\n        Label = \"my-placement-group\",\n        Region = \"us-mia\",\n        AffinityType = \"anti_affinity:local\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewPlacementGroup(ctx, \"test\", \u0026linode.PlacementGroupArgs{\n\t\t\tLabel:        pulumi.String(\"my-placement-group\"),\n\t\t\tRegion:       pulumi.String(\"us-mia\"),\n\t\t\tAffinityType: pulumi.String(\"anti_affinity:local\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.PlacementGroup;\nimport com.pulumi.linode.PlacementGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new PlacementGroup(\"test\", PlacementGroupArgs.builder()\n            .label(\"my-placement-group\")\n            .region(\"us-mia\")\n            .affinityType(\"anti_affinity:local\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: linode:PlacementGroup\n    properties:\n      label: my-placement-group\n      region: us-mia\n      affinityType: anti_affinity:local\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPlacement Groups be imported using their unique `id`, e.g.\n\n```sh\n$ pulumi import linode:index/placementGroup:PlacementGroup mygroup 1234567\n```\n\n",
+            "properties": {
+                "affinityType": {
+                    "type": "string",
+                    "description": "The affinity policy to use when placing Linodes in this group.\n"
+                },
+                "isCompliant": {
+                    "type": "boolean",
+                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                },
+                "isStrict": {
+                    "type": "boolean",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/PlacementGroupMember:PlacementGroupMember"
+                    },
+                    "description": "A set of Linodes currently assigned to this Placement Group.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the Placement Group.\n"
+                }
+            },
+            "required": [
+                "affinityType",
+                "isCompliant",
+                "isStrict",
+                "label",
+                "members",
+                "region"
+            ],
+            "inputProperties": {
+                "affinityType": {
+                    "type": "string",
+                    "description": "The affinity policy to use when placing Linodes in this group.\n"
+                },
+                "isStrict": {
+                    "type": "boolean",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the Placement Group.\n"
+                }
+            },
+            "requiredInputs": [
+                "affinityType",
+                "label",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PlacementGroup resources.\n",
+                "properties": {
+                    "affinityType": {
+                        "type": "string",
+                        "description": "The affinity policy to use when placing Linodes in this group.\n"
+                    },
+                    "isCompliant": {
+                        "type": "boolean",
+                        "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                    },
+                    "isStrict": {
+                        "type": "boolean",
+                        "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/PlacementGroupMember:PlacementGroupMember"
+                        },
+                        "description": "A set of Linodes currently assigned to this Placement Group.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the Placement Group.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/placementGroupAssignment:PlacementGroupAssignment": {
+            "description": "**NOTE: Placement Groups may not currently be available to all users.**\n\nManages a single assignment between a Linode and a Placement Group.\n\nTo prevent update conflicts, Linodes managed through the `linode.Instance` resource should specify `placement_group_externally_managed`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {placementGroupExternallyManaged: true});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\", placement_group_externally_managed=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        PlacementGroupExternallyManaged = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tPlacementGroupExternallyManaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()\n            .placementGroupExternallyManaged(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-instance:\n    type: linode:Instance\n    properties:\n      placementGroupExternallyManaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pg = new linode.PlacementGroup(\"my-pg\", {\n    label: \"my-pg\",\n    region: \"us-east\",\n    affinityType: \"anti_affinity:local\",\n});\nconst my_inst = new linode.Instance(\"my-inst\", {\n    label: \"my-inst\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    placementGroupExternallyManaged: true,\n});\nconst my_assignment = new linode.PlacementGroupAssignment(\"my-assignment\", {\n    placementGroupId: my_pg.id,\n    linodeId: my_inst.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pg = linode.PlacementGroup(\"my-pg\",\n    label=\"my-pg\",\n    region=\"us-east\",\n    affinity_type=\"anti_affinity:local\")\nmy_inst = linode.Instance(\"my-inst\",\n    label=\"my-inst\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    placement_group_externally_managed=True)\nmy_assignment = linode.PlacementGroupAssignment(\"my-assignment\",\n    placement_group_id=my_pg.id,\n    linode_id=my_inst.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pg = new Linode.PlacementGroup(\"my-pg\", new()\n    {\n        Label = \"my-pg\",\n        Region = \"us-east\",\n        AffinityType = \"anti_affinity:local\",\n    });\n\n    var my_inst = new Linode.Instance(\"my-inst\", new()\n    {\n        Label = \"my-inst\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        PlacementGroupExternallyManaged = true,\n    });\n\n    var my_assignment = new Linode.PlacementGroupAssignment(\"my-assignment\", new()\n    {\n        PlacementGroupId = my_pg.Id,\n        LinodeId = my_inst.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewPlacementGroup(ctx, \"my-pg\", \u0026linode.PlacementGroupArgs{\n\t\t\tLabel:        pulumi.String(\"my-pg\"),\n\t\t\tRegion:       pulumi.String(\"us-east\"),\n\t\t\tAffinityType: pulumi.String(\"anti_affinity:local\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"my-inst\", \u0026linode.InstanceArgs{\n\t\t\tLabel:                           pulumi.String(\"my-inst\"),\n\t\t\tRegion:                          pulumi.String(\"us-east\"),\n\t\t\tType:                            pulumi.String(\"g6-nanode-1\"),\n\t\t\tPlacementGroupExternallyManaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewPlacementGroupAssignment(ctx, \"my-assignment\", \u0026linode.PlacementGroupAssignmentArgs{\n\t\t\tPlacementGroupId: my_pg.ID(),\n\t\t\tLinodeId:         my_inst.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.PlacementGroup;\nimport com.pulumi.linode.PlacementGroupArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.PlacementGroupAssignment;\nimport com.pulumi.linode.PlacementGroupAssignmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pg = new PlacementGroup(\"my-pg\", PlacementGroupArgs.builder()\n            .label(\"my-pg\")\n            .region(\"us-east\")\n            .affinityType(\"anti_affinity:local\")\n            .build());\n\n        var my_inst = new Instance(\"my-inst\", InstanceArgs.builder()\n            .label(\"my-inst\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .placementGroupExternallyManaged(true)\n            .build());\n\n        var my_assignment = new PlacementGroupAssignment(\"my-assignment\", PlacementGroupAssignmentArgs.builder()\n            .placementGroupId(my_pg.id())\n            .linodeId(my_inst.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-assignment:\n    type: linode:PlacementGroupAssignment\n    properties:\n      placementGroupId: ${[\"my-pg\"].id}\n      linodeId: ${[\"my-inst\"].id}\n  my-pg:\n    type: linode:PlacementGroup\n    properties:\n      label: my-pg\n      region: us-east\n      affinityType: anti_affinity:local\n  my-inst:\n    type: linode:Instance\n    properties:\n      label: my-inst\n      region: us-east\n      type: g6-nanode-1\n      placementGroupExternallyManaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPlacement Group assignments can be imported using the Placement Group's ID followed by the Linode's ID separated by a comma, e.g.\n\n```sh\n$ pulumi import linode:index/placementGroupAssignment:PlacementGroupAssignment my-assignment 1234567,7654321\n```\n\n",
+            "properties": {
+                "compliantOnly": {
+                    "type": "boolean"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The unique ID of the Linode to assign.\n"
+                },
+                "placementGroupId": {
+                    "type": "integer",
+                    "description": "The unique ID of the target Placement Group.\n"
+                }
+            },
+            "required": [
+                "linodeId",
+                "placementGroupId"
+            ],
+            "inputProperties": {
+                "compliantOnly": {
+                    "type": "boolean"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The unique ID of the Linode to assign.\n"
+                },
+                "placementGroupId": {
+                    "type": "integer",
+                    "description": "The unique ID of the target Placement Group.\n"
+                }
+            },
+            "requiredInputs": [
+                "linodeId",
+                "placementGroupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PlacementGroupAssignment resources.\n",
+                "properties": {
+                    "compliantOnly": {
+                        "type": "boolean"
+                    },
+                    "linodeId": {
+                        "type": "integer",
+                        "description": "The unique ID of the Linode to assign.\n"
+                    },
+                    "placementGroupId": {
+                        "type": "integer",
+                        "description": "The unique ID of the target Placement Group.\n"
                     }
                 },
                 "type": "object"
@@ -15783,6 +16191,130 @@
                 "type": "object"
             }
         },
+        "linode:index/getPlacementGroup:getPlacementGroup": {
+            "description": "**NOTE: Placement Groups may not currently be available to all users.**\n\n`linode.PlacementGroup` provides details about a Linode placement group.\n\n## Example Usage\n\nThe following example shows how the resource might be used to obtain additional information about a Linode placement group.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst pg = linode.getPlacementGroup({\n    id: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\npg = linode.get_placement_group(id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pg = Linode.GetPlacementGroup.Invoke(new()\n    {\n        Id = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupPlacementGroup(ctx, \u0026linode.LookupPlacementGroupArgs{\n\t\t\tId: 12345,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetPlacementGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var pg = LinodeFunctions.getPlacementGroup(GetPlacementGroupArgs.builder()\n            .id(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  pg:\n    fn::invoke:\n      Function: linode:getPlacementGroup\n      Arguments:\n        id: 12345\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPlacementGroup.\n",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "The ID of the Placement Group.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getPlacementGroupMember:getPlacementGroupMember"
+                        },
+                        "description": "A set of Linodes currently assigned to this Placement Group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPlacementGroup.\n",
+                "properties": {
+                    "affinityType": {
+                        "description": "The affinity policy to use when placing Linodes in this group.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "isCompliant": {
+                        "description": "Whether this Linode is currently compliant with the group's affinity policy.\n",
+                        "type": "boolean"
+                    },
+                    "isStrict": {
+                        "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n",
+                        "type": "boolean"
+                    },
+                    "label": {
+                        "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n",
+                        "type": "string"
+                    },
+                    "members": {
+                        "description": "A set of Linodes currently assigned to this Placement Group.\n",
+                        "items": {
+                            "$ref": "#/types/linode:index/getPlacementGroupMember:getPlacementGroupMember"
+                        },
+                        "type": "array"
+                    },
+                    "region": {
+                        "description": "The region of the Placement Group.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "affinityType",
+                    "id",
+                    "isCompliant",
+                    "isStrict",
+                    "label",
+                    "region"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getPlacementGroups:getPlacementGroups": {
+            "description": "**NOTE: Placement Groups may not currently be available to all users.**\n\nProvides information about a list of Linode Placement Groups that match a set of filters.\n\n## Example Usage\n\nThe following example shows how one might use this data source to list Placement Groups.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nexport = async () =\u003e {\n    const all = await linode.getPlacementGroups({});\n    const filtered = await linode.getPlacementGroups({\n        filters: [{\n            name: \"label\",\n            values: [\"my-label\"],\n        }],\n    });\n    return {\n        \"all-pgs\": all.placementGroups,\n        \"filtered-pgs\": filtered.placementGroups,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall = linode.get_placement_groups()\nfiltered = linode.get_placement_groups(filters=[linode.GetPlacementGroupsFilterArgs(\n    name=\"label\",\n    values=[\"my-label\"],\n)])\npulumi.export(\"all-pgs\", all.placement_groups)\npulumi.export(\"filtered-pgs\", filtered.placement_groups)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Linode.GetPlacementGroups.Invoke();\n\n    var filtered = Linode.GetPlacementGroups.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetPlacementGroupsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-label\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"all-pgs\"] = all.Apply(getPlacementGroupsResult =\u003e getPlacementGroupsResult.PlacementGroups),\n        [\"filtered-pgs\"] = filtered.Apply(getPlacementGroupsResult =\u003e getPlacementGroupsResult.PlacementGroups),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := linode.GetPlacementGroups(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfiltered, err := linode.GetPlacementGroups(ctx, \u0026linode.GetPlacementGroupsArgs{\n\t\t\tFilters: []linode.GetPlacementGroupsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-label\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"all-pgs\", all.PlacementGroups)\n\t\tctx.Export(\"filtered-pgs\", filtered.PlacementGroups)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetPlacementGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = LinodeFunctions.getPlacementGroups();\n\n        final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()\n            .filters(GetPlacementGroupsFilterArgs.builder()\n                .name(\"label\")\n                .values(\"my-label\")\n                .build())\n            .build());\n\n        ctx.export(\"all-pgs\", all.applyValue(getPlacementGroupsResult -\u003e getPlacementGroupsResult.placementGroups()));\n        ctx.export(\"filtered-pgs\", filtered.applyValue(getPlacementGroupsResult -\u003e getPlacementGroupsResult.placementGroups()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: linode:getPlacementGroups\n      Arguments: {}\n  filtered:\n    fn::invoke:\n      Function: linode:getPlacementGroups\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-label\noutputs:\n  all-pgs: ${all.placementGroups}\n  filtered-pgs: ${filtered.placementGroups}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `region`\n\n* `affinity_type`\n\n* `is_strict`\n\n* `is_compliant`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPlacementGroups.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getPlacementGroupsFilter:getPlacementGroupsFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "placementGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getPlacementGroupsPlacementGroup:getPlacementGroupsPlacementGroup"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPlacementGroups.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getPlacementGroupsFilter:getPlacementGroupsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "placementGroups": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getPlacementGroupsPlacementGroup:getPlacementGroupsPlacementGroup"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "linode:index/getProfile:getProfile": {
             "description": "Provides information about a Linode profile.\n\n## Example Usage\n\nThe following example shows how one might use this data source to access profile details.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst profile = linode.getProfile({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprofile = linode.get_profile()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var profile = Linode.GetProfile.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetProfile(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var profile = LinodeFunctions.getProfile();\n\n    }\n}\n```\n```yaml\nvariables:\n  profile:\n    fn::invoke:\n      Function: linode:getProfile\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -15893,6 +16425,12 @@
                         "description": "Detailed location information for this Region, including city, state or region, and country.\n",
                         "type": "string"
                     },
+                    "placementGroupLimits": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getRegionPlacementGroupLimit:getRegionPlacementGroupLimit"
+                        },
+                        "type": "array"
+                    },
                     "resolvers": {
                         "items": {
                             "$ref": "#/types/linode:index/getRegionResolver:getRegionResolver"
@@ -15913,6 +16451,7 @@
                     "country",
                     "id",
                     "label",
+                    "placementGroupLimits",
                     "siteType",
                     "status"
                 ],

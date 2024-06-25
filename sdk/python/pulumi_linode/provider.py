@@ -24,6 +24,7 @@ class ProviderArgs:
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  obj_access_key: Optional[pulumi.Input[str]] = None,
+                 obj_bucket_force_delete: Optional[pulumi.Input[bool]] = None,
                  obj_secret_key: Optional[pulumi.Input[str]] = None,
                  obj_use_temp_keys: Optional[pulumi.Input[bool]] = None,
                  skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
@@ -44,6 +45,7 @@ class ProviderArgs:
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
         :param pulumi.Input[str] obj_access_key: The access key to be used in ObjectStorageBucket and linode_object_storage_object.
+        :param pulumi.Input[bool] obj_bucket_force_delete: If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
         :param pulumi.Input[str] obj_secret_key: The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
         :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
                linode_object_sorage_bucket resource.
@@ -76,6 +78,8 @@ class ProviderArgs:
             pulumi.set(__self__, "min_retry_delay_ms", min_retry_delay_ms)
         if obj_access_key is not None:
             pulumi.set(__self__, "obj_access_key", obj_access_key)
+        if obj_bucket_force_delete is not None:
+            pulumi.set(__self__, "obj_bucket_force_delete", obj_bucket_force_delete)
         if obj_secret_key is not None:
             pulumi.set(__self__, "obj_secret_key", obj_secret_key)
         if obj_use_temp_keys is not None:
@@ -218,6 +222,18 @@ class ProviderArgs:
         pulumi.set(self, "obj_access_key", value)
 
     @property
+    @pulumi.getter(name="objBucketForceDelete")
+    def obj_bucket_force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
+        """
+        return pulumi.get(self, "obj_bucket_force_delete")
+
+    @obj_bucket_force_delete.setter
+    def obj_bucket_force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "obj_bucket_force_delete", value)
+
+    @property
     @pulumi.getter(name="objSecretKey")
     def obj_secret_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -330,6 +346,7 @@ class Provider(pulumi.ProviderResource):
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  obj_access_key: Optional[pulumi.Input[str]] = None,
+                 obj_bucket_force_delete: Optional[pulumi.Input[bool]] = None,
                  obj_secret_key: Optional[pulumi.Input[str]] = None,
                  obj_use_temp_keys: Optional[pulumi.Input[bool]] = None,
                  skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
@@ -357,6 +374,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[int] max_retry_delay_ms: Maximum delay in milliseconds before retrying a request.
         :param pulumi.Input[int] min_retry_delay_ms: Minimum delay in milliseconds before retrying a request.
         :param pulumi.Input[str] obj_access_key: The access key to be used in ObjectStorageBucket and linode_object_storage_object.
+        :param pulumi.Input[bool] obj_bucket_force_delete: If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
         :param pulumi.Input[str] obj_secret_key: The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
         :param pulumi.Input[bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
                linode_object_sorage_bucket resource.
@@ -404,6 +422,7 @@ class Provider(pulumi.ProviderResource):
                  max_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  min_retry_delay_ms: Optional[pulumi.Input[int]] = None,
                  obj_access_key: Optional[pulumi.Input[str]] = None,
+                 obj_bucket_force_delete: Optional[pulumi.Input[bool]] = None,
                  obj_secret_key: Optional[pulumi.Input[str]] = None,
                  obj_use_temp_keys: Optional[pulumi.Input[bool]] = None,
                  skip_implicit_reboots: Optional[pulumi.Input[bool]] = None,
@@ -433,6 +452,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["max_retry_delay_ms"] = pulumi.Output.from_input(max_retry_delay_ms).apply(pulumi.runtime.to_json) if max_retry_delay_ms is not None else None
             __props__.__dict__["min_retry_delay_ms"] = pulumi.Output.from_input(min_retry_delay_ms).apply(pulumi.runtime.to_json) if min_retry_delay_ms is not None else None
             __props__.__dict__["obj_access_key"] = obj_access_key
+            __props__.__dict__["obj_bucket_force_delete"] = pulumi.Output.from_input(obj_bucket_force_delete).apply(pulumi.runtime.to_json) if obj_bucket_force_delete is not None else None
             __props__.__dict__["obj_secret_key"] = None if obj_secret_key is None else pulumi.Output.secret(obj_secret_key)
             __props__.__dict__["obj_use_temp_keys"] = pulumi.Output.from_input(obj_use_temp_keys).apply(pulumi.runtime.to_json) if obj_use_temp_keys is not None else None
             __props__.__dict__["skip_implicit_reboots"] = pulumi.Output.from_input(skip_implicit_reboots).apply(pulumi.runtime.to_json) if skip_implicit_reboots is not None else None
