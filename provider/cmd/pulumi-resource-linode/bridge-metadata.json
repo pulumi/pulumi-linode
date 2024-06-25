@@ -223,6 +223,9 @@
                     "metadata": {
                         "maxItemsOne": false
                     },
+                    "placement_group": {
+                        "maxItemsOne": true
+                    },
                     "shared_ipv4": {
                         "maxItemsOne": false
                     },
@@ -437,6 +440,19 @@
             },
             "linode_object_storage_object": {
                 "current": "linode:index/objectStorageObject:ObjectStorageObject",
+                "majorVersion": 4
+            },
+            "linode_placement_group": {
+                "current": "linode:index/placementGroup:PlacementGroup",
+                "majorVersion": 4,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_placement_group_assignment": {
+                "current": "linode:index/placementGroupAssignment:PlacementGroupAssignment",
                 "majorVersion": 4
             },
             "linode_rdns": {
@@ -1487,6 +1503,41 @@
                 "current": "linode:index/getObjectStorageCluster:getObjectStorageCluster",
                 "majorVersion": 4
             },
+            "linode_placement_group": {
+                "current": "linode:index/getPlacementGroup:getPlacementGroup",
+                "majorVersion": 4,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_placement_groups": {
+                "current": "linode:index/getPlacementGroups:getPlacementGroups",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "placement_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "members": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_profile": {
                 "current": "linode:index/getProfile:getProfile",
                 "majorVersion": 4,
@@ -1504,6 +1555,9 @@
                 "majorVersion": 4,
                 "fields": {
                     "capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "placement_group_limits": {
                         "maxItemsOne": false
                     },
                     "resolvers": {
@@ -1530,6 +1584,9 @@
                         "elem": {
                             "fields": {
                                 "capabilities": {
+                                    "maxItemsOne": false
+                                },
+                                "placement_group_limits": {
                                     "maxItemsOne": false
                                 },
                                 "resolvers": {
@@ -1882,6 +1939,8 @@
             "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
             "linode:index/objectStorageKey:ObjectStorageKey": 1,
             "linode:index/objectStorageObject:ObjectStorageObject": 0,
+            "linode:index/placementGroup:PlacementGroup": 1,
+            "linode:index/placementGroupAssignment:PlacementGroupAssignment": 1,
             "linode:index/rdns:Rdns": 1,
             "linode:index/sshKey:SshKey": 1,
             "linode:index/stackScript:StackScript": 1,
@@ -1934,6 +1993,8 @@
             "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": 1,
             "linode:index/getNodebalancers:getNodebalancers": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
+            "linode:index/getPlacementGroup:getPlacementGroup": 1,
+            "linode:index/getPlacementGroups:getPlacementGroups": 1,
             "linode:index/getProfile:getProfile": 1,
             "linode:index/getRegion:getRegion": 1,
             "linode:index/getRegions:getRegions": 1,
