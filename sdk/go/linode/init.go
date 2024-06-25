@@ -65,6 +65,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ObjectStorageKey{}
 	case "linode:index/objectStorageObject:ObjectStorageObject":
 		r = &ObjectStorageObject{}
+	case "linode:index/placementGroup:PlacementGroup":
+		r = &PlacementGroup{}
+	case "linode:index/placementGroupAssignment:PlacementGroupAssignment":
+		r = &PlacementGroupAssignment{}
 	case "linode:index/rdns:Rdns":
 		r = &Rdns{}
 	case "linode:index/sshKey:SshKey":
@@ -220,6 +224,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/objectStorageObject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/placementGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/placementGroupAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

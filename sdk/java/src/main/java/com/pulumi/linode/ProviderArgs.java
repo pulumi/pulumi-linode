@@ -169,6 +169,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+     * 
+     */
+    @Import(name="objBucketForceDelete", json=true)
+    private @Nullable Output<Boolean> objBucketForceDelete;
+
+    /**
+     * @return If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+     * 
+     */
+    public Optional<Output<Boolean>> objBucketForceDelete() {
+        return Optional.ofNullable(this.objBucketForceDelete);
+    }
+
+    /**
      * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      * 
      */
@@ -303,6 +318,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.maxRetryDelayMs = $.maxRetryDelayMs;
         this.minRetryDelayMs = $.minRetryDelayMs;
         this.objAccessKey = $.objAccessKey;
+        this.objBucketForceDelete = $.objBucketForceDelete;
         this.objSecretKey = $.objSecretKey;
         this.objUseTempKeys = $.objUseTempKeys;
         this.skipImplicitReboots = $.skipImplicitReboots;
@@ -539,6 +555,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder objAccessKey(String objAccessKey) {
             return objAccessKey(Output.of(objAccessKey));
+        }
+
+        /**
+         * @param objBucketForceDelete If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objBucketForceDelete(@Nullable Output<Boolean> objBucketForceDelete) {
+            $.objBucketForceDelete = objBucketForceDelete;
+            return this;
+        }
+
+        /**
+         * @param objBucketForceDelete If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objBucketForceDelete(Boolean objBucketForceDelete) {
+            return objBucketForceDelete(Output.of(objBucketForceDelete));
         }
 
         /**

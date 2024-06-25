@@ -33,7 +33,7 @@ public final class InstanceConfig {
      */
     private @Nullable InstanceConfigHelpers helpers;
     /**
-     * @return The unique ID of this Config.
+     * @return The ID of the Placement Group.
      * 
      */
     private @Nullable Integer id;
@@ -96,7 +96,7 @@ public final class InstanceConfig {
         return Optional.ofNullable(this.helpers);
     }
     /**
-     * @return The unique ID of this Config.
+     * @return The ID of the Placement Group.
      * 
      */
     public Optional<Integer> id() {

@@ -42,6 +42,18 @@ namespace Pulumi.Linode.Inputs
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
+        [Input("placementGroupLimits", required: true)]
+        private InputList<Inputs.GetRegionsRegionPlacementGroupLimitInputArgs>? _placementGroupLimits;
+
+        /// <summary>
+        /// Information about placement groups limits for this region.
+        /// </summary>
+        public InputList<Inputs.GetRegionsRegionPlacementGroupLimitInputArgs> PlacementGroupLimits
+        {
+            get => _placementGroupLimits ?? (_placementGroupLimits = new InputList<Inputs.GetRegionsRegionPlacementGroupLimitInputArgs>());
+            set => _placementGroupLimits = value;
+        }
+
         [Input("resolvers")]
         private InputList<Inputs.GetRegionsRegionResolverInputArgs>? _resolvers;
         public InputList<Inputs.GetRegionsRegionResolverInputArgs> Resolvers

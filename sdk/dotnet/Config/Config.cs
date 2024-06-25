@@ -132,6 +132,16 @@ namespace Pulumi.Linode
             set => _objAccessKey.Set(value);
         }
 
+        private static readonly __Value<bool?> _objBucketForceDelete = new __Value<bool?>(() => __config.GetBoolean("objBucketForceDelete"));
+        /// <summary>
+        /// If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+        /// </summary>
+        public static bool? ObjBucketForceDelete
+        {
+            get => _objBucketForceDelete.Get();
+            set => _objBucketForceDelete.Set(value);
+        }
+
         private static readonly __Value<string?> _objSecretKey = new __Value<string?>(() => __config.Get("objSecretKey"));
         /// <summary>
         /// The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.

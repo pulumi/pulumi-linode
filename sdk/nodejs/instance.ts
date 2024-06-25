@@ -115,6 +115,27 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Linode Instance Assigned to a Placement Group
+ *
+ * **NOTE: Placement Groups may not currently be available to all users.**
+ *
+ * The following example shows how one might use this resource to configure a Linode instance assigned to a
+ * Placement Group.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     region: "us-mia",
+ *     type: "g6-standard-1",
+ *     placementGroup: {
+ *         id: 12345,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Linodes Instances can be imported using the Linode `id`, e.g.
@@ -258,6 +279,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly migrationType!: pulumi.Output<string | undefined>;
     /**
+     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     */
+    public readonly placementGroup!: pulumi.Output<outputs.InstancePlacementGroup | undefined>;
+    /**
+     * If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     */
+    public readonly placementGroupExternallyManaged!: pulumi.Output<boolean | undefined>;
+    /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
     public readonly privateIp!: pulumi.Output<boolean | undefined>;
@@ -291,6 +320,8 @@ export class Instance extends pulumi.CustomResource {
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      *
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     *
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     public readonly sharedIpv4s!: pulumi.Output<string[]>;
     /**
@@ -366,6 +397,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["migrationType"] = state ? state.migrationType : undefined;
+            resourceInputs["placementGroup"] = state ? state.placementGroup : undefined;
+            resourceInputs["placementGroupExternallyManaged"] = state ? state.placementGroupExternallyManaged : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -401,6 +434,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["migrationType"] = args ? args.migrationType : undefined;
+            resourceInputs["placementGroup"] = args ? args.placementGroup : undefined;
+            resourceInputs["placementGroupExternallyManaged"] = args ? args.placementGroupExternallyManaged : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
@@ -534,6 +569,14 @@ export interface InstanceState {
      */
     migrationType?: pulumi.Input<string>;
     /**
+     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     */
+    placementGroup?: pulumi.Input<inputs.InstancePlacementGroup>;
+    /**
+     * If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     */
+    placementGroupExternallyManaged?: pulumi.Input<boolean>;
+    /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
     privateIp?: pulumi.Input<boolean>;
@@ -567,6 +610,8 @@ export interface InstanceState {
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      *
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     *
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -689,6 +734,14 @@ export interface InstanceArgs {
      */
     migrationType?: pulumi.Input<string>;
     /**
+     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     */
+    placementGroup?: pulumi.Input<inputs.InstancePlacementGroup>;
+    /**
+     * If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     */
+    placementGroupExternallyManaged?: pulumi.Input<boolean>;
+    /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
     privateIp?: pulumi.Input<boolean>;
@@ -718,6 +771,8 @@ export interface InstanceArgs {
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      *
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     *
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**

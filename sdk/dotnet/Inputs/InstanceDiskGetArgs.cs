@@ -43,7 +43,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Filesystem { get; set; }
 
         /// <summary>
-        /// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+        /// The ID of the Placement Group.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }

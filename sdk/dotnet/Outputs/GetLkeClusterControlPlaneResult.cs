@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClusterControlPlaneResult
     {
         /// <summary>
-        /// The ACL configuration for an LKE cluster's control plane.
+        /// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneAclResult> Acls;
         /// <summary>

@@ -39,6 +39,7 @@ __all__ = [
     'InstanceInterfaceIpv4',
     'InstanceIpVpcNat11',
     'InstanceMetadata',
+    'InstancePlacementGroup',
     'InstanceSpecs',
     'LkeClusterControlPlane',
     'LkeClusterControlPlaneAcl',
@@ -58,6 +59,7 @@ __all__ = [
     'ObjectStorageBucketLifecycleRuleExpiration',
     'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration',
     'ObjectStorageKeyBucketAccess',
+    'PlacementGroupMember',
     'RdnsTimeouts',
     'StackScriptUserDefinedField',
     'UserDomainGrant',
@@ -182,10 +184,16 @@ __all__ = [
     'GetNodebalancersFilterResult',
     'GetNodebalancersNodebalancerResult',
     'GetNodebalancersNodebalancerTransferResult',
+    'GetPlacementGroupMemberResult',
+    'GetPlacementGroupsFilterResult',
+    'GetPlacementGroupsPlacementGroupResult',
+    'GetPlacementGroupsPlacementGroupMemberResult',
     'GetProfileReferralsResult',
+    'GetRegionPlacementGroupLimitResult',
     'GetRegionResolverResult',
     'GetRegionsFilterResult',
     'GetRegionsRegionResult',
+    'GetRegionsRegionPlacementGroupLimitResult',
     'GetRegionsRegionResolverResult',
     'GetSshkeysFilterResult',
     'GetSshkeysSshkeyResult',
@@ -852,7 +860,7 @@ class InstanceConfig(dict):
         :param str comments: Optional field for arbitrary User comments on this Config.
         :param 'InstanceConfigDevicesArgs' devices: Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
         :param 'InstanceConfigHelpersArgs' helpers: Helpers enabled when booting to this Linode Config.
-        :param int id: The unique ID of this Config.
+        :param int id: The ID of the Placement Group.
         :param Sequence['InstanceConfigInterfaceArgs'] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
         :param int memory_limit: Defaults to the total RAM of the Linode
@@ -918,7 +926,7 @@ class InstanceConfig(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The unique ID of this Config.
+        The ID of the Placement Group.
         """
         return pulumi.get(self, "id")
 
@@ -1713,7 +1721,7 @@ class InstanceConfigInterface(dict):
         """
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param bool active: Whether this interface is currently booted and active.
-        :param int id: The ID of the interface.
+        :param int id: The ID of the Placement Group.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         :param 'InstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -1766,7 +1774,7 @@ class InstanceConfigInterface(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the interface.
+        The ID of the Placement Group.
         """
         return pulumi.get(self, "id")
 
@@ -1909,7 +1917,7 @@ class InstanceDisk(dict):
         :param Sequence[str] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
         :param Sequence[str] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         :param str filesystem: The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
-        :param int id: The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+        :param int id: The ID of the Placement Group.
         :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
         :param bool read_only: If true, this Disk is read-only.
         :param str root_pass: The password that will be initialially assigned to the 'root' user account.
@@ -1981,7 +1989,7 @@ class InstanceDisk(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+        The ID of the Placement Group.
         """
         return pulumi.get(self, "id")
 
@@ -2108,7 +2116,7 @@ class InstanceInterface(dict):
         """
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param bool active: Whether this interface is currently booted and active.
-        :param int id: The ID of the interface.
+        :param int id: The ID of the Placement Group.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         :param 'InstanceInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -2161,7 +2169,7 @@ class InstanceInterface(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the interface.
+        The ID of the Placement Group.
         """
         return pulumi.get(self, "id")
 
@@ -2345,6 +2353,89 @@ class InstanceMetadata(dict):
 
 
 @pulumi.output_type
+class InstancePlacementGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "affinityType":
+            suggest = "affinity_type"
+        elif key == "compliantOnly":
+            suggest = "compliant_only"
+        elif key == "isStrict":
+            suggest = "is_strict"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePlacementGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePlacementGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePlacementGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: int,
+                 affinity_type: Optional[str] = None,
+                 compliant_only: Optional[bool] = None,
+                 is_strict: Optional[bool] = None,
+                 label: Optional[str] = None):
+        """
+        :param int id: The ID of the Placement Group.
+        :param str affinity_type: The affinity policy enforced by the Placement Group.
+        :param bool is_strict: Whether the Placement Group enforces strict compliance.
+        :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        """
+        pulumi.set(__self__, "id", id)
+        if affinity_type is not None:
+            pulumi.set(__self__, "affinity_type", affinity_type)
+        if compliant_only is not None:
+            pulumi.set(__self__, "compliant_only", compliant_only)
+        if is_strict is not None:
+            pulumi.set(__self__, "is_strict", is_strict)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the Placement Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="affinityType")
+    def affinity_type(self) -> Optional[str]:
+        """
+        The affinity policy enforced by the Placement Group.
+        """
+        return pulumi.get(self, "affinity_type")
+
+    @property
+    @pulumi.getter(name="compliantOnly")
+    def compliant_only(self) -> Optional[bool]:
+        return pulumi.get(self, "compliant_only")
+
+    @property
+    @pulumi.getter(name="isStrict")
+    def is_strict(self) -> Optional[bool]:
+        """
+        Whether the Placement Group enforces strict compliance.
+        """
+        return pulumi.get(self, "is_strict")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        """
+        return pulumi.get(self, "label")
+
+
+@pulumi.output_type
 class InstanceSpecs(dict):
     def __init__(__self__, *,
                  disk: Optional[int] = None,
@@ -2425,7 +2516,7 @@ class LkeClusterControlPlane(dict):
         :param 'LkeClusterControlPlaneAclArgs' acl: Defines the ACL configuration for an LKE cluster's control plane.
         :param bool high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
                
-               * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+               * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -2446,7 +2537,7 @@ class LkeClusterControlPlane(dict):
         """
         Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 
-        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
         """
         return pulumi.get(self, "high_availability")
 
@@ -3406,6 +3497,54 @@ class ObjectStorageKeyBucketAccess(dict):
         This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class PlacementGroupMember(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isCompliant":
+            suggest = "is_compliant"
+        elif key == "linodeId":
+            suggest = "linode_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PlacementGroupMember. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PlacementGroupMember.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PlacementGroupMember.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_compliant: bool,
+                 linode_id: int):
+        """
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "is_compliant", is_compliant)
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="isCompliant")
+    def is_compliant(self) -> bool:
+        """
+        Whether this Linode is currently compliant with the group's affinity policy.
+        """
+        return pulumi.get(self, "is_compliant")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
 
 
 @pulumi.output_type
@@ -9727,7 +9866,7 @@ class GetLkeClusterControlPlaneResult(dict):
                  acls: Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']] = None):
         """
         :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
-        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane.
+        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
         """
         pulumi.set(__self__, "high_availability", high_availability)
         if acls is not None:
@@ -9745,7 +9884,7 @@ class GetLkeClusterControlPlaneResult(dict):
     @pulumi.getter
     def acls(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']]:
         """
-        The ACL configuration for an LKE cluster's control plane.
+        The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
         """
         return pulumi.get(self, "acls")
 
@@ -11012,6 +11151,190 @@ class GetNodebalancersNodebalancerTransferResult(dict):
 
 
 @pulumi.output_type
+class GetPlacementGroupMemberResult(dict):
+    def __init__(__self__, *,
+                 is_compliant: bool,
+                 linode_id: int):
+        """
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "is_compliant", is_compliant)
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="isCompliant")
+    def is_compliant(self) -> bool:
+        """
+        Whether this Linode is currently compliant with the group's affinity policy.
+        """
+        return pulumi.get(self, "is_compliant")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
+class GetPlacementGroupsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetPlacementGroupsPlacementGroupResult(dict):
+    def __init__(__self__, *,
+                 affinity_type: str,
+                 id: int,
+                 is_compliant: bool,
+                 is_strict: bool,
+                 label: str,
+                 region: str,
+                 members: Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']] = None):
+        """
+        :param str affinity_type: The affinity policy to use when placing Linodes in this group.
+        :param int id: The ID of the placement group.
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param bool is_strict: Whether Linodes must be able to become compliant during assignment. (Default `true`)
+        :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        :param str region: The region of the Placement Group.
+        :param Sequence['GetPlacementGroupsPlacementGroupMemberArgs'] members: A set of Linodes currently assigned to this Placement Group.
+        """
+        pulumi.set(__self__, "affinity_type", affinity_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_compliant", is_compliant)
+        pulumi.set(__self__, "is_strict", is_strict)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+
+    @property
+    @pulumi.getter(name="affinityType")
+    def affinity_type(self) -> str:
+        """
+        The affinity policy to use when placing Linodes in this group.
+        """
+        return pulumi.get(self, "affinity_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the placement group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isCompliant")
+    def is_compliant(self) -> bool:
+        """
+        Whether this Linode is currently compliant with the group's affinity policy.
+        """
+        return pulumi.get(self, "is_compliant")
+
+    @property
+    @pulumi.getter(name="isStrict")
+    def is_strict(self) -> bool:
+        """
+        Whether Linodes must be able to become compliant during assignment. (Default `true`)
+        """
+        return pulumi.get(self, "is_strict")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of the Placement Group.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']]:
+        """
+        A set of Linodes currently assigned to this Placement Group.
+        """
+        return pulumi.get(self, "members")
+
+
+@pulumi.output_type
+class GetPlacementGroupsPlacementGroupMemberResult(dict):
+    def __init__(__self__, *,
+                 is_compliant: bool,
+                 linode_id: int):
+        """
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "is_compliant", is_compliant)
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="isCompliant")
+    def is_compliant(self) -> bool:
+        """
+        Whether this Linode is currently compliant with the group's affinity policy.
+        """
+        return pulumi.get(self, "is_compliant")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
 class GetProfileReferralsResult(dict):
     def __init__(__self__, *,
                  code: str,
@@ -11082,6 +11405,35 @@ class GetProfileReferralsResult(dict):
         The referral URL.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetRegionPlacementGroupLimitResult(dict):
+    def __init__(__self__, *,
+                 maximum_linodes_per_pg: int,
+                 maximum_pgs_per_customer: int):
+        """
+        :param int maximum_linodes_per_pg: The maximum number of Linodes allowed to be assigned to a placement group in this region.
+        :param int maximum_pgs_per_customer: The maximum number of placement groups allowed for the current user in this region.
+        """
+        pulumi.set(__self__, "maximum_linodes_per_pg", maximum_linodes_per_pg)
+        pulumi.set(__self__, "maximum_pgs_per_customer", maximum_pgs_per_customer)
+
+    @property
+    @pulumi.getter(name="maximumLinodesPerPg")
+    def maximum_linodes_per_pg(self) -> int:
+        """
+        The maximum number of Linodes allowed to be assigned to a placement group in this region.
+        """
+        return pulumi.get(self, "maximum_linodes_per_pg")
+
+    @property
+    @pulumi.getter(name="maximumPgsPerCustomer")
+    def maximum_pgs_per_customer(self) -> int:
+        """
+        The maximum number of placement groups allowed for the current user in this region.
+        """
+        return pulumi.get(self, "maximum_pgs_per_customer")
 
 
 @pulumi.output_type
@@ -11161,6 +11513,7 @@ class GetRegionsRegionResult(dict):
                  country: str,
                  id: str,
                  label: str,
+                 placement_group_limits: Sequence['outputs.GetRegionsRegionPlacementGroupLimitResult'],
                  site_type: str,
                  status: str,
                  resolvers: Optional[Sequence['outputs.GetRegionsRegionResolverResult']] = None):
@@ -11169,6 +11522,7 @@ class GetRegionsRegionResult(dict):
         :param str country: The country the region resides in.
         :param str id: The unique ID of this Region.
         :param str label: Detailed location information for this Region, including city, state or region, and country.
+        :param Sequence['GetRegionsRegionPlacementGroupLimitArgs'] placement_group_limits: Information about placement groups limits for this region.
         :param str site_type: The type of this region.
         :param str status: This region’s current operational status (ok or outage).
         """
@@ -11176,6 +11530,7 @@ class GetRegionsRegionResult(dict):
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "placement_group_limits", placement_group_limits)
         pulumi.set(__self__, "site_type", site_type)
         pulumi.set(__self__, "status", status)
         if resolvers is not None:
@@ -11214,6 +11569,14 @@ class GetRegionsRegionResult(dict):
         return pulumi.get(self, "label")
 
     @property
+    @pulumi.getter(name="placementGroupLimits")
+    def placement_group_limits(self) -> Sequence['outputs.GetRegionsRegionPlacementGroupLimitResult']:
+        """
+        Information about placement groups limits for this region.
+        """
+        return pulumi.get(self, "placement_group_limits")
+
+    @property
     @pulumi.getter(name="siteType")
     def site_type(self) -> str:
         """
@@ -11233,6 +11596,35 @@ class GetRegionsRegionResult(dict):
     @pulumi.getter
     def resolvers(self) -> Optional[Sequence['outputs.GetRegionsRegionResolverResult']]:
         return pulumi.get(self, "resolvers")
+
+
+@pulumi.output_type
+class GetRegionsRegionPlacementGroupLimitResult(dict):
+    def __init__(__self__, *,
+                 maximum_linodes_per_pg: int,
+                 maximum_pgs_per_customer: int):
+        """
+        :param int maximum_linodes_per_pg: The maximum number of Linodes allowed to be assigned to a placement group in this region.
+        :param int maximum_pgs_per_customer: The maximum number of placement groups allowed for the current user in this region.
+        """
+        pulumi.set(__self__, "maximum_linodes_per_pg", maximum_linodes_per_pg)
+        pulumi.set(__self__, "maximum_pgs_per_customer", maximum_pgs_per_customer)
+
+    @property
+    @pulumi.getter(name="maximumLinodesPerPg")
+    def maximum_linodes_per_pg(self) -> int:
+        """
+        The maximum number of Linodes allowed to be assigned to a placement group in this region.
+        """
+        return pulumi.get(self, "maximum_linodes_per_pg")
+
+    @property
+    @pulumi.getter(name="maximumPgsPerCustomer")
+    def maximum_pgs_per_customer(self) -> int:
+        """
+        The maximum number of placement groups allowed for the current user in this region.
+        """
+        return pulumi.get(self, "maximum_pgs_per_customer")
 
 
 @pulumi.output_type

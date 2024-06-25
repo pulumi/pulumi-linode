@@ -174,6 +174,35 @@ namespace Pulumi.Linode
     /// });
     /// ```
     /// 
+    /// ### Linode Instance Assigned to a Placement Group
+    /// 
+    /// **NOTE: Placement Groups may not currently be available to all users.**
+    /// 
+    /// The following example shows how one might use this resource to configure a Linode instance assigned to a
+    /// Placement Group.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Region = "us-mia",
+    ///         Type = "g6-standard-1",
+    ///         PlacementGroup = new Linode.Inputs.InstancePlacementGroupArgs
+    ///         {
+    ///             Id = 12345,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Linodes Instances can be imported using the Linode `id`, e.g.
@@ -329,6 +358,18 @@ namespace Pulumi.Linode
         public Output<string?> MigrationType { get; private set; } = null!;
 
         /// <summary>
+        /// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        /// </summary>
+        [Output("placementGroup")]
+        public Output<Outputs.InstancePlacementGroup?> PlacementGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+        /// </summary>
+        [Output("placementGroupExternallyManaged")]
+        public Output<bool?> PlacementGroupExternallyManaged { get; private set; } = null!;
+
+        /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         /// </summary>
         [Output("privateIp")]
@@ -372,6 +413,8 @@ namespace Pulumi.Linode
         /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         /// 
         /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        /// 
+        /// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         /// </summary>
         [Output("sharedIpv4s")]
         public Output<ImmutableArray<string>> SharedIpv4s { get; private set; } = null!;
@@ -619,6 +662,18 @@ namespace Pulumi.Linode
         public Input<string>? MigrationType { get; set; }
 
         /// <summary>
+        /// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        /// </summary>
+        [Input("placementGroup")]
+        public Input<Inputs.InstancePlacementGroupArgs>? PlacementGroup { get; set; }
+
+        /// <summary>
+        /// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+        /// </summary>
+        [Input("placementGroupExternallyManaged")]
+        public Input<bool>? PlacementGroupExternallyManaged { get; set; }
+
+        /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         /// </summary>
         [Input("privateIp")]
@@ -669,6 +724,8 @@ namespace Pulumi.Linode
         /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         /// 
         /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        /// 
+        /// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         /// </summary>
         public InputList<string> SharedIpv4s
         {
@@ -922,6 +979,18 @@ namespace Pulumi.Linode
         public Input<string>? MigrationType { get; set; }
 
         /// <summary>
+        /// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        /// </summary>
+        [Input("placementGroup")]
+        public Input<Inputs.InstancePlacementGroupGetArgs>? PlacementGroup { get; set; }
+
+        /// <summary>
+        /// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+        /// </summary>
+        [Input("placementGroupExternallyManaged")]
+        public Input<bool>? PlacementGroupExternallyManaged { get; set; }
+
+        /// <summary>
         /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
         /// </summary>
         [Input("privateIp")]
@@ -978,6 +1047,8 @@ namespace Pulumi.Linode
         /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         /// 
         /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        /// 
+        /// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         /// </summary>
         public InputList<string> SharedIpv4s
         {

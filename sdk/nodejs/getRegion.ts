@@ -59,6 +59,7 @@ export interface GetRegionResult {
      * Detailed location information for this Region, including city, state or region, and country.
      */
     readonly label: string;
+    readonly placementGroupLimits: outputs.GetRegionPlacementGroupLimit[];
     readonly resolvers?: outputs.GetRegionResolver[];
     /**
      * The type of this region.

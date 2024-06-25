@@ -36,14 +36,14 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the interface.
+     * The ID of the Placement Group.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the interface.
+     * @return The ID of the Placement Group.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -233,7 +233,7 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id The ID of the interface.
+         * @param id The ID of the Placement Group.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id The ID of the interface.
+         * @param id The ID of the Placement Group.
          * 
          * @return builder
          * 

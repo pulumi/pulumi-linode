@@ -16,7 +16,7 @@ namespace Pulumi.Linode.Inputs
         private List<Inputs.GetLkeClusterControlPlaneAclArgs>? _acls;
 
         /// <summary>
-        /// The ACL configuration for an LKE cluster's control plane.
+        /// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
         /// </summary>
         public List<Inputs.GetLkeClusterControlPlaneAclArgs> Acls
         {

@@ -1540,7 +1540,7 @@ type InstanceConfig struct {
 	Devices *InstanceConfigDevices `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers *InstanceConfigHelpers `pulumi:"helpers"`
-	// The unique ID of this Config.
+	// The ID of the Placement Group.
 	Id *int `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces []InstanceConfigInterface `pulumi:"interfaces"`
@@ -1576,7 +1576,7 @@ type InstanceConfigArgs struct {
 	Devices InstanceConfigDevicesPtrInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers InstanceConfigHelpersPtrInput `pulumi:"helpers"`
-	// The unique ID of this Config.
+	// The ID of the Placement Group.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces InstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
@@ -1660,7 +1660,7 @@ func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
-// The unique ID of this Config.
+// The ID of the Placement Group.
 func (o InstanceConfigOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -3606,7 +3606,7 @@ func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput 
 type InstanceConfigInterface struct {
 	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
-	// The ID of the interface.
+	// The ID of the Placement Group.
 	Id *int `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges []string `pulumi:"ipRanges"`
@@ -3644,7 +3644,7 @@ type InstanceConfigInterfaceInput interface {
 type InstanceConfigInterfaceArgs struct {
 	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
-	// The ID of the interface.
+	// The ID of the Placement Group.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
@@ -3724,7 +3724,7 @@ func (o InstanceConfigInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the interface.
+// The ID of the Placement Group.
 func (o InstanceConfigInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -3956,7 +3956,7 @@ type InstanceDiskType struct {
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
 	// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
 	Filesystem *string `pulumi:"filesystem"`
-	// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+	// The ID of the Placement Group.
 	Id *int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
 	Image *string `pulumi:"image"`
@@ -3992,7 +3992,7 @@ type InstanceDiskTypeArgs struct {
 	AuthorizedUsers pulumi.StringArrayInput `pulumi:"authorizedUsers"`
 	// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
 	Filesystem pulumi.StringPtrInput `pulumi:"filesystem"`
-	// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+	// The ID of the Placement Group.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
 	Image pulumi.StringPtrInput `pulumi:"image"`
@@ -4076,7 +4076,7 @@ func (o InstanceDiskTypeOutput) Filesystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *string { return v.Filesystem }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+// The ID of the Placement Group.
 func (o InstanceDiskTypeOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDiskType) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -4314,7 +4314,7 @@ func (o InstanceDiskTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type InstanceInterface struct {
 	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
-	// The ID of the interface.
+	// The ID of the Placement Group.
 	Id *int `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges []string `pulumi:"ipRanges"`
@@ -4352,7 +4352,7 @@ type InstanceInterfaceInput interface {
 type InstanceInterfaceArgs struct {
 	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
-	// The ID of the interface.
+	// The ID of the Placement Group.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
@@ -4432,7 +4432,7 @@ func (o InstanceInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the interface.
+// The ID of the Placement Group.
 func (o InstanceInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -4863,6 +4863,215 @@ func (o InstanceMetadataArrayOutput) Index(i pulumi.IntInput) InstanceMetadataOu
 	}).(InstanceMetadataOutput)
 }
 
+type InstancePlacementGroup struct {
+	// The affinity policy enforced by the Placement Group.
+	AffinityType  *string `pulumi:"affinityType"`
+	CompliantOnly *bool   `pulumi:"compliantOnly"`
+	// The ID of the Placement Group.
+	Id int `pulumi:"id"`
+	// Whether the Placement Group enforces strict compliance.
+	IsStrict *bool `pulumi:"isStrict"`
+	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+	Label *string `pulumi:"label"`
+}
+
+// InstancePlacementGroupInput is an input type that accepts InstancePlacementGroupArgs and InstancePlacementGroupOutput values.
+// You can construct a concrete instance of `InstancePlacementGroupInput` via:
+//
+//	InstancePlacementGroupArgs{...}
+type InstancePlacementGroupInput interface {
+	pulumi.Input
+
+	ToInstancePlacementGroupOutput() InstancePlacementGroupOutput
+	ToInstancePlacementGroupOutputWithContext(context.Context) InstancePlacementGroupOutput
+}
+
+type InstancePlacementGroupArgs struct {
+	// The affinity policy enforced by the Placement Group.
+	AffinityType  pulumi.StringPtrInput `pulumi:"affinityType"`
+	CompliantOnly pulumi.BoolPtrInput   `pulumi:"compliantOnly"`
+	// The ID of the Placement Group.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Whether the Placement Group enforces strict compliance.
+	IsStrict pulumi.BoolPtrInput `pulumi:"isStrict"`
+	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+}
+
+func (InstancePlacementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePlacementGroup)(nil)).Elem()
+}
+
+func (i InstancePlacementGroupArgs) ToInstancePlacementGroupOutput() InstancePlacementGroupOutput {
+	return i.ToInstancePlacementGroupOutputWithContext(context.Background())
+}
+
+func (i InstancePlacementGroupArgs) ToInstancePlacementGroupOutputWithContext(ctx context.Context) InstancePlacementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePlacementGroupOutput)
+}
+
+func (i InstancePlacementGroupArgs) ToInstancePlacementGroupPtrOutput() InstancePlacementGroupPtrOutput {
+	return i.ToInstancePlacementGroupPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePlacementGroupArgs) ToInstancePlacementGroupPtrOutputWithContext(ctx context.Context) InstancePlacementGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePlacementGroupOutput).ToInstancePlacementGroupPtrOutputWithContext(ctx)
+}
+
+// InstancePlacementGroupPtrInput is an input type that accepts InstancePlacementGroupArgs, InstancePlacementGroupPtr and InstancePlacementGroupPtrOutput values.
+// You can construct a concrete instance of `InstancePlacementGroupPtrInput` via:
+//
+//	        InstancePlacementGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePlacementGroupPtrInput interface {
+	pulumi.Input
+
+	ToInstancePlacementGroupPtrOutput() InstancePlacementGroupPtrOutput
+	ToInstancePlacementGroupPtrOutputWithContext(context.Context) InstancePlacementGroupPtrOutput
+}
+
+type instancePlacementGroupPtrType InstancePlacementGroupArgs
+
+func InstancePlacementGroupPtr(v *InstancePlacementGroupArgs) InstancePlacementGroupPtrInput {
+	return (*instancePlacementGroupPtrType)(v)
+}
+
+func (*instancePlacementGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePlacementGroup)(nil)).Elem()
+}
+
+func (i *instancePlacementGroupPtrType) ToInstancePlacementGroupPtrOutput() InstancePlacementGroupPtrOutput {
+	return i.ToInstancePlacementGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePlacementGroupPtrType) ToInstancePlacementGroupPtrOutputWithContext(ctx context.Context) InstancePlacementGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePlacementGroupPtrOutput)
+}
+
+type InstancePlacementGroupOutput struct{ *pulumi.OutputState }
+
+func (InstancePlacementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePlacementGroup)(nil)).Elem()
+}
+
+func (o InstancePlacementGroupOutput) ToInstancePlacementGroupOutput() InstancePlacementGroupOutput {
+	return o
+}
+
+func (o InstancePlacementGroupOutput) ToInstancePlacementGroupOutputWithContext(ctx context.Context) InstancePlacementGroupOutput {
+	return o
+}
+
+func (o InstancePlacementGroupOutput) ToInstancePlacementGroupPtrOutput() InstancePlacementGroupPtrOutput {
+	return o.ToInstancePlacementGroupPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePlacementGroupOutput) ToInstancePlacementGroupPtrOutputWithContext(ctx context.Context) InstancePlacementGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePlacementGroup) *InstancePlacementGroup {
+		return &v
+	}).(InstancePlacementGroupPtrOutput)
+}
+
+// The affinity policy enforced by the Placement Group.
+func (o InstancePlacementGroupOutput) AffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePlacementGroup) *string { return v.AffinityType }).(pulumi.StringPtrOutput)
+}
+
+func (o InstancePlacementGroupOutput) CompliantOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstancePlacementGroup) *bool { return v.CompliantOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Placement Group.
+func (o InstancePlacementGroupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v InstancePlacementGroup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Whether the Placement Group enforces strict compliance.
+func (o InstancePlacementGroupOutput) IsStrict() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstancePlacementGroup) *bool { return v.IsStrict }).(pulumi.BoolPtrOutput)
+}
+
+// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+func (o InstancePlacementGroupOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePlacementGroup) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+type InstancePlacementGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePlacementGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePlacementGroup)(nil)).Elem()
+}
+
+func (o InstancePlacementGroupPtrOutput) ToInstancePlacementGroupPtrOutput() InstancePlacementGroupPtrOutput {
+	return o
+}
+
+func (o InstancePlacementGroupPtrOutput) ToInstancePlacementGroupPtrOutputWithContext(ctx context.Context) InstancePlacementGroupPtrOutput {
+	return o
+}
+
+func (o InstancePlacementGroupPtrOutput) Elem() InstancePlacementGroupOutput {
+	return o.ApplyT(func(v *InstancePlacementGroup) InstancePlacementGroup {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePlacementGroup
+		return ret
+	}).(InstancePlacementGroupOutput)
+}
+
+// The affinity policy enforced by the Placement Group.
+func (o InstancePlacementGroupPtrOutput) AffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePlacementGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AffinityType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstancePlacementGroupPtrOutput) CompliantOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstancePlacementGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CompliantOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Placement Group.
+func (o InstancePlacementGroupPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePlacementGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the Placement Group enforces strict compliance.
+func (o InstancePlacementGroupPtrOutput) IsStrict() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstancePlacementGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsStrict
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+func (o InstancePlacementGroupPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePlacementGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceSpecs struct {
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk *int `pulumi:"disk"`
@@ -5062,7 +5271,7 @@ type LkeClusterControlPlane struct {
 	Acl *LkeClusterControlPlaneAcl `pulumi:"acl"`
 	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	//
-	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
 	HighAvailability *bool `pulumi:"highAvailability"`
 }
 
@@ -5082,7 +5291,7 @@ type LkeClusterControlPlaneArgs struct {
 	Acl LkeClusterControlPlaneAclPtrInput `pulumi:"acl"`
 	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	//
-	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
 	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
 }
 
@@ -5170,7 +5379,7 @@ func (o LkeClusterControlPlaneOutput) Acl() LkeClusterControlPlaneAclPtrOutput {
 
 // Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 //
-// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
 func (o LkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
 }
@@ -5211,7 +5420,7 @@ func (o LkeClusterControlPlanePtrOutput) Acl() LkeClusterControlPlaneAclPtrOutpu
 
 // Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 //
-// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
 func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
 		if v == nil {
@@ -7588,6 +7797,112 @@ func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) Object
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageKeyBucketAccess {
 		return vs[0].([]ObjectStorageKeyBucketAccess)[vs[1].(int)]
 	}).(ObjectStorageKeyBucketAccessOutput)
+}
+
+type PlacementGroupMember struct {
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant bool `pulumi:"isCompliant"`
+	// The ID of the Linode.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// PlacementGroupMemberInput is an input type that accepts PlacementGroupMemberArgs and PlacementGroupMemberOutput values.
+// You can construct a concrete instance of `PlacementGroupMemberInput` via:
+//
+//	PlacementGroupMemberArgs{...}
+type PlacementGroupMemberInput interface {
+	pulumi.Input
+
+	ToPlacementGroupMemberOutput() PlacementGroupMemberOutput
+	ToPlacementGroupMemberOutputWithContext(context.Context) PlacementGroupMemberOutput
+}
+
+type PlacementGroupMemberArgs struct {
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant pulumi.BoolInput `pulumi:"isCompliant"`
+	// The ID of the Linode.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (PlacementGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementGroupMember)(nil)).Elem()
+}
+
+func (i PlacementGroupMemberArgs) ToPlacementGroupMemberOutput() PlacementGroupMemberOutput {
+	return i.ToPlacementGroupMemberOutputWithContext(context.Background())
+}
+
+func (i PlacementGroupMemberArgs) ToPlacementGroupMemberOutputWithContext(ctx context.Context) PlacementGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementGroupMemberOutput)
+}
+
+// PlacementGroupMemberArrayInput is an input type that accepts PlacementGroupMemberArray and PlacementGroupMemberArrayOutput values.
+// You can construct a concrete instance of `PlacementGroupMemberArrayInput` via:
+//
+//	PlacementGroupMemberArray{ PlacementGroupMemberArgs{...} }
+type PlacementGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToPlacementGroupMemberArrayOutput() PlacementGroupMemberArrayOutput
+	ToPlacementGroupMemberArrayOutputWithContext(context.Context) PlacementGroupMemberArrayOutput
+}
+
+type PlacementGroupMemberArray []PlacementGroupMemberInput
+
+func (PlacementGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PlacementGroupMember)(nil)).Elem()
+}
+
+func (i PlacementGroupMemberArray) ToPlacementGroupMemberArrayOutput() PlacementGroupMemberArrayOutput {
+	return i.ToPlacementGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i PlacementGroupMemberArray) ToPlacementGroupMemberArrayOutputWithContext(ctx context.Context) PlacementGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementGroupMemberArrayOutput)
+}
+
+type PlacementGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (PlacementGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementGroupMember)(nil)).Elem()
+}
+
+func (o PlacementGroupMemberOutput) ToPlacementGroupMemberOutput() PlacementGroupMemberOutput {
+	return o
+}
+
+func (o PlacementGroupMemberOutput) ToPlacementGroupMemberOutputWithContext(ctx context.Context) PlacementGroupMemberOutput {
+	return o
+}
+
+// Whether this Linode is currently compliant with the group's affinity policy.
+func (o PlacementGroupMemberOutput) IsCompliant() pulumi.BoolOutput {
+	return o.ApplyT(func(v PlacementGroupMember) bool { return v.IsCompliant }).(pulumi.BoolOutput)
+}
+
+// The ID of the Linode.
+func (o PlacementGroupMemberOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v PlacementGroupMember) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type PlacementGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (PlacementGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PlacementGroupMember)(nil)).Elem()
+}
+
+func (o PlacementGroupMemberArrayOutput) ToPlacementGroupMemberArrayOutput() PlacementGroupMemberArrayOutput {
+	return o
+}
+
+func (o PlacementGroupMemberArrayOutput) ToPlacementGroupMemberArrayOutputWithContext(ctx context.Context) PlacementGroupMemberArrayOutput {
+	return o
+}
+
+func (o PlacementGroupMemberArrayOutput) Index(i pulumi.IntInput) PlacementGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PlacementGroupMember {
+		return vs[0].([]PlacementGroupMember)[vs[1].(int)]
+	}).(PlacementGroupMemberOutput)
 }
 
 type RdnsTimeouts struct {
@@ -20800,7 +21115,7 @@ func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOu
 }
 
 type GetLkeClusterControlPlane struct {
-	// The ACL configuration for an LKE cluster's control plane.
+	// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
 	Acls []GetLkeClusterControlPlaneAcl `pulumi:"acls"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
@@ -20818,7 +21133,7 @@ type GetLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClusterControlPlaneArgs struct {
-	// The ACL configuration for an LKE cluster's control plane.
+	// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
 	Acls GetLkeClusterControlPlaneAclArrayInput `pulumi:"acls"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
@@ -20875,7 +21190,7 @@ func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithCo
 	return o
 }
 
-// The ACL configuration for an LKE cluster's control plane.
+// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
 func (o GetLkeClusterControlPlaneOutput) Acls() GetLkeClusterControlPlaneAclArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterControlPlane) []GetLkeClusterControlPlaneAcl { return v.Acls }).(GetLkeClusterControlPlaneAclArrayOutput)
 }
@@ -23701,6 +24016,484 @@ func (o GetNodebalancersNodebalancerTransferArrayOutput) Index(i pulumi.IntInput
 	}).(GetNodebalancersNodebalancerTransferOutput)
 }
 
+type GetPlacementGroupMember struct {
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant bool `pulumi:"isCompliant"`
+	// The ID of the Linode.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetPlacementGroupMemberInput is an input type that accepts GetPlacementGroupMemberArgs and GetPlacementGroupMemberOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMemberInput` via:
+//
+//	GetPlacementGroupMemberArgs{...}
+type GetPlacementGroupMemberInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMemberOutput() GetPlacementGroupMemberOutput
+	ToGetPlacementGroupMemberOutputWithContext(context.Context) GetPlacementGroupMemberOutput
+}
+
+type GetPlacementGroupMemberArgs struct {
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant pulumi.BoolInput `pulumi:"isCompliant"`
+	// The ID of the Linode.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetPlacementGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMember)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMemberArgs) ToGetPlacementGroupMemberOutput() GetPlacementGroupMemberOutput {
+	return i.ToGetPlacementGroupMemberOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMemberArgs) ToGetPlacementGroupMemberOutputWithContext(ctx context.Context) GetPlacementGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMemberOutput)
+}
+
+// GetPlacementGroupMemberArrayInput is an input type that accepts GetPlacementGroupMemberArray and GetPlacementGroupMemberArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMemberArrayInput` via:
+//
+//	GetPlacementGroupMemberArray{ GetPlacementGroupMemberArgs{...} }
+type GetPlacementGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMemberArrayOutput() GetPlacementGroupMemberArrayOutput
+	ToGetPlacementGroupMemberArrayOutputWithContext(context.Context) GetPlacementGroupMemberArrayOutput
+}
+
+type GetPlacementGroupMemberArray []GetPlacementGroupMemberInput
+
+func (GetPlacementGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupMember)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMemberArray) ToGetPlacementGroupMemberArrayOutput() GetPlacementGroupMemberArrayOutput {
+	return i.ToGetPlacementGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMemberArray) ToGetPlacementGroupMemberArrayOutputWithContext(ctx context.Context) GetPlacementGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMemberArrayOutput)
+}
+
+type GetPlacementGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMember)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMemberOutput) ToGetPlacementGroupMemberOutput() GetPlacementGroupMemberOutput {
+	return o
+}
+
+func (o GetPlacementGroupMemberOutput) ToGetPlacementGroupMemberOutputWithContext(ctx context.Context) GetPlacementGroupMemberOutput {
+	return o
+}
+
+// Whether this Linode is currently compliant with the group's affinity policy.
+func (o GetPlacementGroupMemberOutput) IsCompliant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPlacementGroupMember) bool { return v.IsCompliant }).(pulumi.BoolOutput)
+}
+
+// The ID of the Linode.
+func (o GetPlacementGroupMemberOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupMember) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetPlacementGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupMember)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMemberArrayOutput) ToGetPlacementGroupMemberArrayOutput() GetPlacementGroupMemberArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupMemberArrayOutput) ToGetPlacementGroupMemberArrayOutputWithContext(ctx context.Context) GetPlacementGroupMemberArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupMemberArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupMember {
+		return vs[0].([]GetPlacementGroupMember)[vs[1].(int)]
+	}).(GetPlacementGroupMemberOutput)
+}
+
+type GetPlacementGroupsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetPlacementGroupsFilterInput is an input type that accepts GetPlacementGroupsFilterArgs and GetPlacementGroupsFilterOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsFilterInput` via:
+//
+//	GetPlacementGroupsFilterArgs{...}
+type GetPlacementGroupsFilterInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsFilterOutput() GetPlacementGroupsFilterOutput
+	ToGetPlacementGroupsFilterOutputWithContext(context.Context) GetPlacementGroupsFilterOutput
+}
+
+type GetPlacementGroupsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetPlacementGroupsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsFilter)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsFilterArgs) ToGetPlacementGroupsFilterOutput() GetPlacementGroupsFilterOutput {
+	return i.ToGetPlacementGroupsFilterOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsFilterArgs) ToGetPlacementGroupsFilterOutputWithContext(ctx context.Context) GetPlacementGroupsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsFilterOutput)
+}
+
+// GetPlacementGroupsFilterArrayInput is an input type that accepts GetPlacementGroupsFilterArray and GetPlacementGroupsFilterArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsFilterArrayInput` via:
+//
+//	GetPlacementGroupsFilterArray{ GetPlacementGroupsFilterArgs{...} }
+type GetPlacementGroupsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsFilterArrayOutput() GetPlacementGroupsFilterArrayOutput
+	ToGetPlacementGroupsFilterArrayOutputWithContext(context.Context) GetPlacementGroupsFilterArrayOutput
+}
+
+type GetPlacementGroupsFilterArray []GetPlacementGroupsFilterInput
+
+func (GetPlacementGroupsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsFilter)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsFilterArray) ToGetPlacementGroupsFilterArrayOutput() GetPlacementGroupsFilterArrayOutput {
+	return i.ToGetPlacementGroupsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsFilterArray) ToGetPlacementGroupsFilterArrayOutputWithContext(ctx context.Context) GetPlacementGroupsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsFilterArrayOutput)
+}
+
+type GetPlacementGroupsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsFilter)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsFilterOutput) ToGetPlacementGroupsFilterOutput() GetPlacementGroupsFilterOutput {
+	return o
+}
+
+func (o GetPlacementGroupsFilterOutput) ToGetPlacementGroupsFilterOutputWithContext(ctx context.Context) GetPlacementGroupsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetPlacementGroupsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPlacementGroupsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetPlacementGroupsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlacementGroupsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetPlacementGroupsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPlacementGroupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetPlacementGroupsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsFilter)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsFilterArrayOutput) ToGetPlacementGroupsFilterArrayOutput() GetPlacementGroupsFilterArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsFilterArrayOutput) ToGetPlacementGroupsFilterArrayOutputWithContext(ctx context.Context) GetPlacementGroupsFilterArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsFilterArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupsFilter {
+		return vs[0].([]GetPlacementGroupsFilter)[vs[1].(int)]
+	}).(GetPlacementGroupsFilterOutput)
+}
+
+type GetPlacementGroupsPlacementGroup struct {
+	// The affinity policy to use when placing Linodes in this group.
+	AffinityType string `pulumi:"affinityType"`
+	// The ID of the placement group.
+	Id int `pulumi:"id"`
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant bool `pulumi:"isCompliant"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
+	IsStrict bool `pulumi:"isStrict"`
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+	Label string `pulumi:"label"`
+	// A set of Linodes currently assigned to this Placement Group.
+	Members []GetPlacementGroupsPlacementGroupMember `pulumi:"members"`
+	// The region of the Placement Group.
+	Region string `pulumi:"region"`
+}
+
+// GetPlacementGroupsPlacementGroupInput is an input type that accepts GetPlacementGroupsPlacementGroupArgs and GetPlacementGroupsPlacementGroupOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupInput` via:
+//
+//	GetPlacementGroupsPlacementGroupArgs{...}
+type GetPlacementGroupsPlacementGroupInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupOutput() GetPlacementGroupsPlacementGroupOutput
+	ToGetPlacementGroupsPlacementGroupOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupOutput
+}
+
+type GetPlacementGroupsPlacementGroupArgs struct {
+	// The affinity policy to use when placing Linodes in this group.
+	AffinityType pulumi.StringInput `pulumi:"affinityType"`
+	// The ID of the placement group.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant pulumi.BoolInput `pulumi:"isCompliant"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
+	IsStrict pulumi.BoolInput `pulumi:"isStrict"`
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A set of Linodes currently assigned to this Placement Group.
+	Members GetPlacementGroupsPlacementGroupMemberArrayInput `pulumi:"members"`
+	// The region of the Placement Group.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetPlacementGroupsPlacementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroup)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupArgs) ToGetPlacementGroupsPlacementGroupOutput() GetPlacementGroupsPlacementGroupOutput {
+	return i.ToGetPlacementGroupsPlacementGroupOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupArgs) ToGetPlacementGroupsPlacementGroupOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupOutput)
+}
+
+// GetPlacementGroupsPlacementGroupArrayInput is an input type that accepts GetPlacementGroupsPlacementGroupArray and GetPlacementGroupsPlacementGroupArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupArrayInput` via:
+//
+//	GetPlacementGroupsPlacementGroupArray{ GetPlacementGroupsPlacementGroupArgs{...} }
+type GetPlacementGroupsPlacementGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupArrayOutput() GetPlacementGroupsPlacementGroupArrayOutput
+	ToGetPlacementGroupsPlacementGroupArrayOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupArrayOutput
+}
+
+type GetPlacementGroupsPlacementGroupArray []GetPlacementGroupsPlacementGroupInput
+
+func (GetPlacementGroupsPlacementGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroup)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupArray) ToGetPlacementGroupsPlacementGroupArrayOutput() GetPlacementGroupsPlacementGroupArrayOutput {
+	return i.ToGetPlacementGroupsPlacementGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupArray) ToGetPlacementGroupsPlacementGroupArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupArrayOutput)
+}
+
+type GetPlacementGroupsPlacementGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroup)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupOutput) ToGetPlacementGroupsPlacementGroupOutput() GetPlacementGroupsPlacementGroupOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupOutput) ToGetPlacementGroupsPlacementGroupOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupOutput {
+	return o
+}
+
+// The affinity policy to use when placing Linodes in this group.
+func (o GetPlacementGroupsPlacementGroupOutput) AffinityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) string { return v.AffinityType }).(pulumi.StringOutput)
+}
+
+// The ID of the placement group.
+func (o GetPlacementGroupsPlacementGroupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Whether this Linode is currently compliant with the group's affinity policy.
+func (o GetPlacementGroupsPlacementGroupOutput) IsCompliant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) bool { return v.IsCompliant }).(pulumi.BoolOutput)
+}
+
+// Whether Linodes must be able to become compliant during assignment. (Default `true`)
+func (o GetPlacementGroupsPlacementGroupOutput) IsStrict() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) bool { return v.IsStrict }).(pulumi.BoolOutput)
+}
+
+// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+func (o GetPlacementGroupsPlacementGroupOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A set of Linodes currently assigned to this Placement Group.
+func (o GetPlacementGroupsPlacementGroupOutput) Members() GetPlacementGroupsPlacementGroupMemberArrayOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) []GetPlacementGroupsPlacementGroupMember { return v.Members }).(GetPlacementGroupsPlacementGroupMemberArrayOutput)
+}
+
+// The region of the Placement Group.
+func (o GetPlacementGroupsPlacementGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetPlacementGroupsPlacementGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroup)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupArrayOutput) ToGetPlacementGroupsPlacementGroupArrayOutput() GetPlacementGroupsPlacementGroupArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupArrayOutput) ToGetPlacementGroupsPlacementGroupArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupsPlacementGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupsPlacementGroup {
+		return vs[0].([]GetPlacementGroupsPlacementGroup)[vs[1].(int)]
+	}).(GetPlacementGroupsPlacementGroupOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMember struct {
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant bool `pulumi:"isCompliant"`
+	// The ID of the Linode.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetPlacementGroupsPlacementGroupMemberInput is an input type that accepts GetPlacementGroupsPlacementGroupMemberArgs and GetPlacementGroupsPlacementGroupMemberOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMemberInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMemberArgs{...}
+type GetPlacementGroupsPlacementGroupMemberInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMemberOutput() GetPlacementGroupsPlacementGroupMemberOutput
+	ToGetPlacementGroupsPlacementGroupMemberOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMemberOutput
+}
+
+type GetPlacementGroupsPlacementGroupMemberArgs struct {
+	// Whether this Linode is currently compliant with the group's affinity policy.
+	IsCompliant pulumi.BoolInput `pulumi:"isCompliant"`
+	// The ID of the Linode.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetPlacementGroupsPlacementGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMember)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMemberArgs) ToGetPlacementGroupsPlacementGroupMemberOutput() GetPlacementGroupsPlacementGroupMemberOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMemberOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMemberArgs) ToGetPlacementGroupsPlacementGroupMemberOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMemberOutput)
+}
+
+// GetPlacementGroupsPlacementGroupMemberArrayInput is an input type that accepts GetPlacementGroupsPlacementGroupMemberArray and GetPlacementGroupsPlacementGroupMemberArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMemberArrayInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMemberArray{ GetPlacementGroupsPlacementGroupMemberArgs{...} }
+type GetPlacementGroupsPlacementGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMemberArrayOutput() GetPlacementGroupsPlacementGroupMemberArrayOutput
+	ToGetPlacementGroupsPlacementGroupMemberArrayOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMemberArrayOutput
+}
+
+type GetPlacementGroupsPlacementGroupMemberArray []GetPlacementGroupsPlacementGroupMemberInput
+
+func (GetPlacementGroupsPlacementGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroupMember)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMemberArray) ToGetPlacementGroupsPlacementGroupMemberArrayOutput() GetPlacementGroupsPlacementGroupMemberArrayOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMemberArray) ToGetPlacementGroupsPlacementGroupMemberArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMemberArrayOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMember)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMemberOutput) ToGetPlacementGroupsPlacementGroupMemberOutput() GetPlacementGroupsPlacementGroupMemberOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMemberOutput) ToGetPlacementGroupsPlacementGroupMemberOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMemberOutput {
+	return o
+}
+
+// Whether this Linode is currently compliant with the group's affinity policy.
+func (o GetPlacementGroupsPlacementGroupMemberOutput) IsCompliant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMember) bool { return v.IsCompliant }).(pulumi.BoolOutput)
+}
+
+// The ID of the Linode.
+func (o GetPlacementGroupsPlacementGroupMemberOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMember) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroupMember)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMemberArrayOutput) ToGetPlacementGroupsPlacementGroupMemberArrayOutput() GetPlacementGroupsPlacementGroupMemberArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMemberArrayOutput) ToGetPlacementGroupsPlacementGroupMemberArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMemberArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMemberArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupsPlacementGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupsPlacementGroupMember {
+		return vs[0].([]GetPlacementGroupsPlacementGroupMember)[vs[1].(int)]
+	}).(GetPlacementGroupsPlacementGroupMemberOutput)
+}
+
 type GetProfileReferrals struct {
 	// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
 	Code string `pulumi:"code"`
@@ -23796,6 +24589,112 @@ func (o GetProfileReferralsOutput) Total() pulumi.IntOutput {
 // The referral URL.
 func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetRegionPlacementGroupLimit struct {
+	// The maximum number of Linodes allowed to be assigned to a placement group in this region.
+	MaximumLinodesPerPg int `pulumi:"maximumLinodesPerPg"`
+	// The maximum number of placement groups allowed for the current user in this region.
+	MaximumPgsPerCustomer int `pulumi:"maximumPgsPerCustomer"`
+}
+
+// GetRegionPlacementGroupLimitInput is an input type that accepts GetRegionPlacementGroupLimitArgs and GetRegionPlacementGroupLimitOutput values.
+// You can construct a concrete instance of `GetRegionPlacementGroupLimitInput` via:
+//
+//	GetRegionPlacementGroupLimitArgs{...}
+type GetRegionPlacementGroupLimitInput interface {
+	pulumi.Input
+
+	ToGetRegionPlacementGroupLimitOutput() GetRegionPlacementGroupLimitOutput
+	ToGetRegionPlacementGroupLimitOutputWithContext(context.Context) GetRegionPlacementGroupLimitOutput
+}
+
+type GetRegionPlacementGroupLimitArgs struct {
+	// The maximum number of Linodes allowed to be assigned to a placement group in this region.
+	MaximumLinodesPerPg pulumi.IntInput `pulumi:"maximumLinodesPerPg"`
+	// The maximum number of placement groups allowed for the current user in this region.
+	MaximumPgsPerCustomer pulumi.IntInput `pulumi:"maximumPgsPerCustomer"`
+}
+
+func (GetRegionPlacementGroupLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (i GetRegionPlacementGroupLimitArgs) ToGetRegionPlacementGroupLimitOutput() GetRegionPlacementGroupLimitOutput {
+	return i.ToGetRegionPlacementGroupLimitOutputWithContext(context.Background())
+}
+
+func (i GetRegionPlacementGroupLimitArgs) ToGetRegionPlacementGroupLimitOutputWithContext(ctx context.Context) GetRegionPlacementGroupLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionPlacementGroupLimitOutput)
+}
+
+// GetRegionPlacementGroupLimitArrayInput is an input type that accepts GetRegionPlacementGroupLimitArray and GetRegionPlacementGroupLimitArrayOutput values.
+// You can construct a concrete instance of `GetRegionPlacementGroupLimitArrayInput` via:
+//
+//	GetRegionPlacementGroupLimitArray{ GetRegionPlacementGroupLimitArgs{...} }
+type GetRegionPlacementGroupLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionPlacementGroupLimitArrayOutput() GetRegionPlacementGroupLimitArrayOutput
+	ToGetRegionPlacementGroupLimitArrayOutputWithContext(context.Context) GetRegionPlacementGroupLimitArrayOutput
+}
+
+type GetRegionPlacementGroupLimitArray []GetRegionPlacementGroupLimitInput
+
+func (GetRegionPlacementGroupLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (i GetRegionPlacementGroupLimitArray) ToGetRegionPlacementGroupLimitArrayOutput() GetRegionPlacementGroupLimitArrayOutput {
+	return i.ToGetRegionPlacementGroupLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionPlacementGroupLimitArray) ToGetRegionPlacementGroupLimitArrayOutputWithContext(ctx context.Context) GetRegionPlacementGroupLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionPlacementGroupLimitArrayOutput)
+}
+
+type GetRegionPlacementGroupLimitOutput struct{ *pulumi.OutputState }
+
+func (GetRegionPlacementGroupLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (o GetRegionPlacementGroupLimitOutput) ToGetRegionPlacementGroupLimitOutput() GetRegionPlacementGroupLimitOutput {
+	return o
+}
+
+func (o GetRegionPlacementGroupLimitOutput) ToGetRegionPlacementGroupLimitOutputWithContext(ctx context.Context) GetRegionPlacementGroupLimitOutput {
+	return o
+}
+
+// The maximum number of Linodes allowed to be assigned to a placement group in this region.
+func (o GetRegionPlacementGroupLimitOutput) MaximumLinodesPerPg() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionPlacementGroupLimit) int { return v.MaximumLinodesPerPg }).(pulumi.IntOutput)
+}
+
+// The maximum number of placement groups allowed for the current user in this region.
+func (o GetRegionPlacementGroupLimitOutput) MaximumPgsPerCustomer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionPlacementGroupLimit) int { return v.MaximumPgsPerCustomer }).(pulumi.IntOutput)
+}
+
+type GetRegionPlacementGroupLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionPlacementGroupLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (o GetRegionPlacementGroupLimitArrayOutput) ToGetRegionPlacementGroupLimitArrayOutput() GetRegionPlacementGroupLimitArrayOutput {
+	return o
+}
+
+func (o GetRegionPlacementGroupLimitArrayOutput) ToGetRegionPlacementGroupLimitArrayOutputWithContext(ctx context.Context) GetRegionPlacementGroupLimitArrayOutput {
+	return o
+}
+
+func (o GetRegionPlacementGroupLimitArrayOutput) Index(i pulumi.IntInput) GetRegionPlacementGroupLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionPlacementGroupLimit {
+		return vs[0].([]GetRegionPlacementGroupLimit)[vs[1].(int)]
+	}).(GetRegionPlacementGroupLimitOutput)
 }
 
 type GetRegionResolver struct {
@@ -24027,8 +24926,10 @@ type GetRegionsRegion struct {
 	// The unique ID of this Region.
 	Id string `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
-	Label     string                     `pulumi:"label"`
-	Resolvers []GetRegionsRegionResolver `pulumi:"resolvers"`
+	Label string `pulumi:"label"`
+	// Information about placement groups limits for this region.
+	PlacementGroupLimits []GetRegionsRegionPlacementGroupLimit `pulumi:"placementGroupLimits"`
+	Resolvers            []GetRegionsRegionResolver            `pulumi:"resolvers"`
 	// The type of this region.
 	SiteType string `pulumi:"siteType"`
 	// This region’s current operational status (ok or outage).
@@ -24054,8 +24955,10 @@ type GetRegionsRegionArgs struct {
 	// The unique ID of this Region.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
-	Label     pulumi.StringInput                 `pulumi:"label"`
-	Resolvers GetRegionsRegionResolverArrayInput `pulumi:"resolvers"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// Information about placement groups limits for this region.
+	PlacementGroupLimits GetRegionsRegionPlacementGroupLimitArrayInput `pulumi:"placementGroupLimits"`
+	Resolvers            GetRegionsRegionResolverArrayInput            `pulumi:"resolvers"`
 	// The type of this region.
 	SiteType pulumi.StringInput `pulumi:"siteType"`
 	// This region’s current operational status (ok or outage).
@@ -24133,6 +25036,11 @@ func (o GetRegionsRegionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// Information about placement groups limits for this region.
+func (o GetRegionsRegionOutput) PlacementGroupLimits() GetRegionsRegionPlacementGroupLimitArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegion) []GetRegionsRegionPlacementGroupLimit { return v.PlacementGroupLimits }).(GetRegionsRegionPlacementGroupLimitArrayOutput)
+}
+
 func (o GetRegionsRegionOutput) Resolvers() GetRegionsRegionResolverArrayOutput {
 	return o.ApplyT(func(v GetRegionsRegion) []GetRegionsRegionResolver { return v.Resolvers }).(GetRegionsRegionResolverArrayOutput)
 }
@@ -24165,6 +25073,112 @@ func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
 		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
 	}).(GetRegionsRegionOutput)
+}
+
+type GetRegionsRegionPlacementGroupLimit struct {
+	// The maximum number of Linodes allowed to be assigned to a placement group in this region.
+	MaximumLinodesPerPg int `pulumi:"maximumLinodesPerPg"`
+	// The maximum number of placement groups allowed for the current user in this region.
+	MaximumPgsPerCustomer int `pulumi:"maximumPgsPerCustomer"`
+}
+
+// GetRegionsRegionPlacementGroupLimitInput is an input type that accepts GetRegionsRegionPlacementGroupLimitArgs and GetRegionsRegionPlacementGroupLimitOutput values.
+// You can construct a concrete instance of `GetRegionsRegionPlacementGroupLimitInput` via:
+//
+//	GetRegionsRegionPlacementGroupLimitArgs{...}
+type GetRegionsRegionPlacementGroupLimitInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionPlacementGroupLimitOutput() GetRegionsRegionPlacementGroupLimitOutput
+	ToGetRegionsRegionPlacementGroupLimitOutputWithContext(context.Context) GetRegionsRegionPlacementGroupLimitOutput
+}
+
+type GetRegionsRegionPlacementGroupLimitArgs struct {
+	// The maximum number of Linodes allowed to be assigned to a placement group in this region.
+	MaximumLinodesPerPg pulumi.IntInput `pulumi:"maximumLinodesPerPg"`
+	// The maximum number of placement groups allowed for the current user in this region.
+	MaximumPgsPerCustomer pulumi.IntInput `pulumi:"maximumPgsPerCustomer"`
+}
+
+func (GetRegionsRegionPlacementGroupLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (i GetRegionsRegionPlacementGroupLimitArgs) ToGetRegionsRegionPlacementGroupLimitOutput() GetRegionsRegionPlacementGroupLimitOutput {
+	return i.ToGetRegionsRegionPlacementGroupLimitOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionPlacementGroupLimitArgs) ToGetRegionsRegionPlacementGroupLimitOutputWithContext(ctx context.Context) GetRegionsRegionPlacementGroupLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionPlacementGroupLimitOutput)
+}
+
+// GetRegionsRegionPlacementGroupLimitArrayInput is an input type that accepts GetRegionsRegionPlacementGroupLimitArray and GetRegionsRegionPlacementGroupLimitArrayOutput values.
+// You can construct a concrete instance of `GetRegionsRegionPlacementGroupLimitArrayInput` via:
+//
+//	GetRegionsRegionPlacementGroupLimitArray{ GetRegionsRegionPlacementGroupLimitArgs{...} }
+type GetRegionsRegionPlacementGroupLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionPlacementGroupLimitArrayOutput() GetRegionsRegionPlacementGroupLimitArrayOutput
+	ToGetRegionsRegionPlacementGroupLimitArrayOutputWithContext(context.Context) GetRegionsRegionPlacementGroupLimitArrayOutput
+}
+
+type GetRegionsRegionPlacementGroupLimitArray []GetRegionsRegionPlacementGroupLimitInput
+
+func (GetRegionsRegionPlacementGroupLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (i GetRegionsRegionPlacementGroupLimitArray) ToGetRegionsRegionPlacementGroupLimitArrayOutput() GetRegionsRegionPlacementGroupLimitArrayOutput {
+	return i.ToGetRegionsRegionPlacementGroupLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionPlacementGroupLimitArray) ToGetRegionsRegionPlacementGroupLimitArrayOutputWithContext(ctx context.Context) GetRegionsRegionPlacementGroupLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionPlacementGroupLimitArrayOutput)
+}
+
+type GetRegionsRegionPlacementGroupLimitOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionPlacementGroupLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (o GetRegionsRegionPlacementGroupLimitOutput) ToGetRegionsRegionPlacementGroupLimitOutput() GetRegionsRegionPlacementGroupLimitOutput {
+	return o
+}
+
+func (o GetRegionsRegionPlacementGroupLimitOutput) ToGetRegionsRegionPlacementGroupLimitOutputWithContext(ctx context.Context) GetRegionsRegionPlacementGroupLimitOutput {
+	return o
+}
+
+// The maximum number of Linodes allowed to be assigned to a placement group in this region.
+func (o GetRegionsRegionPlacementGroupLimitOutput) MaximumLinodesPerPg() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionsRegionPlacementGroupLimit) int { return v.MaximumLinodesPerPg }).(pulumi.IntOutput)
+}
+
+// The maximum number of placement groups allowed for the current user in this region.
+func (o GetRegionsRegionPlacementGroupLimitOutput) MaximumPgsPerCustomer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionsRegionPlacementGroupLimit) int { return v.MaximumPgsPerCustomer }).(pulumi.IntOutput)
+}
+
+type GetRegionsRegionPlacementGroupLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionPlacementGroupLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegionPlacementGroupLimit)(nil)).Elem()
+}
+
+func (o GetRegionsRegionPlacementGroupLimitArrayOutput) ToGetRegionsRegionPlacementGroupLimitArrayOutput() GetRegionsRegionPlacementGroupLimitArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionPlacementGroupLimitArrayOutput) ToGetRegionsRegionPlacementGroupLimitArrayOutputWithContext(ctx context.Context) GetRegionsRegionPlacementGroupLimitArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionPlacementGroupLimitArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionPlacementGroupLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegionPlacementGroupLimit {
+		return vs[0].([]GetRegionsRegionPlacementGroupLimit)[vs[1].(int)]
+	}).(GetRegionsRegionPlacementGroupLimitOutput)
 }
 
 type GetRegionsRegionResolver struct {
@@ -29472,6 +30486,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpVpcNat11ArrayInput)(nil)).Elem(), InstanceIpVpcNat11Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataInput)(nil)).Elem(), InstanceMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataArrayInput)(nil)).Elem(), InstanceMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePlacementGroupInput)(nil)).Elem(), InstancePlacementGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePlacementGroupPtrInput)(nil)).Elem(), InstancePlacementGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsInput)(nil)).Elem(), InstanceSpecsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsPtrInput)(nil)).Elem(), InstanceSpecsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
@@ -29510,6 +30526,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyBucketAccessInput)(nil)).Elem(), ObjectStorageKeyBucketAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyBucketAccessArrayInput)(nil)).Elem(), ObjectStorageKeyBucketAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberInput)(nil)).Elem(), PlacementGroupMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberArrayInput)(nil)).Elem(), PlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsInput)(nil)).Elem(), RdnsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsPtrInput)(nil)).Elem(), RdnsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptUserDefinedFieldInput)(nil)).Elem(), StackScriptUserDefinedFieldArgs{})
@@ -29746,13 +30764,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsFilterInput)(nil)).Elem(), GetPlacementGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsFilterArrayInput)(nil)).Elem(), GetPlacementGroupsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralsInput)(nil)).Elem(), GetProfileReferralsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitInput)(nil)).Elem(), GetRegionPlacementGroupLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitArrayInput)(nil)).Elem(), GetRegionPlacementGroupLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverInput)(nil)).Elem(), GetRegionResolverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverArrayInput)(nil)).Elem(), GetRegionResolverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterInput)(nil)).Elem(), GetRegionsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionPlacementGroupLimitInput)(nil)).Elem(), GetRegionsRegionPlacementGroupLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionPlacementGroupLimitArrayInput)(nil)).Elem(), GetRegionsRegionPlacementGroupLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverInput)(nil)).Elem(), GetRegionsRegionResolverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverArrayInput)(nil)).Elem(), GetRegionsRegionResolverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshkeysFilterInput)(nil)).Elem(), GetSshkeysFilterArgs{})
@@ -29891,6 +30921,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIpVpcNat11ArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataArrayOutput{})
+	pulumi.RegisterOutputType(InstancePlacementGroupOutput{})
+	pulumi.RegisterOutputType(InstancePlacementGroupPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsOutput{})
 	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneOutput{})
@@ -29929,6 +30961,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessOutput{})
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessArrayOutput{})
+	pulumi.RegisterOutputType(PlacementGroupMemberOutput{})
+	pulumi.RegisterOutputType(PlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
@@ -30165,13 +31199,25 @@ func init() {
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerArrayOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMemberOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsFilterOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMemberOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
+	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitOutput{})
+	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionResolverOutput{})
 	pulumi.RegisterOutputType(GetRegionResolverArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
 	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionPlacementGroupLimitOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionPlacementGroupLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionResolverOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionResolverArrayOutput{})
 	pulumi.RegisterOutputType(GetSshkeysFilterOutput{})

@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetRegionPlacementGroupLimit;
 import com.pulumi.linode.outputs.GetRegionResolver;
 import java.lang.String;
 import java.util.List;
@@ -29,6 +30,7 @@ public final class GetRegionResult {
      * 
      */
     private String label;
+    private List<GetRegionPlacementGroupLimit> placementGroupLimits;
     private @Nullable List<GetRegionResolver> resolvers;
     /**
      * @return The type of this region.
@@ -66,6 +68,9 @@ public final class GetRegionResult {
     public String label() {
         return this.label;
     }
+    public List<GetRegionPlacementGroupLimit> placementGroupLimits() {
+        return this.placementGroupLimits;
+    }
     public List<GetRegionResolver> resolvers() {
         return this.resolvers == null ? List.of() : this.resolvers;
     }
@@ -97,6 +102,7 @@ public final class GetRegionResult {
         private String country;
         private String id;
         private String label;
+        private List<GetRegionPlacementGroupLimit> placementGroupLimits;
         private @Nullable List<GetRegionResolver> resolvers;
         private String siteType;
         private String status;
@@ -107,6 +113,7 @@ public final class GetRegionResult {
     	      this.country = defaults.country;
     	      this.id = defaults.id;
     	      this.label = defaults.label;
+    	      this.placementGroupLimits = defaults.placementGroupLimits;
     	      this.resolvers = defaults.resolvers;
     	      this.siteType = defaults.siteType;
     	      this.status = defaults.status;
@@ -148,6 +155,17 @@ public final class GetRegionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder placementGroupLimits(List<GetRegionPlacementGroupLimit> placementGroupLimits) {
+            if (placementGroupLimits == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "placementGroupLimits");
+            }
+            this.placementGroupLimits = placementGroupLimits;
+            return this;
+        }
+        public Builder placementGroupLimits(GetRegionPlacementGroupLimit... placementGroupLimits) {
+            return placementGroupLimits(List.of(placementGroupLimits));
+        }
+        @CustomType.Setter
         public Builder resolvers(@Nullable List<GetRegionResolver> resolvers) {
 
             this.resolvers = resolvers;
@@ -178,6 +196,7 @@ public final class GetRegionResult {
             _resultValue.country = country;
             _resultValue.id = id;
             _resultValue.label = label;
+            _resultValue.placementGroupLimits = placementGroupLimits;
             _resultValue.resolvers = resolvers;
             _resultValue.siteType = siteType;
             _resultValue.status = status;

@@ -22,7 +22,7 @@ public final class InstanceConfigInterface {
      */
     private @Nullable Boolean active;
     /**
-     * @return The ID of the interface.
+     * @return The ID of the Placement Group.
      * 
      */
     private @Nullable Integer id;
@@ -80,7 +80,7 @@ public final class InstanceConfigInterface {
         return Optional.ofNullable(this.active);
     }
     /**
-     * @return The ID of the interface.
+     * @return The ID of the Placement Group.
      * 
      */
     public Optional<Integer> id() {

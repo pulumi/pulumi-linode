@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.InstanceConfigHelpers? Helpers;
         /// <summary>
-        /// The unique ID of this Config.
+        /// The ID of the Placement Group.
         /// </summary>
         public readonly int? Id;
         /// <summary>

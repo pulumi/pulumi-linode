@@ -23,7 +23,7 @@ class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, capabilities=None, country=None, id=None, label=None, resolvers=None, site_type=None, status=None):
+    def __init__(__self__, capabilities=None, country=None, id=None, label=None, placement_group_limits=None, resolvers=None, site_type=None, status=None):
         if capabilities and not isinstance(capabilities, list):
             raise TypeError("Expected argument 'capabilities' to be a list")
         pulumi.set(__self__, "capabilities", capabilities)
@@ -36,6 +36,9 @@ class GetRegionResult:
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
+        if placement_group_limits and not isinstance(placement_group_limits, list):
+            raise TypeError("Expected argument 'placement_group_limits' to be a list")
+        pulumi.set(__self__, "placement_group_limits", placement_group_limits)
         if resolvers and not isinstance(resolvers, list):
             raise TypeError("Expected argument 'resolvers' to be a list")
         pulumi.set(__self__, "resolvers", resolvers)
@@ -76,6 +79,11 @@ class GetRegionResult:
         return pulumi.get(self, "label")
 
     @property
+    @pulumi.getter(name="placementGroupLimits")
+    def placement_group_limits(self) -> Sequence['outputs.GetRegionPlacementGroupLimitResult']:
+        return pulumi.get(self, "placement_group_limits")
+
+    @property
     @pulumi.getter
     def resolvers(self) -> Optional[Sequence['outputs.GetRegionResolverResult']]:
         return pulumi.get(self, "resolvers")
@@ -107,6 +115,7 @@ class AwaitableGetRegionResult(GetRegionResult):
             country=self.country,
             id=self.id,
             label=self.label,
+            placement_group_limits=self.placement_group_limits,
             resolvers=self.resolvers,
             site_type=self.site_type,
             status=self.status)
@@ -143,6 +152,7 @@ def get_region(id: Optional[str] = None,
         country=pulumi.get(__ret__, 'country'),
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
+        placement_group_limits=pulumi.get(__ret__, 'placement_group_limits'),
         resolvers=pulumi.get(__ret__, 'resolvers'),
         site_type=pulumi.get(__ret__, 'site_type'),
         status=pulumi.get(__ret__, 'status'))

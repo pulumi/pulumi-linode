@@ -16,6 +16,7 @@ import com.pulumi.linode.outputs.InstanceConfig;
 import com.pulumi.linode.outputs.InstanceDisk;
 import com.pulumi.linode.outputs.InstanceInterface;
 import com.pulumi.linode.outputs.InstanceMetadata;
+import com.pulumi.linode.outputs.InstancePlacementGroup;
 import com.pulumi.linode.outputs.InstanceSpecs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -204,6 +205,52 @@ import javax.annotation.Nullable;
  *             .rootDevice("/dev/sda")
  *             .kernel("linode/latest-64bit")
  *             .booted(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Linode Instance Assigned to a Placement Group
+ * 
+ * **NOTE: Placement Groups may not currently be available to all users.**
+ * 
+ * The following example shows how one might use this resource to configure a Linode instance assigned to a
+ * Placement Group.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.inputs.InstancePlacementGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
+ *             .label("my-instance")
+ *             .region("us-mia")
+ *             .type("g6-standard-1")
+ *             .placementGroup(InstancePlacementGroupArgs.builder()
+ *                 .id(12345)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -560,6 +607,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.migrationType);
     }
     /**
+     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * 
+     */
+    @Export(name="placementGroup", refs={InstancePlacementGroup.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePlacementGroup> placementGroup;
+
+    /**
+     * @return Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * 
+     */
+    public Output<Optional<InstancePlacementGroup>> placementGroup() {
+        return Codegen.optional(this.placementGroup);
+    }
+    /**
+     * If true, changes to the Linode&#39;s assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     * 
+     */
+    @Export(name="placementGroupExternallyManaged", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> placementGroupExternallyManaged;
+
+    /**
+     * @return If true, changes to the Linode&#39;s assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
+     * 
+     */
+    public Output<Optional<Boolean>> placementGroupExternallyManaged() {
+        return Codegen.optional(this.placementGroupExternallyManaged);
+    }
+    /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode&#39;s region. It can be enabled on an existing Linode but it can&#39;t be disabled.
      * 
      */
@@ -654,6 +729,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
+     * 
      */
     @Export(name="sharedIpv4s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sharedIpv4s;
@@ -662,6 +739,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
      * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+     * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      * 
      */
     public Output<List<String>> sharedIpv4s() {

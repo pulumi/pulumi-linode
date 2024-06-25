@@ -95,6 +95,8 @@ type providerArgs struct {
 	MinRetryDelayMs *int `pulumi:"minRetryDelayMs"`
 	// The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjAccessKey *string `pulumi:"objAccessKey"`
+	// If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
+	ObjBucketForceDelete *bool `pulumi:"objBucketForceDelete"`
 	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey *string `pulumi:"objSecretKey"`
 	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
@@ -136,6 +138,8 @@ type ProviderArgs struct {
 	MinRetryDelayMs pulumi.IntPtrInput
 	// The access key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjAccessKey pulumi.StringPtrInput
+	// If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
+	ObjBucketForceDelete pulumi.BoolPtrInput
 	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey pulumi.StringPtrInput
 	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and

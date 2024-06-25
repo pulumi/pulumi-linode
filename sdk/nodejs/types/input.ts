@@ -1786,7 +1786,7 @@ export interface GetKernelsKernelArgs {
 
 export interface GetLkeClusterControlPlane {
     /**
-     * The ACL configuration for an LKE cluster's control plane.
+     * The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
      */
     acls?: inputs.GetLkeClusterControlPlaneAcl[];
     /**
@@ -1797,7 +1797,7 @@ export interface GetLkeClusterControlPlane {
 
 export interface GetLkeClusterControlPlaneArgs {
     /**
-     * The ACL configuration for an LKE cluster's control plane.
+     * The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
      */
     acls?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneAclArgs>[]>;
     /**
@@ -2670,6 +2670,142 @@ export interface GetNodebalancersNodebalancerTransferArgs {
     total: pulumi.Input<number>;
 }
 
+export interface GetPlacementGroupMember {
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant?: boolean;
+    /**
+     * The ID of the Linode.
+     */
+    linodeId?: number;
+}
+
+export interface GetPlacementGroupMemberArgs {
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Linode.
+     */
+    linodeId?: pulumi.Input<number>;
+}
+
+export interface GetPlacementGroupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetPlacementGroupsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetPlacementGroupsPlacementGroup {
+    /**
+     * The affinity policy to use when placing Linodes in this group.
+     */
+    affinityType?: string;
+    /**
+     * The ID of the placement group.
+     */
+    id: number;
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant?: boolean;
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
+     */
+    isStrict?: boolean;
+    /**
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+     */
+    label?: string;
+    /**
+     * A set of Linodes currently assigned to this Placement Group.
+     */
+    members?: inputs.GetPlacementGroupsPlacementGroupMember[];
+    /**
+     * The region of the Placement Group.
+     */
+    region?: string;
+}
+
+export interface GetPlacementGroupsPlacementGroupArgs {
+    /**
+     * The affinity policy to use when placing Linodes in this group.
+     */
+    affinityType?: pulumi.Input<string>;
+    /**
+     * The ID of the placement group.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant?: pulumi.Input<boolean>;
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
+     */
+    isStrict?: pulumi.Input<boolean>;
+    /**
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * A set of Linodes currently assigned to this Placement Group.
+     */
+    members?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMemberArgs>[]>;
+    /**
+     * The region of the Placement Group.
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GetPlacementGroupsPlacementGroupMember {
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant?: boolean;
+    /**
+     * The ID of the Linode.
+     */
+    linodeId?: number;
+}
+
+export interface GetPlacementGroupsPlacementGroupMemberArgs {
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Linode.
+     */
+    linodeId?: pulumi.Input<number>;
+}
+
 export interface GetRegionResolver {
     /**
      * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
@@ -2734,11 +2870,15 @@ export interface GetRegionsRegion {
     /**
      * The unique ID of this Region.
      */
-    id?: string;
+    id: string;
     /**
      * Detailed location information for this Region, including city, state or region, and country.
      */
     label?: string;
+    /**
+     * Information about placement groups limits for this region.
+     */
+    placementGroupLimits?: inputs.GetRegionsRegionPlacementGroupLimit[];
     resolvers?: inputs.GetRegionsRegionResolver[];
     /**
      * The type of this region.
@@ -2762,11 +2902,15 @@ export interface GetRegionsRegionArgs {
     /**
      * The unique ID of this Region.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
     /**
      * Detailed location information for this Region, including city, state or region, and country.
      */
     label?: pulumi.Input<string>;
+    /**
+     * Information about placement groups limits for this region.
+     */
+    placementGroupLimits?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionPlacementGroupLimitArgs>[]>;
     resolvers?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionResolverArgs>[]>;
     /**
      * The type of this region.
@@ -2776,6 +2920,28 @@ export interface GetRegionsRegionArgs {
      * This region’s current operational status (ok or outage).
      */
     status?: pulumi.Input<string>;
+}
+
+export interface GetRegionsRegionPlacementGroupLimit {
+    /**
+     * The maximum number of Linodes allowed to be assigned to a placement group in this region.
+     */
+    maximumLinodesPerPg: number;
+    /**
+     * The maximum number of placement groups allowed for the current user in this region.
+     */
+    maximumPgsPerCustomer: number;
+}
+
+export interface GetRegionsRegionPlacementGroupLimitArgs {
+    /**
+     * The maximum number of Linodes allowed to be assigned to a placement group in this region.
+     */
+    maximumLinodesPerPg: pulumi.Input<number>;
+    /**
+     * The maximum number of placement groups allowed for the current user in this region.
+     */
+    maximumPgsPerCustomer: pulumi.Input<number>;
 }
 
 export interface GetRegionsRegionResolver {
@@ -4345,7 +4511,7 @@ export interface InstanceConfig {
      */
     helpers?: pulumi.Input<inputs.InstanceConfigHelpers>;
     /**
-     * The unique ID of this Config.
+     * The ID of the Placement Group.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4562,7 +4728,7 @@ export interface InstanceConfigInterface {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The ID of the interface.
+     * The ID of the Placement Group.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4628,7 +4794,7 @@ export interface InstanceDisk {
      */
     filesystem?: pulumi.Input<string>;
     /**
-     * The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
+     * The ID of the Placement Group.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4682,7 +4848,7 @@ export interface InstanceInterface {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The ID of the interface.
+     * The ID of the Placement Group.
      */
     id?: pulumi.Input<number>;
     /**
@@ -4750,6 +4916,26 @@ export interface InstanceMetadata {
     userData?: pulumi.Input<string>;
 }
 
+export interface InstancePlacementGroup {
+    /**
+     * The affinity policy enforced by the Placement Group.
+     */
+    affinityType?: pulumi.Input<string>;
+    compliantOnly?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Placement Group.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * Whether the Placement Group enforces strict compliance.
+     */
+    isStrict?: pulumi.Input<boolean>;
+    /**
+     * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+     */
+    label?: pulumi.Input<string>;
+}
+
 export interface InstanceSpecs {
     /**
      * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
@@ -4777,7 +4963,7 @@ export interface LkeClusterControlPlane {
     /**
      * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      *
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
      */
     highAvailability?: pulumi.Input<boolean>;
 }
@@ -5077,6 +5263,17 @@ export interface ObjectStorageKeyBucketAccess {
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: pulumi.Input<string>;
+}
+
+export interface PlacementGroupMember {
+    /**
+     * Whether this Linode is currently compliant with the group's affinity policy.
+     */
+    isCompliant: pulumi.Input<boolean>;
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: pulumi.Input<number>;
 }
 
 export interface RdnsTimeouts {

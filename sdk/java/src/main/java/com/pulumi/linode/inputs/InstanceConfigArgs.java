@@ -67,14 +67,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The unique ID of this Config.
+     * The ID of the Placement Group.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The unique ID of this Config.
+     * @return The ID of the Placement Group.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -284,7 +284,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param id The unique ID of this Config.
+         * @param id The ID of the Placement Group.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param id The unique ID of this Config.
+         * @param id The ID of the Placement Group.
          * 
          * @return builder
          * 

@@ -79,6 +79,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
             resourceInputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
             resourceInputs["objAccessKey"] = args ? args.objAccessKey : undefined;
+            resourceInputs["objBucketForceDelete"] = pulumi.output(args ? args.objBucketForceDelete : undefined).apply(JSON.stringify);
             resourceInputs["objSecretKey"] = args?.objSecretKey ? pulumi.secret(args.objSecretKey) : undefined;
             resourceInputs["objUseTempKeys"] = pulumi.output(args ? args.objUseTempKeys : undefined).apply(JSON.stringify);
             resourceInputs["skipImplicitReboots"] = pulumi.output(args ? args.skipImplicitReboots : undefined).apply(JSON.stringify);
@@ -139,6 +140,10 @@ export interface ProviderArgs {
      * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
     objAccessKey?: pulumi.Input<string>;
+    /**
+     * If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
+     */
+    objBucketForceDelete?: pulumi.Input<boolean>;
     /**
      * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
