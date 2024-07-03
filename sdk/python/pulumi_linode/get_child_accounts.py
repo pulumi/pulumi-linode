@@ -67,6 +67,8 @@ def get_child_accounts(child_accounts: Optional[Sequence[pulumi.InputType['GetCh
     """
     Provides information about Linode Child Accounts that match a set of filters.
 
+    **NOTE: Parent/Child related features may not be generally available.**
+
     ## Example Usage
 
     The following example shows how one might use this data source to access Child Accounts under the current Account.
@@ -142,6 +144,8 @@ def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Seq
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountsResult]:
     """
     Provides information about Linode Child Accounts that match a set of filters.
+
+    **NOTE: Parent/Child related features may not be generally available.**
 
     ## Example Usage
 

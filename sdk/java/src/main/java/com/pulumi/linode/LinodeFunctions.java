@@ -1747,6 +1747,8 @@ public final class LinodeFunctions {
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
+     * **NOTE: Parent/Child related features may not be generally available.**
+     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access child account details.
@@ -1792,6 +1794,8 @@ public final class LinodeFunctions {
      * Provides information about a Linode Child Account.
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+     * 
+     * **NOTE: Parent/Child related features may not be generally available.**
      * 
      * ## Example Usage
      * 
@@ -1839,6 +1843,8 @@ public final class LinodeFunctions {
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
+     * **NOTE: Parent/Child related features may not be generally available.**
+     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access child account details.
@@ -1885,6 +1891,8 @@ public final class LinodeFunctions {
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
+     * **NOTE: Parent/Child related features may not be generally available.**
+     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access child account details.
@@ -1928,6 +1936,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * **NOTE: Parent/Child related features may not be generally available.**
      * 
      * ## Example Usage
      * 
@@ -2019,6 +2029,8 @@ public final class LinodeFunctions {
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
      * 
+     * **NOTE: Parent/Child related features may not be generally available.**
+     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access Child Accounts under the current Account.
@@ -2108,6 +2120,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * **NOTE: Parent/Child related features may not be generally available.**
      * 
      * ## Example Usage
      * 
@@ -2199,6 +2213,8 @@ public final class LinodeFunctions {
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
      * 
+     * **NOTE: Parent/Child related features may not be generally available.**
+     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access Child Accounts under the current Account.
@@ -2289,6 +2305,8 @@ public final class LinodeFunctions {
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
      * 
+     * **NOTE: Parent/Child related features may not be generally available.**
+     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to access Child Accounts under the current Account.
@@ -2378,6 +2396,8 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * 
+     * **NOTE: Parent/Child related features may not be generally available.**
      * 
      * ## Example Usage
      * 

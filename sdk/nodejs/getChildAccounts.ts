@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode Child Accounts that match a set of filters.
  *
+ * **NOTE: Parent/Child related features may not be generally available.**
+ *
  * ## Example Usage
  *
  * The following example shows how one might use this data source to access Child Accounts under the current Account.
@@ -96,6 +98,8 @@ export interface GetChildAccountsResult {
 }
 /**
  * Provides information about Linode Child Accounts that match a set of filters.
+ *
+ * **NOTE: Parent/Child related features may not be generally available.**
  *
  * ## Example Usage
  *
