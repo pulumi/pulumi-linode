@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about service availability in a region to an account specifically.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
  *
  * ## Example Usage
  *
@@ -61,6 +62,7 @@ export interface GetAccountAvailabilityResult {
 }
 /**
  * Provides details about service availability in a region to an account specifically.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
  *
  * ## Example Usage
  *

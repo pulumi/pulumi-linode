@@ -7687,10 +7687,14 @@ func (o ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Da
 type ObjectStorageKeyBucketAccess struct {
 	// The unique label of the bucket to which the key will grant limited access.
 	BucketName string `pulumi:"bucketName"`
-	// The Object Storage cluster where a bucket to which the key is granting access is hosted.
-	Cluster string `pulumi:"cluster"`
+	// The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+	//
+	// Deprecated: The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+	Cluster *string `pulumi:"cluster"`
 	// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
 	Permissions string `pulumi:"permissions"`
+	// The region where the bucket resides.
+	Region *string `pulumi:"region"`
 }
 
 // ObjectStorageKeyBucketAccessInput is an input type that accepts ObjectStorageKeyBucketAccessArgs and ObjectStorageKeyBucketAccessOutput values.
@@ -7707,10 +7711,14 @@ type ObjectStorageKeyBucketAccessInput interface {
 type ObjectStorageKeyBucketAccessArgs struct {
 	// The unique label of the bucket to which the key will grant limited access.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// The Object Storage cluster where a bucket to which the key is granting access is hosted.
-	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+	//
+	// Deprecated: The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
 	// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
 	Permissions pulumi.StringInput `pulumi:"permissions"`
+	// The region where the bucket resides.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (ObjectStorageKeyBucketAccessArgs) ElementType() reflect.Type {
@@ -7769,14 +7777,21 @@ func (o ObjectStorageKeyBucketAccessOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// The Object Storage cluster where a bucket to which the key is granting access is hosted.
-func (o ObjectStorageKeyBucketAccessOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.Cluster }).(pulumi.StringOutput)
+// The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+//
+// Deprecated: The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+func (o ObjectStorageKeyBucketAccessOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) *string { return v.Cluster }).(pulumi.StringPtrOutput)
 }
 
 // This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
 func (o ObjectStorageKeyBucketAccessOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+// The region where the bucket resides.
+func (o ObjectStorageKeyBucketAccessOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ObjectStorageKeyBucketAccess) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 type ObjectStorageKeyBucketAccessArrayOutput struct{ *pulumi.OutputState }
@@ -7797,6 +7812,112 @@ func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) Object
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageKeyBucketAccess {
 		return vs[0].([]ObjectStorageKeyBucketAccess)[vs[1].(int)]
 	}).(ObjectStorageKeyBucketAccessOutput)
+}
+
+type ObjectStorageKeyRegionsDetail struct {
+	// The ID of the region.
+	Id string `pulumi:"id"`
+	// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+	S3Endpoint string `pulumi:"s3Endpoint"`
+}
+
+// ObjectStorageKeyRegionsDetailInput is an input type that accepts ObjectStorageKeyRegionsDetailArgs and ObjectStorageKeyRegionsDetailOutput values.
+// You can construct a concrete instance of `ObjectStorageKeyRegionsDetailInput` via:
+//
+//	ObjectStorageKeyRegionsDetailArgs{...}
+type ObjectStorageKeyRegionsDetailInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyRegionsDetailOutput() ObjectStorageKeyRegionsDetailOutput
+	ToObjectStorageKeyRegionsDetailOutputWithContext(context.Context) ObjectStorageKeyRegionsDetailOutput
+}
+
+type ObjectStorageKeyRegionsDetailArgs struct {
+	// The ID of the region.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+	S3Endpoint pulumi.StringInput `pulumi:"s3Endpoint"`
+}
+
+func (ObjectStorageKeyRegionsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKeyRegionsDetail)(nil)).Elem()
+}
+
+func (i ObjectStorageKeyRegionsDetailArgs) ToObjectStorageKeyRegionsDetailOutput() ObjectStorageKeyRegionsDetailOutput {
+	return i.ToObjectStorageKeyRegionsDetailOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKeyRegionsDetailArgs) ToObjectStorageKeyRegionsDetailOutputWithContext(ctx context.Context) ObjectStorageKeyRegionsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyRegionsDetailOutput)
+}
+
+// ObjectStorageKeyRegionsDetailArrayInput is an input type that accepts ObjectStorageKeyRegionsDetailArray and ObjectStorageKeyRegionsDetailArrayOutput values.
+// You can construct a concrete instance of `ObjectStorageKeyRegionsDetailArrayInput` via:
+//
+//	ObjectStorageKeyRegionsDetailArray{ ObjectStorageKeyRegionsDetailArgs{...} }
+type ObjectStorageKeyRegionsDetailArrayInput interface {
+	pulumi.Input
+
+	ToObjectStorageKeyRegionsDetailArrayOutput() ObjectStorageKeyRegionsDetailArrayOutput
+	ToObjectStorageKeyRegionsDetailArrayOutputWithContext(context.Context) ObjectStorageKeyRegionsDetailArrayOutput
+}
+
+type ObjectStorageKeyRegionsDetailArray []ObjectStorageKeyRegionsDetailInput
+
+func (ObjectStorageKeyRegionsDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectStorageKeyRegionsDetail)(nil)).Elem()
+}
+
+func (i ObjectStorageKeyRegionsDetailArray) ToObjectStorageKeyRegionsDetailArrayOutput() ObjectStorageKeyRegionsDetailArrayOutput {
+	return i.ToObjectStorageKeyRegionsDetailArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectStorageKeyRegionsDetailArray) ToObjectStorageKeyRegionsDetailArrayOutputWithContext(ctx context.Context) ObjectStorageKeyRegionsDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectStorageKeyRegionsDetailArrayOutput)
+}
+
+type ObjectStorageKeyRegionsDetailOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageKeyRegionsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectStorageKeyRegionsDetail)(nil)).Elem()
+}
+
+func (o ObjectStorageKeyRegionsDetailOutput) ToObjectStorageKeyRegionsDetailOutput() ObjectStorageKeyRegionsDetailOutput {
+	return o
+}
+
+func (o ObjectStorageKeyRegionsDetailOutput) ToObjectStorageKeyRegionsDetailOutputWithContext(ctx context.Context) ObjectStorageKeyRegionsDetailOutput {
+	return o
+}
+
+// The ID of the region.
+func (o ObjectStorageKeyRegionsDetailOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageKeyRegionsDetail) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+func (o ObjectStorageKeyRegionsDetailOutput) S3Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageKeyRegionsDetail) string { return v.S3Endpoint }).(pulumi.StringOutput)
+}
+
+type ObjectStorageKeyRegionsDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectStorageKeyRegionsDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectStorageKeyRegionsDetail)(nil)).Elem()
+}
+
+func (o ObjectStorageKeyRegionsDetailArrayOutput) ToObjectStorageKeyRegionsDetailArrayOutput() ObjectStorageKeyRegionsDetailArrayOutput {
+	return o
+}
+
+func (o ObjectStorageKeyRegionsDetailArrayOutput) ToObjectStorageKeyRegionsDetailArrayOutputWithContext(ctx context.Context) ObjectStorageKeyRegionsDetailArrayOutput {
+	return o
+}
+
+func (o ObjectStorageKeyRegionsDetailArrayOutput) Index(i pulumi.IntInput) ObjectStorageKeyRegionsDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStorageKeyRegionsDetail {
+		return vs[0].([]ObjectStorageKeyRegionsDetail)[vs[1].(int)]
+	}).(ObjectStorageKeyRegionsDetailOutput)
 }
 
 type PlacementGroupMember struct {
@@ -17193,7 +17314,7 @@ func (o GetInstanceTypesFilterArrayOutput) Index(i pulumi.IntInput) GetInstanceT
 type GetInstanceTypesType struct {
 	// Information about the optional Backup service offered for Linodes.
 	Addons []GetInstanceTypesTypeAddon `pulumi:"addons"`
-	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
 	Class string `pulumi:"class"`
 	// The Disk size, in MB, of the Linode Type.
 	Disk int `pulumi:"disk"`
@@ -17229,7 +17350,7 @@ type GetInstanceTypesTypeInput interface {
 type GetInstanceTypesTypeArgs struct {
 	// Information about the optional Backup service offered for Linodes.
 	Addons GetInstanceTypesTypeAddonArrayInput `pulumi:"addons"`
-	// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
 	Class pulumi.StringInput `pulumi:"class"`
 	// The Disk size, in MB, of the Linode Type.
 	Disk pulumi.IntInput `pulumi:"disk"`
@@ -17307,7 +17428,7 @@ func (o GetInstanceTypesTypeOutput) Addons() GetInstanceTypesTypeAddonArrayOutpu
 	return o.ApplyT(func(v GetInstanceTypesType) []GetInstanceTypesTypeAddon { return v.Addons }).(GetInstanceTypesTypeAddonArrayOutput)
 }
 
-// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
 func (o GetInstanceTypesTypeOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Class }).(pulumi.StringOutput)
 }
@@ -18136,7 +18257,7 @@ type GetInstancesInstance struct {
 	HostUuid string `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
 	Id int `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image string `pulumi:"image"`
 	// A string containing the Linode's public IP address.
 	IpAddress string `pulumi:"ipAddress"`
@@ -18192,7 +18313,7 @@ type GetInstancesInstanceArgs struct {
 	HostUuid pulumi.StringInput `pulumi:"hostUuid"`
 	// The ID of the disk in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringInput `pulumi:"image"`
 	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
@@ -18314,7 +18435,7 @@ func (o GetInstancesInstanceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 func (o GetInstancesInstanceOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -18715,7 +18836,7 @@ type GetInstancesInstanceConfig struct {
 	Id int `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
-	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
 	Kernel string `pulumi:"kernel"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label string `pulumi:"label"`
@@ -18751,7 +18872,7 @@ type GetInstancesInstanceConfigArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
-	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
 	Kernel pulumi.StringInput `pulumi:"kernel"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -18841,7 +18962,7 @@ func (o GetInstancesInstanceConfigOutput) Interfaces() GetInstancesInstanceConfi
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigInterface { return v.Interfaces }).(GetInstancesInstanceConfigInterfaceArrayOutput)
 }
 
-// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
 func (o GetInstancesInstanceConfigOutput) Kernel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Kernel }).(pulumi.StringOutput)
 }
@@ -30526,6 +30647,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyBucketAccessInput)(nil)).Elem(), ObjectStorageKeyBucketAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyBucketAccessArrayInput)(nil)).Elem(), ObjectStorageKeyBucketAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyRegionsDetailInput)(nil)).Elem(), ObjectStorageKeyRegionsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyRegionsDetailArrayInput)(nil)).Elem(), ObjectStorageKeyRegionsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberInput)(nil)).Elem(), PlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberArrayInput)(nil)).Elem(), PlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsInput)(nil)).Elem(), RdnsTimeoutsArgs{})
@@ -30961,6 +31084,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessOutput{})
 	pulumi.RegisterOutputType(ObjectStorageKeyBucketAccessArrayOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyRegionsDetailOutput{})
+	pulumi.RegisterOutputType(ObjectStorageKeyRegionsDetailArrayOutput{})
 	pulumi.RegisterOutputType(PlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(PlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsOutput{})

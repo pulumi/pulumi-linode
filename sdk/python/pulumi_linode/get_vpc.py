@@ -105,6 +105,7 @@ def get_vpc(id: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcResult:
     """
     Provides information about a Linode VPC.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
 
     ## Example Usage
 
@@ -140,6 +141,7 @@ def get_vpc_output(id: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcResult]:
     """
     Provides information about a Linode VPC.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
 
     ## Example Usage
 

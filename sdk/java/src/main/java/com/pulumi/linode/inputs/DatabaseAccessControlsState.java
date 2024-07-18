@@ -48,14 +48,14 @@ public final class DatabaseAccessControlsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * The unique type of the target database. (`mysql`, `postgresql`)
      * 
      */
     @Import(name="databaseType")
     private @Nullable Output<String> databaseType;
 
     /**
-     * @return The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * @return The unique type of the target database. (`mysql`, `postgresql`)
      * 
      */
     public Optional<Output<String>> databaseType() {
@@ -141,7 +141,7 @@ public final class DatabaseAccessControlsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseType The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+         * @param databaseType The unique type of the target database. (`mysql`, `postgresql`)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DatabaseAccessControlsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseType The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+         * @param databaseType The unique type of the target database. (`mysql`, `postgresql`)
          * 
          * @return builder
          * 

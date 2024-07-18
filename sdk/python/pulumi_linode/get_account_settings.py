@@ -104,6 +104,7 @@ class AwaitableGetAccountSettingsResult(GetAccountSettingsResult):
 def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSettingsResult:
     """
     Provides information about Linode account settings.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
 
     ## Example Usage
 
@@ -133,6 +134,7 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountSettingsResult]:
     """
     Provides information about Linode account settings.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
 
     ## Example Usage
 

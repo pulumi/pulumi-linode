@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Child Account.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
         /// 
         /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 
@@ -43,6 +44,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about a Linode Child Account.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
         /// 
         /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
         /// 

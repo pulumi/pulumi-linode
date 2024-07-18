@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode Cloud Firewalls that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
  *
  * ## Example Usage
  *
@@ -121,6 +122,7 @@ export interface GetFirewallsResult {
 }
 /**
  * Provides information about Linode Cloud Firewalls that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
  *
  * ## Example Usage
  *

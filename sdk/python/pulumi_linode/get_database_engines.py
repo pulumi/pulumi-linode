@@ -99,6 +99,7 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseEnginesResult:
     """
     Provides information about Linode Managed Database engines that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
 
     ## Example Usage
 
@@ -177,6 +178,7 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseEnginesResult]:
     """
     Provides information about Linode Managed Database engines that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
 
     ## Example Usage
 

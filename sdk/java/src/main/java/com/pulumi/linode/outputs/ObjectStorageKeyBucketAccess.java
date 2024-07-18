@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ObjectStorageKeyBucketAccess {
@@ -16,15 +18,24 @@ public final class ObjectStorageKeyBucketAccess {
      */
     private String bucketName;
     /**
-     * @return The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+     * 
+     * @deprecated
+     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    private String cluster;
+    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    private @Nullable String cluster;
     /**
      * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
      * 
      */
     private String permissions;
+    /**
+     * @return The region where the bucket resides.
+     * 
+     */
+    private @Nullable String region;
 
     private ObjectStorageKeyBucketAccess() {}
     /**
@@ -35,11 +46,15 @@ public final class ObjectStorageKeyBucketAccess {
         return this.bucketName;
     }
     /**
-     * @return The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+     * 
+     * @deprecated
+     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    public String cluster() {
-        return this.cluster;
+    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    public Optional<String> cluster() {
+        return Optional.ofNullable(this.cluster);
     }
     /**
      * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
@@ -47,6 +62,13 @@ public final class ObjectStorageKeyBucketAccess {
      */
     public String permissions() {
         return this.permissions;
+    }
+    /**
+     * @return The region where the bucket resides.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
 
     public static Builder builder() {
@@ -59,14 +81,16 @@ public final class ObjectStorageKeyBucketAccess {
     @CustomType.Builder
     public static final class Builder {
         private String bucketName;
-        private String cluster;
+        private @Nullable String cluster;
         private String permissions;
+        private @Nullable String region;
         public Builder() {}
         public Builder(ObjectStorageKeyBucketAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
     	      this.cluster = defaults.cluster;
     	      this.permissions = defaults.permissions;
+    	      this.region = defaults.region;
         }
 
         @CustomType.Setter
@@ -78,10 +102,8 @@ public final class ObjectStorageKeyBucketAccess {
             return this;
         }
         @CustomType.Setter
-        public Builder cluster(String cluster) {
-            if (cluster == null) {
-              throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccess", "cluster");
-            }
+        public Builder cluster(@Nullable String cluster) {
+
             this.cluster = cluster;
             return this;
         }
@@ -93,11 +115,18 @@ public final class ObjectStorageKeyBucketAccess {
             this.permissions = permissions;
             return this;
         }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
         public ObjectStorageKeyBucketAccess build() {
             final var _resultValue = new ObjectStorageKeyBucketAccess();
             _resultValue.bucketName = bucketName;
             _resultValue.cluster = cluster;
             _resultValue.permissions = permissions;
+            _resultValue.region = region;
             return _resultValue;
         }
     }

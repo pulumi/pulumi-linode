@@ -89,6 +89,7 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
     """
     Provides information about Linode Instance types that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
 
     ## Example Usage
 
@@ -161,6 +162,7 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     Provides information about Linode Instance types that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
 
     ## Example Usage
 

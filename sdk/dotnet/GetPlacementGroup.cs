@@ -15,6 +15,7 @@ namespace Pulumi.Linode
         /// **NOTE: Placement Groups may not currently be available to all users.**
         /// 
         /// `linode.PlacementGroup` provides details about a Linode placement group.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
         /// 
         /// ## Example Usage
         /// 
@@ -43,6 +44,7 @@ namespace Pulumi.Linode
         /// **NOTE: Placement Groups may not currently be available to all users.**
         /// 
         /// `linode.PlacementGroup` provides details about a Linode placement group.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
         /// 
         /// ## Example Usage
         /// 

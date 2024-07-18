@@ -205,6 +205,7 @@ def get_domain(domain: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
     Provides information about a Linode domain.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
 
     ## Example Usage
 
@@ -251,6 +252,7 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
     """
     Provides information about a Linode domain.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
 
     ## Example Usage
 

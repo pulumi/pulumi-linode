@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  * To learn more, see the early access documentation.
  *
  * Provides details about Linode VLANs.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
  *
  * ## Example Usage
  *
@@ -89,6 +90,7 @@ export interface GetVlansResult {
  * To learn more, see the early access documentation.
  *
  * Provides details about Linode VLANs.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
  *
  * ## Example Usage
  *

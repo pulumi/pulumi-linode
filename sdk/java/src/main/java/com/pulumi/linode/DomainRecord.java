@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
- * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
+ * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-domain-record).
  * 
  * ## Example Usage
  * 
@@ -149,14 +149,14 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protocol);
     }
     /**
-     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
      * 
      */
     @Export(name="recordType", refs={String.class}, tree="[0]")
     private Output<String> recordType;
 
     /**
-     * @return The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * @return The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
      * 
      */
     public Output<String> recordType() {

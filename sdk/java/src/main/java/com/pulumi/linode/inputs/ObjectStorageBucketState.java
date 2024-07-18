@@ -39,14 +39,14 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      * 
      */
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
-     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      * 
      */
     public Optional<Output<String>> acl() {
@@ -69,16 +69,26 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The cluster of the Linode Object Storage Bucket.
+     * The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+     * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      * 
      */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
     /**
-     * @return The cluster of the Linode Object Storage Bucket.
+     * @return The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+     * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      * 
      */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     public Optional<Output<String>> cluster() {
         return Optional.ofNullable(this.cluster);
     }
@@ -161,6 +171,21 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `obj_secret_key` in the provider configuration;
      * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
@@ -214,6 +239,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         this.hostname = $.hostname;
         this.label = $.label;
         this.lifecycleRules = $.lifecycleRules;
+        this.region = $.region;
         this.secretKey = $.secretKey;
         this.versioning = $.versioning;
     }
@@ -262,7 +288,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
          * 
          * @return builder
          * 
@@ -273,7 +299,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+         * @param acl The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
          * 
          * @return builder
          * 
@@ -304,22 +330,32 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cluster The cluster of the Linode Object Storage Bucket.
+         * @param cluster The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+         * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+         * 
          */
+        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
         public Builder cluster(@Nullable Output<String> cluster) {
             $.cluster = cluster;
             return this;
         }
 
         /**
-         * @param cluster The cluster of the Linode Object Storage Bucket.
+         * @param cluster The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+         * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+         * 
          */
+        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
         public Builder cluster(String cluster) {
             return cluster(Output.of(cluster));
         }
@@ -439,6 +475,27 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          */
         public Builder lifecycleRules(ObjectStorageBucketLifecycleRuleArgs... lifecycleRules) {
             return lifecycleRules(List.of(lifecycleRules));
+        }
+
+        /**
+         * @param region The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

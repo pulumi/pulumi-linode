@@ -89,6 +89,7 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
     """
     Provides information about Linode Managed Databases that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
     ## Example Usage
 
@@ -143,6 +144,7 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
     """
     Provides information about Linode Managed Databases that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
     ## Example Usage
 

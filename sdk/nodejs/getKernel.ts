@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode kernel
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
  *
  * ## Example Usage
  *
@@ -75,6 +76,7 @@ export interface GetKernelResult {
 }
 /**
  * Provides information about a Linode kernel
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
  *
  * ## Example Usage
  *

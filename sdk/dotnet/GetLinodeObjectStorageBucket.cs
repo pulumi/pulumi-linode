@@ -21,11 +21,14 @@ namespace Pulumi.Linode
 
     public sealed class GetLinodeObjectStorageBucketArgs : global::Pulumi.InvokeArgs
     {
-        [Input("cluster", required: true)]
-        public string Cluster { get; set; } = null!;
+        [Input("cluster")]
+        public string? Cluster { get; set; }
 
         [Input("label", required: true)]
         public string Label { get; set; } = null!;
+
+        [Input("region")]
+        public string? Region { get; set; }
 
         public GetLinodeObjectStorageBucketArgs()
         {
@@ -35,11 +38,14 @@ namespace Pulumi.Linode
 
     public sealed class GetLinodeObjectStorageBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
+        [Input("cluster")]
+        public Input<string>? Cluster { get; set; }
 
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetLinodeObjectStorageBucketInvokeArgs()
         {
@@ -57,6 +63,7 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string Label;
         public readonly int Objects;
+        public readonly string Region;
         public readonly int Size;
 
         [OutputConstructor]
@@ -73,6 +80,8 @@ namespace Pulumi.Linode
 
             int objects,
 
+            string region,
+
             int size)
         {
             Cluster = cluster;
@@ -81,6 +90,7 @@ namespace Pulumi.Linode
             Id = id;
             Label = label;
             Objects = objects;
+            Region = region;
             Size = size;
         }
     }

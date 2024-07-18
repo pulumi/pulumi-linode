@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Networking IP Address
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
  *
  * ## Example Usage
  *
@@ -82,6 +83,7 @@ export interface GetNetworkingIpResult {
 }
 /**
  * Provides information about a Linode Networking IP Address
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
  *
  * ## Example Usage
  *

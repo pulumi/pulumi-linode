@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode profile.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
  *
  * ## Example Usage
  *
@@ -75,6 +76,7 @@ export interface GetProfileResult {
 }
 /**
  * Provides information about a Linode profile.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
  *
  * ## Example Usage
  *

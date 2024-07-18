@@ -121,10 +121,10 @@ namespace Pulumi.Linode
         public Output<string?> CacheControl { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster the bucket is in.
+        /// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         /// </summary>
         [Output("cluster")]
-        public Output<string> Cluster { get; private set; } = null!;
+        public Output<string?> Cluster { get; private set; } = null!;
 
         /// <summary>
         /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -191,6 +191,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster the bucket is in. Required if `cluster` is not configured.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
         /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
@@ -295,10 +301,10 @@ namespace Pulumi.Linode
         public Input<string>? CacheControl { get; set; }
 
         /// <summary>
-        /// The cluster the bucket is in.
+        /// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         /// </summary>
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
+        [Input("cluster")]
+        public Input<string>? Cluster { get; set; }
 
         /// <summary>
         /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -372,6 +378,12 @@ namespace Pulumi.Linode
             set => _metadata = value;
         }
 
+        /// <summary>
+        /// The cluster the bucket is in. Required if `cluster` is not configured.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         [Input("secretKey")]
         private Input<string>? _secretKey;
 
@@ -437,7 +449,7 @@ namespace Pulumi.Linode
         public Input<string>? CacheControl { get; set; }
 
         /// <summary>
-        /// The cluster the bucket is in.
+        /// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -513,6 +525,12 @@ namespace Pulumi.Linode
             get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
+
+        /// <summary>
+        /// The cluster the bucket is in. Required if `cluster` is not configured.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;

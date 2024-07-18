@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-keys).
  *
  * ## Example Usage
  *
@@ -18,6 +19,22 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = new linode.ObjectStorageKey("foo", {label: "image-access"});
+ * ```
+ *
+ * The following example shows a key with limited access.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.ObjectStorageKey("foobar", {
+ *     label: "my-key",
+ *     bucketAccesses: [{
+ *         bucketName: "my-bucket-name",
+ *         region: "us-mia",
+ *         permissions: "read_write",
+ *     }],
+ * });
  * ```
  */
 export class ObjectStorageKey extends pulumi.CustomResource {
@@ -58,14 +75,22 @@ export class ObjectStorageKey extends pulumi.CustomResource {
     public readonly bucketAccesses!: pulumi.Output<outputs.ObjectStorageKeyBucketAccess[] | undefined>;
     /**
      * The label given to this key. For display purposes only.
-     *
-     * - - -
      */
     public readonly label!: pulumi.Output<string>;
     /**
      * Whether or not this key is a limited access key.
      */
     public /*out*/ readonly limited!: pulumi.Output<boolean>;
+    /**
+     * A set of regions where the key will grant access to create buckets.
+     *
+     * - - -
+     */
+    public readonly regions!: pulumi.Output<string[]>;
+    /**
+     * A set of objects containing the detailed info of the regions where this key can access.
+     */
+    public /*out*/ readonly regionsDetails!: pulumi.Output<outputs.ObjectStorageKeyRegionsDetail[]>;
     /**
      * This keypair's secret key.
      */
@@ -88,6 +113,8 @@ export class ObjectStorageKey extends pulumi.CustomResource {
             resourceInputs["bucketAccesses"] = state ? state.bucketAccesses : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["limited"] = state ? state.limited : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["regionsDetails"] = state ? state.regionsDetails : undefined;
             resourceInputs["secretKey"] = state ? state.secretKey : undefined;
         } else {
             const args = argsOrState as ObjectStorageKeyArgs | undefined;
@@ -96,8 +123,10 @@ export class ObjectStorageKey extends pulumi.CustomResource {
             }
             resourceInputs["bucketAccesses"] = args ? args.bucketAccesses : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["limited"] = undefined /*out*/;
+            resourceInputs["regionsDetails"] = undefined /*out*/;
             resourceInputs["secretKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -121,14 +150,22 @@ export interface ObjectStorageKeyState {
     bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
     /**
      * The label given to this key. For display purposes only.
-     *
-     * - - -
      */
     label?: pulumi.Input<string>;
     /**
      * Whether or not this key is a limited access key.
      */
     limited?: pulumi.Input<boolean>;
+    /**
+     * A set of regions where the key will grant access to create buckets.
+     *
+     * - - -
+     */
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of objects containing the detailed info of the regions where this key can access.
+     */
+    regionsDetails?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyRegionsDetail>[]>;
     /**
      * This keypair's secret key.
      */
@@ -145,8 +182,12 @@ export interface ObjectStorageKeyArgs {
     bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
     /**
      * The label given to this key. For display purposes only.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * A set of regions where the key will grant access to create buckets.
      *
      * - - -
      */
-    label: pulumi.Input<string>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
 }

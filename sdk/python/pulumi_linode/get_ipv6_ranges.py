@@ -66,6 +66,7 @@ def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFi
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpv6RangesResult:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
 
     > Some fields may not be accessible directly the results of this data source.
     For additional information about a specific IPv6 range consider using the Ipv6Range
@@ -110,6 +111,7 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6RangesResult]:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
 
     > Some fields may not be accessible directly the results of this data source.
     For additional information about a specific IPv6 range consider using the Ipv6Range

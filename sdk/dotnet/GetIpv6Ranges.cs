@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about Linode IPv6 ranges that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
         /// 
         /// &gt; Some fields may not be accessible directly the results of this data source.
         /// For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -63,6 +64,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about Linode IPv6 ranges that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
         /// 
         /// &gt; Some fields may not be accessible directly the results of this data source.
         /// For additional information about a specific IPv6 range consider using the linode.Ipv6Range

@@ -12,6 +12,7 @@ import (
 )
 
 // Provides information about a Linode user
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
 //
 // ## Example Usage
 //

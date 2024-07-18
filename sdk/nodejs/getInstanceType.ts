@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode instance type
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
  *
  * ## Example Usage
  *
@@ -51,7 +52,7 @@ export interface GetInstanceTypeArgs {
 export interface GetInstanceTypeResult {
     readonly addons: outputs.GetInstanceTypeAddons;
     /**
-     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      */
     readonly class: string;
     /**
@@ -87,6 +88,7 @@ export interface GetInstanceTypeResult {
 }
 /**
  * Provides information about a Linode instance type
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
  *
  * ## Example Usage
  *

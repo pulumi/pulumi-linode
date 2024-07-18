@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a list of Linode VPCs that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
  *
  * ## Example Usage
  *
@@ -67,6 +68,7 @@ export interface GetVpcsResult {
 }
 /**
  * Provides information about a list of Linode VPCs that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
  *
  * ## Example Usage
  *

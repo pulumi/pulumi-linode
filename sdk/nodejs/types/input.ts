@@ -1392,7 +1392,7 @@ export interface GetInstanceTypesType {
      */
     addons?: inputs.GetInstanceTypesTypeAddon[];
     /**
-     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      */
     class?: string;
     /**
@@ -1439,7 +1439,7 @@ export interface GetInstanceTypesTypeArgs {
      */
     addons?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonArgs>[]>;
     /**
-     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      */
     class?: pulumi.Input<string>;
     /**
@@ -5256,13 +5256,30 @@ export interface ObjectStorageKeyBucketAccess {
      */
     bucketName: pulumi.Input<string>;
     /**
-     * The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+     *
+     * @deprecated The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      */
-    cluster: pulumi.Input<string>;
+    cluster?: pulumi.Input<string>;
     /**
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: pulumi.Input<string>;
+    /**
+     * The region where the bucket resides.
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface ObjectStorageKeyRegionsDetail {
+    /**
+     * The ID of the region.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+     */
+    s3Endpoint: pulumi.Input<string>;
 }
 
 export interface PlacementGroupMember {

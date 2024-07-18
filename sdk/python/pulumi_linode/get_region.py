@@ -126,6 +126,7 @@ def get_region(id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
 
     ## Example Usage
 
@@ -164,6 +165,7 @@ def get_region_output(id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
 
     ## Example Usage
 

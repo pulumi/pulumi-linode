@@ -122,6 +122,7 @@ def get_placement_group(id: Optional[int] = None,
     **NOTE: Placement Groups may not currently be available to all users.**
 
     `PlacementGroup` provides details about a Linode placement group.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
 
     ## Example Usage
 
@@ -162,6 +163,7 @@ def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
     **NOTE: Placement Groups may not currently be available to all users.**
 
     `PlacementGroup` provides details about a Linode placement group.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
 
     ## Example Usage
 

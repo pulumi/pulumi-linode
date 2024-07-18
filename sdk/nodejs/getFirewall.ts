@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a Linode Firewall.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
  *
  * ## Example Usage
  *
@@ -92,6 +93,7 @@ export interface GetFirewallResult {
 }
 /**
  * Provides details about a Linode Firewall.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
  *
  * ## Example Usage
  *

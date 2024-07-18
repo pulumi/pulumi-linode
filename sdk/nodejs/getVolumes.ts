@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode volumes that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,6 +72,7 @@ export interface GetVolumesResult {
 }
 /**
  * Provides information about Linode volumes that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

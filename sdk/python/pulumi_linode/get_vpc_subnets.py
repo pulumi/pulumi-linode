@@ -79,6 +79,7 @@ def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFi
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcSubnetsResult:
     """
     Provides information about a list of Linode VPC subnets that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
 
     ## Example Usage
 
@@ -130,6 +131,7 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetsResult]:
     """
     Provides information about a list of Linode VPC subnets that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
 
     ## Example Usage
 

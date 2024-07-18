@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.
+ * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
  *
  * ## Example Usage
  *
@@ -71,7 +72,7 @@ export class DatabaseAccessControls extends pulumi.CustomResource {
      */
     public readonly databaseId!: pulumi.Output<number>;
     /**
-     * The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * The unique type of the target database. (`mysql`, `postgresql`)
      */
     public readonly databaseType!: pulumi.Output<string>;
 
@@ -124,7 +125,7 @@ export interface DatabaseAccessControlsState {
      */
     databaseId?: pulumi.Input<number>;
     /**
-     * The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * The unique type of the target database. (`mysql`, `postgresql`)
      */
     databaseType?: pulumi.Input<string>;
 }
@@ -142,7 +143,7 @@ export interface DatabaseAccessControlsArgs {
      */
     databaseId: pulumi.Input<number>;
     /**
-     * The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * The unique type of the target database. (`mysql`, `postgresql`)
      */
     databaseType: pulumi.Input<string>;
 }

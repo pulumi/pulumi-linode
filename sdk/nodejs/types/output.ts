@@ -1519,7 +1519,7 @@ export interface GetInstanceTypesType {
      */
     addons: outputs.GetInstanceTypesTypeAddon[];
     /**
-     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      */
     class: string;
     /**
@@ -1659,7 +1659,7 @@ export interface GetInstancesInstance {
      */
     id: number;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     image: string;
     /**
@@ -1777,7 +1777,7 @@ export interface GetInstancesInstanceConfig {
      */
     interfaces: outputs.GetInstancesInstanceConfigInterface[];
     /**
-     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+     * A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
      */
     kernel: string;
     /**
@@ -4464,13 +4464,30 @@ export interface ObjectStorageKeyBucketAccess {
      */
     bucketName: string;
     /**
-     * The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+     *
+     * @deprecated The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      */
     cluster: string;
     /**
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: string;
+    /**
+     * The region where the bucket resides.
+     */
+    region: string;
+}
+
+export interface ObjectStorageKeyRegionsDetail {
+    /**
+     * The ID of the region.
+     */
+    id: string;
+    /**
+     * The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+     */
+    s3Endpoint: string;
 }
 
 export interface PlacementGroupMember {

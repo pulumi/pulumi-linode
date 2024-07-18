@@ -17,6 +17,7 @@ namespace Pulumi.Linode
         /// To learn more, see the early access documentation.
         /// 
         /// Provides details about Linode VLANs.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
         /// 
         /// ## Example Usage
         /// 
@@ -82,6 +83,7 @@ namespace Pulumi.Linode
         /// To learn more, see the early access documentation.
         /// 
         /// Provides details about Linode VLANs.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
         /// 
         /// ## Example Usage
         /// 

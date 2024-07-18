@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.ObjectStorageKeyBucketAccessArgs;
+import com.pulumi.linode.inputs.ObjectStorageKeyRegionsDetailArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -51,16 +52,12 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
     /**
      * The label given to this key. For display purposes only.
      * 
-     * ***
-     * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
      * @return The label given to this key. For display purposes only.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> label() {
@@ -80,6 +77,40 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> limited() {
         return Optional.ofNullable(this.limited);
+    }
+
+    /**
+     * A set of regions where the key will grant access to create buckets.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="regions")
+    private @Nullable Output<List<String>> regions;
+
+    /**
+     * @return A set of regions where the key will grant access to create buckets.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<List<String>>> regions() {
+        return Optional.ofNullable(this.regions);
+    }
+
+    /**
+     * A set of objects containing the detailed info of the regions where this key can access.
+     * 
+     */
+    @Import(name="regionsDetails")
+    private @Nullable Output<List<ObjectStorageKeyRegionsDetailArgs>> regionsDetails;
+
+    /**
+     * @return A set of objects containing the detailed info of the regions where this key can access.
+     * 
+     */
+    public Optional<Output<List<ObjectStorageKeyRegionsDetailArgs>>> regionsDetails() {
+        return Optional.ofNullable(this.regionsDetails);
     }
 
     /**
@@ -104,6 +135,8 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         this.bucketAccesses = $.bucketAccesses;
         this.label = $.label;
         this.limited = $.limited;
+        this.regions = $.regions;
+        this.regionsDetails = $.regionsDetails;
         this.secretKey = $.secretKey;
     }
 
@@ -180,8 +213,6 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         /**
          * @param label The label given to this key. For display purposes only.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -192,8 +223,6 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param label The label given to this key. For display purposes only.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -221,6 +250,74 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
          */
         public Builder limited(Boolean limited) {
             return limited(Output.of(limited));
+        }
+
+        /**
+         * @param regions A set of regions where the key will grant access to create buckets.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(@Nullable Output<List<String>> regions) {
+            $.regions = regions;
+            return this;
+        }
+
+        /**
+         * @param regions A set of regions where the key will grant access to create buckets.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(List<String> regions) {
+            return regions(Output.of(regions));
+        }
+
+        /**
+         * @param regions A set of regions where the key will grant access to create buckets.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(String... regions) {
+            return regions(List.of(regions));
+        }
+
+        /**
+         * @param regionsDetails A set of objects containing the detailed info of the regions where this key can access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionsDetails(@Nullable Output<List<ObjectStorageKeyRegionsDetailArgs>> regionsDetails) {
+            $.regionsDetails = regionsDetails;
+            return this;
+        }
+
+        /**
+         * @param regionsDetails A set of objects containing the detailed info of the regions where this key can access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionsDetails(List<ObjectStorageKeyRegionsDetailArgs> regionsDetails) {
+            return regionsDetails(Output.of(regionsDetails));
+        }
+
+        /**
+         * @param regionsDetails A set of objects containing the detailed info of the regions where this key can access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionsDetails(ObjectStorageKeyRegionsDetailArgs... regionsDetails) {
+            return regionsDetails(List.of(regionsDetails));
         }
 
         /**

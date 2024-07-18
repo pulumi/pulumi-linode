@@ -17,7 +17,7 @@ import java.util.Objects;
 public final class GetInstanceTypeResult {
     private GetInstanceTypeAddons addons;
     /**
-     * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
      */
     private String class_;
@@ -64,7 +64,7 @@ public final class GetInstanceTypeResult {
         return this.addons;
     }
     /**
-     * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
      */
     public String class_() {

@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Manages a Linode Firewall Device.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-firewall-device).
  *
  * **NOTICE:** Attaching a Linode Firewall Device to a `linode.Firewall` resource with user-defined `linodes` may cause device conflicts.
  *

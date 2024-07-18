@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode StackScripts that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
  *
  * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
  *
@@ -105,6 +106,7 @@ export interface GetStackScriptsResult {
 }
 /**
  * Provides information about Linode StackScripts that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
  *
  * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `isPublic` is not filtered on.
  *

@@ -17,6 +17,7 @@ public final class GetLinodeObjectStorageBucketResult {
     private String id;
     private String label;
     private Integer objects;
+    private String region;
     private Integer size;
 
     private GetLinodeObjectStorageBucketResult() {}
@@ -38,6 +39,9 @@ public final class GetLinodeObjectStorageBucketResult {
     public Integer objects() {
         return this.objects;
     }
+    public String region() {
+        return this.region;
+    }
     public Integer size() {
         return this.size;
     }
@@ -57,6 +61,7 @@ public final class GetLinodeObjectStorageBucketResult {
         private String id;
         private String label;
         private Integer objects;
+        private String region;
         private Integer size;
         public Builder() {}
         public Builder(GetLinodeObjectStorageBucketResult defaults) {
@@ -67,6 +72,7 @@ public final class GetLinodeObjectStorageBucketResult {
     	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.objects = defaults.objects;
+    	      this.region = defaults.region;
     	      this.size = defaults.size;
         }
 
@@ -119,6 +125,14 @@ public final class GetLinodeObjectStorageBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(Integer size) {
             if (size == null) {
               throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "size");
@@ -134,6 +148,7 @@ public final class GetLinodeObjectStorageBucketResult {
             _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.objects = objects;
+            _resultValue.region = region;
             _resultValue.size = size;
             return _resultValue;
         }

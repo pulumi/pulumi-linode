@@ -11,7 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
-    /// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
+    /// For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-domain-record).
     /// 
     /// ## Example Usage
     /// 
@@ -85,7 +85,7 @@ namespace Pulumi.Linode
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        /// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         /// </summary>
         [Output("recordType")]
         public Output<string> RecordType { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Linode
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        /// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         /// </summary>
         [Input("recordType", required: true)]
         public Input<string> RecordType { get; set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Linode
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        /// The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         /// </summary>
         [Input("recordType")]
         public Input<string>? RecordType { get; set; }

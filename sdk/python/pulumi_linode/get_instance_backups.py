@@ -85,6 +85,7 @@ def get_instance_backups(linode_id: Optional[int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceBackupsResult:
     """
     Provides details about the backups of an Instance.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
 
     ## Example Usage
 
@@ -116,6 +117,7 @@ def get_instance_backups_output(linode_id: Optional[pulumi.Input[int]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceBackupsResult]:
     """
     Provides details about the backups of an Instance.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
 
     ## Example Usage
 

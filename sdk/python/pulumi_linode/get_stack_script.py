@@ -202,6 +202,7 @@ def get_stack_script(id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptResult:
     """
     Provides details about a specific Linode StackScript.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
 
     ## Example Usage
 
@@ -244,6 +245,7 @@ def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptResult]:
     """
     Provides details about a specific Linode StackScript.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
 
     ## Example Usage
 

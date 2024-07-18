@@ -119,6 +119,7 @@ def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabas
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseBackupsResult:
     """
     Provides information about Linode Database Backups that match a set of filters.
+    For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
     ## Example Usage
 
@@ -188,6 +189,7 @@ def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseBackupsResult]:
     """
     Provides information about Linode Database Backups that match a set of filters.
+    For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
     ## Example Usage
 

@@ -196,6 +196,7 @@ def get_firewall(id: Optional[int] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallResult:
     """
     Provides details about a Linode Firewall.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
 
     ## Example Usage
 
@@ -236,6 +237,7 @@ def get_firewall_output(id: Optional[pulumi.Input[int]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
     """
     Provides details about a Linode Firewall.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
 
     ## Example Usage
 

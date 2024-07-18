@@ -89,6 +89,7 @@ def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArg
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKernelsResult:
     """
     Provides information about Linode Kernels that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
 
     ## Example Usage
 
@@ -156,6 +157,7 @@ def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelsResult]:
     """
     Provides information about Linode Kernels that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
 
     ## Example Usage
 

@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,18 +32,26 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
     }
 
     /**
-     * The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+     * 
+     * @deprecated
+     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    @Import(name="cluster", required=true)
-    private Output<String> cluster;
+    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    @Import(name="cluster")
+    private @Nullable Output<String> cluster;
 
     /**
-     * @return The Object Storage cluster where a bucket to which the key is granting access is hosted.
+     * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+     * 
+     * @deprecated
+     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    public Output<String> cluster() {
-        return this.cluster;
+    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    public Optional<Output<String>> cluster() {
+        return Optional.ofNullable(this.cluster);
     }
 
     /**
@@ -59,12 +69,28 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
         return this.permissions;
     }
 
+    /**
+     * The region where the bucket resides.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region where the bucket resides.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private ObjectStorageKeyBucketAccessArgs() {}
 
     private ObjectStorageKeyBucketAccessArgs(ObjectStorageKeyBucketAccessArgs $) {
         this.bucketName = $.bucketName;
         this.cluster = $.cluster;
         this.permissions = $.permissions;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -107,22 +133,30 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cluster The Object Storage cluster where a bucket to which the key is granting access is hosted.
+         * @param cluster The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+         * 
          */
-        public Builder cluster(Output<String> cluster) {
+        @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+        public Builder cluster(@Nullable Output<String> cluster) {
             $.cluster = cluster;
             return this;
         }
 
         /**
-         * @param cluster The Object Storage cluster where a bucket to which the key is granting access is hosted.
+         * @param cluster The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+         * 
          */
+        @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
         public Builder cluster(String cluster) {
             return cluster(Output.of(cluster));
         }
@@ -148,12 +182,30 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
             return permissions(Output.of(permissions));
         }
 
+        /**
+         * @param region The region where the bucket resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region where the bucket resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
         public ObjectStorageKeyBucketAccessArgs build() {
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccessArgs", "bucketName");
-            }
-            if ($.cluster == null) {
-                throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccessArgs", "cluster");
             }
             if ($.permissions == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccessArgs", "permissions");

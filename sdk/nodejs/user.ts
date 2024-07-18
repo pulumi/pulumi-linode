@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Manages a Linode User.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-user).
  *
  * ## Example Usage
  *

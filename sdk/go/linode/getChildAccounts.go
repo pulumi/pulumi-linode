@@ -12,6 +12,7 @@ import (
 )
 
 // Provides information about Linode Child Accounts that match a set of filters.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
 //
 // **NOTE: Parent/Child related features may not be generally available.**
 //

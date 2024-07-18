@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode IPv6 Range.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
  *
  * ## Example Usage
  *
@@ -60,6 +61,7 @@ export interface GetIpv6RangeResult {
 }
 /**
  * Provides information about a Linode IPv6 Range.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
  *
  * ## Example Usage
  *

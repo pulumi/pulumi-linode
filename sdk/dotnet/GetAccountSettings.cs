@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about Linode account settings.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
         /// 
         /// ## Example Usage
         /// 
@@ -36,6 +37,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about Linode account settings.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
         /// 
         /// ## Example Usage
         /// 

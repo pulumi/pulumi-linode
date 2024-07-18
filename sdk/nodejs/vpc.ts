@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Manages a Linode VPC.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-vpc).
  *
  * Please refer to linode.VpcSubnet to manage the subnets under a Linode VPC.
  *

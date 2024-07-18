@@ -89,6 +89,7 @@ def get_volumes(filters: Optional[Sequence[pulumi.InputType['GetVolumesFilterArg
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
     Provides information about Linode volumes that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
 
     ```python
     import pulumi
@@ -135,6 +136,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Provides information about Linode volumes that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
 
     ```python
     import pulumi

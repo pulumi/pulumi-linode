@@ -36,8 +36,6 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
     /**
      * The label given to this key. For display purposes only.
      * 
-     * ***
-     * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
@@ -45,11 +43,28 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The label given to this key. For display purposes only.
      * 
-     * ***
-     * 
      */
     public Output<String> label() {
         return this.label;
+    }
+
+    /**
+     * A set of regions where the key will grant access to create buckets.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="regions")
+    private @Nullable Output<List<String>> regions;
+
+    /**
+     * @return A set of regions where the key will grant access to create buckets.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<List<String>>> regions() {
+        return Optional.ofNullable(this.regions);
     }
 
     private ObjectStorageKeyArgs() {}
@@ -57,6 +72,7 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
     private ObjectStorageKeyArgs(ObjectStorageKeyArgs $) {
         this.bucketAccesses = $.bucketAccesses;
         this.label = $.label;
+        this.regions = $.regions;
     }
 
     public static Builder builder() {
@@ -111,8 +127,6 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param label The label given to this key. For display purposes only.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -124,13 +138,48 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param label The label given to this key. For display purposes only.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param regions A set of regions where the key will grant access to create buckets.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(@Nullable Output<List<String>> regions) {
+            $.regions = regions;
+            return this;
+        }
+
+        /**
+         * @param regions A set of regions where the key will grant access to create buckets.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(List<String> regions) {
+            return regions(Output.of(regions));
+        }
+
+        /**
+         * @param regions A set of regions where the key will grant access to create buckets.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(String... regions) {
+            return regions(List.of(regions));
         }
 
         public ObjectStorageKeyArgs build() {

@@ -82,14 +82,14 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The cluster the bucket is in.
+     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
      */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
     /**
-     * @return The cluster the bucket is in.
+     * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
      */
     public Optional<Output<String>> cluster() {
@@ -262,6 +262,21 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The cluster the bucket is in. Required if `cluster` is not configured.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
      * * configuring the `obj_secret_key` in the provider configuration;
      * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -344,6 +359,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         this.forceDestroy = $.forceDestroy;
         this.key = $.key;
         this.metadata = $.metadata;
+        this.region = $.region;
         this.secretKey = $.secretKey;
         this.source = $.source;
         this.versionId = $.versionId;
@@ -457,7 +473,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cluster The cluster the bucket is in.
+         * @param cluster The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
          * 
          * @return builder
          * 
@@ -468,7 +484,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cluster The cluster the bucket is in.
+         * @param cluster The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
          * 
          * @return builder
          * 
@@ -706,6 +722,27 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
          */
         public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
+        }
+
+        /**
+         * @param region The cluster the bucket is in. Required if `cluster` is not configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The cluster the bucket is in. Required if `cluster` is not configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

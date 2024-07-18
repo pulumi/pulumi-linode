@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Linode Instance resource.  This can be used to create, modify, and delete Linodes.
- * For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createLinodeInstance).
+ * For more information, see [Getting Started with Linode](https://linode.com/docs/getting-started/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-linode-instance).
  * 
  * ## Example Usage
  * 

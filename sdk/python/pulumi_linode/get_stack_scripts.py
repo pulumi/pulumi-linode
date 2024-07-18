@@ -99,6 +99,7 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptsResult:
     """
     Provides information about Linode StackScripts that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
 
     **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
 
@@ -177,6 +178,7 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptsResult]:
     """
     Provides information about Linode StackScripts that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
 
     **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
 

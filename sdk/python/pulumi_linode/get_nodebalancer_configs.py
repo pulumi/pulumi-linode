@@ -102,6 +102,7 @@ def get_nodebalancer_configs(filters: Optional[Sequence[pulumi.InputType['GetNod
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodebalancerConfigsResult:
     """
     Provides information about Linode NodeBalancer Configs that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
 
     ## Example Usage
 
@@ -179,6 +180,7 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodebalancerConfigsResult]:
     """
     Provides information about Linode NodeBalancer Configs that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
 
     ## Example Usage
 

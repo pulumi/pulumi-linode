@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Domain Record.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
         /// 
         /// ## Example Usage
         /// 
@@ -46,6 +47,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about a Linode Domain Record.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
         /// 
         /// ## Example Usage
         /// 
@@ -176,7 +178,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int TtlSec;
         /// <summary>
-        /// The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+        /// The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
         /// </summary>
         public readonly string Type;
         /// <summary>

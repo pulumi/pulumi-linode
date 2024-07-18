@@ -12,6 +12,7 @@ import (
 )
 
 // Provides information about a Linode Domain Record.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
 //
 // ## Example Usage
 //
@@ -90,7 +91,7 @@ type LookupDomainRecordResult struct {
 	Target string `pulumi:"target"`
 	// The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
 	TtlSec int `pulumi:"ttlSec"`
-	// The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+	// The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
 	Type string `pulumi:"type"`
 	// The relative weight of this Record. Higher values are preferred.
 	Weight int `pulumi:"weight"`
@@ -188,7 +189,7 @@ func (o LookupDomainRecordResultOutput) TtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) int { return v.TtlSec }).(pulumi.IntOutput)
 }
 
-// The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+// The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
 func (o LookupDomainRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -66,6 +66,7 @@ def get_child_accounts(child_accounts: Optional[Sequence[pulumi.InputType['GetCh
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetChildAccountsResult:
     """
     Provides information about Linode Child Accounts that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
 
     **NOTE: Parent/Child related features may not be generally available.**
 
@@ -144,6 +145,7 @@ def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Seq
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountsResult]:
     """
     Provides information about Linode Child Accounts that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
 
     **NOTE: Parent/Child related features may not be generally available.**
 

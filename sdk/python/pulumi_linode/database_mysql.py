@@ -555,7 +555,7 @@ class DatabaseMysql(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
-        For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
@@ -650,7 +650,7 @@ class DatabaseMysql(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
-        For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 

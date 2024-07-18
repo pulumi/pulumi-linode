@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode Managed Database engines that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
  *
  * ## Example Usage
  *
@@ -108,6 +109,7 @@ export interface GetDatabaseEnginesResult {
 }
 /**
  * Provides information about Linode Managed Database engines that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
  *
  * ## Example Usage
  *

@@ -58,6 +58,7 @@ __all__ = [
     'ObjectStorageBucketLifecycleRuleExpirationArgs',
     'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs',
     'ObjectStorageKeyBucketAccessArgs',
+    'ObjectStorageKeyRegionsDetailArgs',
     'PlacementGroupMemberArgs',
     'RdnsTimeoutsArgs',
     'StackScriptUserDefinedFieldArgs',
@@ -3609,16 +3610,24 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
 class ObjectStorageKeyBucketAccessArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
-                 cluster: pulumi.Input[str],
-                 permissions: pulumi.Input[str]):
+                 permissions: pulumi.Input[str],
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket_name: The unique label of the bucket to which the key will grant limited access.
-        :param pulumi.Input[str] cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
         :param pulumi.Input[str] permissions: This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+        :param pulumi.Input[str] cluster: The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+        :param pulumi.Input[str] region: The region where the bucket resides.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "permissions", permissions)
+        if cluster is not None:
+            warnings.warn("""The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""", DeprecationWarning)
+            pulumi.log.warn("""cluster is deprecated: The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""")
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -3634,18 +3643,6 @@ class ObjectStorageKeyBucketAccessArgs:
 
     @property
     @pulumi.getter
-    def cluster(self) -> pulumi.Input[str]:
-        """
-        The Object Storage cluster where a bucket to which the key is granting access is hosted.
-        """
-        return pulumi.get(self, "cluster")
-
-    @cluster.setter
-    def cluster(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cluster", value)
-
-    @property
-    @pulumi.getter
     def permissions(self) -> pulumi.Input[str]:
         """
         This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
@@ -3655,6 +3652,68 @@ class ObjectStorageKeyBucketAccessArgs:
     @permissions.setter
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""")
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the bucket resides.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ObjectStorageKeyRegionsDetailArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 s3_endpoint: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of the region.
+        :param pulumi.Input[str] s3_endpoint: The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "s3_endpoint", s3_endpoint)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of the region.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> pulumi.Input[str]:
+        """
+        The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+        """
+        return pulumi.get(self, "s3_endpoint")
+
+    @s3_endpoint.setter
+    def s3_endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "s3_endpoint", value)
 
 
 @pulumi.input_type
@@ -6739,7 +6798,7 @@ class GetInstanceTypesTypeArgs:
                  vcpus: int):
         """
         :param Sequence['GetInstanceTypesTypeAddonArgs'] addons: Information about the optional Backup service offered for Linodes.
-        :param str class_: The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        :param str class_: The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         :param int disk: The Disk size, in MB, of the Linode Type.
         :param str id: The ID representing the Linode Type.
         :param str label: The Linode Type's label is for display purposes only.
@@ -6778,7 +6837,7 @@ class GetInstanceTypesTypeArgs:
     @pulumi.getter(name="class")
     def class_(self) -> str:
         """
-        The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         """
         return pulumi.get(self, "class_")
 

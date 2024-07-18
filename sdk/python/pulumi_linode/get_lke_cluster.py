@@ -196,6 +196,7 @@ def get_lke_cluster(control_planes: Optional[Sequence[pulumi.InputType['GetLkeCl
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeClusterResult:
     """
     Provides details about an LKE Cluster.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
 
     ## Example Usage
 
@@ -241,6 +242,7 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClusterResult]:
     """
     Provides details about an LKE Cluster.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
 
     ## Example Usage
 

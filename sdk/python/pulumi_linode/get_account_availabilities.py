@@ -66,6 +66,7 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAvailabilitiesResult:
     """
     Provides information about services availabilities for the current Linode account.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
 
     ## Example Usage
 
@@ -108,6 +109,7 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilitiesResult]:
     """
     Provides information about services availabilities for the current Linode account.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
 
     ## Example Usage
 

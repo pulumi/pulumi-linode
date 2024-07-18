@@ -89,6 +89,7 @@ def get_users(filters: Optional[Sequence[pulumi.InputType['GetUsersFilterArgs']]
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     Provides information about Linode users that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
 
     ```python
     import pulumi
@@ -145,6 +146,7 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
     Provides information about Linode users that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
 
     ```python
     import pulumi

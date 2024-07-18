@@ -32,14 +32,14 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      * 
      */
     @Import(name="longviewSubscription")
     private @Nullable Output<String> longviewSubscription;
 
     /**
-     * @return The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+     * @return The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      * 
      */
     public Optional<Output<String>> longviewSubscription() {
@@ -141,7 +141,7 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param longviewSubscription The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+         * @param longviewSubscription The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param longviewSubscription The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+         * @param longviewSubscription The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
          * 
          * @return builder
          * 

@@ -143,7 +143,7 @@ class GetDomainRecordResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+        The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
         """
         return pulumi.get(self, "type")
 
@@ -182,6 +182,7 @@ def get_domain_record(domain_id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainRecordResult:
     """
     Provides information about a Linode Domain Record.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
 
     ## Example Usage
 
@@ -231,6 +232,7 @@ def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordResult]:
     """
     Provides information about a Linode Domain Record.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
 
     ## Example Usage
 
