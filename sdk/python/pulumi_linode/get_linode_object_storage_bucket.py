@@ -21,7 +21,7 @@ class GetLinodeObjectStorageBucketResult:
     """
     A collection of values returned by getLinodeObjectStorageBucket.
     """
-    def __init__(__self__, cluster=None, created=None, hostname=None, id=None, label=None, objects=None, size=None):
+    def __init__(__self__, cluster=None, created=None, hostname=None, id=None, label=None, objects=None, region=None, size=None):
         if cluster and not isinstance(cluster, str):
             raise TypeError("Expected argument 'cluster' to be a str")
         pulumi.set(__self__, "cluster", cluster)
@@ -40,6 +40,9 @@ class GetLinodeObjectStorageBucketResult:
         if objects and not isinstance(objects, int):
             raise TypeError("Expected argument 'objects' to be a int")
         pulumi.set(__self__, "objects", objects)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
@@ -76,6 +79,11 @@ class GetLinodeObjectStorageBucketResult:
 
     @property
     @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
     def size(self) -> int:
         return pulumi.get(self, "size")
 
@@ -92,11 +100,13 @@ class AwaitableGetLinodeObjectStorageBucketResult(GetLinodeObjectStorageBucketRe
             id=self.id,
             label=self.label,
             objects=self.objects,
+            region=self.region,
             size=self.size)
 
 
 def get_linode_object_storage_bucket(cluster: Optional[str] = None,
                                      label: Optional[str] = None,
+                                     region: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLinodeObjectStorageBucketResult:
     """
     Use this data source to access information about an existing resource.
@@ -104,6 +114,7 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
     __args__ = dict()
     __args__['cluster'] = cluster
     __args__['label'] = label
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket', __args__, opts=opts, typ=GetLinodeObjectStorageBucketResult).value
 
@@ -114,12 +125,14 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         objects=pulumi.get(__ret__, 'objects'),
+        region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'))
 
 
 @_utilities.lift_output_func(get_linode_object_storage_bucket)
-def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[str]] = None,
+def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optional[str]]] = None,
                                             label: Optional[pulumi.Input[str]] = None,
+                                            region: Optional[pulumi.Input[Optional[str]]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLinodeObjectStorageBucketResult]:
     """
     Use this data source to access information about an existing resource.

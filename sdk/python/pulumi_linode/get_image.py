@@ -183,6 +183,7 @@ def get_image(id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Provides information about a Linode image
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
 
     ## Example Usage
 
@@ -224,6 +225,7 @@ def get_image_output(id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
     Provides information about a Linode image
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
 
     ## Example Usage
 

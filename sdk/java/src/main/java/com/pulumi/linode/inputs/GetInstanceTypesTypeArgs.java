@@ -35,14 +35,14 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      */
     @Import(name="class", required=true)
     private Output<String> class_;
 
     /**
-     * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      */
     public Output<String> class_() {
@@ -250,7 +250,7 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param class_ The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+         * @param class_ The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param class_ The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+         * @param class_ The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
          * 
          * @return builder
          * 

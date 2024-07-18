@@ -138,6 +138,7 @@ def get_kernel(id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKernelResult:
     """
     Provides information about a Linode kernel
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
 
     ## Example Usage
 
@@ -175,6 +176,7 @@ def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelResult]:
     """
     Provides information about a Linode kernel
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
 
     ## Example Usage
 

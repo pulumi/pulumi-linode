@@ -105,6 +105,7 @@ def get_account_login(id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountLoginResult:
     """
     Provides details about a specific Linode account login.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
 
     ## Example Usage
 
@@ -139,6 +140,7 @@ def get_account_login_output(id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginResult]:
     """
     Provides details about a specific Linode account login.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
 
     ## Example Usage
 

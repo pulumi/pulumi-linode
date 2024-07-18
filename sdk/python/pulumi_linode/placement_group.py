@@ -197,9 +197,10 @@ class PlacementGroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        **NOTE: Placement Groups may not currently be available to all users.**
-
         Manages a Linode Placement Group.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-placement-group).
+
+        **NOTE: Placement Groups may not currently be available to all users.**
 
         ## Example Usage
 
@@ -237,9 +238,10 @@ class PlacementGroup(pulumi.CustomResource):
                  args: PlacementGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **NOTE: Placement Groups may not currently be available to all users.**
-
         Manages a Linode Placement Group.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-placement-group).
+
+        **NOTE: Placement Groups may not currently be available to all users.**
 
         ## Example Usage
 

@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode instance type
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
         /// 
         /// ## Example Usage
         /// 
@@ -39,6 +40,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about a Linode instance type
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
         /// 
         /// ## Example Usage
         /// 
@@ -111,7 +113,7 @@ namespace Pulumi.Linode
     {
         public readonly Outputs.GetInstanceTypeAddonsResult Addons;
         /// <summary>
-        /// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        /// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
         /// </summary>
         public readonly string Class;
         /// <summary>

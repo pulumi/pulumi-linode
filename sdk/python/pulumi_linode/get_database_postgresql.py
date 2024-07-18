@@ -315,6 +315,7 @@ def get_database_postgresql(database_id: Optional[int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasePostgresqlResult:
     """
     Provides information about a Linode PostgreSQL Database.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
     ## Example Usage
 
@@ -384,6 +385,7 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[i
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasePostgresqlResult]:
     """
     Provides information about a Linode PostgreSQL Database.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
     ## Example Usage
 

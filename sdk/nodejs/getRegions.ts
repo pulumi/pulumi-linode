@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode regions that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,6 +67,7 @@ export interface GetRegionsResult {
 }
 /**
  * Provides information about Linode regions that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

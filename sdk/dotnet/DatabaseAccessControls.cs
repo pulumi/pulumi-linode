@@ -11,6 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.
+    /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
     /// 
     /// ## Example Usage
     /// 
@@ -69,7 +70,7 @@ namespace Pulumi.Linode
         public Output<int> DatabaseId { get; private set; } = null!;
 
         /// <summary>
-        /// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        /// The unique type of the target database. (`mysql`, `postgresql`)
         /// </summary>
         [Output("databaseType")]
         public Output<string> DatabaseType { get; private set; } = null!;
@@ -139,7 +140,7 @@ namespace Pulumi.Linode
         public Input<int> DatabaseId { get; set; } = null!;
 
         /// <summary>
-        /// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        /// The unique type of the target database. (`mysql`, `postgresql`)
         /// </summary>
         [Input("databaseType", required: true)]
         public Input<string> DatabaseType { get; set; } = null!;
@@ -171,7 +172,7 @@ namespace Pulumi.Linode
         public Input<int>? DatabaseId { get; set; }
 
         /// <summary>
-        /// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        /// The unique type of the target database. (`mysql`, `postgresql`)
         /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }

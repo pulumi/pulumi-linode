@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a Linode NodeBalancer.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
  *
  * ## Example Usage
  *
@@ -89,6 +90,7 @@ export interface GetNodeBalancerResult {
 }
 /**
  * Provides details about a Linode NodeBalancer.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
  *
  * ## Example Usage
  *

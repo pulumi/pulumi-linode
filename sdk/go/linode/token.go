@@ -16,7 +16,7 @@ import (
 //
 // It is common for the provider itself to be configured with broadly scoped Personal Access Tokens.  Provisioning scripts or tools configured within a Linode Instance should follow the principle of least privilege to afford only the required roles for tools to perform their necessary tasks.  The `Token` resource allows for the management of Personal Access Tokens with scopes mirroring or narrowing the scope of the parent token.
 //
-// For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getTokens).
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-personal-access-tokens).
 //
 // ## Example Usage
 //
@@ -68,7 +68,7 @@ type Token struct {
 	Expiry pulumi.StringOutput `pulumi:"expiry"`
 	// A label for the Token.
 	Label pulumi.StringPtrOutput `pulumi:"label"`
-	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
 	Scopes pulumi.StringOutput `pulumi:"scopes"`
 	// The token used to access the API.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -117,7 +117,7 @@ type tokenState struct {
 	Expiry *string `pulumi:"expiry"`
 	// A label for the Token.
 	Label *string `pulumi:"label"`
-	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
 	Scopes *string `pulumi:"scopes"`
 	// The token used to access the API.
 	Token *string `pulumi:"token"`
@@ -130,7 +130,7 @@ type TokenState struct {
 	Expiry pulumi.StringPtrInput
 	// A label for the Token.
 	Label pulumi.StringPtrInput
-	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
 	Scopes pulumi.StringPtrInput
 	// The token used to access the API.
 	Token pulumi.StringPtrInput
@@ -145,7 +145,7 @@ type tokenArgs struct {
 	Expiry *string `pulumi:"expiry"`
 	// A label for the Token.
 	Label *string `pulumi:"label"`
-	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
 	Scopes string `pulumi:"scopes"`
 }
 
@@ -155,7 +155,7 @@ type TokenArgs struct {
 	Expiry pulumi.StringPtrInput
 	// A label for the Token.
 	Label pulumi.StringPtrInput
-	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
 	Scopes pulumi.StringInput
 }
 
@@ -261,7 +261,7 @@ func (o TokenOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://www.linode.com/docs/api/#oauth-reference).
+// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
 func (o TokenOutput) Scopes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Scopes }).(pulumi.StringOutput)
 }

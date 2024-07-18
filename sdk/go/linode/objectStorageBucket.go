@@ -13,6 +13,7 @@ import (
 )
 
 // Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 //
 // ## Example Usage
 //
@@ -110,11 +111,14 @@ type ObjectStorageBucket struct {
 	// * configured by `objAccessKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The cert used by this Object Storage Bucket.
 	Cert ObjectStorageBucketCertPtrOutput `pulumi:"cert"`
-	// The cluster of the Linode Object Storage Bucket.
+	// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+	// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrOutput `pulumi:"corsEnabled"`
@@ -127,6 +131,8 @@ type ObjectStorageBucket struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
+	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -146,9 +152,6 @@ func NewObjectStorageBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Cluster == nil {
-		return nil, errors.New("invalid value for required argument 'Cluster'")
-	}
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
 	}
@@ -186,11 +189,14 @@ type objectStorageBucketState struct {
 	// * configured by `objAccessKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
 	AccessKey *string `pulumi:"accessKey"`
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 	Acl *string `pulumi:"acl"`
 	// The cert used by this Object Storage Bucket.
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
-	// The cluster of the Linode Object Storage Bucket.
+	// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+	// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster *string `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
@@ -203,6 +209,8 @@ type objectStorageBucketState struct {
 	Label *string `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
+	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+	Region *string `pulumi:"region"`
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -220,11 +228,14 @@ type ObjectStorageBucketState struct {
 	// * configured by `objAccessKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
 	AccessKey pulumi.StringPtrInput
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 	Acl pulumi.StringPtrInput
 	// The cert used by this Object Storage Bucket.
 	Cert ObjectStorageBucketCertPtrInput
-	// The cluster of the Linode Object Storage Bucket.
+	// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+	// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrInput
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrInput
@@ -237,6 +248,8 @@ type ObjectStorageBucketState struct {
 	Label pulumi.StringPtrInput
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
+	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+	Region pulumi.StringPtrInput
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -258,18 +271,23 @@ type objectStorageBucketArgs struct {
 	// * configured by `objAccessKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
 	AccessKey *string `pulumi:"accessKey"`
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 	Acl *string `pulumi:"acl"`
 	// The cert used by this Object Storage Bucket.
 	Cert *ObjectStorageBucketCert `pulumi:"cert"`
-	// The cluster of the Linode Object Storage Bucket.
-	Cluster string `pulumi:"cluster"`
+	// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+	// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+	Cluster *string `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The label of the Linode Object Storage Bucket.
 	Label string `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
+	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+	Region *string `pulumi:"region"`
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -288,18 +306,23 @@ type ObjectStorageBucketArgs struct {
 	// * configured by `objAccessKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
 	AccessKey pulumi.StringPtrInput
-	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+	// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 	Acl pulumi.StringPtrInput
 	// The cert used by this Object Storage Bucket.
 	Cert ObjectStorageBucketCertPtrInput
-	// The cluster of the Linode Object Storage Bucket.
-	Cluster pulumi.StringInput
+	// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+	// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+	Cluster pulumi.StringPtrInput
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringInput
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
+	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+	Region pulumi.StringPtrInput
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -406,7 +429,7 @@ func (o ObjectStorageBucketOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
 func (o ObjectStorageBucketOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
 }
@@ -416,7 +439,10 @@ func (o ObjectStorageBucketOutput) Cert() ObjectStorageBucketCertPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucketCertPtrOutput { return v.Cert }).(ObjectStorageBucketCertPtrOutput)
 }
 
-// The cluster of the Linode Object Storage Bucket.
+// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+//
+// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 func (o ObjectStorageBucketOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -445,6 +471,11 @@ func (o ObjectStorageBucketOutput) Label() pulumi.StringOutput {
 // Lifecycle rules to be applied to the bucket.
 func (o ObjectStorageBucketOutput) LifecycleRules() ObjectStorageBucketLifecycleRuleArrayOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) ObjectStorageBucketLifecycleRuleArrayOutput { return v.LifecycleRules }).(ObjectStorageBucketLifecycleRuleArrayOutput)
+}
+
+// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+func (o ObjectStorageBucketOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The secret key to authenticate with. If not specified with the resource, its value can be

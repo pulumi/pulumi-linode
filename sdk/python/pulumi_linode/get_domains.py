@@ -89,6 +89,7 @@ def get_domains(domains: Optional[Sequence[pulumi.InputType['GetDomainsDomainArg
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     Provides information about Linode Domains that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
 
     ## Example Usage
 
@@ -161,6 +162,7 @@ def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Provides information about Linode Domains that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
 
     ## Example Usage
 

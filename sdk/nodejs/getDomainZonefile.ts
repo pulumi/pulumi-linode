@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Domain Zonefile.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
  *
  * ## Example Usage
  *
@@ -54,6 +55,7 @@ export interface GetDomainZonefileResult {
 }
 /**
  * Provides information about a Linode Domain Zonefile.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
  *
  * ## Example Usage
  *

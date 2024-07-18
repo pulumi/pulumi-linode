@@ -83,18 +83,18 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The cluster the bucket is in.
+     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
      */
-    @Import(name="cluster", required=true)
-    private Output<String> cluster;
+    @Import(name="cluster")
+    private @Nullable Output<String> cluster;
 
     /**
-     * @return The cluster the bucket is in.
+     * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
      */
-    public Output<String> cluster() {
-        return this.cluster;
+    public Optional<Output<String>> cluster() {
+        return Optional.ofNullable(this.cluster);
     }
 
     /**
@@ -263,6 +263,21 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The cluster the bucket is in. Required if `cluster` is not configured.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
      * * configuring the `obj_secret_key` in the provider configuration;
      * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -330,6 +345,7 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         this.forceDestroy = $.forceDestroy;
         this.key = $.key;
         this.metadata = $.metadata;
+        this.region = $.region;
         this.secretKey = $.secretKey;
         this.source = $.source;
         this.websiteRedirect = $.websiteRedirect;
@@ -442,18 +458,18 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cluster The cluster the bucket is in.
+         * @param cluster The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
          * 
          * @return builder
          * 
          */
-        public Builder cluster(Output<String> cluster) {
+        public Builder cluster(@Nullable Output<String> cluster) {
             $.cluster = cluster;
             return this;
         }
 
         /**
-         * @param cluster The cluster the bucket is in.
+         * @param cluster The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
          * 
          * @return builder
          * 
@@ -694,6 +710,27 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param region The cluster the bucket is in. Required if `cluster` is not configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The cluster the bucket is in. Required if `cluster` is not configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
+        /**
          * @param secretKey The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
          * * configuring the `obj_secret_key` in the provider configuration;
          * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -763,9 +800,6 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         public ObjectStorageObjectArgs build() {
             if ($.bucket == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "bucket");
-            }
-            if ($.cluster == null) {
-                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "cluster");
             }
             if ($.key == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "key");

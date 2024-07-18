@@ -66,7 +66,7 @@ class GetInstanceTypeResult:
     @pulumi.getter(name="class")
     def class_(self) -> str:
         """
-        The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
         """
         return pulumi.get(self, "class_")
 
@@ -161,6 +161,7 @@ def get_instance_type(id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypeResult:
     """
     Provides information about a Linode instance type
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
 
     ## Example Usage
 
@@ -203,6 +204,7 @@ def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeResult]:
     """
     Provides information about a Linode instance type
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
 
     ## Example Usage
 

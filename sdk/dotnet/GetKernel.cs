@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode kernel
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
         /// 
         /// ## Example Usage
         /// 
@@ -39,6 +40,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about a Linode kernel
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
         /// 
         /// ## Example Usage
         /// 

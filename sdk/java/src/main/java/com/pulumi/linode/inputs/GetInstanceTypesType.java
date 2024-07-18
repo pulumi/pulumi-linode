@@ -34,14 +34,14 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      */
     @Import(name="class", required=true)
     private String class_;
 
     /**
-     * @return The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+     * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      */
     public String class_() {
@@ -239,7 +239,7 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param class_ The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+         * @param class_ The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
          * 
          * @return builder
          * 

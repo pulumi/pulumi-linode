@@ -12,6 +12,7 @@ import (
 )
 
 // Provides information about Linode Instance types that match a set of filters.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
 //
 // ## Example Usage
 //

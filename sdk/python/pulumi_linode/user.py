@@ -495,6 +495,7 @@ class User(pulumi.CustomResource):
                  __props__=None):
         """
         Manages a Linode User.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-user).
 
         ## Example Usage
 
@@ -586,6 +587,7 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linode User.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-user).
 
         ## Example Usage
 

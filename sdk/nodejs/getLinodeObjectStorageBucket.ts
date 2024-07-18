@@ -10,6 +10,7 @@ export function getLinodeObjectStorageBucket(args: GetLinodeObjectStorageBucketA
     return pulumi.runtime.invoke("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", {
         "cluster": args.cluster,
         "label": args.label,
+        "region": args.region,
     }, opts);
 }
 
@@ -17,8 +18,9 @@ export function getLinodeObjectStorageBucket(args: GetLinodeObjectStorageBucketA
  * A collection of arguments for invoking getLinodeObjectStorageBucket.
  */
 export interface GetLinodeObjectStorageBucketArgs {
-    cluster: string;
+    cluster?: string;
     label: string;
+    region?: string;
 }
 
 /**
@@ -31,6 +33,7 @@ export interface GetLinodeObjectStorageBucketResult {
     readonly id: string;
     readonly label: string;
     readonly objects: number;
+    readonly region: string;
     readonly size: number;
 }
 export function getLinodeObjectStorageBucketOutput(args: GetLinodeObjectStorageBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLinodeObjectStorageBucketResult> {
@@ -41,6 +44,7 @@ export function getLinodeObjectStorageBucketOutput(args: GetLinodeObjectStorageB
  * A collection of arguments for invoking getLinodeObjectStorageBucket.
  */
 export interface GetLinodeObjectStorageBucketOutputArgs {
-    cluster: pulumi.Input<string>;
+    cluster?: pulumi.Input<string>;
     label: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

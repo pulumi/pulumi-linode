@@ -88,6 +88,7 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     Provides information about Linode instances that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
 
     ## Example Usage
 
@@ -169,6 +170,7 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
     Provides information about Linode instances that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
 
     ## Example Usage
 

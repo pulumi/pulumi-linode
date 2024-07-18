@@ -76,6 +76,7 @@ def get_instance_networking(linode_id: Optional[int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceNetworkingResult:
     """
     Provides details about the networking configuration of an Instance.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
 
     ## Example Usage
 
@@ -106,6 +107,7 @@ def get_instance_networking_output(linode_id: Optional[pulumi.Input[int]] = None
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceNetworkingResult]:
     """
     Provides details about the networking configuration of an Instance.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
 
     ## Example Usage
 

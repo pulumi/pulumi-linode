@@ -177,6 +177,7 @@ def get_node_balancer(firewalls: Optional[Sequence[pulumi.InputType['GetNodeBala
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeBalancerResult:
     """
     Provides details about a Linode NodeBalancer.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
 
     ## Example Usage
 
@@ -217,6 +218,7 @@ def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerResult]:
     """
     Provides details about a Linode NodeBalancer.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
 
     ## Example Usage
 

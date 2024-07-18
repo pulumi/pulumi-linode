@@ -82,6 +82,7 @@ def get_ssh_key(id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
 
     ## Example Usage
 
@@ -117,6 +118,7 @@ def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
 
     ## Example Usage
 

@@ -8,17 +8,19 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetLinodeObjectStorageBucketArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetLinodeObjectStorageBucketArgs Empty = new GetLinodeObjectStorageBucketArgs();
 
-    @Import(name="cluster", required=true)
-    private Output<String> cluster;
+    @Import(name="cluster")
+    private @Nullable Output<String> cluster;
 
-    public Output<String> cluster() {
-        return this.cluster;
+    public Optional<Output<String>> cluster() {
+        return Optional.ofNullable(this.cluster);
     }
 
     @Import(name="label", required=true)
@@ -28,11 +30,19 @@ public final class GetLinodeObjectStorageBucketArgs extends com.pulumi.resources
         return this.label;
     }
 
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private GetLinodeObjectStorageBucketArgs() {}
 
     private GetLinodeObjectStorageBucketArgs(GetLinodeObjectStorageBucketArgs $) {
         this.cluster = $.cluster;
         this.label = $.label;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -53,7 +63,7 @@ public final class GetLinodeObjectStorageBucketArgs extends com.pulumi.resources
             $ = new GetLinodeObjectStorageBucketArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder cluster(Output<String> cluster) {
+        public Builder cluster(@Nullable Output<String> cluster) {
             $.cluster = cluster;
             return this;
         }
@@ -71,10 +81,16 @@ public final class GetLinodeObjectStorageBucketArgs extends com.pulumi.resources
             return label(Output.of(label));
         }
 
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
         public GetLinodeObjectStorageBucketArgs build() {
-            if ($.cluster == null) {
-                throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketArgs", "cluster");
-            }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketArgs", "label");
             }

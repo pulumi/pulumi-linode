@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
         /// 
         /// ## Example Usage
         /// 
@@ -39,6 +40,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
         /// 
         /// ## Example Usage
         /// 

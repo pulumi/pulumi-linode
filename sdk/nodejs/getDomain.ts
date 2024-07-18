@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode domain.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
  *
  * ## Example Usage
  *
@@ -110,6 +111,7 @@ export interface GetDomainResult {
 }
 /**
  * Provides information about a Linode domain.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
  *
  * ## Example Usage
  *

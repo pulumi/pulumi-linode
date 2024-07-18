@@ -164,6 +164,7 @@ class FirewallDevice(pulumi.CustomResource):
                  __props__=None):
         """
         Manages a Linode Firewall Device.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-firewall-device).
 
         **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
 
@@ -216,6 +217,7 @@ class FirewallDevice(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linode Firewall Device.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-firewall-device).
 
         **NOTICE:** Attaching a Linode Firewall Device to a `Firewall` resource with user-defined `linodes` may cause device conflicts.
 

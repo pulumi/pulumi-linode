@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode Kernels that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
  *
  * ## Example Usage
  *
@@ -92,6 +93,7 @@ export interface GetKernelsResult {
 }
 /**
  * Provides information about Linode Kernels that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
  *
  * ## Example Usage
  *

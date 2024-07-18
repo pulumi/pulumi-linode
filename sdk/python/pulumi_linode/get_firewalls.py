@@ -89,6 +89,7 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallsResult:
     """
     Provides information about Linode Cloud Firewalls that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
 
     ## Example Usage
 
@@ -185,6 +186,7 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallsResult]:
     """
     Provides information about Linode Cloud Firewalls that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
 
     ## Example Usage
 

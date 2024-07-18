@@ -242,6 +242,7 @@ def get_node_balancer_config(id: Optional[int] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeBalancerConfigResult:
     """
     Provides details about a Linode NodeBalancer Config.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
 
     ## Example Usage
 
@@ -290,6 +291,7 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
     """
     Provides details about a Linode NodeBalancer Config.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
 
     ## Example Usage
 

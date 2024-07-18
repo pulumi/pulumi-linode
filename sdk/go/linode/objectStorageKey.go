@@ -13,6 +13,7 @@ import (
 )
 
 // Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-keys).
 //
 // ## Example Usage
 //
@@ -41,6 +42,39 @@ import (
 //	}
 //
 // ```
+//
+// The following example shows a key with limited access.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewObjectStorageKey(ctx, "foobar", &linode.ObjectStorageKeyArgs{
+//				Label: pulumi.String("my-key"),
+//				BucketAccesses: linode.ObjectStorageKeyBucketAccessArray{
+//					&linode.ObjectStorageKeyBucketAccessArgs{
+//						BucketName:  pulumi.String("my-bucket-name"),
+//						Region:      pulumi.String("us-mia"),
+//						Permissions: pulumi.String("read_write"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ObjectStorageKey struct {
 	pulumi.CustomResourceState
 
@@ -49,11 +83,15 @@ type ObjectStorageKey struct {
 	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
 	BucketAccesses ObjectStorageKeyBucketAccessArrayOutput `pulumi:"bucketAccesses"`
 	// The label given to this key. For display purposes only.
-	//
-	// ***
 	Label pulumi.StringOutput `pulumi:"label"`
 	// Whether or not this key is a limited access key.
 	Limited pulumi.BoolOutput `pulumi:"limited"`
+	// A set of regions where the key will grant access to create buckets.
+	//
+	// ***
+	Regions pulumi.StringArrayOutput `pulumi:"regions"`
+	// A set of objects containing the detailed info of the regions where this key can access.
+	RegionsDetails ObjectStorageKeyRegionsDetailArrayOutput `pulumi:"regionsDetails"`
 	// This keypair's secret key.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 }
@@ -100,11 +138,15 @@ type objectStorageKeyState struct {
 	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
 	BucketAccesses []ObjectStorageKeyBucketAccess `pulumi:"bucketAccesses"`
 	// The label given to this key. For display purposes only.
-	//
-	// ***
 	Label *string `pulumi:"label"`
 	// Whether or not this key is a limited access key.
 	Limited *bool `pulumi:"limited"`
+	// A set of regions where the key will grant access to create buckets.
+	//
+	// ***
+	Regions []string `pulumi:"regions"`
+	// A set of objects containing the detailed info of the regions where this key can access.
+	RegionsDetails []ObjectStorageKeyRegionsDetail `pulumi:"regionsDetails"`
 	// This keypair's secret key.
 	SecretKey *string `pulumi:"secretKey"`
 }
@@ -115,11 +157,15 @@ type ObjectStorageKeyState struct {
 	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
 	BucketAccesses ObjectStorageKeyBucketAccessArrayInput
 	// The label given to this key. For display purposes only.
-	//
-	// ***
 	Label pulumi.StringPtrInput
 	// Whether or not this key is a limited access key.
 	Limited pulumi.BoolPtrInput
+	// A set of regions where the key will grant access to create buckets.
+	//
+	// ***
+	Regions pulumi.StringArrayInput
+	// A set of objects containing the detailed info of the regions where this key can access.
+	RegionsDetails ObjectStorageKeyRegionsDetailArrayInput
 	// This keypair's secret key.
 	SecretKey pulumi.StringPtrInput
 }
@@ -132,9 +178,11 @@ type objectStorageKeyArgs struct {
 	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
 	BucketAccesses []ObjectStorageKeyBucketAccess `pulumi:"bucketAccesses"`
 	// The label given to this key. For display purposes only.
+	Label string `pulumi:"label"`
+	// A set of regions where the key will grant access to create buckets.
 	//
 	// ***
-	Label string `pulumi:"label"`
+	Regions []string `pulumi:"regions"`
 }
 
 // The set of arguments for constructing a ObjectStorageKey resource.
@@ -142,9 +190,11 @@ type ObjectStorageKeyArgs struct {
 	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
 	BucketAccesses ObjectStorageKeyBucketAccessArrayInput
 	// The label given to this key. For display purposes only.
+	Label pulumi.StringInput
+	// A set of regions where the key will grant access to create buckets.
 	//
 	// ***
-	Label pulumi.StringInput
+	Regions pulumi.StringArrayInput
 }
 
 func (ObjectStorageKeyArgs) ElementType() reflect.Type {
@@ -245,8 +295,6 @@ func (o ObjectStorageKeyOutput) BucketAccesses() ObjectStorageKeyBucketAccessArr
 }
 
 // The label given to this key. For display purposes only.
-//
-// ***
 func (o ObjectStorageKeyOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageKey) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
@@ -254,6 +302,18 @@ func (o ObjectStorageKeyOutput) Label() pulumi.StringOutput {
 // Whether or not this key is a limited access key.
 func (o ObjectStorageKeyOutput) Limited() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ObjectStorageKey) pulumi.BoolOutput { return v.Limited }).(pulumi.BoolOutput)
+}
+
+// A set of regions where the key will grant access to create buckets.
+//
+// ***
+func (o ObjectStorageKeyOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// A set of objects containing the detailed info of the regions where this key can access.
+func (o ObjectStorageKeyOutput) RegionsDetails() ObjectStorageKeyRegionsDetailArrayOutput {
+	return o.ApplyT(func(v *ObjectStorageKey) ObjectStorageKeyRegionsDetailArrayOutput { return v.RegionsDetails }).(ObjectStorageKeyRegionsDetailArrayOutput)
 }
 
 // This keypair's secret key.

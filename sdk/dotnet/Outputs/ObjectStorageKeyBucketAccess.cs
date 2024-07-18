@@ -18,25 +18,32 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// The Object Storage cluster where a bucket to which the key is granting access is hosted.
+        /// The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
         /// </summary>
-        public readonly string Cluster;
+        public readonly string? Cluster;
         /// <summary>
         /// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         /// </summary>
         public readonly string Permissions;
+        /// <summary>
+        /// The region where the bucket resides.
+        /// </summary>
+        public readonly string? Region;
 
         [OutputConstructor]
         private ObjectStorageKeyBucketAccess(
             string bucketName,
 
-            string cluster,
+            string? cluster,
 
-            string permissions)
+            string permissions,
+
+            string? region)
         {
             BucketName = bucketName;
             Cluster = cluster;
             Permissions = permissions;
+            Region = region;
         }
     }
 }

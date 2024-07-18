@@ -59,6 +59,7 @@ __all__ = [
     'ObjectStorageBucketLifecycleRuleExpiration',
     'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration',
     'ObjectStorageKeyBucketAccess',
+    'ObjectStorageKeyRegionsDetail',
     'PlacementGroupMember',
     'RdnsTimeouts',
     'StackScriptUserDefinedField',
@@ -3463,16 +3464,21 @@ class ObjectStorageKeyBucketAccess(dict):
 
     def __init__(__self__, *,
                  bucket_name: str,
-                 cluster: str,
-                 permissions: str):
+                 permissions: str,
+                 cluster: Optional[str] = None,
+                 region: Optional[str] = None):
         """
         :param str bucket_name: The unique label of the bucket to which the key will grant limited access.
-        :param str cluster: The Object Storage cluster where a bucket to which the key is granting access is hosted.
         :param str permissions: This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+        :param str cluster: The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+        :param str region: The region where the bucket resides.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "permissions", permissions)
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -3484,19 +3490,74 @@ class ObjectStorageKeyBucketAccess(dict):
 
     @property
     @pulumi.getter
-    def cluster(self) -> str:
-        """
-        The Object Storage cluster where a bucket to which the key is granting access is hosted.
-        """
-        return pulumi.get(self, "cluster")
-
-    @property
-    @pulumi.getter
     def permissions(self) -> str:
         """
         This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
         """
         return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""")
+    def cluster(self) -> Optional[str]:
+        """
+        The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The region where the bucket resides.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class ObjectStorageKeyRegionsDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "s3Endpoint":
+            suggest = "s3_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectStorageKeyRegionsDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectStorageKeyRegionsDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectStorageKeyRegionsDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: str,
+                 s3_endpoint: str):
+        """
+        :param str id: The ID of the region.
+        :param str s3_endpoint: The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "s3_endpoint", s3_endpoint)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the region.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> str:
+        """
+        The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+        """
+        return pulumi.get(self, "s3_endpoint")
 
 
 @pulumi.output_type
@@ -8072,7 +8133,7 @@ class GetInstanceTypesTypeResult(dict):
                  vcpus: int):
         """
         :param Sequence['GetInstanceTypesTypeAddonArgs'] addons: Information about the optional Backup service offered for Linodes.
-        :param str class_: The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        :param str class_: The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         :param int disk: The Disk size, in MB, of the Linode Type.
         :param str id: The ID representing the Linode Type.
         :param str label: The Linode Type's label is for display purposes only.
@@ -8107,7 +8168,7 @@ class GetInstanceTypesTypeResult(dict):
     @pulumi.getter(name="class")
     def class_(self) -> str:
         """
-        The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         """
         return pulumi.get(self, "class_")
 
@@ -8412,7 +8473,7 @@ class GetInstancesInstanceResult(dict):
         :param bool has_user_data: Whether this Instance was created with user-data.
         :param str host_uuid: The Linode’s host machine, as a UUID.
         :param int id: The ID of the disk in the Linode API.
-        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+        :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param str ip_address: A string containing the Linode's public IP address.
         :param Sequence[str] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param str ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
@@ -8521,7 +8582,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://developers.linode.com/api/v4/images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         """
         return pulumi.get(self, "image")
 
@@ -8766,7 +8827,7 @@ class GetInstancesInstanceConfigResult(dict):
         :param Sequence['GetInstancesInstanceConfigHelperArgs'] helpers: Helpers enabled when booting to this Linode Config.
         :param int id: The ID of the disk in the Linode API.
         :param Sequence['GetInstancesInstanceConfigInterfaceArgs'] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
-        :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param int memory_limit: Defaults to the total RAM of the Linode
         :param str root_device: The root device to boot.
@@ -8829,7 +8890,7 @@ class GetInstancesInstanceConfigResult(dict):
     @pulumi.getter
     def kernel(self) -> str:
         """
-        A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://developers.linode.com/api/v4/linode-kernels)).
+        A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         """
         return pulumi.get(self, "kernel")
 

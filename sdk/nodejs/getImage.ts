@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode image
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
  *
  * ## Example Usage
  *
@@ -88,6 +89,7 @@ export interface GetImageResult {
 }
 /**
  * Provides information about a Linode image
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
  *
  * ## Example Usage
  *

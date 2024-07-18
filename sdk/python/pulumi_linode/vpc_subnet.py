@@ -181,6 +181,7 @@ class VpcSubnet(pulumi.CustomResource):
                  __props__=None):
         """
         Manages a Linode VPC subnet.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-vpc-subnet).
 
         ## Example Usage
 
@@ -218,6 +219,7 @@ class VpcSubnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linode VPC subnet.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-vpc-subnet).
 
         ## Example Usage
 

@@ -21,7 +21,7 @@ class DatabaseAccessControlsArgs:
         The set of arguments for constructing a DatabaseAccessControls resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         :param pulumi.Input[int] database_id: The unique ID of the target database.
-        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `postgresql`)
         """
         pulumi.set(__self__, "allow_lists", allow_lists)
         pulumi.set(__self__, "database_id", database_id)
@@ -55,7 +55,7 @@ class DatabaseAccessControlsArgs:
     @pulumi.getter(name="databaseType")
     def database_type(self) -> pulumi.Input[str]:
         """
-        The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        The unique type of the target database. (`mysql`, `postgresql`)
         """
         return pulumi.get(self, "database_type")
 
@@ -74,7 +74,7 @@ class _DatabaseAccessControlsState:
         Input properties used for looking up and filtering DatabaseAccessControls resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         :param pulumi.Input[int] database_id: The unique ID of the target database.
-        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `postgresql`)
         """
         if allow_lists is not None:
             pulumi.set(__self__, "allow_lists", allow_lists)
@@ -111,7 +111,7 @@ class _DatabaseAccessControlsState:
     @pulumi.getter(name="databaseType")
     def database_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        The unique type of the target database. (`mysql`, `postgresql`)
         """
         return pulumi.get(self, "database_type")
 
@@ -131,6 +131,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
                  __props__=None):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
+        For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
 
         ## Example Usage
 
@@ -160,7 +161,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         :param pulumi.Input[int] database_id: The unique ID of the target database.
-        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `postgresql`)
         """
         ...
     @overload
@@ -170,6 +171,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
+        For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
 
         ## Example Usage
 
@@ -253,7 +255,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         :param pulumi.Input[int] database_id: The unique ID of the target database.
-        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        :param pulumi.Input[str] database_type: The unique type of the target database. (`mysql`, `postgresql`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -284,7 +286,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
     @pulumi.getter(name="databaseType")
     def database_type(self) -> pulumi.Output[str]:
         """
-        The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+        The unique type of the target database. (`mysql`, `postgresql`)
         """
         return pulumi.get(self, "database_type")
 

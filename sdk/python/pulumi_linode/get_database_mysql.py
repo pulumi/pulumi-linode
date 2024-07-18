@@ -294,6 +294,7 @@ def get_database_mysql(database_id: Optional[int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseMysqlResult:
     """
     Provides information about a Linode MySQL Database.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
     ## Example Usage
 
@@ -361,6 +362,7 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[int]]]
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseMysqlResult]:
     """
     Provides information about a Linode MySQL Database.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
     ## Example Usage
 

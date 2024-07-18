@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode PostgreSQL Database.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
  *
  * ## Example Usage
  *
@@ -156,6 +157,7 @@ export interface GetDatabasePostgresqlResult {
 }
 /**
  * Provides information about a Linode PostgreSQL Database.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
  *
  * ## Example Usage
  *

@@ -89,6 +89,7 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshkeysResult:
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
 
     ## Example Usage
 
@@ -148,6 +149,7 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshkeysResult]:
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
 
     ## Example Usage
 

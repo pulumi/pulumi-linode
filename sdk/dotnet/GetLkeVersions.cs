@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
         /// 
         /// ## Example Usage
         /// 
@@ -36,6 +37,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
         /// 
         /// ## Example Usage
         /// 

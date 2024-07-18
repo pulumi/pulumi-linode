@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode account logins that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
  *
  * ## Example Usage
  *
@@ -71,6 +72,7 @@ export interface GetAccountLoginsResult {
 }
 /**
  * Provides information about Linode account logins that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
  *
  * ## Example Usage
  *

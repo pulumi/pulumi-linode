@@ -210,18 +210,18 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cacheControl);
     }
     /**
-     * The cluster the bucket is in.
+     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
-    private Output<String> cluster;
+    private Output</* @Nullable */ String> cluster;
 
     /**
-     * @return The cluster the bucket is in.
+     * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
      */
-    public Output<String> cluster() {
-        return this.cluster;
+    public Output<Optional<String>> cluster() {
+        return Codegen.optional(this.cluster);
     }
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -376,6 +376,20 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
+    }
+    /**
+     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
+
+    /**
+     * @return The cluster the bucket is in. Required if `cluster` is not configured.
+     * 
+     */
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
     /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by

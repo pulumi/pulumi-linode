@@ -165,6 +165,7 @@ class AwaitableGetProfileResult(GetProfileResult):
 def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProfileResult:
     """
     Provides information about a Linode profile.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
 
     ## Example Usage
 
@@ -199,6 +200,7 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
 def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProfileResult]:
     """
     Provides information about a Linode profile.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
 
     ## Example Usage
 

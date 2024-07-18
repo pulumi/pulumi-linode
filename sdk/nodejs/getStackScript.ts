@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a specific Linode StackScript.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
  *
  * ## Example Usage
  *
@@ -100,6 +101,7 @@ export interface GetStackScriptResult {
 }
 /**
  * Provides details about a specific Linode StackScript.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
  *
  * ## Example Usage
  *

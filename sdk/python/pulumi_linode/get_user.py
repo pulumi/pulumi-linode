@@ -242,6 +242,7 @@ def get_user(database_grants: Optional[Sequence[pulumi.InputType['GetUserDatabas
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Provides information about a Linode user
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
 
     ## Example Usage
 
@@ -309,6 +310,7 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[pul
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
     Provides information about a Linode user
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
 
     ## Example Usage
 

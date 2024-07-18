@@ -153,6 +153,7 @@ def get_networking_ip(address: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkingIpResult:
     """
     Provides information about a Linode Networking IP Address
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
 
     ## Example Usage
 
@@ -191,6 +192,7 @@ def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkingIpResult]:
     """
     Provides information about a Linode Networking IP Address
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
 
     ## Example Usage
 

@@ -11,6 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Manages the settings of a Linode account.
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
     /// 
     /// ## Example Usage
     /// 
@@ -49,7 +50,7 @@ namespace Pulumi.Linode
         public Output<bool> BackupsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         /// </summary>
         [Output("longviewSubscription")]
         public Output<string> LongviewSubscription { get; private set; } = null!;
@@ -125,7 +126,7 @@ namespace Pulumi.Linode
         public Input<bool>? BackupsEnabled { get; set; }
 
         /// <summary>
-        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         /// </summary>
         [Input("longviewSubscription")]
         public Input<string>? LongviewSubscription { get; set; }
@@ -151,7 +152,7 @@ namespace Pulumi.Linode
         public Input<bool>? BackupsEnabled { get; set; }
 
         /// <summary>
-        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         /// </summary>
         [Input("longviewSubscription")]
         public Input<string>? LongviewSubscription { get; set; }

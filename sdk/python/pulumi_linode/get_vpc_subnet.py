@@ -116,6 +116,7 @@ def get_vpc_subnet(id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcSubnetResult:
     """
     Provides information about a Linode VPC subnet.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
 
     ## Example Usage
 
@@ -156,6 +157,7 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetResult]:
     """
     Provides information about a Linode VPC subnet.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
 
     ## Example Usage
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Provides details about a specific Linode account login.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
 //
 // ## Example Usage
 //

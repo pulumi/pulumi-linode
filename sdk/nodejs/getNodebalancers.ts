@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode NodeBalancers that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
  *
  * ## Example Usage
  *
@@ -91,6 +92,7 @@ export interface GetNodebalancersResult {
 }
 /**
  * Provides information about Linode NodeBalancers that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
  *
  * ## Example Usage
  *

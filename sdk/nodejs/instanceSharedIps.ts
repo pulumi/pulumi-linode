@@ -5,13 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manages IPs shared to a Linode instance.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-share-ips).
+ *
  * > **Beta Notice** IPv6 sharing is currently available through early access.
  * To use early access resources, the `apiVersion` provider argument must be set to `v4beta`.
  * To learn more, see the early access documentation.
  *
  * > **Notice** This resource should only be defined once per-instance and should not be used alongside the `sharedIpv4` field in `linode.Instance`.
- *
- * Manages IPs shared to a Linode instance.
  *
  * ## Example Usage
  *

@@ -123,9 +123,10 @@ class PlacementGroupAssignment(pulumi.CustomResource):
                  placement_group_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        **NOTE: Placement Groups may not currently be available to all users.**
-
         Manages a single assignment between a Linode and a Placement Group.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-group-add-linode).
+
+        **NOTE: Placement Groups may not currently be available to all users.**
 
         To prevent update conflicts, Linodes managed through the `Instance` resource should specify `placement_group_externally_managed`:
 
@@ -176,9 +177,10 @@ class PlacementGroupAssignment(pulumi.CustomResource):
                  args: PlacementGroupAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **NOTE: Placement Groups may not currently be available to all users.**
-
         Manages a single assignment between a Linode and a Placement Group.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-group-add-linode).
+
+        **NOTE: Placement Groups may not currently be available to all users.**
 
         To prevent update conflicts, Linodes managed through the `Instance` resource should specify `placement_group_externally_managed`:
 

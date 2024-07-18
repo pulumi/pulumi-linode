@@ -69,6 +69,7 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountLoginsResult:
     """
     Provides information about Linode account logins that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
 
     ## Example Usage
 
@@ -117,6 +118,7 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginsResult]:
     """
     Provides information about Linode account logins that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
 
     ## Example Usage
 

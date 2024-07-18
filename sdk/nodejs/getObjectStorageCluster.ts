@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Object Storage Cluster
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
  *
  * ## Example Usage
  *
@@ -62,6 +63,7 @@ export interface GetObjectStorageClusterResult {
 }
 /**
  * Provides information about a Linode Object Storage Cluster
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
  *
  * ## Example Usage
  *

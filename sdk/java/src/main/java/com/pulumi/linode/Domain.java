@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Linode Domain resource.  This can be used to create, modify, and delete Linode Domains through Linode&#39;s managed DNS service.
- * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomain).
+ * For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-domain).
  * 
  * ## Example Usage
  * 

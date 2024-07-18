@@ -186,6 +186,7 @@ import java.util.concurrent.CompletableFuture;
 public final class LinodeFunctions {
     /**
      * Provides information about a Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -229,6 +230,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -272,6 +274,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -315,6 +318,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -358,6 +362,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -401,6 +406,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -444,6 +450,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about services availabilities for the current Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
      * 
      * ## Example Usage
      * 
@@ -500,6 +507,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about services availabilities for the current Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
      * 
      * ## Example Usage
      * 
@@ -556,6 +564,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about services availabilities for the current Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
      * 
      * ## Example Usage
      * 
@@ -612,6 +621,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about services availabilities for the current Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
      * 
      * ## Example Usage
      * 
@@ -668,6 +678,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about services availabilities for the current Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
      * 
      * ## Example Usage
      * 
@@ -724,6 +735,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about services availabilities for the current Linode account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-availability).
      * 
      * ## Example Usage
      * 
@@ -780,6 +792,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about service availability in a region to an account specifically.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
      * 
      * ## Example Usage
      * 
@@ -824,6 +837,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about service availability in a region to an account specifically.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
      * 
      * ## Example Usage
      * 
@@ -868,6 +882,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about service availability in a region to an account specifically.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
      * 
      * ## Example Usage
      * 
@@ -912,6 +927,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about service availability in a region to an account specifically.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
      * 
      * ## Example Usage
      * 
@@ -956,6 +972,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode account login.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
      * 
      * ## Example Usage
      * 
@@ -1000,6 +1017,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode account login.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
      * 
      * ## Example Usage
      * 
@@ -1044,6 +1062,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode account login.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
      * 
      * ## Example Usage
      * 
@@ -1088,6 +1107,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode account login.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
      * 
      * ## Example Usage
      * 
@@ -1132,6 +1152,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account logins that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
      * 
      * ## Example Usage
      * 
@@ -1193,6 +1214,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account logins that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
      * 
      * ## Example Usage
      * 
@@ -1254,6 +1276,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account logins that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
      * 
      * ## Example Usage
      * 
@@ -1315,6 +1338,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account logins that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
      * 
      * ## Example Usage
      * 
@@ -1376,6 +1400,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account logins that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
      * 
      * ## Example Usage
      * 
@@ -1437,6 +1462,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account logins that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
      * 
      * ## Example Usage
      * 
@@ -1498,6 +1524,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account settings.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
      * 
      * ## Example Usage
      * 
@@ -1539,6 +1566,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account settings.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
      * 
      * ## Example Usage
      * 
@@ -1580,6 +1608,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account settings.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
      * 
      * ## Example Usage
      * 
@@ -1621,6 +1650,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account settings.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
      * 
      * ## Example Usage
      * 
@@ -1662,6 +1692,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account settings.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
      * 
      * ## Example Usage
      * 
@@ -1703,6 +1734,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode account settings.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
      * 
      * ## Example Usage
      * 
@@ -1744,6 +1776,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Child Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -1792,6 +1825,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Child Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -1840,6 +1874,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Child Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -1888,6 +1923,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Child Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
      * 
      * Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
      * 
@@ -1936,6 +1972,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
      * 
      * **NOTE: Parent/Child related features may not be generally available.**
      * 
@@ -2028,6 +2065,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
      * 
      * **NOTE: Parent/Child related features may not be generally available.**
      * 
@@ -2120,6 +2158,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
      * 
      * **NOTE: Parent/Child related features may not be generally available.**
      * 
@@ -2212,6 +2251,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
      * 
      * **NOTE: Parent/Child related features may not be generally available.**
      * 
@@ -2304,6 +2344,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
      * 
      * **NOTE: Parent/Child related features may not be generally available.**
      * 
@@ -2396,6 +2437,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Child Accounts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
      * 
      * **NOTE: Parent/Child related features may not be generally available.**
      * 
@@ -2488,6 +2530,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
+     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -2573,6 +2616,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
+     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -2658,6 +2702,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
+     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -2743,6 +2788,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Database Backups that match a set of filters.
+     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -2828,6 +2874,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Database engines that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
      * ## Example Usage
      * 
@@ -2958,6 +3005,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Database engines that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
      * ## Example Usage
      * 
@@ -3088,6 +3136,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Database engines that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
      * ## Example Usage
      * 
@@ -3218,6 +3267,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Database engines that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
      * ## Example Usage
      * 
@@ -3348,6 +3398,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Database engines that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
      * ## Example Usage
      * 
@@ -3478,6 +3529,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Database engines that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
      * ## Example Usage
      * 
@@ -3608,6 +3660,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -3666,6 +3719,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -3724,6 +3778,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -3782,6 +3837,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -3840,6 +3896,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -3898,6 +3955,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -3955,9 +4013,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
-     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+     * 
+     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -4040,9 +4099,10 @@ public final class LinodeFunctions {
         return getDatabaseMysqlBackups(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
-     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+     * 
+     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -4125,9 +4185,10 @@ public final class LinodeFunctions {
         return getDatabaseMysqlBackupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
-     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+     * 
+     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -4210,9 +4271,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
-     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+     * 
+     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -4296,6 +4358,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -4354,6 +4417,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -4412,6 +4476,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -4470,6 +4535,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -4528,6 +4594,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -4586,6 +4653,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
      * 
@@ -4644,6 +4712,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -4726,6 +4795,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -4808,6 +4878,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -4890,6 +4961,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -4972,6 +5044,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -5054,6 +5127,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
      * 
@@ -5136,6 +5210,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode domain.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
      * 
      * ## Example Usage
      * 
@@ -5184,6 +5259,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode domain.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
      * 
      * ## Example Usage
      * 
@@ -5232,6 +5308,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode domain.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
      * 
      * ## Example Usage
      * 
@@ -5280,6 +5357,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode domain.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
      * 
      * ## Example Usage
      * 
@@ -5328,6 +5406,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode domain.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
      * 
      * ## Example Usage
      * 
@@ -5376,6 +5455,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode domain.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
      * 
      * ## Example Usage
      * 
@@ -5424,6 +5504,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Record.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      * 
      * ## Example Usage
      * 
@@ -5474,6 +5555,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Record.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      * 
      * ## Example Usage
      * 
@@ -5524,6 +5606,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Record.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      * 
      * ## Example Usage
      * 
@@ -5574,6 +5657,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Record.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      * 
      * ## Example Usage
      * 
@@ -5624,6 +5708,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Zonefile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
      * 
      * ## Example Usage
      * 
@@ -5668,6 +5753,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Zonefile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
      * 
      * ## Example Usage
      * 
@@ -5712,6 +5798,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Zonefile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
      * 
      * ## Example Usage
      * 
@@ -5756,6 +5843,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Domain Zonefile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
      * 
      * ## Example Usage
      * 
@@ -5800,6 +5888,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Domains that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
      * 
@@ -5876,6 +5965,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Domains that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
      * 
@@ -5952,6 +6042,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Domains that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
      * 
@@ -6028,6 +6119,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Domains that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
      * 
@@ -6104,6 +6196,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Domains that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
      * 
@@ -6180,6 +6273,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Domains that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
      * 
@@ -6256,6 +6350,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode Firewall.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
      * 
      * ## Example Usage
      * 
@@ -6298,6 +6393,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode Firewall.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
      * 
      * ## Example Usage
      * 
@@ -6340,6 +6436,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode Firewall.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
      * 
      * ## Example Usage
      * 
@@ -6382,6 +6479,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode Firewall.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
      * 
      * ## Example Usage
      * 
@@ -6424,6 +6522,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
      * 
      * ## Example Usage
      * 
@@ -6547,6 +6646,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
      * 
      * ## Example Usage
      * 
@@ -6670,6 +6770,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
      * 
      * ## Example Usage
      * 
@@ -6793,6 +6894,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
      * 
      * ## Example Usage
      * 
@@ -6916,6 +7018,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
      * 
      * ## Example Usage
      * 
@@ -7039,6 +7142,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
      * 
      * ## Example Usage
      * 
@@ -7162,6 +7266,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode image
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
      * 
      * ## Example Usage
      * 
@@ -7206,6 +7311,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode image
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
      * 
      * ## Example Usage
      * 
@@ -7250,6 +7356,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode image
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
      * 
      * ## Example Usage
      * 
@@ -7294,6 +7401,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode image
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-image).
      * 
      * ## Example Usage
      * 
@@ -7338,6 +7446,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode images that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
      * 
      * ## Example Usage
      * 
@@ -7445,6 +7554,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode images that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
      * 
      * ## Example Usage
      * 
@@ -7552,6 +7662,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode images that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
      * 
      * ## Example Usage
      * 
@@ -7659,6 +7770,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode images that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
      * 
      * ## Example Usage
      * 
@@ -7766,6 +7878,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode images that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
      * 
      * ## Example Usage
      * 
@@ -7873,6 +7986,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode images that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
      * 
      * ## Example Usage
      * 
@@ -7980,6 +8094,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the backups of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
      * 
      * ## Example Usage
      * 
@@ -8022,6 +8137,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the backups of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
      * 
      * ## Example Usage
      * 
@@ -8064,6 +8180,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the backups of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
      * 
      * ## Example Usage
      * 
@@ -8106,6 +8223,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the backups of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
      * 
      * ## Example Usage
      * 
@@ -8148,6 +8266,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
      * 
      * ## Example Usage
      * 
@@ -8190,6 +8309,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
      * 
      * ## Example Usage
      * 
@@ -8232,6 +8352,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
      * 
      * ## Example Usage
      * 
@@ -8274,6 +8395,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
      * 
      * ## Example Usage
      * 
@@ -8316,6 +8438,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode instance type
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
      * ## Example Usage
      * 
@@ -8360,6 +8483,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode instance type
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
      * ## Example Usage
      * 
@@ -8404,6 +8528,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode instance type
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
      * ## Example Usage
      * 
@@ -8448,6 +8573,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode instance type
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
      * ## Example Usage
      * 
@@ -8492,6 +8618,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Instance types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      * ## Example Usage
      * 
@@ -8592,6 +8719,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Instance types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      * ## Example Usage
      * 
@@ -8692,6 +8820,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Instance types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      * ## Example Usage
      * 
@@ -8792,6 +8921,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Instance types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      * ## Example Usage
      * 
@@ -8892,6 +9022,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Instance types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      * ## Example Usage
      * 
@@ -8992,6 +9123,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Instance types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
      * 
      * ## Example Usage
      * 
@@ -9092,6 +9224,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode instances that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
      * 
      * ## Example Usage
      * 
@@ -9201,6 +9334,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode instances that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
      * 
      * ## Example Usage
      * 
@@ -9310,6 +9444,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode instances that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
      * 
      * ## Example Usage
      * 
@@ -9419,6 +9554,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode instances that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
      * 
      * ## Example Usage
      * 
@@ -9528,6 +9664,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode instances that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
      * 
      * ## Example Usage
      * 
@@ -9637,6 +9774,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode instances that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
      * 
      * ## Example Usage
      * 
@@ -9746,6 +9884,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode IPv6 Range.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
      * 
      * ## Example Usage
      * 
@@ -9790,6 +9929,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode IPv6 Range.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
      * 
      * ## Example Usage
      * 
@@ -9834,6 +9974,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode IPv6 Range.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
      * 
      * ## Example Usage
      * 
@@ -9878,6 +10019,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode IPv6 Range.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
      * 
      * ## Example Usage
      * 
@@ -9922,6 +10064,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode IPv6 ranges that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
      * 
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -9980,6 +10123,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode IPv6 ranges that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
      * 
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -10038,6 +10182,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode IPv6 ranges that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
      * 
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -10096,6 +10241,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode IPv6 ranges that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
      * 
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -10154,6 +10300,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode IPv6 ranges that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
      * 
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -10212,6 +10359,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode IPv6 ranges that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
      * 
      * &gt; Some fields may not be accessible directly the results of this data source.
      * For additional information about a specific IPv6 range consider using the linode.Ipv6Range
@@ -10270,6 +10418,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode kernel
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
      * 
      * ## Example Usage
      * 
@@ -10314,6 +10463,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode kernel
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
      * 
      * ## Example Usage
      * 
@@ -10358,6 +10508,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode kernel
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
      * 
      * ## Example Usage
      * 
@@ -10402,6 +10553,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode kernel
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
      * 
      * ## Example Usage
      * 
@@ -10446,6 +10598,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Kernels that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
      * 
      * ## Example Usage
      * 
@@ -10516,6 +10669,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Kernels that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
      * 
      * ## Example Usage
      * 
@@ -10586,6 +10740,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Kernels that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
      * 
      * ## Example Usage
      * 
@@ -10656,6 +10811,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Kernels that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
      * 
      * ## Example Usage
      * 
@@ -10726,6 +10882,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Kernels that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
      * 
      * ## Example Usage
      * 
@@ -10796,6 +10953,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode Kernels that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
      * 
      * ## Example Usage
      * 
@@ -10878,6 +11036,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about an LKE Cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
      * 
      * ## Example Usage
      * 
@@ -10920,6 +11079,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about an LKE Cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
      * 
      * ## Example Usage
      * 
@@ -10962,6 +11122,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about an LKE Cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
      * 
      * ## Example Usage
      * 
@@ -11004,6 +11165,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about an LKE Cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
      * 
      * ## Example Usage
      * 
@@ -11046,6 +11208,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
      * 
@@ -11110,6 +11273,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
      * 
@@ -11174,6 +11338,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
      * 
@@ -11238,6 +11403,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
      * 
@@ -11302,6 +11468,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
      * 
@@ -11366,6 +11533,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
      * 
@@ -11430,6 +11598,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
      * ## Example Usage
      * 
@@ -11471,6 +11640,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
      * ## Example Usage
      * 
@@ -11512,6 +11682,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
      * ## Example Usage
      * 
@@ -11553,6 +11724,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
      * ## Example Usage
      * 
@@ -11594,6 +11766,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
      * ## Example Usage
      * 
@@ -11635,6 +11808,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
      * ## Example Usage
      * 
@@ -11676,6 +11850,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Networking IP Address
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
      * 
      * ## Example Usage
      * 
@@ -11720,6 +11895,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Networking IP Address
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
      * 
      * ## Example Usage
      * 
@@ -11764,6 +11940,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Networking IP Address
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
      * 
      * ## Example Usage
      * 
@@ -11808,6 +11985,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Networking IP Address
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
      * 
      * ## Example Usage
      * 
@@ -11852,6 +12030,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
      * 
      * ## Example Usage
      * 
@@ -11894,6 +12073,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
      * 
      * ## Example Usage
      * 
@@ -11936,6 +12116,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
      * 
      * ## Example Usage
      * 
@@ -11978,6 +12159,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer).
      * 
      * ## Example Usage
      * 
@@ -12020,6 +12202,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer Config.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
      * 
      * ## Example Usage
      * 
@@ -12063,6 +12246,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer Config.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
      * 
      * ## Example Usage
      * 
@@ -12106,6 +12290,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer Config.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
      * 
      * ## Example Usage
      * 
@@ -12149,6 +12334,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer Config.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
      * 
      * ## Example Usage
      * 
@@ -12192,6 +12378,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer node.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-node).
      * 
      * ## Example Usage
      * 
@@ -12236,6 +12423,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer node.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-node).
      * 
      * ## Example Usage
      * 
@@ -12280,6 +12468,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer node.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-node).
      * 
      * ## Example Usage
      * 
@@ -12324,6 +12513,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a Linode NodeBalancer node.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-node).
      * 
      * ## Example Usage
      * 
@@ -12368,6 +12558,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
      * 
      * ## Example Usage
      * 
@@ -12443,6 +12634,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
      * 
      * ## Example Usage
      * 
@@ -12518,6 +12710,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
      * 
      * ## Example Usage
      * 
@@ -12593,6 +12786,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancer Configs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
      * 
      * ## Example Usage
      * 
@@ -12668,6 +12862,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
      * ## Example Usage
      * 
@@ -12737,6 +12932,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
      * ## Example Usage
      * 
@@ -12806,6 +13002,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
      * ## Example Usage
      * 
@@ -12875,6 +13072,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
      * ## Example Usage
      * 
@@ -12944,6 +13142,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
      * ## Example Usage
      * 
@@ -13013,6 +13212,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode NodeBalancers that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
      * ## Example Usage
      * 
@@ -13082,6 +13282,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Object Storage Cluster
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
      * 
      * ## Example Usage
      * 
@@ -13126,6 +13327,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Object Storage Cluster
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
      * 
      * ## Example Usage
      * 
@@ -13170,6 +13372,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Object Storage Cluster
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
      * 
      * ## Example Usage
      * 
@@ -13214,6 +13417,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Object Storage Cluster
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
      * 
      * ## Example Usage
      * 
@@ -13260,6 +13464,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
      * ## Example Usage
      * 
@@ -13306,6 +13511,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
      * ## Example Usage
      * 
@@ -13352,6 +13558,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
      * ## Example Usage
      * 
@@ -13398,6 +13605,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
      * ## Example Usage
      * 
@@ -13444,6 +13652,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
      * ## Example Usage
      * 
@@ -13511,6 +13720,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
      * ## Example Usage
      * 
@@ -13578,6 +13788,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
      * ## Example Usage
      * 
@@ -13645,6 +13856,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
      * ## Example Usage
      * 
@@ -13712,6 +13924,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
      * ## Example Usage
      * 
@@ -13779,6 +13992,7 @@ public final class LinodeFunctions {
      * **NOTE: Placement Groups may not currently be available to all users.**
      * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
      * ## Example Usage
      * 
@@ -13844,6 +14058,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode profile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
      * 
      * ## Example Usage
      * 
@@ -13885,6 +14100,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode profile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
      * 
      * ## Example Usage
      * 
@@ -13926,6 +14142,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode profile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
      * 
      * ## Example Usage
      * 
@@ -13967,6 +14184,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode profile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
      * 
      * ## Example Usage
      * 
@@ -14008,6 +14226,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode profile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
      * 
      * ## Example Usage
      * 
@@ -14049,6 +14268,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode profile.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
      * 
      * ## Example Usage
      * 
@@ -14090,6 +14310,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
      * 
      * ## Example Usage
      * 
@@ -14134,6 +14355,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
      * 
      * ## Example Usage
      * 
@@ -14178,6 +14400,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
      * 
      * ## Example Usage
      * 
@@ -14222,6 +14445,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
      * 
      * ## Example Usage
      * 
@@ -14266,6 +14490,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -14325,6 +14550,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -14384,6 +14610,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -14443,6 +14670,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -14502,6 +14730,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -14561,6 +14790,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode regions that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -14620,6 +14850,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
@@ -14664,6 +14895,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
@@ -14708,6 +14940,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
@@ -14752,6 +14985,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
@@ -14796,6 +15030,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
      * 
      * ## Example Usage
      * 
@@ -14858,6 +15093,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
      * 
      * ## Example Usage
      * 
@@ -14920,6 +15156,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
      * 
      * ## Example Usage
      * 
@@ -14982,6 +15219,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
      * 
      * ## Example Usage
      * 
@@ -15044,6 +15282,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
      * 
      * ## Example Usage
      * 
@@ -15106,6 +15345,7 @@ public final class LinodeFunctions {
     }
     /**
      * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
      * 
      * ## Example Usage
      * 
@@ -15168,6 +15408,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode StackScript.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
      * 
      * ## Example Usage
      * 
@@ -15212,6 +15453,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode StackScript.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
      * 
      * ## Example Usage
      * 
@@ -15256,6 +15498,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode StackScript.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
      * 
      * ## Example Usage
      * 
@@ -15300,6 +15543,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a specific Linode StackScript.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
      * 
      * ## Example Usage
      * 
@@ -15344,6 +15588,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode StackScripts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
      * 
      * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
      * 
@@ -15419,6 +15664,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode StackScripts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
      * 
      * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
      * 
@@ -15494,6 +15740,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode StackScripts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
      * 
      * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
      * 
@@ -15569,6 +15816,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode StackScripts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
      * 
      * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
      * 
@@ -15644,6 +15892,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode StackScripts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
      * 
      * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
      * 
@@ -15719,6 +15968,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode StackScripts that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
      * 
      * **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
      * 
@@ -15794,6 +16044,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
      * 
      * ## Example Usage
      * 
@@ -15840,6 +16091,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
      * 
      * ## Example Usage
      * 
@@ -15886,6 +16138,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
      * 
      * ## Example Usage
      * 
@@ -15932,6 +16185,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
      * 
      * ## Example Usage
      * 
@@ -15978,6 +16232,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16038,6 +16293,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16098,6 +16354,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16158,6 +16415,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16218,6 +16476,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16278,6 +16537,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode users that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16342,6 +16602,7 @@ public final class LinodeFunctions {
      * To learn more, see the early access documentation.
      * 
      * Provides details about Linode VLANs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
      * 
      * ## Example Usage
      * 
@@ -16413,6 +16674,7 @@ public final class LinodeFunctions {
      * To learn more, see the early access documentation.
      * 
      * Provides details about Linode VLANs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
      * 
      * ## Example Usage
      * 
@@ -16484,6 +16746,7 @@ public final class LinodeFunctions {
      * To learn more, see the early access documentation.
      * 
      * Provides details about Linode VLANs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
      * 
      * ## Example Usage
      * 
@@ -16555,6 +16818,7 @@ public final class LinodeFunctions {
      * To learn more, see the early access documentation.
      * 
      * Provides details about Linode VLANs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
      * 
      * ## Example Usage
      * 
@@ -16626,6 +16890,7 @@ public final class LinodeFunctions {
      * To learn more, see the early access documentation.
      * 
      * Provides details about Linode VLANs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
      * 
      * ## Example Usage
      * 
@@ -16697,6 +16962,7 @@ public final class LinodeFunctions {
      * To learn more, see the early access documentation.
      * 
      * Provides details about Linode VLANs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
      * 
      * ## Example Usage
      * 
@@ -16764,6 +17030,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Volume.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
      * 
      * ## Example Usage
      * 
@@ -16808,6 +17075,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Volume.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
      * 
      * ## Example Usage
      * 
@@ -16852,6 +17120,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Volume.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
      * 
      * ## Example Usage
      * 
@@ -16896,6 +17165,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode Volume.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
      * 
      * ## Example Usage
      * 
@@ -16940,6 +17210,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16990,6 +17261,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17040,6 +17312,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17090,6 +17363,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17140,6 +17414,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17190,6 +17465,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about Linode volumes that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17240,6 +17516,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
      * 
      * ## Example Usage
      * 
@@ -17285,6 +17562,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
      * 
      * ## Example Usage
      * 
@@ -17330,6 +17608,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
      * 
      * ## Example Usage
      * 
@@ -17375,6 +17654,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
      * 
      * ## Example Usage
      * 
@@ -17420,6 +17700,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC subnet.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
      * 
      * ## Example Usage
      * 
@@ -17466,6 +17747,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC subnet.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
      * 
      * ## Example Usage
      * 
@@ -17512,6 +17794,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC subnet.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
      * 
      * ## Example Usage
      * 
@@ -17558,6 +17841,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a Linode VPC subnet.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
      * 
      * ## Example Usage
      * 
@@ -17604,6 +17888,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
      * 
      * ## Example Usage
      * 
@@ -17661,6 +17946,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
      * 
      * ## Example Usage
      * 
@@ -17718,6 +18004,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
      * 
      * ## Example Usage
      * 
@@ -17775,6 +18062,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPC subnets that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
      * 
      * ## Example Usage
      * 
@@ -17832,6 +18120,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPCs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
      * 
      * ## Example Usage
      * 
@@ -17890,6 +18179,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPCs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
      * 
      * ## Example Usage
      * 
@@ -17948,6 +18238,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPCs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
      * 
      * ## Example Usage
      * 
@@ -18006,6 +18297,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPCs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
      * 
      * ## Example Usage
      * 
@@ -18064,6 +18356,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPCs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
      * 
      * ## Example Usage
      * 
@@ -18122,6 +18415,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides information about a list of Linode VPCs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
      * 
      * ## Example Usage
      * 

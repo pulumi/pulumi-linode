@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about a Linode Volume.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
         /// 
         /// ## Example Usage
         /// 
@@ -39,6 +40,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about a Linode Volume.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
         /// 
         /// ## Example Usage
         /// 

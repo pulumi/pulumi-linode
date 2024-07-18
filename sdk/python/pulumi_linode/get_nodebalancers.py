@@ -89,6 +89,7 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodebalancersResult:
     """
     Provides information about Linode NodeBalancers that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
 
     ## Example Usage
 
@@ -155,6 +156,7 @@ def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodebalancersResult]:
     """
     Provides information about Linode NodeBalancers that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
 
     ## Example Usage
 

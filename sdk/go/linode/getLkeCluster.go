@@ -12,6 +12,7 @@ import (
 )
 
 // Provides details about an LKE Cluster.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
 //
 // ## Example Usage
 //

@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about Linode users that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,6 +82,7 @@ export interface GetUsersResult {
 }
 /**
  * Provides information about Linode users that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

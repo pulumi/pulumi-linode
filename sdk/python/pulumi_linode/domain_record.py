@@ -28,7 +28,7 @@ class DomainRecordArgs:
         """
         The set of arguments for constructing a DomainRecord resource.
         :param pulumi.Input[int] domain_id: The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
-        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
                
                - - -
@@ -77,7 +77,7 @@ class DomainRecordArgs:
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Input[str]:
         """
-        The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         """
         return pulumi.get(self, "record_type")
 
@@ -217,7 +217,7 @@ class _DomainRecordState:
         :param pulumi.Input[int] port: The port this Record points to.
         :param pulumi.Input[int] priority: The priority of the target host. Lower values are preferred.
         :param pulumi.Input[str] protocol: The protocol this Record's service communicates with. Only valid for SRV records.
-        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
@@ -313,7 +313,7 @@ class _DomainRecordState:
     @pulumi.getter(name="recordType")
     def record_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         """
         return pulumi.get(self, "record_type")
 
@@ -403,7 +403,7 @@ class DomainRecord(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
-        For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
+        For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-domain-record).
 
         ## Example Usage
 
@@ -439,7 +439,7 @@ class DomainRecord(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port this Record points to.
         :param pulumi.Input[int] priority: The priority of the target host. Lower values are preferred.
         :param pulumi.Input[str] protocol: The protocol this Record's service communicates with. Only valid for SRV records.
-        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
@@ -456,7 +456,7 @@ class DomainRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Linode Domain Record resource.  This can be used to create, modify, and delete Linodes Domain Records.
-        For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/createDomainRecord).
+        For more information, see [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-domain-record).
 
         ## Example Usage
 
@@ -570,7 +570,7 @@ class DomainRecord(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port this Record points to.
         :param pulumi.Input[int] priority: The priority of the target host. Lower values are preferred.
         :param pulumi.Input[str] protocol: The protocol this Record's service communicates with. Only valid for SRV records.
-        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        :param pulumi.Input[str] record_type: The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         :param pulumi.Input[str] service: The service this Record identified. Only valid for SRV records.
         :param pulumi.Input[str] tag: The tag portion of a CAA record. It is invalid to set this on other record types.
         :param pulumi.Input[str] target: The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
@@ -640,7 +640,7 @@ class DomainRecord(pulumi.CustomResource):
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Output[str]:
         """
-        The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://www.linode.com/docs/api/domains/#domain-record-create__request-body-schema). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+        The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
         """
         return pulumi.get(self, "record_type")
 

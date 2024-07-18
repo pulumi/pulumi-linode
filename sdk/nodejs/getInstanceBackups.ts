@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about the backups of an Instance.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
  *
  * ## Example Usage
  *
@@ -53,6 +54,7 @@ export interface GetInstanceBackupsResult {
 }
 /**
  * Provides details about the backups of an Instance.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
  *
  * ## Example Usage
  *

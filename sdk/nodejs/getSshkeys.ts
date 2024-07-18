@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
  *
  * ## Example Usage
  *
@@ -84,6 +85,7 @@ export interface GetSshkeysResult {
 }
 /**
  * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
  *
  * ## Example Usage
  *

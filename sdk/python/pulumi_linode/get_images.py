@@ -99,6 +99,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
     Provides information about Linode images that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
 
     ## Example Usage
 
@@ -185,6 +186,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
     """
     Provides information about Linode images that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).
 
     ## Example Usage
 

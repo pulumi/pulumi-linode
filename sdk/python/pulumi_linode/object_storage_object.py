@@ -15,11 +15,11 @@ __all__ = ['ObjectStorageObjectArgs', 'ObjectStorageObject']
 class ObjectStorageObjectArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 cluster: pulumi.Input[str],
                  key: pulumi.Input[str],
                  access_key: Optional[pulumi.Input[str]] = None,
                  acl: Optional[pulumi.Input[str]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
+                 cluster: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_base64: Optional[pulumi.Input[str]] = None,
                  content_disposition: Optional[pulumi.Input[str]] = None,
@@ -30,19 +30,20 @@ class ObjectStorageObjectArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  website_redirect: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ObjectStorageObject resource.
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
-        :param pulumi.Input[str] cluster: The cluster the bucket is in.
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
                * configuring the `obj_access_key` in the provider configuration;
                * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        :param pulumi.Input[str] cluster: The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
         :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
@@ -53,6 +54,7 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] etag: The specific version of this object.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
+        :param pulumi.Input[str] region: The cluster the bucket is in. Required if `cluster` is not configured.
         :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
                * configuring the `obj_secret_key` in the provider configuration;
                * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -60,7 +62,6 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[str] website_redirect: Specifies a target URL for website redirect.
         """
         pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "key", key)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -68,6 +69,8 @@ class ObjectStorageObjectArgs:
             pulumi.set(__self__, "acl", acl)
         if cache_control is not None:
             pulumi.set(__self__, "cache_control", cache_control)
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if content_base64 is not None:
@@ -88,6 +91,8 @@ class ObjectStorageObjectArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if source is not None:
@@ -106,18 +111,6 @@ class ObjectStorageObjectArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
-
-    @property
-    @pulumi.getter
-    def cluster(self) -> pulumi.Input[str]:
-        """
-        The cluster the bucket is in.
-        """
-        return pulumi.get(self, "cluster")
-
-    @cluster.setter
-    def cluster(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cluster", value)
 
     @property
     @pulumi.getter
@@ -168,6 +161,18 @@ class ObjectStorageObjectArgs:
     @cache_control.setter
     def cache_control(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cache_control", value)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
 
     @property
     @pulumi.getter
@@ -290,6 +295,18 @@ class ObjectStorageObjectArgs:
         pulumi.set(self, "metadata", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster the bucket is in. Required if `cluster` is not configured.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -347,6 +364,7 @@ class _ObjectStorageObjectState:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
@@ -359,7 +377,7 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
-        :param pulumi.Input[str] cluster: The cluster the bucket is in.
+        :param pulumi.Input[str] cluster: The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
         :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
@@ -371,6 +389,7 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
+        :param pulumi.Input[str] region: The cluster the bucket is in. Required if `cluster` is not configured.
         :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
                * configuring the `obj_secret_key` in the provider configuration;
                * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -410,6 +429,8 @@ class _ObjectStorageObjectState:
             pulumi.set(__self__, "key", key)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if source is not None:
@@ -473,7 +494,7 @@ class _ObjectStorageObjectState:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster the bucket is in.
+        The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         """
         return pulumi.get(self, "cluster")
 
@@ -614,6 +635,18 @@ class _ObjectStorageObjectState:
         pulumi.set(self, "metadata", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster the bucket is in. Required if `cluster` is not configured.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -685,6 +718,7 @@ class ObjectStorageObject(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  website_redirect: Optional[pulumi.Input[str]] = None,
@@ -749,7 +783,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
-        :param pulumi.Input[str] cluster: The cluster the bucket is in.
+        :param pulumi.Input[str] cluster: The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
         :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
@@ -761,6 +795,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
+        :param pulumi.Input[str] region: The cluster the bucket is in. Required if `cluster` is not configured.
         :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
                * configuring the `obj_secret_key` in the provider configuration;
                * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -856,6 +891,7 @@ class ObjectStorageObject(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  website_redirect: Optional[pulumi.Input[str]] = None,
@@ -874,8 +910,6 @@ class ObjectStorageObject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["cache_control"] = cache_control
-            if cluster is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["content"] = content
             __props__.__dict__["content_base64"] = content_base64
@@ -890,6 +924,7 @@ class ObjectStorageObject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
             __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["region"] = region
             __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
             __props__.__dict__["source"] = source
             __props__.__dict__["website_redirect"] = website_redirect
@@ -922,6 +957,7 @@ class ObjectStorageObject(pulumi.CustomResource):
             force_destroy: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             secret_key: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[str]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
@@ -939,7 +975,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] acl: The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         :param pulumi.Input[str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
-        :param pulumi.Input[str] cluster: The cluster the bucket is in.
+        :param pulumi.Input[str] cluster: The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
         :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
@@ -951,6 +987,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of keys/values to provision metadata.
+        :param pulumi.Input[str] region: The cluster the bucket is in. Required if `cluster` is not configured.
         :param pulumi.Input[str] secret_key: The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
                * configuring the `obj_secret_key` in the provider configuration;
                * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -978,6 +1015,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["key"] = key
         __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["region"] = region
         __props__.__dict__["secret_key"] = secret_key
         __props__.__dict__["source"] = source
         __props__.__dict__["version_id"] = version_id
@@ -1020,9 +1058,9 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cluster(self) -> pulumi.Output[str]:
+    def cluster(self) -> pulumi.Output[Optional[str]]:
         """
-        The cluster the bucket is in.
+        The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
         """
         return pulumi.get(self, "cluster")
 
@@ -1113,6 +1151,14 @@ class ObjectStorageObject(pulumi.CustomResource):
         A map of keys/values to provision metadata.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The cluster the bucket is in. Required if `cluster` is not configured.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretKey")

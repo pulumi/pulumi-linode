@@ -11,6 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
     /// 
     /// ## Example Usage
     /// 
@@ -99,7 +100,7 @@ namespace Pulumi.Linode
         public Output<string?> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -111,7 +112,8 @@ namespace Pulumi.Linode
         public Output<Outputs.ObjectStorageBucketCert?> Cert { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket.
+        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -146,6 +148,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("lifecycleRules")]
         public Output<ImmutableArray<Outputs.ObjectStorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
+
+        /// <summary>
+        /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The secret key to authenticate with. If not specified with the resource, its value can be
@@ -224,7 +232,7 @@ namespace Pulumi.Linode
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -236,10 +244,11 @@ namespace Pulumi.Linode
         public Input<Inputs.ObjectStorageBucketCertArgs>? Cert { get; set; }
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket.
+        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         /// </summary>
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
+        [Input("cluster")]
+        public Input<string>? Cluster { get; set; }
 
         /// <summary>
         /// If true, the bucket will have CORS enabled for all origins.
@@ -264,6 +273,12 @@ namespace Pulumi.Linode
             get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.ObjectStorageBucketLifecycleRuleArgs>());
             set => _lifecycleRules = value;
         }
+
+        /// <summary>
+        /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;
@@ -310,7 +325,7 @@ namespace Pulumi.Linode
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+        /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -322,7 +337,8 @@ namespace Pulumi.Linode
         public Input<Inputs.ObjectStorageBucketCertGetArgs>? Cert { get; set; }
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket.
+        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -363,6 +379,12 @@ namespace Pulumi.Linode
             get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.ObjectStorageBucketLifecycleRuleGetArgs>());
             set => _lifecycleRules = value;
         }
+
+        /// <summary>
+        /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;

@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
  * 
  * ## Example Usage
  * 
@@ -151,14 +152,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessKey);
     }
     /**
-     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+     * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      * 
      */
     @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
-     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://linode.com/docs/api/object-storage/#object-storage-bucket-access-update__request-body-schema).
+     * @return The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      * 
      */
     public Output<Optional<String>> acl() {
@@ -179,14 +180,20 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cert);
     }
     /**
-     * The cluster of the Linode Object Storage Bucket.
+     * The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+     * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      * 
      */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
-     * @return The cluster of the Linode Object Storage Bucket.
+     * @return The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
+     * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
      * 
      */
     public Output<String> cluster() {
@@ -263,6 +270,20 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ObjectStorageBucketLifecycleRule>>> lifecycleRules() {
         return Codegen.optional(this.lifecycleRules);
+    }
+    /**
+     * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output<String> region;
+
+    /**
+     * @return The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be

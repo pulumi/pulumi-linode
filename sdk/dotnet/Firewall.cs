@@ -11,6 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Manages a Linode Firewall.
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-firewalls).
     /// 
     /// ## Example Usage
     /// 

@@ -69,6 +69,7 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainZonefileResult:
     """
     Provides information about a Linode Domain Zonefile.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
 
     ## Example Usage
 
@@ -100,6 +101,7 @@ def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainZonefileResult]:
     """
     Provides information about a Linode Domain Zonefile.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
 
     ## Example Usage
 

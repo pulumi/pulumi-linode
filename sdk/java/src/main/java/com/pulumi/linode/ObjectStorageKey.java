@@ -11,6 +11,7 @@ import com.pulumi.linode.ObjectStorageKeyArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.ObjectStorageKeyState;
 import com.pulumi.linode.outputs.ObjectStorageKeyBucketAccess;
+import com.pulumi.linode.outputs.ObjectStorageKeyRegionsDetail;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-keys).
  * 
  * ## Example Usage
  * 
@@ -49,6 +51,47 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()
  *             .label("image-access")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The following example shows a key with limited access.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.ObjectStorageKey;
+ * import com.pulumi.linode.ObjectStorageKeyArgs;
+ * import com.pulumi.linode.inputs.ObjectStorageKeyBucketAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new ObjectStorageKey("foobar", ObjectStorageKeyArgs.builder()
+ *             .label("my-key")
+ *             .bucketAccesses(ObjectStorageKeyBucketAccessArgs.builder()
+ *                 .bucketName("my-bucket-name")
+ *                 .region("us-mia")
+ *                 .permissions("read_write")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -91,16 +134,12 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
     /**
      * The label given to this key. For display purposes only.
      * 
-     * ***
-     * 
      */
     @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
      * @return The label given to this key. For display purposes only.
-     * 
-     * ***
      * 
      */
     public Output<String> label() {
@@ -119,6 +158,38 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> limited() {
         return this.limited;
+    }
+    /**
+     * A set of regions where the key will grant access to create buckets.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> regions;
+
+    /**
+     * @return A set of regions where the key will grant access to create buckets.
+     * 
+     * ***
+     * 
+     */
+    public Output<List<String>> regions() {
+        return this.regions;
+    }
+    /**
+     * A set of objects containing the detailed info of the regions where this key can access.
+     * 
+     */
+    @Export(name="regionsDetails", refs={List.class,ObjectStorageKeyRegionsDetail.class}, tree="[0,1]")
+    private Output<List<ObjectStorageKeyRegionsDetail>> regionsDetails;
+
+    /**
+     * @return A set of objects containing the detailed info of the regions where this key can access.
+     * 
+     */
+    public Output<List<ObjectStorageKeyRegionsDetail>> regionsDetails() {
+        return this.regionsDetails;
     }
     /**
      * This keypair&#39;s secret key.

@@ -23,8 +23,9 @@ func GetLinodeObjectStorageBucket(ctx *pulumi.Context, args *GetLinodeObjectStor
 
 // A collection of arguments for invoking getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketArgs struct {
-	Cluster string `pulumi:"cluster"`
-	Label   string `pulumi:"label"`
+	Cluster *string `pulumi:"cluster"`
+	Label   string  `pulumi:"label"`
+	Region  *string `pulumi:"region"`
 }
 
 // A collection of values returned by getLinodeObjectStorageBucket.
@@ -35,6 +36,7 @@ type GetLinodeObjectStorageBucketResult struct {
 	Id       string `pulumi:"id"`
 	Label    string `pulumi:"label"`
 	Objects  int    `pulumi:"objects"`
+	Region   string `pulumi:"region"`
 	Size     int    `pulumi:"size"`
 }
 
@@ -53,8 +55,9 @@ func GetLinodeObjectStorageBucketOutput(ctx *pulumi.Context, args GetLinodeObjec
 
 // A collection of arguments for invoking getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketOutputArgs struct {
-	Cluster pulumi.StringInput `pulumi:"cluster"`
-	Label   pulumi.StringInput `pulumi:"label"`
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	Label   pulumi.StringInput    `pulumi:"label"`
+	Region  pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetLinodeObjectStorageBucketOutputArgs) ElementType() reflect.Type {
@@ -98,6 +101,10 @@ func (o GetLinodeObjectStorageBucketResultOutput) Label() pulumi.StringOutput {
 
 func (o GetLinodeObjectStorageBucketResultOutput) Objects() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) int { return v.Objects }).(pulumi.IntOutput)
+}
+
+func (o GetLinodeObjectStorageBucketResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o GetLinodeObjectStorageBucketResultOutput) Size() pulumi.IntOutput {

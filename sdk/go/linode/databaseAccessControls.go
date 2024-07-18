@@ -13,6 +13,7 @@ import (
 )
 
 // Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
+// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
 //
 // ## Example Usage
 //
@@ -70,7 +71,7 @@ type DatabaseAccessControls struct {
 	AllowLists pulumi.StringArrayOutput `pulumi:"allowLists"`
 	// The unique ID of the target database.
 	DatabaseId pulumi.IntOutput `pulumi:"databaseId"`
-	// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType pulumi.StringOutput `pulumi:"databaseType"`
 }
 
@@ -117,7 +118,7 @@ type databaseAccessControlsState struct {
 	AllowLists []string `pulumi:"allowLists"`
 	// The unique ID of the target database.
 	DatabaseId *int `pulumi:"databaseId"`
-	// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType *string `pulumi:"databaseType"`
 }
 
@@ -126,7 +127,7 @@ type DatabaseAccessControlsState struct {
 	AllowLists pulumi.StringArrayInput
 	// The unique ID of the target database.
 	DatabaseId pulumi.IntPtrInput
-	// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType pulumi.StringPtrInput
 }
 
@@ -139,7 +140,7 @@ type databaseAccessControlsArgs struct {
 	AllowLists []string `pulumi:"allowLists"`
 	// The unique ID of the target database.
 	DatabaseId int `pulumi:"databaseId"`
-	// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType string `pulumi:"databaseType"`
 }
 
@@ -149,7 +150,7 @@ type DatabaseAccessControlsArgs struct {
 	AllowLists pulumi.StringArrayInput
 	// The unique ID of the target database.
 	DatabaseId pulumi.IntInput
-	// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType pulumi.StringInput
 }
 
@@ -250,7 +251,7 @@ func (o DatabaseAccessControlsOutput) DatabaseId() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseAccessControls) pulumi.IntOutput { return v.DatabaseId }).(pulumi.IntOutput)
 }
 
-// The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+// The unique type of the target database. (`mysql`, `postgresql`)
 func (o DatabaseAccessControlsOutput) DatabaseType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseAccessControls) pulumi.StringOutput { return v.DatabaseType }).(pulumi.StringOutput)
 }

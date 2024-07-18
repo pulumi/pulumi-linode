@@ -88,6 +88,7 @@ def get_placement_groups(filters: Optional[Sequence[pulumi.InputType['GetPlaceme
     **NOTE: Placement Groups may not currently be available to all users.**
 
     Provides information about a list of Linode Placement Groups that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
 
     ## Example Usage
 
@@ -146,6 +147,7 @@ def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence
     **NOTE: Placement Groups may not currently be available to all users.**
 
     Provides information about a list of Linode Placement Groups that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
 
     ## Example Usage
 

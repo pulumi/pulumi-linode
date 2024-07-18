@@ -12,9 +12,10 @@ namespace Pulumi.Linode
     public static class GetDatabaseMysqlBackups
     {
         /// <summary>
-        /// &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
-        /// 
         /// Provides information about Linode MySQL Database Backups that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+        /// 
+        /// &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
         /// 
         /// ## Example Usage
         /// 
@@ -69,9 +70,10 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
-        /// 
         /// Provides information about Linode MySQL Database Backups that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+        /// 
+        /// &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
         /// 
         /// ## Example Usage
         /// 

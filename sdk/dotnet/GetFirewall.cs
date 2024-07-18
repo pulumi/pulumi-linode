@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about a Linode Firewall.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
         /// 
         /// ## Example Usage
         /// 
@@ -37,6 +38,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides details about a Linode Firewall.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
         /// 
         /// ## Example Usage
         /// 

@@ -620,7 +620,7 @@ class DatabasePostgresql(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Linode PostgreSQL Database resource. This can be used to create, modify, and delete Linode PostgreSQL Databases.
-        For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-databases-postgre-sql-instances).
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 
@@ -721,7 +721,7 @@ class DatabasePostgresql(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Linode PostgreSQL Database resource. This can be used to create, modify, and delete Linode PostgreSQL Databases.
-        For more information, see the [Linode APIv4 docs](https://www.linode.com/docs/api/databases/).
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-databases-postgre-sql-instances).
 
         Please keep in mind that Managed Databases can take up to an hour to provision.
 

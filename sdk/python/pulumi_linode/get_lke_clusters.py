@@ -89,6 +89,7 @@ def get_lke_clusters(filters: Optional[Sequence[pulumi.InputType['GetLkeClusters
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeClustersResult:
     """
     Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
 
     ## Example Usage
 
@@ -149,6 +150,7 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[pul
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClustersResult]:
     """
     Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
 
     ## Example Usage
 

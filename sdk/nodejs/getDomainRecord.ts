@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information about a Linode Domain Record.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
  *
  * ## Example Usage
  *
@@ -98,7 +99,7 @@ export interface GetDomainRecordResult {
      */
     readonly ttlSec: number;
     /**
-     * The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+     * The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      */
     readonly type: string;
     /**
@@ -108,6 +109,7 @@ export interface GetDomainRecordResult {
 }
 /**
  * Provides information about a Linode Domain Record.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
  *
  * ## Example Usage
  *

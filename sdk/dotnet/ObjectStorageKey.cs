@@ -11,6 +11,7 @@ namespace Pulumi.Linode
 {
     /// <summary>
     /// Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-keys).
     /// 
     /// ## Example Usage
     /// 
@@ -27,6 +28,33 @@ namespace Pulumi.Linode
     ///     var foo = new Linode.ObjectStorageKey("foo", new()
     ///     {
     ///         Label = "image-access",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The following example shows a key with limited access.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.ObjectStorageKey("foobar", new()
+    ///     {
+    ///         Label = "my-key",
+    ///         BucketAccesses = new[]
+    ///         {
+    ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
+    ///             {
+    ///                 BucketName = "my-bucket-name",
+    ///                 Region = "us-mia",
+    ///                 Permissions = "read_write",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -49,8 +77,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The label given to this key. For display purposes only.
-        /// 
-        /// - - -
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
@@ -60,6 +86,20 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("limited")]
         public Output<bool> Limited { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of regions where the key will grant access to create buckets.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("regions")]
+        public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of objects containing the detailed info of the regions where this key can access.
+        /// </summary>
+        [Output("regionsDetails")]
+        public Output<ImmutableArray<Outputs.ObjectStorageKeyRegionsDetail>> RegionsDetails { get; private set; } = null!;
 
         /// <summary>
         /// This keypair's secret key.
@@ -131,11 +171,23 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The label given to this key. For display purposes only.
-        /// 
-        /// - - -
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
+
+        [Input("regions")]
+        private InputList<string>? _regions;
+
+        /// <summary>
+        /// A set of regions where the key will grant access to create buckets.
+        /// 
+        /// - - -
+        /// </summary>
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
 
         public ObjectStorageKeyArgs()
         {
@@ -165,8 +217,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The label given to this key. For display purposes only.
-        /// 
-        /// - - -
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
@@ -176,6 +226,32 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("limited")]
         public Input<bool>? Limited { get; set; }
+
+        [Input("regions")]
+        private InputList<string>? _regions;
+
+        /// <summary>
+        /// A set of regions where the key will grant access to create buckets.
+        /// 
+        /// - - -
+        /// </summary>
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
+
+        [Input("regionsDetails")]
+        private InputList<Inputs.ObjectStorageKeyRegionsDetailGetArgs>? _regionsDetails;
+
+        /// <summary>
+        /// A set of objects containing the detailed info of the regions where this key can access.
+        /// </summary>
+        public InputList<Inputs.ObjectStorageKeyRegionsDetailGetArgs> RegionsDetails
+        {
+            get => _regionsDetails ?? (_regionsDetails = new InputList<Inputs.ObjectStorageKeyRegionsDetailGetArgs>());
+            set => _regionsDetails = value;
+        }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;

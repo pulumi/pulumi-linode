@@ -64,7 +64,7 @@ public final class GetDomainRecordResult {
      */
     private Integer ttlSec;
     /**
-     * @return The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+     * @return The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      * 
      */
     private String type;
@@ -146,7 +146,7 @@ public final class GetDomainRecordResult {
         return this.ttlSec;
     }
     /**
-     * @return The type of Record this is in the DNS system. See all record types [here](https://www.linode.com/docs/api/domains/#domain-records-list__responses).
+     * @return The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
      * 
      */
     public String type() {

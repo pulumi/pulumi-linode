@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// The class of the Linode Type. See all classes [here](https://www.linode.com/docs/api/linode-types/#type-view__responses).
+        /// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         /// </summary>
         [Input("class", required: true)]
         public Input<string> Class { get; set; } = null!;

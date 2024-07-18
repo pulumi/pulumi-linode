@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about Linode Managed Databases that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
         /// 
         /// ## Example Usage
         /// 
@@ -72,6 +73,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about Linode Managed Databases that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
         /// 
         /// ## Example Usage
         /// 

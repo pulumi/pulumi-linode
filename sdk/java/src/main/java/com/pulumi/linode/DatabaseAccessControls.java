@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 
 /**
  * Manages the access control for a Linode Database. Only one `linode.DatabaseAccessControls` resource should be defined per-database.
+ * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
  * 
  * ## Example Usage
  * 
@@ -107,14 +108,14 @@ public class DatabaseAccessControls extends com.pulumi.resources.CustomResource 
         return this.databaseId;
     }
     /**
-     * The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * The unique type of the target database. (`mysql`, `postgresql`)
      * 
      */
     @Export(name="databaseType", refs={String.class}, tree="[0]")
     private Output<String> databaseType;
 
     /**
-     * @return The unique type of the target database. (`mysql`, `mongodb`, `postgresql`)
+     * @return The unique type of the target database. (`mysql`, `postgresql`)
      * 
      */
     public Output<String> databaseType() {

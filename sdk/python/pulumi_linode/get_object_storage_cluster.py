@@ -93,6 +93,7 @@ def get_object_storage_cluster(id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageClusterResult:
     """
     Provides information about a Linode Object Storage Cluster
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
 
     ## Example Usage
 
@@ -126,6 +127,7 @@ def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
     """
     Provides information about a Linode Object Storage Cluster
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
 
     ## Example Usage
 

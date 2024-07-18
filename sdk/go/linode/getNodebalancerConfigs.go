@@ -12,6 +12,7 @@ import (
 )
 
 // Provides information about Linode NodeBalancer Configs that match a set of filters.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
 //
 // ## Example Usage
 //

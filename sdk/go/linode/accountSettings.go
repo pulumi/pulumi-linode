@@ -12,6 +12,7 @@ import (
 )
 
 // Manages the settings of a Linode account.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
 //
 // ## Example Usage
 //
@@ -52,7 +53,7 @@ type AccountSettings struct {
 
 	// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
 	BackupsEnabled pulumi.BoolOutput `pulumi:"backupsEnabled"`
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription pulumi.StringOutput `pulumi:"longviewSubscription"`
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed pulumi.BoolOutput `pulumi:"managed"`
@@ -94,7 +95,7 @@ func GetAccountSettings(ctx *pulumi.Context,
 type accountSettingsState struct {
 	// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription *string `pulumi:"longviewSubscription"`
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed *bool `pulumi:"managed"`
@@ -107,7 +108,7 @@ type accountSettingsState struct {
 type AccountSettingsState struct {
 	// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
 	BackupsEnabled pulumi.BoolPtrInput
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription pulumi.StringPtrInput
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed pulumi.BoolPtrInput
@@ -124,7 +125,7 @@ func (AccountSettingsState) ElementType() reflect.Type {
 type accountSettingsArgs struct {
 	// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription *string `pulumi:"longviewSubscription"`
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
 	NetworkHelper *bool `pulumi:"networkHelper"`
@@ -134,7 +135,7 @@ type accountSettingsArgs struct {
 type AccountSettingsArgs struct {
 	// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
 	BackupsEnabled pulumi.BoolPtrInput
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription pulumi.StringPtrInput
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
 	NetworkHelper pulumi.BoolPtrInput
@@ -232,7 +233,7 @@ func (o AccountSettingsOutput) BackupsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccountSettings) pulumi.BoolOutput { return v.BackupsEnabled }).(pulumi.BoolOutput)
 }
 
-// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://www.linode.com/docs/api/longview/#longview-subscriptions-list) ID or null for Longview Free.
+// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 func (o AccountSettingsOutput) LongviewSubscription() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSettings) pulumi.StringOutput { return v.LongviewSubscription }).(pulumi.StringOutput)
 }

@@ -13,6 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides information about Linode Database Backups that match a set of filters.
+        /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
         /// ## Example Usage
         /// 
@@ -70,6 +71,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides information about Linode Database Backups that match a set of filters.
+        /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
         /// ## Example Usage
         /// 

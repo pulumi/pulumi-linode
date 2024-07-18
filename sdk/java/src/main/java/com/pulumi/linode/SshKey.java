@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Linode SSH Key resource.  This can be used to create, modify, and delete Linodes SSH Keys.  Managed SSH Keys allow instances to be created with a list of Linode usernames, whose SSH keys will be automatically applied to the root account&#39;s `~/.ssh/authorized_keys` file.
- * For more information, see the [Linode APIv4 docs](https://developers.linode.com/api/v4#operation/getSSHKeys).
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
+ * 
  * **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
  * 
  * ## Example Usage

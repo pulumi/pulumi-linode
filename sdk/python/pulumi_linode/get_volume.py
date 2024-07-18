@@ -156,6 +156,7 @@ def get_volume(id: Optional[int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Provides information about a Linode Volume.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
 
     ## Example Usage
 
@@ -194,6 +195,7 @@ def get_volume_output(id: Optional[pulumi.Input[int]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Provides information about a Linode Volume.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
 
     ## Example Usage
 
