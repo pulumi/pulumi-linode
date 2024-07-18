@@ -435,6 +435,12 @@
                 "fields": {
                     "bucket_access": {
                         "maxItemsOne": false
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    },
+                    "regions_details": {
+                        "maxItemsOne": false
                     }
                 }
             },
