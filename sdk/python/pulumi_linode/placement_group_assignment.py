@@ -146,7 +146,7 @@ class PlacementGroupAssignment(pulumi.CustomResource):
         my_pg = linode.PlacementGroup("my-pg",
             label="my-pg",
             region="us-east",
-            affinity_type="anti_affinity:local")
+            placement_group_type="anti_affinity:local")
         my_inst = linode.Instance("my-inst",
             label="my-inst",
             region="us-east",
@@ -200,7 +200,7 @@ class PlacementGroupAssignment(pulumi.CustomResource):
         my_pg = linode.PlacementGroup("my-pg",
             label="my-pg",
             region="us-east",
-            affinity_type="anti_affinity:local")
+            placement_group_type="anti_affinity:local")
         my_inst = linode.Instance("my-inst",
             label="my-inst",
             region="us-east",

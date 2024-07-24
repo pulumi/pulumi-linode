@@ -115,9 +115,9 @@ def get_placement_groups(filters: Optional[Sequence[pulumi.InputType['GetPlaceme
 
     * `region`
 
-    * `affinity_type`
+    * `placement_group_type`
 
-    * `is_strict`
+    * `placement_group_policy`
 
     * `is_compliant`
     """
@@ -174,9 +174,9 @@ def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence
 
     * `region`
 
-    * `affinity_type`
+    * `placement_group_type`
 
-    * `is_strict`
+    * `placement_group_policy`
 
     * `is_compliant`
     """

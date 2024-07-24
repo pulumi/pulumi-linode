@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetPlacementGroupMemberArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether this Linode is currently compliant with the group's affinity policy.
+        /// Whether this Linode is currently compliant with the group's placement group type.
         /// </summary>
         [Input("isCompliant", required: true)]
         public bool IsCompliant { get; set; }

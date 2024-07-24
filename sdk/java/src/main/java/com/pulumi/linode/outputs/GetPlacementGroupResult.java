@@ -15,22 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPlacementGroupResult {
-    /**
-     * @return The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    private String affinityType;
     private Integer id;
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     private Boolean isCompliant;
-    /**
-     * @return Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    private Boolean isStrict;
     /**
      * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
@@ -42,35 +32,31 @@ public final class GetPlacementGroupResult {
      */
     private @Nullable List<GetPlacementGroupMember> members;
     /**
+     * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    private String placementGroupPolicy;
+    /**
+     * @return The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    private String placementGroupType;
+    /**
      * @return The region of the Placement Group.
      * 
      */
     private String region;
 
     private GetPlacementGroupResult() {}
-    /**
-     * @return The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    public String affinityType() {
-        return this.affinityType;
-    }
     public Integer id() {
         return this.id;
     }
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     public Boolean isCompliant() {
         return this.isCompliant;
-    }
-    /**
-     * @return Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    public Boolean isStrict() {
-        return this.isStrict;
     }
     /**
      * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -85,6 +71,20 @@ public final class GetPlacementGroupResult {
      */
     public List<GetPlacementGroupMember> members() {
         return this.members == null ? List.of() : this.members;
+    }
+    /**
+     * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    public String placementGroupPolicy() {
+        return this.placementGroupPolicy;
+    }
+    /**
+     * @return The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    public String placementGroupType() {
+        return this.placementGroupType;
     }
     /**
      * @return The region of the Placement Group.
@@ -103,33 +103,25 @@ public final class GetPlacementGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String affinityType;
         private Integer id;
         private Boolean isCompliant;
-        private Boolean isStrict;
         private String label;
         private @Nullable List<GetPlacementGroupMember> members;
+        private String placementGroupPolicy;
+        private String placementGroupType;
         private String region;
         public Builder() {}
         public Builder(GetPlacementGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.affinityType = defaults.affinityType;
     	      this.id = defaults.id;
     	      this.isCompliant = defaults.isCompliant;
-    	      this.isStrict = defaults.isStrict;
     	      this.label = defaults.label;
     	      this.members = defaults.members;
+    	      this.placementGroupPolicy = defaults.placementGroupPolicy;
+    	      this.placementGroupType = defaults.placementGroupType;
     	      this.region = defaults.region;
         }
 
-        @CustomType.Setter
-        public Builder affinityType(String affinityType) {
-            if (affinityType == null) {
-              throw new MissingRequiredPropertyException("GetPlacementGroupResult", "affinityType");
-            }
-            this.affinityType = affinityType;
-            return this;
-        }
         @CustomType.Setter
         public Builder id(Integer id) {
             if (id == null) {
@@ -144,14 +136,6 @@ public final class GetPlacementGroupResult {
               throw new MissingRequiredPropertyException("GetPlacementGroupResult", "isCompliant");
             }
             this.isCompliant = isCompliant;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder isStrict(Boolean isStrict) {
-            if (isStrict == null) {
-              throw new MissingRequiredPropertyException("GetPlacementGroupResult", "isStrict");
-            }
-            this.isStrict = isStrict;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +156,22 @@ public final class GetPlacementGroupResult {
             return members(List.of(members));
         }
         @CustomType.Setter
+        public Builder placementGroupPolicy(String placementGroupPolicy) {
+            if (placementGroupPolicy == null) {
+              throw new MissingRequiredPropertyException("GetPlacementGroupResult", "placementGroupPolicy");
+            }
+            this.placementGroupPolicy = placementGroupPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder placementGroupType(String placementGroupType) {
+            if (placementGroupType == null) {
+              throw new MissingRequiredPropertyException("GetPlacementGroupResult", "placementGroupType");
+            }
+            this.placementGroupType = placementGroupType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetPlacementGroupResult", "region");
@@ -181,12 +181,12 @@ public final class GetPlacementGroupResult {
         }
         public GetPlacementGroupResult build() {
             final var _resultValue = new GetPlacementGroupResult();
-            _resultValue.affinityType = affinityType;
             _resultValue.id = id;
             _resultValue.isCompliant = isCompliant;
-            _resultValue.isStrict = isStrict;
             _resultValue.label = label;
             _resultValue.members = members;
+            _resultValue.placementGroupPolicy = placementGroupPolicy;
+            _resultValue.placementGroupType = placementGroupType;
             _resultValue.region = region;
             return _resultValue;
         }

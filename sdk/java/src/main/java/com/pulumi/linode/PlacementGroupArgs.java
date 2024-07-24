@@ -6,7 +6,6 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,36 +15,6 @@ import javax.annotation.Nullable;
 public final class PlacementGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PlacementGroupArgs Empty = new PlacementGroupArgs();
-
-    /**
-     * The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    @Import(name="affinityType", required=true)
-    private Output<String> affinityType;
-
-    /**
-     * @return The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    public Output<String> affinityType() {
-        return this.affinityType;
-    }
-
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    @Import(name="isStrict")
-    private @Nullable Output<Boolean> isStrict;
-
-    /**
-     * @return Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    public Optional<Output<Boolean>> isStrict() {
-        return Optional.ofNullable(this.isStrict);
-    }
 
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -60,6 +29,36 @@ public final class PlacementGroupArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> label() {
         return this.label;
+    }
+
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    @Import(name="placementGroupPolicy")
+    private @Nullable Output<String> placementGroupPolicy;
+
+    /**
+     * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    public Optional<Output<String>> placementGroupPolicy() {
+        return Optional.ofNullable(this.placementGroupPolicy);
+    }
+
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    @Import(name="placementGroupType", required=true)
+    private Output<String> placementGroupType;
+
+    /**
+     * @return The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    public Output<String> placementGroupType() {
+        return this.placementGroupType;
     }
 
     /**
@@ -80,9 +79,9 @@ public final class PlacementGroupArgs extends com.pulumi.resources.ResourceArgs 
     private PlacementGroupArgs() {}
 
     private PlacementGroupArgs(PlacementGroupArgs $) {
-        this.affinityType = $.affinityType;
-        this.isStrict = $.isStrict;
         this.label = $.label;
+        this.placementGroupPolicy = $.placementGroupPolicy;
+        this.placementGroupType = $.placementGroupType;
         this.region = $.region;
     }
 
@@ -102,48 +101,6 @@ public final class PlacementGroupArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(PlacementGroupArgs defaults) {
             $ = new PlacementGroupArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param affinityType The affinity policy to use when placing Linodes in this group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(Output<String> affinityType) {
-            $.affinityType = affinityType;
-            return this;
-        }
-
-        /**
-         * @param affinityType The affinity policy to use when placing Linodes in this group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(String affinityType) {
-            return affinityType(Output.of(affinityType));
-        }
-
-        /**
-         * @param isStrict Whether Linodes must be able to become compliant during assignment. (Default `true`)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(@Nullable Output<Boolean> isStrict) {
-            $.isStrict = isStrict;
-            return this;
-        }
-
-        /**
-         * @param isStrict Whether Linodes must be able to become compliant during assignment. (Default `true`)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(Boolean isStrict) {
-            return isStrict(Output.of(isStrict));
         }
 
         /**
@@ -168,6 +125,48 @@ public final class PlacementGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param placementGroupPolicy Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(@Nullable Output<String> placementGroupPolicy) {
+            $.placementGroupPolicy = placementGroupPolicy;
+            return this;
+        }
+
+        /**
+         * @param placementGroupPolicy Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(String placementGroupPolicy) {
+            return placementGroupPolicy(Output.of(placementGroupPolicy));
+        }
+
+        /**
+         * @param placementGroupType The placement group type to use when placing Linodes in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(Output<String> placementGroupType) {
+            $.placementGroupType = placementGroupType;
+            return this;
+        }
+
+        /**
+         * @param placementGroupType The placement group type to use when placing Linodes in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(String placementGroupType) {
+            return placementGroupType(Output.of(placementGroupType));
+        }
+
+        /**
          * @param region The region of the Placement Group.
          * 
          * @return builder
@@ -189,11 +188,11 @@ public final class PlacementGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public PlacementGroupArgs build() {
-            if ($.affinityType == null) {
-                throw new MissingRequiredPropertyException("PlacementGroupArgs", "affinityType");
-            }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("PlacementGroupArgs", "label");
+            }
+            if ($.placementGroupType == null) {
+                throw new MissingRequiredPropertyException("PlacementGroupArgs", "placementGroupType");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("PlacementGroupArgs", "region");

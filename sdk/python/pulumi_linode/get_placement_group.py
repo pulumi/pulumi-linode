@@ -23,36 +23,28 @@ class GetPlacementGroupResult:
     """
     A collection of values returned by getPlacementGroup.
     """
-    def __init__(__self__, affinity_type=None, id=None, is_compliant=None, is_strict=None, label=None, members=None, region=None):
-        if affinity_type and not isinstance(affinity_type, str):
-            raise TypeError("Expected argument 'affinity_type' to be a str")
-        pulumi.set(__self__, "affinity_type", affinity_type)
+    def __init__(__self__, id=None, is_compliant=None, label=None, members=None, placement_group_policy=None, placement_group_type=None, region=None):
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if is_compliant and not isinstance(is_compliant, bool):
             raise TypeError("Expected argument 'is_compliant' to be a bool")
         pulumi.set(__self__, "is_compliant", is_compliant)
-        if is_strict and not isinstance(is_strict, bool):
-            raise TypeError("Expected argument 'is_strict' to be a bool")
-        pulumi.set(__self__, "is_strict", is_strict)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
         pulumi.set(__self__, "members", members)
+        if placement_group_policy and not isinstance(placement_group_policy, str):
+            raise TypeError("Expected argument 'placement_group_policy' to be a str")
+        pulumi.set(__self__, "placement_group_policy", placement_group_policy)
+        if placement_group_type and not isinstance(placement_group_type, str):
+            raise TypeError("Expected argument 'placement_group_type' to be a str")
+        pulumi.set(__self__, "placement_group_type", placement_group_type)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-
-    @property
-    @pulumi.getter(name="affinityType")
-    def affinity_type(self) -> str:
-        """
-        The affinity policy to use when placing Linodes in this group.
-        """
-        return pulumi.get(self, "affinity_type")
 
     @property
     @pulumi.getter
@@ -63,17 +55,9 @@ class GetPlacementGroupResult:
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> bool:
         """
-        Whether this Linode is currently compliant with the group's affinity policy.
+        Whether this Linode is currently compliant with the group's placement group type.
         """
         return pulumi.get(self, "is_compliant")
-
-    @property
-    @pulumi.getter(name="isStrict")
-    def is_strict(self) -> bool:
-        """
-        Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        """
-        return pulumi.get(self, "is_strict")
 
     @property
     @pulumi.getter
@@ -92,6 +76,22 @@ class GetPlacementGroupResult:
         return pulumi.get(self, "members")
 
     @property
+    @pulumi.getter(name="placementGroupPolicy")
+    def placement_group_policy(self) -> str:
+        """
+        Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        """
+        return pulumi.get(self, "placement_group_policy")
+
+    @property
+    @pulumi.getter(name="placementGroupType")
+    def placement_group_type(self) -> str:
+        """
+        The placement group type to use when placing Linodes in this group.
+        """
+        return pulumi.get(self, "placement_group_type")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -106,12 +106,12 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
         if False:
             yield self
         return GetPlacementGroupResult(
-            affinity_type=self.affinity_type,
             id=self.id,
             is_compliant=self.is_compliant,
-            is_strict=self.is_strict,
             label=self.label,
             members=self.members,
+            placement_group_policy=self.placement_group_policy,
+            placement_group_type=self.placement_group_type,
             region=self.region)
 
 
@@ -146,12 +146,12 @@ def get_placement_group(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult).value
 
     return AwaitableGetPlacementGroupResult(
-        affinity_type=pulumi.get(__ret__, 'affinity_type'),
         id=pulumi.get(__ret__, 'id'),
         is_compliant=pulumi.get(__ret__, 'is_compliant'),
-        is_strict=pulumi.get(__ret__, 'is_strict'),
         label=pulumi.get(__ret__, 'label'),
         members=pulumi.get(__ret__, 'members'),
+        placement_group_policy=pulumi.get(__ret__, 'placement_group_policy'),
+        placement_group_type=pulumi.get(__ret__, 'placement_group_type'),
         region=pulumi.get(__ret__, 'region'))
 
 

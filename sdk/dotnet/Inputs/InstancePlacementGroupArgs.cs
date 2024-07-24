@@ -12,12 +12,6 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class InstancePlacementGroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The affinity policy enforced by the Placement Group.
-        /// </summary>
-        [Input("affinityType")]
-        public Input<string>? AffinityType { get; set; }
-
         [Input("compliantOnly")]
         public Input<bool>? CompliantOnly { get; set; }
 
@@ -28,16 +22,22 @@ namespace Pulumi.Linode.Inputs
         public Input<int> Id { get; set; } = null!;
 
         /// <summary>
-        /// Whether the Placement Group enforces strict compliance.
-        /// </summary>
-        [Input("isStrict")]
-        public Input<bool>? IsStrict { get; set; }
-
-        /// <summary>
         /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// Whether the Placement Group enforces strict compliance.
+        /// </summary>
+        [Input("placementGroupPolicy")]
+        public Input<string>? PlacementGroupPolicy { get; set; }
+
+        /// <summary>
+        /// The placement group type enforced by the Placement Group.
+        /// </summary>
+        [Input("placementGroupType")]
+        public Input<string>? PlacementGroupType { get; set; }
 
         public InstancePlacementGroupArgs()
         {

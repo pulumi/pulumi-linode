@@ -18,21 +18,6 @@ public final class InstancePlacementGroupArgs extends com.pulumi.resources.Resou
 
     public static final InstancePlacementGroupArgs Empty = new InstancePlacementGroupArgs();
 
-    /**
-     * The affinity policy enforced by the Placement Group.
-     * 
-     */
-    @Import(name="affinityType")
-    private @Nullable Output<String> affinityType;
-
-    /**
-     * @return The affinity policy enforced by the Placement Group.
-     * 
-     */
-    public Optional<Output<String>> affinityType() {
-        return Optional.ofNullable(this.affinityType);
-    }
-
     @Import(name="compliantOnly")
     private @Nullable Output<Boolean> compliantOnly;
 
@@ -56,21 +41,6 @@ public final class InstancePlacementGroupArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Whether the Placement Group enforces strict compliance.
-     * 
-     */
-    @Import(name="isStrict")
-    private @Nullable Output<Boolean> isStrict;
-
-    /**
-     * @return Whether the Placement Group enforces strict compliance.
-     * 
-     */
-    public Optional<Output<Boolean>> isStrict() {
-        return Optional.ofNullable(this.isStrict);
-    }
-
-    /**
      * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
@@ -85,14 +55,44 @@ public final class InstancePlacementGroupArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.label);
     }
 
+    /**
+     * Whether the Placement Group enforces strict compliance.
+     * 
+     */
+    @Import(name="placementGroupPolicy")
+    private @Nullable Output<String> placementGroupPolicy;
+
+    /**
+     * @return Whether the Placement Group enforces strict compliance.
+     * 
+     */
+    public Optional<Output<String>> placementGroupPolicy() {
+        return Optional.ofNullable(this.placementGroupPolicy);
+    }
+
+    /**
+     * The placement group type enforced by the Placement Group.
+     * 
+     */
+    @Import(name="placementGroupType")
+    private @Nullable Output<String> placementGroupType;
+
+    /**
+     * @return The placement group type enforced by the Placement Group.
+     * 
+     */
+    public Optional<Output<String>> placementGroupType() {
+        return Optional.ofNullable(this.placementGroupType);
+    }
+
     private InstancePlacementGroupArgs() {}
 
     private InstancePlacementGroupArgs(InstancePlacementGroupArgs $) {
-        this.affinityType = $.affinityType;
         this.compliantOnly = $.compliantOnly;
         this.id = $.id;
-        this.isStrict = $.isStrict;
         this.label = $.label;
+        this.placementGroupPolicy = $.placementGroupPolicy;
+        this.placementGroupType = $.placementGroupType;
     }
 
     public static Builder builder() {
@@ -111,27 +111,6 @@ public final class InstancePlacementGroupArgs extends com.pulumi.resources.Resou
 
         public Builder(InstancePlacementGroupArgs defaults) {
             $ = new InstancePlacementGroupArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param affinityType The affinity policy enforced by the Placement Group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(@Nullable Output<String> affinityType) {
-            $.affinityType = affinityType;
-            return this;
-        }
-
-        /**
-         * @param affinityType The affinity policy enforced by the Placement Group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(String affinityType) {
-            return affinityType(Output.of(affinityType));
         }
 
         public Builder compliantOnly(@Nullable Output<Boolean> compliantOnly) {
@@ -165,27 +144,6 @@ public final class InstancePlacementGroupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param isStrict Whether the Placement Group enforces strict compliance.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(@Nullable Output<Boolean> isStrict) {
-            $.isStrict = isStrict;
-            return this;
-        }
-
-        /**
-         * @param isStrict Whether the Placement Group enforces strict compliance.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(Boolean isStrict) {
-            return isStrict(Output.of(isStrict));
-        }
-
-        /**
          * @param label The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
          * 
          * @return builder
@@ -204,6 +162,48 @@ public final class InstancePlacementGroupArgs extends com.pulumi.resources.Resou
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param placementGroupPolicy Whether the Placement Group enforces strict compliance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(@Nullable Output<String> placementGroupPolicy) {
+            $.placementGroupPolicy = placementGroupPolicy;
+            return this;
+        }
+
+        /**
+         * @param placementGroupPolicy Whether the Placement Group enforces strict compliance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(String placementGroupPolicy) {
+            return placementGroupPolicy(Output.of(placementGroupPolicy));
+        }
+
+        /**
+         * @param placementGroupType The placement group type enforced by the Placement Group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(@Nullable Output<String> placementGroupType) {
+            $.placementGroupType = placementGroupType;
+            return this;
+        }
+
+        /**
+         * @param placementGroupType The placement group type enforced by the Placement Group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(String placementGroupType) {
+            return placementGroupType(Output.of(placementGroupType));
         }
 
         public InstancePlacementGroupArgs build() {

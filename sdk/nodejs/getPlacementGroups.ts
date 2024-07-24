@@ -43,9 +43,9 @@ import * as utilities from "./utilities";
  *
  * * `region`
  *
- * * `affinityType`
+ * * `placementGroupType`
  *
- * * `isStrict`
+ * * `placementGroupPolicy`
  *
  * * `isCompliant`
  */
@@ -118,9 +118,9 @@ export interface GetPlacementGroupsResult {
  *
  * * `region`
  *
- * * `affinityType`
+ * * `placementGroupType`
  *
- * * `isStrict`
+ * * `placementGroupPolicy`
  *
  * * `isCompliant`
  */

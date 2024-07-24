@@ -2638,7 +2638,7 @@ export interface GetNodebalancersNodebalancerTransfer {
 
 export interface GetPlacementGroupMember {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant: boolean;
     /**
@@ -2664,21 +2664,13 @@ export interface GetPlacementGroupsFilter {
 
 export interface GetPlacementGroupsPlacementGroup {
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    affinityType: string;
-    /**
      * The ID of the placement group.
      */
     id: number;
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant: boolean;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    isStrict: boolean;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
@@ -2688,6 +2680,14 @@ export interface GetPlacementGroupsPlacementGroup {
      */
     members?: outputs.GetPlacementGroupsPlacementGroupMember[];
     /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    placementGroupPolicy: string;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    placementGroupType: string;
+    /**
      * The region of the Placement Group.
      */
     region: string;
@@ -2695,7 +2695,7 @@ export interface GetPlacementGroupsPlacementGroup {
 
 export interface GetPlacementGroupsPlacementGroupMember {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant: boolean;
     /**
@@ -4125,23 +4125,23 @@ export interface InstanceMetadata {
 }
 
 export interface InstancePlacementGroup {
-    /**
-     * The affinity policy enforced by the Placement Group.
-     */
-    affinityType: string;
     compliantOnly?: boolean;
     /**
      * The ID of the Placement Group.
      */
     id: number;
     /**
-     * Whether the Placement Group enforces strict compliance.
-     */
-    isStrict: boolean;
-    /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label: string;
+    /**
+     * Whether the Placement Group enforces strict compliance.
+     */
+    placementGroupPolicy: string;
+    /**
+     * The placement group type enforced by the Placement Group.
+     */
+    placementGroupType: string;
 }
 
 export interface InstanceSpecs {
@@ -4492,7 +4492,7 @@ export interface ObjectStorageKeyRegionsDetail {
 
 export interface PlacementGroupMember {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant: boolean;
     /**

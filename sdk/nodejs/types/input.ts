@@ -2672,7 +2672,7 @@ export interface GetNodebalancersNodebalancerTransferArgs {
 
 export interface GetPlacementGroupMember {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: boolean;
     /**
@@ -2683,7 +2683,7 @@ export interface GetPlacementGroupMember {
 
 export interface GetPlacementGroupMemberArgs {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: pulumi.Input<boolean>;
     /**
@@ -2724,21 +2724,13 @@ export interface GetPlacementGroupsFilterArgs {
 
 export interface GetPlacementGroupsPlacementGroup {
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    affinityType?: string;
-    /**
      * The ID of the placement group.
      */
     id: number;
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: boolean;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    isStrict?: boolean;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
@@ -2748,6 +2740,14 @@ export interface GetPlacementGroupsPlacementGroup {
      */
     members?: inputs.GetPlacementGroupsPlacementGroupMember[];
     /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    placementGroupPolicy?: string;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    placementGroupType?: string;
+    /**
      * The region of the Placement Group.
      */
     region?: string;
@@ -2755,21 +2755,13 @@ export interface GetPlacementGroupsPlacementGroup {
 
 export interface GetPlacementGroupsPlacementGroupArgs {
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    affinityType?: pulumi.Input<string>;
-    /**
      * The ID of the placement group.
      */
     id: pulumi.Input<number>;
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: pulumi.Input<boolean>;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    isStrict?: pulumi.Input<boolean>;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
@@ -2779,6 +2771,14 @@ export interface GetPlacementGroupsPlacementGroupArgs {
      */
     members?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMemberArgs>[]>;
     /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    placementGroupPolicy?: pulumi.Input<string>;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    placementGroupType?: pulumi.Input<string>;
+    /**
      * The region of the Placement Group.
      */
     region?: pulumi.Input<string>;
@@ -2786,7 +2786,7 @@ export interface GetPlacementGroupsPlacementGroupArgs {
 
 export interface GetPlacementGroupsPlacementGroupMember {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: boolean;
     /**
@@ -2797,7 +2797,7 @@ export interface GetPlacementGroupsPlacementGroupMember {
 
 export interface GetPlacementGroupsPlacementGroupMemberArgs {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: pulumi.Input<boolean>;
     /**
@@ -4917,23 +4917,23 @@ export interface InstanceMetadata {
 }
 
 export interface InstancePlacementGroup {
-    /**
-     * The affinity policy enforced by the Placement Group.
-     */
-    affinityType?: pulumi.Input<string>;
     compliantOnly?: pulumi.Input<boolean>;
     /**
      * The ID of the Placement Group.
      */
     id: pulumi.Input<number>;
     /**
-     * Whether the Placement Group enforces strict compliance.
-     */
-    isStrict?: pulumi.Input<boolean>;
-    /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * Whether the Placement Group enforces strict compliance.
+     */
+    placementGroupPolicy?: pulumi.Input<string>;
+    /**
+     * The placement group type enforced by the Placement Group.
+     */
+    placementGroupType?: pulumi.Input<string>;
 }
 
 export interface InstanceSpecs {
@@ -5284,7 +5284,7 @@ export interface ObjectStorageKeyRegionsDetail {
 
 export interface PlacementGroupMember {
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant: pulumi.Input<boolean>;
     /**

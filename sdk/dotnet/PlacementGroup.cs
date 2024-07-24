@@ -31,7 +31,7 @@ namespace Pulumi.Linode
     ///     {
     ///         Label = "my-placement-group",
     ///         Region = "us-mia",
-    ///         AffinityType = "anti_affinity:local",
+    ///         PlacementGroupType = "anti_affinity:local",
     ///     });
     /// 
     /// });
@@ -49,22 +49,10 @@ namespace Pulumi.Linode
     public partial class PlacementGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The affinity policy to use when placing Linodes in this group.
-        /// </summary>
-        [Output("affinityType")]
-        public Output<string> AffinityType { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether this Linode is currently compliant with the group's affinity policy.
+        /// Whether this Linode is currently compliant with the group's placement group type.
         /// </summary>
         [Output("isCompliant")]
         public Output<bool> IsCompliant { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        /// </summary>
-        [Output("isStrict")]
-        public Output<bool> IsStrict { get; private set; } = null!;
 
         /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -77,6 +65,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<Outputs.PlacementGroupMember>> Members { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// </summary>
+        [Output("placementGroupPolicy")]
+        public Output<string> PlacementGroupPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The placement group type to use when placing Linodes in this group.
+        /// </summary>
+        [Output("placementGroupType")]
+        public Output<string> PlacementGroupType { get; private set; } = null!;
 
         /// <summary>
         /// The region of the Placement Group.
@@ -131,22 +131,22 @@ namespace Pulumi.Linode
     public sealed class PlacementGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The affinity policy to use when placing Linodes in this group.
-        /// </summary>
-        [Input("affinityType", required: true)]
-        public Input<string> AffinityType { get; set; } = null!;
-
-        /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        /// </summary>
-        [Input("isStrict")]
-        public Input<bool>? IsStrict { get; set; }
-
-        /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
+
+        /// <summary>
+        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// </summary>
+        [Input("placementGroupPolicy")]
+        public Input<string>? PlacementGroupPolicy { get; set; }
+
+        /// <summary>
+        /// The placement group type to use when placing Linodes in this group.
+        /// </summary>
+        [Input("placementGroupType", required: true)]
+        public Input<string> PlacementGroupType { get; set; } = null!;
 
         /// <summary>
         /// The region of the Placement Group.
@@ -163,22 +163,10 @@ namespace Pulumi.Linode
     public sealed class PlacementGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The affinity policy to use when placing Linodes in this group.
-        /// </summary>
-        [Input("affinityType")]
-        public Input<string>? AffinityType { get; set; }
-
-        /// <summary>
-        /// Whether this Linode is currently compliant with the group's affinity policy.
+        /// Whether this Linode is currently compliant with the group's placement group type.
         /// </summary>
         [Input("isCompliant")]
         public Input<bool>? IsCompliant { get; set; }
-
-        /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        /// </summary>
-        [Input("isStrict")]
-        public Input<bool>? IsStrict { get; set; }
 
         /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -197,6 +185,18 @@ namespace Pulumi.Linode
             get => _members ?? (_members = new InputList<Inputs.PlacementGroupMemberGetArgs>());
             set => _members = value;
         }
+
+        /// <summary>
+        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// </summary>
+        [Input("placementGroupPolicy")]
+        public Input<string>? PlacementGroupPolicy { get; set; }
+
+        /// <summary>
+        /// The placement group type to use when placing Linodes in this group.
+        /// </summary>
+        [Input("placementGroupType")]
+        public Input<string>? PlacementGroupType { get; set; }
 
         /// <summary>
         /// The region of the Placement Group.

@@ -13,28 +13,16 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetPlacementGroupsPlacementGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The affinity policy to use when placing Linodes in this group.
-        /// </summary>
-        [Input("affinityType", required: true)]
-        public string AffinityType { get; set; } = null!;
-
-        /// <summary>
         /// The ID of the placement group.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
 
         /// <summary>
-        /// Whether this Linode is currently compliant with the group's affinity policy.
+        /// Whether this Linode is currently compliant with the group's placement group type.
         /// </summary>
         [Input("isCompliant", required: true)]
         public bool IsCompliant { get; set; }
-
-        /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        /// </summary>
-        [Input("isStrict", required: true)]
-        public bool IsStrict { get; set; }
 
         /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -53,6 +41,18 @@ namespace Pulumi.Linode.Inputs
             get => _members ?? (_members = new List<Inputs.GetPlacementGroupsPlacementGroupMemberArgs>());
             set => _members = value;
         }
+
+        /// <summary>
+        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// </summary>
+        [Input("placementGroupPolicy", required: true)]
+        public string PlacementGroupPolicy { get; set; } = null!;
+
+        /// <summary>
+        /// The placement group type to use when placing Linodes in this group.
+        /// </summary>
+        [Input("placementGroupType", required: true)]
+        public string PlacementGroupType { get; set; } = null!;
 
         /// <summary>
         /// The region of the Placement Group.

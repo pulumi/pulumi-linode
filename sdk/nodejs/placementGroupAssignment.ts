@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * const my_pg = new linode.PlacementGroup("my-pg", {
  *     label: "my-pg",
  *     region: "us-east",
- *     affinityType: "anti_affinity:local",
+ *     placementGroupType: "anti_affinity:local",
  * });
  * const my_inst = new linode.Instance("my-inst", {
  *     label: "my-inst",

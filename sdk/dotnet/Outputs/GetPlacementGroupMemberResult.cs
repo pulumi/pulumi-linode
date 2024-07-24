@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetPlacementGroupMemberResult
     {
         /// <summary>
-        /// Whether this Linode is currently compliant with the group's affinity policy.
+        /// Whether this Linode is currently compliant with the group's placement group type.
         /// </summary>
         public readonly bool IsCompliant;
         /// <summary>

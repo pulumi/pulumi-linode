@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *         var my_pg = new PlacementGroup("my-pg", PlacementGroupArgs.builder()
  *             .label("my-pg")
  *             .region("us-east")
- *             .affinityType("anti_affinity:local")
+ *             .placementGroupType("anti_affinity:local")
  *             .build());
  * 
  *         var my_inst = new Instance("my-inst", InstanceArgs.builder()

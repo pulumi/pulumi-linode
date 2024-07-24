@@ -19,48 +19,18 @@ public final class PlacementGroupState extends com.pulumi.resources.ResourceArgs
     public static final PlacementGroupState Empty = new PlacementGroupState();
 
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    @Import(name="affinityType")
-    private @Nullable Output<String> affinityType;
-
-    /**
-     * @return The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    public Optional<Output<String>> affinityType() {
-        return Optional.ofNullable(this.affinityType);
-    }
-
-    /**
-     * Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     @Import(name="isCompliant")
     private @Nullable Output<Boolean> isCompliant;
 
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     public Optional<Output<Boolean>> isCompliant() {
         return Optional.ofNullable(this.isCompliant);
-    }
-
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    @Import(name="isStrict")
-    private @Nullable Output<Boolean> isStrict;
-
-    /**
-     * @return Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    public Optional<Output<Boolean>> isStrict() {
-        return Optional.ofNullable(this.isStrict);
     }
 
     /**
@@ -94,6 +64,36 @@ public final class PlacementGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    @Import(name="placementGroupPolicy")
+    private @Nullable Output<String> placementGroupPolicy;
+
+    /**
+     * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    public Optional<Output<String>> placementGroupPolicy() {
+        return Optional.ofNullable(this.placementGroupPolicy);
+    }
+
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    @Import(name="placementGroupType")
+    private @Nullable Output<String> placementGroupType;
+
+    /**
+     * @return The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    public Optional<Output<String>> placementGroupType() {
+        return Optional.ofNullable(this.placementGroupType);
+    }
+
+    /**
      * The region of the Placement Group.
      * 
      */
@@ -111,11 +111,11 @@ public final class PlacementGroupState extends com.pulumi.resources.ResourceArgs
     private PlacementGroupState() {}
 
     private PlacementGroupState(PlacementGroupState $) {
-        this.affinityType = $.affinityType;
         this.isCompliant = $.isCompliant;
-        this.isStrict = $.isStrict;
         this.label = $.label;
         this.members = $.members;
+        this.placementGroupPolicy = $.placementGroupPolicy;
+        this.placementGroupType = $.placementGroupType;
         this.region = $.region;
     }
 
@@ -138,28 +138,7 @@ public final class PlacementGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param affinityType The affinity policy to use when placing Linodes in this group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(@Nullable Output<String> affinityType) {
-            $.affinityType = affinityType;
-            return this;
-        }
-
-        /**
-         * @param affinityType The affinity policy to use when placing Linodes in this group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(String affinityType) {
-            return affinityType(Output.of(affinityType));
-        }
-
-        /**
-         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s affinity policy.
+         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s placement group type.
          * 
          * @return builder
          * 
@@ -170,34 +149,13 @@ public final class PlacementGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s affinity policy.
+         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s placement group type.
          * 
          * @return builder
          * 
          */
         public Builder isCompliant(Boolean isCompliant) {
             return isCompliant(Output.of(isCompliant));
-        }
-
-        /**
-         * @param isStrict Whether Linodes must be able to become compliant during assignment. (Default `true`)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(@Nullable Output<Boolean> isStrict) {
-            $.isStrict = isStrict;
-            return this;
-        }
-
-        /**
-         * @param isStrict Whether Linodes must be able to become compliant during assignment. (Default `true`)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(Boolean isStrict) {
-            return isStrict(Output.of(isStrict));
         }
 
         /**
@@ -250,6 +208,48 @@ public final class PlacementGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder members(PlacementGroupMemberArgs... members) {
             return members(List.of(members));
+        }
+
+        /**
+         * @param placementGroupPolicy Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(@Nullable Output<String> placementGroupPolicy) {
+            $.placementGroupPolicy = placementGroupPolicy;
+            return this;
+        }
+
+        /**
+         * @param placementGroupPolicy Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(String placementGroupPolicy) {
+            return placementGroupPolicy(Output.of(placementGroupPolicy));
+        }
+
+        /**
+         * @param placementGroupType The placement group type to use when placing Linodes in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(@Nullable Output<String> placementGroupType) {
+            $.placementGroupType = placementGroupType;
+            return this;
+        }
+
+        /**
+         * @param placementGroupType The placement group type to use when placing Linodes in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(String placementGroupType) {
+            return placementGroupType(Output.of(placementGroupType));
         }
 
         /**
