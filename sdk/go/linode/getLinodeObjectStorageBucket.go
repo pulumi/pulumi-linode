@@ -11,6 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides information about a Linode Object Storage Bucket
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+//
+// ## Example Usage
+//
+// The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetLinodeObjectStorageBucket(ctx, &linode.GetLinodeObjectStorageBucketArgs{
+//				Label:  "my-bucket",
+//				Region: pulumi.StringRef("us-mia"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLinodeObjectStorageBucket(ctx *pulumi.Context, args *GetLinodeObjectStorageBucketArgs, opts ...pulumi.InvokeOption) (*GetLinodeObjectStorageBucketResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLinodeObjectStorageBucketResult
@@ -23,9 +54,12 @@ func GetLinodeObjectStorageBucket(ctx *pulumi.Context, args *GetLinodeObjectStor
 
 // A collection of arguments for invoking getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketArgs struct {
+	// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
 	Cluster *string `pulumi:"cluster"`
-	Label   string  `pulumi:"label"`
-	Region  *string `pulumi:"region"`
+	// The name of this bucket.
+	Label string `pulumi:"label"`
+	// The ID of the region this bucket is in. Required if `cluster` is not configured.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getLinodeObjectStorageBucket.
@@ -55,9 +89,12 @@ func GetLinodeObjectStorageBucketOutput(ctx *pulumi.Context, args GetLinodeObjec
 
 // A collection of arguments for invoking getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketOutputArgs struct {
+	// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
-	Label   pulumi.StringInput    `pulumi:"label"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
+	// The name of this bucket.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The ID of the region this bucket is in. Required if `cluster` is not configured.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetLinodeObjectStorageBucketOutputArgs) ElementType() reflect.Type {

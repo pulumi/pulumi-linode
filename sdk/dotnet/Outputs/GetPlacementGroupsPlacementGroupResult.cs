@@ -14,21 +14,13 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetPlacementGroupsPlacementGroupResult
     {
         /// <summary>
-        /// The affinity policy to use when placing Linodes in this group.
-        /// </summary>
-        public readonly string AffinityType;
-        /// <summary>
         /// The ID of the placement group.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// Whether this Linode is currently compliant with the group's affinity policy.
+        /// Whether this Linode is currently compliant with the group's placement group type.
         /// </summary>
         public readonly bool IsCompliant;
-        /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        /// </summary>
-        public readonly bool IsStrict;
         /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
@@ -38,32 +30,40 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPlacementGroupsPlacementGroupMemberResult> Members;
         /// <summary>
+        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// </summary>
+        public readonly string PlacementGroupPolicy;
+        /// <summary>
+        /// The placement group type to use when placing Linodes in this group.
+        /// </summary>
+        public readonly string PlacementGroupType;
+        /// <summary>
         /// The region of the Placement Group.
         /// </summary>
         public readonly string Region;
 
         [OutputConstructor]
         private GetPlacementGroupsPlacementGroupResult(
-            string affinityType,
-
             int id,
 
             bool isCompliant,
-
-            bool isStrict,
 
             string label,
 
             ImmutableArray<Outputs.GetPlacementGroupsPlacementGroupMemberResult> members,
 
+            string placementGroupPolicy,
+
+            string placementGroupType,
+
             string region)
         {
-            AffinityType = affinityType;
             Id = id;
             IsCompliant = isCompliant;
-            IsStrict = isStrict;
             Label = label;
             Members = members;
+            PlacementGroupPolicy = placementGroupPolicy;
+            PlacementGroupType = placementGroupType;
             Region = region;
         }
     }

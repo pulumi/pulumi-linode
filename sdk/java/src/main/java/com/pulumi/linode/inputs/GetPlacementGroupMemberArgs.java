@@ -16,14 +16,14 @@ public final class GetPlacementGroupMemberArgs extends com.pulumi.resources.Reso
     public static final GetPlacementGroupMemberArgs Empty = new GetPlacementGroupMemberArgs();
 
     /**
-     * Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     @Import(name="isCompliant", required=true)
     private Output<Boolean> isCompliant;
 
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     public Output<Boolean> isCompliant() {
@@ -71,7 +71,7 @@ public final class GetPlacementGroupMemberArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s affinity policy.
+         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s placement group type.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetPlacementGroupMemberArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s affinity policy.
+         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s placement group type.
          * 
          * @return builder
          * 

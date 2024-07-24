@@ -65,9 +65,9 @@ import (
 //
 // * `region`
 //
-// * `affinityType`
+// * `placementGroupType`
 //
-// * `isStrict`
+// * `placementGroupPolicy`
 //
 // * `isCompliant`
 func GetPlacementGroups(ctx *pulumi.Context, args *GetPlacementGroupsArgs, opts ...pulumi.InvokeOption) (*GetPlacementGroupsResult, error) {

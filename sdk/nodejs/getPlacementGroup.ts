@@ -52,19 +52,11 @@ export interface GetPlacementGroupArgs {
  * A collection of values returned by getPlacementGroup.
  */
 export interface GetPlacementGroupResult {
-    /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    readonly affinityType: string;
     readonly id: number;
     /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     readonly isCompliant: boolean;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    readonly isStrict: boolean;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
@@ -73,6 +65,14 @@ export interface GetPlacementGroupResult {
      * A set of Linodes currently assigned to this Placement Group.
      */
     readonly members?: outputs.GetPlacementGroupMember[];
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    readonly placementGroupPolicy: string;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    readonly placementGroupType: string;
     /**
      * The region of the Placement Group.
      */

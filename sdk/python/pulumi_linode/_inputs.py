@@ -2405,25 +2405,25 @@ class InstanceMetadataArgs:
 class InstancePlacementGroupArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[int],
-                 affinity_type: Optional[pulumi.Input[str]] = None,
                  compliant_only: Optional[pulumi.Input[bool]] = None,
-                 is_strict: Optional[pulumi.Input[bool]] = None,
-                 label: Optional[pulumi.Input[str]] = None):
+                 label: Optional[pulumi.Input[str]] = None,
+                 placement_group_policy: Optional[pulumi.Input[str]] = None,
+                 placement_group_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] id: The ID of the Placement Group.
-        :param pulumi.Input[str] affinity_type: The affinity policy enforced by the Placement Group.
-        :param pulumi.Input[bool] is_strict: Whether the Placement Group enforces strict compliance.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[str] placement_group_policy: Whether the Placement Group enforces strict compliance.
+        :param pulumi.Input[str] placement_group_type: The placement group type enforced by the Placement Group.
         """
         pulumi.set(__self__, "id", id)
-        if affinity_type is not None:
-            pulumi.set(__self__, "affinity_type", affinity_type)
         if compliant_only is not None:
             pulumi.set(__self__, "compliant_only", compliant_only)
-        if is_strict is not None:
-            pulumi.set(__self__, "is_strict", is_strict)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if placement_group_policy is not None:
+            pulumi.set(__self__, "placement_group_policy", placement_group_policy)
+        if placement_group_type is not None:
+            pulumi.set(__self__, "placement_group_type", placement_group_type)
 
     @property
     @pulumi.getter
@@ -2438,18 +2438,6 @@ class InstancePlacementGroupArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="affinityType")
-    def affinity_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The affinity policy enforced by the Placement Group.
-        """
-        return pulumi.get(self, "affinity_type")
-
-    @affinity_type.setter
-    def affinity_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "affinity_type", value)
-
-    @property
     @pulumi.getter(name="compliantOnly")
     def compliant_only(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "compliant_only")
@@ -2457,18 +2445,6 @@ class InstancePlacementGroupArgs:
     @compliant_only.setter
     def compliant_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "compliant_only", value)
-
-    @property
-    @pulumi.getter(name="isStrict")
-    def is_strict(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether the Placement Group enforces strict compliance.
-        """
-        return pulumi.get(self, "is_strict")
-
-    @is_strict.setter
-    def is_strict(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_strict", value)
 
     @property
     @pulumi.getter
@@ -2481,6 +2457,30 @@ class InstancePlacementGroupArgs:
     @label.setter
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="placementGroupPolicy")
+    def placement_group_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the Placement Group enforces strict compliance.
+        """
+        return pulumi.get(self, "placement_group_policy")
+
+    @placement_group_policy.setter
+    def placement_group_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "placement_group_policy", value)
+
+    @property
+    @pulumi.getter(name="placementGroupType")
+    def placement_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The placement group type enforced by the Placement Group.
+        """
+        return pulumi.get(self, "placement_group_type")
+
+    @placement_group_type.setter
+    def placement_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "placement_group_type", value)
 
 
 @pulumi.input_type
@@ -3722,7 +3722,7 @@ class PlacementGroupMemberArgs:
                  is_compliant: pulumi.Input[bool],
                  linode_id: pulumi.Input[int]):
         """
-        :param pulumi.Input[bool] is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param pulumi.Input[bool] is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param pulumi.Input[int] linode_id: The ID of the Linode.
         """
         pulumi.set(__self__, "is_compliant", is_compliant)
@@ -3732,7 +3732,7 @@ class PlacementGroupMemberArgs:
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> pulumi.Input[bool]:
         """
-        Whether this Linode is currently compliant with the group's affinity policy.
+        Whether this Linode is currently compliant with the group's placement group type.
         """
         return pulumi.get(self, "is_compliant")
 
@@ -9121,7 +9121,7 @@ class GetPlacementGroupMemberArgs:
                  is_compliant: bool,
                  linode_id: int):
         """
-        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param int linode_id: The ID of the Linode.
         """
         pulumi.set(__self__, "is_compliant", is_compliant)
@@ -9131,7 +9131,7 @@ class GetPlacementGroupMemberArgs:
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> bool:
         """
-        Whether this Linode is currently compliant with the group's affinity policy.
+        Whether this Linode is currently compliant with the group's placement group type.
         """
         return pulumi.get(self, "is_compliant")
 
@@ -9208,42 +9208,30 @@ class GetPlacementGroupsFilterArgs:
 @pulumi.input_type
 class GetPlacementGroupsPlacementGroupArgs:
     def __init__(__self__, *,
-                 affinity_type: str,
                  id: int,
                  is_compliant: bool,
-                 is_strict: bool,
                  label: str,
+                 placement_group_policy: str,
+                 placement_group_type: str,
                  region: str,
                  members: Optional[Sequence['GetPlacementGroupsPlacementGroupMemberArgs']] = None):
         """
-        :param str affinity_type: The affinity policy to use when placing Linodes in this group.
         :param int id: The ID of the placement group.
-        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
-        :param bool is_strict: Whether Linodes must be able to become compliant during assignment. (Default `true`)
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        :param str placement_group_policy: Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        :param str placement_group_type: The placement group type to use when placing Linodes in this group.
         :param str region: The region of the Placement Group.
         :param Sequence['GetPlacementGroupsPlacementGroupMemberArgs'] members: A set of Linodes currently assigned to this Placement Group.
         """
-        pulumi.set(__self__, "affinity_type", affinity_type)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_compliant", is_compliant)
-        pulumi.set(__self__, "is_strict", is_strict)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "placement_group_policy", placement_group_policy)
+        pulumi.set(__self__, "placement_group_type", placement_group_type)
         pulumi.set(__self__, "region", region)
         if members is not None:
             pulumi.set(__self__, "members", members)
-
-    @property
-    @pulumi.getter(name="affinityType")
-    def affinity_type(self) -> str:
-        """
-        The affinity policy to use when placing Linodes in this group.
-        """
-        return pulumi.get(self, "affinity_type")
-
-    @affinity_type.setter
-    def affinity_type(self, value: str):
-        pulumi.set(self, "affinity_type", value)
 
     @property
     @pulumi.getter
@@ -9261,25 +9249,13 @@ class GetPlacementGroupsPlacementGroupArgs:
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> bool:
         """
-        Whether this Linode is currently compliant with the group's affinity policy.
+        Whether this Linode is currently compliant with the group's placement group type.
         """
         return pulumi.get(self, "is_compliant")
 
     @is_compliant.setter
     def is_compliant(self, value: bool):
         pulumi.set(self, "is_compliant", value)
-
-    @property
-    @pulumi.getter(name="isStrict")
-    def is_strict(self) -> bool:
-        """
-        Whether Linodes must be able to become compliant during assignment. (Default `true`)
-        """
-        return pulumi.get(self, "is_strict")
-
-    @is_strict.setter
-    def is_strict(self, value: bool):
-        pulumi.set(self, "is_strict", value)
 
     @property
     @pulumi.getter
@@ -9292,6 +9268,30 @@ class GetPlacementGroupsPlacementGroupArgs:
     @label.setter
     def label(self, value: str):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="placementGroupPolicy")
+    def placement_group_policy(self) -> str:
+        """
+        Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        """
+        return pulumi.get(self, "placement_group_policy")
+
+    @placement_group_policy.setter
+    def placement_group_policy(self, value: str):
+        pulumi.set(self, "placement_group_policy", value)
+
+    @property
+    @pulumi.getter(name="placementGroupType")
+    def placement_group_type(self) -> str:
+        """
+        The placement group type to use when placing Linodes in this group.
+        """
+        return pulumi.get(self, "placement_group_type")
+
+    @placement_group_type.setter
+    def placement_group_type(self, value: str):
+        pulumi.set(self, "placement_group_type", value)
 
     @property
     @pulumi.getter
@@ -9324,7 +9324,7 @@ class GetPlacementGroupsPlacementGroupMemberArgs:
                  is_compliant: bool,
                  linode_id: int):
         """
-        :param bool is_compliant: Whether this Linode is currently compliant with the group's affinity policy.
+        :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param int linode_id: The ID of the Linode.
         """
         pulumi.set(__self__, "is_compliant", is_compliant)
@@ -9334,7 +9334,7 @@ class GetPlacementGroupsPlacementGroupMemberArgs:
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> bool:
         """
-        Whether this Linode is currently compliant with the group's affinity policy.
+        Whether this Linode is currently compliant with the group's placement group type.
         """
         return pulumi.get(self, "is_compliant")
 

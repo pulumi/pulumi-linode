@@ -62,9 +62,9 @@ namespace Pulumi.Linode
         /// 
         /// * `region`
         /// 
-        /// * `affinity_type`
+        /// * `placement_group_type`
         /// 
-        /// * `is_strict`
+        /// * `placement_group_policy`
         /// 
         /// * `is_compliant`
         /// </summary>
@@ -122,9 +122,9 @@ namespace Pulumi.Linode
         /// 
         /// * `region`
         /// 
-        /// * `affinity_type`
+        /// * `placement_group_type`
         /// 
-        /// * `is_strict`
+        /// * `placement_group_policy`
         /// 
         /// * `is_compliant`
         /// </summary>

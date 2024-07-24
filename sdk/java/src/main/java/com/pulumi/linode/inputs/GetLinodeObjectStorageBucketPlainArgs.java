@@ -15,23 +15,47 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
 
     public static final GetLinodeObjectStorageBucketPlainArgs Empty = new GetLinodeObjectStorageBucketPlainArgs();
 
+    /**
+     * The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+     * 
+     */
     @Import(name="cluster")
     private @Nullable String cluster;
 
+    /**
+     * @return The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+     * 
+     */
     public Optional<String> cluster() {
         return Optional.ofNullable(this.cluster);
     }
 
+    /**
+     * The name of this bucket.
+     * 
+     */
     @Import(name="label", required=true)
     private String label;
 
+    /**
+     * @return The name of this bucket.
+     * 
+     */
     public String label() {
         return this.label;
     }
 
+    /**
+     * The ID of the region this bucket is in. Required if `cluster` is not configured.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The ID of the region this bucket is in. Required if `cluster` is not configured.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -62,16 +86,34 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
             $ = new GetLinodeObjectStorageBucketPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cluster The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cluster(@Nullable String cluster) {
             $.cluster = cluster;
             return this;
         }
 
+        /**
+         * @param label The name of this bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param region The ID of the region this bucket is in. Required if `cluster` is not configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

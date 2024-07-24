@@ -20,21 +20,6 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
     public static final GetPlacementGroupsPlacementGroup Empty = new GetPlacementGroupsPlacementGroup();
 
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    @Import(name="affinityType", required=true)
-    private String affinityType;
-
-    /**
-     * @return The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    public String affinityType() {
-        return this.affinityType;
-    }
-
-    /**
      * The ID of the placement group.
      * 
      */
@@ -50,33 +35,18 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
     }
 
     /**
-     * Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     @Import(name="isCompliant", required=true)
     private Boolean isCompliant;
 
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     public Boolean isCompliant() {
         return this.isCompliant;
-    }
-
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    @Import(name="isStrict", required=true)
-    private Boolean isStrict;
-
-    /**
-     * @return Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    public Boolean isStrict() {
-        return this.isStrict;
     }
 
     /**
@@ -110,6 +80,36 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
     }
 
     /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    @Import(name="placementGroupPolicy", required=true)
+    private String placementGroupPolicy;
+
+    /**
+     * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    public String placementGroupPolicy() {
+        return this.placementGroupPolicy;
+    }
+
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    @Import(name="placementGroupType", required=true)
+    private String placementGroupType;
+
+    /**
+     * @return The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    public String placementGroupType() {
+        return this.placementGroupType;
+    }
+
+    /**
      * The region of the Placement Group.
      * 
      */
@@ -127,12 +127,12 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
     private GetPlacementGroupsPlacementGroup() {}
 
     private GetPlacementGroupsPlacementGroup(GetPlacementGroupsPlacementGroup $) {
-        this.affinityType = $.affinityType;
         this.id = $.id;
         this.isCompliant = $.isCompliant;
-        this.isStrict = $.isStrict;
         this.label = $.label;
         this.members = $.members;
+        this.placementGroupPolicy = $.placementGroupPolicy;
+        this.placementGroupType = $.placementGroupType;
         this.region = $.region;
     }
 
@@ -155,17 +155,6 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
         }
 
         /**
-         * @param affinityType The affinity policy to use when placing Linodes in this group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder affinityType(String affinityType) {
-            $.affinityType = affinityType;
-            return this;
-        }
-
-        /**
          * @param id The ID of the placement group.
          * 
          * @return builder
@@ -177,24 +166,13 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
         }
 
         /**
-         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s affinity policy.
+         * @param isCompliant Whether this Linode is currently compliant with the group&#39;s placement group type.
          * 
          * @return builder
          * 
          */
         public Builder isCompliant(Boolean isCompliant) {
             $.isCompliant = isCompliant;
-            return this;
-        }
-
-        /**
-         * @param isStrict Whether Linodes must be able to become compliant during assignment. (Default `true`)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isStrict(Boolean isStrict) {
-            $.isStrict = isStrict;
             return this;
         }
 
@@ -231,6 +209,28 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
         }
 
         /**
+         * @param placementGroupPolicy Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupPolicy(String placementGroupPolicy) {
+            $.placementGroupPolicy = placementGroupPolicy;
+            return this;
+        }
+
+        /**
+         * @param placementGroupType The placement group type to use when placing Linodes in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupType(String placementGroupType) {
+            $.placementGroupType = placementGroupType;
+            return this;
+        }
+
+        /**
          * @param region The region of the Placement Group.
          * 
          * @return builder
@@ -242,20 +242,20 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
         }
 
         public GetPlacementGroupsPlacementGroup build() {
-            if ($.affinityType == null) {
-                throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "affinityType");
-            }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "id");
             }
             if ($.isCompliant == null) {
                 throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "isCompliant");
             }
-            if ($.isStrict == null) {
-                throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "isStrict");
-            }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "label");
+            }
+            if ($.placementGroupPolicy == null) {
+                throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "placementGroupPolicy");
+            }
+            if ($.placementGroupType == null) {
+                throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "placementGroupType");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "region");

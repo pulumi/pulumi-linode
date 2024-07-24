@@ -13,41 +13,41 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class InstancePlacementGroup
     {
-        /// <summary>
-        /// The affinity policy enforced by the Placement Group.
-        /// </summary>
-        public readonly string? AffinityType;
         public readonly bool? CompliantOnly;
         /// <summary>
         /// The ID of the Placement Group.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// Whether the Placement Group enforces strict compliance.
-        /// </summary>
-        public readonly bool? IsStrict;
-        /// <summary>
         /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         /// </summary>
         public readonly string? Label;
+        /// <summary>
+        /// Whether the Placement Group enforces strict compliance.
+        /// </summary>
+        public readonly string? PlacementGroupPolicy;
+        /// <summary>
+        /// The placement group type enforced by the Placement Group.
+        /// </summary>
+        public readonly string? PlacementGroupType;
 
         [OutputConstructor]
         private InstancePlacementGroup(
-            string? affinityType,
-
             bool? compliantOnly,
 
             int id,
 
-            bool? isStrict,
+            string? label,
 
-            string? label)
+            string? placementGroupPolicy,
+
+            string? placementGroupType)
         {
-            AffinityType = affinityType;
             CompliantOnly = compliantOnly;
             Id = id;
-            IsStrict = isStrict;
             Label = label;
+            PlacementGroupPolicy = placementGroupPolicy;
+            PlacementGroupType = placementGroupType;
         }
     }
 }

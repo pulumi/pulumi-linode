@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         var test = new PlacementGroup("test", PlacementGroupArgs.builder()
  *             .label("my-placement-group")
  *             .region("us-mia")
- *             .affinityType("anti_affinity:local")
+ *             .placementGroupType("anti_affinity:local")
  *             .build());
  * 
  *     }
@@ -73,46 +73,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/placementGroup:PlacementGroup")
 public class PlacementGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    @Export(name="affinityType", refs={String.class}, tree="[0]")
-    private Output<String> affinityType;
-
-    /**
-     * @return The affinity policy to use when placing Linodes in this group.
-     * 
-     */
-    public Output<String> affinityType() {
-        return this.affinityType;
-    }
-    /**
-     * Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     @Export(name="isCompliant", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isCompliant;
 
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     public Output<Boolean> isCompliant() {
         return this.isCompliant;
-    }
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    @Export(name="isStrict", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> isStrict;
-
-    /**
-     * @return Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     * 
-     */
-    public Output<Boolean> isStrict() {
-        return this.isStrict;
     }
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -141,6 +113,34 @@ public class PlacementGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<List<PlacementGroupMember>> members() {
         return this.members;
+    }
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    @Export(name="placementGroupPolicy", refs={String.class}, tree="[0]")
+    private Output<String> placementGroupPolicy;
+
+    /**
+     * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * 
+     */
+    public Output<String> placementGroupPolicy() {
+        return this.placementGroupPolicy;
+    }
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    @Export(name="placementGroupType", refs={String.class}, tree="[0]")
+    private Output<String> placementGroupType;
+
+    /**
+     * @return The placement group type to use when placing Linodes in this group.
+     * 
+     */
+    public Output<String> placementGroupType() {
+        return this.placementGroupType;
     }
     /**
      * The region of the Placement Group.

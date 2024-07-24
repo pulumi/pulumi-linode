@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const test = new linode.PlacementGroup("test", {
  *     label: "my-placement-group",
  *     region: "us-mia",
- *     affinityType: "anti_affinity:local",
+ *     placementGroupType: "anti_affinity:local",
  * });
  * ```
  *
@@ -64,17 +64,9 @@ export class PlacementGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    public readonly affinityType!: pulumi.Output<string>;
-    /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     public /*out*/ readonly isCompliant!: pulumi.Output<boolean>;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    public readonly isStrict!: pulumi.Output<boolean>;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
@@ -83,6 +75,14 @@ export class PlacementGroup extends pulumi.CustomResource {
      * A set of Linodes currently assigned to this Placement Group.
      */
     public /*out*/ readonly members!: pulumi.Output<outputs.PlacementGroupMember[]>;
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    public readonly placementGroupPolicy!: pulumi.Output<string>;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    public readonly placementGroupType!: pulumi.Output<string>;
     /**
      * The region of the Placement Group.
      */
@@ -101,26 +101,26 @@ export class PlacementGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PlacementGroupState | undefined;
-            resourceInputs["affinityType"] = state ? state.affinityType : undefined;
             resourceInputs["isCompliant"] = state ? state.isCompliant : undefined;
-            resourceInputs["isStrict"] = state ? state.isStrict : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["placementGroupPolicy"] = state ? state.placementGroupPolicy : undefined;
+            resourceInputs["placementGroupType"] = state ? state.placementGroupType : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as PlacementGroupArgs | undefined;
-            if ((!args || args.affinityType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'affinityType'");
-            }
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
+            }
+            if ((!args || args.placementGroupType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'placementGroupType'");
             }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["affinityType"] = args ? args.affinityType : undefined;
-            resourceInputs["isStrict"] = args ? args.isStrict : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["placementGroupPolicy"] = args ? args.placementGroupPolicy : undefined;
+            resourceInputs["placementGroupType"] = args ? args.placementGroupType : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["isCompliant"] = undefined /*out*/;
             resourceInputs["members"] = undefined /*out*/;
@@ -135,17 +135,9 @@ export class PlacementGroup extends pulumi.CustomResource {
  */
 export interface PlacementGroupState {
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    affinityType?: pulumi.Input<string>;
-    /**
-     * Whether this Linode is currently compliant with the group's affinity policy.
+     * Whether this Linode is currently compliant with the group's placement group type.
      */
     isCompliant?: pulumi.Input<boolean>;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    isStrict?: pulumi.Input<boolean>;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
@@ -154,6 +146,14 @@ export interface PlacementGroupState {
      * A set of Linodes currently assigned to this Placement Group.
      */
     members?: pulumi.Input<pulumi.Input<inputs.PlacementGroupMember>[]>;
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    placementGroupPolicy?: pulumi.Input<string>;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    placementGroupType?: pulumi.Input<string>;
     /**
      * The region of the Placement Group.
      */
@@ -165,17 +165,17 @@ export interface PlacementGroupState {
  */
 export interface PlacementGroupArgs {
     /**
-     * The affinity policy to use when placing Linodes in this group.
-     */
-    affinityType: pulumi.Input<string>;
-    /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `true`)
-     */
-    isStrict?: pulumi.Input<boolean>;
-    /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label: pulumi.Input<string>;
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    placementGroupPolicy?: pulumi.Input<string>;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    placementGroupType: pulumi.Input<string>;
     /**
      * The region of the Placement Group.
      */

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPlacementGroupsPlacementGroupMember {
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     private Boolean isCompliant;
@@ -24,7 +24,7 @@ public final class GetPlacementGroupsPlacementGroupMember {
 
     private GetPlacementGroupsPlacementGroupMember() {}
     /**
-     * @return Whether this Linode is currently compliant with the group&#39;s affinity policy.
+     * @return Whether this Linode is currently compliant with the group&#39;s placement group type.
      * 
      */
     public Boolean isCompliant() {

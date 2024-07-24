@@ -11,9 +11,59 @@ namespace Pulumi.Linode
 {
     public static class GetLinodeObjectStorageBucket
     {
+        /// <summary>
+        /// Provides information about a Linode Object Storage Bucket
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()
+        ///     {
+        ///         Label = "my-bucket",
+        ///         Region = "us-mia",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetLinodeObjectStorageBucketResult> InvokeAsync(GetLinodeObjectStorageBucketArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLinodeObjectStorageBucketResult>("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args ?? new GetLinodeObjectStorageBucketArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about a Linode Object Storage Bucket
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()
+        ///     {
+        ///         Label = "my-bucket",
+        ///         Region = "us-mia",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLinodeObjectStorageBucketResult> Invoke(GetLinodeObjectStorageBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLinodeObjectStorageBucketResult>("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args ?? new GetLinodeObjectStorageBucketInvokeArgs(), options.WithDefaults());
     }
@@ -21,12 +71,21 @@ namespace Pulumi.Linode
 
     public sealed class GetLinodeObjectStorageBucketArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+        /// </summary>
         [Input("cluster")]
         public string? Cluster { get; set; }
 
+        /// <summary>
+        /// The name of this bucket.
+        /// </summary>
         [Input("label", required: true)]
         public string Label { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the region this bucket is in. Required if `cluster` is not configured.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -38,12 +97,21 @@ namespace Pulumi.Linode
 
     public sealed class GetLinodeObjectStorageBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+        /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
 
+        /// <summary>
+        /// The name of this bucket.
+        /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the region this bucket is in. Required if `cluster` is not configured.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

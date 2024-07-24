@@ -47,7 +47,7 @@ namespace Pulumi.Linode
     ///     {
     ///         Label = "my-pg",
     ///         Region = "us-east",
-    ///         AffinityType = "anti_affinity:local",
+    ///         PlacementGroupType = "anti_affinity:local",
     ///     });
     /// 
     ///     var my_inst = new Linode.Instance("my-inst", new()

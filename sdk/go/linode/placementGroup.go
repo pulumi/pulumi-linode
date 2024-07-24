@@ -34,9 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewPlacementGroup(ctx, "test", &linode.PlacementGroupArgs{
-//				Label:        pulumi.String("my-placement-group"),
-//				Region:       pulumi.String("us-mia"),
-//				AffinityType: pulumi.String("anti_affinity:local"),
+//				Label:              pulumi.String("my-placement-group"),
+//				Region:             pulumi.String("us-mia"),
+//				PlacementGroupType: pulumi.String("anti_affinity:local"),
 //			})
 //			if err != nil {
 //				return err
@@ -57,16 +57,16 @@ import (
 type PlacementGroup struct {
 	pulumi.CustomResourceState
 
-	// The affinity policy to use when placing Linodes in this group.
-	AffinityType pulumi.StringOutput `pulumi:"affinityType"`
-	// Whether this Linode is currently compliant with the group's affinity policy.
+	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant pulumi.BoolOutput `pulumi:"isCompliant"`
-	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-	IsStrict pulumi.BoolOutput `pulumi:"isStrict"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members PlacementGroupMemberArrayOutput `pulumi:"members"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy pulumi.StringOutput `pulumi:"placementGroupPolicy"`
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType pulumi.StringOutput `pulumi:"placementGroupType"`
 	// The region of the Placement Group.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
@@ -78,11 +78,11 @@ func NewPlacementGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AffinityType == nil {
-		return nil, errors.New("invalid value for required argument 'AffinityType'")
-	}
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
+	}
+	if args.PlacementGroupType == nil {
+		return nil, errors.New("invalid value for required argument 'PlacementGroupType'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
@@ -110,31 +110,31 @@ func GetPlacementGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PlacementGroup resources.
 type placementGroupState struct {
-	// The affinity policy to use when placing Linodes in this group.
-	AffinityType *string `pulumi:"affinityType"`
-	// Whether this Linode is currently compliant with the group's affinity policy.
+	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant *bool `pulumi:"isCompliant"`
-	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-	IsStrict *bool `pulumi:"isStrict"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members []PlacementGroupMember `pulumi:"members"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy *string `pulumi:"placementGroupPolicy"`
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType *string `pulumi:"placementGroupType"`
 	// The region of the Placement Group.
 	Region *string `pulumi:"region"`
 }
 
 type PlacementGroupState struct {
-	// The affinity policy to use when placing Linodes in this group.
-	AffinityType pulumi.StringPtrInput
-	// Whether this Linode is currently compliant with the group's affinity policy.
+	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant pulumi.BoolPtrInput
-	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-	IsStrict pulumi.BoolPtrInput
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput
 	// A set of Linodes currently assigned to this Placement Group.
 	Members PlacementGroupMemberArrayInput
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy pulumi.StringPtrInput
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType pulumi.StringPtrInput
 	// The region of the Placement Group.
 	Region pulumi.StringPtrInput
 }
@@ -144,24 +144,24 @@ func (PlacementGroupState) ElementType() reflect.Type {
 }
 
 type placementGroupArgs struct {
-	// The affinity policy to use when placing Linodes in this group.
-	AffinityType string `pulumi:"affinityType"`
-	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-	IsStrict *bool `pulumi:"isStrict"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy *string `pulumi:"placementGroupPolicy"`
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType string `pulumi:"placementGroupType"`
 	// The region of the Placement Group.
 	Region string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a PlacementGroup resource.
 type PlacementGroupArgs struct {
-	// The affinity policy to use when placing Linodes in this group.
-	AffinityType pulumi.StringInput
-	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-	IsStrict pulumi.BoolPtrInput
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy pulumi.StringPtrInput
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType pulumi.StringInput
 	// The region of the Placement Group.
 	Region pulumi.StringInput
 }
@@ -253,19 +253,9 @@ func (o PlacementGroupOutput) ToPlacementGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The affinity policy to use when placing Linodes in this group.
-func (o PlacementGroupOutput) AffinityType() pulumi.StringOutput {
-	return o.ApplyT(func(v *PlacementGroup) pulumi.StringOutput { return v.AffinityType }).(pulumi.StringOutput)
-}
-
-// Whether this Linode is currently compliant with the group's affinity policy.
+// Whether this Linode is currently compliant with the group's placement group type.
 func (o PlacementGroupOutput) IsCompliant() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PlacementGroup) pulumi.BoolOutput { return v.IsCompliant }).(pulumi.BoolOutput)
-}
-
-// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-func (o PlacementGroupOutput) IsStrict() pulumi.BoolOutput {
-	return o.ApplyT(func(v *PlacementGroup) pulumi.BoolOutput { return v.IsStrict }).(pulumi.BoolOutput)
 }
 
 // The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -276,6 +266,16 @@ func (o PlacementGroupOutput) Label() pulumi.StringOutput {
 // A set of Linodes currently assigned to this Placement Group.
 func (o PlacementGroupOutput) Members() PlacementGroupMemberArrayOutput {
 	return o.ApplyT(func(v *PlacementGroup) PlacementGroupMemberArrayOutput { return v.Members }).(PlacementGroupMemberArrayOutput)
+}
+
+// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+func (o PlacementGroupOutput) PlacementGroupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PlacementGroup) pulumi.StringOutput { return v.PlacementGroupPolicy }).(pulumi.StringOutput)
+}
+
+// The placement group type to use when placing Linodes in this group.
+func (o PlacementGroupOutput) PlacementGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PlacementGroup) pulumi.StringOutput { return v.PlacementGroupType }).(pulumi.StringOutput)
 }
 
 // The region of the Placement Group.

@@ -63,17 +63,17 @@ type LookupPlacementGroupArgs struct {
 
 // A collection of values returned by getPlacementGroup.
 type LookupPlacementGroupResult struct {
-	// The affinity policy to use when placing Linodes in this group.
-	AffinityType string `pulumi:"affinityType"`
-	Id           int    `pulumi:"id"`
-	// Whether this Linode is currently compliant with the group's affinity policy.
+	Id int `pulumi:"id"`
+	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant bool `pulumi:"isCompliant"`
-	// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-	IsStrict bool `pulumi:"isStrict"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members []GetPlacementGroupMember `pulumi:"members"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy string `pulumi:"placementGroupPolicy"`
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType string `pulumi:"placementGroupType"`
 	// The region of the Placement Group.
 	Region string `pulumi:"region"`
 }
@@ -118,23 +118,13 @@ func (o LookupPlacementGroupResultOutput) ToLookupPlacementGroupResultOutputWith
 	return o
 }
 
-// The affinity policy to use when placing Linodes in this group.
-func (o LookupPlacementGroupResultOutput) AffinityType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPlacementGroupResult) string { return v.AffinityType }).(pulumi.StringOutput)
-}
-
 func (o LookupPlacementGroupResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// Whether this Linode is currently compliant with the group's affinity policy.
+// Whether this Linode is currently compliant with the group's placement group type.
 func (o LookupPlacementGroupResultOutput) IsCompliant() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) bool { return v.IsCompliant }).(pulumi.BoolOutput)
-}
-
-// Whether Linodes must be able to become compliant during assignment. (Default `true`)
-func (o LookupPlacementGroupResultOutput) IsStrict() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupPlacementGroupResult) bool { return v.IsStrict }).(pulumi.BoolOutput)
 }
 
 // The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -145,6 +135,16 @@ func (o LookupPlacementGroupResultOutput) Label() pulumi.StringOutput {
 // A set of Linodes currently assigned to this Placement Group.
 func (o LookupPlacementGroupResultOutput) Members() GetPlacementGroupMemberArrayOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) []GetPlacementGroupMember { return v.Members }).(GetPlacementGroupMemberArrayOutput)
+}
+
+// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+func (o LookupPlacementGroupResultOutput) PlacementGroupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPlacementGroupResult) string { return v.PlacementGroupPolicy }).(pulumi.StringOutput)
+}
+
+// The placement group type to use when placing Linodes in this group.
+func (o LookupPlacementGroupResultOutput) PlacementGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPlacementGroupResult) string { return v.PlacementGroupType }).(pulumi.StringOutput)
 }
 
 // The region of the Placement Group.

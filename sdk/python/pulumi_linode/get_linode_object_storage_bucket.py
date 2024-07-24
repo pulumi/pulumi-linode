@@ -109,7 +109,25 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
                                      region: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLinodeObjectStorageBucketResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Linode Object Storage Bucket
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_bucket = linode.get_linode_object_storage_bucket(label="my-bucket",
+        region="us-mia")
+    ```
+
+
+    :param str cluster: The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+    :param str label: The name of this bucket.
+    :param str region: The ID of the region this bucket is in. Required if `cluster` is not configured.
     """
     __args__ = dict()
     __args__['cluster'] = cluster
@@ -135,6 +153,24 @@ def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optio
                                             region: Optional[pulumi.Input[Optional[str]]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLinodeObjectStorageBucketResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Linode Object Storage Bucket
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+
+    ## Example Usage
+
+    The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    my_bucket = linode.get_linode_object_storage_bucket(label="my-bucket",
+        region="us-mia")
+    ```
+
+
+    :param str cluster: The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+    :param str label: The name of this bucket.
+    :param str region: The ID of the region this bucket is in. Required if `cluster` is not configured.
     """
     ...

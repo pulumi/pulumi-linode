@@ -11022,15 +11022,187 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetKernelsResult> getKernelsPlain(GetKernelsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getKernels:getKernels", TypeShape.of(GetKernelsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about a Linode Object Storage Bucket
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-bucket = LinodeFunctions.getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs.builder()
+     *             .label("my-bucket")
+     *             .region("us-mia")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs args) {
         return getLinodeObjectStorageBucket(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about a Linode Object Storage Bucket
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-bucket = LinodeFunctions.getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs.builder()
+     *             .label("my-bucket")
+     *             .region("us-mia")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucketPlain(GetLinodeObjectStorageBucketPlainArgs args) {
         return getLinodeObjectStorageBucketPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about a Linode Object Storage Bucket
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-bucket = LinodeFunctions.getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs.builder()
+     *             .label("my-bucket")
+     *             .region("us-mia")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", TypeShape.of(GetLinodeObjectStorageBucketResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about a Linode Object Storage Bucket
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-bucket = LinodeFunctions.getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs.builder()
+     *             .label("my-bucket")
+     *             .region("us-mia")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLinodeObjectStorageBucketResult> getLinodeObjectStorageBucketPlain(GetLinodeObjectStorageBucketPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", TypeShape.of(GetLinodeObjectStorageBucketResult.class), args, Utilities.withVersion(options));
     }
@@ -13706,9 +13878,9 @@ public final class LinodeFunctions {
      * 
      * * `region`
      * 
-     * * `affinity_type`
+     * * `placement_group_type`
      * 
-     * * `is_strict`
+     * * `placement_group_policy`
      * 
      * * `is_compliant`
      * 
@@ -13774,9 +13946,9 @@ public final class LinodeFunctions {
      * 
      * * `region`
      * 
-     * * `affinity_type`
+     * * `placement_group_type`
      * 
-     * * `is_strict`
+     * * `placement_group_policy`
      * 
      * * `is_compliant`
      * 
@@ -13842,9 +14014,9 @@ public final class LinodeFunctions {
      * 
      * * `region`
      * 
-     * * `affinity_type`
+     * * `placement_group_type`
      * 
-     * * `is_strict`
+     * * `placement_group_policy`
      * 
      * * `is_compliant`
      * 
@@ -13910,9 +14082,9 @@ public final class LinodeFunctions {
      * 
      * * `region`
      * 
-     * * `affinity_type`
+     * * `placement_group_type`
      * 
-     * * `is_strict`
+     * * `placement_group_policy`
      * 
      * * `is_compliant`
      * 
@@ -13978,9 +14150,9 @@ public final class LinodeFunctions {
      * 
      * * `region`
      * 
-     * * `affinity_type`
+     * * `placement_group_type`
      * 
-     * * `is_strict`
+     * * `placement_group_policy`
      * 
      * * `is_compliant`
      * 
@@ -14046,9 +14218,9 @@ public final class LinodeFunctions {
      * 
      * * `region`
      * 
-     * * `affinity_type`
+     * * `placement_group_type`
      * 
-     * * `is_strict`
+     * * `placement_group_policy`
      * 
      * * `is_compliant`
      * 

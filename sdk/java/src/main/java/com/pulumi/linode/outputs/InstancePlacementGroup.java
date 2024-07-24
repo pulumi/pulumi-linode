@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePlacementGroup {
-    /**
-     * @return The affinity policy enforced by the Placement Group.
-     * 
-     */
-    private @Nullable String affinityType;
     private @Nullable Boolean compliantOnly;
     /**
      * @return The ID of the Placement Group.
@@ -26,24 +21,22 @@ public final class InstancePlacementGroup {
      */
     private Integer id;
     /**
-     * @return Whether the Placement Group enforces strict compliance.
-     * 
-     */
-    private @Nullable Boolean isStrict;
-    /**
      * @return The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     private @Nullable String label;
-
-    private InstancePlacementGroup() {}
     /**
-     * @return The affinity policy enforced by the Placement Group.
+     * @return Whether the Placement Group enforces strict compliance.
      * 
      */
-    public Optional<String> affinityType() {
-        return Optional.ofNullable(this.affinityType);
-    }
+    private @Nullable String placementGroupPolicy;
+    /**
+     * @return The placement group type enforced by the Placement Group.
+     * 
+     */
+    private @Nullable String placementGroupType;
+
+    private InstancePlacementGroup() {}
     public Optional<Boolean> compliantOnly() {
         return Optional.ofNullable(this.compliantOnly);
     }
@@ -55,18 +48,25 @@ public final class InstancePlacementGroup {
         return this.id;
     }
     /**
-     * @return Whether the Placement Group enforces strict compliance.
-     * 
-     */
-    public Optional<Boolean> isStrict() {
-        return Optional.ofNullable(this.isStrict);
-    }
-    /**
      * @return The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
+    }
+    /**
+     * @return Whether the Placement Group enforces strict compliance.
+     * 
+     */
+    public Optional<String> placementGroupPolicy() {
+        return Optional.ofNullable(this.placementGroupPolicy);
+    }
+    /**
+     * @return The placement group type enforced by the Placement Group.
+     * 
+     */
+    public Optional<String> placementGroupType() {
+        return Optional.ofNullable(this.placementGroupType);
     }
 
     public static Builder builder() {
@@ -78,27 +78,21 @@ public final class InstancePlacementGroup {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String affinityType;
         private @Nullable Boolean compliantOnly;
         private Integer id;
-        private @Nullable Boolean isStrict;
         private @Nullable String label;
+        private @Nullable String placementGroupPolicy;
+        private @Nullable String placementGroupType;
         public Builder() {}
         public Builder(InstancePlacementGroup defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.affinityType = defaults.affinityType;
     	      this.compliantOnly = defaults.compliantOnly;
     	      this.id = defaults.id;
-    	      this.isStrict = defaults.isStrict;
     	      this.label = defaults.label;
+    	      this.placementGroupPolicy = defaults.placementGroupPolicy;
+    	      this.placementGroupType = defaults.placementGroupType;
         }
 
-        @CustomType.Setter
-        public Builder affinityType(@Nullable String affinityType) {
-
-            this.affinityType = affinityType;
-            return this;
-        }
         @CustomType.Setter
         public Builder compliantOnly(@Nullable Boolean compliantOnly) {
 
@@ -114,24 +108,30 @@ public final class InstancePlacementGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder isStrict(@Nullable Boolean isStrict) {
-
-            this.isStrict = isStrict;
-            return this;
-        }
-        @CustomType.Setter
         public Builder label(@Nullable String label) {
 
             this.label = label;
             return this;
         }
+        @CustomType.Setter
+        public Builder placementGroupPolicy(@Nullable String placementGroupPolicy) {
+
+            this.placementGroupPolicy = placementGroupPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder placementGroupType(@Nullable String placementGroupType) {
+
+            this.placementGroupType = placementGroupType;
+            return this;
+        }
         public InstancePlacementGroup build() {
             final var _resultValue = new InstancePlacementGroup();
-            _resultValue.affinityType = affinityType;
             _resultValue.compliantOnly = compliantOnly;
             _resultValue.id = id;
-            _resultValue.isStrict = isStrict;
             _resultValue.label = label;
+            _resultValue.placementGroupPolicy = placementGroupPolicy;
+            _resultValue.placementGroupType = placementGroupType;
             return _resultValue;
         }
     }
