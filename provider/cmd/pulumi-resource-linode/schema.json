@@ -1056,10 +1056,6 @@
         },
         "linode:index/InstancePlacementGroup:InstancePlacementGroup": {
             "properties": {
-                "affinityType": {
-                    "type": "string",
-                    "description": "The affinity policy enforced by the Placement Group.\n"
-                },
                 "compliantOnly": {
                     "type": "boolean"
                 },
@@ -1067,13 +1063,17 @@
                     "type": "integer",
                     "description": "The ID of the Placement Group.\n"
                 },
-                "isStrict": {
-                    "type": "boolean",
-                    "description": "Whether the Placement Group enforces strict compliance.\n"
-                },
                 "label": {
                     "type": "string",
                     "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                },
+                "placementGroupPolicy": {
+                    "type": "string",
+                    "description": "Whether the Placement Group enforces strict compliance.\n"
+                },
+                "placementGroupType": {
+                    "type": "string",
+                    "description": "The placement group type enforced by the Placement Group.\n"
                 }
             },
             "type": "object",
@@ -1083,10 +1083,10 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "affinityType",
                         "id",
-                        "isStrict",
-                        "label"
+                        "label",
+                        "placementGroupPolicy",
+                        "placementGroupType"
                     ]
                 }
             }
@@ -1651,7 +1651,7 @@
             "properties": {
                 "isCompliant": {
                     "type": "boolean",
-                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                    "description": "Whether this Linode is currently compliant with the group's placement group type.\n"
                 },
                 "linodeId": {
                     "type": "integer",
@@ -6242,7 +6242,7 @@
             "properties": {
                 "isCompliant": {
                     "type": "boolean",
-                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                    "description": "Whether this Linode is currently compliant with the group's placement group type.\n"
                 },
                 "linodeId": {
                     "type": "integer",
@@ -6286,21 +6286,13 @@
         },
         "linode:index/getPlacementGroupsPlacementGroup:getPlacementGroupsPlacementGroup": {
             "properties": {
-                "affinityType": {
-                    "type": "string",
-                    "description": "The affinity policy to use when placing Linodes in this group.\n"
-                },
                 "id": {
                     "type": "integer",
                     "description": "The ID of the placement group.\n"
                 },
                 "isCompliant": {
                     "type": "boolean",
-                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
-                },
-                "isStrict": {
-                    "type": "boolean",
-                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                    "description": "Whether this Linode is currently compliant with the group's placement group type.\n"
                 },
                 "label": {
                     "type": "string",
@@ -6313,6 +6305,14 @@
                     },
                     "description": "A set of Linodes currently assigned to this Placement Group.\n"
                 },
+                "placementGroupPolicy": {
+                    "type": "string",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `strict`)\n"
+                },
+                "placementGroupType": {
+                    "type": "string",
+                    "description": "The placement group type to use when placing Linodes in this group.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region of the Placement Group.\n"
@@ -6320,11 +6320,11 @@
             },
             "type": "object",
             "required": [
-                "affinityType",
                 "id",
                 "isCompliant",
-                "isStrict",
                 "label",
+                "placementGroupPolicy",
+                "placementGroupType",
                 "region"
             ],
             "language": {
@@ -6339,7 +6339,7 @@
             "properties": {
                 "isCompliant": {
                     "type": "boolean",
-                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
+                    "description": "Whether this Linode is currently compliant with the group's placement group type.\n"
                 },
                 "linodeId": {
                     "type": "integer",
@@ -12157,19 +12157,11 @@
             }
         },
         "linode:index/placementGroup:PlacementGroup": {
-            "description": "Manages a Linode Placement Group.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-placement-group).\n\n**NOTE: Placement Groups may not currently be available to all users.**\n\n## Example Usage\n\nCreate a Placement Group with the local anti-affinity policy:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst test = new linode.PlacementGroup(\"test\", {\n    label: \"my-placement-group\",\n    region: \"us-mia\",\n    affinityType: \"anti_affinity:local\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.PlacementGroup(\"test\",\n    label=\"my-placement-group\",\n    region=\"us-mia\",\n    affinity_type=\"anti_affinity:local\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Linode.PlacementGroup(\"test\", new()\n    {\n        Label = \"my-placement-group\",\n        Region = \"us-mia\",\n        AffinityType = \"anti_affinity:local\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewPlacementGroup(ctx, \"test\", \u0026linode.PlacementGroupArgs{\n\t\t\tLabel:        pulumi.String(\"my-placement-group\"),\n\t\t\tRegion:       pulumi.String(\"us-mia\"),\n\t\t\tAffinityType: pulumi.String(\"anti_affinity:local\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.PlacementGroup;\nimport com.pulumi.linode.PlacementGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new PlacementGroup(\"test\", PlacementGroupArgs.builder()\n            .label(\"my-placement-group\")\n            .region(\"us-mia\")\n            .affinityType(\"anti_affinity:local\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: linode:PlacementGroup\n    properties:\n      label: my-placement-group\n      region: us-mia\n      affinityType: anti_affinity:local\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPlacement Groups be imported using their unique `id`, e.g.\n\n```sh\n$ pulumi import linode:index/placementGroup:PlacementGroup mygroup 1234567\n```\n\n",
+            "description": "Manages a Linode Placement Group.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-placement-group).\n\n**NOTE: Placement Groups may not currently be available to all users.**\n\n## Example Usage\n\nCreate a Placement Group with the local anti-affinity policy:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst test = new linode.PlacementGroup(\"test\", {\n    label: \"my-placement-group\",\n    region: \"us-mia\",\n    placementGroupType: \"anti_affinity:local\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.PlacementGroup(\"test\",\n    label=\"my-placement-group\",\n    region=\"us-mia\",\n    placement_group_type=\"anti_affinity:local\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Linode.PlacementGroup(\"test\", new()\n    {\n        Label = \"my-placement-group\",\n        Region = \"us-mia\",\n        PlacementGroupType = \"anti_affinity:local\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewPlacementGroup(ctx, \"test\", \u0026linode.PlacementGroupArgs{\n\t\t\tLabel:              pulumi.String(\"my-placement-group\"),\n\t\t\tRegion:             pulumi.String(\"us-mia\"),\n\t\t\tPlacementGroupType: pulumi.String(\"anti_affinity:local\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.PlacementGroup;\nimport com.pulumi.linode.PlacementGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new PlacementGroup(\"test\", PlacementGroupArgs.builder()\n            .label(\"my-placement-group\")\n            .region(\"us-mia\")\n            .placementGroupType(\"anti_affinity:local\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: linode:PlacementGroup\n    properties:\n      label: my-placement-group\n      region: us-mia\n      placementGroupType: anti_affinity:local\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPlacement Groups be imported using their unique `id`, e.g.\n\n```sh\n$ pulumi import linode:index/placementGroup:PlacementGroup mygroup 1234567\n```\n\n",
             "properties": {
-                "affinityType": {
-                    "type": "string",
-                    "description": "The affinity policy to use when placing Linodes in this group.\n"
-                },
                 "isCompliant": {
                     "type": "boolean",
-                    "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
-                },
-                "isStrict": {
-                    "type": "boolean",
-                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                    "description": "Whether this Linode is currently compliant with the group's placement group type.\n"
                 },
                 "label": {
                     "type": "string",
@@ -12182,31 +12174,39 @@
                     },
                     "description": "A set of Linodes currently assigned to this Placement Group.\n"
                 },
+                "placementGroupPolicy": {
+                    "type": "string",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `strict`)\n"
+                },
+                "placementGroupType": {
+                    "type": "string",
+                    "description": "The placement group type to use when placing Linodes in this group.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region of the Placement Group.\n"
                 }
             },
             "required": [
-                "affinityType",
                 "isCompliant",
-                "isStrict",
                 "label",
                 "members",
+                "placementGroupPolicy",
+                "placementGroupType",
                 "region"
             ],
             "inputProperties": {
-                "affinityType": {
-                    "type": "string",
-                    "description": "The affinity policy to use when placing Linodes in this group.\n"
-                },
-                "isStrict": {
-                    "type": "boolean",
-                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
-                },
                 "label": {
                     "type": "string",
                     "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "placementGroupPolicy": {
+                    "type": "string",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `strict`)\n"
+                },
+                "placementGroupType": {
+                    "type": "string",
+                    "description": "The placement group type to use when placing Linodes in this group.\n"
                 },
                 "region": {
                     "type": "string",
@@ -12214,24 +12214,16 @@
                 }
             },
             "requiredInputs": [
-                "affinityType",
                 "label",
+                "placementGroupType",
                 "region"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering PlacementGroup resources.\n",
                 "properties": {
-                    "affinityType": {
-                        "type": "string",
-                        "description": "The affinity policy to use when placing Linodes in this group.\n"
-                    },
                     "isCompliant": {
                         "type": "boolean",
-                        "description": "Whether this Linode is currently compliant with the group's affinity policy.\n"
-                    },
-                    "isStrict": {
-                        "type": "boolean",
-                        "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n"
+                        "description": "Whether this Linode is currently compliant with the group's placement group type.\n"
                     },
                     "label": {
                         "type": "string",
@@ -12244,6 +12236,14 @@
                         },
                         "description": "A set of Linodes currently assigned to this Placement Group.\n"
                     },
+                    "placementGroupPolicy": {
+                        "type": "string",
+                        "description": "Whether Linodes must be able to become compliant during assignment. (Default `strict`)\n"
+                    },
+                    "placementGroupType": {
+                        "type": "string",
+                        "description": "The placement group type to use when placing Linodes in this group.\n"
+                    },
                     "region": {
                         "type": "string",
                         "description": "The region of the Placement Group.\n"
@@ -12253,7 +12253,7 @@
             }
         },
         "linode:index/placementGroupAssignment:PlacementGroupAssignment": {
-            "description": "Manages a single assignment between a Linode and a Placement Group.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-group-add-linode).\n\n**NOTE: Placement Groups may not currently be available to all users.**\n\nTo prevent update conflicts, Linodes managed through the `linode.Instance` resource should specify `placement_group_externally_managed`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {placementGroupExternallyManaged: true});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\", placement_group_externally_managed=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        PlacementGroupExternallyManaged = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tPlacementGroupExternallyManaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()\n            .placementGroupExternallyManaged(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-instance:\n    type: linode:Instance\n    properties:\n      placementGroupExternallyManaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pg = new linode.PlacementGroup(\"my-pg\", {\n    label: \"my-pg\",\n    region: \"us-east\",\n    affinityType: \"anti_affinity:local\",\n});\nconst my_inst = new linode.Instance(\"my-inst\", {\n    label: \"my-inst\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    placementGroupExternallyManaged: true,\n});\nconst my_assignment = new linode.PlacementGroupAssignment(\"my-assignment\", {\n    placementGroupId: my_pg.id,\n    linodeId: my_inst.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pg = linode.PlacementGroup(\"my-pg\",\n    label=\"my-pg\",\n    region=\"us-east\",\n    affinity_type=\"anti_affinity:local\")\nmy_inst = linode.Instance(\"my-inst\",\n    label=\"my-inst\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    placement_group_externally_managed=True)\nmy_assignment = linode.PlacementGroupAssignment(\"my-assignment\",\n    placement_group_id=my_pg.id,\n    linode_id=my_inst.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pg = new Linode.PlacementGroup(\"my-pg\", new()\n    {\n        Label = \"my-pg\",\n        Region = \"us-east\",\n        AffinityType = \"anti_affinity:local\",\n    });\n\n    var my_inst = new Linode.Instance(\"my-inst\", new()\n    {\n        Label = \"my-inst\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        PlacementGroupExternallyManaged = true,\n    });\n\n    var my_assignment = new Linode.PlacementGroupAssignment(\"my-assignment\", new()\n    {\n        PlacementGroupId = my_pg.Id,\n        LinodeId = my_inst.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewPlacementGroup(ctx, \"my-pg\", \u0026linode.PlacementGroupArgs{\n\t\t\tLabel:        pulumi.String(\"my-pg\"),\n\t\t\tRegion:       pulumi.String(\"us-east\"),\n\t\t\tAffinityType: pulumi.String(\"anti_affinity:local\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"my-inst\", \u0026linode.InstanceArgs{\n\t\t\tLabel:                           pulumi.String(\"my-inst\"),\n\t\t\tRegion:                          pulumi.String(\"us-east\"),\n\t\t\tType:                            pulumi.String(\"g6-nanode-1\"),\n\t\t\tPlacementGroupExternallyManaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewPlacementGroupAssignment(ctx, \"my-assignment\", \u0026linode.PlacementGroupAssignmentArgs{\n\t\t\tPlacementGroupId: my_pg.ID(),\n\t\t\tLinodeId:         my_inst.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.PlacementGroup;\nimport com.pulumi.linode.PlacementGroupArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.PlacementGroupAssignment;\nimport com.pulumi.linode.PlacementGroupAssignmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pg = new PlacementGroup(\"my-pg\", PlacementGroupArgs.builder()\n            .label(\"my-pg\")\n            .region(\"us-east\")\n            .affinityType(\"anti_affinity:local\")\n            .build());\n\n        var my_inst = new Instance(\"my-inst\", InstanceArgs.builder()\n            .label(\"my-inst\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .placementGroupExternallyManaged(true)\n            .build());\n\n        var my_assignment = new PlacementGroupAssignment(\"my-assignment\", PlacementGroupAssignmentArgs.builder()\n            .placementGroupId(my_pg.id())\n            .linodeId(my_inst.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-assignment:\n    type: linode:PlacementGroupAssignment\n    properties:\n      placementGroupId: ${[\"my-pg\"].id}\n      linodeId: ${[\"my-inst\"].id}\n  my-pg:\n    type: linode:PlacementGroup\n    properties:\n      label: my-pg\n      region: us-east\n      affinityType: anti_affinity:local\n  my-inst:\n    type: linode:Instance\n    properties:\n      label: my-inst\n      region: us-east\n      type: g6-nanode-1\n      placementGroupExternallyManaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPlacement Group assignments can be imported using the Placement Group's ID followed by the Linode's ID separated by a comma, e.g.\n\n```sh\n$ pulumi import linode:index/placementGroupAssignment:PlacementGroupAssignment my-assignment 1234567,7654321\n```\n\n",
+            "description": "Manages a single assignment between a Linode and a Placement Group.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-group-add-linode).\n\n**NOTE: Placement Groups may not currently be available to all users.**\n\nTo prevent update conflicts, Linodes managed through the `linode.Instance` resource should specify `placement_group_externally_managed`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instance = new linode.Instance(\"my-instance\", {placementGroupExternallyManaged: true});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instance = linode.Instance(\"my-instance\", placement_group_externally_managed=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instance = new Linode.Instance(\"my-instance\", new()\n    {\n        PlacementGroupExternallyManaged = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewInstance(ctx, \"my-instance\", \u0026linode.InstanceArgs{\n\t\t\tPlacementGroupExternallyManaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_instance = new Instance(\"my-instance\", InstanceArgs.builder()\n            .placementGroupExternallyManaged(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-instance:\n    type: linode:Instance\n    properties:\n      placementGroupExternallyManaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pg = new linode.PlacementGroup(\"my-pg\", {\n    label: \"my-pg\",\n    region: \"us-east\",\n    placementGroupType: \"anti_affinity:local\",\n});\nconst my_inst = new linode.Instance(\"my-inst\", {\n    label: \"my-inst\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    placementGroupExternallyManaged: true,\n});\nconst my_assignment = new linode.PlacementGroupAssignment(\"my-assignment\", {\n    placementGroupId: my_pg.id,\n    linodeId: my_inst.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pg = linode.PlacementGroup(\"my-pg\",\n    label=\"my-pg\",\n    region=\"us-east\",\n    placement_group_type=\"anti_affinity:local\")\nmy_inst = linode.Instance(\"my-inst\",\n    label=\"my-inst\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    placement_group_externally_managed=True)\nmy_assignment = linode.PlacementGroupAssignment(\"my-assignment\",\n    placement_group_id=my_pg.id,\n    linode_id=my_inst.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pg = new Linode.PlacementGroup(\"my-pg\", new()\n    {\n        Label = \"my-pg\",\n        Region = \"us-east\",\n        PlacementGroupType = \"anti_affinity:local\",\n    });\n\n    var my_inst = new Linode.Instance(\"my-inst\", new()\n    {\n        Label = \"my-inst\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        PlacementGroupExternallyManaged = true,\n    });\n\n    var my_assignment = new Linode.PlacementGroupAssignment(\"my-assignment\", new()\n    {\n        PlacementGroupId = my_pg.Id,\n        LinodeId = my_inst.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewPlacementGroup(ctx, \"my-pg\", \u0026linode.PlacementGroupArgs{\n\t\t\tLabel:              pulumi.String(\"my-pg\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t\tPlacementGroupType: pulumi.String(\"anti_affinity:local\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"my-inst\", \u0026linode.InstanceArgs{\n\t\t\tLabel:                           pulumi.String(\"my-inst\"),\n\t\t\tRegion:                          pulumi.String(\"us-east\"),\n\t\t\tType:                            pulumi.String(\"g6-nanode-1\"),\n\t\t\tPlacementGroupExternallyManaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewPlacementGroupAssignment(ctx, \"my-assignment\", \u0026linode.PlacementGroupAssignmentArgs{\n\t\t\tPlacementGroupId: my_pg.ID(),\n\t\t\tLinodeId:         my_inst.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.PlacementGroup;\nimport com.pulumi.linode.PlacementGroupArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.PlacementGroupAssignment;\nimport com.pulumi.linode.PlacementGroupAssignmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pg = new PlacementGroup(\"my-pg\", PlacementGroupArgs.builder()\n            .label(\"my-pg\")\n            .region(\"us-east\")\n            .placementGroupType(\"anti_affinity:local\")\n            .build());\n\n        var my_inst = new Instance(\"my-inst\", InstanceArgs.builder()\n            .label(\"my-inst\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .placementGroupExternallyManaged(true)\n            .build());\n\n        var my_assignment = new PlacementGroupAssignment(\"my-assignment\", PlacementGroupAssignmentArgs.builder()\n            .placementGroupId(my_pg.id())\n            .linodeId(my_inst.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-assignment:\n    type: linode:PlacementGroupAssignment\n    properties:\n      placementGroupId: ${[\"my-pg\"].id}\n      linodeId: ${[\"my-inst\"].id}\n  my-pg:\n    type: linode:PlacementGroup\n    properties:\n      label: my-pg\n      region: us-east\n      placementGroupType: anti_affinity:local\n  my-inst:\n    type: linode:Instance\n    properties:\n      label: my-inst\n      region: us-east\n      type: g6-nanode-1\n      placementGroupExternallyManaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nPlacement Group assignments can be imported using the Placement Group's ID followed by the Linode's ID separated by a comma, e.g.\n\n```sh\n$ pulumi import linode:index/placementGroupAssignment:PlacementGroupAssignment my-assignment 1234567,7654321\n```\n\n",
             "properties": {
                 "compliantOnly": {
                     "type": "boolean"
@@ -15500,17 +15500,21 @@
             }
         },
         "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": {
+            "description": "Provides information about a Linode Object Storage Bucket\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode Object Storage Bucket.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my-bucket = linode.getLinodeObjectStorageBucket({\n    label: \"my-bucket\",\n    region: \"us-mia\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_bucket = linode.get_linode_object_storage_bucket(label=\"my-bucket\",\n    region=\"us-mia\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()\n    {\n        Label = \"my-bucket\",\n        Region = \"us-mia\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLinodeObjectStorageBucket(ctx, \u0026linode.GetLinodeObjectStorageBucketArgs{\n\t\t\tLabel:  \"my-bucket\",\n\t\t\tRegion: pulumi.StringRef(\"us-mia\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-bucket = LinodeFunctions.getLinodeObjectStorageBucket(GetLinodeObjectStorageBucketArgs.builder()\n            .label(\"my-bucket\")\n            .region(\"us-mia\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-bucket:\n    fn::invoke:\n      Function: linode:getLinodeObjectStorageBucket\n      Arguments:\n        label: my-bucket\n        region: us-mia\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getLinodeObjectStorageBucket.\n",
                 "properties": {
                     "cluster": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.\n"
                     },
                     "label": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of this bucket.\n"
                     },
                     "region": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the region this bucket is in. Required if `cluster` is not configured.\n"
                     }
                 },
                 "type": "object",
@@ -16319,19 +16323,11 @@
             "outputs": {
                 "description": "A collection of values returned by getPlacementGroup.\n",
                 "properties": {
-                    "affinityType": {
-                        "description": "The affinity policy to use when placing Linodes in this group.\n",
-                        "type": "string"
-                    },
                     "id": {
                         "type": "integer"
                     },
                     "isCompliant": {
-                        "description": "Whether this Linode is currently compliant with the group's affinity policy.\n",
-                        "type": "boolean"
-                    },
-                    "isStrict": {
-                        "description": "Whether Linodes must be able to become compliant during assignment. (Default `true`)\n",
+                        "description": "Whether this Linode is currently compliant with the group's placement group type.\n",
                         "type": "boolean"
                     },
                     "label": {
@@ -16345,24 +16341,32 @@
                         },
                         "type": "array"
                     },
+                    "placementGroupPolicy": {
+                        "description": "Whether Linodes must be able to become compliant during assignment. (Default `strict`)\n",
+                        "type": "string"
+                    },
+                    "placementGroupType": {
+                        "description": "The placement group type to use when placing Linodes in this group.\n",
+                        "type": "string"
+                    },
                     "region": {
                         "description": "The region of the Placement Group.\n",
                         "type": "string"
                     }
                 },
                 "required": [
-                    "affinityType",
                     "id",
                     "isCompliant",
-                    "isStrict",
                     "label",
+                    "placementGroupPolicy",
+                    "placementGroupType",
                     "region"
                 ],
                 "type": "object"
             }
         },
         "linode:index/getPlacementGroups:getPlacementGroups": {
-            "description": "**NOTE: Placement Groups may not currently be available to all users.**\n\nProvides information about a list of Linode Placement Groups that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).\n\n## Example Usage\n\nThe following example shows how one might use this data source to list Placement Groups.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nexport = async () =\u003e {\n    const all = await linode.getPlacementGroups({});\n    const filtered = await linode.getPlacementGroups({\n        filters: [{\n            name: \"label\",\n            values: [\"my-label\"],\n        }],\n    });\n    return {\n        \"all-pgs\": all.placementGroups,\n        \"filtered-pgs\": filtered.placementGroups,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall = linode.get_placement_groups()\nfiltered = linode.get_placement_groups(filters=[linode.GetPlacementGroupsFilterArgs(\n    name=\"label\",\n    values=[\"my-label\"],\n)])\npulumi.export(\"all-pgs\", all.placement_groups)\npulumi.export(\"filtered-pgs\", filtered.placement_groups)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Linode.GetPlacementGroups.Invoke();\n\n    var filtered = Linode.GetPlacementGroups.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetPlacementGroupsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-label\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"all-pgs\"] = all.Apply(getPlacementGroupsResult =\u003e getPlacementGroupsResult.PlacementGroups),\n        [\"filtered-pgs\"] = filtered.Apply(getPlacementGroupsResult =\u003e getPlacementGroupsResult.PlacementGroups),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := linode.GetPlacementGroups(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfiltered, err := linode.GetPlacementGroups(ctx, \u0026linode.GetPlacementGroupsArgs{\n\t\t\tFilters: []linode.GetPlacementGroupsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-label\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"all-pgs\", all.PlacementGroups)\n\t\tctx.Export(\"filtered-pgs\", filtered.PlacementGroups)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetPlacementGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = LinodeFunctions.getPlacementGroups();\n\n        final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()\n            .filters(GetPlacementGroupsFilterArgs.builder()\n                .name(\"label\")\n                .values(\"my-label\")\n                .build())\n            .build());\n\n        ctx.export(\"all-pgs\", all.applyValue(getPlacementGroupsResult -\u003e getPlacementGroupsResult.placementGroups()));\n        ctx.export(\"filtered-pgs\", filtered.applyValue(getPlacementGroupsResult -\u003e getPlacementGroupsResult.placementGroups()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: linode:getPlacementGroups\n      Arguments: {}\n  filtered:\n    fn::invoke:\n      Function: linode:getPlacementGroups\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-label\noutputs:\n  all-pgs: ${all.placementGroups}\n  filtered-pgs: ${filtered.placementGroups}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `region`\n\n* `affinity_type`\n\n* `is_strict`\n\n* `is_compliant`\n",
+            "description": "**NOTE: Placement Groups may not currently be available to all users.**\n\nProvides information about a list of Linode Placement Groups that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).\n\n## Example Usage\n\nThe following example shows how one might use this data source to list Placement Groups.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nexport = async () =\u003e {\n    const all = await linode.getPlacementGroups({});\n    const filtered = await linode.getPlacementGroups({\n        filters: [{\n            name: \"label\",\n            values: [\"my-label\"],\n        }],\n    });\n    return {\n        \"all-pgs\": all.placementGroups,\n        \"filtered-pgs\": filtered.placementGroups,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall = linode.get_placement_groups()\nfiltered = linode.get_placement_groups(filters=[linode.GetPlacementGroupsFilterArgs(\n    name=\"label\",\n    values=[\"my-label\"],\n)])\npulumi.export(\"all-pgs\", all.placement_groups)\npulumi.export(\"filtered-pgs\", filtered.placement_groups)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Linode.GetPlacementGroups.Invoke();\n\n    var filtered = Linode.GetPlacementGroups.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetPlacementGroupsFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-label\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"all-pgs\"] = all.Apply(getPlacementGroupsResult =\u003e getPlacementGroupsResult.PlacementGroups),\n        [\"filtered-pgs\"] = filtered.Apply(getPlacementGroupsResult =\u003e getPlacementGroupsResult.PlacementGroups),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := linode.GetPlacementGroups(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfiltered, err := linode.GetPlacementGroups(ctx, \u0026linode.GetPlacementGroupsArgs{\n\t\t\tFilters: []linode.GetPlacementGroupsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-label\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"all-pgs\", all.PlacementGroups)\n\t\tctx.Export(\"filtered-pgs\", filtered.PlacementGroups)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetPlacementGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = LinodeFunctions.getPlacementGroups();\n\n        final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()\n            .filters(GetPlacementGroupsFilterArgs.builder()\n                .name(\"label\")\n                .values(\"my-label\")\n                .build())\n            .build());\n\n        ctx.export(\"all-pgs\", all.applyValue(getPlacementGroupsResult -\u003e getPlacementGroupsResult.placementGroups()));\n        ctx.export(\"filtered-pgs\", filtered.applyValue(getPlacementGroupsResult -\u003e getPlacementGroupsResult.placementGroups()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: linode:getPlacementGroups\n      Arguments: {}\n  filtered:\n    fn::invoke:\n      Function: linode:getPlacementGroups\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - my-label\noutputs:\n  all-pgs: ${all.placementGroups}\n  filtered-pgs: ${filtered.placementGroups}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `id`\n\n* `label`\n\n* `region`\n\n* `placement_group_type`\n\n* `placement_group_policy`\n\n* `is_compliant`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPlacementGroups.\n",
                 "properties": {

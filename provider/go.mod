@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-linode/provider/v4
 go 1.21.12
 
 require (
-	github.com/linode/terraform-provider-linode/v2 v2.24.0
+	github.com/linode/terraform-provider-linode/v2 v2.25.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0
 	github.com/pulumi/pulumi/sdk/v3 v3.124.0
@@ -154,7 +154,7 @@ require (
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
-	github.com/linode/linodego v1.37.0 // indirect
+	github.com/linode/linodego v1.38.0 // indirect
 	github.com/linode/linodego/k8s v1.25.2 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
