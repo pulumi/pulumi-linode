@@ -29,52 +29,42 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := linode.GetChildAccounts(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			filtered, err := linode.GetChildAccounts(ctx, &linode.GetChildAccountsArgs{
-//				Filters: []linode.GetChildAccountsFilter{
-//					{
-//						Name: "email",
-//						Values: []string{
-//							"example@linode.com",
-//						},
-//					},
-//					{
-//						Name: "first_name",
-//						Values: []string{
-//							"John",
-//						},
-//					},
-//					{
-//						Name: "last_name",
-//						Values: []string{
-//							"Smith",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range all.ChildAccounts {
-//				splat0 = append(splat0, val0.Euuid)
-//			}
-//			ctx.Export("allAccounts", splat0)
-//			var splat1 []*string
-//			for _, val0 := range filtered.ChildAccounts {
-//				splat1 = append(splat1, val0.Euuid)
-//			}
-//			ctx.Export("filteredAccounts", splat1)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all, err := linode.GetChildAccounts(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// filtered, err := linode.GetChildAccounts(ctx, &linode.GetChildAccountsArgs{
+// Filters: []linode.GetChildAccountsFilter{
+// {
+// Name: "email",
+// Values: []string{
+// "example@linode.com",
+// },
+// },
+// {
+// Name: "first_name",
+// Values: []string{
+// "John",
+// },
+// },
+// {
+// Name: "last_name",
+// Values: []string{
+// "Smith",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("allAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:16,11-37)))
+// ctx.Export("filteredAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:20,11-42)))
+// return nil
+// })
+// }
 // ```
 //
 // ## Filterable Fields

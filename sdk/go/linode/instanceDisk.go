@@ -81,9 +81,9 @@ import (
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
 //				LinodeId: my_instance.ID(),
-//				Size: my_instance.Specs.ApplyT(func(specs linode.InstanceSpecs) (*int, error) {
+//				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs linode.InstanceSpecs) (*int, error) {
 //					return &specs.Disk, nil
-//				}).(pulumi.IntPtrOutput),
+//				}).(pulumi.IntPtrOutput)),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				RootPass: pulumi.String("myc00lpass!"),
 //				AuthorizedKeys: pulumi.StringArray{

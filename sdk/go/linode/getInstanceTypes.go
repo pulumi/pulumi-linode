@@ -27,31 +27,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			specific_types, err := linode.GetInstanceTypes(ctx, &linode.GetInstanceTypesArgs{
-//				Filters: []linode.GetInstanceTypesFilter{
-//					{
-//						Name: "vcpus",
-//						Values: []string{
-//							"2",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range specific_types.Types {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("typeIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// specific_types, err := linode.GetInstanceTypes(ctx, &linode.GetInstanceTypesArgs{
+// Filters: []linode.GetInstanceTypesFilter{
+// {
+// Name: "vcpus",
+// Values: []string{
+// "2",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("typeIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-37)))
+// return nil
+// })
+// }
 // ```
 //
 // Get information about all Linode Instance types:
@@ -65,22 +59,16 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all_types, err := linode.GetInstanceTypes(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range all_types.Types {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("typeIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all_types, err := linode.GetInstanceTypes(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("typeIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-32)))
+// return nil
+// })
+// }
 // ```
 //
 // ## Filterable Fields
