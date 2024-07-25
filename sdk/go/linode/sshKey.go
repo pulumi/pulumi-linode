@@ -44,7 +44,7 @@ import (
 //			}
 //			foo, err := linode.NewSshKey(ctx, "foo", &linode.SshKeyArgs{
 //				Label:  pulumi.String("foo"),
-//				SshKey: invokeChomp.Result,
+//				SshKey: pulumi.String(invokeChomp.Result),
 //			})
 //			if err != nil {
 //				return err

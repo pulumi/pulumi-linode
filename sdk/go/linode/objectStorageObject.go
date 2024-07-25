@@ -43,7 +43,7 @@ import (
 //				Key:       pulumi.String("my-object"),
 //				SecretKey: pulumi.Any(myKey.SecretKey),
 //				AccessKey: pulumi.Any(myKey.AccessKey),
-//				Source:    invokePathexpand.Result,
+//				Source:    pulumi.String(invokePathexpand.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ import (
 //				Bucket:  pulumi.String("my-bucket"),
 //				Cluster: pulumi.String("us-east-1"),
 //				Key:     pulumi.String("my-object"),
-//				Source:  invokePathexpand.Result,
+//				Source:  pulumi.String(invokePathexpand.Result),
 //			})
 //			if err != nil {
 //				return err

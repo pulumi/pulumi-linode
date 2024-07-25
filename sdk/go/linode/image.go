@@ -44,9 +44,9 @@ import (
 //			bar, err := linode.NewImage(ctx, "bar", &linode.ImageArgs{
 //				Label:       pulumi.String("foo-sda-image"),
 //				Description: pulumi.String("Image taken from foo"),
-//				DiskId: foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
+//				DiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
 //					return &disks[0].Id, nil
-//				}).(pulumi.IntPtrOutput),
+//				}).(pulumi.IntPtrOutput)),
 //				LinodeId: foo.ID(),
 //			})
 //			if err != nil {
@@ -92,7 +92,7 @@ import (
 //				Description: pulumi.String("An image uploaded from Terraform!"),
 //				Region:      pulumi.String("us-southeast"),
 //				FilePath:    pulumi.String("path/to/image.img.gz"),
-//				FileHash:    invokeFilemd5.Result,
+//				FileHash:    pulumi.String(invokeFilemd5.Result),
 //			})
 //			if err != nil {
 //				return err
