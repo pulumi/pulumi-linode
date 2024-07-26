@@ -67,22 +67,16 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := linode.GetFirewalls(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*int
-//			for _, val0 := range all.Firewalls {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("firewallIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all, err := linode.GetFirewalls(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("firewallIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-30)))
+// return nil
+// })
+// }
 // ```
 //
 // ## Firewall Rule

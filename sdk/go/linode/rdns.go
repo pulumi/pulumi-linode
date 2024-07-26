@@ -92,14 +92,14 @@ import (
 //				myInstance = append(myInstance, __res)
 //			}
 //			var myRdns []*linode.Rdns
-//			for index := 0; index < len(myInstance); index++ {
+//			for index := 0; index < int(len(myInstance)); index++ {
 //				key0 := index
 //				val0 := index
 //				__res, err := linode.NewRdns(ctx, fmt.Sprintf("my_rdns-%v", key0), &linode.RdnsArgs{
 //					Address: myInstance[val0].IpAddress,
-//					Rdns: myInstance[val0].IpAddress.ApplyT(func(ipAddress string) (string, error) {
+//					Rdns: pulumi.String(myInstance[val0].IpAddress.ApplyT(func(ipAddress string) (string, error) {
 //						return fmt.Sprintf("%v.nip.io", ipAddress), nil
-//					}).(pulumi.StringOutput),
+//					}).(pulumi.StringOutput)),
 //				})
 //				if err != nil {
 //					return err

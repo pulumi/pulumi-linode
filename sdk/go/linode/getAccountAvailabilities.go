@@ -27,31 +27,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			filtered_availabilities, err := linode.GetAccountAvailabilities(ctx, &linode.GetAccountAvailabilitiesArgs{
-//				Filters: []linode.GetAccountAvailabilitiesFilter{
-//					{
-//						Name: "unavailable",
-//						Values: []string{
-//							"Linodes",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range filtered_availabilities.Availabilities {
-//				splat0 = append(splat0, val0.Region)
-//			}
-//			ctx.Export("regions-without-linodes", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// filtered_availabilities, err := linode.GetAccountAvailabilities(ctx, &linode.GetAccountAvailabilitiesArgs{
+// Filters: []linode.GetAccountAvailabilitiesFilter{
+// {
+// Name: "unavailable",
+// Values: []string{
+// "Linodes",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("regions-without-linodes", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-59)))
+// return nil
+// })
+// }
 // ```
 //
 // ## Filterable Fields

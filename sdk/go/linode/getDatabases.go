@@ -27,22 +27,16 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := linode.GetDatabases(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*int
-//			for _, val0 := range all.Databases {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("databaseIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all, err := linode.GetDatabases(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-30)))
+// return nil
+// })
+// }
 // ```
 //
 // Get information about all Linode MySQL Databases:
@@ -56,31 +50,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mysql, err := linode.GetDatabases(ctx, &linode.GetDatabasesArgs{
-//				Filters: []linode.GetDatabasesFilter{
-//					{
-//						Name: "engine",
-//						Values: []string{
-//							"mysql",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*int
-//			for _, val0 := range mysql.Databases {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("databaseIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// mysql, err := linode.GetDatabases(ctx, &linode.GetDatabasesArgs{
+// Filters: []linode.GetDatabasesFilter{
+// {
+// Name: "engine",
+// Values: []string{
+// "mysql",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-32)))
+// return nil
+// })
+// }
 // ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

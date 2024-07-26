@@ -148,7 +148,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := linode.NewInstanceSharedIps(ctx, fmt.Sprintf("share-secondary-%v", key0), &linode.InstanceSharedIpsArgs{
-//					LinodeId: secondary[val0].ID(),
+//					LinodeId: pulumi.Int(secondary[val0].ID()),
 //					Addresses: pulumi.StringArray{
 //						rangeIpv6Range.Range,
 //					},

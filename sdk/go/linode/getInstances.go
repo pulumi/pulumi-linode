@@ -68,22 +68,16 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all_instances, err := linode.GetInstances(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*int
-//			for _, val0 := range all_instances.Instances {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("instanceIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all_instances, err := linode.GetInstances(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("instanceIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-40)))
+// return nil
+// })
+// }
 // ```
 //
 // ## Filterable Fields

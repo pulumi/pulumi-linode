@@ -27,22 +27,16 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := linode.GetDatabaseEngines(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range all.Engines {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("engineIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all, err := linode.GetDatabaseEngines(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-28)))
+// return nil
+// })
+// }
 // ```
 //
 // Get information about all Linode MySQL Database engines:
@@ -56,31 +50,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mysql, err := linode.GetDatabaseEngines(ctx, &linode.GetDatabaseEnginesArgs{
-//				Filters: []linode.GetDatabaseEnginesFilter{
-//					{
-//						Name: "engine",
-//						Values: []string{
-//							"mysql",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range mysql.Engines {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("engineIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// mysql, err := linode.GetDatabaseEngines(ctx, &linode.GetDatabaseEnginesArgs{
+// Filters: []linode.GetDatabaseEnginesFilter{
+// {
+// Name: "engine",
+// Values: []string{
+// "mysql",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-30)))
+// return nil
+// })
+// }
 // ```
 //
 // Create a Linode MySQL Database using the latest support MySQL version:
