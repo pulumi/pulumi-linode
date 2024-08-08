@@ -79,10 +79,10 @@ class AwaitableGetPlacementGroupsResult(GetPlacementGroupsResult):
             placement_groups=self.placement_groups)
 
 
-def get_placement_groups(filters: Optional[Sequence[pulumi.InputType['GetPlacementGroupsFilterArgs']]] = None,
+def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict']]] = None,
                          order: Optional[str] = None,
                          order_by: Optional[str] = None,
-                         placement_groups: Optional[Sequence[pulumi.InputType['GetPlacementGroupsPlacementGroupArgs']]] = None,
+                         placement_groups: Optional[Sequence[Union['GetPlacementGroupsPlacementGroupArgs', 'GetPlacementGroupsPlacementGroupArgsDict']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupsResult:
     """
     **NOTE: Placement Groups may not currently be available to all users.**
@@ -99,10 +99,10 @@ def get_placement_groups(filters: Optional[Sequence[pulumi.InputType['GetPlaceme
     import pulumi_linode as linode
 
     all = linode.get_placement_groups()
-    filtered = linode.get_placement_groups(filters=[linode.GetPlacementGroupsFilterArgs(
-        name="label",
-        values=["my-label"],
-    )])
+    filtered = linode.get_placement_groups(filters=[{
+        "name": "label",
+        "values": ["my-label"],
+    }])
     pulumi.export("all-pgs", all.placement_groups)
     pulumi.export("filtered-pgs", filtered.placement_groups)
     ```
@@ -138,10 +138,10 @@ def get_placement_groups(filters: Optional[Sequence[pulumi.InputType['GetPlaceme
 
 
 @_utilities.lift_output_func(get_placement_groups)
-def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPlacementGroupsFilterArgs']]]]] = None,
+def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict']]]]] = None,
                                 order: Optional[pulumi.Input[Optional[str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                                placement_groups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPlacementGroupsPlacementGroupArgs']]]]] = None,
+                                placement_groups: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupsPlacementGroupArgs', 'GetPlacementGroupsPlacementGroupArgsDict']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlacementGroupsResult]:
     """
     **NOTE: Placement Groups may not currently be available to all users.**
@@ -158,10 +158,10 @@ def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence
     import pulumi_linode as linode
 
     all = linode.get_placement_groups()
-    filtered = linode.get_placement_groups(filters=[linode.GetPlacementGroupsFilterArgs(
-        name="label",
-        values=["my-label"],
-    )])
+    filtered = linode.get_placement_groups(filters=[{
+        "name": "label",
+        "values": ["my-label"],
+    }])
     pulumi.export("all-pgs", all.placement_groups)
     pulumi.export("filtered-pgs", filtered.placement_groups)
     ```

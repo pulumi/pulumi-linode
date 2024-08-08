@@ -176,14 +176,14 @@ class FirewallDevice(pulumi.CustomResource):
 
         my_firewall = linode.Firewall("my_firewall",
             label="my_firewall",
-            inbounds=[linode.FirewallInboundArgs(
-                label="http",
-                action="ACCEPT",
-                protocol="TCP",
-                ports="80",
-                ipv4s=["0.0.0.0/0"],
-                ipv6s=["::/0"],
-            )],
+            inbounds=[{
+                "label": "http",
+                "action": "ACCEPT",
+                "protocol": "TCP",
+                "ports": "80",
+                "ipv4s": ["0.0.0.0/0"],
+                "ipv6s": ["::/0"],
+            }],
             inbound_policy="DROP",
             outbound_policy="ACCEPT")
         my_instance = linode.Instance("my_instance",
@@ -229,14 +229,14 @@ class FirewallDevice(pulumi.CustomResource):
 
         my_firewall = linode.Firewall("my_firewall",
             label="my_firewall",
-            inbounds=[linode.FirewallInboundArgs(
-                label="http",
-                action="ACCEPT",
-                protocol="TCP",
-                ports="80",
-                ipv4s=["0.0.0.0/0"],
-                ipv6s=["::/0"],
-            )],
+            inbounds=[{
+                "label": "http",
+                "action": "ACCEPT",
+                "protocol": "TCP",
+                "ports": "80",
+                "ipv4s": ["0.0.0.0/0"],
+                "ipv6s": ["::/0"],
+            }],
             inbound_policy="DROP",
             outbound_policy="ACCEPT")
         my_instance = linode.Instance("my_instance",

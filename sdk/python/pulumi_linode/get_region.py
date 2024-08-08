@@ -122,7 +122,7 @@ class AwaitableGetRegionResult(GetRegionResult):
 
 
 def get_region(id: Optional[str] = None,
-               resolvers: Optional[Sequence[pulumi.InputType['GetRegionResolverArgs']]] = None,
+               resolvers: Optional[Sequence[Union['GetRegionResolverArgs', 'GetRegionResolverArgsDict']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -161,7 +161,7 @@ def get_region(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_region)
 def get_region_output(id: Optional[pulumi.Input[str]] = None,
-                      resolvers: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRegionResolverArgs']]]]] = None,
+                      resolvers: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionResolverArgs', 'GetRegionResolverArgsDict']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).

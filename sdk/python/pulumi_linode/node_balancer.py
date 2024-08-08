@@ -444,14 +444,14 @@ class NodeBalancer(pulumi.CustomResource):
             client_conn_throttle: Optional[pulumi.Input[int]] = None,
             created: Optional[pulumi.Input[str]] = None,
             firewall_id: Optional[pulumi.Input[int]] = None,
-            firewalls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerFirewallArgs']]]]] = None,
+            firewalls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             ipv4: Optional[pulumi.Input[str]] = None,
             ipv6: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            transfers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]]]] = None,
+            transfers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]]] = None,
             updated: Optional[pulumi.Input[str]] = None) -> 'NodeBalancer':
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
@@ -463,7 +463,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[str] created: When this firewall was created.
         :param pulumi.Input[int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerFirewallArgs']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
         :param pulumi.Input[str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[str] ipv4: A list of IPv4 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[str] ipv6: A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -472,7 +472,7 @@ class NodeBalancer(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeBalancerTransferArgs']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[str] updated: When this firewall was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -82,8 +82,8 @@ class AwaitableGetKernelsResult(GetKernelsResult):
             order_by=self.order_by)
 
 
-def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArgs']]] = None,
-                kernels: Optional[Sequence[pulumi.InputType['GetKernelsKernelArgs']]] = None,
+def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict']]] = None,
+                kernels: Optional[Sequence[Union['GetKernelsKernelArgs', 'GetKernelsKernelArgsDict']]] = None,
                 order: Optional[str] = None,
                 order_by: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKernelsResult:
@@ -100,14 +100,14 @@ def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArg
     import pulumi_linode as linode
 
     filtered_kernels = linode.get_kernels(filters=[
-        linode.GetKernelsFilterArgs(
-            name="label",
-            values=["my-kernel"],
-        ),
-        linode.GetKernelsFilterArgs(
-            name="architecture",
-            values=["x86_64"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-kernel"],
+        },
+        {
+            "name": "architecture",
+            "values": ["x86_64"],
+        },
     ])
     ```
 
@@ -150,8 +150,8 @@ def get_kernels(filters: Optional[Sequence[pulumi.InputType['GetKernelsFilterArg
 
 
 @_utilities.lift_output_func(get_kernels)
-def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKernelsFilterArgs']]]]] = None,
-                       kernels: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKernelsKernelArgs']]]]] = None,
+def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict']]]]] = None,
+                       kernels: Optional[pulumi.Input[Optional[Sequence[Union['GetKernelsKernelArgs', 'GetKernelsKernelArgsDict']]]]] = None,
                        order: Optional[pulumi.Input[Optional[str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelsResult]:
@@ -168,14 +168,14 @@ def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     import pulumi_linode as linode
 
     filtered_kernels = linode.get_kernels(filters=[
-        linode.GetKernelsFilterArgs(
-            name="label",
-            values=["my-kernel"],
-        ),
-        linode.GetKernelsFilterArgs(
-            name="architecture",
-            values=["x86_64"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-kernel"],
+        },
+        {
+            "name": "architecture",
+            "values": ["x86_64"],
+        },
     ])
     ```
 

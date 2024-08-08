@@ -82,8 +82,8 @@ class AwaitableGetNodebalancersResult(GetNodebalancersResult):
             order_by=self.order_by)
 
 
-def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalancersFilterArgs']]] = None,
-                      nodebalancers: Optional[Sequence[pulumi.InputType['GetNodebalancersNodebalancerArgs']]] = None,
+def get_nodebalancers(filters: Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict']]] = None,
+                      nodebalancers: Optional[Sequence[Union['GetNodebalancersNodebalancerArgs', 'GetNodebalancersNodebalancerArgsDict']]] = None,
                       order: Optional[str] = None,
                       order_by: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodebalancersResult:
@@ -100,14 +100,14 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
     import pulumi_linode as linode
 
     specific_nodebalancers = linode.get_nodebalancers(filters=[
-        linode.GetNodebalancersFilterArgs(
-            name="label",
-            values=["my-nodebalancer"],
-        ),
-        linode.GetNodebalancersFilterArgs(
-            name="region",
-            values=["us-iad"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-nodebalancer"],
+        },
+        {
+            "name": "region",
+            "values": ["us-iad"],
+        },
     ])
     pulumi.export("nodebalancerId", specific_nodebalancers.nodebalancers[0].id)
     ```
@@ -149,8 +149,8 @@ def get_nodebalancers(filters: Optional[Sequence[pulumi.InputType['GetNodebalanc
 
 
 @_utilities.lift_output_func(get_nodebalancers)
-def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodebalancersFilterArgs']]]]] = None,
-                             nodebalancers: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodebalancersNodebalancerArgs']]]]] = None,
+def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict']]]]] = None,
+                             nodebalancers: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancersNodebalancerArgs', 'GetNodebalancersNodebalancerArgsDict']]]]] = None,
                              order: Optional[pulumi.Input[Optional[str]]] = None,
                              order_by: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodebalancersResult]:
@@ -167,14 +167,14 @@ def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     import pulumi_linode as linode
 
     specific_nodebalancers = linode.get_nodebalancers(filters=[
-        linode.GetNodebalancersFilterArgs(
-            name="label",
-            values=["my-nodebalancer"],
-        ),
-        linode.GetNodebalancersFilterArgs(
-            name="region",
-            values=["us-iad"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-nodebalancer"],
+        },
+        {
+            "name": "region",
+            "values": ["us-iad"],
+        },
     ])
     pulumi.export("nodebalancerId", specific_nodebalancers.nodebalancers[0].id)
     ```
