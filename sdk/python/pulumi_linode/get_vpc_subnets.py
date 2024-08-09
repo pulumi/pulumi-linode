@@ -73,9 +73,9 @@ class AwaitableGetVpcSubnetsResult(GetVpcSubnetsResult):
             vpc_subnets=self.vpc_subnets)
 
 
-def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFilterArgs']]] = None,
+def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict']]] = None,
                     vpc_id: Optional[int] = None,
-                    vpc_subnets: Optional[Sequence[pulumi.InputType['GetVpcSubnetsVpcSubnetArgs']]] = None,
+                    vpc_subnets: Optional[Sequence[Union['GetVpcSubnetsVpcSubnetArgs', 'GetVpcSubnetsVpcSubnetArgsDict']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcSubnetsResult:
     """
     Provides information about a list of Linode VPC subnets that match a set of filters.
@@ -90,10 +90,10 @@ def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFi
     import pulumi_linode as linode
 
     filtered_subnets = linode.get_vpc_subnets(vpc_id=123,
-        filters=[linode.GetVpcSubnetsFilterArgs(
-            name="label",
-            values=["test"],
-        )])
+        filters=[{
+            "name": "label",
+            "values": ["test"],
+        }])
     pulumi.export("vpcSubnets", filtered_subnets.vpc_subnets)
     ```
 
@@ -125,9 +125,9 @@ def get_vpc_subnets(filters: Optional[Sequence[pulumi.InputType['GetVpcSubnetsFi
 
 
 @_utilities.lift_output_func(get_vpc_subnets)
-def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVpcSubnetsFilterArgs']]]]] = None,
+def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict']]]]] = None,
                            vpc_id: Optional[pulumi.Input[int]] = None,
-                           vpc_subnets: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVpcSubnetsVpcSubnetArgs']]]]] = None,
+                           vpc_subnets: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcSubnetsVpcSubnetArgs', 'GetVpcSubnetsVpcSubnetArgsDict']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetsResult]:
     """
     Provides information about a list of Linode VPC subnets that match a set of filters.
@@ -142,10 +142,10 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     import pulumi_linode as linode
 
     filtered_subnets = linode.get_vpc_subnets(vpc_id=123,
-        filters=[linode.GetVpcSubnetsFilterArgs(
-            name="label",
-            values=["test"],
-        )])
+        filters=[{
+            "name": "label",
+            "values": ["test"],
+        }])
     pulumi.export("vpcSubnets", filtered_subnets.vpc_subnets)
     ```
 

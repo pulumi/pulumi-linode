@@ -361,7 +361,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NodeBalancerConfig(String name) {
+    public NodeBalancerConfig(java.lang.String name) {
         this(name, NodeBalancerConfigArgs.Empty);
     }
     /**
@@ -369,7 +369,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NodeBalancerConfig(String name, NodeBalancerConfigArgs args) {
+    public NodeBalancerConfig(java.lang.String name, NodeBalancerConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -378,15 +378,22 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NodeBalancerConfig(String name, NodeBalancerConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, args == null ? NodeBalancerConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NodeBalancerConfig(java.lang.String name, NodeBalancerConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NodeBalancerConfig(String name, Output<String> id, @Nullable NodeBalancerConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, state, makeResourceOptions(options, id));
+    private NodeBalancerConfig(java.lang.String name, Output<java.lang.String> id, @Nullable NodeBalancerConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/nodeBalancerConfig:NodeBalancerConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NodeBalancerConfigArgs makeArgs(NodeBalancerConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodeBalancerConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -406,7 +413,7 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NodeBalancerConfig get(String name, Output<String> id, @Nullable NodeBalancerConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NodeBalancerConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable NodeBalancerConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NodeBalancerConfig(name, id, state, options);
     }
 }

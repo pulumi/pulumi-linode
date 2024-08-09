@@ -616,7 +616,7 @@ class DatabasePostgresql(pulumi.CustomResource):
                  replication_type: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 updates: Optional[pulumi.Input[pulumi.InputType['DatabasePostgresqlUpdatesArgs']]] = None,
+                 updates: Optional[pulumi.Input[Union['DatabasePostgresqlUpdatesArgs', 'DatabasePostgresqlUpdatesArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode PostgreSQL Database resource. This can be used to create, modify, and delete Linode PostgreSQL Databases.
@@ -656,13 +656,13 @@ class DatabasePostgresql(pulumi.CustomResource):
             replication_type="semi_synch",
             replication_commit_type="remote_write",
             ssl_connection=True,
-            updates=linode.DatabasePostgresqlUpdatesArgs(
-                day_of_week="saturday",
-                duration=1,
-                frequency="monthly",
-                hour_of_day=22,
-                week_of_month=2,
-            ))
+            updates={
+                "day_of_week": "saturday",
+                "duration": 1,
+                "frequency": "monthly",
+                "hour_of_day": 22,
+                "week_of_month": 2,
+            })
         ```
 
         ## updates
@@ -711,7 +711,7 @@ class DatabasePostgresql(pulumi.CustomResource):
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['DatabasePostgresqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[Union['DatabasePostgresqlUpdatesArgs', 'DatabasePostgresqlUpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
     @overload
@@ -757,13 +757,13 @@ class DatabasePostgresql(pulumi.CustomResource):
             replication_type="semi_synch",
             replication_commit_type="remote_write",
             ssl_connection=True,
-            updates=linode.DatabasePostgresqlUpdatesArgs(
-                day_of_week="saturday",
-                duration=1,
-                frequency="monthly",
-                hour_of_day=22,
-                week_of_month=2,
-            ))
+            updates={
+                "day_of_week": "saturday",
+                "duration": 1,
+                "frequency": "monthly",
+                "hour_of_day": 22,
+                "week_of_month": 2,
+            })
         ```
 
         ## updates
@@ -813,7 +813,7 @@ class DatabasePostgresql(pulumi.CustomResource):
                  replication_type: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 updates: Optional[pulumi.Input[pulumi.InputType['DatabasePostgresqlUpdatesArgs']]] = None,
+                 updates: Optional[pulumi.Input[Union['DatabasePostgresqlUpdatesArgs', 'DatabasePostgresqlUpdatesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -885,7 +885,7 @@ class DatabasePostgresql(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated: Optional[pulumi.Input[str]] = None,
-            updates: Optional[pulumi.Input[pulumi.InputType['DatabasePostgresqlUpdatesArgs']]] = None,
+            updates: Optional[pulumi.Input[Union['DatabasePostgresqlUpdatesArgs', 'DatabasePostgresqlUpdatesArgsDict']]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'DatabasePostgresql':
         """
         Get an existing DatabasePostgresql resource's state with the given name, id, and optional extra
@@ -926,7 +926,7 @@ class DatabasePostgresql(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
-        :param pulumi.Input[pulumi.InputType['DatabasePostgresqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[Union['DatabasePostgresqlUpdatesArgs', 'DatabasePostgresqlUpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `13.2`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

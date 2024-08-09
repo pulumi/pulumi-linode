@@ -82,10 +82,10 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             types=self.types)
 
 
-def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceTypesFilterArgs']]] = None,
+def get_instance_types(filters: Optional[Sequence[Union['GetInstanceTypesFilterArgs', 'GetInstanceTypesFilterArgsDict']]] = None,
                        order: Optional[str] = None,
                        order_by: Optional[str] = None,
-                       types: Optional[Sequence[pulumi.InputType['GetInstanceTypesTypeArgs']]] = None,
+                       types: Optional[Sequence[Union['GetInstanceTypesTypeArgs', 'GetInstanceTypesTypeArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
     """
     Provides information about Linode Instance types that match a set of filters.
@@ -99,10 +99,10 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
     import pulumi
     import pulumi_linode as linode
 
-    specific_types = linode.get_instance_types(filters=[linode.GetInstanceTypesFilterArgs(
-        name="vcpus",
-        values=["2"],
-    )])
+    specific_types = linode.get_instance_types(filters=[{
+        "name": "vcpus",
+        "values": ["2"],
+    }])
     pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
 
@@ -155,10 +155,10 @@ def get_instance_types(filters: Optional[Sequence[pulumi.InputType['GetInstanceT
 
 
 @_utilities.lift_output_func(get_instance_types)
-def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstanceTypesFilterArgs']]]]] = None,
+def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceTypesFilterArgs', 'GetInstanceTypesFilterArgsDict']]]]] = None,
                               order: Optional[pulumi.Input[Optional[str]]] = None,
                               order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                              types: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstanceTypesTypeArgs']]]]] = None,
+                              types: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceTypesTypeArgs', 'GetInstanceTypesTypeArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     Provides information about Linode Instance types that match a set of filters.
@@ -172,10 +172,10 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     import pulumi
     import pulumi_linode as linode
 
-    specific_types = linode.get_instance_types(filters=[linode.GetInstanceTypesFilterArgs(
-        name="vcpus",
-        values=["2"],
-    )])
+    specific_types = linode.get_instance_types(filters=[{
+        "name": "vcpus",
+        "values": ["2"],
+    }])
     pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
 

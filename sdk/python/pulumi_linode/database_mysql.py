@@ -551,7 +551,7 @@ class DatabaseMysql(pulumi.CustomResource):
                  replication_type: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 updates: Optional[pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']]] = None,
+                 updates: Optional[pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
@@ -590,13 +590,13 @@ class DatabaseMysql(pulumi.CustomResource):
             encrypted=True,
             replication_type="asynch",
             ssl_connection=True,
-            updates=linode.DatabaseMysqlUpdatesArgs(
-                day_of_week="saturday",
-                duration=1,
-                frequency="monthly",
-                hour_of_day=22,
-                week_of_month=2,
-            ))
+            updates={
+                "day_of_week": "saturday",
+                "duration": 1,
+                "frequency": "monthly",
+                "hour_of_day": 22,
+                "week_of_month": 2,
+            })
         ```
 
         ## updates
@@ -640,7 +640,7 @@ class DatabaseMysql(pulumi.CustomResource):
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
     @overload
@@ -685,13 +685,13 @@ class DatabaseMysql(pulumi.CustomResource):
             encrypted=True,
             replication_type="asynch",
             ssl_connection=True,
-            updates=linode.DatabaseMysqlUpdatesArgs(
-                day_of_week="saturday",
-                duration=1,
-                frequency="monthly",
-                hour_of_day=22,
-                week_of_month=2,
-            ))
+            updates={
+                "day_of_week": "saturday",
+                "duration": 1,
+                "frequency": "monthly",
+                "hour_of_day": 22,
+                "week_of_month": 2,
+            })
         ```
 
         ## updates
@@ -740,7 +740,7 @@ class DatabaseMysql(pulumi.CustomResource):
                  replication_type: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 updates: Optional[pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']]] = None,
+                 updates: Optional[pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -808,7 +808,7 @@ class DatabaseMysql(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated: Optional[pulumi.Input[str]] = None,
-            updates: Optional[pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']]] = None,
+            updates: Optional[pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'DatabaseMysql':
         """
         Get an existing DatabaseMysql resource's state with the given name, id, and optional extra
@@ -843,7 +843,7 @@ class DatabaseMysql(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlUpdatesArgs']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

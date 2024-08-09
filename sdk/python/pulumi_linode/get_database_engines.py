@@ -91,8 +91,8 @@ class AwaitableGetDatabaseEnginesResult(GetDatabaseEnginesResult):
             order_by=self.order_by)
 
 
-def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabaseEnginesEngineArgs']]] = None,
-                         filters: Optional[Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']]] = None,
+def get_database_engines(engines: Optional[Sequence[Union['GetDatabaseEnginesEngineArgs', 'GetDatabaseEnginesEngineArgsDict']]] = None,
+                         filters: Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]] = None,
                          latest: Optional[bool] = None,
                          order: Optional[str] = None,
                          order_by: Optional[str] = None,
@@ -119,10 +119,10 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     import pulumi
     import pulumi_linode as linode
 
-    mysql = linode.get_database_engines(filters=[linode.GetDatabaseEnginesFilterArgs(
-        name="engine",
-        values=["mysql"],
-    )])
+    mysql = linode.get_database_engines(filters=[{
+        "name": "engine",
+        "values": ["mysql"],
+    }])
     pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
 
@@ -133,10 +133,10 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
     import pulumi_linode as linode
 
     mysql = linode.get_database_engines(latest=True,
-        filters=[linode.GetDatabaseEnginesFilterArgs(
-            name="engine",
-            values=["mysql"],
-        )])
+        filters=[{
+            "name": "engine",
+            "values": ["mysql"],
+        }])
     my_db = linode.DatabaseMysql("my_db",
         label="mydb",
         engine_id=mysql.engines[0].id,
@@ -170,8 +170,8 @@ def get_database_engines(engines: Optional[Sequence[pulumi.InputType['GetDatabas
 
 
 @_utilities.lift_output_func(get_database_engines)
-def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseEnginesEngineArgs']]]]] = None,
-                                filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseEnginesFilterArgs']]]]] = None,
+def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesEngineArgs', 'GetDatabaseEnginesEngineArgsDict']]]]] = None,
+                                filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[bool]]] = None,
                                 order: Optional[pulumi.Input[Optional[str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
@@ -198,10 +198,10 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     import pulumi
     import pulumi_linode as linode
 
-    mysql = linode.get_database_engines(filters=[linode.GetDatabaseEnginesFilterArgs(
-        name="engine",
-        values=["mysql"],
-    )])
+    mysql = linode.get_database_engines(filters=[{
+        "name": "engine",
+        "values": ["mysql"],
+    }])
     pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
 
@@ -212,10 +212,10 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     import pulumi_linode as linode
 
     mysql = linode.get_database_engines(latest=True,
-        filters=[linode.GetDatabaseEnginesFilterArgs(
-            name="engine",
-            values=["mysql"],
-        )])
+        filters=[{
+            "name": "engine",
+            "values": ["mysql"],
+        }])
     my_db = linode.DatabaseMysql("my_db",
         label="mydb",
         engine_id=mysql.engines[0].id,

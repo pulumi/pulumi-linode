@@ -61,8 +61,8 @@ class AwaitableGetIpv6RangesResult(GetIpv6RangesResult):
             ranges=self.ranges)
 
 
-def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFilterArgs']]] = None,
-                    ranges: Optional[Sequence[pulumi.InputType['GetIpv6RangesRangeArgs']]] = None,
+def get_ipv6_ranges(filters: Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]] = None,
+                    ranges: Optional[Sequence[Union['GetIpv6RangesRangeArgs', 'GetIpv6RangesRangeArgsDict']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpv6RangesResult:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.
@@ -76,10 +76,10 @@ def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFi
     import pulumi
     import pulumi_linode as linode
 
-    filtered_ranges = linode.get_ipv6_ranges(filters=[linode.GetIpv6RangesFilterArgs(
-        name="region",
-        values=["us-mia"],
-    )])
+    filtered_ranges = linode.get_ipv6_ranges(filters=[{
+        "name": "region",
+        "values": ["us-mia"],
+    }])
     pulumi.export("ranges", filtered_ranges)
     ```
 
@@ -106,8 +106,8 @@ def get_ipv6_ranges(filters: Optional[Sequence[pulumi.InputType['GetIpv6RangesFi
 
 
 @_utilities.lift_output_func(get_ipv6_ranges)
-def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIpv6RangesFilterArgs']]]]] = None,
-                           ranges: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIpv6RangesRangeArgs']]]]] = None,
+def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]]]] = None,
+                           ranges: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesRangeArgs', 'GetIpv6RangesRangeArgsDict']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6RangesResult]:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.
@@ -121,10 +121,10 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     import pulumi
     import pulumi_linode as linode
 
-    filtered_ranges = linode.get_ipv6_ranges(filters=[linode.GetIpv6RangesFilterArgs(
-        name="region",
-        values=["us-mia"],
-    )])
+    filtered_ranges = linode.get_ipv6_ranges(filters=[{
+        "name": "region",
+        "values": ["us-mia"],
+    }])
     pulumi.export("ranges", filtered_ranges)
     ```
 

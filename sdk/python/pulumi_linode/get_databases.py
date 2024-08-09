@@ -82,8 +82,8 @@ class AwaitableGetDatabasesResult(GetDatabasesResult):
             order_by=self.order_by)
 
 
-def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDatabaseArgs']]] = None,
-                  filters: Optional[Sequence[pulumi.InputType['GetDatabasesFilterArgs']]] = None,
+def get_databases(databases: Optional[Sequence[Union['GetDatabasesDatabaseArgs', 'GetDatabasesDatabaseArgsDict']]] = None,
+                  filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]] = None,
                   order: Optional[str] = None,
                   order_by: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
@@ -109,10 +109,10 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
     import pulumi
     import pulumi_linode as linode
 
-    mysql = linode.get_databases(filters=[linode.GetDatabasesFilterArgs(
-        name="engine",
-        values=["mysql"],
-    )])
+    mysql = linode.get_databases(filters=[{
+        "name": "engine",
+        "values": ["mysql"],
+    }])
     pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
 
@@ -137,8 +137,8 @@ def get_databases(databases: Optional[Sequence[pulumi.InputType['GetDatabasesDat
 
 
 @_utilities.lift_output_func(get_databases)
-def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabasesDatabaseArgs']]]]] = None,
-                         filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabasesFilterArgs']]]]] = None,
+def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabasesDatabaseArgs', 'GetDatabasesDatabaseArgsDict']]]]] = None,
+                         filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
@@ -164,10 +164,10 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[pulu
     import pulumi
     import pulumi_linode as linode
 
-    mysql = linode.get_databases(filters=[linode.GetDatabasesFilterArgs(
-        name="engine",
-        values=["mysql"],
-    )])
+    mysql = linode.get_databases(filters=[{
+        "name": "engine",
+        "values": ["mysql"],
+    }])
     pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
 

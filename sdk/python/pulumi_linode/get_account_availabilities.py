@@ -61,8 +61,8 @@ class AwaitableGetAccountAvailabilitiesResult(GetAccountAvailabilitiesResult):
             id=self.id)
 
 
-def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputType['GetAccountAvailabilitiesAvailabilityArgs']]] = None,
-                               filters: Optional[Sequence[pulumi.InputType['GetAccountAvailabilitiesFilterArgs']]] = None,
+def get_account_availabilities(availabilities: Optional[Sequence[Union['GetAccountAvailabilitiesAvailabilityArgs', 'GetAccountAvailabilitiesAvailabilityArgsDict']]] = None,
+                               filters: Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict']]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAvailabilitiesResult:
     """
     Provides information about services availabilities for the current Linode account.
@@ -76,10 +76,10 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
     import pulumi
     import pulumi_linode as linode
 
-    filtered_availabilities = linode.get_account_availabilities(filters=[linode.GetAccountAvailabilitiesFilterArgs(
-        name="unavailable",
-        values=["Linodes"],
-    )])
+    filtered_availabilities = linode.get_account_availabilities(filters=[{
+        "name": "unavailable",
+        "values": ["Linodes"],
+    }])
     pulumi.export("regions-without-linodes", [__item.region for __item in filtered_availabilities.availabilities])
     ```
 
@@ -104,8 +104,8 @@ def get_account_availabilities(availabilities: Optional[Sequence[pulumi.InputTyp
 
 
 @_utilities.lift_output_func(get_account_availabilities)
-def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountAvailabilitiesAvailabilityArgs']]]]] = None,
-                                      filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountAvailabilitiesFilterArgs']]]]] = None,
+def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountAvailabilitiesAvailabilityArgs', 'GetAccountAvailabilitiesAvailabilityArgsDict']]]]] = None,
+                                      filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict']]]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilitiesResult]:
     """
     Provides information about services availabilities for the current Linode account.
@@ -119,10 +119,10 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_linode as linode
 
-    filtered_availabilities = linode.get_account_availabilities(filters=[linode.GetAccountAvailabilitiesFilterArgs(
-        name="unavailable",
-        values=["Linodes"],
-    )])
+    filtered_availabilities = linode.get_account_availabilities(filters=[{
+        "name": "unavailable",
+        "values": ["Linodes"],
+    }])
     pulumi.export("regions-without-linodes", [__item.region for __item in filtered_availabilities.availabilities])
     ```
 

@@ -82,10 +82,10 @@ class AwaitableGetSshkeysResult(GetSshkeysResult):
             sshkeys=self.sshkeys)
 
 
-def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArgs']]] = None,
+def get_sshkeys(filters: Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSshkeysFilterArgsDict']]] = None,
                 order: Optional[str] = None,
                 order_by: Optional[str] = None,
-                sshkeys: Optional[Sequence[pulumi.InputType['GetSshkeysSshkeyArgs']]] = None,
+                sshkeys: Optional[Sequence[Union['GetSshkeysSshkeyArgs', 'GetSshkeysSshkeyArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshkeysResult:
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
@@ -102,14 +102,14 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
     import pulumi_linode as linode
 
     filtered_ssh = linode.get_sshkeys(filters=[
-        linode.GetSshkeysFilterArgs(
-            name="label",
-            values=["my-ssh"],
-        ),
-        linode.GetSshkeysFilterArgs(
-            name="ssh_key",
-            values=["RSA-6522525"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-ssh"],
+        },
+        {
+            "name": "ssh_key",
+            "values": ["RSA-6522525"],
+        },
     ])
     ```
 
@@ -142,10 +142,10 @@ def get_sshkeys(filters: Optional[Sequence[pulumi.InputType['GetSshkeysFilterArg
 
 
 @_utilities.lift_output_func(get_sshkeys)
-def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSshkeysFilterArgs']]]]] = None,
+def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSshkeysFilterArgsDict']]]]] = None,
                        order: Optional[pulumi.Input[Optional[str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                       sshkeys: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSshkeysSshkeyArgs']]]]] = None,
+                       sshkeys: Optional[pulumi.Input[Optional[Sequence[Union['GetSshkeysSshkeyArgs', 'GetSshkeysSshkeyArgsDict']]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshkeysResult]:
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
@@ -162,14 +162,14 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     import pulumi_linode as linode
 
     filtered_ssh = linode.get_sshkeys(filters=[
-        linode.GetSshkeysFilterArgs(
-            name="label",
-            values=["my-ssh"],
-        ),
-        linode.GetSshkeysFilterArgs(
-            name="ssh_key",
-            values=["RSA-6522525"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-ssh"],
+        },
+        {
+            "name": "ssh_key",
+            "values": ["RSA-6522525"],
+        },
     ])
     ```
 

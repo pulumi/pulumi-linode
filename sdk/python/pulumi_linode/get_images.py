@@ -91,8 +91,8 @@ class AwaitableGetImagesResult(GetImagesResult):
             order_by=self.order_by)
 
 
-def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]] = None,
-               images: Optional[Sequence[pulumi.InputType['GetImagesImageArgs']]] = None,
+def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]] = None,
+               images: Optional[Sequence[Union['GetImagesImageArgs', 'GetImagesImageArgsDict']]] = None,
                latest: Optional[bool] = None,
                order: Optional[str] = None,
                order_by: Optional[str] = None,
@@ -110,14 +110,14 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     import pulumi_linode as linode
 
     specific_images = linode.get_images(filters=[
-        linode.GetImagesFilterArgs(
-            name="label",
-            values=["Debian 12"],
-        ),
-        linode.GetImagesFilterArgs(
-            name="is_public",
-            values=["true"],
-        ),
+        {
+            "name": "label",
+            "values": ["Debian 12"],
+        },
+        {
+            "name": "is_public",
+            "values": ["true"],
+        },
     ])
     pulumi.export("imageId", specific_images.images[0].id)
     ```
@@ -178,8 +178,8 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
 
 @_utilities.lift_output_func(get_images)
-def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]]]] = None,
-                      images: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImagesImageArgs']]]]] = None,
+def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
+                      images: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesImageArgs', 'GetImagesImageArgsDict']]]]] = None,
                       latest: Optional[pulumi.Input[Optional[bool]]] = None,
                       order: Optional[pulumi.Input[Optional[str]]] = None,
                       order_by: Optional[pulumi.Input[Optional[str]]] = None,
@@ -197,14 +197,14 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     import pulumi_linode as linode
 
     specific_images = linode.get_images(filters=[
-        linode.GetImagesFilterArgs(
-            name="label",
-            values=["Debian 12"],
-        ),
-        linode.GetImagesFilterArgs(
-            name="is_public",
-            values=["true"],
-        ),
+        {
+            "name": "label",
+            "values": ["Debian 12"],
+        },
+        {
+            "name": "is_public",
+            "values": ["true"],
+        },
     ])
     pulumi.export("imageId", specific_images.images[0].id)
     ```

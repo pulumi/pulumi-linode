@@ -172,7 +172,7 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             updated=self.updated)
 
 
-def get_node_balancer(firewalls: Optional[Sequence[pulumi.InputType['GetNodeBalancerFirewallArgs']]] = None,
+def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]] = None,
                       id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeBalancerResult:
     """
@@ -213,7 +213,7 @@ def get_node_balancer(firewalls: Optional[Sequence[pulumi.InputType['GetNodeBala
 
 
 @_utilities.lift_output_func(get_node_balancer)
-def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodeBalancerFirewallArgs']]]]] = None,
+def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]]]] = None,
                              id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerResult]:
     """

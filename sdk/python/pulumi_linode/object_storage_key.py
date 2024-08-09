@@ -201,7 +201,7 @@ class ObjectStorageKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]]] = None,
+                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -228,16 +228,16 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         foobar = linode.ObjectStorageKey("foobar",
             label="my-key",
-            bucket_accesses=[linode.ObjectStorageKeyBucketAccessArgs(
-                bucket_name="my-bucket-name",
-                region="us-mia",
-                permissions="read_write",
-            )])
+            bucket_accesses=[{
+                "bucket_name": "my-bucket-name",
+                "region": "us-mia",
+                "permissions": "read_write",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A set of regions where the key will grant access to create buckets.
                
@@ -272,11 +272,11 @@ class ObjectStorageKey(pulumi.CustomResource):
 
         foobar = linode.ObjectStorageKey("foobar",
             label="my-key",
-            bucket_accesses=[linode.ObjectStorageKeyBucketAccessArgs(
-                bucket_name="my-bucket-name",
-                region="us-mia",
-                permissions="read_write",
-            )])
+            bucket_accesses=[{
+                "bucket_name": "my-bucket-name",
+                "region": "us-mia",
+                "permissions": "read_write",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -294,7 +294,7 @@ class ObjectStorageKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]]] = None,
+                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -328,11 +328,11 @@ class ObjectStorageKey(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: Optional[pulumi.Input[str]] = None,
-            bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]]] = None,
+            bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
             label: Optional[pulumi.Input[str]] = None,
             limited: Optional[pulumi.Input[bool]] = None,
             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            regions_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyRegionsDetailArgs']]]]] = None,
+            regions_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyRegionsDetailArgs', 'ObjectStorageKeyRegionsDetailArgsDict']]]]] = None,
             secret_key: Optional[pulumi.Input[str]] = None) -> 'ObjectStorageKey':
         """
         Get an existing ObjectStorageKey resource's state with the given name, id, and optional extra
@@ -342,13 +342,13 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: This keypair's access key. This is not secret.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyBucketAccessArgs']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[str] label: The label given to this key. For display purposes only.
         :param pulumi.Input[bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A set of regions where the key will grant access to create buckets.
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectStorageKeyRegionsDetailArgs']]]] regions_details: A set of objects containing the detailed info of the regions where this key can access.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyRegionsDetailArgs', 'ObjectStorageKeyRegionsDetailArgsDict']]]] regions_details: A set of objects containing the detailed info of the regions where this key can access.
         :param pulumi.Input[str] secret_key: This keypair's secret key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

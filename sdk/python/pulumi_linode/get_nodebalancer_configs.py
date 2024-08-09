@@ -94,8 +94,8 @@ class AwaitableGetNodebalancerConfigsResult(GetNodebalancerConfigsResult):
             order_by=self.order_by)
 
 
-def get_nodebalancer_configs(filters: Optional[Sequence[pulumi.InputType['GetNodebalancerConfigsFilterArgs']]] = None,
-                             nodebalancer_configs: Optional[Sequence[pulumi.InputType['GetNodebalancerConfigsNodebalancerConfigArgs']]] = None,
+def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerConfigsFilterArgs', 'GetNodebalancerConfigsFilterArgsDict']]] = None,
+                             nodebalancer_configs: Optional[Sequence[Union['GetNodebalancerConfigsNodebalancerConfigArgs', 'GetNodebalancerConfigsNodebalancerConfigArgsDict']]] = None,
                              nodebalancer_id: Optional[int] = None,
                              order: Optional[str] = None,
                              order_by: Optional[str] = None,
@@ -113,10 +113,10 @@ def get_nodebalancer_configs(filters: Optional[Sequence[pulumi.InputType['GetNod
     import pulumi_linode as linode
 
     filter_nb_configs = linode.get_nodebalancer_configs(nodebalancer_id=12345,
-        filters=[linode.GetNodebalancerConfigsFilterArgs(
-            name="port",
-            values=["80"],
-        )])
+        filters=[{
+            "name": "port",
+            "values": ["80"],
+        }])
     pulumi.export("nodebalancerConfigId", filter_nb_configs.nodebalancer_configs[0].id)
     ```
 
@@ -172,8 +172,8 @@ def get_nodebalancer_configs(filters: Optional[Sequence[pulumi.InputType['GetNod
 
 
 @_utilities.lift_output_func(get_nodebalancer_configs)
-def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodebalancerConfigsFilterArgs']]]]] = None,
-                                    nodebalancer_configs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodebalancerConfigsNodebalancerConfigArgs']]]]] = None,
+def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerConfigsFilterArgs', 'GetNodebalancerConfigsFilterArgsDict']]]]] = None,
+                                    nodebalancer_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerConfigsNodebalancerConfigArgs', 'GetNodebalancerConfigsNodebalancerConfigArgsDict']]]]] = None,
                                     nodebalancer_id: Optional[pulumi.Input[int]] = None,
                                     order: Optional[pulumi.Input[Optional[str]]] = None,
                                     order_by: Optional[pulumi.Input[Optional[str]]] = None,
@@ -191,10 +191,10 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
     import pulumi_linode as linode
 
     filter_nb_configs = linode.get_nodebalancer_configs(nodebalancer_id=12345,
-        filters=[linode.GetNodebalancerConfigsFilterArgs(
-            name="port",
-            values=["80"],
-        )])
+        filters=[{
+            "name": "port",
+            "values": ["80"],
+        }])
     pulumi.export("nodebalancerConfigId", filter_nb_configs.nodebalancer_configs[0].id)
     ```
 

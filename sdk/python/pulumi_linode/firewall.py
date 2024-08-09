@@ -401,12 +401,12 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  inbound_policy: Optional[pulumi.Input[str]] = None,
-                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
+                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  outbound_policy: Optional[pulumi.Input[str]] = None,
-                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
+                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -431,41 +431,41 @@ class Firewall(pulumi.CustomResource):
         my_firewall = linode.Firewall("my_firewall",
             label="my_firewall",
             inbounds=[
-                linode.FirewallInboundArgs(
-                    label="allow-http",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallInboundArgs(
-                    label="allow-https",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
+                {
+                    "label": "allow-http",
+                    "action": "ACCEPT",
+                    "protocol": "TCP",
+                    "ports": "80",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
+                {
+                    "label": "allow-https",
+                    "action": "ACCEPT",
+                    "protocol": "TCP",
+                    "ports": "443",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
             ],
             inbound_policy="DROP",
             outbounds=[
-                linode.FirewallOutboundArgs(
-                    label="reject-http",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallOutboundArgs(
-                    label="reject-https",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
+                {
+                    "label": "reject-http",
+                    "action": "DROP",
+                    "protocol": "TCP",
+                    "ports": "80",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
+                {
+                    "label": "reject-https",
+                    "action": "DROP",
+                    "protocol": "TCP",
+                    "ports": "443",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
             ],
             outbound_policy="ACCEPT",
             linodes=[my_instance.id])
@@ -487,12 +487,12 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
                
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         ...
@@ -523,41 +523,41 @@ class Firewall(pulumi.CustomResource):
         my_firewall = linode.Firewall("my_firewall",
             label="my_firewall",
             inbounds=[
-                linode.FirewallInboundArgs(
-                    label="allow-http",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallInboundArgs(
-                    label="allow-https",
-                    action="ACCEPT",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
+                {
+                    "label": "allow-http",
+                    "action": "ACCEPT",
+                    "protocol": "TCP",
+                    "ports": "80",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
+                {
+                    "label": "allow-https",
+                    "action": "ACCEPT",
+                    "protocol": "TCP",
+                    "ports": "443",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
             ],
             inbound_policy="DROP",
             outbounds=[
-                linode.FirewallOutboundArgs(
-                    label="reject-http",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="80",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
-                linode.FirewallOutboundArgs(
-                    label="reject-https",
-                    action="DROP",
-                    protocol="TCP",
-                    ports="443",
-                    ipv4s=["0.0.0.0/0"],
-                    ipv6s=["::/0"],
-                ),
+                {
+                    "label": "reject-http",
+                    "action": "DROP",
+                    "protocol": "TCP",
+                    "ports": "80",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
+                {
+                    "label": "reject-https",
+                    "action": "DROP",
+                    "protocol": "TCP",
+                    "ports": "443",
+                    "ipv4s": ["0.0.0.0/0"],
+                    "ipv6s": ["::/0"],
+                },
             ],
             outbound_policy="ACCEPT",
             linodes=[my_instance.id])
@@ -588,12 +588,12 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  inbound_policy: Optional[pulumi.Input[str]] = None,
-                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
+                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  outbound_policy: Optional[pulumi.Input[str]] = None,
-                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
+                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -634,15 +634,15 @@ class Firewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created: Optional[pulumi.Input[str]] = None,
-            devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]]] = None,
+            devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict']]]]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             inbound_policy: Optional[pulumi.Input[str]] = None,
-            inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]]] = None,
+            inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
             label: Optional[pulumi.Input[str]] = None,
             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             outbound_policy: Optional[pulumi.Input[str]] = None,
-            outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]]] = None,
+            outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated: Optional[pulumi.Input[str]] = None) -> 'Firewall':
@@ -654,19 +654,19 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: When this firewall was created
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeviceArgs']]]] devices: The devices associated with this firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict']]]] devices: The devices associated with this firewall.
         :param pulumi.Input[bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
                
                * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
                
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundArgs']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundArgs']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[str] status: The status of the Firewall.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[str] updated: When this firewall was last updated

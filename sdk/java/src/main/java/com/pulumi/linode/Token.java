@@ -150,7 +150,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Token(String name) {
+    public Token(java.lang.String name) {
         this(name, TokenArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Token(String name, TokenArgs args) {
+    public Token(java.lang.String name, TokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class Token extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Token(String name, TokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/token:Token", name, args == null ? TokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Token(java.lang.String name, TokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/token:Token", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Token(String name, Output<String> id, @Nullable TokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/token:Token", name, state, makeResourceOptions(options, id));
+    private Token(java.lang.String name, Output<java.lang.String> id, @Nullable TokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/token:Token", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TokenArgs makeArgs(TokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -194,7 +201,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Token get(String name, Output<String> id, @Nullable TokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Token get(java.lang.String name, Output<java.lang.String> id, @Nullable TokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Token(name, id, state, options);
     }
 }

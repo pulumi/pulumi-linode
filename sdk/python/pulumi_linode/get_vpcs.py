@@ -64,8 +64,8 @@ class AwaitableGetVpcsResult(GetVpcsResult):
             vpcs=self.vpcs)
 
 
-def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] = None,
-             vpcs: Optional[Sequence[pulumi.InputType['GetVpcsVpcArgs']]] = None,
+def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]] = None,
+             vpcs: Optional[Sequence[Union['GetVpcsVpcArgs', 'GetVpcsVpcArgsDict']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcsResult:
     """
     Provides information about a list of Linode VPCs that match a set of filters.
@@ -79,10 +79,10 @@ def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] 
     import pulumi
     import pulumi_linode as linode
 
-    filtered_vpcs = linode.get_vpcs(filters=[linode.GetVpcsFilterArgs(
-        name="label",
-        values=["test"],
-    )])
+    filtered_vpcs = linode.get_vpcs(filters=[{
+        "name": "label",
+        "values": ["test"],
+    }])
     pulumi.export("vpcs", filtered_vpcs.vpcs)
     ```
 
@@ -109,8 +109,8 @@ def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] 
 
 
 @_utilities.lift_output_func(get_vpcs)
-def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]]]] = None,
-                    vpcs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVpcsVpcArgs']]]]] = None,
+def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]]]] = None,
+                    vpcs: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcsVpcArgs', 'GetVpcsVpcArgsDict']]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcsResult]:
     """
     Provides information about a list of Linode VPCs that match a set of filters.
@@ -124,10 +124,10 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
     import pulumi
     import pulumi_linode as linode
 
-    filtered_vpcs = linode.get_vpcs(filters=[linode.GetVpcsFilterArgs(
-        name="label",
-        values=["test"],
-    )])
+    filtered_vpcs = linode.get_vpcs(filters=[{
+        "name": "label",
+        "values": ["test"],
+    }])
     pulumi.export("vpcs", filtered_vpcs.vpcs)
     ```
 

@@ -61,8 +61,8 @@ class AwaitableGetChildAccountsResult(GetChildAccountsResult):
             id=self.id)
 
 
-def get_child_accounts(child_accounts: Optional[Sequence[pulumi.InputType['GetChildAccountsChildAccountArgs']]] = None,
-                       filters: Optional[Sequence[pulumi.InputType['GetChildAccountsFilterArgs']]] = None,
+def get_child_accounts(child_accounts: Optional[Sequence[Union['GetChildAccountsChildAccountArgs', 'GetChildAccountsChildAccountArgsDict']]] = None,
+                       filters: Optional[Sequence[Union['GetChildAccountsFilterArgs', 'GetChildAccountsFilterArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetChildAccountsResult:
     """
     Provides information about Linode Child Accounts that match a set of filters.
@@ -80,18 +80,18 @@ def get_child_accounts(child_accounts: Optional[Sequence[pulumi.InputType['GetCh
 
     all = linode.get_child_accounts()
     filtered = linode.get_child_accounts(filters=[
-        linode.GetChildAccountsFilterArgs(
-            name="email",
-            values=["example@linode.com"],
-        ),
-        linode.GetChildAccountsFilterArgs(
-            name="first_name",
-            values=["John"],
-        ),
-        linode.GetChildAccountsFilterArgs(
-            name="last_name",
-            values=["Smith"],
-        ),
+        {
+            "name": "email",
+            "values": ["example@linode.com"],
+        },
+        {
+            "name": "first_name",
+            "values": ["John"],
+        },
+        {
+            "name": "last_name",
+            "values": ["Smith"],
+        },
     ])
     pulumi.export("allAccounts", [__item.euuid for __item in all.child_accounts])
     pulumi.export("filteredAccounts", [__item.euuid for __item in filtered.child_accounts])
@@ -140,8 +140,8 @@ def get_child_accounts(child_accounts: Optional[Sequence[pulumi.InputType['GetCh
 
 
 @_utilities.lift_output_func(get_child_accounts)
-def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetChildAccountsChildAccountArgs']]]]] = None,
-                              filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetChildAccountsFilterArgs']]]]] = None,
+def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsChildAccountArgs', 'GetChildAccountsChildAccountArgsDict']]]]] = None,
+                              filters: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsFilterArgs', 'GetChildAccountsFilterArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountsResult]:
     """
     Provides information about Linode Child Accounts that match a set of filters.
@@ -159,18 +159,18 @@ def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Seq
 
     all = linode.get_child_accounts()
     filtered = linode.get_child_accounts(filters=[
-        linode.GetChildAccountsFilterArgs(
-            name="email",
-            values=["example@linode.com"],
-        ),
-        linode.GetChildAccountsFilterArgs(
-            name="first_name",
-            values=["John"],
-        ),
-        linode.GetChildAccountsFilterArgs(
-            name="last_name",
-            values=["Smith"],
-        ),
+        {
+            "name": "email",
+            "values": ["example@linode.com"],
+        },
+        {
+            "name": "first_name",
+            "values": ["John"],
+        },
+        {
+            "name": "last_name",
+            "values": ["Smith"],
+        },
     ])
     pulumi.export("allAccounts", [__item.euuid for __item in all.child_accounts])
     pulumi.export("filteredAccounts", [__item.euuid for __item in filtered.child_accounts])

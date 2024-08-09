@@ -295,7 +295,7 @@ class Volume(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  source_volume_id: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.
@@ -461,7 +461,7 @@ class Volume(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  source_volume_id: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,7 +500,7 @@ class Volume(pulumi.CustomResource):
             source_volume_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None) -> 'Volume':
+            timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

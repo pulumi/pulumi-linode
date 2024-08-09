@@ -1997,19 +1997,19 @@ public final class LinodeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var all = LinodeFunctions.getChildAccounts();
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("email")
-     *                     .values("example{@literal @}linode.com")
+     *                     .values("example}{@literal @}{@code linode.com")
      *                     .build(),
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("first_name")
@@ -2023,8 +2023,8 @@ public final class LinodeFunctions {
      * 
      *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
      *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -2090,19 +2090,19 @@ public final class LinodeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var all = LinodeFunctions.getChildAccounts();
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("email")
-     *                     .values("example{@literal @}linode.com")
+     *                     .values("example}{@literal @}{@code linode.com")
      *                     .build(),
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("first_name")
@@ -2116,8 +2116,8 @@ public final class LinodeFunctions {
      * 
      *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
      *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -2183,19 +2183,19 @@ public final class LinodeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var all = LinodeFunctions.getChildAccounts();
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("email")
-     *                     .values("example{@literal @}linode.com")
+     *                     .values("example}{@literal @}{@code linode.com")
      *                     .build(),
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("first_name")
@@ -2209,8 +2209,8 @@ public final class LinodeFunctions {
      * 
      *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
      *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -2276,19 +2276,19 @@ public final class LinodeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var all = LinodeFunctions.getChildAccounts();
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("email")
-     *                     .values("example{@literal @}linode.com")
+     *                     .values("example}{@literal @}{@code linode.com")
      *                     .build(),
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("first_name")
@@ -2302,8 +2302,8 @@ public final class LinodeFunctions {
      * 
      *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
      *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -2369,19 +2369,19 @@ public final class LinodeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var all = LinodeFunctions.getChildAccounts();
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("email")
-     *                     .values("example{@literal @}linode.com")
+     *                     .values("example}{@literal @}{@code linode.com")
      *                     .build(),
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("first_name")
@@ -2395,8 +2395,8 @@ public final class LinodeFunctions {
      * 
      *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
      *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -2462,19 +2462,19 @@ public final class LinodeFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var all = LinodeFunctions.getChildAccounts();
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("email")
-     *                     .values("example{@literal @}linode.com")
+     *                     .values("example}{@literal @}{@code linode.com")
      *                     .build(),
      *                 GetChildAccountsFilterArgs.builder()
      *                     .name("first_name")
@@ -2488,8 +2488,8 @@ public final class LinodeFunctions {
      * 
      *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
      *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

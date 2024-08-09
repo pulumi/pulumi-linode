@@ -82,8 +82,8 @@ class AwaitableGetFirewallsResult(GetFirewallsResult):
             order_by=self.order_by)
 
 
-def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilterArgs']]] = None,
-                  firewalls: Optional[Sequence[pulumi.InputType['GetFirewallsFirewallArgs']]] = None,
+def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]] = None,
+                  firewalls: Optional[Sequence[Union['GetFirewallsFirewallArgs', 'GetFirewallsFirewallArgsDict']]] = None,
                   order: Optional[str] = None,
                   order_by: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallsResult:
@@ -100,14 +100,14 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
     import pulumi_linode as linode
 
     specific = linode.get_firewalls(filters=[
-        linode.GetFirewallsFilterArgs(
-            name="label",
-            values=["my-firewalls"],
-        ),
-        linode.GetFirewallsFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-firewalls"],
+        },
+        {
+            "name": "tags",
+            "values": ["my-tag"],
+        },
     ])
     pulumi.export("firewallId", specific.firewalls[0].id)
     ```
@@ -179,8 +179,8 @@ def get_firewalls(filters: Optional[Sequence[pulumi.InputType['GetFirewallsFilte
 
 
 @_utilities.lift_output_func(get_firewalls)
-def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFirewallsFilterArgs']]]]] = None,
-                         firewalls: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFirewallsFirewallArgs']]]]] = None,
+def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]]]] = None,
+                         firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFirewallArgs', 'GetFirewallsFirewallArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallsResult]:
@@ -197,14 +197,14 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     import pulumi_linode as linode
 
     specific = linode.get_firewalls(filters=[
-        linode.GetFirewallsFilterArgs(
-            name="label",
-            values=["my-firewalls"],
-        ),
-        linode.GetFirewallsFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-firewalls"],
+        },
+        {
+            "name": "tags",
+            "values": ["my-tag"],
+        },
     ])
     pulumi.export("firewallId", specific.firewalls[0].id)
     ```

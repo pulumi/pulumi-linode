@@ -80,7 +80,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := linode.NewInstance(ctx, fmt.Sprintf("my_instance-%v", key0), &linode.InstanceArgs{
-//					Label:    pulumi.String(fmt.Sprintf("simple_instance-%v", val0+1)),
+//					Label:    pulumi.Sprintf("simple_instance-%v", val0+1),
 //					Image:    pulumi.String("linode/ubuntu22.04"),
 //					Region:   pulumi.String("us-central"),
 //					Type:     pulumi.String("g6-standard-1"),

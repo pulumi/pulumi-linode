@@ -82,8 +82,8 @@ class AwaitableGetLkeClustersResult(GetLkeClustersResult):
             order_by=self.order_by)
 
 
-def get_lke_clusters(filters: Optional[Sequence[pulumi.InputType['GetLkeClustersFilterArgs']]] = None,
-                     lke_clusters: Optional[Sequence[pulumi.InputType['GetLkeClustersLkeClusterArgs']]] = None,
+def get_lke_clusters(filters: Optional[Sequence[Union['GetLkeClustersFilterArgs', 'GetLkeClustersFilterArgsDict']]] = None,
+                     lke_clusters: Optional[Sequence[Union['GetLkeClustersLkeClusterArgs', 'GetLkeClustersLkeClusterArgsDict']]] = None,
                      order: Optional[str] = None,
                      order_by: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeClustersResult:
@@ -99,10 +99,10 @@ def get_lke_clusters(filters: Optional[Sequence[pulumi.InputType['GetLkeClusters
     import pulumi
     import pulumi_linode as linode
 
-    specific = linode.get_lke_clusters(filters=[linode.GetLkeClustersFilterArgs(
-        name="tags",
-        values=["test-tag"],
-    )])
+    specific = linode.get_lke_clusters(filters=[{
+        "name": "tags",
+        "values": ["test-tag"],
+    }])
     pulumi.export("lkeCluster", specific.lke_clusters[0].id)
     ```
 
@@ -143,8 +143,8 @@ def get_lke_clusters(filters: Optional[Sequence[pulumi.InputType['GetLkeClusters
 
 
 @_utilities.lift_output_func(get_lke_clusters)
-def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetLkeClustersFilterArgs']]]]] = None,
-                            lke_clusters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetLkeClustersLkeClusterArgs']]]]] = None,
+def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClustersFilterArgs', 'GetLkeClustersFilterArgsDict']]]]] = None,
+                            lke_clusters: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClustersLkeClusterArgs', 'GetLkeClustersLkeClusterArgsDict']]]]] = None,
                             order: Optional[pulumi.Input[Optional[str]]] = None,
                             order_by: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClustersResult]:
@@ -160,10 +160,10 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[pul
     import pulumi
     import pulumi_linode as linode
 
-    specific = linode.get_lke_clusters(filters=[linode.GetLkeClustersFilterArgs(
-        name="tags",
-        values=["test-tag"],
-    )])
+    specific = linode.get_lke_clusters(filters=[{
+        "name": "tags",
+        "values": ["test-tag"],
+    }])
     pulumi.export("lkeCluster", specific.lke_clusters[0].id)
     ```
 

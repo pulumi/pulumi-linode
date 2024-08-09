@@ -330,7 +330,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ObjectStorageBucket(String name) {
+    public ObjectStorageBucket(java.lang.String name) {
         this(name, ObjectStorageBucketArgs.Empty);
     }
     /**
@@ -338,7 +338,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ObjectStorageBucket(String name, ObjectStorageBucketArgs args) {
+    public ObjectStorageBucket(java.lang.String name, ObjectStorageBucketArgs args) {
         this(name, args, null);
     }
     /**
@@ -347,15 +347,22 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ObjectStorageBucket(String name, ObjectStorageBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/objectStorageBucket:ObjectStorageBucket", name, args == null ? ObjectStorageBucketArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ObjectStorageBucket(java.lang.String name, ObjectStorageBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/objectStorageBucket:ObjectStorageBucket", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ObjectStorageBucket(String name, Output<String> id, @Nullable ObjectStorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/objectStorageBucket:ObjectStorageBucket", name, state, makeResourceOptions(options, id));
+    private ObjectStorageBucket(java.lang.String name, Output<java.lang.String> id, @Nullable ObjectStorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/objectStorageBucket:ObjectStorageBucket", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ObjectStorageBucketArgs makeArgs(ObjectStorageBucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ObjectStorageBucketArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -374,7 +381,7 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ObjectStorageBucket get(String name, Output<String> id, @Nullable ObjectStorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ObjectStorageBucket get(java.lang.String name, Output<java.lang.String> id, @Nullable ObjectStorageBucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ObjectStorageBucket(name, id, state, options);
     }
 }
