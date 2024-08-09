@@ -79,10 +79,10 @@ class AwaitableGetVlansResult(GetVlansResult):
             vlans=self.vlans)
 
 
-def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]] = None,
+def get_vlans(filters: Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFilterArgsDict']]] = None,
               order: Optional[str] = None,
               order_by: Optional[str] = None,
-              vlans: Optional[Sequence[pulumi.InputType['GetVlansVlanArgs']]] = None,
+              vlans: Optional[Sequence[Union['GetVlansVlanArgs', 'GetVlansVlanArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlansResult:
     """
     > **Beta Notice** VLANs are currently available through early access.
@@ -104,14 +104,14 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
         region="us-southeast",
         type="g6-standard-1",
         root_pass="bogusPassword$",
-        interfaces=[linode.InstanceInterfaceArgs(
-            purpose="vlan",
-            label="my-vlan",
-        )])
-    my_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(
-        name="label",
-        values=["my-vlan"],
-    )])
+        interfaces=[{
+            "purpose": "vlan",
+            "label": "my-vlan",
+        }])
+    my_vlans = linode.get_vlans(filters=[{
+        "name": "label",
+        "values": ["my-vlan"],
+    }])
     pulumi.export("vlanLinodes", my_vlans.vlans[0].linodes)
     ```
 
@@ -142,10 +142,10 @@ def get_vlans(filters: Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]
 
 
 @_utilities.lift_output_func(get_vlans)
-def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansFilterArgs']]]]] = None,
+def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFilterArgsDict']]]]] = None,
                      order: Optional[pulumi.Input[Optional[str]]] = None,
                      order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                     vlans: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVlansVlanArgs']]]]] = None,
+                     vlans: Optional[pulumi.Input[Optional[Sequence[Union['GetVlansVlanArgs', 'GetVlansVlanArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlansResult]:
     """
     > **Beta Notice** VLANs are currently available through early access.
@@ -167,14 +167,14 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
         region="us-southeast",
         type="g6-standard-1",
         root_pass="bogusPassword$",
-        interfaces=[linode.InstanceInterfaceArgs(
-            purpose="vlan",
-            label="my-vlan",
-        )])
-    my_vlans = linode.get_vlans(filters=[linode.GetVlansFilterArgs(
-        name="label",
-        values=["my-vlan"],
-    )])
+        interfaces=[{
+            "purpose": "vlan",
+            "label": "my-vlan",
+        }])
+    my_vlans = linode.get_vlans(filters=[{
+        "name": "label",
+        "values": ["my-vlan"],
+    }])
     pulumi.export("vlanLinodes", my_vlans.vlans[0].linodes)
     ```
 

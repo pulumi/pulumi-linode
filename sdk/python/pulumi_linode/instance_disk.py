@@ -441,7 +441,7 @@ class InstanceDisk(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceDiskTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
@@ -601,7 +601,7 @@ class InstanceDisk(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceDiskTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -655,7 +655,7 @@ class InstanceDisk(pulumi.CustomResource):
             stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             stackscript_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceDiskTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
             updated: Optional[pulumi.Input[str]] = None) -> 'InstanceDisk':
         """
         Get an existing InstanceDisk resource's state with the given name, id, and optional extra

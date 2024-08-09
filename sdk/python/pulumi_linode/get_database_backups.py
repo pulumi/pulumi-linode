@@ -109,10 +109,10 @@ class AwaitableGetDatabaseBackupsResult(GetDatabaseBackupsResult):
             order_by=self.order_by)
 
 
-def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabaseBackupsBackupArgs']]] = None,
+def get_database_backups(backups: Optional[Sequence[Union['GetDatabaseBackupsBackupArgs', 'GetDatabaseBackupsBackupArgsDict']]] = None,
                          database_id: Optional[int] = None,
                          database_type: Optional[str] = None,
-                         filters: Optional[Sequence[pulumi.InputType['GetDatabaseBackupsFilterArgs']]] = None,
+                         filters: Optional[Sequence[Union['GetDatabaseBackupsFilterArgs', 'GetDatabaseBackupsFilterArgsDict']]] = None,
                          latest: Optional[bool] = None,
                          order: Optional[str] = None,
                          order_by: Optional[str] = None,
@@ -141,10 +141,10 @@ def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabas
 
     auto_backups = linode.get_database_backups(database_id=12345,
         database_type="postgresql",
-        filters=[linode.GetDatabaseBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
+        filters=[{
+            "name": "type",
+            "values": ["auto"],
+        }])
     ```
 
 
@@ -179,10 +179,10 @@ def get_database_backups(backups: Optional[Sequence[pulumi.InputType['GetDatabas
 
 
 @_utilities.lift_output_func(get_database_backups)
-def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseBackupsBackupArgs']]]]] = None,
+def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseBackupsBackupArgs', 'GetDatabaseBackupsBackupArgsDict']]]]] = None,
                                 database_id: Optional[pulumi.Input[int]] = None,
                                 database_type: Optional[pulumi.Input[str]] = None,
-                                filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseBackupsFilterArgs']]]]] = None,
+                                filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseBackupsFilterArgs', 'GetDatabaseBackupsFilterArgsDict']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[bool]]] = None,
                                 order: Optional[pulumi.Input[Optional[str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
@@ -211,10 +211,10 @@ def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence
 
     auto_backups = linode.get_database_backups(database_id=12345,
         database_type="postgresql",
-        filters=[linode.GetDatabaseBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
+        filters=[{
+            "name": "type",
+            "values": ["auto"],
+        }])
     ```
 
 

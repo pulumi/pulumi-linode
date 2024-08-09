@@ -133,7 +133,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := linode.NewInstance(ctx, fmt.Sprintf("secondary-%v", key0), &linode.InstanceArgs{
-//					Label:  pulumi.String(fmt.Sprintf("node-secondary-%v", val0)),
+//					Label:  pulumi.Sprintf("node-secondary-%v", val0),
 //					Type:   pulumi.String("g6-nanode-1"),
 //					Region: pulumi.String("eu-central"),
 //				})

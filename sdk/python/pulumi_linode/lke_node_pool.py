@@ -208,7 +208,7 @@ class LkeNodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaler: Optional[pulumi.Input[pulumi.InputType['LkeNodePoolAutoscalerArgs']]] = None,
+                 autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[int]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -262,7 +262,7 @@ class LkeNodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaler: Optional[pulumi.Input[pulumi.InputType['LkeNodePoolAutoscalerArgs']]] = None,
+                 autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[int]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -296,10 +296,10 @@ class LkeNodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaler: Optional[pulumi.Input[pulumi.InputType['LkeNodePoolAutoscalerArgs']]] = None,
+            autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[int]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeNodePoolNodeArgs']]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'LkeNodePool':
         """
@@ -311,7 +311,7 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LkeNodePoolNodeArgs']]]] nodes: A list of nodes in the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]] nodes: A list of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
                
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.

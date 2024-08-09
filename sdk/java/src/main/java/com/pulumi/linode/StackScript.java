@@ -284,7 +284,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StackScript(String name) {
+    public StackScript(java.lang.String name) {
         this(name, StackScriptArgs.Empty);
     }
     /**
@@ -292,7 +292,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StackScript(String name, StackScriptArgs args) {
+    public StackScript(java.lang.String name, StackScriptArgs args) {
         this(name, args, null);
     }
     /**
@@ -301,15 +301,22 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StackScript(String name, StackScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/stackScript:StackScript", name, args == null ? StackScriptArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StackScript(java.lang.String name, StackScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/stackScript:StackScript", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StackScript(String name, Output<String> id, @Nullable StackScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/stackScript:StackScript", name, state, makeResourceOptions(options, id));
+    private StackScript(java.lang.String name, Output<java.lang.String> id, @Nullable StackScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/stackScript:StackScript", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StackScriptArgs makeArgs(StackScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StackScriptArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -325,7 +332,7 @@ public class StackScript extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StackScript get(String name, Output<String> id, @Nullable StackScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StackScript get(java.lang.String name, Output<java.lang.String> id, @Nullable StackScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StackScript(name, id, state, options);
     }
 }

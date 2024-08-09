@@ -202,7 +202,7 @@ public class InstanceSharedIps extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceSharedIps(String name) {
+    public InstanceSharedIps(java.lang.String name) {
         this(name, InstanceSharedIpsArgs.Empty);
     }
     /**
@@ -210,7 +210,7 @@ public class InstanceSharedIps extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceSharedIps(String name, InstanceSharedIpsArgs args) {
+    public InstanceSharedIps(java.lang.String name, InstanceSharedIpsArgs args) {
         this(name, args, null);
     }
     /**
@@ -219,15 +219,22 @@ public class InstanceSharedIps extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceSharedIps(String name, InstanceSharedIpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/instanceSharedIps:InstanceSharedIps", name, args == null ? InstanceSharedIpsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceSharedIps(java.lang.String name, InstanceSharedIpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/instanceSharedIps:InstanceSharedIps", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceSharedIps(String name, Output<String> id, @Nullable InstanceSharedIpsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/instanceSharedIps:InstanceSharedIps", name, state, makeResourceOptions(options, id));
+    private InstanceSharedIps(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceSharedIpsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/instanceSharedIps:InstanceSharedIps", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceSharedIpsArgs makeArgs(InstanceSharedIpsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceSharedIpsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -243,7 +250,7 @@ public class InstanceSharedIps extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceSharedIps get(String name, Output<String> id, @Nullable InstanceSharedIpsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceSharedIps get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceSharedIpsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceSharedIps(name, id, state, options);
     }
 }
