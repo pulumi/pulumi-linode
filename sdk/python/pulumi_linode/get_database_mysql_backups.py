@@ -101,7 +101,7 @@ class AwaitableGetDatabaseMysqlBackupsResult(GetDatabaseMysqlBackupsResult):
 
 
 def get_database_mysql_backups(database_id: Optional[int] = None,
-                               filters: Optional[Sequence[pulumi.InputType['GetDatabaseMysqlBackupsFilterArgs']]] = None,
+                               filters: Optional[Sequence[Union['GetDatabaseMysqlBackupsFilterArgs', 'GetDatabaseMysqlBackupsFilterArgsDict']]] = None,
                                latest: Optional[bool] = None,
                                order: Optional[str] = None,
                                order_by: Optional[str] = None,
@@ -130,10 +130,10 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
     import pulumi_linode as linode
 
     auto_backups = linode.get_database_mysql_backups(database_id=12345,
-        filters=[linode.GetDatabaseMysqlBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
+        filters=[{
+            "name": "type",
+            "values": ["auto"],
+        }])
     ```
 
 
@@ -165,7 +165,7 @@ def get_database_mysql_backups(database_id: Optional[int] = None,
 
 @_utilities.lift_output_func(get_database_mysql_backups)
 def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] = None,
-                                      filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDatabaseMysqlBackupsFilterArgs']]]]] = None,
+                                      filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseMysqlBackupsFilterArgs', 'GetDatabaseMysqlBackupsFilterArgsDict']]]]] = None,
                                       latest: Optional[pulumi.Input[Optional[bool]]] = None,
                                       order: Optional[pulumi.Input[Optional[str]]] = None,
                                       order_by: Optional[pulumi.Input[Optional[str]]] = None,
@@ -194,10 +194,10 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
     import pulumi_linode as linode
 
     auto_backups = linode.get_database_mysql_backups(database_id=12345,
-        filters=[linode.GetDatabaseMysqlBackupsFilterArgs(
-            name="type",
-            values=["auto"],
-        )])
+        filters=[{
+            "name": "type",
+            "values": ["auto"],
+        }])
     ```
 
 

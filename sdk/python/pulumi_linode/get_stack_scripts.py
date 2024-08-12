@@ -91,11 +91,11 @@ class AwaitableGetStackScriptsResult(GetStackScriptsResult):
             stackscripts=self.stackscripts)
 
 
-def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScriptsFilterArgs']]] = None,
+def get_stack_scripts(filters: Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict']]] = None,
                       latest: Optional[bool] = None,
                       order: Optional[str] = None,
                       order_by: Optional[str] = None,
-                      stackscripts: Optional[Sequence[pulumi.InputType['GetStackScriptsStackscriptArgs']]] = None,
+                      stackscripts: Optional[Sequence[Union['GetStackScriptsStackscriptArgs', 'GetStackScriptsStackscriptArgsDict']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackScriptsResult:
     """
     Provides information about Linode StackScripts that match a set of filters.
@@ -112,14 +112,14 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
     import pulumi_linode as linode
 
     specific_stackscripts = linode.get_stack_scripts(filters=[
-        linode.GetStackScriptsFilterArgs(
-            name="label",
-            values=["my-cool-stackscript"],
-        ),
-        linode.GetStackScriptsFilterArgs(
-            name="is_public",
-            values=["false"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-cool-stackscript"],
+        },
+        {
+            "name": "is_public",
+            "values": ["false"],
+        },
     ])
     pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
     ```
@@ -170,11 +170,11 @@ def get_stack_scripts(filters: Optional[Sequence[pulumi.InputType['GetStackScrip
 
 
 @_utilities.lift_output_func(get_stack_scripts)
-def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetStackScriptsFilterArgs']]]]] = None,
+def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict']]]]] = None,
                              latest: Optional[pulumi.Input[Optional[bool]]] = None,
                              order: Optional[pulumi.Input[Optional[str]]] = None,
                              order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                             stackscripts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetStackScriptsStackscriptArgs']]]]] = None,
+                             stackscripts: Optional[pulumi.Input[Optional[Sequence[Union['GetStackScriptsStackscriptArgs', 'GetStackScriptsStackscriptArgsDict']]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptsResult]:
     """
     Provides information about Linode StackScripts that match a set of filters.
@@ -191,14 +191,14 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[pu
     import pulumi_linode as linode
 
     specific_stackscripts = linode.get_stack_scripts(filters=[
-        linode.GetStackScriptsFilterArgs(
-            name="label",
-            values=["my-cool-stackscript"],
-        ),
-        linode.GetStackScriptsFilterArgs(
-            name="is_public",
-            values=["false"],
-        ),
+        {
+            "name": "label",
+            "values": ["my-cool-stackscript"],
+        },
+        {
+            "name": "is_public",
+            "values": ["false"],
+        },
     ])
     pulumi.export("stackscriptId", specific_stackscripts.stackscripts[0].id)
     ```

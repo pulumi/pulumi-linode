@@ -82,8 +82,8 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             order_by=self.order_by)
 
 
-def get_domains(domains: Optional[Sequence[pulumi.InputType['GetDomainsDomainArgs']]] = None,
-                filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArgs']]] = None,
+def get_domains(domains: Optional[Sequence[Union['GetDomainsDomainArgs', 'GetDomainsDomainArgsDict']]] = None,
+                filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]] = None,
                 order: Optional[str] = None,
                 order_by: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
@@ -99,10 +99,10 @@ def get_domains(domains: Optional[Sequence[pulumi.InputType['GetDomainsDomainArg
     import pulumi
     import pulumi_linode as linode
 
-    specific = linode.get_domains(filters=[linode.GetDomainsFilterArgs(
-        name="tags",
-        values=["test-tag"],
-    )])
+    specific = linode.get_domains(filters=[{
+        "name": "tags",
+        "values": ["test-tag"],
+    }])
     pulumi.export("domain", specific.domains[0].domain)
     ```
 
@@ -155,8 +155,8 @@ def get_domains(domains: Optional[Sequence[pulumi.InputType['GetDomainsDomainArg
 
 
 @_utilities.lift_output_func(get_domains)
-def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDomainsDomainArgs']]]]] = None,
-                       filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDomainsFilterArgs']]]]] = None,
+def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsDomainArgs', 'GetDomainsDomainArgsDict']]]]] = None,
+                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
                        order: Optional[pulumi.Input[Optional[str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
@@ -172,10 +172,10 @@ def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     import pulumi
     import pulumi_linode as linode
 
-    specific = linode.get_domains(filters=[linode.GetDomainsFilterArgs(
-        name="tags",
-        values=["test-tag"],
-    )])
+    specific = linode.get_domains(filters=[{
+        "name": "tags",
+        "values": ["test-tag"],
+    }])
     pulumi.export("domain", specific.domains[0].domain)
     ```
 

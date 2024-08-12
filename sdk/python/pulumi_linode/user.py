@@ -480,18 +480,18 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]]] = None,
+                 domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]]] = None,
                  email: Optional[pulumi.Input[str]] = None,
-                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]]] = None,
-                 global_grants: Optional[pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']]] = None,
-                 image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]]] = None,
-                 linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]]] = None,
-                 longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]]] = None,
-                 nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]]] = None,
+                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]]] = None,
+                 global_grants: Optional[pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']]] = None,
+                 image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]]] = None,
+                 linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
+                 longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
+                 nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
                  restricted: Optional[pulumi.Input[bool]] = None,
-                 stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]]] = None,
+                 stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
-                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]]] = None,
+                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages a Linode User.
@@ -520,14 +520,14 @@ class User(pulumi.CustomResource):
             username="cooluser123",
             email="cool@acme.io",
             restricted=True,
-            global_grants=linode.UserGlobalGrantsArgs(
-                add_linodes=True,
-                add_images=True,
-            ),
-            linode_grants=[linode.UserLinodeGrantArgs(
-                id=12345,
-                permissions="read_write",
-            )])
+            global_grants={
+                "add_linodes": True,
+                "add_images": True,
+            },
+            linode_grants=[{
+                "id": 12345,
+                "permissions": "read_write",
+            }])
         ```
 
         ## Global Grants
@@ -562,22 +562,22 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]] domain_grants: The domains the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]] firewall_grants: The firewalls the user has permissions access to.
-        :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: A structure containing the Account-level grants a User has.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]] image_grants: The images the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]] linode_grants: The Linodes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]] longview_grants: The longview the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]] firewall_grants: The firewalls the user has permissions access to.
+        :param pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']] global_grants: A structure containing the Account-level grants a User has.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]] image_grants: The images the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
                
                The following arguments are sets of entity grants:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]] stackscript_grants: The StackScripts the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[str] username: The username of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]] volume_grants: The volumes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to.
         """
         ...
     @overload
@@ -612,14 +612,14 @@ class User(pulumi.CustomResource):
             username="cooluser123",
             email="cool@acme.io",
             restricted=True,
-            global_grants=linode.UserGlobalGrantsArgs(
-                add_linodes=True,
-                add_images=True,
-            ),
-            linode_grants=[linode.UserLinodeGrantArgs(
-                id=12345,
-                permissions="read_write",
-            )])
+            global_grants={
+                "add_linodes": True,
+                "add_images": True,
+            },
+            linode_grants=[{
+                "id": 12345,
+                "permissions": "read_write",
+            }])
         ```
 
         ## Global Grants
@@ -667,18 +667,18 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]]] = None,
+                 domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]]] = None,
                  email: Optional[pulumi.Input[str]] = None,
-                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]]] = None,
-                 global_grants: Optional[pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']]] = None,
-                 image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]]] = None,
-                 linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]]] = None,
-                 longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]]] = None,
-                 nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]]] = None,
+                 firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]]] = None,
+                 global_grants: Optional[pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']]] = None,
+                 image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]]] = None,
+                 linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
+                 longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
+                 nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
                  restricted: Optional[pulumi.Input[bool]] = None,
-                 stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]]] = None,
+                 stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
-                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]]] = None,
+                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -717,21 +717,21 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]]] = None,
+            domain_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]]] = None,
             email: Optional[pulumi.Input[str]] = None,
-            firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]]] = None,
-            global_grants: Optional[pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']]] = None,
-            image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]]] = None,
-            linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]]] = None,
-            longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]]] = None,
-            nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]]] = None,
+            firewall_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]]] = None,
+            global_grants: Optional[pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']]] = None,
+            image_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]]] = None,
+            linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
+            longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
+            nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
             restricted: Optional[pulumi.Input[bool]] = None,
             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]]] = None,
+            stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
             tfa_enabled: Optional[pulumi.Input[bool]] = None,
             user_type: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
-            volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]]] = None) -> 'User':
+            volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -739,25 +739,25 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserDomainGrantArgs']]]] domain_grants: The domains the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[str] email: The email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserFirewallGrantArgs']]]] firewall_grants: The firewalls the user has permissions access to.
-        :param pulumi.Input[pulumi.InputType['UserGlobalGrantsArgs']] global_grants: A structure containing the Account-level grants a User has.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserImageGrantArgs']]]] image_grants: The images the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLinodeGrantArgs']]]] linode_grants: The Linodes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserLongviewGrantArgs']]]] longview_grants: The longview the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserNodebalancerGrantArgs']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]] firewall_grants: The firewalls the user has permissions access to.
+        :param pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']] global_grants: A structure containing the Account-level grants a User has.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]] image_grants: The images the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
                
                The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of the User's SSH keys.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserStackscriptGrantArgs']]]] stackscript_grants: The StackScripts the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
         :param pulumi.Input[str] user_type: The type of this user.
         :param pulumi.Input[str] username: The username of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserVolumeGrantArgs']]]] volume_grants: The volumes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
