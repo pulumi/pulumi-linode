@@ -116,7 +116,7 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
 
 
 def get_placement_group(id: Optional[int] = None,
-                        members: Optional[Sequence[pulumi.InputType['GetPlacementGroupMemberArgs']]] = None,
+                        members: Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupResult:
     """
     **NOTE: Placement Groups may not currently be available to all users.**
@@ -137,7 +137,7 @@ def get_placement_group(id: Optional[int] = None,
 
 
     :param int id: The ID of the Placement Group.
-    :param Sequence[pulumi.InputType['GetPlacementGroupMemberArgs']] members: A set of Linodes currently assigned to this Placement Group.
+    :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -157,7 +157,7 @@ def get_placement_group(id: Optional[int] = None,
 
 @_utilities.lift_output_func(get_placement_group)
 def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
-                               members: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPlacementGroupMemberArgs']]]]] = None,
+                               members: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlacementGroupResult]:
     """
     **NOTE: Placement Groups may not currently be available to all users.**
@@ -178,6 +178,6 @@ def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
 
 
     :param int id: The ID of the Placement Group.
-    :param Sequence[pulumi.InputType['GetPlacementGroupMemberArgs']] members: A set of Linodes currently assigned to this Placement Group.
+    :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
     """
     ...

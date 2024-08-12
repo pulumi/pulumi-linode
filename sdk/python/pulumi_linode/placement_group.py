@@ -317,7 +317,7 @@ class PlacementGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             is_compliant: Optional[pulumi.Input[bool]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PlacementGroupMemberArgs']]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict']]]]] = None,
             placement_group_policy: Optional[pulumi.Input[str]] = None,
             placement_group_type: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'PlacementGroup':
@@ -330,7 +330,7 @@ class PlacementGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param pulumi.Input[str] label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PlacementGroupMemberArgs']]]] members: A set of Linodes currently assigned to this Placement Group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict']]]] members: A set of Linodes currently assigned to this Placement Group.
         :param pulumi.Input[str] placement_group_policy: Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         :param pulumi.Input[str] placement_group_type: The placement group type to use when placing Linodes in this group.
         :param pulumi.Input[str] region: The region of the Placement Group.

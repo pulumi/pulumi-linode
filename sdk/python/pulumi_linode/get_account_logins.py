@@ -64,8 +64,8 @@ class AwaitableGetAccountLoginsResult(GetAccountLoginsResult):
             logins=self.logins)
 
 
-def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLoginsFilterArgs']]] = None,
-                       logins: Optional[Sequence[pulumi.InputType['GetAccountLoginsLoginArgs']]] = None,
+def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]] = None,
+                       logins: Optional[Sequence[Union['GetAccountLoginsLoginArgs', 'GetAccountLoginsLoginArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountLoginsResult:
     """
     Provides information about Linode account logins that match a set of filters.
@@ -80,14 +80,14 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
     import pulumi_linode as linode
 
     filtered_account_logins = linode.get_account_logins(filters=[
-        linode.GetAccountLoginsFilterArgs(
-            name="restricted",
-            values=["true"],
-        ),
-        linode.GetAccountLoginsFilterArgs(
-            name="username",
-            values=["myUsername"],
-        ),
+        {
+            "name": "restricted",
+            "values": ["true"],
+        },
+        {
+            "name": "username",
+            "values": ["myUsername"],
+        },
     ])
     pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
     ```
@@ -113,8 +113,8 @@ def get_account_logins(filters: Optional[Sequence[pulumi.InputType['GetAccountLo
 
 
 @_utilities.lift_output_func(get_account_logins)
-def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountLoginsFilterArgs']]]]] = None,
-                              logins: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAccountLoginsLoginArgs']]]]] = None,
+def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]]]] = None,
+                              logins: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsLoginArgs', 'GetAccountLoginsLoginArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginsResult]:
     """
     Provides information about Linode account logins that match a set of filters.
@@ -129,14 +129,14 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     import pulumi_linode as linode
 
     filtered_account_logins = linode.get_account_logins(filters=[
-        linode.GetAccountLoginsFilterArgs(
-            name="restricted",
-            values=["true"],
-        ),
-        linode.GetAccountLoginsFilterArgs(
-            name="username",
-            values=["myUsername"],
-        ),
+        {
+            "name": "restricted",
+            "values": ["true"],
+        },
+        {
+            "name": "username",
+            "values": ["myUsername"],
+        },
     ])
     pulumi.export("loginIds", [__item.id for __item in filtered_account_logins.logins])
     ```

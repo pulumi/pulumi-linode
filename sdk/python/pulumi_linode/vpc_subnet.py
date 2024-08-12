@@ -295,7 +295,7 @@ class VpcSubnet(pulumi.CustomResource):
             created: Optional[pulumi.Input[str]] = None,
             ipv4: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            linodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcSubnetLinodeArgs']]]]] = None,
+            linodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]]] = None,
             updated: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[int]] = None) -> 'VpcSubnet':
         """
@@ -308,7 +308,7 @@ class VpcSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] created: The date and time when the VPC was created.
         :param pulumi.Input[str] ipv4: The IPv4 range of this subnet in CIDR format.
         :param pulumi.Input[str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpcSubnetLinodeArgs']]]] linodes: A list of Linode IDs that added to this subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]] linodes: A list of Linode IDs that added to this subnet.
         :param pulumi.Input[str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[int] vpc_id: The id of the parent VPC for this VPC Subnet.
         """

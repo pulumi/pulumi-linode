@@ -529,7 +529,7 @@ class StackScript(pulumi.CustomResource):
             rev_note: Optional[pulumi.Input[str]] = None,
             script: Optional[pulumi.Input[str]] = None,
             updated: Optional[pulumi.Input[str]] = None,
-            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]]] = None,
+            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]]] = None,
             user_gravatar_id: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'StackScript':
         """
@@ -551,7 +551,7 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[str] updated: The date this StackScript was updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackScriptUserDefinedFieldArgs']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         :param pulumi.Input[str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[str] username: The User who created the StackScript.
         """

@@ -42,16 +42,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foobar = new Domain("foobar", DomainArgs.builder()
  *             .type("master")
  *             .domain("foobar.example")
- *             .soaEmail("example{@literal @}foobar.example")
+ *             .soaEmail("example}{@literal @}{@code foobar.example")
  *             .build());
  * 
  *         var foobarDomainRecord = new DomainRecord("foobarDomainRecord", DomainRecordArgs.builder()
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .target("foobar.example")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -241,7 +241,7 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DomainRecord(String name) {
+    public DomainRecord(java.lang.String name) {
         this(name, DomainRecordArgs.Empty);
     }
     /**
@@ -249,7 +249,7 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DomainRecord(String name, DomainRecordArgs args) {
+    public DomainRecord(java.lang.String name, DomainRecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -258,15 +258,22 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DomainRecord(String name, DomainRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/domainRecord:DomainRecord", name, args == null ? DomainRecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DomainRecord(java.lang.String name, DomainRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/domainRecord:DomainRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DomainRecord(String name, Output<String> id, @Nullable DomainRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/domainRecord:DomainRecord", name, state, makeResourceOptions(options, id));
+    private DomainRecord(java.lang.String name, Output<java.lang.String> id, @Nullable DomainRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/domainRecord:DomainRecord", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DomainRecordArgs makeArgs(DomainRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DomainRecordArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -282,7 +289,7 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DomainRecord get(String name, Output<String> id, @Nullable DomainRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DomainRecord get(java.lang.String name, Output<java.lang.String> id, @Nullable DomainRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DomainRecord(name, id, state, options);
     }
 }

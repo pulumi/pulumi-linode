@@ -167,7 +167,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallDevice(String name) {
+    public FirewallDevice(java.lang.String name) {
         this(name, FirewallDeviceArgs.Empty);
     }
     /**
@@ -175,7 +175,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallDevice(String name, FirewallDeviceArgs args) {
+    public FirewallDevice(java.lang.String name, FirewallDeviceArgs args) {
         this(name, args, null);
     }
     /**
@@ -184,15 +184,22 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallDevice(String name, FirewallDeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/firewallDevice:FirewallDevice", name, args == null ? FirewallDeviceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FirewallDevice(java.lang.String name, FirewallDeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/firewallDevice:FirewallDevice", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallDevice(String name, Output<String> id, @Nullable FirewallDeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/firewallDevice:FirewallDevice", name, state, makeResourceOptions(options, id));
+    private FirewallDevice(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallDeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/firewallDevice:FirewallDevice", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FirewallDeviceArgs makeArgs(FirewallDeviceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallDeviceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -208,7 +215,7 @@ public class FirewallDevice extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallDevice get(String name, Output<String> id, @Nullable FirewallDeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallDevice get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallDeviceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallDevice(name, id, state, options);
     }
 }

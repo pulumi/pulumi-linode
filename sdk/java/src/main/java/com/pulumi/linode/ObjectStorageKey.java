@@ -210,7 +210,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ObjectStorageKey(String name) {
+    public ObjectStorageKey(java.lang.String name) {
         this(name, ObjectStorageKeyArgs.Empty);
     }
     /**
@@ -218,7 +218,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ObjectStorageKey(String name, ObjectStorageKeyArgs args) {
+    public ObjectStorageKey(java.lang.String name, ObjectStorageKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -227,15 +227,22 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ObjectStorageKey(String name, ObjectStorageKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/objectStorageKey:ObjectStorageKey", name, args == null ? ObjectStorageKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ObjectStorageKey(java.lang.String name, ObjectStorageKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/objectStorageKey:ObjectStorageKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ObjectStorageKey(String name, Output<String> id, @Nullable ObjectStorageKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("linode:index/objectStorageKey:ObjectStorageKey", name, state, makeResourceOptions(options, id));
+    private ObjectStorageKey(java.lang.String name, Output<java.lang.String> id, @Nullable ObjectStorageKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("linode:index/objectStorageKey:ObjectStorageKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ObjectStorageKeyArgs makeArgs(ObjectStorageKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ObjectStorageKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -254,7 +261,7 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ObjectStorageKey get(String name, Output<String> id, @Nullable ObjectStorageKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ObjectStorageKey get(java.lang.String name, Output<java.lang.String> id, @Nullable ObjectStorageKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ObjectStorageKey(name, id, state, options);
     }
 }

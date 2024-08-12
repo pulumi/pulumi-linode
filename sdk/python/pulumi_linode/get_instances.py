@@ -82,7 +82,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             order_by=self.order_by)
 
 
-def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilterArgs']]] = None,
+def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict']]] = None,
                   order: Optional[str] = None,
                   order_by: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
@@ -99,17 +99,17 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     import pulumi_linode as linode
 
     my_instances = linode.get_instances(filters=[
-        linode.GetInstancesFilterArgs(
-            name="label",
-            values=[
+        {
+            "name": "label",
+            "values": [
                 "my-label",
                 "my-other-label",
             ],
-        ),
-        linode.GetInstancesFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
+        },
+        {
+            "name": "tags",
+            "values": ["my-tag"],
+        },
     ])
     pulumi.export("instanceId", my_instances.instances[0].id)
     ```
@@ -164,7 +164,7 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
 
 
 @_utilities.lift_output_func(get_instances)
-def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstancesFilterArgs']]]]] = None,
+def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
@@ -181,17 +181,17 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
     import pulumi_linode as linode
 
     my_instances = linode.get_instances(filters=[
-        linode.GetInstancesFilterArgs(
-            name="label",
-            values=[
+        {
+            "name": "label",
+            "values": [
                 "my-label",
                 "my-other-label",
             ],
-        ),
-        linode.GetInstancesFilterArgs(
-            name="tags",
-            values=["my-tag"],
-        ),
+        },
+        {
+            "name": "tags",
+            "values": ["my-tag"],
+        },
     ])
     pulumi.export("instanceId", my_instances.instances[0].id)
     ```

@@ -521,7 +521,7 @@ class Image(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['ImageTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
@@ -677,7 +677,7 @@ class Image(pulumi.CustomResource):
                  label: Optional[pulumi.Input[str]] = None,
                  linode_id: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['ImageTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -734,7 +734,7 @@ class Image(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['ImageTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vendor: Optional[pulumi.Input[str]] = None) -> 'Image':
         """
