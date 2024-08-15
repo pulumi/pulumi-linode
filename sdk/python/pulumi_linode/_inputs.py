@@ -1897,7 +1897,7 @@ class InstanceDiskArgs:
                  image: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
@@ -1909,7 +1909,7 @@ class InstanceDiskArgs:
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
         :param pulumi.Input[bool] read_only: If true, this Disk is read-only.
         :param pulumi.Input[str] root_pass: The password that will be initialially assigned to the 'root' user account.
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         pulumi.set(__self__, "label", label)
@@ -2043,14 +2043,14 @@ class InstanceDiskArgs:
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         """
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @property

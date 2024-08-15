@@ -1910,7 +1910,7 @@ class InstanceDisk(dict):
                  image: Optional[str] = None,
                  read_only: Optional[bool] = None,
                  root_pass: Optional[str] = None,
-                 stackscript_data: Optional[Mapping[str, Any]] = None,
+                 stackscript_data: Optional[Mapping[str, str]] = None,
                  stackscript_id: Optional[int] = None):
         """
         :param str label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
@@ -1922,7 +1922,7 @@ class InstanceDisk(dict):
         :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
         :param bool read_only: If true, this Disk is read-only.
         :param str root_pass: The password that will be initialially assigned to the 'root' user account.
-        :param Mapping[str, Any] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param Mapping[str, str] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param int stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         pulumi.set(__self__, "label", label)
@@ -2020,7 +2020,7 @@ class InstanceDisk(dict):
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[Mapping[str, Any]]:
+    def stackscript_data(self) -> Optional[Mapping[str, str]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         """

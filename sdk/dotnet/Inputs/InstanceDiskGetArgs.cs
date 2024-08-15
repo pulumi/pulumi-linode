@@ -89,17 +89,17 @@ namespace Pulumi.Linode.Inputs
         public Input<int> Size { get; set; } = null!;
 
         [Input("stackscriptData")]
-        private InputMap<object>? _stackscriptData;
+        private InputMap<string>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
-        public InputMap<object> StackscriptData
+        public InputMap<string> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
