@@ -330,6 +330,23 @@
                 "protocol"
             ]
         },
+        "linode:index/ImageReplication:ImageReplication": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of an image replica.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region",
+                "status"
+            ]
+        },
         "linode:index/ImageTimeouts:ImageTimeouts": {
             "properties": {
                 "create": {
@@ -1214,6 +1231,13 @@
                         "$ref": "#/types/linode:index/LkeClusterPoolNode:LkeClusterPoolNode"
                     },
                     "description": "The nodes in the node pool.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
                 "type": {
                     "type": "string",
@@ -3052,6 +3076,28 @@
                 }
             }
         },
+        "linode:index/getImageReplication:getImageReplication": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region of an image replica.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of an image replica.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getImagesFilter:getImagesFilter": {
             "properties": {
                 "matchBy": {
@@ -3117,13 +3163,31 @@
                     "type": "string",
                     "description": "A short description of the Image.\n"
                 },
+                "replications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getImagesImageReplication:getImagesImageReplication"
+                    },
+                    "description": "A list of image replication regions and corresponding status.\n"
+                },
                 "size": {
                     "type": "integer",
                     "description": "The minimum size this Image needs to deploy. Size is in MB. example: 2500\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "The current status of this image. (`creating`, `pending_upload`, `available`)\n"
+                    "description": "The status of an image replica.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of customized tags.\n"
+                },
+                "totalSize": {
+                    "type": "integer",
+                    "description": "The total size of the image in all available regions.\n"
                 },
                 "type": {
                     "type": "string",
@@ -3147,6 +3211,8 @@
                 "label",
                 "size",
                 "status",
+                "tags",
+                "totalSize",
                 "type",
                 "vendor"
             ],
@@ -3155,6 +3221,28 @@
                     "requiredInputs": [
                         "id"
                     ]
+                }
+            }
+        },
+        "linode:index/getImagesImageReplication:getImagesImageReplication": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region of an image replica.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of an image replica.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
             }
         },
@@ -4573,7 +4661,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the Placement Group in the Linode API.\n"
                 },
                 "image": {
                     "type": "string",
@@ -4596,7 +4684,13 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "placementGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstancesInstancePlacementGroup:getInstancesInstancePlacementGroup"
+                    }
                 },
                 "privateIpAddress": {
                     "type": "string",
@@ -4652,6 +4746,7 @@
                 "ipv4s",
                 "ipv6",
                 "label",
+                "placementGroups",
                 "privateIpAddress",
                 "region",
                 "specs",
@@ -4777,7 +4872,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the Placement Group in the Linode API.\n"
                 },
                 "interfaces": {
                     "type": "array",
@@ -4792,7 +4887,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
                 },
                 "memoryLimit": {
                     "type": "integer",
@@ -5152,7 +5247,7 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the Placement Group in the Linode API.\n"
                 },
                 "ipRanges": {
                     "type": "array",
@@ -5171,7 +5266,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
                 },
                 "primary": {
                     "type": "boolean",
@@ -5234,11 +5329,11 @@
                 },
                 "id": {
                     "type": "integer",
-                    "description": "The ID of the disk in the Linode API.\n"
+                    "description": "The ID of the Placement Group in the Linode API.\n"
                 },
                 "label": {
                     "type": "string",
-                    "description": "The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.\n"
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -5251,6 +5346,38 @@
                 "id",
                 "label",
                 "size"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getInstancesInstancePlacementGroup:getInstancesInstancePlacementGroup": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the Placement Group in the Linode API.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "placementGroupPolicy": {
+                    "type": "string",
+                    "description": "Whether Linodes must be able to become compliant during assignment. (Default `strict`)\n"
+                },
+                "placementGroupType": {
+                    "type": "string",
+                    "description": "The placement group type to use when placing Linodes in this group.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "placementGroupPolicy",
+                "placementGroupType"
             ],
             "language": {
                 "nodejs": {
@@ -9441,7 +9568,7 @@
             }
         },
         "linode:index/image:Image": {
-            "description": "Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.\n\nFor more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-image).\n\n## Example Usage\n\nCreating an image from an existing Linode Instance and deploying another instance with that image:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    type: \"g6-nanode-1\",\n    region: \"us-central\",\n    image: \"linode/ubuntu22.04\",\n    rootPass: \"insecure-p4ssw0rd!!\",\n});\nconst bar = new linode.Image(\"bar\", {\n    label: \"foo-sda-image\",\n    description: \"Image taken from foo\",\n    diskId: foo.disks.apply(disks =\u003e disks[0].id),\n    linodeId: foo.id,\n});\nconst barBased = new linode.Instance(\"bar_based\", {\n    type: foo.type,\n    region: \"eu-west\",\n    image: bar.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    type=\"g6-nanode-1\",\n    region=\"us-central\",\n    image=\"linode/ubuntu22.04\",\n    root_pass=\"insecure-p4ssw0rd!!\")\nbar = linode.Image(\"bar\",\n    label=\"foo-sda-image\",\n    description=\"Image taken from foo\",\n    disk_id=foo.disks[0].id,\n    linode_id=foo.id)\nbar_based = linode.Instance(\"bar_based\",\n    type=foo.type,\n    region=\"eu-west\",\n    image=bar.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.Instance(\"foo\", new()\n    {\n        Type = \"g6-nanode-1\",\n        Region = \"us-central\",\n        Image = \"linode/ubuntu22.04\",\n        RootPass = \"insecure-p4ssw0rd!!\",\n    });\n\n    var bar = new Linode.Image(\"bar\", new()\n    {\n        Label = \"foo-sda-image\",\n        Description = \"Image taken from foo\",\n        DiskId = foo.Disks.Apply(disks =\u003e disks[0].Id),\n        LinodeId = foo.Id,\n    });\n\n    var barBased = new Linode.Instance(\"bar_based\", new()\n    {\n        Type = foo.Type,\n        Region = \"eu-west\",\n        Image = bar.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-central\"),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRootPass: pulumi.String(\"insecure-p4ssw0rd!!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbar, err := linode.NewImage(ctx, \"bar\", \u0026linode.ImageArgs{\n\t\t\tLabel:       pulumi.String(\"foo-sda-image\"),\n\t\t\tDescription: pulumi.String(\"Image taken from foo\"),\n\t\t\tDiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {\n\t\t\t\treturn \u0026disks[0].Id, nil\n\t\t\t}).(pulumi.IntPtrOutput)),\n\t\t\tLinodeId: foo.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"bar_based\", \u0026linode.InstanceArgs{\n\t\t\tType:   foo.Type,\n\t\t\tRegion: pulumi.String(\"eu-west\"),\n\t\t\tImage:  bar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Image;\nimport com.pulumi.linode.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Instance(\"foo\", InstanceArgs.builder()\n            .type(\"g6-nanode-1\")\n            .region(\"us-central\")\n            .image(\"linode/ubuntu22.04\")\n            .rootPass(\"insecure-p4ssw0rd!!\")\n            .build());\n\n        var bar = new Image(\"bar\", ImageArgs.builder()\n            .label(\"foo-sda-image\")\n            .description(\"Image taken from foo\")\n            .diskId(foo.disks().applyValue(disks -\u003e disks[0].id()))\n            .linodeId(foo.id())\n            .build());\n\n        var barBased = new Instance(\"barBased\", InstanceArgs.builder()\n            .type(foo.type())\n            .region(\"eu-west\")\n            .image(bar.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:Instance\n    properties:\n      type: g6-nanode-1\n      region: us-central\n      image: linode/ubuntu22.04\n      rootPass: insecure-p4ssw0rd!!\n  bar:\n    type: linode:Image\n    properties:\n      label: foo-sda-image\n      description: Image taken from foo\n      diskId: ${foo.disks[0].id}\n      linodeId: ${foo.id}\n  barBased:\n    type: linode:Instance\n    name: bar_based\n    properties:\n      type: ${foo.type}\n      region: eu-west\n      image: ${bar.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating and uploading an image from a local file:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst foobar = new linode.Image(\"foobar\", {\n    label: \"foobar-image\",\n    description: \"An image uploaded from Terraform!\",\n    region: \"us-southeast\",\n    filePath: \"path/to/image.img.gz\",\n    fileHash: std.filemd5({\n        input: \"path/to/image.img.gz\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nfoobar = linode.Image(\"foobar\",\n    label=\"foobar-image\",\n    description=\"An image uploaded from Terraform!\",\n    region=\"us-southeast\",\n    file_path=\"path/to/image.img.gz\",\n    file_hash=std.filemd5(input=\"path/to/image.img.gz\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Image(\"foobar\", new()\n    {\n        Label = \"foobar-image\",\n        Description = \"An image uploaded from Terraform!\",\n        Region = \"us-southeast\",\n        FilePath = \"path/to/image.img.gz\",\n        FileHash = Std.Filemd5.Invoke(new()\n        {\n            Input = \"path/to/image.img.gz\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFilemd5, err := std.Filemd5(ctx, \u0026std.Filemd5Args{\n\t\t\tInput: \"path/to/image.img.gz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewImage(ctx, \"foobar\", \u0026linode.ImageArgs{\n\t\t\tLabel:       pulumi.String(\"foobar-image\"),\n\t\t\tDescription: pulumi.String(\"An image uploaded from Terraform!\"),\n\t\t\tRegion:      pulumi.String(\"us-southeast\"),\n\t\t\tFilePath:    pulumi.String(\"path/to/image.img.gz\"),\n\t\t\tFileHash:    pulumi.String(invokeFilemd5.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Image;\nimport com.pulumi.linode.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Image(\"foobar\", ImageArgs.builder()\n            .label(\"foobar-image\")\n            .description(\"An image uploaded from Terraform!\")\n            .region(\"us-southeast\")\n            .filePath(\"path/to/image.img.gz\")\n            .fileHash(StdFunctions.filemd5(Filemd5Args.builder()\n                .input(\"path/to/image.img.gz\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Image\n    properties:\n      label: foobar-image\n      description: An image uploaded from Terraform!\n      region: us-southeast\n      filePath: path/to/image.img.gz\n      fileHash:\n        fn::invoke:\n          Function: std:filemd5\n          Arguments:\n            input: path/to/image.img.gz\n          Return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes Images can be imported using the Linode Image `id`, e.g.\n\n```sh\n$ pulumi import linode:index/image:Image myimage 1234567\n```\n\n",
+            "description": "Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.\n\nFor more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-image).\n\n## Example Usage\n\nCreating an image from an existing Linode Instance and deploying another instance with that image:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    type: \"g6-nanode-1\",\n    region: \"us-central\",\n    image: \"linode/ubuntu22.04\",\n    rootPass: \"insecure-p4ssw0rd!!\",\n});\nconst bar = new linode.Image(\"bar\", {\n    label: \"foo-sda-image\",\n    description: \"Image taken from foo\",\n    diskId: foo.disks.apply(disks =\u003e disks[0].id),\n    linodeId: foo.id,\n    tags: [\n        \"image-tag\",\n        \"test\",\n    ],\n});\nconst barBased = new linode.Instance(\"bar_based\", {\n    type: foo.type,\n    region: \"eu-west\",\n    image: bar.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    type=\"g6-nanode-1\",\n    region=\"us-central\",\n    image=\"linode/ubuntu22.04\",\n    root_pass=\"insecure-p4ssw0rd!!\")\nbar = linode.Image(\"bar\",\n    label=\"foo-sda-image\",\n    description=\"Image taken from foo\",\n    disk_id=foo.disks[0].id,\n    linode_id=foo.id,\n    tags=[\n        \"image-tag\",\n        \"test\",\n    ])\nbar_based = linode.Instance(\"bar_based\",\n    type=foo.type,\n    region=\"eu-west\",\n    image=bar.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.Instance(\"foo\", new()\n    {\n        Type = \"g6-nanode-1\",\n        Region = \"us-central\",\n        Image = \"linode/ubuntu22.04\",\n        RootPass = \"insecure-p4ssw0rd!!\",\n    });\n\n    var bar = new Linode.Image(\"bar\", new()\n    {\n        Label = \"foo-sda-image\",\n        Description = \"Image taken from foo\",\n        DiskId = foo.Disks.Apply(disks =\u003e disks[0].Id),\n        LinodeId = foo.Id,\n        Tags = new[]\n        {\n            \"image-tag\",\n            \"test\",\n        },\n    });\n\n    var barBased = new Linode.Instance(\"bar_based\", new()\n    {\n        Type = foo.Type,\n        Region = \"eu-west\",\n        Image = bar.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-central\"),\n\t\t\tImage:    pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tRootPass: pulumi.String(\"insecure-p4ssw0rd!!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tbar, err := linode.NewImage(ctx, \"bar\", \u0026linode.ImageArgs{\n\t\t\tLabel:       pulumi.String(\"foo-sda-image\"),\n\t\t\tDescription: pulumi.String(\"Image taken from foo\"),\n\t\t\tDiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {\n\t\t\t\treturn \u0026disks[0].Id, nil\n\t\t\t}).(pulumi.IntPtrOutput)),\n\t\t\tLinodeId: foo.ID(),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image-tag\"),\n\t\t\t\tpulumi.String(\"test\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"bar_based\", \u0026linode.InstanceArgs{\n\t\t\tType:   foo.Type,\n\t\t\tRegion: pulumi.String(\"eu-west\"),\n\t\t\tImage:  bar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Image;\nimport com.pulumi.linode.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Instance(\"foo\", InstanceArgs.builder()\n            .type(\"g6-nanode-1\")\n            .region(\"us-central\")\n            .image(\"linode/ubuntu22.04\")\n            .rootPass(\"insecure-p4ssw0rd!!\")\n            .build());\n\n        var bar = new Image(\"bar\", ImageArgs.builder()\n            .label(\"foo-sda-image\")\n            .description(\"Image taken from foo\")\n            .diskId(foo.disks().applyValue(disks -\u003e disks[0].id()))\n            .linodeId(foo.id())\n            .tags(            \n                \"image-tag\",\n                \"test\")\n            .build());\n\n        var barBased = new Instance(\"barBased\", InstanceArgs.builder()\n            .type(foo.type())\n            .region(\"eu-west\")\n            .image(bar.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:Instance\n    properties:\n      type: g6-nanode-1\n      region: us-central\n      image: linode/ubuntu22.04\n      rootPass: insecure-p4ssw0rd!!\n  bar:\n    type: linode:Image\n    properties:\n      label: foo-sda-image\n      description: Image taken from foo\n      diskId: ${foo.disks[0].id}\n      linodeId: ${foo.id}\n      tags:\n        - image-tag\n        - test\n  barBased:\n    type: linode:Instance\n    name: bar_based\n    properties:\n      type: ${foo.type}\n      region: eu-west\n      image: ${bar.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating and uploading an image from a local file:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst foobar = new linode.Image(\"foobar\", {\n    label: \"foobar-image\",\n    description: \"An image uploaded from Terraform!\",\n    region: \"us-southeast\",\n    tags: [\n        \"image-tag\",\n        \"test\",\n    ],\n    filePath: \"path/to/image.img.gz\",\n    fileHash: std.filemd5({\n        input: \"path/to/image.img.gz\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nfoobar = linode.Image(\"foobar\",\n    label=\"foobar-image\",\n    description=\"An image uploaded from Terraform!\",\n    region=\"us-southeast\",\n    tags=[\n        \"image-tag\",\n        \"test\",\n    ],\n    file_path=\"path/to/image.img.gz\",\n    file_hash=std.filemd5(input=\"path/to/image.img.gz\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Image(\"foobar\", new()\n    {\n        Label = \"foobar-image\",\n        Description = \"An image uploaded from Terraform!\",\n        Region = \"us-southeast\",\n        Tags = new[]\n        {\n            \"image-tag\",\n            \"test\",\n        },\n        FilePath = \"path/to/image.img.gz\",\n        FileHash = Std.Filemd5.Invoke(new()\n        {\n            Input = \"path/to/image.img.gz\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFilemd5, err := std.Filemd5(ctx, \u0026std.Filemd5Args{\n\t\t\tInput: \"path/to/image.img.gz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewImage(ctx, \"foobar\", \u0026linode.ImageArgs{\n\t\t\tLabel:       pulumi.String(\"foobar-image\"),\n\t\t\tDescription: pulumi.String(\"An image uploaded from Terraform!\"),\n\t\t\tRegion:      pulumi.String(\"us-southeast\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image-tag\"),\n\t\t\t\tpulumi.String(\"test\"),\n\t\t\t},\n\t\t\tFilePath: pulumi.String(\"path/to/image.img.gz\"),\n\t\t\tFileHash: pulumi.String(invokeFilemd5.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Image;\nimport com.pulumi.linode.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Image(\"foobar\", ImageArgs.builder()\n            .label(\"foobar-image\")\n            .description(\"An image uploaded from Terraform!\")\n            .region(\"us-southeast\")\n            .tags(            \n                \"image-tag\",\n                \"test\")\n            .filePath(\"path/to/image.img.gz\")\n            .fileHash(StdFunctions.filemd5(Filemd5Args.builder()\n                .input(\"path/to/image.img.gz\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Image\n    properties:\n      label: foobar-image\n      description: An image uploaded from Terraform!\n      region: us-southeast\n      tags:\n        - image-tag\n        - test\n      filePath: path/to/image.img.gz\n      fileHash:\n        fn::invoke:\n          Function: std:filemd5\n          Arguments:\n            input: path/to/image.img.gz\n          Return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nUpload and replicate an image from a local file:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst foobar = new linode.Image(\"foobar\", {\n    label: \"foobar-image\",\n    description: \"An image uploaded from Terraform!\",\n    region: \"us-southeast\",\n    tags: [\n        \"image-tag\",\n        \"test\",\n    ],\n    filePath: \"path/to/image.img.gz\",\n    fileHash: std.filemd5({\n        input: \"path/to/image.img.gz\",\n    }).then(invoke =\u003e invoke.result),\n    replicaRegions: [\n        \"us-southeast\",\n        \"us-east\",\n        \"eu-west\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nfoobar = linode.Image(\"foobar\",\n    label=\"foobar-image\",\n    description=\"An image uploaded from Terraform!\",\n    region=\"us-southeast\",\n    tags=[\n        \"image-tag\",\n        \"test\",\n    ],\n    file_path=\"path/to/image.img.gz\",\n    file_hash=std.filemd5(input=\"path/to/image.img.gz\").result,\n    replica_regions=[\n        \"us-southeast\",\n        \"us-east\",\n        \"eu-west\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Image(\"foobar\", new()\n    {\n        Label = \"foobar-image\",\n        Description = \"An image uploaded from Terraform!\",\n        Region = \"us-southeast\",\n        Tags = new[]\n        {\n            \"image-tag\",\n            \"test\",\n        },\n        FilePath = \"path/to/image.img.gz\",\n        FileHash = Std.Filemd5.Invoke(new()\n        {\n            Input = \"path/to/image.img.gz\",\n        }).Apply(invoke =\u003e invoke.Result),\n        ReplicaRegions = new[]\n        {\n            \"us-southeast\",\n            \"us-east\",\n            \"eu-west\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFilemd5, err := std.Filemd5(ctx, \u0026std.Filemd5Args{\n\t\t\tInput: \"path/to/image.img.gz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewImage(ctx, \"foobar\", \u0026linode.ImageArgs{\n\t\t\tLabel:       pulumi.String(\"foobar-image\"),\n\t\t\tDescription: pulumi.String(\"An image uploaded from Terraform!\"),\n\t\t\tRegion:      pulumi.String(\"us-southeast\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image-tag\"),\n\t\t\t\tpulumi.String(\"test\"),\n\t\t\t},\n\t\t\tFilePath: pulumi.String(\"path/to/image.img.gz\"),\n\t\t\tFileHash: pulumi.String(invokeFilemd5.Result),\n\t\t\tReplicaRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-southeast\"),\n\t\t\t\tpulumi.String(\"us-east\"),\n\t\t\t\tpulumi.String(\"eu-west\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Image;\nimport com.pulumi.linode.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Image(\"foobar\", ImageArgs.builder()\n            .label(\"foobar-image\")\n            .description(\"An image uploaded from Terraform!\")\n            .region(\"us-southeast\")\n            .tags(            \n                \"image-tag\",\n                \"test\")\n            .filePath(\"path/to/image.img.gz\")\n            .fileHash(StdFunctions.filemd5(Filemd5Args.builder()\n                .input(\"path/to/image.img.gz\")\n                .build()).result())\n            .replicaRegions(            \n                \"us-southeast\",\n                \"us-east\",\n                \"eu-west\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Image\n    properties:\n      label: foobar-image\n      description: An image uploaded from Terraform!\n      region: us-southeast\n      tags:\n        - image-tag\n        - test\n      filePath: path/to/image.img.gz\n      fileHash:\n        fn::invoke:\n          Function: std:filemd5\n          Arguments:\n            input: path/to/image.img.gz\n          Return: result\n      replicaRegions:\n        - us-southeast\n        - us-east\n        - eu-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes Images can be imported using the Linode Image `id`, e.g.\n\n```sh\n$ pulumi import linode:index/image:Image myimage 1234567\n```\n\n",
             "properties": {
                 "capabilities": {
                     "type": "array",
@@ -9468,7 +9595,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "A detailed description of this Image.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
+                    "description": "A detailed description of this Image.\n"
                 },
                 "diskId": {
                     "type": "integer",
@@ -9500,7 +9627,21 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
+                    "description": "The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).\n"
+                },
+                "replicaRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
+                },
+                "replications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/ImageReplication:ImageReplication"
+                    },
+                    "description": "A list of image replications region and corresponding status.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -9508,10 +9649,21 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The current status of this Image.\n"
+                    "description": "The status of an image replica.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of customized tags.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/linode:index/ImageTimeouts:ImageTimeouts"
+                },
+                "totalSize": {
+                    "type": "integer",
+                    "description": "The total size of the image in all available regions.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9520,6 +9672,10 @@
                 "vendor": {
                     "type": "string",
                     "description": "The upstream distribution vendor. Nil for private Images.\n"
+                },
+                "waitForReplications": {
+                    "type": "boolean",
+                    "description": "Whether to wait for all image replications become `available`. Default to false.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
                 }
             },
             "required": [
@@ -9529,13 +9685,16 @@
                 "createdBy",
                 "deprecated",
                 "expiry",
-                "fileHash",
                 "isPublic",
                 "label",
+                "replications",
                 "size",
                 "status",
+                "tags",
+                "totalSize",
                 "type",
-                "vendor"
+                "vendor",
+                "waitForReplications"
             ],
             "inputProperties": {
                 "cloudInit": {
@@ -9544,7 +9703,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "A detailed description of this Image.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
+                    "description": "A detailed description of this Image.\n"
                 },
                 "diskId": {
                     "type": "integer",
@@ -9568,10 +9727,28 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
+                    "description": "The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).\n"
+                },
+                "replicaRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of customized tags.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/linode:index/ImageTimeouts:ImageTimeouts"
+                },
+                "waitForReplications": {
+                    "type": "boolean",
+                    "description": "Whether to wait for all image replications become `available`. Default to false.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
                 }
             },
             "requiredInputs": [
@@ -9605,7 +9782,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "A detailed description of this Image.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
+                        "description": "A detailed description of this Image.\n"
                     },
                     "diskId": {
                         "type": "integer",
@@ -9637,7 +9814,21 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region of the image. See all regions [here](https://api.linode.com/v4/regions).\n"
+                        "description": "The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).\n"
+                    },
+                    "replicaRegions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
+                    },
+                    "replications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/ImageReplication:ImageReplication"
+                        },
+                        "description": "A list of image replications region and corresponding status.\n"
                     },
                     "size": {
                         "type": "integer",
@@ -9645,10 +9836,21 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "The current status of this Image.\n"
+                        "description": "The status of an image replica.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of customized tags.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/linode:index/ImageTimeouts:ImageTimeouts"
+                    },
+                    "totalSize": {
+                        "type": "integer",
+                        "description": "The total size of the image in all available regions.\n"
                     },
                     "type": {
                         "type": "string",
@@ -9657,6 +9859,10 @@
                     "vendor": {
                         "type": "string",
                         "description": "The upstream distribution vendor. Nil for private Images.\n"
+                    },
+                    "waitForReplications": {
+                        "type": "boolean",
+                        "description": "Whether to wait for all image replications become `available`. Default to false.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
                     }
                 },
                 "type": "object"
@@ -11884,7 +12090,8 @@
                 },
                 "cluster": {
                     "type": "string",
-                    "description": "The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.\n"
+                    "description": "The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.\n",
+                    "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`."
                 },
                 "content": {
                     "type": "string",
@@ -11984,6 +12191,7 @@
                 "cluster": {
                     "type": "string",
                     "description": "The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.\n",
+                    "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.",
                     "willReplaceOnChanges": true
                 },
                 "content": {
@@ -12080,6 +12288,7 @@
                     "cluster": {
                         "type": "string",
                         "description": "The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.\n",
+                        "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.",
                         "willReplaceOnChanges": true
                     },
                     "content": {
@@ -14826,6 +15035,13 @@
                     "id": {
                         "type": "string",
                         "description": "The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.\n"
+                    },
+                    "replications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getImageReplication:getImageReplication"
+                        },
+                        "description": "A list of image replication regions and corresponding status.\n"
                     }
                 },
                 "type": "object",
@@ -14872,13 +15088,31 @@
                         "description": "A short description of the Image.\n",
                         "type": "string"
                     },
+                    "replications": {
+                        "description": "A list of image replication regions and corresponding status.\n",
+                        "items": {
+                            "$ref": "#/types/linode:index/getImageReplication:getImageReplication"
+                        },
+                        "type": "array"
+                    },
                     "size": {
                         "description": "The minimum size this Image needs to deploy. Size is in MB. example: 2500\n",
                         "type": "integer"
                     },
                     "status": {
-                        "description": "The current status of this image. (`creating`, `pending_upload`, `available`)\n",
+                        "description": "The status of an image replica.\n",
                         "type": "string"
+                    },
+                    "tags": {
+                        "description": "A list of customized tags.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "totalSize": {
+                        "description": "The total size of the image in all available regions.\n",
+                        "type": "integer"
                     },
                     "type": {
                         "description": "How the Image was created. Manual Images can be created at any time. \"Automatic\" Images are created automatically from a deleted Linode. (`manual`, `automatic`)\n",
@@ -14901,6 +15135,8 @@
                     "label",
                     "size",
                     "status",
+                    "tags",
+                    "totalSize",
                     "type",
                     "vendor"
                 ],
@@ -14908,7 +15144,7 @@
             }
         },
         "linode:index/getImages:getImages": {
-            "description": "Provides information about Linode images that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).\n\n## Example Usage\n\nGet information about all Linode images with a certain label and visibility:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific-images = linode.getImages({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"Debian 12\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"true\"],\n        },\n    ],\n});\nexport const imageId = specific_images.then(specific_images =\u003e specific_images.images?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_images = linode.get_images(filters=[\n    {\n        \"name\": \"label\",\n        \"values\": [\"Debian 12\"],\n    },\n    {\n        \"name\": \"is_public\",\n        \"values\": [\"true\"],\n    },\n])\npulumi.export(\"imageId\", specific_images.images[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var specific_images = Linode.GetImages.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetImagesFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"Debian 12\",\n                },\n            },\n            new Linode.Inputs.GetImagesFilterInputArgs\n            {\n                Name = \"is_public\",\n                Values = new[]\n                {\n                    \"true\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"imageId\"] = specific_images.Apply(specific_images =\u003e specific_images.Apply(getImagesResult =\u003e getImagesResult.Images[0]?.Id)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tspecific_images, err := linode.GetImages(ctx, \u0026linode.GetImagesArgs{\n\t\t\tFilters: []linode.GetImagesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Debian 12\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"imageId\", specific_images.Images[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetImagesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()\n            .filters(            \n                GetImagesFilterArgs.builder()\n                    .name(\"label\")\n                    .values(\"Debian 12\")\n                    .build(),\n                GetImagesFilterArgs.builder()\n                    .name(\"is_public\")\n                    .values(\"true\")\n                    .build())\n            .build());\n\n        ctx.export(\"imageId\", specific_images.images()[0].id());\n    }\n}\n```\n```yaml\nvariables:\n  specific-images:\n    fn::invoke:\n      Function: linode:getImages\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - Debian 12\n          - name: is_public\n            values:\n              - 'true'\noutputs:\n  imageId: ${[\"specific-images\"].images[0].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet information about all Linode images associated with the current token:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all-images = linode.getImages({});\nexport const imageIds = all_images.then(all_images =\u003e all_images.images.map(__item =\u003e __item.id));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_images = linode.get_images()\npulumi.export(\"imageIds\", [__item.id for __item in all_images.images])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all_images = Linode.GetImages.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"imageIds\"] = all_images.Apply(all_images =\u003e all_images.Apply(getImagesResult =\u003e getImagesResult.Images).Select(__item =\u003e __item.Id).ToList()),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nall_images, err := linode.GetImages(ctx, nil, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"imageIds\", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-34)))\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetImagesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all-images = LinodeFunctions.getImages();\n\n        ctx.export(\"imageIds\", all_images.images().stream().map(element -\u003e element.id()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `created_by`\n\n* `deprecated`\n\n* `description`\n\n* `id`\n\n* `is_public`\n\n* `label`\n\n* `size`\n\n* `status`\n\n* `vendor`\n",
+            "description": "Provides information about Linode images that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-images).\n\n## Example Usage\n\nGet information about all Linode images with a certain label and visibility:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific-images = linode.getImages({\n    filters: [\n        {\n            name: \"label\",\n            values: [\"Debian 12\"],\n        },\n        {\n            name: \"is_public\",\n            values: [\"true\"],\n        },\n    ],\n});\nexport const imageId = specific_images.then(specific_images =\u003e specific_images.images?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_images = linode.get_images(filters=[\n    {\n        \"name\": \"label\",\n        \"values\": [\"Debian 12\"],\n    },\n    {\n        \"name\": \"is_public\",\n        \"values\": [\"true\"],\n    },\n])\npulumi.export(\"imageId\", specific_images.images[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var specific_images = Linode.GetImages.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetImagesFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"Debian 12\",\n                },\n            },\n            new Linode.Inputs.GetImagesFilterInputArgs\n            {\n                Name = \"is_public\",\n                Values = new[]\n                {\n                    \"true\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"imageId\"] = specific_images.Apply(specific_images =\u003e specific_images.Apply(getImagesResult =\u003e getImagesResult.Images[0]?.Id)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tspecific_images, err := linode.GetImages(ctx, \u0026linode.GetImagesArgs{\n\t\t\tFilters: []linode.GetImagesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"Debian 12\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"is_public\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"imageId\", specific_images.Images[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetImagesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var specific-images = LinodeFunctions.getImages(GetImagesArgs.builder()\n            .filters(            \n                GetImagesFilterArgs.builder()\n                    .name(\"label\")\n                    .values(\"Debian 12\")\n                    .build(),\n                GetImagesFilterArgs.builder()\n                    .name(\"is_public\")\n                    .values(\"true\")\n                    .build())\n            .build());\n\n        ctx.export(\"imageId\", specific_images.images()[0].id());\n    }\n}\n```\n```yaml\nvariables:\n  specific-images:\n    fn::invoke:\n      Function: linode:getImages\n      Arguments:\n        filters:\n          - name: label\n            values:\n              - Debian 12\n          - name: is_public\n            values:\n              - 'true'\noutputs:\n  imageId: ${[\"specific-images\"].images[0].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet information about all Linode images associated with the current token:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all-images = linode.getImages({});\nexport const imageIds = all_images.then(all_images =\u003e all_images.images.map(__item =\u003e __item.id));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_images = linode.get_images()\npulumi.export(\"imageIds\", [__item.id for __item in all_images.images])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all_images = Linode.GetImages.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"imageIds\"] = all_images.Apply(all_images =\u003e all_images.Apply(getImagesResult =\u003e getImagesResult.Images).Select(__item =\u003e __item.Id).ToList()),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nall_images, err := linode.GetImages(ctx, nil, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"imageIds\", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-34)))\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetImagesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all-images = LinodeFunctions.getImages();\n\n        ctx.export(\"imageIds\", all_images.images().stream().map(element -\u003e element.id()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `created_by`\n\n* `deprecated`\n\n* `description`\n\n* `id`\n\n* `is_public`\n\n* `label`\n\n* `size`\n\n* `status`\n\n* `vendor`\n\n* `tags`\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getImages.\n",
                 "properties": {
@@ -15506,7 +15742,8 @@
                 "properties": {
                     "cluster": {
                         "type": "string",
-                        "description": "The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.\n"
+                        "description": "The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.\n",
+                        "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`."
                     },
                     "label": {
                         "type": "string",
@@ -15526,6 +15763,7 @@
                 "description": "A collection of values returned by getLinodeObjectStorageBucket.\n",
                 "properties": {
                     "cluster": {
+                        "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.",
                         "type": "string"
                     },
                     "created": {
