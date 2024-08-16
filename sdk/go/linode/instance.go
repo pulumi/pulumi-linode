@@ -333,7 +333,7 @@ type Instance struct {
 	Specs InstanceSpecsOutput `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData pulumi.MapOutput `pulumi:"stackscriptData"`
+	StackscriptData pulumi.StringMapOutput `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
 	// that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrOutput `pulumi:"stackscriptId"`
@@ -366,7 +366,7 @@ func NewInstance(ctx *pulumi.Context,
 		args.RootPass = pulumi.ToSecret(args.RootPass).(pulumi.StringPtrInput)
 	}
 	if args.StackscriptData != nil {
-		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.MapInput)
+		args.StackscriptData = pulumi.ToSecret(args.StackscriptData).(pulumi.StringMapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"rootPass",
@@ -486,7 +486,7 @@ type instanceState struct {
 	Specs *InstanceSpecs `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
+	StackscriptData map[string]string `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
 	// that is compatible with this StackScript.
 	StackscriptId *int `pulumi:"stackscriptId"`
@@ -596,7 +596,7 @@ type InstanceState struct {
 	Specs InstanceSpecsPtrInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData pulumi.MapInput
+	StackscriptData pulumi.StringMapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
 	// that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrInput
@@ -694,7 +694,7 @@ type instanceArgs struct {
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
+	StackscriptData map[string]string `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
 	// that is compatible with this StackScript.
 	StackscriptId *int `pulumi:"stackscriptId"`
@@ -787,7 +787,7 @@ type InstanceArgs struct {
 	SharedIpv4s pulumi.StringArrayInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData pulumi.MapInput
+	StackscriptData pulumi.StringMapInput
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
 	// that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrInput
@@ -1074,8 +1074,8 @@ func (o InstanceOutput) Specs() InstanceSpecsOutput {
 
 // An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 // accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-func (o InstanceOutput) StackscriptData() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.StackscriptData }).(pulumi.MapOutput)
+func (o InstanceOutput) StackscriptData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.StackscriptData }).(pulumi.StringMapOutput)
 }
 
 // The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image

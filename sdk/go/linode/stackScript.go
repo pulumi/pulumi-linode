@@ -55,8 +55,8 @@ import (
 //				},
 //				RootPass:      pulumi.String("..."),
 //				StackscriptId: foo.ID(),
-//				StackscriptData: pulumi.Map{
-//					"package": pulumi.Any("nginx"),
+//				StackscriptData: pulumi.StringMap{
+//					"package": pulumi.String("nginx"),
 //				},
 //			})
 //			if err != nil {

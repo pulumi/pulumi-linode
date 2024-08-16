@@ -39,7 +39,7 @@ class InstanceArgs:
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -91,7 +91,7 @@ class InstanceArgs:
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
                that is compatible with this StackScript.
@@ -470,7 +470,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
         accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
@@ -478,7 +478,7 @@ class InstanceArgs:
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @property
@@ -580,7 +580,7 @@ class _InstanceState:
                  root_pass: Optional[pulumi.Input[str]] = None,
                  shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  specs: Optional[pulumi.Input['InstanceSpecsArgs']] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
@@ -641,7 +641,7 @@ class _InstanceState:
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input['InstanceSpecsArgs'] specs: Information about the resources available to this Linode.
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
                that is compatible with this StackScript.
@@ -1136,7 +1136,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
         accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
@@ -1144,7 +1144,7 @@ class _InstanceState:
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @property
@@ -1252,7 +1252,7 @@ class Instance(pulumi.CustomResource):
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1442,7 +1442,7 @@ class Instance(pulumi.CustomResource):
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
                that is compatible with this StackScript.
@@ -1635,7 +1635,7 @@ class Instance(pulumi.CustomResource):
                  resize_disk: Optional[pulumi.Input[bool]] = None,
                  root_pass: Optional[pulumi.Input[str]] = None,
                  shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[int]] = None,
                  swap_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1733,7 +1733,7 @@ class Instance(pulumi.CustomResource):
             root_pass: Optional[pulumi.Input[str]] = None,
             shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             specs: Optional[pulumi.Input[Union['InstanceSpecsArgs', 'InstanceSpecsArgsDict']]] = None,
-            stackscript_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             stackscript_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             swap_size: Optional[pulumi.Input[int]] = None,
@@ -1799,7 +1799,7 @@ class Instance(pulumi.CustomResource):
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[Union['InstanceSpecsArgs', 'InstanceSpecsArgsDict']] specs: Information about the resources available to this Linode.
-        :param pulumi.Input[Mapping[str, Any]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
                that is compatible with this StackScript.
@@ -2128,7 +2128,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
         accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.

@@ -4075,7 +4075,7 @@ type InstanceDiskType struct {
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData map[string]interface{} `pulumi:"stackscriptData"`
+	StackscriptData map[string]string `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId *int `pulumi:"stackscriptId"`
 }
@@ -4111,7 +4111,7 @@ type InstanceDiskTypeArgs struct {
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-	StackscriptData pulumi.MapInput `pulumi:"stackscriptData"`
+	StackscriptData pulumi.StringMapInput `pulumi:"stackscriptData"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrInput `pulumi:"stackscriptId"`
 }
@@ -4213,8 +4213,8 @@ func (o InstanceDiskTypeOutput) Size() pulumi.IntOutput {
 }
 
 // An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-func (o InstanceDiskTypeOutput) StackscriptData() pulumi.MapOutput {
-	return o.ApplyT(func(v InstanceDiskType) map[string]interface{} { return v.StackscriptData }).(pulumi.MapOutput)
+func (o InstanceDiskTypeOutput) StackscriptData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceDiskType) map[string]string { return v.StackscriptData }).(pulumi.StringMapOutput)
 }
 
 // The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.

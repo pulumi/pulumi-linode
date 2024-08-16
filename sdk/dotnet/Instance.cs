@@ -430,7 +430,7 @@ namespace Pulumi.Linode
         /// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
         [Output("stackscriptData")]
-        public Output<ImmutableDictionary<string, object>?> StackscriptData { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
         /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
@@ -734,18 +734,18 @@ namespace Pulumi.Linode
         }
 
         [Input("stackscriptData")]
-        private InputMap<object>? _stackscriptData;
+        private InputMap<string>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
         /// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
-        public InputMap<object> StackscriptData
+        public InputMap<string> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -1063,18 +1063,18 @@ namespace Pulumi.Linode
         public Input<Inputs.InstanceSpecsGetArgs>? Specs { get; set; }
 
         [Input("stackscriptData")]
-        private InputMap<object>? _stackscriptData;
+        private InputMap<string>? _stackscriptData;
 
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
         /// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
-        public InputMap<object> StackscriptData
+        public InputMap<string> StackscriptData
         {
-            get => _stackscriptData ?? (_stackscriptData = new InputMap<object>());
+            get => _stackscriptData ?? (_stackscriptData = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _stackscriptData = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

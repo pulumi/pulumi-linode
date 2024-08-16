@@ -20,7 +20,6 @@ import com.pulumi.linode.outputs.InstancePlacementGroup;
 import com.pulumi.linode.outputs.InstanceSpecs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -765,15 +764,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
-    @Export(name="stackscriptData", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> stackscriptData;
+    @Export(name="stackscriptData", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> stackscriptData;
 
     /**
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
      * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
-    public Output<Optional<Map<String,Object>>> stackscriptData() {
+    public Output<Optional<Map<String,String>>> stackscriptData() {
         return Codegen.optional(this.stackscriptData);
     }
     /**
