@@ -70,6 +70,9 @@ class ObjectStorageObjectArgs:
         if cache_control is not None:
             pulumi.set(__self__, "cache_control", cache_control)
         if cluster is not None:
+            warnings.warn("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""", DeprecationWarning)
+            pulumi.log.warn("""cluster is deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
+        if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -164,6 +167,7 @@ class ObjectStorageObjectArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
         The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
@@ -406,6 +410,9 @@ class _ObjectStorageObjectState:
         if cache_control is not None:
             pulumi.set(__self__, "cache_control", cache_control)
         if cluster is not None:
+            warnings.warn("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""", DeprecationWarning)
+            pulumi.log.warn("""cluster is deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
+        if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -492,6 +499,7 @@ class _ObjectStorageObjectState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
         The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
@@ -1058,6 +1066,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
     def cluster(self) -> pulumi.Output[Optional[str]]:
         """
         The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.

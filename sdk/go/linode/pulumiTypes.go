@@ -856,6 +856,112 @@ func (o FirewallOutboundArrayOutput) Index(i pulumi.IntInput) FirewallOutboundOu
 	}).(FirewallOutboundOutput)
 }
 
+type ImageReplication struct {
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+	Region string `pulumi:"region"`
+	// The status of an image replica.
+	Status string `pulumi:"status"`
+}
+
+// ImageReplicationInput is an input type that accepts ImageReplicationArgs and ImageReplicationOutput values.
+// You can construct a concrete instance of `ImageReplicationInput` via:
+//
+//	ImageReplicationArgs{...}
+type ImageReplicationInput interface {
+	pulumi.Input
+
+	ToImageReplicationOutput() ImageReplicationOutput
+	ToImageReplicationOutputWithContext(context.Context) ImageReplicationOutput
+}
+
+type ImageReplicationArgs struct {
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+	Region pulumi.StringInput `pulumi:"region"`
+	// The status of an image replica.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (ImageReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageReplication)(nil)).Elem()
+}
+
+func (i ImageReplicationArgs) ToImageReplicationOutput() ImageReplicationOutput {
+	return i.ToImageReplicationOutputWithContext(context.Background())
+}
+
+func (i ImageReplicationArgs) ToImageReplicationOutputWithContext(ctx context.Context) ImageReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageReplicationOutput)
+}
+
+// ImageReplicationArrayInput is an input type that accepts ImageReplicationArray and ImageReplicationArrayOutput values.
+// You can construct a concrete instance of `ImageReplicationArrayInput` via:
+//
+//	ImageReplicationArray{ ImageReplicationArgs{...} }
+type ImageReplicationArrayInput interface {
+	pulumi.Input
+
+	ToImageReplicationArrayOutput() ImageReplicationArrayOutput
+	ToImageReplicationArrayOutputWithContext(context.Context) ImageReplicationArrayOutput
+}
+
+type ImageReplicationArray []ImageReplicationInput
+
+func (ImageReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageReplication)(nil)).Elem()
+}
+
+func (i ImageReplicationArray) ToImageReplicationArrayOutput() ImageReplicationArrayOutput {
+	return i.ToImageReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i ImageReplicationArray) ToImageReplicationArrayOutputWithContext(ctx context.Context) ImageReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageReplicationArrayOutput)
+}
+
+type ImageReplicationOutput struct{ *pulumi.OutputState }
+
+func (ImageReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageReplication)(nil)).Elem()
+}
+
+func (o ImageReplicationOutput) ToImageReplicationOutput() ImageReplicationOutput {
+	return o
+}
+
+func (o ImageReplicationOutput) ToImageReplicationOutputWithContext(ctx context.Context) ImageReplicationOutput {
+	return o
+}
+
+// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+func (o ImageReplicationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageReplication) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of an image replica.
+func (o ImageReplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageReplication) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ImageReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageReplication)(nil)).Elem()
+}
+
+func (o ImageReplicationArrayOutput) ToImageReplicationArrayOutput() ImageReplicationArrayOutput {
+	return o
+}
+
+func (o ImageReplicationArrayOutput) ToImageReplicationArrayOutputWithContext(ctx context.Context) ImageReplicationArrayOutput {
+	return o
+}
+
+func (o ImageReplicationArrayOutput) Index(i pulumi.IntInput) ImageReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageReplication {
+		return vs[0].([]ImageReplication)[vs[1].(int)]
+	}).(ImageReplicationOutput)
+}
+
 type ImageTimeouts struct {
 	// Used when creating the instance image (until the instance is available)
 	Create *string `pulumi:"create"`
@@ -5711,6 +5817,8 @@ type LkeClusterPool struct {
 	Id *int `pulumi:"id"`
 	// The nodes in the node pool.
 	Nodes []LkeClusterPoolNode `pulumi:"nodes"`
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
@@ -5737,6 +5845,8 @@ type LkeClusterPoolArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The nodes in the node pool.
 	Nodes LkeClusterPoolNodeArrayInput `pulumi:"nodes"`
+	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -5812,6 +5922,11 @@ func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
 // The nodes in the node pool.
 func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolNode { return v.Nodes }).(LkeClusterPoolNodeArrayOutput)
+}
+
+// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+func (o LkeClusterPoolOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LkeClusterPool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -13525,6 +13640,112 @@ func (o GetFirewallsFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetFir
 	}).(GetFirewallsFirewallOutboundOutput)
 }
 
+type GetImageReplication struct {
+	// The region of an image replica.
+	Region string `pulumi:"region"`
+	// The status of an image replica.
+	Status string `pulumi:"status"`
+}
+
+// GetImageReplicationInput is an input type that accepts GetImageReplicationArgs and GetImageReplicationOutput values.
+// You can construct a concrete instance of `GetImageReplicationInput` via:
+//
+//	GetImageReplicationArgs{...}
+type GetImageReplicationInput interface {
+	pulumi.Input
+
+	ToGetImageReplicationOutput() GetImageReplicationOutput
+	ToGetImageReplicationOutputWithContext(context.Context) GetImageReplicationOutput
+}
+
+type GetImageReplicationArgs struct {
+	// The region of an image replica.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The status of an image replica.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetImageReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageReplication)(nil)).Elem()
+}
+
+func (i GetImageReplicationArgs) ToGetImageReplicationOutput() GetImageReplicationOutput {
+	return i.ToGetImageReplicationOutputWithContext(context.Background())
+}
+
+func (i GetImageReplicationArgs) ToGetImageReplicationOutputWithContext(ctx context.Context) GetImageReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageReplicationOutput)
+}
+
+// GetImageReplicationArrayInput is an input type that accepts GetImageReplicationArray and GetImageReplicationArrayOutput values.
+// You can construct a concrete instance of `GetImageReplicationArrayInput` via:
+//
+//	GetImageReplicationArray{ GetImageReplicationArgs{...} }
+type GetImageReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetImageReplicationArrayOutput() GetImageReplicationArrayOutput
+	ToGetImageReplicationArrayOutputWithContext(context.Context) GetImageReplicationArrayOutput
+}
+
+type GetImageReplicationArray []GetImageReplicationInput
+
+func (GetImageReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImageReplication)(nil)).Elem()
+}
+
+func (i GetImageReplicationArray) ToGetImageReplicationArrayOutput() GetImageReplicationArrayOutput {
+	return i.ToGetImageReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetImageReplicationArray) ToGetImageReplicationArrayOutputWithContext(ctx context.Context) GetImageReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageReplicationArrayOutput)
+}
+
+type GetImageReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetImageReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageReplication)(nil)).Elem()
+}
+
+func (o GetImageReplicationOutput) ToGetImageReplicationOutput() GetImageReplicationOutput {
+	return o
+}
+
+func (o GetImageReplicationOutput) ToGetImageReplicationOutputWithContext(ctx context.Context) GetImageReplicationOutput {
+	return o
+}
+
+// The region of an image replica.
+func (o GetImageReplicationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageReplication) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of an image replica.
+func (o GetImageReplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageReplication) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetImageReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImageReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImageReplication)(nil)).Elem()
+}
+
+func (o GetImageReplicationArrayOutput) ToGetImageReplicationArrayOutput() GetImageReplicationArrayOutput {
+	return o
+}
+
+func (o GetImageReplicationArrayOutput) ToGetImageReplicationArrayOutputWithContext(ctx context.Context) GetImageReplicationArrayOutput {
+	return o
+}
+
+func (o GetImageReplicationArrayOutput) Index(i pulumi.IntInput) GetImageReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageReplication {
+		return vs[0].([]GetImageReplication)[vs[1].(int)]
+	}).(GetImageReplicationOutput)
+}
+
 type GetImagesFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -13659,10 +13880,16 @@ type GetImagesImage struct {
 	IsPublic bool `pulumi:"isPublic"`
 	// A short description of the Image.
 	Label string `pulumi:"label"`
+	// A list of image replication regions and corresponding status.
+	Replications []GetImagesImageReplication `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
 	Size int `pulumi:"size"`
-	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	// The status of an image replica.
 	Status string `pulumi:"status"`
+	// A list of customized tags.
+	Tags []string `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize int `pulumi:"totalSize"`
 	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 	Type string `pulumi:"type"`
 	// The upstream distribution vendor. `None` for private Images.
@@ -13699,10 +13926,16 @@ type GetImagesImageArgs struct {
 	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
 	// A short description of the Image.
 	Label pulumi.StringInput `pulumi:"label"`
+	// A list of image replication regions and corresponding status.
+	Replications GetImagesImageReplicationArrayInput `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
 	Size pulumi.IntInput `pulumi:"size"`
-	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	// The status of an image replica.
 	Status pulumi.StringInput `pulumi:"status"`
+	// A list of customized tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize pulumi.IntInput `pulumi:"totalSize"`
 	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 	Type pulumi.StringInput `pulumi:"type"`
 	// The upstream distribution vendor. `None` for private Images.
@@ -13805,14 +14038,29 @@ func (o GetImagesImageOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A list of image replication regions and corresponding status.
+func (o GetImagesImageOutput) Replications() GetImagesImageReplicationArrayOutput {
+	return o.ApplyT(func(v GetImagesImage) []GetImagesImageReplication { return v.Replications }).(GetImagesImageReplicationArrayOutput)
+}
+
 // The minimum size this Image needs to deploy. Size is in MB. example: 2500
 func (o GetImagesImageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The current status of this image. (`creating`, `pendingUpload`, `available`)
+// The status of an image replica.
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of customized tags.
+func (o GetImagesImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImagesImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The total size of the image in all available regions.
+func (o GetImagesImageOutput) TotalSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.TotalSize }).(pulumi.IntOutput)
 }
 
 // How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
@@ -13843,6 +14091,112 @@ func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
 		return vs[0].([]GetImagesImage)[vs[1].(int)]
 	}).(GetImagesImageOutput)
+}
+
+type GetImagesImageReplication struct {
+	// The region of an image replica.
+	Region string `pulumi:"region"`
+	// The status of an image replica.
+	Status string `pulumi:"status"`
+}
+
+// GetImagesImageReplicationInput is an input type that accepts GetImagesImageReplicationArgs and GetImagesImageReplicationOutput values.
+// You can construct a concrete instance of `GetImagesImageReplicationInput` via:
+//
+//	GetImagesImageReplicationArgs{...}
+type GetImagesImageReplicationInput interface {
+	pulumi.Input
+
+	ToGetImagesImageReplicationOutput() GetImagesImageReplicationOutput
+	ToGetImagesImageReplicationOutputWithContext(context.Context) GetImagesImageReplicationOutput
+}
+
+type GetImagesImageReplicationArgs struct {
+	// The region of an image replica.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The status of an image replica.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetImagesImageReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageReplication)(nil)).Elem()
+}
+
+func (i GetImagesImageReplicationArgs) ToGetImagesImageReplicationOutput() GetImagesImageReplicationOutput {
+	return i.ToGetImagesImageReplicationOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageReplicationArgs) ToGetImagesImageReplicationOutputWithContext(ctx context.Context) GetImagesImageReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageReplicationOutput)
+}
+
+// GetImagesImageReplicationArrayInput is an input type that accepts GetImagesImageReplicationArray and GetImagesImageReplicationArrayOutput values.
+// You can construct a concrete instance of `GetImagesImageReplicationArrayInput` via:
+//
+//	GetImagesImageReplicationArray{ GetImagesImageReplicationArgs{...} }
+type GetImagesImageReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesImageReplicationArrayOutput() GetImagesImageReplicationArrayOutput
+	ToGetImagesImageReplicationArrayOutputWithContext(context.Context) GetImagesImageReplicationArrayOutput
+}
+
+type GetImagesImageReplicationArray []GetImagesImageReplicationInput
+
+func (GetImagesImageReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImageReplication)(nil)).Elem()
+}
+
+func (i GetImagesImageReplicationArray) ToGetImagesImageReplicationArrayOutput() GetImagesImageReplicationArrayOutput {
+	return i.ToGetImagesImageReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageReplicationArray) ToGetImagesImageReplicationArrayOutputWithContext(ctx context.Context) GetImagesImageReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageReplicationArrayOutput)
+}
+
+type GetImagesImageReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageReplication)(nil)).Elem()
+}
+
+func (o GetImagesImageReplicationOutput) ToGetImagesImageReplicationOutput() GetImagesImageReplicationOutput {
+	return o
+}
+
+func (o GetImagesImageReplicationOutput) ToGetImagesImageReplicationOutputWithContext(ctx context.Context) GetImagesImageReplicationOutput {
+	return o
+}
+
+// The region of an image replica.
+func (o GetImagesImageReplicationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImageReplication) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of an image replica.
+func (o GetImagesImageReplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImageReplication) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetImagesImageReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImageReplication)(nil)).Elem()
+}
+
+func (o GetImagesImageReplicationArrayOutput) ToGetImagesImageReplicationArrayOutput() GetImagesImageReplicationArrayOutput {
+	return o
+}
+
+func (o GetImagesImageReplicationArrayOutput) ToGetImagesImageReplicationArrayOutputWithContext(ctx context.Context) GetImagesImageReplicationArrayOutput {
+	return o
+}
+
+func (o GetImagesImageReplicationArrayOutput) Index(i pulumi.IntInput) GetImagesImageReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImageReplication {
+		return vs[0].([]GetImagesImageReplication)[vs[1].(int)]
+	}).(GetImagesImageReplicationOutput)
 }
 
 type GetInstanceBackupsAutomatic struct {
@@ -18255,7 +18609,7 @@ type GetInstancesInstance struct {
 	HasUserData bool `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid string `pulumi:"hostUuid"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image string `pulumi:"image"`
@@ -18265,8 +18619,9 @@ type GetInstancesInstance struct {
 	Ipv4s []string `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 string `pulumi:"ipv6"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
-	Label string `pulumi:"label"`
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+	Label           string                               `pulumi:"label"`
+	PlacementGroups []GetInstancesInstancePlacementGroup `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress string `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
@@ -18311,7 +18666,7 @@ type GetInstancesInstanceArgs struct {
 	HasUserData pulumi.BoolInput `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringInput `pulumi:"hostUuid"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringInput `pulumi:"image"`
@@ -18321,8 +18676,9 @@ type GetInstancesInstanceArgs struct {
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
-	Label pulumi.StringInput `pulumi:"label"`
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+	Label           pulumi.StringInput                           `pulumi:"label"`
+	PlacementGroups GetInstancesInstancePlacementGroupArrayInput `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
@@ -18430,7 +18786,7 @@ func (o GetInstancesInstanceOutput) HostUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.HostUuid }).(pulumi.StringOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the Placement Group in the Linode API.
 func (o GetInstancesInstanceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -18455,9 +18811,13 @@ func (o GetInstancesInstanceOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
-// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) PlacementGroups() GetInstancesInstancePlacementGroupArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstancePlacementGroup { return v.PlacementGroups }).(GetInstancesInstancePlacementGroupArrayOutput)
 }
 
 // This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -18832,13 +19192,13 @@ type GetInstancesInstanceConfig struct {
 	Devices []GetInstancesInstanceConfigDevice `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers []GetInstancesInstanceConfigHelper `pulumi:"helpers"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id int `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces []GetInstancesInstanceConfigInterface `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
 	Kernel string `pulumi:"kernel"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
 	MemoryLimit int `pulumi:"memoryLimit"`
@@ -18868,13 +19228,13 @@ type GetInstancesInstanceConfigArgs struct {
 	Devices GetInstancesInstanceConfigDeviceArrayInput `pulumi:"devices"`
 	// Helpers enabled when booting to this Linode Config.
 	Helpers GetInstancesInstanceConfigHelperArrayInput `pulumi:"helpers"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
 	// An array of Network Interfaces for this Linode’s Configuration Profile.
 	Interfaces GetInstancesInstanceConfigInterfaceArrayInput `pulumi:"interfaces"`
 	// A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
 	Kernel pulumi.StringInput `pulumi:"kernel"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Defaults to the total RAM of the Linode
 	MemoryLimit pulumi.IntInput `pulumi:"memoryLimit"`
@@ -18952,7 +19312,7 @@ func (o GetInstancesInstanceConfigOutput) Helpers() GetInstancesInstanceConfigHe
 	return o.ApplyT(func(v GetInstancesInstanceConfig) []GetInstancesInstanceConfigHelper { return v.Helpers }).(GetInstancesInstanceConfigHelperArrayOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the Placement Group in the Linode API.
 func (o GetInstancesInstanceConfigOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -18967,7 +19327,7 @@ func (o GetInstancesInstanceConfigOutput) Kernel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Kernel }).(pulumi.StringOutput)
 }
 
-// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 func (o GetInstancesInstanceConfigOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfig) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -20228,7 +20588,7 @@ func (o GetInstancesInstanceConfigHelperArrayOutput) Index(i pulumi.IntInput) Ge
 type GetInstancesInstanceConfigInterface struct {
 	// Whether this interface is currently booted and active.
 	Active bool `pulumi:"active"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id int `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges []string `pulumi:"ipRanges"`
@@ -20236,7 +20596,7 @@ type GetInstancesInstanceConfigInterface struct {
 	IpamAddress *string `pulumi:"ipamAddress"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4 GetInstancesInstanceConfigInterfaceIpv4 `pulumi:"ipv4"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
 	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 	Primary *bool `pulumi:"primary"`
@@ -20262,7 +20622,7 @@ type GetInstancesInstanceConfigInterfaceInput interface {
 type GetInstancesInstanceConfigInterfaceArgs struct {
 	// Whether this interface is currently booted and active.
 	Active pulumi.BoolInput `pulumi:"active"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
@@ -20270,7 +20630,7 @@ type GetInstancesInstanceConfigInterfaceArgs struct {
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4 GetInstancesInstanceConfigInterfaceIpv4Input `pulumi:"ipv4"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 	Primary pulumi.BoolPtrInput `pulumi:"primary"`
@@ -20338,7 +20698,7 @@ func (o GetInstancesInstanceConfigInterfaceOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) bool { return v.Active }).(pulumi.BoolOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the Placement Group in the Linode API.
 func (o GetInstancesInstanceConfigInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -20358,7 +20718,7 @@ func (o GetInstancesInstanceConfigInterfaceOutput) Ipv4() GetInstancesInstanceCo
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) GetInstancesInstanceConfigInterfaceIpv4 { return v.Ipv4 }).(GetInstancesInstanceConfigInterfaceIpv4Output)
 }
 
-// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 func (o GetInstancesInstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesInstanceConfigInterface) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -20467,9 +20827,9 @@ func (o GetInstancesInstanceConfigInterfaceIpv4Output) Vpc() pulumi.StringOutput
 type GetInstancesInstanceDisk struct {
 	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 	Filesystem string `pulumi:"filesystem"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id int `pulumi:"id"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
 	// The size of the Disk in MB.
 	Size int `pulumi:"size"`
@@ -20489,9 +20849,9 @@ type GetInstancesInstanceDiskInput interface {
 type GetInstancesInstanceDiskArgs struct {
 	// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
 	Filesystem pulumi.StringInput `pulumi:"filesystem"`
-	// The ID of the disk in the Linode API.
+	// The ID of the Placement Group in the Linode API.
 	Id pulumi.IntInput `pulumi:"id"`
-	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The size of the Disk in MB.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -20553,12 +20913,12 @@ func (o GetInstancesInstanceDiskOutput) Filesystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) string { return v.Filesystem }).(pulumi.StringOutput)
 }
 
-// The ID of the disk in the Linode API.
+// The ID of the Placement Group in the Linode API.
 func (o GetInstancesInstanceDiskOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 func (o GetInstancesInstanceDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDisk) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -20586,6 +20946,130 @@ func (o GetInstancesInstanceDiskArrayOutput) Index(i pulumi.IntInput) GetInstanc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceDisk {
 		return vs[0].([]GetInstancesInstanceDisk)[vs[1].(int)]
 	}).(GetInstancesInstanceDiskOutput)
+}
+
+type GetInstancesInstancePlacementGroup struct {
+	// The ID of the Placement Group in the Linode API.
+	Id int `pulumi:"id"`
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+	Label string `pulumi:"label"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy string `pulumi:"placementGroupPolicy"`
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType string `pulumi:"placementGroupType"`
+}
+
+// GetInstancesInstancePlacementGroupInput is an input type that accepts GetInstancesInstancePlacementGroupArgs and GetInstancesInstancePlacementGroupOutput values.
+// You can construct a concrete instance of `GetInstancesInstancePlacementGroupInput` via:
+//
+//	GetInstancesInstancePlacementGroupArgs{...}
+type GetInstancesInstancePlacementGroupInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstancePlacementGroupOutput() GetInstancesInstancePlacementGroupOutput
+	ToGetInstancesInstancePlacementGroupOutputWithContext(context.Context) GetInstancesInstancePlacementGroupOutput
+}
+
+type GetInstancesInstancePlacementGroupArgs struct {
+	// The ID of the Placement Group in the Linode API.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+	PlacementGroupPolicy pulumi.StringInput `pulumi:"placementGroupPolicy"`
+	// The placement group type to use when placing Linodes in this group.
+	PlacementGroupType pulumi.StringInput `pulumi:"placementGroupType"`
+}
+
+func (GetInstancesInstancePlacementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstancePlacementGroup)(nil)).Elem()
+}
+
+func (i GetInstancesInstancePlacementGroupArgs) ToGetInstancesInstancePlacementGroupOutput() GetInstancesInstancePlacementGroupOutput {
+	return i.ToGetInstancesInstancePlacementGroupOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstancePlacementGroupArgs) ToGetInstancesInstancePlacementGroupOutputWithContext(ctx context.Context) GetInstancesInstancePlacementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstancePlacementGroupOutput)
+}
+
+// GetInstancesInstancePlacementGroupArrayInput is an input type that accepts GetInstancesInstancePlacementGroupArray and GetInstancesInstancePlacementGroupArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstancePlacementGroupArrayInput` via:
+//
+//	GetInstancesInstancePlacementGroupArray{ GetInstancesInstancePlacementGroupArgs{...} }
+type GetInstancesInstancePlacementGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstancePlacementGroupArrayOutput() GetInstancesInstancePlacementGroupArrayOutput
+	ToGetInstancesInstancePlacementGroupArrayOutputWithContext(context.Context) GetInstancesInstancePlacementGroupArrayOutput
+}
+
+type GetInstancesInstancePlacementGroupArray []GetInstancesInstancePlacementGroupInput
+
+func (GetInstancesInstancePlacementGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstancePlacementGroup)(nil)).Elem()
+}
+
+func (i GetInstancesInstancePlacementGroupArray) ToGetInstancesInstancePlacementGroupArrayOutput() GetInstancesInstancePlacementGroupArrayOutput {
+	return i.ToGetInstancesInstancePlacementGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstancePlacementGroupArray) ToGetInstancesInstancePlacementGroupArrayOutputWithContext(ctx context.Context) GetInstancesInstancePlacementGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstancePlacementGroupArrayOutput)
+}
+
+type GetInstancesInstancePlacementGroupOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstancePlacementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstancePlacementGroup)(nil)).Elem()
+}
+
+func (o GetInstancesInstancePlacementGroupOutput) ToGetInstancesInstancePlacementGroupOutput() GetInstancesInstancePlacementGroupOutput {
+	return o
+}
+
+func (o GetInstancesInstancePlacementGroupOutput) ToGetInstancesInstancePlacementGroupOutputWithContext(ctx context.Context) GetInstancesInstancePlacementGroupOutput {
+	return o
+}
+
+// The ID of the Placement Group in the Linode API.
+func (o GetInstancesInstancePlacementGroupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstancePlacementGroup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+func (o GetInstancesInstancePlacementGroupOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstancePlacementGroup) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+func (o GetInstancesInstancePlacementGroupOutput) PlacementGroupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstancePlacementGroup) string { return v.PlacementGroupPolicy }).(pulumi.StringOutput)
+}
+
+// The placement group type to use when placing Linodes in this group.
+func (o GetInstancesInstancePlacementGroupOutput) PlacementGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstancePlacementGroup) string { return v.PlacementGroupType }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstancePlacementGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstancePlacementGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstancePlacementGroup)(nil)).Elem()
+}
+
+func (o GetInstancesInstancePlacementGroupArrayOutput) ToGetInstancesInstancePlacementGroupArrayOutput() GetInstancesInstancePlacementGroupArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstancePlacementGroupArrayOutput) ToGetInstancesInstancePlacementGroupArrayOutputWithContext(ctx context.Context) GetInstancesInstancePlacementGroupArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstancePlacementGroupArrayOutput) Index(i pulumi.IntInput) GetInstancesInstancePlacementGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstancePlacementGroup {
+		return vs[0].([]GetInstancesInstancePlacementGroup)[vs[1].(int)]
+	}).(GetInstancesInstancePlacementGroupOutput)
 }
 
 type GetInstancesInstanceSpec struct {
@@ -30561,6 +31045,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundArrayInput)(nil)).Elem(), FirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundInput)(nil)).Elem(), FirewallOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundArrayInput)(nil)).Elem(), FirewallOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageReplicationInput)(nil)).Elem(), ImageReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageReplicationArrayInput)(nil)).Elem(), ImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageTimeoutsInput)(nil)).Elem(), ImageTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageTimeoutsPtrInput)(nil)).Elem(), ImageTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAlertsInput)(nil)).Elem(), InstanceAlertsArgs{})
@@ -30731,10 +31217,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallInboundArrayInput)(nil)).Elem(), GetFirewallsFirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallOutboundInput)(nil)).Elem(), GetFirewallsFirewallOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallOutboundArrayInput)(nil)).Elem(), GetFirewallsFirewallOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageReplicationInput)(nil)).Elem(), GetImageReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageReplicationArrayInput)(nil)).Elem(), GetImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterArrayInput)(nil)).Elem(), GetImagesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageReplicationInput)(nil)).Elem(), GetImagesImageReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageReplicationArrayInput)(nil)).Elem(), GetImagesImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBackupsAutomaticInput)(nil)).Elem(), GetInstanceBackupsAutomaticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBackupsAutomaticArrayInput)(nil)).Elem(), GetInstanceBackupsAutomaticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBackupsAutomaticDiskInput)(nil)).Elem(), GetInstanceBackupsAutomaticDiskArgs{})
@@ -30833,6 +31323,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceConfigInterfaceIpv4Input)(nil)).Elem(), GetInstancesInstanceConfigInterfaceIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskInput)(nil)).Elem(), GetInstancesInstanceDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskArrayInput)(nil)).Elem(), GetInstancesInstanceDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstancePlacementGroupInput)(nil)).Elem(), GetInstancesInstancePlacementGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstancePlacementGroupArrayInput)(nil)).Elem(), GetInstancesInstancePlacementGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecInput)(nil)).Elem(), GetInstancesInstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecArrayInput)(nil)).Elem(), GetInstancesInstanceSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesFilterInput)(nil)).Elem(), GetIpv6RangesFilterArgs{})
@@ -30998,6 +31490,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundArrayOutput{})
+	pulumi.RegisterOutputType(ImageReplicationOutput{})
+	pulumi.RegisterOutputType(ImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(ImageTimeoutsOutput{})
 	pulumi.RegisterOutputType(ImageTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsOutput{})
@@ -31168,10 +31662,14 @@ func init() {
 	pulumi.RegisterOutputType(GetFirewallsFirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFirewallOutboundOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFirewallOutboundArrayOutput{})
+	pulumi.RegisterOutputType(GetImageReplicationOutput{})
+	pulumi.RegisterOutputType(GetImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesImageReplicationOutput{})
+	pulumi.RegisterOutputType(GetImagesImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBackupsAutomaticOutput{})
 	pulumi.RegisterOutputType(GetInstanceBackupsAutomaticArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBackupsAutomaticDiskOutput{})
@@ -31270,6 +31768,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceConfigInterfaceIpv4Output{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstancePlacementGroupOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstancePlacementGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6RangesFilterOutput{})

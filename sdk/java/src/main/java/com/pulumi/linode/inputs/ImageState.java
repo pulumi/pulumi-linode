@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.ImageReplicationArgs;
 import com.pulumi.linode.inputs.ImageTimeoutsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -97,20 +98,12 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     /**
      * A detailed description of this Image.
      * 
-     * ***
-     * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
-     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return A detailed description of this Image.
-     * 
-     * ***
-     * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Optional<Output<String>> description() {
@@ -235,18 +228,48 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * @return The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * 
+     */
+    @Import(name="replicaRegions")
+    private @Nullable Output<List<String>> replicaRegions;
+
+    /**
+     * @return A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaRegions() {
+        return Optional.ofNullable(this.replicaRegions);
+    }
+
+    /**
+     * A list of image replications region and corresponding status.
+     * 
+     */
+    @Import(name="replications")
+    private @Nullable Output<List<ImageReplicationArgs>> replications;
+
+    /**
+     * @return A list of image replications region and corresponding status.
+     * 
+     */
+    public Optional<Output<List<ImageReplicationArgs>>> replications() {
+        return Optional.ofNullable(this.replications);
     }
 
     /**
@@ -265,18 +288,33 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current status of this Image.
+     * The status of an image replica.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The current status of this Image.
+     * @return The status of an image replica.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * A list of customized tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return A list of customized tags.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     @Import(name="timeouts")
@@ -284,6 +322,21 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<ImageTimeoutsArgs>> timeouts() {
         return Optional.ofNullable(this.timeouts);
+    }
+
+    /**
+     * The total size of the image in all available regions.
+     * 
+     */
+    @Import(name="totalSize")
+    private @Nullable Output<Integer> totalSize;
+
+    /**
+     * @return The total size of the image in all available regions.
+     * 
+     */
+    public Optional<Output<Integer>> totalSize() {
+        return Optional.ofNullable(this.totalSize);
     }
 
     /**
@@ -316,6 +369,29 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vendor);
     }
 
+    /**
+     * Whether to wait for all image replications become `available`. Default to false.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
+     */
+    @Import(name="waitForReplications")
+    private @Nullable Output<Boolean> waitForReplications;
+
+    /**
+     * @return Whether to wait for all image replications become `available`. Default to false.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
+     */
+    public Optional<Output<Boolean>> waitForReplications() {
+        return Optional.ofNullable(this.waitForReplications);
+    }
+
     private ImageState() {}
 
     private ImageState(ImageState $) {
@@ -333,11 +409,16 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.linodeId = $.linodeId;
         this.region = $.region;
+        this.replicaRegions = $.replicaRegions;
+        this.replications = $.replications;
         this.size = $.size;
         this.status = $.status;
+        this.tags = $.tags;
         this.timeouts = $.timeouts;
+        this.totalSize = $.totalSize;
         this.type = $.type;
         this.vendor = $.vendor;
+        this.waitForReplications = $.waitForReplications;
     }
 
     public static Builder builder() {
@@ -476,10 +557,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description A detailed description of this Image.
          * 
-         * ***
-         * 
-         * The following arguments apply to creating an image from an existing Linode Instance:
-         * 
          * @return builder
          * 
          */
@@ -490,10 +567,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description A detailed description of this Image.
-         * 
-         * ***
-         * 
-         * The following arguments apply to creating an image from an existing Linode Instance:
          * 
          * @return builder
          * 
@@ -662,7 +735,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+         * @param region The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
          * 
          * @return builder
          * 
@@ -673,13 +746,75 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+         * @param region The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
          * 
          * @return builder
          * 
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param replicaRegions A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaRegions(@Nullable Output<List<String>> replicaRegions) {
+            $.replicaRegions = replicaRegions;
+            return this;
+        }
+
+        /**
+         * @param replicaRegions A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaRegions(List<String> replicaRegions) {
+            return replicaRegions(Output.of(replicaRegions));
+        }
+
+        /**
+         * @param replicaRegions A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaRegions(String... replicaRegions) {
+            return replicaRegions(List.of(replicaRegions));
+        }
+
+        /**
+         * @param replications A list of image replications region and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(@Nullable Output<List<ImageReplicationArgs>> replications) {
+            $.replications = replications;
+            return this;
+        }
+
+        /**
+         * @param replications A list of image replications region and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(List<ImageReplicationArgs> replications) {
+            return replications(Output.of(replications));
+        }
+
+        /**
+         * @param replications A list of image replications region and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(ImageReplicationArgs... replications) {
+            return replications(List.of(replications));
         }
 
         /**
@@ -704,7 +839,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The current status of this Image.
+         * @param status The status of an image replica.
          * 
          * @return builder
          * 
@@ -715,13 +850,44 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The current status of this Image.
+         * @param status The status of an image replica.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A list of customized tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A list of customized tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags A list of customized tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         public Builder timeouts(@Nullable Output<ImageTimeoutsArgs> timeouts) {
@@ -731,6 +897,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
         public Builder timeouts(ImageTimeoutsArgs timeouts) {
             return timeouts(Output.of(timeouts));
+        }
+
+        /**
+         * @param totalSize The total size of the image in all available regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalSize(@Nullable Output<Integer> totalSize) {
+            $.totalSize = totalSize;
+            return this;
+        }
+
+        /**
+         * @param totalSize The total size of the image in all available regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalSize(Integer totalSize) {
+            return totalSize(Output.of(totalSize));
         }
 
         /**
@@ -773,6 +960,35 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vendor(String vendor) {
             return vendor(Output.of(vendor));
+        }
+
+        /**
+         * @param waitForReplications Whether to wait for all image replications become `available`. Default to false.
+         * 
+         * ***
+         * 
+         * The following arguments apply to creating an image from an existing Linode Instance:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForReplications(@Nullable Output<Boolean> waitForReplications) {
+            $.waitForReplications = waitForReplications;
+            return this;
+        }
+
+        /**
+         * @param waitForReplications Whether to wait for all image replications become `available`. Default to false.
+         * 
+         * ***
+         * 
+         * The following arguments apply to creating an image from an existing Linode Instance:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForReplications(Boolean waitForReplications) {
+            return waitForReplications(Output.of(waitForReplications));
         }
 
         public ImageState build() {

@@ -48,6 +48,10 @@ import (
 //					return &disks[0].Id, nil
 //				}).(pulumi.IntPtrOutput)),
 //				LinodeId: foo.ID(),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("image-tag"),
+//					pulumi.String("test"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -91,8 +95,58 @@ import (
 //				Label:       pulumi.String("foobar-image"),
 //				Description: pulumi.String("An image uploaded from Terraform!"),
 //				Region:      pulumi.String("us-southeast"),
-//				FilePath:    pulumi.String("path/to/image.img.gz"),
-//				FileHash:    pulumi.String(invokeFilemd5.Result),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("image-tag"),
+//					pulumi.String("test"),
+//				},
+//				FilePath: pulumi.String("path/to/image.img.gz"),
+//				FileHash: pulumi.String(invokeFilemd5.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Upload and replicate an image from a local file:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilemd5, err := std.Filemd5(ctx, &std.Filemd5Args{
+//				Input: "path/to/image.img.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewImage(ctx, "foobar", &linode.ImageArgs{
+//				Label:       pulumi.String("foobar-image"),
+//				Description: pulumi.String("An image uploaded from Terraform!"),
+//				Region:      pulumi.String("us-southeast"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("image-tag"),
+//					pulumi.String("test"),
+//				},
+//				FilePath: pulumi.String("path/to/image.img.gz"),
+//				FileHash: pulumi.String(invokeFilemd5.Result),
+//				ReplicaRegions: pulumi.StringArray{
+//					pulumi.String("us-southeast"),
+//					pulumi.String("us-east"),
+//					pulumi.String("eu-west"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -124,17 +178,13 @@ type Image struct {
 	// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 	Deprecated pulumi.BoolOutput `pulumi:"deprecated"`
 	// A detailed description of this Image.
-	//
-	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId pulumi.IntPtrOutput `pulumi:"diskId"`
 	// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
 	Expiry pulumi.StringOutput `pulumi:"expiry"`
 	// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
-	FileHash pulumi.StringOutput `pulumi:"fileHash"`
+	FileHash pulumi.StringPtrOutput `pulumi:"fileHash"`
 	// The path of the image file to be uploaded.
 	FilePath pulumi.StringPtrOutput `pulumi:"filePath"`
 	// True if the Image is public.
@@ -149,17 +199,31 @@ type Image struct {
 	//
 	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrOutput `pulumi:"linodeId"`
-	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	ReplicaRegions pulumi.StringArrayOutput `pulumi:"replicaRegions"`
+	// A list of image replications region and corresponding status.
+	Replications ImageReplicationArrayOutput `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The current status of this Image.
-	Status   pulumi.StringOutput    `pulumi:"status"`
-	Timeouts ImageTimeoutsPtrOutput `pulumi:"timeouts"`
+	// The status of an image replica.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// A list of customized tags.
+	Tags     pulumi.StringArrayOutput `pulumi:"tags"`
+	Timeouts ImageTimeoutsPtrOutput   `pulumi:"timeouts"`
+	// The total size of the image in all available regions.
+	TotalSize pulumi.IntOutput `pulumi:"totalSize"`
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The upstream distribution vendor. Nil for private Images.
 	Vendor pulumi.StringOutput `pulumi:"vendor"`
+	// Whether to wait for all image replications become `available`. Default to false.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
+	WaitForReplications pulumi.BoolOutput `pulumi:"waitForReplications"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -206,10 +270,6 @@ type imageState struct {
 	// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 	Deprecated *bool `pulumi:"deprecated"`
 	// A detailed description of this Image.
-	//
-	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId *int `pulumi:"diskId"`
@@ -231,17 +291,31 @@ type imageState struct {
 	//
 	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
-	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region *string `pulumi:"region"`
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	ReplicaRegions []string `pulumi:"replicaRegions"`
+	// A list of image replications region and corresponding status.
+	Replications []ImageReplication `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size *int `pulumi:"size"`
-	// The current status of this Image.
-	Status   *string        `pulumi:"status"`
+	// The status of an image replica.
+	Status *string `pulumi:"status"`
+	// A list of customized tags.
+	Tags     []string       `pulumi:"tags"`
 	Timeouts *ImageTimeouts `pulumi:"timeouts"`
+	// The total size of the image in all available regions.
+	TotalSize *int `pulumi:"totalSize"`
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
 	Type *string `pulumi:"type"`
 	// The upstream distribution vendor. Nil for private Images.
 	Vendor *string `pulumi:"vendor"`
+	// Whether to wait for all image replications become `available`. Default to false.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
+	WaitForReplications *bool `pulumi:"waitForReplications"`
 }
 
 type ImageState struct {
@@ -256,10 +330,6 @@ type ImageState struct {
 	// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
 	Deprecated pulumi.BoolPtrInput
 	// A detailed description of this Image.
-	//
-	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId pulumi.IntPtrInput
@@ -281,17 +351,31 @@ type ImageState struct {
 	//
 	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
-	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrInput
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	ReplicaRegions pulumi.StringArrayInput
+	// A list of image replications region and corresponding status.
+	Replications ImageReplicationArrayInput
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntPtrInput
-	// The current status of this Image.
-	Status   pulumi.StringPtrInput
+	// The status of an image replica.
+	Status pulumi.StringPtrInput
+	// A list of customized tags.
+	Tags     pulumi.StringArrayInput
 	Timeouts ImageTimeoutsPtrInput
+	// The total size of the image in all available regions.
+	TotalSize pulumi.IntPtrInput
 	// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
 	Type pulumi.StringPtrInput
 	// The upstream distribution vendor. Nil for private Images.
 	Vendor pulumi.StringPtrInput
+	// Whether to wait for all image replications become `available`. Default to false.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
+	WaitForReplications pulumi.BoolPtrInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -302,10 +386,6 @@ type imageArgs struct {
 	// Whether this image supports cloud-init.
 	CloudInit *bool `pulumi:"cloudInit"`
 	// A detailed description of this Image.
-	//
-	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description *string `pulumi:"description"`
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId *int `pulumi:"diskId"`
@@ -323,9 +403,19 @@ type imageArgs struct {
 	//
 	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
-	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
-	Region   *string        `pulumi:"region"`
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+	Region *string `pulumi:"region"`
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	ReplicaRegions []string `pulumi:"replicaRegions"`
+	// A list of customized tags.
+	Tags     []string       `pulumi:"tags"`
 	Timeouts *ImageTimeouts `pulumi:"timeouts"`
+	// Whether to wait for all image replications become `available`. Default to false.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
+	WaitForReplications *bool `pulumi:"waitForReplications"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -333,10 +423,6 @@ type ImageArgs struct {
 	// Whether this image supports cloud-init.
 	CloudInit pulumi.BoolPtrInput
 	// A detailed description of this Image.
-	//
-	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	Description pulumi.StringPtrInput
 	// The ID of the Linode Disk that this Image will be created from.
 	DiskId pulumi.IntPtrInput
@@ -354,9 +440,19 @@ type ImageArgs struct {
 	//
 	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
-	// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
-	Region   pulumi.StringPtrInput
+	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+	Region pulumi.StringPtrInput
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	ReplicaRegions pulumi.StringArrayInput
+	// A list of customized tags.
+	Tags     pulumi.StringArrayInput
 	Timeouts ImageTimeoutsPtrInput
+	// Whether to wait for all image replications become `available`. Default to false.
+	//
+	// ***
+	//
+	// The following arguments apply to creating an image from an existing Linode Instance:
+	WaitForReplications pulumi.BoolPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -472,10 +568,6 @@ func (o ImageOutput) Deprecated() pulumi.BoolOutput {
 }
 
 // A detailed description of this Image.
-//
-// ***
-//
-// The following arguments apply to creating an image from an existing Linode Instance:
 func (o ImageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -491,8 +583,8 @@ func (o ImageOutput) Expiry() pulumi.StringOutput {
 }
 
 // The MD5 hash of the file to be uploaded. This is used to trigger file updates.
-func (o ImageOutput) FileHash() pulumi.StringOutput {
-	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.FileHash }).(pulumi.StringOutput)
+func (o ImageOutput) FileHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.FileHash }).(pulumi.StringPtrOutput)
 }
 
 // The path of the image file to be uploaded.
@@ -521,9 +613,19 @@ func (o ImageOutput) LinodeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.LinodeId }).(pulumi.IntPtrOutput)
 }
 
-// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 func (o ImageOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+func (o ImageOutput) ReplicaRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.ReplicaRegions }).(pulumi.StringArrayOutput)
+}
+
+// A list of image replications region and corresponding status.
+func (o ImageOutput) Replications() ImageReplicationArrayOutput {
+	return o.ApplyT(func(v *Image) ImageReplicationArrayOutput { return v.Replications }).(ImageReplicationArrayOutput)
 }
 
 // The minimum size this Image needs to deploy. Size is in MB.
@@ -531,13 +633,23 @@ func (o ImageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The current status of this Image.
+// The status of an image replica.
 func (o ImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// A list of customized tags.
+func (o ImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 func (o ImageOutput) Timeouts() ImageTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Image) ImageTimeoutsPtrOutput { return v.Timeouts }).(ImageTimeoutsPtrOutput)
+}
+
+// The total size of the image in all available regions.
+func (o ImageOutput) TotalSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.TotalSize }).(pulumi.IntOutput)
 }
 
 // How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
@@ -548,6 +660,15 @@ func (o ImageOutput) Type() pulumi.StringOutput {
 // The upstream distribution vendor. Nil for private Images.
 func (o ImageOutput) Vendor() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Vendor }).(pulumi.StringOutput)
+}
+
+// Whether to wait for all image replications become `available`. Default to false.
+//
+// ***
+//
+// The following arguments apply to creating an image from an existing Linode Instance:
+func (o ImageOutput) WaitForReplications() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.WaitForReplications }).(pulumi.BoolOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }

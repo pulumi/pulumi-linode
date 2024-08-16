@@ -6,8 +6,12 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetImageReplicationArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +33,26 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * A list of image replication regions and corresponding status.
+     * 
+     */
+    @Import(name="replications")
+    private @Nullable Output<List<GetImageReplicationArgs>> replications;
+
+    /**
+     * @return A list of image replication regions and corresponding status.
+     * 
+     */
+    public Optional<Output<List<GetImageReplicationArgs>>> replications() {
+        return Optional.ofNullable(this.replications);
+    }
+
     private GetImageArgs() {}
 
     private GetImageArgs(GetImageArgs $) {
         this.id = $.id;
+        this.replications = $.replications;
     }
 
     public static Builder builder() {
@@ -72,6 +92,37 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(@Nullable Output<List<GetImageReplicationArgs>> replications) {
+            $.replications = replications;
+            return this;
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(List<GetImageReplicationArgs> replications) {
+            return replications(Output.of(replications));
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(GetImageReplicationArgs... replications) {
+            return replications(List.of(replications));
         }
 
         public GetImageArgs build() {

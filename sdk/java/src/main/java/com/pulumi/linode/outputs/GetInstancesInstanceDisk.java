@@ -17,12 +17,12 @@ public final class GetInstancesInstanceDisk {
      */
     private String filesystem;
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     private Integer id;
     /**
-     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
     private String label;
@@ -41,14 +41,14 @@ public final class GetInstancesInstanceDisk {
         return this.filesystem;
     }
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
     public String label() {

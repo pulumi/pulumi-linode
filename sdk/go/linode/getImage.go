@@ -55,6 +55,8 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 type LookupImageArgs struct {
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id string `pulumi:"id"`
+	// A list of image replication regions and corresponding status.
+	Replications []GetImageReplication `pulumi:"replications"`
 }
 
 // A collection of values returned by getImage.
@@ -74,10 +76,16 @@ type LookupImageResult struct {
 	IsPublic bool `pulumi:"isPublic"`
 	// A short description of the Image.
 	Label string `pulumi:"label"`
+	// A list of image replication regions and corresponding status.
+	Replications []GetImageReplication `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
 	Size int `pulumi:"size"`
-	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	// The status of an image replica.
 	Status string `pulumi:"status"`
+	// A list of customized tags.
+	Tags []string `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize int `pulumi:"totalSize"`
 	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
 	Type string `pulumi:"type"`
 	// The upstream distribution vendor. `None` for private Images.
@@ -101,6 +109,8 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 type LookupImageOutputArgs struct {
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id pulumi.StringInput `pulumi:"id"`
+	// A list of image replication regions and corresponding status.
+	Replications GetImageReplicationArrayInput `pulumi:"replications"`
 }
 
 func (LookupImageOutputArgs) ElementType() reflect.Type {
@@ -164,14 +174,29 @@ func (o LookupImageResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// A list of image replication regions and corresponding status.
+func (o LookupImageResultOutput) Replications() GetImageReplicationArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []GetImageReplication { return v.Replications }).(GetImageReplicationArrayOutput)
+}
+
 // The minimum size this Image needs to deploy. Size is in MB. example: 2500
 func (o LookupImageResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupImageResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The current status of this image. (`creating`, `pendingUpload`, `available`)
+// The status of an image replica.
 func (o LookupImageResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of customized tags.
+func (o LookupImageResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The total size of the image in all available regions.
+func (o LookupImageResultOutput) TotalSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupImageResult) int { return v.TotalSize }).(pulumi.IntOutput)
 }
 
 // How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)

@@ -784,6 +784,17 @@ export interface GetFirewallsFirewallOutbound {
     protocol: string;
 }
 
+export interface GetImageReplication {
+    /**
+     * The region of an image replica.
+     */
+    region: string;
+    /**
+     * The status of an image replica.
+     */
+    status: string;
+}
+
 export interface GetImagesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -837,13 +848,25 @@ export interface GetImagesImage {
      */
     label: string;
     /**
+     * A list of image replication regions and corresponding status.
+     */
+    replications?: outputs.GetImagesImageReplication[];
+    /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
     size: number;
     /**
-     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     * The status of an image replica.
      */
     status: string;
+    /**
+     * A list of customized tags.
+     */
+    tags: string[];
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize: number;
     /**
      * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
@@ -852,6 +875,17 @@ export interface GetImagesImage {
      * The upstream distribution vendor. `None` for private Images.
      */
     vendor: string;
+}
+
+export interface GetImagesImageReplication {
+    /**
+     * The region of an image replica.
+     */
+    region: string;
+    /**
+     * The status of an image replica.
+     */
+    status: string;
 }
 
 export interface GetInstanceBackupsAutomatic {
@@ -1655,7 +1689,7 @@ export interface GetInstancesInstance {
      */
     hostUuid: string;
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the Placement Group in the Linode API.
      */
     id: number;
     /**
@@ -1675,9 +1709,10 @@ export interface GetInstancesInstance {
      */
     ipv6: string;
     /**
-     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label: string;
+    placementGroups: outputs.GetInstancesInstancePlacementGroup[];
     /**
      * This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      */
@@ -1769,7 +1804,7 @@ export interface GetInstancesInstanceConfig {
      */
     helpers: outputs.GetInstancesInstanceConfigHelper[];
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the Placement Group in the Linode API.
      */
     id: number;
     /**
@@ -1781,7 +1816,7 @@ export interface GetInstancesInstanceConfig {
      */
     kernel: string;
     /**
-     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label: string;
     /**
@@ -1986,7 +2021,7 @@ export interface GetInstancesInstanceConfigInterface {
      */
     active: boolean;
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the Placement Group in the Linode API.
      */
     id: number;
     /**
@@ -2002,7 +2037,7 @@ export interface GetInstancesInstanceConfigInterface {
      */
     ipv4: outputs.GetInstancesInstanceConfigInterfaceIpv4;
     /**
-     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label?: string;
     /**
@@ -2040,17 +2075,36 @@ export interface GetInstancesInstanceDisk {
      */
     filesystem: string;
     /**
-     * The ID of the disk in the Linode API.
+     * The ID of the Placement Group in the Linode API.
      */
     id: number;
     /**
-     * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label: string;
     /**
      * The size of the Disk in MB.
      */
     size: number;
+}
+
+export interface GetInstancesInstancePlacementGroup {
+    /**
+     * The ID of the Placement Group in the Linode API.
+     */
+    id: number;
+    /**
+     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+     */
+    label: string;
+    /**
+     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     */
+    placementGroupPolicy: string;
+    /**
+     * The placement group type to use when placing Linodes in this group.
+     */
+    placementGroupType: string;
 }
 
 export interface GetInstancesInstanceSpec {
@@ -3652,6 +3706,17 @@ export interface GetVpcsVpc {
     updated: string;
 }
 
+export interface ImageReplication {
+    /**
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+     */
+    region: string;
+    /**
+     * The status of an image replica.
+     */
+    status: string;
+}
+
 export interface ImageTimeouts {
     /**
      * Used when creating the instance image (until the instance is available)
@@ -4219,6 +4284,10 @@ export interface LkeClusterPool {
      * The nodes in the node pool.
      */
     nodes: outputs.LkeClusterPoolNode[];
+    /**
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     */
+    tags?: string[];
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */

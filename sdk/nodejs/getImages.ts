@@ -62,6 +62,8 @@ import * as utilities from "./utilities";
  * * `status`
  *
  * * `vendor`
+ *
+ * * `tags`
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
@@ -168,6 +170,8 @@ export interface GetImagesResult {
  * * `status`
  *
  * * `vendor`
+ *
+ * * `tags`
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
     return pulumi.output(args).apply((a: any) => getImages(a, opts))

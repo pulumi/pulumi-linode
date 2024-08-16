@@ -9,6 +9,7 @@ import com.pulumi.linode.outputs.GetInstancesInstanceAlerts;
 import com.pulumi.linode.outputs.GetInstancesInstanceBackup;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfig;
 import com.pulumi.linode.outputs.GetInstancesInstanceDisk;
+import com.pulumi.linode.outputs.GetInstancesInstancePlacementGroup;
 import com.pulumi.linode.outputs.GetInstancesInstanceSpec;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -55,7 +56,7 @@ public final class GetInstancesInstance {
      */
     private String hostUuid;
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     private Integer id;
@@ -80,10 +81,11 @@ public final class GetInstancesInstance {
      */
     private String ipv6;
     /**
-     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
     private String label;
+    private List<GetInstancesInstancePlacementGroup> placementGroups;
     /**
      * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      * 
@@ -175,7 +177,7 @@ public final class GetInstancesInstance {
         return this.hostUuid;
     }
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     public Integer id() {
@@ -210,11 +212,14 @@ public final class GetInstancesInstance {
         return this.ipv6;
     }
     /**
-     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
     public String label() {
         return this.label;
+    }
+    public List<GetInstancesInstancePlacementGroup> placementGroups() {
+        return this.placementGroups;
     }
     /**
      * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -292,6 +297,7 @@ public final class GetInstancesInstance {
         private List<String> ipv4s;
         private String ipv6;
         private String label;
+        private List<GetInstancesInstancePlacementGroup> placementGroups;
         private String privateIpAddress;
         private String region;
         private List<GetInstancesInstanceSpec> specs;
@@ -317,6 +323,7 @@ public final class GetInstancesInstance {
     	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
+    	      this.placementGroups = defaults.placementGroups;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.region = defaults.region;
     	      this.specs = defaults.specs;
@@ -452,6 +459,17 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder placementGroups(List<GetInstancesInstancePlacementGroup> placementGroups) {
+            if (placementGroups == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "placementGroups");
+            }
+            this.placementGroups = placementGroups;
+            return this;
+        }
+        public Builder placementGroups(GetInstancesInstancePlacementGroup... placementGroups) {
+            return placementGroups(List.of(placementGroups));
+        }
+        @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
             if (privateIpAddress == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "privateIpAddress");
@@ -537,6 +555,7 @@ public final class GetInstancesInstance {
             _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
+            _resultValue.placementGroups = placementGroups;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.region = region;
             _resultValue.specs = specs;

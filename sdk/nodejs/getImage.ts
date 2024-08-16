@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -26,6 +28,7 @@ export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getImage:getImage", {
         "id": args.id,
+        "replications": args.replications,
     }, opts);
 }
 
@@ -37,6 +40,10 @@ export interface GetImageArgs {
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
     id: string;
+    /**
+     * A list of image replication regions and corresponding status.
+     */
+    replications?: inputs.GetImageReplication[];
 }
 
 /**
@@ -71,13 +78,25 @@ export interface GetImageResult {
      */
     readonly label: string;
     /**
+     * A list of image replication regions and corresponding status.
+     */
+    readonly replications?: outputs.GetImageReplication[];
+    /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
     readonly size: number;
     /**
-     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     * The status of an image replica.
      */
     readonly status: string;
+    /**
+     * A list of customized tags.
+     */
+    readonly tags: string[];
+    /**
+     * The total size of the image in all available regions.
+     */
+    readonly totalSize: number;
     /**
      * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
@@ -116,4 +135,8 @@ export interface GetImageOutputArgs {
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
     id: pulumi.Input<string>;
+    /**
+     * A list of image replication regions and corresponding status.
+     */
+    replications?: pulumi.Input<pulumi.Input<inputs.GetImageReplicationArgs>[]>;
 }

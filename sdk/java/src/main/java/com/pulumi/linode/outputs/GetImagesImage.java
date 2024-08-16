@@ -5,11 +5,13 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetImagesImageReplication;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImagesImage {
@@ -59,15 +61,30 @@ public final class GetImagesImage {
      */
     private String label;
     /**
+     * @return A list of image replication regions and corresponding status.
+     * 
+     */
+    private @Nullable List<GetImagesImageReplication> replications;
+    /**
      * @return The minimum size this Image needs to deploy. Size is in MB. example: 2500
      * 
      */
     private Integer size;
     /**
-     * @return The current status of this image. (`creating`, `pending_upload`, `available`)
+     * @return The status of an image replica.
      * 
      */
     private String status;
+    /**
+     * @return A list of customized tags.
+     * 
+     */
+    private List<String> tags;
+    /**
+     * @return The total size of the image in all available regions.
+     * 
+     */
+    private Integer totalSize;
     /**
      * @return How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      * 
@@ -144,6 +161,13 @@ public final class GetImagesImage {
         return this.label;
     }
     /**
+     * @return A list of image replication regions and corresponding status.
+     * 
+     */
+    public List<GetImagesImageReplication> replications() {
+        return this.replications == null ? List.of() : this.replications;
+    }
+    /**
      * @return The minimum size this Image needs to deploy. Size is in MB. example: 2500
      * 
      */
@@ -151,11 +175,25 @@ public final class GetImagesImage {
         return this.size;
     }
     /**
-     * @return The current status of this image. (`creating`, `pending_upload`, `available`)
+     * @return The status of an image replica.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return A list of customized tags.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return The total size of the image in all available regions.
+     * 
+     */
+    public Integer totalSize() {
+        return this.totalSize;
     }
     /**
      * @return How the Image was created. Manual Images can be created at any time. &#34;Automatic&#34; Images are created automatically from a deleted Linode. (`manual`, `automatic`)
@@ -190,8 +228,11 @@ public final class GetImagesImage {
         private String id;
         private Boolean isPublic;
         private String label;
+        private @Nullable List<GetImagesImageReplication> replications;
         private Integer size;
         private String status;
+        private List<String> tags;
+        private Integer totalSize;
         private String type;
         private String vendor;
         public Builder() {}
@@ -206,8 +247,11 @@ public final class GetImagesImage {
     	      this.id = defaults.id;
     	      this.isPublic = defaults.isPublic;
     	      this.label = defaults.label;
+    	      this.replications = defaults.replications;
     	      this.size = defaults.size;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
+    	      this.totalSize = defaults.totalSize;
     	      this.type = defaults.type;
     	      this.vendor = defaults.vendor;
         }
@@ -288,6 +332,15 @@ public final class GetImagesImage {
             return this;
         }
         @CustomType.Setter
+        public Builder replications(@Nullable List<GetImagesImageReplication> replications) {
+
+            this.replications = replications;
+            return this;
+        }
+        public Builder replications(GetImagesImageReplication... replications) {
+            return replications(List.of(replications));
+        }
+        @CustomType.Setter
         public Builder size(Integer size) {
             if (size == null) {
               throw new MissingRequiredPropertyException("GetImagesImage", "size");
@@ -301,6 +354,25 @@ public final class GetImagesImage {
               throw new MissingRequiredPropertyException("GetImagesImage", "status");
             }
             this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
+        public Builder totalSize(Integer totalSize) {
+            if (totalSize == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "totalSize");
+            }
+            this.totalSize = totalSize;
             return this;
         }
         @CustomType.Setter
@@ -330,8 +402,11 @@ public final class GetImagesImage {
             _resultValue.id = id;
             _resultValue.isPublic = isPublic;
             _resultValue.label = label;
+            _resultValue.replications = replications;
             _resultValue.size = size;
             _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalSize = totalSize;
             _resultValue.type = type;
             _resultValue.vendor = vendor;
             return _resultValue;

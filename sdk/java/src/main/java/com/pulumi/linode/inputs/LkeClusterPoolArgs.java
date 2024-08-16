@@ -85,6 +85,21 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
@@ -106,6 +121,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         this.count = $.count;
         this.id = $.id;
         this.nodes = $.nodes;
+        this.tags = $.tags;
         this.type = $.type;
     }
 
@@ -223,6 +239,37 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder nodes(LkeClusterPoolNodeArgs... nodes) {
             return nodes(List.of(nodes));
+        }
+
+        /**
+         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

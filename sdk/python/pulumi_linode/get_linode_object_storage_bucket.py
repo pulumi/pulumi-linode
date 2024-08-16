@@ -49,6 +49,7 @@ class GetLinodeObjectStorageBucketResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
     def cluster(self) -> str:
         return pulumi.get(self, "cluster")
 

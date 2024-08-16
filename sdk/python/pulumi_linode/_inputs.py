@@ -15,6 +15,7 @@ __all__ = [
     'FirewallDeviceArgs',
     'FirewallInboundArgs',
     'FirewallOutboundArgs',
+    'ImageReplicationArgs',
     'ImageTimeoutsArgs',
     'InstanceAlertsArgs',
     'InstanceBackupsArgs',
@@ -94,8 +95,10 @@ __all__ = [
     'GetFirewallsFirewallDeviceArgs',
     'GetFirewallsFirewallInboundArgs',
     'GetFirewallsFirewallOutboundArgs',
+    'GetImageReplicationArgs',
     'GetImagesFilterArgs',
     'GetImagesImageArgs',
+    'GetImagesImageReplicationArgs',
     'GetInstanceTypesFilterArgs',
     'GetInstanceTypesTypeArgs',
     'GetInstanceTypesTypeAddonArgs',
@@ -626,6 +629,43 @@ class FirewallOutboundArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ports", value)
+
+
+@pulumi.input_type
+class ImageReplicationArgs:
+    def __init__(__self__, *,
+                 region: pulumi.Input[str],
+                 status: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+        :param pulumi.Input[str] status: The status of an image replica.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        """
+        The status of an image replica.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -2686,7 +2726,8 @@ class LkeClusterPoolArgs:
                  autoscaler: Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']] = None,
                  count: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None):
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input['LkeClusterPoolAutoscalerArgs'] autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
@@ -2695,6 +2736,7 @@ class LkeClusterPoolArgs:
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param pulumi.Input[int] id: The ID of the node.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]] nodes: The nodes in the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "type", type)
         if autoscaler is not None:
@@ -2705,6 +2747,8 @@ class LkeClusterPoolArgs:
             pulumi.set(__self__, "id", id)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -2767,6 +2811,18 @@ class LkeClusterPoolArgs:
     @nodes.setter
     def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -6475,6 +6531,43 @@ class GetFirewallsFirewallOutboundArgs:
 
 
 @pulumi.input_type
+class GetImageReplicationArgs:
+    def __init__(__self__, *,
+                 region: str,
+                 status: str):
+        """
+        :param str region: The region of an image replica.
+        :param str status: The status of an image replica.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of an image replica.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of an image replica.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class GetImagesFilterArgs:
     def __init__(__self__, *,
                  name: str,
@@ -6541,8 +6634,11 @@ class GetImagesImageArgs:
                  label: str,
                  size: int,
                  status: str,
+                 tags: Sequence[str],
+                 total_size: int,
                  type: str,
-                 vendor: str):
+                 vendor: str,
+                 replications: Optional[Sequence['GetImagesImageReplicationArgs']] = None):
         """
         :param Sequence[str] capabilities: The capabilities of this Image.
         :param str created: When this Image was created.
@@ -6554,9 +6650,12 @@ class GetImagesImageArgs:
         :param bool is_public: True if the Image is public.
         :param str label: A short description of the Image.
         :param int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        :param str status: The current status of this image. (`creating`, `pending_upload`, `available`)
+        :param str status: The status of an image replica.
+        :param Sequence[str] tags: A list of customized tags.
+        :param int total_size: The total size of the image in all available regions.
         :param str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         :param str vendor: The upstream distribution vendor. `None` for private Images.
+        :param Sequence['GetImagesImageReplicationArgs'] replications: A list of image replication regions and corresponding status.
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "created", created)
@@ -6569,8 +6668,12 @@ class GetImagesImageArgs:
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "total_size", total_size)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vendor", vendor)
+        if replications is not None:
+            pulumi.set(__self__, "replications", replications)
 
     @property
     @pulumi.getter
@@ -6696,13 +6799,37 @@ class GetImagesImageArgs:
     @pulumi.getter
     def status(self) -> str:
         """
-        The current status of this image. (`creating`, `pending_upload`, `available`)
+        The status of an image replica.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: str):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        A list of customized tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Sequence[str]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="totalSize")
+    def total_size(self) -> int:
+        """
+        The total size of the image in all available regions.
+        """
+        return pulumi.get(self, "total_size")
+
+    @total_size.setter
+    def total_size(self, value: int):
+        pulumi.set(self, "total_size", value)
 
     @property
     @pulumi.getter
@@ -6727,6 +6854,55 @@ class GetImagesImageArgs:
     @vendor.setter
     def vendor(self, value: str):
         pulumi.set(self, "vendor", value)
+
+    @property
+    @pulumi.getter
+    def replications(self) -> Optional[Sequence['GetImagesImageReplicationArgs']]:
+        """
+        A list of image replication regions and corresponding status.
+        """
+        return pulumi.get(self, "replications")
+
+    @replications.setter
+    def replications(self, value: Optional[Sequence['GetImagesImageReplicationArgs']]):
+        pulumi.set(self, "replications", value)
+
+
+@pulumi.input_type
+class GetImagesImageReplicationArgs:
+    def __init__(__self__, *,
+                 region: str,
+                 status: str):
+        """
+        :param str region: The region of an image replica.
+        :param str status: The status of an image replica.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of an image replica.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of an image replica.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

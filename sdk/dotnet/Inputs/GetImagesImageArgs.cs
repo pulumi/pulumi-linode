@@ -72,6 +72,18 @@ namespace Pulumi.Linode.Inputs
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
+        [Input("replications")]
+        private InputList<Inputs.GetImagesImageReplicationInputArgs>? _replications;
+
+        /// <summary>
+        /// A list of image replication regions and corresponding status.
+        /// </summary>
+        public InputList<Inputs.GetImagesImageReplicationInputArgs> Replications
+        {
+            get => _replications ?? (_replications = new InputList<Inputs.GetImagesImageReplicationInputArgs>());
+            set => _replications = value;
+        }
+
         /// <summary>
         /// The minimum size this Image needs to deploy. Size is in MB. example: 2500
         /// </summary>
@@ -79,10 +91,28 @@ namespace Pulumi.Linode.Inputs
         public Input<int> Size { get; set; } = null!;
 
         /// <summary>
-        /// The current status of this image. (`creating`, `pending_upload`, `available`)
+        /// The status of an image replica.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
+
+        [Input("tags", required: true)]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of customized tags.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The total size of the image in all available regions.
+        /// </summary>
+        [Input("totalSize", required: true)]
+        public Input<int> TotalSize { get; set; } = null!;
 
         /// <summary>
         /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)

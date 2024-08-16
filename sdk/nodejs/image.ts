@@ -30,6 +30,10 @@ import * as utilities from "./utilities";
  *     description: "Image taken from foo",
  *     diskId: foo.disks.apply(disks => disks[0].id),
  *     linodeId: foo.id,
+ *     tags: [
+ *         "image-tag",
+ *         "test",
+ *     ],
  * });
  * const barBased = new linode.Instance("bar_based", {
  *     type: foo.type,
@@ -49,10 +53,41 @@ import * as utilities from "./utilities";
  *     label: "foobar-image",
  *     description: "An image uploaded from Terraform!",
  *     region: "us-southeast",
+ *     tags: [
+ *         "image-tag",
+ *         "test",
+ *     ],
  *     filePath: "path/to/image.img.gz",
  *     fileHash: std.filemd5({
  *         input: "path/to/image.img.gz",
  *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ *
+ * Upload and replicate an image from a local file:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * import * as std from "@pulumi/std";
+ *
+ * const foobar = new linode.Image("foobar", {
+ *     label: "foobar-image",
+ *     description: "An image uploaded from Terraform!",
+ *     region: "us-southeast",
+ *     tags: [
+ *         "image-tag",
+ *         "test",
+ *     ],
+ *     filePath: "path/to/image.img.gz",
+ *     fileHash: std.filemd5({
+ *         input: "path/to/image.img.gz",
+ *     }).then(invoke => invoke.result),
+ *     replicaRegions: [
+ *         "us-southeast",
+ *         "us-east",
+ *         "eu-west",
+ *     ],
  * });
  * ```
  *
@@ -114,10 +149,6 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly deprecated!: pulumi.Output<boolean>;
     /**
      * A detailed description of this Image.
-     *
-     * - - -
-     *
-     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -131,7 +162,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      */
-    public readonly fileHash!: pulumi.Output<string>;
+    public readonly fileHash!: pulumi.Output<string | undefined>;
     /**
      * The path of the image file to be uploaded.
      */
@@ -155,18 +186,34 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly linodeId!: pulumi.Output<number | undefined>;
     /**
-     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     */
+    public readonly replicaRegions!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of image replications region and corresponding status.
+     */
+    public /*out*/ readonly replications!: pulumi.Output<outputs.ImageReplication[]>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
     /**
-     * The current status of this Image.
+     * The status of an image replica.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A list of customized tags.
+     */
+    public readonly tags!: pulumi.Output<string[]>;
     public readonly timeouts!: pulumi.Output<outputs.ImageTimeouts | undefined>;
+    /**
+     * The total size of the image in all available regions.
+     */
+    public /*out*/ readonly totalSize!: pulumi.Output<number>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
@@ -175,6 +222,14 @@ export class Image extends pulumi.CustomResource {
      * The upstream distribution vendor. Nil for private Images.
      */
     public /*out*/ readonly vendor!: pulumi.Output<string>;
+    /**
+     * Whether to wait for all image replications become `available`. Default to false.
+     *
+     * - - -
+     *
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     */
+    public readonly waitForReplications!: pulumi.Output<boolean>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -203,11 +258,16 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["linodeId"] = state ? state.linodeId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["replicaRegions"] = state ? state.replicaRegions : undefined;
+            resourceInputs["replications"] = state ? state.replications : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["totalSize"] = state ? state.totalSize : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vendor"] = state ? state.vendor : undefined;
+            resourceInputs["waitForReplications"] = state ? state.waitForReplications : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             if ((!args || args.label === undefined) && !opts.urn) {
@@ -221,15 +281,20 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["replicaRegions"] = args ? args.replicaRegions : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["waitForReplications"] = args ? args.waitForReplications : undefined;
             resourceInputs["capabilities"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["expiry"] = undefined /*out*/;
             resourceInputs["isPublic"] = undefined /*out*/;
+            resourceInputs["replications"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["totalSize"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["vendor"] = undefined /*out*/;
         }
@@ -264,10 +329,6 @@ export interface ImageState {
     deprecated?: pulumi.Input<boolean>;
     /**
      * A detailed description of this Image.
-     *
-     * - - -
-     *
-     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     description?: pulumi.Input<string>;
     /**
@@ -305,18 +366,34 @@ export interface ImageState {
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      */
     region?: pulumi.Input<string>;
+    /**
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     */
+    replicaRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of image replications region and corresponding status.
+     */
+    replications?: pulumi.Input<pulumi.Input<inputs.ImageReplication>[]>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
     size?: pulumi.Input<number>;
     /**
-     * The current status of this Image.
+     * The status of an image replica.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A list of customized tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     timeouts?: pulumi.Input<inputs.ImageTimeouts>;
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize?: pulumi.Input<number>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
@@ -325,6 +402,14 @@ export interface ImageState {
      * The upstream distribution vendor. Nil for private Images.
      */
     vendor?: pulumi.Input<string>;
+    /**
+     * Whether to wait for all image replications become `available`. Default to false.
+     *
+     * - - -
+     *
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     */
+    waitForReplications?: pulumi.Input<boolean>;
 }
 
 /**
@@ -337,10 +422,6 @@ export interface ImageArgs {
     cloudInit?: pulumi.Input<boolean>;
     /**
      * A detailed description of this Image.
-     *
-     * - - -
-     *
-     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     description?: pulumi.Input<string>;
     /**
@@ -370,8 +451,24 @@ export interface ImageArgs {
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      */
     region?: pulumi.Input<string>;
+    /**
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     */
+    replicaRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of customized tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     timeouts?: pulumi.Input<inputs.ImageTimeouts>;
+    /**
+     * Whether to wait for all image replications become `available`. Default to false.
+     *
+     * - - -
+     *
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     */
+    waitForReplications?: pulumi.Input<boolean>;
 }

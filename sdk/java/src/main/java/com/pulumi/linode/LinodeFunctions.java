@@ -7548,6 +7548,8 @@ public final class LinodeFunctions {
      * 
      * * `vendor`
      * 
+     * * `tags`
+     * 
      */
     public static Output<GetImagesResult> getImages() {
         return getImages(GetImagesArgs.Empty, InvokeOptions.Empty);
@@ -7655,6 +7657,8 @@ public final class LinodeFunctions {
      * * `status`
      * 
      * * `vendor`
+     * 
+     * * `tags`
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain() {
@@ -7764,6 +7768,8 @@ public final class LinodeFunctions {
      * 
      * * `vendor`
      * 
+     * * `tags`
+     * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args) {
         return getImages(args, InvokeOptions.Empty);
@@ -7871,6 +7877,8 @@ public final class LinodeFunctions {
      * * `status`
      * 
      * * `vendor`
+     * 
+     * * `tags`
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
@@ -7980,6 +7988,8 @@ public final class LinodeFunctions {
      * 
      * * `vendor`
      * 
+     * * `tags`
+     * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
@@ -8087,6 +8097,8 @@ public final class LinodeFunctions {
      * * `status`
      * 
      * * `vendor`
+     * 
+     * * `tags`
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {

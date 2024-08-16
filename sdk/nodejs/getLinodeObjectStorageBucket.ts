@@ -38,6 +38,8 @@ export function getLinodeObjectStorageBucket(args: GetLinodeObjectStorageBucketA
 export interface GetLinodeObjectStorageBucketArgs {
     /**
      * The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+     *
+     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
     cluster?: string;
     /**
@@ -54,6 +56,9 @@ export interface GetLinodeObjectStorageBucketArgs {
  * A collection of values returned by getLinodeObjectStorageBucket.
  */
 export interface GetLinodeObjectStorageBucketResult {
+    /**
+     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+     */
     readonly cluster: string;
     readonly created: string;
     readonly hostname: string;
@@ -91,6 +96,8 @@ export function getLinodeObjectStorageBucketOutput(args: GetLinodeObjectStorageB
 export interface GetLinodeObjectStorageBucketOutputArgs {
     /**
      * The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+     *
+     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
     cluster?: pulumi.Input<string>;
     /**

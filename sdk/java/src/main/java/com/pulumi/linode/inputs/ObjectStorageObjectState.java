@@ -84,14 +84,22 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     /**
      * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+     * 
      */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
     /**
      * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+     * 
      */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     public Optional<Output<String>> cluster() {
         return Optional.ofNullable(this.cluster);
     }
@@ -477,7 +485,11 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+         * 
          */
+        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
         public Builder cluster(@Nullable Output<String> cluster) {
             $.cluster = cluster;
             return this;
@@ -488,7 +500,11 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+         * 
          */
+        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
         public Builder cluster(String cluster) {
             return cluster(Output.of(cluster));
         }

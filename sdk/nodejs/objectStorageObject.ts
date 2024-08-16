@@ -111,6 +111,8 @@ export class ObjectStorageObject extends pulumi.CustomResource {
     public readonly cacheControl!: pulumi.Output<string | undefined>;
     /**
      * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+     *
+     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
     public readonly cluster!: pulumi.Output<string | undefined>;
     /**
@@ -275,6 +277,8 @@ export interface ObjectStorageObjectState {
     cacheControl?: pulumi.Input<string>;
     /**
      * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+     *
+     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -369,6 +373,8 @@ export interface ObjectStorageObjectArgs {
     cacheControl?: pulumi.Input<string>;
     /**
      * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+     *
+     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
     cluster?: pulumi.Input<string>;
     /**

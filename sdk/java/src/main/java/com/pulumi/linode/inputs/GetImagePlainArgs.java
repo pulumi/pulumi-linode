@@ -5,8 +5,12 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetImageReplication;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +32,26 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * A list of image replication regions and corresponding status.
+     * 
+     */
+    @Import(name="replications")
+    private @Nullable List<GetImageReplication> replications;
+
+    /**
+     * @return A list of image replication regions and corresponding status.
+     * 
+     */
+    public Optional<List<GetImageReplication>> replications() {
+        return Optional.ofNullable(this.replications);
+    }
+
     private GetImagePlainArgs() {}
 
     private GetImagePlainArgs(GetImagePlainArgs $) {
         this.id = $.id;
+        this.replications = $.replications;
     }
 
     public static Builder builder() {
@@ -61,6 +81,27 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder id(String id) {
             $.id = id;
             return this;
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(@Nullable List<GetImageReplication> replications) {
+            $.replications = replications;
+            return this;
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(GetImageReplication... replications) {
+            return replications(List.of(replications));
         }
 
         public GetImagePlainArgs build() {

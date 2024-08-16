@@ -75,6 +75,18 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        [Input("replications")]
+        private List<Inputs.GetImageReplicationArgs>? _replications;
+
+        /// <summary>
+        /// A list of image replication regions and corresponding status.
+        /// </summary>
+        public List<Inputs.GetImageReplicationArgs> Replications
+        {
+            get => _replications ?? (_replications = new List<Inputs.GetImageReplicationArgs>());
+            set => _replications = value;
+        }
+
         public GetImageArgs()
         {
         }
@@ -88,6 +100,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
+
+        [Input("replications")]
+        private InputList<Inputs.GetImageReplicationInputArgs>? _replications;
+
+        /// <summary>
+        /// A list of image replication regions and corresponding status.
+        /// </summary>
+        public InputList<Inputs.GetImageReplicationInputArgs> Replications
+        {
+            get => _replications ?? (_replications = new InputList<Inputs.GetImageReplicationInputArgs>());
+            set => _replications = value;
+        }
 
         public GetImageInvokeArgs()
         {
@@ -127,13 +151,25 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
+        /// A list of image replication regions and corresponding status.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetImageReplicationResult> Replications;
+        /// <summary>
         /// The minimum size this Image needs to deploy. Size is in MB. example: 2500
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// The current status of this image. (`creating`, `pending_upload`, `available`)
+        /// The status of an image replica.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A list of customized tags.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The total size of the image in all available regions.
+        /// </summary>
+        public readonly int TotalSize;
         /// <summary>
         /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         /// </summary>
@@ -163,9 +199,15 @@ namespace Pulumi.Linode
 
             string label,
 
+            ImmutableArray<Outputs.GetImageReplicationResult> replications,
+
             int size,
 
             string status,
+
+            ImmutableArray<string> tags,
+
+            int totalSize,
 
             string type,
 
@@ -180,8 +222,11 @@ namespace Pulumi.Linode
             Id = id;
             IsPublic = isPublic;
             Label = label;
+            Replications = replications;
             Size = size;
             Status = status;
+            Tags = tags;
+            TotalSize = totalSize;
             Type = type;
             Vendor = vendor;
         }

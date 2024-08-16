@@ -136,6 +136,8 @@ type ObjectStorageObject struct {
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl pulumi.StringPtrOutput `pulumi:"cacheControl"`
 	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrOutput `pulumi:"cluster"`
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
@@ -227,6 +229,8 @@ type objectStorageObjectState struct {
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl *string `pulumi:"cacheControl"`
 	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster *string `pulumi:"cluster"`
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content *string `pulumi:"content"`
@@ -276,6 +280,8 @@ type ObjectStorageObjectState struct {
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl pulumi.StringPtrInput
 	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrInput
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content pulumi.StringPtrInput
@@ -329,6 +335,8 @@ type objectStorageObjectArgs struct {
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl *string `pulumi:"cacheControl"`
 	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster *string `pulumi:"cluster"`
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content *string `pulumi:"content"`
@@ -377,6 +385,8 @@ type ObjectStorageObjectArgs struct {
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl pulumi.StringPtrInput
 	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrInput
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content pulumi.StringPtrInput
@@ -522,6 +532,8 @@ func (o ObjectStorageObjectOutput) CacheControl() pulumi.StringPtrOutput {
 }
 
 // The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+//
+// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 func (o ObjectStorageObjectOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Cluster }).(pulumi.StringPtrOutput)
 }

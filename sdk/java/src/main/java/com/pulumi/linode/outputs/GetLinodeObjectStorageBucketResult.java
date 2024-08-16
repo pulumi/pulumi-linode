@@ -11,6 +11,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLinodeObjectStorageBucketResult {
+    /**
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+     * 
+     */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     private String cluster;
     private String created;
     private String hostname;
@@ -21,6 +27,12 @@ public final class GetLinodeObjectStorageBucketResult {
     private Integer size;
 
     private GetLinodeObjectStorageBucketResult() {}
+    /**
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+     * 
+     */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     public String cluster() {
         return this.cluster;
     }

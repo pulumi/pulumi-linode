@@ -40,6 +40,11 @@ namespace Pulumi.Linode
     ///         Description = "Image taken from foo",
     ///         DiskId = foo.Disks.Apply(disks =&gt; disks[0].Id),
     ///         LinodeId = foo.Id,
+    ///         Tags = new[]
+    ///         {
+    ///             "image-tag",
+    ///             "test",
+    ///         },
     ///     });
     /// 
     ///     var barBased = new Linode.Instance("bar_based", new()
@@ -68,11 +73,53 @@ namespace Pulumi.Linode
     ///         Label = "foobar-image",
     ///         Description = "An image uploaded from Terraform!",
     ///         Region = "us-southeast",
+    ///         Tags = new[]
+    ///         {
+    ///             "image-tag",
+    ///             "test",
+    ///         },
     ///         FilePath = "path/to/image.img.gz",
     ///         FileHash = Std.Filemd5.Invoke(new()
     ///         {
     ///             Input = "path/to/image.img.gz",
     ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Upload and replicate an image from a local file:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.Image("foobar", new()
+    ///     {
+    ///         Label = "foobar-image",
+    ///         Description = "An image uploaded from Terraform!",
+    ///         Region = "us-southeast",
+    ///         Tags = new[]
+    ///         {
+    ///             "image-tag",
+    ///             "test",
+    ///         },
+    ///         FilePath = "path/to/image.img.gz",
+    ///         FileHash = Std.Filemd5.Invoke(new()
+    ///         {
+    ///             Input = "path/to/image.img.gz",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ReplicaRegions = new[]
+    ///         {
+    ///             "us-southeast",
+    ///             "us-east",
+    ///             "eu-west",
+    ///         },
     ///     });
     /// 
     /// });
@@ -121,10 +168,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A detailed description of this Image.
-        /// 
-        /// - - -
-        /// 
-        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -145,7 +188,7 @@ namespace Pulumi.Linode
         /// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         /// </summary>
         [Output("fileHash")]
-        public Output<string> FileHash { get; private set; } = null!;
+        public Output<string?> FileHash { get; private set; } = null!;
 
         /// <summary>
         /// The path of the image file to be uploaded.
@@ -178,10 +221,22 @@ namespace Pulumi.Linode
         public Output<int?> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        /// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        /// </summary>
+        [Output("replicaRegions")]
+        public Output<ImmutableArray<string>> ReplicaRegions { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of image replications region and corresponding status.
+        /// </summary>
+        [Output("replications")]
+        public Output<ImmutableArray<Outputs.ImageReplication>> Replications { get; private set; } = null!;
 
         /// <summary>
         /// The minimum size this Image needs to deploy. Size is in MB.
@@ -190,13 +245,25 @@ namespace Pulumi.Linode
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this Image.
+        /// The status of an image replica.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of customized tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
         [Output("timeouts")]
         public Output<Outputs.ImageTimeouts?> Timeouts { get; private set; } = null!;
+
+        /// <summary>
+        /// The total size of the image in all available regions.
+        /// </summary>
+        [Output("totalSize")]
+        public Output<int> TotalSize { get; private set; } = null!;
 
         /// <summary>
         /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
@@ -209,6 +276,16 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("vendor")]
         public Output<string> Vendor { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to wait for all image replications become `available`. Default to false.
+        /// 
+        /// - - -
+        /// 
+        /// The following arguments apply to creating an image from an existing Linode Instance:
+        /// </summary>
+        [Output("waitForReplications")]
+        public Output<bool> WaitForReplications { get; private set; } = null!;
 
 
         /// <summary>
@@ -264,10 +341,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A detailed description of this Image.
-        /// 
-        /// - - -
-        /// 
-        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -309,13 +382,47 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        /// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("replicaRegions")]
+        private InputList<string>? _replicaRegions;
+
+        /// <summary>
+        /// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        /// </summary>
+        public InputList<string> ReplicaRegions
+        {
+            get => _replicaRegions ?? (_replicaRegions = new InputList<string>());
+            set => _replicaRegions = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of customized tags.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("timeouts")]
         public Input<Inputs.ImageTimeoutsArgs>? Timeouts { get; set; }
+
+        /// <summary>
+        /// Whether to wait for all image replications become `available`. Default to false.
+        /// 
+        /// - - -
+        /// 
+        /// The following arguments apply to creating an image from an existing Linode Instance:
+        /// </summary>
+        [Input("waitForReplications")]
+        public Input<bool>? WaitForReplications { get; set; }
 
         public ImageArgs()
         {
@@ -363,10 +470,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// A detailed description of this Image.
-        /// 
-        /// - - -
-        /// 
-        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -420,10 +523,34 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+        /// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("replicaRegions")]
+        private InputList<string>? _replicaRegions;
+
+        /// <summary>
+        /// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        /// </summary>
+        public InputList<string> ReplicaRegions
+        {
+            get => _replicaRegions ?? (_replicaRegions = new InputList<string>());
+            set => _replicaRegions = value;
+        }
+
+        [Input("replications")]
+        private InputList<Inputs.ImageReplicationGetArgs>? _replications;
+
+        /// <summary>
+        /// A list of image replications region and corresponding status.
+        /// </summary>
+        public InputList<Inputs.ImageReplicationGetArgs> Replications
+        {
+            get => _replications ?? (_replications = new InputList<Inputs.ImageReplicationGetArgs>());
+            set => _replications = value;
+        }
 
         /// <summary>
         /// The minimum size this Image needs to deploy. Size is in MB.
@@ -432,13 +559,31 @@ namespace Pulumi.Linode
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The current status of this Image.
+        /// The status of an image replica.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of customized tags.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("timeouts")]
         public Input<Inputs.ImageTimeoutsGetArgs>? Timeouts { get; set; }
+
+        /// <summary>
+        /// The total size of the image in all available regions.
+        /// </summary>
+        [Input("totalSize")]
+        public Input<int>? TotalSize { get; set; }
 
         /// <summary>
         /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
@@ -451,6 +596,16 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("vendor")]
         public Input<string>? Vendor { get; set; }
+
+        /// <summary>
+        /// Whether to wait for all image replications become `available`. Default to false.
+        /// 
+        /// - - -
+        /// 
+        /// The following arguments apply to creating an image from an existing Linode Instance:
+        /// </summary>
+        [Input("waitForReplications")]
+        public Input<bool>? WaitForReplications { get; set; }
 
         public ImageState()
         {
