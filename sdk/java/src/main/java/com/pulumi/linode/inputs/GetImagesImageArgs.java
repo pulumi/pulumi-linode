@@ -6,11 +6,14 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetImagesImageReplicationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs {
@@ -153,6 +156,21 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A list of image replication regions and corresponding status.
+     * 
+     */
+    @Import(name="replications")
+    private @Nullable Output<List<GetImagesImageReplicationArgs>> replications;
+
+    /**
+     * @return A list of image replication regions and corresponding status.
+     * 
+     */
+    public Optional<Output<List<GetImagesImageReplicationArgs>>> replications() {
+        return Optional.ofNullable(this.replications);
+    }
+
+    /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      * 
      */
@@ -168,18 +186,48 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The current status of this image. (`creating`, `pending_upload`, `available`)
+     * The status of an image replica.
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return The current status of this image. (`creating`, `pending_upload`, `available`)
+     * @return The status of an image replica.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+
+    /**
+     * A list of customized tags.
+     * 
+     */
+    @Import(name="tags", required=true)
+    private Output<List<String>> tags;
+
+    /**
+     * @return A list of customized tags.
+     * 
+     */
+    public Output<List<String>> tags() {
+        return this.tags;
+    }
+
+    /**
+     * The total size of the image in all available regions.
+     * 
+     */
+    @Import(name="totalSize", required=true)
+    private Output<Integer> totalSize;
+
+    /**
+     * @return The total size of the image in all available regions.
+     * 
+     */
+    public Output<Integer> totalSize() {
+        return this.totalSize;
     }
 
     /**
@@ -224,8 +272,11 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         this.id = $.id;
         this.isPublic = $.isPublic;
         this.label = $.label;
+        this.replications = $.replications;
         this.size = $.size;
         this.status = $.status;
+        this.tags = $.tags;
+        this.totalSize = $.totalSize;
         this.type = $.type;
         this.vendor = $.vendor;
     }
@@ -448,6 +499,37 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(@Nullable Output<List<GetImagesImageReplicationArgs>> replications) {
+            $.replications = replications;
+            return this;
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(List<GetImagesImageReplicationArgs> replications) {
+            return replications(Output.of(replications));
+        }
+
+        /**
+         * @param replications A list of image replication regions and corresponding status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replications(GetImagesImageReplicationArgs... replications) {
+            return replications(List.of(replications));
+        }
+
+        /**
          * @param size The minimum size this Image needs to deploy. Size is in MB. example: 2500
          * 
          * @return builder
@@ -469,7 +551,7 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The current status of this image. (`creating`, `pending_upload`, `available`)
+         * @param status The status of an image replica.
          * 
          * @return builder
          * 
@@ -480,13 +562,65 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The current status of this image. (`creating`, `pending_upload`, `available`)
+         * @param status The status of an image replica.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A list of customized tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A list of customized tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags A list of customized tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+
+        /**
+         * @param totalSize The total size of the image in all available regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalSize(Output<Integer> totalSize) {
+            $.totalSize = totalSize;
+            return this;
+        }
+
+        /**
+         * @param totalSize The total size of the image in all available regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalSize(Integer totalSize) {
+            return totalSize(Output.of(totalSize));
         }
 
         /**
@@ -564,6 +698,12 @@ public final class GetImagesImageArgs extends com.pulumi.resources.ResourceArgs 
             }
             if ($.status == null) {
                 throw new MissingRequiredPropertyException("GetImagesImageArgs", "status");
+            }
+            if ($.tags == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "tags");
+            }
+            if ($.totalSize == null) {
+                throw new MissingRequiredPropertyException("GetImagesImageArgs", "totalSize");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetImagesImageArgs", "type");

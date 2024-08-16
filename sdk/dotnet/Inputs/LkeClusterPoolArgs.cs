@@ -44,6 +44,18 @@ namespace Pulumi.Linode.Inputs
             set => _nodes = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>

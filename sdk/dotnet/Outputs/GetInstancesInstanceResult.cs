@@ -43,7 +43,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string HostUuid;
         /// <summary>
-        /// The ID of the disk in the Linode API.
+        /// The ID of the Placement Group in the Linode API.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -63,9 +63,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Ipv6;
         /// <summary>
-        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
         public readonly string Label;
+        public readonly ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> PlacementGroups;
         /// <summary>
         /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         /// </summary>
@@ -126,6 +127,8 @@ namespace Pulumi.Linode.Outputs
 
             string label,
 
+            ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> placementGroups,
+
             string privateIpAddress,
 
             string region,
@@ -156,6 +159,7 @@ namespace Pulumi.Linode.Outputs
             Ipv4s = ipv4s;
             Ipv6 = ipv6;
             Label = label;
+            PlacementGroups = placementGroups;
             PrivateIpAddress = privateIpAddress;
             Region = region;
             Specs = specs;

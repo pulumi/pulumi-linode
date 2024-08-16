@@ -31,7 +31,7 @@ public final class GetInstancesInstanceConfig {
      */
     private List<GetInstancesInstanceConfigHelper> helpers;
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     private Integer id;
@@ -46,7 +46,7 @@ public final class GetInstancesInstanceConfig {
      */
     private String kernel;
     /**
-     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
     private String label;
@@ -94,7 +94,7 @@ public final class GetInstancesInstanceConfig {
         return this.helpers;
     }
     /**
-     * @return The ID of the disk in the Linode API.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     public Integer id() {
@@ -115,7 +115,7 @@ public final class GetInstancesInstanceConfig {
         return this.kernel;
     }
     /**
-     * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+     * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
     public String label() {

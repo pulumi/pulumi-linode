@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Filesystem;
         /// <summary>
-        /// The ID of the disk in the Linode API.
+        /// The ID of the Placement Group in the Linode API.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
         public readonly string Label;
         /// <summary>

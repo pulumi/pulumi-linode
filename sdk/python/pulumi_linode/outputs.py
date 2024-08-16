@@ -16,6 +16,7 @@ __all__ = [
     'FirewallDevice',
     'FirewallInbound',
     'FirewallOutbound',
+    'ImageReplication',
     'ImageTimeouts',
     'InstanceAlerts',
     'InstanceBackups',
@@ -101,8 +102,10 @@ __all__ = [
     'GetFirewallsFirewallDeviceResult',
     'GetFirewallsFirewallInboundResult',
     'GetFirewallsFirewallOutboundResult',
+    'GetImageReplicationResult',
     'GetImagesFilterResult',
     'GetImagesImageResult',
+    'GetImagesImageReplicationResult',
     'GetInstanceBackupsAutomaticResult',
     'GetInstanceBackupsAutomaticDiskResult',
     'GetInstanceBackupsCurrentResult',
@@ -158,6 +161,7 @@ __all__ = [
     'GetInstancesInstanceConfigInterfaceResult',
     'GetInstancesInstanceConfigInterfaceIpv4Result',
     'GetInstancesInstanceDiskResult',
+    'GetInstancesInstancePlacementGroupResult',
     'GetInstancesInstanceSpecResult',
     'GetIpv6RangesFilterResult',
     'GetIpv6RangesRangeResult',
@@ -640,6 +644,35 @@ class FirewallOutbound(dict):
         A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         """
         return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class ImageReplication(dict):
+    def __init__(__self__, *,
+                 region: str,
+                 status: str):
+        """
+        :param str region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+        :param str status: The status of an image replica.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of an image replica.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -2616,7 +2649,8 @@ class LkeClusterPool(dict):
                  autoscaler: Optional['outputs.LkeClusterPoolAutoscaler'] = None,
                  count: Optional[int] = None,
                  id: Optional[int] = None,
-                 nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None):
+                 nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None,
+                 tags: Optional[Sequence[str]] = None):
         """
         :param str type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param 'LkeClusterPoolAutoscalerArgs' autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
@@ -2625,6 +2659,7 @@ class LkeClusterPool(dict):
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param int id: The ID of the node.
         :param Sequence['LkeClusterPoolNodeArgs'] nodes: The nodes in the node pool.
+        :param Sequence[str] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         pulumi.set(__self__, "type", type)
         if autoscaler is not None:
@@ -2635,6 +2670,8 @@ class LkeClusterPool(dict):
             pulumi.set(__self__, "id", id)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -2677,6 +2714,14 @@ class LkeClusterPool(dict):
         The nodes in the node pool.
         """
         return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        """
+        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -6071,6 +6116,35 @@ class GetFirewallsFirewallOutboundResult(dict):
 
 
 @pulumi.output_type
+class GetImageReplicationResult(dict):
+    def __init__(__self__, *,
+                 region: str,
+                 status: str):
+        """
+        :param str region: The region of an image replica.
+        :param str status: The status of an image replica.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of an image replica.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of an image replica.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetImagesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -6125,8 +6199,11 @@ class GetImagesImageResult(dict):
                  label: str,
                  size: int,
                  status: str,
+                 tags: Sequence[str],
+                 total_size: int,
                  type: str,
-                 vendor: str):
+                 vendor: str,
+                 replications: Optional[Sequence['outputs.GetImagesImageReplicationResult']] = None):
         """
         :param Sequence[str] capabilities: The capabilities of this Image.
         :param str created: When this Image was created.
@@ -6138,9 +6215,12 @@ class GetImagesImageResult(dict):
         :param bool is_public: True if the Image is public.
         :param str label: A short description of the Image.
         :param int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        :param str status: The current status of this image. (`creating`, `pending_upload`, `available`)
+        :param str status: The status of an image replica.
+        :param Sequence[str] tags: A list of customized tags.
+        :param int total_size: The total size of the image in all available regions.
         :param str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         :param str vendor: The upstream distribution vendor. `None` for private Images.
+        :param Sequence['GetImagesImageReplicationArgs'] replications: A list of image replication regions and corresponding status.
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "created", created)
@@ -6153,8 +6233,12 @@ class GetImagesImageResult(dict):
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "total_size", total_size)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vendor", vendor)
+        if replications is not None:
+            pulumi.set(__self__, "replications", replications)
 
     @property
     @pulumi.getter
@@ -6240,9 +6324,25 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The current status of this image. (`creating`, `pending_upload`, `available`)
+        The status of an image replica.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        A list of customized tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="totalSize")
+    def total_size(self) -> int:
+        """
+        The total size of the image in all available regions.
+        """
+        return pulumi.get(self, "total_size")
 
     @property
     @pulumi.getter
@@ -6259,6 +6359,43 @@ class GetImagesImageResult(dict):
         The upstream distribution vendor. `None` for private Images.
         """
         return pulumi.get(self, "vendor")
+
+    @property
+    @pulumi.getter
+    def replications(self) -> Optional[Sequence['outputs.GetImagesImageReplicationResult']]:
+        """
+        A list of image replication regions and corresponding status.
+        """
+        return pulumi.get(self, "replications")
+
+
+@pulumi.output_type
+class GetImagesImageReplicationResult(dict):
+    def __init__(__self__, *,
+                 region: str,
+                 status: str):
+        """
+        :param str region: The region of an image replica.
+        :param str status: The status of an image replica.
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of an image replica.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of an image replica.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -8456,6 +8593,7 @@ class GetInstancesInstanceResult(dict):
                  ipv4s: Sequence[str],
                  ipv6: str,
                  label: str,
+                 placement_groups: Sequence['outputs.GetInstancesInstancePlacementGroupResult'],
                  private_ip_address: str,
                  region: str,
                  specs: Sequence['outputs.GetInstancesInstanceSpecResult'],
@@ -8472,12 +8610,12 @@ class GetInstancesInstanceResult(dict):
         :param str group: The display group of the Linode instance.
         :param bool has_user_data: Whether this Instance was created with user-data.
         :param str host_uuid: The Linode’s host machine, as a UUID.
-        :param int id: The ID of the disk in the Linode API.
+        :param int id: The ID of the Placement Group in the Linode API.
         :param str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param str ip_address: A string containing the Linode's public IP address.
         :param Sequence[str] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param str ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
-        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param str private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         :param str status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -8500,6 +8638,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "placement_groups", placement_groups)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "specs", specs)
@@ -8574,7 +8713,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of the disk in the Linode API.
+        The ID of the Placement Group in the Linode API.
         """
         return pulumi.get(self, "id")
 
@@ -8614,9 +8753,14 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="placementGroups")
+    def placement_groups(self) -> Sequence['outputs.GetInstancesInstancePlacementGroupResult']:
+        return pulumi.get(self, "placement_groups")
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -8825,10 +8969,10 @@ class GetInstancesInstanceConfigResult(dict):
         :param str comments: Arbitrary user comments about this `config`.
         :param Sequence['GetInstancesInstanceConfigDeviceArgs'] devices: A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
         :param Sequence['GetInstancesInstanceConfigHelperArgs'] helpers: Helpers enabled when booting to this Linode Config.
-        :param int id: The ID of the disk in the Linode API.
+        :param int id: The ID of the Placement Group in the Linode API.
         :param Sequence['GetInstancesInstanceConfigInterfaceArgs'] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
         :param str kernel: A Kernel ID to boot a Linode with. Default is based on image choice. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
-        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param int memory_limit: Defaults to the total RAM of the Linode
         :param str root_device: The root device to boot.
         :param str run_level: Defines the state of your Linode after booting.
@@ -8874,7 +9018,7 @@ class GetInstancesInstanceConfigResult(dict):
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of the disk in the Linode API.
+        The ID of the Placement Group in the Linode API.
         """
         return pulumi.get(self, "id")
 
@@ -8898,7 +9042,7 @@ class GetInstancesInstanceConfigResult(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
 
@@ -9443,13 +9587,13 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
                  subnet_id: Optional[int] = None):
         """
         :param bool active: Whether this interface is currently booted and active.
-        :param int id: The ID of the disk in the Linode API.
+        :param int id: The ID of the Placement Group in the Linode API.
         :param 'GetInstancesInstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param int vpc_id: The ID of VPC which this interface is attached to.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
         :param int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         """
@@ -9481,7 +9625,7 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of the disk in the Linode API.
+        The ID of the Placement Group in the Linode API.
         """
         return pulumi.get(self, "id")
 
@@ -9529,7 +9673,7 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
     @pulumi.getter
     def label(self) -> Optional[str]:
         """
-        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
 
@@ -9588,8 +9732,8 @@ class GetInstancesInstanceDiskResult(dict):
                  size: int):
         """
         :param str filesystem: The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-        :param int id: The ID of the disk in the Linode API.
-        :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        :param int id: The ID of the Placement Group in the Linode API.
+        :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param int size: The size of the Disk in MB.
         """
         pulumi.set(__self__, "filesystem", filesystem)
@@ -9609,7 +9753,7 @@ class GetInstancesInstanceDiskResult(dict):
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of the disk in the Linode API.
+        The ID of the Placement Group in the Linode API.
         """
         return pulumi.get(self, "id")
 
@@ -9617,7 +9761,7 @@ class GetInstancesInstanceDiskResult(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
 
@@ -9628,6 +9772,57 @@ class GetInstancesInstanceDiskResult(dict):
         The size of the Disk in MB.
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetInstancesInstancePlacementGroupResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 placement_group_policy: str,
+                 placement_group_type: str):
+        """
+        :param int id: The ID of the Placement Group in the Linode API.
+        :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        :param str placement_group_policy: Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        :param str placement_group_type: The placement group type to use when placing Linodes in this group.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "placement_group_policy", placement_group_policy)
+        pulumi.set(__self__, "placement_group_type", placement_group_type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the Placement Group in the Linode API.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="placementGroupPolicy")
+    def placement_group_policy(self) -> str:
+        """
+        Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        """
+        return pulumi.get(self, "placement_group_policy")
+
+    @property
+    @pulumi.getter(name="placementGroupType")
+    def placement_group_type(self) -> str:
+        """
+        The placement group type to use when placing Linodes in this group.
+        """
+        return pulumi.get(self, "placement_group_type")
 
 
 @pulumi.output_type

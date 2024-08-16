@@ -1216,6 +1216,28 @@ export interface GetFirewallsFirewallOutboundArgs {
     protocol?: pulumi.Input<string>;
 }
 
+export interface GetImageReplication {
+    /**
+     * The region of an image replica.
+     */
+    region?: string;
+    /**
+     * The status of an image replica.
+     */
+    status?: string;
+}
+
+export interface GetImageReplicationArgs {
+    /**
+     * The region of an image replica.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The status of an image replica.
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface GetImagesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1284,13 +1306,25 @@ export interface GetImagesImage {
      */
     label?: string;
     /**
+     * A list of image replication regions and corresponding status.
+     */
+    replications?: inputs.GetImagesImageReplication[];
+    /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
     size?: number;
     /**
-     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     * The status of an image replica.
      */
     status?: string;
+    /**
+     * A list of customized tags.
+     */
+    tags?: string[];
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize?: number;
     /**
      * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
@@ -1339,13 +1373,25 @@ export interface GetImagesImageArgs {
      */
     label?: pulumi.Input<string>;
     /**
+     * A list of image replication regions and corresponding status.
+     */
+    replications?: pulumi.Input<pulumi.Input<inputs.GetImagesImageReplicationArgs>[]>;
+    /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
     size?: pulumi.Input<number>;
     /**
-     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     * The status of an image replica.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A list of customized tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize?: pulumi.Input<number>;
     /**
      * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
@@ -1354,6 +1400,28 @@ export interface GetImagesImageArgs {
      * The upstream distribution vendor. `None` for private Images.
      */
     vendor?: pulumi.Input<string>;
+}
+
+export interface GetImagesImageReplication {
+    /**
+     * The region of an image replica.
+     */
+    region?: string;
+    /**
+     * The status of an image replica.
+     */
+    status?: string;
+}
+
+export interface GetImagesImageReplicationArgs {
+    /**
+     * The region of an image replica.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The status of an image replica.
+     */
+    status?: pulumi.Input<string>;
 }
 
 export interface GetInstanceTypesFilter {
@@ -4444,6 +4512,17 @@ export interface GetVpcsVpcArgs {
     updated?: pulumi.Input<string>;
 }
 
+export interface ImageReplication {
+    /**
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The status of an image replica.
+     */
+    status: pulumi.Input<string>;
+}
+
 export interface ImageTimeouts {
     /**
      * Used when creating the instance image (until the instance is available)
@@ -5011,6 +5090,10 @@ export interface LkeClusterPool {
      * The nodes in the node pool.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
+    /**
+     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */

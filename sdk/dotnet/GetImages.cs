@@ -95,6 +95,8 @@ namespace Pulumi.Linode
         /// * `status`
         /// 
         /// * `vendor`
+        /// 
+        /// * `tags`
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("linode:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
@@ -183,6 +185,8 @@ namespace Pulumi.Linode
         /// * `status`
         /// 
         /// * `vendor`
+        /// 
+        /// * `tags`
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("linode:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());

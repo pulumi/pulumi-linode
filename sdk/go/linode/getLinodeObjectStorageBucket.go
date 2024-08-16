@@ -55,6 +55,8 @@ func GetLinodeObjectStorageBucket(ctx *pulumi.Context, args *GetLinodeObjectStor
 // A collection of arguments for invoking getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketArgs struct {
 	// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster *string `pulumi:"cluster"`
 	// The name of this bucket.
 	Label string `pulumi:"label"`
@@ -64,6 +66,7 @@ type GetLinodeObjectStorageBucketArgs struct {
 
 // A collection of values returned by getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketResult struct {
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster  string `pulumi:"cluster"`
 	Created  string `pulumi:"created"`
 	Hostname string `pulumi:"hostname"`
@@ -90,6 +93,8 @@ func GetLinodeObjectStorageBucketOutput(ctx *pulumi.Context, args GetLinodeObjec
 // A collection of arguments for invoking getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketOutputArgs struct {
 	// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+	//
+	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
 	// The name of this bucket.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -116,6 +121,7 @@ func (o GetLinodeObjectStorageBucketResultOutput) ToGetLinodeObjectStorageBucket
 	return o
 }
 
+// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 func (o GetLinodeObjectStorageBucketResultOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.Cluster }).(pulumi.StringOutput)
 }

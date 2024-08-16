@@ -39,6 +39,11 @@ public final class LkeClusterPool {
      */
     private @Nullable List<LkeClusterPoolNode> nodes;
     /**
+     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * 
+     */
+    private @Nullable List<String> tags;
+    /**
      * @return A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
@@ -76,6 +81,13 @@ public final class LkeClusterPool {
         return this.nodes == null ? List.of() : this.nodes;
     }
     /**
+     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags == null ? List.of() : this.tags;
+    }
+    /**
      * @return A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
@@ -96,6 +108,7 @@ public final class LkeClusterPool {
         private @Nullable Integer count;
         private @Nullable Integer id;
         private @Nullable List<LkeClusterPoolNode> nodes;
+        private @Nullable List<String> tags;
         private String type;
         public Builder() {}
         public Builder(LkeClusterPool defaults) {
@@ -104,6 +117,7 @@ public final class LkeClusterPool {
     	      this.count = defaults.count;
     	      this.id = defaults.id;
     	      this.nodes = defaults.nodes;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
         }
 
@@ -135,6 +149,15 @@ public final class LkeClusterPool {
             return nodes(List.of(nodes));
         }
         @CustomType.Setter
+        public Builder tags(@Nullable List<String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("LkeClusterPool", "type");
@@ -148,6 +171,7 @@ public final class LkeClusterPool {
             _resultValue.count = count;
             _resultValue.id = id;
             _resultValue.nodes = nodes;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             return _resultValue;
         }

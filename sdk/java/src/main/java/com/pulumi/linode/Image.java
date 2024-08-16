@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.ImageArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.ImageState;
+import com.pulumi.linode.outputs.ImageReplication;
 import com.pulumi.linode.outputs.ImageTimeouts;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -64,6 +65,9 @@ import javax.annotation.Nullable;
  *             .description("Image taken from foo")
  *             .diskId(foo.disks().applyValue(disks -> disks[0].id()))
  *             .linodeId(foo.id())
+ *             .tags(            
+ *                 "image-tag",
+ *                 "test")
  *             .build());
  * 
  *         var barBased = new Instance("barBased", InstanceArgs.builder()
@@ -107,10 +111,61 @@ import javax.annotation.Nullable;
  *             .label("foobar-image")
  *             .description("An image uploaded from Terraform!")
  *             .region("us-southeast")
+ *             .tags(            
+ *                 "image-tag",
+ *                 "test")
  *             .filePath("path/to/image.img.gz")
  *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
  *                 .input("path/to/image.img.gz")
  *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Upload and replicate an image from a local file:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Image;
+ * import com.pulumi.linode.ImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Image("foobar", ImageArgs.builder()
+ *             .label("foobar-image")
+ *             .description("An image uploaded from Terraform!")
+ *             .region("us-southeast")
+ *             .tags(            
+ *                 "image-tag",
+ *                 "test")
+ *             .filePath("path/to/image.img.gz")
+ *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
+ *                 .input("path/to/image.img.gz")
+ *                 .build()).result())
+ *             .replicaRegions(            
+ *                 "us-southeast",
+ *                 "us-east",
+ *                 "eu-west")
  *             .build());
  * 
  *     }
@@ -203,20 +258,12 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * A detailed description of this Image.
      * 
-     * ***
-     * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
-     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
      * @return A detailed description of this Image.
-     * 
-     * ***
-     * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Output<Optional<String>> description() {
@@ -255,14 +302,14 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="fileHash", refs={String.class}, tree="[0]")
-    private Output<String> fileHash;
+    private Output</* @Nullable */ String> fileHash;
 
     /**
      * @return The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      * 
      */
-    public Output<String> fileHash() {
-        return this.fileHash;
+    public Output<Optional<String>> fileHash() {
+        return Codegen.optional(this.fileHash);
     }
     /**
      * The path of the image file to be uploaded.
@@ -333,18 +380,46 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.linodeId);
     }
     /**
-     * The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
-     * @return The region of the image. See all regions [here](https://api.linode.com/v4/regions).
+     * @return The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
      */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
+    }
+    /**
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * 
+     */
+    @Export(name="replicaRegions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> replicaRegions;
+
+    /**
+     * @return A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * 
+     */
+    public Output<Optional<List<String>>> replicaRegions() {
+        return Codegen.optional(this.replicaRegions);
+    }
+    /**
+     * A list of image replications region and corresponding status.
+     * 
+     */
+    @Export(name="replications", refs={List.class,ImageReplication.class}, tree="[0,1]")
+    private Output<List<ImageReplication>> replications;
+
+    /**
+     * @return A list of image replications region and corresponding status.
+     * 
+     */
+    public Output<List<ImageReplication>> replications() {
+        return this.replications;
     }
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
@@ -361,24 +436,52 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.size;
     }
     /**
-     * The current status of this Image.
+     * The status of an image replica.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The current status of this Image.
+     * @return The status of an image replica.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A list of customized tags.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tags;
+
+    /**
+     * @return A list of customized tags.
+     * 
+     */
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     @Export(name="timeouts", refs={ImageTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ ImageTimeouts> timeouts;
 
     public Output<Optional<ImageTimeouts>> timeouts() {
         return Codegen.optional(this.timeouts);
+    }
+    /**
+     * The total size of the image in all available regions.
+     * 
+     */
+    @Export(name="totalSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> totalSize;
+
+    /**
+     * @return The total size of the image in all available regions.
+     * 
+     */
+    public Output<Integer> totalSize() {
+        return this.totalSize;
     }
     /**
      * How the Image was created. &#39;Manual&#39; Images can be created at any time. &#39;Automatic&#39; images are created automatically from a deleted Linode.
@@ -407,6 +510,28 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vendor() {
         return this.vendor;
+    }
+    /**
+     * Whether to wait for all image replications become `available`. Default to false.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
+     */
+    @Export(name="waitForReplications", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> waitForReplications;
+
+    /**
+     * @return Whether to wait for all image replications become `available`. Default to false.
+     * 
+     * ***
+     * 
+     * The following arguments apply to creating an image from an existing Linode Instance:
+     * 
+     */
+    public Output<Boolean> waitForReplications() {
+        return this.waitForReplications;
     }
 
     /**

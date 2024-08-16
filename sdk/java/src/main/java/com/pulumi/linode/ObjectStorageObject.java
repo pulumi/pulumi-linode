@@ -212,7 +212,11 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
     /**
      * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
      * 
+     * @deprecated
+     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
+     * 
      */
+    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cluster;
 

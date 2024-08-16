@@ -32,6 +32,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.LkeClusterPoolNode> Nodes;
         /// <summary>
+        /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
         /// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         public readonly string Type;
@@ -46,12 +50,15 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.LkeClusterPoolNode> nodes,
 
+            ImmutableArray<string> tags,
+
             string type)
         {
             Autoscaler = autoscaler;
             Count = count;
             Id = id;
             Nodes = nodes;
+            Tags = tags;
             Type = type;
         }
     }

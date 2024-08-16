@@ -111,6 +111,15 @@
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
+                    },
+                    "replica_regions": {
+                        "maxItemsOne": false
+                    },
+                    "replications": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -321,6 +330,9 @@
                                     "maxItemsOne": true
                                 },
                                 "nodes": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -942,6 +954,12 @@
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
+                    },
+                    "replications": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -964,6 +982,12 @@
                         "elem": {
                             "fields": {
                                 "capabilities": {
+                                    "maxItemsOne": false
+                                },
+                                "replications": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1224,6 +1248,9 @@
                                     "maxItemsOne": false
                                 },
                                 "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "placement_group": {
                                     "maxItemsOne": false
                                 },
                                 "specs": {

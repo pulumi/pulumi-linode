@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetImageResult',
@@ -21,7 +23,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, capabilities=None, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, size=None, status=None, type=None, vendor=None):
+    def __init__(__self__, capabilities=None, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, replications=None, size=None, status=None, tags=None, total_size=None, type=None, vendor=None):
         if capabilities and not isinstance(capabilities, list):
             raise TypeError("Expected argument 'capabilities' to be a list")
         pulumi.set(__self__, "capabilities", capabilities)
@@ -49,12 +51,21 @@ class GetImageResult:
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
+        if replications and not isinstance(replications, list):
+            raise TypeError("Expected argument 'replications' to be a list")
+        pulumi.set(__self__, "replications", replications)
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if total_size and not isinstance(total_size, int):
+            raise TypeError("Expected argument 'total_size' to be a int")
+        pulumi.set(__self__, "total_size", total_size)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -127,6 +138,14 @@ class GetImageResult:
 
     @property
     @pulumi.getter
+    def replications(self) -> Optional[Sequence['outputs.GetImageReplicationResult']]:
+        """
+        A list of image replication regions and corresponding status.
+        """
+        return pulumi.get(self, "replications")
+
+    @property
+    @pulumi.getter
     def size(self) -> int:
         """
         The minimum size this Image needs to deploy. Size is in MB. example: 2500
@@ -137,9 +156,25 @@ class GetImageResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        The current status of this image. (`creating`, `pending_upload`, `available`)
+        The status of an image replica.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        A list of customized tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="totalSize")
+    def total_size(self) -> int:
+        """
+        The total size of the image in all available regions.
+        """
+        return pulumi.get(self, "total_size")
 
     @property
     @pulumi.getter
@@ -173,13 +208,17 @@ class AwaitableGetImageResult(GetImageResult):
             id=self.id,
             is_public=self.is_public,
             label=self.label,
+            replications=self.replications,
             size=self.size,
             status=self.status,
+            tags=self.tags,
+            total_size=self.total_size,
             type=self.type,
             vendor=self.vendor)
 
 
 def get_image(id: Optional[str] = None,
+              replications: Optional[Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Provides information about a Linode image
@@ -198,9 +237,11 @@ def get_image(id: Optional[str] = None,
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+    :param Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']] replications: A list of image replication regions and corresponding status.
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['replications'] = replications
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
@@ -214,14 +255,18 @@ def get_image(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_public=pulumi.get(__ret__, 'is_public'),
         label=pulumi.get(__ret__, 'label'),
+        replications=pulumi.get(__ret__, 'replications'),
         size=pulumi.get(__ret__, 'size'),
         status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_size=pulumi.get(__ret__, 'total_size'),
         type=pulumi.get(__ret__, 'type'),
         vendor=pulumi.get(__ret__, 'vendor'))
 
 
 @_utilities.lift_output_func(get_image)
 def get_image_output(id: Optional[pulumi.Input[str]] = None,
+                     replications: Optional[pulumi.Input[Optional[Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
     Provides information about a Linode image
@@ -240,5 +285,6 @@ def get_image_output(id: Optional[pulumi.Input[str]] = None,
 
 
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+    :param Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']] replications: A list of image replication regions and corresponding status.
     """
     ...

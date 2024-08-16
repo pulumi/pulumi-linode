@@ -152,6 +152,8 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
 
     * `vendor`
 
+    * `tags`
+
 
     :param bool latest: If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
            
@@ -238,6 +240,8 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     * `status`
 
     * `vendor`
+
+    * `tags`
 
 
     :param bool latest: If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
