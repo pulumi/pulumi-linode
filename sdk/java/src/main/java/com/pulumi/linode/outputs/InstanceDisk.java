@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,7 @@ public final class InstanceDisk {
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
-    private @Nullable Map<String,Object> stackscriptData;
+    private @Nullable Map<String,String> stackscriptData;
     /**
      * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
@@ -141,7 +140,7 @@ public final class InstanceDisk {
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
-    public Map<String,Object> stackscriptData() {
+    public Map<String,String> stackscriptData() {
         return this.stackscriptData == null ? Map.of() : this.stackscriptData;
     }
     /**
@@ -170,7 +169,7 @@ public final class InstanceDisk {
         private @Nullable Boolean readOnly;
         private @Nullable String rootPass;
         private Integer size;
-        private @Nullable Map<String,Object> stackscriptData;
+        private @Nullable Map<String,String> stackscriptData;
         private @Nullable Integer stackscriptId;
         public Builder() {}
         public Builder(InstanceDisk defaults) {
@@ -253,7 +252,7 @@ public final class InstanceDisk {
             return this;
         }
         @CustomType.Setter
-        public Builder stackscriptData(@Nullable Map<String,Object> stackscriptData) {
+        public Builder stackscriptData(@Nullable Map<String,String> stackscriptData) {
 
             this.stackscriptData = stackscriptData;
             return this;

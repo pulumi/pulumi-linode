@@ -52,7 +52,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? StackscriptData;
+        public readonly ImmutableDictionary<string, string>? StackscriptData;
         /// <summary>
         /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Pulumi.Linode.Outputs
 
             int size,
 
-            ImmutableDictionary<string, object>? stackscriptData,
+            ImmutableDictionary<string, string>? stackscriptData,
 
             int? stackscriptId)
         {

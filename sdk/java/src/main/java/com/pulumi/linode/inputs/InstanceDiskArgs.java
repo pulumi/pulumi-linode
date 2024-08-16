@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -161,13 +160,13 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="stackscriptData")
-    private @Nullable Output<Map<String,Object>> stackscriptData;
+    private @Nullable Output<Map<String,String>> stackscriptData;
 
     /**
      * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
-    public Optional<Output<Map<String,Object>>> stackscriptData() {
+    public Optional<Output<Map<String,String>>> stackscriptData() {
         return Optional.ofNullable(this.stackscriptData);
     }
 
@@ -435,7 +434,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder stackscriptData(@Nullable Output<Map<String,Object>> stackscriptData) {
+        public Builder stackscriptData(@Nullable Output<Map<String,String>> stackscriptData) {
             $.stackscriptData = stackscriptData;
             return this;
         }
@@ -446,7 +445,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder stackscriptData(Map<String,Object> stackscriptData) {
+        public Builder stackscriptData(Map<String,String> stackscriptData) {
             return stackscriptData(Output.of(stackscriptData));
         }
 
