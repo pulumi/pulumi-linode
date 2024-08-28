@@ -1341,6 +1341,28 @@
                 "status"
             ]
         },
+        "linode:index/LkeNodePoolTaint:LkeNodePoolTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The Kubernetes taint key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Kubernetes taint value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "effect",
+                "key",
+                "value"
+            ]
+        },
         "linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus": {
             "properties": {
                 "down": {
@@ -5656,6 +5678,13 @@
                     "type": "integer",
                     "description": "The LKE Cluster's ID.\n"
                 },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.\n"
+                },
                 "nodes": {
                     "type": "array",
                     "items": {
@@ -5670,16 +5699,25 @@
                     },
                     "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeClusterPoolTaint:getLkeClusterPoolTaint"
+                    },
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.\n"
+                },
                 "type": {
                     "type": "string",
-                    "description": "This custom disk partition’s filesystem type.\n"
+                    "description": "The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
                 }
             },
             "type": "object",
             "required": [
                 "count",
                 "id",
+                "labels",
                 "tags",
+                "taints",
                 "type"
             ],
             "language": {
@@ -5723,7 +5761,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "This custom disk partition’s filesystem type.\n"
+                    "description": "The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
                 }
             },
             "type": "object",
@@ -5763,6 +5801,28 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "linode:index/getLkeClusterPoolTaint:getLkeClusterPoolTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The Kubernetes taint key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Kubernetes taint value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "effect",
+                "key",
+                "value"
+            ]
         },
         "linode:index/getLkeClustersFilter:getLkeClustersFilter": {
             "properties": {
@@ -7790,6 +7850,107 @@
                     "requiredInputs": [
                         "id"
                     ]
+                }
+            }
+        },
+        "linode:index/getVpcIpsFilter:getVpcIpsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getVpcIpsVpcIp:getVpcIpsVpcIp": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.\n"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.\n"
+                },
+                "addressRange": {
+                    "type": "string",
+                    "description": "A range of IPv4 addresses configured for this VPC interface. Null if a single address.\n"
+                },
+                "configId": {
+                    "type": "integer",
+                    "description": "The globally general entity identifier for the Linode configuration profile where the VPC is included.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "The default gateway for the VPC subnet that the IP or IP range belongs to.\n"
+                },
+                "interfaceId": {
+                    "type": "integer",
+                    "description": "The globally general API entity identifier for the Linode interface.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The identifier for the Linode the VPC interface currently belongs to.\n"
+                },
+                "nat11": {
+                    "type": "string",
+                    "description": "The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "The number of bits set in the subnet mask.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the VPC.\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The id of the VPC Subnet for this interface.\n"
+                },
+                "subnetMask": {
+                    "type": "string",
+                    "description": "The mask that separates host bits from network bits for the address or address_range.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The id of the parent VPC for the list of VPC IPs.\n\n* `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "address",
+                "addressRange",
+                "configId",
+                "gateway",
+                "interfaceId",
+                "linodeId",
+                "nat11",
+                "prefix",
+                "region",
+                "subnetId",
+                "subnetMask",
+                "vpcId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
             }
         },
@@ -11139,6 +11300,13 @@
                     "type": "integer",
                     "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                 },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n\n* `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
+                },
                 "nodeCount": {
                     "type": "integer",
                     "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
@@ -11155,7 +11323,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
+                    "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/LkeNodePoolTaint:LkeNodePoolTaint"
+                    },
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically\nallowing them to repel certain pods.\n"
                 },
                 "type": {
                     "type": "string",
@@ -11164,6 +11339,7 @@
             },
             "required": [
                 "clusterId",
+                "labels",
                 "nodeCount",
                 "nodes",
                 "tags",
@@ -11177,6 +11353,13 @@
                     "type": "integer",
                     "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                 },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n\n* `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
+                },
                 "nodeCount": {
                     "type": "integer",
                     "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
@@ -11186,7 +11369,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
+                    "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/LkeNodePoolTaint:LkeNodePoolTaint"
+                    },
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically\nallowing them to repel certain pods.\n"
                 },
                 "type": {
                     "type": "string",
@@ -11207,6 +11397,13 @@
                         "type": "integer",
                         "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                     },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n\n* `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
+                    },
                     "nodeCount": {
                         "type": "integer",
                         "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
@@ -11223,7 +11420,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
+                        "description": "An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.\n"
+                    },
+                    "taints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/LkeNodePoolTaint:LkeNodePoolTaint"
+                        },
+                        "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically\nallowing them to repel certain pods.\n"
                     },
                     "type": {
                         "type": "string",
@@ -17620,6 +17824,59 @@
                     "label",
                     "region",
                     "updated"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getVpcIps:getVpcIps": {
+            "description": "Provides information about a list of Linode VPC IPs that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).\n\nProvides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).\n\n## Example Usage\n\nThe following example shows how one might use this data source to list VPC IPs.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst filtered-ips = linode.getVpcIps({\n    filters: [{\n        name: \"address\",\n        values: [\"10.0.0.0\"],\n    }],\n});\nexport const vpcIps = filtered_ips.then(filtered_ips =\u003e filtered_ips.vpcIps);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfiltered_ips = linode.get_vpc_ips(filters=[{\n    \"name\": \"address\",\n    \"values\": [\"10.0.0.0\"],\n}])\npulumi.export(\"vpcIps\", filtered_ips.vpc_ips)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered_ips = Linode.GetVpcIps.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetVpcIpsFilterInputArgs\n            {\n                Name = \"address\",\n                Values = new[]\n                {\n                    \"10.0.0.0\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vpcIps\"] = filtered_ips.Apply(filtered_ips =\u003e filtered_ips.Apply(getVpcIpsResult =\u003e getVpcIpsResult.VpcIps)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfiltered_ips, err := linode.GetVpcIps(ctx, \u0026linode.GetVpcIpsArgs{\n\t\t\tFilters: []linode.GetVpcIpsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"address\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"10.0.0.0\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vpcIps\", filtered_ips.VpcIps)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVpcIpsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()\n            .filters(GetVpcIpsFilterArgs.builder()\n                .name(\"address\")\n                .values(\"10.0.0.0\")\n                .build())\n            .build());\n\n        ctx.export(\"vpcIps\", filtered_ips.vpcIps());\n    }\n}\n```\n```yaml\nvariables:\n  filtered-ips:\n    fn::invoke:\n      Function: linode:getVpcIps\n      Arguments:\n        filters:\n          - name: address\n            values:\n              - 10.0.0.0\noutputs:\n  vpcIps: ${[\"filtered-ips\"].vpcIps}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nOne might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst specific-vpc-ips = linode.getVpcIps({\n    vpcId: 123,\n});\nexport const vpcIps = specific_vpc_ips.then(specific_vpc_ips =\u003e specific_vpc_ips.vpcIps);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nspecific_vpc_ips = linode.get_vpc_ips(vpc_id=123)\npulumi.export(\"vpcIps\", specific_vpc_ips.vpc_ips)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var specific_vpc_ips = Linode.GetVpcIps.Invoke(new()\n    {\n        VpcId = 123,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vpcIps\"] = specific_vpc_ips.Apply(specific_vpc_ips =\u003e specific_vpc_ips.Apply(getVpcIpsResult =\u003e getVpcIpsResult.VpcIps)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tspecific_vpc_ips, err := linode.GetVpcIps(ctx, \u0026linode.GetVpcIpsArgs{\n\t\t\tVpcId: pulumi.IntRef(123),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vpcIps\", specific_vpc_ips.VpcIps)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetVpcIpsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()\n            .vpcId(123)\n            .build());\n\n        ctx.export(\"vpcIps\", specific_vpc_ips.vpcIps());\n    }\n}\n```\n```yaml\nvariables:\n  specific-vpc-ips:\n    fn::invoke:\n      Function: linode:getVpcIps\n      Arguments:\n        vpcId: 123\noutputs:\n  vpcIps: ${[\"specific-vpc-ips\"].vpcIps}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `active`\n\n* `config_id`\n\n* `linode_id`\n\n* `region`\n\n* `vpc_id`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcIps.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcIpsFilter:getVpcIpsFilter"
+                        }
+                    },
+                    "vpcId": {
+                        "type": "integer",
+                        "description": "The id of the parent VPC for the list of VPC IPs.\n\n* `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.\n"
+                    },
+                    "vpcIps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcIpsVpcIp:getVpcIpsVpcIp"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcIps.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcIpsFilter:getVpcIpsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "vpcId": {
+                        "description": "The unique globally general API entity identifier for the VPC.\n",
+                        "type": "integer"
+                    },
+                    "vpcIps": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getVpcIpsVpcIp:getVpcIpsVpcIp"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
                 ],
                 "type": "object"
             }

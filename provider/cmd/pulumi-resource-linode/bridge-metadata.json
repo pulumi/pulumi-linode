@@ -355,6 +355,9 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "taint": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1364,6 +1367,9 @@
                                 },
                                 "tags": {
                                     "maxItemsOne": false
+                                },
+                                "taints": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -1854,6 +1860,25 @@
                 "current": "linode:index/getVpc:getVpc",
                 "majorVersion": 4
             },
+            "linode_vpc_ips": {
+                "current": "linode:index/getVpcIps:getVpcIps",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpc_ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_vpc_subnet": {
                 "current": "linode:index/getVpcSubnet:getVpcSubnet",
                 "majorVersion": 4,
@@ -2041,6 +2066,7 @@
             "linode:index/getVolume:getVolume": 1,
             "linode:index/getVolumes:getVolumes": 1,
             "linode:index/getVpc:getVpc": 1,
+            "linode:index/getVpcIps:getVpcIps": 1,
             "linode:index/getVpcSubnet:getVpcSubnet": 1,
             "linode:index/getVpcSubnets:getVpcSubnets": 1,
             "linode:index/getVpcs:getVpcs": 1

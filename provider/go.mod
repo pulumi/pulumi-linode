@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-linode/provider/v4
 go 1.21.12
 
 require (
-	github.com/linode/terraform-provider-linode/v2 v2.26.0
+	github.com/linode/terraform-provider-linode/v2 v2.27.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.42.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
 	github.com/pulumi/pulumi/sdk/v3 v3.129.0
@@ -43,26 +43,26 @@ require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aws/aws-sdk-go v1.50.36 // indirect
-	github.com/aws/aws-sdk-go-v2 v1.30.3 // indirect
-	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.3 // indirect
+	github.com/aws/aws-sdk-go-v2 v1.30.4 // indirect
+	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.4 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.27.23 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.23 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.9 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.17.4 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.15 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.15 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.16 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.16 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.8.0 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/v4a v1.3.15 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.11.3 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.3.17 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.11.17 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.17.15 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/v4a v1.3.16 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.11.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.3.18 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.11.18 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.17.16 // indirect
 	github.com/aws/aws-sdk-go-v2/service/kms v1.30.1 // indirect
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.58.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.60.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sso v1.22.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.26.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.30.1 // indirect
-	github.com/aws/smithy-go v1.20.3 // indirect
+	github.com/aws/smithy-go v1.20.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
 	github.com/bgentry/speakeasy v0.1.0 // indirect
