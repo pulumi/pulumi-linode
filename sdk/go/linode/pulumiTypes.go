@@ -6496,6 +6496,121 @@ func (o LkeNodePoolNodeArrayOutput) Index(i pulumi.IntInput) LkeNodePoolNodeOutp
 	}).(LkeNodePoolNodeOutput)
 }
 
+type LkeNodePoolTaint struct {
+	// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	Effect string `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key string `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value string `pulumi:"value"`
+}
+
+// LkeNodePoolTaintInput is an input type that accepts LkeNodePoolTaintArgs and LkeNodePoolTaintOutput values.
+// You can construct a concrete instance of `LkeNodePoolTaintInput` via:
+//
+//	LkeNodePoolTaintArgs{...}
+type LkeNodePoolTaintInput interface {
+	pulumi.Input
+
+	ToLkeNodePoolTaintOutput() LkeNodePoolTaintOutput
+	ToLkeNodePoolTaintOutputWithContext(context.Context) LkeNodePoolTaintOutput
+}
+
+type LkeNodePoolTaintArgs struct {
+	// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LkeNodePoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeNodePoolTaint)(nil)).Elem()
+}
+
+func (i LkeNodePoolTaintArgs) ToLkeNodePoolTaintOutput() LkeNodePoolTaintOutput {
+	return i.ToLkeNodePoolTaintOutputWithContext(context.Background())
+}
+
+func (i LkeNodePoolTaintArgs) ToLkeNodePoolTaintOutputWithContext(ctx context.Context) LkeNodePoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolTaintOutput)
+}
+
+// LkeNodePoolTaintArrayInput is an input type that accepts LkeNodePoolTaintArray and LkeNodePoolTaintArrayOutput values.
+// You can construct a concrete instance of `LkeNodePoolTaintArrayInput` via:
+//
+//	LkeNodePoolTaintArray{ LkeNodePoolTaintArgs{...} }
+type LkeNodePoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToLkeNodePoolTaintArrayOutput() LkeNodePoolTaintArrayOutput
+	ToLkeNodePoolTaintArrayOutputWithContext(context.Context) LkeNodePoolTaintArrayOutput
+}
+
+type LkeNodePoolTaintArray []LkeNodePoolTaintInput
+
+func (LkeNodePoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeNodePoolTaint)(nil)).Elem()
+}
+
+func (i LkeNodePoolTaintArray) ToLkeNodePoolTaintArrayOutput() LkeNodePoolTaintArrayOutput {
+	return i.ToLkeNodePoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i LkeNodePoolTaintArray) ToLkeNodePoolTaintArrayOutputWithContext(ctx context.Context) LkeNodePoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeNodePoolTaintArrayOutput)
+}
+
+type LkeNodePoolTaintOutput struct{ *pulumi.OutputState }
+
+func (LkeNodePoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeNodePoolTaint)(nil)).Elem()
+}
+
+func (o LkeNodePoolTaintOutput) ToLkeNodePoolTaintOutput() LkeNodePoolTaintOutput {
+	return o
+}
+
+func (o LkeNodePoolTaintOutput) ToLkeNodePoolTaintOutputWithContext(ctx context.Context) LkeNodePoolTaintOutput {
+	return o
+}
+
+// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+func (o LkeNodePoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeNodePoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint key.
+func (o LkeNodePoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeNodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint value.
+func (o LkeNodePoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeNodePoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LkeNodePoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (LkeNodePoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeNodePoolTaint)(nil)).Elem()
+}
+
+func (o LkeNodePoolTaintArrayOutput) ToLkeNodePoolTaintArrayOutput() LkeNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o LkeNodePoolTaintArrayOutput) ToLkeNodePoolTaintArrayOutputWithContext(ctx context.Context) LkeNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o LkeNodePoolTaintArrayOutput) Index(i pulumi.IntInput) LkeNodePoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeNodePoolTaint {
+		return vs[0].([]LkeNodePoolTaint)[vs[1].(int)]
+	}).(LkeNodePoolTaintOutput)
+}
+
 type NodeBalancerConfigNodeStatus struct {
 	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 	Down int `pulumi:"down"`
@@ -22046,11 +22161,15 @@ type GetLkeClusterPool struct {
 	Disks []GetLkeClusterPoolDisk `pulumi:"disks"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
+	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the Node Pool.
 	Nodes []GetLkeClusterPoolNode `pulumi:"nodes"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
-	// This custom disk partition’s filesystem type.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+	Taints []GetLkeClusterPoolTaint `pulumi:"taints"`
+	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
 
@@ -22074,11 +22193,15 @@ type GetLkeClusterPoolArgs struct {
 	Disks GetLkeClusterPoolDiskArrayInput `pulumi:"disks"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
+	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the Node Pool.
 	Nodes GetLkeClusterPoolNodeArrayInput `pulumi:"nodes"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// This custom disk partition’s filesystem type.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+	Taints GetLkeClusterPoolTaintArrayInput `pulumi:"taints"`
+	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -22153,6 +22276,11 @@ func (o GetLkeClusterPoolOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+func (o GetLkeClusterPoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The nodes in the Node Pool.
 func (o GetLkeClusterPoolOutput) Nodes() GetLkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolNode { return v.Nodes }).(GetLkeClusterPoolNodeArrayOutput)
@@ -22163,7 +22291,12 @@ func (o GetLkeClusterPoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// This custom disk partition’s filesystem type.
+// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+func (o GetLkeClusterPoolOutput) Taints() GetLkeClusterPoolTaintArrayOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolTaint { return v.Taints }).(GetLkeClusterPoolTaintArrayOutput)
+}
+
+// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o GetLkeClusterPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -22306,7 +22439,7 @@ func (o GetLkeClusterPoolAutoscalerArrayOutput) Index(i pulumi.IntInput) GetLkeC
 type GetLkeClusterPoolDisk struct {
 	// The size of this custom disk partition in MB.
 	Size int `pulumi:"size"`
-	// This custom disk partition’s filesystem type.
+	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
 
@@ -22324,7 +22457,7 @@ type GetLkeClusterPoolDiskInput interface {
 type GetLkeClusterPoolDiskArgs struct {
 	// The size of this custom disk partition in MB.
 	Size pulumi.IntInput `pulumi:"size"`
-	// This custom disk partition’s filesystem type.
+	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -22384,7 +22517,7 @@ func (o GetLkeClusterPoolDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPoolDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// This custom disk partition’s filesystem type.
+// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o GetLkeClusterPoolDiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPoolDisk) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -22522,6 +22655,121 @@ func (o GetLkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) GetLkeCluster
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolNode {
 		return vs[0].([]GetLkeClusterPoolNode)[vs[1].(int)]
 	}).(GetLkeClusterPoolNodeOutput)
+}
+
+type GetLkeClusterPoolTaint struct {
+	// The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	Effect string `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key string `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value string `pulumi:"value"`
+}
+
+// GetLkeClusterPoolTaintInput is an input type that accepts GetLkeClusterPoolTaintArgs and GetLkeClusterPoolTaintOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolTaintInput` via:
+//
+//	GetLkeClusterPoolTaintArgs{...}
+type GetLkeClusterPoolTaintInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolTaintOutput() GetLkeClusterPoolTaintOutput
+	ToGetLkeClusterPoolTaintOutputWithContext(context.Context) GetLkeClusterPoolTaintOutput
+}
+
+type GetLkeClusterPoolTaintArgs struct {
+	// The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetLkeClusterPoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolTaintArgs) ToGetLkeClusterPoolTaintOutput() GetLkeClusterPoolTaintOutput {
+	return i.ToGetLkeClusterPoolTaintOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolTaintArgs) ToGetLkeClusterPoolTaintOutputWithContext(ctx context.Context) GetLkeClusterPoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolTaintOutput)
+}
+
+// GetLkeClusterPoolTaintArrayInput is an input type that accepts GetLkeClusterPoolTaintArray and GetLkeClusterPoolTaintArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterPoolTaintArrayInput` via:
+//
+//	GetLkeClusterPoolTaintArray{ GetLkeClusterPoolTaintArgs{...} }
+type GetLkeClusterPoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterPoolTaintArrayOutput() GetLkeClusterPoolTaintArrayOutput
+	ToGetLkeClusterPoolTaintArrayOutputWithContext(context.Context) GetLkeClusterPoolTaintArrayOutput
+}
+
+type GetLkeClusterPoolTaintArray []GetLkeClusterPoolTaintInput
+
+func (GetLkeClusterPoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (i GetLkeClusterPoolTaintArray) ToGetLkeClusterPoolTaintArrayOutput() GetLkeClusterPoolTaintArrayOutput {
+	return i.ToGetLkeClusterPoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterPoolTaintArray) ToGetLkeClusterPoolTaintArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterPoolTaintArrayOutput)
+}
+
+type GetLkeClusterPoolTaintOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolTaintOutput) ToGetLkeClusterPoolTaintOutput() GetLkeClusterPoolTaintOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolTaintOutput) ToGetLkeClusterPoolTaintOutputWithContext(ctx context.Context) GetLkeClusterPoolTaintOutput {
+	return o
+}
+
+// The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+func (o GetLkeClusterPoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint key.
+func (o GetLkeClusterPoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint value.
+func (o GetLkeClusterPoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetLkeClusterPoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterPoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (o GetLkeClusterPoolTaintArrayOutput) ToGetLkeClusterPoolTaintArrayOutput() GetLkeClusterPoolTaintArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolTaintArrayOutput) ToGetLkeClusterPoolTaintArrayOutputWithContext(ctx context.Context) GetLkeClusterPoolTaintArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterPoolTaintArrayOutput) Index(i pulumi.IntInput) GetLkeClusterPoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterPoolTaint {
+		return vs[0].([]GetLkeClusterPoolTaint)[vs[1].(int)]
+	}).(GetLkeClusterPoolTaintOutput)
 }
 
 type GetLkeClustersFilter struct {
@@ -30108,6 +30356,332 @@ func (o GetVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetVolumesVolumeOu
 	}).(GetVolumesVolumeOutput)
 }
 
+type GetVpcIpsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetVpcIpsFilterInput is an input type that accepts GetVpcIpsFilterArgs and GetVpcIpsFilterOutput values.
+// You can construct a concrete instance of `GetVpcIpsFilterInput` via:
+//
+//	GetVpcIpsFilterArgs{...}
+type GetVpcIpsFilterInput interface {
+	pulumi.Input
+
+	ToGetVpcIpsFilterOutput() GetVpcIpsFilterOutput
+	ToGetVpcIpsFilterOutputWithContext(context.Context) GetVpcIpsFilterOutput
+}
+
+type GetVpcIpsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVpcIpsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcIpsFilter)(nil)).Elem()
+}
+
+func (i GetVpcIpsFilterArgs) ToGetVpcIpsFilterOutput() GetVpcIpsFilterOutput {
+	return i.ToGetVpcIpsFilterOutputWithContext(context.Background())
+}
+
+func (i GetVpcIpsFilterArgs) ToGetVpcIpsFilterOutputWithContext(ctx context.Context) GetVpcIpsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcIpsFilterOutput)
+}
+
+// GetVpcIpsFilterArrayInput is an input type that accepts GetVpcIpsFilterArray and GetVpcIpsFilterArrayOutput values.
+// You can construct a concrete instance of `GetVpcIpsFilterArrayInput` via:
+//
+//	GetVpcIpsFilterArray{ GetVpcIpsFilterArgs{...} }
+type GetVpcIpsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcIpsFilterArrayOutput() GetVpcIpsFilterArrayOutput
+	ToGetVpcIpsFilterArrayOutputWithContext(context.Context) GetVpcIpsFilterArrayOutput
+}
+
+type GetVpcIpsFilterArray []GetVpcIpsFilterInput
+
+func (GetVpcIpsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcIpsFilter)(nil)).Elem()
+}
+
+func (i GetVpcIpsFilterArray) ToGetVpcIpsFilterArrayOutput() GetVpcIpsFilterArrayOutput {
+	return i.ToGetVpcIpsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcIpsFilterArray) ToGetVpcIpsFilterArrayOutputWithContext(ctx context.Context) GetVpcIpsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcIpsFilterArrayOutput)
+}
+
+type GetVpcIpsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVpcIpsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcIpsFilter)(nil)).Elem()
+}
+
+func (o GetVpcIpsFilterOutput) ToGetVpcIpsFilterOutput() GetVpcIpsFilterOutput {
+	return o
+}
+
+func (o GetVpcIpsFilterOutput) ToGetVpcIpsFilterOutputWithContext(ctx context.Context) GetVpcIpsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetVpcIpsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcIpsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetVpcIpsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetVpcIpsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcIpsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVpcIpsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcIpsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcIpsFilter)(nil)).Elem()
+}
+
+func (o GetVpcIpsFilterArrayOutput) ToGetVpcIpsFilterArrayOutput() GetVpcIpsFilterArrayOutput {
+	return o
+}
+
+func (o GetVpcIpsFilterArrayOutput) ToGetVpcIpsFilterArrayOutputWithContext(ctx context.Context) GetVpcIpsFilterArrayOutput {
+	return o
+}
+
+func (o GetVpcIpsFilterArrayOutput) Index(i pulumi.IntInput) GetVpcIpsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcIpsFilter {
+		return vs[0].([]GetVpcIpsFilter)[vs[1].(int)]
+	}).(GetVpcIpsFilterOutput)
+}
+
+type GetVpcIpsVpcIp struct {
+	// True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
+	Active bool `pulumi:"active"`
+	// An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+	Address string `pulumi:"address"`
+	// A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+	AddressRange string `pulumi:"addressRange"`
+	// The globally general entity identifier for the Linode configuration profile where the VPC is included.
+	ConfigId int `pulumi:"configId"`
+	// The default gateway for the VPC subnet that the IP or IP range belongs to.
+	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
+	// The identifier for the Linode the VPC interface currently belongs to.
+	LinodeId int `pulumi:"linodeId"`
+	// The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+	Nat11 string `pulumi:"nat11"`
+	// The number of bits set in the subnet mask.
+	Prefix int `pulumi:"prefix"`
+	// The region of the VPC.
+	Region string `pulumi:"region"`
+	// The id of the VPC Subnet for this interface.
+	SubnetId int `pulumi:"subnetId"`
+	// The mask that separates host bits from network bits for the address or address_range.
+	SubnetMask string `pulumi:"subnetMask"`
+	// The id of the parent VPC for the list of VPC IPs.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// GetVpcIpsVpcIpInput is an input type that accepts GetVpcIpsVpcIpArgs and GetVpcIpsVpcIpOutput values.
+// You can construct a concrete instance of `GetVpcIpsVpcIpInput` via:
+//
+//	GetVpcIpsVpcIpArgs{...}
+type GetVpcIpsVpcIpInput interface {
+	pulumi.Input
+
+	ToGetVpcIpsVpcIpOutput() GetVpcIpsVpcIpOutput
+	ToGetVpcIpsVpcIpOutputWithContext(context.Context) GetVpcIpsVpcIpOutput
+}
+
+type GetVpcIpsVpcIpArgs struct {
+	// True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+	AddressRange pulumi.StringInput `pulumi:"addressRange"`
+	// The globally general entity identifier for the Linode configuration profile where the VPC is included.
+	ConfigId pulumi.IntInput `pulumi:"configId"`
+	// The default gateway for the VPC subnet that the IP or IP range belongs to.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
+	// The identifier for the Linode the VPC interface currently belongs to.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+	// The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+	Nat11 pulumi.StringInput `pulumi:"nat11"`
+	// The number of bits set in the subnet mask.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// The region of the VPC.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The id of the VPC Subnet for this interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The mask that separates host bits from network bits for the address or address_range.
+	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
+	// The id of the parent VPC for the list of VPC IPs.
+	//
+	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (GetVpcIpsVpcIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcIpsVpcIp)(nil)).Elem()
+}
+
+func (i GetVpcIpsVpcIpArgs) ToGetVpcIpsVpcIpOutput() GetVpcIpsVpcIpOutput {
+	return i.ToGetVpcIpsVpcIpOutputWithContext(context.Background())
+}
+
+func (i GetVpcIpsVpcIpArgs) ToGetVpcIpsVpcIpOutputWithContext(ctx context.Context) GetVpcIpsVpcIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcIpsVpcIpOutput)
+}
+
+// GetVpcIpsVpcIpArrayInput is an input type that accepts GetVpcIpsVpcIpArray and GetVpcIpsVpcIpArrayOutput values.
+// You can construct a concrete instance of `GetVpcIpsVpcIpArrayInput` via:
+//
+//	GetVpcIpsVpcIpArray{ GetVpcIpsVpcIpArgs{...} }
+type GetVpcIpsVpcIpArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcIpsVpcIpArrayOutput() GetVpcIpsVpcIpArrayOutput
+	ToGetVpcIpsVpcIpArrayOutputWithContext(context.Context) GetVpcIpsVpcIpArrayOutput
+}
+
+type GetVpcIpsVpcIpArray []GetVpcIpsVpcIpInput
+
+func (GetVpcIpsVpcIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcIpsVpcIp)(nil)).Elem()
+}
+
+func (i GetVpcIpsVpcIpArray) ToGetVpcIpsVpcIpArrayOutput() GetVpcIpsVpcIpArrayOutput {
+	return i.ToGetVpcIpsVpcIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcIpsVpcIpArray) ToGetVpcIpsVpcIpArrayOutputWithContext(ctx context.Context) GetVpcIpsVpcIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcIpsVpcIpArrayOutput)
+}
+
+type GetVpcIpsVpcIpOutput struct{ *pulumi.OutputState }
+
+func (GetVpcIpsVpcIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcIpsVpcIp)(nil)).Elem()
+}
+
+func (o GetVpcIpsVpcIpOutput) ToGetVpcIpsVpcIpOutput() GetVpcIpsVpcIpOutput {
+	return o
+}
+
+func (o GetVpcIpsVpcIpOutput) ToGetVpcIpsVpcIpOutputWithContext(ctx context.Context) GetVpcIpsVpcIpOutput {
+	return o
+}
+
+// True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
+func (o GetVpcIpsVpcIpOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+func (o GetVpcIpsVpcIpOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+func (o GetVpcIpsVpcIpOutput) AddressRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) string { return v.AddressRange }).(pulumi.StringOutput)
+}
+
+// The globally general entity identifier for the Linode configuration profile where the VPC is included.
+func (o GetVpcIpsVpcIpOutput) ConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) int { return v.ConfigId }).(pulumi.IntOutput)
+}
+
+// The default gateway for the VPC subnet that the IP or IP range belongs to.
+func (o GetVpcIpsVpcIpOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetVpcIpsVpcIpOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) int { return v.InterfaceId }).(pulumi.IntOutput)
+}
+
+// The identifier for the Linode the VPC interface currently belongs to.
+func (o GetVpcIpsVpcIpOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+// The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+func (o GetVpcIpsVpcIpOutput) Nat11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) string { return v.Nat11 }).(pulumi.StringOutput)
+}
+
+// The number of bits set in the subnet mask.
+func (o GetVpcIpsVpcIpOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// The region of the VPC.
+func (o GetVpcIpsVpcIpOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The id of the VPC Subnet for this interface.
+func (o GetVpcIpsVpcIpOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The mask that separates host bits from network bits for the address or address_range.
+func (o GetVpcIpsVpcIpOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+// The id of the parent VPC for the list of VPC IPs.
+//
+// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+func (o GetVpcIpsVpcIpOutput) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcIpsVpcIp) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+type GetVpcIpsVpcIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcIpsVpcIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcIpsVpcIp)(nil)).Elem()
+}
+
+func (o GetVpcIpsVpcIpArrayOutput) ToGetVpcIpsVpcIpArrayOutput() GetVpcIpsVpcIpArrayOutput {
+	return o
+}
+
+func (o GetVpcIpsVpcIpArrayOutput) ToGetVpcIpsVpcIpArrayOutputWithContext(ctx context.Context) GetVpcIpsVpcIpArrayOutput {
+	return o
+}
+
+func (o GetVpcIpsVpcIpArrayOutput) Index(i pulumi.IntInput) GetVpcIpsVpcIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcIpsVpcIp {
+		return vs[0].([]GetVpcIpsVpcIp)[vs[1].(int)]
+	}).(GetVpcIpsVpcIpOutput)
+}
+
 type GetVpcSubnetLinode struct {
 	// The unique id of this VPC subnet.
 	Id         int                           `pulumi:"id"`
@@ -31113,6 +31687,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolAutoscalerPtrInput)(nil)).Elem(), LkeNodePoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolNodeInput)(nil)).Elem(), LkeNodePoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolNodeArrayInput)(nil)).Elem(), LkeNodePoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolTaintInput)(nil)).Elem(), LkeNodePoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolTaintArrayInput)(nil)).Elem(), LkeNodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInput)(nil)).Elem(), NodeBalancerFirewallArgs{})
@@ -31349,6 +31925,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolDiskArrayInput)(nil)).Elem(), GetLkeClusterPoolDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolNodeInput)(nil)).Elem(), GetLkeClusterPoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolNodeArrayInput)(nil)).Elem(), GetLkeClusterPoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolTaintInput)(nil)).Elem(), GetLkeClusterPoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolTaintArrayInput)(nil)).Elem(), GetLkeClusterPoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersFilterInput)(nil)).Elem(), GetLkeClustersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersFilterArrayInput)(nil)).Elem(), GetLkeClustersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterInput)(nil)).Elem(), GetLkeClustersLkeClusterArgs{})
@@ -31464,6 +32042,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesFilterArrayInput)(nil)).Elem(), GetVolumesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeInput)(nil)).Elem(), GetVolumesVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeArrayInput)(nil)).Elem(), GetVolumesVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpsFilterInput)(nil)).Elem(), GetVpcIpsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpsFilterArrayInput)(nil)).Elem(), GetVpcIpsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpsVpcIpInput)(nil)).Elem(), GetVpcIpsVpcIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpsVpcIpArrayInput)(nil)).Elem(), GetVpcIpsVpcIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeInput)(nil)).Elem(), GetVpcSubnetLinodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeArrayInput)(nil)).Elem(), GetVpcSubnetLinodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeInterfaceInput)(nil)).Elem(), GetVpcSubnetLinodeInterfaceArgs{})
@@ -31558,6 +32140,8 @@ func init() {
 	pulumi.RegisterOutputType(LkeNodePoolAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolNodeOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(LkeNodePoolTaintOutput{})
+	pulumi.RegisterOutputType(LkeNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerFirewallOutput{})
@@ -31794,6 +32378,8 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeClusterPoolDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolNodeOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolTaintOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterPoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersFilterOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterOutput{})
@@ -31909,6 +32495,10 @@ func init() {
 	pulumi.RegisterOutputType(GetVolumesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumesVolumeOutput{})
 	pulumi.RegisterOutputType(GetVolumesVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcIpsFilterOutput{})
+	pulumi.RegisterOutputType(GetVpcIpsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcIpsVpcIpOutput{})
+	pulumi.RegisterOutputType(GetVpcIpsVpcIpArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetLinodeOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetLinodeArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetLinodeInterfaceOutput{})

@@ -9,9 +9,11 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetLkeClusterPoolAutoscalerArgs;
 import com.pulumi.linode.inputs.GetLkeClusterPoolDiskArgs;
 import com.pulumi.linode.inputs.GetLkeClusterPoolNodeArgs;
+import com.pulumi.linode.inputs.GetLkeClusterPoolTaintArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -82,6 +84,21 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * 
+     */
+    @Import(name="labels", required=true)
+    private Output<Map<String,String>> labels;
+
+    /**
+     * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * 
+     */
+    public Output<Map<String,String>> labels() {
+        return this.labels;
+    }
+
+    /**
      * The nodes in the Node Pool.
      * 
      */
@@ -112,14 +129,29 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * This custom disk partition’s filesystem type.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * 
+     */
+    @Import(name="taints", required=true)
+    private Output<List<GetLkeClusterPoolTaintArgs>> taints;
+
+    /**
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * 
+     */
+    public Output<List<GetLkeClusterPoolTaintArgs>> taints() {
+        return this.taints;
+    }
+
+    /**
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return This custom disk partition’s filesystem type.
+     * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     public Output<String> type() {
@@ -133,8 +165,10 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         this.count = $.count;
         this.disks = $.disks;
         this.id = $.id;
+        this.labels = $.labels;
         this.nodes = $.nodes;
         this.tags = $.tags;
+        this.taints = $.taints;
         this.type = $.type;
     }
 
@@ -261,6 +295,27 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param labels Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
          * @param nodes The nodes in the Node Pool.
          * 
          * @return builder
@@ -323,7 +378,38 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type This custom disk partition’s filesystem type.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(Output<List<GetLkeClusterPoolTaintArgs>> taints) {
+            $.taints = taints;
+            return this;
+        }
+
+        /**
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(List<GetLkeClusterPoolTaintArgs> taints) {
+            return taints(Output.of(taints));
+        }
+
+        /**
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(GetLkeClusterPoolTaintArgs... taints) {
+            return taints(List.of(taints));
+        }
+
+        /**
+         * @param type The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
          * 
          * @return builder
          * 
@@ -334,7 +420,7 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type This custom disk partition’s filesystem type.
+         * @param type The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
          * 
          * @return builder
          * 
@@ -350,8 +436,14 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "id");
             }
+            if ($.labels == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "labels");
+            }
             if ($.tags == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "tags");
+            }
+            if ($.taints == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "taints");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "type");

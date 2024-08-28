@@ -113,6 +113,8 @@ import com.pulumi.linode.inputs.GetVolumePlainArgs;
 import com.pulumi.linode.inputs.GetVolumesArgs;
 import com.pulumi.linode.inputs.GetVolumesPlainArgs;
 import com.pulumi.linode.inputs.GetVpcArgs;
+import com.pulumi.linode.inputs.GetVpcIpsArgs;
+import com.pulumi.linode.inputs.GetVpcIpsPlainArgs;
 import com.pulumi.linode.inputs.GetVpcPlainArgs;
 import com.pulumi.linode.inputs.GetVpcSubnetArgs;
 import com.pulumi.linode.inputs.GetVpcSubnetPlainArgs;
@@ -176,6 +178,7 @@ import com.pulumi.linode.outputs.GetUsersResult;
 import com.pulumi.linode.outputs.GetVlansResult;
 import com.pulumi.linode.outputs.GetVolumeResult;
 import com.pulumi.linode.outputs.GetVolumesResult;
+import com.pulumi.linode.outputs.GetVpcIpsResult;
 import com.pulumi.linode.outputs.GetVpcResult;
 import com.pulumi.linode.outputs.GetVpcSubnetResult;
 import com.pulumi.linode.outputs.GetVpcSubnetsResult;
@@ -17881,6 +17884,606 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Linode VPC IPs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+     * 
+     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC IPs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .filters(GetVpcIpsFilterArgs.builder()
+     *                 .name("address")
+     *                 .values("10.0.0.0")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", filtered_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .vpcId(123)
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `active`
+     * 
+     * * `config_id`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static Output<GetVpcIpsResult> getVpcIps() {
+        return getVpcIps(GetVpcIpsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPC IPs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+     * 
+     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC IPs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .filters(GetVpcIpsFilterArgs.builder()
+     *                 .name("address")
+     *                 .values("10.0.0.0")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", filtered_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .vpcId(123)
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `active`
+     * 
+     * * `config_id`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static CompletableFuture<GetVpcIpsResult> getVpcIpsPlain() {
+        return getVpcIpsPlain(GetVpcIpsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPC IPs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+     * 
+     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC IPs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .filters(GetVpcIpsFilterArgs.builder()
+     *                 .name("address")
+     *                 .values("10.0.0.0")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", filtered_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .vpcId(123)
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `active`
+     * 
+     * * `config_id`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static Output<GetVpcIpsResult> getVpcIps(GetVpcIpsArgs args) {
+        return getVpcIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPC IPs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+     * 
+     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC IPs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .filters(GetVpcIpsFilterArgs.builder()
+     *                 .name("address")
+     *                 .values("10.0.0.0")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", filtered_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .vpcId(123)
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `active`
+     * 
+     * * `config_id`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static CompletableFuture<GetVpcIpsResult> getVpcIpsPlain(GetVpcIpsPlainArgs args) {
+        return getVpcIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Linode VPC IPs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+     * 
+     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC IPs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .filters(GetVpcIpsFilterArgs.builder()
+     *                 .name("address")
+     *                 .values("10.0.0.0")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", filtered_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .vpcId(123)
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `active`
+     * 
+     * * `config_id`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static Output<GetVpcIpsResult> getVpcIps(GetVpcIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpcIps:getVpcIps", TypeShape.of(GetVpcIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Linode VPC IPs that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+     * 
+     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list VPC IPs.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .filters(GetVpcIpsFilterArgs.builder()
+     *                 .name("address")
+     *                 .values("10.0.0.0")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", filtered_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-vpc-ips = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .vpcId(123)
+     *             .build());
+     * 
+     *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `active`
+     * 
+     * * `config_id`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static CompletableFuture<GetVpcIpsResult> getVpcIpsPlain(GetVpcIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVpcIps:getVpcIps", TypeShape.of(GetVpcIpsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode VPC subnet.

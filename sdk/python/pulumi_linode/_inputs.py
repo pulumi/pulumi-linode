@@ -49,6 +49,7 @@ __all__ = [
     'LkeClusterPoolNodeArgs',
     'LkeNodePoolAutoscalerArgs',
     'LkeNodePoolNodeArgs',
+    'LkeNodePoolTaintArgs',
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerFirewallArgs',
     'NodeBalancerFirewallInboundArgs',
@@ -119,6 +120,7 @@ __all__ = [
     'GetLkeClusterPoolAutoscalerArgs',
     'GetLkeClusterPoolDiskArgs',
     'GetLkeClusterPoolNodeArgs',
+    'GetLkeClusterPoolTaintArgs',
     'GetLkeClustersFilterArgs',
     'GetLkeClustersLkeClusterArgs',
     'GetLkeClustersLkeClusterControlPlaneArgs',
@@ -170,6 +172,8 @@ __all__ = [
     'GetVlansVlanArgs',
     'GetVolumesFilterArgs',
     'GetVolumesVolumeArgs',
+    'GetVpcIpsFilterArgs',
+    'GetVpcIpsVpcIpArgs',
     'GetVpcSubnetsFilterArgs',
     'GetVpcSubnetsVpcSubnetArgs',
     'GetVpcSubnetsVpcSubnetLinodeArgs',
@@ -3004,6 +3008,58 @@ class LkeNodePoolNodeArgs:
     @status.setter
     def status(self, value: pulumi.Input[str]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class LkeNodePoolTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        :param pulumi.Input[str] key: The Kubernetes taint key.
+        :param pulumi.Input[str] value: The Kubernetes taint value.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        """
+        The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The Kubernetes taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The Kubernetes taint value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -7821,7 +7877,9 @@ class GetLkeClusterPoolArgs:
     def __init__(__self__, *,
                  count: int,
                  id: int,
+                 labels: Mapping[str, str],
                  tags: Sequence[str],
+                 taints: Sequence['GetLkeClusterPoolTaintArgs'],
                  type: str,
                  autoscalers: Optional[Sequence['GetLkeClusterPoolAutoscalerArgs']] = None,
                  disks: Optional[Sequence['GetLkeClusterPoolDiskArgs']] = None,
@@ -7829,15 +7887,19 @@ class GetLkeClusterPoolArgs:
         """
         :param int count: The number of nodes in the Node Pool.
         :param int id: The LKE Cluster's ID.
+        :param Mapping[str, str] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-        :param str type: This custom disk partition’s filesystem type.
+        :param Sequence['GetLkeClusterPoolTaintArgs'] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        :param str type: The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "type", type)
         if autoscalers is not None:
             pulumi.set(__self__, "autoscalers", autoscalers)
@@ -7872,6 +7934,18 @@ class GetLkeClusterPoolArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Mapping[str, str]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
         An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -7884,9 +7958,21 @@ class GetLkeClusterPoolArgs:
 
     @property
     @pulumi.getter
+    def taints(self) -> Sequence['GetLkeClusterPoolTaintArgs']:
+        """
+        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Sequence['GetLkeClusterPoolTaintArgs']):
+        pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> str:
         """
-        This custom disk partition’s filesystem type.
+        The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -7990,7 +8076,7 @@ class GetLkeClusterPoolDiskArgs:
                  type: str):
         """
         :param int size: The size of this custom disk partition in MB.
-        :param str type: This custom disk partition’s filesystem type.
+        :param str type: The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
@@ -8011,7 +8097,7 @@ class GetLkeClusterPoolDiskArgs:
     @pulumi.getter
     def type(self) -> str:
         """
-        This custom disk partition’s filesystem type.
+        The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
@@ -8070,6 +8156,58 @@ class GetLkeClusterPoolNodeArgs:
     @status.setter
     def status(self, value: str):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class GetLkeClusterPoolTaintArgs:
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        """
+        :param str effect: The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        :param str key: The Kubernetes taint key.
+        :param str value: The Kubernetes taint value.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: str):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The Kubernetes taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The Kubernetes taint value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -12099,6 +12237,265 @@ class GetVolumesVolumeArgs:
     @updated.setter
     def updated(self, value: str):
         pulumi.set(self, "updated", value)
+
+
+@pulumi.input_type
+class GetVpcIpsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+@pulumi.input_type
+class GetVpcIpsVpcIpArgs:
+    def __init__(__self__, *,
+                 active: bool,
+                 address: str,
+                 address_range: str,
+                 config_id: int,
+                 gateway: str,
+                 interface_id: int,
+                 linode_id: int,
+                 nat11: str,
+                 prefix: int,
+                 region: str,
+                 subnet_id: int,
+                 subnet_mask: str,
+                 vpc_id: int):
+        """
+        :param bool active: True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+        :param str address: An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+        :param str address_range: A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+        :param int config_id: The globally general entity identifier for the Linode configuration profile where the VPC is included.
+        :param str gateway: The default gateway for the VPC subnet that the IP or IP range belongs to.
+        :param int interface_id: The globally general API entity identifier for the Linode interface.
+        :param int linode_id: The identifier for the Linode the VPC interface currently belongs to.
+        :param str nat11: The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+        :param int prefix: The number of bits set in the subnet mask.
+        :param str region: The region of the VPC.
+        :param int subnet_id: The id of the VPC Subnet for this interface.
+        :param str subnet_mask: The mask that separates host bits from network bits for the address or address_range.
+        :param int vpc_id: The id of the parent VPC for the list of VPC IPs.
+               
+               * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_range", address_range)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "interface_id", interface_id)
+        pulumi.set(__self__, "linode_id", linode_id)
+        pulumi.set(__self__, "nat11", nat11)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: bool):
+        pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: str):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="addressRange")
+    def address_range(self) -> str:
+        """
+        A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+        """
+        return pulumi.get(self, "address_range")
+
+    @address_range.setter
+    def address_range(self, value: str):
+        pulumi.set(self, "address_range", value)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> int:
+        """
+        The globally general entity identifier for the Linode configuration profile where the VPC is included.
+        """
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: int):
+        pulumi.set(self, "config_id", value)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for the VPC subnet that the IP or IP range belongs to.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: str):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter(name="interfaceId")
+    def interface_id(self) -> int:
+        """
+        The globally general API entity identifier for the Linode interface.
+        """
+        return pulumi.get(self, "interface_id")
+
+    @interface_id.setter
+    def interface_id(self, value: int):
+        pulumi.set(self, "interface_id", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The identifier for the Linode the VPC interface currently belongs to.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def nat11(self) -> str:
+        """
+        The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+        """
+        return pulumi.get(self, "nat11")
+
+    @nat11.setter
+    def nat11(self, value: str):
+        pulumi.set(self, "nat11", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The number of bits set in the subnet mask.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: int):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of the VPC.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> int:
+        """
+        The id of the VPC Subnet for this interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: int):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The mask that separates host bits from network bits for the address or address_range.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @subnet_mask.setter
+    def subnet_mask(self, value: str):
+        pulumi.set(self, "subnet_mask", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> int:
+        """
+        The id of the parent VPC for the list of VPC IPs.
+
+        * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: int):
+        pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type

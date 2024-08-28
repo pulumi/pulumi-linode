@@ -1936,6 +1936,10 @@ export interface GetLkeClusterPool {
      */
     id?: number;
     /**
+     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     */
+    labels?: {[key: string]: string};
+    /**
      * The nodes in the Node Pool.
      */
     nodes?: inputs.GetLkeClusterPoolNode[];
@@ -1944,7 +1948,11 @@ export interface GetLkeClusterPool {
      */
     tags?: string[];
     /**
-     * This custom disk partition’s filesystem type.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     */
+    taints?: inputs.GetLkeClusterPoolTaint[];
+    /**
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: string;
 }
@@ -1967,6 +1975,10 @@ export interface GetLkeClusterPoolArgs {
      */
     id?: pulumi.Input<number>;
     /**
+     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The nodes in the Node Pool.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolNodeArgs>[]>;
@@ -1975,7 +1987,11 @@ export interface GetLkeClusterPoolArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This custom disk partition’s filesystem type.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     */
+    taints?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolTaintArgs>[]>;
+    /**
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: pulumi.Input<string>;
 }
@@ -2016,7 +2032,7 @@ export interface GetLkeClusterPoolDisk {
      */
     size?: number;
     /**
-     * This custom disk partition’s filesystem type.
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: string;
 }
@@ -2027,7 +2043,7 @@ export interface GetLkeClusterPoolDiskArgs {
      */
     size?: pulumi.Input<number>;
     /**
-     * This custom disk partition’s filesystem type.
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: pulumi.Input<string>;
 }
@@ -2060,6 +2076,36 @@ export interface GetLkeClusterPoolNodeArgs {
      * The status of the node. (`ready`, `notReady`)
      */
     status?: pulumi.Input<string>;
+}
+
+export interface GetLkeClusterPoolTaint {
+    /**
+     * The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     */
+    effect: string;
+    /**
+     * The Kubernetes taint key.
+     */
+    key: string;
+    /**
+     * The Kubernetes taint value.
+     */
+    value: string;
+}
+
+export interface GetLkeClusterPoolTaintArgs {
+    /**
+     * The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * The Kubernetes taint key.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The Kubernetes taint value.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface GetLkeClustersFilter {
@@ -4312,6 +4358,150 @@ export interface GetVolumesVolumeArgs {
     updated?: pulumi.Input<string>;
 }
 
+export interface GetVpcIpsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetVpcIpsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVpcIpsVpcIp {
+    /**
+     * True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
+     */
+    active?: boolean;
+    /**
+     * An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+     */
+    address?: string;
+    /**
+     * A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+     */
+    addressRange?: string;
+    /**
+     * The globally general entity identifier for the Linode configuration profile where the VPC is included.
+     */
+    configId?: number;
+    /**
+     * The default gateway for the VPC subnet that the IP or IP range belongs to.
+     */
+    gateway?: string;
+    /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId?: number;
+    /**
+     * The identifier for the Linode the VPC interface currently belongs to.
+     */
+    linodeId?: number;
+    /**
+     * The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+     */
+    nat11?: string;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    prefix?: number;
+    /**
+     * The region of the VPC.
+     */
+    region?: string;
+    /**
+     * The id of the VPC Subnet for this interface.
+     */
+    subnetId?: number;
+    /**
+     * The mask that separates host bits from network bits for the address or address_range.
+     */
+    subnetMask?: string;
+    /**
+     * The id of the parent VPC for the list of VPC IPs.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     */
+    vpcId?: number;
+}
+
+export interface GetVpcIpsVpcIpArgs {
+    /**
+     * True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
+     * An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+     */
+    addressRange?: pulumi.Input<string>;
+    /**
+     * The globally general entity identifier for the Linode configuration profile where the VPC is included.
+     */
+    configId?: pulumi.Input<number>;
+    /**
+     * The default gateway for the VPC subnet that the IP or IP range belongs to.
+     */
+    gateway?: pulumi.Input<string>;
+    /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId?: pulumi.Input<number>;
+    /**
+     * The identifier for the Linode the VPC interface currently belongs to.
+     */
+    linodeId?: pulumi.Input<number>;
+    /**
+     * The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+     */
+    nat11?: pulumi.Input<string>;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    prefix?: pulumi.Input<number>;
+    /**
+     * The region of the VPC.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The id of the VPC Subnet for this interface.
+     */
+    subnetId?: pulumi.Input<number>;
+    /**
+     * The mask that separates host bits from network bits for the address or address_range.
+     */
+    subnetMask?: pulumi.Input<string>;
+    /**
+     * The id of the parent VPC for the list of VPC IPs.
+     *
+     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     */
+    vpcId?: pulumi.Input<number>;
+}
+
 export interface GetVpcSubnetsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -5150,6 +5340,21 @@ export interface LkeNodePoolNode {
      * The status of the node. (`ready`, `notReady`)
      */
     status: pulumi.Input<string>;
+}
+
+export interface LkeNodePoolTaint {
+    /**
+     * The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * The Kubernetes taint key.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The Kubernetes taint value.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface NodeBalancerConfigNodeStatus {

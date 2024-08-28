@@ -330,6 +330,11 @@ export const getVpc: typeof import("./getVpc").getVpc = null as any;
 export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
 utilities.lazyLoad(exports, ["getVpc","getVpcOutput"], () => require("./getVpc"));
 
+export { GetVpcIpsArgs, GetVpcIpsResult, GetVpcIpsOutputArgs } from "./getVpcIps";
+export const getVpcIps: typeof import("./getVpcIps").getVpcIps = null as any;
+export const getVpcIpsOutput: typeof import("./getVpcIps").getVpcIpsOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcIps","getVpcIpsOutput"], () => require("./getVpcIps"));
+
 export { GetVpcSubnetArgs, GetVpcSubnetResult, GetVpcSubnetOutputArgs } from "./getVpcSubnet";
 export const getVpcSubnet: typeof import("./getVpcSubnet").getVpcSubnet = null as any;
 export const getVpcSubnetOutput: typeof import("./getVpcSubnet").getVpcSubnetOutput = null as any;

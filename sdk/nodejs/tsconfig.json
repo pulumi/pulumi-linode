@@ -80,6 +80,7 @@
         "getVolume.ts",
         "getVolumes.ts",
         "getVpc.ts",
+        "getVpcIps.ts",
         "getVpcSubnet.ts",
         "getVpcSubnets.ts",
         "getVpcs.ts",

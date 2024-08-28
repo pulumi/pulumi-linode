@@ -12,9 +12,11 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.LkeNodePoolState;
 import com.pulumi.linode.outputs.LkeNodePoolAutoscaler;
 import com.pulumi.linode.outputs.LkeNodePoolNode;
+import com.pulumi.linode.outputs.LkeNodePoolTaint;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -51,6 +53,28 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
+     * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
+
+    /**
+     * @return A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     */
+    public Output<Map<String,String>> labels() {
+        return this.labels;
+    }
+    /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
      */
@@ -81,8 +105,6 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
     /**
      * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
@@ -90,11 +112,25 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
     /**
      * @return An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     public Output<List<String>> tags() {
         return this.tags;
+    }
+    /**
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+     * allowing them to repel certain pods.
+     * 
+     */
+    @Export(name="taints", refs={List.class,LkeNodePoolTaint.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<LkeNodePoolTaint>> taints;
+
+    /**
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+     * allowing them to repel certain pods.
+     * 
+     */
+    public Output<Optional<List<LkeNodePoolTaint>>> taints() {
+        return Codegen.optional(this.taints);
     }
     /**
      * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).

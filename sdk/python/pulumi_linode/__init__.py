@@ -70,6 +70,7 @@ from .get_vlans import *
 from .get_volume import *
 from .get_volumes import *
 from .get_vpc import *
+from .get_vpc_ips import *
 from .get_vpc_subnet import *
 from .get_vpc_subnets import *
 from .get_vpcs import *

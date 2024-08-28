@@ -7,9 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;
 import com.pulumi.linode.inputs.LkeNodePoolNodeArgs;
+import com.pulumi.linode.inputs.LkeNodePoolTaintArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -39,6 +41,29 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> clusterId() {
         return Optional.ofNullable(this.clusterId);
+    }
+
+    /**
+     * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -74,8 +99,6 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
@@ -83,11 +106,26 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+     * allowing them to repel certain pods.
+     * 
+     */
+    @Import(name="taints")
+    private @Nullable Output<List<LkeNodePoolTaintArgs>> taints;
+
+    /**
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+     * allowing them to repel certain pods.
+     * 
+     */
+    public Optional<Output<List<LkeNodePoolTaintArgs>>> taints() {
+        return Optional.ofNullable(this.taints);
     }
 
     /**
@@ -110,9 +148,11 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     private LkeNodePoolState(LkeNodePoolState $) {
         this.autoscaler = $.autoscaler;
         this.clusterId = $.clusterId;
+        this.labels = $.labels;
         this.nodeCount = $.nodeCount;
         this.nodes = $.nodes;
         this.tags = $.tags;
+        this.taints = $.taints;
         this.type = $.type;
     }
 
@@ -162,6 +202,35 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterId(Integer clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param labels A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
+         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
+         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**
@@ -219,8 +288,6 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-         * 
          * @return builder
          * 
          */
@@ -232,8 +299,6 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-         * 
          * @return builder
          * 
          */
@@ -244,13 +309,45 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-         * 
          * @return builder
          * 
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+         * allowing them to repel certain pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(@Nullable Output<List<LkeNodePoolTaintArgs>> taints) {
+            $.taints = taints;
+            return this;
+        }
+
+        /**
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+         * allowing them to repel certain pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(List<LkeNodePoolTaintArgs> taints) {
+            return taints(Output.of(taints));
+        }
+
+        /**
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+         * allowing them to repel certain pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taints(LkeNodePoolTaintArgs... taints) {
+            return taints(List.of(taints));
         }
 
         /**

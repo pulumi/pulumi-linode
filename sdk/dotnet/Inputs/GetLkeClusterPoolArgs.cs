@@ -48,6 +48,18 @@ namespace Pulumi.Linode.Inputs
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
 
+        [Input("labels", required: true)]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("nodes")]
         private InputList<Inputs.GetLkeClusterPoolNodeInputArgs>? _nodes;
 
@@ -72,8 +84,20 @@ namespace Pulumi.Linode.Inputs
             set => _tags = value;
         }
 
+        [Input("taints", required: true)]
+        private InputList<Inputs.GetLkeClusterPoolTaintInputArgs>? _taints;
+
         /// <summary>
-        /// This custom disk partition’s filesystem type.
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        /// </summary>
+        public InputList<Inputs.GetLkeClusterPoolTaintInputArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.GetLkeClusterPoolTaintInputArgs>());
+            set => _taints = value;
+        }
+
+        /// <summary>
+        /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

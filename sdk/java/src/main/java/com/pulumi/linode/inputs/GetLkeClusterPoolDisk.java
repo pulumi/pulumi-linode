@@ -30,14 +30,14 @@ public final class GetLkeClusterPoolDisk extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * This custom disk partition’s filesystem type.
+     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     @Import(name="type", required=true)
     private String type;
 
     /**
-     * @return This custom disk partition’s filesystem type.
+     * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
      */
     public String type() {
@@ -81,7 +81,7 @@ public final class GetLkeClusterPoolDisk extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param type This custom disk partition’s filesystem type.
+         * @param type The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
          * 
          * @return builder
          * 
