@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public int Size { get; set; }
 
         /// <summary>
-        /// This custom disk partition’s filesystem type.
+        /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;

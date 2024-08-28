@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// This custom disk partition’s filesystem type.
+        /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         public readonly string Type;
 

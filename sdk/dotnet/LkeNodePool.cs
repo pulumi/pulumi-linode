@@ -31,6 +31,16 @@ namespace Pulumi.Linode
         public Output<int> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// 
+        /// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// </summary>
         [Output("nodeCount")]
@@ -44,11 +54,16 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
-        /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+        /// allowing them to repel certain pods.
+        /// </summary>
+        [Output("taints")]
+        public Output<ImmutableArray<Outputs.LkeNodePoolTaint>> Taints { get; private set; } = null!;
 
         /// <summary>
         /// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -111,6 +126,22 @@ namespace Pulumi.Linode
         [Input("clusterId", required: true)]
         public Input<int> ClusterId { get; set; } = null!;
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// 
+        /// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// </summary>
@@ -122,13 +153,24 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
-        /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("taints")]
+        private InputList<Inputs.LkeNodePoolTaintArgs>? _taints;
+
+        /// <summary>
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+        /// allowing them to repel certain pods.
+        /// </summary>
+        public InputList<Inputs.LkeNodePoolTaintArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.LkeNodePoolTaintArgs>());
+            set => _taints = value;
         }
 
         /// <summary>
@@ -154,6 +196,22 @@ namespace Pulumi.Linode
         [Input("clusterId")]
         public Input<int>? ClusterId { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// 
+        /// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         /// </summary>
@@ -177,13 +235,24 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
-        /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("taints")]
+        private InputList<Inputs.LkeNodePoolTaintGetArgs>? _taints;
+
+        /// <summary>
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
+        /// allowing them to repel certain pods.
+        /// </summary>
+        public InputList<Inputs.LkeNodePoolTaintGetArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.LkeNodePoolTaintGetArgs>());
+            set => _taints = value;
         }
 
         /// <summary>
