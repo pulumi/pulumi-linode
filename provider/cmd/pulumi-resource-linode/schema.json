@@ -8568,7 +8568,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n\n- - -\n"
+                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -8645,7 +8645,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n\n- - -\n",
+                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n",
                     "willReplaceOnChanges": true
                 },
                 "updates": {
@@ -8740,7 +8740,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n\n- - -\n",
+                        "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n",
                         "willReplaceOnChanges": true
                     },
                     "updated": {
@@ -8842,7 +8842,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n\n- - -\n"
+                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n"
                 },
                 "updated": {
                     "type": "string",
@@ -8925,7 +8925,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n\n- - -\n",
+                    "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n",
                     "willReplaceOnChanges": true
                 },
                 "updates": {
@@ -9029,7 +9029,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n\n- - -\n",
+                        "description": "The Linode Instance type used for the nodes of the  Managed Database instance.\n",
                         "willReplaceOnChanges": true
                     },
                     "updated": {
@@ -9084,7 +9084,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IP addresses representing the master DNS for this Domain.\n\n- - -\n"
+                    "description": "The IP addresses representing the master DNS for this Domain.\n"
                 },
                 "refreshSec": {
                     "type": "integer",
@@ -9158,7 +9158,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IP addresses representing the master DNS for this Domain.\n\n- - -\n"
+                    "description": "The IP addresses representing the master DNS for this Domain.\n"
                 },
                 "refreshSec": {
                     "type": "integer",
@@ -9233,7 +9233,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IP addresses representing the master DNS for this Domain.\n\n- - -\n"
+                        "description": "The IP addresses representing the master DNS for this Domain.\n"
                     },
                     "refreshSec": {
                         "type": "integer",
@@ -9308,7 +9308,7 @@
                 },
                 "target": {
                     "type": "string",
-                    "description": "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n\n- - -\n"
+                    "description": "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n"
                 },
                 "ttlSec": {
                     "type": "integer",
@@ -9362,7 +9362,7 @@
                 },
                 "target": {
                     "type": "string",
-                    "description": "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n\n- - -\n"
+                    "description": "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n"
                 },
                 "ttlSec": {
                     "type": "integer",
@@ -9417,7 +9417,7 @@
                     },
                     "target": {
                         "type": "string",
-                        "description": "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n\n- - -\n"
+                        "description": "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.\n"
                     },
                     "ttlSec": {
                         "type": "integer",
@@ -9784,7 +9784,7 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n"
+                    "description": "The ID of the Linode that this Image will be created from.\n"
                 },
                 "region": {
                     "type": "string",
@@ -9836,7 +9836,7 @@
                 },
                 "waitForReplications": {
                     "type": "boolean",
-                    "description": "Whether to wait for all image replications become `available`. Default to false.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
+                    "description": "Whether to wait for all image replications become `available`. Default to false.\n"
                 }
             },
             "required": [
@@ -9884,7 +9884,7 @@
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n"
+                    "description": "The ID of the Linode that this Image will be created from.\n"
                 },
                 "region": {
                     "type": "string",
@@ -9909,7 +9909,7 @@
                 },
                 "waitForReplications": {
                     "type": "boolean",
-                    "description": "Whether to wait for all image replications become `available`. Default to false.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
+                    "description": "Whether to wait for all image replications become `available`. Default to false.\n"
                 }
             },
             "requiredInputs": [
@@ -9971,7 +9971,7 @@
                     },
                     "linodeId": {
                         "type": "integer",
-                        "description": "The ID of the Linode that this Image will be created from.\n\n- - -\n\n\u003e **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.\n\nThe following arguments apply to uploading an image:\n"
+                        "description": "The ID of the Linode that this Image will be created from.\n"
                     },
                     "region": {
                         "type": "string",
@@ -10023,7 +10023,7 @@
                     },
                     "waitForReplications": {
                         "type": "boolean",
-                        "description": "Whether to wait for all image replications become `available`. Default to false.\n\n- - -\n\nThe following arguments apply to creating an image from an existing Linode Instance:\n"
+                        "description": "Whether to wait for all image replications become `available`. Default to false.\n"
                     }
                 },
                 "type": "object"
@@ -10212,7 +10212,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `\"g6-nanode-1\"`, `\"g6-standard-2\"`, `\"g6-highmem-16\"`, `\"g6-dedicated-16\"`, etc. See all types [here](https://api.linode.com/v4/linode/types).\n\n- - -\n"
+                    "description": "The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `\"g6-nanode-1\"`, `\"g6-standard-2\"`, `\"g6-highmem-16\"`, `\"g6-dedicated-16\"`, etc. See all types [here](https://api.linode.com/v4/linode/types).\n"
                 },
                 "watchdogEnabled": {
                     "type": "boolean",
@@ -10391,7 +10391,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `\"g6-nanode-1\"`, `\"g6-standard-2\"`, `\"g6-highmem-16\"`, `\"g6-dedicated-16\"`, etc. See all types [here](https://api.linode.com/v4/linode/types).\n\n- - -\n"
+                    "description": "The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `\"g6-nanode-1\"`, `\"g6-standard-2\"`, `\"g6-highmem-16\"`, `\"g6-dedicated-16\"`, etc. See all types [here](https://api.linode.com/v4/linode/types).\n"
                 },
                 "watchdogEnabled": {
                     "type": "boolean",
@@ -10592,7 +10592,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `\"g6-nanode-1\"`, `\"g6-standard-2\"`, `\"g6-highmem-16\"`, `\"g6-dedicated-16\"`, etc. See all types [here](https://api.linode.com/v4/linode/types).\n\n- - -\n"
+                        "description": "The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `\"g6-nanode-1\"`, `\"g6-standard-2\"`, `\"g6-highmem-16\"`, `\"g6-dedicated-16\"`, etc. See all types [here](https://api.linode.com/v4/linode/types).\n"
                     },
                     "watchdogEnabled": {
                         "type": "boolean",
@@ -10646,7 +10646,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.\n\n- - -\n"
+                    "description": "The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.\n"
                 },
                 "stackscriptData": {
                     "type": "object",
@@ -10719,7 +10719,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.\n\n- - -\n"
+                    "description": "The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.\n"
                 },
                 "stackscriptData": {
                     "type": "object",
@@ -10786,7 +10786,7 @@
                     },
                     "size": {
                         "type": "integer",
-                        "description": "The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.\n\n- - -\n"
+                        "description": "The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.\n"
                     },
                     "stackscriptData": {
                         "type": "object",
@@ -11477,7 +11477,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n"
+                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -11525,7 +11525,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n"
+                    "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -11575,7 +11575,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n\n- - -\n"
+                        "description": "The region where this NodeBalancer will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -11867,7 +11867,7 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The private IP Address where this backend can be reached. This must be a private IP address.\n\n- - -\n"
+                    "description": "The private IP Address where this backend can be reached. This must be a private IP address.\n"
                 },
                 "configId": {
                     "type": "integer",
@@ -11906,7 +11906,7 @@
             "inputProperties": {
                 "address": {
                     "type": "string",
-                    "description": "The private IP Address where this backend can be reached. This must be a private IP address.\n\n- - -\n"
+                    "description": "The private IP Address where this backend can be reached. This must be a private IP address.\n"
                 },
                 "configId": {
                     "type": "integer",
@@ -11942,7 +11942,7 @@
                 "properties": {
                     "address": {
                         "type": "string",
-                        "description": "The private IP Address where this backend can be reached. This must be a private IP address.\n\n- - -\n"
+                        "description": "The private IP Address where this backend can be reached. This must be a private IP address.\n"
                     },
                     "configId": {
                         "type": "integer",
@@ -12182,7 +12182,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of regions where the key will grant access to create buckets.\n\n- - -\n"
+                    "description": "A set of regions where the key will grant access to create buckets.\n"
                 },
                 "regionsDetails": {
                     "type": "array",
@@ -12222,7 +12222,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of regions where the key will grant access to create buckets.\n\n- - -\n"
+                    "description": "A set of regions where the key will grant access to create buckets.\n"
                 }
             },
             "requiredInputs": [
@@ -12255,7 +12255,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of regions where the key will grant access to create buckets.\n\n- - -\n"
+                        "description": "A set of regions where the key will grant access to create buckets.\n"
                     },
                     "regionsDetails": {
                         "type": "array",
@@ -12871,7 +12871,7 @@
             }
         },
         "linode:index/stackScript:StackScript": {
-            "description": "Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.  \n\nFor more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-add-stack-script).\n\n## Example Usage\n\nThe following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `\u003cUDF ...\u003e` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.StackScript(\"foo\", {\n    label: \"foo\",\n    description: \"Installs a Package\",\n    script: `#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install PACKAGE\n`,\n    images: [\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    revNote: \"initial version\",\n});\nconst fooInstance = new linode.Instance(\"foo\", {\n    image: \"linode/ubuntu22.04\",\n    label: \"foo\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    authorizedKeys: [\"...\"],\n    rootPass: \"...\",\n    stackscriptId: foo.id,\n    stackscriptData: {\n        \"package\": \"nginx\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.StackScript(\"foo\",\n    label=\"foo\",\n    description=\"Installs a Package\",\n    script=\"\"\"#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\"\"\",\n    images=[\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    rev_note=\"initial version\")\nfoo_instance = linode.Instance(\"foo\",\n    image=\"linode/ubuntu22.04\",\n    label=\"foo\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    authorized_keys=[\"...\"],\n    root_pass=\"...\",\n    stackscript_id=foo.id,\n    stackscript_data={\n        \"package\": \"nginx\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.StackScript(\"foo\", new()\n    {\n        Label = \"foo\",\n        Description = \"Installs a Package\",\n        Script = @\"#!/bin/bash\n# \u003cUDF name=\"\"package\"\" label=\"\"System Package to Install\"\" example=\"\"nginx\"\" default=\"\"\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\",\n        Images = new[]\n        {\n            \"linode/ubuntu22.04\",\n            \"linode/ubuntu20.04\",\n        },\n        RevNote = \"initial version\",\n    });\n\n    var fooInstance = new Linode.Instance(\"foo\", new()\n    {\n        Image = \"linode/ubuntu22.04\",\n        Label = \"foo\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        AuthorizedKeys = new[]\n        {\n            \"...\",\n        },\n        RootPass = \"...\",\n        StackscriptId = foo.Id,\n        StackscriptData = \n        {\n            { \"package\", \"nginx\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewStackScript(ctx, \"foo\", \u0026linode.StackScriptArgs{\n\t\t\tLabel:       pulumi.String(\"foo\"),\n\t\t\tDescription: pulumi.String(\"Installs a Package\"),\n\t\t\tScript:      pulumi.String(\"#!/bin/bash\\n# \u003cUDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\"\u003e\\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\\n\"),\n\t\t\tImages: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"linode/ubuntu22.04\"),\n\t\t\t\tpulumi.String(\"linode/ubuntu20.04\"),\n\t\t\t},\n\t\t\tRevNote: pulumi.String(\"initial version\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tLabel:  pulumi.String(\"foo\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"...\"),\n\t\t\t},\n\t\t\tRootPass:      pulumi.String(\"...\"),\n\t\t\tStackscriptId: foo.ID(),\n\t\t\tStackscriptData: pulumi.StringMap{\n\t\t\t\t\"package\": pulumi.String(\"nginx\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.StackScript;\nimport com.pulumi.linode.StackScriptArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new StackScript(\"foo\", StackScriptArgs.builder()\n            .label(\"foo\")\n            .description(\"Installs a Package\")\n            .script(\"\"\"\n#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n            \"\"\")\n            .images(            \n                \"linode/ubuntu22.04\",\n                \"linode/ubuntu20.04\")\n            .revNote(\"initial version\")\n            .build());\n\n        var fooInstance = new Instance(\"fooInstance\", InstanceArgs.builder()\n            .image(\"linode/ubuntu22.04\")\n            .label(\"foo\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .authorizedKeys(\"...\")\n            .rootPass(\"...\")\n            .stackscriptId(foo.id())\n            .stackscriptData(Map.of(\"package\", \"nginx\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:StackScript\n    properties:\n      label: foo\n      description: Installs a Package\n      script: |\n        #!/bin/bash\n        # \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\n        apt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n      images:\n        - linode/ubuntu22.04\n        - linode/ubuntu20.04\n      revNote: initial version\n  fooInstance:\n    type: linode:Instance\n    name: foo\n    properties:\n      image: linode/ubuntu22.04\n      label: foo\n      region: us-east\n      type: g6-nanode-1\n      authorizedKeys:\n        - '...'\n      rootPass: '...'\n      stackscriptId: ${foo.id}\n      stackscriptData:\n        package: nginx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes StackScripts can be imported using the Linode StackScript `id`, e.g.\n\n```sh\n$ pulumi import linode:index/stackScript:StackScript mystackscript 1234567\n```\n\n",
+            "description": "Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.\n\nFor more information, see [Automate Deployment with StackScripts](https://www.linode.com/docs/platform/stackscripts/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-add-stack-script).\n\n## Example Usage\n\nThe following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `\u003cUDF ...\u003e` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.StackScript(\"foo\", {\n    label: \"foo\",\n    description: \"Installs a Package\",\n    script: `#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install PACKAGE\n`,\n    images: [\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    revNote: \"initial version\",\n});\nconst fooInstance = new linode.Instance(\"foo\", {\n    image: \"linode/ubuntu22.04\",\n    label: \"foo\",\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n    authorizedKeys: [\"...\"],\n    rootPass: \"...\",\n    stackscriptId: foo.id,\n    stackscriptData: {\n        \"package\": \"nginx\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.StackScript(\"foo\",\n    label=\"foo\",\n    description=\"Installs a Package\",\n    script=\"\"\"#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\"\"\",\n    images=[\n        \"linode/ubuntu22.04\",\n        \"linode/ubuntu20.04\",\n    ],\n    rev_note=\"initial version\")\nfoo_instance = linode.Instance(\"foo\",\n    image=\"linode/ubuntu22.04\",\n    label=\"foo\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\",\n    authorized_keys=[\"...\"],\n    root_pass=\"...\",\n    stackscript_id=foo.id,\n    stackscript_data={\n        \"package\": \"nginx\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.StackScript(\"foo\", new()\n    {\n        Label = \"foo\",\n        Description = \"Installs a Package\",\n        Script = @\"#!/bin/bash\n# \u003cUDF name=\"\"package\"\" label=\"\"System Package to Install\"\" example=\"\"nginx\"\" default=\"\"\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n\",\n        Images = new[]\n        {\n            \"linode/ubuntu22.04\",\n            \"linode/ubuntu20.04\",\n        },\n        RevNote = \"initial version\",\n    });\n\n    var fooInstance = new Linode.Instance(\"foo\", new()\n    {\n        Image = \"linode/ubuntu22.04\",\n        Label = \"foo\",\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n        AuthorizedKeys = new[]\n        {\n            \"...\",\n        },\n        RootPass = \"...\",\n        StackscriptId = foo.Id,\n        StackscriptData = \n        {\n            { \"package\", \"nginx\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewStackScript(ctx, \"foo\", \u0026linode.StackScriptArgs{\n\t\t\tLabel:       pulumi.String(\"foo\"),\n\t\t\tDescription: pulumi.String(\"Installs a Package\"),\n\t\t\tScript:      pulumi.String(\"#!/bin/bash\\n# \u003cUDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\"\u003e\\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\\n\"),\n\t\t\tImages: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"linode/ubuntu22.04\"),\n\t\t\t\tpulumi.String(\"linode/ubuntu20.04\"),\n\t\t\t},\n\t\t\tRevNote: pulumi.String(\"initial version\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"linode/ubuntu22.04\"),\n\t\t\tLabel:  pulumi.String(\"foo\"),\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t\tAuthorizedKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"...\"),\n\t\t\t},\n\t\t\tRootPass:      pulumi.String(\"...\"),\n\t\t\tStackscriptId: foo.ID(),\n\t\t\tStackscriptData: pulumi.StringMap{\n\t\t\t\t\"package\": pulumi.String(\"nginx\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.StackScript;\nimport com.pulumi.linode.StackScriptArgs;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new StackScript(\"foo\", StackScriptArgs.builder()\n            .label(\"foo\")\n            .description(\"Installs a Package\")\n            .script(\"\"\"\n#!/bin/bash\n# \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\napt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n            \"\"\")\n            .images(            \n                \"linode/ubuntu22.04\",\n                \"linode/ubuntu20.04\")\n            .revNote(\"initial version\")\n            .build());\n\n        var fooInstance = new Instance(\"fooInstance\", InstanceArgs.builder()\n            .image(\"linode/ubuntu22.04\")\n            .label(\"foo\")\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .authorizedKeys(\"...\")\n            .rootPass(\"...\")\n            .stackscriptId(foo.id())\n            .stackscriptData(Map.of(\"package\", \"nginx\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:StackScript\n    properties:\n      label: foo\n      description: Installs a Package\n      script: |\n        #!/bin/bash\n        # \u003cUDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\"\u003e\n        apt-get -q update \u0026\u0026 apt-get -q -y install $PACKAGE\n      images:\n        - linode/ubuntu22.04\n        - linode/ubuntu20.04\n      revNote: initial version\n  fooInstance:\n    type: linode:Instance\n    name: foo\n    properties:\n      image: linode/ubuntu22.04\n      label: foo\n      region: us-east\n      type: g6-nanode-1\n      authorizedKeys:\n        - '...'\n      rootPass: '...'\n      stackscriptId: ${foo.id}\n      stackscriptData:\n        package: nginx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes StackScripts can be imported using the Linode StackScript `id`, e.g.\n\n```sh\n$ pulumi import linode:index/stackScript:StackScript mystackscript 1234567\n```\n\n",
             "properties": {
                 "created": {
                     "type": "string",
@@ -12894,7 +12894,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.\n\n- - -\n"
+                    "description": "A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.\n"
                 },
                 "isPublic": {
                     "type": "boolean",
@@ -12957,7 +12957,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.\n\n- - -\n"
+                    "description": "A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.\n"
                 },
                 "isPublic": {
                     "type": "boolean",
@@ -13006,7 +13006,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.\n\n- - -\n"
+                        "description": "A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.\n"
                     },
                     "isPublic": {
                         "type": "boolean",
@@ -13431,7 +13431,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.\n\n- - -\n"
+                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -13476,7 +13476,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.\n\n- - -\n"
+                    "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -13517,7 +13517,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.\n\n- - -\n"
+                        "description": "The region where this volume will be deployed.  Examples are `\"us-east\"`, `\"us-west\"`, `\"ap-south\"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.\n"
                     },
                     "size": {
                         "type": "integer",
