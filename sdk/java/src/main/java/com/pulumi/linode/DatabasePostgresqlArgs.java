@@ -178,16 +178,12 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
-     * ***
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -465,8 +461,6 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -477,8 +471,6 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

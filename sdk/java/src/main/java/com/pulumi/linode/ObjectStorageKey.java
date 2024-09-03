@@ -162,16 +162,12 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
     /**
      * A set of regions where the key will grant access to create buckets.
      * 
-     * ***
-     * 
      */
     @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
     /**
      * @return A set of regions where the key will grant access to create buckets.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> regions() {

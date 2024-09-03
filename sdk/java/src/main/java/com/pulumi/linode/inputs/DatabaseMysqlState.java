@@ -274,16 +274,12 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
-     * ***
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -739,8 +735,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -751,8 +745,6 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

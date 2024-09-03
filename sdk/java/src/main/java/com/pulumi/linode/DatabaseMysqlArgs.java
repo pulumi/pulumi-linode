@@ -155,16 +155,12 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
-     * ***
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -412,8 +408,6 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -424,8 +418,6 @@ public final class DatabaseMysqlArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

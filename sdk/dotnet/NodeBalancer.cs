@@ -100,8 +100,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -190,8 +188,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -272,8 +268,6 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -87,8 +87,6 @@ type ObjectStorageKey struct {
 	// Whether or not this key is a limited access key.
 	Limited pulumi.BoolOutput `pulumi:"limited"`
 	// A set of regions where the key will grant access to create buckets.
-	//
-	// ***
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
 	// A set of objects containing the detailed info of the regions where this key can access.
 	RegionsDetails ObjectStorageKeyRegionsDetailArrayOutput `pulumi:"regionsDetails"`
@@ -142,8 +140,6 @@ type objectStorageKeyState struct {
 	// Whether or not this key is a limited access key.
 	Limited *bool `pulumi:"limited"`
 	// A set of regions where the key will grant access to create buckets.
-	//
-	// ***
 	Regions []string `pulumi:"regions"`
 	// A set of objects containing the detailed info of the regions where this key can access.
 	RegionsDetails []ObjectStorageKeyRegionsDetail `pulumi:"regionsDetails"`
@@ -161,8 +157,6 @@ type ObjectStorageKeyState struct {
 	// Whether or not this key is a limited access key.
 	Limited pulumi.BoolPtrInput
 	// A set of regions where the key will grant access to create buckets.
-	//
-	// ***
 	Regions pulumi.StringArrayInput
 	// A set of objects containing the detailed info of the regions where this key can access.
 	RegionsDetails ObjectStorageKeyRegionsDetailArrayInput
@@ -180,8 +174,6 @@ type objectStorageKeyArgs struct {
 	// The label given to this key. For display purposes only.
 	Label string `pulumi:"label"`
 	// A set of regions where the key will grant access to create buckets.
-	//
-	// ***
 	Regions []string `pulumi:"regions"`
 }
 
@@ -192,8 +184,6 @@ type ObjectStorageKeyArgs struct {
 	// The label given to this key. For display purposes only.
 	Label pulumi.StringInput
 	// A set of regions where the key will grant access to create buckets.
-	//
-	// ***
 	Regions pulumi.StringArrayInput
 }
 
@@ -305,8 +295,6 @@ func (o ObjectStorageKeyOutput) Limited() pulumi.BoolOutput {
 }
 
 // A set of regions where the key will grant access to create buckets.
-//
-// ***
 func (o ObjectStorageKeyOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectStorageKey) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }

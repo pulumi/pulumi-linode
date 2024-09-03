@@ -142,16 +142,12 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -419,8 +415,6 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param region The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -431,8 +425,6 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-         * 
-         * ***
          * 
          * @return builder
          * 

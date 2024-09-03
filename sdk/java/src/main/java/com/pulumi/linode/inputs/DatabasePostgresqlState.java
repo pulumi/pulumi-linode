@@ -312,16 +312,12 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      * 
-     * ***
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The Linode Instance type used for the nodes of the  Managed Database instance.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -829,8 +825,6 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -841,8 +835,6 @@ public final class DatabasePostgresqlState extends com.pulumi.resources.Resource
 
         /**
          * @param type The Linode Instance type used for the nodes of the  Managed Database instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

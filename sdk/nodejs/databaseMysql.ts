@@ -176,8 +176,6 @@ export class DatabaseMysql extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -344,8 +342,6 @@ export interface DatabaseMysqlState {
     status?: pulumi.Input<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -406,8 +402,6 @@ export interface DatabaseMysqlArgs {
     sslConnection?: pulumi.Input<boolean>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
     /**

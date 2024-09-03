@@ -83,8 +83,6 @@ export class ObjectStorageKey extends pulumi.CustomResource {
     public /*out*/ readonly limited!: pulumi.Output<boolean>;
     /**
      * A set of regions where the key will grant access to create buckets.
-     *
-     * - - -
      */
     public readonly regions!: pulumi.Output<string[]>;
     /**
@@ -158,8 +156,6 @@ export interface ObjectStorageKeyState {
     limited?: pulumi.Input<boolean>;
     /**
      * A set of regions where the key will grant access to create buckets.
-     *
-     * - - -
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -186,8 +182,6 @@ export interface ObjectStorageKeyArgs {
     label: pulumi.Input<string>;
     /**
      * A set of regions where the key will grant access to create buckets.
-     *
-     * - - -
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
 }
