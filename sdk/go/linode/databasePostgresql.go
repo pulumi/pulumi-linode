@@ -163,8 +163,6 @@ type DatabasePostgresql struct {
 	// The operating status of the Managed Database.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -269,8 +267,6 @@ type databasePostgresqlState struct {
 	// The operating status of the Managed Database.
 	Status *string `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated *string `pulumi:"updated"`
@@ -328,8 +324,6 @@ type DatabasePostgresqlState struct {
 	// The operating status of the Managed Database.
 	Status pulumi.StringPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// When this Managed Database was last updated.
 	Updated pulumi.StringPtrInput
@@ -373,8 +367,6 @@ type databasePostgresqlArgs struct {
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type string `pulumi:"type"`
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates *DatabasePostgresqlUpdates `pulumi:"updates"`
@@ -411,8 +403,6 @@ type DatabasePostgresqlArgs struct {
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection pulumi.BoolPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringInput
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabasePostgresqlUpdatesPtrInput
@@ -606,8 +596,6 @@ func (o DatabasePostgresqlOutput) Status() pulumi.StringOutput {
 }
 
 // The Linode Instance type used for the nodes of the  Managed Database instance.
-//
-// ***
 func (o DatabasePostgresqlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresql) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

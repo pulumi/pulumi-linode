@@ -51,16 +51,12 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
     /**
      * A set of regions where the key will grant access to create buckets.
      * 
-     * ***
-     * 
      */
     @Import(name="regions")
     private @Nullable Output<List<String>> regions;
 
     /**
      * @return A set of regions where the key will grant access to create buckets.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> regions() {
@@ -148,8 +144,6 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param regions A set of regions where the key will grant access to create buckets.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -161,8 +155,6 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param regions A set of regions where the key will grant access to create buckets.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -172,8 +164,6 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param regions A set of regions where the key will grant access to create buckets.
-         * 
-         * ***
          * 
          * @return builder
          * 

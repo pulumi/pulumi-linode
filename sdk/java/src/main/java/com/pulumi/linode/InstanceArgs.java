@@ -504,16 +504,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      * 
-     * ***
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -1319,8 +1315,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1331,8 +1325,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `&#34;g6-nanode-1&#34;`, `&#34;g6-standard-2&#34;`, `&#34;g6-highmem-16&#34;`, `&#34;g6-dedicated-16&#34;`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-         * 
-         * ***
          * 
          * @return builder
          * 

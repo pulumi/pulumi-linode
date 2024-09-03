@@ -139,16 +139,12 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
     /**
      * The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
      * 
-     * ***
-     * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
      * @return The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> target() {
@@ -390,8 +386,6 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param target The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -402,8 +396,6 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target The target for this Record. This field&#39;s actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-         * 
-         * ***
          * 
          * @return builder
          * 

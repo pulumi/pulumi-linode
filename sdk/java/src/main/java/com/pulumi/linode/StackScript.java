@@ -152,16 +152,12 @@ public class StackScript extends com.pulumi.resources.CustomResource {
     /**
      * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      * 
-     * ***
-     * 
      */
     @Export(name="images", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> images;
 
     /**
      * @return A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> images() {

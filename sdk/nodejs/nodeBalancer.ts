@@ -96,8 +96,6 @@ export class NodeBalancer extends pulumi.CustomResource {
     public readonly label!: pulumi.Output<string | undefined>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -196,8 +194,6 @@ export interface NodeBalancerState {
     label?: pulumi.Input<string>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -232,8 +228,6 @@ export interface NodeBalancerArgs {
     label?: pulumi.Input<string>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**

@@ -26,8 +26,6 @@ type NodeBalancerNode struct {
 	pulumi.CustomResourceState
 
 	// The private IP Address where this backend can be reached. This must be a private IP address.
-	//
-	// ***
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The ID of the NodeBalancerConfig to access.
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
@@ -86,8 +84,6 @@ func GetNodeBalancerNode(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NodeBalancerNode resources.
 type nodeBalancerNodeState struct {
 	// The private IP Address where this backend can be reached. This must be a private IP address.
-	//
-	// ***
 	Address *string `pulumi:"address"`
 	// The ID of the NodeBalancerConfig to access.
 	ConfigId *int `pulumi:"configId"`
@@ -105,8 +101,6 @@ type nodeBalancerNodeState struct {
 
 type NodeBalancerNodeState struct {
 	// The private IP Address where this backend can be reached. This must be a private IP address.
-	//
-	// ***
 	Address pulumi.StringPtrInput
 	// The ID of the NodeBalancerConfig to access.
 	ConfigId pulumi.IntPtrInput
@@ -128,8 +122,6 @@ func (NodeBalancerNodeState) ElementType() reflect.Type {
 
 type nodeBalancerNodeArgs struct {
 	// The private IP Address where this backend can be reached. This must be a private IP address.
-	//
-	// ***
 	Address string `pulumi:"address"`
 	// The ID of the NodeBalancerConfig to access.
 	ConfigId int `pulumi:"configId"`
@@ -146,8 +138,6 @@ type nodeBalancerNodeArgs struct {
 // The set of arguments for constructing a NodeBalancerNode resource.
 type NodeBalancerNodeArgs struct {
 	// The private IP Address where this backend can be reached. This must be a private IP address.
-	//
-	// ***
 	Address pulumi.StringInput
 	// The ID of the NodeBalancerConfig to access.
 	ConfigId pulumi.IntInput
@@ -249,8 +239,6 @@ func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutputWithContext(ctx context.
 }
 
 // The private IP Address where this backend can be reached. This must be a private IP address.
-//
-// ***
 func (o NodeBalancerNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }

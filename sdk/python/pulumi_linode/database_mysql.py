@@ -32,8 +32,6 @@ class DatabaseMysqlArgs:
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[bool] encrypted: Whether the Managed Databases is encrypted. (default `false`)
@@ -105,8 +103,6 @@ class DatabaseMysqlArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The Linode Instance type used for the nodes of the  Managed Database instance.
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -241,8 +237,6 @@ class _DatabaseMysqlState:
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] status: The operating status of the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
         :param pulumi.Input['DatabaseMysqlUpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
@@ -491,8 +485,6 @@ class _DatabaseMysqlState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The Linode Instance type used for the nodes of the  Managed Database instance.
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -638,8 +630,6 @@ class DatabaseMysql(pulumi.CustomResource):
                
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
@@ -840,8 +830,6 @@ class DatabaseMysql(pulumi.CustomResource):
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] status: The operating status of the Managed Database.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the  Managed Database instance.
-               
-               - - -
         :param pulumi.Input[str] updated: When this Managed Database was last updated.
         :param pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] version: The Managed Database engine version. (e.g. `v8.0.26`)
@@ -1011,8 +999,6 @@ class DatabaseMysql(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The Linode Instance type used for the nodes of the  Managed Database instance.
-
-        - - -
         """
         return pulumi.get(self, "type")
 

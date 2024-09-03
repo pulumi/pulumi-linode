@@ -154,8 +154,6 @@ type DatabaseMysql struct {
 	// The operating status of the Managed Database.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -252,8 +250,6 @@ type databaseMysqlState struct {
 	// The operating status of the Managed Database.
 	Status *string `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// When this Managed Database was last updated.
 	Updated *string `pulumi:"updated"`
@@ -303,8 +299,6 @@ type DatabaseMysqlState struct {
 	// The operating status of the Managed Database.
 	Status pulumi.StringPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// When this Managed Database was last updated.
 	Updated pulumi.StringPtrInput
@@ -342,8 +336,6 @@ type databaseMysqlArgs struct {
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type string `pulumi:"type"`
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates *DatabaseMysqlUpdates `pulumi:"updates"`
@@ -374,8 +366,6 @@ type DatabaseMysqlArgs struct {
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	SslConnection pulumi.BoolPtrInput
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
-	//
-	// ***
 	Type pulumi.StringInput
 	// Configuration settings for automated patch update maintenance for the Managed Database.
 	Updates DatabaseMysqlUpdatesPtrInput
@@ -555,8 +545,6 @@ func (o DatabaseMysqlOutput) Status() pulumi.StringOutput {
 }
 
 // The Linode Instance type used for the nodes of the  Managed Database instance.
-//
-// ***
 func (o DatabaseMysqlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseMysql) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

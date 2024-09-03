@@ -99,8 +99,6 @@ export class DomainRecord extends pulumi.CustomResource {
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
      * The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     *
-     * - - -
      */
     public readonly target!: pulumi.Output<string>;
     /**
@@ -202,8 +200,6 @@ export interface DomainRecordState {
     tag?: pulumi.Input<string>;
     /**
      * The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     *
-     * - - -
      */
     target?: pulumi.Input<string>;
     /**
@@ -254,8 +250,6 @@ export interface DomainRecordArgs {
     tag?: pulumi.Input<string>;
     /**
      * The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.
-     *
-     * - - -
      */
     target: pulumi.Input<string>;
     /**

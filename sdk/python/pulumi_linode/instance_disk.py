@@ -32,8 +32,6 @@ class InstanceDiskInitArgs:
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
@@ -91,8 +89,6 @@ class InstanceDiskInitArgs:
     def size(self) -> pulumi.Input[int]:
         """
         The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-
-        - - -
         """
         return pulumi.get(self, "size")
 
@@ -222,8 +218,6 @@ class _InstanceDiskState:
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
         :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
@@ -359,8 +353,6 @@ class _InstanceDiskState:
     def size(self) -> Optional[pulumi.Input[int]]:
         """
         The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-
-        - - -
         """
         return pulumi.get(self, "size")
 
@@ -509,8 +501,6 @@ class InstanceDisk(pulumi.CustomResource):
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
         :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
@@ -673,8 +663,6 @@ class InstanceDisk(pulumi.CustomResource):
         :param pulumi.Input[int] linode_id: The ID of the Linode to create this Disk under.
         :param pulumi.Input[str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         :param pulumi.Input[int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         :param pulumi.Input[str] status: A brief description of this Disk's current state.
@@ -769,8 +757,6 @@ class InstanceDisk(pulumi.CustomResource):
     def size(self) -> pulumi.Output[int]:
         """
         The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
-
-        - - -
         """
         return pulumi.get(self, "size")
 
