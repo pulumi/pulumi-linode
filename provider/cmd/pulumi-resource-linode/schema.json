@@ -238,23 +238,23 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "entityId",
-                        "id",
-                        "label",
-                        "type",
-                        "url"
-                    ]
-                }
-            }
+            "required": [
+                "entityId",
+                "id",
+                "label",
+                "type",
+                "url"
+            ]
         },
         "linode:index/FirewallInbound:FirewallInbound": {
             "properties": {
                 "action": {
                     "type": "string",
                     "description": "Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Used to describe this rule. For display purposes only.\n"
                 },
                 "ipv4s": {
                     "type": "array",
@@ -288,13 +288,27 @@
                 "action",
                 "label",
                 "protocol"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "description",
+                        "label",
+                        "protocol"
+                    ]
+                }
+            }
         },
         "linode:index/FirewallOutbound:FirewallOutbound": {
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
+                    "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Used to describe this rule. For display purposes only.\n"
                 },
                 "ipv4s": {
                     "type": "array",
@@ -328,7 +342,17 @@
                 "action",
                 "label",
                 "protocol"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "description",
+                        "label",
+                        "protocol"
+                    ]
+                }
+            }
         },
         "linode:index/ImageReplication:ImageReplication": {
             "properties": {
@@ -1221,6 +1245,10 @@
                     "type": "integer",
                     "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
                 },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for nodes in this pool.\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The ID of the node.\n"
@@ -1252,6 +1280,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "count",
+                        "diskEncryption",
                         "id",
                         "nodes",
                         "type"
@@ -1450,6 +1479,9 @@
                     "type": "string",
                     "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
                 },
+                "description": {
+                    "type": "string"
+                },
                 "ipv4s": {
                     "type": "array",
                     "items": {
@@ -1480,6 +1512,7 @@
             "type": "object",
             "required": [
                 "action",
+                "description",
                 "ipv4s",
                 "ipv6s",
                 "label",
@@ -1493,6 +1526,9 @@
                     "type": "string",
                     "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
                 },
+                "description": {
+                    "type": "string"
+                },
                 "ipv4s": {
                     "type": "array",
                     "items": {
@@ -1523,6 +1559,7 @@
             "type": "object",
             "required": [
                 "action",
+                "description",
                 "ipv4s",
                 "ipv6s",
                 "label",
@@ -2754,6 +2791,9 @@
                     "type": "string",
                     "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
                 },
+                "description": {
+                    "type": "string"
+                },
                 "ipv4s": {
                     "type": "array",
                     "items": {
@@ -2784,6 +2824,7 @@
             "type": "object",
             "required": [
                 "action",
+                "description",
                 "ipv4s",
                 "ipv6s",
                 "label",
@@ -2802,6 +2843,9 @@
                     "type": "string",
                     "description": "Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.\n"
                 },
+                "description": {
+                    "type": "string"
+                },
                 "ipv4s": {
                     "type": "array",
                     "items": {
@@ -2832,6 +2876,7 @@
             "type": "object",
             "required": [
                 "action",
+                "description",
                 "ipv4s",
                 "ipv6s",
                 "label",
@@ -4662,6 +4707,10 @@
                     },
                     "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n"
                 },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for this instance.\n"
+                },
                 "disks": {
                     "type": "array",
                     "items": {
@@ -4707,6 +4756,10 @@
                 "label": {
                     "type": "string",
                     "description": "The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.\n"
+                },
+                "lkeClusterId": {
+                    "type": "integer",
+                    "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                 },
                 "placementGroups": {
                     "type": "array",
@@ -4759,6 +4812,7 @@
                 "bootConfigLabel",
                 "configs",
                 "disks",
+                "diskEncryption",
                 "group",
                 "hasUserData",
                 "hostUuid",
@@ -4768,6 +4822,7 @@
                 "ipv4s",
                 "ipv6",
                 "label",
+                "lkeClusterId",
                 "placementGroups",
                 "privateIpAddress",
                 "region",
@@ -5667,6 +5722,10 @@
                     "type": "integer",
                     "description": "The number of nodes in the Node Pool.\n"
                 },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for nodes in this pool.\n"
+                },
                 "disks": {
                     "type": "array",
                     "items": {
@@ -5714,6 +5773,7 @@
             "type": "object",
             "required": [
                 "count",
+                "diskEncryption",
                 "id",
                 "labels",
                 "tags",
@@ -9508,6 +9568,7 @@
             "required": [
                 "created",
                 "devices",
+                "disabled",
                 "inboundPolicy",
                 "label",
                 "linodes",
@@ -10078,6 +10139,10 @@
                     "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
                     "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource."
                 },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)\n\n* **NOTE: Disk encryption may not currently be available to all users.**\n"
+                },
                 "disks": {
                     "type": "array",
                     "items": {
@@ -10131,6 +10196,10 @@
                 "label": {
                     "type": "string",
                     "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                },
+                "lkeClusterId": {
+                    "type": "integer",
+                    "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                 },
                 "metadatas": {
                     "type": "array",
@@ -10227,12 +10296,14 @@
                 "booted",
                 "configs",
                 "disks",
+                "diskEncryption",
                 "hasUserData",
                 "hostUuid",
                 "ipAddress",
                 "ipv4s",
                 "ipv6",
                 "label",
+                "lkeClusterId",
                 "privateIpAddress",
                 "region",
                 "sharedIpv4s",
@@ -10286,6 +10357,11 @@
                     },
                     "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
                     "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource."
+                },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)\n\n* **NOTE: Disk encryption may not currently be available to all users.**\n",
+                    "willReplaceOnChanges": true
                 },
                 "disks": {
                     "type": "array",
@@ -10453,6 +10529,11 @@
                         "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
                         "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource."
                     },
+                    "diskEncryption": {
+                        "type": "string",
+                        "description": "The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)\n\n* **NOTE: Disk encryption may not currently be available to all users.**\n",
+                        "willReplaceOnChanges": true
+                    },
                     "disks": {
                         "type": "array",
                         "items": {
@@ -10508,6 +10589,10 @@
                     "label": {
                         "type": "string",
                         "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                    },
+                    "lkeClusterId": {
+                        "type": "integer",
+                        "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                     },
                     "metadatas": {
                         "type": "array",
@@ -10623,6 +10708,10 @@
                     "type": "string",
                     "description": "When this disk was created.\n"
                 },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)\n"
+                },
                 "filesystem": {
                     "type": "string",
                     "description": "The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)\n"
@@ -10674,6 +10763,7 @@
             },
             "required": [
                 "created",
+                "diskEncryption",
                 "filesystem",
                 "label",
                 "linodeId",
@@ -10762,6 +10852,10 @@
                     "created": {
                         "type": "string",
                         "description": "When this disk was created.\n"
+                    },
+                    "diskEncryption": {
+                        "type": "string",
+                        "description": "The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)\n"
                     },
                     "filesystem": {
                         "type": "string",
@@ -11300,6 +11394,10 @@
                     "type": "integer",
                     "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
                 },
+                "diskEncryption": {
+                    "type": "string",
+                    "description": "The disk encryption policy for nodes in this pool.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -11339,6 +11437,7 @@
             },
             "required": [
                 "clusterId",
+                "diskEncryption",
                 "labels",
                 "nodeCount",
                 "nodes",
@@ -11396,6 +11495,10 @@
                     "clusterId": {
                         "type": "integer",
                         "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
+                    },
+                    "diskEncryption": {
+                        "type": "string",
+                        "description": "The disk encryption policy for nodes in this pool.\n"
                     },
                     "labels": {
                         "type": "object",
