@@ -19,6 +19,11 @@ public final class FirewallInbound {
      */
     private String action;
     /**
+     * @return Used to describe this rule. For display purposes only.
+     * 
+     */
+    private @Nullable String description;
+    /**
      * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
@@ -51,6 +56,13 @@ public final class FirewallInbound {
      */
     public String action() {
         return this.action;
+    }
+    /**
+     * @return Used to describe this rule. For display purposes only.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     /**
      * @return A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
@@ -98,6 +110,7 @@ public final class FirewallInbound {
     @CustomType.Builder
     public static final class Builder {
         private String action;
+        private @Nullable String description;
         private @Nullable List<String> ipv4s;
         private @Nullable List<String> ipv6s;
         private String label;
@@ -107,6 +120,7 @@ public final class FirewallInbound {
         public Builder(FirewallInbound defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
+    	      this.description = defaults.description;
     	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
@@ -120,6 +134,12 @@ public final class FirewallInbound {
               throw new MissingRequiredPropertyException("FirewallInbound", "action");
             }
             this.action = action;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -165,6 +185,7 @@ public final class FirewallInbound {
         public FirewallInbound build() {
             final var _resultValue = new FirewallInbound();
             _resultValue.action = action;
+            _resultValue.description = description;
             _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;

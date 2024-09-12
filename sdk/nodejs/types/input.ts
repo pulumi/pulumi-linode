@@ -55,23 +55,23 @@ export interface FirewallDevice {
     /**
      * The ID of the underlying entity this device references (i.e. the Linode's ID).
      */
-    entityId?: pulumi.Input<number>;
+    entityId: pulumi.Input<number>;
     /**
      * The ID of the Firewall Device.
      */
-    id?: pulumi.Input<number>;
+    id: pulumi.Input<number>;
     /**
      * This Firewall's unique label.
      */
-    label?: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * The type of Firewall Device.
      */
-    type?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The URL of the underlying entity this device references.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface FirewallInbound {
@@ -79,6 +79,10 @@ export interface FirewallInbound {
      * Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
+    /**
+     * Used to describe this rule. For display purposes only.
+     */
+    description?: pulumi.Input<string>;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      */
@@ -103,9 +107,13 @@ export interface FirewallInbound {
 
 export interface FirewallOutbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
+    /**
+     * Used to describe this rule. For display purposes only.
+     */
+    description?: pulumi.Input<string>;
     /**
      * A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      */
@@ -1928,6 +1936,10 @@ export interface GetLkeClusterPool {
      */
     count?: number;
     /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    diskEncryption?: string;
+    /**
      * This Node Pool’s custom disk layout.
      */
     disks?: inputs.GetLkeClusterPoolDisk[];
@@ -1966,6 +1978,10 @@ export interface GetLkeClusterPoolArgs {
      * The number of nodes in the Node Pool.
      */
     count?: pulumi.Input<number>;
+    /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    diskEncryption?: pulumi.Input<string>;
     /**
      * This Node Pool’s custom disk layout.
      */
@@ -5273,6 +5289,10 @@ export interface LkeClusterPool {
      */
     count?: pulumi.Input<number>;
     /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    diskEncryption?: pulumi.Input<string>;
+    /**
      * The ID of the node.
      */
     id?: pulumi.Input<number>;
@@ -5410,6 +5430,7 @@ export interface NodeBalancerFirewallInbound {
      * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
@@ -5437,6 +5458,7 @@ export interface NodeBalancerFirewallOutbound {
      * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */

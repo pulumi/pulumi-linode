@@ -708,7 +708,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> pulumi.Output[Optional[bool]]:
+    def disabled(self) -> pulumi.Output[bool]:
         """
         If `true`, the Firewall's rules are not enforced (defaults to `false`).
 

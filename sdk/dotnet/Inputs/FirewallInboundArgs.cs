@@ -18,6 +18,12 @@ namespace Pulumi.Linode.Inputs
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
+        /// <summary>
+        /// Used to describe this rule. For display purposes only.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("ipv4s")]
         private InputList<string>? _ipv4s;
 

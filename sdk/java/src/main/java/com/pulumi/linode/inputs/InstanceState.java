@@ -179,6 +179,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     * 
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     * 
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     * 
+     */
+    public Optional<Output<String>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * @deprecated
      * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      * 
@@ -357,6 +376,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
+    }
+
+    /**
+     * If applicable, the ID of the LKE cluster this instance is a part of.
+     * 
+     */
+    @Import(name="lkeClusterId")
+    private @Nullable Output<Integer> lkeClusterId;
+
+    /**
+     * @return If applicable, the ID of the LKE cluster this instance is a part of.
+     * 
+     */
+    public Optional<Output<Integer>> lkeClusterId() {
+        return Optional.ofNullable(this.lkeClusterId);
     }
 
     /**
@@ -683,6 +717,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.bootConfigLabel = $.bootConfigLabel;
         this.booted = $.booted;
         this.configs = $.configs;
+        this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
         this.firewallId = $.firewallId;
         this.group = $.group;
@@ -694,6 +729,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.ipv4s = $.ipv4s;
         this.ipv6 = $.ipv6;
         this.label = $.label;
+        this.lkeClusterId = $.lkeClusterId;
         this.metadatas = $.metadatas;
         this.migrationType = $.migrationType;
         this.placementGroup = $.placementGroup;
@@ -970,6 +1006,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
         public Builder configs(InstanceConfigArgs... configs) {
             return configs(List.of(configs));
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+         * 
+         * * **NOTE: Disk encryption may not currently be available to all users.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<String> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+         * 
+         * * **NOTE: Disk encryption may not currently be available to all users.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
         }
 
         /**
@@ -1250,6 +1311,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param lkeClusterId If applicable, the ID of the LKE cluster this instance is a part of.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lkeClusterId(@Nullable Output<Integer> lkeClusterId) {
+            $.lkeClusterId = lkeClusterId;
+            return this;
+        }
+
+        /**
+         * @param lkeClusterId If applicable, the ID of the LKE cluster this instance is a part of.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lkeClusterId(Integer lkeClusterId) {
+            return lkeClusterId(Output.of(lkeClusterId));
         }
 
         /**

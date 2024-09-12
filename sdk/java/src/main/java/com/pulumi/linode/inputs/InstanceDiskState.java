@@ -65,6 +65,21 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The disk encryption policy for this disk&#39;s parent instance. (`enabled`, `disabled`)
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for this disk&#39;s parent instance. (`enabled`, `disabled`)
+     * 
+     */
+    public Optional<Output<String>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      * 
      */
@@ -231,6 +246,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         this.authorizedKeys = $.authorizedKeys;
         this.authorizedUsers = $.authorizedUsers;
         this.created = $.created;
+        this.diskEncryption = $.diskEncryption;
         this.filesystem = $.filesystem;
         this.image = $.image;
         this.label = $.label;
@@ -343,6 +359,27 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder created(String created) {
             return created(Output.of(created));
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for this disk&#39;s parent instance. (`enabled`, `disabled`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<String> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for this disk&#39;s parent instance. (`enabled`, `disabled`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
         }
 
         /**

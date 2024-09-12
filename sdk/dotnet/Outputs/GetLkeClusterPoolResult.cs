@@ -22,6 +22,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Count;
         /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        public readonly string DiskEncryption;
+        /// <summary>
         /// This Node Pool’s custom disk layout.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> Disks;
@@ -56,6 +60,8 @@ namespace Pulumi.Linode.Outputs
 
             int count,
 
+            string diskEncryption,
+
             ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> disks,
 
             int id,
@@ -72,6 +78,7 @@ namespace Pulumi.Linode.Outputs
         {
             Autoscalers = autoscalers;
             Count = count;
+            DiskEncryption = diskEncryption;
             Disks = disks;
             Id = id;
             Labels = labels;

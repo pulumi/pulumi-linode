@@ -16,35 +16,35 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The ID of the underlying entity this device references (i.e. the Linode's ID).
         /// </summary>
-        public readonly int? EntityId;
+        public readonly int EntityId;
         /// <summary>
         /// The ID of the Firewall Device.
         /// </summary>
-        public readonly int? Id;
+        public readonly int Id;
         /// <summary>
         /// This Firewall's unique label.
         /// </summary>
-        public readonly string? Label;
+        public readonly string Label;
         /// <summary>
         /// The type of Firewall Device.
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
         /// <summary>
         /// The URL of the underlying entity this device references.
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private FirewallDevice(
-            int? entityId,
+            int entityId,
 
-            int? id,
+            int id,
 
-            string? label,
+            string label,
 
-            string? type,
+            string type,
 
-            string? url)
+            string url)
         {
             EntityId = entityId;
             Id = id;

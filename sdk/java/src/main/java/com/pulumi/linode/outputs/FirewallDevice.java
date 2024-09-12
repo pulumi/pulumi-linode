@@ -4,11 +4,10 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class FirewallDevice {
@@ -16,63 +15,63 @@ public final class FirewallDevice {
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
      */
-    private @Nullable Integer entityId;
+    private Integer entityId;
     /**
      * @return The ID of the Firewall Device.
      * 
      */
-    private @Nullable Integer id;
+    private Integer id;
     /**
      * @return This Firewall&#39;s unique label.
      * 
      */
-    private @Nullable String label;
+    private String label;
     /**
      * @return The type of Firewall Device.
      * 
      */
-    private @Nullable String type;
+    private String type;
     /**
      * @return The URL of the underlying entity this device references.
      * 
      */
-    private @Nullable String url;
+    private String url;
 
     private FirewallDevice() {}
     /**
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
      */
-    public Optional<Integer> entityId() {
-        return Optional.ofNullable(this.entityId);
+    public Integer entityId() {
+        return this.entityId;
     }
     /**
      * @return The ID of the Firewall Device.
      * 
      */
-    public Optional<Integer> id() {
-        return Optional.ofNullable(this.id);
+    public Integer id() {
+        return this.id;
     }
     /**
      * @return This Firewall&#39;s unique label.
      * 
      */
-    public Optional<String> label() {
-        return Optional.ofNullable(this.label);
+    public String label() {
+        return this.label;
     }
     /**
      * @return The type of Firewall Device.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
     /**
      * @return The URL of the underlying entity this device references.
      * 
      */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -84,11 +83,11 @@ public final class FirewallDevice {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer entityId;
-        private @Nullable Integer id;
-        private @Nullable String label;
-        private @Nullable String type;
-        private @Nullable String url;
+        private Integer entityId;
+        private Integer id;
+        private String label;
+        private String type;
+        private String url;
         public Builder() {}
         public Builder(FirewallDevice defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,32 +99,42 @@ public final class FirewallDevice {
         }
 
         @CustomType.Setter
-        public Builder entityId(@Nullable Integer entityId) {
-
+        public Builder entityId(Integer entityId) {
+            if (entityId == null) {
+              throw new MissingRequiredPropertyException("FirewallDevice", "entityId");
+            }
             this.entityId = entityId;
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable Integer id) {
-
+        public Builder id(Integer id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("FirewallDevice", "id");
+            }
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder label(@Nullable String label) {
-
+        public Builder label(String label) {
+            if (label == null) {
+              throw new MissingRequiredPropertyException("FirewallDevice", "label");
+            }
             this.label = label;
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("FirewallDevice", "type");
+            }
             this.type = type;
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-
+        public Builder url(String url) {
+            if (url == null) {
+              throw new MissingRequiredPropertyException("FirewallDevice", "url");
+            }
             this.url = url;
             return this;
         }

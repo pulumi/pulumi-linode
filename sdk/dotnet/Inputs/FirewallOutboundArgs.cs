@@ -13,10 +13,16 @@ namespace Pulumi.Linode.Inputs
     public sealed class FirewallOutboundArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
+
+        /// <summary>
+        /// Used to describe this rule. For display purposes only.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         [Input("ipv4s")]
         private InputList<string>? _ipv4s;

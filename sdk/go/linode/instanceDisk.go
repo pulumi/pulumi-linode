@@ -119,6 +119,8 @@ type InstanceDisk struct {
 	AuthorizedUsers pulumi.StringArrayOutput `pulumi:"authorizedUsers"`
 	// When this disk was created.
 	Created pulumi.StringOutput `pulumi:"created"`
+	// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
 	Filesystem pulumi.StringOutput `pulumi:"filesystem"`
 	// An Image ID to deploy the Linode Disk from.
@@ -200,6 +202,8 @@ type instanceDiskState struct {
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
 	// When this disk was created.
 	Created *string `pulumi:"created"`
+	// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
 	Filesystem *string `pulumi:"filesystem"`
 	// An Image ID to deploy the Linode Disk from.
@@ -232,6 +236,8 @@ type InstanceDiskState struct {
 	AuthorizedUsers pulumi.StringArrayInput
 	// When this disk was created.
 	Created pulumi.StringPtrInput
+	// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+	DiskEncryption pulumi.StringPtrInput
 	// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
 	Filesystem pulumi.StringPtrInput
 	// An Image ID to deploy the Linode Disk from.
@@ -414,6 +420,11 @@ func (o InstanceDiskOutput) AuthorizedUsers() pulumi.StringArrayOutput {
 // When this disk was created.
 func (o InstanceDiskOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceDisk) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+func (o InstanceDiskOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceDisk) pulumi.StringOutput { return v.DiskEncryption }).(pulumi.StringOutput)
 }
 
 // The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)

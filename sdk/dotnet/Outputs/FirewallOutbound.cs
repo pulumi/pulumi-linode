@@ -14,9 +14,13 @@ namespace Pulumi.Linode.Outputs
     public sealed class FirewallOutbound
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// Used to describe this rule. For display purposes only.
+        /// </summary>
+        public readonly string? Description;
         /// <summary>
         /// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
         /// </summary>
@@ -42,6 +46,8 @@ namespace Pulumi.Linode.Outputs
         private FirewallOutbound(
             string action,
 
+            string? description,
+
             ImmutableArray<string> ipv4s,
 
             ImmutableArray<string> ipv6s,
@@ -53,6 +59,7 @@ namespace Pulumi.Linode.Outputs
             string protocol)
         {
             Action = action;
+            Description = description;
             Ipv4s = ipv4s;
             Ipv6s = ipv6s;
             Label = label;

@@ -55,6 +55,21 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The disk encryption policy for nodes in this pool.
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public Optional<Output<String>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * The ID of the node.
      * 
      */
@@ -119,6 +134,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     private LkeClusterPoolArgs(LkeClusterPoolArgs $) {
         this.autoscaler = $.autoscaler;
         this.count = $.count;
+        this.diskEncryption = $.diskEncryption;
         this.id = $.id;
         this.nodes = $.nodes;
         this.tags = $.tags;
@@ -187,6 +203,27 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder count(Integer count) {
             return count(Output.of(count));
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<String> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
         }
 
         /**

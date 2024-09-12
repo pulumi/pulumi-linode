@@ -16,6 +16,7 @@ public final class GetFirewallOutbound {
      * 
      */
     private String action;
+    private String description;
     /**
      * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
@@ -49,6 +50,9 @@ public final class GetFirewallOutbound {
      */
     public String action() {
         return this.action;
+    }
+    public String description() {
+        return this.description;
     }
     /**
      * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
@@ -96,6 +100,7 @@ public final class GetFirewallOutbound {
     @CustomType.Builder
     public static final class Builder {
         private String action;
+        private String description;
         private List<String> ipv4s;
         private List<String> ipv6s;
         private String label;
@@ -105,6 +110,7 @@ public final class GetFirewallOutbound {
         public Builder(GetFirewallOutbound defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
+    	      this.description = defaults.description;
     	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
@@ -118,6 +124,14 @@ public final class GetFirewallOutbound {
               throw new MissingRequiredPropertyException("GetFirewallOutbound", "action");
             }
             this.action = action;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFirewallOutbound", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +183,7 @@ public final class GetFirewallOutbound {
         public GetFirewallOutbound build() {
             final var _resultValue = new GetFirewallOutbound();
             _resultValue.action = action;
+            _resultValue.description = description;
             _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;

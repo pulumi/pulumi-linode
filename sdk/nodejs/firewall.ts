@@ -119,7 +119,7 @@ export class Firewall extends pulumi.CustomResource {
      *
      * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    public readonly disabled!: pulumi.Output<boolean>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *

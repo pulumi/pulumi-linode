@@ -24,6 +24,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int? Count;
         /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        public readonly string? DiskEncryption;
+        /// <summary>
         /// The ID of the node.
         /// </summary>
         public readonly int? Id;
@@ -46,6 +50,8 @@ namespace Pulumi.Linode.Outputs
 
             int? count,
 
+            string? diskEncryption,
+
             int? id,
 
             ImmutableArray<Outputs.LkeClusterPoolNode> nodes,
@@ -56,6 +62,7 @@ namespace Pulumi.Linode.Outputs
         {
             Autoscaler = autoscaler;
             Count = count;
+            DiskEncryption = diskEncryption;
             Id = id;
             Nodes = nodes;
             Tags = tags;

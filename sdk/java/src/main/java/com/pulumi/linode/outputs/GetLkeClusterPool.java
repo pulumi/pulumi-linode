@@ -29,6 +29,11 @@ public final class GetLkeClusterPool {
      */
     private Integer count;
     /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    private String diskEncryption;
+    /**
      * @return This Node Pool’s custom disk layout.
      * 
      */
@@ -78,6 +83,13 @@ public final class GetLkeClusterPool {
      */
     public Integer count() {
         return this.count;
+    }
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public String diskEncryption() {
+        return this.diskEncryption;
     }
     /**
      * @return This Node Pool’s custom disk layout.
@@ -140,6 +152,7 @@ public final class GetLkeClusterPool {
     public static final class Builder {
         private @Nullable List<GetLkeClusterPoolAutoscaler> autoscalers;
         private Integer count;
+        private String diskEncryption;
         private @Nullable List<GetLkeClusterPoolDisk> disks;
         private Integer id;
         private Map<String,String> labels;
@@ -152,6 +165,7 @@ public final class GetLkeClusterPool {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalers = defaults.autoscalers;
     	      this.count = defaults.count;
+    	      this.diskEncryption = defaults.diskEncryption;
     	      this.disks = defaults.disks;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -176,6 +190,14 @@ public final class GetLkeClusterPool {
               throw new MissingRequiredPropertyException("GetLkeClusterPool", "count");
             }
             this.count = count;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskEncryption(String diskEncryption) {
+            if (diskEncryption == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "diskEncryption");
+            }
+            this.diskEncryption = diskEncryption;
             return this;
         }
         @CustomType.Setter
@@ -246,6 +268,7 @@ public final class GetLkeClusterPool {
             final var _resultValue = new GetLkeClusterPool();
             _resultValue.autoscalers = autoscalers;
             _resultValue.count = count;
+            _resultValue.diskEncryption = diskEncryption;
             _resultValue.disks = disks;
             _resultValue.id = id;
             _resultValue.labels = labels;

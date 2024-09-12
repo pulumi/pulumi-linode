@@ -30,6 +30,12 @@ namespace Pulumi.Linode.Inputs
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        [Input("diskEncryption", required: true)]
+        public Input<string> DiskEncryption { get; set; } = null!;
+
         [Input("disks")]
         private InputList<Inputs.GetLkeClusterPoolDiskInputArgs>? _disks;
 

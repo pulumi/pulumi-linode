@@ -176,6 +176,20 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
+     * The disk encryption policy for this disk&#39;s parent instance. (`enabled`, `disabled`)
+     * 
+     */
+    @Export(name="diskEncryption", refs={String.class}, tree="[0]")
+    private Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for this disk&#39;s parent instance. (`enabled`, `disabled`)
+     * 
+     */
+    public Output<String> diskEncryption() {
+        return this.diskEncryption;
+    }
+    /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      * 
      */

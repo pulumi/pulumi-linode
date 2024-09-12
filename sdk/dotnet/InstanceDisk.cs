@@ -113,6 +113,12 @@ namespace Pulumi.Linode
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
+        /// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+        /// </summary>
+        [Output("diskEncryption")]
+        public Output<string> DiskEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         /// </summary>
         [Output("filesystem")]
@@ -362,6 +368,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
+
+        /// <summary>
+        /// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<string>? DiskEncryption { get; set; }
 
         /// <summary>
         /// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)

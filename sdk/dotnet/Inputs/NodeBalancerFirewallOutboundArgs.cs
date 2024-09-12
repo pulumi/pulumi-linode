@@ -18,6 +18,9 @@ namespace Pulumi.Linode.Inputs
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
+        [Input("description", required: true)]
+        public Input<string> Description { get; set; } = null!;
+
         [Input("ipv4s", required: true)]
         private InputList<string>? _ipv4s;
 

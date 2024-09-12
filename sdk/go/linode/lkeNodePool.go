@@ -25,6 +25,8 @@ type LkeNodePool struct {
 	Autoscaler LkeNodePoolAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId pulumi.IntOutput `pulumi:"clusterId"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -83,6 +85,8 @@ type lkeNodePoolState struct {
 	Autoscaler *LkeNodePoolAutoscaler `pulumi:"autoscaler"`
 	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId *int `pulumi:"clusterId"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption *string `pulumi:"diskEncryption"`
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -106,6 +110,8 @@ type LkeNodePoolState struct {
 	Autoscaler LkeNodePoolAutoscalerPtrInput
 	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId pulumi.IntPtrInput
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption pulumi.StringPtrInput
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -266,6 +272,11 @@ func (o LkeNodePoolOutput) Autoscaler() LkeNodePoolAutoscalerPtrOutput {
 // ID of the LKE Cluster where to create the current Node Pool.
 func (o LkeNodePoolOutput) ClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.IntOutput { return v.ClusterId }).(pulumi.IntOutput)
+}
+
+// The disk encryption policy for nodes in this pool.
+func (o LkeNodePoolOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeNodePool) pulumi.StringOutput { return v.DiskEncryption }).(pulumi.StringOutput)
 }
 
 // A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).

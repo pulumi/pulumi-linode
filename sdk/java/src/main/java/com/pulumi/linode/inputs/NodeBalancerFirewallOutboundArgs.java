@@ -30,6 +30,13 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
         return this.action;
     }
 
+    @Import(name="description", required=true)
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
+
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      * 
@@ -109,6 +116,7 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
 
     private NodeBalancerFirewallOutboundArgs(NodeBalancerFirewallOutboundArgs $) {
         this.action = $.action;
+        this.description = $.description;
         this.ipv4s = $.ipv4s;
         this.ipv6s = $.ipv6s;
         this.label = $.label;
@@ -153,6 +161,15 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        public Builder description(Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -283,6 +300,9 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
         public NodeBalancerFirewallOutboundArgs build() {
             if ($.action == null) {
                 throw new MissingRequiredPropertyException("NodeBalancerFirewallOutboundArgs", "action");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("NodeBalancerFirewallOutboundArgs", "description");
             }
             if ($.ipv4s == null) {
                 throw new MissingRequiredPropertyException("NodeBalancerFirewallOutboundArgs", "ipv4s");

@@ -221,6 +221,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly configs!: pulumi.Output<outputs.InstanceConfig[]>;
     /**
+     * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     *
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     */
+    public readonly diskEncryption!: pulumi.Output<string>;
+    /**
      * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      */
     public readonly disks!: pulumi.Output<outputs.InstanceDisk[]>;
@@ -268,6 +274,10 @@ export class Instance extends pulumi.CustomResource {
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     public readonly label!: pulumi.Output<string>;
+    /**
+     * If applicable, the ID of the LKE cluster this instance is a part of.
+     */
+    public /*out*/ readonly lkeClusterId!: pulumi.Output<number>;
     /**
      * Various fields related to the Linode Metadata service.
      */
@@ -384,6 +394,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["bootConfigLabel"] = state ? state.bootConfigLabel : undefined;
             resourceInputs["booted"] = state ? state.booted : undefined;
             resourceInputs["configs"] = state ? state.configs : undefined;
+            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
             resourceInputs["firewallId"] = state ? state.firewallId : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
@@ -395,6 +406,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipv4s"] = state ? state.ipv4s : undefined;
             resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["lkeClusterId"] = state ? state.lkeClusterId : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["migrationType"] = state ? state.migrationType : undefined;
             resourceInputs["placementGroup"] = state ? state.placementGroup : undefined;
@@ -426,6 +438,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["bootConfigLabel"] = args ? args.bootConfigLabel : undefined;
             resourceInputs["booted"] = args ? args.booted : undefined;
             resourceInputs["configs"] = args ? args.configs : undefined;
+            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
             resourceInputs["disks"] = args ? args.disks : undefined;
             resourceInputs["firewallId"] = args ? args.firewallId : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
@@ -453,6 +466,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["ipv4s"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
+            resourceInputs["lkeClusterId"] = undefined /*out*/;
             resourceInputs["privateIpAddress"] = undefined /*out*/;
             resourceInputs["specs"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -511,6 +525,12 @@ export interface InstanceState {
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
     /**
+     * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     *
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     */
+    diskEncryption?: pulumi.Input<string>;
+    /**
      * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      */
     disks?: pulumi.Input<pulumi.Input<inputs.InstanceDisk>[]>;
@@ -558,6 +578,10 @@ export interface InstanceState {
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * If applicable, the ID of the LKE cluster this instance is a part of.
+     */
+    lkeClusterId?: pulumi.Input<number>;
     /**
      * Various fields related to the Linode Metadata service.
      */
@@ -695,6 +719,12 @@ export interface InstanceArgs {
      * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
+    /**
+     * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     *
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     */
+    diskEncryption?: pulumi.Input<string>;
     /**
      * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      */

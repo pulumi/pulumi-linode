@@ -434,11 +434,11 @@ class FirewallDevice(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 entity_id: Optional[int] = None,
-                 id: Optional[int] = None,
-                 label: Optional[str] = None,
-                 type: Optional[str] = None,
-                 url: Optional[str] = None):
+                 entity_id: int,
+                 id: int,
+                 label: str,
+                 type: str,
+                 url: str):
         """
         :param int entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
         :param int id: The ID of the Firewall Device.
@@ -446,20 +446,15 @@ class FirewallDevice(dict):
         :param str type: The type of Firewall Device.
         :param str url: The URL of the underlying entity this device references.
         """
-        if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[int]:
+    def entity_id(self) -> int:
         """
         The ID of the underlying entity this device references (i.e. the Linode's ID).
         """
@@ -467,7 +462,7 @@ class FirewallDevice(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[int]:
+    def id(self) -> int:
         """
         The ID of the Firewall Device.
         """
@@ -475,7 +470,7 @@ class FirewallDevice(dict):
 
     @property
     @pulumi.getter
-    def label(self) -> Optional[str]:
+    def label(self) -> str:
         """
         This Firewall's unique label.
         """
@@ -483,7 +478,7 @@ class FirewallDevice(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         The type of Firewall Device.
         """
@@ -491,7 +486,7 @@ class FirewallDevice(dict):
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[str]:
+    def url(self) -> str:
         """
         The URL of the underlying entity this device references.
         """
@@ -504,6 +499,7 @@ class FirewallInbound(dict):
                  action: str,
                  label: str,
                  protocol: str,
+                 description: Optional[str] = None,
                  ipv4s: Optional[Sequence[str]] = None,
                  ipv6s: Optional[Sequence[str]] = None,
                  ports: Optional[str] = None):
@@ -511,6 +507,7 @@ class FirewallInbound(dict):
         :param str action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param str label: Used to identify this rule. For display purposes only.
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        :param str description: Used to describe this rule. For display purposes only.
         :param Sequence[str] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -518,6 +515,8 @@ class FirewallInbound(dict):
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "protocol", protocol)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ipv4s is not None:
             pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
@@ -551,6 +550,14 @@ class FirewallInbound(dict):
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Used to describe this rule. For display purposes only.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
     def ipv4s(self) -> Optional[Sequence[str]]:
         """
         A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
@@ -580,13 +587,15 @@ class FirewallOutbound(dict):
                  action: str,
                  label: str,
                  protocol: str,
+                 description: Optional[str] = None,
                  ipv4s: Optional[Sequence[str]] = None,
                  ipv6s: Optional[Sequence[str]] = None,
                  ports: Optional[str] = None):
         """
-        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param str action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param str label: This Firewall's unique label.
         :param str protocol: The network protocol this rule controls.
+        :param str description: Used to describe this rule. For display purposes only.
         :param Sequence[str] ipv4s: A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
         :param Sequence[str] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         :param str ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -594,6 +603,8 @@ class FirewallOutbound(dict):
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "protocol", protocol)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ipv4s is not None:
             pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
@@ -605,7 +616,7 @@ class FirewallOutbound(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -624,6 +635,14 @@ class FirewallOutbound(dict):
         The network protocol this rule controls.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Used to describe this rule. For display purposes only.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -2648,10 +2667,28 @@ class LkeClusterControlPlaneAclAddress(dict):
 
 @pulumi.output_type
 class LkeClusterPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskEncryption":
+            suggest = "disk_encryption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LkeClusterPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LkeClusterPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LkeClusterPool.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  autoscaler: Optional['outputs.LkeClusterPoolAutoscaler'] = None,
                  count: Optional[int] = None,
+                 disk_encryption: Optional[str] = None,
                  id: Optional[int] = None,
                  nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None,
                  tags: Optional[Sequence[str]] = None):
@@ -2661,6 +2698,7 @@ class LkeClusterPool(dict):
         :param int count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
                
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        :param str disk_encryption: The disk encryption policy for nodes in this pool.
         :param int id: The ID of the node.
         :param Sequence['LkeClusterPoolNodeArgs'] nodes: The nodes in the node pool.
         :param Sequence[str] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -2670,6 +2708,8 @@ class LkeClusterPool(dict):
             pulumi.set(__self__, "autoscaler", autoscaler)
         if count is not None:
             pulumi.set(__self__, "count", count)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if nodes is not None:
@@ -2702,6 +2742,14 @@ class LkeClusterPool(dict):
         * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[str]:
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        return pulumi.get(self, "disk_encryption")
 
     @property
     @pulumi.getter
@@ -3104,6 +3152,7 @@ class NodeBalancerFirewall(dict):
 class NodeBalancerFirewallInbound(dict):
     def __init__(__self__, *,
                  action: str,
+                 description: str,
                  ipv4s: Sequence[str],
                  ipv6s: Sequence[str],
                  label: str,
@@ -3118,6 +3167,7 @@ class NodeBalancerFirewallInbound(dict):
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
@@ -3131,6 +3181,11 @@ class NodeBalancerFirewallInbound(dict):
         Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -3177,6 +3232,7 @@ class NodeBalancerFirewallInbound(dict):
 class NodeBalancerFirewallOutbound(dict):
     def __init__(__self__, *,
                  action: str,
+                 description: str,
                  ipv4s: Sequence[str],
                  ipv6s: Sequence[str],
                  label: str,
@@ -3191,6 +3247,7 @@ class NodeBalancerFirewallOutbound(dict):
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
@@ -3204,6 +3261,11 @@ class NodeBalancerFirewallOutbound(dict):
         Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -5604,6 +5666,7 @@ class GetFirewallDeviceResult(dict):
 class GetFirewallInboundResult(dict):
     def __init__(__self__, *,
                  action: str,
+                 description: str,
                  ipv4s: Sequence[str],
                  ipv6s: Sequence[str],
                  label: str,
@@ -5618,6 +5681,7 @@ class GetFirewallInboundResult(dict):
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
@@ -5631,6 +5695,11 @@ class GetFirewallInboundResult(dict):
         Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -5677,6 +5746,7 @@ class GetFirewallInboundResult(dict):
 class GetFirewallOutboundResult(dict):
     def __init__(__self__, *,
                  action: str,
+                 description: str,
                  ipv4s: Sequence[str],
                  ipv6s: Sequence[str],
                  label: str,
@@ -5691,6 +5761,7 @@ class GetFirewallOutboundResult(dict):
         :param str protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
@@ -5704,6 +5775,11 @@ class GetFirewallOutboundResult(dict):
         Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -8627,6 +8703,7 @@ class GetInstancesInstanceResult(dict):
                  backups: Sequence['outputs.GetInstancesInstanceBackupResult'],
                  boot_config_label: str,
                  configs: Sequence['outputs.GetInstancesInstanceConfigResult'],
+                 disk_encryption: str,
                  disks: Sequence['outputs.GetInstancesInstanceDiskResult'],
                  group: str,
                  has_user_data: bool,
@@ -8637,6 +8714,7 @@ class GetInstancesInstanceResult(dict):
                  ipv4s: Sequence[str],
                  ipv6: str,
                  label: str,
+                 lke_cluster_id: int,
                  placement_groups: Sequence['outputs.GetInstancesInstancePlacementGroupResult'],
                  private_ip_address: str,
                  region: str,
@@ -8650,6 +8728,7 @@ class GetInstancesInstanceResult(dict):
         :param Sequence['GetInstancesInstanceBackupArgs'] backups: Information about this Linode's backups status.
         :param str boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param Sequence['GetInstancesInstanceConfigArgs'] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param str disk_encryption: The disk encryption policy for this instance.
         :param Sequence['GetInstancesInstanceDiskArgs'] disks: Disks associated with this Linode.
         :param str group: The display group of the Linode instance.
         :param bool has_user_data: Whether this Instance was created with user-data.
@@ -8660,6 +8739,7 @@ class GetInstancesInstanceResult(dict):
         :param Sequence[str] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param str ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        :param int lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param str private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         :param str status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -8672,6 +8752,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "backups", backups)
         pulumi.set(__self__, "boot_config_label", boot_config_label)
         pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "disk_encryption", disk_encryption)
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "has_user_data", has_user_data)
@@ -8682,6 +8763,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "lke_cluster_id", lke_cluster_id)
         pulumi.set(__self__, "placement_groups", placement_groups)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
         pulumi.set(__self__, "region", region)
@@ -8720,6 +8802,14 @@ class GetInstancesInstanceResult(dict):
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         """
         return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> str:
+        """
+        The disk encryption policy for this instance.
+        """
+        return pulumi.get(self, "disk_encryption")
 
     @property
     @pulumi.getter
@@ -8800,6 +8890,14 @@ class GetInstancesInstanceResult(dict):
         The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="lkeClusterId")
+    def lke_cluster_id(self) -> int:
+        """
+        If applicable, the ID of the LKE cluster this instance is a part of.
+        """
+        return pulumi.get(self, "lke_cluster_id")
 
     @property
     @pulumi.getter(name="placementGroups")
@@ -10252,6 +10350,7 @@ class GetLkeClusterControlPlaneAclAddressResult(dict):
 class GetLkeClusterPoolResult(dict):
     def __init__(__self__, *,
                  count: int,
+                 disk_encryption: str,
                  id: int,
                  labels: Mapping[str, str],
                  tags: Sequence[str],
@@ -10262,6 +10361,7 @@ class GetLkeClusterPoolResult(dict):
                  nodes: Optional[Sequence['outputs.GetLkeClusterPoolNodeResult']] = None):
         """
         :param int count: The number of nodes in the Node Pool.
+        :param str disk_encryption: The disk encryption policy for nodes in this pool.
         :param int id: The LKE Cluster's ID.
         :param Mapping[str, str] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -10272,6 +10372,7 @@ class GetLkeClusterPoolResult(dict):
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         """
         pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "disk_encryption", disk_encryption)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "tags", tags)
@@ -10291,6 +10392,14 @@ class GetLkeClusterPoolResult(dict):
         The number of nodes in the Node Pool.
         """
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> str:
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        return pulumi.get(self, "disk_encryption")
 
     @property
     @pulumi.getter

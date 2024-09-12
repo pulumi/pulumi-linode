@@ -14,10 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallOutbound {
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     private String action;
+    /**
+     * @return Used to describe this rule. For display purposes only.
+     * 
+     */
+    private @Nullable String description;
     /**
      * @return A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      * 
@@ -46,11 +51,18 @@ public final class FirewallOutbound {
 
     private FirewallOutbound() {}
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     public String action() {
         return this.action;
+    }
+    /**
+     * @return Used to describe this rule. For display purposes only.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     /**
      * @return A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
@@ -98,6 +110,7 @@ public final class FirewallOutbound {
     @CustomType.Builder
     public static final class Builder {
         private String action;
+        private @Nullable String description;
         private @Nullable List<String> ipv4s;
         private @Nullable List<String> ipv6s;
         private String label;
@@ -107,6 +120,7 @@ public final class FirewallOutbound {
         public Builder(FirewallOutbound defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
+    	      this.description = defaults.description;
     	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
@@ -120,6 +134,12 @@ public final class FirewallOutbound {
               throw new MissingRequiredPropertyException("FirewallOutbound", "action");
             }
             this.action = action;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -165,6 +185,7 @@ public final class FirewallOutbound {
         public FirewallOutbound build() {
             final var _resultValue = new FirewallOutbound();
             _resultValue.action = action;
+            _resultValue.description = description;
             _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;

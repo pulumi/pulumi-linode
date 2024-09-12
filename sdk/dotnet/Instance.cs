@@ -278,6 +278,14 @@ namespace Pulumi.Linode
         [Output("configs")]
         public Output<ImmutableArray<Outputs.InstanceConfig>> Configs { get; private set; } = null!;
 
+        /// <summary>
+        /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+        /// 
+        /// * **NOTE: Disk encryption may not currently be available to all users.**
+        /// </summary>
+        [Output("diskEncryption")]
+        public Output<string> DiskEncryption { get; private set; } = null!;
+
         [Output("disks")]
         public Output<ImmutableArray<Outputs.InstanceDisk>> Disks { get; private set; } = null!;
 
@@ -342,6 +350,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
+
+        /// <summary>
+        /// If applicable, the ID of the LKE cluster this instance is a part of.
+        /// </summary>
+        [Output("lkeClusterId")]
+        public Output<int> LkeClusterId { get; private set; } = null!;
 
         /// <summary>
         /// Various fields related to the Linode Metadata service.
@@ -593,6 +607,14 @@ namespace Pulumi.Linode
             get => _configs ?? (_configs = new InputList<Inputs.InstanceConfigArgs>());
             set => _configs = value;
         }
+
+        /// <summary>
+        /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+        /// 
+        /// * **NOTE: Disk encryption may not currently be available to all users.**
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<string>? DiskEncryption { get; set; }
 
         [Input("disks")]
         private InputList<Inputs.InstanceDiskArgs>? _disks;
@@ -875,6 +897,14 @@ namespace Pulumi.Linode
             set => _configs = value;
         }
 
+        /// <summary>
+        /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+        /// 
+        /// * **NOTE: Disk encryption may not currently be available to all users.**
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<string>? DiskEncryption { get; set; }
+
         [Input("disks")]
         private InputList<Inputs.InstanceDiskGetArgs>? _disks;
         [Obsolete(@"The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.")]
@@ -957,6 +987,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the LKE cluster this instance is a part of.
+        /// </summary>
+        [Input("lkeClusterId")]
+        public Input<int>? LkeClusterId { get; set; }
 
         [Input("metadatas")]
         private InputList<Inputs.InstanceMetadataGetArgs>? _metadatas;

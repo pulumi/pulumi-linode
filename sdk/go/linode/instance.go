@@ -267,6 +267,10 @@ type Instance struct {
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs InstanceConfigArrayOutput `pulumi:"configs"`
+	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+	//
+	// * **NOTE: Disk encryption may not currently be available to all users.**
+	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks InstanceDiskTypeArrayOutput `pulumi:"disks"`
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
@@ -293,6 +297,8 @@ type Instance struct {
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringOutput `pulumi:"label"`
+	// If applicable, the ID of the LKE cluster this instance is a part of.
+	LkeClusterId pulumi.IntOutput `pulumi:"lkeClusterId"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayOutput `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -420,6 +426,10 @@ type instanceState struct {
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs []InstanceConfig `pulumi:"configs"`
+	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+	//
+	// * **NOTE: Disk encryption may not currently be available to all users.**
+	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
@@ -446,6 +456,8 @@ type instanceState struct {
 	Ipv6 *string `pulumi:"ipv6"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
+	// If applicable, the ID of the LKE cluster this instance is a part of.
+	LkeClusterId *int `pulumi:"lkeClusterId"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -530,6 +542,10 @@ type InstanceState struct {
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs InstanceConfigArrayInput
+	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+	//
+	// * **NOTE: Disk encryption may not currently be available to all users.**
+	DiskEncryption pulumi.StringPtrInput
 	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks InstanceDiskTypeArrayInput
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
@@ -556,6 +572,8 @@ type InstanceState struct {
 	Ipv6 pulumi.StringPtrInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
+	// If applicable, the ID of the LKE cluster this instance is a part of.
+	LkeClusterId pulumi.IntPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -642,6 +660,10 @@ type instanceArgs struct {
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs []InstanceConfig `pulumi:"configs"`
+	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+	//
+	// * **NOTE: Disk encryption may not currently be available to all users.**
+	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks []InstanceDiskType `pulumi:"disks"`
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
@@ -735,6 +757,10 @@ type InstanceArgs struct {
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
 	Configs InstanceConfigArrayInput
+	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+	//
+	// * **NOTE: Disk encryption may not currently be available to all users.**
+	DiskEncryption pulumi.StringPtrInput
 	// Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 	Disks InstanceDiskTypeArrayInput
 	// The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
@@ -942,6 +968,13 @@ func (o InstanceOutput) Configs() InstanceConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceConfigArrayOutput { return v.Configs }).(InstanceConfigArrayOutput)
 }
 
+// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+//
+// * **NOTE: Disk encryption may not currently be available to all users.**
+func (o InstanceOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskEncryption }).(pulumi.StringOutput)
+}
+
 // Deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.
 func (o InstanceOutput) Disks() InstanceDiskTypeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDiskTypeArrayOutput { return v.Disks }).(InstanceDiskTypeArrayOutput)
@@ -999,6 +1032,11 @@ func (o InstanceOutput) Ipv6() pulumi.StringOutput {
 // The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 func (o InstanceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
+}
+
+// If applicable, the ID of the LKE cluster this instance is a part of.
+func (o InstanceOutput) LkeClusterId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LkeClusterId }).(pulumi.IntOutput)
 }
 
 // Various fields related to the Linode Metadata service.

@@ -33,6 +33,21 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Used to describe this rule. For display purposes only.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Used to describe this rule. For display purposes only.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      * 
      */
@@ -111,6 +126,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
 
     private FirewallInboundArgs(FirewallInboundArgs $) {
         this.action = $.action;
+        this.description = $.description;
         this.ipv4s = $.ipv4s;
         this.ipv6s = $.ipv6s;
         this.label = $.label;
@@ -155,6 +171,27 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        /**
+         * @param description Used to describe this rule. For display purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Used to describe this rule. For display purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

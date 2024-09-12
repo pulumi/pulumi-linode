@@ -351,11 +351,11 @@ class DatabasePostgresqlUpdatesArgs:
 @pulumi.input_type
 class FirewallDeviceArgs:
     def __init__(__self__, *,
-                 entity_id: Optional[pulumi.Input[int]] = None,
-                 id: Optional[pulumi.Input[int]] = None,
-                 label: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 entity_id: pulumi.Input[int],
+                 id: pulumi.Input[int],
+                 label: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 url: pulumi.Input[str]):
         """
         :param pulumi.Input[int] entity_id: The ID of the underlying entity this device references (i.e. the Linode's ID).
         :param pulumi.Input[int] id: The ID of the Firewall Device.
@@ -363,75 +363,70 @@ class FirewallDeviceArgs:
         :param pulumi.Input[str] type: The type of Firewall Device.
         :param pulumi.Input[str] url: The URL of the underlying entity this device references.
         """
-        if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[int]]:
+    def entity_id(self) -> pulumi.Input[int]:
         """
         The ID of the underlying entity this device references (i.e. the Linode's ID).
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[int]]):
+    def entity_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "entity_id", value)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[int]]:
+    def id(self) -> pulumi.Input[int]:
         """
         The ID of the Firewall Device.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[int]]):
+    def id(self, value: pulumi.Input[int]):
         pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[str]]:
+    def label(self) -> pulumi.Input[str]:
         """
         This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[str]]):
+    def label(self, value: pulumi.Input[str]):
         pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> pulumi.Input[str]:
         """
         The type of Firewall Device.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
+    def url(self) -> pulumi.Input[str]:
         """
         The URL of the underlying entity this device references.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
+    def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
 
@@ -441,6 +436,7 @@ class FirewallInboundArgs:
                  action: pulumi.Input[str],
                  label: pulumi.Input[str],
                  protocol: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ports: Optional[pulumi.Input[str]] = None):
@@ -448,6 +444,7 @@ class FirewallInboundArgs:
         :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[str] label: Used to identify this rule. For display purposes only.
         :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        :param pulumi.Input[str] description: Used to describe this rule. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
         :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -455,6 +452,8 @@ class FirewallInboundArgs:
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "protocol", protocol)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ipv4s is not None:
             pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
@@ -500,6 +499,18 @@ class FirewallInboundArgs:
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to describe this rule. For display purposes only.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
@@ -541,13 +552,15 @@ class FirewallOutboundArgs:
                  action: pulumi.Input[str],
                  label: pulumi.Input[str],
                  protocol: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ports: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        :param pulumi.Input[str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[str] label: This Firewall's unique label.
         :param pulumi.Input[str] protocol: The network protocol this rule controls.
+        :param pulumi.Input[str] description: Used to describe this rule. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6s: A list of IPv6 addresses or networks this rule applies to.
         :param pulumi.Input[str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -555,6 +568,8 @@ class FirewallOutboundArgs:
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "protocol", protocol)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ipv4s is not None:
             pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
@@ -566,7 +581,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         """
         return pulumi.get(self, "action")
 
@@ -597,6 +612,18 @@ class FirewallOutboundArgs:
     @protocol.setter
     def protocol(self, value: pulumi.Input[str]):
         pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to describe this rule. For display purposes only.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -2729,6 +2756,7 @@ class LkeClusterPoolArgs:
                  type: pulumi.Input[str],
                  autoscaler: Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']] = None,
                  count: Optional[pulumi.Input[int]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2738,6 +2766,7 @@ class LkeClusterPoolArgs:
         :param pulumi.Input[int] count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
                
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[int] id: The ID of the node.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]] nodes: The nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -2747,6 +2776,8 @@ class LkeClusterPoolArgs:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if count is not None:
             pulumi.set(__self__, "count", count)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if nodes is not None:
@@ -2791,6 +2822,18 @@ class LkeClusterPoolArgs:
     @count.setter
     def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_encryption", value)
 
     @property
     @pulumi.getter
@@ -3252,6 +3295,7 @@ class NodeBalancerFirewallArgs:
 class NodeBalancerFirewallInboundArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
+                 description: pulumi.Input[str],
                  ipv4s: pulumi.Input[Sequence[pulumi.Input[str]]],
                  ipv6s: pulumi.Input[Sequence[pulumi.Input[str]]],
                  label: pulumi.Input[str],
@@ -3266,6 +3310,7 @@ class NodeBalancerFirewallInboundArgs:
         :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
@@ -3283,6 +3328,15 @@ class NodeBalancerFirewallInboundArgs:
     @action.setter
     def action(self, value: pulumi.Input[str]):
         pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -3349,6 +3403,7 @@ class NodeBalancerFirewallInboundArgs:
 class NodeBalancerFirewallOutboundArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
+                 description: pulumi.Input[str],
                  ipv4s: pulumi.Input[Sequence[pulumi.Input[str]]],
                  ipv6s: pulumi.Input[Sequence[pulumi.Input[str]]],
                  label: pulumi.Input[str],
@@ -3363,6 +3418,7 @@ class NodeBalancerFirewallOutboundArgs:
         :param pulumi.Input[str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
         """
         pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ipv4s", ipv4s)
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
@@ -3380,6 +3436,15 @@ class NodeBalancerFirewallOutboundArgs:
     @action.setter
     def action(self, value: pulumi.Input[str]):
         pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -7876,6 +7941,7 @@ class GetLkeClusterControlPlaneAclAddressArgs:
 class GetLkeClusterPoolArgs:
     def __init__(__self__, *,
                  count: int,
+                 disk_encryption: str,
                  id: int,
                  labels: Mapping[str, str],
                  tags: Sequence[str],
@@ -7886,6 +7952,7 @@ class GetLkeClusterPoolArgs:
                  nodes: Optional[Sequence['GetLkeClusterPoolNodeArgs']] = None):
         """
         :param int count: The number of nodes in the Node Pool.
+        :param str disk_encryption: The disk encryption policy for nodes in this pool.
         :param int id: The LKE Cluster's ID.
         :param Mapping[str, str] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -7896,6 +7963,7 @@ class GetLkeClusterPoolArgs:
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         """
         pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "disk_encryption", disk_encryption)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "tags", tags)
@@ -7919,6 +7987,18 @@ class GetLkeClusterPoolArgs:
     @count.setter
     def count(self, value: int):
         pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> str:
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: str):
+        pulumi.set(self, "disk_encryption", value)
 
     @property
     @pulumi.getter

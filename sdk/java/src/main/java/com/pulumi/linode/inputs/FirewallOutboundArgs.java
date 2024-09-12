@@ -18,18 +18,33 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     public static final FirewallOutboundArgs Empty = new FirewallOutboundArgs();
 
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
      * 
      */
     public Output<String> action() {
         return this.action;
+    }
+
+    /**
+     * Used to describe this rule. For display purposes only.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Used to describe this rule. For display purposes only.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -111,6 +126,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
 
     private FirewallOutboundArgs(FirewallOutboundArgs $) {
         this.action = $.action;
+        this.description = $.description;
         this.ipv4s = $.ipv4s;
         this.ipv6s = $.ipv6s;
         this.label = $.label;
@@ -137,7 +153,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
          * 
          * @return builder
          * 
@@ -148,13 +164,34 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
          * 
          * @return builder
          * 
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        /**
+         * @param description Used to describe this rule. For display purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Used to describe this rule. For display purposes only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

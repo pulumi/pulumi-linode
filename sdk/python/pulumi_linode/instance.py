@@ -25,6 +25,7 @@ class InstanceArgs:
                  boot_config_label: Optional[pulumi.Input[str]] = None,
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
                  firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,9 @@ class InstanceArgs:
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+               
+               * **NOTE: Disk encryption may not currently be available to all users.**
         :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
@@ -123,6 +127,8 @@ class InstanceArgs:
             pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if disks is not None:
             warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
             pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
@@ -282,6 +288,20 @@ class InstanceArgs:
     @configs.setter
     def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]):
         pulumi.set(self, "configs", value)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+
+        * **NOTE: Disk encryption may not currently be available to all users.**
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_encryption", value)
 
     @property
     @pulumi.getter
@@ -558,6 +578,7 @@ class _InstanceState:
                  boot_config_label: Optional[pulumi.Input[str]] = None,
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
                  firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -569,6 +590,7 @@ class _InstanceState:
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
+                 lke_cluster_id: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: Optional[pulumi.Input[str]] = None,
                  placement_group: Optional[pulumi.Input['InstancePlacementGroupArgs']] = None,
@@ -602,6 +624,9 @@ class _InstanceState:
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+               
+               * **NOTE: Disk encryption may not currently be available to all users.**
         :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[bool] has_user_data: Whether this Instance was created with user-data.
@@ -614,6 +639,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
                
@@ -675,6 +701,8 @@ class _InstanceState:
             pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if disks is not None:
             warnings.warn("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""", DeprecationWarning)
             pulumi.log.warn("""disks is deprecated: The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
@@ -703,6 +731,8 @@ class _InstanceState:
             pulumi.set(__self__, "ipv6", ipv6)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if lke_cluster_id is not None:
+            pulumi.set(__self__, "lke_cluster_id", lke_cluster_id)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
         if migration_type is not None:
@@ -854,6 +884,20 @@ class _InstanceState:
         pulumi.set(self, "configs", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+
+        * **NOTE: Disk encryption may not currently be available to all users.**
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter
     @_utilities.deprecated("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]]:
@@ -985,6 +1029,18 @@ class _InstanceState:
     @label.setter
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="lkeClusterId")
+    def lke_cluster_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        If applicable, the ID of the LKE cluster this instance is a part of.
+        """
+        return pulumi.get(self, "lke_cluster_id")
+
+    @lke_cluster_id.setter
+    def lke_cluster_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lke_cluster_id", value)
 
     @property
     @pulumi.getter
@@ -1237,6 +1293,7 @@ class Instance(pulumi.CustomResource):
                  boot_config_label: Optional[pulumi.Input[str]] = None,
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
                  firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -1410,6 +1467,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+               
+               * **NOTE: Disk encryption may not currently be available to all users.**
         :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
@@ -1620,6 +1680,7 @@ class Instance(pulumi.CustomResource):
                  boot_config_label: Optional[pulumi.Input[str]] = None,
                  booted: Optional[pulumi.Input[bool]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
                  firewall_id: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -1658,6 +1719,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["boot_config_label"] = boot_config_label
             __props__.__dict__["booted"] = booted
             __props__.__dict__["configs"] = configs
+            __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["disks"] = disks
             __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["group"] = group
@@ -1687,6 +1749,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["ipv4s"] = None
             __props__.__dict__["ipv6"] = None
+            __props__.__dict__["lke_cluster_id"] = None
             __props__.__dict__["private_ip_address"] = None
             __props__.__dict__["specs"] = None
             __props__.__dict__["status"] = None
@@ -1711,6 +1774,7 @@ class Instance(pulumi.CustomResource):
             boot_config_label: Optional[pulumi.Input[str]] = None,
             booted: Optional[pulumi.Input[bool]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
+            disk_encryption: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
             firewall_id: Optional[pulumi.Input[int]] = None,
             group: Optional[pulumi.Input[str]] = None,
@@ -1722,6 +1786,7 @@ class Instance(pulumi.CustomResource):
             ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
+            lke_cluster_id: Optional[pulumi.Input[int]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
             migration_type: Optional[pulumi.Input[str]] = None,
             placement_group: Optional[pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
@@ -1760,6 +1825,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+               
+               * **NOTE: Disk encryption may not currently be available to all users.**
         :param pulumi.Input[int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[bool] has_user_data: Whether this Instance was created with user-data.
@@ -1772,6 +1840,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
                
@@ -1825,6 +1894,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["boot_config_label"] = boot_config_label
         __props__.__dict__["booted"] = booted
         __props__.__dict__["configs"] = configs
+        __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["disks"] = disks
         __props__.__dict__["firewall_id"] = firewall_id
         __props__.__dict__["group"] = group
@@ -1836,6 +1906,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ipv4s"] = ipv4s
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["label"] = label
+        __props__.__dict__["lke_cluster_id"] = lke_cluster_id
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["migration_type"] = migration_type
         __props__.__dict__["placement_group"] = placement_group
@@ -1934,6 +2005,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "configs")
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> pulumi.Output[str]:
+        """
+        The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+
+        * **NOTE: Disk encryption may not currently be available to all users.**
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @property
     @pulumi.getter
     @_utilities.deprecated("""The embedded disk block in Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the InstanceDisk resource.""")
     def disks(self) -> pulumi.Output[Sequence['outputs.InstanceDisk']]:
@@ -2021,6 +2102,14 @@ class Instance(pulumi.CustomResource):
         The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="lkeClusterId")
+    def lke_cluster_id(self) -> pulumi.Output[int]:
+        """
+        If applicable, the ID of the LKE cluster this instance is a part of.
+        """
+        return pulumi.get(self, "lke_cluster_id")
 
     @property
     @pulumi.getter

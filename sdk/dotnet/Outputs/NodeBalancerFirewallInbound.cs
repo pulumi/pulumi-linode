@@ -17,6 +17,7 @@ namespace Pulumi.Linode.Outputs
         /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         /// </summary>
         public readonly string Action;
+        public readonly string Description;
         /// <summary>
         /// A list of IPv4 addresses or networks. Must be in IP/mask format.
         /// </summary>
@@ -42,6 +43,8 @@ namespace Pulumi.Linode.Outputs
         private NodeBalancerFirewallInbound(
             string action,
 
+            string description,
+
             ImmutableArray<string> ipv4s,
 
             ImmutableArray<string> ipv6s,
@@ -53,6 +56,7 @@ namespace Pulumi.Linode.Outputs
             string protocol)
         {
             Action = action;
+            Description = description;
             Ipv4s = ipv4s;
             Ipv6s = ipv6s;
             Label = label;
