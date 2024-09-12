@@ -142,6 +142,7 @@ class _LkeNodePoolState:
     def __init__(__self__, *,
                  autoscaler: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']] = None,
                  cluster_id: Optional[pulumi.Input[int]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]] = None,
@@ -151,6 +152,7 @@ class _LkeNodePoolState:
         """
         Input properties used for looking up and filtering LkeNodePool resources.
         :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
                
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -167,6 +169,8 @@ class _LkeNodePoolState:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if node_count is not None:
@@ -200,6 +204,18 @@ class _LkeNodePoolState:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_encryption", value)
 
     @property
     @pulumi.getter
@@ -372,6 +388,7 @@ class LkeNodePool(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["disk_encryption"] = None
             __props__.__dict__["nodes"] = None
         super(LkeNodePool, __self__).__init__(
             'linode:index/lkeNodePool:LkeNodePool',
@@ -385,6 +402,7 @@ class LkeNodePool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[int]] = None,
+            disk_encryption: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]]] = None,
@@ -399,6 +417,7 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
                
                * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -417,6 +436,7 @@ class LkeNodePool(pulumi.CustomResource):
 
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["labels"] = labels
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["nodes"] = nodes
@@ -437,6 +457,14 @@ class LkeNodePool(pulumi.CustomResource):
         ID of the LKE Cluster where to create the current Node Pool.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> pulumi.Output[str]:
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        return pulumi.get(self, "disk_encryption")
 
     @property
     @pulumi.getter

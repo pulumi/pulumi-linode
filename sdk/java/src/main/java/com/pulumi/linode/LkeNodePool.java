@@ -53,6 +53,20 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
+     * The disk encryption policy for nodes in this pool.
+     * 
+     */
+    @Export(name="diskEncryption", refs={String.class}, tree="[0]")
+    private Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public Output<String> diskEncryption() {
+        return this.diskEncryption;
+    }
+    /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.

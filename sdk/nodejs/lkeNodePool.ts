@@ -49,6 +49,10 @@ export class LkeNodePool extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<number>;
     /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    public /*out*/ readonly diskEncryption!: pulumi.Output<string>;
+    /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      *
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -93,6 +97,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             const state = argsOrState as LkeNodePoolState | undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
@@ -114,6 +119,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["diskEncryption"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +136,10 @@ export interface LkeNodePoolState {
      * ID of the LKE Cluster where to create the current Node Pool.
      */
     clusterId?: pulumi.Input<number>;
+    /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    diskEncryption?: pulumi.Input<string>;
     /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      *

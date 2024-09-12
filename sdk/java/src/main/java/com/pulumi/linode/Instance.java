@@ -414,6 +414,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.configs;
     }
     /**
+     * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     * 
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     * 
+     */
+    @Export(name="diskEncryption", refs={String.class}, tree="[0]")
+    private Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+     * 
+     * * **NOTE: Disk encryption may not currently be available to all users.**
+     * 
+     */
+    public Output<String> diskEncryption() {
+        return this.diskEncryption;
+    }
+    /**
      * @deprecated
      * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      * 
@@ -572,6 +590,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> label() {
         return this.label;
+    }
+    /**
+     * If applicable, the ID of the LKE cluster this instance is a part of.
+     * 
+     */
+    @Export(name="lkeClusterId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> lkeClusterId;
+
+    /**
+     * @return If applicable, the ID of the LKE cluster this instance is a part of.
+     * 
+     */
+    public Output<Integer> lkeClusterId() {
+        return this.lkeClusterId;
     }
     /**
      * Various fields related to the Linode Metadata service.

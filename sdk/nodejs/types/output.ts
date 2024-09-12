@@ -80,6 +80,10 @@ export interface FirewallInbound {
      */
     action: string;
     /**
+     * Used to describe this rule. For display purposes only.
+     */
+    description: string;
+    /**
      * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      */
     ipv4s?: string[];
@@ -103,9 +107,13 @@ export interface FirewallInbound {
 
 export interface FirewallOutbound {
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
+    /**
+     * Used to describe this rule. For display purposes only.
+     */
+    description: string;
     /**
      * A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      */
@@ -584,6 +592,7 @@ export interface GetFirewallInbound {
      * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
+    description: string;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
@@ -611,6 +620,7 @@ export interface GetFirewallOutbound {
      * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
+    description: string;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
@@ -1673,6 +1683,10 @@ export interface GetInstancesInstance {
      */
     configs: outputs.GetInstancesInstanceConfig[];
     /**
+     * The disk encryption policy for this instance.
+     */
+    diskEncryption: string;
+    /**
      * Disks associated with this Linode.
      */
     disks: outputs.GetInstancesInstanceDisk[];
@@ -1712,6 +1726,10 @@ export interface GetInstancesInstance {
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label: string;
+    /**
+     * If applicable, the ID of the LKE cluster this instance is a part of.
+     */
+    lkeClusterId: number;
     placementGroups: outputs.GetInstancesInstancePlacementGroup[];
     /**
      * This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -2256,6 +2274,10 @@ export interface GetLkeClusterPool {
      * The number of nodes in the Node Pool.
      */
     count: number;
+    /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    diskEncryption: string;
     /**
      * This Node Pool’s custom disk layout.
      */
@@ -4372,6 +4394,10 @@ export interface LkeClusterPool {
      */
     count: number;
     /**
+     * The disk encryption policy for nodes in this pool.
+     */
+    diskEncryption: string;
+    /**
      * The ID of the node.
      */
     id: number;
@@ -4509,6 +4535,7 @@ export interface NodeBalancerFirewallInbound {
      * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
+    description: string;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
@@ -4536,6 +4563,7 @@ export interface NodeBalancerFirewallOutbound {
      * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      */
     action: string;
+    description: string;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */

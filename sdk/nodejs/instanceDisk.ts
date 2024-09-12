@@ -107,6 +107,10 @@ export class InstanceDisk extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
+     * The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+     */
+    public /*out*/ readonly diskEncryption!: pulumi.Output<string>;
+    /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      */
     public readonly filesystem!: pulumi.Output<string>;
@@ -166,6 +170,7 @@ export class InstanceDisk extends pulumi.CustomResource {
             resourceInputs["authorizedKeys"] = state ? state.authorizedKeys : undefined;
             resourceInputs["authorizedUsers"] = state ? state.authorizedUsers : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["filesystem"] = state ? state.filesystem : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
@@ -200,6 +205,7 @@ export class InstanceDisk extends pulumi.CustomResource {
             resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["diskEncryption"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
@@ -226,6 +232,10 @@ export interface InstanceDiskState {
      * When this disk was created.
      */
     created?: pulumi.Input<string>;
+    /**
+     * The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+     */
+    diskEncryption?: pulumi.Input<string>;
     /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      */

@@ -29,6 +29,11 @@ public final class LkeClusterPool {
      */
     private @Nullable Integer count;
     /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    private @Nullable String diskEncryption;
+    /**
      * @return The ID of the node.
      * 
      */
@@ -65,6 +70,13 @@ public final class LkeClusterPool {
      */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
+    }
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public Optional<String> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
     }
     /**
      * @return The ID of the node.
@@ -106,6 +118,7 @@ public final class LkeClusterPool {
     public static final class Builder {
         private @Nullable LkeClusterPoolAutoscaler autoscaler;
         private @Nullable Integer count;
+        private @Nullable String diskEncryption;
         private @Nullable Integer id;
         private @Nullable List<LkeClusterPoolNode> nodes;
         private @Nullable List<String> tags;
@@ -115,6 +128,7 @@ public final class LkeClusterPool {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaler = defaults.autoscaler;
     	      this.count = defaults.count;
+    	      this.diskEncryption = defaults.diskEncryption;
     	      this.id = defaults.id;
     	      this.nodes = defaults.nodes;
     	      this.tags = defaults.tags;
@@ -131,6 +145,12 @@ public final class LkeClusterPool {
         public Builder count(@Nullable Integer count) {
 
             this.count = count;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskEncryption(@Nullable String diskEncryption) {
+
+            this.diskEncryption = diskEncryption;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +189,7 @@ public final class LkeClusterPool {
             final var _resultValue = new LkeClusterPool();
             _resultValue.autoscaler = autoscaler;
             _resultValue.count = count;
+            _resultValue.diskEncryption = diskEncryption;
             _resultValue.id = id;
             _resultValue.nodes = nodes;
             _resultValue.tags = tags;

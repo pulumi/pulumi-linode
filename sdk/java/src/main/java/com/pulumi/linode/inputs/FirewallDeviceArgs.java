@@ -5,11 +5,10 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,75 +19,75 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
      * The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
      */
-    @Import(name="entityId")
-    private @Nullable Output<Integer> entityId;
+    @Import(name="entityId", required=true)
+    private Output<Integer> entityId;
 
     /**
      * @return The ID of the underlying entity this device references (i.e. the Linode&#39;s ID).
      * 
      */
-    public Optional<Output<Integer>> entityId() {
-        return Optional.ofNullable(this.entityId);
+    public Output<Integer> entityId() {
+        return this.entityId;
     }
 
     /**
      * The ID of the Firewall Device.
      * 
      */
-    @Import(name="id")
-    private @Nullable Output<Integer> id;
+    @Import(name="id", required=true)
+    private Output<Integer> id;
 
     /**
      * @return The ID of the Firewall Device.
      * 
      */
-    public Optional<Output<Integer>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<Integer> id() {
+        return this.id;
     }
 
     /**
      * This Firewall&#39;s unique label.
      * 
      */
-    @Import(name="label")
-    private @Nullable Output<String> label;
+    @Import(name="label", required=true)
+    private Output<String> label;
 
     /**
      * @return This Firewall&#39;s unique label.
      * 
      */
-    public Optional<Output<String>> label() {
-        return Optional.ofNullable(this.label);
+    public Output<String> label() {
+        return this.label;
     }
 
     /**
      * The type of Firewall Device.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return The type of Firewall Device.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**
      * The URL of the underlying entity this device references.
      * 
      */
-    @Import(name="url")
-    private @Nullable Output<String> url;
+    @Import(name="url", required=true)
+    private Output<String> url;
 
     /**
      * @return The URL of the underlying entity this device references.
      * 
      */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     private FirewallDeviceArgs() {}
@@ -125,7 +124,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder entityId(@Nullable Output<Integer> entityId) {
+        public Builder entityId(Output<Integer> entityId) {
             $.entityId = entityId;
             return this;
         }
@@ -146,7 +145,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<Integer> id) {
+        public Builder id(Output<Integer> id) {
             $.id = id;
             return this;
         }
@@ -167,7 +166,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder label(@Nullable Output<String> label) {
+        public Builder label(Output<String> label) {
             $.label = label;
             return this;
         }
@@ -188,7 +187,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -209,7 +208,7 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder url(@Nullable Output<String> url) {
+        public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
@@ -225,6 +224,21 @@ public final class FirewallDeviceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public FirewallDeviceArgs build() {
+            if ($.entityId == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "entityId");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "label");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "type");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("FirewallDeviceArgs", "url");
+            }
             return $;
         }
     }

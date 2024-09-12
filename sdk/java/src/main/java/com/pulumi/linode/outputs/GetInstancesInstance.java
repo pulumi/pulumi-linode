@@ -36,6 +36,11 @@ public final class GetInstancesInstance {
      */
     private List<GetInstancesInstanceConfig> configs;
     /**
+     * @return The disk encryption policy for this instance.
+     * 
+     */
+    private String diskEncryption;
+    /**
      * @return Disks associated with this Linode.
      * 
      */
@@ -85,6 +90,11 @@ public final class GetInstancesInstance {
      * 
      */
     private String label;
+    /**
+     * @return If applicable, the ID of the LKE cluster this instance is a part of.
+     * 
+     */
+    private Integer lkeClusterId;
     private List<GetInstancesInstancePlacementGroup> placementGroups;
     /**
      * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -147,6 +157,13 @@ public final class GetInstancesInstance {
      */
     public List<GetInstancesInstanceConfig> configs() {
         return this.configs;
+    }
+    /**
+     * @return The disk encryption policy for this instance.
+     * 
+     */
+    public String diskEncryption() {
+        return this.diskEncryption;
     }
     /**
      * @return Disks associated with this Linode.
@@ -218,6 +235,13 @@ public final class GetInstancesInstance {
     public String label() {
         return this.label;
     }
+    /**
+     * @return If applicable, the ID of the LKE cluster this instance is a part of.
+     * 
+     */
+    public Integer lkeClusterId() {
+        return this.lkeClusterId;
+    }
     public List<GetInstancesInstancePlacementGroup> placementGroups() {
         return this.placementGroups;
     }
@@ -287,6 +311,7 @@ public final class GetInstancesInstance {
         private List<GetInstancesInstanceBackup> backups;
         private String bootConfigLabel;
         private List<GetInstancesInstanceConfig> configs;
+        private String diskEncryption;
         private List<GetInstancesInstanceDisk> disks;
         private String group;
         private Boolean hasUserData;
@@ -297,6 +322,7 @@ public final class GetInstancesInstance {
         private List<String> ipv4s;
         private String ipv6;
         private String label;
+        private Integer lkeClusterId;
         private List<GetInstancesInstancePlacementGroup> placementGroups;
         private String privateIpAddress;
         private String region;
@@ -313,6 +339,7 @@ public final class GetInstancesInstance {
     	      this.backups = defaults.backups;
     	      this.bootConfigLabel = defaults.bootConfigLabel;
     	      this.configs = defaults.configs;
+    	      this.diskEncryption = defaults.diskEncryption;
     	      this.disks = defaults.disks;
     	      this.group = defaults.group;
     	      this.hasUserData = defaults.hasUserData;
@@ -323,6 +350,7 @@ public final class GetInstancesInstance {
     	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
+    	      this.lkeClusterId = defaults.lkeClusterId;
     	      this.placementGroups = defaults.placementGroups;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.region = defaults.region;
@@ -371,6 +399,14 @@ public final class GetInstancesInstance {
         }
         public Builder configs(GetInstancesInstanceConfig... configs) {
             return configs(List.of(configs));
+        }
+        @CustomType.Setter
+        public Builder diskEncryption(String diskEncryption) {
+            if (diskEncryption == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "diskEncryption");
+            }
+            this.diskEncryption = diskEncryption;
+            return this;
         }
         @CustomType.Setter
         public Builder disks(List<GetInstancesInstanceDisk> disks) {
@@ -456,6 +492,14 @@ public final class GetInstancesInstance {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "label");
             }
             this.label = label;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lkeClusterId(Integer lkeClusterId) {
+            if (lkeClusterId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "lkeClusterId");
+            }
+            this.lkeClusterId = lkeClusterId;
             return this;
         }
         @CustomType.Setter
@@ -545,6 +589,7 @@ public final class GetInstancesInstance {
             _resultValue.backups = backups;
             _resultValue.bootConfigLabel = bootConfigLabel;
             _resultValue.configs = configs;
+            _resultValue.diskEncryption = diskEncryption;
             _resultValue.disks = disks;
             _resultValue.group = group;
             _resultValue.hasUserData = hasUserData;
@@ -555,6 +600,7 @@ public final class GetInstancesInstance {
             _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
+            _resultValue.lkeClusterId = lkeClusterId;
             _resultValue.placementGroups = placementGroups;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.region = region;

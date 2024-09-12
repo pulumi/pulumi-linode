@@ -54,6 +54,21 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The disk encryption policy for nodes in this pool.
+     * 
+     */
+    @Import(name="diskEncryption", required=true)
+    private Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public Output<String> diskEncryption() {
+        return this.diskEncryption;
+    }
+
+    /**
      * This Node Pool’s custom disk layout.
      * 
      */
@@ -163,6 +178,7 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
     private GetLkeClusterPoolArgs(GetLkeClusterPoolArgs $) {
         this.autoscalers = $.autoscalers;
         this.count = $.count;
+        this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
         this.id = $.id;
         this.labels = $.labels;
@@ -240,6 +256,27 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder count(Integer count) {
             return count(Output.of(count));
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(Output<String> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
         }
 
         /**
@@ -432,6 +469,9 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         public GetLkeClusterPoolArgs build() {
             if ($.count == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "count");
+            }
+            if ($.diskEncryption == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "diskEncryption");
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "id");

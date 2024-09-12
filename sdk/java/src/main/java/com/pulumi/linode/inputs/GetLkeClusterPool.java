@@ -53,6 +53,21 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The disk encryption policy for nodes in this pool.
+     * 
+     */
+    @Import(name="diskEncryption", required=true)
+    private String diskEncryption;
+
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public String diskEncryption() {
+        return this.diskEncryption;
+    }
+
+    /**
      * This Node Pool’s custom disk layout.
      * 
      */
@@ -162,6 +177,7 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
     private GetLkeClusterPool(GetLkeClusterPool $) {
         this.autoscalers = $.autoscalers;
         this.count = $.count;
+        this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
         this.id = $.id;
         this.labels = $.labels;
@@ -218,6 +234,17 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
          */
         public Builder count(Integer count) {
             $.count = count;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            $.diskEncryption = diskEncryption;
             return this;
         }
 
@@ -341,6 +368,9 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
         public GetLkeClusterPool build() {
             if ($.count == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPool", "count");
+            }
+            if ($.diskEncryption == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPool", "diskEncryption");
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPool", "id");

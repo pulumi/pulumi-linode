@@ -200,6 +200,7 @@ class _InstanceDiskState:
                  authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  created: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[str]] = None,
                  filesystem: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -216,6 +217,7 @@ class _InstanceDiskState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] created: When this disk was created.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
@@ -235,6 +237,8 @@ class _InstanceDiskState:
             pulumi.set(__self__, "authorized_users", authorized_users)
         if created is not None:
             pulumi.set(__self__, "created", created)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if filesystem is not None:
             pulumi.set(__self__, "filesystem", filesystem)
         if image is not None:
@@ -293,6 +297,18 @@ class _InstanceDiskState:
     @created.setter
     def created(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_encryption", value)
 
     @property
     @pulumi.getter
@@ -629,6 +645,7 @@ class InstanceDisk(pulumi.CustomResource):
             __props__.__dict__["stackscript_id"] = stackscript_id
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["created"] = None
+            __props__.__dict__["disk_encryption"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["rootPass", "stackscriptData"])
@@ -646,6 +663,7 @@ class InstanceDisk(pulumi.CustomResource):
             authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             created: Optional[pulumi.Input[str]] = None,
+            disk_encryption: Optional[pulumi.Input[str]] = None,
             filesystem: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
@@ -667,6 +685,7 @@ class InstanceDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[str] created: When this disk was created.
+        :param pulumi.Input[str] disk_encryption: The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
         :param pulumi.Input[str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[str] label: The Disk's label for display purposes only.
@@ -687,6 +706,7 @@ class InstanceDisk(pulumi.CustomResource):
         __props__.__dict__["authorized_keys"] = authorized_keys
         __props__.__dict__["authorized_users"] = authorized_users
         __props__.__dict__["created"] = created
+        __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["filesystem"] = filesystem
         __props__.__dict__["image"] = image
         __props__.__dict__["label"] = label
@@ -723,6 +743,14 @@ class InstanceDisk(pulumi.CustomResource):
         When this disk was created.
         """
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> pulumi.Output[str]:
+        """
+        The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+        """
+        return pulumi.get(self, "disk_encryption")
 
     @property
     @pulumi.getter

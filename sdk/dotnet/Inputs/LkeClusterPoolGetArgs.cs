@@ -27,6 +27,12 @@ namespace Pulumi.Linode.Inputs
         public Input<int>? Count { get; set; }
 
         /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<string>? DiskEncryption { get; set; }
+
+        /// <summary>
         /// The ID of the node.
         /// </summary>
         [Input("id")]

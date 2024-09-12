@@ -18,6 +18,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Action;
         /// <summary>
+        /// Used to describe this rule. For display purposes only.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
         /// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         /// </summary>
         public readonly ImmutableArray<string> Ipv4s;
@@ -42,6 +46,8 @@ namespace Pulumi.Linode.Outputs
         private FirewallInbound(
             string action,
 
+            string? description,
+
             ImmutableArray<string> ipv4s,
 
             ImmutableArray<string> ipv6s,
@@ -53,6 +59,7 @@ namespace Pulumi.Linode.Outputs
             string protocol)
         {
             Action = action;
+            Description = description;
             Ipv4s = ipv4s;
             Ipv6s = ipv6s;
             Label = label;

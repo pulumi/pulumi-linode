@@ -1981,7 +1981,7 @@
             "linode:index/databasePostgresql:DatabasePostgresql": 0,
             "linode:index/domain:Domain": 0,
             "linode:index/domainRecord:DomainRecord": 0,
-            "linode:index/firewall:Firewall": 0,
+            "linode:index/firewall:Firewall": 1,
             "linode:index/firewallDevice:FirewallDevice": 1,
             "linode:index/image:Image": 1,
             "linode:index/instance:Instance": 0,

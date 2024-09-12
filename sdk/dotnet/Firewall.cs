@@ -144,7 +144,7 @@ namespace Pulumi.Linode
         /// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
         /// </summary>
         [Output("disabled")]
-        public Output<bool?> Disabled { get; private set; } = null!;
+        public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
         /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)

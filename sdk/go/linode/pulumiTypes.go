@@ -441,15 +441,15 @@ func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 
 type FirewallDeviceType struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
-	EntityId *int `pulumi:"entityId"`
+	EntityId int `pulumi:"entityId"`
 	// The ID of the Firewall Device.
-	Id *int `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// This Firewall's unique label.
-	Label *string `pulumi:"label"`
+	Label string `pulumi:"label"`
 	// The type of Firewall Device.
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 	// The URL of the underlying entity this device references.
-	Url *string `pulumi:"url"`
+	Url string `pulumi:"url"`
 }
 
 // FirewallDeviceTypeInput is an input type that accepts FirewallDeviceTypeArgs and FirewallDeviceTypeOutput values.
@@ -465,15 +465,15 @@ type FirewallDeviceTypeInput interface {
 
 type FirewallDeviceTypeArgs struct {
 	// The ID of the underlying entity this device references (i.e. the Linode's ID).
-	EntityId pulumi.IntPtrInput `pulumi:"entityId"`
+	EntityId pulumi.IntInput `pulumi:"entityId"`
 	// The ID of the Firewall Device.
-	Id pulumi.IntPtrInput `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 	// This Firewall's unique label.
-	Label pulumi.StringPtrInput `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
 	// The type of Firewall Device.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 	// The URL of the underlying entity this device references.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (FirewallDeviceTypeArgs) ElementType() reflect.Type {
@@ -528,28 +528,28 @@ func (o FirewallDeviceTypeOutput) ToFirewallDeviceTypeOutputWithContext(ctx cont
 }
 
 // The ID of the underlying entity this device references (i.e. the Linode's ID).
-func (o FirewallDeviceTypeOutput) EntityId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FirewallDeviceType) *int { return v.EntityId }).(pulumi.IntPtrOutput)
+func (o FirewallDeviceTypeOutput) EntityId() pulumi.IntOutput {
+	return o.ApplyT(func(v FirewallDeviceType) int { return v.EntityId }).(pulumi.IntOutput)
 }
 
 // The ID of the Firewall Device.
-func (o FirewallDeviceTypeOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FirewallDeviceType) *int { return v.Id }).(pulumi.IntPtrOutput)
+func (o FirewallDeviceTypeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v FirewallDeviceType) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // This Firewall's unique label.
-func (o FirewallDeviceTypeOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDeviceType) *string { return v.Label }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallDeviceType) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // The type of Firewall Device.
-func (o FirewallDeviceTypeOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDeviceType) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceTypeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallDeviceType) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The URL of the underlying entity this device references.
-func (o FirewallDeviceTypeOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDeviceType) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o FirewallDeviceTypeOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallDeviceType) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type FirewallDeviceTypeArrayOutput struct{ *pulumi.OutputState }
@@ -575,6 +575,8 @@ func (o FirewallDeviceTypeArrayOutput) Index(i pulumi.IntInput) FirewallDeviceTy
 type FirewallInbound struct {
 	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action string `pulumi:"action"`
+	// Used to describe this rule. For display purposes only.
+	Description *string `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
 	Ipv4s []string `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
@@ -601,6 +603,8 @@ type FirewallInboundInput interface {
 type FirewallInboundArgs struct {
 	// Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action pulumi.StringInput `pulumi:"action"`
+	// Used to describe this rule. For display purposes only.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
@@ -669,6 +673,11 @@ func (o FirewallInboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallInbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// Used to describe this rule. For display purposes only.
+func (o FirewallInboundOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallInbound) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
 func (o FirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
@@ -715,8 +724,10 @@ func (o FirewallInboundArrayOutput) Index(i pulumi.IntInput) FirewallInboundOutp
 }
 
 type FirewallOutbound struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action string `pulumi:"action"`
+	// Used to describe this rule. For display purposes only.
+	Description *string `pulumi:"description"`
 	// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
 	Ipv4s []string `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks this rule applies to.
@@ -741,8 +752,10 @@ type FirewallOutboundInput interface {
 }
 
 type FirewallOutboundArgs struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 	Action pulumi.StringInput `pulumi:"action"`
+	// Used to describe this rule. For display purposes only.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks this rule applies to.
@@ -806,9 +819,14 @@ func (o FirewallOutboundOutput) ToFirewallOutboundOutputWithContext(ctx context.
 	return o
 }
 
-// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 func (o FirewallOutboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Used to describe this rule. For display purposes only.
+func (o FirewallOutboundOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallOutbound) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
@@ -5813,6 +5831,8 @@ type LkeClusterPool struct {
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count *int `pulumi:"count"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id *int `pulumi:"id"`
 	// The nodes in the node pool.
@@ -5841,6 +5861,8 @@ type LkeClusterPoolArgs struct {
 	//
 	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption pulumi.StringPtrInput `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The nodes in the node pool.
@@ -5912,6 +5934,11 @@ func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
 // * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeClusterPoolOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// The disk encryption policy for nodes in this pool.
+func (o LkeClusterPoolOutput) DiskEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *string { return v.DiskEncryption }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the node.
@@ -6891,7 +6918,8 @@ func (o NodeBalancerFirewallArrayOutput) Index(i pulumi.IntInput) NodeBalancerFi
 
 type NodeBalancerFirewallInbound struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action string `pulumi:"action"`
+	Action      string `pulumi:"action"`
+	Description string `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -6917,7 +6945,8 @@ type NodeBalancerFirewallInboundInput interface {
 
 type NodeBalancerFirewallInboundArgs struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action pulumi.StringInput `pulumi:"action"`
+	Action      pulumi.StringInput `pulumi:"action"`
+	Description pulumi.StringInput `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -6986,6 +7015,10 @@ func (o NodeBalancerFirewallInboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeBalancerFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
+func (o NodeBalancerFirewallInboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallInbound) string { return v.Description }).(pulumi.StringOutput)
+}
+
 // A list of IPv4 addresses or networks. Must be in IP/mask format.
 func (o NodeBalancerFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeBalancerFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
@@ -7033,7 +7066,8 @@ func (o NodeBalancerFirewallInboundArrayOutput) Index(i pulumi.IntInput) NodeBal
 
 type NodeBalancerFirewallOutbound struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action string `pulumi:"action"`
+	Action      string `pulumi:"action"`
+	Description string `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -7059,7 +7093,8 @@ type NodeBalancerFirewallOutboundInput interface {
 
 type NodeBalancerFirewallOutboundArgs struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action pulumi.StringInput `pulumi:"action"`
+	Action      pulumi.StringInput `pulumi:"action"`
+	Description pulumi.StringInput `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -7126,6 +7161,10 @@ func (o NodeBalancerFirewallOutboundOutput) ToNodeBalancerFirewallOutboundOutput
 // Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 func (o NodeBalancerFirewallOutboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeBalancerFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o NodeBalancerFirewallOutboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeBalancerFirewallOutbound) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // A list of IPv4 addresses or networks. Must be in IP/mask format.
@@ -12727,7 +12766,8 @@ func (o GetFirewallDeviceTypeArrayOutput) Index(i pulumi.IntInput) GetFirewallDe
 
 type GetFirewallInbound struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action string `pulumi:"action"`
+	Action      string `pulumi:"action"`
+	Description string `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -12753,7 +12793,8 @@ type GetFirewallInboundInput interface {
 
 type GetFirewallInboundArgs struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action pulumi.StringInput `pulumi:"action"`
+	Action      pulumi.StringInput `pulumi:"action"`
+	Description pulumi.StringInput `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -12822,6 +12863,10 @@ func (o GetFirewallInboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
 }
 
+func (o GetFirewallInboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallInbound) string { return v.Description }).(pulumi.StringOutput)
+}
+
 // A list of IPv4 addresses or networks. Must be in IP/mask format.
 func (o GetFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
@@ -12869,7 +12914,8 @@ func (o GetFirewallInboundArrayOutput) Index(i pulumi.IntInput) GetFirewallInbou
 
 type GetFirewallOutbound struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action string `pulumi:"action"`
+	Action      string `pulumi:"action"`
+	Description string `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s []string `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -12895,7 +12941,8 @@ type GetFirewallOutboundInput interface {
 
 type GetFirewallOutboundArgs struct {
 	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action pulumi.StringInput `pulumi:"action"`
+	Action      pulumi.StringInput `pulumi:"action"`
+	Description pulumi.StringInput `pulumi:"description"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
@@ -12962,6 +13009,10 @@ func (o GetFirewallOutboundOutput) ToGetFirewallOutboundOutputWithContext(ctx co
 // Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
 func (o GetFirewallOutboundOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallOutboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallOutbound) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // A list of IPv4 addresses or networks. Must be in IP/mask format.
@@ -18716,6 +18767,8 @@ type GetInstancesInstance struct {
 	BootConfigLabel string `pulumi:"bootConfigLabel"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []GetInstancesInstanceConfig `pulumi:"configs"`
+	// The disk encryption policy for this instance.
+	DiskEncryption string `pulumi:"diskEncryption"`
 	// Disks associated with this Linode.
 	Disks []GetInstancesInstanceDisk `pulumi:"disks"`
 	// The display group of the Linode instance.
@@ -18735,7 +18788,9 @@ type GetInstancesInstance struct {
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 string `pulumi:"ipv6"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-	Label           string                               `pulumi:"label"`
+	Label string `pulumi:"label"`
+	// If applicable, the ID of the LKE cluster this instance is a part of.
+	LkeClusterId    int                                  `pulumi:"lkeClusterId"`
 	PlacementGroups []GetInstancesInstancePlacementGroup `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress string `pulumi:"privateIpAddress"`
@@ -18773,6 +18828,8 @@ type GetInstancesInstanceArgs struct {
 	BootConfigLabel pulumi.StringInput `pulumi:"bootConfigLabel"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
+	// The disk encryption policy for this instance.
+	DiskEncryption pulumi.StringInput `pulumi:"diskEncryption"`
 	// Disks associated with this Linode.
 	Disks GetInstancesInstanceDiskArrayInput `pulumi:"disks"`
 	// The display group of the Linode instance.
@@ -18792,7 +18849,9 @@ type GetInstancesInstanceArgs struct {
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-	Label           pulumi.StringInput                           `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// If applicable, the ID of the LKE cluster this instance is a part of.
+	LkeClusterId    pulumi.IntInput                              `pulumi:"lkeClusterId"`
 	PlacementGroups GetInstancesInstancePlacementGroupArrayInput `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
@@ -18881,6 +18940,11 @@ func (o GetInstancesInstanceOutput) Configs() GetInstancesInstanceConfigArrayOut
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceConfig { return v.Configs }).(GetInstancesInstanceConfigArrayOutput)
 }
 
+// The disk encryption policy for this instance.
+func (o GetInstancesInstanceOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DiskEncryption }).(pulumi.StringOutput)
+}
+
 // Disks associated with this Linode.
 func (o GetInstancesInstanceOutput) Disks() GetInstancesInstanceDiskArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceDisk { return v.Disks }).(GetInstancesInstanceDiskArrayOutput)
@@ -18929,6 +18993,11 @@ func (o GetInstancesInstanceOutput) Ipv6() pulumi.StringOutput {
 // The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// If applicable, the ID of the LKE cluster this instance is a part of.
+func (o GetInstancesInstanceOutput) LkeClusterId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.LkeClusterId }).(pulumi.IntOutput)
 }
 
 func (o GetInstancesInstanceOutput) PlacementGroups() GetInstancesInstancePlacementGroupArrayOutput {
@@ -22157,6 +22226,8 @@ type GetLkeClusterPool struct {
 	Autoscalers []GetLkeClusterPoolAutoscaler `pulumi:"autoscalers"`
 	// The number of nodes in the Node Pool.
 	Count int `pulumi:"count"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption string `pulumi:"diskEncryption"`
 	// This Node Pool’s custom disk layout.
 	Disks []GetLkeClusterPoolDisk `pulumi:"disks"`
 	// The LKE Cluster's ID.
@@ -22189,6 +22260,8 @@ type GetLkeClusterPoolArgs struct {
 	Autoscalers GetLkeClusterPoolAutoscalerArrayInput `pulumi:"autoscalers"`
 	// The number of nodes in the Node Pool.
 	Count pulumi.IntInput `pulumi:"count"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption pulumi.StringInput `pulumi:"diskEncryption"`
 	// This Node Pool’s custom disk layout.
 	Disks GetLkeClusterPoolDiskArrayInput `pulumi:"disks"`
 	// The LKE Cluster's ID.
@@ -22264,6 +22337,11 @@ func (o GetLkeClusterPoolOutput) Autoscalers() GetLkeClusterPoolAutoscalerArrayO
 // The number of nodes in the Node Pool.
 func (o GetLkeClusterPoolOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The disk encryption policy for nodes in this pool.
+func (o GetLkeClusterPoolOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) string { return v.DiskEncryption }).(pulumi.StringOutput)
 }
 
 // This Node Pool’s custom disk layout.

@@ -31,6 +31,12 @@ namespace Pulumi.Linode
         public Output<int> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        [Output("diskEncryption")]
+        public Output<string> DiskEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         /// 
         /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -195,6 +201,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("clusterId")]
         public Input<int>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<string>? DiskEncryption { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

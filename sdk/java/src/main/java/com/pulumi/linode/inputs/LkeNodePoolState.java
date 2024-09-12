@@ -44,6 +44,21 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The disk encryption policy for nodes in this pool.
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public Optional<Output<String>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -148,6 +163,7 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     private LkeNodePoolState(LkeNodePoolState $) {
         this.autoscaler = $.autoscaler;
         this.clusterId = $.clusterId;
+        this.diskEncryption = $.diskEncryption;
         this.labels = $.labels;
         this.nodeCount = $.nodeCount;
         this.nodes = $.nodes;
@@ -202,6 +218,27 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterId(Integer clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<String> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
         }
 
         /**

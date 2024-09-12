@@ -27,6 +27,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigResult> Configs;
         /// <summary>
+        /// The disk encryption policy for this instance.
+        /// </summary>
+        public readonly string DiskEncryption;
+        /// <summary>
         /// Disks associated with this Linode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceDiskResult> Disks;
@@ -66,6 +70,10 @@ namespace Pulumi.Linode.Outputs
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// If applicable, the ID of the LKE cluster this instance is a part of.
+        /// </summary>
+        public readonly int LkeClusterId;
         public readonly ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> PlacementGroups;
         /// <summary>
         /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -107,6 +115,8 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetInstancesInstanceConfigResult> configs,
 
+            string diskEncryption,
+
             ImmutableArray<Outputs.GetInstancesInstanceDiskResult> disks,
 
             string group,
@@ -126,6 +136,8 @@ namespace Pulumi.Linode.Outputs
             string ipv6,
 
             string label,
+
+            int lkeClusterId,
 
             ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> placementGroups,
 
@@ -149,6 +161,7 @@ namespace Pulumi.Linode.Outputs
             Backups = backups;
             BootConfigLabel = bootConfigLabel;
             Configs = configs;
+            DiskEncryption = diskEncryption;
             Disks = disks;
             Group = group;
             HasUserData = hasUserData;
@@ -159,6 +172,7 @@ namespace Pulumi.Linode.Outputs
             Ipv4s = ipv4s;
             Ipv6 = ipv6;
             Label = label;
+            LkeClusterId = lkeClusterId;
             PlacementGroups = placementGroups;
             PrivateIpAddress = privateIpAddress;
             Region = region;

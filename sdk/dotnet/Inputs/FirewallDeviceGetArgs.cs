@@ -15,32 +15,32 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The ID of the underlying entity this device references (i.e. the Linode's ID).
         /// </summary>
-        [Input("entityId")]
-        public Input<int>? EntityId { get; set; }
+        [Input("entityId", required: true)]
+        public Input<int> EntityId { get; set; } = null!;
 
         /// <summary>
         /// The ID of the Firewall Device.
         /// </summary>
-        [Input("id")]
-        public Input<int>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<int> Id { get; set; } = null!;
 
         /// <summary>
         /// This Firewall's unique label.
         /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
 
         /// <summary>
         /// The type of Firewall Device.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         /// <summary>
         /// The URL of the underlying entity this device references.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public FirewallDeviceGetArgs()
         {
