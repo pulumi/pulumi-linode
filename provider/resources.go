@@ -17,6 +17,7 @@ package linode
 import (
 	"context"
 	"fmt"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"path"
 	"regexp"
 
@@ -79,6 +80,16 @@ func stripTfFromDocs() tfbridge.DocsEdit {
 	}
 }
 
+// Removes a "Linode Guides" section that links to TF-specific user guides
+var skipGuidesSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Linode Guides"
+		})
+	},
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -102,7 +113,11 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules: &tfbridge.DocRuleInfo{
 			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
-				return append(defaults, stripTfFromDocs())
+				return append(
+					defaults,
+					stripTfFromDocs(),
+					skipGuidesSection,
+				)
 			},
 		},
 
