@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLinodeObjectStorageBucket(args: GetLinodeObjectStorageBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetLinodeObjectStorageBucketResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", {
         "cluster": args.cluster,
@@ -87,7 +86,12 @@ export interface GetLinodeObjectStorageBucketResult {
  * ```
  */
 export function getLinodeObjectStorageBucketOutput(args: GetLinodeObjectStorageBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLinodeObjectStorageBucketResult> {
-    return pulumi.output(args).apply((a: any) => getLinodeObjectStorageBucket(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", {
+        "cluster": args.cluster,
+        "label": args.label,
+        "region": args.region,
+    }, opts);
 }
 
 /**

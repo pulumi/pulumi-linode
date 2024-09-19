@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  */
 export function getDatabaseMysql(args?: GetDatabaseMysqlArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMysqlResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseMysql:getDatabaseMysql", {
         "databaseId": args.databaseId,
@@ -182,7 +181,12 @@ export interface GetDatabaseMysqlResult {
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
 export function getDatabaseMysqlOutput(args?: GetDatabaseMysqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMysqlResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseMysql(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDatabaseMysql:getDatabaseMysql", {
+        "databaseId": args.databaseId,
+        "id": args.id,
+    }, opts);
 }
 
 /**

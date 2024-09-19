@@ -67,7 +67,6 @@ import * as utilities from "./utilities";
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getImages:getImages", {
         "filters": args.filters,
@@ -174,7 +173,15 @@ export interface GetImagesResult {
  * * `tags`
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply((a: any) => getImages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getImages:getImages", {
+        "filters": args.filters,
+        "images": args.images,
+        "latest": args.latest,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

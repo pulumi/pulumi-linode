@@ -68,14 +68,20 @@ type GetDomainZonefileResult struct {
 
 func GetDomainZonefileOutput(ctx *pulumi.Context, args GetDomainZonefileOutputArgs, opts ...pulumi.InvokeOption) GetDomainZonefileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDomainZonefileResult, error) {
+		ApplyT(func(v interface{}) (GetDomainZonefileResultOutput, error) {
 			args := v.(GetDomainZonefileArgs)
-			r, err := GetDomainZonefile(ctx, &args, opts...)
-			var s GetDomainZonefileResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDomainZonefileResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getDomainZonefile:getDomainZonefile", args, &rv, "", opts...)
+			if err != nil {
+				return GetDomainZonefileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDomainZonefileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDomainZonefileResultOutput), nil
+			}
+			return output, nil
 		}).(GetDomainZonefileResultOutput)
 }
 

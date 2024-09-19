@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  */
 export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVpcs:getVpcs", {
         "filters": args.filters,
@@ -98,7 +97,12 @@ export interface GetVpcsResult {
  * * `region`
  */
 export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcsResult> {
-    return pulumi.output(args).apply((a: any) => getVpcs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getVpcs:getVpcs", {
+        "filters": args.filters,
+        "vpcs": args.vpcs,
+    }, opts);
 }
 
 /**

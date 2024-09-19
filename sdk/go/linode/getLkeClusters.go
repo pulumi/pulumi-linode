@@ -97,14 +97,20 @@ type GetLkeClustersResult struct {
 
 func GetLkeClustersOutput(ctx *pulumi.Context, args GetLkeClustersOutputArgs, opts ...pulumi.InvokeOption) GetLkeClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLkeClustersResult, error) {
+		ApplyT(func(v interface{}) (GetLkeClustersResultOutput, error) {
 			args := v.(GetLkeClustersArgs)
-			r, err := GetLkeClusters(ctx, &args, opts...)
-			var s GetLkeClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLkeClustersResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getLkeClusters:getLkeClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetLkeClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLkeClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLkeClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetLkeClustersResultOutput)
 }
 

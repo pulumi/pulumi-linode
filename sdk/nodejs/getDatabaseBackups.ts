@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseBackupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseBackups:getDatabaseBackups", {
         "backups": args.backups,
@@ -135,7 +134,16 @@ export interface GetDatabaseBackupsResult {
  * ```
  */
 export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseBackupsResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseBackups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDatabaseBackups:getDatabaseBackups", {
+        "backups": args.backups,
+        "databaseId": args.databaseId,
+        "databaseType": args.databaseType,
+        "filters": args.filters,
+        "latest": args.latest,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

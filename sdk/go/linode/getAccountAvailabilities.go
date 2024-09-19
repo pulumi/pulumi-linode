@@ -80,14 +80,20 @@ type GetAccountAvailabilitiesResult struct {
 
 func GetAccountAvailabilitiesOutput(ctx *pulumi.Context, args GetAccountAvailabilitiesOutputArgs, opts ...pulumi.InvokeOption) GetAccountAvailabilitiesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccountAvailabilitiesResult, error) {
+		ApplyT(func(v interface{}) (GetAccountAvailabilitiesResultOutput, error) {
 			args := v.(GetAccountAvailabilitiesArgs)
-			r, err := GetAccountAvailabilities(ctx, &args, opts...)
-			var s GetAccountAvailabilitiesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccountAvailabilitiesResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getAccountAvailabilities:getAccountAvailabilities", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccountAvailabilitiesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccountAvailabilitiesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccountAvailabilitiesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccountAvailabilitiesResultOutput)
 }
 

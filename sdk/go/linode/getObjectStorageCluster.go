@@ -72,14 +72,20 @@ type GetObjectStorageClusterResult struct {
 
 func GetObjectStorageClusterOutput(ctx *pulumi.Context, args GetObjectStorageClusterOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetObjectStorageClusterResult, error) {
+		ApplyT(func(v interface{}) (GetObjectStorageClusterResultOutput, error) {
 			args := v.(GetObjectStorageClusterArgs)
-			r, err := GetObjectStorageCluster(ctx, &args, opts...)
-			var s GetObjectStorageClusterResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetObjectStorageClusterResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getObjectStorageCluster:getObjectStorageCluster", args, &rv, "", opts...)
+			if err != nil {
+				return GetObjectStorageClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetObjectStorageClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetObjectStorageClusterResultOutput), nil
+			}
+			return output, nil
 		}).(GetObjectStorageClusterResultOutput)
 }
 

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLkeVersions(opts?: pulumi.InvokeOptions): Promise<GetLkeVersionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeVersions:getLkeVersions", {
     }, opts);
@@ -54,5 +53,7 @@ export interface GetLkeVersionsResult {
  * ```
  */
 export function getLkeVersionsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeVersionsResult> {
-    return pulumi.output(getLkeVersions(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getLkeVersions:getLkeVersions", {
+    }, opts);
 }

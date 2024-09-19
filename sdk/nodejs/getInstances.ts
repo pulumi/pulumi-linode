@@ -68,7 +68,6 @@ import * as utilities from "./utilities";
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getInstances:getInstances", {
         "filters": args.filters,
@@ -166,7 +165,13 @@ export interface GetInstancesResult {
  * * `watchdogEnabled`
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getInstances:getInstances", {
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

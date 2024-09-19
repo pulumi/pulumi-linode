@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKernel(args: GetKernelArgs, opts?: pulumi.InvokeOptions): Promise<GetKernelResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getKernel:getKernel", {
         "id": args.id,
@@ -92,7 +91,10 @@ export interface GetKernelResult {
  * ```
  */
 export function getKernelOutput(args: GetKernelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelResult> {
-    return pulumi.output(args).apply((a: any) => getKernel(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getKernel:getKernel", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

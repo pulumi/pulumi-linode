@@ -79,14 +79,20 @@ type LookupVpcSubnetResult struct {
 
 func LookupVpcSubnetOutput(ctx *pulumi.Context, args LookupVpcSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupVpcSubnetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVpcSubnetResult, error) {
+		ApplyT(func(v interface{}) (LookupVpcSubnetResultOutput, error) {
 			args := v.(LookupVpcSubnetArgs)
-			r, err := LookupVpcSubnet(ctx, &args, opts...)
-			var s LookupVpcSubnetResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupVpcSubnetResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getVpcSubnet:getVpcSubnet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVpcSubnetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVpcSubnetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVpcSubnetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVpcSubnetResultOutput)
 }
 

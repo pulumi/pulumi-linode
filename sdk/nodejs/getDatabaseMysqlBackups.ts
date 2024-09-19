@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseMysqlBackups(args: GetDatabaseMysqlBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMysqlBackupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", {
         "databaseId": args.databaseId,
@@ -127,7 +126,14 @@ export interface GetDatabaseMysqlBackupsResult {
  * ```
  */
 export function getDatabaseMysqlBackupsOutput(args: GetDatabaseMysqlBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMysqlBackupsResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseMysqlBackups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", {
+        "databaseId": args.databaseId,
+        "filters": args.filters,
+        "latest": args.latest,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

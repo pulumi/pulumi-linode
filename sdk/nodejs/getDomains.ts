@@ -57,7 +57,6 @@ import * as utilities from "./utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDomains:getDomains", {
         "domains": args.domains,
@@ -146,7 +145,14 @@ export interface GetDomainsResult {
  * * `soaEmail`
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDomains:getDomains", {
+        "domains": args.domains,
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getObjectStorageCluster(args: GetObjectStorageClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", {
         "id": args.id,
@@ -79,7 +78,10 @@ export interface GetObjectStorageClusterResult {
  * ```
  */
 export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectStorageClusterResult> {
-    return pulumi.output(args).apply((a: any) => getObjectStorageCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getObjectStorageCluster:getObjectStorageCluster", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

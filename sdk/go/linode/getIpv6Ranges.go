@@ -84,14 +84,20 @@ type GetIpv6RangesResult struct {
 
 func GetIpv6RangesOutput(ctx *pulumi.Context, args GetIpv6RangesOutputArgs, opts ...pulumi.InvokeOption) GetIpv6RangesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpv6RangesResult, error) {
+		ApplyT(func(v interface{}) (GetIpv6RangesResultOutput, error) {
 			args := v.(GetIpv6RangesArgs)
-			r, err := GetIpv6Ranges(ctx, &args, opts...)
-			var s GetIpv6RangesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpv6RangesResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getIpv6Ranges:getIpv6Ranges", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpv6RangesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpv6RangesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpv6RangesResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpv6RangesResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getChildAccount(args: GetChildAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetChildAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getChildAccount:getChildAccount", {
         "euuid": args.euuid,
@@ -128,7 +127,10 @@ export interface GetChildAccountResult {
  * ```
  */
 export function getChildAccountOutput(args: GetChildAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildAccountResult> {
-    return pulumi.output(args).apply((a: any) => getChildAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getChildAccount:getChildAccount", {
+        "euuid": args.euuid,
+    }, opts);
 }
 
 /**

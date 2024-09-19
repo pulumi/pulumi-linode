@@ -48,7 +48,6 @@ import * as utilities from "./utilities";
  */
 export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Promise<GetVlansResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVlans:getVlans", {
         "filters": args.filters,
@@ -125,7 +124,14 @@ export interface GetVlansResult {
  * * `region`
  */
 export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlansResult> {
-    return pulumi.output(args).apply((a: any) => getVlans(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getVlans:getVlans", {
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+        "vlans": args.vlans,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getIpv6Range(args: GetIpv6RangeArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6RangeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getIpv6Range:getIpv6Range", {
         "range": args.range,
@@ -77,7 +76,10 @@ export interface GetIpv6RangeResult {
  * ```
  */
 export function getIpv6RangeOutput(args: GetIpv6RangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6RangeResult> {
-    return pulumi.output(args).apply((a: any) => getIpv6Range(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getIpv6Range:getIpv6Range", {
+        "range": args.range,
+    }, opts);
 }
 
 /**

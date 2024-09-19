@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getInstanceBackups(args: GetInstanceBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceBackupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getInstanceBackups:getInstanceBackups", {
         "linodeId": args.linodeId,
@@ -68,7 +67,10 @@ export interface GetInstanceBackupsResult {
  * ```
  */
 export function getInstanceBackupsOutput(args: GetInstanceBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceBackupsResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceBackups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getInstanceBackups:getInstanceBackups", {
+        "linodeId": args.linodeId,
+    }, opts);
 }
 
 /**

@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  */
 export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVolumes:getVolumes", {
         "filters": args.filters,
@@ -94,7 +93,14 @@ export interface GetVolumesResult {
  * * `tags`
  */
 export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumesResult> {
-    return pulumi.output(args).apply((a: any) => getVolumes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getVolumes:getVolumes", {
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+        "volumes": args.volumes,
+    }, opts);
 }
 
 /**

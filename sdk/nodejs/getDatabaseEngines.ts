@@ -60,7 +60,6 @@ import * as utilities from "./utilities";
  */
 export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseEnginesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseEngines:getDatabaseEngines", {
         "engines": args.engines,
@@ -160,7 +159,15 @@ export interface GetDatabaseEnginesResult {
  * ```
  */
 export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseEnginesResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseEngines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDatabaseEngines:getDatabaseEngines", {
+        "engines": args.engines,
+        "filters": args.filters,
+        "latest": args.latest,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

@@ -96,14 +96,20 @@ type GetSshkeysResult struct {
 
 func GetSshkeysOutput(ctx *pulumi.Context, args GetSshkeysOutputArgs, opts ...pulumi.InvokeOption) GetSshkeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSshkeysResult, error) {
+		ApplyT(func(v interface{}) (GetSshkeysResultOutput, error) {
 			args := v.(GetSshkeysArgs)
-			r, err := GetSshkeys(ctx, &args, opts...)
-			var s GetSshkeysResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSshkeysResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getSshkeys:getSshkeys", args, &rv, "", opts...)
+			if err != nil {
+				return GetSshkeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSshkeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSshkeysResultOutput), nil
+			}
+			return output, nil
 		}).(GetSshkeysResultOutput)
 }
 

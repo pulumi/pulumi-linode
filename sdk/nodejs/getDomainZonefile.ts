@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDomainZonefile(args: GetDomainZonefileArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainZonefileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDomainZonefile:getDomainZonefile", {
         "domainId": args.domainId,
@@ -71,7 +70,10 @@ export interface GetDomainZonefileResult {
  * ```
  */
 export function getDomainZonefileOutput(args: GetDomainZonefileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainZonefileResult> {
-    return pulumi.output(args).apply((a: any) => getDomainZonefile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDomainZonefile:getDomainZonefile", {
+        "domainId": args.domainId,
+    }, opts);
 }
 
 /**

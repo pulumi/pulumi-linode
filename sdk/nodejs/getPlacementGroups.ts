@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  */
 export function getPlacementGroups(args?: GetPlacementGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetPlacementGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getPlacementGroups:getPlacementGroups", {
         "filters": args.filters,
@@ -125,7 +124,14 @@ export interface GetPlacementGroupsResult {
  * * `isCompliant`
  */
 export function getPlacementGroupsOutput(args?: GetPlacementGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlacementGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getPlacementGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getPlacementGroups:getPlacementGroups", {
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+        "placementGroups": args.placementGroups,
+    }, opts);
 }
 
 /**
