@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProfile(opts?: pulumi.InvokeOptions): Promise<GetProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getProfile:getProfile", {
     }, opts);
@@ -90,5 +89,7 @@ export interface GetProfileResult {
  * ```
  */
 export function getProfileOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetProfileResult> {
-    return pulumi.output(getProfile(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getProfile:getProfile", {
+    }, opts);
 }

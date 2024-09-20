@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  */
 export function getNodebalancers(args?: GetNodebalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetNodebalancersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodebalancers:getNodebalancers", {
         "filters": args.filters,
@@ -134,7 +133,14 @@ export interface GetNodebalancersResult {
  * * `clientConnThrottle`
  */
 export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodebalancersResult> {
-    return pulumi.output(args).apply((a: any) => getNodebalancers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getNodebalancers:getNodebalancers", {
+        "filters": args.filters,
+        "nodebalancers": args.nodebalancers,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

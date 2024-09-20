@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  */
 export function getIpv6Ranges(args?: GetIpv6RangesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6RangesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getIpv6Ranges:getIpv6Ranges", {
         "filters": args.filters,
@@ -95,7 +94,12 @@ export interface GetIpv6RangesResult {
  * * `region`
  */
 export function getIpv6RangesOutput(args?: GetIpv6RangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6RangesResult> {
-    return pulumi.output(args).apply((a: any) => getIpv6Ranges(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getIpv6Ranges:getIpv6Ranges", {
+        "filters": args.filters,
+        "ranges": args.ranges,
+    }, opts);
 }
 
 /**

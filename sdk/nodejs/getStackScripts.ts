@@ -57,7 +57,6 @@ import * as utilities from "./utilities";
  */
 export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getStackScripts:getStackScripts", {
         "filters": args.filters,
@@ -154,7 +153,15 @@ export interface GetStackScriptsResult {
  * * `username`
  */
 export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptsResult> {
-    return pulumi.output(args).apply((a: any) => getStackScripts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getStackScripts:getStackScripts", {
+        "filters": args.filters,
+        "latest": args.latest,
+        "order": args.order,
+        "orderBy": args.orderBy,
+        "stackscripts": args.stackscripts,
+    }, opts);
 }
 
 /**

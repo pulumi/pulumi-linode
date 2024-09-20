@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  */
 export function getDatabasePostgresql(args?: GetDatabasePostgresqlArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasePostgresqlResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", {
         "databaseId": args.databaseId,
@@ -187,7 +186,12 @@ export interface GetDatabasePostgresqlResult {
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
 export function getDatabasePostgresqlOutput(args?: GetDatabasePostgresqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePostgresqlResult> {
-    return pulumi.output(args).apply((a: any) => getDatabasePostgresql(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDatabasePostgresql:getDatabasePostgresql", {
+        "databaseId": args.databaseId,
+        "id": args.id,
+    }, opts);
 }
 
 /**

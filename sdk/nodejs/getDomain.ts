@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getDomain(args?: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDomain:getDomain", {
         "domain": args.domain,
@@ -130,7 +129,12 @@ export interface GetDomainResult {
  * ```
  */
 export function getDomainOutput(args?: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDomain:getDomain", {
+        "domain": args.domain,
+        "id": args.id,
+    }, opts);
 }
 
 /**

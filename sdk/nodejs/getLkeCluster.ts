@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeCluster:getLkeCluster", {
         "controlPlanes": args.controlPlanes,
@@ -122,7 +121,12 @@ export interface GetLkeClusterResult {
  * ```
  */
 export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClusterResult> {
-    return pulumi.output(args).apply((a: any) => getLkeCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getLkeCluster:getLkeCluster", {
+        "controlPlanes": args.controlPlanes,
+        "id": args.id,
+        "pools": args.pools,
+    }, opts);
 }
 
 /**

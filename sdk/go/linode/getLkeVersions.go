@@ -57,13 +57,19 @@ type GetLkeVersionsResult struct {
 }
 
 func GetLkeVersionsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLkeVersionsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetLkeVersionsResult, error) {
-		r, err := GetLkeVersions(ctx, opts...)
-		var s GetLkeVersionsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetLkeVersionsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetLkeVersionsResult
+		secret, err := ctx.InvokePackageRaw("linode:index/getLkeVersions:getLkeVersions", nil, &rv, "", opts...)
+		if err != nil {
+			return GetLkeVersionsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetLkeVersionsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetLkeVersionsResultOutput), nil
+		}
+		return output, nil
 	}).(GetLkeVersionsResultOutput)
 }
 

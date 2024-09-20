@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAccountSettings(opts?: pulumi.InvokeOptions): Promise<GetAccountSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getAccountSettings:getAccountSettings", {
     }, opts);
@@ -68,5 +67,7 @@ export interface GetAccountSettingsResult {
  * ```
  */
 export function getAccountSettingsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountSettingsResult> {
-    return pulumi.output(getAccountSettings(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getAccountSettings:getAccountSettings", {
+    }, opts);
 }

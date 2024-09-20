@@ -123,14 +123,20 @@ type LookupDatabaseMysqlResult struct {
 
 func LookupDatabaseMysqlOutput(ctx *pulumi.Context, args LookupDatabaseMysqlOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMysqlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMysqlResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseMysqlResultOutput, error) {
 			args := v.(LookupDatabaseMysqlArgs)
-			r, err := LookupDatabaseMysql(ctx, &args, opts...)
-			var s LookupDatabaseMysqlResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseMysqlResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getDatabaseMysql:getDatabaseMysql", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseMysqlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseMysqlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseMysqlResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseMysqlResultOutput)
 }
 

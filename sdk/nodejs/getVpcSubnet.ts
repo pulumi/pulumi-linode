@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVpcSubnet(args: GetVpcSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcSubnetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVpcSubnet:getVpcSubnet", {
         "id": args.id,
@@ -95,7 +94,11 @@ export interface GetVpcSubnetResult {
  * ```
  */
 export function getVpcSubnetOutput(args: GetVpcSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSubnetResult> {
-    return pulumi.output(args).apply((a: any) => getVpcSubnet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getVpcSubnet:getVpcSubnet", {
+        "id": args.id,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

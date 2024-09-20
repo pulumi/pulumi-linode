@@ -43,7 +43,6 @@ import * as utilities from "./utilities";
  */
 export function getAccountLogins(args?: GetAccountLoginsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountLoginsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getAccountLogins:getAccountLogins", {
         "filters": args.filters,
@@ -106,7 +105,12 @@ export interface GetAccountLoginsResult {
  * * `username`
  */
 export function getAccountLoginsOutput(args?: GetAccountLoginsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountLoginsResult> {
-    return pulumi.output(args).apply((a: any) => getAccountLogins(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getAccountLogins:getAccountLogins", {
+        "filters": args.filters,
+        "logins": args.logins,
+    }, opts);
 }
 
 /**

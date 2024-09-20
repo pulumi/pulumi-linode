@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  */
 export function getAccountAvailabilities(args?: GetAccountAvailabilitiesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAvailabilitiesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getAccountAvailabilities:getAccountAvailabilities", {
         "availabilities": args.availabilities,
@@ -99,7 +98,12 @@ export interface GetAccountAvailabilitiesResult {
  * * `available`
  */
 export function getAccountAvailabilitiesOutput(args?: GetAccountAvailabilitiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAvailabilitiesResult> {
-    return pulumi.output(args).apply((a: any) => getAccountAvailabilities(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getAccountAvailabilities:getAccountAvailabilities", {
+        "availabilities": args.availabilities,
+        "filters": args.filters,
+    }, opts);
 }
 
 /**

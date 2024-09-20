@@ -44,7 +44,6 @@ import * as utilities from "./utilities";
  */
 export function getSshkeys(args?: GetSshkeysArgs, opts?: pulumi.InvokeOptions): Promise<GetSshkeysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getSshkeys:getSshkeys", {
         "filters": args.filters,
@@ -120,7 +119,14 @@ export interface GetSshkeysResult {
  * * `sshKey`
  */
 export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshkeysResult> {
-    return pulumi.output(args).apply((a: any) => getSshkeys(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getSshkeys:getSshkeys", {
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+        "sshkeys": args.sshkeys,
+    }, opts);
 }
 
 /**

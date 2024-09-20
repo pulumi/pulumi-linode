@@ -52,7 +52,6 @@ import * as utilities from "./utilities";
  */
 export function getKernels(args?: GetKernelsArgs, opts?: pulumi.InvokeOptions): Promise<GetKernelsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getKernels:getKernels", {
         "filters": args.filters,
@@ -136,7 +135,14 @@ export interface GetKernelsResult {
  * * `xen`
  */
 export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelsResult> {
-    return pulumi.output(args).apply((a: any) => getKernels(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getKernels:getKernels", {
+        "filters": args.filters,
+        "kernels": args.kernels,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

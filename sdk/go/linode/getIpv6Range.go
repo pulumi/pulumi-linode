@@ -72,14 +72,20 @@ type LookupIpv6RangeResult struct {
 
 func LookupIpv6RangeOutput(ctx *pulumi.Context, args LookupIpv6RangeOutputArgs, opts ...pulumi.InvokeOption) LookupIpv6RangeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIpv6RangeResult, error) {
+		ApplyT(func(v interface{}) (LookupIpv6RangeResultOutput, error) {
 			args := v.(LookupIpv6RangeArgs)
-			r, err := LookupIpv6Range(ctx, &args, opts...)
-			var s LookupIpv6RangeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupIpv6RangeResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getIpv6Range:getIpv6Range", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIpv6RangeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIpv6RangeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIpv6RangeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIpv6RangeResultOutput)
 }
 

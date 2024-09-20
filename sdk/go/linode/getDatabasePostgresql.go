@@ -126,14 +126,20 @@ type LookupDatabasePostgresqlResult struct {
 
 func LookupDatabasePostgresqlOutput(ctx *pulumi.Context, args LookupDatabasePostgresqlOutputArgs, opts ...pulumi.InvokeOption) LookupDatabasePostgresqlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabasePostgresqlResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabasePostgresqlResultOutput, error) {
 			args := v.(LookupDatabasePostgresqlArgs)
-			r, err := LookupDatabasePostgresql(ctx, &args, opts...)
-			var s LookupDatabasePostgresqlResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabasePostgresqlResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getDatabasePostgresql:getDatabasePostgresql", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabasePostgresqlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabasePostgresqlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabasePostgresqlResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabasePostgresqlResultOutput)
 }
 

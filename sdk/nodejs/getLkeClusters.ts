@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
  */
 export function getLkeClusters(args?: GetLkeClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeClusters:getLkeClusters", {
         "filters": args.filters,
@@ -122,7 +121,14 @@ export interface GetLkeClustersResult {
  * * `updated`
  */
 export function getLkeClustersOutput(args?: GetLkeClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClustersResult> {
-    return pulumi.output(args).apply((a: any) => getLkeClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getLkeClusters:getLkeClusters", {
+        "filters": args.filters,
+        "lkeClusters": args.lkeClusters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**
