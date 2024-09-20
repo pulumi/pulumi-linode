@@ -55,7 +55,6 @@ import * as utilities from "./utilities";
  * * `sslCommonname`
  */
 export function getNodebalancerConfigs(args: GetNodebalancerConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetNodebalancerConfigsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", {
         "filters": args.filters,
@@ -154,7 +153,14 @@ export interface GetNodebalancerConfigsResult {
  * * `sslCommonname`
  */
 export function getNodebalancerConfigsOutput(args: GetNodebalancerConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodebalancerConfigsResult> {
-    return pulumi.output(args).apply((a: any) => getNodebalancerConfigs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", {
+        "filters": args.filters,
+        "nodebalancerConfigs": args.nodebalancerConfigs,
+        "nodebalancerId": args.nodebalancerId,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * The following example shows a sample grant.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getUser:getUser", {
         "databaseGrants": args.databaseGrants,
@@ -129,7 +128,19 @@ export interface GetUserResult {
  * The following example shows a sample grant.
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getUser:getUser", {
+        "databaseGrants": args.databaseGrants,
+        "domainGrants": args.domainGrants,
+        "firewallGrants": args.firewallGrants,
+        "imageGrants": args.imageGrants,
+        "linodeGrants": args.linodeGrants,
+        "longviewGrants": args.longviewGrants,
+        "nodebalancerGrants": args.nodebalancerGrants,
+        "stackscriptGrants": args.stackscriptGrants,
+        "username": args.username,
+        "volumeGrants": args.volumeGrants,
+    }, opts);
 }
 
 /**

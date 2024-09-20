@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getInstanceNetworking(args: GetInstanceNetworkingArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceNetworkingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getInstanceNetworking:getInstanceNetworking", {
         "linodeId": args.linodeId,
@@ -67,7 +66,10 @@ export interface GetInstanceNetworkingResult {
  * ```
  */
 export function getInstanceNetworkingOutput(args: GetInstanceNetworkingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceNetworkingResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceNetworking(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getInstanceNetworking:getInstanceNetworking", {
+        "linodeId": args.linodeId,
+    }, opts);
 }
 
 /**

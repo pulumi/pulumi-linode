@@ -73,7 +73,6 @@ import * as utilities from "./utilities";
  */
 export function getChildAccounts(args?: GetChildAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetChildAccountsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getChildAccounts:getChildAccounts", {
         "childAccounts": args.childAccounts,
@@ -163,7 +162,12 @@ export interface GetChildAccountsResult {
  * * `activeSince`
  */
 export function getChildAccountsOutput(args?: GetChildAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildAccountsResult> {
-    return pulumi.output(args).apply((a: any) => getChildAccounts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getChildAccounts:getChildAccounts", {
+        "childAccounts": args.childAccounts,
+        "filters": args.filters,
+    }, opts);
 }
 
 /**

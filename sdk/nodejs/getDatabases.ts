@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  */
 export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabases:getDatabases", {
         "databases": args.databases,
@@ -110,7 +109,14 @@ export interface GetDatabasesResult {
  * ```
  */
 export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
-    return pulumi.output(args).apply((a: any) => getDatabases(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getDatabases:getDatabases", {
+        "databases": args.databases,
+        "filters": args.filters,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

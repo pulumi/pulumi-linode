@@ -80,14 +80,20 @@ type LookupNodeBalancerNodeResult struct {
 
 func LookupNodeBalancerNodeOutput(ctx *pulumi.Context, args LookupNodeBalancerNodeOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerNodeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNodeBalancerNodeResult, error) {
+		ApplyT(func(v interface{}) (LookupNodeBalancerNodeResultOutput, error) {
 			args := v.(LookupNodeBalancerNodeArgs)
-			r, err := LookupNodeBalancerNode(ctx, &args, opts...)
-			var s LookupNodeBalancerNodeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNodeBalancerNodeResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getNodeBalancerNode:getNodeBalancerNode", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNodeBalancerNodeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNodeBalancerNodeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNodeBalancerNodeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNodeBalancerNodeResultOutput)
 }
 

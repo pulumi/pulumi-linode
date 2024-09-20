@@ -91,14 +91,20 @@ type LookupLkeClusterResult struct {
 
 func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupLkeClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLkeClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupLkeClusterResultOutput, error) {
 			args := v.(LookupLkeClusterArgs)
-			r, err := LookupLkeCluster(ctx, &args, opts...)
-			var s LookupLkeClusterResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupLkeClusterResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getLkeCluster:getLkeCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLkeClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLkeClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLkeClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLkeClusterResultOutput)
 }
 

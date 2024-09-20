@@ -66,14 +66,20 @@ type GetInstanceNetworkingResult struct {
 
 func GetInstanceNetworkingOutput(ctx *pulumi.Context, args GetInstanceNetworkingOutputArgs, opts ...pulumi.InvokeOption) GetInstanceNetworkingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceNetworkingResult, error) {
+		ApplyT(func(v interface{}) (GetInstanceNetworkingResultOutput, error) {
 			args := v.(GetInstanceNetworkingArgs)
-			r, err := GetInstanceNetworking(ctx, &args, opts...)
-			var s GetInstanceNetworkingResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceNetworkingResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getInstanceNetworking:getInstanceNetworking", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceNetworkingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceNetworkingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceNetworkingResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceNetworkingResultOutput)
 }
 

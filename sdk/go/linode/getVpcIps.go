@@ -122,14 +122,20 @@ type GetVpcIpsResult struct {
 
 func GetVpcIpsOutput(ctx *pulumi.Context, args GetVpcIpsOutputArgs, opts ...pulumi.InvokeOption) GetVpcIpsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVpcIpsResult, error) {
+		ApplyT(func(v interface{}) (GetVpcIpsResultOutput, error) {
 			args := v.(GetVpcIpsArgs)
-			r, err := GetVpcIps(ctx, &args, opts...)
-			var s GetVpcIpsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVpcIpsResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getVpcIps:getVpcIps", args, &rv, "", opts...)
+			if err != nil {
+				return GetVpcIpsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVpcIpsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVpcIpsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVpcIpsResultOutput)
 }
 

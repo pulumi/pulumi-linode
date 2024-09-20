@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNetworkingIp(args: GetNetworkingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNetworkingIp:getNetworkingIp", {
         "address": args.address,
@@ -99,7 +98,10 @@ export interface GetNetworkingIpResult {
  * ```
  */
 export function getNetworkingIpOutput(args: GetNetworkingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkingIpResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkingIp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getNetworkingIp:getNetworkingIp", {
+        "address": args.address,
+    }, opts);
 }
 
 /**

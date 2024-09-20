@@ -56,7 +56,6 @@ import * as utilities from "./utilities";
  */
 export function getVpcIps(args?: GetVpcIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcIpsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVpcIps:getVpcIps", {
         "filters": args.filters,
@@ -140,7 +139,13 @@ export interface GetVpcIpsResult {
  * * `vpcId`
  */
 export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcIpsResult> {
-    return pulumi.output(args).apply((a: any) => getVpcIps(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getVpcIps:getVpcIps", {
+        "filters": args.filters,
+        "vpcId": args.vpcId,
+        "vpcIps": args.vpcIps,
+    }, opts);
 }
 
 /**

@@ -81,7 +81,6 @@ import * as utilities from "./utilities";
  */
 export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getFirewalls:getFirewalls", {
         "filters": args.filters,
@@ -194,7 +193,14 @@ export interface GetFirewallsResult {
  * * `tags`
  */
 export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallsResult> {
-    return pulumi.output(args).apply((a: any) => getFirewalls(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getFirewalls:getFirewalls", {
+        "filters": args.filters,
+        "firewalls": args.firewalls,
+        "order": args.order,
+        "orderBy": args.orderBy,
+    }, opts);
 }
 
 /**

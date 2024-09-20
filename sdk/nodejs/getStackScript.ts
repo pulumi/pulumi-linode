@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getStackScript(args: GetStackScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetStackScriptResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getStackScript:getStackScript", {
         "id": args.id,
@@ -117,7 +116,10 @@ export interface GetStackScriptResult {
  * ```
  */
 export function getStackScriptOutput(args: GetStackScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptResult> {
-    return pulumi.output(args).apply((a: any) => getStackScript(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getStackScript:getStackScript", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

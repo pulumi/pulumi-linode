@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getSshKey:getSshKey", {
         "id": args.id,
@@ -80,7 +79,11 @@ export interface GetSshKeyResult {
  * ```
  */
 export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeyResult> {
-    return pulumi.output(args).apply((a: any) => getSshKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getSshKey:getSshKey", {
+        "id": args.id,
+        "label": args.label,
+    }, opts);
 }
 
 /**

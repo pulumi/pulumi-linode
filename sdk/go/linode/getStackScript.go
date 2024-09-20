@@ -90,14 +90,20 @@ type LookupStackScriptResult struct {
 
 func LookupStackScriptOutput(ctx *pulumi.Context, args LookupStackScriptOutputArgs, opts ...pulumi.InvokeOption) LookupStackScriptResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStackScriptResult, error) {
+		ApplyT(func(v interface{}) (LookupStackScriptResultOutput, error) {
 			args := v.(LookupStackScriptArgs)
-			r, err := LookupStackScript(ctx, &args, opts...)
-			var s LookupStackScriptResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupStackScriptResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getStackScript:getStackScript", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStackScriptResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStackScriptResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStackScriptResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStackScriptResultOutput)
 }
 

@@ -116,14 +116,20 @@ type GetDatabaseMysqlBackupsResult struct {
 
 func GetDatabaseMysqlBackupsOutput(ctx *pulumi.Context, args GetDatabaseMysqlBackupsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseMysqlBackupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatabaseMysqlBackupsResult, error) {
+		ApplyT(func(v interface{}) (GetDatabaseMysqlBackupsResultOutput, error) {
 			args := v.(GetDatabaseMysqlBackupsArgs)
-			r, err := GetDatabaseMysqlBackups(ctx, &args, opts...)
-			var s GetDatabaseMysqlBackupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDatabaseMysqlBackupsResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args, &rv, "", opts...)
+			if err != nil {
+				return GetDatabaseMysqlBackupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDatabaseMysqlBackupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDatabaseMysqlBackupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDatabaseMysqlBackupsResultOutput)
 }
 

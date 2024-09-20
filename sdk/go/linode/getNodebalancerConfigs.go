@@ -114,14 +114,20 @@ type GetNodebalancerConfigsResult struct {
 
 func GetNodebalancerConfigsOutput(ctx *pulumi.Context, args GetNodebalancerConfigsOutputArgs, opts ...pulumi.InvokeOption) GetNodebalancerConfigsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNodebalancerConfigsResult, error) {
+		ApplyT(func(v interface{}) (GetNodebalancerConfigsResultOutput, error) {
 			args := v.(GetNodebalancerConfigsArgs)
-			r, err := GetNodebalancerConfigs(ctx, &args, opts...)
-			var s GetNodebalancerConfigsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNodebalancerConfigsResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args, &rv, "", opts...)
+			if err != nil {
+				return GetNodebalancerConfigsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNodebalancerConfigsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNodebalancerConfigsResultOutput), nil
+			}
+			return output, nil
 		}).(GetNodebalancerConfigsResultOutput)
 }
 

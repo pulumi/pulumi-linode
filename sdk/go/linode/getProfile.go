@@ -75,13 +75,19 @@ type GetProfileResult struct {
 }
 
 func GetProfileOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetProfileResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetProfileResult, error) {
-		r, err := GetProfile(ctx, opts...)
-		var s GetProfileResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetProfileResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetProfileResult
+		secret, err := ctx.InvokePackageRaw("linode:index/getProfile:getProfile", nil, &rv, "", opts...)
+		if err != nil {
+			return GetProfileResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetProfileResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetProfileResultOutput), nil
+		}
+		return output, nil
 	}).(GetProfileResultOutput)
 }
 

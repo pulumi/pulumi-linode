@@ -67,14 +67,20 @@ type GetInstanceBackupsResult struct {
 
 func GetInstanceBackupsOutput(ctx *pulumi.Context, args GetInstanceBackupsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceBackupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceBackupsResult, error) {
+		ApplyT(func(v interface{}) (GetInstanceBackupsResultOutput, error) {
 			args := v.(GetInstanceBackupsArgs)
-			r, err := GetInstanceBackups(ctx, &args, opts...)
-			var s GetInstanceBackupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceBackupsResult
+			secret, err := ctx.InvokePackageRaw("linode:index/getInstanceBackups:getInstanceBackups", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceBackupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceBackupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceBackupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceBackupsResultOutput)
 }
 

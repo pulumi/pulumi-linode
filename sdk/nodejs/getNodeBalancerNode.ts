@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNodeBalancerNode(args: GetNodeBalancerNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerNodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodeBalancerNode:getNodeBalancerNode", {
         "configId": args.configId,
@@ -95,7 +94,12 @@ export interface GetNodeBalancerNodeResult {
  * ```
  */
 export function getNodeBalancerNodeOutput(args: GetNodeBalancerNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerNodeResult> {
-    return pulumi.output(args).apply((a: any) => getNodeBalancerNode(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("linode:index/getNodeBalancerNode:getNodeBalancerNode", {
+        "configId": args.configId,
+        "id": args.id,
+        "nodebalancerId": args.nodebalancerId,
+    }, opts);
 }
 
 /**
