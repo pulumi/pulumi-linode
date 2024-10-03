@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -146,9 +151,6 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
         objects=pulumi.get(__ret__, 'objects'),
         region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'))
-
-
-@_utilities.lift_output_func(get_linode_object_storage_bucket)
 def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optional[str]]] = None,
                                             label: Optional[pulumi.Input[str]] = None,
                                             region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -174,4 +176,18 @@ def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optio
     :param str label: The name of this bucket.
     :param str region: The ID of the region this bucket is in. Required if `cluster` is not configured.
     """
-    ...
+    __args__ = dict()
+    __args__['cluster'] = cluster
+    __args__['label'] = label
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket', __args__, opts=opts, typ=GetLinodeObjectStorageBucketResult)
+    return __ret__.apply(lambda __response__: GetLinodeObjectStorageBucketResult(
+        cluster=pulumi.get(__response__, 'cluster'),
+        created=pulumi.get(__response__, 'created'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        objects=pulumi.get(__response__, 'objects'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size')))

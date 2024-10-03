@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -194,9 +199,6 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
         timezone=pulumi.get(__ret__, 'timezone'),
         two_factor_auth=pulumi.get(__ret__, 'two_factor_auth'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_profile)
 def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProfileResult]:
     """
     Provides information about a Linode profile.
@@ -213,4 +215,18 @@ def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     profile = linode.get_profile()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getProfile:getProfile', __args__, opts=opts, typ=GetProfileResult)
+    return __ret__.apply(lambda __response__: GetProfileResult(
+        authorized_keys=pulumi.get(__response__, 'authorized_keys'),
+        email=pulumi.get(__response__, 'email'),
+        email_notifications=pulumi.get(__response__, 'email_notifications'),
+        id=pulumi.get(__response__, 'id'),
+        ip_whitelist_enabled=pulumi.get(__response__, 'ip_whitelist_enabled'),
+        lish_auth_method=pulumi.get(__response__, 'lish_auth_method'),
+        referrals=pulumi.get(__response__, 'referrals'),
+        restricted=pulumi.get(__response__, 'restricted'),
+        timezone=pulumi.get(__response__, 'timezone'),
+        two_factor_auth=pulumi.get(__response__, 'two_factor_auth'),
+        username=pulumi.get(__response__, 'username')))

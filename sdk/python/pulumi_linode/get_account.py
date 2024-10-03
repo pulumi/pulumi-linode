@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -257,9 +262,6 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
         phone=pulumi.get(__ret__, 'phone'),
         state=pulumi.get(__ret__, 'state'),
         zip=pulumi.get(__ret__, 'zip'))
-
-
-@_utilities.lift_output_func(get_account)
 def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
     Provides information about a Linode account.
@@ -278,4 +280,23 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     account = linode.get_account()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    return __ret__.apply(lambda __response__: GetAccountResult(
+        active_since=pulumi.get(__response__, 'active_since'),
+        address1=pulumi.get(__response__, 'address1'),
+        address2=pulumi.get(__response__, 'address2'),
+        balance=pulumi.get(__response__, 'balance'),
+        capabilities=pulumi.get(__response__, 'capabilities'),
+        city=pulumi.get(__response__, 'city'),
+        company=pulumi.get(__response__, 'company'),
+        country=pulumi.get(__response__, 'country'),
+        email=pulumi.get(__response__, 'email'),
+        euuid=pulumi.get(__response__, 'euuid'),
+        first_name=pulumi.get(__response__, 'first_name'),
+        id=pulumi.get(__response__, 'id'),
+        last_name=pulumi.get(__response__, 'last_name'),
+        phone=pulumi.get(__response__, 'phone'),
+        state=pulumi.get(__response__, 'state'),
+        zip=pulumi.get(__response__, 'zip')))

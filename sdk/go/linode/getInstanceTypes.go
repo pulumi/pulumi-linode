@@ -61,7 +61,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// all_types, err := linode.GetInstanceTypes(ctx, nil, nil);
+// all_types, err := linode.GetInstanceTypes(ctx, &linode.GetInstanceTypesArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

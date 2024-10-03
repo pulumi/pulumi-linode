@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -127,9 +132,6 @@ def get_ipv6_range(range: Optional[str] = None,
         prefix=pulumi.get(__ret__, 'prefix'),
         range=pulumi.get(__ret__, 'range'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_ipv6_range)
 def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6RangeResult]:
     """
@@ -150,4 +152,14 @@ def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
 
     :param str range: The IPv6 range to retrieve information about.
     """
-    ...
+    __args__ = dict()
+    __args__['range'] = range
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getIpv6Range:getIpv6Range', __args__, opts=opts, typ=GetIpv6RangeResult)
+    return __ret__.apply(lambda __response__: GetIpv6RangeResult(
+        id=pulumi.get(__response__, 'id'),
+        is_bgp=pulumi.get(__response__, 'is_bgp'),
+        linodes=pulumi.get(__response__, 'linodes'),
+        prefix=pulumi.get(__response__, 'prefix'),
+        range=pulumi.get(__response__, 'range'),
+        region=pulumi.get(__response__, 'region')))

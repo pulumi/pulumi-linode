@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -103,9 +108,6 @@ def get_ipv6_ranges(filters: Optional[Sequence[Union['GetIpv6RangesFilterArgs', 
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         ranges=pulumi.get(__ret__, 'ranges'))
-
-
-@_utilities.lift_output_func(get_ipv6_ranges)
 def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]]]] = None,
                            ranges: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesRangeArgs', 'GetIpv6RangesRangeArgsDict']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6RangesResult]:
@@ -138,4 +140,12 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
 
     * `region`
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['ranges'] = ranges
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getIpv6Ranges:getIpv6Ranges', __args__, opts=opts, typ=GetIpv6RangesResult)
+    return __ret__.apply(lambda __response__: GetIpv6RangesResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        ranges=pulumi.get(__response__, 'ranges')))

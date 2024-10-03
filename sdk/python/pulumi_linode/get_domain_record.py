@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -223,9 +228,6 @@ def get_domain_record(domain_id: Optional[int] = None,
         ttl_sec=pulumi.get(__ret__, 'ttl_sec'),
         type=pulumi.get(__ret__, 'type'),
         weight=pulumi.get(__ret__, 'weight'))
-
-
-@_utilities.lift_output_func(get_domain_record)
 def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
                              id: Optional[pulumi.Input[Optional[int]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -253,4 +255,22 @@ def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
     :param int id: The unique ID of the Domain Record.
     :param str name: The name of the Record.
     """
-    ...
+    __args__ = dict()
+    __args__['domainId'] = domain_id
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getDomainRecord:getDomainRecord', __args__, opts=opts, typ=GetDomainRecordResult)
+    return __ret__.apply(lambda __response__: GetDomainRecordResult(
+        domain_id=pulumi.get(__response__, 'domain_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        port=pulumi.get(__response__, 'port'),
+        priority=pulumi.get(__response__, 'priority'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        service=pulumi.get(__response__, 'service'),
+        tag=pulumi.get(__response__, 'tag'),
+        target=pulumi.get(__response__, 'target'),
+        ttl_sec=pulumi.get(__response__, 'ttl_sec'),
+        type=pulumi.get(__response__, 'type'),
+        weight=pulumi.get(__response__, 'weight')))

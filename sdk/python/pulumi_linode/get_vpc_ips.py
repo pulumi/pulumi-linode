@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -138,9 +143,6 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
         id=pulumi.get(__ret__, 'id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vpc_ips=pulumi.get(__ret__, 'vpc_ips'))
-
-
-@_utilities.lift_output_func(get_vpc_ips)
 def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]]]] = None,
                        vpc_id: Optional[pulumi.Input[Optional[int]]] = None,
                        vpc_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcIpsVpcIpArgs', 'GetVpcIpsVpcIpArgsDict']]]]] = None,
@@ -194,4 +196,14 @@ def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
            
            * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['vpcId'] = vpc_id
+    __args__['vpcIps'] = vpc_ips
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcIps:getVpcIps', __args__, opts=opts, typ=GetVpcIpsResult)
+    return __ret__.apply(lambda __response__: GetVpcIpsResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vpc_ips=pulumi.get(__response__, 'vpc_ips')))

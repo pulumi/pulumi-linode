@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -176,9 +181,6 @@ def get_database_backups(backups: Optional[Sequence[Union['GetDatabaseBackupsBac
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-
-
-@_utilities.lift_output_func(get_database_backups)
 def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseBackupsBackupArgs', 'GetDatabaseBackupsBackupArgsDict']]]]] = None,
                                 database_id: Optional[pulumi.Input[int]] = None,
                                 database_type: Optional[pulumi.Input[str]] = None,
@@ -226,4 +228,22 @@ def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`created`)
     """
-    ...
+    __args__ = dict()
+    __args__['backups'] = backups
+    __args__['databaseId'] = database_id
+    __args__['databaseType'] = database_type
+    __args__['filters'] = filters
+    __args__['latest'] = latest
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabaseBackups:getDatabaseBackups', __args__, opts=opts, typ=GetDatabaseBackupsResult)
+    return __ret__.apply(lambda __response__: GetDatabaseBackupsResult(
+        backups=pulumi.get(__response__, 'backups'),
+        database_id=pulumi.get(__response__, 'database_id'),
+        database_type=pulumi.get(__response__, 'database_type'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        latest=pulumi.get(__response__, 'latest'),
+        order=pulumi.get(__response__, 'order'),
+        order_by=pulumi.get(__response__, 'order_by')))

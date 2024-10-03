@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -377,9 +382,6 @@ def get_database_postgresql(database_id: Optional[int] = None,
         updated=pulumi.get(__ret__, 'updated'),
         updates=pulumi.get(__ret__, 'updates'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_database_postgresql)
 def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[int]]] = None,
                                    id: Optional[pulumi.Input[Optional[int]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasePostgresqlResult]:
@@ -416,4 +418,33 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[i
     :param int database_id: The ID of the PostgreSQL database. Deprecated: Use id instead.
     :param int id: The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
     """
-    ...
+    __args__ = dict()
+    __args__['databaseId'] = database_id
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabasePostgresql:getDatabasePostgresql', __args__, opts=opts, typ=GetDatabasePostgresqlResult)
+    return __ret__.apply(lambda __response__: GetDatabasePostgresqlResult(
+        allow_lists=pulumi.get(__response__, 'allow_lists'),
+        ca_cert=pulumi.get(__response__, 'ca_cert'),
+        cluster_size=pulumi.get(__response__, 'cluster_size'),
+        created=pulumi.get(__response__, 'created'),
+        database_id=pulumi.get(__response__, 'database_id'),
+        encrypted=pulumi.get(__response__, 'encrypted'),
+        engine=pulumi.get(__response__, 'engine'),
+        engine_id=pulumi.get(__response__, 'engine_id'),
+        host_primary=pulumi.get(__response__, 'host_primary'),
+        host_secondary=pulumi.get(__response__, 'host_secondary'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        port=pulumi.get(__response__, 'port'),
+        region=pulumi.get(__response__, 'region'),
+        replication_commit_type=pulumi.get(__response__, 'replication_commit_type'),
+        replication_type=pulumi.get(__response__, 'replication_type'),
+        root_password=pulumi.get(__response__, 'root_password'),
+        root_username=pulumi.get(__response__, 'root_username'),
+        ssl_connection=pulumi.get(__response__, 'ssl_connection'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        updated=pulumi.get(__response__, 'updated'),
+        updates=pulumi.get(__response__, 'updates'),
+        version=pulumi.get(__response__, 'version')))

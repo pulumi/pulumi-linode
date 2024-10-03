@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -238,9 +243,6 @@ def get_stack_script(id: Optional[str] = None,
         user_defined_fields=pulumi.get(__ret__, 'user_defined_fields'),
         user_gravatar_id=pulumi.get(__ret__, 'user_gravatar_id'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_stack_script)
 def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptResult]:
     """
@@ -261,4 +263,22 @@ def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique numeric ID of the StackScript to query.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getStackScript:getStackScript', __args__, opts=opts, typ=GetStackScriptResult)
+    return __ret__.apply(lambda __response__: GetStackScriptResult(
+        created=pulumi.get(__response__, 'created'),
+        deployments_active=pulumi.get(__response__, 'deployments_active'),
+        deployments_total=pulumi.get(__response__, 'deployments_total'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        images=pulumi.get(__response__, 'images'),
+        is_public=pulumi.get(__response__, 'is_public'),
+        label=pulumi.get(__response__, 'label'),
+        rev_note=pulumi.get(__response__, 'rev_note'),
+        script=pulumi.get(__response__, 'script'),
+        updated=pulumi.get(__response__, 'updated'),
+        user_defined_fields=pulumi.get(__response__, 'user_defined_fields'),
+        user_gravatar_id=pulumi.get(__response__, 'user_gravatar_id'),
+        username=pulumi.get(__response__, 'username')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -230,9 +235,6 @@ def get_firewall(id: Optional[int] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'))
-
-
-@_utilities.lift_output_func(get_firewall)
 def get_firewall_output(id: Optional[pulumi.Input[int]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
     """
@@ -251,4 +253,22 @@ def get_firewall_output(id: Optional[pulumi.Input[int]] = None,
 
     :param int id: The Firewall's ID.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult)
+    return __ret__.apply(lambda __response__: GetFirewallResult(
+        created=pulumi.get(__response__, 'created'),
+        devices=pulumi.get(__response__, 'devices'),
+        disabled=pulumi.get(__response__, 'disabled'),
+        id=pulumi.get(__response__, 'id'),
+        inbound_policy=pulumi.get(__response__, 'inbound_policy'),
+        inbounds=pulumi.get(__response__, 'inbounds'),
+        label=pulumi.get(__response__, 'label'),
+        linodes=pulumi.get(__response__, 'linodes'),
+        nodebalancers=pulumi.get(__response__, 'nodebalancers'),
+        outbound_policy=pulumi.get(__response__, 'outbound_policy'),
+        outbounds=pulumi.get(__response__, 'outbounds'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated=pulumi.get(__response__, 'updated')))
