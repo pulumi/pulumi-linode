@@ -1783,8 +1783,8 @@ github.com/linode/linodego v1.41.0 h1:GcP7JIBr9iLRJ9FwAtb9/WCT1DuPJS/xUApapfdjti
 github.com/linode/linodego v1.41.0/go.mod h1:Ow4/XZ0yvWBzt3iAHwchvhSx30AyLintsSMvvQ2/SJY=
 github.com/linode/linodego/k8s v1.25.2 h1:PY6S0sAD3xANVvM9WY38bz9GqMTjIbytC8IJJ9Cv23o=
 github.com/linode/linodego/k8s v1.25.2/go.mod h1:DC1XCSRZRGsmaa/ggpDPSDUmOM6aK1bhSIP6+f9Cwhc=
-github.com/linode/terraform-provider-linode/v2 v2.29.0 h1:qyozIdUb4CL++ZbjzPUERRcT+CMGnOEFWX2GZTmxSwQ=
-github.com/linode/terraform-provider-linode/v2 v2.29.0/go.mod h1:i962BDTi2XwVv7kdJx6K77ANvAqoK4PIZReUvp7WMfc=
+github.com/linode/terraform-provider-linode/v2 v2.29.1 h1:UoOukWBqmD4FIqlcfTelVm7aQxAip/tNPTtdu9XvHjo=
+github.com/linode/terraform-provider-linode/v2 v2.29.1/go.mod h1:i962BDTi2XwVv7kdJx6K77ANvAqoK4PIZReUvp7WMfc=
 github.com/lucasb-eyer/go-colorful v1.2.0 h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
 github.com/lucasb-eyer/go-colorful v1.2.0/go.mod h1:R4dSotOR9KMtayYi1e77YzuveK+i7ruzyGqttikkLy0=
 github.com/lyft/protoc-gen-star v0.6.0/go.mod h1:TGAoBVkt8w7MPG72TrKIu85MIdXwDuzJYeZuUPFPNwA=
