@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -283,9 +288,6 @@ def get_node_balancer_config(id: Optional[int] = None,
         ssl_commonname=pulumi.get(__ret__, 'ssl_commonname'),
         ssl_fingerprint=pulumi.get(__ret__, 'ssl_fingerprint'),
         stickiness=pulumi.get(__ret__, 'stickiness'))
-
-
-@_utilities.lift_output_func(get_node_balancer_config)
 def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
                                     nodebalancer_id: Optional[pulumi.Input[int]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
@@ -307,4 +309,27 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
     :param int id: The config's ID.
     :param int nodebalancer_id: The ID of the NodeBalancer that contains the config.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['nodebalancerId'] = nodebalancer_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancerConfig:getNodeBalancerConfig', __args__, opts=opts, typ=GetNodeBalancerConfigResult)
+    return __ret__.apply(lambda __response__: GetNodeBalancerConfigResult(
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        check=pulumi.get(__response__, 'check'),
+        check_attempts=pulumi.get(__response__, 'check_attempts'),
+        check_body=pulumi.get(__response__, 'check_body'),
+        check_interval=pulumi.get(__response__, 'check_interval'),
+        check_passive=pulumi.get(__response__, 'check_passive'),
+        check_path=pulumi.get(__response__, 'check_path'),
+        check_timeout=pulumi.get(__response__, 'check_timeout'),
+        cipher_suite=pulumi.get(__response__, 'cipher_suite'),
+        id=pulumi.get(__response__, 'id'),
+        node_statuses=pulumi.get(__response__, 'node_statuses'),
+        nodebalancer_id=pulumi.get(__response__, 'nodebalancer_id'),
+        port=pulumi.get(__response__, 'port'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        proxy_protocol=pulumi.get(__response__, 'proxy_protocol'),
+        ssl_commonname=pulumi.get(__response__, 'ssl_commonname'),
+        ssl_fingerprint=pulumi.get(__response__, 'ssl_fingerprint'),
+        stickiness=pulumi.get(__response__, 'stickiness')))

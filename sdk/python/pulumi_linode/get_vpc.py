@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -134,9 +139,6 @@ def get_vpc(id: Optional[str] = None,
         label=pulumi.get(__ret__, 'label'),
         region=pulumi.get(__ret__, 'region'),
         updated=pulumi.get(__ret__, 'updated'))
-
-
-@_utilities.lift_output_func(get_vpc)
 def get_vpc_output(id: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcResult]:
     """
@@ -158,4 +160,14 @@ def get_vpc_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique id of this VPC.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult)
+    return __ret__.apply(lambda __response__: GetVpcResult(
+        created=pulumi.get(__response__, 'created'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        region=pulumi.get(__response__, 'region'),
+        updated=pulumi.get(__response__, 'updated')))

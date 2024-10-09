@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -185,9 +190,6 @@ def get_networking_ip(address: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_networking_ip)
 def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkingIpResult]:
     """
@@ -208,4 +210,18 @@ def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
 
     :param str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
     """
-    ...
+    __args__ = dict()
+    __args__['address'] = address
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts, typ=GetNetworkingIpResult)
+    return __ret__.apply(lambda __response__: GetNetworkingIpResult(
+        address=pulumi.get(__response__, 'address'),
+        gateway=pulumi.get(__response__, 'gateway'),
+        id=pulumi.get(__response__, 'id'),
+        linode_id=pulumi.get(__response__, 'linode_id'),
+        prefix=pulumi.get(__response__, 'prefix'),
+        public=pulumi.get(__response__, 'public'),
+        rdns=pulumi.get(__response__, 'rdns'),
+        region=pulumi.get(__response__, 'region'),
+        subnet_mask=pulumi.get(__response__, 'subnet_mask'),
+        type=pulumi.get(__response__, 'type')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -120,9 +125,6 @@ def get_object_storage_cluster(id: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         static_site_domain=pulumi.get(__ret__, 'static_site_domain'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_object_storage_cluster)
 def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
     """
@@ -143,4 +145,13 @@ def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique ID of this cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getObjectStorageCluster:getObjectStorageCluster', __args__, opts=opts, typ=GetObjectStorageClusterResult)
+    return __ret__.apply(lambda __response__: GetObjectStorageClusterResult(
+        domain=pulumi.get(__response__, 'domain'),
+        id=pulumi.get(__response__, 'id'),
+        region=pulumi.get(__response__, 'region'),
+        static_site_domain=pulumi.get(__response__, 'static_site_domain'),
+        status=pulumi.get(__response__, 'status')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -149,9 +154,6 @@ def get_vpc_subnet(id: Optional[str] = None,
         linodes=pulumi.get(__ret__, 'linodes'),
         updated=pulumi.get(__ret__, 'updated'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_vpc_subnet)
 def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
                           vpc_id: Optional[pulumi.Input[int]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetResult]:
@@ -176,4 +178,16 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
     :param str id: The unique id of this VPC subnet.
     :param int vpc_id: The id of the parent VPC for this VPC Subnet.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcSubnet:getVpcSubnet', __args__, opts=opts, typ=GetVpcSubnetResult)
+    return __ret__.apply(lambda __response__: GetVpcSubnetResult(
+        created=pulumi.get(__response__, 'created'),
+        id=pulumi.get(__response__, 'id'),
+        ipv4=pulumi.get(__response__, 'ipv4'),
+        label=pulumi.get(__response__, 'label'),
+        linodes=pulumi.get(__response__, 'linodes'),
+        updated=pulumi.get(__response__, 'updated'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

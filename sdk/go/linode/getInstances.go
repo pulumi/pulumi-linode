@@ -70,7 +70,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// all_instances, err := linode.GetInstances(ctx, nil, nil);
+// all_instances, err := linode.GetInstances(ctx, &linode.GetInstancesArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

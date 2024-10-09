@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupAccountSettings(ctx, nil, nil)
+//			_, err := linode.LookupAccountSettings(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -110,9 +115,6 @@ def get_account_availability(region: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
         unavailables=pulumi.get(__ret__, 'unavailables'))
-
-
-@_utilities.lift_output_func(get_account_availability)
 def get_account_availability_output(region: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilityResult]:
     """
@@ -133,4 +135,12 @@ def get_account_availability_output(region: Optional[pulumi.Input[str]] = None,
 
     :param str region: The region ID.
     """
-    ...
+    __args__ = dict()
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountAvailability:getAccountAvailability', __args__, opts=opts, typ=GetAccountAvailabilityResult)
+    return __ret__.apply(lambda __response__: GetAccountAvailabilityResult(
+        availables=pulumi.get(__response__, 'availables'),
+        id=pulumi.get(__response__, 'id'),
+        region=pulumi.get(__response__, 'region'),
+        unavailables=pulumi.get(__response__, 'unavailables')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -169,9 +174,6 @@ def get_kernel(id: Optional[str] = None,
         pvops=pulumi.get(__ret__, 'pvops'),
         version=pulumi.get(__ret__, 'version'),
         xen=pulumi.get(__ret__, 'xen'))
-
-
-@_utilities.lift_output_func(get_kernel)
 def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelResult]:
     """
@@ -192,4 +194,17 @@ def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique ID of this Kernel.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getKernel:getKernel', __args__, opts=opts, typ=GetKernelResult)
+    return __ret__.apply(lambda __response__: GetKernelResult(
+        architecture=pulumi.get(__response__, 'architecture'),
+        built=pulumi.get(__response__, 'built'),
+        deprecated=pulumi.get(__response__, 'deprecated'),
+        id=pulumi.get(__response__, 'id'),
+        kvm=pulumi.get(__response__, 'kvm'),
+        label=pulumi.get(__response__, 'label'),
+        pvops=pulumi.get(__response__, 'pvops'),
+        version=pulumi.get(__response__, 'version'),
+        xen=pulumi.get(__response__, 'xen')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -94,9 +99,6 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
         domain_id=pulumi.get(__ret__, 'domain_id'),
         id=pulumi.get(__ret__, 'id'),
         zone_files=pulumi.get(__ret__, 'zone_files'))
-
-
-@_utilities.lift_output_func(get_domain_zonefile)
 def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainZonefileResult]:
     """
@@ -117,4 +119,11 @@ def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
 
     :param int domain_id: The associated domain's unique ID.
     """
-    ...
+    __args__ = dict()
+    __args__['domainId'] = domain_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getDomainZonefile:getDomainZonefile', __args__, opts=opts, typ=GetDomainZonefileResult)
+    return __ret__.apply(lambda __response__: GetDomainZonefileResult(
+        domain_id=pulumi.get(__response__, 'domain_id'),
+        id=pulumi.get(__response__, 'id'),
+        zone_files=pulumi.get(__response__, 'zone_files')))

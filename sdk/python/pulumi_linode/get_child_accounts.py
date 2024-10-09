@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -137,9 +142,6 @@ def get_child_accounts(child_accounts: Optional[Sequence[Union['GetChildAccounts
         child_accounts=pulumi.get(__ret__, 'child_accounts'),
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_child_accounts)
 def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsChildAccountArgs', 'GetChildAccountsChildAccountArgsDict']]]]] = None,
                               filters: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsFilterArgs', 'GetChildAccountsFilterArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountsResult]:
@@ -206,4 +208,12 @@ def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Seq
 
     * `active_since`
     """
-    ...
+    __args__ = dict()
+    __args__['childAccounts'] = child_accounts
+    __args__['filters'] = filters
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getChildAccounts:getChildAccounts', __args__, opts=opts, typ=GetChildAccountsResult)
+    return __ret__.apply(lambda __response__: GetChildAccountsResult(
+        child_accounts=pulumi.get(__response__, 'child_accounts'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -294,9 +299,6 @@ def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs'
         username=pulumi.get(__ret__, 'username'),
         verified_phone_number=pulumi.get(__ret__, 'verified_phone_number'),
         volume_grants=pulumi.get(__ret__, 'volume_grants'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict']]]]] = None,
                     domain_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserDomainGrantArgs', 'GetUserDomainGrantArgsDict']]]]] = None,
                     firewall_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserFirewallGrantArgs', 'GetUserFirewallGrantArgsDict']]]]] = None,
@@ -328,4 +330,36 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
 
     :param str username: The unique username of this User.
     """
-    ...
+    __args__ = dict()
+    __args__['databaseGrants'] = database_grants
+    __args__['domainGrants'] = domain_grants
+    __args__['firewallGrants'] = firewall_grants
+    __args__['imageGrants'] = image_grants
+    __args__['linodeGrants'] = linode_grants
+    __args__['longviewGrants'] = longview_grants
+    __args__['nodebalancerGrants'] = nodebalancer_grants
+    __args__['stackscriptGrants'] = stackscript_grants
+    __args__['username'] = username
+    __args__['volumeGrants'] = volume_grants
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        database_grants=pulumi.get(__response__, 'database_grants'),
+        domain_grants=pulumi.get(__response__, 'domain_grants'),
+        email=pulumi.get(__response__, 'email'),
+        firewall_grants=pulumi.get(__response__, 'firewall_grants'),
+        global_grants=pulumi.get(__response__, 'global_grants'),
+        id=pulumi.get(__response__, 'id'),
+        image_grants=pulumi.get(__response__, 'image_grants'),
+        linode_grants=pulumi.get(__response__, 'linode_grants'),
+        longview_grants=pulumi.get(__response__, 'longview_grants'),
+        nodebalancer_grants=pulumi.get(__response__, 'nodebalancer_grants'),
+        password_created=pulumi.get(__response__, 'password_created'),
+        restricted=pulumi.get(__response__, 'restricted'),
+        ssh_keys=pulumi.get(__response__, 'ssh_keys'),
+        stackscript_grants=pulumi.get(__response__, 'stackscript_grants'),
+        tfa_enabled=pulumi.get(__response__, 'tfa_enabled'),
+        user_type=pulumi.get(__response__, 'user_type'),
+        username=pulumi.get(__response__, 'username'),
+        verified_phone_number=pulumi.get(__response__, 'verified_phone_number'),
+        volume_grants=pulumi.get(__response__, 'volume_grants')))

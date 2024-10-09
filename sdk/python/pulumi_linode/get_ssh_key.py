@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -110,9 +115,6 @@ def get_ssh_key(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         ssh_key=pulumi.get(__ret__, 'ssh_key'))
-
-
-@_utilities.lift_output_func(get_ssh_key)
 def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        label: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
@@ -135,4 +137,13 @@ def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The ID of the SSH Key
     :param str label: The label of the SSH Key to select.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['label'] = label
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult)
+    return __ret__.apply(lambda __response__: GetSshKeyResult(
+        created=pulumi.get(__response__, 'created'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        ssh_key=pulumi.get(__response__, 'ssh_key')))
