@@ -31,7 +31,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// all, err := linode.GetChildAccounts(ctx, nil, nil);
+// all, err := linode.GetChildAccounts(ctx, &linode.GetChildAccountsArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

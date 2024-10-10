@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -100,9 +105,6 @@ def get_instance_networking(linode_id: Optional[int] = None,
         ipv4s=pulumi.get(__ret__, 'ipv4s'),
         ipv6s=pulumi.get(__ret__, 'ipv6s'),
         linode_id=pulumi.get(__ret__, 'linode_id'))
-
-
-@_utilities.lift_output_func(get_instance_networking)
 def get_instance_networking_output(linode_id: Optional[pulumi.Input[int]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceNetworkingResult]:
     """
@@ -121,4 +123,12 @@ def get_instance_networking_output(linode_id: Optional[pulumi.Input[int]] = None
 
     :param int linode_id: The Linode instance's ID.
     """
-    ...
+    __args__ = dict()
+    __args__['linodeId'] = linode_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getInstanceNetworking:getInstanceNetworking', __args__, opts=opts, typ=GetInstanceNetworkingResult)
+    return __ret__.apply(lambda __response__: GetInstanceNetworkingResult(
+        id=pulumi.get(__response__, 'id'),
+        ipv4s=pulumi.get(__response__, 'ipv4s'),
+        ipv6s=pulumi.get(__response__, 'ipv6s'),
+        linode_id=pulumi.get(__response__, 'linode_id')))

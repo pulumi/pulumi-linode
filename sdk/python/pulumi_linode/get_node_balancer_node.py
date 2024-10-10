@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -159,9 +164,6 @@ def get_node_balancer_node(config_id: Optional[int] = None,
         nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
         status=pulumi.get(__ret__, 'status'),
         weight=pulumi.get(__ret__, 'weight'))
-
-
-@_utilities.lift_output_func(get_node_balancer_node)
 def get_node_balancer_node_output(config_id: Optional[pulumi.Input[int]] = None,
                                   id: Optional[pulumi.Input[int]] = None,
                                   nodebalancer_id: Optional[pulumi.Input[int]] = None,
@@ -186,4 +188,18 @@ def get_node_balancer_node_output(config_id: Optional[pulumi.Input[int]] = None,
     :param int id: The node's ID.
     :param int nodebalancer_id: The ID of the NodeBalancer that contains the node.
     """
-    ...
+    __args__ = dict()
+    __args__['configId'] = config_id
+    __args__['id'] = id
+    __args__['nodebalancerId'] = nodebalancer_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancerNode:getNodeBalancerNode', __args__, opts=opts, typ=GetNodeBalancerNodeResult)
+    return __ret__.apply(lambda __response__: GetNodeBalancerNodeResult(
+        address=pulumi.get(__response__, 'address'),
+        config_id=pulumi.get(__response__, 'config_id'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        mode=pulumi.get(__response__, 'mode'),
+        nodebalancer_id=pulumi.get(__response__, 'nodebalancer_id'),
+        status=pulumi.get(__response__, 'status'),
+        weight=pulumi.get(__response__, 'weight')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -244,9 +249,6 @@ def get_domain(domain: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         ttl_sec=pulumi.get(__ret__, 'ttl_sec'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_domain)
 def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
                       id: Optional[pulumi.Input[Optional[int]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
@@ -270,4 +272,23 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
     :param str domain: The unique domain name of the Domain record to query.
     :param int id: The unique numeric ID of the Domain record to query.
     """
-    ...
+    __args__ = dict()
+    __args__['domain'] = domain
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult)
+    return __ret__.apply(lambda __response__: GetDomainResult(
+        axfr_ips=pulumi.get(__response__, 'axfr_ips'),
+        description=pulumi.get(__response__, 'description'),
+        domain=pulumi.get(__response__, 'domain'),
+        expire_sec=pulumi.get(__response__, 'expire_sec'),
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        master_ips=pulumi.get(__response__, 'master_ips'),
+        refresh_sec=pulumi.get(__response__, 'refresh_sec'),
+        retry_sec=pulumi.get(__response__, 'retry_sec'),
+        soa_email=pulumi.get(__response__, 'soa_email'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        ttl_sec=pulumi.get(__response__, 'ttl_sec'),
+        type=pulumi.get(__response__, 'type')))

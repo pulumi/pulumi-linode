@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -169,9 +174,6 @@ def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerCo
         nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-
-
-@_utilities.lift_output_func(get_nodebalancer_configs)
 def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerConfigsFilterArgs', 'GetNodebalancerConfigsFilterArgsDict']]]]] = None,
                                     nodebalancer_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerConfigsNodebalancerConfigArgs', 'GetNodebalancerConfigsNodebalancerConfigArgsDict']]]]] = None,
                                     nodebalancer_id: Optional[pulumi.Input[int]] = None,
@@ -231,4 +233,18 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['nodebalancerConfigs'] = nodebalancer_configs
+    __args__['nodebalancerId'] = nodebalancer_id
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getNodebalancerConfigs:getNodebalancerConfigs', __args__, opts=opts, typ=GetNodebalancerConfigsResult)
+    return __ret__.apply(lambda __response__: GetNodebalancerConfigsResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        nodebalancer_configs=pulumi.get(__response__, 'nodebalancer_configs'),
+        nodebalancer_id=pulumi.get(__response__, 'nodebalancer_id'),
+        order=pulumi.get(__response__, 'order'),
+        order_by=pulumi.get(__response__, 'order_by')))

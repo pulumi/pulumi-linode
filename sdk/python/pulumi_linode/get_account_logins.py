@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -110,9 +115,6 @@ def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterA
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         logins=pulumi.get(__ret__, 'logins'))
-
-
-@_utilities.lift_output_func(get_account_logins)
 def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]]]] = None,
                               logins: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsLoginArgs', 'GetAccountLoginsLoginArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginsResult]:
@@ -149,4 +151,12 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[U
 
     * `username`
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['logins'] = logins
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountLogins:getAccountLogins', __args__, opts=opts, typ=GetAccountLoginsResult)
+    return __ret__.apply(lambda __response__: GetAccountLoginsResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        logins=pulumi.get(__response__, 'logins')))

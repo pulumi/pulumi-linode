@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := linode.GetPlacementGroups(ctx, nil, nil)
+//			all, err := linode.GetPlacementGroups(ctx, &linode.GetPlacementGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

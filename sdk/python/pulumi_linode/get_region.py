@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -157,9 +162,6 @@ def get_region(id: Optional[str] = None,
         resolvers=pulumi.get(__ret__, 'resolvers'),
         site_type=pulumi.get(__ret__, 'site_type'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_region)
 def get_region_output(id: Optional[pulumi.Input[str]] = None,
                       resolvers: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionResolverArgs', 'GetRegionResolverArgsDict']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
@@ -181,4 +183,17 @@ def get_region_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The code name of the region to select.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['resolvers'] = resolvers
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult)
+    return __ret__.apply(lambda __response__: GetRegionResult(
+        capabilities=pulumi.get(__response__, 'capabilities'),
+        country=pulumi.get(__response__, 'country'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        placement_group_limits=pulumi.get(__response__, 'placement_group_limits'),
+        resolvers=pulumi.get(__response__, 'resolvers'),
+        site_type=pulumi.get(__response__, 'site_type'),
+        status=pulumi.get(__response__, 'status')))

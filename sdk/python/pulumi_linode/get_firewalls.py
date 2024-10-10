@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -176,9 +181,6 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-
-
-@_utilities.lift_output_func(get_firewalls)
 def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]]]] = None,
                          firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFirewallArgs', 'GetFirewallsFirewallArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
@@ -259,4 +261,16 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['firewalls'] = firewalls
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getFirewalls:getFirewalls', __args__, opts=opts, typ=GetFirewallsResult)
+    return __ret__.apply(lambda __response__: GetFirewallsResult(
+        filters=pulumi.get(__response__, 'filters'),
+        firewalls=pulumi.get(__response__, 'firewalls'),
+        id=pulumi.get(__response__, 'id'),
+        order=pulumi.get(__response__, 'order'),
+        order_by=pulumi.get(__response__, 'order_by')))

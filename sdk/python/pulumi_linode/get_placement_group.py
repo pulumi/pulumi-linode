@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -153,9 +158,6 @@ def get_placement_group(id: Optional[int] = None,
         placement_group_policy=pulumi.get(__ret__, 'placement_group_policy'),
         placement_group_type=pulumi.get(__ret__, 'placement_group_type'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_placement_group)
 def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
                                members: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlacementGroupResult]:
@@ -180,4 +182,16 @@ def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
     :param int id: The ID of the Placement Group.
     :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['members'] = members
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult)
+    return __ret__.apply(lambda __response__: GetPlacementGroupResult(
+        id=pulumi.get(__response__, 'id'),
+        is_compliant=pulumi.get(__response__, 'is_compliant'),
+        label=pulumi.get(__response__, 'label'),
+        members=pulumi.get(__response__, 'members'),
+        placement_group_policy=pulumi.get(__response__, 'placement_group_policy'),
+        placement_group_type=pulumi.get(__response__, 'placement_group_type'),
+        region=pulumi.get(__response__, 'region')))
