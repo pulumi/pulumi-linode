@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -101,9 +106,6 @@ def get_account_availabilities(availabilities: Optional[Sequence[Union['GetAccou
         availabilities=pulumi.get(__ret__, 'availabilities'),
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_account_availabilities)
 def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountAvailabilitiesAvailabilityArgs', 'GetAccountAvailabilitiesAvailabilityArgsDict']]]]] = None,
                                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict']]]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilitiesResult]:
@@ -134,4 +136,12 @@ def get_account_availabilities_output(availabilities: Optional[pulumi.Input[Opti
 
     * `available`
     """
-    ...
+    __args__ = dict()
+    __args__['availabilities'] = availabilities
+    __args__['filters'] = filters
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountAvailabilities:getAccountAvailabilities', __args__, opts=opts, typ=GetAccountAvailabilitiesResult)
+    return __ret__.apply(lambda __response__: GetAccountAvailabilitiesResult(
+        availabilities=pulumi.get(__response__, 'availabilities'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id')))

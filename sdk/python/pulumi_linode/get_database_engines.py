@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -167,9 +172,6 @@ def get_database_engines(engines: Optional[Sequence[Union['GetDatabaseEnginesEng
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-
-
-@_utilities.lift_output_func(get_database_engines)
 def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesEngineArgs', 'GetDatabaseEnginesEngineArgsDict']]]]] = None,
                                 filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -230,4 +232,18 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. (`version`)
     """
-    ...
+    __args__ = dict()
+    __args__['engines'] = engines
+    __args__['filters'] = filters
+    __args__['latest'] = latest
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabaseEngines:getDatabaseEngines', __args__, opts=opts, typ=GetDatabaseEnginesResult)
+    return __ret__.apply(lambda __response__: GetDatabaseEnginesResult(
+        engines=pulumi.get(__response__, 'engines'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        latest=pulumi.get(__response__, 'latest'),
+        order=pulumi.get(__response__, 'order'),
+        order_by=pulumi.get(__response__, 'order_by')))

@@ -4,183 +4,385 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'DatabaseMysqlUpdatesArgs',
+    'DatabaseMysqlUpdatesArgsDict',
     'DatabasePostgresqlUpdatesArgs',
+    'DatabasePostgresqlUpdatesArgsDict',
     'FirewallDeviceArgs',
+    'FirewallDeviceArgsDict',
     'FirewallInboundArgs',
+    'FirewallInboundArgsDict',
     'FirewallOutboundArgs',
+    'FirewallOutboundArgsDict',
     'ImageReplicationArgs',
+    'ImageReplicationArgsDict',
     'ImageTimeoutsArgs',
+    'ImageTimeoutsArgsDict',
     'InstanceAlertsArgs',
+    'InstanceAlertsArgsDict',
     'InstanceBackupsArgs',
+    'InstanceBackupsArgsDict',
     'InstanceBackupsScheduleArgs',
+    'InstanceBackupsScheduleArgsDict',
     'InstanceConfigArgs',
+    'InstanceConfigArgsDict',
     'InstanceConfigDevicesArgs',
+    'InstanceConfigDevicesArgsDict',
     'InstanceConfigDevicesSdaArgs',
+    'InstanceConfigDevicesSdaArgsDict',
     'InstanceConfigDevicesSdbArgs',
+    'InstanceConfigDevicesSdbArgsDict',
     'InstanceConfigDevicesSdcArgs',
+    'InstanceConfigDevicesSdcArgsDict',
     'InstanceConfigDevicesSddArgs',
+    'InstanceConfigDevicesSddArgsDict',
     'InstanceConfigDevicesSdeArgs',
+    'InstanceConfigDevicesSdeArgsDict',
     'InstanceConfigDevicesSdfArgs',
+    'InstanceConfigDevicesSdfArgsDict',
     'InstanceConfigDevicesSdgArgs',
+    'InstanceConfigDevicesSdgArgsDict',
     'InstanceConfigDevicesSdhArgs',
+    'InstanceConfigDevicesSdhArgsDict',
     'InstanceConfigHelpersArgs',
+    'InstanceConfigHelpersArgsDict',
     'InstanceConfigInterfaceArgs',
+    'InstanceConfigInterfaceArgsDict',
     'InstanceConfigInterfaceIpv4Args',
+    'InstanceConfigInterfaceIpv4ArgsDict',
     'InstanceDiskArgs',
+    'InstanceDiskArgsDict',
     'InstanceDiskTimeoutsArgs',
+    'InstanceDiskTimeoutsArgsDict',
     'InstanceInterfaceArgs',
+    'InstanceInterfaceArgsDict',
     'InstanceInterfaceIpv4Args',
+    'InstanceInterfaceIpv4ArgsDict',
     'InstanceIpVpcNat11Args',
+    'InstanceIpVpcNat11ArgsDict',
     'InstanceMetadataArgs',
+    'InstanceMetadataArgsDict',
     'InstancePlacementGroupArgs',
+    'InstancePlacementGroupArgsDict',
     'InstanceSpecsArgs',
+    'InstanceSpecsArgsDict',
     'LkeClusterControlPlaneArgs',
+    'LkeClusterControlPlaneArgsDict',
     'LkeClusterControlPlaneAclArgs',
+    'LkeClusterControlPlaneAclArgsDict',
     'LkeClusterControlPlaneAclAddressArgs',
+    'LkeClusterControlPlaneAclAddressArgsDict',
     'LkeClusterPoolArgs',
+    'LkeClusterPoolArgsDict',
     'LkeClusterPoolAutoscalerArgs',
+    'LkeClusterPoolAutoscalerArgsDict',
     'LkeClusterPoolNodeArgs',
+    'LkeClusterPoolNodeArgsDict',
     'LkeNodePoolAutoscalerArgs',
+    'LkeNodePoolAutoscalerArgsDict',
     'LkeNodePoolNodeArgs',
+    'LkeNodePoolNodeArgsDict',
     'LkeNodePoolTaintArgs',
+    'LkeNodePoolTaintArgsDict',
     'NodeBalancerConfigNodeStatusArgs',
+    'NodeBalancerConfigNodeStatusArgsDict',
     'NodeBalancerFirewallArgs',
+    'NodeBalancerFirewallArgsDict',
     'NodeBalancerFirewallInboundArgs',
+    'NodeBalancerFirewallInboundArgsDict',
     'NodeBalancerFirewallOutboundArgs',
+    'NodeBalancerFirewallOutboundArgsDict',
     'NodeBalancerTransferArgs',
+    'NodeBalancerTransferArgsDict',
     'ObjectStorageBucketCertArgs',
+    'ObjectStorageBucketCertArgsDict',
     'ObjectStorageBucketLifecycleRuleArgs',
+    'ObjectStorageBucketLifecycleRuleArgsDict',
     'ObjectStorageBucketLifecycleRuleExpirationArgs',
+    'ObjectStorageBucketLifecycleRuleExpirationArgsDict',
     'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs',
+    'ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict',
     'ObjectStorageKeyBucketAccessArgs',
+    'ObjectStorageKeyBucketAccessArgsDict',
     'ObjectStorageKeyRegionsDetailArgs',
+    'ObjectStorageKeyRegionsDetailArgsDict',
     'PlacementGroupMemberArgs',
+    'PlacementGroupMemberArgsDict',
     'RdnsTimeoutsArgs',
+    'RdnsTimeoutsArgsDict',
     'StackScriptUserDefinedFieldArgs',
+    'StackScriptUserDefinedFieldArgsDict',
     'UserDomainGrantArgs',
+    'UserDomainGrantArgsDict',
     'UserFirewallGrantArgs',
+    'UserFirewallGrantArgsDict',
     'UserGlobalGrantsArgs',
+    'UserGlobalGrantsArgsDict',
     'UserImageGrantArgs',
+    'UserImageGrantArgsDict',
     'UserLinodeGrantArgs',
+    'UserLinodeGrantArgsDict',
     'UserLongviewGrantArgs',
+    'UserLongviewGrantArgsDict',
     'UserNodebalancerGrantArgs',
+    'UserNodebalancerGrantArgsDict',
     'UserStackscriptGrantArgs',
+    'UserStackscriptGrantArgsDict',
     'UserVolumeGrantArgs',
+    'UserVolumeGrantArgsDict',
     'VolumeTimeoutsArgs',
+    'VolumeTimeoutsArgsDict',
     'VpcSubnetLinodeArgs',
+    'VpcSubnetLinodeArgsDict',
     'VpcSubnetLinodeInterfaceArgs',
+    'VpcSubnetLinodeInterfaceArgsDict',
     'GetAccountAvailabilitiesAvailabilityArgs',
+    'GetAccountAvailabilitiesAvailabilityArgsDict',
     'GetAccountAvailabilitiesFilterArgs',
+    'GetAccountAvailabilitiesFilterArgsDict',
     'GetAccountLoginsFilterArgs',
+    'GetAccountLoginsFilterArgsDict',
     'GetAccountLoginsLoginArgs',
+    'GetAccountLoginsLoginArgsDict',
     'GetChildAccountsChildAccountArgs',
+    'GetChildAccountsChildAccountArgsDict',
     'GetChildAccountsFilterArgs',
+    'GetChildAccountsFilterArgsDict',
     'GetDatabaseBackupsBackupArgs',
+    'GetDatabaseBackupsBackupArgsDict',
     'GetDatabaseBackupsFilterArgs',
+    'GetDatabaseBackupsFilterArgsDict',
     'GetDatabaseEnginesEngineArgs',
+    'GetDatabaseEnginesEngineArgsDict',
     'GetDatabaseEnginesFilterArgs',
+    'GetDatabaseEnginesFilterArgsDict',
     'GetDatabaseMysqlBackupsFilterArgs',
+    'GetDatabaseMysqlBackupsFilterArgsDict',
     'GetDatabasesDatabaseArgs',
+    'GetDatabasesDatabaseArgsDict',
     'GetDatabasesFilterArgs',
+    'GetDatabasesFilterArgsDict',
     'GetDomainsDomainArgs',
+    'GetDomainsDomainArgsDict',
     'GetDomainsFilterArgs',
+    'GetDomainsFilterArgsDict',
     'GetFirewallsFilterArgs',
+    'GetFirewallsFilterArgsDict',
     'GetFirewallsFirewallArgs',
+    'GetFirewallsFirewallArgsDict',
     'GetFirewallsFirewallDeviceArgs',
+    'GetFirewallsFirewallDeviceArgsDict',
     'GetFirewallsFirewallInboundArgs',
+    'GetFirewallsFirewallInboundArgsDict',
     'GetFirewallsFirewallOutboundArgs',
+    'GetFirewallsFirewallOutboundArgsDict',
     'GetImageReplicationArgs',
+    'GetImageReplicationArgsDict',
     'GetImagesFilterArgs',
+    'GetImagesFilterArgsDict',
     'GetImagesImageArgs',
+    'GetImagesImageArgsDict',
     'GetImagesImageReplicationArgs',
+    'GetImagesImageReplicationArgsDict',
     'GetInstanceTypesFilterArgs',
+    'GetInstanceTypesFilterArgsDict',
     'GetInstanceTypesTypeArgs',
+    'GetInstanceTypesTypeArgsDict',
     'GetInstanceTypesTypeAddonArgs',
+    'GetInstanceTypesTypeAddonArgsDict',
     'GetInstanceTypesTypeAddonBackupArgs',
+    'GetInstanceTypesTypeAddonBackupArgsDict',
     'GetInstanceTypesTypeAddonBackupPriceArgs',
+    'GetInstanceTypesTypeAddonBackupPriceArgsDict',
     'GetInstanceTypesTypeAddonBackupRegionPriceArgs',
+    'GetInstanceTypesTypeAddonBackupRegionPriceArgsDict',
     'GetInstanceTypesTypePriceArgs',
+    'GetInstanceTypesTypePriceArgsDict',
     'GetInstanceTypesTypeRegionPriceArgs',
+    'GetInstanceTypesTypeRegionPriceArgsDict',
     'GetInstancesFilterArgs',
+    'GetInstancesFilterArgsDict',
     'GetIpv6RangesFilterArgs',
+    'GetIpv6RangesFilterArgsDict',
     'GetIpv6RangesRangeArgs',
+    'GetIpv6RangesRangeArgsDict',
     'GetKernelsFilterArgs',
+    'GetKernelsFilterArgsDict',
     'GetKernelsKernelArgs',
+    'GetKernelsKernelArgsDict',
     'GetLkeClusterControlPlaneArgs',
+    'GetLkeClusterControlPlaneArgsDict',
     'GetLkeClusterControlPlaneAclArgs',
+    'GetLkeClusterControlPlaneAclArgsDict',
     'GetLkeClusterControlPlaneAclAddressArgs',
+    'GetLkeClusterControlPlaneAclAddressArgsDict',
     'GetLkeClusterPoolArgs',
+    'GetLkeClusterPoolArgsDict',
     'GetLkeClusterPoolAutoscalerArgs',
+    'GetLkeClusterPoolAutoscalerArgsDict',
     'GetLkeClusterPoolDiskArgs',
+    'GetLkeClusterPoolDiskArgsDict',
     'GetLkeClusterPoolNodeArgs',
+    'GetLkeClusterPoolNodeArgsDict',
     'GetLkeClusterPoolTaintArgs',
+    'GetLkeClusterPoolTaintArgsDict',
     'GetLkeClustersFilterArgs',
+    'GetLkeClustersFilterArgsDict',
     'GetLkeClustersLkeClusterArgs',
+    'GetLkeClustersLkeClusterArgsDict',
     'GetLkeClustersLkeClusterControlPlaneArgs',
+    'GetLkeClustersLkeClusterControlPlaneArgsDict',
     'GetNodeBalancerFirewallArgs',
+    'GetNodeBalancerFirewallArgsDict',
     'GetNodeBalancerFirewallInboundArgs',
+    'GetNodeBalancerFirewallInboundArgsDict',
     'GetNodeBalancerFirewallOutboundArgs',
+    'GetNodeBalancerFirewallOutboundArgsDict',
     'GetNodebalancerConfigsFilterArgs',
+    'GetNodebalancerConfigsFilterArgsDict',
     'GetNodebalancerConfigsNodebalancerConfigArgs',
+    'GetNodebalancerConfigsNodebalancerConfigArgsDict',
     'GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs',
+    'GetNodebalancerConfigsNodebalancerConfigNodeStatusArgsDict',
     'GetNodebalancersFilterArgs',
+    'GetNodebalancersFilterArgsDict',
     'GetNodebalancersNodebalancerArgs',
+    'GetNodebalancersNodebalancerArgsDict',
     'GetNodebalancersNodebalancerTransferArgs',
+    'GetNodebalancersNodebalancerTransferArgsDict',
     'GetPlacementGroupMemberArgs',
+    'GetPlacementGroupMemberArgsDict',
     'GetPlacementGroupsFilterArgs',
+    'GetPlacementGroupsFilterArgsDict',
     'GetPlacementGroupsPlacementGroupArgs',
+    'GetPlacementGroupsPlacementGroupArgsDict',
     'GetPlacementGroupsPlacementGroupMemberArgs',
+    'GetPlacementGroupsPlacementGroupMemberArgsDict',
     'GetRegionResolverArgs',
+    'GetRegionResolverArgsDict',
     'GetRegionsFilterArgs',
+    'GetRegionsFilterArgsDict',
     'GetRegionsRegionArgs',
+    'GetRegionsRegionArgsDict',
     'GetRegionsRegionPlacementGroupLimitArgs',
+    'GetRegionsRegionPlacementGroupLimitArgsDict',
     'GetRegionsRegionResolverArgs',
+    'GetRegionsRegionResolverArgsDict',
     'GetSshkeysFilterArgs',
+    'GetSshkeysFilterArgsDict',
     'GetSshkeysSshkeyArgs',
+    'GetSshkeysSshkeyArgsDict',
     'GetStackScriptsFilterArgs',
+    'GetStackScriptsFilterArgsDict',
     'GetStackScriptsStackscriptArgs',
+    'GetStackScriptsStackscriptArgsDict',
     'GetStackScriptsStackscriptUserDefinedFieldArgs',
+    'GetStackScriptsStackscriptUserDefinedFieldArgsDict',
     'GetUserDatabaseGrantArgs',
+    'GetUserDatabaseGrantArgsDict',
     'GetUserDomainGrantArgs',
+    'GetUserDomainGrantArgsDict',
     'GetUserFirewallGrantArgs',
+    'GetUserFirewallGrantArgsDict',
     'GetUserImageGrantArgs',
+    'GetUserImageGrantArgsDict',
     'GetUserLinodeGrantArgs',
+    'GetUserLinodeGrantArgsDict',
     'GetUserLongviewGrantArgs',
+    'GetUserLongviewGrantArgsDict',
     'GetUserNodebalancerGrantArgs',
+    'GetUserNodebalancerGrantArgsDict',
     'GetUserStackscriptGrantArgs',
+    'GetUserStackscriptGrantArgsDict',
     'GetUserVolumeGrantArgs',
+    'GetUserVolumeGrantArgsDict',
     'GetUsersFilterArgs',
+    'GetUsersFilterArgsDict',
     'GetUsersUserArgs',
+    'GetUsersUserArgsDict',
     'GetUsersUserDatabaseGrantArgs',
+    'GetUsersUserDatabaseGrantArgsDict',
     'GetUsersUserDomainGrantArgs',
+    'GetUsersUserDomainGrantArgsDict',
     'GetUsersUserFirewallGrantArgs',
+    'GetUsersUserFirewallGrantArgsDict',
     'GetUsersUserGlobalGrantArgs',
+    'GetUsersUserGlobalGrantArgsDict',
     'GetUsersUserImageGrantArgs',
+    'GetUsersUserImageGrantArgsDict',
     'GetUsersUserLinodeGrantArgs',
+    'GetUsersUserLinodeGrantArgsDict',
     'GetUsersUserLongviewGrantArgs',
+    'GetUsersUserLongviewGrantArgsDict',
     'GetUsersUserNodebalancerGrantArgs',
+    'GetUsersUserNodebalancerGrantArgsDict',
     'GetUsersUserStackscriptGrantArgs',
+    'GetUsersUserStackscriptGrantArgsDict',
     'GetUsersUserVolumeGrantArgs',
+    'GetUsersUserVolumeGrantArgsDict',
     'GetVlansFilterArgs',
+    'GetVlansFilterArgsDict',
     'GetVlansVlanArgs',
+    'GetVlansVlanArgsDict',
     'GetVolumesFilterArgs',
+    'GetVolumesFilterArgsDict',
     'GetVolumesVolumeArgs',
+    'GetVolumesVolumeArgsDict',
     'GetVpcIpsFilterArgs',
+    'GetVpcIpsFilterArgsDict',
     'GetVpcIpsVpcIpArgs',
+    'GetVpcIpsVpcIpArgsDict',
     'GetVpcSubnetsFilterArgs',
+    'GetVpcSubnetsFilterArgsDict',
     'GetVpcSubnetsVpcSubnetArgs',
+    'GetVpcSubnetsVpcSubnetArgsDict',
     'GetVpcSubnetsVpcSubnetLinodeArgs',
+    'GetVpcSubnetsVpcSubnetLinodeArgsDict',
     'GetVpcSubnetsVpcSubnetLinodeInterfaceArgs',
+    'GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict',
     'GetVpcsFilterArgs',
+    'GetVpcsFilterArgsDict',
     'GetVpcsVpcArgs',
+    'GetVpcsVpcArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DatabaseMysqlUpdatesArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        """
+        The day to perform maintenance.
+        """
+        duration: pulumi.Input[int]
+        """
+        The maximum maintenance window time in hours.
+        """
+        frequency: pulumi.Input[str]
+        """
+        Whether maintenance occurs on a weekly or monthly basis.
+        """
+        hour_of_day: pulumi.Input[int]
+        """
+        The hour to begin maintenance based in UTC time.
+        """
+        week_of_month: NotRequired[pulumi.Input[int]]
+        """
+        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        """
+elif False:
+    DatabaseMysqlUpdatesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseMysqlUpdatesArgs:
@@ -265,6 +467,31 @@ class DatabaseMysqlUpdatesArgs:
         pulumi.set(self, "week_of_month", value)
 
 
+if not MYPY:
+    class DatabasePostgresqlUpdatesArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        """
+        The day to perform maintenance.
+        """
+        duration: pulumi.Input[int]
+        """
+        The maximum maintenance window time in hours.
+        """
+        frequency: pulumi.Input[str]
+        """
+        Whether maintenance occurs on a weekly or monthly basis.
+        """
+        hour_of_day: pulumi.Input[int]
+        """
+        The hour to begin maintenance based in UTC time.
+        """
+        week_of_month: NotRequired[pulumi.Input[int]]
+        """
+        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+        """
+elif False:
+    DatabasePostgresqlUpdatesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabasePostgresqlUpdatesArgs:
     def __init__(__self__, *,
@@ -348,6 +575,31 @@ class DatabasePostgresqlUpdatesArgs:
         pulumi.set(self, "week_of_month", value)
 
 
+if not MYPY:
+    class FirewallDeviceArgsDict(TypedDict):
+        entity_id: pulumi.Input[int]
+        """
+        The ID of the underlying entity this device references (i.e. the Linode's ID).
+        """
+        id: pulumi.Input[int]
+        """
+        The ID of the Firewall Device.
+        """
+        label: pulumi.Input[str]
+        """
+        This Firewall's unique label.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of Firewall Device.
+        """
+        url: pulumi.Input[str]
+        """
+        The URL of the underlying entity this device references.
+        """
+elif False:
+    FirewallDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallDeviceArgs:
     def __init__(__self__, *,
@@ -429,6 +681,39 @@ class FirewallDeviceArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class FirewallInboundArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        label: pulumi.Input[str]
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Used to describe this rule. For display purposes only.
+        """
+        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+        """
+        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+        """
+        ports: NotRequired[pulumi.Input[str]]
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+elif False:
+    FirewallInboundArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallInboundArgs:
@@ -546,6 +831,39 @@ class FirewallInboundArgs:
         pulumi.set(self, "ports", value)
 
 
+if not MYPY:
+    class FirewallOutboundArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        label: pulumi.Input[str]
+        """
+        This Firewall's unique label.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The network protocol this rule controls.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Used to describe this rule. For display purposes only.
+        """
+        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
+        """
+        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IPv6 addresses or networks this rule applies to.
+        """
+        ports: NotRequired[pulumi.Input[str]]
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+elif False:
+    FirewallOutboundArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallOutboundArgs:
     def __init__(__self__, *,
@@ -662,6 +980,19 @@ class FirewallOutboundArgs:
         pulumi.set(self, "ports", value)
 
 
+if not MYPY:
+    class ImageReplicationArgsDict(TypedDict):
+        region: pulumi.Input[str]
+        """
+        The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+        """
+        status: pulumi.Input[str]
+        """
+        The status of an image replica.
+        """
+elif False:
+    ImageReplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ImageReplicationArgs:
     def __init__(__self__, *,
@@ -699,6 +1030,15 @@ class ImageReplicationArgs:
         pulumi.set(self, "status", value)
 
 
+if not MYPY:
+    class ImageTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        Used when creating the instance image (until the instance is available)
+        """
+elif False:
+    ImageTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ImageTimeoutsArgs:
     def __init__(__self__, *,
@@ -721,6 +1061,31 @@ class ImageTimeoutsArgs:
     def create(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create", value)
 
+
+if not MYPY:
+    class InstanceAlertsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[int]]
+        """
+        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+        """
+        io: NotRequired[pulumi.Input[int]]
+        """
+        The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+        """
+        network_in: NotRequired[pulumi.Input[int]]
+        """
+        The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
+        network_out: NotRequired[pulumi.Input[int]]
+        """
+        The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        """
+        transfer_quota: NotRequired[pulumi.Input[int]]
+        """
+        The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        """
+elif False:
+    InstanceAlertsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceAlertsArgs:
@@ -809,6 +1174,20 @@ class InstanceAlertsArgs:
         pulumi.set(self, "transfer_quota", value)
 
 
+if not MYPY:
+    class InstanceBackupsArgsDict(TypedDict):
+        available: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this Backup is available for restoration.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If this Linode has the Backup service enabled.
+        """
+        schedule: NotRequired[pulumi.Input['InstanceBackupsScheduleArgsDict']]
+elif False:
+    InstanceBackupsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceBackupsArgs:
     def __init__(__self__, *,
@@ -860,6 +1239,19 @@ class InstanceBackupsArgs:
         pulumi.set(self, "schedule", value)
 
 
+if not MYPY:
+    class InstanceBackupsScheduleArgsDict(TypedDict):
+        day: NotRequired[pulumi.Input[str]]
+        """
+        The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+        """
+        window: NotRequired[pulumi.Input[str]]
+        """
+        The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+        """
+elif False:
+    InstanceBackupsScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceBackupsScheduleArgs:
     def __init__(__self__, *,
@@ -898,6 +1290,55 @@ class InstanceBackupsScheduleArgs:
     def window(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "window", value)
 
+
+if not MYPY:
+    class InstanceConfigArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        """
+        comments: NotRequired[pulumi.Input[str]]
+        """
+        Optional field for arbitrary User comments on this Config.
+        """
+        devices: NotRequired[pulumi.Input['InstanceConfigDevicesArgsDict']]
+        """
+        Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+        """
+        helpers: NotRequired[pulumi.Input['InstanceConfigHelpersArgsDict']]
+        """
+        Helpers enabled when booting to this Linode Config.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the Placement Group.
+        """
+        interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgsDict']]]]
+        """
+        An array of Network Interfaces for this Linode’s Configuration Profile.
+        """
+        kernel: NotRequired[pulumi.Input[str]]
+        """
+        A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+        """
+        memory_limit: NotRequired[pulumi.Input[int]]
+        """
+        Defaults to the total RAM of the Linode
+        """
+        root_device: NotRequired[pulumi.Input[str]]
+        """
+        The root device to boot. The corresponding disk must be attached.
+        """
+        run_level: NotRequired[pulumi.Input[str]]
+        """
+        Defines the state of your Linode after booting. Defaults to default.
+        """
+        virt_mode: NotRequired[pulumi.Input[str]]
+        """
+        Controls the virtualization mode. Defaults to paravirt.
+        """
+elif False:
+    InstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigArgs:
@@ -1081,6 +1522,43 @@ class InstanceConfigArgs:
         pulumi.set(self, "virt_mode", value)
 
 
+if not MYPY:
+    class InstanceConfigDevicesArgsDict(TypedDict):
+        sda: NotRequired[pulumi.Input['InstanceConfigDevicesSdaArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sdb: NotRequired[pulumi.Input['InstanceConfigDevicesSdbArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sdc: NotRequired[pulumi.Input['InstanceConfigDevicesSdcArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sdd: NotRequired[pulumi.Input['InstanceConfigDevicesSddArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sde: NotRequired[pulumi.Input['InstanceConfigDevicesSdeArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sdf: NotRequired[pulumi.Input['InstanceConfigDevicesSdfArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sdg: NotRequired[pulumi.Input['InstanceConfigDevicesSdgArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        sdh: NotRequired[pulumi.Input['InstanceConfigDevicesSdhArgsDict']]
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+elif False:
+    InstanceConfigDevicesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigDevicesArgs:
     def __init__(__self__, *,
@@ -1216,6 +1694,23 @@ class InstanceConfigDevicesArgs:
         pulumi.set(self, "sdh", value)
 
 
+if not MYPY:
+    class InstanceConfigDevicesSdaArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigDevicesSdaArgs:
     def __init__(__self__, *,
@@ -1270,6 +1765,23 @@ class InstanceConfigDevicesSdaArgs:
     def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
+
+if not MYPY:
+    class InstanceConfigDevicesSdbArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdbArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigDevicesSdbArgs:
@@ -1326,6 +1838,23 @@ class InstanceConfigDevicesSdbArgs:
         pulumi.set(self, "volume_id", value)
 
 
+if not MYPY:
+    class InstanceConfigDevicesSdcArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigDevicesSdcArgs:
     def __init__(__self__, *,
@@ -1380,6 +1909,23 @@ class InstanceConfigDevicesSdcArgs:
     def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
+
+if not MYPY:
+    class InstanceConfigDevicesSddArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSddArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigDevicesSddArgs:
@@ -1436,6 +1982,23 @@ class InstanceConfigDevicesSddArgs:
         pulumi.set(self, "volume_id", value)
 
 
+if not MYPY:
+    class InstanceConfigDevicesSdeArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigDevicesSdeArgs:
     def __init__(__self__, *,
@@ -1490,6 +2053,23 @@ class InstanceConfigDevicesSdeArgs:
     def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
+
+if not MYPY:
+    class InstanceConfigDevicesSdfArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigDevicesSdfArgs:
@@ -1546,6 +2126,23 @@ class InstanceConfigDevicesSdfArgs:
         pulumi.set(self, "volume_id", value)
 
 
+if not MYPY:
+    class InstanceConfigDevicesSdgArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdgArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigDevicesSdgArgs:
     def __init__(__self__, *,
@@ -1601,6 +2198,23 @@ class InstanceConfigDevicesSdgArgs:
         pulumi.set(self, "volume_id", value)
 
 
+if not MYPY:
+    class InstanceConfigDevicesSdhArgsDict(TypedDict):
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_label: NotRequired[pulumi.Input[str]]
+        """
+        The `label` of the `disk` to map to this `device` slot.
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDevicesSdhArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigDevicesSdhArgs:
     def __init__(__self__, *,
@@ -1655,6 +2269,31 @@ class InstanceConfigDevicesSdhArgs:
     def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
 
+
+if not MYPY:
+    class InstanceConfigHelpersArgsDict(TypedDict):
+        devtmpfs_automount: NotRequired[pulumi.Input[bool]]
+        """
+        Populates the /dev directory early during boot without udev. Defaults to false.
+        """
+        distro: NotRequired[pulumi.Input[bool]]
+        """
+        Controls the behavior of the Linode Config's Distribution Helper setting.
+        """
+        modules_dep: NotRequired[pulumi.Input[bool]]
+        """
+        Creates a modules dependency file for the Kernel you run.
+        """
+        network: NotRequired[pulumi.Input[bool]]
+        """
+        Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
+        """
+        updatedb_disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Disables updatedb cron job to avoid disk thrashing.
+        """
+elif False:
+    InstanceConfigHelpersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigHelpersArgs:
@@ -1742,6 +2381,55 @@ class InstanceConfigHelpersArgs:
     def updatedb_disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "updatedb_disabled", value)
 
+
+if not MYPY:
+    class InstanceConfigInterfaceArgsDict(TypedDict):
+        purpose: pulumi.Input[str]
+        """
+        The type of interface. (`public`, `vlan`, `vpc`)
+        """
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this interface is currently booted and active.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the Placement Group.
+        """
+        ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        """
+        ipam_address: NotRequired[pulumi.Input[str]]
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        """
+        ipv4: NotRequired[pulumi.Input['InstanceConfigInterfaceIpv4ArgsDict']]
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        """
+        primary: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+
+        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        The following computed attribute is available in a VPC interface:
+        """
+        subnet_id: NotRequired[pulumi.Input[int]]
+        """
+        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        """
+        vpc_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of VPC which this interface is attached to.
+        """
+elif False:
+    InstanceConfigInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigInterfaceArgs:
@@ -1917,6 +2605,19 @@ class InstanceConfigInterfaceArgs:
         pulumi.set(self, "vpc_id", value)
 
 
+if not MYPY:
+    class InstanceConfigInterfaceIpv4ArgsDict(TypedDict):
+        nat11: NotRequired[pulumi.Input[str]]
+        """
+        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        """
+        vpc: NotRequired[pulumi.Input[str]]
+        """
+        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+elif False:
+    InstanceConfigInterfaceIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfigInterfaceIpv4Args:
     def __init__(__self__, *,
@@ -1955,6 +2656,55 @@ class InstanceConfigInterfaceIpv4Args:
     def vpc(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc", value)
 
+
+if not MYPY:
+    class InstanceDiskArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        """
+        size: pulumi.Input[int]
+        """
+        The size of the Disk in MB.
+        """
+        authorized_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
+        """
+        authorized_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        """
+        filesystem: NotRequired[pulumi.Input[str]]
+        """
+        The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the Placement Group.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this Disk is read-only.
+        """
+        root_pass: NotRequired[pulumi.Input[str]]
+        """
+        The password that will be initialially assigned to the 'root' user account.
+        """
+        stackscript_data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        """
+        stackscript_id: NotRequired[pulumi.Input[int]]
+        """
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        """
+elif False:
+    InstanceDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceDiskArgs:
@@ -2137,6 +2887,23 @@ class InstanceDiskArgs:
         pulumi.set(self, "stackscript_id", value)
 
 
+if not MYPY:
+    class InstanceDiskTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    InstanceDiskTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceDiskTimeoutsArgs:
     def __init__(__self__, *,
@@ -2191,6 +2958,55 @@ class InstanceDiskTimeoutsArgs:
     def update(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update", value)
 
+
+if not MYPY:
+    class InstanceInterfaceArgsDict(TypedDict):
+        purpose: pulumi.Input[str]
+        """
+        The type of interface. (`public`, `vlan`, `vpc`)
+        """
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this interface is currently booted and active.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the Placement Group.
+        """
+        ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+        """
+        ipam_address: NotRequired[pulumi.Input[str]]
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        """
+        ipv4: NotRequired[pulumi.Input['InstanceInterfaceIpv4ArgsDict']]
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        """
+        primary: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+
+        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        The following computed attribute is available in a VPC interface:
+        """
+        subnet_id: NotRequired[pulumi.Input[int]]
+        """
+        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        """
+        vpc_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of VPC which this interface is attached to.
+        """
+elif False:
+    InstanceInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceInterfaceArgs:
@@ -2366,6 +3182,19 @@ class InstanceInterfaceArgs:
         pulumi.set(self, "vpc_id", value)
 
 
+if not MYPY:
+    class InstanceInterfaceIpv4ArgsDict(TypedDict):
+        nat11: NotRequired[pulumi.Input[str]]
+        """
+        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        """
+        vpc: NotRequired[pulumi.Input[str]]
+        """
+        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+        """
+elif False:
+    InstanceInterfaceIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceInterfaceIpv4Args:
     def __init__(__self__, *,
@@ -2404,6 +3233,17 @@ class InstanceInterfaceIpv4Args:
     def vpc(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc", value)
 
+
+if not MYPY:
+    class InstanceIpVpcNat11ArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The resulting IPv4 address.
+        """
+        subnet_id: pulumi.Input[int]
+        vpc_id: pulumi.Input[int]
+elif False:
+    InstanceIpVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceIpVpcNat11Args:
@@ -2449,6 +3289,15 @@ class InstanceIpVpcNat11Args:
         pulumi.set(self, "vpc_id", value)
 
 
+if not MYPY:
+    class InstanceMetadataArgsDict(TypedDict):
+        user_data: NotRequired[pulumi.Input[str]]
+        """
+        The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+        """
+elif False:
+    InstanceMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMetadataArgs:
     def __init__(__self__, *,
@@ -2471,6 +3320,28 @@ class InstanceMetadataArgs:
     def user_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data", value)
 
+
+if not MYPY:
+    class InstancePlacementGroupArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the Placement Group.
+        """
+        compliant_only: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        """
+        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        """
+        placement_group_policy: NotRequired[pulumi.Input[str]]
+        """
+        Whether the Placement Group enforces strict compliance.
+        """
+        placement_group_type: NotRequired[pulumi.Input[str]]
+        """
+        The placement group type enforced by the Placement Group.
+        """
+elif False:
+    InstancePlacementGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePlacementGroupArgs:
@@ -2554,6 +3425,27 @@ class InstancePlacementGroupArgs:
         pulumi.set(self, "placement_group_type", value)
 
 
+if not MYPY:
+    class InstanceSpecsArgsDict(TypedDict):
+        disk: NotRequired[pulumi.Input[int]]
+        """
+        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+        """
+        memory: NotRequired[pulumi.Input[int]]
+        """
+        The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+        """
+        transfer: NotRequired[pulumi.Input[int]]
+        """
+        The amount of network transfer this Linode is allotted each month.
+        """
+        vcpus: NotRequired[pulumi.Input[int]]
+        """
+        The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+        """
+elif False:
+    InstanceSpecsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceSpecsArgs:
     def __init__(__self__, *,
@@ -2625,6 +3517,21 @@ class InstanceSpecsArgs:
         pulumi.set(self, "vcpus", value)
 
 
+if not MYPY:
+    class LkeClusterControlPlaneArgsDict(TypedDict):
+        acl: NotRequired[pulumi.Input['LkeClusterControlPlaneAclArgsDict']]
+        """
+        Defines the ACL configuration for an LKE cluster's control plane.
+        """
+        high_availability: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+
+        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+        """
+elif False:
+    LkeClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LkeClusterControlPlaneArgs:
     def __init__(__self__, *,
@@ -2667,6 +3574,21 @@ class LkeClusterControlPlaneArgs:
     def high_availability(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "high_availability", value)
 
+
+if not MYPY:
+    class LkeClusterControlPlaneAclArgsDict(TypedDict):
+        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgsDict']]]]
+        """
+        A list of ip addresses to allow.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+
+        * `addresses` - (Optional) A list of ip addresses to allow.
+        """
+elif False:
+    LkeClusterControlPlaneAclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LkeClusterControlPlaneAclArgs:
@@ -2711,6 +3633,19 @@ class LkeClusterControlPlaneAclArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class LkeClusterControlPlaneAclAddressArgsDict(TypedDict):
+        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A set of individual ipv4 addresses or CIDRs to ALLOW.
+        """
+        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A set of individual ipv6 addresses or CIDRs to ALLOW.
+        """
+elif False:
+    LkeClusterControlPlaneAclAddressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LkeClusterControlPlaneAclAddressArgs:
     def __init__(__self__, *,
@@ -2749,6 +3684,41 @@ class LkeClusterControlPlaneAclAddressArgs:
     def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ipv6s", value)
 
+
+if not MYPY:
+    class LkeClusterPoolArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        """
+        autoscaler: NotRequired[pulumi.Input['LkeClusterPoolAutoscalerArgsDict']]
+        """
+        When specified, the number of nodes autoscales within the defined minimum and maximum values.
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        """
+        disk_encryption: NotRequired[pulumi.Input[str]]
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the node.
+        """
+        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgsDict']]]]
+        """
+        The nodes in the node pool.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        """
+elif False:
+    LkeClusterPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LkeClusterPoolArgs:
@@ -2872,6 +3842,19 @@ class LkeClusterPoolArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class LkeClusterPoolAutoscalerArgsDict(TypedDict):
+        max: pulumi.Input[int]
+        """
+        The maximum number of nodes to autoscale to.
+        """
+        min: pulumi.Input[int]
+        """
+        The minimum number of nodes to autoscale to.
+        """
+elif False:
+    LkeClusterPoolAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LkeClusterPoolAutoscalerArgs:
     def __init__(__self__, *,
@@ -2908,6 +3891,23 @@ class LkeClusterPoolAutoscalerArgs:
     def min(self, value: pulumi.Input[int]):
         pulumi.set(self, "min", value)
 
+
+if not MYPY:
+    class LkeClusterPoolNodeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the node.
+        """
+        instance_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the underlying Linode instance.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The status of the node. (`ready`, `not_ready`)
+        """
+elif False:
+    LkeClusterPoolNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LkeClusterPoolNodeArgs:
@@ -2964,6 +3964,19 @@ class LkeClusterPoolNodeArgs:
         pulumi.set(self, "status", value)
 
 
+if not MYPY:
+    class LkeNodePoolAutoscalerArgsDict(TypedDict):
+        max: pulumi.Input[int]
+        """
+        The maximum number of nodes to autoscale to.
+        """
+        min: pulumi.Input[int]
+        """
+        The minimum number of nodes to autoscale to.
+        """
+elif False:
+    LkeNodePoolAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LkeNodePoolAutoscalerArgs:
     def __init__(__self__, *,
@@ -3000,6 +4013,23 @@ class LkeNodePoolAutoscalerArgs:
     def min(self, value: pulumi.Input[int]):
         pulumi.set(self, "min", value)
 
+
+if not MYPY:
+    class LkeNodePoolNodeArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of the node.
+        """
+        instance_id: pulumi.Input[int]
+        """
+        The ID of the underlying Linode instance.
+        """
+        status: pulumi.Input[str]
+        """
+        The status of the node. (`ready`, `not_ready`)
+        """
+elif False:
+    LkeNodePoolNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LkeNodePoolNodeArgs:
@@ -3053,6 +4083,23 @@ class LkeNodePoolNodeArgs:
         pulumi.set(self, "status", value)
 
 
+if not MYPY:
+    class LkeNodePoolTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        """
+        key: pulumi.Input[str]
+        """
+        The Kubernetes taint key.
+        """
+        value: pulumi.Input[str]
+        """
+        The Kubernetes taint value.
+        """
+elif False:
+    LkeNodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LkeNodePoolTaintArgs:
     def __init__(__self__, *,
@@ -3105,6 +4152,19 @@ class LkeNodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class NodeBalancerConfigNodeStatusArgsDict(TypedDict):
+        down: pulumi.Input[int]
+        """
+        The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        """
+        up: pulumi.Input[int]
+        """
+        The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
+elif False:
+    NodeBalancerConfigNodeStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeBalancerConfigNodeStatusArgs:
     def __init__(__self__, *,
@@ -3141,6 +4201,45 @@ class NodeBalancerConfigNodeStatusArgs:
     def up(self, value: pulumi.Input[int]):
         pulumi.set(self, "up", value)
 
+
+if not MYPY:
+    class NodeBalancerFirewallArgsDict(TypedDict):
+        created: pulumi.Input[str]
+        """
+        When this firewall was created.
+        """
+        id: pulumi.Input[int]
+        """
+        (Required) The Firewall's ID.
+        """
+        inbound_policy: pulumi.Input[str]
+        """
+        The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+        """
+        inbounds: pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallInboundArgsDict']]]
+        label: pulumi.Input[str]
+        """
+        The label of the Linode NodeBalancer
+        """
+        outbound_policy: pulumi.Input[str]
+        """
+        The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+        """
+        outbounds: pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallOutboundArgsDict']]]
+        status: pulumi.Input[str]
+        """
+        The status of the firewall. (`enabled`, `disabled`, `deleted`)
+        """
+        tags: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        updated: pulumi.Input[str]
+        """
+        When this firewall was last updated.
+        """
+elif False:
+    NodeBalancerFirewallArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeBalancerFirewallArgs:
@@ -3291,6 +4390,36 @@ class NodeBalancerFirewallArgs:
         pulumi.set(self, "updated", value)
 
 
+if not MYPY:
+    class NodeBalancerFirewallInboundArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        description: pulumi.Input[str]
+        ipv4s: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        """
+        ipv6s: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        """
+        label: pulumi.Input[str]
+        """
+        The label of the Linode NodeBalancer
+        """
+        ports: pulumi.Input[str]
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        protocol: pulumi.Input[str]
+        """
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        """
+elif False:
+    NodeBalancerFirewallInboundArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeBalancerFirewallInboundArgs:
     def __init__(__self__, *,
@@ -3398,6 +4527,36 @@ class NodeBalancerFirewallInboundArgs:
     def protocol(self, value: pulumi.Input[str]):
         pulumi.set(self, "protocol", value)
 
+
+if not MYPY:
+    class NodeBalancerFirewallOutboundArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        description: pulumi.Input[str]
+        ipv4s: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        """
+        ipv6s: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        """
+        label: pulumi.Input[str]
+        """
+        The label of the Linode NodeBalancer
+        """
+        ports: pulumi.Input[str]
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        protocol: pulumi.Input[str]
+        """
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        """
+elif False:
+    NodeBalancerFirewallOutboundArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeBalancerFirewallOutboundArgs:
@@ -3507,6 +4666,23 @@ class NodeBalancerFirewallOutboundArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class NodeBalancerTransferArgsDict(TypedDict):
+        in_: pulumi.Input[float]
+        """
+        The total transfer, in MB, used by this NodeBalancer for the current month
+        """
+        out: pulumi.Input[float]
+        """
+        The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        total: pulumi.Input[float]
+        """
+        The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+elif False:
+    NodeBalancerTransferArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeBalancerTransferArgs:
     def __init__(__self__, *,
@@ -3559,6 +4735,19 @@ class NodeBalancerTransferArgs:
         pulumi.set(self, "total", value)
 
 
+if not MYPY:
+    class ObjectStorageBucketCertArgsDict(TypedDict):
+        certificate: pulumi.Input[str]
+        """
+        The Base64 encoded and PEM formatted SSL certificate.
+        """
+        private_key: pulumi.Input[str]
+        """
+        The private key associated with the TLS/SSL certificate.
+        """
+elif False:
+    ObjectStorageBucketCertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ObjectStorageBucketCertArgs:
     def __init__(__self__, *,
@@ -3595,6 +4784,39 @@ class ObjectStorageBucketCertArgs:
     def private_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_key", value)
 
+
+if not MYPY:
+    class ObjectStorageBucketLifecycleRuleArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Specifies whether the lifecycle rule is active.
+        """
+        abort_incomplete_multipart_upload_days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+
+        * `expiration` - (Optional) Specifies a period in the object's expire.
+
+        * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        """
+        expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgsDict']]
+        """
+        Specifies a period in the object's expire.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier for the rule.
+        """
+        noncurrent_version_expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]
+        """
+        Specifies when non-current object versions expire.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The object key prefix identifying one or more objects to which the rule applies.
+        """
+elif False:
+    ObjectStorageBucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ObjectStorageBucketLifecycleRuleArgs:
@@ -3706,6 +4928,23 @@ class ObjectStorageBucketLifecycleRuleArgs:
         pulumi.set(self, "prefix", value)
 
 
+if not MYPY:
+    class ObjectStorageBucketLifecycleRuleExpirationArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the date after which you want the corresponding action to take effect.
+        """
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days after object creation when the specific rule action takes effect.
+        """
+        expired_object_delete_marker: NotRequired[pulumi.Input[bool]]
+        """
+        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+        """
+elif False:
+    ObjectStorageBucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ObjectStorageBucketLifecycleRuleExpirationArgs:
     def __init__(__self__, *,
@@ -3761,6 +5000,15 @@ class ObjectStorageBucketLifecycleRuleExpirationArgs:
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
+if not MYPY:
+    class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
+        days: pulumi.Input[int]
+        """
+        Specifies the number of days non-current object versions expire.
+        """
+elif False:
+    ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
@@ -3782,6 +5030,27 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def days(self, value: pulumi.Input[int]):
         pulumi.set(self, "days", value)
 
+
+if not MYPY:
+    class ObjectStorageKeyBucketAccessArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        The unique label of the bucket to which the key will grant limited access.
+        """
+        permissions: pulumi.Input[str]
+        """
+        This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+        """
+        cluster: NotRequired[pulumi.Input[str]]
+        """
+        The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The region where the bucket resides.
+        """
+elif False:
+    ObjectStorageKeyBucketAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ObjectStorageKeyBucketAccessArgs:
@@ -3856,6 +5125,19 @@ class ObjectStorageKeyBucketAccessArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class ObjectStorageKeyRegionsDetailArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of the region.
+        """
+        s3_endpoint: pulumi.Input[str]
+        """
+        The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+        """
+elif False:
+    ObjectStorageKeyRegionsDetailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ObjectStorageKeyRegionsDetailArgs:
     def __init__(__self__, *,
@@ -3893,6 +5175,19 @@ class ObjectStorageKeyRegionsDetailArgs:
         pulumi.set(self, "s3_endpoint", value)
 
 
+if not MYPY:
+    class PlacementGroupMemberArgsDict(TypedDict):
+        is_compliant: pulumi.Input[bool]
+        """
+        Whether this Linode is currently compliant with the group's placement group type.
+        """
+        linode_id: pulumi.Input[int]
+        """
+        The ID of the Linode.
+        """
+elif False:
+    PlacementGroupMemberArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PlacementGroupMemberArgs:
     def __init__(__self__, *,
@@ -3929,6 +5224,19 @@ class PlacementGroupMemberArgs:
     def linode_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "linode_id", value)
 
+
+if not MYPY:
+    class RdnsTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    RdnsTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RdnsTimeoutsArgs:
@@ -3968,6 +5276,35 @@ class RdnsTimeoutsArgs:
     def update(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update", value)
 
+
+if not MYPY:
+    class StackScriptUserDefinedFieldArgsDict(TypedDict):
+        default: pulumi.Input[str]
+        """
+        The default value. If not specified, this value will be used.
+        """
+        example: pulumi.Input[str]
+        """
+        An example value for the field.
+        """
+        label: pulumi.Input[str]
+        """
+        The StackScript's label is for display purposes only.
+        """
+        many_of: pulumi.Input[str]
+        """
+        A list of acceptable values for the field in any quantity, combination or order.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the field.
+        """
+        one_of: pulumi.Input[str]
+        """
+        A list of acceptable single values for the field.
+        """
+elif False:
+    StackScriptUserDefinedFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StackScriptUserDefinedFieldArgs:
@@ -4066,6 +5403,19 @@ class StackScriptUserDefinedFieldArgs:
         pulumi.set(self, "one_of", value)
 
 
+if not MYPY:
+    class UserDomainGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserDomainGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class UserDomainGrantArgs:
     def __init__(__self__, *,
@@ -4103,6 +5453,19 @@ class UserDomainGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class UserFirewallGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserFirewallGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class UserFirewallGrantArgs:
     def __init__(__self__, *,
@@ -4139,6 +5502,59 @@ class UserFirewallGrantArgs:
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class UserGlobalGrantsArgsDict(TypedDict):
+        account_access: NotRequired[pulumi.Input[str]]
+        """
+        The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+        """
+        add_databases: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Databases.
+        """
+        add_domains: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Domains.
+        """
+        add_firewalls: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Firewalls.
+        """
+        add_images: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Images.
+        """
+        add_linodes: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may create Linodes.
+        """
+        add_longview: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may create Longview clients and view the current plan.
+        """
+        add_nodebalancers: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add NodeBalancers.
+        """
+        add_stackscripts: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add StackScripts.
+        """
+        add_volumes: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Volumes.
+        """
+        cancel_account: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may cancel the entire Account.
+        """
+        longview_subscription: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may manage the Account’s Longview subscription.
+        """
+elif False:
+    UserGlobalGrantsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserGlobalGrantsArgs:
@@ -4339,6 +5755,19 @@ class UserGlobalGrantsArgs:
         pulumi.set(self, "longview_subscription", value)
 
 
+if not MYPY:
+    class UserImageGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserImageGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class UserImageGrantArgs:
     def __init__(__self__, *,
@@ -4375,6 +5804,19 @@ class UserImageGrantArgs:
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class UserLinodeGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserLinodeGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserLinodeGrantArgs:
@@ -4413,6 +5855,19 @@ class UserLinodeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class UserLongviewGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserLongviewGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class UserLongviewGrantArgs:
     def __init__(__self__, *,
@@ -4449,6 +5904,19 @@ class UserLongviewGrantArgs:
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class UserNodebalancerGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserNodebalancerGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserNodebalancerGrantArgs:
@@ -4487,6 +5955,19 @@ class UserNodebalancerGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class UserStackscriptGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserStackscriptGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class UserStackscriptGrantArgs:
     def __init__(__self__, *,
@@ -4524,6 +6005,19 @@ class UserStackscriptGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class UserVolumeGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserVolumeGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class UserVolumeGrantArgs:
     def __init__(__self__, *,
@@ -4560,6 +6054,23 @@ class UserVolumeGrantArgs:
     def permissions(self, value: pulumi.Input[str]):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class VolumeTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        Used when creating the volume (until the volume is reaches the initial `active` state)
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        Used when deleting the volume
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        Used when updating the volume when necessary during update - e.g. when resizing the volume
+        """
+elif False:
+    VolumeTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeTimeoutsArgs:
@@ -4616,6 +6127,16 @@ class VolumeTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
+if not MYPY:
+    class VpcSubnetLinodeArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the VPC Subnet.
+        """
+        interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgsDict']]]
+elif False:
+    VpcSubnetLinodeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VpcSubnetLinodeArgs:
     def __init__(__self__, *,
@@ -4649,6 +6170,16 @@ class VpcSubnetLinodeArgs:
         pulumi.set(self, "interfaces", value)
 
 
+if not MYPY:
+    class VpcSubnetLinodeInterfaceArgsDict(TypedDict):
+        active: pulumi.Input[bool]
+        id: pulumi.Input[int]
+        """
+        The ID of the VPC Subnet.
+        """
+elif False:
+    VpcSubnetLinodeInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VpcSubnetLinodeInterfaceArgs:
     def __init__(__self__, *,
@@ -4681,6 +6212,23 @@ class VpcSubnetLinodeInterfaceArgs:
     def id(self, value: pulumi.Input[int]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetAccountAvailabilitiesAvailabilityArgsDict(TypedDict):
+        availables: Sequence[str]
+        """
+        A set of services which are available for the given region.
+        """
+        region: str
+        """
+        The region this availability entry refers to.
+        """
+        unavailables: Sequence[str]
+        """
+        A set of services that are unavailable for the given region.
+        """
+elif False:
+    GetAccountAvailabilitiesAvailabilityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAccountAvailabilitiesAvailabilityArgs:
@@ -4733,6 +6281,23 @@ class GetAccountAvailabilitiesAvailabilityArgs:
     def unavailables(self, value: Sequence[str]):
         pulumi.set(self, "unavailables", value)
 
+
+if not MYPY:
+    class GetAccountAvailabilitiesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetAccountAvailabilitiesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAccountAvailabilitiesFilterArgs:
@@ -4787,6 +6352,23 @@ class GetAccountAvailabilitiesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetAccountLoginsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetAccountLoginsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAccountLoginsFilterArgs:
     def __init__(__self__, *,
@@ -4839,6 +6421,35 @@ class GetAccountLoginsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetAccountLoginsLoginArgsDict(TypedDict):
+        datetime: str
+        """
+        When the login was initiated.
+        """
+        id: int
+        """
+        The unique ID of this login object.
+        """
+        ip: str
+        """
+        The remote IP address that requested the login.
+        """
+        restricted: bool
+        """
+        True if the User that was logged into was a restricted User, false otherwise.
+        """
+        status: str
+        """
+        Whether the login attempt succeeded or failed.
+        """
+        username: str
+        """
+        The username of the User that was logged into.
+        """
+elif False:
+    GetAccountLoginsLoginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAccountLoginsLoginArgs:
@@ -4936,6 +6547,75 @@ class GetAccountLoginsLoginArgs:
     def username(self, value: str):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class GetChildAccountsChildAccountArgsDict(TypedDict):
+        active_since: str
+        """
+        When this account was first activated
+        """
+        address1: str
+        """
+        First line of this Account's billing address.
+        """
+        address2: str
+        """
+        Second line of this Account's billing address.
+        """
+        balance: float
+        """
+        This Account's balance, in US dollars.
+        """
+        capabilities: Sequence[str]
+        """
+        A set containing all the capabilities of this Account.
+        """
+        city: str
+        """
+        The city for this Account's billing address.
+        """
+        company: str
+        """
+        The company name associated with this Account.
+        """
+        country: str
+        """
+        The two-letter country code of this Account's billing address.
+        """
+        email: str
+        """
+        The email address for this Account, for account management communications, and may be used for other communications as configured.
+        """
+        euuid: str
+        """
+        The unique ID of this Account.
+        """
+        first_name: str
+        """
+        The first name of the person associated with this Account.
+        """
+        id: str
+        """
+        The Email of the Account.
+        """
+        last_name: str
+        """
+        The last name of the person associated with this Account.
+        """
+        phone: str
+        """
+        The phone number associated with this Account.
+        """
+        state: str
+        """
+        If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
+        """
+        zip: str
+        """
+        The zip code of this Account's billing address.
+        """
+elif False:
+    GetChildAccountsChildAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetChildAccountsChildAccountArgs:
@@ -5184,6 +6864,23 @@ class GetChildAccountsChildAccountArgs:
         pulumi.set(self, "zip", value)
 
 
+if not MYPY:
+    class GetChildAccountsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetChildAccountsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetChildAccountsFilterArgs:
     def __init__(__self__, *,
@@ -5236,6 +6933,27 @@ class GetChildAccountsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetDatabaseBackupsBackupArgsDict(TypedDict):
+        created: str
+        """
+        A time value given in a combined date and time format that represents when the database backup was created.
+        """
+        id: int
+        """
+        The ID of the database backup object.
+        """
+        label: str
+        """
+        The database backup’s label, for display purposes only.
+        """
+        type: str
+        """
+        The type of database backup, determined by how the backup was created.
+        """
+elif False:
+    GetDatabaseBackupsBackupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDatabaseBackupsBackupArgs:
@@ -5304,6 +7022,23 @@ class GetDatabaseBackupsBackupArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class GetDatabaseBackupsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetDatabaseBackupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDatabaseBackupsFilterArgs:
     def __init__(__self__, *,
@@ -5357,6 +7092,23 @@ class GetDatabaseBackupsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetDatabaseEnginesEngineArgsDict(TypedDict):
+        engine: str
+        """
+        The Managed Database engine type.
+        """
+        id: str
+        """
+        The Managed Database engine ID in engine/version format.
+        """
+        version: str
+        """
+        The Managed Database engine version.
+        """
+elif False:
+    GetDatabaseEnginesEngineArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDatabaseEnginesEngineArgs:
     def __init__(__self__, *,
@@ -5408,6 +7160,23 @@ class GetDatabaseEnginesEngineArgs:
     def version(self, value: str):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class GetDatabaseEnginesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetDatabaseEnginesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDatabaseEnginesFilterArgs:
@@ -5462,6 +7231,23 @@ class GetDatabaseEnginesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetDatabaseMysqlBackupsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetDatabaseMysqlBackupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDatabaseMysqlBackupsFilterArgs:
     def __init__(__self__, *,
@@ -5514,6 +7300,79 @@ class GetDatabaseMysqlBackupsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetDatabasesDatabaseArgsDict(TypedDict):
+        allow_lists: Sequence[str]
+        """
+        A list of IP addresses that can access the Managed Database.
+        """
+        cluster_size: int
+        """
+        The number of Linode Instance nodes deployed to the Managed Database.
+        """
+        created: str
+        """
+        When this Managed Database was created.
+        """
+        encrypted: bool
+        """
+        Whether the Managed Databases is encrypted.
+        """
+        engine: str
+        """
+        The Managed Database engine.
+        """
+        host_primary: str
+        """
+        The primary host for the Managed Database.
+        """
+        host_secondary: str
+        """
+        The secondary/private network host for the Managed Database.
+        """
+        id: int
+        """
+        The ID of the Managed Database.
+        """
+        instance_uri: str
+        """
+        he API route for the database instance.
+        """
+        label: str
+        """
+        A unique, user-defined string referring to the Managed Database.
+        """
+        region: str
+        """
+        The region to use for the Managed Database.
+        """
+        replication_type: str
+        """
+        The replication method used for the Managed Database.
+        """
+        ssl_connection: bool
+        """
+        Whether to require SSL credentials to establish a connection to the Managed Database.
+        """
+        status: str
+        """
+        The operating status of the Managed Database.
+        """
+        type: str
+        """
+        The Linode Instance type used for the nodes of the  Managed Database instance.
+        """
+        updated: str
+        """
+        When this Managed Database was last updated.
+        """
+        version: str
+        """
+        The Managed Database engine version.
+        """
+elif False:
+    GetDatabasesDatabaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDatabasesDatabaseArgs:
@@ -5777,6 +7636,23 @@ class GetDatabasesDatabaseArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class GetDatabasesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetDatabasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDatabasesFilterArgs:
     def __init__(__self__, *,
@@ -5829,6 +7705,67 @@ class GetDatabasesFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetDomainsDomainArgsDict(TypedDict):
+        axfr_ips: Sequence[str]
+        """
+        The list of IPs that may perform a zone transfer for this Domain.
+        """
+        description: str
+        """
+        A description for this Domain.
+        """
+        expire_sec: int
+        """
+        The amount of time in seconds that may pass before this Domain is no longer authoritative.
+        """
+        group: str
+        """
+        The group this Domain belongs to.
+        """
+        master_ips: Sequence[str]
+        """
+        The IP addresses representing the master DNS for this Domain.
+        """
+        refresh_sec: int
+        """
+        The amount of time in seconds before this Domain should be refreshed.
+        """
+        retry_sec: int
+        """
+        The interval, in seconds, at which a failed refresh should be retried.
+        """
+        soa_email: str
+        """
+        Start of Authority email address.
+        """
+        status: str
+        """
+        Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+        """
+        tags: Sequence[str]
+        """
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        ttl_sec: int
+        """
+        'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
+        """
+        type: str
+        """
+        If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+        """
+        domain: NotRequired[str]
+        """
+        The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
+        """
+        id: NotRequired[int]
+        """
+        The unique ID of this Domain.
+        """
+elif False:
+    GetDomainsDomainArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDomainsDomainArgs:
@@ -6049,6 +7986,23 @@ class GetDomainsDomainArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetDomainsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetDomainsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDomainsFilterArgs:
     def __init__(__self__, *,
@@ -6102,6 +8056,23 @@ class GetDomainsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetFirewallsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetFirewallsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetFirewallsFilterArgs:
     def __init__(__self__, *,
@@ -6154,6 +8125,67 @@ class GetFirewallsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetFirewallsFirewallArgsDict(TypedDict):
+        created: str
+        """
+        When this firewall was created.
+        """
+        disabled: bool
+        """
+        If true, the Firewall is inactive.
+        """
+        id: int
+        """
+        The unique ID assigned to this Firewall.
+        """
+        inbound_policy: str
+        """
+        The default behavior for inbound traffic.
+        """
+        label: str
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        linodes: Sequence[int]
+        """
+        The IDs of Linodes this firewall is applied to.
+        """
+        nodebalancers: Sequence[int]
+        """
+        The IDs of NodeBalancers assigned to this Firewall..
+        """
+        outbound_policy: str
+        """
+        The default behavior for outbound traffic.
+        """
+        status: str
+        """
+        The status of the firewall.
+        """
+        tags: Sequence[str]
+        """
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        updated: str
+        """
+        When this firewall was last updated.
+        """
+        devices: NotRequired[Sequence['GetFirewallsFirewallDeviceArgsDict']]
+        """
+        The devices associated with this firewall.
+        """
+        inbounds: NotRequired[Sequence['GetFirewallsFirewallInboundArgsDict']]
+        """
+        A set of firewall rules that specify what inbound network traffic is allowed.
+        """
+        outbounds: NotRequired[Sequence['GetFirewallsFirewallOutboundArgsDict']]
+        """
+        A set of firewall rules that specify what outbound network traffic is allowed.
+        """
+elif False:
+    GetFirewallsFirewallArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetFirewallsFirewallArgs:
@@ -6375,6 +8407,31 @@ class GetFirewallsFirewallArgs:
         pulumi.set(self, "outbounds", value)
 
 
+if not MYPY:
+    class GetFirewallsFirewallDeviceArgsDict(TypedDict):
+        entity_id: int
+        """
+        The ID of the underlying entity this device references (i.e. the Linode's ID).
+        """
+        id: int
+        """
+        The unique ID assigned to this Firewall.
+        """
+        label: str
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        type: str
+        """
+        The type of Firewall Device.
+        """
+        url: str
+        """
+        The URL of the underlying entity this device references.
+        """
+elif False:
+    GetFirewallsFirewallDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetFirewallsFirewallDeviceArgs:
     def __init__(__self__, *,
@@ -6456,6 +8513,35 @@ class GetFirewallsFirewallDeviceArgs:
     def url(self, value: str):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class GetFirewallsFirewallInboundArgsDict(TypedDict):
+        action: str
+        """
+        Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        """
+        ipv4s: Sequence[str]
+        """
+        A list of IPv4 addresses or networks in IP/mask format.
+        """
+        ipv6s: Sequence[str]
+        """
+        A list of IPv6 addresses or networks in IP/mask format.
+        """
+        label: str
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        ports: str
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        protocol: str
+        """
+        The network protocol this rule controls. (TCP, UDP, ICMP)
+        """
+elif False:
+    GetFirewallsFirewallInboundArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetFirewallsFirewallInboundArgs:
@@ -6554,6 +8640,35 @@ class GetFirewallsFirewallInboundArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class GetFirewallsFirewallOutboundArgsDict(TypedDict):
+        action: str
+        """
+        Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        """
+        ipv4s: Sequence[str]
+        """
+        A list of IPv4 addresses or networks in IP/mask format.
+        """
+        ipv6s: Sequence[str]
+        """
+        A list of IPv6 addresses or networks in IP/mask format.
+        """
+        label: str
+        """
+        The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
+        """
+        ports: str
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        protocol: str
+        """
+        The network protocol this rule controls. (TCP, UDP, ICMP)
+        """
+elif False:
+    GetFirewallsFirewallOutboundArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetFirewallsFirewallOutboundArgs:
     def __init__(__self__, *,
@@ -6651,6 +8766,19 @@ class GetFirewallsFirewallOutboundArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class GetImageReplicationArgsDict(TypedDict):
+        region: str
+        """
+        The region of an image replica.
+        """
+        status: str
+        """
+        The status of an image replica.
+        """
+elif False:
+    GetImageReplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetImageReplicationArgs:
     def __init__(__self__, *,
@@ -6687,6 +8815,23 @@ class GetImageReplicationArgs:
     def status(self, value: str):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class GetImagesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetImagesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetImagesFilterArgs:
@@ -6740,6 +8885,75 @@ class GetImagesFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetImagesImageArgsDict(TypedDict):
+        capabilities: Sequence[str]
+        """
+        The capabilities of this Image.
+        """
+        created: str
+        """
+        When this Image was created.
+        """
+        created_by: str
+        """
+        The name of the User who created this Image, or "linode" for official Images.
+        """
+        deprecated: bool
+        """
+        Whether or not this Image is deprecated. Will only be true for deprecated public Images.
+        """
+        description: str
+        """
+        A detailed description of this Image.
+        """
+        expiry: str
+        """
+        Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+        """
+        id: str
+        """
+        The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+        """
+        is_public: bool
+        """
+        True if the Image is public.
+        """
+        label: str
+        """
+        A short description of the Image.
+        """
+        size: int
+        """
+        The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        """
+        status: str
+        """
+        The status of an image replica.
+        """
+        tags: Sequence[str]
+        """
+        A list of customized tags.
+        """
+        total_size: int
+        """
+        The total size of the image in all available regions.
+        """
+        type: str
+        """
+        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
+        vendor: str
+        """
+        The upstream distribution vendor. `None` for private Images.
+        """
+        replications: NotRequired[Sequence['GetImagesImageReplicationArgsDict']]
+        """
+        A list of image replication regions and corresponding status.
+        """
+elif False:
+    GetImagesImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetImagesImageArgs:
@@ -6989,6 +9203,19 @@ class GetImagesImageArgs:
         pulumi.set(self, "replications", value)
 
 
+if not MYPY:
+    class GetImagesImageReplicationArgsDict(TypedDict):
+        region: str
+        """
+        The region of an image replica.
+        """
+        status: str
+        """
+        The status of an image replica.
+        """
+elif False:
+    GetImagesImageReplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetImagesImageReplicationArgs:
     def __init__(__self__, *,
@@ -7025,6 +9252,23 @@ class GetImagesImageReplicationArgs:
     def status(self, value: str):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class GetInstanceTypesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetInstanceTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceTypesFilterArgs:
@@ -7078,6 +9322,55 @@ class GetInstanceTypesFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetInstanceTypesTypeArgsDict(TypedDict):
+        addons: Sequence['GetInstanceTypesTypeAddonArgsDict']
+        """
+        Information about the optional Backup service offered for Linodes.
+        """
+        class_: str
+        """
+        The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
+        """
+        disk: int
+        """
+        The Disk size, in MB, of the Linode Type.
+        """
+        id: str
+        """
+        The ID representing the Linode Type.
+        """
+        label: str
+        """
+        The Linode Type's label is for display purposes only.
+        """
+        memory: int
+        """
+        The amount of RAM included in this Linode Type.
+        """
+        network_out: int
+        """
+        The Mbits outbound bandwidth allocation.
+        """
+        prices: Sequence['GetInstanceTypesTypePriceArgsDict']
+        """
+        Cost in US dollars, broken down into hourly and monthly charges.
+        """
+        region_prices: Sequence['GetInstanceTypesTypeRegionPriceArgsDict']
+        """
+        A list of region-specific prices for this plan.
+        """
+        transfer: int
+        """
+        The monthly outbound transfer amount, in MB.
+        """
+        vcpus: int
+        """
+        The number of VCPU cores this Linode Type offers.
+        """
+elif False:
+    GetInstanceTypesTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceTypesTypeArgs:
@@ -7251,6 +9544,12 @@ class GetInstanceTypesTypeArgs:
         pulumi.set(self, "vcpus", value)
 
 
+if not MYPY:
+    class GetInstanceTypesTypeAddonArgsDict(TypedDict):
+        backups: Sequence['GetInstanceTypesTypeAddonBackupArgsDict']
+elif False:
+    GetInstanceTypesTypeAddonArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceTypesTypeAddonArgs:
     def __init__(__self__, *,
@@ -7266,6 +9565,13 @@ class GetInstanceTypesTypeAddonArgs:
     def backups(self, value: Sequence['GetInstanceTypesTypeAddonBackupArgs']):
         pulumi.set(self, "backups", value)
 
+
+if not MYPY:
+    class GetInstanceTypesTypeAddonBackupArgsDict(TypedDict):
+        prices: Sequence['GetInstanceTypesTypeAddonBackupPriceArgsDict']
+        region_prices: Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgsDict']
+elif False:
+    GetInstanceTypesTypeAddonBackupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceTypesTypeAddonBackupArgs:
@@ -7293,6 +9599,19 @@ class GetInstanceTypesTypeAddonBackupArgs:
     def region_prices(self, value: Sequence['GetInstanceTypesTypeAddonBackupRegionPriceArgs']):
         pulumi.set(self, "region_prices", value)
 
+
+if not MYPY:
+    class GetInstanceTypesTypeAddonBackupPriceArgsDict(TypedDict):
+        hourly: float
+        """
+        The cost (in US dollars) per hour to add Backups service.
+        """
+        monthly: float
+        """
+        The cost (in US dollars) per month to add Backups service.
+        """
+elif False:
+    GetInstanceTypesTypeAddonBackupPriceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceTypesTypeAddonBackupPriceArgs:
@@ -7330,6 +9649,17 @@ class GetInstanceTypesTypeAddonBackupPriceArgs:
     def monthly(self, value: float):
         pulumi.set(self, "monthly", value)
 
+
+if not MYPY:
+    class GetInstanceTypesTypeAddonBackupRegionPriceArgsDict(TypedDict):
+        hourly: float
+        id: str
+        """
+        The ID representing the Linode Type.
+        """
+        monthly: float
+elif False:
+    GetInstanceTypesTypeAddonBackupRegionPriceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceTypesTypeAddonBackupRegionPriceArgs:
@@ -7375,6 +9705,19 @@ class GetInstanceTypesTypeAddonBackupRegionPriceArgs:
         pulumi.set(self, "monthly", value)
 
 
+if not MYPY:
+    class GetInstanceTypesTypePriceArgsDict(TypedDict):
+        hourly: float
+        """
+        Cost (in US dollars) per hour.
+        """
+        monthly: float
+        """
+        Cost (in US dollars) per month.
+        """
+elif False:
+    GetInstanceTypesTypePriceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceTypesTypePriceArgs:
     def __init__(__self__, *,
@@ -7411,6 +9754,17 @@ class GetInstanceTypesTypePriceArgs:
     def monthly(self, value: float):
         pulumi.set(self, "monthly", value)
 
+
+if not MYPY:
+    class GetInstanceTypesTypeRegionPriceArgsDict(TypedDict):
+        hourly: float
+        id: str
+        """
+        The ID representing the Linode Type.
+        """
+        monthly: float
+elif False:
+    GetInstanceTypesTypeRegionPriceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceTypesTypeRegionPriceArgs:
@@ -7455,6 +9809,23 @@ class GetInstanceTypesTypeRegionPriceArgs:
     def monthly(self, value: float):
         pulumi.set(self, "monthly", value)
 
+
+if not MYPY:
+    class GetInstancesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetInstancesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstancesFilterArgs:
@@ -7509,6 +9880,23 @@ class GetInstancesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetIpv6RangesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetIpv6RangesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetIpv6RangesFilterArgs:
     def __init__(__self__, *,
@@ -7561,6 +9949,27 @@ class GetIpv6RangesFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetIpv6RangesRangeArgsDict(TypedDict):
+        prefix: int
+        """
+        The prefix length of the address, denoting how many addresses can be assigned from this range.
+        """
+        range: str
+        """
+        The IPv6 address of this range.
+        """
+        region: str
+        """
+        The region for this range of IPv6 addresses.
+        """
+        route_target: str
+        """
+        The IPv6 SLAAC address.
+        """
+elif False:
+    GetIpv6RangesRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIpv6RangesRangeArgs:
@@ -7629,6 +10038,23 @@ class GetIpv6RangesRangeArgs:
         pulumi.set(self, "route_target", value)
 
 
+if not MYPY:
+    class GetKernelsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetKernelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKernelsFilterArgs:
     def __init__(__self__, *,
@@ -7681,6 +10107,47 @@ class GetKernelsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetKernelsKernelArgsDict(TypedDict):
+        architecture: str
+        """
+        The architecture of this Kernel.
+        """
+        built: str
+        """
+        The date on which this Kernel was built.
+        """
+        deprecated: bool
+        """
+        Whether or not this Kernel is deprecated.
+        """
+        id: str
+        """
+        The unique ID of this Kernel.
+        """
+        kvm: bool
+        """
+        If this Kernel is suitable for KVM Linodes.
+        """
+        label: str
+        """
+        The friendly name of this Kernel.
+        """
+        pvops: bool
+        """
+        If this Kernel is suitable for paravirtualized operations.
+        """
+        version: str
+        """
+        Linux Kernel version
+        """
+        xen: bool
+        """
+        If this Kernel is suitable for Xen Linodes.
+        """
+elif False:
+    GetKernelsKernelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetKernelsKernelArgs:
@@ -7824,6 +10291,19 @@ class GetKernelsKernelArgs:
         pulumi.set(self, "xen", value)
 
 
+if not MYPY:
+    class GetLkeClusterControlPlaneArgsDict(TypedDict):
+        high_availability: bool
+        """
+        Whether High Availability is enabled for the cluster Control Plane.
+        """
+        acls: NotRequired[Sequence['GetLkeClusterControlPlaneAclArgsDict']]
+        """
+        The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+        """
+elif False:
+    GetLkeClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLkeClusterControlPlaneArgs:
     def __init__(__self__, *,
@@ -7861,6 +10341,19 @@ class GetLkeClusterControlPlaneArgs:
     def acls(self, value: Optional[Sequence['GetLkeClusterControlPlaneAclArgs']]):
         pulumi.set(self, "acls", value)
 
+
+if not MYPY:
+    class GetLkeClusterControlPlaneAclArgsDict(TypedDict):
+        enabled: bool
+        """
+        The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+        """
+        addresses: NotRequired[Sequence['GetLkeClusterControlPlaneAclAddressArgsDict']]
+        """
+        A list of ip addresses to allow.
+        """
+elif False:
+    GetLkeClusterControlPlaneAclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLkeClusterControlPlaneAclArgs:
@@ -7900,6 +10393,19 @@ class GetLkeClusterControlPlaneAclArgs:
         pulumi.set(self, "addresses", value)
 
 
+if not MYPY:
+    class GetLkeClusterControlPlaneAclAddressArgsDict(TypedDict):
+        ipv4s: Sequence[str]
+        """
+        A set of individual ipv4 addresses or CIDRs to ALLOW.
+        """
+        ipv6s: Sequence[str]
+        """
+        A set of individual ipv6 addresses or CIDRs to ALLOW.
+        """
+elif False:
+    GetLkeClusterControlPlaneAclAddressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLkeClusterControlPlaneAclAddressArgs:
     def __init__(__self__, *,
@@ -7936,6 +10442,51 @@ class GetLkeClusterControlPlaneAclAddressArgs:
     def ipv6s(self, value: Sequence[str]):
         pulumi.set(self, "ipv6s", value)
 
+
+if not MYPY:
+    class GetLkeClusterPoolArgsDict(TypedDict):
+        count: int
+        """
+        The number of nodes in the Node Pool.
+        """
+        disk_encryption: str
+        """
+        The disk encryption policy for nodes in this pool.
+        """
+        id: int
+        """
+        The LKE Cluster's ID.
+        """
+        labels: Mapping[str, str]
+        """
+        Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        """
+        tags: Sequence[str]
+        """
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        taints: Sequence['GetLkeClusterPoolTaintArgsDict']
+        """
+        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        """
+        type: str
+        """
+        The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        """
+        autoscalers: NotRequired[Sequence['GetLkeClusterPoolAutoscalerArgsDict']]
+        """
+        The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+        """
+        disks: NotRequired[Sequence['GetLkeClusterPoolDiskArgsDict']]
+        """
+        This Node Pool’s custom disk layout.
+        """
+        nodes: NotRequired[Sequence['GetLkeClusterPoolNodeArgsDict']]
+        """
+        The nodes in the Node Pool.
+        """
+elif False:
+    GetLkeClusterPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLkeClusterPoolArgs:
@@ -8097,6 +10648,23 @@ class GetLkeClusterPoolArgs:
         pulumi.set(self, "nodes", value)
 
 
+if not MYPY:
+    class GetLkeClusterPoolAutoscalerArgsDict(TypedDict):
+        enabled: bool
+        """
+        The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
+        """
+        max: int
+        """
+        The maximum number of nodes to autoscale to.
+        """
+        min: int
+        """
+        The minimum number of nodes to autoscale to.
+        """
+elif False:
+    GetLkeClusterPoolAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLkeClusterPoolAutoscalerArgs:
     def __init__(__self__, *,
@@ -8149,6 +10717,19 @@ class GetLkeClusterPoolAutoscalerArgs:
         pulumi.set(self, "min", value)
 
 
+if not MYPY:
+    class GetLkeClusterPoolDiskArgsDict(TypedDict):
+        size: int
+        """
+        The size of this custom disk partition in MB.
+        """
+        type: str
+        """
+        The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        """
+elif False:
+    GetLkeClusterPoolDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLkeClusterPoolDiskArgs:
     def __init__(__self__, *,
@@ -8185,6 +10766,23 @@ class GetLkeClusterPoolDiskArgs:
     def type(self, value: str):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class GetLkeClusterPoolNodeArgsDict(TypedDict):
+        id: str
+        """
+        The LKE Cluster's ID.
+        """
+        instance_id: int
+        """
+        The ID of the underlying Linode instance.
+        """
+        status: str
+        """
+        The status of the node. (`ready`, `not_ready`)
+        """
+elif False:
+    GetLkeClusterPoolNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLkeClusterPoolNodeArgs:
@@ -8238,6 +10836,23 @@ class GetLkeClusterPoolNodeArgs:
         pulumi.set(self, "status", value)
 
 
+if not MYPY:
+    class GetLkeClusterPoolTaintArgsDict(TypedDict):
+        effect: str
+        """
+        The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        """
+        key: str
+        """
+        The Kubernetes taint key.
+        """
+        value: str
+        """
+        The Kubernetes taint value.
+        """
+elif False:
+    GetLkeClusterPoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLkeClusterPoolTaintArgs:
     def __init__(__self__, *,
@@ -8289,6 +10904,23 @@ class GetLkeClusterPoolTaintArgs:
     def value(self, value: str):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetLkeClustersFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetLkeClustersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLkeClustersFilterArgs:
@@ -8342,6 +10974,47 @@ class GetLkeClustersFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetLkeClustersLkeClusterArgsDict(TypedDict):
+        created: str
+        """
+        When this Kubernetes cluster was created.
+        """
+        id: int
+        """
+        The LKE Cluster's ID.
+        """
+        k8s_version: str
+        """
+        The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+        """
+        label: str
+        """
+        The unique label for the cluster.
+        """
+        region: str
+        """
+        This Kubernetes cluster's location.
+        """
+        status: str
+        """
+        The status of the cluster.
+        """
+        tags: Sequence[str]
+        """
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        updated: str
+        """
+        When this Kubernetes cluster was updated.
+        """
+        control_plane: NotRequired['GetLkeClustersLkeClusterControlPlaneArgsDict']
+        """
+        Defines settings for the Kubernetes Control Plane.
+        """
+elif False:
+    GetLkeClustersLkeClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLkeClustersLkeClusterArgs:
@@ -8486,6 +11159,15 @@ class GetLkeClustersLkeClusterArgs:
         pulumi.set(self, "control_plane", value)
 
 
+if not MYPY:
+    class GetLkeClustersLkeClusterControlPlaneArgsDict(TypedDict):
+        high_availability: bool
+        """
+        Whether High Availability is enabled for the cluster Control Plane.
+        """
+elif False:
+    GetLkeClustersLkeClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLkeClustersLkeClusterControlPlaneArgs:
     def __init__(__self__, *,
@@ -8507,6 +11189,51 @@ class GetLkeClustersLkeClusterControlPlaneArgs:
     def high_availability(self, value: bool):
         pulumi.set(self, "high_availability", value)
 
+
+if not MYPY:
+    class GetNodeBalancerFirewallArgsDict(TypedDict):
+        created: str
+        """
+        When this firewall was created.
+        """
+        id: int
+        """
+        The NodeBalancer's ID.
+        """
+        inbound_policy: str
+        """
+        The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+        """
+        label: str
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        outbound_policy: str
+        """
+        The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+        """
+        status: str
+        """
+        The status of the firewall. (`enabled`, `disabled`, `deleted`)
+        """
+        tags: Sequence[str]
+        """
+        The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
+        """
+        updated: str
+        """
+        When this firewall was last updated.
+        """
+        inbounds: NotRequired[Sequence['GetNodeBalancerFirewallInboundArgsDict']]
+        """
+        A set of firewall rules that specify what inbound network traffic is allowed.
+        """
+        outbounds: NotRequired[Sequence['GetNodeBalancerFirewallOutboundArgsDict']]
+        """
+        A set of firewall rules that specify what outbound network traffic is allowed.
+        """
+elif False:
+    GetNodeBalancerFirewallArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNodeBalancerFirewallArgs:
@@ -8667,6 +11394,35 @@ class GetNodeBalancerFirewallArgs:
         pulumi.set(self, "outbounds", value)
 
 
+if not MYPY:
+    class GetNodeBalancerFirewallInboundArgsDict(TypedDict):
+        action: str
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        ipv4s: Sequence[str]
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        """
+        ipv6s: Sequence[str]
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        """
+        label: str
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        ports: str
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        protocol: str
+        """
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        """
+elif False:
+    GetNodeBalancerFirewallInboundArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetNodeBalancerFirewallInboundArgs:
     def __init__(__self__, *,
@@ -8763,6 +11519,35 @@ class GetNodeBalancerFirewallInboundArgs:
     def protocol(self, value: str):
         pulumi.set(self, "protocol", value)
 
+
+if not MYPY:
+    class GetNodeBalancerFirewallOutboundArgsDict(TypedDict):
+        action: str
+        """
+        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        """
+        ipv4s: Sequence[str]
+        """
+        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        """
+        ipv6s: Sequence[str]
+        """
+        A list of IPv6 addresses or networks. Must be in IP/mask format.
+        """
+        label: str
+        """
+        Used to identify this rule. For display purposes only.
+        """
+        ports: str
+        """
+        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        """
+        protocol: str
+        """
+        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        """
+elif False:
+    GetNodeBalancerFirewallOutboundArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNodeBalancerFirewallOutboundArgs:
@@ -8861,6 +11646,23 @@ class GetNodeBalancerFirewallOutboundArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class GetNodebalancerConfigsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetNodebalancerConfigsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetNodebalancerConfigsFilterArgs:
     def __init__(__self__, *,
@@ -8913,6 +11715,85 @@ class GetNodebalancerConfigsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetNodebalancerConfigsNodebalancerConfigArgsDict(TypedDict):
+        algorithm: str
+        """
+        What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+        """
+        check: str
+        """
+        The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        """
+        check_attempts: int
+        """
+        How many times to attempt a check before considering a backend to be down. (1-30)
+        """
+        check_body: str
+        """
+        This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
+        """
+        check_interval: int
+        """
+        How often, in seconds, to check that backends are up and serving requests.
+        """
+        check_passive: bool
+        """
+        If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
+        """
+        check_path: str
+        """
+        The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
+        """
+        check_timeout: int
+        """
+        How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
+        """
+        cipher_suite: str
+        """
+        What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+        """
+        id: int
+        """
+        The config's ID.
+        """
+        node_statuses: Sequence['GetNodebalancerConfigsNodebalancerConfigNodeStatusArgsDict']
+        """
+        A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+        """
+        nodebalancer_id: int
+        """
+        The ID of the NodeBalancer to access.
+
+        * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        """
+        port: int
+        """
+        The TCP port this Config is for.
+        """
+        protocol: str
+        """
+        The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        """
+        proxy_protocol: str
+        """
+        The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+        """
+        ssl_commonname: str
+        """
+        The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        """
+        ssl_fingerprint: str
+        """
+        The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
+        """
+        stickiness: str
+        """
+        Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        """
+elif False:
+    GetNodebalancerConfigsNodebalancerConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNodebalancerConfigsNodebalancerConfigArgs:
@@ -9195,6 +12076,19 @@ class GetNodebalancerConfigsNodebalancerConfigArgs:
         pulumi.set(self, "stickiness", value)
 
 
+if not MYPY:
+    class GetNodebalancerConfigsNodebalancerConfigNodeStatusArgsDict(TypedDict):
+        down: int
+        """
+        The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+        """
+        up: int
+        """
+        The number of backends considered to be 'UP' and healthy, and that are serving requests.
+        """
+elif False:
+    GetNodebalancerConfigsNodebalancerConfigNodeStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs:
     def __init__(__self__, *,
@@ -9231,6 +12125,23 @@ class GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs:
     def up(self, value: int):
         pulumi.set(self, "up", value)
 
+
+if not MYPY:
+    class GetNodebalancersFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetNodebalancersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNodebalancersFilterArgs:
@@ -9284,6 +12195,55 @@ class GetNodebalancersFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetNodebalancersNodebalancerArgsDict(TypedDict):
+        client_conn_throttle: int
+        """
+        Throttle connections per second (0-20)
+        """
+        created: str
+        """
+        When this Linode NodeBalancer was created
+        """
+        hostname: str
+        """
+        This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
+        """
+        id: int
+        """
+        The Linode NodeBalancer's unique ID
+        """
+        ipv4: str
+        """
+        The Public IPv4 Address of this NodeBalancer
+        """
+        ipv6: str
+        """
+        The Public IPv6 Address of this NodeBalancer
+        """
+        label: str
+        """
+        The label of the Linode NodeBalancer
+        """
+        region: str
+        """
+        The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
+        """
+        tags: Sequence[str]
+        """
+        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        transfers: Sequence['GetNodebalancersNodebalancerTransferArgsDict']
+        """
+        Information about the amount of transfer this NodeBalancer has had so far this month.
+        """
+        updated: str
+        """
+        When this Linode NodeBalancer was last updated
+        """
+elif False:
+    GetNodebalancersNodebalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNodebalancersNodebalancerArgs:
@@ -9457,6 +12417,23 @@ class GetNodebalancersNodebalancerArgs:
         pulumi.set(self, "updated", value)
 
 
+if not MYPY:
+    class GetNodebalancersNodebalancerTransferArgsDict(TypedDict):
+        in_: float
+        """
+        The total transfer, in MB, used by this NodeBalancer for the current month
+        """
+        out: float
+        """
+        The total inbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+        total: float
+        """
+        The total outbound transfer, in MB, used for this NodeBalancer for the current month
+        """
+elif False:
+    GetNodebalancersNodebalancerTransferArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetNodebalancersNodebalancerTransferArgs:
     def __init__(__self__, *,
@@ -9509,6 +12486,19 @@ class GetNodebalancersNodebalancerTransferArgs:
         pulumi.set(self, "total", value)
 
 
+if not MYPY:
+    class GetPlacementGroupMemberArgsDict(TypedDict):
+        is_compliant: bool
+        """
+        Whether this Linode is currently compliant with the group's placement group type.
+        """
+        linode_id: int
+        """
+        The ID of the Linode.
+        """
+elif False:
+    GetPlacementGroupMemberArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPlacementGroupMemberArgs:
     def __init__(__self__, *,
@@ -9545,6 +12535,23 @@ class GetPlacementGroupMemberArgs:
     def linode_id(self, value: int):
         pulumi.set(self, "linode_id", value)
 
+
+if not MYPY:
+    class GetPlacementGroupsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetPlacementGroupsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPlacementGroupsFilterArgs:
@@ -9598,6 +12605,39 @@ class GetPlacementGroupsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetPlacementGroupsPlacementGroupArgsDict(TypedDict):
+        id: int
+        """
+        The ID of the placement group.
+        """
+        is_compliant: bool
+        """
+        Whether this Linode is currently compliant with the group's placement group type.
+        """
+        label: str
+        """
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        """
+        placement_group_policy: str
+        """
+        Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        """
+        placement_group_type: str
+        """
+        The placement group type to use when placing Linodes in this group.
+        """
+        region: str
+        """
+        The region of the Placement Group.
+        """
+        members: NotRequired[Sequence['GetPlacementGroupsPlacementGroupMemberArgsDict']]
+        """
+        A set of Linodes currently assigned to this Placement Group.
+        """
+elif False:
+    GetPlacementGroupsPlacementGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPlacementGroupsPlacementGroupArgs:
@@ -9712,6 +12752,19 @@ class GetPlacementGroupsPlacementGroupArgs:
         pulumi.set(self, "members", value)
 
 
+if not MYPY:
+    class GetPlacementGroupsPlacementGroupMemberArgsDict(TypedDict):
+        is_compliant: bool
+        """
+        Whether this Linode is currently compliant with the group's placement group type.
+        """
+        linode_id: int
+        """
+        The ID of the Linode.
+        """
+elif False:
+    GetPlacementGroupsPlacementGroupMemberArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPlacementGroupsPlacementGroupMemberArgs:
     def __init__(__self__, *,
@@ -9749,6 +12802,19 @@ class GetPlacementGroupsPlacementGroupMemberArgs:
         pulumi.set(self, "linode_id", value)
 
 
+if not MYPY:
+    class GetRegionResolverArgsDict(TypedDict):
+        ipv4: str
+        """
+        The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        ipv6: str
+        """
+        The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+elif False:
+    GetRegionResolverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRegionResolverArgs:
     def __init__(__self__, *,
@@ -9785,6 +12851,23 @@ class GetRegionResolverArgs:
     def ipv6(self, value: str):
         pulumi.set(self, "ipv6", value)
 
+
+if not MYPY:
+    class GetRegionsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRegionsFilterArgs:
@@ -9838,6 +12921,40 @@ class GetRegionsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetRegionsRegionArgsDict(TypedDict):
+        capabilities: Sequence[str]
+        """
+        A list of capabilities of this region.
+        """
+        country: str
+        """
+        The country the region resides in.
+        """
+        id: str
+        """
+        The unique ID of this Region.
+        """
+        label: str
+        """
+        Detailed location information for this Region, including city, state or region, and country.
+        """
+        placement_group_limits: Sequence['GetRegionsRegionPlacementGroupLimitArgsDict']
+        """
+        Information about placement groups limits for this region.
+        """
+        site_type: str
+        """
+        The type of this region.
+        """
+        status: str
+        """
+        This region’s current operational status (ok or outage).
+        """
+        resolvers: NotRequired[Sequence['GetRegionsRegionResolverArgsDict']]
+elif False:
+    GetRegionsRegionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRegionsRegionArgs:
@@ -9963,6 +13080,19 @@ class GetRegionsRegionArgs:
         pulumi.set(self, "resolvers", value)
 
 
+if not MYPY:
+    class GetRegionsRegionPlacementGroupLimitArgsDict(TypedDict):
+        maximum_linodes_per_pg: int
+        """
+        The maximum number of Linodes allowed to be assigned to a placement group in this region.
+        """
+        maximum_pgs_per_customer: int
+        """
+        The maximum number of placement groups allowed for the current user in this region.
+        """
+elif False:
+    GetRegionsRegionPlacementGroupLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRegionsRegionPlacementGroupLimitArgs:
     def __init__(__self__, *,
@@ -10000,6 +13130,19 @@ class GetRegionsRegionPlacementGroupLimitArgs:
         pulumi.set(self, "maximum_pgs_per_customer", value)
 
 
+if not MYPY:
+    class GetRegionsRegionResolverArgsDict(TypedDict):
+        ipv4: str
+        """
+        The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+        """
+        ipv6: str
+        """
+        The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+        """
+elif False:
+    GetRegionsRegionResolverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRegionsRegionResolverArgs:
     def __init__(__self__, *,
@@ -10036,6 +13179,23 @@ class GetRegionsRegionResolverArgs:
     def ipv6(self, value: str):
         pulumi.set(self, "ipv6", value)
 
+
+if not MYPY:
+    class GetSshkeysFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetSshkeysFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSshkeysFilterArgs:
@@ -10089,6 +13249,27 @@ class GetSshkeysFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetSshkeysSshkeyArgsDict(TypedDict):
+        created: str
+        """
+        The date this key was added.
+        """
+        label: str
+        """
+        The label of the SSH Key.
+        """
+        ssh_key: str
+        """
+        The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+        """
+        id: NotRequired[str]
+        """
+        The ID of the SSH Key.
+        """
+elif False:
+    GetSshkeysSshkeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSshkeysSshkeyArgs:
@@ -10158,6 +13339,23 @@ class GetSshkeysSshkeyArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GetStackScriptsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetStackScriptsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStackScriptsFilterArgs:
     def __init__(__self__, *,
@@ -10210,6 +13408,67 @@ class GetStackScriptsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetStackScriptsStackscriptArgsDict(TypedDict):
+        created: str
+        """
+        The date this StackScript was created.
+        """
+        deployments_active: int
+        """
+        Count of currently active, deployed Linodes created from this StackScript.
+        """
+        deployments_total: int
+        """
+        The total number of times this StackScript has been deployed.
+        """
+        description: str
+        """
+        A description for the StackScript.
+        """
+        id: str
+        """
+        The unique ID of the StackScript.
+        """
+        images: Sequence[str]
+        """
+        An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+        """
+        is_public: bool
+        """
+        This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
+        """
+        label: str
+        """
+        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        """
+        rev_note: str
+        """
+        This field allows you to add notes for the set of revisions made to this StackScript.
+        """
+        script: str
+        """
+        The script to execute when provisioning a new Linode with this StackScript.
+        """
+        updated: str
+        """
+        The date this StackScript was updated.
+        """
+        user_defined_fields: Sequence['GetStackScriptsStackscriptUserDefinedFieldArgsDict']
+        """
+        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        """
+        user_gravatar_id: str
+        """
+        The Gravatar ID for the User who created the StackScript.
+        """
+        username: str
+        """
+        The User who created the StackScript.
+        """
+elif False:
+    GetStackScriptsStackscriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetStackScriptsStackscriptArgs:
@@ -10428,6 +13687,35 @@ class GetStackScriptsStackscriptArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class GetStackScriptsStackscriptUserDefinedFieldArgsDict(TypedDict):
+        default: str
+        """
+        The default value. If not specified, this value will be used.
+        """
+        example: str
+        """
+        An example value for the field.
+        """
+        label: str
+        """
+        A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
+        """
+        many_of: str
+        """
+        A list of acceptable values for the field in any quantity, combination or order.
+        """
+        name: str
+        """
+        The name of the field.
+        """
+        one_of: str
+        """
+        A list of acceptable single values for the field.
+        """
+elif False:
+    GetStackScriptsStackscriptUserDefinedFieldArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetStackScriptsStackscriptUserDefinedFieldArgs:
     def __init__(__self__, *,
@@ -10525,6 +13813,23 @@ class GetStackScriptsStackscriptUserDefinedFieldArgs:
         pulumi.set(self, "one_of", value)
 
 
+if not MYPY:
+    class GetUserDatabaseGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserDatabaseGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUserDatabaseGrantArgs:
     def __init__(__self__, *,
@@ -10576,6 +13881,23 @@ class GetUserDatabaseGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUserDomainGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserDomainGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUserDomainGrantArgs:
@@ -10629,6 +13951,23 @@ class GetUserDomainGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUserFirewallGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserFirewallGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUserFirewallGrantArgs:
     def __init__(__self__, *,
@@ -10680,6 +14019,23 @@ class GetUserFirewallGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUserImageGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserImageGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUserImageGrantArgs:
@@ -10733,6 +14089,23 @@ class GetUserImageGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUserLinodeGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserLinodeGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUserLinodeGrantArgs:
     def __init__(__self__, *,
@@ -10784,6 +14157,23 @@ class GetUserLinodeGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUserLongviewGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserLongviewGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUserLongviewGrantArgs:
@@ -10837,6 +14227,23 @@ class GetUserLongviewGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUserNodebalancerGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserNodebalancerGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUserNodebalancerGrantArgs:
     def __init__(__self__, *,
@@ -10888,6 +14295,23 @@ class GetUserNodebalancerGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUserStackscriptGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserStackscriptGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUserStackscriptGrantArgs:
@@ -10941,6 +14365,23 @@ class GetUserStackscriptGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUserVolumeGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserVolumeGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUserVolumeGrantArgs:
     def __init__(__self__, *,
@@ -10992,6 +14433,23 @@ class GetUserVolumeGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUsersFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetUsersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersFilterArgs:
@@ -11045,6 +14503,87 @@ class GetUsersFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetUsersUserArgsDict(TypedDict):
+        database_grants: Sequence['GetUsersUserDatabaseGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        domain_grants: Sequence['GetUsersUserDomainGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        email: str
+        """
+        The email address for this User, for account management communications, and may be used for other communications as configured.
+        """
+        firewall_grants: Sequence['GetUsersUserFirewallGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        global_grants: Sequence['GetUsersUserGlobalGrantArgsDict']
+        """
+        A structure containing the Account-level grants a User has.
+        """
+        id: str
+        """
+        The ID of entity this grant applies to.
+        """
+        image_grants: Sequence['GetUsersUserImageGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        linode_grants: Sequence['GetUsersUserLinodeGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        longview_grants: Sequence['GetUsersUserLongviewGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        nodebalancer_grants: Sequence['GetUsersUserNodebalancerGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        password_created: str
+        """
+        The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+        """
+        restricted: bool
+        """
+        If true, this User must be granted access to perform actions or access entities on this Account.
+        """
+        ssh_keys: Sequence[str]
+        """
+        A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        """
+        stackscript_grants: Sequence['GetUsersUserStackscriptGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+        tfa_enabled: bool
+        """
+        A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
+        """
+        user_type: str
+        """
+        The type of this user.
+        """
+        username: str
+        """
+        This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
+        """
+        verified_phone_number: str
+        """
+        The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
+        """
+        volume_grants: Sequence['GetUsersUserVolumeGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
+elif False:
+    GetUsersUserArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersUserArgs:
@@ -11338,6 +14877,23 @@ class GetUsersUserArgs:
         pulumi.set(self, "volume_grants", value)
 
 
+if not MYPY:
+    class GetUsersUserDatabaseGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserDatabaseGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUsersUserDatabaseGrantArgs:
     def __init__(__self__, *,
@@ -11389,6 +14945,23 @@ class GetUsersUserDatabaseGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUsersUserDomainGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserDomainGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersUserDomainGrantArgs:
@@ -11442,6 +15015,23 @@ class GetUsersUserDomainGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUsersUserFirewallGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserFirewallGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUsersUserFirewallGrantArgs:
     def __init__(__self__, *,
@@ -11493,6 +15083,56 @@ class GetUsersUserFirewallGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUsersUserGlobalGrantArgsDict(TypedDict):
+        account_access: str
+        """
+        The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+        """
+        add_databases: bool
+        """
+        If true, this User may add Managed Databases.
+        """
+        add_domains: bool
+        """
+        If true, this User may add Domains.
+        """
+        add_firewalls: bool
+        """
+        If true, this User may add Firewalls.
+        """
+        add_images: bool
+        """
+        If true, this User may add Images.
+        """
+        add_linodes: bool
+        """
+        If true, this User may create Linodes.
+        """
+        add_longview: bool
+        """
+        If true, this User may create Longview clients and view the current plan.
+        """
+        add_nodebalancers: bool
+        """
+        If true, this User may add NodeBalancers.
+        """
+        add_stackscripts: bool
+        add_volumes: bool
+        """
+        If true, this User may add Volumes.
+        """
+        cancel_account: bool
+        """
+        If true, this User may cancel the entire Account.
+        """
+        longview_subscription: bool
+        """
+        If true, this User may manage the Account’s Longview subscription.
+        """
+elif False:
+    GetUsersUserGlobalGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersUserGlobalGrantArgs:
@@ -11677,6 +15317,23 @@ class GetUsersUserGlobalGrantArgs:
         pulumi.set(self, "longview_subscription", value)
 
 
+if not MYPY:
+    class GetUsersUserImageGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserImageGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUsersUserImageGrantArgs:
     def __init__(__self__, *,
@@ -11728,6 +15385,23 @@ class GetUsersUserImageGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUsersUserLinodeGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserLinodeGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersUserLinodeGrantArgs:
@@ -11781,6 +15455,23 @@ class GetUsersUserLinodeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUsersUserLongviewGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserLongviewGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUsersUserLongviewGrantArgs:
     def __init__(__self__, *,
@@ -11832,6 +15523,23 @@ class GetUsersUserLongviewGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUsersUserNodebalancerGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserNodebalancerGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersUserNodebalancerGrantArgs:
@@ -11885,6 +15593,23 @@ class GetUsersUserNodebalancerGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetUsersUserStackscriptGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserStackscriptGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUsersUserStackscriptGrantArgs:
     def __init__(__self__, *,
@@ -11936,6 +15661,23 @@ class GetUsersUserStackscriptGrantArgs:
     def permissions(self, value: str):
         pulumi.set(self, "permissions", value)
 
+
+if not MYPY:
+    class GetUsersUserVolumeGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserVolumeGrantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersUserVolumeGrantArgs:
@@ -11989,6 +15731,23 @@ class GetUsersUserVolumeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GetVlansFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetVlansFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVlansFilterArgs:
     def __init__(__self__, *,
@@ -12041,6 +15800,27 @@ class GetVlansFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetVlansVlanArgsDict(TypedDict):
+        created: str
+        """
+        When the VLAN was created.
+        """
+        label: str
+        """
+        The unique label of the VLAN.
+        """
+        linodes: Sequence[int]
+        """
+        The running Linodes currently attached to the VLAN.
+        """
+        region: str
+        """
+        The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
+        """
+elif False:
+    GetVlansVlanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVlansVlanArgs:
@@ -12109,6 +15889,23 @@ class GetVlansVlanArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class GetVolumesFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetVolumesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVolumesFilterArgs:
     def __init__(__self__, *,
@@ -12161,6 +15958,51 @@ class GetVolumesFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetVolumesVolumeArgsDict(TypedDict):
+        created: str
+        """
+        When this Volume was created.
+        """
+        filesystem_path: str
+        """
+        The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
+        """
+        id: int
+        """
+        The unique ID of this Volume.
+        """
+        label: str
+        """
+        This Volume's label is for display purposes only.
+        """
+        linode_id: int
+        """
+        If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
+        """
+        region: str
+        """
+        The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
+        """
+        size: int
+        """
+        The Volume's size, in GiB.
+        """
+        status: str
+        """
+        The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        """
+        tags: Sequence[str]
+        """
+        An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        """
+        updated: str
+        """
+        When this Volume was last updated.
+        """
+elif False:
+    GetVolumesVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVolumesVolumeArgs:
@@ -12319,6 +16161,23 @@ class GetVolumesVolumeArgs:
         pulumi.set(self, "updated", value)
 
 
+if not MYPY:
+    class GetVpcIpsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetVpcIpsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVpcIpsFilterArgs:
     def __init__(__self__, *,
@@ -12371,6 +16230,65 @@ class GetVpcIpsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetVpcIpsVpcIpArgsDict(TypedDict):
+        active: bool
+        """
+        True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+        """
+        address: str
+        """
+        An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
+        """
+        address_range: str
+        """
+        A range of IPv4 addresses configured for this VPC interface. Null if a single address.
+        """
+        config_id: int
+        """
+        The globally general entity identifier for the Linode configuration profile where the VPC is included.
+        """
+        gateway: str
+        """
+        The default gateway for the VPC subnet that the IP or IP range belongs to.
+        """
+        interface_id: int
+        """
+        The globally general API entity identifier for the Linode interface.
+        """
+        linode_id: int
+        """
+        The identifier for the Linode the VPC interface currently belongs to.
+        """
+        nat11: str
+        """
+        The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
+        """
+        prefix: int
+        """
+        The number of bits set in the subnet mask.
+        """
+        region: str
+        """
+        The region of the VPC.
+        """
+        subnet_id: int
+        """
+        The id of the VPC Subnet for this interface.
+        """
+        subnet_mask: str
+        """
+        The mask that separates host bits from network bits for the address or address_range.
+        """
+        vpc_id: int
+        """
+        The id of the parent VPC for the list of VPC IPs.
+
+        * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        """
+elif False:
+    GetVpcIpsVpcIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVpcIpsVpcIpArgs:
@@ -12578,6 +16496,23 @@ class GetVpcIpsVpcIpArgs:
         pulumi.set(self, "vpc_id", value)
 
 
+if not MYPY:
+    class GetVpcSubnetsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetVpcSubnetsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVpcSubnetsFilterArgs:
     def __init__(__self__, *,
@@ -12630,6 +16565,35 @@ class GetVpcSubnetsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetVpcSubnetsVpcSubnetArgsDict(TypedDict):
+        created: str
+        """
+        The date and time when the VPC Subnet was created.
+        """
+        id: int
+        """
+        The unique id of the VPC subnet.
+        """
+        ipv4: str
+        """
+        The IPv4 range of this subnet in CIDR format.
+        """
+        label: str
+        """
+        The label of the VPC subnet.
+        """
+        linodes: Sequence['GetVpcSubnetsVpcSubnetLinodeArgsDict']
+        """
+        A list of Linode IDs that added to this subnet.
+        """
+        updated: str
+        """
+        The date and time when the VPC Subnet was last updated.
+        """
+elif False:
+    GetVpcSubnetsVpcSubnetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVpcSubnetsVpcSubnetArgs:
@@ -12728,6 +16692,16 @@ class GetVpcSubnetsVpcSubnetArgs:
         pulumi.set(self, "updated", value)
 
 
+if not MYPY:
+    class GetVpcSubnetsVpcSubnetLinodeArgsDict(TypedDict):
+        id: int
+        """
+        The unique id of the VPC subnet.
+        """
+        interfaces: Sequence['GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict']
+elif False:
+    GetVpcSubnetsVpcSubnetLinodeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVpcSubnetsVpcSubnetLinodeArgs:
     def __init__(__self__, *,
@@ -12761,6 +16735,16 @@ class GetVpcSubnetsVpcSubnetLinodeArgs:
         pulumi.set(self, "interfaces", value)
 
 
+if not MYPY:
+    class GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict(TypedDict):
+        active: bool
+        id: int
+        """
+        The unique id of the VPC subnet.
+        """
+elif False:
+    GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs:
     def __init__(__self__, *,
@@ -12793,6 +16777,23 @@ class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs:
     def id(self, value: int):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class GetVpcsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetVpcsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVpcsFilterArgs:
@@ -12846,6 +16847,35 @@ class GetVpcsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetVpcsVpcArgsDict(TypedDict):
+        created: str
+        """
+        The date and time when the VPC was created.
+        """
+        description: str
+        """
+        The user-defined description of this VPC.
+        """
+        id: str
+        """
+        The unique id of this VPC.
+        """
+        label: str
+        """
+        The label of the VPC.
+        """
+        region: str
+        """
+        The region where the VPC is deployed.
+        """
+        updated: str
+        """
+        The date and time when the VPC was last updated.
+        """
+elif False:
+    GetVpcsVpcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVpcsVpcArgs:

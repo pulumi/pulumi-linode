@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -233,9 +238,6 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'))
-
-
-@_utilities.lift_output_func(get_lke_cluster)
 def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]]]] = None,
                            id: Optional[pulumi.Input[int]] = None,
                            pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']]]]] = None,
@@ -258,4 +260,23 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
     :param int id: The LKE Cluster's ID.
     :param Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']] pools: Node pools associated with this cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['controlPlanes'] = control_planes
+    __args__['id'] = id
+    __args__['pools'] = pools
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult)
+    return __ret__.apply(lambda __response__: GetLkeClusterResult(
+        api_endpoints=pulumi.get(__response__, 'api_endpoints'),
+        control_planes=pulumi.get(__response__, 'control_planes'),
+        created=pulumi.get(__response__, 'created'),
+        dashboard_url=pulumi.get(__response__, 'dashboard_url'),
+        id=pulumi.get(__response__, 'id'),
+        k8s_version=pulumi.get(__response__, 'k8s_version'),
+        kubeconfig=pulumi.get(__response__, 'kubeconfig'),
+        label=pulumi.get(__response__, 'label'),
+        pools=pulumi.get(__response__, 'pools'),
+        region=pulumi.get(__response__, 'region'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated=pulumi.get(__response__, 'updated')))

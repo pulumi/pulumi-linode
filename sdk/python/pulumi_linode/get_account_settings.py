@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -128,9 +133,6 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
         managed=pulumi.get(__ret__, 'managed'),
         network_helper=pulumi.get(__ret__, 'network_helper'),
         object_storage=pulumi.get(__ret__, 'object_storage'))
-
-
-@_utilities.lift_output_func(get_account_settings)
 def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountSettingsResult]:
     """
     Provides information about Linode account settings.
@@ -147,4 +149,13 @@ def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> 
     example = linode.get_account_settings()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountSettings:getAccountSettings', __args__, opts=opts, typ=GetAccountSettingsResult)
+    return __ret__.apply(lambda __response__: GetAccountSettingsResult(
+        backups_enabled=pulumi.get(__response__, 'backups_enabled'),
+        id=pulumi.get(__response__, 'id'),
+        longview_subscription=pulumi.get(__response__, 'longview_subscription'),
+        managed=pulumi.get(__response__, 'managed'),
+        network_helper=pulumi.get(__response__, 'network_helper'),
+        object_storage=pulumi.get(__response__, 'object_storage')))

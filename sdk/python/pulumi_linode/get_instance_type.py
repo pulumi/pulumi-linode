@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -196,9 +201,6 @@ def get_instance_type(id: Optional[str] = None,
         region_prices=pulumi.get(__ret__, 'region_prices'),
         transfer=pulumi.get(__ret__, 'transfer'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
-
-
-@_utilities.lift_output_func(get_instance_type)
 def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
                              label: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeResult]:
@@ -221,4 +223,20 @@ def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
     :param str id: Label used to identify instance type
     :param str label: The Linode Type's label is for display purposes only
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['label'] = label
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getInstanceType:getInstanceType', __args__, opts=opts, typ=GetInstanceTypeResult)
+    return __ret__.apply(lambda __response__: GetInstanceTypeResult(
+        addons=pulumi.get(__response__, 'addons'),
+        class_=pulumi.get(__response__, 'class_'),
+        disk=pulumi.get(__response__, 'disk'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        memory=pulumi.get(__response__, 'memory'),
+        network_out=pulumi.get(__response__, 'network_out'),
+        price=pulumi.get(__response__, 'price'),
+        region_prices=pulumi.get(__response__, 'region_prices'),
+        transfer=pulumi.get(__response__, 'transfer'),
+        vcpus=pulumi.get(__response__, 'vcpus')))

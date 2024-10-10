@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -210,9 +215,6 @@ def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewal
         tags=pulumi.get(__ret__, 'tags'),
         transfers=pulumi.get(__ret__, 'transfers'),
         updated=pulumi.get(__ret__, 'updated'))
-
-
-@_utilities.lift_output_func(get_node_balancer)
 def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]]]] = None,
                              id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerResult]:
@@ -232,4 +234,21 @@ def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[
 
     :param int id: The NodeBalancer's ID.
     """
-    ...
+    __args__ = dict()
+    __args__['firewalls'] = firewalls
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult)
+    return __ret__.apply(lambda __response__: GetNodeBalancerResult(
+        client_conn_throttle=pulumi.get(__response__, 'client_conn_throttle'),
+        created=pulumi.get(__response__, 'created'),
+        firewalls=pulumi.get(__response__, 'firewalls'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        ipv4=pulumi.get(__response__, 'ipv4'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        label=pulumi.get(__response__, 'label'),
+        region=pulumi.get(__response__, 'region'),
+        tags=pulumi.get(__response__, 'tags'),
+        transfers=pulumi.get(__response__, 'transfers'),
+        updated=pulumi.get(__response__, 'updated')))

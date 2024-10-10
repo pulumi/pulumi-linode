@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -122,9 +127,6 @@ def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 
         id=pulumi.get(__ret__, 'id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vpc_subnets=pulumi.get(__ret__, 'vpc_subnets'))
-
-
-@_utilities.lift_output_func(get_vpc_subnets)
 def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict']]]]] = None,
                            vpc_id: Optional[pulumi.Input[int]] = None,
                            vpc_subnets: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcSubnetsVpcSubnetArgs', 'GetVpcSubnetsVpcSubnetArgsDict']]]]] = None,
@@ -162,4 +164,14 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
            
            * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['vpcId'] = vpc_id
+    __args__['vpcSubnets'] = vpc_subnets
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcSubnets:getVpcSubnets', __args__, opts=opts, typ=GetVpcSubnetsResult)
+    return __ret__.apply(lambda __response__: GetVpcSubnetsResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vpc_subnets=pulumi.get(__response__, 'vpc_subnets')))

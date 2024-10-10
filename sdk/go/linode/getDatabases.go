@@ -29,7 +29,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// all, err := linode.GetDatabases(ctx, nil, nil);
+// all, err := linode.GetDatabases(ctx, &linode.GetDatabasesArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

@@ -69,7 +69,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// all, err := linode.GetFirewalls(ctx, nil, nil);
+// all, err := linode.GetFirewalls(ctx, &linode.GetFirewallsArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

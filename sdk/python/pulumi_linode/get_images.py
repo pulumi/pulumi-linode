@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -177,9 +182,6 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-
-
-@_utilities.lift_output_func(get_images)
 def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
                       images: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesImageArgs', 'GetImagesImageArgsDict']]]]] = None,
                       latest: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -250,4 +252,18 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['images'] = images
+    __args__['latest'] = latest
+    __args__['order'] = order
+    __args__['orderBy'] = order_by
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
+    return __ret__.apply(lambda __response__: GetImagesResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        images=pulumi.get(__response__, 'images'),
+        latest=pulumi.get(__response__, 'latest'),
+        order=pulumi.get(__response__, 'order'),
+        order_by=pulumi.get(__response__, 'order_by')))

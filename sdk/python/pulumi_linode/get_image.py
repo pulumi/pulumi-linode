@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -262,9 +267,6 @@ def get_image(id: Optional[str] = None,
         total_size=pulumi.get(__ret__, 'total_size'),
         type=pulumi.get(__ret__, 'type'),
         vendor=pulumi.get(__ret__, 'vendor'))
-
-
-@_utilities.lift_output_func(get_image)
 def get_image_output(id: Optional[pulumi.Input[str]] = None,
                      replications: Optional[pulumi.Input[Optional[Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
@@ -287,4 +289,25 @@ def get_image_output(id: Optional[pulumi.Input[str]] = None,
     :param str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
     :param Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']] replications: A list of image replication regions and corresponding status.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['replications'] = replications
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
+    return __ret__.apply(lambda __response__: GetImageResult(
+        capabilities=pulumi.get(__response__, 'capabilities'),
+        created=pulumi.get(__response__, 'created'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        deprecated=pulumi.get(__response__, 'deprecated'),
+        description=pulumi.get(__response__, 'description'),
+        expiry=pulumi.get(__response__, 'expiry'),
+        id=pulumi.get(__response__, 'id'),
+        is_public=pulumi.get(__response__, 'is_public'),
+        label=pulumi.get(__response__, 'label'),
+        replications=pulumi.get(__response__, 'replications'),
+        size=pulumi.get(__response__, 'size'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_size=pulumi.get(__response__, 'total_size'),
+        type=pulumi.get(__response__, 'type'),
+        vendor=pulumi.get(__response__, 'vendor')))

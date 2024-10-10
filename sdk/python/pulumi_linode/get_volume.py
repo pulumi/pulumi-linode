@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -188,9 +193,6 @@ def get_volume(id: Optional[int] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'))
-
-
-@_utilities.lift_output_func(get_volume)
 def get_volume_output(id: Optional[pulumi.Input[int]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
     """
@@ -211,4 +213,18 @@ def get_volume_output(id: Optional[pulumi.Input[int]] = None,
 
     :param int id: The unique numeric ID of the Volume record to query.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult)
+    return __ret__.apply(lambda __response__: GetVolumeResult(
+        created=pulumi.get(__response__, 'created'),
+        filesystem_path=pulumi.get(__response__, 'filesystem_path'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        linode_id=pulumi.get(__response__, 'linode_id'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated=pulumi.get(__response__, 'updated')))
