@@ -14,10 +14,10 @@ The linode provider is available as a package in all Pulumi languages:
 * Java: [`com.pulumi/linode`](https://central.sonatype.com/artifact/com.pulumi/linode)
 ## Overview
 
-The Linode provider exposes resources and data sources to interact with [Linode](https://www.linode.com/) services.
+The Linode provider exposes resources and functions to interact with [Linode](https://www.linode.com/) services.
 The provider needs to be configured with the proper credentials before it can be used.
 
-Use the navigation to the left to read about the available data sources.
+Use the navigation to the left to read about the available functions.
 ## Example Usage
 
 
@@ -355,7 +355,7 @@ This section outlines less frequently used provider configuration options.
 Some resources are made available before the feature reaches general availability. These resources are subject to change, and may not be available to all customers in all regions. Early access features can be accessed by configuring the provider to use a different version of the API.
 ### Configuring the Target API Version
 
-The `apiVersion` can be set on the provider block like so:
+The `apiVersion` can be set on the provider configuration like so:
 
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 {{% choosable language typescript %}}
