@@ -164,6 +164,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/volume:Volume")
 public class Volume extends com.pulumi.resources.CustomResource {
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    @Export(name="encryption", refs={String.class}, tree="[0]")
+    private Output<String> encryption;
+
+    /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    public Output<String> encryption() {
+        return this.encryption;
+    }
+    /**
      * The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */

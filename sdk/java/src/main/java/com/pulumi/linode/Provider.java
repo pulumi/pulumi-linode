@@ -24,6 +24,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:linode")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
+     * The path to a Linode API CA file to trust.
+     * 
+     */
+    @Export(name="apiCaPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiCaPath;
+
+    /**
+     * @return The path to a Linode API CA file to trust.
+     * 
+     */
+    public Output<Optional<String>> apiCaPath() {
+        return Codegen.optional(this.apiCaPath);
+    }
+    /**
      * The version of Linode API.
      * 
      */

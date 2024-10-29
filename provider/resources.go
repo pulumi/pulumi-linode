@@ -144,20 +144,13 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"linode_domain": {
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"domain": {
-						CSharpName: "DomainName",
-					},
+					"domain": {CSharpName: "DomainName"},
 				},
 			},
-			"linode_nodebalancer": {
-				Tok: makeResource("NodeBalancer"),
-			},
-			"linode_nodebalancer_config": {
-				Tok: makeResource("NodeBalancerConfig"),
-			},
-			"linode_nodebalancer_node": {
-				Tok: makeResource("NodeBalancerNode"),
-			},
+			"linode_nodebalancer":        {Tok: makeResource("NodeBalancer")},
+			"linode_nodebalancer_config": {Tok: makeResource("NodeBalancerConfig")},
+			"linode_nodebalancer_node":   {Tok: makeResource("NodeBalancerNode")},
+			"linode_stackscript":         {Tok: makeResource("StackScript")},
 			"linode_rdns": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"rdns": {CSharpName: "RdnsName"},
@@ -168,9 +161,6 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"ssh_key": {CSharpName: "SshKeyName"},
 				},
-			},
-			"linode_stackscript": {
-				Tok: makeResource("StackScript"),
 			},
 			"linode_token": {
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -187,6 +177,12 @@ func Provider() tfbridge.ProviderInfo {
 			"linode_nodebalancer_config": {Tok: makeDataSource("getNodeBalancerConfig")},
 			"linode_nodebalancer_node":   {Tok: makeDataSource("getNodeBalancerNode")},
 			"linode_stackscripts":        {Tok: makeDataSource("getStackScripts")},
+
+			"linode_lke_types":               {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_nb_types":                {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_network_transfer_prices": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_volume_types":            {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+
 			"linode_object_storage_bucket": {
 				Tok:  makeDataSource("getLinodeObjectStorageBucket"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},

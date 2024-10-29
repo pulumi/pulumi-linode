@@ -18,6 +18,11 @@ public final class GetVolumesVolume {
      */
     private String created;
     /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    private String encryption;
+    /**
      * @return The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
@@ -70,6 +75,13 @@ public final class GetVolumesVolume {
      */
     public String created() {
         return this.created;
+    }
+    /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    public String encryption() {
+        return this.encryption;
     }
     /**
      * @return The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
@@ -145,6 +157,7 @@ public final class GetVolumesVolume {
     @CustomType.Builder
     public static final class Builder {
         private String created;
+        private String encryption;
         private String filesystemPath;
         private Integer id;
         private String label;
@@ -158,6 +171,7 @@ public final class GetVolumesVolume {
         public Builder(GetVolumesVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
+    	      this.encryption = defaults.encryption;
     	      this.filesystemPath = defaults.filesystemPath;
     	      this.id = defaults.id;
     	      this.label = defaults.label;
@@ -175,6 +189,14 @@ public final class GetVolumesVolume {
               throw new MissingRequiredPropertyException("GetVolumesVolume", "created");
             }
             this.created = created;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryption(String encryption) {
+            if (encryption == null) {
+              throw new MissingRequiredPropertyException("GetVolumesVolume", "encryption");
+            }
+            this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
@@ -255,6 +277,7 @@ public final class GetVolumesVolume {
         public GetVolumesVolume build() {
             final var _resultValue = new GetVolumesVolume();
             _resultValue.created = created;
+            _resultValue.encryption = encryption;
             _resultValue.filesystemPath = filesystemPath;
             _resultValue.id = id;
             _resultValue.label = label;

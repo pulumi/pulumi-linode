@@ -215,6 +215,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly booted!: pulumi.Output<boolean>;
     /**
+     * A list of capabilities of this Linode instance.
+     */
+    public /*out*/ readonly capabilities!: pulumi.Output<string[]>;
+    /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
      * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
@@ -393,6 +397,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupsEnabled"] = state ? state.backupsEnabled : undefined;
             resourceInputs["bootConfigLabel"] = state ? state.bootConfigLabel : undefined;
             resourceInputs["booted"] = state ? state.booted : undefined;
+            resourceInputs["capabilities"] = state ? state.capabilities : undefined;
             resourceInputs["configs"] = state ? state.configs : undefined;
             resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
@@ -461,6 +466,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["watchdogEnabled"] = args ? args.watchdogEnabled : undefined;
             resourceInputs["backups"] = undefined /*out*/;
+            resourceInputs["capabilities"] = undefined /*out*/;
             resourceInputs["hasUserData"] = undefined /*out*/;
             resourceInputs["hostUuid"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
@@ -518,6 +524,10 @@ export interface InstanceState {
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
     booted?: pulumi.Input<boolean>;
+    /**
+     * A list of capabilities of this Linode instance.
+     */
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *

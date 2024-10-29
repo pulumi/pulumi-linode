@@ -61,6 +61,8 @@ type LookupVolumeArgs struct {
 type LookupVolumeResult struct {
 	// When this Volume was created.
 	Created string `pulumi:"created"`
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	Encryption string `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 	FilesystemPath string `pulumi:"filesystemPath"`
 	// The unique ID of this Volume.
@@ -128,6 +130,11 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 // When this Volume was created.
 func (o LookupVolumeResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+func (o LookupVolumeResultOutput) Encryption() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.Encryption }).(pulumi.StringOutput)
 }
 
 // The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.

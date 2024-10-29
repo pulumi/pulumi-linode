@@ -156,6 +156,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of capabilities of this Linode instance.
+     * 
+     */
+    @Import(name="capabilities")
+    private @Nullable Output<List<String>> capabilities;
+
+    /**
+     * @return A list of capabilities of this Linode instance.
+     * 
+     */
+    public Optional<Output<List<String>>> capabilities() {
+        return Optional.ofNullable(this.capabilities);
+    }
+
+    /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      * @deprecated
@@ -716,6 +731,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.backupsEnabled = $.backupsEnabled;
         this.bootConfigLabel = $.bootConfigLabel;
         this.booted = $.booted;
+        this.capabilities = $.capabilities;
         this.configs = $.configs;
         this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
@@ -963,6 +979,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder booted(Boolean booted) {
             return booted(Output.of(booted));
+        }
+
+        /**
+         * @param capabilities A list of capabilities of this Linode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(@Nullable Output<List<String>> capabilities) {
+            $.capabilities = capabilities;
+            return this;
+        }
+
+        /**
+         * @param capabilities A list of capabilities of this Linode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(List<String> capabilities) {
+            return capabilities(Output.of(capabilities));
+        }
+
+        /**
+         * @param capabilities A list of capabilities of this Linode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
         }
 
         /**

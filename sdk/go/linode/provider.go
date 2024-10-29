@@ -18,6 +18,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	// The path to a Linode API CA file to trust.
+	ApiCaPath pulumi.StringPtrOutput `pulumi:"apiCaPath"`
 	// The version of Linode API.
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// The path to the Linode config file to use. (default `~/.config/linode`)
@@ -75,6 +77,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// The path to a Linode API CA file to trust.
+	ApiCaPath *string `pulumi:"apiCaPath"`
 	// The version of Linode API.
 	ApiVersion *string `pulumi:"apiVersion"`
 	// The path to the Linode config file to use. (default `~/.config/linode`)
@@ -118,6 +122,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// The path to a Linode API CA file to trust.
+	ApiCaPath pulumi.StringPtrInput
 	// The version of Linode API.
 	ApiVersion pulumi.StringPtrInput
 	// The path to the Linode config file to use. (default `~/.config/linode`)
@@ -194,6 +200,11 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// The path to a Linode API CA file to trust.
+func (o ProviderOutput) ApiCaPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiCaPath }).(pulumi.StringPtrOutput)
 }
 
 // The version of Linode API.

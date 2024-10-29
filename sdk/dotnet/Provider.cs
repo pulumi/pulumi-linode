@@ -19,6 +19,12 @@ namespace Pulumi.Linode
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
+        /// The path to a Linode API CA file to trust.
+        /// </summary>
+        [Output("apiCaPath")]
+        public Output<string?> ApiCaPath { get; private set; } = null!;
+
+        /// <summary>
         /// The version of Linode API.
         /// </summary>
         [Output("apiVersion")]
@@ -98,6 +104,12 @@ namespace Pulumi.Linode
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The path to a Linode API CA file to trust.
+        /// </summary>
+        [Input("apiCaPath")]
+        public Input<string>? ApiCaPath { get; set; }
+
         /// <summary>
         /// The version of Linode API.
         /// </summary>

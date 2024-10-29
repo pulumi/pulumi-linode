@@ -38,6 +38,18 @@ namespace Pulumi.Linode.Inputs
         [Input("id")]
         public Input<int>? Id { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("nodes")]
         private InputList<Inputs.LkeClusterPoolNodeGetArgs>? _nodes;
 
@@ -60,6 +72,18 @@ namespace Pulumi.Linode.Inputs
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("taints")]
+        private InputList<Inputs.LkeClusterPoolTaintGetArgs>? _taints;
+
+        /// <summary>
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        /// </summary>
+        public InputList<Inputs.LkeClusterPoolTaintGetArgs> Taints
+        {
+            get => _taints ?? (_taints = new InputList<Inputs.LkeClusterPoolTaintGetArgs>());
+            set => _taints = value;
         }
 
         /// <summary>

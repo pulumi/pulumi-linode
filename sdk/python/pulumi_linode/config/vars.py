@@ -21,6 +21,13 @@ __config__ = pulumi.Config('linode')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def api_ca_path(self) -> Optional[str]:
+        """
+        The path to a Linode API CA file to trust.
+        """
+        return __config__.get('apiCaPath')
+
+    @property
     def api_version(self) -> Optional[str]:
         """
         The version of Linode API.

@@ -20,6 +20,21 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     public static final VolumeArgs Empty = new VolumeArgs();
 
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    @Import(name="encryption")
+    private @Nullable Output<String> encryption;
+
+    /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    public Optional<Output<String>> encryption() {
+        return Optional.ofNullable(this.encryption);
+    }
+
+    /**
      * The label of the Linode Volume
      * 
      */
@@ -123,6 +138,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     private VolumeArgs() {}
 
     private VolumeArgs(VolumeArgs $) {
+        this.encryption = $.encryption;
         this.label = $.label;
         this.linodeId = $.linodeId;
         this.region = $.region;
@@ -148,6 +164,27 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(VolumeArgs defaults) {
             $ = new VolumeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(@Nullable Output<String> encryption) {
+            $.encryption = encryption;
+            return this;
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(String encryption) {
+            return encryption(Output.of(encryption));
         }
 
         /**

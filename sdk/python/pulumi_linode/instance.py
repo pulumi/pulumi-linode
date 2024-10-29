@@ -582,6 +582,7 @@ class _InstanceState:
                  backups_enabled: Optional[pulumi.Input[bool]] = None,
                  boot_config_label: Optional[pulumi.Input[str]] = None,
                  booted: Optional[pulumi.Input[bool]] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiskArgs']]]] = None,
@@ -628,6 +629,7 @@ class _InstanceState:
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: A list of capabilities of this Linode instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
                
@@ -701,6 +703,8 @@ class _InstanceState:
             pulumi.set(__self__, "boot_config_label", boot_config_label)
         if booted is not None:
             pulumi.set(__self__, "booted", booted)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
         if configs is not None:
             warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
             pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
@@ -874,6 +878,18 @@ class _InstanceState:
     @booted.setter
     def booted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "booted", value)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of capabilities of this Linode instance.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "capabilities", value)
 
     @property
     @pulumi.getter
@@ -1749,6 +1765,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["watchdog_enabled"] = watchdog_enabled
             __props__.__dict__["backups"] = None
+            __props__.__dict__["capabilities"] = None
             __props__.__dict__["has_user_data"] = None
             __props__.__dict__["host_uuid"] = None
             __props__.__dict__["ip_address"] = None
@@ -1778,6 +1795,7 @@ class Instance(pulumi.CustomResource):
             backups_enabled: Optional[pulumi.Input[bool]] = None,
             boot_config_label: Optional[pulumi.Input[str]] = None,
             booted: Optional[pulumi.Input[bool]] = None,
+            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
             disk_encryption: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
@@ -1829,6 +1847,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: A list of capabilities of this Linode instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
                
@@ -1898,6 +1917,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backups_enabled"] = backups_enabled
         __props__.__dict__["boot_config_label"] = boot_config_label
         __props__.__dict__["booted"] = booted
+        __props__.__dict__["capabilities"] = capabilities
         __props__.__dict__["configs"] = configs
         __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["disks"] = disks
@@ -1999,6 +2019,14 @@ class Instance(pulumi.CustomResource):
         If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         """
         return pulumi.get(self, "booted")
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of capabilities of this Linode instance.
+        """
+        return pulumi.get(self, "capabilities")
 
     @property
     @pulumi.getter

@@ -32,6 +32,16 @@ namespace Pulumi.Linode
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("linode");
 
+        private static readonly __Value<string?> _apiCaPath = new __Value<string?>(() => __config.Get("apiCaPath"));
+        /// <summary>
+        /// The path to a Linode API CA file to trust.
+        /// </summary>
+        public static string? ApiCaPath
+        {
+            get => _apiCaPath.Get();
+            set => _apiCaPath.Set(value);
+        }
+
         private static readonly __Value<string?> _apiVersion = new __Value<string?>(() => __config.Get("apiVersion") ?? Utilities.GetEnv("LINODE_API_VERSION"));
         /// <summary>
         /// The version of Linode API.

@@ -72,6 +72,12 @@ import com.pulumi.linode.inputs.GetLkeClusterArgs;
 import com.pulumi.linode.inputs.GetLkeClusterPlainArgs;
 import com.pulumi.linode.inputs.GetLkeClustersArgs;
 import com.pulumi.linode.inputs.GetLkeClustersPlainArgs;
+import com.pulumi.linode.inputs.GetLkeTypesArgs;
+import com.pulumi.linode.inputs.GetLkeTypesPlainArgs;
+import com.pulumi.linode.inputs.GetNbTypesArgs;
+import com.pulumi.linode.inputs.GetNbTypesPlainArgs;
+import com.pulumi.linode.inputs.GetNetworkTransferPricesArgs;
+import com.pulumi.linode.inputs.GetNetworkTransferPricesPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpPlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerArgs;
@@ -110,6 +116,8 @@ import com.pulumi.linode.inputs.GetVlansArgs;
 import com.pulumi.linode.inputs.GetVlansPlainArgs;
 import com.pulumi.linode.inputs.GetVolumeArgs;
 import com.pulumi.linode.inputs.GetVolumePlainArgs;
+import com.pulumi.linode.inputs.GetVolumeTypesArgs;
+import com.pulumi.linode.inputs.GetVolumeTypesPlainArgs;
 import com.pulumi.linode.inputs.GetVolumesArgs;
 import com.pulumi.linode.inputs.GetVolumesPlainArgs;
 import com.pulumi.linode.inputs.GetVpcArgs;
@@ -156,7 +164,10 @@ import com.pulumi.linode.outputs.GetKernelsResult;
 import com.pulumi.linode.outputs.GetLinodeObjectStorageBucketResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
 import com.pulumi.linode.outputs.GetLkeClustersResult;
+import com.pulumi.linode.outputs.GetLkeTypesResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
+import com.pulumi.linode.outputs.GetNbTypesResult;
+import com.pulumi.linode.outputs.GetNetworkTransferPricesResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
 import com.pulumi.linode.outputs.GetNodeBalancerNodeResult;
@@ -177,6 +188,7 @@ import com.pulumi.linode.outputs.GetUserResult;
 import com.pulumi.linode.outputs.GetUsersResult;
 import com.pulumi.linode.outputs.GetVlansResult;
 import com.pulumi.linode.outputs.GetVolumeResult;
+import com.pulumi.linode.outputs.GetVolumeTypesResult;
 import com.pulumi.linode.outputs.GetVolumesResult;
 import com.pulumi.linode.outputs.GetVpcIpsResult;
 import com.pulumi.linode.outputs.GetVpcResult;
@@ -11783,6 +11795,24 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetLkeClustersResult> getLkeClustersPlain(GetLkeClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeClusters:getLkeClusters", TypeShape.of(GetLkeClustersResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetLkeTypesResult> getLkeTypes() {
+        return getLkeTypes(GetLkeTypesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain() {
+        return getLkeTypesPlain(GetLkeTypesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args) {
+        return getLkeTypes(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain(GetLkeTypesPlainArgs args) {
+        return getLkeTypesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain(GetLkeTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
@@ -12034,6 +12064,42 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetNbTypesResult> getNbTypes() {
+        return getNbTypes(GetNbTypesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNbTypesResult> getNbTypesPlain() {
+        return getNbTypesPlain(GetNbTypesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetNbTypesResult> getNbTypes(GetNbTypesArgs args) {
+        return getNbTypes(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNbTypesResult> getNbTypesPlain(GetNbTypesPlainArgs args) {
+        return getNbTypesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetNbTypesResult> getNbTypes(GetNbTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNbTypes:getNbTypes", TypeShape.of(GetNbTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetNbTypesResult> getNbTypesPlain(GetNbTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNbTypes:getNbTypes", TypeShape.of(GetNbTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetNetworkTransferPricesResult> getNetworkTransferPrices() {
+        return getNetworkTransferPrices(GetNetworkTransferPricesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNetworkTransferPricesResult> getNetworkTransferPricesPlain() {
+        return getNetworkTransferPricesPlain(GetNetworkTransferPricesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetNetworkTransferPricesResult> getNetworkTransferPrices(GetNetworkTransferPricesArgs args) {
+        return getNetworkTransferPrices(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNetworkTransferPricesResult> getNetworkTransferPricesPlain(GetNetworkTransferPricesPlainArgs args) {
+        return getNetworkTransferPricesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetNetworkTransferPricesResult> getNetworkTransferPrices(GetNetworkTransferPricesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", TypeShape.of(GetNetworkTransferPricesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetNetworkTransferPricesResult> getNetworkTransferPricesPlain(GetNetworkTransferPricesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", TypeShape.of(GetNetworkTransferPricesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode Networking IP Address
@@ -17394,6 +17460,24 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetVolumeTypesResult> getVolumeTypes() {
+        return getVolumeTypes(GetVolumeTypesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetVolumeTypesResult> getVolumeTypesPlain() {
+        return getVolumeTypesPlain(GetVolumeTypesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetVolumeTypesResult> getVolumeTypes(GetVolumeTypesArgs args) {
+        return getVolumeTypes(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetVolumeTypesResult> getVolumeTypesPlain(GetVolumeTypesPlainArgs args) {
+        return getVolumeTypesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetVolumeTypesResult> getVolumeTypes(GetVolumeTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVolumeTypes:getVolumeTypes", TypeShape.of(GetVolumeTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetVolumeTypesResult> getVolumeTypesPlain(GetVolumeTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVolumeTypes:getVolumeTypes", TypeShape.of(GetVolumeTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode volumes that match a set of filters.

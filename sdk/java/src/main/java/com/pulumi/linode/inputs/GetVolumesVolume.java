@@ -31,6 +31,21 @@ public final class GetVolumesVolume extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    @Import(name="encryption", required=true)
+    private String encryption;
+
+    /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    public String encryption() {
+        return this.encryption;
+    }
+
+    /**
      * The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
@@ -169,6 +184,7 @@ public final class GetVolumesVolume extends com.pulumi.resources.InvokeArgs {
 
     private GetVolumesVolume(GetVolumesVolume $) {
         this.created = $.created;
+        this.encryption = $.encryption;
         this.filesystemPath = $.filesystemPath;
         this.id = $.id;
         this.label = $.label;
@@ -206,6 +222,17 @@ public final class GetVolumesVolume extends com.pulumi.resources.InvokeArgs {
          */
         public Builder created(String created) {
             $.created = created;
+            return this;
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(String encryption) {
+            $.encryption = encryption;
             return this;
         }
 
@@ -321,6 +348,9 @@ public final class GetVolumesVolume extends com.pulumi.resources.InvokeArgs {
         public GetVolumesVolume build() {
             if ($.created == null) {
                 throw new MissingRequiredPropertyException("GetVolumesVolume", "created");
+            }
+            if ($.encryption == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolume", "encryption");
             }
             if ($.filesystemPath == null) {
                 throw new MissingRequiredPropertyException("GetVolumesVolume", "filesystemPath");

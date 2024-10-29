@@ -19,6 +19,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     public static final VolumeState Empty = new VolumeState();
 
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    @Import(name="encryption")
+    private @Nullable Output<String> encryption;
+
+    /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    public Optional<Output<String>> encryption() {
+        return Optional.ofNullable(this.encryption);
+    }
+
+    /**
      * The full filesystem path for the Volume based on the Volume&#39;s label. The path is &#34;/dev/disk/by-id/scsi-0Linode_Volume_&#34; + the Volume label
      * 
      */
@@ -152,6 +167,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     private VolumeState() {}
 
     private VolumeState(VolumeState $) {
+        this.encryption = $.encryption;
         this.filesystemPath = $.filesystemPath;
         this.label = $.label;
         this.linodeId = $.linodeId;
@@ -179,6 +195,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(VolumeState defaults) {
             $ = new VolumeState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(@Nullable Output<String> encryption) {
+            $.encryption = encryption;
+            return this;
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(String encryption) {
+            return encryption(Output.of(encryption));
         }
 
         /**

@@ -263,6 +263,8 @@ type Instance struct {
 	BootConfigLabel pulumi.StringOutput `pulumi:"bootConfigLabel"`
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolOutput `pulumi:"booted"`
+	// A list of capabilities of this Linode instance.
+	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
@@ -422,6 +424,8 @@ type instanceState struct {
 	BootConfigLabel *string `pulumi:"bootConfigLabel"`
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted *bool `pulumi:"booted"`
+	// A list of capabilities of this Linode instance.
+	Capabilities []string `pulumi:"capabilities"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
@@ -538,6 +542,8 @@ type InstanceState struct {
 	BootConfigLabel pulumi.StringPtrInput
 	// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 	Booted pulumi.BoolPtrInput
+	// A list of capabilities of this Linode instance.
+	Capabilities pulumi.StringArrayInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
 	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
@@ -959,6 +965,11 @@ func (o InstanceOutput) BootConfigLabel() pulumi.StringOutput {
 // If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
 func (o InstanceOutput) Booted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.Booted }).(pulumi.BoolOutput)
+}
+
+// A list of capabilities of this Linode instance.
+func (o InstanceOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.

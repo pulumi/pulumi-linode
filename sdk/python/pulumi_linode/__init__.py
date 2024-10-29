@@ -47,7 +47,10 @@ from .get_kernels import *
 from .get_linode_object_storage_bucket import *
 from .get_lke_cluster import *
 from .get_lke_clusters import *
+from .get_lke_types import *
 from .get_lke_versions import *
+from .get_nb_types import *
+from .get_network_transfer_prices import *
 from .get_networking_ip import *
 from .get_node_balancer import *
 from .get_node_balancer_config import *
@@ -68,6 +71,7 @@ from .get_user import *
 from .get_users import *
 from .get_vlans import *
 from .get_volume import *
+from .get_volume_types import *
 from .get_volumes import *
 from .get_vpc import *
 from .get_vpc_ips import *

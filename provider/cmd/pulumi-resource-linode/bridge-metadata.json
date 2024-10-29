@@ -146,6 +146,9 @@
                             }
                         }
                     },
+                    "capabilities": {
+                        "maxItemsOne": false
+                    },
                     "config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -333,6 +336,9 @@
                                     "maxItemsOne": false
                                 },
                                 "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "taint": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1193,6 +1199,9 @@
                                         }
                                     }
                                 },
+                                "capabilities": {
+                                    "maxItemsOne": false
+                                },
                                 "config": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -1405,12 +1414,99 @@
                     }
                 }
             },
+            "linode_lke_types": {
+                "current": "linode:index/getLkeTypes:getLkeTypes",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "price": {
+                                    "maxItemsOne": false
+                                },
+                                "region_prices": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_lke_versions": {
                 "current": "linode:index/getLkeVersions:getLkeVersions",
                 "majorVersion": 4,
                 "fields": {
                     "versions": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_nb_types": {
+                "current": "linode:index/getNbTypes:getNbTypes",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "price": {
+                                    "maxItemsOne": false
+                                },
+                                "region_prices": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_network_transfer_prices": {
+                "current": "linode:index/getNetworkTransferPrices:getNetworkTransferPrices",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "price": {
+                                    "maxItemsOne": false
+                                },
+                                "region_prices": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1830,6 +1926,35 @@
                     }
                 }
             },
+            "linode_volume_types": {
+                "current": "linode:index/getVolumeTypes:getVolumeTypes",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "price": {
+                                    "maxItemsOne": false
+                                },
+                                "region_prices": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_volumes": {
                 "current": "linode:index/getVolumes:getVolumes",
                 "majorVersion": 4,
@@ -2043,7 +2168,10 @@
             "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket": 1,
             "linode:index/getLkeCluster:getLkeCluster": 1,
             "linode:index/getLkeClusters:getLkeClusters": 1,
+            "linode:index/getLkeTypes:getLkeTypes": 1,
             "linode:index/getLkeVersions:getLkeVersions": 1,
+            "linode:index/getNbTypes:getNbTypes": 1,
+            "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,
             "linode:index/getNetworkingIp:getNetworkingIp": 1,
             "linode:index/getNodeBalancer:getNodeBalancer": 1,
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
@@ -2064,6 +2192,7 @@
             "linode:index/getUsers:getUsers": 1,
             "linode:index/getVlans:getVlans": 1,
             "linode:index/getVolume:getVolume": 1,
+            "linode:index/getVolumeTypes:getVolumeTypes": 1,
             "linode:index/getVolumes:getVolumes": 1,
             "linode:index/getVpc:getVpc": 1,
             "linode:index/getVpcIps:getVpcIps": 1,

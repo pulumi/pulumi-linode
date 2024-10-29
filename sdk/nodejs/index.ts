@@ -215,10 +215,25 @@ export const getLkeClusters: typeof import("./getLkeClusters").getLkeClusters = 
 export const getLkeClustersOutput: typeof import("./getLkeClusters").getLkeClustersOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeClusters","getLkeClustersOutput"], () => require("./getLkeClusters"));
 
+export { GetLkeTypesArgs, GetLkeTypesResult, GetLkeTypesOutputArgs } from "./getLkeTypes";
+export const getLkeTypes: typeof import("./getLkeTypes").getLkeTypes = null as any;
+export const getLkeTypesOutput: typeof import("./getLkeTypes").getLkeTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getLkeTypes","getLkeTypesOutput"], () => require("./getLkeTypes"));
+
 export { GetLkeVersionsResult } from "./getLkeVersions";
 export const getLkeVersions: typeof import("./getLkeVersions").getLkeVersions = null as any;
 export const getLkeVersionsOutput: typeof import("./getLkeVersions").getLkeVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeVersions","getLkeVersionsOutput"], () => require("./getLkeVersions"));
+
+export { GetNbTypesArgs, GetNbTypesResult, GetNbTypesOutputArgs } from "./getNbTypes";
+export const getNbTypes: typeof import("./getNbTypes").getNbTypes = null as any;
+export const getNbTypesOutput: typeof import("./getNbTypes").getNbTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getNbTypes","getNbTypesOutput"], () => require("./getNbTypes"));
+
+export { GetNetworkTransferPricesArgs, GetNetworkTransferPricesResult, GetNetworkTransferPricesOutputArgs } from "./getNetworkTransferPrices";
+export const getNetworkTransferPrices: typeof import("./getNetworkTransferPrices").getNetworkTransferPrices = null as any;
+export const getNetworkTransferPricesOutput: typeof import("./getNetworkTransferPrices").getNetworkTransferPricesOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkTransferPrices","getNetworkTransferPricesOutput"], () => require("./getNetworkTransferPrices"));
 
 export { GetNetworkingIpArgs, GetNetworkingIpResult, GetNetworkingIpOutputArgs } from "./getNetworkingIp";
 export const getNetworkingIp: typeof import("./getNetworkingIp").getNetworkingIp = null as any;
@@ -319,6 +334,11 @@ export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume
 export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
 utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
+
+export { GetVolumeTypesArgs, GetVolumeTypesResult, GetVolumeTypesOutputArgs } from "./getVolumeTypes";
+export const getVolumeTypes: typeof import("./getVolumeTypes").getVolumeTypes = null as any;
+export const getVolumeTypesOutput: typeof import("./getVolumeTypes").getVolumeTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getVolumeTypes","getVolumeTypesOutput"], () => require("./getVolumeTypes"));
 
 export { GetVolumesArgs, GetVolumesResult, GetVolumesOutputArgs } from "./getVolumes";
 export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
