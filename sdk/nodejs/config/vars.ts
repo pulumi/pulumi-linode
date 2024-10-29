@@ -8,6 +8,17 @@ declare var exports: any;
 const __config = new pulumi.Config("linode");
 
 /**
+ * The path to a Linode API CA file to trust.
+ */
+export declare const apiCaPath: string | undefined;
+Object.defineProperty(exports, "apiCaPath", {
+    get() {
+        return __config.get("apiCaPath");
+    },
+    enumerable: true,
+});
+
+/**
  * The version of Linode API.
  */
 export declare const apiVersion: string | undefined;

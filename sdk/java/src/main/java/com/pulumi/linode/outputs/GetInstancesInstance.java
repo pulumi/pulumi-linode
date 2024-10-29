@@ -31,6 +31,11 @@ public final class GetInstancesInstance {
      */
     private String bootConfigLabel;
     /**
+     * @return A list of capabilities of this Linode instance.
+     * 
+     */
+    private List<String> capabilities;
+    /**
      * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      */
@@ -150,6 +155,13 @@ public final class GetInstancesInstance {
      */
     public String bootConfigLabel() {
         return this.bootConfigLabel;
+    }
+    /**
+     * @return A list of capabilities of this Linode instance.
+     * 
+     */
+    public List<String> capabilities() {
+        return this.capabilities;
     }
     /**
      * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -310,6 +322,7 @@ public final class GetInstancesInstance {
         private GetInstancesInstanceAlerts alerts;
         private List<GetInstancesInstanceBackup> backups;
         private String bootConfigLabel;
+        private List<String> capabilities;
         private List<GetInstancesInstanceConfig> configs;
         private String diskEncryption;
         private List<GetInstancesInstanceDisk> disks;
@@ -338,6 +351,7 @@ public final class GetInstancesInstance {
     	      this.alerts = defaults.alerts;
     	      this.backups = defaults.backups;
     	      this.bootConfigLabel = defaults.bootConfigLabel;
+    	      this.capabilities = defaults.capabilities;
     	      this.configs = defaults.configs;
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.disks = defaults.disks;
@@ -388,6 +402,17 @@ public final class GetInstancesInstance {
             }
             this.bootConfigLabel = bootConfigLabel;
             return this;
+        }
+        @CustomType.Setter
+        public Builder capabilities(List<String> capabilities) {
+            if (capabilities == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "capabilities");
+            }
+            this.capabilities = capabilities;
+            return this;
+        }
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
         }
         @CustomType.Setter
         public Builder configs(List<GetInstancesInstanceConfig> configs) {
@@ -588,6 +613,7 @@ public final class GetInstancesInstance {
             _resultValue.alerts = alerts;
             _resultValue.backups = backups;
             _resultValue.bootConfigLabel = bootConfigLabel;
+            _resultValue.capabilities = capabilities;
             _resultValue.configs = configs;
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.disks = disks;

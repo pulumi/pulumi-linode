@@ -273,6 +273,12 @@ namespace Pulumi.Linode
         public Output<bool> Booted { get; private set; } = null!;
 
         /// <summary>
+        /// A list of capabilities of this Linode instance.
+        /// </summary>
+        [Output("capabilities")]
+        public Output<ImmutableArray<string>> Capabilities { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
         [Output("configs")]
@@ -883,6 +889,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("booted")]
         public Input<bool>? Booted { get; set; }
+
+        [Input("capabilities")]
+        private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// A list of capabilities of this Linode instance.
+        /// </summary>
+        public InputList<string> Capabilities
+        {
+            get => _capabilities ?? (_capabilities = new InputList<string>());
+            set => _capabilities = value;
+        }
 
         [Input("configs")]
         private InputList<Inputs.InstanceConfigGetArgs>? _configs;

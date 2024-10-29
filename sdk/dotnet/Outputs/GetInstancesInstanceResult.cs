@@ -23,6 +23,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string BootConfigLabel;
         /// <summary>
+        /// A list of capabilities of this Linode instance.
+        /// </summary>
+        public readonly ImmutableArray<string> Capabilities;
+        /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigResult> Configs;
@@ -113,6 +117,8 @@ namespace Pulumi.Linode.Outputs
 
             string bootConfigLabel,
 
+            ImmutableArray<string> capabilities,
+
             ImmutableArray<Outputs.GetInstancesInstanceConfigResult> configs,
 
             string diskEncryption,
@@ -160,6 +166,7 @@ namespace Pulumi.Linode.Outputs
             Alerts = alerts;
             Backups = backups;
             BootConfigLabel = bootConfigLabel;
+            Capabilities = capabilities;
             Configs = configs;
             DiskEncryption = diskEncryption;
             Disks = disks;

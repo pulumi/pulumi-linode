@@ -396,6 +396,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.booted;
     }
     /**
+     * A list of capabilities of this Linode instance.
+     * 
+     */
+    @Export(name="capabilities", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> capabilities;
+
+    /**
+     * @return A list of capabilities of this Linode instance.
+     * 
+     */
+    public Output<List<String>> capabilities() {
+        return this.capabilities;
+    }
+    /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      * @deprecated

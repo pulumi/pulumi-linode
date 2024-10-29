@@ -11,6 +11,11 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// The path to a Linode API CA file to trust.
+func GetApiCaPath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "linode:apiCaPath")
+}
+
 // The version of Linode API.
 func GetApiVersion(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "linode:apiVersion")

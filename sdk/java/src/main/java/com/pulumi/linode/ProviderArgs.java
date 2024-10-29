@@ -19,6 +19,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
+     * The path to a Linode API CA file to trust.
+     * 
+     */
+    @Import(name="apiCaPath")
+    private @Nullable Output<String> apiCaPath;
+
+    /**
+     * @return The path to a Linode API CA file to trust.
+     * 
+     */
+    public Optional<Output<String>> apiCaPath() {
+        return Optional.ofNullable(this.apiCaPath);
+    }
+
+    /**
      * The version of Linode API.
      * 
      */
@@ -308,6 +323,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
+        this.apiCaPath = $.apiCaPath;
         this.apiVersion = $.apiVersion;
         this.configPath = $.configPath;
         this.configProfile = $.configProfile;
@@ -345,6 +361,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiCaPath The path to a Linode API CA file to trust.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiCaPath(@Nullable Output<String> apiCaPath) {
+            $.apiCaPath = apiCaPath;
+            return this;
+        }
+
+        /**
+         * @param apiCaPath The path to a Linode API CA file to trust.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiCaPath(String apiCaPath) {
+            return apiCaPath(Output.of(apiCaPath));
         }
 
         /**

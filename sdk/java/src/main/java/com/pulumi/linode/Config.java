@@ -13,6 +13,13 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("linode");
 /**
+ * The path to a Linode API CA file to trust.
+ * 
+ */
+    public Optional<String> apiCaPath() {
+        return Codegen.stringProp("apiCaPath").config(config).get();
+    }
+/**
  * The version of Linode API.
  * 
  */

@@ -26,10 +26,13 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, created=None, filesystem_path=None, id=None, label=None, linode_id=None, region=None, size=None, status=None, tags=None, updated=None):
+    def __init__(__self__, created=None, encryption=None, filesystem_path=None, id=None, label=None, linode_id=None, region=None, size=None, status=None, tags=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
+        if encryption and not isinstance(encryption, str):
+            raise TypeError("Expected argument 'encryption' to be a str")
+        pulumi.set(__self__, "encryption", encryption)
         if filesystem_path and not isinstance(filesystem_path, str):
             raise TypeError("Expected argument 'filesystem_path' to be a str")
         pulumi.set(__self__, "filesystem_path", filesystem_path)
@@ -65,6 +68,14 @@ class GetVolumeResult:
         When this Volume was created.
         """
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> str:
+        """
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        """
+        return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter(name="filesystemPath")
@@ -146,6 +157,7 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             yield self
         return GetVolumeResult(
             created=self.created,
+            encryption=self.encryption,
             filesystem_path=self.filesystem_path,
             id=self.id,
             label=self.label,
@@ -184,6 +196,7 @@ def get_volume(id: Optional[int] = None,
 
     return AwaitableGetVolumeResult(
         created=pulumi.get(__ret__, 'created'),
+        encryption=pulumi.get(__ret__, 'encryption'),
         filesystem_path=pulumi.get(__ret__, 'filesystem_path'),
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
@@ -219,6 +232,7 @@ def get_volume_output(id: Optional[pulumi.Input[int]] = None,
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult)
     return __ret__.apply(lambda __response__: GetVolumeResult(
         created=pulumi.get(__response__, 'created'),
+        encryption=pulumi.get(__response__, 'encryption'),
         filesystem_path=pulumi.get(__response__, 'filesystem_path'),
         id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),

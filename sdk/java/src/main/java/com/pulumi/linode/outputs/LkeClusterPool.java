@@ -7,9 +7,11 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.LkeClusterPoolAutoscaler;
 import com.pulumi.linode.outputs.LkeClusterPoolNode;
+import com.pulumi.linode.outputs.LkeClusterPoolTaint;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -39,6 +41,11 @@ public final class LkeClusterPool {
      */
     private @Nullable Integer id;
     /**
+     * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * 
+     */
+    private @Nullable Map<String,String> labels;
+    /**
      * @return The nodes in the node pool.
      * 
      */
@@ -48,6 +55,11 @@ public final class LkeClusterPool {
      * 
      */
     private @Nullable List<String> tags;
+    /**
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * 
+     */
+    private @Nullable List<LkeClusterPoolTaint> taints;
     /**
      * @return A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      * 
@@ -86,6 +98,13 @@ public final class LkeClusterPool {
         return Optional.ofNullable(this.id);
     }
     /**
+     * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * 
+     */
+    public Map<String,String> labels() {
+        return this.labels == null ? Map.of() : this.labels;
+    }
+    /**
      * @return The nodes in the node pool.
      * 
      */
@@ -98,6 +117,13 @@ public final class LkeClusterPool {
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
+    }
+    /**
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * 
+     */
+    public List<LkeClusterPoolTaint> taints() {
+        return this.taints == null ? List.of() : this.taints;
     }
     /**
      * @return A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -120,8 +146,10 @@ public final class LkeClusterPool {
         private @Nullable Integer count;
         private @Nullable String diskEncryption;
         private @Nullable Integer id;
+        private @Nullable Map<String,String> labels;
         private @Nullable List<LkeClusterPoolNode> nodes;
         private @Nullable List<String> tags;
+        private @Nullable List<LkeClusterPoolTaint> taints;
         private String type;
         public Builder() {}
         public Builder(LkeClusterPool defaults) {
@@ -130,8 +158,10 @@ public final class LkeClusterPool {
     	      this.count = defaults.count;
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.id = defaults.id;
+    	      this.labels = defaults.labels;
     	      this.nodes = defaults.nodes;
     	      this.tags = defaults.tags;
+    	      this.taints = defaults.taints;
     	      this.type = defaults.type;
         }
 
@@ -160,6 +190,12 @@ public final class LkeClusterPool {
             return this;
         }
         @CustomType.Setter
+        public Builder labels(@Nullable Map<String,String> labels) {
+
+            this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nodes(@Nullable List<LkeClusterPoolNode> nodes) {
 
             this.nodes = nodes;
@@ -178,6 +214,15 @@ public final class LkeClusterPool {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder taints(@Nullable List<LkeClusterPoolTaint> taints) {
+
+            this.taints = taints;
+            return this;
+        }
+        public Builder taints(LkeClusterPoolTaint... taints) {
+            return taints(List.of(taints));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("LkeClusterPool", "type");
@@ -191,8 +236,10 @@ public final class LkeClusterPool {
             _resultValue.count = count;
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.id = id;
+            _resultValue.labels = labels;
             _resultValue.nodes = nodes;
             _resultValue.tags = tags;
+            _resultValue.taints = taints;
             _resultValue.type = type;
             return _resultValue;
         }

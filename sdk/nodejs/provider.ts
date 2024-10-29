@@ -26,6 +26,10 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
+     * The path to a Linode API CA file to trust.
+     */
+    public readonly apiCaPath!: pulumi.Output<string | undefined>;
+    /**
      * The version of Linode API.
      */
     public readonly apiVersion!: pulumi.Output<string | undefined>;
@@ -69,6 +73,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["apiCaPath"] = args ? args.apiCaPath : undefined;
             resourceInputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
             resourceInputs["configPath"] = args ? args.configPath : undefined;
             resourceInputs["configProfile"] = args ? args.configProfile : undefined;
@@ -100,6 +105,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * The path to a Linode API CA file to trust.
+     */
+    apiCaPath?: pulumi.Input<string>;
     /**
      * The version of Linode API.
      */

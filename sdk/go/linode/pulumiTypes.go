@@ -5835,10 +5835,14 @@ type LkeClusterPool struct {
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id *int `pulumi:"id"`
+	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the node pool.
 	Nodes []LkeClusterPoolNode `pulumi:"nodes"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+	Taints []LkeClusterPoolTaint `pulumi:"taints"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
 }
@@ -5865,10 +5869,14 @@ type LkeClusterPoolArgs struct {
 	DiskEncryption pulumi.StringPtrInput `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id pulumi.IntPtrInput `pulumi:"id"`
+	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the node pool.
 	Nodes LkeClusterPoolNodeArrayInput `pulumi:"nodes"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+	Taints LkeClusterPoolTaintArrayInput `pulumi:"taints"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -5946,6 +5954,11 @@ func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+func (o LkeClusterPoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LkeClusterPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The nodes in the node pool.
 func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolNode { return v.Nodes }).(LkeClusterPoolNodeArrayOutput)
@@ -5954,6 +5967,11 @@ func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
 // An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 func (o LkeClusterPoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+func (o LkeClusterPoolOutput) Taints() LkeClusterPoolTaintArrayOutput {
+	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolTaint { return v.Taints }).(LkeClusterPoolTaintArrayOutput)
 }
 
 // A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
@@ -6250,6 +6268,121 @@ func (o LkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolNo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterPoolNode {
 		return vs[0].([]LkeClusterPoolNode)[vs[1].(int)]
 	}).(LkeClusterPoolNodeOutput)
+}
+
+type LkeClusterPoolTaint struct {
+	// The Kubernetes taint effect.
+	Effect string `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key string `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value string `pulumi:"value"`
+}
+
+// LkeClusterPoolTaintInput is an input type that accepts LkeClusterPoolTaintArgs and LkeClusterPoolTaintOutput values.
+// You can construct a concrete instance of `LkeClusterPoolTaintInput` via:
+//
+//	LkeClusterPoolTaintArgs{...}
+type LkeClusterPoolTaintInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolTaintOutput() LkeClusterPoolTaintOutput
+	ToLkeClusterPoolTaintOutputWithContext(context.Context) LkeClusterPoolTaintOutput
+}
+
+type LkeClusterPoolTaintArgs struct {
+	// The Kubernetes taint effect.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LkeClusterPoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (i LkeClusterPoolTaintArgs) ToLkeClusterPoolTaintOutput() LkeClusterPoolTaintOutput {
+	return i.ToLkeClusterPoolTaintOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolTaintArgs) ToLkeClusterPoolTaintOutputWithContext(ctx context.Context) LkeClusterPoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolTaintOutput)
+}
+
+// LkeClusterPoolTaintArrayInput is an input type that accepts LkeClusterPoolTaintArray and LkeClusterPoolTaintArrayOutput values.
+// You can construct a concrete instance of `LkeClusterPoolTaintArrayInput` via:
+//
+//	LkeClusterPoolTaintArray{ LkeClusterPoolTaintArgs{...} }
+type LkeClusterPoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToLkeClusterPoolTaintArrayOutput() LkeClusterPoolTaintArrayOutput
+	ToLkeClusterPoolTaintArrayOutputWithContext(context.Context) LkeClusterPoolTaintArrayOutput
+}
+
+type LkeClusterPoolTaintArray []LkeClusterPoolTaintInput
+
+func (LkeClusterPoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (i LkeClusterPoolTaintArray) ToLkeClusterPoolTaintArrayOutput() LkeClusterPoolTaintArrayOutput {
+	return i.ToLkeClusterPoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i LkeClusterPoolTaintArray) ToLkeClusterPoolTaintArrayOutputWithContext(ctx context.Context) LkeClusterPoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterPoolTaintArrayOutput)
+}
+
+type LkeClusterPoolTaintOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (o LkeClusterPoolTaintOutput) ToLkeClusterPoolTaintOutput() LkeClusterPoolTaintOutput {
+	return o
+}
+
+func (o LkeClusterPoolTaintOutput) ToLkeClusterPoolTaintOutputWithContext(ctx context.Context) LkeClusterPoolTaintOutput {
+	return o
+}
+
+// The Kubernetes taint effect.
+func (o LkeClusterPoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeClusterPoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint key.
+func (o LkeClusterPoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeClusterPoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint value.
+func (o LkeClusterPoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LkeClusterPoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LkeClusterPoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterPoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LkeClusterPoolTaint)(nil)).Elem()
+}
+
+func (o LkeClusterPoolTaintArrayOutput) ToLkeClusterPoolTaintArrayOutput() LkeClusterPoolTaintArrayOutput {
+	return o
+}
+
+func (o LkeClusterPoolTaintArrayOutput) ToLkeClusterPoolTaintArrayOutputWithContext(ctx context.Context) LkeClusterPoolTaintArrayOutput {
+	return o
+}
+
+func (o LkeClusterPoolTaintArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LkeClusterPoolTaint {
+		return vs[0].([]LkeClusterPoolTaint)[vs[1].(int)]
+	}).(LkeClusterPoolTaintOutput)
 }
 
 type LkeNodePoolAutoscaler struct {
@@ -18765,6 +18898,8 @@ type GetInstancesInstance struct {
 	Backups []GetInstancesInstanceBackup `pulumi:"backups"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.
 	BootConfigLabel string `pulumi:"bootConfigLabel"`
+	// A list of capabilities of this Linode instance.
+	Capabilities []string `pulumi:"capabilities"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs []GetInstancesInstanceConfig `pulumi:"configs"`
 	// The disk encryption policy for this instance.
@@ -18826,6 +18961,8 @@ type GetInstancesInstanceArgs struct {
 	Backups GetInstancesInstanceBackupArrayInput `pulumi:"backups"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.
 	BootConfigLabel pulumi.StringInput `pulumi:"bootConfigLabel"`
+	// A list of capabilities of this Linode instance.
+	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	Configs GetInstancesInstanceConfigArrayInput `pulumi:"configs"`
 	// The disk encryption policy for this instance.
@@ -18933,6 +19070,11 @@ func (o GetInstancesInstanceOutput) Backups() GetInstancesInstanceBackupArrayOut
 // The Label of the Instance Config that should be used to boot the Linode instance.
 func (o GetInstancesInstanceOutput) BootConfigLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.BootConfigLabel }).(pulumi.StringOutput)
+}
+
+// A list of capabilities of this Linode instance.
+func (o GetInstancesInstanceOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -23271,6 +23413,460 @@ func (o GetLkeClustersLkeClusterControlPlanePtrOutput) HighAvailability() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetLkeTypesFilter struct {
+	// The type of comparison to use for this filter.
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name string `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values []string `pulumi:"values"`
+}
+
+// GetLkeTypesFilterInput is an input type that accepts GetLkeTypesFilterArgs and GetLkeTypesFilterOutput values.
+// You can construct a concrete instance of `GetLkeTypesFilterInput` via:
+//
+//	GetLkeTypesFilterArgs{...}
+type GetLkeTypesFilterInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesFilterOutput() GetLkeTypesFilterOutput
+	ToGetLkeTypesFilterOutputWithContext(context.Context) GetLkeTypesFilterOutput
+}
+
+type GetLkeTypesFilterArgs struct {
+	// The type of comparison to use for this filter.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetLkeTypesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesFilter)(nil)).Elem()
+}
+
+func (i GetLkeTypesFilterArgs) ToGetLkeTypesFilterOutput() GetLkeTypesFilterOutput {
+	return i.ToGetLkeTypesFilterOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesFilterArgs) ToGetLkeTypesFilterOutputWithContext(ctx context.Context) GetLkeTypesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesFilterOutput)
+}
+
+// GetLkeTypesFilterArrayInput is an input type that accepts GetLkeTypesFilterArray and GetLkeTypesFilterArrayOutput values.
+// You can construct a concrete instance of `GetLkeTypesFilterArrayInput` via:
+//
+//	GetLkeTypesFilterArray{ GetLkeTypesFilterArgs{...} }
+type GetLkeTypesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesFilterArrayOutput() GetLkeTypesFilterArrayOutput
+	ToGetLkeTypesFilterArrayOutputWithContext(context.Context) GetLkeTypesFilterArrayOutput
+}
+
+type GetLkeTypesFilterArray []GetLkeTypesFilterInput
+
+func (GetLkeTypesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesFilter)(nil)).Elem()
+}
+
+func (i GetLkeTypesFilterArray) ToGetLkeTypesFilterArrayOutput() GetLkeTypesFilterArrayOutput {
+	return i.ToGetLkeTypesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesFilterArray) ToGetLkeTypesFilterArrayOutputWithContext(ctx context.Context) GetLkeTypesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesFilterArrayOutput)
+}
+
+type GetLkeTypesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesFilter)(nil)).Elem()
+}
+
+func (o GetLkeTypesFilterOutput) ToGetLkeTypesFilterOutput() GetLkeTypesFilterOutput {
+	return o
+}
+
+func (o GetLkeTypesFilterOutput) ToGetLkeTypesFilterOutputWithContext(ctx context.Context) GetLkeTypesFilterOutput {
+	return o
+}
+
+// The type of comparison to use for this filter.
+func (o GetLkeTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLkeTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the attribute to filter on.
+func (o GetLkeTypesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeTypesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value(s) to be used in the filter.
+func (o GetLkeTypesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLkeTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetLkeTypesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesFilter)(nil)).Elem()
+}
+
+func (o GetLkeTypesFilterArrayOutput) ToGetLkeTypesFilterArrayOutput() GetLkeTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesFilterArrayOutput) ToGetLkeTypesFilterArrayOutputWithContext(ctx context.Context) GetLkeTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesFilterArrayOutput) Index(i pulumi.IntInput) GetLkeTypesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeTypesFilter {
+		return vs[0].([]GetLkeTypesFilter)[vs[1].(int)]
+	}).(GetLkeTypesFilterOutput)
+}
+
+type GetLkeTypesType struct {
+	// The unique ID assigned to this LKE Type.
+	Id string `pulumi:"id"`
+	// The LKE Type's label.
+	Label string `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices []GetLkeTypesTypePrice `pulumi:"prices"`
+	// A list of region-specific prices for this LKE Type.
+	RegionPrices []GetLkeTypesTypeRegionPrice `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+}
+
+// GetLkeTypesTypeInput is an input type that accepts GetLkeTypesTypeArgs and GetLkeTypesTypeOutput values.
+// You can construct a concrete instance of `GetLkeTypesTypeInput` via:
+//
+//	GetLkeTypesTypeArgs{...}
+type GetLkeTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesTypeOutput() GetLkeTypesTypeOutput
+	ToGetLkeTypesTypeOutputWithContext(context.Context) GetLkeTypesTypeOutput
+}
+
+type GetLkeTypesTypeArgs struct {
+	// The unique ID assigned to this LKE Type.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The LKE Type's label.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices GetLkeTypesTypePriceArrayInput `pulumi:"prices"`
+	// A list of region-specific prices for this LKE Type.
+	RegionPrices GetLkeTypesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+}
+
+func (GetLkeTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesType)(nil)).Elem()
+}
+
+func (i GetLkeTypesTypeArgs) ToGetLkeTypesTypeOutput() GetLkeTypesTypeOutput {
+	return i.ToGetLkeTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesTypeArgs) ToGetLkeTypesTypeOutputWithContext(ctx context.Context) GetLkeTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesTypeOutput)
+}
+
+// GetLkeTypesTypeArrayInput is an input type that accepts GetLkeTypesTypeArray and GetLkeTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetLkeTypesTypeArrayInput` via:
+//
+//	GetLkeTypesTypeArray{ GetLkeTypesTypeArgs{...} }
+type GetLkeTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesTypeArrayOutput() GetLkeTypesTypeArrayOutput
+	ToGetLkeTypesTypeArrayOutputWithContext(context.Context) GetLkeTypesTypeArrayOutput
+}
+
+type GetLkeTypesTypeArray []GetLkeTypesTypeInput
+
+func (GetLkeTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesType)(nil)).Elem()
+}
+
+func (i GetLkeTypesTypeArray) ToGetLkeTypesTypeArrayOutput() GetLkeTypesTypeArrayOutput {
+	return i.ToGetLkeTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesTypeArray) ToGetLkeTypesTypeArrayOutputWithContext(ctx context.Context) GetLkeTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesTypeArrayOutput)
+}
+
+type GetLkeTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesType)(nil)).Elem()
+}
+
+func (o GetLkeTypesTypeOutput) ToGetLkeTypesTypeOutput() GetLkeTypesTypeOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeOutput) ToGetLkeTypesTypeOutputWithContext(ctx context.Context) GetLkeTypesTypeOutput {
+	return o
+}
+
+// The unique ID assigned to this LKE Type.
+func (o GetLkeTypesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeTypesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The LKE Type's label.
+func (o GetLkeTypesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeTypesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Cost in US dollars, broken down into hourly and monthly charges.
+func (o GetLkeTypesTypeOutput) Prices() GetLkeTypesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetLkeTypesType) []GetLkeTypesTypePrice { return v.Prices }).(GetLkeTypesTypePriceArrayOutput)
+}
+
+// A list of region-specific prices for this LKE Type.
+func (o GetLkeTypesTypeOutput) RegionPrices() GetLkeTypesTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetLkeTypesType) []GetLkeTypesTypeRegionPrice { return v.RegionPrices }).(GetLkeTypesTypeRegionPriceArrayOutput)
+}
+
+// The monthly outbound transfer amount, in MB.
+func (o GetLkeTypesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeTypesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+type GetLkeTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesType)(nil)).Elem()
+}
+
+func (o GetLkeTypesTypeArrayOutput) ToGetLkeTypesTypeArrayOutput() GetLkeTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeArrayOutput) ToGetLkeTypesTypeArrayOutputWithContext(ctx context.Context) GetLkeTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeArrayOutput) Index(i pulumi.IntInput) GetLkeTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeTypesType {
+		return vs[0].([]GetLkeTypesType)[vs[1].(int)]
+	}).(GetLkeTypesTypeOutput)
+}
+
+type GetLkeTypesTypePrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetLkeTypesTypePriceInput is an input type that accepts GetLkeTypesTypePriceArgs and GetLkeTypesTypePriceOutput values.
+// You can construct a concrete instance of `GetLkeTypesTypePriceInput` via:
+//
+//	GetLkeTypesTypePriceArgs{...}
+type GetLkeTypesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesTypePriceOutput() GetLkeTypesTypePriceOutput
+	ToGetLkeTypesTypePriceOutputWithContext(context.Context) GetLkeTypesTypePriceOutput
+}
+
+type GetLkeTypesTypePriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetLkeTypesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetLkeTypesTypePriceArgs) ToGetLkeTypesTypePriceOutput() GetLkeTypesTypePriceOutput {
+	return i.ToGetLkeTypesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesTypePriceArgs) ToGetLkeTypesTypePriceOutputWithContext(ctx context.Context) GetLkeTypesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesTypePriceOutput)
+}
+
+// GetLkeTypesTypePriceArrayInput is an input type that accepts GetLkeTypesTypePriceArray and GetLkeTypesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetLkeTypesTypePriceArrayInput` via:
+//
+//	GetLkeTypesTypePriceArray{ GetLkeTypesTypePriceArgs{...} }
+type GetLkeTypesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesTypePriceArrayOutput() GetLkeTypesTypePriceArrayOutput
+	ToGetLkeTypesTypePriceArrayOutputWithContext(context.Context) GetLkeTypesTypePriceArrayOutput
+}
+
+type GetLkeTypesTypePriceArray []GetLkeTypesTypePriceInput
+
+func (GetLkeTypesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetLkeTypesTypePriceArray) ToGetLkeTypesTypePriceArrayOutput() GetLkeTypesTypePriceArrayOutput {
+	return i.ToGetLkeTypesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesTypePriceArray) ToGetLkeTypesTypePriceArrayOutputWithContext(ctx context.Context) GetLkeTypesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesTypePriceArrayOutput)
+}
+
+type GetLkeTypesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetLkeTypesTypePriceOutput) ToGetLkeTypesTypePriceOutput() GetLkeTypesTypePriceOutput {
+	return o
+}
+
+func (o GetLkeTypesTypePriceOutput) ToGetLkeTypesTypePriceOutputWithContext(ctx context.Context) GetLkeTypesTypePriceOutput {
+	return o
+}
+
+func (o GetLkeTypesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetLkeTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetLkeTypesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetLkeTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetLkeTypesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetLkeTypesTypePriceArrayOutput) ToGetLkeTypesTypePriceArrayOutput() GetLkeTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesTypePriceArrayOutput) ToGetLkeTypesTypePriceArrayOutputWithContext(ctx context.Context) GetLkeTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetLkeTypesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeTypesTypePrice {
+		return vs[0].([]GetLkeTypesTypePrice)[vs[1].(int)]
+	}).(GetLkeTypesTypePriceOutput)
+}
+
+type GetLkeTypesTypeRegionPrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Id      string  `pulumi:"id"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetLkeTypesTypeRegionPriceInput is an input type that accepts GetLkeTypesTypeRegionPriceArgs and GetLkeTypesTypeRegionPriceOutput values.
+// You can construct a concrete instance of `GetLkeTypesTypeRegionPriceInput` via:
+//
+//	GetLkeTypesTypeRegionPriceArgs{...}
+type GetLkeTypesTypeRegionPriceInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesTypeRegionPriceOutput() GetLkeTypesTypeRegionPriceOutput
+	ToGetLkeTypesTypeRegionPriceOutputWithContext(context.Context) GetLkeTypesTypeRegionPriceOutput
+}
+
+type GetLkeTypesTypeRegionPriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Id      pulumi.StringInput  `pulumi:"id"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetLkeTypesTypeRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetLkeTypesTypeRegionPriceArgs) ToGetLkeTypesTypeRegionPriceOutput() GetLkeTypesTypeRegionPriceOutput {
+	return i.ToGetLkeTypesTypeRegionPriceOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesTypeRegionPriceArgs) ToGetLkeTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetLkeTypesTypeRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesTypeRegionPriceOutput)
+}
+
+// GetLkeTypesTypeRegionPriceArrayInput is an input type that accepts GetLkeTypesTypeRegionPriceArray and GetLkeTypesTypeRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetLkeTypesTypeRegionPriceArrayInput` via:
+//
+//	GetLkeTypesTypeRegionPriceArray{ GetLkeTypesTypeRegionPriceArgs{...} }
+type GetLkeTypesTypeRegionPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeTypesTypeRegionPriceArrayOutput() GetLkeTypesTypeRegionPriceArrayOutput
+	ToGetLkeTypesTypeRegionPriceArrayOutputWithContext(context.Context) GetLkeTypesTypeRegionPriceArrayOutput
+}
+
+type GetLkeTypesTypeRegionPriceArray []GetLkeTypesTypeRegionPriceInput
+
+func (GetLkeTypesTypeRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetLkeTypesTypeRegionPriceArray) ToGetLkeTypesTypeRegionPriceArrayOutput() GetLkeTypesTypeRegionPriceArrayOutput {
+	return i.ToGetLkeTypesTypeRegionPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeTypesTypeRegionPriceArray) ToGetLkeTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetLkeTypesTypeRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeTypesTypeRegionPriceArrayOutput)
+}
+
+type GetLkeTypesTypeRegionPriceOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesTypeRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetLkeTypesTypeRegionPriceOutput) ToGetLkeTypesTypeRegionPriceOutput() GetLkeTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeRegionPriceOutput) ToGetLkeTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetLkeTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetLkeTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetLkeTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetLkeTypesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetLkeTypesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetLkeTypesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeTypesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetLkeTypesTypeRegionPriceArrayOutput) ToGetLkeTypesTypeRegionPriceArrayOutput() GetLkeTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeRegionPriceArrayOutput) ToGetLkeTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetLkeTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetLkeTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetLkeTypesTypeRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeTypesTypeRegionPrice {
+		return vs[0].([]GetLkeTypesTypeRegionPrice)[vs[1].(int)]
+	}).(GetLkeTypesTypeRegionPriceOutput)
+}
+
 type GetLkeVersionsVersion struct {
 	// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 	Id string `pulumi:"id"`
@@ -23366,6 +23962,914 @@ func (o GetLkeVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetLkeVersion
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeVersionsVersion {
 		return vs[0].([]GetLkeVersionsVersion)[vs[1].(int)]
 	}).(GetLkeVersionsVersionOutput)
+}
+
+type GetNbTypesFilter struct {
+	// The type of comparison to use for this filter.
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name string `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values []string `pulumi:"values"`
+}
+
+// GetNbTypesFilterInput is an input type that accepts GetNbTypesFilterArgs and GetNbTypesFilterOutput values.
+// You can construct a concrete instance of `GetNbTypesFilterInput` via:
+//
+//	GetNbTypesFilterArgs{...}
+type GetNbTypesFilterInput interface {
+	pulumi.Input
+
+	ToGetNbTypesFilterOutput() GetNbTypesFilterOutput
+	ToGetNbTypesFilterOutputWithContext(context.Context) GetNbTypesFilterOutput
+}
+
+type GetNbTypesFilterArgs struct {
+	// The type of comparison to use for this filter.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNbTypesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesFilter)(nil)).Elem()
+}
+
+func (i GetNbTypesFilterArgs) ToGetNbTypesFilterOutput() GetNbTypesFilterOutput {
+	return i.ToGetNbTypesFilterOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesFilterArgs) ToGetNbTypesFilterOutputWithContext(ctx context.Context) GetNbTypesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesFilterOutput)
+}
+
+// GetNbTypesFilterArrayInput is an input type that accepts GetNbTypesFilterArray and GetNbTypesFilterArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesFilterArrayInput` via:
+//
+//	GetNbTypesFilterArray{ GetNbTypesFilterArgs{...} }
+type GetNbTypesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput
+	ToGetNbTypesFilterArrayOutputWithContext(context.Context) GetNbTypesFilterArrayOutput
+}
+
+type GetNbTypesFilterArray []GetNbTypesFilterInput
+
+func (GetNbTypesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesFilter)(nil)).Elem()
+}
+
+func (i GetNbTypesFilterArray) ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput {
+	return i.ToGetNbTypesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesFilterArray) ToGetNbTypesFilterArrayOutputWithContext(ctx context.Context) GetNbTypesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesFilterArrayOutput)
+}
+
+type GetNbTypesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesFilter)(nil)).Elem()
+}
+
+func (o GetNbTypesFilterOutput) ToGetNbTypesFilterOutput() GetNbTypesFilterOutput {
+	return o
+}
+
+func (o GetNbTypesFilterOutput) ToGetNbTypesFilterOutputWithContext(ctx context.Context) GetNbTypesFilterOutput {
+	return o
+}
+
+// The type of comparison to use for this filter.
+func (o GetNbTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNbTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the attribute to filter on.
+func (o GetNbTypesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value(s) to be used in the filter.
+func (o GetNbTypesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNbTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNbTypesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesFilter)(nil)).Elem()
+}
+
+func (o GetNbTypesFilterArrayOutput) ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetNbTypesFilterArrayOutput) ToGetNbTypesFilterArrayOutputWithContext(ctx context.Context) GetNbTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetNbTypesFilterArrayOutput) Index(i pulumi.IntInput) GetNbTypesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesFilter {
+		return vs[0].([]GetNbTypesFilter)[vs[1].(int)]
+	}).(GetNbTypesFilterOutput)
+}
+
+type GetNbTypesType struct {
+	// The unique ID assigned to this Node Balancer Type.
+	Id string `pulumi:"id"`
+	// The Node Balancer Type's label.
+	Label string `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices []GetNbTypesTypePrice `pulumi:"prices"`
+	// A list of region-specific prices for this Node Balancer Type.
+	RegionPrices []GetNbTypesTypeRegionPrice `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+}
+
+// GetNbTypesTypeInput is an input type that accepts GetNbTypesTypeArgs and GetNbTypesTypeOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeInput` via:
+//
+//	GetNbTypesTypeArgs{...}
+type GetNbTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeOutput() GetNbTypesTypeOutput
+	ToGetNbTypesTypeOutputWithContext(context.Context) GetNbTypesTypeOutput
+}
+
+type GetNbTypesTypeArgs struct {
+	// The unique ID assigned to this Node Balancer Type.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Node Balancer Type's label.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices GetNbTypesTypePriceArrayInput `pulumi:"prices"`
+	// A list of region-specific prices for this Node Balancer Type.
+	RegionPrices GetNbTypesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+}
+
+func (GetNbTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesType)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeArgs) ToGetNbTypesTypeOutput() GetNbTypesTypeOutput {
+	return i.ToGetNbTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeArgs) ToGetNbTypesTypeOutputWithContext(ctx context.Context) GetNbTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeOutput)
+}
+
+// GetNbTypesTypeArrayInput is an input type that accepts GetNbTypesTypeArray and GetNbTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeArrayInput` via:
+//
+//	GetNbTypesTypeArray{ GetNbTypesTypeArgs{...} }
+type GetNbTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput
+	ToGetNbTypesTypeArrayOutputWithContext(context.Context) GetNbTypesTypeArrayOutput
+}
+
+type GetNbTypesTypeArray []GetNbTypesTypeInput
+
+func (GetNbTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesType)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeArray) ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput {
+	return i.ToGetNbTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeArray) ToGetNbTypesTypeArrayOutputWithContext(ctx context.Context) GetNbTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeArrayOutput)
+}
+
+type GetNbTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesType)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeOutput) ToGetNbTypesTypeOutput() GetNbTypesTypeOutput {
+	return o
+}
+
+func (o GetNbTypesTypeOutput) ToGetNbTypesTypeOutputWithContext(ctx context.Context) GetNbTypesTypeOutput {
+	return o
+}
+
+// The unique ID assigned to this Node Balancer Type.
+func (o GetNbTypesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Node Balancer Type's label.
+func (o GetNbTypesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Cost in US dollars, broken down into hourly and monthly charges.
+func (o GetNbTypesTypeOutput) Prices() GetNbTypesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetNbTypesType) []GetNbTypesTypePrice { return v.Prices }).(GetNbTypesTypePriceArrayOutput)
+}
+
+// A list of region-specific prices for this Node Balancer Type.
+func (o GetNbTypesTypeOutput) RegionPrices() GetNbTypesTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetNbTypesType) []GetNbTypesTypeRegionPrice { return v.RegionPrices }).(GetNbTypesTypeRegionPriceArrayOutput)
+}
+
+// The monthly outbound transfer amount, in MB.
+func (o GetNbTypesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNbTypesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+type GetNbTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesType)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeArrayOutput) ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeArrayOutput) ToGetNbTypesTypeArrayOutputWithContext(ctx context.Context) GetNbTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesType {
+		return vs[0].([]GetNbTypesType)[vs[1].(int)]
+	}).(GetNbTypesTypeOutput)
+}
+
+type GetNbTypesTypePrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNbTypesTypePriceInput is an input type that accepts GetNbTypesTypePriceArgs and GetNbTypesTypePriceOutput values.
+// You can construct a concrete instance of `GetNbTypesTypePriceInput` via:
+//
+//	GetNbTypesTypePriceArgs{...}
+type GetNbTypesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput
+	ToGetNbTypesTypePriceOutputWithContext(context.Context) GetNbTypesTypePriceOutput
+}
+
+type GetNbTypesTypePriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNbTypesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypePriceArgs) ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput {
+	return i.ToGetNbTypesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypePriceArgs) ToGetNbTypesTypePriceOutputWithContext(ctx context.Context) GetNbTypesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypePriceOutput)
+}
+
+// GetNbTypesTypePriceArrayInput is an input type that accepts GetNbTypesTypePriceArray and GetNbTypesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesTypePriceArrayInput` via:
+//
+//	GetNbTypesTypePriceArray{ GetNbTypesTypePriceArgs{...} }
+type GetNbTypesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput
+	ToGetNbTypesTypePriceArrayOutputWithContext(context.Context) GetNbTypesTypePriceArrayOutput
+}
+
+type GetNbTypesTypePriceArray []GetNbTypesTypePriceInput
+
+func (GetNbTypesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypePriceArray) ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput {
+	return i.ToGetNbTypesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypePriceArray) ToGetNbTypesTypePriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypePriceArrayOutput)
+}
+
+type GetNbTypesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypePriceOutput) ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceOutput) ToGetNbTypesTypePriceOutputWithContext(ctx context.Context) GetNbTypesTypePriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetNbTypesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNbTypesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypePriceArrayOutput) ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceArrayOutput) ToGetNbTypesTypePriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesTypePrice {
+		return vs[0].([]GetNbTypesTypePrice)[vs[1].(int)]
+	}).(GetNbTypesTypePriceOutput)
+}
+
+type GetNbTypesTypeRegionPrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Id      string  `pulumi:"id"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNbTypesTypeRegionPriceInput is an input type that accepts GetNbTypesTypeRegionPriceArgs and GetNbTypesTypeRegionPriceOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeRegionPriceInput` via:
+//
+//	GetNbTypesTypeRegionPriceArgs{...}
+type GetNbTypesTypeRegionPriceInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput
+	ToGetNbTypesTypeRegionPriceOutputWithContext(context.Context) GetNbTypesTypeRegionPriceOutput
+}
+
+type GetNbTypesTypeRegionPriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Id      pulumi.StringInput  `pulumi:"id"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNbTypesTypeRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeRegionPriceArgs) ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput {
+	return i.ToGetNbTypesTypeRegionPriceOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeRegionPriceArgs) ToGetNbTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeRegionPriceOutput)
+}
+
+// GetNbTypesTypeRegionPriceArrayInput is an input type that accepts GetNbTypesTypeRegionPriceArray and GetNbTypesTypeRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeRegionPriceArrayInput` via:
+//
+//	GetNbTypesTypeRegionPriceArray{ GetNbTypesTypeRegionPriceArgs{...} }
+type GetNbTypesTypeRegionPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput
+	ToGetNbTypesTypeRegionPriceArrayOutputWithContext(context.Context) GetNbTypesTypeRegionPriceArrayOutput
+}
+
+type GetNbTypesTypeRegionPriceArray []GetNbTypesTypeRegionPriceInput
+
+func (GetNbTypesTypeRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeRegionPriceArray) ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput {
+	return i.ToGetNbTypesTypeRegionPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeRegionPriceArray) ToGetNbTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeRegionPriceArrayOutput)
+}
+
+type GetNbTypesTypeRegionPriceOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) ToGetNbTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNbTypesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeRegionPriceArrayOutput) ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceArrayOutput) ToGetNbTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypeRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesTypeRegionPrice {
+		return vs[0].([]GetNbTypesTypeRegionPrice)[vs[1].(int)]
+	}).(GetNbTypesTypeRegionPriceOutput)
+}
+
+type GetNetworkTransferPricesFilter struct {
+	// The type of comparison to use for this filter.
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name string `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values []string `pulumi:"values"`
+}
+
+// GetNetworkTransferPricesFilterInput is an input type that accepts GetNetworkTransferPricesFilterArgs and GetNetworkTransferPricesFilterOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesFilterInput` via:
+//
+//	GetNetworkTransferPricesFilterArgs{...}
+type GetNetworkTransferPricesFilterInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput
+	ToGetNetworkTransferPricesFilterOutputWithContext(context.Context) GetNetworkTransferPricesFilterOutput
+}
+
+type GetNetworkTransferPricesFilterArgs struct {
+	// The type of comparison to use for this filter.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNetworkTransferPricesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesFilterArgs) ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput {
+	return i.ToGetNetworkTransferPricesFilterOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesFilterArgs) ToGetNetworkTransferPricesFilterOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesFilterOutput)
+}
+
+// GetNetworkTransferPricesFilterArrayInput is an input type that accepts GetNetworkTransferPricesFilterArray and GetNetworkTransferPricesFilterArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesFilterArrayInput` via:
+//
+//	GetNetworkTransferPricesFilterArray{ GetNetworkTransferPricesFilterArgs{...} }
+type GetNetworkTransferPricesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput
+	ToGetNetworkTransferPricesFilterArrayOutputWithContext(context.Context) GetNetworkTransferPricesFilterArrayOutput
+}
+
+type GetNetworkTransferPricesFilterArray []GetNetworkTransferPricesFilterInput
+
+func (GetNetworkTransferPricesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesFilterArray) ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput {
+	return i.ToGetNetworkTransferPricesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesFilterArray) ToGetNetworkTransferPricesFilterArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesFilterArrayOutput)
+}
+
+type GetNetworkTransferPricesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterOutput {
+	return o
+}
+
+// The type of comparison to use for this filter.
+func (o GetNetworkTransferPricesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the attribute to filter on.
+func (o GetNetworkTransferPricesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value(s) to be used in the filter.
+func (o GetNetworkTransferPricesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkTransferPricesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesFilterArrayOutput) ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesFilterArrayOutput) ToGetNetworkTransferPricesFilterArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesFilter {
+		return vs[0].([]GetNetworkTransferPricesFilter)[vs[1].(int)]
+	}).(GetNetworkTransferPricesFilterOutput)
+}
+
+type GetNetworkTransferPricesType struct {
+	// The unique ID assigned to this Network Transfer Price.
+	Id string `pulumi:"id"`
+	// The Network Transfer Price's label.
+	Label string `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices []GetNetworkTransferPricesTypePrice `pulumi:"prices"`
+	// A list of region-specific prices for this Network Transfer Price.
+	RegionPrices []GetNetworkTransferPricesTypeRegionPrice `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+}
+
+// GetNetworkTransferPricesTypeInput is an input type that accepts GetNetworkTransferPricesTypeArgs and GetNetworkTransferPricesTypeOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeInput` via:
+//
+//	GetNetworkTransferPricesTypeArgs{...}
+type GetNetworkTransferPricesTypeInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput
+	ToGetNetworkTransferPricesTypeOutputWithContext(context.Context) GetNetworkTransferPricesTypeOutput
+}
+
+type GetNetworkTransferPricesTypeArgs struct {
+	// The unique ID assigned to this Network Transfer Price.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Network Transfer Price's label.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices GetNetworkTransferPricesTypePriceArrayInput `pulumi:"prices"`
+	// A list of region-specific prices for this Network Transfer Price.
+	RegionPrices GetNetworkTransferPricesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+}
+
+func (GetNetworkTransferPricesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeArgs) ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput {
+	return i.ToGetNetworkTransferPricesTypeOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeArgs) ToGetNetworkTransferPricesTypeOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeOutput)
+}
+
+// GetNetworkTransferPricesTypeArrayInput is an input type that accepts GetNetworkTransferPricesTypeArray and GetNetworkTransferPricesTypeArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeArrayInput` via:
+//
+//	GetNetworkTransferPricesTypeArray{ GetNetworkTransferPricesTypeArgs{...} }
+type GetNetworkTransferPricesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput
+	ToGetNetworkTransferPricesTypeArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypeArrayOutput
+}
+
+type GetNetworkTransferPricesTypeArray []GetNetworkTransferPricesTypeInput
+
+func (GetNetworkTransferPricesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeArray) ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput {
+	return i.ToGetNetworkTransferPricesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeArray) ToGetNetworkTransferPricesTypeArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeArrayOutput)
+}
+
+type GetNetworkTransferPricesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeOutput {
+	return o
+}
+
+// The unique ID assigned to this Network Transfer Price.
+func (o GetNetworkTransferPricesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Network Transfer Price's label.
+func (o GetNetworkTransferPricesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Cost in US dollars, broken down into hourly and monthly charges.
+func (o GetNetworkTransferPricesTypeOutput) Prices() GetNetworkTransferPricesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) []GetNetworkTransferPricesTypePrice { return v.Prices }).(GetNetworkTransferPricesTypePriceArrayOutput)
+}
+
+// A list of region-specific prices for this Network Transfer Price.
+func (o GetNetworkTransferPricesTypeOutput) RegionPrices() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) []GetNetworkTransferPricesTypeRegionPrice { return v.RegionPrices }).(GetNetworkTransferPricesTypeRegionPriceArrayOutput)
+}
+
+// The monthly outbound transfer amount, in MB.
+func (o GetNetworkTransferPricesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+type GetNetworkTransferPricesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeArrayOutput) ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeArrayOutput) ToGetNetworkTransferPricesTypeArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesType {
+		return vs[0].([]GetNetworkTransferPricesType)[vs[1].(int)]
+	}).(GetNetworkTransferPricesTypeOutput)
+}
+
+type GetNetworkTransferPricesTypePrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNetworkTransferPricesTypePriceInput is an input type that accepts GetNetworkTransferPricesTypePriceArgs and GetNetworkTransferPricesTypePriceOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypePriceInput` via:
+//
+//	GetNetworkTransferPricesTypePriceArgs{...}
+type GetNetworkTransferPricesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput
+	ToGetNetworkTransferPricesTypePriceOutputWithContext(context.Context) GetNetworkTransferPricesTypePriceOutput
+}
+
+type GetNetworkTransferPricesTypePriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNetworkTransferPricesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypePriceArgs) ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput {
+	return i.ToGetNetworkTransferPricesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypePriceArgs) ToGetNetworkTransferPricesTypePriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypePriceOutput)
+}
+
+// GetNetworkTransferPricesTypePriceArrayInput is an input type that accepts GetNetworkTransferPricesTypePriceArray and GetNetworkTransferPricesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypePriceArrayInput` via:
+//
+//	GetNetworkTransferPricesTypePriceArray{ GetNetworkTransferPricesTypePriceArgs{...} }
+type GetNetworkTransferPricesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput
+	ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypePriceArrayOutput
+}
+
+type GetNetworkTransferPricesTypePriceArray []GetNetworkTransferPricesTypePriceInput
+
+func (GetNetworkTransferPricesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypePriceArray) ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput {
+	return i.ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypePriceArray) ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypePriceArrayOutput)
+}
+
+type GetNetworkTransferPricesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypePriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetNetworkTransferPricesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNetworkTransferPricesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypePriceArrayOutput) ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceArrayOutput) ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesTypePrice {
+		return vs[0].([]GetNetworkTransferPricesTypePrice)[vs[1].(int)]
+	}).(GetNetworkTransferPricesTypePriceOutput)
+}
+
+type GetNetworkTransferPricesTypeRegionPrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Id      string  `pulumi:"id"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNetworkTransferPricesTypeRegionPriceInput is an input type that accepts GetNetworkTransferPricesTypeRegionPriceArgs and GetNetworkTransferPricesTypeRegionPriceOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeRegionPriceInput` via:
+//
+//	GetNetworkTransferPricesTypeRegionPriceArgs{...}
+type GetNetworkTransferPricesTypeRegionPriceInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput
+	ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(context.Context) GetNetworkTransferPricesTypeRegionPriceOutput
+}
+
+type GetNetworkTransferPricesTypeRegionPriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Id      pulumi.StringInput  `pulumi:"id"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNetworkTransferPricesTypeRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArgs) ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput {
+	return i.ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArgs) ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeRegionPriceOutput)
+}
+
+// GetNetworkTransferPricesTypeRegionPriceArrayInput is an input type that accepts GetNetworkTransferPricesTypeRegionPriceArray and GetNetworkTransferPricesTypeRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeRegionPriceArrayInput` via:
+//
+//	GetNetworkTransferPricesTypeRegionPriceArray{ GetNetworkTransferPricesTypeRegionPriceArgs{...} }
+type GetNetworkTransferPricesTypeRegionPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput
+	ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput
+}
+
+type GetNetworkTransferPricesTypeRegionPriceArray []GetNetworkTransferPricesTypeRegionPriceInput
+
+func (GetNetworkTransferPricesTypeRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArray) ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return i.ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArray) ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeRegionPriceArrayOutput)
+}
+
+type GetNetworkTransferPricesTypeRegionPriceOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNetworkTransferPricesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypeRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesTypeRegionPrice {
+		return vs[0].([]GetNetworkTransferPricesTypeRegionPrice)[vs[1].(int)]
+	}).(GetNetworkTransferPricesTypeRegionPriceOutput)
 }
 
 type GetNodeBalancerConfigNodeStatus struct {
@@ -30141,6 +31645,460 @@ func (o GetVlansVlanArrayOutput) Index(i pulumi.IntInput) GetVlansVlanOutput {
 	}).(GetVlansVlanOutput)
 }
 
+type GetVolumeTypesFilter struct {
+	// The type of comparison to use for this filter.
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name string `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values []string `pulumi:"values"`
+}
+
+// GetVolumeTypesFilterInput is an input type that accepts GetVolumeTypesFilterArgs and GetVolumeTypesFilterOutput values.
+// You can construct a concrete instance of `GetVolumeTypesFilterInput` via:
+//
+//	GetVolumeTypesFilterArgs{...}
+type GetVolumeTypesFilterInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesFilterOutput() GetVolumeTypesFilterOutput
+	ToGetVolumeTypesFilterOutputWithContext(context.Context) GetVolumeTypesFilterOutput
+}
+
+type GetVolumeTypesFilterArgs struct {
+	// The type of comparison to use for this filter.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVolumeTypesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesFilter)(nil)).Elem()
+}
+
+func (i GetVolumeTypesFilterArgs) ToGetVolumeTypesFilterOutput() GetVolumeTypesFilterOutput {
+	return i.ToGetVolumeTypesFilterOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesFilterArgs) ToGetVolumeTypesFilterOutputWithContext(ctx context.Context) GetVolumeTypesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesFilterOutput)
+}
+
+// GetVolumeTypesFilterArrayInput is an input type that accepts GetVolumeTypesFilterArray and GetVolumeTypesFilterArrayOutput values.
+// You can construct a concrete instance of `GetVolumeTypesFilterArrayInput` via:
+//
+//	GetVolumeTypesFilterArray{ GetVolumeTypesFilterArgs{...} }
+type GetVolumeTypesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesFilterArrayOutput() GetVolumeTypesFilterArrayOutput
+	ToGetVolumeTypesFilterArrayOutputWithContext(context.Context) GetVolumeTypesFilterArrayOutput
+}
+
+type GetVolumeTypesFilterArray []GetVolumeTypesFilterInput
+
+func (GetVolumeTypesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesFilter)(nil)).Elem()
+}
+
+func (i GetVolumeTypesFilterArray) ToGetVolumeTypesFilterArrayOutput() GetVolumeTypesFilterArrayOutput {
+	return i.ToGetVolumeTypesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesFilterArray) ToGetVolumeTypesFilterArrayOutputWithContext(ctx context.Context) GetVolumeTypesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesFilterArrayOutput)
+}
+
+type GetVolumeTypesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesFilter)(nil)).Elem()
+}
+
+func (o GetVolumeTypesFilterOutput) ToGetVolumeTypesFilterOutput() GetVolumeTypesFilterOutput {
+	return o
+}
+
+func (o GetVolumeTypesFilterOutput) ToGetVolumeTypesFilterOutputWithContext(ctx context.Context) GetVolumeTypesFilterOutput {
+	return o
+}
+
+// The type of comparison to use for this filter.
+func (o GetVolumeTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVolumeTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the attribute to filter on.
+func (o GetVolumeTypesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeTypesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value(s) to be used in the filter.
+func (o GetVolumeTypesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVolumeTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVolumeTypesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesFilter)(nil)).Elem()
+}
+
+func (o GetVolumeTypesFilterArrayOutput) ToGetVolumeTypesFilterArrayOutput() GetVolumeTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesFilterArrayOutput) ToGetVolumeTypesFilterArrayOutputWithContext(ctx context.Context) GetVolumeTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesFilterArrayOutput) Index(i pulumi.IntInput) GetVolumeTypesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumeTypesFilter {
+		return vs[0].([]GetVolumeTypesFilter)[vs[1].(int)]
+	}).(GetVolumeTypesFilterOutput)
+}
+
+type GetVolumeTypesType struct {
+	// The unique ID assigned to this Volume Type.
+	Id string `pulumi:"id"`
+	// The Volume Type's label.
+	Label string `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices []GetVolumeTypesTypePrice `pulumi:"prices"`
+	// A list of region-specific prices for this Volume Type.
+	RegionPrices []GetVolumeTypesTypeRegionPrice `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+}
+
+// GetVolumeTypesTypeInput is an input type that accepts GetVolumeTypesTypeArgs and GetVolumeTypesTypeOutput values.
+// You can construct a concrete instance of `GetVolumeTypesTypeInput` via:
+//
+//	GetVolumeTypesTypeArgs{...}
+type GetVolumeTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesTypeOutput() GetVolumeTypesTypeOutput
+	ToGetVolumeTypesTypeOutputWithContext(context.Context) GetVolumeTypesTypeOutput
+}
+
+type GetVolumeTypesTypeArgs struct {
+	// The unique ID assigned to this Volume Type.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Volume Type's label.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices GetVolumeTypesTypePriceArrayInput `pulumi:"prices"`
+	// A list of region-specific prices for this Volume Type.
+	RegionPrices GetVolumeTypesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+}
+
+func (GetVolumeTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesType)(nil)).Elem()
+}
+
+func (i GetVolumeTypesTypeArgs) ToGetVolumeTypesTypeOutput() GetVolumeTypesTypeOutput {
+	return i.ToGetVolumeTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesTypeArgs) ToGetVolumeTypesTypeOutputWithContext(ctx context.Context) GetVolumeTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesTypeOutput)
+}
+
+// GetVolumeTypesTypeArrayInput is an input type that accepts GetVolumeTypesTypeArray and GetVolumeTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetVolumeTypesTypeArrayInput` via:
+//
+//	GetVolumeTypesTypeArray{ GetVolumeTypesTypeArgs{...} }
+type GetVolumeTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesTypeArrayOutput() GetVolumeTypesTypeArrayOutput
+	ToGetVolumeTypesTypeArrayOutputWithContext(context.Context) GetVolumeTypesTypeArrayOutput
+}
+
+type GetVolumeTypesTypeArray []GetVolumeTypesTypeInput
+
+func (GetVolumeTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesType)(nil)).Elem()
+}
+
+func (i GetVolumeTypesTypeArray) ToGetVolumeTypesTypeArrayOutput() GetVolumeTypesTypeArrayOutput {
+	return i.ToGetVolumeTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesTypeArray) ToGetVolumeTypesTypeArrayOutputWithContext(ctx context.Context) GetVolumeTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesTypeArrayOutput)
+}
+
+type GetVolumeTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesType)(nil)).Elem()
+}
+
+func (o GetVolumeTypesTypeOutput) ToGetVolumeTypesTypeOutput() GetVolumeTypesTypeOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeOutput) ToGetVolumeTypesTypeOutputWithContext(ctx context.Context) GetVolumeTypesTypeOutput {
+	return o
+}
+
+// The unique ID assigned to this Volume Type.
+func (o GetVolumeTypesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeTypesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Volume Type's label.
+func (o GetVolumeTypesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeTypesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Cost in US dollars, broken down into hourly and monthly charges.
+func (o GetVolumeTypesTypeOutput) Prices() GetVolumeTypesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetVolumeTypesType) []GetVolumeTypesTypePrice { return v.Prices }).(GetVolumeTypesTypePriceArrayOutput)
+}
+
+// A list of region-specific prices for this Volume Type.
+func (o GetVolumeTypesTypeOutput) RegionPrices() GetVolumeTypesTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetVolumeTypesType) []GetVolumeTypesTypeRegionPrice { return v.RegionPrices }).(GetVolumeTypesTypeRegionPriceArrayOutput)
+}
+
+// The monthly outbound transfer amount, in MB.
+func (o GetVolumeTypesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVolumeTypesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+type GetVolumeTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesType)(nil)).Elem()
+}
+
+func (o GetVolumeTypesTypeArrayOutput) ToGetVolumeTypesTypeArrayOutput() GetVolumeTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeArrayOutput) ToGetVolumeTypesTypeArrayOutputWithContext(ctx context.Context) GetVolumeTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeArrayOutput) Index(i pulumi.IntInput) GetVolumeTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumeTypesType {
+		return vs[0].([]GetVolumeTypesType)[vs[1].(int)]
+	}).(GetVolumeTypesTypeOutput)
+}
+
+type GetVolumeTypesTypePrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetVolumeTypesTypePriceInput is an input type that accepts GetVolumeTypesTypePriceArgs and GetVolumeTypesTypePriceOutput values.
+// You can construct a concrete instance of `GetVolumeTypesTypePriceInput` via:
+//
+//	GetVolumeTypesTypePriceArgs{...}
+type GetVolumeTypesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesTypePriceOutput() GetVolumeTypesTypePriceOutput
+	ToGetVolumeTypesTypePriceOutputWithContext(context.Context) GetVolumeTypesTypePriceOutput
+}
+
+type GetVolumeTypesTypePriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetVolumeTypesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetVolumeTypesTypePriceArgs) ToGetVolumeTypesTypePriceOutput() GetVolumeTypesTypePriceOutput {
+	return i.ToGetVolumeTypesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesTypePriceArgs) ToGetVolumeTypesTypePriceOutputWithContext(ctx context.Context) GetVolumeTypesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesTypePriceOutput)
+}
+
+// GetVolumeTypesTypePriceArrayInput is an input type that accepts GetVolumeTypesTypePriceArray and GetVolumeTypesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetVolumeTypesTypePriceArrayInput` via:
+//
+//	GetVolumeTypesTypePriceArray{ GetVolumeTypesTypePriceArgs{...} }
+type GetVolumeTypesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesTypePriceArrayOutput() GetVolumeTypesTypePriceArrayOutput
+	ToGetVolumeTypesTypePriceArrayOutputWithContext(context.Context) GetVolumeTypesTypePriceArrayOutput
+}
+
+type GetVolumeTypesTypePriceArray []GetVolumeTypesTypePriceInput
+
+func (GetVolumeTypesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetVolumeTypesTypePriceArray) ToGetVolumeTypesTypePriceArrayOutput() GetVolumeTypesTypePriceArrayOutput {
+	return i.ToGetVolumeTypesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesTypePriceArray) ToGetVolumeTypesTypePriceArrayOutputWithContext(ctx context.Context) GetVolumeTypesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesTypePriceArrayOutput)
+}
+
+type GetVolumeTypesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetVolumeTypesTypePriceOutput) ToGetVolumeTypesTypePriceOutput() GetVolumeTypesTypePriceOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypePriceOutput) ToGetVolumeTypesTypePriceOutputWithContext(ctx context.Context) GetVolumeTypesTypePriceOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVolumeTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetVolumeTypesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVolumeTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetVolumeTypesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetVolumeTypesTypePriceArrayOutput) ToGetVolumeTypesTypePriceArrayOutput() GetVolumeTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypePriceArrayOutput) ToGetVolumeTypesTypePriceArrayOutputWithContext(ctx context.Context) GetVolumeTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetVolumeTypesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumeTypesTypePrice {
+		return vs[0].([]GetVolumeTypesTypePrice)[vs[1].(int)]
+	}).(GetVolumeTypesTypePriceOutput)
+}
+
+type GetVolumeTypesTypeRegionPrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Id      string  `pulumi:"id"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetVolumeTypesTypeRegionPriceInput is an input type that accepts GetVolumeTypesTypeRegionPriceArgs and GetVolumeTypesTypeRegionPriceOutput values.
+// You can construct a concrete instance of `GetVolumeTypesTypeRegionPriceInput` via:
+//
+//	GetVolumeTypesTypeRegionPriceArgs{...}
+type GetVolumeTypesTypeRegionPriceInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesTypeRegionPriceOutput() GetVolumeTypesTypeRegionPriceOutput
+	ToGetVolumeTypesTypeRegionPriceOutputWithContext(context.Context) GetVolumeTypesTypeRegionPriceOutput
+}
+
+type GetVolumeTypesTypeRegionPriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Id      pulumi.StringInput  `pulumi:"id"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetVolumeTypesTypeRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetVolumeTypesTypeRegionPriceArgs) ToGetVolumeTypesTypeRegionPriceOutput() GetVolumeTypesTypeRegionPriceOutput {
+	return i.ToGetVolumeTypesTypeRegionPriceOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesTypeRegionPriceArgs) ToGetVolumeTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetVolumeTypesTypeRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesTypeRegionPriceOutput)
+}
+
+// GetVolumeTypesTypeRegionPriceArrayInput is an input type that accepts GetVolumeTypesTypeRegionPriceArray and GetVolumeTypesTypeRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetVolumeTypesTypeRegionPriceArrayInput` via:
+//
+//	GetVolumeTypesTypeRegionPriceArray{ GetVolumeTypesTypeRegionPriceArgs{...} }
+type GetVolumeTypesTypeRegionPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumeTypesTypeRegionPriceArrayOutput() GetVolumeTypesTypeRegionPriceArrayOutput
+	ToGetVolumeTypesTypeRegionPriceArrayOutputWithContext(context.Context) GetVolumeTypesTypeRegionPriceArrayOutput
+}
+
+type GetVolumeTypesTypeRegionPriceArray []GetVolumeTypesTypeRegionPriceInput
+
+func (GetVolumeTypesTypeRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetVolumeTypesTypeRegionPriceArray) ToGetVolumeTypesTypeRegionPriceArrayOutput() GetVolumeTypesTypeRegionPriceArrayOutput {
+	return i.ToGetVolumeTypesTypeRegionPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumeTypesTypeRegionPriceArray) ToGetVolumeTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetVolumeTypesTypeRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeTypesTypeRegionPriceArrayOutput)
+}
+
+type GetVolumeTypesTypeRegionPriceOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesTypeRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetVolumeTypesTypeRegionPriceOutput) ToGetVolumeTypesTypeRegionPriceOutput() GetVolumeTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeRegionPriceOutput) ToGetVolumeTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetVolumeTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVolumeTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetVolumeTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVolumeTypesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVolumeTypesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetVolumeTypesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeTypesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetVolumeTypesTypeRegionPriceArrayOutput) ToGetVolumeTypesTypeRegionPriceArrayOutput() GetVolumeTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeRegionPriceArrayOutput) ToGetVolumeTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetVolumeTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetVolumeTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetVolumeTypesTypeRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumeTypesTypeRegionPrice {
+		return vs[0].([]GetVolumeTypesTypeRegionPrice)[vs[1].(int)]
+	}).(GetVolumeTypesTypeRegionPriceOutput)
+}
+
 type GetVolumesFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -30259,6 +32217,8 @@ func (o GetVolumesFilterArrayOutput) Index(i pulumi.IntInput) GetVolumesFilterOu
 type GetVolumesVolume struct {
 	// When this Volume was created.
 	Created string `pulumi:"created"`
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	Encryption string `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 	FilesystemPath string `pulumi:"filesystemPath"`
 	// The unique ID of this Volume.
@@ -30293,6 +32253,8 @@ type GetVolumesVolumeInput interface {
 type GetVolumesVolumeArgs struct {
 	// When this Volume was created.
 	Created pulumi.StringInput `pulumi:"created"`
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	Encryption pulumi.StringInput `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 	FilesystemPath pulumi.StringInput `pulumi:"filesystemPath"`
 	// The unique ID of this Volume.
@@ -30367,6 +32329,11 @@ func (o GetVolumesVolumeOutput) ToGetVolumesVolumeOutputWithContext(ctx context.
 // When this Volume was created.
 func (o GetVolumesVolumeOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+func (o GetVolumesVolumeOutput) Encryption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumesVolume) string { return v.Encryption }).(pulumi.StringOutput)
 }
 
 // The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
@@ -31761,6 +33728,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolAutoscalerPtrInput)(nil)).Elem(), LkeClusterPoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeInput)(nil)).Elem(), LkeClusterPoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolNodeArrayInput)(nil)).Elem(), LkeClusterPoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolTaintInput)(nil)).Elem(), LkeClusterPoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolTaintArrayInput)(nil)).Elem(), LkeClusterPoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolAutoscalerInput)(nil)).Elem(), LkeNodePoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolAutoscalerPtrInput)(nil)).Elem(), LkeNodePoolAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolNodeInput)(nil)).Elem(), LkeNodePoolNodeArgs{})
@@ -32011,8 +33980,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterArrayInput)(nil)).Elem(), GetLkeClustersLkeClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlanePtrInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesFilterInput)(nil)).Elem(), GetLkeTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesFilterArrayInput)(nil)).Elem(), GetLkeTypesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeInput)(nil)).Elem(), GetLkeTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeArrayInput)(nil)).Elem(), GetLkeTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypePriceInput)(nil)).Elem(), GetLkeTypesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypePriceArrayInput)(nil)).Elem(), GetLkeTypesTypePriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeRegionPriceInput)(nil)).Elem(), GetLkeTypesTypeRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetLkeTypesTypeRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionInput)(nil)).Elem(), GetLkeVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionArrayInput)(nil)).Elem(), GetLkeVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterInput)(nil)).Elem(), GetNbTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterArrayInput)(nil)).Elem(), GetNbTypesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeInput)(nil)).Elem(), GetNbTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeArrayInput)(nil)).Elem(), GetNbTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypePriceInput)(nil)).Elem(), GetNbTypesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypePriceArrayInput)(nil)).Elem(), GetNbTypesTypePriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeRegionPriceInput)(nil)).Elem(), GetNbTypesTypeRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetNbTypesTypeRegionPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesFilterInput)(nil)).Elem(), GetNetworkTransferPricesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesFilterArrayInput)(nil)).Elem(), GetNetworkTransferPricesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeInput)(nil)).Elem(), GetNetworkTransferPricesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInput)(nil)).Elem(), GetNodeBalancerFirewallArgs{})
@@ -32116,6 +34109,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterArrayInput)(nil)).Elem(), GetVlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanInput)(nil)).Elem(), GetVlansVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanArrayInput)(nil)).Elem(), GetVlansVlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesFilterInput)(nil)).Elem(), GetVolumeTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesFilterArrayInput)(nil)).Elem(), GetVolumeTypesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesTypeInput)(nil)).Elem(), GetVolumeTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesTypeArrayInput)(nil)).Elem(), GetVolumeTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesTypePriceInput)(nil)).Elem(), GetVolumeTypesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesTypePriceArrayInput)(nil)).Elem(), GetVolumeTypesTypePriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesTypeRegionPriceInput)(nil)).Elem(), GetVolumeTypesTypeRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetVolumeTypesTypeRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesFilterInput)(nil)).Elem(), GetVolumesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesFilterArrayInput)(nil)).Elem(), GetVolumesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumesVolumeInput)(nil)).Elem(), GetVolumesVolumeArgs{})
@@ -32214,6 +34215,8 @@ func init() {
 	pulumi.RegisterOutputType(LkeClusterPoolAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolNodeOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolTaintOutput{})
+	pulumi.RegisterOutputType(LkeClusterPoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolAutoscalerOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolNodeOutput{})
@@ -32464,8 +34467,32 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesFilterOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesTypeRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetLkeTypesTypeRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesFilterOutput{})
+	pulumi.RegisterOutputType(GetNbTypesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeRegionPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesFilterOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutput{})
@@ -32569,6 +34596,14 @@ func init() {
 	pulumi.RegisterOutputType(GetVlansFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVlansVlanOutput{})
 	pulumi.RegisterOutputType(GetVlansVlanArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesFilterOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesTypeRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetVolumeTypesTypeRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumesFilterOutput{})
 	pulumi.RegisterOutputType(GetVolumesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumesVolumeOutput{})

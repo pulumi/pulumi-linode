@@ -113,6 +113,12 @@ namespace Pulumi.Linode
     public partial class Volume : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// </summary>
+        [Output("encryption")]
+        public Output<string> Encryption { get; private set; } = null!;
+
+        /// <summary>
         /// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         /// </summary>
         [Output("filesystemPath")]
@@ -212,6 +218,12 @@ namespace Pulumi.Linode
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// </summary>
+        [Input("encryption")]
+        public Input<string>? Encryption { get; set; }
+
+        /// <summary>
         /// The label of the Linode Volume
         /// </summary>
         [Input("label", required: true)]
@@ -266,6 +278,12 @@ namespace Pulumi.Linode
 
     public sealed class VolumeState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// </summary>
+        [Input("encryption")]
+        public Input<string>? Encryption { get; set; }
+
         /// <summary>
         /// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         /// </summary>

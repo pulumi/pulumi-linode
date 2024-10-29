@@ -19,6 +19,12 @@ namespace Pulumi.Linode.Inputs
         public string Created { get; set; } = null!;
 
         /// <summary>
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// </summary>
+        [Input("encryption", required: true)]
+        public string Encryption { get; set; } = null!;
+
+        /// <summary>
         /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
         /// </summary>
         [Input("filesystemPath", required: true)]

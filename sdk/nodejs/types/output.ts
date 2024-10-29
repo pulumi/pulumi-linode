@@ -1679,6 +1679,10 @@ export interface GetInstancesInstance {
      */
     bootConfigLabel: string;
     /**
+     * A list of capabilities of this Linode instance.
+     */
+    capabilities: string[];
+    /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      */
     configs: outputs.GetInstancesInstanceConfig[];
@@ -2425,11 +2429,158 @@ export interface GetLkeClustersLkeClusterControlPlane {
     highAvailability: boolean;
 }
 
+export interface GetLkeTypesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetLkeTypesType {
+    /**
+     * The unique ID assigned to this LKE Type.
+     */
+    id: string;
+    /**
+     * The LKE Type's label.
+     */
+    label: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices: outputs.GetLkeTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this LKE Type.
+     */
+    regionPrices: outputs.GetLkeTypesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer: number;
+}
+
+export interface GetLkeTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetLkeTypesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
 export interface GetLkeVersionsVersion {
     /**
      * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      */
     id: string;
+}
+
+export interface GetNbTypesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetNbTypesType {
+    /**
+     * The unique ID assigned to this Node Balancer Type.
+     */
+    id: string;
+    /**
+     * The Node Balancer Type's label.
+     */
+    label: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices: outputs.GetNbTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this Node Balancer Type.
+     */
+    regionPrices: outputs.GetNbTypesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer: number;
+}
+
+export interface GetNbTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetNbTypesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
+export interface GetNetworkTransferPricesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetNetworkTransferPricesType {
+    /**
+     * The unique ID assigned to this Network Transfer Price.
+     */
+    id: string;
+    /**
+     * The Network Transfer Price's label.
+     */
+    label: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices: outputs.GetNetworkTransferPricesTypePrice[];
+    /**
+     * A list of region-specific prices for this Network Transfer Price.
+     */
+    regionPrices: outputs.GetNetworkTransferPricesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer: number;
+}
+
+export interface GetNetworkTransferPricesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetNetworkTransferPricesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
 }
 
 export interface GetNodeBalancerConfigNodeStatus {
@@ -3577,6 +3728,55 @@ export interface GetVlansVlan {
     region: string;
 }
 
+export interface GetVolumeTypesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetVolumeTypesType {
+    /**
+     * The unique ID assigned to this Volume Type.
+     */
+    id: string;
+    /**
+     * The Volume Type's label.
+     */
+    label: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices: outputs.GetVolumeTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this Volume Type.
+     */
+    regionPrices: outputs.GetVolumeTypesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer: number;
+}
+
+export interface GetVolumeTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetVolumeTypesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
 export interface GetVolumesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3597,6 +3797,10 @@ export interface GetVolumesVolume {
      * When this Volume was created.
      */
     created: string;
+    /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    encryption: string;
     /**
      * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      */
@@ -4402,6 +4606,10 @@ export interface LkeClusterPool {
      */
     id: number;
     /**
+     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     */
+    labels?: {[key: string]: string};
+    /**
      * The nodes in the node pool.
      */
     nodes: outputs.LkeClusterPoolNode[];
@@ -4409,6 +4617,10 @@ export interface LkeClusterPool {
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: string[];
+    /**
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     */
+    taints?: outputs.LkeClusterPoolTaint[];
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
@@ -4439,6 +4651,21 @@ export interface LkeClusterPoolNode {
      * The status of the node. (`ready`, `notReady`)
      */
     status: string;
+}
+
+export interface LkeClusterPoolTaint {
+    /**
+     * The Kubernetes taint effect.
+     */
+    effect: string;
+    /**
+     * The Kubernetes taint key.
+     */
+    key: string;
+    /**
+     * The Kubernetes taint value.
+     */
+    value: string;
 }
 
 export interface LkeNodePoolAutoscaler {

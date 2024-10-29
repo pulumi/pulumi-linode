@@ -103,6 +103,10 @@ export class Volume extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    public readonly encryption!: pulumi.Output<string>;
+    /**
      * The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
      */
     public /*out*/ readonly filesystemPath!: pulumi.Output<string>;
@@ -151,6 +155,7 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["filesystemPath"] = state ? state.filesystemPath : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["linodeId"] = state ? state.linodeId : undefined;
@@ -165,6 +170,7 @@ export class Volume extends pulumi.CustomResource {
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -184,6 +190,10 @@ export class Volume extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Volume resources.
  */
 export interface VolumeState {
+    /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    encryption?: pulumi.Input<string>;
     /**
      * The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
      */
@@ -225,6 +235,10 @@ export interface VolumeState {
  * The set of arguments for constructing a Volume resource.
  */
 export interface VolumeArgs {
+    /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    encryption?: pulumi.Input<string>;
     /**
      * The label of the Linode Volume
      */

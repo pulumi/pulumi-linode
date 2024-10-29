@@ -32,6 +32,21 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    @Import(name="encryption", required=true)
+    private Output<String> encryption;
+
+    /**
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * 
+     */
+    public Output<String> encryption() {
+        return this.encryption;
+    }
+
+    /**
      * The full filesystem path for the Volume based on the Volume&#39;s label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      * 
      */
@@ -170,6 +185,7 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
 
     private GetVolumesVolumeArgs(GetVolumesVolumeArgs $) {
         this.created = $.created;
+        this.encryption = $.encryption;
         this.filesystemPath = $.filesystemPath;
         this.id = $.id;
         this.label = $.label;
@@ -218,6 +234,27 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder created(String created) {
             return created(Output.of(created));
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(Output<String> encryption) {
+            $.encryption = encryption;
+            return this;
+        }
+
+        /**
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(String encryption) {
+            return encryption(Output.of(encryption));
         }
 
         /**
@@ -422,6 +459,9 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
         public GetVolumesVolumeArgs build() {
             if ($.created == null) {
                 throw new MissingRequiredPropertyException("GetVolumesVolumeArgs", "created");
+            }
+            if ($.encryption == null) {
+                throw new MissingRequiredPropertyException("GetVolumesVolumeArgs", "encryption");
             }
             if ($.filesystemPath == null) {
                 throw new MissingRequiredPropertyException("GetVolumesVolumeArgs", "filesystemPath");

@@ -47,6 +47,10 @@ export interface GetVolumeResult {
      */
     readonly created: string;
     /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    readonly encryption: string;
+    /**
      * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      */
     readonly filesystemPath: string;

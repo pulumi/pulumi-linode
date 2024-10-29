@@ -19,6 +19,7 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 api_ca_path: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  config_path: Optional[pulumi.Input[str]] = None,
                  config_profile: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class ProviderArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] api_ca_path: The path to a Linode API CA file to trust.
         :param pulumi.Input[str] api_version: The version of Linode API.
         :param pulumi.Input[str] config_path: The path to the Linode config file to use. (default `~/.config/linode`)
         :param pulumi.Input[str] config_profile: The Linode config profile to use. (default `default`)
@@ -61,6 +63,8 @@ class ProviderArgs:
         :param pulumi.Input[str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[str] url: The HTTP(S) API address of the Linode API to use.
         """
+        if api_ca_path is not None:
+            pulumi.set(__self__, "api_ca_path", api_ca_path)
         if api_version is None:
             api_version = _utilities.get_env('LINODE_API_VERSION')
         if api_version is not None:
@@ -105,6 +109,18 @@ class ProviderArgs:
             url = _utilities.get_env('LINODE_URL')
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="apiCaPath")
+    def api_ca_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a Linode API CA file to trust.
+        """
+        return pulumi.get(self, "api_ca_path")
+
+    @api_ca_path.setter
+    def api_ca_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_ca_path", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -341,6 +357,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_ca_path: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  config_path: Optional[pulumi.Input[str]] = None,
                  config_profile: Optional[pulumi.Input[str]] = None,
@@ -369,6 +386,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_ca_path: The path to a Linode API CA file to trust.
         :param pulumi.Input[str] api_version: The version of Linode API.
         :param pulumi.Input[str] config_path: The path to the Linode config file to use. (default `~/.config/linode`)
         :param pulumi.Input[str] config_profile: The Linode config profile to use. (default `default`)
@@ -417,6 +435,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_ca_path: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  config_path: Optional[pulumi.Input[str]] = None,
                  config_profile: Optional[pulumi.Input[str]] = None,
@@ -445,6 +464,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["api_ca_path"] = api_ca_path
             if api_version is None:
                 api_version = _utilities.get_env('LINODE_API_VERSION')
             __props__.__dict__["api_version"] = api_version
@@ -477,6 +497,14 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="apiCaPath")
+    def api_ca_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to a Linode API CA file to trust.
+        """
+        return pulumi.get(self, "api_ca_path")
 
     @property
     @pulumi.getter(name="apiVersion")

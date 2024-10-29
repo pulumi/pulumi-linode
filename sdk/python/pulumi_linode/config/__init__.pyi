@@ -14,6 +14,11 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
+apiCaPath: Optional[str]
+"""
+The path to a Linode API CA file to trust.
+"""
+
 apiVersion: Optional[str]
 """
 The version of Linode API.

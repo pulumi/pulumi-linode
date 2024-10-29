@@ -32,6 +32,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int? Id;
         /// <summary>
+        /// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
         /// The nodes in the node pool.
         /// </summary>
         public readonly ImmutableArray<Outputs.LkeClusterPoolNode> Nodes;
@@ -39,6 +43,10 @@ namespace Pulumi.Linode.Outputs
         /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.LkeClusterPoolTaint> Taints;
         /// <summary>
         /// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
@@ -54,9 +62,13 @@ namespace Pulumi.Linode.Outputs
 
             int? id,
 
+            ImmutableDictionary<string, string>? labels,
+
             ImmutableArray<Outputs.LkeClusterPoolNode> nodes,
 
             ImmutableArray<string> tags,
+
+            ImmutableArray<Outputs.LkeClusterPoolTaint> taints,
 
             string type)
         {
@@ -64,8 +76,10 @@ namespace Pulumi.Linode.Outputs
             Count = count;
             DiskEncryption = diskEncryption;
             Id = id;
+            Labels = labels;
             Nodes = nodes;
             Tags = tags;
+            Taints = taints;
             Type = type;
         }
     }

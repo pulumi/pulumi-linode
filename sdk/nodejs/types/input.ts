@@ -2246,6 +2246,300 @@ export interface GetLkeClustersLkeClusterControlPlaneArgs {
     highAvailability?: pulumi.Input<boolean>;
 }
 
+export interface GetLkeTypesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetLkeTypesFilterArgs {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetLkeTypesType {
+    /**
+     * The unique ID assigned to this LKE Type.
+     */
+    id: string;
+    /**
+     * The LKE Type's label.
+     */
+    label?: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: inputs.GetLkeTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this LKE Type.
+     */
+    regionPrices?: inputs.GetLkeTypesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: number;
+}
+
+export interface GetLkeTypesTypeArgs {
+    /**
+     * The unique ID assigned to this LKE Type.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The LKE Type's label.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesTypePriceArgs>[]>;
+    /**
+     * A list of region-specific prices for this LKE Type.
+     */
+    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesTypeRegionPriceArgs>[]>;
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: pulumi.Input<number>;
+}
+
+export interface GetLkeTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetLkeTypesTypePriceArgs {
+    hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetLkeTypesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
+export interface GetLkeTypesTypeRegionPriceArgs {
+    hourly: pulumi.Input<number>;
+    id: pulumi.Input<string>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetNbTypesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetNbTypesFilterArgs {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetNbTypesType {
+    /**
+     * The unique ID assigned to this Node Balancer Type.
+     */
+    id: string;
+    /**
+     * The Node Balancer Type's label.
+     */
+    label?: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: inputs.GetNbTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this Node Balancer Type.
+     */
+    regionPrices?: inputs.GetNbTypesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: number;
+}
+
+export interface GetNbTypesTypeArgs {
+    /**
+     * The unique ID assigned to this Node Balancer Type.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The Node Balancer Type's label.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: pulumi.Input<pulumi.Input<inputs.GetNbTypesTypePriceArgs>[]>;
+    /**
+     * A list of region-specific prices for this Node Balancer Type.
+     */
+    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetNbTypesTypeRegionPriceArgs>[]>;
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: pulumi.Input<number>;
+}
+
+export interface GetNbTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetNbTypesTypePriceArgs {
+    hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetNbTypesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
+export interface GetNbTypesTypeRegionPriceArgs {
+    hourly: pulumi.Input<number>;
+    id: pulumi.Input<string>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetNetworkTransferPricesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetNetworkTransferPricesFilterArgs {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetNetworkTransferPricesType {
+    /**
+     * The unique ID assigned to this Network Transfer Price.
+     */
+    id: string;
+    /**
+     * The Network Transfer Price's label.
+     */
+    label?: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: inputs.GetNetworkTransferPricesTypePrice[];
+    /**
+     * A list of region-specific prices for this Network Transfer Price.
+     */
+    regionPrices?: inputs.GetNetworkTransferPricesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: number;
+}
+
+export interface GetNetworkTransferPricesTypeArgs {
+    /**
+     * The unique ID assigned to this Network Transfer Price.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The Network Transfer Price's label.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesTypePriceArgs>[]>;
+    /**
+     * A list of region-specific prices for this Network Transfer Price.
+     */
+    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesTypeRegionPriceArgs>[]>;
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: pulumi.Input<number>;
+}
+
+export interface GetNetworkTransferPricesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetNetworkTransferPricesTypePriceArgs {
+    hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetNetworkTransferPricesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
+export interface GetNetworkTransferPricesTypeRegionPriceArgs {
+    hourly: pulumi.Input<number>;
+    id: pulumi.Input<string>;
+    monthly: pulumi.Input<number>;
+}
+
 export interface GetNodeBalancerFirewall {
     /**
      * When this firewall was created.
@@ -4258,6 +4552,104 @@ export interface GetVlansVlanArgs {
     region?: pulumi.Input<string>;
 }
 
+export interface GetVolumeTypesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetVolumeTypesFilterArgs {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetVolumeTypesType {
+    /**
+     * The unique ID assigned to this Volume Type.
+     */
+    id: string;
+    /**
+     * The Volume Type's label.
+     */
+    label?: string;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: inputs.GetVolumeTypesTypePrice[];
+    /**
+     * A list of region-specific prices for this Volume Type.
+     */
+    regionPrices?: inputs.GetVolumeTypesTypeRegionPrice[];
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: number;
+}
+
+export interface GetVolumeTypesTypeArgs {
+    /**
+     * The unique ID assigned to this Volume Type.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The Volume Type's label.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Cost in US dollars, broken down into hourly and monthly charges.
+     */
+    prices?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesTypePriceArgs>[]>;
+    /**
+     * A list of region-specific prices for this Volume Type.
+     */
+    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesTypeRegionPriceArgs>[]>;
+    /**
+     * The monthly outbound transfer amount, in MB.
+     */
+    transfer?: pulumi.Input<number>;
+}
+
+export interface GetVolumeTypesTypePrice {
+    hourly: number;
+    monthly: number;
+}
+
+export interface GetVolumeTypesTypePriceArgs {
+    hourly: pulumi.Input<number>;
+    monthly: pulumi.Input<number>;
+}
+
+export interface GetVolumeTypesTypeRegionPrice {
+    hourly: number;
+    id: string;
+    monthly: number;
+}
+
+export interface GetVolumeTypesTypeRegionPriceArgs {
+    hourly: pulumi.Input<number>;
+    id: pulumi.Input<string>;
+    monthly: pulumi.Input<number>;
+}
+
 export interface GetVolumesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -4293,6 +4685,10 @@ export interface GetVolumesVolume {
      * When this Volume was created.
      */
     created?: string;
+    /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    encryption?: string;
     /**
      * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      */
@@ -4336,6 +4732,10 @@ export interface GetVolumesVolumeArgs {
      * When this Volume was created.
      */
     created?: pulumi.Input<string>;
+    /**
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     */
+    encryption?: pulumi.Input<string>;
     /**
      * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
      */
@@ -5297,6 +5697,10 @@ export interface LkeClusterPool {
      */
     id?: pulumi.Input<number>;
     /**
+     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The nodes in the node pool.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
@@ -5304,6 +5708,10 @@ export interface LkeClusterPool {
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     */
+    taints?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolTaint>[]>;
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
@@ -5334,6 +5742,21 @@ export interface LkeClusterPoolNode {
      * The status of the node. (`ready`, `notReady`)
      */
     status?: pulumi.Input<string>;
+}
+
+export interface LkeClusterPoolTaint {
+    /**
+     * The Kubernetes taint effect.
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * The Kubernetes taint key.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The Kubernetes taint value.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface LkeNodePoolAutoscaler {
