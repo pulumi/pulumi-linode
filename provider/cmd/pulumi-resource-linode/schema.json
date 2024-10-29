@@ -51,6 +51,10 @@
     },
     "config": {
         "variables": {
+            "apiCaPath": {
+                "type": "string",
+                "description": "The path to a Linode API CA file to trust.\n"
+            },
             "apiVersion": {
                 "type": "string",
                 "description": "The version of Linode API.\n",
@@ -1247,6 +1251,13 @@
                     "type": "integer",
                     "description": "The ID of the node.\n"
                 },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.\n"
+                },
                 "nodes": {
                     "type": "array",
                     "items": {
@@ -1260,6 +1271,13 @@
                         "type": "string"
                     },
                     "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/LkeClusterPoolTaint:LkeClusterPoolTaint"
+                    },
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.\n"
                 },
                 "type": {
                     "type": "string",
@@ -1324,6 +1342,28 @@
                     ]
                 }
             }
+        },
+        "linode:index/LkeClusterPoolTaint:LkeClusterPoolTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "The Kubernetes taint effect.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The Kubernetes taint key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Kubernetes taint value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "effect",
+                "key",
+                "value"
+            ]
         },
         "linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler": {
             "properties": {
@@ -4694,6 +4734,13 @@
                     "type": "string",
                     "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
                 },
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of capabilities of this Linode instance.\n"
+                },
                 "configs": {
                     "type": "array",
                     "items": {
@@ -4804,6 +4851,7 @@
                 "alerts",
                 "backups",
                 "bootConfigLabel",
+                "capabilities",
                 "configs",
                 "disks",
                 "diskEncryption",
@@ -5978,6 +6026,109 @@
                 }
             }
         },
+        "linode:index/getLkeTypesFilter:getLkeTypesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The type of comparison to use for this filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attribute to filter on.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value(s) to be used in the filter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getLkeTypesType:getLkeTypesType": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID assigned to this LKE Type.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The LKE Type's label.\n"
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeTypesTypePrice:getLkeTypesTypePrice"
+                    },
+                    "description": "Cost in US dollars, broken down into hourly and monthly charges.\n"
+                },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getLkeTypesTypeRegionPrice:getLkeTypesTypeRegionPrice"
+                    },
+                    "description": "A list of region-specific prices for this LKE Type.\n"
+                },
+                "transfer": {
+                    "type": "integer",
+                    "description": "The monthly outbound transfer amount, in MB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "prices",
+                "regionPrices",
+                "transfer"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getLkeTypesTypePrice:getLkeTypesTypePrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "monthly"
+            ]
+        },
+        "linode:index/getLkeTypesTypeRegionPrice:getLkeTypesTypeRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
+                "monthly"
+            ]
+        },
         "linode:index/getLkeVersionsVersion:getLkeVersionsVersion": {
             "properties": {
                 "id": {
@@ -5994,6 +6145,212 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "linode:index/getNbTypesFilter:getNbTypesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The type of comparison to use for this filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attribute to filter on.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value(s) to be used in the filter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getNbTypesType:getNbTypesType": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID assigned to this Node Balancer Type.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The Node Balancer Type's label.\n"
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getNbTypesTypePrice:getNbTypesTypePrice"
+                    },
+                    "description": "Cost in US dollars, broken down into hourly and monthly charges.\n"
+                },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getNbTypesTypeRegionPrice:getNbTypesTypeRegionPrice"
+                    },
+                    "description": "A list of region-specific prices for this Node Balancer Type.\n"
+                },
+                "transfer": {
+                    "type": "integer",
+                    "description": "The monthly outbound transfer amount, in MB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "prices",
+                "regionPrices",
+                "transfer"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getNbTypesTypePrice:getNbTypesTypePrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "monthly"
+            ]
+        },
+        "linode:index/getNbTypesTypeRegionPrice:getNbTypesTypeRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
+                "monthly"
+            ]
+        },
+        "linode:index/getNetworkTransferPricesFilter:getNetworkTransferPricesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The type of comparison to use for this filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attribute to filter on.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value(s) to be used in the filter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getNetworkTransferPricesType:getNetworkTransferPricesType": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID assigned to this Network Transfer Price.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The Network Transfer Price's label.\n"
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getNetworkTransferPricesTypePrice:getNetworkTransferPricesTypePrice"
+                    },
+                    "description": "Cost in US dollars, broken down into hourly and monthly charges.\n"
+                },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getNetworkTransferPricesTypeRegionPrice:getNetworkTransferPricesTypeRegionPrice"
+                    },
+                    "description": "A list of region-specific prices for this Network Transfer Price.\n"
+                },
+                "transfer": {
+                    "type": "integer",
+                    "description": "The monthly outbound transfer amount, in MB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "prices",
+                "regionPrices",
+                "transfer"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getNetworkTransferPricesTypePrice:getNetworkTransferPricesTypePrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "monthly"
+            ]
+        },
+        "linode:index/getNetworkTransferPricesTypeRegionPrice:getNetworkTransferPricesTypeRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
+                "monthly"
+            ]
         },
         "linode:index/getNodeBalancerConfigNodeStatus:getNodeBalancerConfigNodeStatus": {
             "properties": {
@@ -7816,6 +8173,109 @@
                 }
             }
         },
+        "linode:index/getVolumeTypesFilter:getVolumeTypesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The type of comparison to use for this filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attribute to filter on.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value(s) to be used in the filter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getVolumeTypesType:getVolumeTypesType": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID assigned to this Volume Type.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The Volume Type's label.\n"
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getVolumeTypesTypePrice:getVolumeTypesTypePrice"
+                    },
+                    "description": "Cost in US dollars, broken down into hourly and monthly charges.\n"
+                },
+                "regionPrices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getVolumeTypesTypeRegionPrice:getVolumeTypesTypeRegionPrice"
+                    },
+                    "description": "A list of region-specific prices for this Volume Type.\n"
+                },
+                "transfer": {
+                    "type": "integer",
+                    "description": "The monthly outbound transfer amount, in MB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "prices",
+                "regionPrices",
+                "transfer"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "linode:index/getVolumeTypesTypePrice:getVolumeTypesTypePrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "monthly"
+            ]
+        },
+        "linode:index/getVolumeTypesTypeRegionPrice:getVolumeTypesTypeRegionPrice": {
+            "properties": {
+                "hourly": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "monthly": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hourly",
+                "id",
+                "monthly"
+            ]
+        },
         "linode:index/getVolumesFilter:getVolumesFilter": {
             "properties": {
                 "matchBy": {
@@ -7845,6 +8305,10 @@
                 "created": {
                     "type": "string",
                     "description": "When this Volume was created.\n"
+                },
+                "encryption": {
+                    "type": "string",
+                    "description": "Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.\n"
                 },
                 "filesystemPath": {
                     "type": "string",
@@ -7889,6 +8353,7 @@
             "type": "object",
             "required": [
                 "created",
+                "encryption",
                 "filesystemPath",
                 "id",
                 "label",
@@ -8229,6 +8694,10 @@
     "provider": {
         "description": "The provider type for the linode package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
+            "apiCaPath": {
+                "type": "string",
+                "description": "The path to a Linode API CA file to trust.\n"
+            },
             "apiVersion": {
                 "type": "string",
                 "description": "The version of Linode API.\n"
@@ -8308,6 +8777,10 @@
             }
         },
         "inputProperties": {
+            "apiCaPath": {
+                "type": "string",
+                "description": "The path to a Linode API CA file to trust.\n"
+            },
             "apiVersion": {
                 "type": "string",
                 "description": "The version of Linode API.\n",
@@ -10125,6 +10598,13 @@
                     "type": "boolean",
                     "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n"
                 },
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of capabilities of this Linode instance.\n"
+                },
                 "configs": {
                     "type": "array",
                     "items": {
@@ -10288,6 +10768,7 @@
                 "backupsEnabled",
                 "bootConfigLabel",
                 "booted",
+                "capabilities",
                 "configs",
                 "disks",
                 "diskEncryption",
@@ -10514,6 +10995,13 @@
                     "booted": {
                         "type": "boolean",
                         "description": "If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.\n"
+                    },
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of capabilities of this Linode instance.\n"
                     },
                     "configs": {
                         "type": "array",
@@ -13514,6 +14002,10 @@
         "linode:index/volume:Volume": {
             "description": "Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.\n\nFor more information, see [How to Use Block Storage with Your Linode](https://www.linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-volume).\n\n## Example Usage\n\nThe following example shows how one might use this resource to configure a Block Storage Volume attached to a Linode Instance.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobaz = new linode.Instance(\"foobaz\", {\n    rootPass: \"3X4mp13\",\n    type: \"g6-nanode-1\",\n    region: \"us-west\",\n    tags: [\"foobaz\"],\n});\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"foo-volume\",\n    region: foobaz.region,\n    linodeId: foobaz.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobaz = linode.Instance(\"foobaz\",\n    root_pass=\"3X4mp13\",\n    type=\"g6-nanode-1\",\n    region=\"us-west\",\n    tags=[\"foobaz\"])\nfoobar = linode.Volume(\"foobar\",\n    label=\"foo-volume\",\n    region=foobaz.region,\n    linode_id=foobaz.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobaz = new Linode.Instance(\"foobaz\", new()\n    {\n        RootPass = \"3X4mp13\",\n        Type = \"g6-nanode-1\",\n        Region = \"us-west\",\n        Tags = new[]\n        {\n            \"foobaz\",\n        },\n    });\n\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"foo-volume\",\n        Region = foobaz.Region,\n        LinodeId = foobaz.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobaz, err := linode.NewInstance(ctx, \"foobaz\", \u0026linode.InstanceArgs{\n\t\t\tRootPass: pulumi.String(\"3X4mp13\"),\n\t\t\tType:     pulumi.String(\"g6-nanode-1\"),\n\t\t\tRegion:   pulumi.String(\"us-west\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobaz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:    pulumi.String(\"foo-volume\"),\n\t\t\tRegion:   foobaz.Region,\n\t\t\tLinodeId: foobaz.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobaz = new Instance(\"foobaz\", InstanceArgs.builder()\n            .rootPass(\"3X4mp13\")\n            .type(\"g6-nanode-1\")\n            .region(\"us-west\")\n            .tags(\"foobaz\")\n            .build());\n\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()\n            .label(\"foo-volume\")\n            .region(foobaz.region())\n            .linodeId(foobaz.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobaz:\n    type: linode:Instance\n    properties:\n      rootPass: 3X4mp13\n      type: g6-nanode-1\n      region: us-west\n      tags:\n        - foobaz\n  foobar:\n    type: linode:Volume\n    properties:\n      label: foo-volume\n      region: ${foobaz.region}\n      linodeId: ${foobaz.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nVolumes can also be attached using the Linode Instance config device map.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foo = new linode.Instance(\"foo\", {\n    region: \"us-east\",\n    type: \"g6-nanode-1\",\n});\nconst fooInstanceConfig = new linode.index.InstanceConfig(\"foo\", {\n    linodeId: foo.id,\n    label: \"boot-existing-volume\",\n    kernel: \"linode/grub2\",\n    devices: [{\n        deviceName: \"sda\",\n        volumeId: 12345,\n    }],\n    booted: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoo = linode.Instance(\"foo\",\n    region=\"us-east\",\n    type=\"g6-nanode-1\")\nfoo_instance_config = linode.index.InstanceConfig(\"foo\",\n    linode_id=foo.id,\n    label=boot-existing-volume,\n    kernel=linode/grub2,\n    devices=[{\n        deviceName: sda,\n        volumeId: 12345,\n    }],\n    booted=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Linode.Instance(\"foo\", new()\n    {\n        Region = \"us-east\",\n        Type = \"g6-nanode-1\",\n    });\n\n    var fooInstanceConfig = new Linode.Index.InstanceConfig(\"foo\", new()\n    {\n        LinodeId = foo.Id,\n        Label = \"boot-existing-volume\",\n        Kernel = \"linode/grub2\",\n        Devices = new[]\n        {\n            \n            {\n                { \"deviceName\", \"sda\" },\n                { \"volumeId\", 12345 },\n            },\n        },\n        Booted = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := linode.NewInstance(ctx, \"foo\", \u0026linode.InstanceArgs{\n\t\t\tRegion: pulumi.String(\"us-east\"),\n\t\t\tType:   pulumi.String(\"g6-nanode-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewInstanceConfig(ctx, \"foo\", \u0026linode.InstanceConfigArgs{\n\t\t\tLinodeId: foo.ID(),\n\t\t\tLabel:    \"boot-existing-volume\",\n\t\t\tKernel:   \"linode/grub2\",\n\t\t\tDevices: []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"deviceName\": \"sda\",\n\t\t\t\t\t\"volumeId\":   12345,\n\t\t\t\t},\n\t\t\t},\n\t\t\tBooted: true,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Instance;\nimport com.pulumi.linode.InstanceArgs;\nimport com.pulumi.linode.instanceConfig;\nimport com.pulumi.linode.InstanceConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Instance(\"foo\", InstanceArgs.builder()\n            .region(\"us-east\")\n            .type(\"g6-nanode-1\")\n            .build());\n\n        var fooInstanceConfig = new InstanceConfig(\"fooInstanceConfig\", InstanceConfigArgs.builder()\n            .linodeId(foo.id())\n            .label(\"boot-existing-volume\")\n            .kernel(\"linode/grub2\")\n            .devices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .booted(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: linode:Instance\n    properties:\n      region: us-east\n      type: g6-nanode-1\n  fooInstanceConfig:\n    type: linode:instanceConfig\n    name: foo\n    properties:\n      linodeId: ${foo.id}\n      label: boot-existing-volume\n      kernel: linode/grub2\n      devices:\n        - deviceName: sda\n          volumeId: 12345\n      booted: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nVolumes may also be cloned from existing volumes.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.Volume(\"foobar\", {\n    label: \"my-cloned-volume\",\n    sourceVolumeId: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.Volume(\"foobar\",\n    label=\"my-cloned-volume\",\n    source_volume_id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.Volume(\"foobar\", new()\n    {\n        Label = \"my-cloned-volume\",\n        SourceVolumeId = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewVolume(ctx, \"foobar\", \u0026linode.VolumeArgs{\n\t\t\tLabel:          pulumi.String(\"my-cloned-volume\"),\n\t\t\tSourceVolumeId: pulumi.Int(12345),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.Volume;\nimport com.pulumi.linode.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Volume(\"foobar\", VolumeArgs.builder()\n            .label(\"my-cloned-volume\")\n            .sourceVolumeId(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:Volume\n    properties:\n      label: my-cloned-volume\n      sourceVolumeId: 12345 # Region is optional when cloning a volume\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes Volumes can be imported using the Linode Volume `id`, e.g.\n\n```sh\n$ pulumi import linode:index/volume:Volume myvolume 1234567\n```\n\n",
             "properties": {
+                "encryption": {
+                    "type": "string",
+                    "description": "Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.\n"
+                },
                 "filesystemPath": {
                     "type": "string",
                     "description": "The full filesystem path for the Volume based on the Volume's label. The path is \"/dev/disk/by-id/scsi-0Linode_Volume_\" + the Volume label\n"
@@ -13554,6 +14046,7 @@
                 }
             },
             "required": [
+                "encryption",
                 "filesystemPath",
                 "label",
                 "linodeId",
@@ -13563,6 +14056,10 @@
                 "tags"
             ],
             "inputProperties": {
+                "encryption": {
+                    "type": "string",
+                    "description": "Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.\n"
+                },
                 "label": {
                     "type": "string",
                     "description": "The label of the Linode Volume\n"
@@ -13600,6 +14097,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Volume resources.\n",
                 "properties": {
+                    "encryption": {
+                        "type": "string",
+                        "description": "Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.\n"
+                    },
                     "filesystemPath": {
                         "type": "string",
                         "description": "The full filesystem path for the Volume based on the Volume's label. The path is \"/dev/disk/by-id/scsi-0Linode_Volume_\" + the Volume label\n"
@@ -16276,6 +16777,62 @@
                 "type": "object"
             }
         },
+        "linode:index/getLkeTypes:getLkeTypes": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getLkeTypes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeTypesFilter:getLkeTypesFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeTypesType:getLkeTypesType"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLkeTypes.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeTypesFilter:getLkeTypesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeTypesType:getLkeTypesType"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "linode:index/getLkeVersions:getLkeVersions": {
             "description": "Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersions(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions();\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: linode:getLkeVersions\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -16295,6 +16852,118 @@
                 "required": [
                     "id",
                     "versions"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getNbTypes:getNbTypes": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getNbTypes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNbTypesFilter:getNbTypesFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNbTypesType:getNbTypesType"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNbTypes.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getNbTypesFilter:getNbTypesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getNbTypesType:getNbTypesType"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkTransferPrices.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkTransferPricesFilter:getNetworkTransferPricesFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkTransferPricesType:getNetworkTransferPricesType"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkTransferPrices.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkTransferPricesFilter:getNetworkTransferPricesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkTransferPricesType:getNetworkTransferPricesType"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
                 ],
                 "type": "object"
             }
@@ -17757,6 +18426,10 @@
                         "description": "When this Volume was created.\n",
                         "type": "string"
                     },
+                    "encryption": {
+                        "description": "Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.\n",
+                        "type": "string"
+                    },
                     "filesystemPath": {
                         "description": "The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.\n",
                         "type": "string"
@@ -17799,6 +18472,7 @@
                 },
                 "required": [
                     "created",
+                    "encryption",
                     "filesystemPath",
                     "id",
                     "label",
@@ -17808,6 +18482,62 @@
                     "status",
                     "tags",
                     "updated"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getVolumeTypes:getVolumeTypes": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getVolumeTypes.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumeTypesFilter:getVolumeTypesFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumeTypesType:getVolumeTypesType"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVolumeTypes.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumeTypesFilter:getVolumeTypesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getVolumeTypesType:getVolumeTypesType"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
                 ],
                 "type": "object"
             }
