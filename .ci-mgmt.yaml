@@ -4,6 +4,7 @@ env:
   LINODE_TOKEN: ${{ secrets.LINODE_API_TOKEN }}
 makeTemplate: bridged
 pulumiConvert: 1
+registryDocs: true
 plugins:
   - name: std
     version: "1.6.2"
