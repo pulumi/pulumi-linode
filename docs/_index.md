@@ -1,4 +1,5 @@
 ---
+# *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
 title: Linode Provider
 meta_desc: Provides an overview on how to configure the Pulumi Linode provider.
 layout: package
@@ -311,6 +312,10 @@ This section outlines commonly used provider configuration options.
 * `apiVersion` (Optional) The version of the Linode API to use. (default `v4`)
 
   The Linode API version can also be specified using the `LINODE_API_VERSION` environment variable.
+
+* `apiCaPath` (Optional) The path to a CA file to trust when making API requests.
+
+  The Linode API CA file path can also be specified using the `LINODE_CA` environment variable.
 
 * `objAccessKey` - (Optional) The access key to be used in [linode.ObjectStorageBucket](https://www.terraform.io/docs/resources/object_storage_bucket.md) and [linode.ObjectStorageObject](https://www.terraform.io/docs/resources/object_storage_object.md).
 
