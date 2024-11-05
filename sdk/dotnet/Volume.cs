@@ -49,58 +49,6 @@ namespace Pulumi.Linode
     /// 
     /// Volumes can also be attached using the Linode Instance config device map.
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new Linode.Instance("foo", new()
-    ///     {
-    ///         Region = "us-east",
-    ///         Type = "g6-nanode-1",
-    ///     });
-    /// 
-    ///     var fooInstanceConfig = new Linode.Index.InstanceConfig("foo", new()
-    ///     {
-    ///         LinodeId = foo.Id,
-    ///         Label = "boot-existing-volume",
-    ///         Kernel = "linode/grub2",
-    ///         Devices = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "deviceName", "sda" },
-    ///                 { "volumeId", 12345 },
-    ///             },
-    ///         },
-    ///         Booted = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Volumes may also be cloned from existing volumes.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new Linode.Volume("foobar", new()
-    ///     {
-    ///         Label = "my-cloned-volume",
-    ///         SourceVolumeId = 12345,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Linodes Volumes can be imported using the Linode Volume `id`, e.g.

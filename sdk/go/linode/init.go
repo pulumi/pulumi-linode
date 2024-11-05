@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Image{}
 	case "linode:index/instance:Instance":
 		r = &Instance{}
+	case "linode:index/instanceConfig:InstanceConfig":
+		r = &InstanceConfig{}
 	case "linode:index/instanceDisk:InstanceDisk":
 		r = &InstanceDisk{}
 	case "linode:index/instanceIp:InstanceIp":
@@ -164,6 +166,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/instanceConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

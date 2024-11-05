@@ -91,6 +91,7 @@
         "image.ts",
         "index.ts",
         "instance.ts",
+        "instanceConfig.ts",
         "instanceDisk.ts",
         "instanceIp.ts",
         "instanceSharedIps.ts",

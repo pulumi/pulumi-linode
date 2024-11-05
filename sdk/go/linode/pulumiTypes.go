@@ -1657,7 +1657,7 @@ func (o InstanceBackupsSchedulePtrOutput) Window() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type InstanceConfig struct {
+type InstanceConfigType struct {
 	// Optional field for arbitrary User comments on this Config.
 	Comments *string `pulumi:"comments"`
 	// Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
@@ -1682,18 +1682,18 @@ type InstanceConfig struct {
 	VirtMode *string `pulumi:"virtMode"`
 }
 
-// InstanceConfigInput is an input type that accepts InstanceConfigArgs and InstanceConfigOutput values.
-// You can construct a concrete instance of `InstanceConfigInput` via:
+// InstanceConfigTypeInput is an input type that accepts InstanceConfigTypeArgs and InstanceConfigTypeOutput values.
+// You can construct a concrete instance of `InstanceConfigTypeInput` via:
 //
-//	InstanceConfigArgs{...}
-type InstanceConfigInput interface {
+//	InstanceConfigTypeArgs{...}
+type InstanceConfigTypeInput interface {
 	pulumi.Input
 
-	ToInstanceConfigOutput() InstanceConfigOutput
-	ToInstanceConfigOutputWithContext(context.Context) InstanceConfigOutput
+	ToInstanceConfigTypeOutput() InstanceConfigTypeOutput
+	ToInstanceConfigTypeOutputWithContext(context.Context) InstanceConfigTypeOutput
 }
 
-type InstanceConfigArgs struct {
+type InstanceConfigTypeArgs struct {
 	// Optional field for arbitrary User comments on this Config.
 	Comments pulumi.StringPtrInput `pulumi:"comments"`
 	// Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
@@ -1718,134 +1718,249 @@ type InstanceConfigArgs struct {
 	VirtMode pulumi.StringPtrInput `pulumi:"virtMode"`
 }
 
-func (InstanceConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceConfig)(nil)).Elem()
+func (InstanceConfigTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigType)(nil)).Elem()
 }
 
-func (i InstanceConfigArgs) ToInstanceConfigOutput() InstanceConfigOutput {
-	return i.ToInstanceConfigOutputWithContext(context.Background())
+func (i InstanceConfigTypeArgs) ToInstanceConfigTypeOutput() InstanceConfigTypeOutput {
+	return i.ToInstanceConfigTypeOutputWithContext(context.Background())
 }
 
-func (i InstanceConfigArgs) ToInstanceConfigOutputWithContext(ctx context.Context) InstanceConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigOutput)
+func (i InstanceConfigTypeArgs) ToInstanceConfigTypeOutputWithContext(ctx context.Context) InstanceConfigTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigTypeOutput)
 }
 
-// InstanceConfigArrayInput is an input type that accepts InstanceConfigArray and InstanceConfigArrayOutput values.
-// You can construct a concrete instance of `InstanceConfigArrayInput` via:
+// InstanceConfigTypeArrayInput is an input type that accepts InstanceConfigTypeArray and InstanceConfigTypeArrayOutput values.
+// You can construct a concrete instance of `InstanceConfigTypeArrayInput` via:
 //
-//	InstanceConfigArray{ InstanceConfigArgs{...} }
-type InstanceConfigArrayInput interface {
+//	InstanceConfigTypeArray{ InstanceConfigTypeArgs{...} }
+type InstanceConfigTypeArrayInput interface {
 	pulumi.Input
 
-	ToInstanceConfigArrayOutput() InstanceConfigArrayOutput
-	ToInstanceConfigArrayOutputWithContext(context.Context) InstanceConfigArrayOutput
+	ToInstanceConfigTypeArrayOutput() InstanceConfigTypeArrayOutput
+	ToInstanceConfigTypeArrayOutputWithContext(context.Context) InstanceConfigTypeArrayOutput
 }
 
-type InstanceConfigArray []InstanceConfigInput
+type InstanceConfigTypeArray []InstanceConfigTypeInput
 
-func (InstanceConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceConfig)(nil)).Elem()
+func (InstanceConfigTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigType)(nil)).Elem()
 }
 
-func (i InstanceConfigArray) ToInstanceConfigArrayOutput() InstanceConfigArrayOutput {
-	return i.ToInstanceConfigArrayOutputWithContext(context.Background())
+func (i InstanceConfigTypeArray) ToInstanceConfigTypeArrayOutput() InstanceConfigTypeArrayOutput {
+	return i.ToInstanceConfigTypeArrayOutputWithContext(context.Background())
 }
 
-func (i InstanceConfigArray) ToInstanceConfigArrayOutputWithContext(ctx context.Context) InstanceConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigArrayOutput)
+func (i InstanceConfigTypeArray) ToInstanceConfigTypeArrayOutputWithContext(ctx context.Context) InstanceConfigTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigTypeArrayOutput)
 }
 
-type InstanceConfigOutput struct{ *pulumi.OutputState }
+type InstanceConfigTypeOutput struct{ *pulumi.OutputState }
 
-func (InstanceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceConfig)(nil)).Elem()
+func (InstanceConfigTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigType)(nil)).Elem()
 }
 
-func (o InstanceConfigOutput) ToInstanceConfigOutput() InstanceConfigOutput {
+func (o InstanceConfigTypeOutput) ToInstanceConfigTypeOutput() InstanceConfigTypeOutput {
 	return o
 }
 
-func (o InstanceConfigOutput) ToInstanceConfigOutputWithContext(ctx context.Context) InstanceConfigOutput {
+func (o InstanceConfigTypeOutput) ToInstanceConfigTypeOutputWithContext(ctx context.Context) InstanceConfigTypeOutput {
 	return o
 }
 
 // Optional field for arbitrary User comments on this Config.
-func (o InstanceConfigOutput) Comments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *string { return v.Comments }).(pulumi.StringPtrOutput)
+func (o InstanceConfigTypeOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *string { return v.Comments }).(pulumi.StringPtrOutput)
 }
 
 // Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
-func (o InstanceConfigOutput) Devices() InstanceConfigDevicesPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *InstanceConfigDevices { return v.Devices }).(InstanceConfigDevicesPtrOutput)
+func (o InstanceConfigTypeOutput) Devices() InstanceConfigDevicesPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *InstanceConfigDevices { return v.Devices }).(InstanceConfigDevicesPtrOutput)
 }
 
 // Helpers enabled when booting to this Linode Config.
-func (o InstanceConfigOutput) Helpers() InstanceConfigHelpersPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
+func (o InstanceConfigTypeOutput) Helpers() InstanceConfigHelpersPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *InstanceConfigHelpers { return v.Helpers }).(InstanceConfigHelpersPtrOutput)
 }
 
 // The ID of the Placement Group.
-func (o InstanceConfigOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
+func (o InstanceConfigTypeOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // An array of Network Interfaces for this Linode’s Configuration Profile.
-func (o InstanceConfigOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
-	return o.ApplyT(func(v InstanceConfig) []InstanceConfigInterface { return v.Interfaces }).(InstanceConfigInterfaceArrayOutput)
+func (o InstanceConfigTypeOutput) Interfaces() InstanceConfigInterfaceArrayOutput {
+	return o.ApplyT(func(v InstanceConfigType) []InstanceConfigInterface { return v.Interfaces }).(InstanceConfigInterfaceArrayOutput)
 }
 
 // A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
-func (o InstanceConfigOutput) Kernel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *string { return v.Kernel }).(pulumi.StringPtrOutput)
+func (o InstanceConfigTypeOutput) Kernel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
 
 // The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-func (o InstanceConfigOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceConfig) string { return v.Label }).(pulumi.StringOutput)
+func (o InstanceConfigTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigType) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // Defaults to the total RAM of the Linode
-func (o InstanceConfigOutput) MemoryLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
+func (o InstanceConfigTypeOutput) MemoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *int { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
 
 // The root device to boot. The corresponding disk must be attached.
-func (o InstanceConfigOutput) RootDevice() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *string { return v.RootDevice }).(pulumi.StringPtrOutput)
+func (o InstanceConfigTypeOutput) RootDevice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *string { return v.RootDevice }).(pulumi.StringPtrOutput)
 }
 
 // Defines the state of your Linode after booting. Defaults to default.
-func (o InstanceConfigOutput) RunLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *string { return v.RunLevel }).(pulumi.StringPtrOutput)
+func (o InstanceConfigTypeOutput) RunLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *string { return v.RunLevel }).(pulumi.StringPtrOutput)
 }
 
 // Controls the virtualization mode. Defaults to paravirt.
-func (o InstanceConfigOutput) VirtMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *string { return v.VirtMode }).(pulumi.StringPtrOutput)
+func (o InstanceConfigTypeOutput) VirtMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfigType) *string { return v.VirtMode }).(pulumi.StringPtrOutput)
 }
 
-type InstanceConfigArrayOutput struct{ *pulumi.OutputState }
+type InstanceConfigTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceConfig)(nil)).Elem()
+func (InstanceConfigTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigType)(nil)).Elem()
 }
 
-func (o InstanceConfigArrayOutput) ToInstanceConfigArrayOutput() InstanceConfigArrayOutput {
+func (o InstanceConfigTypeArrayOutput) ToInstanceConfigTypeArrayOutput() InstanceConfigTypeArrayOutput {
 	return o
 }
 
-func (o InstanceConfigArrayOutput) ToInstanceConfigArrayOutputWithContext(ctx context.Context) InstanceConfigArrayOutput {
+func (o InstanceConfigTypeArrayOutput) ToInstanceConfigTypeArrayOutputWithContext(ctx context.Context) InstanceConfigTypeArrayOutput {
 	return o
 }
 
-func (o InstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfig {
-		return vs[0].([]InstanceConfig)[vs[1].(int)]
-	}).(InstanceConfigOutput)
+func (o InstanceConfigTypeArrayOutput) Index(i pulumi.IntInput) InstanceConfigTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigType {
+		return vs[0].([]InstanceConfigType)[vs[1].(int)]
+	}).(InstanceConfigTypeOutput)
+}
+
+type InstanceConfigDevice struct {
+	// The Disk ID to map to this disk slot
+	DeviceName string `pulumi:"deviceName"`
+	// The Disk ID to map to this disk slot
+	DiskId *int `pulumi:"diskId"`
+	// The Block Storage volume ID to map to this disk slot
+	VolumeId *int `pulumi:"volumeId"`
+}
+
+// InstanceConfigDeviceInput is an input type that accepts InstanceConfigDeviceArgs and InstanceConfigDeviceOutput values.
+// You can construct a concrete instance of `InstanceConfigDeviceInput` via:
+//
+//	InstanceConfigDeviceArgs{...}
+type InstanceConfigDeviceInput interface {
+	pulumi.Input
+
+	ToInstanceConfigDeviceOutput() InstanceConfigDeviceOutput
+	ToInstanceConfigDeviceOutputWithContext(context.Context) InstanceConfigDeviceOutput
+}
+
+type InstanceConfigDeviceArgs struct {
+	// The Disk ID to map to this disk slot
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The Disk ID to map to this disk slot
+	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
+	// The Block Storage volume ID to map to this disk slot
+	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
+}
+
+func (InstanceConfigDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigDevice)(nil)).Elem()
+}
+
+func (i InstanceConfigDeviceArgs) ToInstanceConfigDeviceOutput() InstanceConfigDeviceOutput {
+	return i.ToInstanceConfigDeviceOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigDeviceArgs) ToInstanceConfigDeviceOutputWithContext(ctx context.Context) InstanceConfigDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDeviceOutput)
+}
+
+// InstanceConfigDeviceArrayInput is an input type that accepts InstanceConfigDeviceArray and InstanceConfigDeviceArrayOutput values.
+// You can construct a concrete instance of `InstanceConfigDeviceArrayInput` via:
+//
+//	InstanceConfigDeviceArray{ InstanceConfigDeviceArgs{...} }
+type InstanceConfigDeviceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceConfigDeviceArrayOutput() InstanceConfigDeviceArrayOutput
+	ToInstanceConfigDeviceArrayOutputWithContext(context.Context) InstanceConfigDeviceArrayOutput
+}
+
+type InstanceConfigDeviceArray []InstanceConfigDeviceInput
+
+func (InstanceConfigDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigDevice)(nil)).Elem()
+}
+
+func (i InstanceConfigDeviceArray) ToInstanceConfigDeviceArrayOutput() InstanceConfigDeviceArrayOutput {
+	return i.ToInstanceConfigDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigDeviceArray) ToInstanceConfigDeviceArrayOutputWithContext(ctx context.Context) InstanceConfigDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigDeviceArrayOutput)
+}
+
+type InstanceConfigDeviceOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigDevice)(nil)).Elem()
+}
+
+func (o InstanceConfigDeviceOutput) ToInstanceConfigDeviceOutput() InstanceConfigDeviceOutput {
+	return o
+}
+
+func (o InstanceConfigDeviceOutput) ToInstanceConfigDeviceOutputWithContext(ctx context.Context) InstanceConfigDeviceOutput {
+	return o
+}
+
+// The Disk ID to map to this disk slot
+func (o InstanceConfigDeviceOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigDevice) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The Disk ID to map to this disk slot
+func (o InstanceConfigDeviceOutput) DiskId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigDevice) *int { return v.DiskId }).(pulumi.IntPtrOutput)
+}
+
+// The Block Storage volume ID to map to this disk slot
+func (o InstanceConfigDeviceOutput) VolumeId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConfigDevice) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
+}
+
+type InstanceConfigDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigDevice)(nil)).Elem()
+}
+
+func (o InstanceConfigDeviceArrayOutput) ToInstanceConfigDeviceArrayOutput() InstanceConfigDeviceArrayOutput {
+	return o
+}
+
+func (o InstanceConfigDeviceArrayOutput) ToInstanceConfigDeviceArrayOutputWithContext(ctx context.Context) InstanceConfigDeviceArrayOutput {
+	return o
+}
+
+func (o InstanceConfigDeviceArrayOutput) Index(i pulumi.IntInput) InstanceConfigDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigDevice {
+		return vs[0].([]InstanceConfigDevice)[vs[1].(int)]
+	}).(InstanceConfigDeviceOutput)
 }
 
 type InstanceConfigDevices struct {
-	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+	// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 	Sda *InstanceConfigDevicesSda `pulumi:"sda"`
 	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdb *InstanceConfigDevicesSdb `pulumi:"sdb"`
@@ -1875,7 +1990,7 @@ type InstanceConfigDevicesInput interface {
 }
 
 type InstanceConfigDevicesArgs struct {
-	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+	// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 	Sda InstanceConfigDevicesSdaPtrInput `pulumi:"sda"`
 	// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
 	Sdb InstanceConfigDevicesSdbPtrInput `pulumi:"sdb"`
@@ -1970,7 +2085,7 @@ func (o InstanceConfigDevicesOutput) ToInstanceConfigDevicesPtrOutputWithContext
 	}).(InstanceConfigDevicesPtrOutput)
 }
 
-// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 func (o InstanceConfigDevicesOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevices) *InstanceConfigDevicesSda { return v.Sda }).(InstanceConfigDevicesSdaPtrOutput)
 }
@@ -2034,7 +2149,7 @@ func (o InstanceConfigDevicesPtrOutput) Elem() InstanceConfigDevicesOutput {
 	}).(InstanceConfigDevicesOutput)
 }
 
-// Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
 func (o InstanceConfigDevicesPtrOutput) Sda() InstanceConfigDevicesSdaPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevices) *InstanceConfigDevicesSda {
 		if v == nil {
@@ -2115,11 +2230,9 @@ func (o InstanceConfigDevicesPtrOutput) Sdh() InstanceConfigDevicesSdhPtrOutput 
 }
 
 type InstanceConfigDevicesSda struct {
-	// The Disk ID to map to this disk slot
+	// The Disk ID to map to this `device` slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
-	// The Block Storage volume ID to map to this disk slot
+	// The Volume ID to map to this `device` slot.
 	VolumeId *int `pulumi:"volumeId"`
 }
 
@@ -2135,11 +2248,9 @@ type InstanceConfigDevicesSdaInput interface {
 }
 
 type InstanceConfigDevicesSdaArgs struct {
-	// The Disk ID to map to this disk slot
+	// The Disk ID to map to this `device` slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
-	// The Block Storage volume ID to map to this disk slot
+	// The Volume ID to map to this `device` slot.
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
 
@@ -2220,17 +2331,12 @@ func (o InstanceConfigDevicesSdaOutput) ToInstanceConfigDevicesSdaPtrOutputWithC
 	}).(InstanceConfigDevicesSdaPtrOutput)
 }
 
-// The Disk ID to map to this disk slot
+// The Disk ID to map to this `device` slot
 func (o InstanceConfigDevicesSdaOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdaOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSda) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
-// The Block Storage volume ID to map to this disk slot
+// The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdaOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSda) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
 }
@@ -2259,7 +2365,7 @@ func (o InstanceConfigDevicesSdaPtrOutput) Elem() InstanceConfigDevicesSdaOutput
 	}).(InstanceConfigDevicesSdaOutput)
 }
 
-// The Disk ID to map to this disk slot
+// The Disk ID to map to this `device` slot
 func (o InstanceConfigDevicesSdaPtrOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSda) *int {
 		if v == nil {
@@ -2269,17 +2375,7 @@ func (o InstanceConfigDevicesSdaPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdaPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSda) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Block Storage volume ID to map to this disk slot
+// The Volume ID to map to this `device` slot.
 func (o InstanceConfigDevicesSdaPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSda) *int {
 		if v == nil {
@@ -2292,8 +2388,6 @@ func (o InstanceConfigDevicesSdaPtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSdb struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -2312,8 +2406,6 @@ type InstanceConfigDevicesSdbInput interface {
 type InstanceConfigDevicesSdbArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -2400,11 +2492,6 @@ func (o InstanceConfigDevicesSdbOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdbOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdb) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdbOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdb) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -2444,16 +2531,6 @@ func (o InstanceConfigDevicesSdbPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdbPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdbPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdb) *int {
@@ -2467,8 +2544,6 @@ func (o InstanceConfigDevicesSdbPtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSdc struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -2487,8 +2562,6 @@ type InstanceConfigDevicesSdcInput interface {
 type InstanceConfigDevicesSdcArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -2575,11 +2648,6 @@ func (o InstanceConfigDevicesSdcOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdcOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdc) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdcOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdc) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -2619,16 +2687,6 @@ func (o InstanceConfigDevicesSdcPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdcPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdcPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdc) *int {
@@ -2642,8 +2700,6 @@ func (o InstanceConfigDevicesSdcPtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSdd struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -2662,8 +2718,6 @@ type InstanceConfigDevicesSddInput interface {
 type InstanceConfigDevicesSddArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -2750,11 +2804,6 @@ func (o InstanceConfigDevicesSddOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSddOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdd) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSddOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdd) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -2794,16 +2843,6 @@ func (o InstanceConfigDevicesSddPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSddPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdd) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSddPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdd) *int {
@@ -2817,8 +2856,6 @@ func (o InstanceConfigDevicesSddPtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSde struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -2837,8 +2874,6 @@ type InstanceConfigDevicesSdeInput interface {
 type InstanceConfigDevicesSdeArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -2925,11 +2960,6 @@ func (o InstanceConfigDevicesSdeOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdeOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSde) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdeOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSde) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -2969,16 +2999,6 @@ func (o InstanceConfigDevicesSdePtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdePtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSde) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdePtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSde) *int {
@@ -2992,8 +3012,6 @@ func (o InstanceConfigDevicesSdePtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSdf struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -3012,8 +3030,6 @@ type InstanceConfigDevicesSdfInput interface {
 type InstanceConfigDevicesSdfArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -3100,11 +3116,6 @@ func (o InstanceConfigDevicesSdfOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdfOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdf) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdfOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdf) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -3144,16 +3155,6 @@ func (o InstanceConfigDevicesSdfPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdfPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdf) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdfPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdf) *int {
@@ -3167,8 +3168,6 @@ func (o InstanceConfigDevicesSdfPtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSdg struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -3187,8 +3186,6 @@ type InstanceConfigDevicesSdgInput interface {
 type InstanceConfigDevicesSdgArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -3275,11 +3272,6 @@ func (o InstanceConfigDevicesSdgOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdgOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdg) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdgOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdg) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -3319,16 +3311,6 @@ func (o InstanceConfigDevicesSdgPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdgPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdg) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdgPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdg) *int {
@@ -3342,8 +3324,6 @@ func (o InstanceConfigDevicesSdgPtrOutput) VolumeId() pulumi.IntPtrOutput {
 type InstanceConfigDevicesSdh struct {
 	// The Disk ID to map to this disk slot
 	DiskId *int `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel *string `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId *int `pulumi:"volumeId"`
 }
@@ -3362,8 +3342,6 @@ type InstanceConfigDevicesSdhInput interface {
 type InstanceConfigDevicesSdhArgs struct {
 	// The Disk ID to map to this disk slot
 	DiskId pulumi.IntPtrInput `pulumi:"diskId"`
-	// The `label` of the `disk` to map to this `device` slot.
-	DiskLabel pulumi.StringPtrInput `pulumi:"diskLabel"`
 	// The Block Storage volume ID to map to this disk slot
 	VolumeId pulumi.IntPtrInput `pulumi:"volumeId"`
 }
@@ -3450,11 +3428,6 @@ func (o InstanceConfigDevicesSdhOutput) DiskId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.DiskId }).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdhOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfigDevicesSdh) *string { return v.DiskLabel }).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdhOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigDevicesSdh) *int { return v.VolumeId }).(pulumi.IntPtrOutput)
@@ -3494,16 +3467,6 @@ func (o InstanceConfigDevicesSdhPtrOutput) DiskId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The `label` of the `disk` to map to this `device` slot.
-func (o InstanceConfigDevicesSdhPtrOutput) DiskLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceConfigDevicesSdh) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskLabel
-	}).(pulumi.StringPtrOutput)
-}
-
 // The Block Storage volume ID to map to this disk slot
 func (o InstanceConfigDevicesSdhPtrOutput) VolumeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceConfigDevicesSdh) *int {
@@ -3512,6 +3475,139 @@ func (o InstanceConfigDevicesSdhPtrOutput) VolumeId() pulumi.IntPtrOutput {
 		}
 		return v.VolumeId
 	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceConfigHelper struct {
+	// Populates the /dev directory early during boot without udev. (default `true`)
+	DevtmpfsAutomount *bool `pulumi:"devtmpfsAutomount"`
+	// Helps maintain correct inittab/upstart console device. (default `true`)
+	Distro *bool `pulumi:"distro"`
+	// Creates a modules dependency file for the Kernel you run. (default `true`)
+	ModulesDep *bool `pulumi:"modulesDep"`
+	// Automatically configures static networking. (default `true`)
+	Network *bool `pulumi:"network"`
+	// Disables updatedb cron job to avoid disk thrashing. (default `true`)
+	UpdatedbDisabled *bool `pulumi:"updatedbDisabled"`
+}
+
+// InstanceConfigHelperInput is an input type that accepts InstanceConfigHelperArgs and InstanceConfigHelperOutput values.
+// You can construct a concrete instance of `InstanceConfigHelperInput` via:
+//
+//	InstanceConfigHelperArgs{...}
+type InstanceConfigHelperInput interface {
+	pulumi.Input
+
+	ToInstanceConfigHelperOutput() InstanceConfigHelperOutput
+	ToInstanceConfigHelperOutputWithContext(context.Context) InstanceConfigHelperOutput
+}
+
+type InstanceConfigHelperArgs struct {
+	// Populates the /dev directory early during boot without udev. (default `true`)
+	DevtmpfsAutomount pulumi.BoolPtrInput `pulumi:"devtmpfsAutomount"`
+	// Helps maintain correct inittab/upstart console device. (default `true`)
+	Distro pulumi.BoolPtrInput `pulumi:"distro"`
+	// Creates a modules dependency file for the Kernel you run. (default `true`)
+	ModulesDep pulumi.BoolPtrInput `pulumi:"modulesDep"`
+	// Automatically configures static networking. (default `true`)
+	Network pulumi.BoolPtrInput `pulumi:"network"`
+	// Disables updatedb cron job to avoid disk thrashing. (default `true`)
+	UpdatedbDisabled pulumi.BoolPtrInput `pulumi:"updatedbDisabled"`
+}
+
+func (InstanceConfigHelperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigHelper)(nil)).Elem()
+}
+
+func (i InstanceConfigHelperArgs) ToInstanceConfigHelperOutput() InstanceConfigHelperOutput {
+	return i.ToInstanceConfigHelperOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigHelperArgs) ToInstanceConfigHelperOutputWithContext(ctx context.Context) InstanceConfigHelperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigHelperOutput)
+}
+
+// InstanceConfigHelperArrayInput is an input type that accepts InstanceConfigHelperArray and InstanceConfigHelperArrayOutput values.
+// You can construct a concrete instance of `InstanceConfigHelperArrayInput` via:
+//
+//	InstanceConfigHelperArray{ InstanceConfigHelperArgs{...} }
+type InstanceConfigHelperArrayInput interface {
+	pulumi.Input
+
+	ToInstanceConfigHelperArrayOutput() InstanceConfigHelperArrayOutput
+	ToInstanceConfigHelperArrayOutputWithContext(context.Context) InstanceConfigHelperArrayOutput
+}
+
+type InstanceConfigHelperArray []InstanceConfigHelperInput
+
+func (InstanceConfigHelperArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigHelper)(nil)).Elem()
+}
+
+func (i InstanceConfigHelperArray) ToInstanceConfigHelperArrayOutput() InstanceConfigHelperArrayOutput {
+	return i.ToInstanceConfigHelperArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceConfigHelperArray) ToInstanceConfigHelperArrayOutputWithContext(ctx context.Context) InstanceConfigHelperArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigHelperArrayOutput)
+}
+
+type InstanceConfigHelperOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigHelperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigHelper)(nil)).Elem()
+}
+
+func (o InstanceConfigHelperOutput) ToInstanceConfigHelperOutput() InstanceConfigHelperOutput {
+	return o
+}
+
+func (o InstanceConfigHelperOutput) ToInstanceConfigHelperOutputWithContext(ctx context.Context) InstanceConfigHelperOutput {
+	return o
+}
+
+// Populates the /dev directory early during boot without udev. (default `true`)
+func (o InstanceConfigHelperOutput) DevtmpfsAutomount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigHelper) *bool { return v.DevtmpfsAutomount }).(pulumi.BoolPtrOutput)
+}
+
+// Helps maintain correct inittab/upstart console device. (default `true`)
+func (o InstanceConfigHelperOutput) Distro() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigHelper) *bool { return v.Distro }).(pulumi.BoolPtrOutput)
+}
+
+// Creates a modules dependency file for the Kernel you run. (default `true`)
+func (o InstanceConfigHelperOutput) ModulesDep() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigHelper) *bool { return v.ModulesDep }).(pulumi.BoolPtrOutput)
+}
+
+// Automatically configures static networking. (default `true`)
+func (o InstanceConfigHelperOutput) Network() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigHelper) *bool { return v.Network }).(pulumi.BoolPtrOutput)
+}
+
+// Disables updatedb cron job to avoid disk thrashing. (default `true`)
+func (o InstanceConfigHelperOutput) UpdatedbDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceConfigHelper) *bool { return v.UpdatedbDisabled }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceConfigHelperArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigHelperArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceConfigHelper)(nil)).Elem()
+}
+
+func (o InstanceConfigHelperArrayOutput) ToInstanceConfigHelperArrayOutput() InstanceConfigHelperArrayOutput {
+	return o
+}
+
+func (o InstanceConfigHelperArrayOutput) ToInstanceConfigHelperArrayOutputWithContext(ctx context.Context) InstanceConfigHelperArrayOutput {
+	return o
+}
+
+func (o InstanceConfigHelperArrayOutput) Index(i pulumi.IntInput) InstanceConfigHelperOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigHelper {
+		return vs[0].([]InstanceConfigHelper)[vs[1].(int)]
+	}).(InstanceConfigHelperOutput)
 }
 
 type InstanceConfigHelpers struct {
@@ -3730,13 +3826,13 @@ func (o InstanceConfigHelpersPtrOutput) UpdatedbDisabled() pulumi.BoolPtrOutput 
 type InstanceConfigInterface struct {
 	// Whether this interface is currently booted and active.
 	Active *bool `pulumi:"active"`
-	// The ID of the Placement Group.
+	// The ID of the interface.
 	Id *int `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges []string `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
 	Ipv4 *InstanceConfigInterfaceIpv4 `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
@@ -3768,13 +3864,13 @@ type InstanceConfigInterfaceInput interface {
 type InstanceConfigInterfaceArgs struct {
 	// Whether this interface is currently booted and active.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
-	// The ID of the Placement Group.
+	// The ID of the interface.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
 	Ipv4 InstanceConfigInterfaceIpv4PtrInput `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
@@ -3848,7 +3944,7 @@ func (o InstanceConfigInterfaceOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the Placement Group.
+// The ID of the interface.
 func (o InstanceConfigInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -3863,7 +3959,7 @@ func (o InstanceConfigInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
 func (o InstanceConfigInterfaceOutput) Ipv4() InstanceConfigInterfaceIpv4PtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *InstanceConfigInterfaceIpv4 { return v.Ipv4 }).(InstanceConfigInterfaceIpv4PtrOutput)
 }
@@ -33674,8 +33770,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsPtrInput)(nil)).Elem(), InstanceBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsScheduleInput)(nil)).Elem(), InstanceBackupsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsSchedulePtrInput)(nil)).Elem(), InstanceBackupsScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInput)(nil)).Elem(), InstanceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigArrayInput)(nil)).Elem(), InstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigTypeInput)(nil)).Elem(), InstanceConfigTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigTypeArrayInput)(nil)).Elem(), InstanceConfigTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDeviceInput)(nil)).Elem(), InstanceConfigDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDeviceArrayInput)(nil)).Elem(), InstanceConfigDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDevicesInput)(nil)).Elem(), InstanceConfigDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDevicesPtrInput)(nil)).Elem(), InstanceConfigDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDevicesSdaInput)(nil)).Elem(), InstanceConfigDevicesSdaArgs{})
@@ -33694,6 +33792,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDevicesSdgPtrInput)(nil)).Elem(), InstanceConfigDevicesSdgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDevicesSdhInput)(nil)).Elem(), InstanceConfigDevicesSdhArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDevicesSdhPtrInput)(nil)).Elem(), InstanceConfigDevicesSdhArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigHelperInput)(nil)).Elem(), InstanceConfigHelperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigHelperArrayInput)(nil)).Elem(), InstanceConfigHelperArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigHelpersInput)(nil)).Elem(), InstanceConfigHelpersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigHelpersPtrInput)(nil)).Elem(), InstanceConfigHelpersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInterfaceInput)(nil)).Elem(), InstanceConfigInterfaceArgs{})
@@ -34161,8 +34261,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceBackupsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceBackupsScheduleOutput{})
 	pulumi.RegisterOutputType(InstanceBackupsSchedulePtrOutput{})
-	pulumi.RegisterOutputType(InstanceConfigOutput{})
-	pulumi.RegisterOutputType(InstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(InstanceConfigTypeOutput{})
+	pulumi.RegisterOutputType(InstanceConfigTypeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceConfigDeviceOutput{})
+	pulumi.RegisterOutputType(InstanceConfigDeviceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDevicesOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDevicesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDevicesSdaOutput{})
@@ -34181,6 +34283,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceConfigDevicesSdgPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDevicesSdhOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDevicesSdhPtrOutput{})
+	pulumi.RegisterOutputType(InstanceConfigHelperOutput{})
+	pulumi.RegisterOutputType(InstanceConfigHelperArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigHelpersOutput{})
 	pulumi.RegisterOutputType(InstanceConfigHelpersPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigInterfaceOutput{})

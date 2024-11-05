@@ -138,9 +138,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		IgnoreMappings: []string{
-			"linode_instance_config", // Mapping causes a panic due to duplicate types
-		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"linode_domain": {
 				Fields: map[string]*tfbridge.SchemaInfo{

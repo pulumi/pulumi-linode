@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool? Active;
         /// <summary>
-        /// The ID of the Placement Group.
+        /// The ID of the interface.
         /// </summary>
         public readonly int? Id;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? IpamAddress;
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
         /// </summary>
         public readonly Outputs.InstanceConfigInterfaceIpv4? Ipv4;
         /// <summary>

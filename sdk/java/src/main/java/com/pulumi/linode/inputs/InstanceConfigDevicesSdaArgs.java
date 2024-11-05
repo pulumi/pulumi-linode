@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +16,14 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
     public static final InstanceConfigDevicesSdaArgs Empty = new InstanceConfigDevicesSdaArgs();
 
     /**
-     * The Disk ID to map to this disk slot
+     * The Disk ID to map to this `device` slot
      * 
      */
     @Import(name="diskId")
     private @Nullable Output<Integer> diskId;
 
     /**
-     * @return The Disk ID to map to this disk slot
+     * @return The Disk ID to map to this `device` slot
      * 
      */
     public Optional<Output<Integer>> diskId() {
@@ -32,29 +31,14 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    @Import(name="diskLabel")
-    private @Nullable Output<String> diskLabel;
-
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    public Optional<Output<String>> diskLabel() {
-        return Optional.ofNullable(this.diskLabel);
-    }
-
-    /**
-     * The Block Storage volume ID to map to this disk slot
+     * The Volume ID to map to this `device` slot.
      * 
      */
     @Import(name="volumeId")
     private @Nullable Output<Integer> volumeId;
 
     /**
-     * @return The Block Storage volume ID to map to this disk slot
+     * @return The Volume ID to map to this `device` slot.
      * 
      */
     public Optional<Output<Integer>> volumeId() {
@@ -65,7 +49,6 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
 
     private InstanceConfigDevicesSdaArgs(InstanceConfigDevicesSdaArgs $) {
         this.diskId = $.diskId;
-        this.diskLabel = $.diskLabel;
         this.volumeId = $.volumeId;
     }
 
@@ -88,7 +71,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskId The Disk ID to map to this disk slot
+         * @param diskId The Disk ID to map to this `device` slot
          * 
          * @return builder
          * 
@@ -99,7 +82,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskId The Disk ID to map to this disk slot
+         * @param diskId The Disk ID to map to this `device` slot
          * 
          * @return builder
          * 
@@ -109,28 +92,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskLabel The `label` of the `disk` to map to this `device` slot.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder diskLabel(@Nullable Output<String> diskLabel) {
-            $.diskLabel = diskLabel;
-            return this;
-        }
-
-        /**
-         * @param diskLabel The `label` of the `disk` to map to this `device` slot.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder diskLabel(String diskLabel) {
-            return diskLabel(Output.of(diskLabel));
-        }
-
-        /**
-         * @param volumeId The Block Storage volume ID to map to this disk slot
+         * @param volumeId The Volume ID to map to this `device` slot.
          * 
          * @return builder
          * 
@@ -141,7 +103,7 @@ public final class InstanceConfigDevicesSdaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param volumeId The Block Storage volume ID to map to this disk slot
+         * @param volumeId The Volume ID to map to this `device` slot.
          * 
          * @return builder
          * 

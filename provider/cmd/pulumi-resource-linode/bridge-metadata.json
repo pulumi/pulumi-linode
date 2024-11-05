@@ -249,6 +249,62 @@
                     }
                 }
             },
+            "linode_instance_config": {
+                "current": "linode:index/instanceConfig:InstanceConfig",
+                "majorVersion": 4,
+                "fields": {
+                    "device": {
+                        "maxItemsOne": false
+                    },
+                    "devices": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sda": {
+                                    "maxItemsOne": true
+                                },
+                                "sdb": {
+                                    "maxItemsOne": true
+                                },
+                                "sdc": {
+                                    "maxItemsOne": true
+                                },
+                                "sdd": {
+                                    "maxItemsOne": true
+                                },
+                                "sde": {
+                                    "maxItemsOne": true
+                                },
+                                "sdf": {
+                                    "maxItemsOne": true
+                                },
+                                "sdg": {
+                                    "maxItemsOne": true
+                                },
+                                "sdh": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "helpers": {
+                        "maxItemsOne": false
+                    },
+                    "interface": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv4": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_instance_disk": {
                 "current": "linode:index/instanceDisk:InstanceDisk",
                 "majorVersion": 4,
@@ -2110,6 +2166,7 @@
             "linode:index/firewallDevice:FirewallDevice": 1,
             "linode:index/image:Image": 1,
             "linode:index/instance:Instance": 0,
+            "linode:index/instanceConfig:InstanceConfig": 0,
             "linode:index/instanceDisk:InstanceDisk": 1,
             "linode:index/instanceIp:InstanceIp": 1,
             "linode:index/instanceSharedIps:InstanceSharedIps": 1,

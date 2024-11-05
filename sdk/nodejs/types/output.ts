@@ -4138,52 +4138,63 @@ export interface InstanceConfig {
     virtMode?: string;
 }
 
+export interface InstanceConfigDevice {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    deviceName: string;
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
 export interface InstanceConfigDevices {
     /**
-     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
-    sda: outputs.InstanceConfigDevicesSda;
+    sda?: outputs.InstanceConfigDevicesSda;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdb: outputs.InstanceConfigDevicesSdb;
+    sdb?: outputs.InstanceConfigDevicesSdb;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdc: outputs.InstanceConfigDevicesSdc;
+    sdc?: outputs.InstanceConfigDevicesSdc;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdd: outputs.InstanceConfigDevicesSdd;
+    sdd?: outputs.InstanceConfigDevicesSdd;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sde: outputs.InstanceConfigDevicesSde;
+    sde?: outputs.InstanceConfigDevicesSde;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdf: outputs.InstanceConfigDevicesSdf;
+    sdf?: outputs.InstanceConfigDevicesSdf;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdg: outputs.InstanceConfigDevicesSdg;
+    sdg?: outputs.InstanceConfigDevicesSdg;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdh: outputs.InstanceConfigDevicesSdh;
+    sdh?: outputs.InstanceConfigDevicesSdh;
 }
 
 export interface InstanceConfigDevicesSda {
     /**
-     * The Disk ID to map to this disk slot
+     * The Disk ID to map to this `device` slot
      */
-    diskId: number;
+    diskId?: number;
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
-    /**
-     * The Block Storage volume ID to map to this disk slot
+     * The Volume ID to map to this `device` slot.
      */
     volumeId?: number;
 }
@@ -4192,11 +4203,7 @@ export interface InstanceConfigDevicesSdb {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -4207,11 +4214,7 @@ export interface InstanceConfigDevicesSdc {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -4222,11 +4225,7 @@ export interface InstanceConfigDevicesSdd {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -4237,11 +4236,7 @@ export interface InstanceConfigDevicesSde {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -4252,11 +4247,7 @@ export interface InstanceConfigDevicesSdf {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -4267,11 +4258,7 @@ export interface InstanceConfigDevicesSdg {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -4282,15 +4269,34 @@ export interface InstanceConfigDevicesSdh {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId: number;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: string;
+    diskId?: number;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: number;
+}
+
+export interface InstanceConfigHelper {
+    /**
+     * Populates the /dev directory early during boot without udev. (default `true`)
+     */
+    devtmpfsAutomount?: boolean;
+    /**
+     * Helps maintain correct inittab/upstart console device. (default `true`)
+     */
+    distro?: boolean;
+    /**
+     * Creates a modules dependency file for the Kernel you run. (default `true`)
+     */
+    modulesDep?: boolean;
+    /**
+     * Automatically configures static networking. (default `true`)
+     */
+    network?: boolean;
+    /**
+     * Disables updatedb cron job to avoid disk thrashing. (default `true`)
+     */
+    updatedbDisabled?: boolean;
 }
 
 export interface InstanceConfigHelpers {
@@ -4322,7 +4328,7 @@ export interface InstanceConfigInterface {
      */
     active: boolean;
     /**
-     * The ID of the Placement Group.
+     * The ID of the interface.
      */
     id: number;
     /**
@@ -4334,7 +4340,7 @@ export interface InstanceConfigInterface {
      */
     ipamAddress?: string;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      */
     ipv4: outputs.InstanceConfigInterfaceIpv4;
     /**
