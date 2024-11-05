@@ -19,12 +19,6 @@ namespace Pulumi.Linode.Inputs
         public Input<int>? DiskId { get; set; }
 
         /// <summary>
-        /// The `label` of the `disk` to map to this `device` slot.
-        /// </summary>
-        [Input("diskLabel")]
-        public Input<string>? DiskLabel { get; set; }
-
-        /// <summary>
         /// The Block Storage volume ID to map to this disk slot
         /// </summary>
         [Input("volumeId")]

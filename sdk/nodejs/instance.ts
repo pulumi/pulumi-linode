@@ -66,55 +66,6 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Linode Instance with Explicit Configs and Disks
- *
- * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const me = linode.getProfile({});
- * const web = new linode.Instance("web", {
- *     label: "complex_instance",
- *     tags: ["foo"],
- *     region: "us-central",
- *     type: "g6-nanode-1",
- *     privateIp: true,
- * });
- * const webVolume = new linode.Volume("web_volume", {
- *     label: "web_volume",
- *     size: 20,
- *     region: "us-central",
- * });
- * const bootDisk = new linode.InstanceDisk("boot_disk", {
- *     label: "boot",
- *     linodeId: web.id,
- *     size: 3000,
- *     image: "linode/ubuntu22.04",
- *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
- *     authorizedUsers: [me.then(me => me.username)],
- *     rootPass: "terr4form-test",
- * });
- * const bootConfig = new linode.index.InstanceConfig("boot_config", {
- *     label: "boot_config",
- *     linodeId: web.id,
- *     devices: [
- *         {
- *             deviceName: "sda",
- *             diskId: bootDisk.id,
- *         },
- *         {
- *             deviceName: "sdb",
- *             volumeId: webVolume.id,
- *         },
- *     ],
- *     rootDevice: "/dev/sda",
- *     kernel: "linode/latest-64bit",
- *     booted: true,
- * });
- * ```
- *
  * ### Linode Instance Assigned to a Placement Group
  *
  * **NOTE: Placement Groups may not currently be available to all users.**
@@ -221,7 +172,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
-     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      */
     public readonly configs!: pulumi.Output<outputs.InstanceConfig[]>;
     /**
@@ -531,7 +482,7 @@ export interface InstanceState {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
-     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
     /**
@@ -726,7 +677,7 @@ export interface InstanceArgs {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
-     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[]>;
     /**

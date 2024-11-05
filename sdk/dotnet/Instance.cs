@@ -99,81 +99,6 @@ namespace Pulumi.Linode
     /// });
     /// ```
     /// 
-    /// ### Linode Instance with Explicit Configs and Disks
-    /// 
-    /// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var me = Linode.GetProfile.Invoke();
-    /// 
-    ///     var web = new Linode.Instance("web", new()
-    ///     {
-    ///         Label = "complex_instance",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo",
-    ///         },
-    ///         Region = "us-central",
-    ///         Type = "g6-nanode-1",
-    ///         PrivateIp = true,
-    ///     });
-    /// 
-    ///     var webVolume = new Linode.Volume("web_volume", new()
-    ///     {
-    ///         Label = "web_volume",
-    ///         Size = 20,
-    ///         Region = "us-central",
-    ///     });
-    /// 
-    ///     var bootDisk = new Linode.InstanceDisk("boot_disk", new()
-    ///     {
-    ///         Label = "boot",
-    ///         LinodeId = web.Id,
-    ///         Size = 3000,
-    ///         Image = "linode/ubuntu22.04",
-    ///         AuthorizedKeys = new[]
-    ///         {
-    ///             "ssh-rsa AAAA...Gw== user@example.local",
-    ///         },
-    ///         AuthorizedUsers = new[]
-    ///         {
-    ///             me.Apply(getProfileResult =&gt; getProfileResult.Username),
-    ///         },
-    ///         RootPass = "terr4form-test",
-    ///     });
-    /// 
-    ///     var bootConfig = new Linode.Index.InstanceConfig("boot_config", new()
-    ///     {
-    ///         Label = "boot_config",
-    ///         LinodeId = web.Id,
-    ///         Devices = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "deviceName", "sda" },
-    ///                 { "diskId", bootDisk.Id },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "deviceName", "sdb" },
-    ///                 { "volumeId", webVolume.Id },
-    ///             },
-    ///         },
-    ///         RootDevice = "/dev/sda",
-    ///         Kernel = "linode/latest-64bit",
-    ///         Booted = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ### Linode Instance Assigned to a Placement Group
     /// 
     /// **NOTE: Placement Groups may not currently be available to all users.**
@@ -607,7 +532,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
-        [Obsolete(@"The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.")]
+        [Obsolete(@"The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.")]
         public InputList<Inputs.InstanceConfigArgs> Configs
         {
             get => _configs ?? (_configs = new InputList<Inputs.InstanceConfigArgs>());
@@ -908,7 +833,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         /// </summary>
-        [Obsolete(@"The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.")]
+        [Obsolete(@"The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.")]
         public InputList<Inputs.InstanceConfigGetArgs> Configs
         {
             get => _configs ?? (_configs = new InputList<Inputs.InstanceConfigGetArgs>());

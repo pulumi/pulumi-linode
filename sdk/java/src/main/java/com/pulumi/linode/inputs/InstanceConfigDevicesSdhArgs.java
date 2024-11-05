@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,21 +31,6 @@ public final class InstanceConfigDevicesSdhArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    @Import(name="diskLabel")
-    private @Nullable Output<String> diskLabel;
-
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    public Optional<Output<String>> diskLabel() {
-        return Optional.ofNullable(this.diskLabel);
-    }
-
-    /**
      * The Block Storage volume ID to map to this disk slot
      * 
      */
@@ -65,7 +49,6 @@ public final class InstanceConfigDevicesSdhArgs extends com.pulumi.resources.Res
 
     private InstanceConfigDevicesSdhArgs(InstanceConfigDevicesSdhArgs $) {
         this.diskId = $.diskId;
-        this.diskLabel = $.diskLabel;
         this.volumeId = $.volumeId;
     }
 
@@ -106,27 +89,6 @@ public final class InstanceConfigDevicesSdhArgs extends com.pulumi.resources.Res
          */
         public Builder diskId(Integer diskId) {
             return diskId(Output.of(diskId));
-        }
-
-        /**
-         * @param diskLabel The `label` of the `disk` to map to this `device` slot.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder diskLabel(@Nullable Output<String> diskLabel) {
-            $.diskLabel = diskLabel;
-            return this;
-        }
-
-        /**
-         * @param diskLabel The `label` of the `disk` to map to this `device` slot.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder diskLabel(String diskLabel) {
-            return diskLabel(Output.of(diskLabel));
         }
 
         /**

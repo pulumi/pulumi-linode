@@ -380,6 +380,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { InstanceConfigArgs, InstanceConfigState } from "./instanceConfig";
+export type InstanceConfig = import("./instanceConfig").InstanceConfig;
+export const InstanceConfig: typeof import("./instanceConfig").InstanceConfig = null as any;
+utilities.lazyLoad(exports, ["InstanceConfig"], () => require("./instanceConfig"));
+
 export { InstanceDiskArgs, InstanceDiskState } from "./instanceDisk";
 export type InstanceDisk = import("./instanceDisk").InstanceDisk;
 export const InstanceDisk: typeof import("./instanceDisk").InstanceDisk = null as any;
@@ -529,6 +534,8 @@ const _module = {
                 return new Image(name, <any>undefined, { urn })
             case "linode:index/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "linode:index/instanceConfig:InstanceConfig":
+                return new InstanceConfig(name, <any>undefined, { urn })
             case "linode:index/instanceDisk:InstanceDisk":
                 return new InstanceDisk(name, <any>undefined, { urn })
             case "linode:index/instanceIp:InstanceIp":
@@ -588,6 +595,7 @@ pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
+pulumi.runtime.registerResourceModule("linode", "index/instanceConfig", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceDisk", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _module)

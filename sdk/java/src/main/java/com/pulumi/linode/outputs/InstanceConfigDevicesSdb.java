@@ -5,7 +5,6 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,11 +16,6 @@ public final class InstanceConfigDevicesSdb {
      * 
      */
     private @Nullable Integer diskId;
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    private @Nullable String diskLabel;
     /**
      * @return The Block Storage volume ID to map to this disk slot
      * 
@@ -35,13 +29,6 @@ public final class InstanceConfigDevicesSdb {
      */
     public Optional<Integer> diskId() {
         return Optional.ofNullable(this.diskId);
-    }
-    /**
-     * @return The `label` of the `disk` to map to this `device` slot.
-     * 
-     */
-    public Optional<String> diskLabel() {
-        return Optional.ofNullable(this.diskLabel);
     }
     /**
      * @return The Block Storage volume ID to map to this disk slot
@@ -61,13 +48,11 @@ public final class InstanceConfigDevicesSdb {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskId;
-        private @Nullable String diskLabel;
         private @Nullable Integer volumeId;
         public Builder() {}
         public Builder(InstanceConfigDevicesSdb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskId = defaults.diskId;
-    	      this.diskLabel = defaults.diskLabel;
     	      this.volumeId = defaults.volumeId;
         }
 
@@ -75,12 +60,6 @@ public final class InstanceConfigDevicesSdb {
         public Builder diskId(@Nullable Integer diskId) {
 
             this.diskId = diskId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder diskLabel(@Nullable String diskLabel) {
-
-            this.diskLabel = diskLabel;
             return this;
         }
         @CustomType.Setter
@@ -92,7 +71,6 @@ public final class InstanceConfigDevicesSdb {
         public InstanceConfigDevicesSdb build() {
             final var _resultValue = new InstanceConfigDevicesSdb();
             _resultValue.diskId = diskId;
-            _resultValue.diskLabel = diskLabel;
             _resultValue.volumeId = volumeId;
             return _resultValue;
         }

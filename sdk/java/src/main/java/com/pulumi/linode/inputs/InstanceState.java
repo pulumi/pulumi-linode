@@ -174,10 +174,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      * @deprecated
-     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      * 
      */
-    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
+    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
     @Import(name="configs")
     private @Nullable Output<List<InstanceConfigArgs>> configs;
 
@@ -185,10 +185,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      * @deprecated
-     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      * 
      */
-    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
+    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
     public Optional<Output<List<InstanceConfigArgs>>> configs() {
         return Optional.ofNullable(this.configs);
     }
@@ -1018,10 +1018,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
          * 
          */
-        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
+        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
         public Builder configs(@Nullable Output<List<InstanceConfigArgs>> configs) {
             $.configs = configs;
             return this;
@@ -1033,10 +1033,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
          * 
          */
-        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
+        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
         public Builder configs(List<InstanceConfigArgs> configs) {
             return configs(Output.of(configs));
         }
@@ -1047,10 +1047,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
          * 
          */
-        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
+        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
         public Builder configs(InstanceConfigArgs... configs) {
             return configs(List.of(configs));
         }

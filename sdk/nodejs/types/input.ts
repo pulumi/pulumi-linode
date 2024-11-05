@@ -5229,9 +5229,24 @@ export interface InstanceConfig {
     virtMode?: pulumi.Input<string>;
 }
 
+export interface InstanceConfigDevice {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    deviceName: pulumi.Input<string>;
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number>;
+}
+
 export interface InstanceConfigDevices {
     /**
-     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
     sda?: pulumi.Input<inputs.InstanceConfigDevicesSda>;
     /**
@@ -5266,15 +5281,11 @@ export interface InstanceConfigDevices {
 
 export interface InstanceConfigDevicesSda {
     /**
-     * The Disk ID to map to this disk slot
+     * The Disk ID to map to this `device` slot
      */
     diskId?: pulumi.Input<number>;
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
-    /**
-     * The Block Storage volume ID to map to this disk slot
+     * The Volume ID to map to this `device` slot.
      */
     volumeId?: pulumi.Input<number>;
 }
@@ -5284,10 +5295,6 @@ export interface InstanceConfigDevicesSdb {
      * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -5300,10 +5307,6 @@ export interface InstanceConfigDevicesSdc {
      */
     diskId?: pulumi.Input<number>;
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
-    /**
      * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
@@ -5314,10 +5317,6 @@ export interface InstanceConfigDevicesSdd {
      * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -5330,10 +5329,6 @@ export interface InstanceConfigDevicesSde {
      */
     diskId?: pulumi.Input<number>;
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
-    /**
      * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
@@ -5344,10 +5339,6 @@ export interface InstanceConfigDevicesSdf {
      * The Disk ID to map to this disk slot
      */
     diskId?: pulumi.Input<number>;
-    /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
@@ -5360,10 +5351,6 @@ export interface InstanceConfigDevicesSdg {
      */
     diskId?: pulumi.Input<number>;
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
-    /**
      * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
@@ -5375,13 +5362,32 @@ export interface InstanceConfigDevicesSdh {
      */
     diskId?: pulumi.Input<number>;
     /**
-     * The `label` of the `disk` to map to this `device` slot.
-     */
-    diskLabel?: pulumi.Input<string>;
-    /**
      * The Block Storage volume ID to map to this disk slot
      */
     volumeId?: pulumi.Input<number>;
+}
+
+export interface InstanceConfigHelper {
+    /**
+     * Populates the /dev directory early during boot without udev. (default `true`)
+     */
+    devtmpfsAutomount?: pulumi.Input<boolean>;
+    /**
+     * Helps maintain correct inittab/upstart console device. (default `true`)
+     */
+    distro?: pulumi.Input<boolean>;
+    /**
+     * Creates a modules dependency file for the Kernel you run. (default `true`)
+     */
+    modulesDep?: pulumi.Input<boolean>;
+    /**
+     * Automatically configures static networking. (default `true`)
+     */
+    network?: pulumi.Input<boolean>;
+    /**
+     * Disables updatedb cron job to avoid disk thrashing. (default `true`)
+     */
+    updatedbDisabled?: pulumi.Input<boolean>;
 }
 
 export interface InstanceConfigHelpers {
@@ -5413,7 +5419,7 @@ export interface InstanceConfigInterface {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The ID of the Placement Group.
+     * The ID of the interface.
      */
     id?: pulumi.Input<number>;
     /**
@@ -5425,7 +5431,7 @@ export interface InstanceConfigInterface {
      */
     ipamAddress?: pulumi.Input<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      */
     ipv4?: pulumi.Input<inputs.InstanceConfigInterfaceIpv4>;
     /**

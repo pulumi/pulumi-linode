@@ -22,7 +22,7 @@ public final class InstanceConfigInterface {
      */
     private @Nullable Boolean active;
     /**
-     * @return The ID of the Placement Group.
+     * @return The ID of the interface.
      * 
      */
     private @Nullable Integer id;
@@ -37,7 +37,7 @@ public final class InstanceConfigInterface {
      */
     private @Nullable String ipamAddress;
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      * 
      */
     private @Nullable InstanceConfigInterfaceIpv4 ipv4;
@@ -80,7 +80,7 @@ public final class InstanceConfigInterface {
         return Optional.ofNullable(this.active);
     }
     /**
-     * @return The ID of the Placement Group.
+     * @return The ID of the interface.
      * 
      */
     public Optional<Integer> id() {
@@ -101,7 +101,7 @@ public final class InstanceConfigInterface {
         return Optional.ofNullable(this.ipamAddress);
     }
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      * 
      */
     public Optional<InstanceConfigInterfaceIpv4> ipv4() {

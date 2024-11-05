@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.linode.Instance;
  * import com.pulumi.linode.InstanceArgs;
- * import com.pulumi.linode.instanceConfig;
+ * import com.pulumi.linode.InstanceConfig;
  * import com.pulumi.linode.InstanceConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -106,7 +106,10 @@ import javax.annotation.Nullable;
  *             .linodeId(foo.id())
  *             .label("boot-existing-volume")
  *             .kernel("linode/grub2")
- *             .devices(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .devices(InstanceConfigDevicesArgs.builder()
+ *                 .deviceName("sda")
+ *                 .volumeId(12345)
+ *                 .build())
  *             .booted(true)
  *             .build());
  * 

@@ -36,14 +36,14 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the Placement Group.
+     * The ID of the interface.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the Placement Group.
+     * @return The ID of the interface.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -81,14 +81,14 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<InstanceConfigInterfaceIpv4Args> ipv4;
 
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      * 
      */
     public Optional<Output<InstanceConfigInterfaceIpv4Args>> ipv4() {
@@ -233,7 +233,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id The ID of the Placement Group.
+         * @param id The ID of the interface.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id The ID of the Placement Group.
+         * @param id The ID of the interface.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipv4 This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4 The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class InstanceConfigInterfaceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipv4 This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4 The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
          * 
          * @return builder
          * 

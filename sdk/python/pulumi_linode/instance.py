@@ -128,8 +128,8 @@ class InstanceArgs:
         if booted is not None:
             pulumi.set(__self__, "booted", booted)
         if configs is not None:
-            warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
-            pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+            warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""", DeprecationWarning)
+            pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""")
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if disk_encryption is not None:
@@ -283,7 +283,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""")
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -706,8 +706,8 @@ class _InstanceState:
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
         if configs is not None:
-            warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""", DeprecationWarning)
-            pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+            warnings.warn("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""", DeprecationWarning)
+            pulumi.log.warn("""configs is deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""")
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if disk_encryption is not None:
@@ -893,7 +893,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""")
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.
@@ -1395,51 +1395,6 @@ class Instance(pulumi.CustomResource):
             private_ip=True)
         ```
 
-        ### Linode Instance with Explicit Configs and Disks
-
-        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        me = linode.get_profile()
-        web = linode.Instance("web",
-            label="complex_instance",
-            tags=["foo"],
-            region="us-central",
-            type="g6-nanode-1",
-            private_ip=True)
-        web_volume = linode.Volume("web_volume",
-            label="web_volume",
-            size=20,
-            region="us-central")
-        boot_disk = linode.InstanceDisk("boot_disk",
-            label="boot",
-            linode_id=web.id,
-            size=3000,
-            image="linode/ubuntu22.04",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            authorized_users=[me.username],
-            root_pass="terr4form-test")
-        boot_config = linode.index.InstanceConfig("boot_config",
-            label=boot_config,
-            linode_id=web.id,
-            devices=[
-                {
-                    deviceName: sda,
-                    diskId: boot_disk.id,
-                },
-                {
-                    deviceName: sdb,
-                    volumeId: web_volume.id,
-                },
-            ],
-            root_device=/dev/sda,
-            kernel=linode/latest-64bit,
-            booted=True)
-        ```
-
         ### Linode Instance Assigned to a Placement Group
 
         **NOTE: Placement Groups may not currently be available to all users.**
@@ -1597,51 +1552,6 @@ class Instance(pulumi.CustomResource):
             tags=["foo"],
             swap_size=256,
             private_ip=True)
-        ```
-
-        ### Linode Instance with Explicit Configs and Disks
-
-        Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        me = linode.get_profile()
-        web = linode.Instance("web",
-            label="complex_instance",
-            tags=["foo"],
-            region="us-central",
-            type="g6-nanode-1",
-            private_ip=True)
-        web_volume = linode.Volume("web_volume",
-            label="web_volume",
-            size=20,
-            region="us-central")
-        boot_disk = linode.InstanceDisk("boot_disk",
-            label="boot",
-            linode_id=web.id,
-            size=3000,
-            image="linode/ubuntu22.04",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            authorized_users=[me.username],
-            root_pass="terr4form-test")
-        boot_config = linode.index.InstanceConfig("boot_config",
-            label=boot_config,
-            linode_id=web.id,
-            devices=[
-                {
-                    deviceName: sda,
-                    diskId: boot_disk.id,
-                },
-                {
-                    deviceName: sdb,
-                    volumeId: web_volume.id,
-                },
-            ],
-            root_device=/dev/sda,
-            kernel=linode/latest-64bit,
-            booted=True)
         ```
 
         ### Linode Instance Assigned to a Placement Group
@@ -2030,7 +1940,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.""")
+    @_utilities.deprecated("""The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.""")
     def configs(self) -> pulumi.Output[Sequence['outputs.InstanceConfig']]:
         """
         Configuration profiles define the VM settings and boot behavior of the Linode Instance.

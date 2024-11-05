@@ -109,88 +109,6 @@ import (
 //
 // ```
 //
-// ### Linode Instance with Explicit Configs and Disks
-//
-// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := linode.GetProfile(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			web, err := linode.NewInstance(ctx, "web", &linode.InstanceArgs{
-//				Label: pulumi.String("complex_instance"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo"),
-//				},
-//				Region:    pulumi.String("us-central"),
-//				Type:      pulumi.String("g6-nanode-1"),
-//				PrivateIp: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			webVolume, err := linode.NewVolume(ctx, "web_volume", &linode.VolumeArgs{
-//				Label:  pulumi.String("web_volume"),
-//				Size:   pulumi.Int(20),
-//				Region: pulumi.String("us-central"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			bootDisk, err := linode.NewInstanceDisk(ctx, "boot_disk", &linode.InstanceDiskArgs{
-//				Label:    pulumi.String("boot"),
-//				LinodeId: web.ID(),
-//				Size:     pulumi.Int(3000),
-//				Image:    pulumi.String("linode/ubuntu22.04"),
-//				AuthorizedKeys: pulumi.StringArray{
-//					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
-//				},
-//				AuthorizedUsers: pulumi.StringArray{
-//					pulumi.String(me.Username),
-//				},
-//				RootPass: pulumi.String("terr4form-test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewInstanceConfig(ctx, "boot_config", &linode.InstanceConfigArgs{
-//				Label:    "boot_config",
-//				LinodeId: web.ID(),
-//				Devices: []interface{}{
-//					map[string]interface{}{
-//						"deviceName": "sda",
-//						"diskId":     bootDisk.ID(),
-//					},
-//					map[string]interface{}{
-//						"deviceName": "sdb",
-//						"volumeId":   webVolume.ID(),
-//					},
-//				},
-//				RootDevice: "/dev/sda",
-//				Kernel:     "linode/latest-64bit",
-//				Booted:     true,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Linode Instance Assigned to a Placement Group
 //
 // **NOTE: Placement Groups may not currently be available to all users.**
@@ -267,8 +185,8 @@ type Instance struct {
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
-	Configs InstanceConfigArrayOutput `pulumi:"configs"`
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.
+	Configs InstanceConfigTypeArrayOutput `pulumi:"configs"`
 	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
 	//
 	// * **NOTE: Disk encryption may not currently be available to all users.**
@@ -428,8 +346,8 @@ type instanceState struct {
 	Capabilities []string `pulumi:"capabilities"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
-	Configs []InstanceConfig `pulumi:"configs"`
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.
+	Configs []InstanceConfigType `pulumi:"configs"`
 	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
 	//
 	// * **NOTE: Disk encryption may not currently be available to all users.**
@@ -546,8 +464,8 @@ type InstanceState struct {
 	Capabilities pulumi.StringArrayInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
-	Configs InstanceConfigArrayInput
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.
+	Configs InstanceConfigTypeArrayInput
 	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
 	//
 	// * **NOTE: Disk encryption may not currently be available to all users.**
@@ -664,8 +582,8 @@ type instanceArgs struct {
 	Booted *bool `pulumi:"booted"`
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
-	Configs []InstanceConfig `pulumi:"configs"`
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.
+	Configs []InstanceConfigType `pulumi:"configs"`
 	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
 	//
 	// * **NOTE: Disk encryption may not currently be available to all users.**
@@ -761,8 +679,8 @@ type InstanceArgs struct {
 	Booted pulumi.BoolPtrInput
 	// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 	//
-	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
-	Configs InstanceConfigArrayInput
+	// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.
+	Configs InstanceConfigTypeArrayInput
 	// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
 	//
 	// * **NOTE: Disk encryption may not currently be available to all users.**
@@ -974,9 +892,9 @@ func (o InstanceOutput) Capabilities() pulumi.StringArrayOutput {
 
 // Configuration profiles define the VM settings and boot behavior of the Linode Instance.
 //
-// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linodeInstanceConfig resource.
-func (o InstanceOutput) Configs() InstanceConfigArrayOutput {
-	return o.ApplyT(func(v *Instance) InstanceConfigArrayOutput { return v.Configs }).(InstanceConfigArrayOutput)
+// Deprecated: The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to InstanceConfig resource.
+func (o InstanceOutput) Configs() InstanceConfigTypeArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceConfigTypeArrayOutput { return v.Configs }).(InstanceConfigTypeArrayOutput)
 }
 
 // The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)

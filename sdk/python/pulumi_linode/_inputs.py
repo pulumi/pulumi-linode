@@ -37,6 +37,8 @@ __all__ = [
     'InstanceBackupsScheduleArgsDict',
     'InstanceConfigArgs',
     'InstanceConfigArgsDict',
+    'InstanceConfigDeviceArgs',
+    'InstanceConfigDeviceArgsDict',
     'InstanceConfigDevicesArgs',
     'InstanceConfigDevicesArgsDict',
     'InstanceConfigDevicesSdaArgs',
@@ -55,6 +57,8 @@ __all__ = [
     'InstanceConfigDevicesSdgArgsDict',
     'InstanceConfigDevicesSdhArgs',
     'InstanceConfigDevicesSdhArgsDict',
+    'InstanceConfigHelperArgs',
+    'InstanceConfigHelperArgsDict',
     'InstanceConfigHelpersArgs',
     'InstanceConfigHelpersArgsDict',
     'InstanceConfigInterfaceArgs',
@@ -1557,10 +1561,81 @@ class InstanceConfigArgs:
 
 
 if not MYPY:
+    class InstanceConfigDeviceArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        The Disk ID to map to this disk slot
+        """
+        disk_id: NotRequired[pulumi.Input[int]]
+        """
+        The Disk ID to map to this disk slot
+        """
+        volume_id: NotRequired[pulumi.Input[int]]
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+elif False:
+    InstanceConfigDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceConfigDeviceArgs:
+    def __init__(__self__, *,
+                 device_name: pulumi.Input[str],
+                 disk_id: Optional[pulumi.Input[int]] = None,
+                 volume_id: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] device_name: The Disk ID to map to this disk slot
+        :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> pulumi.Input[str]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+if not MYPY:
     class InstanceConfigDevicesArgsDict(TypedDict):
         sda: NotRequired[pulumi.Input['InstanceConfigDevicesSdaArgsDict']]
         """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
         """
         sdb: NotRequired[pulumi.Input['InstanceConfigDevicesSdbArgsDict']]
         """
@@ -1605,7 +1680,7 @@ class InstanceConfigDevicesArgs:
                  sdg: Optional[pulumi.Input['InstanceConfigDevicesSdgArgs']] = None,
                  sdh: Optional[pulumi.Input['InstanceConfigDevicesSdhArgs']] = None):
         """
-        :param pulumi.Input['InstanceConfigDevicesSdaArgs'] sda: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdaArgs'] sda: ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
         :param pulumi.Input['InstanceConfigDevicesSdbArgs'] sdb: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdcArgs'] sdc: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSddArgs'] sdd: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
@@ -1635,7 +1710,7 @@ class InstanceConfigDevicesArgs:
     @pulumi.getter
     def sda(self) -> Optional[pulumi.Input['InstanceConfigDevicesSdaArgs']]:
         """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
         """
         return pulumi.get(self, "sda")
 
@@ -1732,15 +1807,11 @@ if not MYPY:
     class InstanceConfigDevicesSdaArgsDict(TypedDict):
         disk_id: NotRequired[pulumi.Input[int]]
         """
-        The Disk ID to map to this disk slot
-        """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
+        The Disk ID to map to this `device` slot
         """
         volume_id: NotRequired[pulumi.Input[int]]
         """
-        The Block Storage volume ID to map to this disk slot
+        The Volume ID to map to this `device` slot.
         """
 elif False:
     InstanceConfigDevicesSdaArgsDict: TypeAlias = Mapping[str, Any]
@@ -1749,17 +1820,13 @@ elif False:
 class InstanceConfigDevicesSdaArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
-        :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
+        :param pulumi.Input[int] disk_id: The Disk ID to map to this `device` slot
+        :param pulumi.Input[int] volume_id: The Volume ID to map to this `device` slot.
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -1767,7 +1834,7 @@ class InstanceConfigDevicesSdaArgs:
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The Disk ID to map to this disk slot
+        The Disk ID to map to this `device` slot
         """
         return pulumi.get(self, "disk_id")
 
@@ -1776,22 +1843,10 @@ class InstanceConfigDevicesSdaArgs:
         pulumi.set(self, "disk_id", value)
 
     @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
-
-    @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The Block Storage volume ID to map to this disk slot
+        The Volume ID to map to this `device` slot.
         """
         return pulumi.get(self, "volume_id")
 
@@ -1806,10 +1861,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -1821,17 +1872,13 @@ elif False:
 class InstanceConfigDevicesSdbArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -1846,18 +1893,6 @@ class InstanceConfigDevicesSdbArgs:
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
-
-    @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -1878,10 +1913,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -1893,17 +1924,13 @@ elif False:
 class InstanceConfigDevicesSdcArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -1918,18 +1945,6 @@ class InstanceConfigDevicesSdcArgs:
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
-
-    @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -1950,10 +1965,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -1965,17 +1976,13 @@ elif False:
 class InstanceConfigDevicesSddArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -1990,18 +1997,6 @@ class InstanceConfigDevicesSddArgs:
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
-
-    @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -2022,10 +2017,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -2037,17 +2028,13 @@ elif False:
 class InstanceConfigDevicesSdeArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -2062,18 +2049,6 @@ class InstanceConfigDevicesSdeArgs:
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
-
-    @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -2094,10 +2069,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -2109,17 +2080,13 @@ elif False:
 class InstanceConfigDevicesSdfArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -2134,18 +2101,6 @@ class InstanceConfigDevicesSdfArgs:
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
-
-    @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -2166,10 +2121,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -2181,17 +2132,13 @@ elif False:
 class InstanceConfigDevicesSdgArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -2206,18 +2153,6 @@ class InstanceConfigDevicesSdgArgs:
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_id", value)
-
-    @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -2238,10 +2173,6 @@ if not MYPY:
         """
         The Disk ID to map to this disk slot
         """
-        disk_label: NotRequired[pulumi.Input[str]]
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
         volume_id: NotRequired[pulumi.Input[int]]
         """
         The Block Storage volume ID to map to this disk slot
@@ -2253,17 +2184,13 @@ elif False:
 class InstanceConfigDevicesSdhArgs:
     def __init__(__self__, *,
                  disk_id: Optional[pulumi.Input[int]] = None,
-                 disk_label: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] disk_id: The Disk ID to map to this disk slot
-        :param pulumi.Input[str] disk_label: The `label` of the `disk` to map to this `device` slot.
         :param pulumi.Input[int] volume_id: The Block Storage volume ID to map to this disk slot
         """
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -2280,18 +2207,6 @@ class InstanceConfigDevicesSdhArgs:
         pulumi.set(self, "disk_id", value)
 
     @property
-    @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `label` of the `disk` to map to this `device` slot.
-        """
-        return pulumi.get(self, "disk_label")
-
-    @disk_label.setter
-    def disk_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_label", value)
-
-    @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2302,6 +2217,118 @@ class InstanceConfigDevicesSdhArgs:
     @volume_id.setter
     def volume_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_id", value)
+
+
+if not MYPY:
+    class InstanceConfigHelperArgsDict(TypedDict):
+        devtmpfs_automount: NotRequired[pulumi.Input[bool]]
+        """
+        Populates the /dev directory early during boot without udev. (default `true`)
+        """
+        distro: NotRequired[pulumi.Input[bool]]
+        """
+        Helps maintain correct inittab/upstart console device. (default `true`)
+        """
+        modules_dep: NotRequired[pulumi.Input[bool]]
+        """
+        Creates a modules dependency file for the Kernel you run. (default `true`)
+        """
+        network: NotRequired[pulumi.Input[bool]]
+        """
+        Automatically configures static networking. (default `true`)
+        """
+        updatedb_disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Disables updatedb cron job to avoid disk thrashing. (default `true`)
+        """
+elif False:
+    InstanceConfigHelperArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceConfigHelperArgs:
+    def __init__(__self__, *,
+                 devtmpfs_automount: Optional[pulumi.Input[bool]] = None,
+                 distro: Optional[pulumi.Input[bool]] = None,
+                 modules_dep: Optional[pulumi.Input[bool]] = None,
+                 network: Optional[pulumi.Input[bool]] = None,
+                 updatedb_disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] devtmpfs_automount: Populates the /dev directory early during boot without udev. (default `true`)
+        :param pulumi.Input[bool] distro: Helps maintain correct inittab/upstart console device. (default `true`)
+        :param pulumi.Input[bool] modules_dep: Creates a modules dependency file for the Kernel you run. (default `true`)
+        :param pulumi.Input[bool] network: Automatically configures static networking. (default `true`)
+        :param pulumi.Input[bool] updatedb_disabled: Disables updatedb cron job to avoid disk thrashing. (default `true`)
+        """
+        if devtmpfs_automount is not None:
+            pulumi.set(__self__, "devtmpfs_automount", devtmpfs_automount)
+        if distro is not None:
+            pulumi.set(__self__, "distro", distro)
+        if modules_dep is not None:
+            pulumi.set(__self__, "modules_dep", modules_dep)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if updatedb_disabled is not None:
+            pulumi.set(__self__, "updatedb_disabled", updatedb_disabled)
+
+    @property
+    @pulumi.getter(name="devtmpfsAutomount")
+    def devtmpfs_automount(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Populates the /dev directory early during boot without udev. (default `true`)
+        """
+        return pulumi.get(self, "devtmpfs_automount")
+
+    @devtmpfs_automount.setter
+    def devtmpfs_automount(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "devtmpfs_automount", value)
+
+    @property
+    @pulumi.getter
+    def distro(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Helps maintain correct inittab/upstart console device. (default `true`)
+        """
+        return pulumi.get(self, "distro")
+
+    @distro.setter
+    def distro(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "distro", value)
+
+    @property
+    @pulumi.getter(name="modulesDep")
+    def modules_dep(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Creates a modules dependency file for the Kernel you run. (default `true`)
+        """
+        return pulumi.get(self, "modules_dep")
+
+    @modules_dep.setter
+    def modules_dep(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "modules_dep", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically configures static networking. (default `true`)
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="updatedbDisabled")
+    def updatedb_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables updatedb cron job to avoid disk thrashing. (default `true`)
+        """
+        return pulumi.get(self, "updatedb_disabled")
+
+    @updatedb_disabled.setter
+    def updatedb_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "updatedb_disabled", value)
 
 
 if not MYPY:
@@ -2428,7 +2455,7 @@ if not MYPY:
         """
         id: NotRequired[pulumi.Input[int]]
         """
-        The ID of the Placement Group.
+        The ID of the interface.
         """
         ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -2440,7 +2467,7 @@ if not MYPY:
         """
         ipv4: NotRequired[pulumi.Input['InstanceConfigInterfaceIpv4ArgsDict']]
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
         """
         label: NotRequired[pulumi.Input[str]]
         """
@@ -2481,10 +2508,10 @@ class InstanceConfigInterfaceArgs:
         """
         :param pulumi.Input[str] purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param pulumi.Input[bool] active: Whether this interface is currently booted and active.
-        :param pulumi.Input[int] id: The ID of the Placement Group.
+        :param pulumi.Input[int] id: The ID of the interface.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param pulumi.Input[str] ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        :param pulumi.Input['InstanceConfigInterfaceIpv4Args'] ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input['InstanceConfigInterfaceIpv4Args'] ipv4: The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
         :param pulumi.Input[str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param pulumi.Input[bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
@@ -2542,7 +2569,7 @@ class InstanceConfigInterfaceArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the Placement Group.
+        The ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -2578,7 +2605,7 @@ class InstanceConfigInterfaceArgs:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input['InstanceConfigInterfaceIpv4Args']]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
         """
         return pulumi.get(self, "ipv4")
 

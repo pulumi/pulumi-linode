@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.VolumeArgs;
  * import com.pulumi.linode.InstanceDisk;
  * import com.pulumi.linode.InstanceDiskArgs;
- * import com.pulumi.linode.instanceConfig;
+ * import com.pulumi.linode.InstanceConfig;
  * import com.pulumi.linode.InstanceConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -199,8 +199,14 @@ import javax.annotation.Nullable;
  *             .label("boot_config")
  *             .linodeId(web.id())
  *             .devices(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 InstanceConfigDevicesArgs.builder()
+ *                     .deviceName("sda")
+ *                     .diskId(bootDisk.id())
+ *                     .build(),
+ *                 InstanceConfigDevicesArgs.builder()
+ *                     .deviceName("sdb")
+ *                     .volumeId(webVolume.id())
+ *                     .build())
  *             .rootDevice("/dev/sda")
  *             .kernel("linode/latest-64bit")
  *             .booted(true)
@@ -413,10 +419,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
      * @deprecated
-     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource.
+     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      * 
      */
-    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode_instance_config resource. */
+    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
     @Export(name="configs", refs={List.class,InstanceConfig.class}, tree="[0,1]")
     private Output<List<InstanceConfig>> configs;
 
