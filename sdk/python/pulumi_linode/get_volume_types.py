@@ -53,6 +53,9 @@ class GetVolumeTypesResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Volume type.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -90,7 +93,12 @@ def get_volume_types(filters: Optional[Sequence[Union['GetVolumeTypesFilterArgs'
                      types: Optional[Sequence[Union['GetVolumeTypesTypeArgs', 'GetVolumeTypesTypeArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeTypesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode Volume types that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -112,7 +120,12 @@ def get_volume_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
                             types: Optional[pulumi.Input[Optional[Sequence[Union['GetVolumeTypesTypeArgs', 'GetVolumeTypesTypeArgsDict']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeTypesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode Volume types that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters

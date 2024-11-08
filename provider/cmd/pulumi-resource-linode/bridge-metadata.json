@@ -542,6 +542,15 @@
                 "current": "linode:index/rdns:Rdns",
                 "majorVersion": 4
             },
+            "linode_reserved_ip_assignment": {
+                "current": "linode:index/reservedIpAssignment:ReservedIpAssignment",
+                "majorVersion": 4,
+                "fields": {
+                    "vpc_nat_1_1": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_sshkey": {
                 "current": "linode:index/sshKey:SshKey",
                 "majorVersion": 4
@@ -2175,13 +2184,14 @@
             "linode:index/lkeNodePool:LkeNodePool": 1,
             "linode:index/nodeBalancer:NodeBalancer": 1,
             "linode:index/nodeBalancerConfig:NodeBalancerConfig": 1,
-            "linode:index/nodeBalancerNode:NodeBalancerNode": 0,
+            "linode:index/nodeBalancerNode:NodeBalancerNode": 1,
             "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
             "linode:index/objectStorageKey:ObjectStorageKey": 1,
             "linode:index/objectStorageObject:ObjectStorageObject": 0,
             "linode:index/placementGroup:PlacementGroup": 1,
             "linode:index/placementGroupAssignment:PlacementGroupAssignment": 1,
             "linode:index/rdns:Rdns": 1,
+            "linode:index/reservedIpAssignment:ReservedIpAssignment": 1,
             "linode:index/sshKey:SshKey": 1,
             "linode:index/stackScript:StackScript": 1,
             "linode:index/token:Token": 1,

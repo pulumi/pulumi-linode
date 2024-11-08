@@ -68,8 +68,6 @@ import * as utilities from "./utilities";
  *
  * ### Linode Instance Assigned to a Placement Group
  *
- * **NOTE: Placement Groups may not currently be available to all users.**
- *
  * The following example shows how one might use this resource to configure a Linode instance assigned to a
  * Placement Group.
  *
@@ -220,7 +218,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      */
-    public /*out*/ readonly ipv4s!: pulumi.Output<string[]>;
+    public readonly ipv4s!: pulumi.Output<string[]>;
     /**
      * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
      */
@@ -244,7 +242,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly migrationType!: pulumi.Output<string | undefined>;
     /**
-     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * Information about the Placement Group this Linode is assigned to.
      */
     public readonly placementGroup!: pulumi.Output<outputs.InstancePlacementGroup | undefined>;
     /**
@@ -400,6 +398,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["interfaces"] = args ? args.interfaces : undefined;
+            resourceInputs["ipv4s"] = args ? args.ipv4s : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["migrationType"] = args ? args.migrationType : undefined;
@@ -421,7 +420,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["hasUserData"] = undefined /*out*/;
             resourceInputs["hostUuid"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
-            resourceInputs["ipv4s"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
             resourceInputs["lkeClusterId"] = undefined /*out*/;
             resourceInputs["privateIpAddress"] = undefined /*out*/;
@@ -554,7 +552,7 @@ export interface InstanceState {
      */
     migrationType?: pulumi.Input<string>;
     /**
-     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * Information about the Placement Group this Linode is assigned to.
      */
     placementGroup?: pulumi.Input<inputs.InstancePlacementGroup>;
     /**
@@ -711,6 +709,10 @@ export interface InstanceArgs {
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
+     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
@@ -725,7 +727,7 @@ export interface InstanceArgs {
      */
     migrationType?: pulumi.Input<string>;
     /**
-     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * Information about the Placement Group this Linode is assigned to.
      */
     placementGroup?: pulumi.Input<inputs.InstancePlacementGroup>;
     /**

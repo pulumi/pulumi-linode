@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **NOTE: Placement Groups may not currently be available to all users.**
-//
 // Provides information about a list of Linode Placement Groups that match a set of filters.
 // For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
 //

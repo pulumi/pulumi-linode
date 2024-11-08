@@ -22,9 +22,17 @@ public final class GetNetworkTransferPricesTypeRegionPriceArgs extends com.pulum
         return this.hourly;
     }
 
+    /**
+     * The ID representing the Network Transfer Price.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return The ID representing the Network Transfer Price.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -71,11 +79,23 @@ public final class GetNetworkTransferPricesTypeRegionPriceArgs extends com.pulum
             return hourly(Output.of(hourly));
         }
 
+        /**
+         * @param id The ID representing the Network Transfer Price.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID representing the Network Transfer Price.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

@@ -21,9 +21,17 @@ public final class GetVolumeTypesTypeRegionPrice extends com.pulumi.resources.In
         return this.hourly;
     }
 
+    /**
+     * The ID representing the Volume type.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return The ID representing the Volume type.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -66,6 +74,12 @@ public final class GetVolumeTypesTypeRegionPrice extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param id The ID representing the Volume type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

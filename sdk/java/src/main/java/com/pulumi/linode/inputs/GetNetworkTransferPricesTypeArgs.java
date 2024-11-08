@@ -19,14 +19,14 @@ public final class GetNetworkTransferPricesTypeArgs extends com.pulumi.resources
     public static final GetNetworkTransferPricesTypeArgs Empty = new GetNetworkTransferPricesTypeArgs();
 
     /**
-     * The unique ID assigned to this Network Transfer Price.
+     * The ID representing the Network Transfer Price.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The unique ID assigned to this Network Transfer Price.
+     * @return The ID representing the Network Transfer Price.
      * 
      */
     public Output<String> id() {
@@ -34,14 +34,14 @@ public final class GetNetworkTransferPricesTypeArgs extends com.pulumi.resources
     }
 
     /**
-     * The Network Transfer Price&#39;s label.
+     * The Network Transfer Price label is for display purposes only.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The Network Transfer Price&#39;s label.
+     * @return The Network Transfer Price label is for display purposes only.
      * 
      */
     public Output<String> label() {
@@ -122,7 +122,7 @@ public final class GetNetworkTransferPricesTypeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id The unique ID assigned to this Network Transfer Price.
+         * @param id The ID representing the Network Transfer Price.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GetNetworkTransferPricesTypeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id The unique ID assigned to this Network Transfer Price.
+         * @param id The ID representing the Network Transfer Price.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetNetworkTransferPricesTypeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param label The Network Transfer Price&#39;s label.
+         * @param label The Network Transfer Price label is for display purposes only.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetNetworkTransferPricesTypeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param label The Network Transfer Price&#39;s label.
+         * @param label The Network Transfer Price label is for display purposes only.
          * 
          * @return builder
          * 

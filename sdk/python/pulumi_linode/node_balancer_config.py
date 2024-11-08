@@ -40,6 +40,8 @@ class NodeBalancerConfigArgs:
         """
         The set of arguments for constructing a NodeBalancerConfig resource.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+               
+               - - -
         :param pulumi.Input[str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         :param pulumi.Input[str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
@@ -94,6 +96,8 @@ class NodeBalancerConfigArgs:
     def nodebalancer_id(self) -> pulumi.Input[int]:
         """
         The ID of the NodeBalancer to access.
+
+        - - -
         """
         return pulumi.get(self, "nodebalancer_id")
 
@@ -320,6 +324,8 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated
                periodically as checks are performed against backends.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+               
+               - - -
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
@@ -495,6 +501,8 @@ class _NodeBalancerConfigState:
     def nodebalancer_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the NodeBalancer to access.
+
+        - - -
         """
         return pulumi.get(self, "nodebalancer_id")
 
@@ -670,6 +678,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+               
+               - - -
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
@@ -831,6 +841,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated
                periodically as checks are performed against backends.
         :param pulumi.Input[int] nodebalancer_id: The ID of the NodeBalancer to access.
+               
+               - - -
         :param pulumi.Input[int] port: The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         :param pulumi.Input[str] protocol: The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         :param pulumi.Input[str] proxy_protocol: The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
@@ -952,6 +964,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
     def nodebalancer_id(self) -> pulumi.Output[int]:
         """
         The ID of the NodeBalancer to access.
+
+        - - -
         """
         return pulumi.get(self, "nodebalancer_id")
 

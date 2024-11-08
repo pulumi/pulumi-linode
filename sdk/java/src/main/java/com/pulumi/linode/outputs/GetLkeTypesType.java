@@ -15,12 +15,12 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeTypesType {
     /**
-     * @return The unique ID assigned to this LKE Type.
+     * @return The ID representing the Kubernetes type.
      * 
      */
     private String id;
     /**
-     * @return The LKE Type&#39;s label.
+     * @return The Kubernetes type label is for display purposes only.
      * 
      */
     private String label;
@@ -42,14 +42,14 @@ public final class GetLkeTypesType {
 
     private GetLkeTypesType() {}
     /**
-     * @return The unique ID assigned to this LKE Type.
+     * @return The ID representing the Kubernetes type.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The LKE Type&#39;s label.
+     * @return The Kubernetes type label is for display purposes only.
      * 
      */
     public String label() {

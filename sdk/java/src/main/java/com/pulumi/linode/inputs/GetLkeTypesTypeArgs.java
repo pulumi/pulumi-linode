@@ -19,14 +19,14 @@ public final class GetLkeTypesTypeArgs extends com.pulumi.resources.ResourceArgs
     public static final GetLkeTypesTypeArgs Empty = new GetLkeTypesTypeArgs();
 
     /**
-     * The unique ID assigned to this LKE Type.
+     * The ID representing the Kubernetes type.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The unique ID assigned to this LKE Type.
+     * @return The ID representing the Kubernetes type.
      * 
      */
     public Output<String> id() {
@@ -34,14 +34,14 @@ public final class GetLkeTypesTypeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The LKE Type&#39;s label.
+     * The Kubernetes type label is for display purposes only.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The LKE Type&#39;s label.
+     * @return The Kubernetes type label is for display purposes only.
      * 
      */
     public Output<String> label() {
@@ -122,7 +122,7 @@ public final class GetLkeTypesTypeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id The unique ID assigned to this LKE Type.
+         * @param id The ID representing the Kubernetes type.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GetLkeTypesTypeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id The unique ID assigned to this LKE Type.
+         * @param id The ID representing the Kubernetes type.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetLkeTypesTypeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param label The LKE Type&#39;s label.
+         * @param label The Kubernetes type label is for display purposes only.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetLkeTypesTypeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param label The LKE Type&#39;s label.
+         * @param label The Kubernetes type label is for display purposes only.
          * 
          * @return builder
          * 

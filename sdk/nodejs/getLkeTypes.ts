@@ -6,6 +6,10 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about Linode LKE types that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+ */
 export function getLkeTypes(args?: GetLkeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +26,13 @@ export function getLkeTypes(args?: GetLkeTypesArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetLkeTypesArgs {
     filters?: inputs.GetLkeTypesFilter[];
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: string;
     types?: inputs.GetLkeTypesType[];
 }
@@ -32,11 +42,18 @@ export interface GetLkeTypesArgs {
  */
 export interface GetLkeTypesResult {
     readonly filters?: outputs.GetLkeTypesFilter[];
+    /**
+     * The ID representing the Kubernetes type.
+     */
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
     readonly types?: outputs.GetLkeTypesType[];
 }
+/**
+ * Provides information about Linode LKE types that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+ */
 export function getLkeTypesOutput(args?: GetLkeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,7 +70,13 @@ export function getLkeTypesOutput(args?: GetLkeTypesOutputArgs, opts?: pulumi.In
  */
 export interface GetLkeTypesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesFilterArgs>[]>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: pulumi.Input<string>;
     types?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesTypeArgs>[]>;
 }

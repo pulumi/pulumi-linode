@@ -220,8 +220,6 @@ import javax.annotation.Nullable;
  * 
  * ### Linode Instance Assigned to a Placement Group
  * 
- * **NOTE: Placement Groups may not currently be available to all users.**
- * 
  * The following example shows how one might use this resource to configure a Linode instance assigned to a
  * Placement Group.
  * 
@@ -658,14 +656,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.migrationType);
     }
     /**
-     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * Information about the Placement Group this Linode is assigned to.
      * 
      */
     @Export(name="placementGroup", refs={InstancePlacementGroup.class}, tree="[0]")
     private Output</* @Nullable */ InstancePlacementGroup> placementGroup;
 
     /**
-     * @return Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * @return Information about the Placement Group this Linode is assigned to.
      * 
      */
     public Output<Optional<InstancePlacementGroup>> placementGroup() {

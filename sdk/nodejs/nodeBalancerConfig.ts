@@ -116,6 +116,8 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
     public /*out*/ readonly nodeStatuses!: pulumi.Output<outputs.NodeBalancerConfigNodeStatus[]>;
     /**
      * The ID of the NodeBalancer to access.
+     *
+     * - - -
      */
     public readonly nodebalancerId!: pulumi.Output<number>;
     /**
@@ -263,6 +265,8 @@ export interface NodeBalancerConfigState {
     nodeStatuses?: pulumi.Input<pulumi.Input<inputs.NodeBalancerConfigNodeStatus>[]>;
     /**
      * The ID of the NodeBalancer to access.
+     *
+     * - - -
      */
     nodebalancerId?: pulumi.Input<number>;
     /**
@@ -342,6 +346,8 @@ export interface NodeBalancerConfigArgs {
     cipherSuite?: pulumi.Input<string>;
     /**
      * The ID of the NodeBalancer to access.
+     *
+     * - - -
      */
     nodebalancerId: pulumi.Input<number>;
     /**

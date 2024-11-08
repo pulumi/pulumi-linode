@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetNetworkTransferPricesTypeInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique ID assigned to this Network Transfer Price.
+        /// The ID representing the Network Transfer Price.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The Network Transfer Price's label.
+        /// The Network Transfer Price label is for display purposes only.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;

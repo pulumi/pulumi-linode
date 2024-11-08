@@ -127,6 +127,8 @@ __all__ = [
     'PlacementGroupMemberArgsDict',
     'RdnsTimeoutsArgs',
     'RdnsTimeoutsArgsDict',
+    'ReservedIpAssignmentVpcNat11Args',
+    'ReservedIpAssignmentVpcNat11ArgsDict',
     'StackScriptUserDefinedFieldArgs',
     'StackScriptUserDefinedFieldArgsDict',
     'UserDomainGrantArgs',
@@ -5445,6 +5447,52 @@ class RdnsTimeoutsArgs:
     @update.setter
     def update(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class ReservedIpAssignmentVpcNat11ArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        subnet_id: pulumi.Input[int]
+        vpc_id: pulumi.Input[int]
+elif False:
+    ReservedIpAssignmentVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservedIpAssignmentVpcNat11Args:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 subnet_id: pulumi.Input[int],
+                 vpc_id: pulumi.Input[int]):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "vpc_id", value)
 
 
 if not MYPY:
@@ -11364,15 +11412,15 @@ if not MYPY:
     class GetLkeTypesFilterArgsDict(TypedDict):
         name: str
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         values: Sequence[str]
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         match_by: NotRequired[str]
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
 elif False:
     GetLkeTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -11384,9 +11432,9 @@ class GetLkeTypesFilterArgs:
                  values: Sequence[str],
                  match_by: Optional[str] = None):
         """
-        :param str name: The name of the attribute to filter on.
-        :param Sequence[str] values: The value(s) to be used in the filter.
-        :param str match_by: The type of comparison to use for this filter.
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -11397,7 +11445,7 @@ class GetLkeTypesFilterArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         return pulumi.get(self, "name")
 
@@ -11409,7 +11457,7 @@ class GetLkeTypesFilterArgs:
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         return pulumi.get(self, "values")
 
@@ -11421,7 +11469,7 @@ class GetLkeTypesFilterArgs:
     @pulumi.getter(name="matchBy")
     def match_by(self) -> Optional[str]:
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
 
@@ -11434,11 +11482,11 @@ if not MYPY:
     class GetLkeTypesTypeArgsDict(TypedDict):
         id: str
         """
-        The unique ID assigned to this LKE Type.
+        The ID representing the Kubernetes type.
         """
         label: str
         """
-        The LKE Type's label.
+        The Kubernetes type label is for display purposes only.
         """
         prices: Sequence['GetLkeTypesTypePriceArgsDict']
         """
@@ -11464,8 +11512,8 @@ class GetLkeTypesTypeArgs:
                  region_prices: Sequence['GetLkeTypesTypeRegionPriceArgs'],
                  transfer: int):
         """
-        :param str id: The unique ID assigned to this LKE Type.
-        :param str label: The LKE Type's label.
+        :param str id: The ID representing the Kubernetes type.
+        :param str label: The Kubernetes type label is for display purposes only.
         :param Sequence['GetLkeTypesTypePriceArgs'] prices: Cost in US dollars, broken down into hourly and monthly charges.
         :param Sequence['GetLkeTypesTypeRegionPriceArgs'] region_prices: A list of region-specific prices for this LKE Type.
         :param int transfer: The monthly outbound transfer amount, in MB.
@@ -11480,7 +11528,7 @@ class GetLkeTypesTypeArgs:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique ID assigned to this LKE Type.
+        The ID representing the Kubernetes type.
         """
         return pulumi.get(self, "id")
 
@@ -11492,7 +11540,7 @@ class GetLkeTypesTypeArgs:
     @pulumi.getter
     def label(self) -> str:
         """
-        The LKE Type's label.
+        The Kubernetes type label is for display purposes only.
         """
         return pulumi.get(self, "label")
 
@@ -11540,7 +11588,13 @@ class GetLkeTypesTypeArgs:
 if not MYPY:
     class GetLkeTypesTypePriceArgsDict(TypedDict):
         hourly: float
+        """
+        Cost (in US dollars) per hour.
+        """
         monthly: float
+        """
+        Cost (in US dollars) per month.
+        """
 elif False:
     GetLkeTypesTypePriceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -11549,12 +11603,19 @@ class GetLkeTypesTypePriceArgs:
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @hourly.setter
@@ -11564,6 +11625,9 @@ class GetLkeTypesTypePriceArgs:
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
     @monthly.setter
@@ -11575,6 +11639,9 @@ if not MYPY:
     class GetLkeTypesTypeRegionPriceArgsDict(TypedDict):
         hourly: float
         id: str
+        """
+        The ID representing the Kubernetes type.
+        """
         monthly: float
 elif False:
     GetLkeTypesTypeRegionPriceArgsDict: TypeAlias = Mapping[str, Any]
@@ -11585,6 +11652,9 @@ class GetLkeTypesTypeRegionPriceArgs:
                  hourly: float,
                  id: str,
                  monthly: float):
+        """
+        :param str id: The ID representing the Kubernetes type.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "monthly", monthly)
@@ -11601,6 +11671,9 @@ class GetLkeTypesTypeRegionPriceArgs:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Kubernetes type.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -11878,15 +11951,15 @@ if not MYPY:
     class GetNetworkTransferPricesFilterArgsDict(TypedDict):
         name: str
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         values: Sequence[str]
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         match_by: NotRequired[str]
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
 elif False:
     GetNetworkTransferPricesFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -11898,9 +11971,9 @@ class GetNetworkTransferPricesFilterArgs:
                  values: Sequence[str],
                  match_by: Optional[str] = None):
         """
-        :param str name: The name of the attribute to filter on.
-        :param Sequence[str] values: The value(s) to be used in the filter.
-        :param str match_by: The type of comparison to use for this filter.
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -11911,7 +11984,7 @@ class GetNetworkTransferPricesFilterArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         return pulumi.get(self, "name")
 
@@ -11923,7 +11996,7 @@ class GetNetworkTransferPricesFilterArgs:
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         return pulumi.get(self, "values")
 
@@ -11935,7 +12008,7 @@ class GetNetworkTransferPricesFilterArgs:
     @pulumi.getter(name="matchBy")
     def match_by(self) -> Optional[str]:
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
 
@@ -11948,11 +12021,11 @@ if not MYPY:
     class GetNetworkTransferPricesTypeArgsDict(TypedDict):
         id: str
         """
-        The unique ID assigned to this Network Transfer Price.
+        The ID representing the Network Transfer Price.
         """
         label: str
         """
-        The Network Transfer Price's label.
+        The Network Transfer Price label is for display purposes only.
         """
         prices: Sequence['GetNetworkTransferPricesTypePriceArgsDict']
         """
@@ -11978,8 +12051,8 @@ class GetNetworkTransferPricesTypeArgs:
                  region_prices: Sequence['GetNetworkTransferPricesTypeRegionPriceArgs'],
                  transfer: int):
         """
-        :param str id: The unique ID assigned to this Network Transfer Price.
-        :param str label: The Network Transfer Price's label.
+        :param str id: The ID representing the Network Transfer Price.
+        :param str label: The Network Transfer Price label is for display purposes only.
         :param Sequence['GetNetworkTransferPricesTypePriceArgs'] prices: Cost in US dollars, broken down into hourly and monthly charges.
         :param Sequence['GetNetworkTransferPricesTypeRegionPriceArgs'] region_prices: A list of region-specific prices for this Network Transfer Price.
         :param int transfer: The monthly outbound transfer amount, in MB.
@@ -11994,7 +12067,7 @@ class GetNetworkTransferPricesTypeArgs:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique ID assigned to this Network Transfer Price.
+        The ID representing the Network Transfer Price.
         """
         return pulumi.get(self, "id")
 
@@ -12006,7 +12079,7 @@ class GetNetworkTransferPricesTypeArgs:
     @pulumi.getter
     def label(self) -> str:
         """
-        The Network Transfer Price's label.
+        The Network Transfer Price label is for display purposes only.
         """
         return pulumi.get(self, "label")
 
@@ -12054,7 +12127,13 @@ class GetNetworkTransferPricesTypeArgs:
 if not MYPY:
     class GetNetworkTransferPricesTypePriceArgsDict(TypedDict):
         hourly: float
+        """
+        Cost (in US dollars) per hour.
+        """
         monthly: float
+        """
+        Cost (in US dollars) per month.
+        """
 elif False:
     GetNetworkTransferPricesTypePriceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -12063,12 +12142,19 @@ class GetNetworkTransferPricesTypePriceArgs:
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @hourly.setter
@@ -12078,6 +12164,9 @@ class GetNetworkTransferPricesTypePriceArgs:
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
     @monthly.setter
@@ -12089,6 +12178,9 @@ if not MYPY:
     class GetNetworkTransferPricesTypeRegionPriceArgsDict(TypedDict):
         hourly: float
         id: str
+        """
+        The ID representing the Network Transfer Price.
+        """
         monthly: float
 elif False:
     GetNetworkTransferPricesTypeRegionPriceArgsDict: TypeAlias = Mapping[str, Any]
@@ -12099,6 +12191,9 @@ class GetNetworkTransferPricesTypeRegionPriceArgs:
                  hourly: float,
                  id: str,
                  monthly: float):
+        """
+        :param str id: The ID representing the Network Transfer Price.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "monthly", monthly)
@@ -12115,6 +12210,9 @@ class GetNetworkTransferPricesTypeRegionPriceArgs:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Network Transfer Price.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -16834,15 +16932,15 @@ if not MYPY:
     class GetVolumeTypesFilterArgsDict(TypedDict):
         name: str
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         values: Sequence[str]
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         match_by: NotRequired[str]
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
 elif False:
     GetVolumeTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -16854,9 +16952,9 @@ class GetVolumeTypesFilterArgs:
                  values: Sequence[str],
                  match_by: Optional[str] = None):
         """
-        :param str name: The name of the attribute to filter on.
-        :param Sequence[str] values: The value(s) to be used in the filter.
-        :param str match_by: The type of comparison to use for this filter.
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -16867,7 +16965,7 @@ class GetVolumeTypesFilterArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         return pulumi.get(self, "name")
 
@@ -16879,7 +16977,7 @@ class GetVolumeTypesFilterArgs:
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         return pulumi.get(self, "values")
 
@@ -16891,7 +16989,7 @@ class GetVolumeTypesFilterArgs:
     @pulumi.getter(name="matchBy")
     def match_by(self) -> Optional[str]:
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
 
@@ -16904,11 +17002,11 @@ if not MYPY:
     class GetVolumeTypesTypeArgsDict(TypedDict):
         id: str
         """
-        The unique ID assigned to this Volume Type.
+        The ID representing the Volume type.
         """
         label: str
         """
-        The Volume Type's label.
+        The Volume type label is for display purposes only.
         """
         prices: Sequence['GetVolumeTypesTypePriceArgsDict']
         """
@@ -16934,8 +17032,8 @@ class GetVolumeTypesTypeArgs:
                  region_prices: Sequence['GetVolumeTypesTypeRegionPriceArgs'],
                  transfer: int):
         """
-        :param str id: The unique ID assigned to this Volume Type.
-        :param str label: The Volume Type's label.
+        :param str id: The ID representing the Volume type.
+        :param str label: The Volume type label is for display purposes only.
         :param Sequence['GetVolumeTypesTypePriceArgs'] prices: Cost in US dollars, broken down into hourly and monthly charges.
         :param Sequence['GetVolumeTypesTypeRegionPriceArgs'] region_prices: A list of region-specific prices for this Volume Type.
         :param int transfer: The monthly outbound transfer amount, in MB.
@@ -16950,7 +17048,7 @@ class GetVolumeTypesTypeArgs:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique ID assigned to this Volume Type.
+        The ID representing the Volume type.
         """
         return pulumi.get(self, "id")
 
@@ -16962,7 +17060,7 @@ class GetVolumeTypesTypeArgs:
     @pulumi.getter
     def label(self) -> str:
         """
-        The Volume Type's label.
+        The Volume type label is for display purposes only.
         """
         return pulumi.get(self, "label")
 
@@ -17010,7 +17108,13 @@ class GetVolumeTypesTypeArgs:
 if not MYPY:
     class GetVolumeTypesTypePriceArgsDict(TypedDict):
         hourly: float
+        """
+        Cost (in US dollars) per hour.
+        """
         monthly: float
+        """
+        Cost (in US dollars) per month.
+        """
 elif False:
     GetVolumeTypesTypePriceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -17019,12 +17123,19 @@ class GetVolumeTypesTypePriceArgs:
     def __init__(__self__, *,
                  hourly: float,
                  monthly: float):
+        """
+        :param float hourly: Cost (in US dollars) per hour.
+        :param float monthly: Cost (in US dollars) per month.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "monthly", monthly)
 
     @property
     @pulumi.getter
     def hourly(self) -> float:
+        """
+        Cost (in US dollars) per hour.
+        """
         return pulumi.get(self, "hourly")
 
     @hourly.setter
@@ -17034,6 +17145,9 @@ class GetVolumeTypesTypePriceArgs:
     @property
     @pulumi.getter
     def monthly(self) -> float:
+        """
+        Cost (in US dollars) per month.
+        """
         return pulumi.get(self, "monthly")
 
     @monthly.setter
@@ -17045,6 +17159,9 @@ if not MYPY:
     class GetVolumeTypesTypeRegionPriceArgsDict(TypedDict):
         hourly: float
         id: str
+        """
+        The ID representing the Volume type.
+        """
         monthly: float
 elif False:
     GetVolumeTypesTypeRegionPriceArgsDict: TypeAlias = Mapping[str, Any]
@@ -17055,6 +17172,9 @@ class GetVolumeTypesTypeRegionPriceArgs:
                  hourly: float,
                  id: str,
                  monthly: float):
+        """
+        :param str id: The ID representing the Volume type.
+        """
         pulumi.set(__self__, "hourly", hourly)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "monthly", monthly)
@@ -17071,6 +17191,9 @@ class GetVolumeTypesTypeRegionPriceArgs:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Volume type.
+        """
         return pulumi.get(self, "id")
 
     @id.setter

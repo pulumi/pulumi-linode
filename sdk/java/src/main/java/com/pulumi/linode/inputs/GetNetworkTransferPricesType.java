@@ -18,14 +18,14 @@ public final class GetNetworkTransferPricesType extends com.pulumi.resources.Inv
     public static final GetNetworkTransferPricesType Empty = new GetNetworkTransferPricesType();
 
     /**
-     * The unique ID assigned to this Network Transfer Price.
+     * The ID representing the Network Transfer Price.
      * 
      */
     @Import(name="id", required=true)
     private String id;
 
     /**
-     * @return The unique ID assigned to this Network Transfer Price.
+     * @return The ID representing the Network Transfer Price.
      * 
      */
     public String id() {
@@ -33,14 +33,14 @@ public final class GetNetworkTransferPricesType extends com.pulumi.resources.Inv
     }
 
     /**
-     * The Network Transfer Price&#39;s label.
+     * The Network Transfer Price label is for display purposes only.
      * 
      */
     @Import(name="label", required=true)
     private String label;
 
     /**
-     * @return The Network Transfer Price&#39;s label.
+     * @return The Network Transfer Price label is for display purposes only.
      * 
      */
     public String label() {
@@ -121,7 +121,7 @@ public final class GetNetworkTransferPricesType extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id The unique ID assigned to this Network Transfer Price.
+         * @param id The ID representing the Network Transfer Price.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetNetworkTransferPricesType extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param label The Network Transfer Price&#39;s label.
+         * @param label The Network Transfer Price label is for display purposes only.
          * 
          * @return builder
          * 

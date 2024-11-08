@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetNetworkTransferPricesTypeResult
     {
         /// <summary>
-        /// The unique ID assigned to this Network Transfer Price.
+        /// The ID representing the Network Transfer Price.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Network Transfer Price's label.
+        /// The Network Transfer Price label is for display purposes only.
         /// </summary>
         public readonly string Label;
         /// <summary>

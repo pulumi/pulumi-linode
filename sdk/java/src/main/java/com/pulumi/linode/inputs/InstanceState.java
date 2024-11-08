@@ -443,14 +443,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * Information about the Placement Group this Linode is assigned to.
      * 
      */
     @Import(name="placementGroup")
     private @Nullable Output<InstancePlacementGroupArgs> placementGroup;
 
     /**
-     * @return Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * @return Information about the Placement Group this Linode is assigned to.
      * 
      */
     public Optional<Output<InstancePlacementGroupArgs>> placementGroup() {
@@ -1438,7 +1438,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementGroup Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+         * @param placementGroup Information about the Placement Group this Linode is assigned to.
          * 
          * @return builder
          * 
@@ -1449,7 +1449,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementGroup Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+         * @param placementGroup Information about the Placement Group this Linode is assigned to.
          * 
          * @return builder
          * 

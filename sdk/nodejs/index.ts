@@ -465,6 +465,11 @@ export type Rdns = import("./rdns").Rdns;
 export const Rdns: typeof import("./rdns").Rdns = null as any;
 utilities.lazyLoad(exports, ["Rdns"], () => require("./rdns"));
 
+export { ReservedIpAssignmentArgs, ReservedIpAssignmentState } from "./reservedIpAssignment";
+export type ReservedIpAssignment = import("./reservedIpAssignment").ReservedIpAssignment;
+export const ReservedIpAssignment: typeof import("./reservedIpAssignment").ReservedIpAssignment = null as any;
+utilities.lazyLoad(exports, ["ReservedIpAssignment"], () => require("./reservedIpAssignment"));
+
 export { SshKeyArgs, SshKeyState } from "./sshKey";
 export type SshKey = import("./sshKey").SshKey;
 export const SshKey: typeof import("./sshKey").SshKey = null as any;
@@ -566,6 +571,8 @@ const _module = {
                 return new PlacementGroupAssignment(name, <any>undefined, { urn })
             case "linode:index/rdns:Rdns":
                 return new Rdns(name, <any>undefined, { urn })
+            case "linode:index/reservedIpAssignment:ReservedIpAssignment":
+                return new ReservedIpAssignment(name, <any>undefined, { urn })
             case "linode:index/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
             case "linode:index/stackScript:StackScript":
@@ -611,6 +618,7 @@ pulumi.runtime.registerResourceModule("linode", "index/objectStorageObject", _mo
 pulumi.runtime.registerResourceModule("linode", "index/placementGroup", _module)
 pulumi.runtime.registerResourceModule("linode", "index/placementGroupAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
+pulumi.runtime.registerResourceModule("linode", "index/reservedIpAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)
 pulumi.runtime.registerResourceModule("linode", "index/token", _module)

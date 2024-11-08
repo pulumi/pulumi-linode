@@ -6,6 +6,10 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about Linode Volume types that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+ */
 export function getVolumeTypes(args?: GetVolumeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +26,13 @@ export function getVolumeTypes(args?: GetVolumeTypesArgs, opts?: pulumi.InvokeOp
  */
 export interface GetVolumeTypesArgs {
     filters?: inputs.GetVolumeTypesFilter[];
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: string;
     types?: inputs.GetVolumeTypesType[];
 }
@@ -32,11 +42,18 @@ export interface GetVolumeTypesArgs {
  */
 export interface GetVolumeTypesResult {
     readonly filters?: outputs.GetVolumeTypesFilter[];
+    /**
+     * The ID representing the Volume type.
+     */
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
     readonly types?: outputs.GetVolumeTypesType[];
 }
+/**
+ * Provides information about Linode Volume types that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+ */
 export function getVolumeTypesOutput(args?: GetVolumeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,7 +70,13 @@ export function getVolumeTypesOutput(args?: GetVolumeTypesOutputArgs, opts?: pul
  */
 export interface GetVolumeTypesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesFilterArgs>[]>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: pulumi.Input<string>;
     types?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesTypeArgs>[]>;
 }

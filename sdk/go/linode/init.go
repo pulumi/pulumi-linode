@@ -73,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PlacementGroupAssignment{}
 	case "linode:index/rdns:Rdns":
 		r = &Rdns{}
+	case "linode:index/reservedIpAssignment:ReservedIpAssignment":
+		r = &ReservedIpAssignment{}
 	case "linode:index/sshKey:SshKey":
 		r = &SshKey{}
 	case "linode:index/stackScript:StackScript":
@@ -246,6 +248,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/rdns",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/reservedIpAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

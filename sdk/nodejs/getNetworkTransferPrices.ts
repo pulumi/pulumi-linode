@@ -6,6 +6,10 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about Linode Network Transfer Prices that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+ */
 export function getNetworkTransferPrices(args?: GetNetworkTransferPricesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkTransferPricesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +26,13 @@ export function getNetworkTransferPrices(args?: GetNetworkTransferPricesArgs, op
  */
 export interface GetNetworkTransferPricesArgs {
     filters?: inputs.GetNetworkTransferPricesFilter[];
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: string;
     types?: inputs.GetNetworkTransferPricesType[];
 }
@@ -32,11 +42,18 @@ export interface GetNetworkTransferPricesArgs {
  */
 export interface GetNetworkTransferPricesResult {
     readonly filters?: outputs.GetNetworkTransferPricesFilter[];
+    /**
+     * The ID representing the Network Transfer Price.
+     */
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
     readonly types?: outputs.GetNetworkTransferPricesType[];
 }
+/**
+ * Provides information about Linode Network Transfer Prices that match a set of filters.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+ */
 export function getNetworkTransferPricesOutput(args?: GetNetworkTransferPricesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkTransferPricesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,7 +70,13 @@ export function getNetworkTransferPricesOutput(args?: GetNetworkTransferPricesOu
  */
 export interface GetNetworkTransferPricesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesFilterArgs>[]>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: pulumi.Input<string>;
     types?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesTypeArgs>[]>;
 }

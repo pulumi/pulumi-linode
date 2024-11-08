@@ -12,9 +12,15 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetLkeTypesTypePriceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cost (in US dollars) per hour.
+        /// </summary>
         [Input("hourly", required: true)]
         public double Hourly { get; set; }
 
+        /// <summary>
+        /// Cost (in US dollars) per month.
+        /// </summary>
         [Input("monthly", required: true)]
         public double Monthly { get; set; }
 

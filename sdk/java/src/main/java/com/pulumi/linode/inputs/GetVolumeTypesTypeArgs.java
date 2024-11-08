@@ -19,14 +19,14 @@ public final class GetVolumeTypesTypeArgs extends com.pulumi.resources.ResourceA
     public static final GetVolumeTypesTypeArgs Empty = new GetVolumeTypesTypeArgs();
 
     /**
-     * The unique ID assigned to this Volume Type.
+     * The ID representing the Volume type.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The unique ID assigned to this Volume Type.
+     * @return The ID representing the Volume type.
      * 
      */
     public Output<String> id() {
@@ -34,14 +34,14 @@ public final class GetVolumeTypesTypeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Volume Type&#39;s label.
+     * The Volume type label is for display purposes only.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The Volume Type&#39;s label.
+     * @return The Volume type label is for display purposes only.
      * 
      */
     public Output<String> label() {
@@ -122,7 +122,7 @@ public final class GetVolumeTypesTypeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id The unique ID assigned to this Volume Type.
+         * @param id The ID representing the Volume type.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GetVolumeTypesTypeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id The unique ID assigned to this Volume Type.
+         * @param id The ID representing the Volume type.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetVolumeTypesTypeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label The Volume Type&#39;s label.
+         * @param label The Volume type label is for display purposes only.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetVolumeTypesTypeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label The Volume Type&#39;s label.
+         * @param label The Volume type label is for display purposes only.
          * 
          * @return builder
          * 

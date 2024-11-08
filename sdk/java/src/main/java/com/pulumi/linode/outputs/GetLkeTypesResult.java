@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLkeTypesResult {
     private @Nullable List<GetLkeTypesFilter> filters;
+    /**
+     * @return The ID representing the Kubernetes type.
+     * 
+     */
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -25,6 +29,10 @@ public final class GetLkeTypesResult {
     public List<GetLkeTypesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return The ID representing the Kubernetes type.
+     * 
+     */
     public String id() {
         return this.id;
     }

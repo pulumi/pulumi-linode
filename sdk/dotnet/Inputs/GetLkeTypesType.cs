@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetLkeTypesTypeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique ID assigned to this LKE Type.
+        /// The ID representing the Kubernetes type.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The LKE Type's label.
+        /// The Kubernetes type label is for display purposes only.
         /// </summary>
         [Input("label", required: true)]
         public string Label { get; set; } = null!;

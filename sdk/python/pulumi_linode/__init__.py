@@ -97,6 +97,7 @@ from .placement_group import *
 from .placement_group_assignment import *
 from .provider import *
 from .rdns import *
+from .reserved_ip_assignment import *
 from .ssh_key import *
 from .stack_script import *
 from .token import *
@@ -323,6 +324,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/rdns:Rdns": "Rdns"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/reservedIpAssignment",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/reservedIpAssignment:ReservedIpAssignment": "ReservedIpAssignment"
   }
  },
  {

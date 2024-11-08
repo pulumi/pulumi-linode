@@ -18,14 +18,14 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
     public static final GetVolumeTypesFilterArgs Empty = new GetVolumeTypesFilterArgs();
 
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      * 
      */
     @Import(name="matchBy")
     private @Nullable Output<String> matchBy;
 
     /**
-     * @return The type of comparison to use for this filter.
+     * @return The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      * 
      */
     public Optional<Output<String>> matchBy() {
@@ -33,14 +33,14 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the attribute to filter on.
+     * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      * 
      */
     public Output<String> name() {
@@ -48,14 +48,14 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return The value(s) to be used in the filter.
+     * @return A list of values for the filter to allow. These values should all be in string form.
      * 
      */
     public Output<List<String>> values() {
@@ -89,7 +89,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchBy The type of comparison to use for this filter.
+         * @param matchBy The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchBy The type of comparison to use for this filter.
+         * @param matchBy The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the attribute to filter on.
+         * @param name The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the attribute to filter on.
+         * @param name The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param values The value(s) to be used in the filter.
+         * @param values A list of values for the filter to allow. These values should all be in string form.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param values The value(s) to be used in the filter.
+         * @param values A list of values for the filter to allow. These values should all be in string form.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetVolumeTypesFilterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param values The value(s) to be used in the filter.
+         * @param values A list of values for the filter to allow. These values should all be in string form.
          * 
          * @return builder
          * 

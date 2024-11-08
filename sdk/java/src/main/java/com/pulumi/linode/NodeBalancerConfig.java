@@ -233,12 +233,16 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the NodeBalancer to access.
      * 
+     * ***
+     * 
      */
     @Export(name="nodebalancerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodebalancerId;
 
     /**
      * @return The ID of the NodeBalancer to access.
+     * 
+     * ***
      * 
      */
     public Output<Integer> nodebalancerId() {

@@ -90,8 +90,6 @@ def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFil
                          placement_groups: Optional[Sequence[Union['GetPlacementGroupsPlacementGroupArgs', 'GetPlacementGroupsPlacementGroupArgsDict']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupsResult:
     """
-    **NOTE: Placement Groups may not currently be available to all users.**
-
     Provides information about a list of Linode Placement Groups that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
 
@@ -146,8 +144,6 @@ def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence
                                 placement_groups: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupsPlacementGroupArgs', 'GetPlacementGroupsPlacementGroupArgsDict']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlacementGroupsResult]:
     """
-    **NOTE: Placement Groups may not currently be available to all users.**
-
     Provides information about a list of Linode Placement Groups that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
 

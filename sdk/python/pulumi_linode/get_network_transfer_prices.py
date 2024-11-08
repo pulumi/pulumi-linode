@@ -53,6 +53,9 @@ class GetNetworkTransferPricesResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Network Transfer Price.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -90,7 +93,12 @@ def get_network_transfer_prices(filters: Optional[Sequence[Union['GetNetworkTran
                                 types: Optional[Sequence[Union['GetNetworkTransferPricesTypeArgs', 'GetNetworkTransferPricesTypeArgsDict']]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkTransferPricesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode Network Transfer Prices that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -112,7 +120,12 @@ def get_network_transfer_prices_output(filters: Optional[pulumi.Input[Optional[S
                                        types: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkTransferPricesTypeArgs', 'GetNetworkTransferPricesTypeArgsDict']]]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkTransferPricesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode Network Transfer Prices that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters

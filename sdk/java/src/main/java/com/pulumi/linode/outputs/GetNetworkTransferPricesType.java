@@ -15,12 +15,12 @@ import java.util.Objects;
 @CustomType
 public final class GetNetworkTransferPricesType {
     /**
-     * @return The unique ID assigned to this Network Transfer Price.
+     * @return The ID representing the Network Transfer Price.
      * 
      */
     private String id;
     /**
-     * @return The Network Transfer Price&#39;s label.
+     * @return The Network Transfer Price label is for display purposes only.
      * 
      */
     private String label;
@@ -42,14 +42,14 @@ public final class GetNetworkTransferPricesType {
 
     private GetNetworkTransferPricesType() {}
     /**
-     * @return The unique ID assigned to this Network Transfer Price.
+     * @return The ID representing the Network Transfer Price.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The Network Transfer Price&#39;s label.
+     * @return The Network Transfer Price label is for display purposes only.
      * 
      */
     public String label() {

@@ -111,8 +111,6 @@ import (
 //
 // ### Linode Instance Assigned to a Placement Group
 //
-// **NOTE: Placement Groups may not currently be available to all users.**
-//
 // The following example shows how one might use this resource to configure a Linode instance assigned to a
 // Placement Group.
 //
@@ -225,7 +223,7 @@ type Instance struct {
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
-	// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup InstancePlacementGroupPtrOutput `pulumi:"placementGroup"`
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
 	PlacementGroupExternallyManaged pulumi.BoolPtrOutput `pulumi:"placementGroupExternallyManaged"`
@@ -386,7 +384,7 @@ type instanceState struct {
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	MigrationType *string `pulumi:"migrationType"`
-	// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup *InstancePlacementGroup `pulumi:"placementGroup"`
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
 	PlacementGroupExternallyManaged *bool `pulumi:"placementGroupExternallyManaged"`
@@ -504,7 +502,7 @@ type InstanceState struct {
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	MigrationType pulumi.StringPtrInput
-	// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup InstancePlacementGroupPtrInput
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
 	PlacementGroupExternallyManaged pulumi.BoolPtrInput
@@ -602,6 +600,8 @@ type instanceArgs struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4s []string `pulumi:"ipv4s"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
 	// Various fields related to the Linode Metadata service.
@@ -610,7 +610,7 @@ type instanceArgs struct {
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	MigrationType *string `pulumi:"migrationType"`
-	// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup *InstancePlacementGroup `pulumi:"placementGroup"`
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
 	PlacementGroupExternallyManaged *bool `pulumi:"placementGroupExternallyManaged"`
@@ -699,6 +699,8 @@ type InstanceArgs struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
+	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	Ipv4s pulumi.StringArrayInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
@@ -707,7 +709,7 @@ type InstanceArgs struct {
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 	MigrationType pulumi.StringPtrInput
-	// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup InstancePlacementGroupPtrInput
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
 	PlacementGroupExternallyManaged pulumi.BoolPtrInput
@@ -980,7 +982,7 @@ func (o InstanceOutput) MigrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
 }
 
-// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+// Information about the Placement Group this Linode is assigned to.
 func (o InstanceOutput) PlacementGroup() InstancePlacementGroupPtrOutput {
 	return o.ApplyT(func(v *Instance) InstancePlacementGroupPtrOutput { return v.PlacementGroup }).(InstancePlacementGroupPtrOutput)
 }

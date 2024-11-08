@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeTypesTypeResult
     {
         /// <summary>
-        /// The unique ID assigned to this LKE Type.
+        /// The ID representing the Kubernetes type.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The LKE Type's label.
+        /// The Kubernetes type label is for display purposes only.
         /// </summary>
         public readonly string Label;
         /// <summary>

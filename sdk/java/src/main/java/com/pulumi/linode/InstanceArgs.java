@@ -273,6 +273,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * 
+     */
+    @Import(name="ipv4s")
+    private @Nullable Output<List<String>> ipv4s;
+
+    /**
+     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv4s() {
+        return Optional.ofNullable(this.ipv4s);
+    }
+
+    /**
      * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
@@ -322,14 +337,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * Information about the Placement Group this Linode is assigned to.
      * 
      */
     @Import(name="placementGroup")
     private @Nullable Output<InstancePlacementGroupArgs> placementGroup;
 
     /**
-     * @return Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+     * @return Information about the Placement Group this Linode is assigned to.
      * 
      */
     public Optional<Output<InstancePlacementGroupArgs>> placementGroup() {
@@ -571,6 +586,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.group = $.group;
         this.image = $.image;
         this.interfaces = $.interfaces;
+        this.ipv4s = $.ipv4s;
         this.label = $.label;
         this.metadatas = $.metadatas;
         this.migrationType = $.migrationType;
@@ -996,6 +1012,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4s(@Nullable Output<List<String>> ipv4s) {
+            $.ipv4s = ipv4s;
+            return this;
+        }
+
+        /**
+         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4s(List<String> ipv4s) {
+            return ipv4s(Output.of(ipv4s));
+        }
+
+        /**
+         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4s(String... ipv4s) {
+            return ipv4s(List.of(ipv4s));
+        }
+
+        /**
          * @param label The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
          * 
          * @return builder
@@ -1073,7 +1120,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementGroup Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+         * @param placementGroup Information about the Placement Group this Linode is assigned to.
          * 
          * @return builder
          * 
@@ -1084,7 +1131,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementGroup Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+         * @param placementGroup Information about the Placement Group this Linode is assigned to.
          * 
          * @return builder
          * 

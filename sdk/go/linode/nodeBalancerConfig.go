@@ -92,6 +92,8 @@ type NodeBalancerConfig struct {
 	// periodically as checks are performed against backends.
 	NodeStatuses NodeBalancerConfigNodeStatusArrayOutput `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
+	//
+	// ***
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port pulumi.IntOutput `pulumi:"port"`
@@ -178,6 +180,8 @@ type nodeBalancerConfigState struct {
 	// periodically as checks are performed against backends.
 	NodeStatuses []NodeBalancerConfigNodeStatus `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
+	//
+	// ***
 	NodebalancerId *int `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port *int `pulumi:"port"`
@@ -221,6 +225,8 @@ type NodeBalancerConfigState struct {
 	// periodically as checks are performed against backends.
 	NodeStatuses NodeBalancerConfigNodeStatusArrayInput
 	// The ID of the NodeBalancer to access.
+	//
+	// ***
 	NodebalancerId pulumi.IntPtrInput
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port pulumi.IntPtrInput
@@ -265,6 +271,8 @@ type nodeBalancerConfigArgs struct {
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
 	CipherSuite *string `pulumi:"cipherSuite"`
 	// The ID of the NodeBalancer to access.
+	//
+	// ***
 	NodebalancerId int `pulumi:"nodebalancerId"`
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port *int `pulumi:"port"`
@@ -302,6 +310,8 @@ type NodeBalancerConfigArgs struct {
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
 	CipherSuite pulumi.StringPtrInput
 	// The ID of the NodeBalancer to access.
+	//
+	// ***
 	NodebalancerId pulumi.IntInput
 	// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
 	Port pulumi.IntPtrInput
@@ -457,6 +467,8 @@ func (o NodeBalancerConfigOutput) NodeStatuses() NodeBalancerConfigNodeStatusArr
 }
 
 // The ID of the NodeBalancer to access.
+//
+// ***
 func (o NodeBalancerConfigOutput) NodebalancerId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.IntOutput { return v.NodebalancerId }).(pulumi.IntOutput)
 }

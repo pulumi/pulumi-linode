@@ -8,8 +8,6 @@ import * as utilities from "./utilities";
  * Manages a single assignment between a Linode and a Placement Group.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-group-add-linode).
  *
- * **NOTE: Placement Groups may not currently be available to all users.**
- *
  * To prevent update conflicts, Linodes managed through the `linode.Instance` resource should specify `placementGroupExternallyManaged`:
  *
  * ```typescript

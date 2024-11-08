@@ -15,12 +15,12 @@ import java.util.Objects;
 @CustomType
 public final class GetVolumeTypesType {
     /**
-     * @return The unique ID assigned to this Volume Type.
+     * @return The ID representing the Volume type.
      * 
      */
     private String id;
     /**
-     * @return The Volume Type&#39;s label.
+     * @return The Volume type label is for display purposes only.
      * 
      */
     private String label;
@@ -42,14 +42,14 @@ public final class GetVolumeTypesType {
 
     private GetVolumeTypesType() {}
     /**
-     * @return The unique ID assigned to this Volume Type.
+     * @return The ID representing the Volume type.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The Volume Type&#39;s label.
+     * @return The Volume type label is for display purposes only.
      * 
      */
     public String label() {
