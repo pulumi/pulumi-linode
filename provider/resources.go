@@ -153,6 +153,9 @@ func Provider() tfbridge.ProviderInfo {
 					"rdns": {CSharpName: "RdnsName"},
 				},
 			},
+			"linode_reserved_ip_assignment": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 			"linode_sshkey": {
 				Tok: makeResource("SshKey"),
 				Fields: map[string]*tfbridge.SchemaInfo{
