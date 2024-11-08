@@ -21,7 +21,7 @@ import (
 
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	linode "github.com/pulumi/pulumi-linode/provider/v4"
 )
