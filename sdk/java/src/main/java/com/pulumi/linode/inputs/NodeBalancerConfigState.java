@@ -176,12 +176,16 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
     /**
      * The ID of the NodeBalancer to access.
      * 
+     * ***
+     * 
      */
     @Import(name="nodebalancerId")
     private @Nullable Output<Integer> nodebalancerId;
 
     /**
      * @return The ID of the NodeBalancer to access.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Integer>> nodebalancerId() {
@@ -578,6 +582,8 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         /**
          * @param nodebalancerId The ID of the NodeBalancer to access.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -588,6 +594,8 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
 
         /**
          * @param nodebalancerId The ID of the NodeBalancer to access.
+         * 
+         * ***
          * 
          * @return builder
          * 

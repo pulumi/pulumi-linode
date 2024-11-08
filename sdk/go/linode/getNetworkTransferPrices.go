@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides information about Linode Network Transfer Prices that match a set of filters.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
 func GetNetworkTransferPrices(ctx *pulumi.Context, args *GetNetworkTransferPricesArgs, opts ...pulumi.InvokeOption) (*GetNetworkTransferPricesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkTransferPricesResult
@@ -24,18 +26,21 @@ func GetNetworkTransferPrices(ctx *pulumi.Context, args *GetNetworkTransferPrice
 // A collection of arguments for invoking getNetworkTransferPrices.
 type GetNetworkTransferPricesArgs struct {
 	Filters []GetNetworkTransferPricesFilter `pulumi:"filters"`
-	Order   *string                          `pulumi:"order"`
-	OrderBy *string                          `pulumi:"orderBy"`
-	Types   []GetNetworkTransferPricesType   `pulumi:"types"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order *string `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy *string                        `pulumi:"orderBy"`
+	Types   []GetNetworkTransferPricesType `pulumi:"types"`
 }
 
 // A collection of values returned by getNetworkTransferPrices.
 type GetNetworkTransferPricesResult struct {
 	Filters []GetNetworkTransferPricesFilter `pulumi:"filters"`
-	Id      string                           `pulumi:"id"`
-	Order   *string                          `pulumi:"order"`
-	OrderBy *string                          `pulumi:"orderBy"`
-	Types   []GetNetworkTransferPricesType   `pulumi:"types"`
+	// The ID representing the Network Transfer Price.
+	Id      string                         `pulumi:"id"`
+	Order   *string                        `pulumi:"order"`
+	OrderBy *string                        `pulumi:"orderBy"`
+	Types   []GetNetworkTransferPricesType `pulumi:"types"`
 }
 
 func GetNetworkTransferPricesOutput(ctx *pulumi.Context, args GetNetworkTransferPricesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkTransferPricesResultOutput {
@@ -60,9 +65,11 @@ func GetNetworkTransferPricesOutput(ctx *pulumi.Context, args GetNetworkTransfer
 // A collection of arguments for invoking getNetworkTransferPrices.
 type GetNetworkTransferPricesOutputArgs struct {
 	Filters GetNetworkTransferPricesFilterArrayInput `pulumi:"filters"`
-	Order   pulumi.StringPtrInput                    `pulumi:"order"`
-	OrderBy pulumi.StringPtrInput                    `pulumi:"orderBy"`
-	Types   GetNetworkTransferPricesTypeArrayInput   `pulumi:"types"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy pulumi.StringPtrInput                  `pulumi:"orderBy"`
+	Types   GetNetworkTransferPricesTypeArrayInput `pulumi:"types"`
 }
 
 func (GetNetworkTransferPricesOutputArgs) ElementType() reflect.Type {
@@ -88,6 +95,7 @@ func (o GetNetworkTransferPricesResultOutput) Filters() GetNetworkTransferPrices
 	return o.ApplyT(func(v GetNetworkTransferPricesResult) []GetNetworkTransferPricesFilter { return v.Filters }).(GetNetworkTransferPricesFilterArrayOutput)
 }
 
+// The ID representing the Network Transfer Price.
 func (o GetNetworkTransferPricesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesResult) string { return v.Id }).(pulumi.StringOutput)
 }

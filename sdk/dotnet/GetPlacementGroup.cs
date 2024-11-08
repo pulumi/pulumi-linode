@@ -12,8 +12,6 @@ namespace Pulumi.Linode
     public static class GetPlacementGroup
     {
         /// <summary>
-        /// **NOTE: Placement Groups may not currently be available to all users.**
-        /// 
         /// `linode.PlacementGroup` provides details about a Linode placement group.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
         /// 
@@ -41,8 +39,6 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlacementGroupResult>("linode:index/getPlacementGroup:getPlacementGroup", args ?? new GetPlacementGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// **NOTE: Placement Groups may not currently be available to all users.**
-        /// 
         /// `linode.PlacementGroup` provides details about a Linode placement group.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
         /// 

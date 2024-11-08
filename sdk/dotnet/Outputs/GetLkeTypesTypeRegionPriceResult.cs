@@ -14,6 +14,9 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeTypesTypeRegionPriceResult
     {
         public readonly double Hourly;
+        /// <summary>
+        /// The ID representing the Kubernetes type.
+        /// </summary>
         public readonly string Id;
         public readonly double Monthly;
 

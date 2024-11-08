@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVolumeTypesTypeResult
     {
         /// <summary>
-        /// The unique ID assigned to this Volume Type.
+        /// The ID representing the Volume type.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Volume Type's label.
+        /// The Volume type label is for display purposes only.
         /// </summary>
         public readonly string Label;
         /// <summary>

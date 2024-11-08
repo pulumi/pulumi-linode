@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVolumeTypesTypePrice {
+    /**
+     * @return Cost (in US dollars) per hour.
+     * 
+     */
     private Double hourly;
+    /**
+     * @return Cost (in US dollars) per month.
+     * 
+     */
     private Double monthly;
 
     private GetVolumeTypesTypePrice() {}
+    /**
+     * @return Cost (in US dollars) per hour.
+     * 
+     */
     public Double hourly() {
         return this.hourly;
     }
+    /**
+     * @return Cost (in US dollars) per month.
+     * 
+     */
     public Double monthly() {
         return this.monthly;
     }

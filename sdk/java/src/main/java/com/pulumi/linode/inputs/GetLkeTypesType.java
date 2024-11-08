@@ -18,14 +18,14 @@ public final class GetLkeTypesType extends com.pulumi.resources.InvokeArgs {
     public static final GetLkeTypesType Empty = new GetLkeTypesType();
 
     /**
-     * The unique ID assigned to this LKE Type.
+     * The ID representing the Kubernetes type.
      * 
      */
     @Import(name="id", required=true)
     private String id;
 
     /**
-     * @return The unique ID assigned to this LKE Type.
+     * @return The ID representing the Kubernetes type.
      * 
      */
     public String id() {
@@ -33,14 +33,14 @@ public final class GetLkeTypesType extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The LKE Type&#39;s label.
+     * The Kubernetes type label is for display purposes only.
      * 
      */
     @Import(name="label", required=true)
     private String label;
 
     /**
-     * @return The LKE Type&#39;s label.
+     * @return The Kubernetes type label is for display purposes only.
      * 
      */
     public String label() {
@@ -121,7 +121,7 @@ public final class GetLkeTypesType extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id The unique ID assigned to this LKE Type.
+         * @param id The ID representing the Kubernetes type.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetLkeTypesType extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param label The LKE Type&#39;s label.
+         * @param label The Kubernetes type label is for display purposes only.
          * 
          * @return builder
          * 

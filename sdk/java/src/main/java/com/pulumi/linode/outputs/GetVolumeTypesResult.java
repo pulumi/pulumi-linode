@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetVolumeTypesResult {
     private @Nullable List<GetVolumeTypesFilter> filters;
+    /**
+     * @return The ID representing the Volume type.
+     * 
+     */
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -25,6 +29,10 @@ public final class GetVolumeTypesResult {
     public List<GetVolumeTypesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return The ID representing the Volume type.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -18,14 +18,14 @@ public final class GetVolumeTypesType extends com.pulumi.resources.InvokeArgs {
     public static final GetVolumeTypesType Empty = new GetVolumeTypesType();
 
     /**
-     * The unique ID assigned to this Volume Type.
+     * The ID representing the Volume type.
      * 
      */
     @Import(name="id", required=true)
     private String id;
 
     /**
-     * @return The unique ID assigned to this Volume Type.
+     * @return The ID representing the Volume type.
      * 
      */
     public String id() {
@@ -33,14 +33,14 @@ public final class GetVolumeTypesType extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Volume Type&#39;s label.
+     * The Volume type label is for display purposes only.
      * 
      */
     @Import(name="label", required=true)
     private String label;
 
     /**
-     * @return The Volume Type&#39;s label.
+     * @return The Volume type label is for display purposes only.
      * 
      */
     public String label() {
@@ -121,7 +121,7 @@ public final class GetVolumeTypesType extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id The unique ID assigned to this Volume Type.
+         * @param id The ID representing the Volume type.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetVolumeTypesType extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param label The Volume Type&#39;s label.
+         * @param label The Volume type label is for display purposes only.
          * 
          * @return builder
          * 

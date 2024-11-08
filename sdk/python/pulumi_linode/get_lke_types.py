@@ -53,6 +53,9 @@ class GetLkeTypesResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID representing the Kubernetes type.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -90,7 +93,12 @@ def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'Get
                   types: Optional[Sequence[Union['GetLkeTypesTypeArgs', 'GetLkeTypesTypeArgsDict']]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeTypesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode LKE types that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -112,7 +120,12 @@ def get_lke_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
                          types: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeTypesTypeArgs', 'GetLkeTypesTypeArgsDict']]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeTypesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Linode LKE types that match a set of filters.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters

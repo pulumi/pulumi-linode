@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides information about Linode LKE types that match a set of filters.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
 func GetLkeTypes(ctx *pulumi.Context, args *GetLkeTypesArgs, opts ...pulumi.InvokeOption) (*GetLkeTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLkeTypesResult
@@ -24,18 +26,21 @@ func GetLkeTypes(ctx *pulumi.Context, args *GetLkeTypesArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getLkeTypes.
 type GetLkeTypesArgs struct {
 	Filters []GetLkeTypesFilter `pulumi:"filters"`
-	Order   *string             `pulumi:"order"`
-	OrderBy *string             `pulumi:"orderBy"`
-	Types   []GetLkeTypesType   `pulumi:"types"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order *string `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy *string           `pulumi:"orderBy"`
+	Types   []GetLkeTypesType `pulumi:"types"`
 }
 
 // A collection of values returned by getLkeTypes.
 type GetLkeTypesResult struct {
 	Filters []GetLkeTypesFilter `pulumi:"filters"`
-	Id      string              `pulumi:"id"`
-	Order   *string             `pulumi:"order"`
-	OrderBy *string             `pulumi:"orderBy"`
-	Types   []GetLkeTypesType   `pulumi:"types"`
+	// The ID representing the Kubernetes type.
+	Id      string            `pulumi:"id"`
+	Order   *string           `pulumi:"order"`
+	OrderBy *string           `pulumi:"orderBy"`
+	Types   []GetLkeTypesType `pulumi:"types"`
 }
 
 func GetLkeTypesOutput(ctx *pulumi.Context, args GetLkeTypesOutputArgs, opts ...pulumi.InvokeOption) GetLkeTypesResultOutput {
@@ -60,9 +65,11 @@ func GetLkeTypesOutput(ctx *pulumi.Context, args GetLkeTypesOutputArgs, opts ...
 // A collection of arguments for invoking getLkeTypes.
 type GetLkeTypesOutputArgs struct {
 	Filters GetLkeTypesFilterArrayInput `pulumi:"filters"`
-	Order   pulumi.StringPtrInput       `pulumi:"order"`
-	OrderBy pulumi.StringPtrInput       `pulumi:"orderBy"`
-	Types   GetLkeTypesTypeArrayInput   `pulumi:"types"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy pulumi.StringPtrInput     `pulumi:"orderBy"`
+	Types   GetLkeTypesTypeArrayInput `pulumi:"types"`
 }
 
 func (GetLkeTypesOutputArgs) ElementType() reflect.Type {
@@ -88,6 +95,7 @@ func (o GetLkeTypesResultOutput) Filters() GetLkeTypesFilterArrayOutput {
 	return o.ApplyT(func(v GetLkeTypesResult) []GetLkeTypesFilter { return v.Filters }).(GetLkeTypesFilterArrayOutput)
 }
 
+// The ID representing the Kubernetes type.
 func (o GetLkeTypesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeTypesResult) string { return v.Id }).(pulumi.StringOutput)
 }

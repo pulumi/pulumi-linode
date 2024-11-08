@@ -11,9 +11,17 @@ namespace Pulumi.Linode
 {
     public static class GetVolumeTypes
     {
+        /// <summary>
+        /// Provides information about Linode Volume types that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+        /// </summary>
         public static Task<GetVolumeTypesResult> InvokeAsync(GetVolumeTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeTypesResult>("linode:index/getVolumeTypes:getVolumeTypes", args ?? new GetVolumeTypesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about Linode Volume types that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+        /// </summary>
         public static Output<GetVolumeTypesResult> Invoke(GetVolumeTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeTypesResult>("linode:index/getVolumeTypes:getVolumeTypes", args ?? new GetVolumeTypesInvokeArgs(), options.WithDefaults());
     }
@@ -29,9 +37,15 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
@@ -59,9 +73,15 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
@@ -84,6 +104,9 @@ namespace Pulumi.Linode
     public sealed class GetVolumeTypesResult
     {
         public readonly ImmutableArray<Outputs.GetVolumeTypesFilterResult> Filters;
+        /// <summary>
+        /// The ID representing the Volume type.
+        /// </summary>
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;

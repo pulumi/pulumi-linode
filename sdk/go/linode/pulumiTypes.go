@@ -8680,6 +8680,112 @@ func (o RdnsTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ReservedIpAssignmentVpcNat11 struct {
+	Address  string `pulumi:"address"`
+	SubnetId int    `pulumi:"subnetId"`
+	VpcId    int    `pulumi:"vpcId"`
+}
+
+// ReservedIpAssignmentVpcNat11Input is an input type that accepts ReservedIpAssignmentVpcNat11Args and ReservedIpAssignmentVpcNat11Output values.
+// You can construct a concrete instance of `ReservedIpAssignmentVpcNat11Input` via:
+//
+//	ReservedIpAssignmentVpcNat11Args{...}
+type ReservedIpAssignmentVpcNat11Input interface {
+	pulumi.Input
+
+	ToReservedIpAssignmentVpcNat11Output() ReservedIpAssignmentVpcNat11Output
+	ToReservedIpAssignmentVpcNat11OutputWithContext(context.Context) ReservedIpAssignmentVpcNat11Output
+}
+
+type ReservedIpAssignmentVpcNat11Args struct {
+	Address  pulumi.StringInput `pulumi:"address"`
+	SubnetId pulumi.IntInput    `pulumi:"subnetId"`
+	VpcId    pulumi.IntInput    `pulumi:"vpcId"`
+}
+
+func (ReservedIpAssignmentVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedIpAssignmentVpcNat11)(nil)).Elem()
+}
+
+func (i ReservedIpAssignmentVpcNat11Args) ToReservedIpAssignmentVpcNat11Output() ReservedIpAssignmentVpcNat11Output {
+	return i.ToReservedIpAssignmentVpcNat11OutputWithContext(context.Background())
+}
+
+func (i ReservedIpAssignmentVpcNat11Args) ToReservedIpAssignmentVpcNat11OutputWithContext(ctx context.Context) ReservedIpAssignmentVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpAssignmentVpcNat11Output)
+}
+
+// ReservedIpAssignmentVpcNat11ArrayInput is an input type that accepts ReservedIpAssignmentVpcNat11Array and ReservedIpAssignmentVpcNat11ArrayOutput values.
+// You can construct a concrete instance of `ReservedIpAssignmentVpcNat11ArrayInput` via:
+//
+//	ReservedIpAssignmentVpcNat11Array{ ReservedIpAssignmentVpcNat11Args{...} }
+type ReservedIpAssignmentVpcNat11ArrayInput interface {
+	pulumi.Input
+
+	ToReservedIpAssignmentVpcNat11ArrayOutput() ReservedIpAssignmentVpcNat11ArrayOutput
+	ToReservedIpAssignmentVpcNat11ArrayOutputWithContext(context.Context) ReservedIpAssignmentVpcNat11ArrayOutput
+}
+
+type ReservedIpAssignmentVpcNat11Array []ReservedIpAssignmentVpcNat11Input
+
+func (ReservedIpAssignmentVpcNat11Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservedIpAssignmentVpcNat11)(nil)).Elem()
+}
+
+func (i ReservedIpAssignmentVpcNat11Array) ToReservedIpAssignmentVpcNat11ArrayOutput() ReservedIpAssignmentVpcNat11ArrayOutput {
+	return i.ToReservedIpAssignmentVpcNat11ArrayOutputWithContext(context.Background())
+}
+
+func (i ReservedIpAssignmentVpcNat11Array) ToReservedIpAssignmentVpcNat11ArrayOutputWithContext(ctx context.Context) ReservedIpAssignmentVpcNat11ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpAssignmentVpcNat11ArrayOutput)
+}
+
+type ReservedIpAssignmentVpcNat11Output struct{ *pulumi.OutputState }
+
+func (ReservedIpAssignmentVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedIpAssignmentVpcNat11)(nil)).Elem()
+}
+
+func (o ReservedIpAssignmentVpcNat11Output) ToReservedIpAssignmentVpcNat11Output() ReservedIpAssignmentVpcNat11Output {
+	return o
+}
+
+func (o ReservedIpAssignmentVpcNat11Output) ToReservedIpAssignmentVpcNat11OutputWithContext(ctx context.Context) ReservedIpAssignmentVpcNat11Output {
+	return o
+}
+
+func (o ReservedIpAssignmentVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservedIpAssignmentVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o ReservedIpAssignmentVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v ReservedIpAssignmentVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+func (o ReservedIpAssignmentVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v ReservedIpAssignmentVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+type ReservedIpAssignmentVpcNat11ArrayOutput struct{ *pulumi.OutputState }
+
+func (ReservedIpAssignmentVpcNat11ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservedIpAssignmentVpcNat11)(nil)).Elem()
+}
+
+func (o ReservedIpAssignmentVpcNat11ArrayOutput) ToReservedIpAssignmentVpcNat11ArrayOutput() ReservedIpAssignmentVpcNat11ArrayOutput {
+	return o
+}
+
+func (o ReservedIpAssignmentVpcNat11ArrayOutput) ToReservedIpAssignmentVpcNat11ArrayOutputWithContext(ctx context.Context) ReservedIpAssignmentVpcNat11ArrayOutput {
+	return o
+}
+
+func (o ReservedIpAssignmentVpcNat11ArrayOutput) Index(i pulumi.IntInput) ReservedIpAssignmentVpcNat11Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservedIpAssignmentVpcNat11 {
+		return vs[0].([]ReservedIpAssignmentVpcNat11)[vs[1].(int)]
+	}).(ReservedIpAssignmentVpcNat11Output)
+}
+
 type StackScriptUserDefinedField struct {
 	// The default value. If not specified, this value will be used.
 	Default string `pulumi:"default"`
@@ -23510,11 +23616,11 @@ func (o GetLkeClustersLkeClusterControlPlanePtrOutput) HighAvailability() pulumi
 }
 
 type GetLkeTypesFilter struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name string `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values []string `pulumi:"values"`
 }
 
@@ -23530,11 +23636,11 @@ type GetLkeTypesFilterInput interface {
 }
 
 type GetLkeTypesFilterArgs struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -23589,17 +23695,17 @@ func (o GetLkeTypesFilterOutput) ToGetLkeTypesFilterOutputWithContext(ctx contex
 	return o
 }
 
-// The type of comparison to use for this filter.
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 func (o GetLkeTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLkeTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
-// The name of the attribute to filter on.
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 func (o GetLkeTypesFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeTypesFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value(s) to be used in the filter.
+// A list of values for the filter to allow. These values should all be in string form.
 func (o GetLkeTypesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLkeTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -23625,9 +23731,9 @@ func (o GetLkeTypesFilterArrayOutput) Index(i pulumi.IntInput) GetLkeTypesFilter
 }
 
 type GetLkeTypesType struct {
-	// The unique ID assigned to this LKE Type.
+	// The ID representing the Kubernetes type.
 	Id string `pulumi:"id"`
-	// The LKE Type's label.
+	// The Kubernetes type label is for display purposes only.
 	Label string `pulumi:"label"`
 	// Cost in US dollars, broken down into hourly and monthly charges.
 	Prices []GetLkeTypesTypePrice `pulumi:"prices"`
@@ -23649,9 +23755,9 @@ type GetLkeTypesTypeInput interface {
 }
 
 type GetLkeTypesTypeArgs struct {
-	// The unique ID assigned to this LKE Type.
+	// The ID representing the Kubernetes type.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The LKE Type's label.
+	// The Kubernetes type label is for display purposes only.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Cost in US dollars, broken down into hourly and monthly charges.
 	Prices GetLkeTypesTypePriceArrayInput `pulumi:"prices"`
@@ -23712,12 +23818,12 @@ func (o GetLkeTypesTypeOutput) ToGetLkeTypesTypeOutputWithContext(ctx context.Co
 	return o
 }
 
-// The unique ID assigned to this LKE Type.
+// The ID representing the Kubernetes type.
 func (o GetLkeTypesTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeTypesType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The LKE Type's label.
+// The Kubernetes type label is for display purposes only.
 func (o GetLkeTypesTypeOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeTypesType) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -23758,7 +23864,9 @@ func (o GetLkeTypesTypeArrayOutput) Index(i pulumi.IntInput) GetLkeTypesTypeOutp
 }
 
 type GetLkeTypesTypePrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -23774,7 +23882,9 @@ type GetLkeTypesTypePriceInput interface {
 }
 
 type GetLkeTypesTypePriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -23829,10 +23939,12 @@ func (o GetLkeTypesTypePriceOutput) ToGetLkeTypesTypePriceOutputWithContext(ctx 
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetLkeTypesTypePriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetLkeTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetLkeTypesTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetLkeTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -23858,7 +23970,8 @@ func (o GetLkeTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetLkeTypesTyp
 }
 
 type GetLkeTypesTypeRegionPrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	Hourly float64 `pulumi:"hourly"`
+	// The ID representing the Kubernetes type.
 	Id      string  `pulumi:"id"`
 	Monthly float64 `pulumi:"monthly"`
 }
@@ -23875,7 +23988,8 @@ type GetLkeTypesTypeRegionPriceInput interface {
 }
 
 type GetLkeTypesTypeRegionPriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// The ID representing the Kubernetes type.
 	Id      pulumi.StringInput  `pulumi:"id"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
@@ -23935,6 +24049,7 @@ func (o GetLkeTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetLkeTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// The ID representing the Kubernetes type.
 func (o GetLkeTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -24515,11 +24630,11 @@ func (o GetNbTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNbType
 }
 
 type GetNetworkTransferPricesFilter struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name string `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values []string `pulumi:"values"`
 }
 
@@ -24535,11 +24650,11 @@ type GetNetworkTransferPricesFilterInput interface {
 }
 
 type GetNetworkTransferPricesFilterArgs struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -24594,17 +24709,17 @@ func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOu
 	return o
 }
 
-// The type of comparison to use for this filter.
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 func (o GetNetworkTransferPricesFilterOutput) MatchBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
-// The name of the attribute to filter on.
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 func (o GetNetworkTransferPricesFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value(s) to be used in the filter.
+// A list of values for the filter to allow. These values should all be in string form.
 func (o GetNetworkTransferPricesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -24630,9 +24745,9 @@ func (o GetNetworkTransferPricesFilterArrayOutput) Index(i pulumi.IntInput) GetN
 }
 
 type GetNetworkTransferPricesType struct {
-	// The unique ID assigned to this Network Transfer Price.
+	// The ID representing the Network Transfer Price.
 	Id string `pulumi:"id"`
-	// The Network Transfer Price's label.
+	// The Network Transfer Price label is for display purposes only.
 	Label string `pulumi:"label"`
 	// Cost in US dollars, broken down into hourly and monthly charges.
 	Prices []GetNetworkTransferPricesTypePrice `pulumi:"prices"`
@@ -24654,9 +24769,9 @@ type GetNetworkTransferPricesTypeInput interface {
 }
 
 type GetNetworkTransferPricesTypeArgs struct {
-	// The unique ID assigned to this Network Transfer Price.
+	// The ID representing the Network Transfer Price.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Network Transfer Price's label.
+	// The Network Transfer Price label is for display purposes only.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Cost in US dollars, broken down into hourly and monthly charges.
 	Prices GetNetworkTransferPricesTypePriceArrayInput `pulumi:"prices"`
@@ -24717,12 +24832,12 @@ func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutput
 	return o
 }
 
-// The unique ID assigned to this Network Transfer Price.
+// The ID representing the Network Transfer Price.
 func (o GetNetworkTransferPricesTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Network Transfer Price's label.
+// The Network Transfer Price label is for display purposes only.
 func (o GetNetworkTransferPricesTypeOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -24763,7 +24878,9 @@ func (o GetNetworkTransferPricesTypeArrayOutput) Index(i pulumi.IntInput) GetNet
 }
 
 type GetNetworkTransferPricesTypePrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -24779,7 +24896,9 @@ type GetNetworkTransferPricesTypePriceInput interface {
 }
 
 type GetNetworkTransferPricesTypePriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -24834,10 +24953,12 @@ func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypeP
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetNetworkTransferPricesTypePriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetNetworkTransferPricesTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -24863,7 +24984,8 @@ func (o GetNetworkTransferPricesTypePriceArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetNetworkTransferPricesTypeRegionPrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	Hourly float64 `pulumi:"hourly"`
+	// The ID representing the Network Transfer Price.
 	Id      string  `pulumi:"id"`
 	Monthly float64 `pulumi:"monthly"`
 }
@@ -24880,7 +25002,8 @@ type GetNetworkTransferPricesTypeRegionPriceInput interface {
 }
 
 type GetNetworkTransferPricesTypeRegionPriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// The ID representing the Network Transfer Price.
 	Id      pulumi.StringInput  `pulumi:"id"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
@@ -24940,6 +25063,7 @@ func (o GetNetworkTransferPricesTypeRegionPriceOutput) Hourly() pulumi.Float64Ou
 	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// The ID representing the Network Transfer Price.
 func (o GetNetworkTransferPricesTypeRegionPriceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -31742,11 +31866,11 @@ func (o GetVlansVlanArrayOutput) Index(i pulumi.IntInput) GetVlansVlanOutput {
 }
 
 type GetVolumeTypesFilter struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name string `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values []string `pulumi:"values"`
 }
 
@@ -31762,11 +31886,11 @@ type GetVolumeTypesFilterInput interface {
 }
 
 type GetVolumeTypesFilterArgs struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -31821,17 +31945,17 @@ func (o GetVolumeTypesFilterOutput) ToGetVolumeTypesFilterOutputWithContext(ctx 
 	return o
 }
 
-// The type of comparison to use for this filter.
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 func (o GetVolumeTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
-// The name of the attribute to filter on.
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 func (o GetVolumeTypesFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeTypesFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value(s) to be used in the filter.
+// A list of values for the filter to allow. These values should all be in string form.
 func (o GetVolumeTypesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVolumeTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -31857,9 +31981,9 @@ func (o GetVolumeTypesFilterArrayOutput) Index(i pulumi.IntInput) GetVolumeTypes
 }
 
 type GetVolumeTypesType struct {
-	// The unique ID assigned to this Volume Type.
+	// The ID representing the Volume type.
 	Id string `pulumi:"id"`
-	// The Volume Type's label.
+	// The Volume type label is for display purposes only.
 	Label string `pulumi:"label"`
 	// Cost in US dollars, broken down into hourly and monthly charges.
 	Prices []GetVolumeTypesTypePrice `pulumi:"prices"`
@@ -31881,9 +32005,9 @@ type GetVolumeTypesTypeInput interface {
 }
 
 type GetVolumeTypesTypeArgs struct {
-	// The unique ID assigned to this Volume Type.
+	// The ID representing the Volume type.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Volume Type's label.
+	// The Volume type label is for display purposes only.
 	Label pulumi.StringInput `pulumi:"label"`
 	// Cost in US dollars, broken down into hourly and monthly charges.
 	Prices GetVolumeTypesTypePriceArrayInput `pulumi:"prices"`
@@ -31944,12 +32068,12 @@ func (o GetVolumeTypesTypeOutput) ToGetVolumeTypesTypeOutputWithContext(ctx cont
 	return o
 }
 
-// The unique ID assigned to this Volume Type.
+// The ID representing the Volume type.
 func (o GetVolumeTypesTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeTypesType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Volume Type's label.
+// The Volume type label is for display purposes only.
 func (o GetVolumeTypesTypeOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeTypesType) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -31990,7 +32114,9 @@ func (o GetVolumeTypesTypeArrayOutput) Index(i pulumi.IntInput) GetVolumeTypesTy
 }
 
 type GetVolumeTypesTypePrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly float64 `pulumi:"monthly"`
 }
 
@@ -32006,7 +32132,9 @@ type GetVolumeTypesTypePriceInput interface {
 }
 
 type GetVolumeTypesTypePriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
@@ -32061,10 +32189,12 @@ func (o GetVolumeTypesTypePriceOutput) ToGetVolumeTypesTypePriceOutputWithContex
 	return o
 }
 
+// Cost (in US dollars) per hour.
 func (o GetVolumeTypesTypePriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVolumeTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// Cost (in US dollars) per month.
 func (o GetVolumeTypesTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVolumeTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
@@ -32090,7 +32220,8 @@ func (o GetVolumeTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetVolumeTy
 }
 
 type GetVolumeTypesTypeRegionPrice struct {
-	Hourly  float64 `pulumi:"hourly"`
+	Hourly float64 `pulumi:"hourly"`
+	// The ID representing the Volume type.
 	Id      string  `pulumi:"id"`
 	Monthly float64 `pulumi:"monthly"`
 }
@@ -32107,7 +32238,8 @@ type GetVolumeTypesTypeRegionPriceInput interface {
 }
 
 type GetVolumeTypesTypeRegionPriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// The ID representing the Volume type.
 	Id      pulumi.StringInput  `pulumi:"id"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
@@ -32167,6 +32299,7 @@ func (o GetVolumeTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVolumeTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
+// The ID representing the Volume type.
 func (o GetVolumeTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -33862,6 +33995,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberArrayInput)(nil)).Elem(), PlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsInput)(nil)).Elem(), RdnsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsPtrInput)(nil)).Elem(), RdnsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedIpAssignmentVpcNat11Input)(nil)).Elem(), ReservedIpAssignmentVpcNat11Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedIpAssignmentVpcNat11ArrayInput)(nil)).Elem(), ReservedIpAssignmentVpcNat11Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptUserDefinedFieldInput)(nil)).Elem(), StackScriptUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackScriptUserDefinedFieldArrayInput)(nil)).Elem(), StackScriptUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserDomainGrantInput)(nil)).Elem(), UserDomainGrantArgs{})
@@ -34353,6 +34488,8 @@ func init() {
 	pulumi.RegisterOutputType(PlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(ReservedIpAssignmentVpcNat11Output{})
+	pulumi.RegisterOutputType(ReservedIpAssignmentVpcNat11ArrayOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(StackScriptUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(UserDomainGrantOutput{})

@@ -14,6 +14,9 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetNetworkTransferPricesTypeRegionPriceResult
     {
         public readonly double Hourly;
+        /// <summary>
+        /// The ID representing the Network Transfer Price.
+        /// </summary>
         public readonly string Id;
         public readonly double Monthly;
 

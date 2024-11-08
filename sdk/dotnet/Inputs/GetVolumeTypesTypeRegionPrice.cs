@@ -15,6 +15,9 @@ namespace Pulumi.Linode.Inputs
         [Input("hourly", required: true)]
         public double Hourly { get; set; }
 
+        /// <summary>
+        /// The ID representing the Volume type.
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 

@@ -14,6 +14,9 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVolumeTypesTypeRegionPriceResult
     {
         public readonly double Hourly;
+        /// <summary>
+        /// The ID representing the Volume type.
+        /// </summary>
         public readonly string Id;
         public readonly double Monthly;
 

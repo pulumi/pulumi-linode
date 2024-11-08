@@ -12,6 +12,10 @@ import java.util.Objects;
 @CustomType
 public final class GetVolumeTypesTypeRegionPrice {
     private Double hourly;
+    /**
+     * @return The ID representing the Volume type.
+     * 
+     */
     private String id;
     private Double monthly;
 
@@ -19,6 +23,10 @@ public final class GetVolumeTypesTypeRegionPrice {
     public Double hourly() {
         return this.hourly;
     }
+    /**
+     * @return The ID representing the Volume type.
+     * 
+     */
     public String id() {
         return this.id;
     }

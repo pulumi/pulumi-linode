@@ -21,9 +21,17 @@ public final class GetNetworkTransferPricesTypeRegionPrice extends com.pulumi.re
         return this.hourly;
     }
 
+    /**
+     * The ID representing the Network Transfer Price.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return The ID representing the Network Transfer Price.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -66,6 +74,12 @@ public final class GetNetworkTransferPricesTypeRegionPrice extends com.pulumi.re
             return this;
         }
 
+        /**
+         * @param id The ID representing the Network Transfer Price.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

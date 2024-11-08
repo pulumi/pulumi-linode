@@ -12,6 +12,10 @@ import java.util.Objects;
 @CustomType
 public final class GetNetworkTransferPricesTypeRegionPrice {
     private Double hourly;
+    /**
+     * @return The ID representing the Network Transfer Price.
+     * 
+     */
     private String id;
     private Double monthly;
 
@@ -19,6 +23,10 @@ public final class GetNetworkTransferPricesTypeRegionPrice {
     public Double hourly() {
         return this.hourly;
     }
+    /**
+     * @return The ID representing the Network Transfer Price.
+     * 
+     */
     public String id() {
         return this.id;
     }

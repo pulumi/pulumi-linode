@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLkeTypesFilter {
     /**
-     * @return The type of comparison to use for this filter.
+     * @return The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      * 
      */
     private @Nullable String matchBy;
     /**
-     * @return The name of the attribute to filter on.
+     * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      * 
      */
     private String name;
     /**
-     * @return The value(s) to be used in the filter.
+     * @return A list of values for the filter to allow. These values should all be in string form.
      * 
      */
     private List<String> values;
 
     private GetLkeTypesFilter() {}
     /**
-     * @return The type of comparison to use for this filter.
+     * @return The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      * 
      */
     public Optional<String> matchBy() {
         return Optional.ofNullable(this.matchBy);
     }
     /**
-     * @return The name of the attribute to filter on.
+     * @return The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The value(s) to be used in the filter.
+     * @return A list of values for the filter to allow. These values should all be in string form.
      * 
      */
     public List<String> values() {

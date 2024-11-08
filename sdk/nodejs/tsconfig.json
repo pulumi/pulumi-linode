@@ -108,6 +108,7 @@
         "placementGroupAssignment.ts",
         "provider.ts",
         "rdns.ts",
+        "reservedIpAssignment.ts",
         "sshKey.ts",
         "stackScript.ts",
         "token.ts",

@@ -2248,41 +2248,41 @@ export interface GetLkeClustersLkeClusterControlPlaneArgs {
 
 export interface GetLkeTypesFilter {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: string;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
 }
 
 export interface GetLkeTypesFilterArgs {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: pulumi.Input<string>;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: pulumi.Input<string>;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetLkeTypesType {
     /**
-     * The unique ID assigned to this LKE Type.
+     * The ID representing the Kubernetes type.
      */
     id: string;
     /**
-     * The LKE Type's label.
+     * The Kubernetes type label is for display purposes only.
      */
     label?: string;
     /**
@@ -2301,11 +2301,11 @@ export interface GetLkeTypesType {
 
 export interface GetLkeTypesTypeArgs {
     /**
-     * The unique ID assigned to this LKE Type.
+     * The ID representing the Kubernetes type.
      */
     id: pulumi.Input<string>;
     /**
-     * The LKE Type's label.
+     * The Kubernetes type label is for display purposes only.
      */
     label?: pulumi.Input<string>;
     /**
@@ -2323,23 +2323,41 @@ export interface GetLkeTypesTypeArgs {
 }
 
 export interface GetLkeTypesTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
 export interface GetLkeTypesTypePriceArgs {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: pulumi.Input<number>;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: pulumi.Input<number>;
 }
 
 export interface GetLkeTypesTypeRegionPrice {
     hourly: number;
+    /**
+     * The ID representing the Kubernetes type.
+     */
     id: string;
     monthly: number;
 }
 
 export interface GetLkeTypesTypeRegionPriceArgs {
     hourly: pulumi.Input<number>;
+    /**
+     * The ID representing the Kubernetes type.
+     */
     id: pulumi.Input<string>;
     monthly: pulumi.Input<number>;
 }
@@ -2444,41 +2462,41 @@ export interface GetNbTypesTypeRegionPriceArgs {
 
 export interface GetNetworkTransferPricesFilter {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: string;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
 }
 
 export interface GetNetworkTransferPricesFilterArgs {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: pulumi.Input<string>;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: pulumi.Input<string>;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetNetworkTransferPricesType {
     /**
-     * The unique ID assigned to this Network Transfer Price.
+     * The ID representing the Network Transfer Price.
      */
     id: string;
     /**
-     * The Network Transfer Price's label.
+     * The Network Transfer Price label is for display purposes only.
      */
     label?: string;
     /**
@@ -2497,11 +2515,11 @@ export interface GetNetworkTransferPricesType {
 
 export interface GetNetworkTransferPricesTypeArgs {
     /**
-     * The unique ID assigned to this Network Transfer Price.
+     * The ID representing the Network Transfer Price.
      */
     id: pulumi.Input<string>;
     /**
-     * The Network Transfer Price's label.
+     * The Network Transfer Price label is for display purposes only.
      */
     label?: pulumi.Input<string>;
     /**
@@ -2519,23 +2537,41 @@ export interface GetNetworkTransferPricesTypeArgs {
 }
 
 export interface GetNetworkTransferPricesTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
 export interface GetNetworkTransferPricesTypePriceArgs {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: pulumi.Input<number>;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: pulumi.Input<number>;
 }
 
 export interface GetNetworkTransferPricesTypeRegionPrice {
     hourly: number;
+    /**
+     * The ID representing the Network Transfer Price.
+     */
     id: string;
     monthly: number;
 }
 
 export interface GetNetworkTransferPricesTypeRegionPriceArgs {
     hourly: pulumi.Input<number>;
+    /**
+     * The ID representing the Network Transfer Price.
+     */
     id: pulumi.Input<string>;
     monthly: pulumi.Input<number>;
 }
@@ -4554,41 +4590,41 @@ export interface GetVlansVlanArgs {
 
 export interface GetVolumeTypesFilter {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: string;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
 }
 
 export interface GetVolumeTypesFilterArgs {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: pulumi.Input<string>;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: pulumi.Input<string>;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetVolumeTypesType {
     /**
-     * The unique ID assigned to this Volume Type.
+     * The ID representing the Volume type.
      */
     id: string;
     /**
-     * The Volume Type's label.
+     * The Volume type label is for display purposes only.
      */
     label?: string;
     /**
@@ -4607,11 +4643,11 @@ export interface GetVolumeTypesType {
 
 export interface GetVolumeTypesTypeArgs {
     /**
-     * The unique ID assigned to this Volume Type.
+     * The ID representing the Volume type.
      */
     id: pulumi.Input<string>;
     /**
-     * The Volume Type's label.
+     * The Volume type label is for display purposes only.
      */
     label?: pulumi.Input<string>;
     /**
@@ -4629,23 +4665,41 @@ export interface GetVolumeTypesTypeArgs {
 }
 
 export interface GetVolumeTypesTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: number;
 }
 
 export interface GetVolumeTypesTypePriceArgs {
+    /**
+     * Cost (in US dollars) per hour.
+     */
     hourly: pulumi.Input<number>;
+    /**
+     * Cost (in US dollars) per month.
+     */
     monthly: pulumi.Input<number>;
 }
 
 export interface GetVolumeTypesTypeRegionPrice {
     hourly: number;
+    /**
+     * The ID representing the Volume type.
+     */
     id: string;
     monthly: number;
 }
 
 export interface GetVolumeTypesTypeRegionPriceArgs {
     hourly: pulumi.Input<number>;
+    /**
+     * The ID representing the Volume type.
+     */
     id: pulumi.Input<string>;
     monthly: pulumi.Input<number>;
 }
@@ -6041,6 +6095,12 @@ export interface RdnsTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     update?: pulumi.Input<string>;
+}
+
+export interface ReservedIpAssignmentVpcNat11 {
+    address: pulumi.Input<string>;
+    subnetId: pulumi.Input<number>;
+    vpcId: pulumi.Input<number>;
 }
 
 export interface StackScriptUserDefinedField {

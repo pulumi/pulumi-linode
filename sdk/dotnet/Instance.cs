@@ -101,8 +101,6 @@ namespace Pulumi.Linode
     /// 
     /// ### Linode Instance Assigned to a Placement Group
     /// 
-    /// **NOTE: Placement Groups may not currently be available to all users.**
-    /// 
     /// The following example shows how one might use this resource to configure a Linode instance assigned to a
     /// Placement Group.
     /// 
@@ -303,7 +301,7 @@ namespace Pulumi.Linode
         public Output<string?> MigrationType { get; private set; } = null!;
 
         /// <summary>
-        /// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        /// Information about the Placement Group this Linode is assigned to.
         /// </summary>
         [Output("placementGroup")]
         public Output<Outputs.InstancePlacementGroup?> PlacementGroup { get; private set; } = null!;
@@ -588,6 +586,18 @@ namespace Pulumi.Linode
             set => _interfaces = value;
         }
 
+        [Input("ipv4s")]
+        private InputList<string>? _ipv4s;
+
+        /// <summary>
+        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// </summary>
+        public InputList<string> Ipv4s
+        {
+            get => _ipv4s ?? (_ipv4s = new InputList<string>());
+            set => _ipv4s = value;
+        }
+
         /// <summary>
         /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         /// </summary>
@@ -615,7 +625,7 @@ namespace Pulumi.Linode
         public Input<string>? MigrationType { get; set; }
 
         /// <summary>
-        /// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        /// Information about the Placement Group this Linode is assigned to.
         /// </summary>
         [Input("placementGroup")]
         public Input<Inputs.InstancePlacementGroupArgs>? PlacementGroup { get; set; }
@@ -958,7 +968,7 @@ namespace Pulumi.Linode
         public Input<string>? MigrationType { get; set; }
 
         /// <summary>
-        /// Information about the Placement Group this Linode is assigned to. NOTE: Placement Groups may not currently be available to all users.
+        /// Information about the Placement Group this Linode is assigned to.
         /// </summary>
         [Input("placementGroup")]
         public Input<Inputs.InstancePlacementGroupGetArgs>? PlacementGroup { get; set; }

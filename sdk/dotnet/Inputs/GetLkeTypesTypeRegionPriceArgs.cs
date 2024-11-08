@@ -15,6 +15,9 @@ namespace Pulumi.Linode.Inputs
         [Input("hourly", required: true)]
         public Input<double> Hourly { get; set; } = null!;
 
+        /// <summary>
+        /// The ID representing the Kubernetes type.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 

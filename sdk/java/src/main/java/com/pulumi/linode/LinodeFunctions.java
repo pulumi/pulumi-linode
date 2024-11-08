@@ -11795,21 +11795,51 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetLkeClustersResult> getLkeClustersPlain(GetLkeClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeClusters:getLkeClusters", TypeShape.of(GetLkeClustersResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode LKE types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     */
     public static Output<GetLkeTypesResult> getLkeTypes() {
         return getLkeTypes(GetLkeTypesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode LKE types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     */
     public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain() {
         return getLkeTypesPlain(GetLkeTypesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode LKE types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     */
     public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args) {
         return getLkeTypes(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode LKE types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     */
     public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain(GetLkeTypesPlainArgs args) {
         return getLkeTypesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode LKE types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     */
     public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode LKE types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     */
     public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain(GetLkeTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
     }
@@ -12083,21 +12113,51 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetNbTypesResult> getNbTypesPlain(GetNbTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNbTypes:getNbTypes", TypeShape.of(GetNbTypesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode Network Transfer Prices that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+     * 
+     */
     public static Output<GetNetworkTransferPricesResult> getNetworkTransferPrices() {
         return getNetworkTransferPrices(GetNetworkTransferPricesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Network Transfer Prices that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+     * 
+     */
     public static CompletableFuture<GetNetworkTransferPricesResult> getNetworkTransferPricesPlain() {
         return getNetworkTransferPricesPlain(GetNetworkTransferPricesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Network Transfer Prices that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+     * 
+     */
     public static Output<GetNetworkTransferPricesResult> getNetworkTransferPrices(GetNetworkTransferPricesArgs args) {
         return getNetworkTransferPrices(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Network Transfer Prices that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+     * 
+     */
     public static CompletableFuture<GetNetworkTransferPricesResult> getNetworkTransferPricesPlain(GetNetworkTransferPricesPlainArgs args) {
         return getNetworkTransferPricesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Network Transfer Prices that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+     * 
+     */
     public static Output<GetNetworkTransferPricesResult> getNetworkTransferPrices(GetNetworkTransferPricesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", TypeShape.of(GetNetworkTransferPricesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode Network Transfer Prices that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+     * 
+     */
     public static CompletableFuture<GetNetworkTransferPricesResult> getNetworkTransferPricesPlain(GetNetworkTransferPricesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", TypeShape.of(GetNetworkTransferPricesResult.class), args, Utilities.withVersion(options));
     }
@@ -13714,8 +13774,6 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageCluster:getObjectStorageCluster", TypeShape.of(GetObjectStorageClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
@@ -13761,8 +13819,6 @@ public final class LinodeFunctions {
         return getPlacementGroup(args, InvokeOptions.Empty);
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
@@ -13808,8 +13864,6 @@ public final class LinodeFunctions {
         return getPlacementGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
@@ -13855,8 +13909,6 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getPlacementGroup:getPlacementGroup", TypeShape.of(GetPlacementGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * `linode.PlacementGroup` provides details about a Linode placement group.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
      * 
@@ -13902,8 +13954,6 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getPlacementGroup:getPlacementGroup", TypeShape.of(GetPlacementGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
@@ -13970,8 +14020,6 @@ public final class LinodeFunctions {
         return getPlacementGroups(GetPlacementGroupsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
@@ -14038,8 +14086,6 @@ public final class LinodeFunctions {
         return getPlacementGroupsPlain(GetPlacementGroupsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
@@ -14106,8 +14152,6 @@ public final class LinodeFunctions {
         return getPlacementGroups(args, InvokeOptions.Empty);
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
@@ -14174,8 +14218,6 @@ public final class LinodeFunctions {
         return getPlacementGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
@@ -14242,8 +14284,6 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getPlacementGroups:getPlacementGroups", TypeShape.of(GetPlacementGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * **NOTE: Placement Groups may not currently be available to all users.**
-     * 
      * Provides information about a list of Linode Placement Groups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
      * 
@@ -17461,21 +17501,51 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode Volume types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+     * 
+     */
     public static Output<GetVolumeTypesResult> getVolumeTypes() {
         return getVolumeTypes(GetVolumeTypesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Volume types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+     * 
+     */
     public static CompletableFuture<GetVolumeTypesResult> getVolumeTypesPlain() {
         return getVolumeTypesPlain(GetVolumeTypesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Volume types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+     * 
+     */
     public static Output<GetVolumeTypesResult> getVolumeTypes(GetVolumeTypesArgs args) {
         return getVolumeTypes(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Volume types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+     * 
+     */
     public static CompletableFuture<GetVolumeTypesResult> getVolumeTypesPlain(GetVolumeTypesPlainArgs args) {
         return getVolumeTypesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about Linode Volume types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+     * 
+     */
     public static Output<GetVolumeTypesResult> getVolumeTypes(GetVolumeTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getVolumeTypes:getVolumeTypes", TypeShape.of(GetVolumeTypesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about Linode Volume types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+     * 
+     */
     public static CompletableFuture<GetVolumeTypesResult> getVolumeTypesPlain(GetVolumeTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVolumeTypes:getVolumeTypes", TypeShape.of(GetVolumeTypesResult.class), args, Utilities.withVersion(options));
     }

@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetVolumeTypesTypeInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique ID assigned to this Volume Type.
+        /// The ID representing the Volume type.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The Volume Type's label.
+        /// The Volume type label is for display purposes only.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;

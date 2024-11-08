@@ -21,9 +21,17 @@ public final class GetLkeTypesTypeRegionPrice extends com.pulumi.resources.Invok
         return this.hourly;
     }
 
+    /**
+     * The ID representing the Kubernetes type.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return The ID representing the Kubernetes type.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -66,6 +74,12 @@ public final class GetLkeTypesTypeRegionPrice extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param id The ID representing the Kubernetes type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

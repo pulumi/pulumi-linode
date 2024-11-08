@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNetworkTransferPricesResult {
     private @Nullable List<GetNetworkTransferPricesFilter> filters;
+    /**
+     * @return The ID representing the Network Transfer Price.
+     * 
+     */
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -25,6 +29,10 @@ public final class GetNetworkTransferPricesResult {
     public List<GetNetworkTransferPricesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return The ID representing the Network Transfer Price.
+     * 
+     */
     public String id() {
         return this.id;
     }
