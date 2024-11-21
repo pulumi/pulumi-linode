@@ -9,6 +9,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//go:build python || all
 // +build python all
 
 package examples
@@ -21,7 +22,7 @@ import (
 )
 
 func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	basePython := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			filepath.Join("..", "sdk", "python", "bin"),

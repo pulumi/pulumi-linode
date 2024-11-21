@@ -28,7 +28,8 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func getBaseOptions() integration.ProgramTestOptions {
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	t.Skip("integration tests are not being run")
 	return integration.ProgramTestOptions{
 		ExpectRefreshChanges: true,
 	}

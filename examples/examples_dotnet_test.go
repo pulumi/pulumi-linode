@@ -9,6 +9,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//go:build dotnet || all
 // +build dotnet all
 
 package examples
@@ -20,7 +21,7 @@ import (
 )
 
 func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	baseCsharp := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			"Pulumi.Linode",
