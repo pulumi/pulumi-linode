@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The linode provider is available as a package in all Pulumi languages:
+The Linode provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/linode`](https://www.npmjs.com/package/@pulumi/linode)
 * Python: [`pulumi-linode`](https://pypi.org/project/pulumi-linode/)
