@@ -54,7 +54,7 @@ export interface GetNetworkTransferPricesResult {
  * Provides information about Linode Network Transfer Prices that match a set of filters.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
  */
-export function getNetworkTransferPricesOutput(args?: GetNetworkTransferPricesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkTransferPricesResult> {
+export function getNetworkTransferPricesOutput(args?: GetNetworkTransferPricesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkTransferPricesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", {

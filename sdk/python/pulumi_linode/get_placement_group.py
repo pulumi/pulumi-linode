@@ -158,7 +158,7 @@ def get_placement_group(id: Optional[int] = None,
         region=pulumi.get(__ret__, 'region'))
 def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
                                members: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlacementGroupResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlacementGroupResult]:
     """
     `PlacementGroup` provides details about a Linode placement group.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).
@@ -181,7 +181,7 @@ def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['members'] = members
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult)
     return __ret__.apply(lambda __response__: GetPlacementGroupResult(
         id=pulumi.get(__response__, 'id'),

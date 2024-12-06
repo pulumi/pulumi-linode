@@ -69,7 +69,7 @@ export interface GetDomainZonefileResult {
  * });
  * ```
  */
-export function getDomainZonefileOutput(args: GetDomainZonefileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainZonefileResult> {
+export function getDomainZonefileOutput(args: GetDomainZonefileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainZonefileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDomainZonefile:getDomainZonefile", {
         "domainId": args.domainId,

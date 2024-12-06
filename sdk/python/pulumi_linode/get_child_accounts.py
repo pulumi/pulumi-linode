@@ -144,7 +144,7 @@ def get_child_accounts(child_accounts: Optional[Sequence[Union['GetChildAccounts
         id=pulumi.get(__ret__, 'id'))
 def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsChildAccountArgs', 'GetChildAccountsChildAccountArgsDict']]]]] = None,
                               filters: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsFilterArgs', 'GetChildAccountsFilterArgsDict']]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChildAccountsResult]:
     """
     Provides information about Linode Child Accounts that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
@@ -211,7 +211,7 @@ def get_child_accounts_output(child_accounts: Optional[pulumi.Input[Optional[Seq
     __args__ = dict()
     __args__['childAccounts'] = child_accounts
     __args__['filters'] = filters
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getChildAccounts:getChildAccounts', __args__, opts=opts, typ=GetChildAccountsResult)
     return __ret__.apply(lambda __response__: GetChildAccountsResult(
         child_accounts=pulumi.get(__response__, 'child_accounts'),

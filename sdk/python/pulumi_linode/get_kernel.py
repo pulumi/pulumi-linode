@@ -175,7 +175,7 @@ def get_kernel(id: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'),
         xen=pulumi.get(__ret__, 'xen'))
 def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKernelResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKernelResult]:
     """
     Provides information about a Linode kernel
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
@@ -196,7 +196,7 @@ def get_kernel_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getKernel:getKernel', __args__, opts=opts, typ=GetKernelResult)
     return __ret__.apply(lambda __response__: GetKernelResult(
         architecture=pulumi.get(__response__, 'architecture'),

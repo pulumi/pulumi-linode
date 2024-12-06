@@ -88,7 +88,7 @@ export interface GetProfileResult {
  * const profile = linode.getProfile({});
  * ```
  */
-export function getProfileOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetProfileResult> {
+export function getProfileOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getProfile:getProfile", {
     }, opts);

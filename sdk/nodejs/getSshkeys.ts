@@ -118,7 +118,7 @@ export interface GetSshkeysResult {
  *
  * * `sshKey`
  */
-export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshkeysResult> {
+export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshkeysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getSshkeys:getSshkeys", {

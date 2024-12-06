@@ -148,7 +148,7 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
                      order: Optional[pulumi.Input[Optional[str]]] = None,
                      order_by: Optional[pulumi.Input[Optional[str]]] = None,
                      vlans: Optional[pulumi.Input[Optional[Sequence[Union['GetVlansVlanArgs', 'GetVlansVlanArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVlansResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlansResult]:
     """
     > **Beta Notice** VLANs are currently available through early access.
     To use early access resources, the `api_version` provider argument must be set to `v4beta`.
@@ -195,7 +195,7 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['vlans'] = vlans
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVlans:getVlans', __args__, opts=opts, typ=GetVlansResult)
     return __ret__.apply(lambda __response__: GetVlansResult(
         filters=pulumi.get(__response__, 'filters'),

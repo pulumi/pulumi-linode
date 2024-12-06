@@ -192,7 +192,7 @@ export interface GetFirewallsResult {
  *
  * * `tags`
  */
-export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallsResult> {
+export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getFirewalls:getFirewalls", {

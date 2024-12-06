@@ -81,7 +81,7 @@ export interface GetAccountLoginResult {
  * });
  * ```
  */
-export function getAccountLoginOutput(args: GetAccountLoginOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountLoginResult> {
+export function getAccountLoginOutput(args: GetAccountLoginOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountLoginResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getAccountLogin:getAccountLogin", {
         "id": args.id,

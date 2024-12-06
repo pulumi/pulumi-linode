@@ -128,7 +128,7 @@ export interface GetDomainRecordResult {
  * });
  * ```
  */
-export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordResult> {
+export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDomainRecord:getDomainRecord", {
         "domainId": args.domainId,

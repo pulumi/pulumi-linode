@@ -158,7 +158,7 @@ export interface GetDatabaseEnginesResult {
  * });
  * ```
  */
-export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseEnginesResult> {
+export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseEnginesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabaseEngines:getDatabaseEngines", {

@@ -97,7 +97,7 @@ export interface GetNetworkingIpResult {
  * });
  * ```
  */
-export function getNetworkingIpOutput(args: GetNetworkingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkingIpResult> {
+export function getNetworkingIpOutput(args: GetNetworkingIpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkingIpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNetworkingIp:getNetworkingIp", {
         "address": args.address,
