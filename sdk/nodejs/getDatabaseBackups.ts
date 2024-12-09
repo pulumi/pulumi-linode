@@ -133,7 +133,7 @@ export interface GetDatabaseBackupsResult {
  * });
  * ```
  */
-export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseBackupsResult> {
+export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabaseBackups:getDatabaseBackups", {
         "backups": args.backups,

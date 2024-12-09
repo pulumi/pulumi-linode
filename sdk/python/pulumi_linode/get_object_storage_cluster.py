@@ -126,7 +126,7 @@ def get_object_storage_cluster(id: Optional[str] = None,
         static_site_domain=pulumi.get(__ret__, 'static_site_domain'),
         status=pulumi.get(__ret__, 'status'))
 def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
     """
     Provides information about a Linode Object Storage Cluster
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
@@ -147,7 +147,7 @@ def get_object_storage_cluster_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getObjectStorageCluster:getObjectStorageCluster', __args__, opts=opts, typ=GetObjectStorageClusterResult)
     return __ret__.apply(lambda __response__: GetObjectStorageClusterResult(
         domain=pulumi.get(__response__, 'domain'),

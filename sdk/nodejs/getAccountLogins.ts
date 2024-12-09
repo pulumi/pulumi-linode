@@ -104,7 +104,7 @@ export interface GetAccountLoginsResult {
  *
  * * `username`
  */
-export function getAccountLoginsOutput(args?: GetAccountLoginsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountLoginsResult> {
+export function getAccountLoginsOutput(args?: GetAccountLoginsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountLoginsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getAccountLogins:getAccountLogins", {

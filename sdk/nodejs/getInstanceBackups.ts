@@ -66,7 +66,7 @@ export interface GetInstanceBackupsResult {
  * });
  * ```
  */
-export function getInstanceBackupsOutput(args: GetInstanceBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceBackupsResult> {
+export function getInstanceBackupsOutput(args: GetInstanceBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getInstanceBackups:getInstanceBackups", {
         "linodeId": args.linodeId,

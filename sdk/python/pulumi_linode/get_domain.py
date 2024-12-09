@@ -251,7 +251,7 @@ def get_domain(domain: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
                       id: Optional[pulumi.Input[Optional[int]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
     Provides information about a Linode domain.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
@@ -275,7 +275,7 @@ def get_domain_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['domain'] = domain
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult)
     return __ret__.apply(lambda __response__: GetDomainResult(
         axfr_ips=pulumi.get(__response__, 'axfr_ips'),

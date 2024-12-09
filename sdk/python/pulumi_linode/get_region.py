@@ -164,7 +164,7 @@ def get_region(id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'))
 def get_region_output(id: Optional[pulumi.Input[str]] = None,
                       resolvers: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionResolverArgs', 'GetRegionResolverArgsDict']]]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
@@ -186,7 +186,7 @@ def get_region_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['resolvers'] = resolvers
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult)
     return __ret__.apply(lambda __response__: GetRegionResult(
         capabilities=pulumi.get(__response__, 'capabilities'),

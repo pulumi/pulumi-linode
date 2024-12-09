@@ -90,7 +90,7 @@ export interface GetKernelResult {
  * });
  * ```
  */
-export function getKernelOutput(args: GetKernelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelResult> {
+export function getKernelOutput(args: GetKernelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKernelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getKernel:getKernel", {
         "id": args.id,

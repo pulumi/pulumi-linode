@@ -93,7 +93,7 @@ export interface GetIpv6RangesResult {
  *
  * * `region`
  */
-export function getIpv6RangesOutput(args?: GetIpv6RangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6RangesResult> {
+export function getIpv6RangesOutput(args?: GetIpv6RangesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv6RangesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getIpv6Ranges:getIpv6Ranges", {

@@ -52,7 +52,7 @@ export interface GetLkeVersionsResult {
  * const example = linode.getLkeVersions({});
  * ```
  */
-export function getLkeVersionsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeVersionsResult> {
+export function getLkeVersionsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLkeVersions:getLkeVersions", {
     }, opts);

@@ -270,7 +270,7 @@ def get_child_account(euuid: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         zip=pulumi.get(__ret__, 'zip'))
 def get_child_account_output(euuid: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildAccountResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChildAccountResult]:
     """
     Provides information about a Linode Child Account.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-account).
@@ -295,7 +295,7 @@ def get_child_account_output(euuid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['euuid'] = euuid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getChildAccount:getChildAccount', __args__, opts=opts, typ=GetChildAccountResult)
     return __ret__.apply(lambda __response__: GetChildAccountResult(
         active_since=pulumi.get(__response__, 'active_since'),

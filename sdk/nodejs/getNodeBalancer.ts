@@ -102,7 +102,7 @@ export interface GetNodeBalancerResult {
  * });
  * ```
  */
-export function getNodeBalancerOutput(args: GetNodeBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeBalancerResult> {
+export function getNodeBalancerOutput(args: GetNodeBalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNodeBalancer:getNodeBalancer", {
         "firewalls": args.firewalls,

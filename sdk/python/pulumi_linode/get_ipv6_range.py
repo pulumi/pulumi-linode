@@ -133,7 +133,7 @@ def get_ipv6_range(range: Optional[str] = None,
         range=pulumi.get(__ret__, 'range'),
         region=pulumi.get(__ret__, 'region'))
 def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6RangeResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6RangeResult]:
     """
     Provides information about a Linode IPv6 Range.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
@@ -154,7 +154,7 @@ def get_ipv6_range_output(range: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['range'] = range
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getIpv6Range:getIpv6Range', __args__, opts=opts, typ=GetIpv6RangeResult)
     return __ret__.apply(lambda __response__: GetIpv6RangeResult(
         id=pulumi.get(__response__, 'id'),

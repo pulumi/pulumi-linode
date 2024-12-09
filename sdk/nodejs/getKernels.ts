@@ -134,7 +134,7 @@ export interface GetKernelsResult {
  *
  * * `xen`
  */
-export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKernelsResult> {
+export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKernelsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getKernels:getKernels", {
