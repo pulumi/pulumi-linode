@@ -107,7 +107,7 @@ export interface GetAccountResult {
  * const account = linode.getAccount({});
  * ```
  */
-export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+export function getAccountOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getAccount:getAccount", {
     }, opts);

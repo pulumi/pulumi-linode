@@ -125,7 +125,7 @@ export interface GetDatabaseMysqlBackupsResult {
  * });
  * ```
  */
-export function getDatabaseMysqlBackupsOutput(args: GetDatabaseMysqlBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMysqlBackupsResult> {
+export function getDatabaseMysqlBackupsOutput(args: GetDatabaseMysqlBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseMysqlBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", {
         "databaseId": args.databaseId,

@@ -108,7 +108,7 @@ export interface GetDatabasesResult {
  * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
  */
-export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
+export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabasesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabases:getDatabases", {

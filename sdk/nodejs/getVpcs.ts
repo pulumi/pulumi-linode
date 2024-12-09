@@ -96,7 +96,7 @@ export interface GetVpcsResult {
  *
  * * `region`
  */
-export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcsResult> {
+export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVpcs:getVpcs", {

@@ -138,7 +138,7 @@ export interface GetVpcIpsResult {
  *
  * * `vpcId`
  */
-export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcIpsResult> {
+export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcIpsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVpcIps:getVpcIps", {

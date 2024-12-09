@@ -152,7 +152,7 @@ export interface GetStackScriptsResult {
  *
  * * `username`
  */
-export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackScriptsResult> {
+export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStackScriptsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getStackScripts:getStackScripts", {

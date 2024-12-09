@@ -92,7 +92,7 @@ export interface GetPlacementGroupResult {
  * });
  * ```
  */
-export function getPlacementGroupOutput(args: GetPlacementGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlacementGroupResult> {
+export function getPlacementGroupOutput(args: GetPlacementGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPlacementGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getPlacementGroup:getPlacementGroup", {
         "id": args.id,

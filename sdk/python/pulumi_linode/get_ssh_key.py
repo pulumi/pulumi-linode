@@ -117,7 +117,7 @@ def get_ssh_key(id: Optional[str] = None,
         ssh_key=pulumi.get(__ret__, 'ssh_key'))
 def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        label: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeyResult]:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
@@ -140,7 +140,7 @@ def get_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['label'] = label
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult)
     return __ret__.apply(lambda __response__: GetSshKeyResult(
         created=pulumi.get(__response__, 'created'),

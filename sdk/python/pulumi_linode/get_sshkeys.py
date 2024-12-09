@@ -148,7 +148,7 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
                        order: Optional[pulumi.Input[Optional[str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[str]]] = None,
                        sshkeys: Optional[pulumi.Input[Optional[Sequence[Union['GetSshkeysSshkeyArgs', 'GetSshkeysSshkeyArgsDict']]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshkeysResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshkeysResult]:
     """
     `SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
@@ -192,7 +192,7 @@ def get_sshkeys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['sshkeys'] = sshkeys
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getSshkeys:getSshkeys', __args__, opts=opts, typ=GetSshkeysResult)
     return __ret__.apply(lambda __response__: GetSshkeysResult(
         filters=pulumi.get(__response__, 'filters'),

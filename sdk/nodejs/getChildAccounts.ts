@@ -161,7 +161,7 @@ export interface GetChildAccountsResult {
  *
  * * `activeSince`
  */
-export function getChildAccountsOutput(args?: GetChildAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildAccountsResult> {
+export function getChildAccountsOutput(args?: GetChildAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChildAccountsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getChildAccounts:getChildAccounts", {

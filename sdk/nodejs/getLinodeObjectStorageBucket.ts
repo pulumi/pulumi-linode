@@ -85,7 +85,7 @@ export interface GetLinodeObjectStorageBucketResult {
  * });
  * ```
  */
-export function getLinodeObjectStorageBucketOutput(args: GetLinodeObjectStorageBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLinodeObjectStorageBucketResult> {
+export function getLinodeObjectStorageBucketOutput(args: GetLinodeObjectStorageBucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLinodeObjectStorageBucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", {
         "cluster": args.cluster,

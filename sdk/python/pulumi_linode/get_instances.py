@@ -169,7 +169,7 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
 def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     Provides information about Linode instances that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).
@@ -236,7 +236,7 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         filters=pulumi.get(__response__, 'filters'),

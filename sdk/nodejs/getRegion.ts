@@ -87,7 +87,7 @@ export interface GetRegionResult {
  * });
  * ```
  */
-export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
+export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getRegion:getRegion", {
         "id": args.id,

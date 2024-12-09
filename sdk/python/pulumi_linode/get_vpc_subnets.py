@@ -130,7 +130,7 @@ def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 
 def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict']]]]] = None,
                            vpc_id: Optional[pulumi.Input[int]] = None,
                            vpc_subnets: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcSubnetsVpcSubnetArgs', 'GetVpcSubnetsVpcSubnetArgsDict']]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcSubnetsResult]:
     """
     Provides information about a list of Linode VPC subnets that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
@@ -168,7 +168,7 @@ def get_vpc_subnets_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     __args__['filters'] = filters
     __args__['vpcId'] = vpc_id
     __args__['vpcSubnets'] = vpc_subnets
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcSubnets:getVpcSubnets', __args__, opts=opts, typ=GetVpcSubnetsResult)
     return __ret__.apply(lambda __response__: GetVpcSubnetsResult(
         filters=pulumi.get(__response__, 'filters'),

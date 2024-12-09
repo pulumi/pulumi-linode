@@ -152,7 +152,7 @@ export interface GetNodebalancerConfigsResult {
  *
  * * `sslCommonname`
  */
-export function getNodebalancerConfigsOutput(args: GetNodebalancerConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodebalancerConfigsResult> {
+export function getNodebalancerConfigsOutput(args: GetNodebalancerConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodebalancerConfigsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", {
         "filters": args.filters,

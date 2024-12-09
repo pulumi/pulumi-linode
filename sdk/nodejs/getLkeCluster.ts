@@ -120,7 +120,7 @@ export interface GetLkeClusterResult {
  * });
  * ```
  */
-export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClusterResult> {
+export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLkeCluster:getLkeCluster", {
         "controlPlanes": args.controlPlanes,

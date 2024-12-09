@@ -145,7 +145,7 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
                      order: Optional[pulumi.Input[Optional[str]]] = None,
                      order_by: Optional[pulumi.Input[Optional[str]]] = None,
                      users: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     Provides information about Linode users that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
@@ -186,7 +186,7 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['users'] = users
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
         filters=pulumi.get(__response__, 'filters'),
