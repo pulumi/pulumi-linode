@@ -66,7 +66,7 @@ export interface GetAccountSettingsResult {
  * const example = linode.getAccountSettings({});
  * ```
  */
-export function getAccountSettingsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountSettingsResult> {
+export function getAccountSettingsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSettingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getAccountSettings:getAccountSettings", {
     }, opts);

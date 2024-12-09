@@ -191,7 +191,7 @@ def get_networking_ip(address: Optional[str] = None,
         subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
         type=pulumi.get(__ret__, 'type'))
 def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkingIpResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingIpResult]:
     """
     Provides information about a Linode Networking IP Address
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
@@ -212,7 +212,7 @@ def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['address'] = address
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts, typ=GetNetworkingIpResult)
     return __ret__.apply(lambda __response__: GetNetworkingIpResult(
         address=pulumi.get(__response__, 'address'),

@@ -207,7 +207,7 @@ def get_volume(id: Optional[int] = None,
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'))
 def get_volume_output(id: Optional[pulumi.Input[int]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Provides information about a Linode Volume.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume).
@@ -228,7 +228,7 @@ def get_volume_output(id: Optional[pulumi.Input[int]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult)
     return __ret__.apply(lambda __response__: GetVolumeResult(
         created=pulumi.get(__response__, 'created'),

@@ -76,7 +76,7 @@ export interface GetAccountAvailabilityResult {
  * });
  * ```
  */
-export function getAccountAvailabilityOutput(args: GetAccountAvailabilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAvailabilityResult> {
+export function getAccountAvailabilityOutput(args: GetAccountAvailabilityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAvailabilityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getAccountAvailability:getAccountAvailability", {
         "region": args.region,

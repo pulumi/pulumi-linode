@@ -231,7 +231,7 @@ def get_domain_record(domain_id: Optional[int] = None,
 def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
                              id: Optional[pulumi.Input[Optional[int]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainRecordResult]:
     """
     Provides information about a Linode Domain Record.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
@@ -259,7 +259,7 @@ def get_domain_record_output(domain_id: Optional[pulumi.Input[int]] = None,
     __args__['domainId'] = domain_id
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDomainRecord:getDomainRecord', __args__, opts=opts, typ=GetDomainRecordResult)
     return __ret__.apply(lambda __response__: GetDomainRecordResult(
         domain_id=pulumi.get(__response__, 'domain_id'),

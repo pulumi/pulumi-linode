@@ -133,7 +133,7 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
         managed=pulumi.get(__ret__, 'managed'),
         network_helper=pulumi.get(__ret__, 'network_helper'),
         object_storage=pulumi.get(__ret__, 'object_storage'))
-def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountSettingsResult]:
+def get_account_settings_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSettingsResult]:
     """
     Provides information about Linode account settings.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-settings).
@@ -150,7 +150,7 @@ def get_account_settings_output(opts: Optional[pulumi.InvokeOptions] = None) -> 
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountSettings:getAccountSettings', __args__, opts=opts, typ=GetAccountSettingsResult)
     return __ret__.apply(lambda __response__: GetAccountSettingsResult(
         backups_enabled=pulumi.get(__response__, 'backups_enabled'),

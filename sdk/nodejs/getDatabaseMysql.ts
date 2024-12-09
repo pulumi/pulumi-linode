@@ -180,7 +180,7 @@ export interface GetDatabaseMysqlResult {
  *
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
-export function getDatabaseMysqlOutput(args?: GetDatabaseMysqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMysqlResult> {
+export function getDatabaseMysqlOutput(args?: GetDatabaseMysqlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseMysqlResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabaseMysql:getDatabaseMysql", {

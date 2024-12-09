@@ -241,7 +241,7 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
 def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]]]] = None,
                            id: Optional[pulumi.Input[int]] = None,
                            pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClusterResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeClusterResult]:
     """
     Provides details about an LKE Cluster.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
@@ -264,7 +264,7 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
     __args__['controlPlanes'] = control_planes
     __args__['id'] = id
     __args__['pools'] = pools
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult)
     return __ret__.apply(lambda __response__: GetLkeClusterResult(
         api_endpoints=pulumi.get(__response__, 'api_endpoints'),

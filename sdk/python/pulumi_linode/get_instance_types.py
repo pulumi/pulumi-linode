@@ -161,7 +161,7 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[U
                               order: Optional[pulumi.Input[Optional[str]]] = None,
                               order_by: Optional[pulumi.Input[Optional[str]]] = None,
                               types: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceTypesTypeArgs', 'GetInstanceTypesTypeArgsDict']]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     Provides information about Linode Instance types that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
@@ -218,7 +218,7 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['types'] = types
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
     return __ret__.apply(lambda __response__: GetInstanceTypesResult(
         filters=pulumi.get(__response__, 'filters'),

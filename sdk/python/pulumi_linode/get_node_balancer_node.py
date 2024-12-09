@@ -167,7 +167,7 @@ def get_node_balancer_node(config_id: Optional[int] = None,
 def get_node_balancer_node_output(config_id: Optional[pulumi.Input[int]] = None,
                                   id: Optional[pulumi.Input[int]] = None,
                                   nodebalancer_id: Optional[pulumi.Input[int]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerNodeResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerNodeResult]:
     """
     Provides details about a Linode NodeBalancer node.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-node).
@@ -192,7 +192,7 @@ def get_node_balancer_node_output(config_id: Optional[pulumi.Input[int]] = None,
     __args__['configId'] = config_id
     __args__['id'] = id
     __args__['nodebalancerId'] = nodebalancer_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancerNode:getNodeBalancerNode', __args__, opts=opts, typ=GetNodeBalancerNodeResult)
     return __ret__.apply(lambda __response__: GetNodeBalancerNodeResult(
         address=pulumi.get(__response__, 'address'),

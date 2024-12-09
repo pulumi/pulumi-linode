@@ -185,7 +185,7 @@ export interface GetDatabasePostgresqlResult {
  *
  * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
-export function getDatabasePostgresqlOutput(args?: GetDatabasePostgresqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePostgresqlResult> {
+export function getDatabasePostgresqlOutput(args?: GetDatabasePostgresqlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabasePostgresqlResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabasePostgresql:getDatabasePostgresql", {

@@ -77,7 +77,7 @@ export interface GetObjectStorageClusterResult {
  * });
  * ```
  */
-export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectStorageClusterResult> {
+export function getObjectStorageClusterOutput(args: GetObjectStorageClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObjectStorageClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getObjectStorageCluster:getObjectStorageCluster", {
         "id": args.id,

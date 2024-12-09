@@ -179,7 +179,7 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
                                     nodebalancer_id: Optional[pulumi.Input[int]] = None,
                                     order: Optional[pulumi.Input[Optional[str]]] = None,
                                     order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodebalancerConfigsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodebalancerConfigsResult]:
     """
     Provides information about Linode NodeBalancer Configs that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
@@ -239,7 +239,7 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
     __args__['nodebalancerId'] = nodebalancer_id
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNodebalancerConfigs:getNodebalancerConfigs', __args__, opts=opts, typ=GetNodebalancerConfigsResult)
     return __ret__.apply(lambda __response__: GetNodebalancerConfigsResult(
         filters=pulumi.get(__response__, 'filters'),

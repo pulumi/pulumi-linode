@@ -171,7 +171,7 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
                                       latest: Optional[pulumi.Input[Optional[bool]]] = None,
                                       order: Optional[pulumi.Input[Optional[str]]] = None,
                                       order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseMysqlBackupsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseMysqlBackupsResult]:
     """
     Provides information about Linode MySQL Database Backups that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
@@ -216,7 +216,7 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[int]] =
     __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups', __args__, opts=opts, typ=GetDatabaseMysqlBackupsResult)
     return __ret__.apply(lambda __response__: GetDatabaseMysqlBackupsResult(
         backups=pulumi.get(__response__, 'backups'),

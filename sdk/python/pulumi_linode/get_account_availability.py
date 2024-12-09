@@ -116,7 +116,7 @@ def get_account_availability(region: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         unavailables=pulumi.get(__ret__, 'unavailables'))
 def get_account_availability_output(region: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAvailabilityResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAvailabilityResult]:
     """
     Provides details about service availability in a region to an account specifically.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
@@ -137,7 +137,7 @@ def get_account_availability_output(region: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountAvailability:getAccountAvailability', __args__, opts=opts, typ=GetAccountAvailabilityResult)
     return __ret__.apply(lambda __response__: GetAccountAvailabilityResult(
         availables=pulumi.get(__response__, 'availables'),

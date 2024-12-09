@@ -135,7 +135,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
                        order: Optional[pulumi.Input[Optional[str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[str]]] = None,
                        volumes: Optional[pulumi.Input[Optional[Sequence[Union['GetVolumesVolumeArgs', 'GetVolumesVolumeArgsDict']]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumesResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Provides information about Linode volumes that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volumes).
@@ -166,7 +166,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['volumes'] = volumes
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult)
     return __ret__.apply(lambda __response__: GetVolumesResult(
         filters=pulumi.get(__response__, 'filters'),

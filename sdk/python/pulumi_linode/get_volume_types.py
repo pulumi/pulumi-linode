@@ -118,7 +118,7 @@ def get_volume_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
                             order: Optional[pulumi.Input[Optional[str]]] = None,
                             order_by: Optional[pulumi.Input[Optional[str]]] = None,
                             types: Optional[pulumi.Input[Optional[Sequence[Union['GetVolumeTypesTypeArgs', 'GetVolumeTypesTypeArgsDict']]]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeTypesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeTypesResult]:
     """
     Provides information about Linode Volume types that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
@@ -132,7 +132,7 @@ def get_volume_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['types'] = types
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVolumeTypes:getVolumeTypes', __args__, opts=opts, typ=GetVolumeTypesResult)
     return __ret__.apply(lambda __response__: GetVolumeTypesResult(
         filters=pulumi.get(__response__, 'filters'),
