@@ -384,7 +384,7 @@ def get_database_postgresql(database_id: Optional[int] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[int]]] = None,
                                    id: Optional[pulumi.Input[Optional[int]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasePostgresqlResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasePostgresqlResult]:
     """
     Provides information about a Linode PostgreSQL Database.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
@@ -421,7 +421,7 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[i
     __args__ = dict()
     __args__['databaseId'] = database_id
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabasePostgresql:getDatabasePostgresql', __args__, opts=opts, typ=GetDatabasePostgresqlResult)
     return __ret__.apply(lambda __response__: GetDatabasePostgresqlResult(
         allow_lists=pulumi.get(__response__, 'allow_lists'),

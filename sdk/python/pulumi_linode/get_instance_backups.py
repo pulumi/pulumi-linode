@@ -116,7 +116,7 @@ def get_instance_backups(linode_id: Optional[int] = None,
         in_progresses=pulumi.get(__ret__, 'in_progresses'),
         linode_id=pulumi.get(__ret__, 'linode_id'))
 def get_instance_backups_output(linode_id: Optional[pulumi.Input[int]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceBackupsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceBackupsResult]:
     """
     Provides details about the backups of an Instance.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
@@ -135,7 +135,7 @@ def get_instance_backups_output(linode_id: Optional[pulumi.Input[int]] = None,
     """
     __args__ = dict()
     __args__['linodeId'] = linode_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getInstanceBackups:getInstanceBackups', __args__, opts=opts, typ=GetInstanceBackupsResult)
     return __ret__.apply(lambda __response__: GetInstanceBackupsResult(
         automatics=pulumi.get(__response__, 'automatics'),

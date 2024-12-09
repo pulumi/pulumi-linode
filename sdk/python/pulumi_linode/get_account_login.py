@@ -139,7 +139,7 @@ def get_account_login(id: Optional[int] = None,
         status=pulumi.get(__ret__, 'status'),
         username=pulumi.get(__ret__, 'username'))
 def get_account_login_output(id: Optional[pulumi.Input[int]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountLoginResult]:
     """
     Provides details about a specific Linode account login.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
@@ -160,7 +160,7 @@ def get_account_login_output(id: Optional[pulumi.Input[int]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountLogin:getAccountLogin', __args__, opts=opts, typ=GetAccountLoginResult)
     return __ret__.apply(lambda __response__: GetAccountLoginResult(
         datetime=pulumi.get(__response__, 'datetime'),

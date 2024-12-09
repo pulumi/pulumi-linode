@@ -123,7 +123,7 @@ export interface GetVlansResult {
  *
  * * `region`
  */
-export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlansResult> {
+export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVlans:getVlans", {

@@ -126,7 +126,7 @@ export interface GetChildAccountResult {
  * });
  * ```
  */
-export function getChildAccountOutput(args: GetChildAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildAccountResult> {
+export function getChildAccountOutput(args: GetChildAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChildAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getChildAccount:getChildAccount", {
         "euuid": args.euuid,

@@ -93,7 +93,7 @@ export interface GetVpcSubnetResult {
  * export const vpcSubnet = foo;
  * ```
  */
-export function getVpcSubnetOutput(args: GetVpcSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSubnetResult> {
+export function getVpcSubnetOutput(args: GetVpcSubnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcSubnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVpcSubnet:getVpcSubnet", {
         "id": args.id,

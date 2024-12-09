@@ -117,7 +117,7 @@ def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterA
         logins=pulumi.get(__ret__, 'logins'))
 def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]]]] = None,
                               logins: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsLoginArgs', 'GetAccountLoginsLoginArgsDict']]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountLoginsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountLoginsResult]:
     """
     Provides information about Linode account logins that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
@@ -154,7 +154,7 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     __args__ = dict()
     __args__['filters'] = filters
     __args__['logins'] = logins
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountLogins:getAccountLogins', __args__, opts=opts, typ=GetAccountLoginsResult)
     return __ret__.apply(lambda __response__: GetAccountLoginsResult(
         filters=pulumi.get(__response__, 'filters'),

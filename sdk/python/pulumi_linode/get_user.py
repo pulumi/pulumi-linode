@@ -309,7 +309,7 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
                     stackscript_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict']]]]] = None,
                     username: Optional[pulumi.Input[str]] = None,
                     volume_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict']]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Provides information about a Linode user
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user).
@@ -341,7 +341,7 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
     __args__['stackscriptGrants'] = stackscript_grants
     __args__['username'] = username
     __args__['volumeGrants'] = volume_grants
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         database_grants=pulumi.get(__response__, 'database_grants'),

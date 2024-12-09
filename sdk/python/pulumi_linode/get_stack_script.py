@@ -244,7 +244,7 @@ def get_stack_script(id: Optional[str] = None,
         user_gravatar_id=pulumi.get(__ret__, 'user_gravatar_id'),
         username=pulumi.get(__ret__, 'username'))
 def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStackScriptResult]:
     """
     Provides details about a specific Linode StackScript.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
@@ -265,7 +265,7 @@ def get_stack_script_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getStackScript:getStackScript', __args__, opts=opts, typ=GetStackScriptResult)
     return __ret__.apply(lambda __response__: GetStackScriptResult(
         created=pulumi.get(__response__, 'created'),

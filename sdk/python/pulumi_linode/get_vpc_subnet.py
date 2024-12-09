@@ -156,7 +156,7 @@ def get_vpc_subnet(id: Optional[str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
                           vpc_id: Optional[pulumi.Input[int]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcSubnetResult]:
     """
     Provides information about a Linode VPC subnet.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
@@ -181,7 +181,7 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcSubnet:getVpcSubnet', __args__, opts=opts, typ=GetVpcSubnetResult)
     return __ret__.apply(lambda __response__: GetVpcSubnetResult(
         created=pulumi.get(__response__, 'created'),

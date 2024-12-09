@@ -154,7 +154,7 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
 def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optional[str]]] = None,
                                             label: Optional[pulumi.Input[str]] = None,
                                             region: Optional[pulumi.Input[Optional[str]]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLinodeObjectStorageBucketResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLinodeObjectStorageBucketResult]:
     """
     Provides information about a Linode Object Storage Bucket
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
@@ -180,7 +180,7 @@ def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optio
     __args__['cluster'] = cluster
     __args__['label'] = label
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket', __args__, opts=opts, typ=GetLinodeObjectStorageBucketResult)
     return __ret__.apply(lambda __response__: GetLinodeObjectStorageBucketResult(
         cluster=pulumi.get(__response__, 'cluster'),

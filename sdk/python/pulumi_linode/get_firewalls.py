@@ -185,7 +185,7 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
                          firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFirewallArgs', 'GetFirewallsFirewallArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallsResult]:
     """
     Provides information about Linode Cloud Firewalls that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewalls).
@@ -266,7 +266,7 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     __args__['firewalls'] = firewalls
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getFirewalls:getFirewalls', __args__, opts=opts, typ=GetFirewallsResult)
     return __ret__.apply(lambda __response__: GetFirewallsResult(
         filters=pulumi.get(__response__, 'filters'),

@@ -75,7 +75,7 @@ export interface GetIpv6RangeResult {
  * });
  * ```
  */
-export function getIpv6RangeOutput(args: GetIpv6RangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6RangeResult> {
+export function getIpv6RangeOutput(args: GetIpv6RangeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv6RangeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getIpv6Range:getIpv6Range", {
         "range": args.range,

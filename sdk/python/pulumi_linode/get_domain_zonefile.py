@@ -100,7 +100,7 @@ def get_domain_zonefile(domain_id: Optional[int] = None,
         id=pulumi.get(__ret__, 'id'),
         zone_files=pulumi.get(__ret__, 'zone_files'))
 def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainZonefileResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainZonefileResult]:
     """
     Provides information about a Linode Domain Zonefile.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
@@ -121,7 +121,7 @@ def get_domain_zonefile_output(domain_id: Optional[pulumi.Input[int]] = None,
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDomainZonefile:getDomainZonefile', __args__, opts=opts, typ=GetDomainZonefileResult)
     return __ret__.apply(lambda __response__: GetDomainZonefileResult(
         domain_id=pulumi.get(__response__, 'domain_id'),

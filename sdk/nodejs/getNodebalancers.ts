@@ -132,7 +132,7 @@ export interface GetNodebalancersResult {
  *
  * * `clientConnThrottle`
  */
-export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodebalancersResult> {
+export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodebalancersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNodebalancers:getNodebalancers", {

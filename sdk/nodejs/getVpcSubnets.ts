@@ -101,7 +101,7 @@ export interface GetVpcSubnetsResult {
  *
  * * `ipv4`
  */
-export function getVpcSubnetsOutput(args: GetVpcSubnetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSubnetsResult> {
+export function getVpcSubnetsOutput(args: GetVpcSubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcSubnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVpcSubnets:getVpcSubnets", {
         "filters": args.filters,

@@ -177,7 +177,7 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[Un
                              order: Optional[pulumi.Input[Optional[str]]] = None,
                              order_by: Optional[pulumi.Input[Optional[str]]] = None,
                              stackscripts: Optional[pulumi.Input[Optional[Sequence[Union['GetStackScriptsStackscriptArgs', 'GetStackScriptsStackscriptArgsDict']]]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackScriptsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStackScriptsResult]:
     """
     Provides information about Linode StackScripts that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
@@ -238,7 +238,7 @@ def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[Un
     __args__['order'] = order
     __args__['orderBy'] = order_by
     __args__['stackscripts'] = stackscripts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getStackScripts:getStackScripts', __args__, opts=opts, typ=GetStackScriptsResult)
     return __ret__.apply(lambda __response__: GetStackScriptsResult(
         filters=pulumi.get(__response__, 'filters'),

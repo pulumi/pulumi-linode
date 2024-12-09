@@ -54,7 +54,7 @@ export interface GetVolumeTypesResult {
  * Provides information about Linode Volume types that match a set of filters.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
  */
-export function getVolumeTypesOutput(args?: GetVolumeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeTypesResult> {
+export function getVolumeTypesOutput(args?: GetVolumeTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumeTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVolumeTypes:getVolumeTypes", {

@@ -102,7 +102,7 @@ export interface GetInstanceTypeResult {
  * });
  * ```
  */
-export function getInstanceTypeOutput(args: GetInstanceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeResult> {
+export function getInstanceTypeOutput(args: GetInstanceTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getInstanceType:getInstanceType", {
         "id": args.id,

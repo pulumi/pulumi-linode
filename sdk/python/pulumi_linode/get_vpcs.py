@@ -113,7 +113,7 @@ def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilte
         vpcs=pulumi.get(__ret__, 'vpcs'))
 def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]]]] = None,
                     vpcs: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcsVpcArgs', 'GetVpcsVpcArgsDict']]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcsResult]:
     """
     Provides information about a list of Linode VPCs that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
@@ -146,7 +146,7 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetV
     __args__ = dict()
     __args__['filters'] = filters
     __args__['vpcs'] = vpcs
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult)
     return __ret__.apply(lambda __response__: GetVpcsResult(
         filters=pulumi.get(__response__, 'filters'),
