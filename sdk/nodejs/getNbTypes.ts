@@ -37,7 +37,7 @@ export interface GetNbTypesResult {
     readonly orderBy?: string;
     readonly types?: outputs.GetNbTypesType[];
 }
-export function getNbTypesOutput(args?: GetNbTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNbTypesResult> {
+export function getNbTypesOutput(args?: GetNbTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNbTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNbTypes:getNbTypes", {

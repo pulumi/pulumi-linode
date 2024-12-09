@@ -361,7 +361,7 @@ def get_database_mysql(database_id: Optional[int] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[int]]] = None,
                               id: Optional[pulumi.Input[Optional[int]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseMysqlResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseMysqlResult]:
     """
     Provides information about a Linode MySQL Database.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
@@ -398,7 +398,7 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[int]]]
     __args__ = dict()
     __args__['databaseId'] = database_id
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabaseMysql:getDatabaseMysql', __args__, opts=opts, typ=GetDatabaseMysqlResult)
     return __ret__.apply(lambda __response__: GetDatabaseMysqlResult(
         allow_lists=pulumi.get(__response__, 'allow_lists'),

@@ -290,7 +290,7 @@ def get_node_balancer_config(id: Optional[int] = None,
         stickiness=pulumi.get(__ret__, 'stickiness'))
 def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
                                     nodebalancer_id: Optional[pulumi.Input[int]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
     """
     Provides details about a Linode NodeBalancer Config.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
@@ -312,7 +312,7 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[int]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['nodebalancerId'] = nodebalancer_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancerConfig:getNodeBalancerConfig', __args__, opts=opts, typ=GetNodeBalancerConfigResult)
     return __ret__.apply(lambda __response__: GetNodeBalancerConfigResult(
         algorithm=pulumi.get(__response__, 'algorithm'),

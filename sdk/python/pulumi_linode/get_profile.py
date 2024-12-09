@@ -199,7 +199,7 @@ def get_profile(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProf
         timezone=pulumi.get(__ret__, 'timezone'),
         two_factor_auth=pulumi.get(__ret__, 'two_factor_auth'),
         username=pulumi.get(__ret__, 'username'))
-def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProfileResult]:
+def get_profile_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProfileResult]:
     """
     Provides information about a Linode profile.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
@@ -216,7 +216,7 @@ def get_profile_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getProfile:getProfile', __args__, opts=opts, typ=GetProfileResult)
     return __ret__.apply(lambda __response__: GetProfileResult(
         authorized_keys=pulumi.get(__response__, 'authorized_keys'),

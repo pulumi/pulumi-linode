@@ -65,7 +65,7 @@ export interface GetInstanceNetworkingResult {
  * });
  * ```
  */
-export function getInstanceNetworkingOutput(args: GetInstanceNetworkingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceNetworkingResult> {
+export function getInstanceNetworkingOutput(args: GetInstanceNetworkingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceNetworkingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getInstanceNetworking:getInstanceNetworking", {
         "linodeId": args.linodeId,

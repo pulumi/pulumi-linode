@@ -203,7 +203,7 @@ def get_instance_type(id: Optional[str] = None,
         vcpus=pulumi.get(__ret__, 'vcpus'))
 def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
                              label: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypeResult]:
     """
     Provides information about a Linode instance type
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
@@ -226,7 +226,7 @@ def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['label'] = label
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getInstanceType:getInstanceType', __args__, opts=opts, typ=GetInstanceTypeResult)
     return __ret__.apply(lambda __response__: GetInstanceTypeResult(
         addons=pulumi.get(__response__, 'addons'),

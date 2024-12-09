@@ -120,7 +120,7 @@ export interface GetLkeClustersResult {
  *
  * * `updated`
  */
-export function getLkeClustersOutput(args?: GetLkeClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLkeClustersResult> {
+export function getLkeClustersOutput(args?: GetLkeClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLkeClusters:getLkeClusters", {

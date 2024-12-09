@@ -149,7 +149,7 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
                             lke_clusters: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClustersLkeClusterArgs', 'GetLkeClustersLkeClusterArgsDict']]]]] = None,
                             order: Optional[pulumi.Input[Optional[str]]] = None,
                             order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLkeClustersResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeClustersResult]:
     """
     Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
@@ -194,7 +194,7 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     __args__['lkeClusters'] = lke_clusters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeClusters:getLkeClusters', __args__, opts=opts, typ=GetLkeClustersResult)
     return __ret__.apply(lambda __response__: GetLkeClustersResult(
         filters=pulumi.get(__response__, 'filters'),

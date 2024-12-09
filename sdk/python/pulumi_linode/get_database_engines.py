@@ -177,7 +177,7 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
                                 latest: Optional[pulumi.Input[Optional[bool]]] = None,
                                 order: Optional[pulumi.Input[Optional[str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseEnginesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseEnginesResult]:
     """
     Provides information about Linode Managed Database engines that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
@@ -238,7 +238,7 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabaseEngines:getDatabaseEngines', __args__, opts=opts, typ=GetDatabaseEnginesResult)
     return __ret__.apply(lambda __response__: GetDatabaseEnginesResult(
         engines=pulumi.get(__response__, 'engines'),
