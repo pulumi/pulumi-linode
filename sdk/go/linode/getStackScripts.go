@@ -113,21 +113,11 @@ type GetStackScriptsResult struct {
 }
 
 func GetStackScriptsOutput(ctx *pulumi.Context, args GetStackScriptsOutputArgs, opts ...pulumi.InvokeOption) GetStackScriptsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetStackScriptsResultOutput, error) {
 			args := v.(GetStackScriptsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetStackScriptsResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getStackScripts:getStackScripts", args, &rv, "", opts...)
-			if err != nil {
-				return GetStackScriptsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetStackScriptsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetStackScriptsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getStackScripts:getStackScripts", args, GetStackScriptsResultOutput{}, options).(GetStackScriptsResultOutput), nil
 		}).(GetStackScriptsResultOutput)
 }
 

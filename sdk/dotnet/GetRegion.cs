@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// `linode.getRegion` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how the resource might be used to obtain additional information about a Linode region.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var region = Linode.GetRegion.Invoke(new()
+        ///     {
+        ///         Id = "us-east",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("linode:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());
     }
 
 

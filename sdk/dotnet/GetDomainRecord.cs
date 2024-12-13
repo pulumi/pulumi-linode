@@ -78,6 +78,40 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode Domain Record.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Domain Record.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Id = 14950401,
+        ///         DomainId = 3150401,
+        ///     });
+        /// 
+        ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Name = "www",
+        ///         DomainId = 3150401,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("linode:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
     }
 
 

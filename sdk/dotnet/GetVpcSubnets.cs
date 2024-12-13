@@ -110,6 +110,56 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVpcSubnetsResult> Invoke(GetVpcSubnetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetsResult>("linode:index/getVpcSubnets:getVpcSubnets", args ?? new GetVpcSubnetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a list of Linode VPC subnets that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnets).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to list VPC subnets.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_subnets = Linode.GetVpcSubnets.Invoke(new()
+        ///     {
+        ///         VpcId = 123,
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVpcSubnetsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcSubnets"] = filtered_subnets.Apply(filtered_subnets =&gt; filtered_subnets.Apply(getVpcSubnetsResult =&gt; getVpcSubnetsResult.VpcSubnets)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `id`
+        /// 
+        /// * `label`
+        /// 
+        /// * `ipv4`
+        /// </summary>
+        public static Output<GetVpcSubnetsResult> Invoke(GetVpcSubnetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetsResult>("linode:index/getVpcSubnets:getVpcSubnets", args ?? new GetVpcSubnetsInvokeArgs(), options.WithDefaults());
     }
 
 

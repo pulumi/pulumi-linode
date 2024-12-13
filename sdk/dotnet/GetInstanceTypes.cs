@@ -166,6 +166,84 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Instance types that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all Linode Instance types with a certain number of VCPUs:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_types = Linode.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetInstanceTypesFilterInputArgs
+        ///             {
+        ///                 Name = "vcpus",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeIds"] = specific_types.Apply(specific_types =&gt; specific_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode Instance types:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_types = Linode.GetInstanceTypes.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeIds"] = all_types.Apply(all_types =&gt; all_types.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `class`
+        /// 
+        /// * `disk`
+        /// 
+        /// * `gpus`
+        /// 
+        /// * `label`
+        /// 
+        /// * `memory`
+        /// 
+        /// * `network_out`
+        /// 
+        /// * `transfer`
+        /// 
+        /// * `vcpus`
+        /// </summary>
+        public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetInstanceBackupsResult> Invoke(GetInstanceBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about the backups of an Instance.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-backups).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backups = Linode.GetInstanceBackups.Invoke(new()
+        ///     {
+        ///         LinodeId = 123,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceBackupsResult> Invoke(GetInstanceBackupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceBackupsResult>("linode:index/getInstanceBackups:getInstanceBackups", args ?? new GetInstanceBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

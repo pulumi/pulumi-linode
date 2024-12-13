@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetIpv6RangeResult> Invoke(GetIpv6RangeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode IPv6 Range.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about an IPv6 range assigned to a Linode:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var range_info = Linode.GetIpv6Range.Invoke(new()
+        ///     {
+        ///         Range = "2001:0db8::",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIpv6RangeResult> Invoke(GetIpv6RangeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangeResult>("linode:index/getIpv6Range:getIpv6Range", args ?? new GetIpv6RangeInvokeArgs(), options.WithDefaults());
     }
 
 

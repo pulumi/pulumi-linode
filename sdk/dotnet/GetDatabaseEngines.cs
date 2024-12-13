@@ -204,6 +204,103 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDatabaseEnginesResult> Invoke(GetDatabaseEnginesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Managed Database engines that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all Linode Managed Database engines:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetDatabaseEngines.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["engineIds"] = all.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode MySQL Database engines:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetDatabaseEnginesFilterInputArgs
+        ///             {
+        ///                 Name = "engine",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "mysql",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["engineIds"] = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Create a Linode MySQL Database using the latest support MySQL version:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
+        ///     {
+        ///         Latest = true,
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetDatabaseEnginesFilterInputArgs
+        ///             {
+        ///                 Name = "engine",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "mysql",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myDb = new Linode.DatabaseMysql("my_db", new()
+        ///     {
+        ///         Label = "mydb",
+        ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
+        ///         Region = "us-southeast",
+        ///         Type = "g6-nanode-1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseEnginesResult> Invoke(GetDatabaseEnginesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseEnginesResult>("linode:index/getDatabaseEngines:getDatabaseEngines", args ?? new GetDatabaseEnginesInvokeArgs(), options.WithDefaults());
     }
 
 

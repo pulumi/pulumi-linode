@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetAccountLoginResult> Invoke(GetAccountLoginInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountLoginResult>("linode:index/getAccountLogin:getAccountLogin", args ?? new GetAccountLoginInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about a specific Linode account login.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-login).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode account login.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccountLogin = Linode.GetAccountLogin.Invoke(new()
+        ///     {
+        ///         Id = 123456,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountLoginResult> Invoke(GetAccountLoginInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountLoginResult>("linode:index/getAccountLogin:getAccountLogin", args ?? new GetAccountLoginInvokeArgs(), options.WithDefaults());
     }
 
 

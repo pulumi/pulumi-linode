@@ -39,21 +39,11 @@ type GetNbTypesResult struct {
 }
 
 func GetNbTypesOutput(ctx *pulumi.Context, args GetNbTypesOutputArgs, opts ...pulumi.InvokeOption) GetNbTypesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNbTypesResultOutput, error) {
 			args := v.(GetNbTypesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNbTypesResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getNbTypes:getNbTypes", args, &rv, "", opts...)
-			if err != nil {
-				return GetNbTypesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNbTypesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNbTypesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getNbTypes:getNbTypes", args, GetNbTypesResultOutput{}, options).(GetNbTypesResultOutput), nil
 		}).(GetNbTypesResultOutput)
 }
 

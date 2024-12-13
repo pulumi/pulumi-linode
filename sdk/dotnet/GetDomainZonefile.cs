@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDomainZonefileResult> Invoke(GetDomainZonefileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode Domain Zonefile.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain-zone).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Domain Zonefile.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myZonefile = Linode.GetDomainZonefile.Invoke(new()
+        ///     {
+        ///         DomainId = 3150401,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDomainZonefileResult> Invoke(GetDomainZonefileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainZonefileResult>("linode:index/getDomainZonefile:getDomainZonefile", args ?? new GetDomainZonefileInvokeArgs(), options.WithDefaults());
     }
 
 

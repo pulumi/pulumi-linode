@@ -72,6 +72,37 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode VPC.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode VPC.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Linode.GetVpc.Invoke(new()
+        ///     {
+        ///         Id = "123",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpc"] = foo,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
     }
 
 
