@@ -112,6 +112,57 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetIpv6RangesResult> Invoke(GetIpv6RangesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangesResult>("linode:index/getIpv6Ranges:getIpv6Ranges", args ?? new GetIpv6RangesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode IPv6 ranges that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-ranges).
+        /// 
+        /// &gt; Some fields may not be accessible directly the results of this data source.
+        /// For additional information about a specific IPv6 range consider using the linode.Ipv6Range
+        /// data source.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_ranges = Linode.GetIpv6Ranges.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetIpv6RangesFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-mia",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ranges"] = filtered_ranges,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `range`
+        /// 
+        /// * `route_target`
+        /// 
+        /// * `prefix`
+        /// 
+        /// * `region`
+        /// </summary>
+        public static Output<GetIpv6RangesResult> Invoke(GetIpv6RangesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangesResult>("linode:index/getIpv6Ranges:getIpv6Ranges", args ?? new GetIpv6RangesInvokeArgs(), options.WithDefaults());
     }
 
 

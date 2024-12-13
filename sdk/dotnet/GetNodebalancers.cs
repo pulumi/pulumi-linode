@@ -140,6 +140,71 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetNodebalancersResult> Invoke(GetNodebalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode NodeBalancers that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode NodeBalancer.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_nodebalancers = Linode.GetNodebalancers.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancersFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-nodebalancer",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetNodebalancersFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-iad",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodebalancerId"] = specific_nodebalancers.Apply(specific_nodebalancers =&gt; specific_nodebalancers.Apply(getNodebalancersResult =&gt; getNodebalancersResult.Nodebalancers[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `label`
+        /// 
+        /// * `tags`
+        /// 
+        /// * `ipv4`
+        /// 
+        /// * `ipv6`
+        /// 
+        /// * `hostname`
+        /// 
+        /// * `region`
+        /// 
+        /// * `client_conn_throttle`
+        /// </summary>
+        public static Output<GetNodebalancersResult> Invoke(GetNodebalancersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersInvokeArgs(), options.WithDefaults());
     }
 
 

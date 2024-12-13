@@ -120,6 +120,61 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetSshkeysResult> Invoke(GetSshkeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshkeysResult>("linode:index/getSshkeys:getSshkeys", args ?? new GetSshkeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how the resource might be used to obtain the names of the SSH Keys configured on the Linode user profile.
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filteredSsh = Linode.GetSshkeys.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetSshkeysFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-ssh",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetSshkeysFilterInputArgs
+        ///             {
+        ///                 Name = "ssh_key",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "RSA-6522525",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `id`
+        /// 
+        /// * `label`
+        /// 
+        /// * `ssh_key`
+        /// </summary>
+        public static Output<GetSshkeysResult> Invoke(GetSshkeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshkeysResult>("linode:index/getSshkeys:getSshkeys", args ?? new GetSshkeysInvokeArgs(), options.WithDefaults());
     }
 
 

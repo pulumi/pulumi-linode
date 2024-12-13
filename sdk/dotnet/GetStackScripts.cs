@@ -152,6 +152,77 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetStackScriptsResult> Invoke(GetStackScriptsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode StackScripts that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
+        /// 
+        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode StackScript.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-cool-stackscript",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetStackScriptsFilterInputArgs
+        ///             {
+        ///                 Name = "is_public",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "false",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stackscriptId"] = specific_stackscripts.Apply(specific_stackscripts =&gt; specific_stackscripts.Apply(getStackScriptsResult =&gt; getStackScriptsResult.Stackscripts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `deployments_active`
+        /// 
+        /// * `deployments_total`
+        /// 
+        /// * `description`
+        /// 
+        /// * `images`
+        /// 
+        /// * `is_public`
+        /// 
+        /// * `label`
+        /// 
+        /// * `mine`
+        /// 
+        /// * `rev_note`
+        /// 
+        /// * `username`
+        /// </summary>
+        public static Output<GetStackScriptsResult> Invoke(GetStackScriptsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());
     }
 
 

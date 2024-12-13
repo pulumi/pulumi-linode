@@ -124,6 +124,63 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetLkeClustersResult> Invoke(GetLkeClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeClustersResult>("linode:index/getLkeClusters:getLkeClusters", args ?? new GetLkeClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a list of current Linode Kubernetes (LKE) clusters on your account that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all LKE clusters with a specific tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific = Linode.GetLkeClusters.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetLkeClustersFilterInputArgs
+        ///             {
+        ///                 Name = "tags",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test-tag",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["lkeCluster"] = specific.Apply(getLkeClustersResult =&gt; getLkeClustersResult.LkeClusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `k8s_version`
+        /// 
+        /// * `label`
+        /// 
+        /// * `region`
+        /// 
+        /// * `tags`
+        /// 
+        /// * `status`
+        /// 
+        /// * `created`
+        /// 
+        /// * `updated`
+        /// </summary>
+        public static Output<GetLkeClustersResult> Invoke(GetLkeClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeClustersResult>("linode:index/getLkeClusters:getLkeClusters", args ?? new GetLkeClustersInvokeArgs(), options.WithDefaults());
     }
 
 

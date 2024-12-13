@@ -126,6 +126,64 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetPlacementGroupsResult> Invoke(GetPlacementGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlacementGroupsResult>("linode:index/getPlacementGroups:getPlacementGroups", args ?? new GetPlacementGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a list of Linode Placement Groups that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-groups).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to list Placement Groups.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetPlacementGroups.Invoke();
+        /// 
+        ///     var filtered = Linode.GetPlacementGroups.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetPlacementGroupsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-label",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["all-pgs"] = all.Apply(getPlacementGroupsResult =&gt; getPlacementGroupsResult.PlacementGroups),
+        ///         ["filtered-pgs"] = filtered.Apply(getPlacementGroupsResult =&gt; getPlacementGroupsResult.PlacementGroups),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `id`
+        /// 
+        /// * `label`
+        /// 
+        /// * `region`
+        /// 
+        /// * `placement_group_type`
+        /// 
+        /// * `placement_group_policy`
+        /// 
+        /// * `is_compliant`
+        /// </summary>
+        public static Output<GetPlacementGroupsResult> Invoke(GetPlacementGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPlacementGroupsResult>("linode:index/getPlacementGroups:getPlacementGroups", args ?? new GetPlacementGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

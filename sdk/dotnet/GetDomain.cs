@@ -74,6 +74,38 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("linode:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode domain.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domain).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode domain.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Linode.GetDomain.Invoke(new()
+        ///     {
+        ///         Id = 1234567,
+        ///     });
+        /// 
+        ///     var bar = Linode.GetDomain.Invoke(new()
+        ///     {
+        ///         Domain = "bar.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("linode:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }
 
 

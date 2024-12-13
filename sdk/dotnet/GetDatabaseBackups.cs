@@ -126,6 +126,64 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDatabaseBackupsResult> Invoke(GetDatabaseBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Database Backups that match a set of filters.
+        /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all backups for a MySQL database:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_backups = Linode.GetDatabaseBackups.Invoke(new()
+        ///     {
+        ///         DatabaseId = 12345,
+        ///         DatabaseType = "mysql",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get information about all automatic PostgreSQL Database Backups:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var auto_backups = Linode.GetDatabaseBackups.Invoke(new()
+        ///     {
+        ///         DatabaseId = 12345,
+        ///         DatabaseType = "postgresql",
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetDatabaseBackupsFilterInputArgs
+        ///             {
+        ///                 Name = "type",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "auto",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseBackupsResult> Invoke(GetDatabaseBackupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

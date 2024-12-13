@@ -142,6 +142,72 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Beta Notice** VLANs are currently available through early access.
+        /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        /// To learn more, see the early access documentation.
+        /// 
+        /// Provides details about Linode VLANs.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vlans).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     {
+        ///         Label = "my_instance",
+        ///         Image = "linode/ubuntu22.04",
+        ///         Region = "us-southeast",
+        ///         Type = "g6-standard-1",
+        ///         RootPass = "bogusPassword$",
+        ///         Interfaces = new[]
+        ///         {
+        ///             new Linode.Inputs.InstanceInterfaceArgs
+        ///             {
+        ///                 Purpose = "vlan",
+        ///                 Label = "my-vlan",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var my_vlans = Linode.GetVlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVlansFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-vlan",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vlanLinodes"] = my_vlans.Apply(my_vlans =&gt; my_vlans.Apply(getVlansResult =&gt; getVlansResult.Vlans[0]?.Linodes)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `label`
+        /// 
+        /// * `region`
+        /// </summary>
+        public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
     }
 
 

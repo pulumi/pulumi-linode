@@ -24,6 +24,13 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVolumeTypesResult> Invoke(GetVolumeTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeTypesResult>("linode:index/getVolumeTypes:getVolumeTypes", args ?? new GetVolumeTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Volume types that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-volume-types).
+        /// </summary>
+        public static Output<GetVolumeTypesResult> Invoke(GetVolumeTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeTypesResult>("linode:index/getVolumeTypes:getVolumeTypes", args ?? new GetVolumeTypesInvokeArgs(), options.WithDefaults());
     }
 
 

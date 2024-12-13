@@ -86,21 +86,11 @@ type GetAccountLoginsResult struct {
 }
 
 func GetAccountLoginsOutput(ctx *pulumi.Context, args GetAccountLoginsOutputArgs, opts ...pulumi.InvokeOption) GetAccountLoginsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccountLoginsResultOutput, error) {
 			args := v.(GetAccountLoginsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAccountLoginsResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getAccountLogins:getAccountLogins", args, &rv, "", opts...)
-			if err != nil {
-				return GetAccountLoginsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAccountLoginsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAccountLoginsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getAccountLogins:getAccountLogins", args, GetAccountLoginsResultOutput{}, options).(GetAccountLoginsResultOutput), nil
 		}).(GetAccountLoginsResultOutput)
 }
 

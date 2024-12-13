@@ -58,6 +58,30 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetProfileResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode profile.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-profile).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access profile details.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var profile = Linode.GetProfile.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProfileResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProfileResult>("linode:index/getProfile:getProfile", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

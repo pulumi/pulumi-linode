@@ -92,6 +92,47 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDatabasePostgresqlResult> Invoke(GetDatabasePostgresqlInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode PostgreSQL Database.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about a PostgreSQL database:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_db = Linode.GetDatabasePostgresql.Invoke(new()
+        ///     {
+        ///         Id = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## updates
+        /// 
+        /// The following arguments are exported by the `updates` specification block:
+        /// 
+        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// 
+        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// 
+        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// 
+        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        /// </summary>
+        public static Output<GetDatabasePostgresqlResult> Invoke(GetDatabasePostgresqlInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlInvokeArgs(), options.WithDefaults());
     }
 
 

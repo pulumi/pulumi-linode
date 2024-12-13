@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetAccountAvailabilityResult> Invoke(GetAccountAvailabilityInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAvailabilityResult>("linode:index/getAccountAvailability:getAccountAvailability", args ?? new GetAccountAvailabilityInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about service availability in a region to an account specifically.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-availability).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode account availability.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccountAvailability = Linode.GetAccountAvailability.Invoke(new()
+        ///     {
+        ///         Region = "us-east",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountAvailabilityResult> Invoke(GetAccountAvailabilityInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAvailabilityResult>("linode:index/getAccountAvailability:getAccountAvailability", args ?? new GetAccountAvailabilityInvokeArgs(), options.WithDefaults());
     }
 
 

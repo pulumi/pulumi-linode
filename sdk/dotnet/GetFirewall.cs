@@ -60,6 +60,31 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("linode:index/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about a Linode Firewall.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-firewall).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
+        ///     {
+        ///         Id = 123,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("linode:index/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithDefaults());
     }
 
 

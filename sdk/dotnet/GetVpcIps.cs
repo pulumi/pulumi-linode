@@ -166,6 +166,84 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVpcIpsResult> Invoke(GetVpcIpsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcIpsResult>("linode:index/getVpcIps:getVpcIps", args ?? new GetVpcIpsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a list of Linode VPC IPs that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
+        /// 
+        /// Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to list VPC IPs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_ips = Linode.GetVpcIps.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVpcIpsFilterInputArgs
+        ///             {
+        ///                 Name = "address",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "10.0.0.0",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIps"] = filtered_ips.Apply(filtered_ips =&gt; filtered_ips.Apply(getVpcIpsResult =&gt; getVpcIpsResult.VpcIps)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// One might also use this data source to list all VPC IPs in a specific VPC. The following example shows how to do this.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_vpc_ips = Linode.GetVpcIps.Invoke(new()
+        ///     {
+        ///         VpcId = 123,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIps"] = specific_vpc_ips.Apply(specific_vpc_ips =&gt; specific_vpc_ips.Apply(getVpcIpsResult =&gt; getVpcIpsResult.VpcIps)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `active`
+        /// 
+        /// * `config_id`
+        /// 
+        /// * `linode_id`
+        /// 
+        /// * `region`
+        /// 
+        /// * `vpc_id`
+        /// </summary>
+        public static Output<GetVpcIpsResult> Invoke(GetVpcIpsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcIpsResult>("linode:index/getVpcIps:getVpcIps", args ?? new GetVpcIpsInvokeArgs(), options.WithDefaults());
     }
 
 

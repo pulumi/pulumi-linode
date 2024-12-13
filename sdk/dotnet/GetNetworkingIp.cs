@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetNetworkingIpResult> Invoke(GetNetworkingIpInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode Networking IP Address
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Networking IP Address.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()
+        ///     {
+        ///         Address = "162.159.27.72",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkingIpResult> Invoke(GetNetworkingIpInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpResult>("linode:index/getNetworkingIp:getNetworkingIp", args ?? new GetNetworkingIpInvokeArgs(), options.WithDefaults());
     }
 
 

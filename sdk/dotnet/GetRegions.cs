@@ -120,6 +120,61 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("linode:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode regions that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_regions = Linode.GetRegions.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Name = "status",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "ok",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Name = "capabilities",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "NodeBalancers",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regions"] = filtered_regions.Apply(filtered_regions =&gt; filtered_regions.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `status`
+        /// 
+        /// * `country`
+        /// 
+        /// * `capabilities`
+        /// 
+        /// * `site_type`
+        /// </summary>
+        public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("linode:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
     }
 
 
