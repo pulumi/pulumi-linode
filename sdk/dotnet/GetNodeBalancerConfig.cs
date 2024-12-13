@@ -62,6 +62,32 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetNodeBalancerConfigResult> Invoke(GetNodeBalancerConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeBalancerConfigResult>("linode:index/getNodeBalancerConfig:getNodeBalancerConfig", args ?? new GetNodeBalancerConfigInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about a Linode NodeBalancer Config.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-config).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_config = Linode.GetNodeBalancerConfig.Invoke(new()
+        ///     {
+        ///         Id = 123,
+        ///         NodebalancerId = 456,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNodeBalancerConfigResult> Invoke(GetNodeBalancerConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeBalancerConfigResult>("linode:index/getNodeBalancerConfig:getNodeBalancerConfig", args ?? new GetNodeBalancerConfigInvokeArgs(), options.WithDefaults());
     }
 
 

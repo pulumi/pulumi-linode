@@ -116,6 +116,59 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("linode:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode users that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-users).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_users = Linode.GetUsers.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetUsersFilterInputArgs
+        ///             {
+        ///                 Name = "username",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test-user",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["users"] = filtered_users.Apply(filtered_users =&gt; filtered_users.Apply(getUsersResult =&gt; getUsersResult.Users)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `username`
+        /// 
+        /// * `email`
+        /// 
+        /// * `restricted`
+        /// 
+        /// * `user_type`
+        /// 
+        /// * `password_created`
+        /// 
+        /// * `tfa_enabled`
+        /// 
+        /// * `verfied_phone_number`
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("linode:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,6 +16,9 @@ namespace Pulumi.Linode
 
         public static Output<GetNbTypesResult> Invoke(GetNbTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNbTypesResult>("linode:index/getNbTypes:getNbTypes", args ?? new GetNbTypesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetNbTypesResult> Invoke(GetNbTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNbTypesResult>("linode:index/getNbTypes:getNbTypes", args ?? new GetNbTypesInvokeArgs(), options.WithDefaults());
     }
 
 

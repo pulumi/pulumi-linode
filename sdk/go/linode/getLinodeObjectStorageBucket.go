@@ -78,21 +78,11 @@ type GetLinodeObjectStorageBucketResult struct {
 }
 
 func GetLinodeObjectStorageBucketOutput(ctx *pulumi.Context, args GetLinodeObjectStorageBucketOutputArgs, opts ...pulumi.InvokeOption) GetLinodeObjectStorageBucketResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLinodeObjectStorageBucketResultOutput, error) {
 			args := v.(GetLinodeObjectStorageBucketArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLinodeObjectStorageBucketResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args, &rv, "", opts...)
-			if err != nil {
-				return GetLinodeObjectStorageBucketResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLinodeObjectStorageBucketResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLinodeObjectStorageBucketResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args, GetLinodeObjectStorageBucketResultOutput{}, options).(GetLinodeObjectStorageBucketResultOutput), nil
 		}).(GetLinodeObjectStorageBucketResultOutput)
 }
 

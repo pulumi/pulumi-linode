@@ -58,6 +58,30 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetLkeVersionsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode LKE Version.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Linode.GetLkeVersions.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLkeVersionsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -74,6 +74,38 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode VPC subnet.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-subnet).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode VPC subnet.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Linode.GetVpcSubnet.Invoke(new()
+        ///     {
+        ///         VpcId = 123,
+        ///         Id = "12345",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcSubnet"] = foo,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());
     }
 
 

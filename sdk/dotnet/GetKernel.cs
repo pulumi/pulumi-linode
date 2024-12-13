@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetKernelResult> Invoke(GetKernelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode kernel
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernel).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var latest = Linode.GetKernel.Invoke(new()
+        ///     {
+        ///         Id = "linode/latest-64bit",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKernelResult> Invoke(GetKernelInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKernelResult>("linode:index/getKernel:getKernel", args ?? new GetKernelInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -148,6 +148,75 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("linode:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Domains that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all Linode Cloud Domains with a specific tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific = Linode.GetDomains.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetDomainsFilterInputArgs
+        ///             {
+        ///                 Name = "tags",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test-tag",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domain"] = specific.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Domain),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `group`
+        /// 
+        /// * `tags`
+        /// 
+        /// * `domain`
+        /// 
+        /// * `type`
+        /// 
+        /// * `status`
+        /// 
+        /// * `description`
+        /// 
+        /// * `master_ips`
+        /// 
+        /// * `axfr_ips`
+        /// 
+        /// * `ttl_sec`
+        /// 
+        /// * `retry_sec`
+        /// 
+        /// * `expire_sec`
+        /// 
+        /// * `refresh_sec`
+        /// 
+        /// * `soa_email`
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("linode:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -194,6 +194,98 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetChildAccountsResult> Invoke(GetChildAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChildAccountsResult>("linode:index/getChildAccounts:getChildAccounts", args ?? new GetChildAccountsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Child Accounts that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-child-accounts).
+        /// 
+        /// **NOTE: Parent/Child related features may not be generally available.**
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access Child Accounts under the current Account.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetChildAccounts.Invoke();
+        /// 
+        ///     var filtered = Linode.GetChildAccounts.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetChildAccountsFilterInputArgs
+        ///             {
+        ///                 Name = "email",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "example@linode.com",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetChildAccountsFilterInputArgs
+        ///             {
+        ///                 Name = "first_name",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "John",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetChildAccountsFilterInputArgs
+        ///             {
+        ///                 Name = "last_name",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Smith",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allAccounts"] = all.Apply(getChildAccountsResult =&gt; getChildAccountsResult.ChildAccounts).Select(__item =&gt; __item.Euuid).ToList(),
+        ///         ["filteredAccounts"] = filtered.Apply(getChildAccountsResult =&gt; getChildAccountsResult.ChildAccounts).Select(__item =&gt; __item.Euuid).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `euuid`
+        /// 
+        /// * `email`
+        /// 
+        /// * `first_name`
+        /// 
+        /// * `last_name`
+        /// 
+        /// * `company`
+        /// 
+        /// * `address_1`
+        /// 
+        /// * `address_2`
+        /// 
+        /// * `phone`
+        /// 
+        /// * `city`
+        /// 
+        /// * `state`
+        /// 
+        /// * `country`
+        /// 
+        /// * `zip`
+        /// 
+        /// * `capabilities`
+        /// 
+        /// * `active_since`
+        /// </summary>
+        public static Output<GetChildAccountsResult> Invoke(GetChildAccountsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetChildAccountsResult>("linode:index/getChildAccounts:getChildAccounts", args ?? new GetChildAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

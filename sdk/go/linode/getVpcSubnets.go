@@ -88,21 +88,11 @@ type GetVpcSubnetsResult struct {
 }
 
 func GetVpcSubnetsOutput(ctx *pulumi.Context, args GetVpcSubnetsOutputArgs, opts ...pulumi.InvokeOption) GetVpcSubnetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVpcSubnetsResultOutput, error) {
 			args := v.(GetVpcSubnetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVpcSubnetsResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getVpcSubnets:getVpcSubnets", args, &rv, "", opts...)
-			if err != nil {
-				return GetVpcSubnetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVpcSubnetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVpcSubnetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getVpcSubnets:getVpcSubnets", args, GetVpcSubnetsResultOutput{}, options).(GetVpcSubnetsResultOutput), nil
 		}).(GetVpcSubnetsResultOutput)
 }
 

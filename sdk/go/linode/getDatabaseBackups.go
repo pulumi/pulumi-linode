@@ -119,21 +119,11 @@ type GetDatabaseBackupsResult struct {
 }
 
 func GetDatabaseBackupsOutput(ctx *pulumi.Context, args GetDatabaseBackupsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseBackupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabaseBackupsResultOutput, error) {
 			args := v.(GetDatabaseBackupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDatabaseBackupsResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getDatabaseBackups:getDatabaseBackups", args, &rv, "", opts...)
-			if err != nil {
-				return GetDatabaseBackupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDatabaseBackupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDatabaseBackupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getDatabaseBackups:getDatabaseBackups", args, GetDatabaseBackupsResultOutput{}, options).(GetDatabaseBackupsResultOutput), nil
 		}).(GetDatabaseBackupsResultOutput)
 }
 

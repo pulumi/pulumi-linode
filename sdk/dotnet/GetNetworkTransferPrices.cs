@@ -24,6 +24,13 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetNetworkTransferPricesResult> Invoke(GetNetworkTransferPricesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkTransferPricesResult>("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", args ?? new GetNetworkTransferPricesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Network Transfer Prices that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-network-transfer-prices).
+        /// </summary>
+        public static Output<GetNetworkTransferPricesResult> Invoke(GetNetworkTransferPricesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkTransferPricesResult>("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", args ?? new GetNetworkTransferPricesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -64,6 +64,33 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetStackScriptResult> Invoke(GetStackScriptInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about a specific Linode StackScript.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-script).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode StackScript.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
+        ///     {
+        ///         Id = "355872",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetStackScriptResult> Invoke(GetStackScriptInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptResult>("linode:index/getStackScript:getStackScript", args ?? new GetStackScriptInvokeArgs(), options.WithDefaults());
     }
 
 

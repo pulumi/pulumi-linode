@@ -44,21 +44,11 @@ type GetNetworkTransferPricesResult struct {
 }
 
 func GetNetworkTransferPricesOutput(ctx *pulumi.Context, args GetNetworkTransferPricesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkTransferPricesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetworkTransferPricesResultOutput, error) {
 			args := v.(GetNetworkTransferPricesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNetworkTransferPricesResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", args, &rv, "", opts...)
-			if err != nil {
-				return GetNetworkTransferPricesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNetworkTransferPricesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNetworkTransferPricesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getNetworkTransferPrices:getNetworkTransferPrices", args, GetNetworkTransferPricesResultOutput{}, options).(GetNetworkTransferPricesResultOutput), nil
 		}).(GetNetworkTransferPricesResultOutput)
 }
 

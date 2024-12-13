@@ -24,6 +24,13 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetLkeTypesResult> Invoke(GetLkeTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeTypesResult>("linode:index/getLkeTypes:getLkeTypes", args ?? new GetLkeTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode LKE types that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+        /// </summary>
+        public static Output<GetLkeTypesResult> Invoke(GetLkeTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeTypesResult>("linode:index/getLkeTypes:getLkeTypes", args ?? new GetLkeTypesInvokeArgs(), options.WithDefaults());
     }
 
 

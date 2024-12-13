@@ -66,6 +66,34 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetLinodeObjectStorageBucketResult> Invoke(GetLinodeObjectStorageBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLinodeObjectStorageBucketResult>("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args ?? new GetLinodeObjectStorageBucketInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode Object Storage Bucket
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-bucket).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Object Storage Bucket.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()
+        ///     {
+        ///         Label = "my-bucket",
+        ///         Region = "us-mia",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLinodeObjectStorageBucketResult> Invoke(GetLinodeObjectStorageBucketInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLinodeObjectStorageBucketResult>("linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket", args ?? new GetLinodeObjectStorageBucketInvokeArgs(), options.WithDefaults());
     }
 
 

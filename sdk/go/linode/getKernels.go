@@ -103,21 +103,11 @@ type GetKernelsResult struct {
 }
 
 func GetKernelsOutput(ctx *pulumi.Context, args GetKernelsOutputArgs, opts ...pulumi.InvokeOption) GetKernelsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKernelsResultOutput, error) {
 			args := v.(GetKernelsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKernelsResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getKernels:getKernels", args, &rv, "", opts...)
-			if err != nil {
-				return GetKernelsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKernelsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKernelsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getKernels:getKernels", args, GetKernelsResultOutput{}, options).(GetKernelsResultOutput), nil
 		}).(GetKernelsResultOutput)
 }
 

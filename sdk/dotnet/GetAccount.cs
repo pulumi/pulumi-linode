@@ -62,6 +62,32 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetAccountResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a Linode account.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account).
+        /// 
+        /// Due to the sensitive nature of the data exposed by this data source, it should not be used in conjunction with the `LINODE_DEBUG` option.  See the [debugging notes](https://www.terraform.io/providers/linode/linode/latest/docs#debugging) for more details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access account details.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var account = Linode.GetAccount.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("linode:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

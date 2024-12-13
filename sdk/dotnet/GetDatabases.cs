@@ -130,6 +130,66 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Managed Databases that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all Linode Managed Databases:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetDatabases.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = all.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get information about all Linode MySQL Databases:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mysql = Linode.GetDatabases.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetDatabasesFilterInputArgs
+        ///             {
+        ///                 Name = "engine",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "mysql",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseIds"] = mysql.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
     }
 
 

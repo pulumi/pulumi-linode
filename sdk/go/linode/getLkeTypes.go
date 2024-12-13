@@ -44,21 +44,11 @@ type GetLkeTypesResult struct {
 }
 
 func GetLkeTypesOutput(ctx *pulumi.Context, args GetLkeTypesOutputArgs, opts ...pulumi.InvokeOption) GetLkeTypesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLkeTypesResultOutput, error) {
 			args := v.(GetLkeTypesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLkeTypesResult
-			secret, err := ctx.InvokePackageRaw("linode:index/getLkeTypes:getLkeTypes", args, &rv, "", opts...)
-			if err != nil {
-				return GetLkeTypesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLkeTypesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLkeTypesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("linode:index/getLkeTypes:getLkeTypes", args, GetLkeTypesResultOutput{}, options).(GetLkeTypesResultOutput), nil
 		}).(GetLkeTypesResultOutput)
 }
 

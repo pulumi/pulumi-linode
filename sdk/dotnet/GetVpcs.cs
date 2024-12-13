@@ -112,6 +112,57 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetVpcsResult> Invoke(GetVpcsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcsResult>("linode:index/getVpcs:getVpcs", args ?? new GetVpcsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a list of Linode VPCs that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to list VPCs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_vpcs = Linode.GetVpcs.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetVpcsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "test",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcs"] = filtered_vpcs.Apply(filtered_vpcs =&gt; filtered_vpcs.Apply(getVpcsResult =&gt; getVpcsResult.Vpcs)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `id`
+        /// 
+        /// * `label`
+        /// 
+        /// * `description`
+        /// 
+        /// * `region`
+        /// </summary>
+        public static Output<GetVpcsResult> Invoke(GetVpcsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcsResult>("linode:index/getVpcs:getVpcs", args ?? new GetVpcsInvokeArgs(), options.WithDefaults());
     }
 
 

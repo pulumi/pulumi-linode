@@ -60,6 +60,31 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetInstanceNetworkingResult> Invoke(GetInstanceNetworkingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceNetworkingResult>("linode:index/getInstanceNetworking:getInstanceNetworking", args ?? new GetInstanceNetworkingInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about the networking configuration of an Instance.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Linode.GetInstanceNetworking.Invoke(new()
+        ///     {
+        ///         LinodeId = 123,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceNetworkingResult> Invoke(GetInstanceNetworkingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceNetworkingResult>("linode:index/getInstanceNetworking:getInstanceNetworking", args ?? new GetInstanceNetworkingInvokeArgs(), options.WithDefaults());
     }
 
 

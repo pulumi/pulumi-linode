@@ -146,6 +146,74 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetNodebalancerConfigsResult> Invoke(GetNodebalancerConfigsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerConfigsResult>("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args ?? new GetNodebalancerConfigsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode NodeBalancer Configs that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-configs).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a list of NodeBalancer Configs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filterNbConfigs = Linode.GetNodebalancerConfigs.Invoke(new()
+        ///     {
+        ///         NodebalancerId = 12345,
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancerConfigsFilterInputArgs
+        ///             {
+        ///                 Name = "port",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "80",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodebalancerConfigId"] = filterNbConfigs.Apply(getNodebalancerConfigsResult =&gt; getNodebalancerConfigsResult.NodebalancerConfigs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `algorithm`
+        /// 
+        /// * `check`
+        /// 
+        /// * `nodebalancer_id`
+        /// 
+        /// * `port`
+        /// 
+        /// * `protocol`
+        /// 
+        /// * `proxy_protocol`
+        /// 
+        /// * `stickiness`
+        /// 
+        /// * `check_path`
+        /// 
+        /// * `check_body`
+        /// 
+        /// * `check_passive`
+        /// 
+        /// * `cipher_suite`
+        /// 
+        /// * `ssl_commonname`
+        /// </summary>
+        public static Output<GetNodebalancerConfigsResult> Invoke(GetNodebalancerConfigsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerConfigsResult>("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args ?? new GetNodebalancerConfigsInvokeArgs(), options.WithDefaults());
     }
 
 

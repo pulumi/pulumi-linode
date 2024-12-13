@@ -136,6 +136,69 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetKernelsResult> Invoke(GetKernelsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode Kernels that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-kernels).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode Kernel.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filteredKernels = Linode.GetKernels.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetKernelsFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "my-kernel",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetKernelsFilterInputArgs
+        ///             {
+        ///                 Name = "architecture",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "x86_64",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `id`
+        /// 
+        /// * `architecture`
+        /// 
+        /// * `deprecated`
+        /// 
+        /// * `kvm`
+        /// 
+        /// * `label`
+        /// 
+        /// * `pvops`
+        /// 
+        /// * `version`
+        /// 
+        /// * `xen`
+        /// </summary>
+        public static Output<GetKernelsResult> Invoke(GetKernelsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsInvokeArgs(), options.WithDefaults());
     }
 
 

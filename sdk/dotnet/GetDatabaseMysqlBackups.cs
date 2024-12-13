@@ -126,6 +126,64 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetDatabaseMysqlBackupsResult> Invoke(GetDatabaseMysqlBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode MySQL Database Backups that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
+        /// 
+        /// &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get information about all backups for a MySQL database:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_backups = Linode.GetDatabaseMysqlBackups.Invoke(new()
+        ///     {
+        ///         DatabaseId = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get information about all automatic MySQL Database Backups:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var auto_backups = Linode.GetDatabaseMysqlBackups.Invoke(new()
+        ///     {
+        ///         DatabaseId = 12345,
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetDatabaseMysqlBackupsFilterInputArgs
+        ///             {
+        ///                 Name = "type",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "auto",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseMysqlBackupsResult> Invoke(GetDatabaseMysqlBackupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlBackupsResult>("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", args ?? new GetDatabaseMysqlBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

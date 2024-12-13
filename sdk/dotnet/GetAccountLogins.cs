@@ -124,6 +124,63 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetAccountLoginsResult> Invoke(GetAccountLoginsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountLoginsResult>("linode:index/getAccountLogins:getAccountLogins", args ?? new GetAccountLoginsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about Linode account logins that match a set of filters.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-account-logins).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example shows how one might use this data source to access information about a Linode account login.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered_account_logins = Linode.GetAccountLogins.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetAccountLoginsFilterInputArgs
+        ///             {
+        ///                 Name = "restricted",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///             new Linode.Inputs.GetAccountLoginsFilterInputArgs
+        ///             {
+        ///                 Name = "username",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "myUsername",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["loginIds"] = filtered_account_logins.Apply(filtered_account_logins =&gt; filtered_account_logins.Apply(getAccountLoginsResult =&gt; getAccountLoginsResult.Logins).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `ip`
+        /// 
+        /// * `restricted`
+        /// 
+        /// * `username`
+        /// </summary>
+        public static Output<GetAccountLoginsResult> Invoke(GetAccountLoginsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountLoginsResult>("linode:index/getAccountLogins:getAccountLogins", args ?? new GetAccountLoginsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Linode
         /// </summary>
         public static Output<GetLkeClusterResult> Invoke(GetLkeClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides details about an LKE Cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_cluster = Linode.GetLkeCluster.Invoke(new()
+        ///     {
+        ///         Id = 123,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLkeClusterResult> Invoke(GetLkeClusterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeClusterResult>("linode:index/getLkeCluster:getLkeCluster", args ?? new GetLkeClusterInvokeArgs(), options.WithDefaults());
     }
 
 
