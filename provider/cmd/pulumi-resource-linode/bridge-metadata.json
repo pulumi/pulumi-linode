@@ -423,6 +423,19 @@
                     }
                 }
             },
+            "linode_networking_ip": {
+                "current": "linode:index/networkingIp:NetworkingIp",
+                "majorVersion": 4
+            },
+            "linode_networking_ip_assignment": {
+                "current": "linode:index/networkingIpAssignment:NetworkingIpAssignment",
+                "majorVersion": 4,
+                "fields": {
+                    "assignments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_nodebalancer": {
                 "current": "linode:index/nodeBalancer:NodeBalancer",
                 "majorVersion": 4,
@@ -1579,6 +1592,25 @@
                 "current": "linode:index/getNetworkingIp:getNetworkingIp",
                 "majorVersion": 4
             },
+            "linode_networking_ips": {
+                "current": "linode:index/getNetworkingIps:getNetworkingIps",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ip_addresses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_nodebalancer": {
                 "current": "linode:index/getNodeBalancer:getNodeBalancer",
                 "majorVersion": 4,
@@ -2182,12 +2214,14 @@
             "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
             "linode:index/lkeNodePool:LkeNodePool": 1,
+            "linode:index/networkingIp:NetworkingIp": 1,
+            "linode:index/networkingIpAssignment:NetworkingIpAssignment": 1,
             "linode:index/nodeBalancer:NodeBalancer": 1,
             "linode:index/nodeBalancerConfig:NodeBalancerConfig": 1,
             "linode:index/nodeBalancerNode:NodeBalancerNode": 1,
             "linode:index/objectStorageBucket:ObjectStorageBucket": 0,
             "linode:index/objectStorageKey:ObjectStorageKey": 1,
-            "linode:index/objectStorageObject:ObjectStorageObject": 0,
+            "linode:index/objectStorageObject:ObjectStorageObject": 1,
             "linode:index/placementGroup:PlacementGroup": 1,
             "linode:index/placementGroupAssignment:PlacementGroupAssignment": 1,
             "linode:index/rdns:Rdns": 1,
@@ -2240,6 +2274,7 @@
             "linode:index/getNbTypes:getNbTypes": 1,
             "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,
             "linode:index/getNetworkingIp:getNetworkingIp": 1,
+            "linode:index/getNetworkingIps:getNetworkingIps": 1,
             "linode:index/getNodeBalancer:getNodeBalancer": 1,
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": 1,

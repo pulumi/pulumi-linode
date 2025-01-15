@@ -168,7 +168,9 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			"linode_lke_node_pool": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_lke_node_pool":            {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_networking_ip":            {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_networking_ip_assignment": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"linode_sshkey":              {Tok: makeDataSource("getSshKey")},
@@ -187,6 +189,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  makeDataSource("getLinodeObjectStorageBucket"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
+			"linode_networking_ips": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

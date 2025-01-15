@@ -1369,6 +1369,21 @@
                 "value"
             ]
         },
+        "linode:index/NetworkingIpAssignmentAssignment:NetworkingIpAssignmentAssignment": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "linodeId": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "linodeId"
+            ]
+        },
         "linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus": {
             "properties": {
                 "down": {
@@ -6320,6 +6335,92 @@
                 "monthly"
             ]
         },
+        "linode:index/getNetworkingIpsFilter:getNetworkingIpsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The type of comparison to use for this filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attribute to filter on.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value(s) to be used in the filter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getNetworkingIpsIpAddress:getNetworkingIpsIpAddress": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The IP address.\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "The default gateway for this address.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode this address currently belongs to.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "The number of bits set in the subnet mask.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether this is a public or private IP address.\n"
+                },
+                "rdns": {
+                    "type": "string",
+                    "description": "The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The Region this IP address resides in.\n"
+                },
+                "reserved": {
+                    "type": "boolean",
+                    "description": "Whether this IP is reserved or not.\n"
+                },
+                "subnetMask": {
+                    "type": "string",
+                    "description": "The mask that separates host bits from network bits for this address.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "gateway",
+                "linodeId",
+                "prefix",
+                "public",
+                "rdns",
+                "region",
+                "reserved",
+                "subnetMask",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "linode:index/getNodeBalancerConfigNodeStatus:getNodeBalancerConfigNodeStatus": {
             "properties": {
                 "down": {
@@ -10294,7 +10395,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
+                    "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
                 },
                 "replications": {
                     "type": "array",
@@ -10394,7 +10495,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
+                    "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -10481,7 +10582,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
+                        "description": "A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.\n"
                     },
                     "replications": {
                         "type": "array",
@@ -12216,6 +12317,142 @@
                 "type": "object"
             }
         },
+        "linode:index/networkingIp:NetworkingIp": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The allocated IPv4 address.\n"
+                },
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether the IPv4 address is public or private.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.\n"
+                },
+                "reserved": {
+                    "type": "boolean",
+                    "description": "Whether the IPv4 address should be reserved.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of IP address (ipv4).\n"
+                }
+            },
+            "required": [
+                "address",
+                "linodeId",
+                "public",
+                "region",
+                "reserved",
+                "type"
+            ],
+            "inputProperties": {
+                "linodeId": {
+                    "type": "integer",
+                    "description": "The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether the IPv4 address is public or private.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.\n"
+                },
+                "reserved": {
+                    "type": "boolean",
+                    "description": "Whether the IPv4 address should be reserved.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of IP address (ipv4).\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkingIp resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The allocated IPv4 address.\n"
+                    },
+                    "linodeId": {
+                        "type": "integer",
+                        "description": "The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.\n"
+                    },
+                    "public": {
+                        "type": "boolean",
+                        "description": "Whether the IPv4 address is public or private.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.\n"
+                    },
+                    "reserved": {
+                        "type": "boolean",
+                        "description": "Whether the IPv4 address should be reserved.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of IP address (ipv4).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "linode:index/networkingIpAssignment:NetworkingIpAssignment": {
+            "properties": {
+                "assignments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/NetworkingIpAssignmentAssignment:NetworkingIpAssignmentAssignment"
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for the IP assignments.\n"
+                }
+            },
+            "required": [
+                "region"
+            ],
+            "inputProperties": {
+                "assignments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/NetworkingIpAssignmentAssignment:NetworkingIpAssignmentAssignment"
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for the IP assignments.\n"
+                }
+            },
+            "requiredInputs": [
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkingIpAssignment resources.\n",
+                "properties": {
+                    "assignments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/NetworkingIpAssignmentAssignment:NetworkingIpAssignmentAssignment"
+                        }
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region for the IP assignments.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "linode:index/nodeBalancer:NodeBalancer": {
             "description": "Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.\nFor more information, see [Getting Started with NodeBalancers](https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-node-balancer).\n\n## Example Usage\n\nThe following example shows how one might use this resource to configure a NodeBalancer.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst foobar = new linode.NodeBalancer(\"foobar\", {\n    label: \"mynodebalancer\",\n    region: \"us-east\",\n    clientConnThrottle: 20,\n    tags: [\"foobar\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfoobar = linode.NodeBalancer(\"foobar\",\n    label=\"mynodebalancer\",\n    region=\"us-east\",\n    client_conn_throttle=20,\n    tags=[\"foobar\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new Linode.NodeBalancer(\"foobar\", new()\n    {\n        Label = \"mynodebalancer\",\n        Region = \"us-east\",\n        ClientConnThrottle = 20,\n        Tags = new[]\n        {\n            \"foobar\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewNodeBalancer(ctx, \"foobar\", \u0026linode.NodeBalancerArgs{\n\t\t\tLabel:              pulumi.String(\"mynodebalancer\"),\n\t\t\tRegion:             pulumi.String(\"us-east\"),\n\t\t\tClientConnThrottle: pulumi.Int(20),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foobar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.NodeBalancer;\nimport com.pulumi.linode.NodeBalancerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new NodeBalancer(\"foobar\", NodeBalancerArgs.builder()\n            .label(\"mynodebalancer\")\n            .region(\"us-east\")\n            .clientConnThrottle(20)\n            .tags(\"foobar\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:NodeBalancer\n    properties:\n      label: mynodebalancer\n      region: us-east\n      clientConnThrottle: 20\n      tags:\n        - foobar\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLinodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.\n\n```sh\n$ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567\n```\n\n",
             "properties": {
@@ -12750,7 +12987,7 @@
             }
         },
         "linode:index/objectStorageBucket:ObjectStorageBucket": {
-            "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).\n\n## Example Usage\n\nThe following example shows how one might use this resource to create an Object Storage Bucket:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: \"mybucket\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"mybucket\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var primary = Linode.GetObjectStorageCluster.Invoke(new()\n    {\n        Id = \"us-east-1\",\n    });\n\n    var foobar = new Linode.ObjectStorageBucket(\"foobar\", new()\n    {\n        Cluster = primary.Apply(getObjectStorageClusterResult =\u003e getObjectStorageClusterResult.Id),\n        Label = \"mybucket\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(\"mybucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageClusterArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()\n            .id(\"us-east-1\")\n            .build());\n\n        var foobar = new ObjectStorageBucket(\"foobar\", ObjectStorageBucketArgs.builder()\n            .cluster(primary.applyValue(getObjectStorageClusterResult -\u003e getObjectStorageClusterResult.id()))\n            .label(\"mybucket\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:ObjectStorageBucket\n    properties:\n      cluster: ${primary.id}\n      label: mybucket\nvariables:\n  primary:\n    fn::invoke:\n      function: linode:getObjectStorageCluster\n      arguments:\n        id: us-east-1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst mykey = new linode.ObjectStorageKey(\"mykey\", {label: \"image-access\"});\nconst mybucket = new linode.ObjectStorageBucket(\"mybucket\", {\n    accessKey: mykey.accessKey,\n    secretKey: mykey.secretKey,\n    cluster: \"us-east-1\",\n    label: \"mybucket\",\n    lifecycleRules: [{\n        id: \"my-rule\",\n        enabled: true,\n        abortIncompleteMultipartUploadDays: 5,\n        expiration: {\n            date: \"2021-06-21\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmykey = linode.ObjectStorageKey(\"mykey\", label=\"image-access\")\nmybucket = linode.ObjectStorageBucket(\"mybucket\",\n    access_key=mykey.access_key,\n    secret_key=mykey.secret_key,\n    cluster=\"us-east-1\",\n    label=\"mybucket\",\n    lifecycle_rules=[{\n        \"id\": \"my-rule\",\n        \"enabled\": True,\n        \"abort_incomplete_multipart_upload_days\": 5,\n        \"expiration\": {\n            \"date\": \"2021-06-21\",\n        },\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Linode.ObjectStorageKey(\"mykey\", new()\n    {\n        Label = \"image-access\",\n    });\n\n    var mybucket = new Linode.ObjectStorageBucket(\"mybucket\", new()\n    {\n        AccessKey = mykey.AccessKey,\n        SecretKey = mykey.SecretKey,\n        Cluster = \"us-east-1\",\n        Label = \"mybucket\",\n        LifecycleRules = new[]\n        {\n            new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs\n            {\n                Id = \"my-rule\",\n                Enabled = true,\n                AbortIncompleteMultipartUploadDays = 5,\n                Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs\n                {\n                    Date = \"2021-06-21\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmykey, err := linode.NewObjectStorageKey(ctx, \"mykey\", \u0026linode.ObjectStorageKeyArgs{\n\t\t\tLabel: pulumi.String(\"image-access\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"mybucket\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tAccessKey: mykey.AccessKey,\n\t\t\tSecretKey: mykey.SecretKey,\n\t\t\tCluster:   pulumi.String(\"us-east-1\"),\n\t\t\tLabel:     pulumi.String(\"mybucket\"),\n\t\t\tLifecycleRules: linode.ObjectStorageBucketLifecycleRuleArray{\n\t\t\t\t\u0026linode.ObjectStorageBucketLifecycleRuleArgs{\n\t\t\t\t\tId:                                 pulumi.String(\"my-rule\"),\n\t\t\t\t\tEnabled:                            pulumi.Bool(true),\n\t\t\t\t\tAbortIncompleteMultipartUploadDays: pulumi.Int(5),\n\t\t\t\t\tExpiration: \u0026linode.ObjectStorageBucketLifecycleRuleExpirationArgs{\n\t\t\t\t\t\tDate: pulumi.String(\"2021-06-21\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageKey;\nimport com.pulumi.linode.ObjectStorageKeyArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleExpirationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new ObjectStorageKey(\"mykey\", ObjectStorageKeyArgs.builder()\n            .label(\"image-access\")\n            .build());\n\n        var mybucket = new ObjectStorageBucket(\"mybucket\", ObjectStorageBucketArgs.builder()\n            .accessKey(mykey.accessKey())\n            .secretKey(mykey.secretKey())\n            .cluster(\"us-east-1\")\n            .label(\"mybucket\")\n            .lifecycleRules(ObjectStorageBucketLifecycleRuleArgs.builder()\n                .id(\"my-rule\")\n                .enabled(true)\n                .abortIncompleteMultipartUploadDays(5)\n                .expiration(ObjectStorageBucketLifecycleRuleExpirationArgs.builder()\n                    .date(\"2021-06-21\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: linode:ObjectStorageKey\n    properties:\n      label: image-access\n  mybucket:\n    type: linode:ObjectStorageBucket\n    properties:\n      accessKey: ${mykey.accessKey}\n      secretKey: ${mykey.secretKey}\n      cluster: us-east-1\n      label: mybucket\n      lifecycleRules:\n        - id: my-rule\n          enabled: true\n          abortIncompleteMultipartUploadDays: 5\n          expiration:\n            date: 2021-06-21\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules using provider-level object credentials\n\n## Import\n\nLinodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.\n\n```sh\n$ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar\n```\n\n",
+            "description": "Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).\n\n## Example Usage\n\nThe following example shows how one might use this resource to create an Object Storage Bucket:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst primary = linode.getObjectStorageCluster({\n    id: \"us-east-1\",\n});\nconst foobar = new linode.ObjectStorageBucket(\"foobar\", {\n    cluster: primary.then(primary =\u003e primary.id),\n    label: \"mybucket\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nprimary = linode.get_object_storage_cluster(id=\"us-east-1\")\nfoobar = linode.ObjectStorageBucket(\"foobar\",\n    cluster=primary.id,\n    label=\"mybucket\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var primary = Linode.GetObjectStorageCluster.Invoke(new()\n    {\n        Id = \"us-east-1\",\n    });\n\n    var foobar = new Linode.ObjectStorageBucket(\"foobar\", new()\n    {\n        Cluster = primary.Apply(getObjectStorageClusterResult =\u003e getObjectStorageClusterResult.Id),\n        Label = \"mybucket\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := linode.GetObjectStorageCluster(ctx, \u0026linode.GetObjectStorageClusterArgs{\n\t\t\tId: \"us-east-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"foobar\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tCluster: pulumi.String(primary.Id),\n\t\t\tLabel:   pulumi.String(\"mybucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageClusterArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()\n            .id(\"us-east-1\")\n            .build());\n\n        var foobar = new ObjectStorageBucket(\"foobar\", ObjectStorageBucketArgs.builder()\n            .cluster(primary.applyValue(getObjectStorageClusterResult -\u003e getObjectStorageClusterResult.id()))\n            .label(\"mybucket\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: linode:ObjectStorageBucket\n    properties:\n      cluster: ${primary.id}\n      label: mybucket\nvariables:\n  primary:\n    fn::invoke:\n      function: linode:getObjectStorageCluster\n      arguments:\n        id: us-east-1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst mykey = new linode.ObjectStorageKey(\"mykey\", {label: \"image-access\"});\nconst mybucket = new linode.ObjectStorageBucket(\"mybucket\", {\n    accessKey: mykey.accessKey,\n    secretKey: mykey.secretKey,\n    region: \"us-mia\",\n    label: \"mybucket\",\n    lifecycleRules: [{\n        id: \"my-rule\",\n        enabled: true,\n        abortIncompleteMultipartUploadDays: 5,\n        expiration: {\n            date: \"2021-06-21\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmykey = linode.ObjectStorageKey(\"mykey\", label=\"image-access\")\nmybucket = linode.ObjectStorageBucket(\"mybucket\",\n    access_key=mykey.access_key,\n    secret_key=mykey.secret_key,\n    region=\"us-mia\",\n    label=\"mybucket\",\n    lifecycle_rules=[{\n        \"id\": \"my-rule\",\n        \"enabled\": True,\n        \"abort_incomplete_multipart_upload_days\": 5,\n        \"expiration\": {\n            \"date\": \"2021-06-21\",\n        },\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mykey = new Linode.ObjectStorageKey(\"mykey\", new()\n    {\n        Label = \"image-access\",\n    });\n\n    var mybucket = new Linode.ObjectStorageBucket(\"mybucket\", new()\n    {\n        AccessKey = mykey.AccessKey,\n        SecretKey = mykey.SecretKey,\n        Region = \"us-mia\",\n        Label = \"mybucket\",\n        LifecycleRules = new[]\n        {\n            new Linode.Inputs.ObjectStorageBucketLifecycleRuleArgs\n            {\n                Id = \"my-rule\",\n                Enabled = true,\n                AbortIncompleteMultipartUploadDays = 5,\n                Expiration = new Linode.Inputs.ObjectStorageBucketLifecycleRuleExpirationArgs\n                {\n                    Date = \"2021-06-21\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmykey, err := linode.NewObjectStorageKey(ctx, \"mykey\", \u0026linode.ObjectStorageKeyArgs{\n\t\t\tLabel: pulumi.String(\"image-access\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageBucket(ctx, \"mybucket\", \u0026linode.ObjectStorageBucketArgs{\n\t\t\tAccessKey: mykey.AccessKey,\n\t\t\tSecretKey: mykey.SecretKey,\n\t\t\tRegion:    pulumi.String(\"us-mia\"),\n\t\t\tLabel:     pulumi.String(\"mybucket\"),\n\t\t\tLifecycleRules: linode.ObjectStorageBucketLifecycleRuleArray{\n\t\t\t\t\u0026linode.ObjectStorageBucketLifecycleRuleArgs{\n\t\t\t\t\tId:                                 pulumi.String(\"my-rule\"),\n\t\t\t\t\tEnabled:                            pulumi.Bool(true),\n\t\t\t\t\tAbortIncompleteMultipartUploadDays: pulumi.Int(5),\n\t\t\t\t\tExpiration: \u0026linode.ObjectStorageBucketLifecycleRuleExpirationArgs{\n\t\t\t\t\t\tDate: pulumi.String(\"2021-06-21\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageKey;\nimport com.pulumi.linode.ObjectStorageKeyArgs;\nimport com.pulumi.linode.ObjectStorageBucket;\nimport com.pulumi.linode.ObjectStorageBucketArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleArgs;\nimport com.pulumi.linode.inputs.ObjectStorageBucketLifecycleRuleExpirationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mykey = new ObjectStorageKey(\"mykey\", ObjectStorageKeyArgs.builder()\n            .label(\"image-access\")\n            .build());\n\n        var mybucket = new ObjectStorageBucket(\"mybucket\", ObjectStorageBucketArgs.builder()\n            .accessKey(mykey.accessKey())\n            .secretKey(mykey.secretKey())\n            .region(\"us-mia\")\n            .label(\"mybucket\")\n            .lifecycleRules(ObjectStorageBucketLifecycleRuleArgs.builder()\n                .id(\"my-rule\")\n                .enabled(true)\n                .abortIncompleteMultipartUploadDays(5)\n                .expiration(ObjectStorageBucketLifecycleRuleExpirationArgs.builder()\n                    .date(\"2021-06-21\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mykey:\n    type: linode:ObjectStorageKey\n    properties:\n      label: image-access\n  mybucket:\n    type: linode:ObjectStorageBucket\n    properties:\n      accessKey: ${mykey.accessKey}\n      secretKey: ${mykey.secretKey}\n      region: us-mia\n      label: mybucket\n      lifecycleRules:\n        - id: my-rule\n          enabled: true\n          abortIncompleteMultipartUploadDays: 5\n          expiration:\n            date: 2021-06-21\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreating an Object Storage Bucket with Lifecycle rules using provider-level object credentials\n\n## Import\n\nLinodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.\n\n```sh\n$ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar\n```\n\n",
             "properties": {
                 "accessKey": {
                     "type": "string",
@@ -12808,6 +13045,7 @@
             },
             "required": [
                 "cluster",
+                "corsEnabled",
                 "endpoint",
                 "hostname",
                 "label",
@@ -13049,7 +13287,7 @@
             }
         },
         "linode:index/objectStorageObject:ObjectStorageObject": {
-            "description": "Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.\n\n## Example Usage\n\n### Uploading a file to a bucket\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    cluster: \"us-east-1\",\n    key: \"my-object\",\n    secretKey: myKey.secretKey,\n    accessKey: myKey.accessKey,\n    source: std.pathexpand({\n        input: \"~/files/log.txt\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    cluster=\"us-east-1\",\n    key=\"my-object\",\n    secret_key=my_key[\"secretKey\"],\n    access_key=my_key[\"accessKey\"],\n    source=std.pathexpand(input=\"~/files/log.txt\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Cluster = \"us-east-1\",\n        Key = \"my-object\",\n        SecretKey = myKey.SecretKey,\n        AccessKey = myKey.AccessKey,\n        Source = Std.Pathexpand.Invoke(new()\n        {\n            Input = \"~/files/log.txt\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokePathexpand, err := std.Pathexpand(ctx, \u0026std.PathexpandArgs{\n\t\t\tInput: \"~/files/log.txt\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:    pulumi.String(\"my-bucket\"),\n\t\t\tCluster:   pulumi.String(\"us-east-1\"),\n\t\t\tKey:       pulumi.String(\"my-object\"),\n\t\t\tSecretKey: pulumi.Any(myKey.SecretKey),\n\t\t\tAccessKey: pulumi.Any(myKey.AccessKey),\n\t\t\tSource:    pulumi.String(invokePathexpand.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()\n            .bucket(\"my-bucket\")\n            .cluster(\"us-east-1\")\n            .key(\"my-object\")\n            .secretKey(myKey.secretKey())\n            .accessKey(myKey.accessKey())\n            .source(StdFunctions.pathexpand(PathexpandArgs.builder()\n                .input(\"~/files/log.txt\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      cluster: us-east-1\n      key: my-object\n      secretKey: ${myKey.secretKey}\n      accessKey: ${myKey.accessKey}\n      source:\n        fn::invoke:\n          function: std:pathexpand\n          arguments:\n            input: ~/files/log.txt\n          return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Uploading plaintext to a bucket\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    cluster: \"us-east-1\",\n    key: \"my-object\",\n    secretKey: myKey.secretKey,\n    accessKey: myKey.accessKey,\n    content: \"This is the content of the Object...\",\n    contentType: \"text/plain\",\n    contentLanguage: \"en\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    cluster=\"us-east-1\",\n    key=\"my-object\",\n    secret_key=my_key[\"secretKey\"],\n    access_key=my_key[\"accessKey\"],\n    content=\"This is the content of the Object...\",\n    content_type=\"text/plain\",\n    content_language=\"en\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Cluster = \"us-east-1\",\n        Key = \"my-object\",\n        SecretKey = myKey.SecretKey,\n        AccessKey = myKey.AccessKey,\n        Content = \"This is the content of the Object...\",\n        ContentType = \"text/plain\",\n        ContentLanguage = \"en\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:          pulumi.String(\"my-bucket\"),\n\t\t\tCluster:         pulumi.String(\"us-east-1\"),\n\t\t\tKey:             pulumi.String(\"my-object\"),\n\t\t\tSecretKey:       pulumi.Any(myKey.SecretKey),\n\t\t\tAccessKey:       pulumi.Any(myKey.AccessKey),\n\t\t\tContent:         pulumi.String(\"This is the content of the Object...\"),\n\t\t\tContentType:     pulumi.String(\"text/plain\"),\n\t\t\tContentLanguage: pulumi.String(\"en\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()\n            .bucket(\"my-bucket\")\n            .cluster(\"us-east-1\")\n            .key(\"my-object\")\n            .secretKey(myKey.secretKey())\n            .accessKey(myKey.accessKey())\n            .content(\"This is the content of the Object...\")\n            .contentType(\"text/plain\")\n            .contentLanguage(\"en\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      cluster: us-east-1\n      key: my-object\n      secretKey: ${myKey.secretKey}\n      accessKey: ${myKey.accessKey}\n      content: This is the content of the Object...\n      contentType: text/plain\n      contentLanguage: en\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Creating an object using implicitly created object credentials\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    cluster: \"us-east-1\",\n    key: \"my-object\",\n    source: std.pathexpand({\n        input: \"~/files/log.txt\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    cluster=\"us-east-1\",\n    key=\"my-object\",\n    source=std.pathexpand(input=\"~/files/log.txt\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Cluster = \"us-east-1\",\n        Key = \"my-object\",\n        Source = Std.Pathexpand.Invoke(new()\n        {\n            Input = \"~/files/log.txt\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokePathexpand, err := std.Pathexpand(ctx, \u0026std.PathexpandArgs{\n\t\t\tInput: \"~/files/log.txt\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:  pulumi.String(\"my-bucket\"),\n\t\t\tCluster: pulumi.String(\"us-east-1\"),\n\t\t\tKey:     pulumi.String(\"my-object\"),\n\t\t\tSource:  pulumi.String(invokePathexpand.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()\n            .bucket(\"my-bucket\")\n            .cluster(\"us-east-1\")\n            .key(\"my-object\")\n            .source(StdFunctions.pathexpand(PathexpandArgs.builder()\n                .input(\"~/files/log.txt\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      cluster: us-east-1\n      key: my-object\n      source:\n        fn::invoke:\n          function: std:pathexpand\n          arguments:\n            input: ~/files/log.txt\n          return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a Linode Object Storage Object resource. This can be used to create, modify, and delete Linodes Object Storage Objects for Buckets.\n\n## Example Usage\n\n### Uploading a file to a bucket\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    region: \"us-mia\",\n    key: \"my-object\",\n    secretKey: myKey.secretKey,\n    accessKey: myKey.accessKey,\n    source: std.pathexpand({\n        input: \"~/files/log.txt\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    region=\"us-mia\",\n    key=\"my-object\",\n    secret_key=my_key[\"secretKey\"],\n    access_key=my_key[\"accessKey\"],\n    source=std.pathexpand(input=\"~/files/log.txt\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Region = \"us-mia\",\n        Key = \"my-object\",\n        SecretKey = myKey.SecretKey,\n        AccessKey = myKey.AccessKey,\n        Source = Std.Pathexpand.Invoke(new()\n        {\n            Input = \"~/files/log.txt\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokePathexpand, err := std.Pathexpand(ctx, \u0026std.PathexpandArgs{\n\t\t\tInput: \"~/files/log.txt\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:    pulumi.String(\"my-bucket\"),\n\t\t\tRegion:    pulumi.String(\"us-mia\"),\n\t\t\tKey:       pulumi.String(\"my-object\"),\n\t\t\tSecretKey: pulumi.Any(myKey.SecretKey),\n\t\t\tAccessKey: pulumi.Any(myKey.AccessKey),\n\t\t\tSource:    pulumi.String(invokePathexpand.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()\n            .bucket(\"my-bucket\")\n            .region(\"us-mia\")\n            .key(\"my-object\")\n            .secretKey(myKey.secretKey())\n            .accessKey(myKey.accessKey())\n            .source(StdFunctions.pathexpand(PathexpandArgs.builder()\n                .input(\"~/files/log.txt\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      region: us-mia\n      key: my-object\n      secretKey: ${myKey.secretKey}\n      accessKey: ${myKey.accessKey}\n      source:\n        fn::invoke:\n          function: std:pathexpand\n          arguments:\n            input: ~/files/log.txt\n          return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Uploading plaintext to a bucket\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    region: \"us-mia\",\n    key: \"my-object\",\n    secretKey: myKey.secretKey,\n    accessKey: myKey.accessKey,\n    content: \"This is the content of the Object...\",\n    contentType: \"text/plain\",\n    contentLanguage: \"en\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    region=\"us-mia\",\n    key=\"my-object\",\n    secret_key=my_key[\"secretKey\"],\n    access_key=my_key[\"accessKey\"],\n    content=\"This is the content of the Object...\",\n    content_type=\"text/plain\",\n    content_language=\"en\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Region = \"us-mia\",\n        Key = \"my-object\",\n        SecretKey = myKey.SecretKey,\n        AccessKey = myKey.AccessKey,\n        Content = \"This is the content of the Object...\",\n        ContentType = \"text/plain\",\n        ContentLanguage = \"en\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket:          pulumi.String(\"my-bucket\"),\n\t\t\tRegion:          pulumi.String(\"us-mia\"),\n\t\t\tKey:             pulumi.String(\"my-object\"),\n\t\t\tSecretKey:       pulumi.Any(myKey.SecretKey),\n\t\t\tAccessKey:       pulumi.Any(myKey.AccessKey),\n\t\t\tContent:         pulumi.String(\"This is the content of the Object...\"),\n\t\t\tContentType:     pulumi.String(\"text/plain\"),\n\t\t\tContentLanguage: pulumi.String(\"en\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()\n            .bucket(\"my-bucket\")\n            .region(\"us-mia\")\n            .key(\"my-object\")\n            .secretKey(myKey.secretKey())\n            .accessKey(myKey.accessKey())\n            .content(\"This is the content of the Object...\")\n            .contentType(\"text/plain\")\n            .contentLanguage(\"en\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      region: us-mia\n      key: my-object\n      secretKey: ${myKey.secretKey}\n      accessKey: ${myKey.accessKey}\n      content: This is the content of the Object...\n      contentType: text/plain\n      contentLanguage: en\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Creating an object using implicitly created object credentials\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\nimport * as std from \"@pulumi/std\";\n\nconst object = new linode.ObjectStorageObject(\"object\", {\n    bucket: \"my-bucket\",\n    region: \"us-mia\",\n    key: \"my-object\",\n    source: std.pathexpand({\n        input: \"~/files/log.txt\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\nimport pulumi_std as std\n\nobject = linode.ObjectStorageObject(\"object\",\n    bucket=\"my-bucket\",\n    region=\"us-mia\",\n    key=\"my-object\",\n    source=std.pathexpand(input=\"~/files/log.txt\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @object = new Linode.ObjectStorageObject(\"object\", new()\n    {\n        Bucket = \"my-bucket\",\n        Region = \"us-mia\",\n        Key = \"my-object\",\n        Source = Std.Pathexpand.Invoke(new()\n        {\n            Input = \"~/files/log.txt\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokePathexpand, err := std.Pathexpand(ctx, \u0026std.PathexpandArgs{\n\t\t\tInput: \"~/files/log.txt\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewObjectStorageObject(ctx, \"object\", \u0026linode.ObjectStorageObjectArgs{\n\t\t\tBucket: pulumi.String(\"my-bucket\"),\n\t\t\tRegion: pulumi.String(\"us-mia\"),\n\t\t\tKey:    pulumi.String(\"my-object\"),\n\t\t\tSource: pulumi.String(invokePathexpand.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.ObjectStorageObject;\nimport com.pulumi.linode.ObjectStorageObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var object = new ObjectStorageObject(\"object\", ObjectStorageObjectArgs.builder()\n            .bucket(\"my-bucket\")\n            .region(\"us-mia\")\n            .key(\"my-object\")\n            .source(StdFunctions.pathexpand(PathexpandArgs.builder()\n                .input(\"~/files/log.txt\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  object:\n    type: linode:ObjectStorageObject\n    properties:\n      bucket: my-bucket\n      region: us-mia\n      key: my-object\n      source:\n        fn::invoke:\n          function: std:pathexpand\n          arguments:\n            input: ~/files/log.txt\n          return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "accessKey": {
                     "type": "string",
@@ -13142,11 +13380,14 @@
                 }
             },
             "required": [
+                "acl",
                 "bucket",
                 "contentType",
                 "endpoint",
                 "etag",
+                "forceDestroy",
                 "key",
+                "metadata",
                 "versionId"
             ],
             "inputProperties": {
@@ -13160,8 +13401,7 @@
                 },
                 "bucket": {
                     "type": "string",
-                    "description": "The name of the bucket to put the object in.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the bucket to put the object in.\n"
                 },
                 "cacheControl": {
                     "type": "string",
@@ -13170,8 +13410,7 @@
                 "cluster": {
                     "type": "string",
                     "description": "The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.\n",
-                    "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`."
                 },
                 "content": {
                     "type": "string",
@@ -13211,8 +13450,7 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "They name of the object once it is in the bucket.\n",
-                    "willReplaceOnChanges": true
+                    "description": "They name of the object once it is in the bucket.\n"
                 },
                 "metadata": {
                     "type": "object",
@@ -13223,8 +13461,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The cluster the bucket is in. Required if `cluster` is not configured.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The cluster the bucket is in. Required if `cluster` is not configured.\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -13257,8 +13494,7 @@
                     },
                     "bucket": {
                         "type": "string",
-                        "description": "The name of the bucket to put the object in.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the bucket to put the object in.\n"
                     },
                     "cacheControl": {
                         "type": "string",
@@ -13267,8 +13503,7 @@
                     "cluster": {
                         "type": "string",
                         "description": "The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.\n",
-                        "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`."
                     },
                     "content": {
                         "type": "string",
@@ -13308,8 +13543,7 @@
                     },
                     "key": {
                         "type": "string",
-                        "description": "They name of the object once it is in the bucket.\n",
-                        "willReplaceOnChanges": true
+                        "description": "They name of the object once it is in the bucket.\n"
                     },
                     "metadata": {
                         "type": "object",
@@ -13320,8 +13554,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The cluster the bucket is in. Required if `cluster` is not configured.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The cluster the bucket is in. Required if `cluster` is not configured.\n"
                     },
                     "secretKey": {
                         "type": "string",
@@ -17319,7 +17552,7 @@
             }
         },
         "linode:index/getNetworkingIp:getNetworkingIp": {
-            "description": "Provides information about a Linode Networking IP Address\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode Networking IP Address.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst ns1LinodeCom = linode.getNetworkingIp({\n    address: \"162.159.27.72\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nns1_linode_com = linode.get_networking_ip(address=\"162.159.27.72\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()\n    {\n        Address = \"162.159.27.72\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetNetworkingIp(ctx, \u0026linode.GetNetworkingIpArgs{\n\t\t\tAddress: \"162.159.27.72\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetNetworkingIpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ns1LinodeCom = LinodeFunctions.getNetworkingIp(GetNetworkingIpArgs.builder()\n            .address(\"162.159.27.72\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  ns1LinodeCom:\n    fn::invoke:\n      function: linode:getNetworkingIp\n      arguments:\n        address: 162.159.27.72\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides information about a Linode Networking IP Address\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ip).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode Networking IP Address.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst ns1LinodeCom = linode.getNetworkingIp({\n    address: \"162.159.27.72\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nns1_linode_com = linode.get_networking_ip(address=\"162.159.27.72\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()\n    {\n        Address = \"162.159.27.72\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupNetworkingIp(ctx, \u0026linode.LookupNetworkingIpArgs{\n\t\t\tAddress: \"162.159.27.72\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetNetworkingIpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ns1LinodeCom = LinodeFunctions.getNetworkingIp(GetNetworkingIpArgs.builder()\n            .address(\"162.159.27.72\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  ns1LinodeCom:\n    fn::invoke:\n      function: linode:getNetworkingIp\n      arguments:\n        address: 162.159.27.72\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetworkingIp.\n",
                 "properties": {
@@ -17367,6 +17600,9 @@
                         "description": "The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).\n",
                         "type": "string"
                     },
+                    "reserved": {
+                        "type": "boolean"
+                    },
                     "subnetMask": {
                         "description": "The mask that separates host bits from network bits for this address.\n",
                         "type": "string"
@@ -17385,8 +17621,65 @@
                     "public",
                     "rdns",
                     "region",
+                    "reserved",
                     "subnetMask",
                     "type"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getNetworkingIps:getNetworkingIps": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkingIps.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkingIpsFilter:getNetworkingIpsFilter"
+                        }
+                    },
+                    "ipAddresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkingIpsIpAddress:getNetworkingIpsIpAddress"
+                        }
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkingIps.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkingIpsFilter:getNetworkingIpsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "ipAddresses": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getNetworkingIpsIpAddress:getNetworkingIpsIpAddress"
+                        },
+                        "type": "array"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
                 ],
                 "type": "object"
             }
