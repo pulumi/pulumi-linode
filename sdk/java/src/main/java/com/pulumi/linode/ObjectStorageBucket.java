@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *         var mybucket = new ObjectStorageBucket("mybucket", ObjectStorageBucketArgs.builder()
  *             .accessKey(mykey.accessKey())
  *             .secretKey(mykey.secretKey())
- *             .cluster("us-east-1")
+ *             .region("us-mia")
  *             .label("mybucket")
  *             .lifecycleRules(ObjectStorageBucketLifecycleRuleArgs.builder()
  *                 .id("my-rule")
@@ -204,14 +204,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="corsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> corsEnabled;
+    private Output<Boolean> corsEnabled;
 
     /**
      * @return If true, the bucket will have CORS enabled for all origins.
      * 
      */
-    public Output<Optional<Boolean>> corsEnabled() {
-        return Codegen.optional(this.corsEnabled);
+    public Output<Boolean> corsEnabled() {
+        return this.corsEnabled;
     }
     /**
      * The endpoint for the bucket used for s3 connections.

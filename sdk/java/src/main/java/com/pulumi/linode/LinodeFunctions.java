@@ -81,6 +81,8 @@ import com.pulumi.linode.inputs.GetNetworkTransferPricesArgs;
 import com.pulumi.linode.inputs.GetNetworkTransferPricesPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpArgs;
 import com.pulumi.linode.inputs.GetNetworkingIpPlainArgs;
+import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+import com.pulumi.linode.inputs.GetNetworkingIpsPlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerConfigArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerConfigPlainArgs;
@@ -170,6 +172,7 @@ import com.pulumi.linode.outputs.GetLkeVersionsResult;
 import com.pulumi.linode.outputs.GetNbTypesResult;
 import com.pulumi.linode.outputs.GetNetworkTransferPricesResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
+import com.pulumi.linode.outputs.GetNetworkingIpsResult;
 import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
 import com.pulumi.linode.outputs.GetNodeBalancerNodeResult;
 import com.pulumi.linode.outputs.GetNodeBalancerResult;
@@ -14648,6 +14651,27 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetNetworkingIpResult> getNetworkingIpPlain(GetNetworkingIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNetworkingIp:getNetworkingIp", TypeShape.of(GetNetworkingIpResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetNetworkingIpsResult> getNetworkingIps() {
+        return getNetworkingIps(GetNetworkingIpsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNetworkingIpsResult> getNetworkingIpsPlain() {
+        return getNetworkingIpsPlain(GetNetworkingIpsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetNetworkingIpsResult> getNetworkingIps(GetNetworkingIpsArgs args) {
+        return getNetworkingIps(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNetworkingIpsResult> getNetworkingIpsPlain(GetNetworkingIpsPlainArgs args) {
+        return getNetworkingIpsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetNetworkingIpsResult> getNetworkingIps(GetNetworkingIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNetworkingIps:getNetworkingIps", TypeShape.of(GetNetworkingIpsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetNetworkingIpsResult> getNetworkingIps(GetNetworkingIpsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNetworkingIps:getNetworkingIps", TypeShape.of(GetNetworkingIpsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetNetworkingIpsResult> getNetworkingIpsPlain(GetNetworkingIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNetworkingIps:getNetworkingIps", TypeShape.of(GetNetworkingIpsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about a Linode NodeBalancer.

@@ -55,6 +55,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LkeCluster{}
 	case "linode:index/lkeNodePool:LkeNodePool":
 		r = &LkeNodePool{}
+	case "linode:index/networkingIp:NetworkingIp":
+		r = &NetworkingIp{}
+	case "linode:index/networkingIpAssignment:NetworkingIpAssignment":
+		r = &NetworkingIpAssignment{}
 	case "linode:index/nodeBalancer:NodeBalancer":
 		r = &NodeBalancer{}
 	case "linode:index/nodeBalancerConfig:NodeBalancerConfig":
@@ -203,6 +207,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/lkeNodePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/networkingIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/networkingIpAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

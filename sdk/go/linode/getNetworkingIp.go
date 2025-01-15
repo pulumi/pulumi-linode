@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetNetworkingIp(ctx, &linode.GetNetworkingIpArgs{
+//			_, err := linode.LookupNetworkingIp(ctx, &linode.LookupNetworkingIpArgs{
 //				Address: "162.159.27.72",
 //			}, nil)
 //			if err != nil {
@@ -41,9 +41,9 @@ import (
 //	}
 //
 // ```
-func GetNetworkingIp(ctx *pulumi.Context, args *GetNetworkingIpArgs, opts ...pulumi.InvokeOption) (*GetNetworkingIpResult, error) {
+func LookupNetworkingIp(ctx *pulumi.Context, args *LookupNetworkingIpArgs, opts ...pulumi.InvokeOption) (*LookupNetworkingIpResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetNetworkingIpResult
+	var rv LookupNetworkingIpResult
 	err := ctx.Invoke("linode:index/getNetworkingIp:getNetworkingIp", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -52,13 +52,13 @@ func GetNetworkingIp(ctx *pulumi.Context, args *GetNetworkingIpArgs, opts ...pul
 }
 
 // A collection of arguments for invoking getNetworkingIp.
-type GetNetworkingIpArgs struct {
+type LookupNetworkingIpArgs struct {
 	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
 	Address string `pulumi:"address"`
 }
 
 // A collection of values returned by getNetworkingIp.
-type GetNetworkingIpResult struct {
+type LookupNetworkingIpResult struct {
 	// The IP address.
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
@@ -73,96 +73,101 @@ type GetNetworkingIpResult struct {
 	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
 	Rdns string `pulumi:"rdns"`
 	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-	Region string `pulumi:"region"`
+	Region   string `pulumi:"region"`
+	Reserved bool   `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
 	Type string `pulumi:"type"`
 }
 
-func GetNetworkingIpOutput(ctx *pulumi.Context, args GetNetworkingIpOutputArgs, opts ...pulumi.InvokeOption) GetNetworkingIpResultOutput {
+func LookupNetworkingIpOutput(ctx *pulumi.Context, args LookupNetworkingIpOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkingIpResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkingIpResultOutput, error) {
-			args := v.(GetNetworkingIpArgs)
+		ApplyT(func(v interface{}) (LookupNetworkingIpResultOutput, error) {
+			args := v.(LookupNetworkingIpArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getNetworkingIp:getNetworkingIp", args, GetNetworkingIpResultOutput{}, options).(GetNetworkingIpResultOutput), nil
-		}).(GetNetworkingIpResultOutput)
+			return ctx.InvokeOutput("linode:index/getNetworkingIp:getNetworkingIp", args, LookupNetworkingIpResultOutput{}, options).(LookupNetworkingIpResultOutput), nil
+		}).(LookupNetworkingIpResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkingIp.
-type GetNetworkingIpOutputArgs struct {
+type LookupNetworkingIpOutputArgs struct {
 	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
 	Address pulumi.StringInput `pulumi:"address"`
 }
 
-func (GetNetworkingIpOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpArgs)(nil)).Elem()
+func (LookupNetworkingIpOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkingIpArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getNetworkingIp.
-type GetNetworkingIpResultOutput struct{ *pulumi.OutputState }
+type LookupNetworkingIpResultOutput struct{ *pulumi.OutputState }
 
-func (GetNetworkingIpResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpResult)(nil)).Elem()
+func (LookupNetworkingIpResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkingIpResult)(nil)).Elem()
 }
 
-func (o GetNetworkingIpResultOutput) ToGetNetworkingIpResultOutput() GetNetworkingIpResultOutput {
+func (o LookupNetworkingIpResultOutput) ToLookupNetworkingIpResultOutput() LookupNetworkingIpResultOutput {
 	return o
 }
 
-func (o GetNetworkingIpResultOutput) ToGetNetworkingIpResultOutputWithContext(ctx context.Context) GetNetworkingIpResultOutput {
+func (o LookupNetworkingIpResultOutput) ToLookupNetworkingIpResultOutputWithContext(ctx context.Context) LookupNetworkingIpResultOutput {
 	return o
 }
 
 // The IP address.
-func (o GetNetworkingIpResultOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Address }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // The default gateway for this address.
-func (o GetNetworkingIpResultOutput) Gateway() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Gateway }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
-func (o GetNetworkingIpResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The ID of the Linode this address currently belongs to.
-func (o GetNetworkingIpResultOutput) LinodeId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) int { return v.LinodeId }).(pulumi.IntOutput)
+func (o LookupNetworkingIpResultOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) int { return v.LinodeId }).(pulumi.IntOutput)
 }
 
 // The number of bits set in the subnet mask.
-func (o GetNetworkingIpResultOutput) Prefix() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) int { return v.Prefix }).(pulumi.IntOutput)
+func (o LookupNetworkingIpResultOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) int { return v.Prefix }).(pulumi.IntOutput)
 }
 
 // Whether this is a public or private IP address.
-func (o GetNetworkingIpResultOutput) Public() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) bool { return v.Public }).(pulumi.BoolOutput)
+func (o LookupNetworkingIpResultOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
 // The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-func (o GetNetworkingIpResultOutput) Rdns() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Rdns }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Rdns }).(pulumi.StringOutput)
 }
 
 // The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-func (o GetNetworkingIpResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Region }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkingIpResultOutput) Reserved() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) bool { return v.Reserved }).(pulumi.BoolOutput)
 }
 
 // The mask that separates host bits from network bits for this address.
-func (o GetNetworkingIpResultOutput) SubnetMask() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.SubnetMask }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.SubnetMask }).(pulumi.StringOutput)
 }
 
 // The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-func (o GetNetworkingIpResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupNetworkingIpResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetNetworkingIpResultOutput{})
+	pulumi.RegisterOutputType(LookupNetworkingIpResultOutput{})
 }

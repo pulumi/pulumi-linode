@@ -26,7 +26,7 @@ class GetNetworkingIpResult:
     """
     A collection of values returned by getNetworkingIp.
     """
-    def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, subnet_mask=None, type=None):
+    def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, type=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -51,6 +51,9 @@ class GetNetworkingIpResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if reserved and not isinstance(reserved, bool):
+            raise TypeError("Expected argument 'reserved' to be a bool")
+        pulumi.set(__self__, "reserved", reserved)
         if subnet_mask and not isinstance(subnet_mask, str):
             raise TypeError("Expected argument 'subnet_mask' to be a str")
         pulumi.set(__self__, "subnet_mask", subnet_mask)
@@ -120,6 +123,11 @@ class GetNetworkingIpResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter
+    def reserved(self) -> bool:
+        return pulumi.get(self, "reserved")
+
+    @property
     @pulumi.getter(name="subnetMask")
     def subnet_mask(self) -> str:
         """
@@ -150,6 +158,7 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
             public=self.public,
             rdns=self.rdns,
             region=self.region,
+            reserved=self.reserved,
             subnet_mask=self.subnet_mask,
             type=self.type)
 
@@ -188,6 +197,7 @@ def get_networking_ip(address: Optional[str] = None,
         public=pulumi.get(__ret__, 'public'),
         rdns=pulumi.get(__ret__, 'rdns'),
         region=pulumi.get(__ret__, 'region'),
+        reserved=pulumi.get(__ret__, 'reserved'),
         subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
         type=pulumi.get(__ret__, 'type'))
 def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
@@ -223,5 +233,6 @@ def get_networking_ip_output(address: Optional[pulumi.Input[str]] = None,
         public=pulumi.get(__response__, 'public'),
         rdns=pulumi.get(__response__, 'rdns'),
         region=pulumi.get(__response__, 'region'),
+        reserved=pulumi.get(__response__, 'reserved'),
         subnet_mask=pulumi.get(__response__, 'subnet_mask'),
         type=pulumi.get(__response__, 'type')))

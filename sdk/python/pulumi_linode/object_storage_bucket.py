@@ -475,7 +475,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         mybucket = linode.ObjectStorageBucket("mybucket",
             access_key=mykey.access_key,
             secret_key=mykey.secret_key,
-            cluster="us-east-1",
+            region="us-mia",
             label="mybucket",
             lifecycle_rules=[{
                 "id": "my-rule",
@@ -553,7 +553,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         mybucket = linode.ObjectStorageBucket("mybucket",
             access_key=mykey.access_key,
             secret_key=mykey.secret_key,
-            cluster="us-east-1",
+            region="us-mia",
             label="mybucket",
             lifecycle_rules=[{
                 "id": "my-rule",
@@ -733,7 +733,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsEnabled")
-    def cors_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def cors_enabled(self) -> pulumi.Output[bool]:
         """
         If true, the bucket will have CORS enabled for all origins.
         """

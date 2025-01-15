@@ -155,6 +155,7 @@ namespace Pulumi.Linode
         /// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         public readonly string Region;
+        public readonly bool Reserved;
         /// <summary>
         /// The mask that separates host bits from network bits for this address.
         /// </summary>
@@ -182,6 +183,8 @@ namespace Pulumi.Linode
 
             string region,
 
+            bool reserved,
+
             string subnetMask,
 
             string type)
@@ -194,6 +197,7 @@ namespace Pulumi.Linode
             Public = @public;
             Rdns = rdns;
             Region = region;
+            Reserved = reserved;
             SubnetMask = subnetMask;
             Type = type;
         }

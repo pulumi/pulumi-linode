@@ -6867,6 +6867,106 @@ func (o LkeNodePoolTaintArrayOutput) Index(i pulumi.IntInput) LkeNodePoolTaintOu
 	}).(LkeNodePoolTaintOutput)
 }
 
+type NetworkingIpAssignmentAssignment struct {
+	Address  string `pulumi:"address"`
+	LinodeId int    `pulumi:"linodeId"`
+}
+
+// NetworkingIpAssignmentAssignmentInput is an input type that accepts NetworkingIpAssignmentAssignmentArgs and NetworkingIpAssignmentAssignmentOutput values.
+// You can construct a concrete instance of `NetworkingIpAssignmentAssignmentInput` via:
+//
+//	NetworkingIpAssignmentAssignmentArgs{...}
+type NetworkingIpAssignmentAssignmentInput interface {
+	pulumi.Input
+
+	ToNetworkingIpAssignmentAssignmentOutput() NetworkingIpAssignmentAssignmentOutput
+	ToNetworkingIpAssignmentAssignmentOutputWithContext(context.Context) NetworkingIpAssignmentAssignmentOutput
+}
+
+type NetworkingIpAssignmentAssignmentArgs struct {
+	Address  pulumi.StringInput `pulumi:"address"`
+	LinodeId pulumi.IntInput    `pulumi:"linodeId"`
+}
+
+func (NetworkingIpAssignmentAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingIpAssignmentAssignment)(nil)).Elem()
+}
+
+func (i NetworkingIpAssignmentAssignmentArgs) ToNetworkingIpAssignmentAssignmentOutput() NetworkingIpAssignmentAssignmentOutput {
+	return i.ToNetworkingIpAssignmentAssignmentOutputWithContext(context.Background())
+}
+
+func (i NetworkingIpAssignmentAssignmentArgs) ToNetworkingIpAssignmentAssignmentOutputWithContext(ctx context.Context) NetworkingIpAssignmentAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingIpAssignmentAssignmentOutput)
+}
+
+// NetworkingIpAssignmentAssignmentArrayInput is an input type that accepts NetworkingIpAssignmentAssignmentArray and NetworkingIpAssignmentAssignmentArrayOutput values.
+// You can construct a concrete instance of `NetworkingIpAssignmentAssignmentArrayInput` via:
+//
+//	NetworkingIpAssignmentAssignmentArray{ NetworkingIpAssignmentAssignmentArgs{...} }
+type NetworkingIpAssignmentAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToNetworkingIpAssignmentAssignmentArrayOutput() NetworkingIpAssignmentAssignmentArrayOutput
+	ToNetworkingIpAssignmentAssignmentArrayOutputWithContext(context.Context) NetworkingIpAssignmentAssignmentArrayOutput
+}
+
+type NetworkingIpAssignmentAssignmentArray []NetworkingIpAssignmentAssignmentInput
+
+func (NetworkingIpAssignmentAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkingIpAssignmentAssignment)(nil)).Elem()
+}
+
+func (i NetworkingIpAssignmentAssignmentArray) ToNetworkingIpAssignmentAssignmentArrayOutput() NetworkingIpAssignmentAssignmentArrayOutput {
+	return i.ToNetworkingIpAssignmentAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkingIpAssignmentAssignmentArray) ToNetworkingIpAssignmentAssignmentArrayOutputWithContext(ctx context.Context) NetworkingIpAssignmentAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingIpAssignmentAssignmentArrayOutput)
+}
+
+type NetworkingIpAssignmentAssignmentOutput struct{ *pulumi.OutputState }
+
+func (NetworkingIpAssignmentAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingIpAssignmentAssignment)(nil)).Elem()
+}
+
+func (o NetworkingIpAssignmentAssignmentOutput) ToNetworkingIpAssignmentAssignmentOutput() NetworkingIpAssignmentAssignmentOutput {
+	return o
+}
+
+func (o NetworkingIpAssignmentAssignmentOutput) ToNetworkingIpAssignmentAssignmentOutputWithContext(ctx context.Context) NetworkingIpAssignmentAssignmentOutput {
+	return o
+}
+
+func (o NetworkingIpAssignmentAssignmentOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkingIpAssignmentAssignment) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o NetworkingIpAssignmentAssignmentOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkingIpAssignmentAssignment) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type NetworkingIpAssignmentAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkingIpAssignmentAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkingIpAssignmentAssignment)(nil)).Elem()
+}
+
+func (o NetworkingIpAssignmentAssignmentArrayOutput) ToNetworkingIpAssignmentAssignmentArrayOutput() NetworkingIpAssignmentAssignmentArrayOutput {
+	return o
+}
+
+func (o NetworkingIpAssignmentAssignmentArrayOutput) ToNetworkingIpAssignmentAssignmentArrayOutputWithContext(ctx context.Context) NetworkingIpAssignmentAssignmentArrayOutput {
+	return o
+}
+
+func (o NetworkingIpAssignmentAssignmentArrayOutput) Index(i pulumi.IntInput) NetworkingIpAssignmentAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkingIpAssignmentAssignment {
+		return vs[0].([]NetworkingIpAssignmentAssignment)[vs[1].(int)]
+	}).(NetworkingIpAssignmentAssignmentOutput)
+}
+
 type NodeBalancerConfigNodeStatus struct {
 	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 	Down int `pulumi:"down"`
@@ -25092,6 +25192,299 @@ func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) Index(i pulumi.IntIn
 	}).(GetNetworkTransferPricesTypeRegionPriceOutput)
 }
 
+type GetNetworkingIpsFilter struct {
+	// The type of comparison to use for this filter.
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name string `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values []string `pulumi:"values"`
+}
+
+// GetNetworkingIpsFilterInput is an input type that accepts GetNetworkingIpsFilterArgs and GetNetworkingIpsFilterOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsFilterInput` via:
+//
+//	GetNetworkingIpsFilterArgs{...}
+type GetNetworkingIpsFilterInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput
+	ToGetNetworkingIpsFilterOutputWithContext(context.Context) GetNetworkingIpsFilterOutput
+}
+
+type GetNetworkingIpsFilterArgs struct {
+	// The type of comparison to use for this filter.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNetworkingIpsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsFilterArgs) ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput {
+	return i.ToGetNetworkingIpsFilterOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsFilterArgs) ToGetNetworkingIpsFilterOutputWithContext(ctx context.Context) GetNetworkingIpsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsFilterOutput)
+}
+
+// GetNetworkingIpsFilterArrayInput is an input type that accepts GetNetworkingIpsFilterArray and GetNetworkingIpsFilterArrayOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsFilterArrayInput` via:
+//
+//	GetNetworkingIpsFilterArray{ GetNetworkingIpsFilterArgs{...} }
+type GetNetworkingIpsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput
+	ToGetNetworkingIpsFilterArrayOutputWithContext(context.Context) GetNetworkingIpsFilterArrayOutput
+}
+
+type GetNetworkingIpsFilterArray []GetNetworkingIpsFilterInput
+
+func (GetNetworkingIpsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsFilterArray) ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput {
+	return i.ToGetNetworkingIpsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsFilterArray) ToGetNetworkingIpsFilterArrayOutputWithContext(ctx context.Context) GetNetworkingIpsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsFilterArrayOutput)
+}
+
+type GetNetworkingIpsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput {
+	return o
+}
+
+func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutputWithContext(ctx context.Context) GetNetworkingIpsFilterOutput {
+	return o
+}
+
+// The type of comparison to use for this filter.
+func (o GetNetworkingIpsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkingIpsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the attribute to filter on.
+func (o GetNetworkingIpsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value(s) to be used in the filter.
+func (o GetNetworkingIpsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkingIpsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkingIpsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsFilterArrayOutput) ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsFilterArrayOutput) ToGetNetworkingIpsFilterArrayOutputWithContext(ctx context.Context) GetNetworkingIpsFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkingIpsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsFilter {
+		return vs[0].([]GetNetworkingIpsFilter)[vs[1].(int)]
+	}).(GetNetworkingIpsFilterOutput)
+}
+
+type GetNetworkingIpsIpAddress struct {
+	// The IP address.
+	Address string `pulumi:"address"`
+	// The default gateway for this address.
+	Gateway string `pulumi:"gateway"`
+	// The ID of the Linode this address currently belongs to.
+	LinodeId int `pulumi:"linodeId"`
+	// The number of bits set in the subnet mask.
+	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns string `pulumi:"rdns"`
+	// The Region this IP address resides in.
+	Region string `pulumi:"region"`
+	// Whether this IP is reserved or not.
+	Reserved bool `pulumi:"reserved"`
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask string `pulumi:"subnetMask"`
+	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+	Type string `pulumi:"type"`
+}
+
+// GetNetworkingIpsIpAddressInput is an input type that accepts GetNetworkingIpsIpAddressArgs and GetNetworkingIpsIpAddressOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressInput` via:
+//
+//	GetNetworkingIpsIpAddressArgs{...}
+type GetNetworkingIpsIpAddressInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput
+	ToGetNetworkingIpsIpAddressOutputWithContext(context.Context) GetNetworkingIpsIpAddressOutput
+}
+
+type GetNetworkingIpsIpAddressArgs struct {
+	// The IP address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The default gateway for this address.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The ID of the Linode this address currently belongs to.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+	// The number of bits set in the subnet mask.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns pulumi.StringInput `pulumi:"rdns"`
+	// The Region this IP address resides in.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Whether this IP is reserved or not.
+	Reserved pulumi.BoolInput `pulumi:"reserved"`
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
+	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetNetworkingIpsIpAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressArgs) ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput {
+	return i.ToGetNetworkingIpsIpAddressOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressArgs) ToGetNetworkingIpsIpAddressOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressOutput)
+}
+
+// GetNetworkingIpsIpAddressArrayInput is an input type that accepts GetNetworkingIpsIpAddressArray and GetNetworkingIpsIpAddressArrayOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressArrayInput` via:
+//
+//	GetNetworkingIpsIpAddressArray{ GetNetworkingIpsIpAddressArgs{...} }
+type GetNetworkingIpsIpAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput
+	ToGetNetworkingIpsIpAddressArrayOutputWithContext(context.Context) GetNetworkingIpsIpAddressArrayOutput
+}
+
+type GetNetworkingIpsIpAddressArray []GetNetworkingIpsIpAddressInput
+
+func (GetNetworkingIpsIpAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressArray) ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput {
+	return i.ToGetNetworkingIpsIpAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressArray) ToGetNetworkingIpsIpAddressArrayOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressArrayOutput)
+}
+
+type GetNetworkingIpsIpAddressOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressOutput {
+	return o
+}
+
+// The IP address.
+func (o GetNetworkingIpsIpAddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The default gateway for this address.
+func (o GetNetworkingIpsIpAddressOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The ID of the Linode this address currently belongs to.
+func (o GetNetworkingIpsIpAddressOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+// The number of bits set in the subnet mask.
+func (o GetNetworkingIpsIpAddressOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetNetworkingIpsIpAddressOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+func (o GetNetworkingIpsIpAddressOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Rdns }).(pulumi.StringOutput)
+}
+
+// The Region this IP address resides in.
+func (o GetNetworkingIpsIpAddressOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Whether this IP is reserved or not.
+func (o GetNetworkingIpsIpAddressOutput) Reserved() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Reserved }).(pulumi.BoolOutput)
+}
+
+// The mask that separates host bits from network bits for this address.
+func (o GetNetworkingIpsIpAddressOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+func (o GetNetworkingIpsIpAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNetworkingIpsIpAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressArrayOutput) ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressArrayOutput) ToGetNetworkingIpsIpAddressArrayOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressArrayOutput) Index(i pulumi.IntInput) GetNetworkingIpsIpAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsIpAddress {
+		return vs[0].([]GetNetworkingIpsIpAddress)[vs[1].(int)]
+	}).(GetNetworkingIpsIpAddressOutput)
+}
+
 type GetNodeBalancerConfigNodeStatus struct {
 	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
 	Down int `pulumi:"down"`
@@ -33969,6 +34362,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolNodeArrayInput)(nil)).Elem(), LkeNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolTaintInput)(nil)).Elem(), LkeNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolTaintArrayInput)(nil)).Elem(), LkeNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingIpAssignmentAssignmentInput)(nil)).Elem(), NetworkingIpAssignmentAssignmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingIpAssignmentAssignmentArrayInput)(nil)).Elem(), NetworkingIpAssignmentAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInput)(nil)).Elem(), NodeBalancerFirewallArgs{})
@@ -34241,6 +34636,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterInput)(nil)).Elem(), GetNetworkingIpsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterArrayInput)(nil)).Elem(), GetNetworkingIpsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressInput)(nil)).Elem(), GetNetworkingIpsIpAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressArrayInput)(nil)).Elem(), GetNetworkingIpsIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInput)(nil)).Elem(), GetNodeBalancerFirewallArgs{})
@@ -34462,6 +34861,8 @@ func init() {
 	pulumi.RegisterOutputType(LkeNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(LkeNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(NetworkingIpAssignmentAssignmentOutput{})
+	pulumi.RegisterOutputType(NetworkingIpAssignmentAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerFirewallOutput{})
@@ -34734,6 +35135,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceOutput{})
 	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsFilterOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutput{})

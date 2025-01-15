@@ -49,7 +49,7 @@ class ImageArgs:
                
                The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of customized tags.
         :param pulumi.Input[bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
@@ -187,7 +187,7 @@ class ImageArgs:
     @pulumi.getter(name="replicaRegions")
     def replica_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         """
         return pulumi.get(self, "replica_regions")
 
@@ -282,7 +282,7 @@ class _ImageState:
                
                The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]] replications: A list of image replications region and corresponding status.
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] status: The status of an image replica.
@@ -523,7 +523,7 @@ class _ImageState:
     @pulumi.getter(name="replicaRegions")
     def replica_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         """
         return pulumi.get(self, "replica_regions")
 
@@ -759,7 +759,7 @@ class Image(pulumi.CustomResource):
                
                The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of customized tags.
         :param pulumi.Input[bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
@@ -980,7 +980,7 @@ class Image(pulumi.CustomResource):
                
                The following arguments apply to uploading an image:
         :param pulumi.Input[str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]] replications: A list of image replications region and corresponding status.
         :param pulumi.Input[int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[str] status: The status of an image replica.
@@ -1146,7 +1146,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="replicaRegions")
     def replica_regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+        A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         """
         return pulumi.get(self, "replica_regions")
 

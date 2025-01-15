@@ -750,7 +750,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         object = linode.ObjectStorageObject("object",
             bucket="my-bucket",
-            cluster="us-east-1",
+            region="us-mia",
             key="my-object",
             secret_key=my_key["secretKey"],
             access_key=my_key["accessKey"],
@@ -765,7 +765,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         object = linode.ObjectStorageObject("object",
             bucket="my-bucket",
-            cluster="us-east-1",
+            region="us-mia",
             key="my-object",
             secret_key=my_key["secretKey"],
             access_key=my_key["accessKey"],
@@ -783,7 +783,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         object = linode.ObjectStorageObject("object",
             bucket="my-bucket",
-            cluster="us-east-1",
+            region="us-mia",
             key="my-object",
             source=std.pathexpand(input="~/files/log.txt").result)
         ```
@@ -835,7 +835,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         object = linode.ObjectStorageObject("object",
             bucket="my-bucket",
-            cluster="us-east-1",
+            region="us-mia",
             key="my-object",
             secret_key=my_key["secretKey"],
             access_key=my_key["accessKey"],
@@ -850,7 +850,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         object = linode.ObjectStorageObject("object",
             bucket="my-bucket",
-            cluster="us-east-1",
+            region="us-mia",
             key="my-object",
             secret_key=my_key["secretKey"],
             access_key=my_key["accessKey"],
@@ -868,7 +868,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         object = linode.ObjectStorageObject("object",
             bucket="my-bucket",
-            cluster="us-east-1",
+            region="us-mia",
             key="my-object",
             source=std.pathexpand(input="~/files/log.txt").result)
         ```
@@ -1047,7 +1047,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> pulumi.Output[Optional[str]]:
+    def acl(self) -> pulumi.Output[str]:
         """
         The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         """
@@ -1144,7 +1144,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+    def force_destroy(self) -> pulumi.Output[bool]:
         """
         Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         """
@@ -1160,7 +1160,7 @@ class ObjectStorageObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A map of keys/values to provision metadata.
         """

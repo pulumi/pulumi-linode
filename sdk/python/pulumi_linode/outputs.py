@@ -59,6 +59,7 @@ __all__ = [
     'LkeNodePoolAutoscaler',
     'LkeNodePoolNode',
     'LkeNodePoolTaint',
+    'NetworkingIpAssignmentAssignment',
     'NodeBalancerConfigNodeStatus',
     'NodeBalancerFirewall',
     'NodeBalancerFirewallInbound',
@@ -201,6 +202,8 @@ __all__ = [
     'GetNetworkTransferPricesTypeResult',
     'GetNetworkTransferPricesTypePriceResult',
     'GetNetworkTransferPricesTypeRegionPriceResult',
+    'GetNetworkingIpsFilterResult',
+    'GetNetworkingIpsIpAddressResult',
     'GetNodeBalancerConfigNodeStatusResult',
     'GetNodeBalancerFirewallResult',
     'GetNodeBalancerFirewallInboundResult',
@@ -3117,6 +3120,42 @@ class LkeNodePoolTaint(dict):
         The Kubernetes taint value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class NetworkingIpAssignmentAssignment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linodeId":
+            suggest = "linode_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkingIpAssignmentAssignment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkingIpAssignmentAssignment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkingIpAssignmentAssignment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: str,
+                 linode_id: int):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        return pulumi.get(self, "linode_id")
 
 
 @pulumi.output_type
@@ -11457,6 +11496,164 @@ class GetNetworkTransferPricesTypeRegionPriceResult(dict):
     @pulumi.getter
     def monthly(self) -> float:
         return pulumi.get(self, "monthly")
+
+
+@pulumi.output_type
+class GetNetworkingIpsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the attribute to filter on.
+        :param Sequence[str] values: The value(s) to be used in the filter.
+        :param str match_by: The type of comparison to use for this filter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the attribute to filter on.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The value(s) to be used in the filter.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The type of comparison to use for this filter.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetNetworkingIpsIpAddressResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 linode_id: int,
+                 prefix: int,
+                 public: bool,
+                 rdns: str,
+                 region: str,
+                 reserved: bool,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The IP address.
+        :param str gateway: The default gateway for this address.
+        :param int linode_id: The ID of the Linode this address currently belongs to.
+        :param int prefix: The number of bits set in the subnet mask.
+        :param bool public: Whether this is a public or private IP address.
+        :param str rdns: The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        :param str region: The Region this IP address resides in.
+        :param bool reserved: Whether this IP is reserved or not.
+        :param str subnet_mask: The mask that separates host bits from network bits for this address.
+        :param str type: The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "reserved", reserved)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode this address currently belongs to.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The number of bits set in the subnet mask.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        """
+        return pulumi.get(self, "rdns")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The Region this IP address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def reserved(self) -> bool:
+        """
+        Whether this IP is reserved or not.
+        """
+        return pulumi.get(self, "reserved")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The mask that separates host bits from network bits for this address.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

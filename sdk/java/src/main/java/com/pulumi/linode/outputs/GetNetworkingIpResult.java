@@ -48,6 +48,7 @@ public final class GetNetworkingIpResult {
      * 
      */
     private String region;
+    private Boolean reserved;
     /**
      * @return The mask that separates host bits from network bits for this address.
      * 
@@ -112,6 +113,9 @@ public final class GetNetworkingIpResult {
     public String region() {
         return this.region;
     }
+    public Boolean reserved() {
+        return this.reserved;
+    }
     /**
      * @return The mask that separates host bits from network bits for this address.
      * 
@@ -144,6 +148,7 @@ public final class GetNetworkingIpResult {
         private Boolean public_;
         private String rdns;
         private String region;
+        private Boolean reserved;
         private String subnetMask;
         private String type;
         public Builder() {}
@@ -157,6 +162,7 @@ public final class GetNetworkingIpResult {
     	      this.public_ = defaults.public_;
     	      this.rdns = defaults.rdns;
     	      this.region = defaults.region;
+    	      this.reserved = defaults.reserved;
     	      this.subnetMask = defaults.subnetMask;
     	      this.type = defaults.type;
         }
@@ -226,6 +232,14 @@ public final class GetNetworkingIpResult {
             return this;
         }
         @CustomType.Setter
+        public Builder reserved(Boolean reserved) {
+            if (reserved == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpResult", "reserved");
+            }
+            this.reserved = reserved;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetMask(String subnetMask) {
             if (subnetMask == null) {
               throw new MissingRequiredPropertyException("GetNetworkingIpResult", "subnetMask");
@@ -251,6 +265,7 @@ public final class GetNetworkingIpResult {
             _resultValue.public_ = public_;
             _resultValue.rdns = rdns;
             _resultValue.region = region;
+            _resultValue.reserved = reserved;
             _resultValue.subnetMask = subnetMask;
             _resultValue.type = type;
             return _resultValue;
