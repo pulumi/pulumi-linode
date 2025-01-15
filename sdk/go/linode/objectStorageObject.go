@@ -39,7 +39,7 @@ import (
 //			}
 //			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
 //				Bucket:    pulumi.String("my-bucket"),
-//				Cluster:   pulumi.String("us-east-1"),
+//				Region:    pulumi.String("us-mia"),
 //				Key:       pulumi.String("my-object"),
 //				SecretKey: pulumi.Any(myKey.SecretKey),
 //				AccessKey: pulumi.Any(myKey.AccessKey),
@@ -70,7 +70,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
 //				Bucket:          pulumi.String("my-bucket"),
-//				Cluster:         pulumi.String("us-east-1"),
+//				Region:          pulumi.String("us-mia"),
 //				Key:             pulumi.String("my-object"),
 //				SecretKey:       pulumi.Any(myKey.SecretKey),
 //				AccessKey:       pulumi.Any(myKey.AccessKey),
@@ -109,10 +109,10 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
-//				Bucket:  pulumi.String("my-bucket"),
-//				Cluster: pulumi.String("us-east-1"),
-//				Key:     pulumi.String("my-object"),
-//				Source:  pulumi.String(invokePathexpand.Result),
+//				Bucket: pulumi.String("my-bucket"),
+//				Region: pulumi.String("us-mia"),
+//				Key:    pulumi.String("my-object"),
+//				Source: pulumi.String(invokePathexpand.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -130,7 +130,7 @@ type ObjectStorageObject struct {
 	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
 	// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
-	Acl pulumi.StringPtrOutput `pulumi:"acl"`
+	Acl pulumi.StringOutput `pulumi:"acl"`
 	// The name of the bucket to put the object in.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
@@ -156,7 +156,7 @@ type ObjectStorageObject struct {
 	// The specific version of this object.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	ForceDestroy pulumi.BoolOutput `pulumi:"forceDestroy"`
 	// They name of the object once it is in the bucket.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A map of keys/values to provision metadata.
@@ -517,8 +517,8 @@ func (o ObjectStorageObjectOutput) AccessKey() pulumi.StringPtrOutput {
 }
 
 // The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
-func (o ObjectStorageObjectOutput) Acl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+func (o ObjectStorageObjectOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
 }
 
 // The name of the bucket to put the object in.
@@ -579,8 +579,8 @@ func (o ObjectStorageObjectOutput) Etag() pulumi.StringOutput {
 }
 
 // Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
-func (o ObjectStorageObjectOutput) ForceDestroy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+func (o ObjectStorageObjectOutput) ForceDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.BoolOutput { return v.ForceDestroy }).(pulumi.BoolOutput)
 }
 
 // They name of the object once it is in the bucket.

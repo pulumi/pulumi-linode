@@ -394,14 +394,14 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      * 
      */
     @Export(name="replicaRegions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> replicaRegions;
 
     /**
-     * @return A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * @return A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      * 
      */
     public Output<Optional<List<String>>> replicaRegions() {

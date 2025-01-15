@@ -2576,6 +2576,122 @@ export interface GetNetworkTransferPricesTypeRegionPriceArgs {
     monthly: pulumi.Input<number>;
 }
 
+export interface GetNetworkingIpsFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetNetworkingIpsFilterArgs {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetNetworkingIpsIpAddress {
+    /**
+     * The IP address.
+     */
+    address?: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway?: string;
+    /**
+     * The ID of the Linode this address currently belongs to.
+     */
+    linodeId?: number;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    prefix?: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public?: boolean;
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     */
+    rdns?: string;
+    /**
+     * The Region this IP address resides in.
+     */
+    region?: string;
+    /**
+     * Whether this IP is reserved or not.
+     */
+    reserved?: boolean;
+    /**
+     * The mask that separates host bits from network bits for this address.
+     */
+    subnetMask?: string;
+    /**
+     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     */
+    type?: string;
+}
+
+export interface GetNetworkingIpsIpAddressArgs {
+    /**
+     * The IP address.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * The default gateway for this address.
+     */
+    gateway?: pulumi.Input<string>;
+    /**
+     * The ID of the Linode this address currently belongs to.
+     */
+    linodeId?: pulumi.Input<number>;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    prefix?: pulumi.Input<number>;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public?: pulumi.Input<boolean>;
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     */
+    rdns?: pulumi.Input<string>;
+    /**
+     * The Region this IP address resides in.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Whether this IP is reserved or not.
+     */
+    reserved?: pulumi.Input<boolean>;
+    /**
+     * The mask that separates host bits from network bits for this address.
+     */
+    subnetMask?: pulumi.Input<string>;
+    /**
+     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     */
+    type?: pulumi.Input<string>;
+}
+
 export interface GetNodeBalancerFirewall {
     /**
      * When this firewall was created.
@@ -5858,6 +5974,11 @@ export interface LkeNodePoolTaint {
      * The Kubernetes taint value.
      */
     value: pulumi.Input<string>;
+}
+
+export interface NetworkingIpAssignmentAssignment {
+    address: pulumi.Input<string>;
+    linodeId: pulumi.Input<number>;
 }
 
 export interface NodeBalancerConfigNodeStatus {

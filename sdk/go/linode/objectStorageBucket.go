@@ -73,7 +73,7 @@ import (
 //			_, err = linode.NewObjectStorageBucket(ctx, "mybucket", &linode.ObjectStorageBucketArgs{
 //				AccessKey: mykey.AccessKey,
 //				SecretKey: mykey.SecretKey,
-//				Cluster:   pulumi.String("us-east-1"),
+//				Region:    pulumi.String("us-mia"),
 //				Label:     pulumi.String("mybucket"),
 //				LifecycleRules: linode.ObjectStorageBucketLifecycleRuleArray{
 //					&linode.ObjectStorageBucketLifecycleRuleArgs{
@@ -121,7 +121,7 @@ type ObjectStorageBucket struct {
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
-	CorsEnabled pulumi.BoolPtrOutput `pulumi:"corsEnabled"`
+	CorsEnabled pulumi.BoolOutput `pulumi:"corsEnabled"`
 	// The endpoint for the bucket used for s3 connections.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
@@ -448,8 +448,8 @@ func (o ObjectStorageBucketOutput) Cluster() pulumi.StringOutput {
 }
 
 // If true, the bucket will have CORS enabled for all origins.
-func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolPtrOutput { return v.CorsEnabled }).(pulumi.BoolPtrOutput)
+func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolOutput { return v.CorsEnabled }).(pulumi.BoolOutput)
 }
 
 // The endpoint for the bucket used for s3 connections.

@@ -190,7 +190,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      */
     public readonly replicaRegions!: pulumi.Output<string[] | undefined>;
     /**
@@ -370,7 +370,7 @@ export interface ImageState {
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      */
     replicaRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -455,7 +455,7 @@ export interface ImageArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+     * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      */
     replicaRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const object = new linode.ObjectStorageObject("object", {
  *     bucket: "my-bucket",
- *     cluster: "us-east-1",
+ *     region: "us-mia",
  *     key: "my-object",
  *     secretKey: myKey.secretKey,
  *     accessKey: myKey.accessKey,
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *
  * const object = new linode.ObjectStorageObject("object", {
  *     bucket: "my-bucket",
- *     cluster: "us-east-1",
+ *     region: "us-mia",
  *     key: "my-object",
  *     secretKey: myKey.secretKey,
  *     accessKey: myKey.accessKey,
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * const object = new linode.ObjectStorageObject("object", {
  *     bucket: "my-bucket",
- *     cluster: "us-east-1",
+ *     region: "us-mia",
  *     key: "my-object",
  *     source: std.pathexpand({
  *         input: "~/files/log.txt",
@@ -100,7 +100,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
     /**
      * The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string>;
     /**
      * The name of the bucket to put the object in.
      */
@@ -150,7 +150,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
     /**
      * Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly forceDestroy!: pulumi.Output<boolean>;
     /**
      * They name of the object once it is in the bucket.
      */
@@ -158,7 +158,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
     /**
      * A map of keys/values to provision metadata.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster the bucket is in. Required if `cluster` is not configured.
      */

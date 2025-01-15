@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
  *             .bucket("my-bucket")
- *             .cluster("us-east-1")
+ *             .region("us-mia")
  *             .key("my-object")
  *             .secretKey(myKey.secretKey())
  *             .accessKey(myKey.accessKey())
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
  *             .bucket("my-bucket")
- *             .cluster("us-east-1")
+ *             .region("us-mia")
  *             .key("my-object")
  *             .secretKey(myKey.secretKey())
  *             .accessKey(myKey.accessKey())
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
  *             .bucket("my-bucket")
- *             .cluster("us-east-1")
+ *             .region("us-mia")
  *             .key("my-object")
  *             .source(StdFunctions.pathexpand(PathexpandArgs.builder()
  *                 .input("~/files/log.txt")
@@ -172,14 +172,14 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="acl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> acl;
+    private Output<String> acl;
 
     /**
      * @return The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
      * 
      */
-    public Output<Optional<String>> acl() {
-        return Codegen.optional(this.acl);
+    public Output<String> acl() {
+        return this.acl;
     }
     /**
      * The name of the bucket to put the object in.
@@ -344,14 +344,14 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> forceDestroy;
+    private Output<Boolean> forceDestroy;
 
     /**
      * @return Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
      * 
      */
-    public Output<Optional<Boolean>> forceDestroy() {
-        return Codegen.optional(this.forceDestroy);
+    public Output<Boolean> forceDestroy() {
+        return this.forceDestroy;
     }
     /**
      * They name of the object once it is in the bucket.
@@ -372,14 +372,14 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> metadata;
+    private Output<Map<String,String>> metadata;
 
     /**
      * @return A map of keys/values to provision metadata.
      * 
      */
-    public Output<Optional<Map<String,String>>> metadata() {
-        return Codegen.optional(this.metadata);
+    public Output<Map<String,String>> metadata() {
+        return this.metadata;
     }
     /**
      * The cluster the bucket is in. Required if `cluster` is not configured.

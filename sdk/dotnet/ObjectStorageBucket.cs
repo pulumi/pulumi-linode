@@ -58,7 +58,7 @@ namespace Pulumi.Linode
     ///     {
     ///         AccessKey = mykey.AccessKey,
     ///         SecretKey = mykey.SecretKey,
-    ///         Cluster = "us-east-1",
+    ///         Region = "us-mia",
     ///         Label = "mybucket",
     ///         LifecycleRules = new[]
     ///         {
@@ -122,7 +122,7 @@ namespace Pulumi.Linode
         /// If true, the bucket will have CORS enabled for all origins.
         /// </summary>
         [Output("corsEnabled")]
-        public Output<bool?> CorsEnabled { get; private set; } = null!;
+        public Output<bool> CorsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The endpoint for the bucket used for s3 connections.

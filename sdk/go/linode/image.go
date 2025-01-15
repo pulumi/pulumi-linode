@@ -201,7 +201,7 @@ type Image struct {
 	LinodeId pulumi.IntPtrOutput `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions pulumi.StringArrayOutput `pulumi:"replicaRegions"`
 	// A list of image replications region and corresponding status.
 	Replications ImageReplicationArrayOutput `pulumi:"replications"`
@@ -293,7 +293,7 @@ type imageState struct {
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region *string `pulumi:"region"`
-	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions []string `pulumi:"replicaRegions"`
 	// A list of image replications region and corresponding status.
 	Replications []ImageReplication `pulumi:"replications"`
@@ -353,7 +353,7 @@ type ImageState struct {
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrInput
-	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions pulumi.StringArrayInput
 	// A list of image replications region and corresponding status.
 	Replications ImageReplicationArrayInput
@@ -405,7 +405,7 @@ type imageArgs struct {
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region *string `pulumi:"region"`
-	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions []string `pulumi:"replicaRegions"`
 	// A list of customized tags.
 	Tags     []string       `pulumi:"tags"`
@@ -442,7 +442,7 @@ type ImageArgs struct {
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrInput
-	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions pulumi.StringArrayInput
 	// A list of customized tags.
 	Tags     pulumi.StringArrayInput
@@ -618,7 +618,7 @@ func (o ImageOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. **Note:** Image replication may not be available to all users. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
+// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 func (o ImageOutput) ReplicaRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.ReplicaRegions }).(pulumi.StringArrayOutput)
 }

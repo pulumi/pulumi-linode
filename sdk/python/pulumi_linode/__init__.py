@@ -52,6 +52,7 @@ from .get_lke_versions import *
 from .get_nb_types import *
 from .get_network_transfer_prices import *
 from .get_networking_ip import *
+from .get_networking_ips import *
 from .get_node_balancer import *
 from .get_node_balancer_config import *
 from .get_node_balancer_node import *
@@ -87,6 +88,8 @@ from .instance_shared_ips import *
 from .ipv6_range import *
 from .lke_cluster import *
 from .lke_node_pool import *
+from .networking_ip import *
+from .networking_ip_assignment import *
 from .node_balancer import *
 from .node_balancer_config import *
 from .node_balancer_node import *
@@ -252,6 +255,22 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/lkeNodePool:LkeNodePool": "LkeNodePool"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/networkingIp",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/networkingIp:NetworkingIp": "NetworkingIp"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/networkingIpAssignment",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/networkingIpAssignment:NetworkingIpAssignment": "NetworkingIpAssignment"
   }
  },
  {

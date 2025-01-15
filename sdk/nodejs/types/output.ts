@@ -2601,6 +2601,64 @@ export interface GetNetworkTransferPricesTypeRegionPrice {
     monthly: number;
 }
 
+export interface GetNetworkingIpsFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetNetworkingIpsIpAddress {
+    /**
+     * The IP address.
+     */
+    address: string;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The ID of the Linode this address currently belongs to.
+     */
+    linodeId: number;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    prefix: number;
+    /**
+     * Whether this is a public or private IP address.
+     */
+    public: boolean;
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     */
+    rdns: string;
+    /**
+     * The Region this IP address resides in.
+     */
+    region: string;
+    /**
+     * Whether this IP is reserved or not.
+     */
+    reserved: boolean;
+    /**
+     * The mask that separates host bits from network bits for this address.
+     */
+    subnetMask: string;
+    /**
+     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     */
+    type: string;
+}
+
 export interface GetNodeBalancerConfigNodeStatus {
     /**
      * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
@@ -4740,6 +4798,11 @@ export interface LkeNodePoolTaint {
      * The Kubernetes taint value.
      */
     value: string;
+}
+
+export interface NetworkingIpAssignmentAssignment {
+    address: string;
+    linodeId: number;
 }
 
 export interface NodeBalancerConfigNodeStatus {

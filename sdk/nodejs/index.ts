@@ -240,6 +240,11 @@ export const getNetworkingIp: typeof import("./getNetworkingIp").getNetworkingIp
 export const getNetworkingIpOutput: typeof import("./getNetworkingIp").getNetworkingIpOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkingIp","getNetworkingIpOutput"], () => require("./getNetworkingIp"));
 
+export { GetNetworkingIpsArgs, GetNetworkingIpsResult, GetNetworkingIpsOutputArgs } from "./getNetworkingIps";
+export const getNetworkingIps: typeof import("./getNetworkingIps").getNetworkingIps = null as any;
+export const getNetworkingIpsOutput: typeof import("./getNetworkingIps").getNetworkingIpsOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkingIps","getNetworkingIpsOutput"], () => require("./getNetworkingIps"));
+
 export { GetNodeBalancerArgs, GetNodeBalancerResult, GetNodeBalancerOutputArgs } from "./getNodeBalancer";
 export const getNodeBalancer: typeof import("./getNodeBalancer").getNodeBalancer = null as any;
 export const getNodeBalancerOutput: typeof import("./getNodeBalancer").getNodeBalancerOutput = null as any;
@@ -415,6 +420,16 @@ export type LkeNodePool = import("./lkeNodePool").LkeNodePool;
 export const LkeNodePool: typeof import("./lkeNodePool").LkeNodePool = null as any;
 utilities.lazyLoad(exports, ["LkeNodePool"], () => require("./lkeNodePool"));
 
+export { NetworkingIpArgs, NetworkingIpState } from "./networkingIp";
+export type NetworkingIp = import("./networkingIp").NetworkingIp;
+export const NetworkingIp: typeof import("./networkingIp").NetworkingIp = null as any;
+utilities.lazyLoad(exports, ["NetworkingIp"], () => require("./networkingIp"));
+
+export { NetworkingIpAssignmentArgs, NetworkingIpAssignmentState } from "./networkingIpAssignment";
+export type NetworkingIpAssignment = import("./networkingIpAssignment").NetworkingIpAssignment;
+export const NetworkingIpAssignment: typeof import("./networkingIpAssignment").NetworkingIpAssignment = null as any;
+utilities.lazyLoad(exports, ["NetworkingIpAssignment"], () => require("./networkingIpAssignment"));
+
 export { NodeBalancerArgs, NodeBalancerState } from "./nodeBalancer";
 export type NodeBalancer = import("./nodeBalancer").NodeBalancer;
 export const NodeBalancer: typeof import("./nodeBalancer").NodeBalancer = null as any;
@@ -553,6 +568,10 @@ const _module = {
                 return new LkeCluster(name, <any>undefined, { urn })
             case "linode:index/lkeNodePool:LkeNodePool":
                 return new LkeNodePool(name, <any>undefined, { urn })
+            case "linode:index/networkingIp:NetworkingIp":
+                return new NetworkingIp(name, <any>undefined, { urn })
+            case "linode:index/networkingIpAssignment:NetworkingIpAssignment":
+                return new NetworkingIpAssignment(name, <any>undefined, { urn })
             case "linode:index/nodeBalancer:NodeBalancer":
                 return new NodeBalancer(name, <any>undefined, { urn })
             case "linode:index/nodeBalancerConfig:NodeBalancerConfig":
@@ -609,6 +628,8 @@ pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _modu
 pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeNodePool", _module)
+pulumi.runtime.registerResourceModule("linode", "index/networkingIp", _module)
+pulumi.runtime.registerResourceModule("linode", "index/networkingIpAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerConfig", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancerNode", _module)

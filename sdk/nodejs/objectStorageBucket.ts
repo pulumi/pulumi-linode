@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  * const mybucket = new linode.ObjectStorageBucket("mybucket", {
  *     accessKey: mykey.accessKey,
  *     secretKey: mykey.secretKey,
- *     cluster: "us-east-1",
+ *     region: "us-mia",
  *     label: "mybucket",
  *     lifecycleRules: [{
  *         id: "my-rule",
@@ -112,7 +112,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
     /**
      * If true, the bucket will have CORS enabled for all origins.
      */
-    public readonly corsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly corsEnabled!: pulumi.Output<boolean>;
     /**
      * The endpoint for the bucket used for s3 connections.
      */

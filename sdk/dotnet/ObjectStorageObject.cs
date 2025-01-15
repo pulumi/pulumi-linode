@@ -28,7 +28,7 @@ namespace Pulumi.Linode
     ///     var @object = new Linode.ObjectStorageObject("object", new()
     ///     {
     ///         Bucket = "my-bucket",
-    ///         Cluster = "us-east-1",
+    ///         Region = "us-mia",
     ///         Key = "my-object",
     ///         SecretKey = myKey.SecretKey,
     ///         AccessKey = myKey.AccessKey,
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
     ///     var @object = new Linode.ObjectStorageObject("object", new()
     ///     {
     ///         Bucket = "my-bucket",
-    ///         Cluster = "us-east-1",
+    ///         Region = "us-mia",
     ///         Key = "my-object",
     ///         SecretKey = myKey.SecretKey,
     ///         AccessKey = myKey.AccessKey,
@@ -80,7 +80,7 @@ namespace Pulumi.Linode
     ///     var @object = new Linode.ObjectStorageObject("object", new()
     ///     {
     ///         Bucket = "my-bucket",
-    ///         Cluster = "us-east-1",
+    ///         Region = "us-mia",
     ///         Key = "my-object",
     ///         Source = Std.Pathexpand.Invoke(new()
     ///         {
@@ -106,7 +106,7 @@ namespace Pulumi.Linode
         /// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
         /// </summary>
         [Output("acl")]
-        public Output<string?> Acl { get; private set; } = null!;
+        public Output<string> Acl { get; private set; } = null!;
 
         /// <summary>
         /// The name of the bucket to put the object in.
@@ -178,7 +178,7 @@ namespace Pulumi.Linode
         /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         /// </summary>
         [Output("forceDestroy")]
-        public Output<bool?> ForceDestroy { get; private set; } = null!;
+        public Output<bool> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
         /// They name of the object once it is in the bucket.
@@ -190,7 +190,7 @@ namespace Pulumi.Linode
         /// A map of keys/values to provision metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The cluster the bucket is in. Required if `cluster` is not configured.

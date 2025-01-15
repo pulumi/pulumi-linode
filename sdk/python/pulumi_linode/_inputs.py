@@ -101,6 +101,8 @@ __all__ = [
     'LkeNodePoolNodeArgsDict',
     'LkeNodePoolTaintArgs',
     'LkeNodePoolTaintArgsDict',
+    'NetworkingIpAssignmentAssignmentArgs',
+    'NetworkingIpAssignmentAssignmentArgsDict',
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerConfigNodeStatusArgsDict',
     'NodeBalancerFirewallArgs',
@@ -275,6 +277,10 @@ __all__ = [
     'GetNetworkTransferPricesTypePriceArgsDict',
     'GetNetworkTransferPricesTypeRegionPriceArgs',
     'GetNetworkTransferPricesTypeRegionPriceArgsDict',
+    'GetNetworkingIpsFilterArgs',
+    'GetNetworkingIpsFilterArgsDict',
+    'GetNetworkingIpsIpAddressArgs',
+    'GetNetworkingIpsIpAddressArgsDict',
     'GetNodeBalancerFirewallArgs',
     'GetNodeBalancerFirewallArgsDict',
     'GetNodeBalancerFirewallInboundArgs',
@@ -4322,6 +4328,40 @@ class LkeNodePoolTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class NetworkingIpAssignmentAssignmentArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        linode_id: pulumi.Input[int]
+elif False:
+    NetworkingIpAssignmentAssignmentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkingIpAssignmentAssignmentArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 linode_id: pulumi.Input[int]):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "linode_id", value)
 
 
 if not MYPY:
@@ -12227,6 +12267,278 @@ class GetNetworkTransferPricesTypeRegionPriceArgs:
     @monthly.setter
     def monthly(self, value: float):
         pulumi.set(self, "monthly", value)
+
+
+if not MYPY:
+    class GetNetworkingIpsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the attribute to filter on.
+        """
+        values: Sequence[str]
+        """
+        The value(s) to be used in the filter.
+        """
+        match_by: NotRequired[str]
+        """
+        The type of comparison to use for this filter.
+        """
+elif False:
+    GetNetworkingIpsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetNetworkingIpsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the attribute to filter on.
+        :param Sequence[str] values: The value(s) to be used in the filter.
+        :param str match_by: The type of comparison to use for this filter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the attribute to filter on.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The value(s) to be used in the filter.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The type of comparison to use for this filter.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetNetworkingIpsIpAddressArgsDict(TypedDict):
+        address: str
+        """
+        The IP address.
+        """
+        gateway: str
+        """
+        The default gateway for this address.
+        """
+        linode_id: int
+        """
+        The ID of the Linode this address currently belongs to.
+        """
+        prefix: int
+        """
+        The number of bits set in the subnet mask.
+        """
+        public: bool
+        """
+        Whether this is a public or private IP address.
+        """
+        rdns: str
+        """
+        The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        """
+        region: str
+        """
+        The Region this IP address resides in.
+        """
+        reserved: bool
+        """
+        Whether this IP is reserved or not.
+        """
+        subnet_mask: str
+        """
+        The mask that separates host bits from network bits for this address.
+        """
+        type: str
+        """
+        The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        """
+elif False:
+    GetNetworkingIpsIpAddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetNetworkingIpsIpAddressArgs:
+    def __init__(__self__, *,
+                 address: str,
+                 gateway: str,
+                 linode_id: int,
+                 prefix: int,
+                 public: bool,
+                 rdns: str,
+                 region: str,
+                 reserved: bool,
+                 subnet_mask: str,
+                 type: str):
+        """
+        :param str address: The IP address.
+        :param str gateway: The default gateway for this address.
+        :param int linode_id: The ID of the Linode this address currently belongs to.
+        :param int prefix: The number of bits set in the subnet mask.
+        :param bool public: Whether this is a public or private IP address.
+        :param str rdns: The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        :param str region: The Region this IP address resides in.
+        :param bool reserved: Whether this IP is reserved or not.
+        :param str subnet_mask: The mask that separates host bits from network bits for this address.
+        :param str type: The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "linode_id", linode_id)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "public", public)
+        pulumi.set(__self__, "rdns", rdns)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "reserved", reserved)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: str):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        The default gateway for this address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: str):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode this address currently belongs to.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        The number of bits set in the subnet mask.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: int):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        """
+        Whether this is a public or private IP address.
+        """
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: bool):
+        pulumi.set(self, "public", value)
+
+    @property
+    @pulumi.getter
+    def rdns(self) -> str:
+        """
+        The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        """
+        return pulumi.get(self, "rdns")
+
+    @rdns.setter
+    def rdns(self, value: str):
+        pulumi.set(self, "rdns", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The Region this IP address resides in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def reserved(self) -> bool:
+        """
+        Whether this IP is reserved or not.
+        """
+        return pulumi.get(self, "reserved")
+
+    @reserved.setter
+    def reserved(self, value: bool):
+        pulumi.set(self, "reserved", value)
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        The mask that separates host bits from network bits for this address.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @subnet_mask.setter
+    def subnet_mask(self, value: str):
+        pulumi.set(self, "subnet_mask", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:
