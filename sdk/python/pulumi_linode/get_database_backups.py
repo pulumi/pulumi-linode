@@ -123,6 +123,8 @@ def get_database_backups(backups: Optional[Sequence[Union['GetDatabaseBackupsBac
                          order_by: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseBackupsResult:
     """
+    > **DEPRECATION NOTICE:** This data source has been deprecated.
+
     Provides information about Linode Database Backups that match a set of filters.
     For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
@@ -190,6 +192,8 @@ def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseBackupsResult]:
     """
+    > **DEPRECATION NOTICE:** This data source has been deprecated.
+
     Provides information about Linode Database Backups that match a set of filters.
     For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 

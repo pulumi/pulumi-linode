@@ -17,7 +17,13 @@ from . import outputs
 
 __all__ = [
     'DatabaseMysqlUpdates',
+    'DatabaseMysqlV2PendingUpdate',
+    'DatabaseMysqlV2Timeouts',
+    'DatabaseMysqlV2Updates',
     'DatabasePostgresqlUpdates',
+    'DatabasePostgresqlV2PendingUpdate',
+    'DatabasePostgresqlV2Timeouts',
+    'DatabasePostgresqlV2Updates',
     'FirewallDevice',
     'FirewallInbound',
     'FirewallOutbound',
@@ -100,7 +106,11 @@ __all__ = [
     'GetDatabaseMysqlBackupsBackupResult',
     'GetDatabaseMysqlBackupsFilterResult',
     'GetDatabaseMysqlUpdateResult',
+    'GetDatabaseMysqlV2PendingUpdateResult',
+    'GetDatabaseMysqlV2UpdatesResult',
     'GetDatabasePostgresqlUpdateResult',
+    'GetDatabasePostgresqlV2PendingUpdateResult',
+    'GetDatabasePostgresqlV2UpdatesResult',
     'GetDatabasesDatabaseResult',
     'GetDatabasesFilterResult',
     'GetDomainsDomainResult',
@@ -216,9 +226,15 @@ __all__ = [
     'GetNodebalancersNodebalancerResult',
     'GetNodebalancersNodebalancerTransferResult',
     'GetPlacementGroupMemberResult',
+    'GetPlacementGroupMigrationsResult',
+    'GetPlacementGroupMigrationsInboundResult',
+    'GetPlacementGroupMigrationsOutboundResult',
     'GetPlacementGroupsFilterResult',
     'GetPlacementGroupsPlacementGroupResult',
     'GetPlacementGroupsPlacementGroupMemberResult',
+    'GetPlacementGroupsPlacementGroupMigrationsResult',
+    'GetPlacementGroupsPlacementGroupMigrationsInboundResult',
+    'GetPlacementGroupsPlacementGroupMigrationsOutboundResult',
     'GetProfileReferralsResult',
     'GetRegionPlacementGroupLimitResult',
     'GetRegionResolverResult',
@@ -359,6 +375,144 @@ class DatabaseMysqlUpdates(dict):
 
 
 @pulumi.output_type
+class DatabaseMysqlV2PendingUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "plannedFor":
+            suggest = "planned_for"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseMysqlV2PendingUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseMysqlV2PendingUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseMysqlV2PendingUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deadline: str,
+                 description: str,
+                 planned_for: str):
+        pulumi.set(__self__, "deadline", deadline)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "planned_for", planned_for)
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> str:
+        return pulumi.get(self, "deadline")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="plannedFor")
+    def planned_for(self) -> str:
+        return pulumi.get(self, "planned_for")
+
+
+@pulumi.output_type
+class DatabaseMysqlV2Timeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class DatabaseMysqlV2Updates(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "hourOfDay":
+            suggest = "hour_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseMysqlV2Updates. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseMysqlV2Updates.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseMysqlV2Updates.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: int,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> int:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+
+@pulumi.output_type
 class DatabasePostgresqlUpdates(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -440,6 +594,144 @@ class DatabasePostgresqlUpdates(dict):
         The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class DatabasePostgresqlV2PendingUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "plannedFor":
+            suggest = "planned_for"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlV2PendingUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabasePostgresqlV2PendingUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabasePostgresqlV2PendingUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deadline: str,
+                 description: str,
+                 planned_for: str):
+        pulumi.set(__self__, "deadline", deadline)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "planned_for", planned_for)
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> str:
+        return pulumi.get(self, "deadline")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="plannedFor")
+    def planned_for(self) -> str:
+        return pulumi.get(self, "planned_for")
+
+
+@pulumi.output_type
+class DatabasePostgresqlV2Timeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class DatabasePostgresqlV2Updates(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "hourOfDay":
+            suggest = "hour_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlV2Updates. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabasePostgresqlV2Updates.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabasePostgresqlV2Updates.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: int,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> int:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
 
 
 @pulumi.output_type
@@ -2243,7 +2535,9 @@ class InstanceInterface(dict):
         :param int id: The ID of the Placement Group.
         :param Sequence[str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        :param 'InstanceInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param 'InstanceInterfaceIpv4Args' ipv4: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
         :param str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
@@ -2317,7 +2611,9 @@ class InstanceInterface(dict):
     @pulumi.getter
     def ipv4(self) -> Optional['outputs.InstanceInterfaceIpv4']:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
         """
         return pulumi.get(self, "ipv4")
 
@@ -2561,19 +2857,44 @@ class InstancePlacementGroup(dict):
 
 @pulumi.output_type
 class InstanceSpecs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratedDevices":
+            suggest = "accelerated_devices"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceSpecs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceSpecs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceSpecs.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 accelerated_devices: Optional[int] = None,
                  disk: Optional[int] = None,
+                 gpus: Optional[int] = None,
                  memory: Optional[int] = None,
                  transfer: Optional[int] = None,
                  vcpus: Optional[int] = None):
         """
+        :param int accelerated_devices: The number of VPUs this Linode has access to.
         :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+        :param int gpus: The number of GPUs this Linode has access to.
         :param int memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
         :param int transfer: The amount of network transfer this Linode is allotted each month.
         :param int vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
         """
+        if accelerated_devices is not None:
+            pulumi.set(__self__, "accelerated_devices", accelerated_devices)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if gpus is not None:
+            pulumi.set(__self__, "gpus", gpus)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if transfer is not None:
@@ -2582,12 +2903,28 @@ class InstanceSpecs(dict):
             pulumi.set(__self__, "vcpus", vcpus)
 
     @property
+    @pulumi.getter(name="acceleratedDevices")
+    def accelerated_devices(self) -> Optional[int]:
+        """
+        The number of VPUs this Linode has access to.
+        """
+        return pulumi.get(self, "accelerated_devices")
+
+    @property
     @pulumi.getter
     def disk(self) -> Optional[int]:
         """
         The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         """
         return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def gpus(self) -> Optional[int]:
+        """
+        The number of GPUs this Linode has access to.
+        """
+        return pulumi.get(self, "gpus")
 
     @property
     @pulumi.getter
@@ -3144,17 +3481,27 @@ class NetworkingIpAssignmentAssignment(dict):
     def __init__(__self__, *,
                  address: str,
                  linode_id: int):
+        """
+        :param str address: The IPv4 address or IPv6 range to assign.
+        :param int linode_id: The ID of the Linode to which the IP address will be assigned.
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "linode_id", linode_id)
 
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        The IPv4 address or IPv6 range to assign.
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> int:
+        """
+        The ID of the Linode to which the IP address will be assigned.
+        """
         return pulumi.get(self, "linode_id")
 
 
@@ -5334,6 +5681,65 @@ class GetDatabaseMysqlUpdateResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseMysqlV2PendingUpdateResult(dict):
+    def __init__(__self__, *,
+                 deadline: str,
+                 description: str,
+                 planned_for: str):
+        pulumi.set(__self__, "deadline", deadline)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "planned_for", planned_for)
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> str:
+        return pulumi.get(self, "deadline")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="plannedFor")
+    def planned_for(self) -> str:
+        return pulumi.get(self, "planned_for")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlV2UpdatesResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: int,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> int:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
+
+
+@pulumi.output_type
 class GetDatabasePostgresqlUpdateResult(dict):
     def __init__(__self__, *,
                  day_of_week: str,
@@ -5371,6 +5777,65 @@ class GetDatabasePostgresqlUpdateResult(dict):
     @pulumi.getter(name="weekOfMonth")
     def week_of_month(self) -> int:
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlV2PendingUpdateResult(dict):
+    def __init__(__self__, *,
+                 deadline: str,
+                 description: str,
+                 planned_for: str):
+        pulumi.set(__self__, "deadline", deadline)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "planned_for", planned_for)
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> str:
+        return pulumi.get(self, "deadline")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="plannedFor")
+    def planned_for(self) -> str:
+        return pulumi.get(self, "planned_for")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlV2UpdatesResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: int,
+                 duration: int,
+                 frequency: str,
+                 hour_of_day: int):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> int:
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        return pulumi.get(self, "hour_of_day")
 
 
 @pulumi.output_type
@@ -8589,6 +9054,7 @@ class GetInstanceTypesFilterResult(dict):
 @pulumi.output_type
 class GetInstanceTypesTypeResult(dict):
     def __init__(__self__, *,
+                 accelerated_devices: int,
                  addons: Sequence['outputs.GetInstanceTypesTypeAddonResult'],
                  class_: str,
                  disk: int,
@@ -8601,6 +9067,7 @@ class GetInstanceTypesTypeResult(dict):
                  transfer: int,
                  vcpus: int):
         """
+        :param int accelerated_devices: The number of VPUs this Linode Type offers.
         :param Sequence['GetInstanceTypesTypeAddonArgs'] addons: Information about the optional Backup service offered for Linodes.
         :param str class_: The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         :param int disk: The Disk size, in MB, of the Linode Type.
@@ -8613,6 +9080,7 @@ class GetInstanceTypesTypeResult(dict):
         :param int transfer: The monthly outbound transfer amount, in MB.
         :param int vcpus: The number of VCPU cores this Linode Type offers.
         """
+        pulumi.set(__self__, "accelerated_devices", accelerated_devices)
         pulumi.set(__self__, "addons", addons)
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "disk", disk)
@@ -8624,6 +9092,14 @@ class GetInstanceTypesTypeResult(dict):
         pulumi.set(__self__, "region_prices", region_prices)
         pulumi.set(__self__, "transfer", transfer)
         pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter(name="acceleratedDevices")
+    def accelerated_devices(self) -> int:
+        """
+        The number of VPUs this Linode Type offers.
+        """
+        return pulumi.get(self, "accelerated_devices")
 
     @property
     @pulumi.getter
@@ -10193,20 +10669,34 @@ class GetInstancesInstancePlacementGroupResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceSpecResult(dict):
     def __init__(__self__, *,
+                 accelerated_devices: int,
                  disk: int,
+                 gpus: int,
                  memory: int,
                  transfer: int,
                  vcpus: int):
         """
+        :param int accelerated_devices: The number of VPUs this Linode has access to.
         :param int disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+        :param int gpus: The number of GPUs this Linode has access to.
         :param int memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
         :param int transfer: The amount of network transfer this Linode is allotted each month.
         :param int vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
         """
+        pulumi.set(__self__, "accelerated_devices", accelerated_devices)
         pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "gpus", gpus)
         pulumi.set(__self__, "memory", memory)
         pulumi.set(__self__, "transfer", transfer)
         pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter(name="acceleratedDevices")
+    def accelerated_devices(self) -> int:
+        """
+        The number of VPUs this Linode has access to.
+        """
+        return pulumi.get(self, "accelerated_devices")
 
     @property
     @pulumi.getter
@@ -10215,6 +10705,14 @@ class GetInstancesInstanceSpecResult(dict):
         The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         """
         return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def gpus(self) -> int:
+        """
+        The number of GPUs this Linode has access to.
+        """
+        return pulumi.get(self, "gpus")
 
     @property
     @pulumi.getter
@@ -11505,9 +12003,9 @@ class GetNetworkingIpsFilterResult(dict):
                  values: Sequence[str],
                  match_by: Optional[str] = None):
         """
-        :param str name: The name of the attribute to filter on.
-        :param Sequence[str] values: The value(s) to be used in the filter.
-        :param str match_by: The type of comparison to use for this filter.
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -11518,7 +12016,7 @@ class GetNetworkingIpsFilterResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         return pulumi.get(self, "name")
 
@@ -11526,7 +12024,7 @@ class GetNetworkingIpsFilterResult(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         return pulumi.get(self, "values")
 
@@ -11534,7 +12032,7 @@ class GetNetworkingIpsFilterResult(dict):
     @pulumi.getter(name="matchBy")
     def match_by(self) -> Optional[str]:
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
 
@@ -11559,8 +12057,8 @@ class GetNetworkingIpsIpAddressResult(dict):
         :param int prefix: The number of bits set in the subnet mask.
         :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-        :param str region: The Region this IP address resides in.
-        :param bool reserved: Whether this IP is reserved or not.
+        :param str region: The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+        :param bool reserved: Whether this IP address is a reserved IP.
         :param str subnet_mask: The mask that separates host bits from network bits for this address.
         :param str type: The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
         """
@@ -11627,7 +12125,7 @@ class GetNetworkingIpsIpAddressResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        The Region this IP address resides in.
+        The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         """
         return pulumi.get(self, "region")
 
@@ -11635,7 +12133,7 @@ class GetNetworkingIpsIpAddressResult(dict):
     @pulumi.getter
     def reserved(self) -> bool:
         """
-        Whether this IP is reserved or not.
+        Whether this IP address is a reserved IP.
         """
         return pulumi.get(self, "reserved")
 
@@ -12508,6 +13006,71 @@ class GetPlacementGroupMemberResult(dict):
 
 
 @pulumi.output_type
+class GetPlacementGroupMigrationsResult(dict):
+    def __init__(__self__, *,
+                 inbounds: Sequence['outputs.GetPlacementGroupMigrationsInboundResult'],
+                 outbounds: Sequence['outputs.GetPlacementGroupMigrationsOutboundResult']):
+        """
+        :param Sequence['GetPlacementGroupMigrationsInboundArgs'] inbounds: A list of the Linodes the system is migrating into the placement group.
+        :param Sequence['GetPlacementGroupMigrationsOutboundArgs'] outbounds: A list of the Linodes the system is migrating out of the placement group.
+        """
+        pulumi.set(__self__, "inbounds", inbounds)
+        pulumi.set(__self__, "outbounds", outbounds)
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Sequence['outputs.GetPlacementGroupMigrationsInboundResult']:
+        """
+        A list of the Linodes the system is migrating into the placement group.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Sequence['outputs.GetPlacementGroupMigrationsOutboundResult']:
+        """
+        A list of the Linodes the system is migrating out of the placement group.
+        """
+        return pulumi.get(self, "outbounds")
+
+
+@pulumi.output_type
+class GetPlacementGroupMigrationsInboundResult(dict):
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
+class GetPlacementGroupMigrationsOutboundResult(dict):
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
 class GetPlacementGroupsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -12557,7 +13120,8 @@ class GetPlacementGroupsPlacementGroupResult(dict):
                  placement_group_policy: str,
                  placement_group_type: str,
                  region: str,
-                 members: Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']] = None):
+                 members: Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']] = None,
+                 migrations: Optional['outputs.GetPlacementGroupsPlacementGroupMigrationsResult'] = None):
         """
         :param int id: The ID of the placement group.
         :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
@@ -12566,6 +13130,7 @@ class GetPlacementGroupsPlacementGroupResult(dict):
         :param str placement_group_type: The placement group type to use when placing Linodes in this group.
         :param str region: The region of the Placement Group.
         :param Sequence['GetPlacementGroupsPlacementGroupMemberArgs'] members: A set of Linodes currently assigned to this Placement Group.
+        :param 'GetPlacementGroupsPlacementGroupMigrationsArgs' migrations: Any Linodes that are being migrated to or from the placement group.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_compliant", is_compliant)
@@ -12575,6 +13140,8 @@ class GetPlacementGroupsPlacementGroupResult(dict):
         pulumi.set(__self__, "region", region)
         if members is not None:
             pulumi.set(__self__, "members", members)
+        if migrations is not None:
+            pulumi.set(__self__, "migrations", migrations)
 
     @property
     @pulumi.getter
@@ -12632,6 +13199,14 @@ class GetPlacementGroupsPlacementGroupResult(dict):
         """
         return pulumi.get(self, "members")
 
+    @property
+    @pulumi.getter
+    def migrations(self) -> Optional['outputs.GetPlacementGroupsPlacementGroupMigrationsResult']:
+        """
+        Any Linodes that are being migrated to or from the placement group.
+        """
+        return pulumi.get(self, "migrations")
+
 
 @pulumi.output_type
 class GetPlacementGroupsPlacementGroupMemberResult(dict):
@@ -12640,7 +13215,7 @@ class GetPlacementGroupsPlacementGroupMemberResult(dict):
                  linode_id: int):
         """
         :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
-        :param int linode_id: The ID of the Linode.
+        :param int linode_id: The unique identifier for the Linode being migrated out of the placement group.
         """
         pulumi.set(__self__, "is_compliant", is_compliant)
         pulumi.set(__self__, "linode_id", linode_id)
@@ -12657,7 +13232,72 @@ class GetPlacementGroupsPlacementGroupMemberResult(dict):
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> int:
         """
-        The ID of the Linode.
+        The unique identifier for the Linode being migrated out of the placement group.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
+class GetPlacementGroupsPlacementGroupMigrationsResult(dict):
+    def __init__(__self__, *,
+                 inbounds: Sequence['outputs.GetPlacementGroupsPlacementGroupMigrationsInboundResult'],
+                 outbounds: Sequence['outputs.GetPlacementGroupsPlacementGroupMigrationsOutboundResult']):
+        """
+        :param Sequence['GetPlacementGroupsPlacementGroupMigrationsInboundArgs'] inbounds: A list of the Linodes the system is migrating into the placement group.
+        :param Sequence['GetPlacementGroupsPlacementGroupMigrationsOutboundArgs'] outbounds: A list of the Linodes the system is migrating out of the placement group.
+        """
+        pulumi.set(__self__, "inbounds", inbounds)
+        pulumi.set(__self__, "outbounds", outbounds)
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Sequence['outputs.GetPlacementGroupsPlacementGroupMigrationsInboundResult']:
+        """
+        A list of the Linodes the system is migrating into the placement group.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Sequence['outputs.GetPlacementGroupsPlacementGroupMigrationsOutboundResult']:
+        """
+        A list of the Linodes the system is migrating out of the placement group.
+        """
+        return pulumi.get(self, "outbounds")
+
+
+@pulumi.output_type
+class GetPlacementGroupsPlacementGroupMigrationsInboundResult(dict):
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The unique identifier for the Linode being migrated out of the placement group.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The unique identifier for the Linode being migrated out of the placement group.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
+class GetPlacementGroupsPlacementGroupMigrationsOutboundResult(dict):
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The unique identifier for the Linode being migrated out of the placement group.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The unique identifier for the Linode being migrated out of the placement group.
         """
         return pulumi.get(self, "linode_id")
 

@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetPlacementGroupMember;
+import com.pulumi.linode.inputs.GetPlacementGroupMigrations;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -47,11 +48,27 @@ public final class GetPlacementGroupPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.members);
     }
 
+    /**
+     * Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    @Import(name="migrations")
+    private @Nullable GetPlacementGroupMigrations migrations;
+
+    /**
+     * @return Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    public Optional<GetPlacementGroupMigrations> migrations() {
+        return Optional.ofNullable(this.migrations);
+    }
+
     private GetPlacementGroupPlainArgs() {}
 
     private GetPlacementGroupPlainArgs(GetPlacementGroupPlainArgs $) {
         this.id = $.id;
         this.members = $.members;
+        this.migrations = $.migrations;
     }
 
     public static Builder builder() {
@@ -102,6 +119,17 @@ public final class GetPlacementGroupPlainArgs extends com.pulumi.resources.Invok
          */
         public Builder members(GetPlacementGroupMember... members) {
             return members(List.of(members));
+        }
+
+        /**
+         * @param migrations Any Linodes that are being migrated to or from the placement group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrations(@Nullable GetPlacementGroupMigrations migrations) {
+            $.migrations = migrations;
+            return this;
         }
 
         public GetPlacementGroupPlainArgs build() {

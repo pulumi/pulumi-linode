@@ -568,14 +568,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipAddress;
     }
     /**
-     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     * 
+     * * **NOTE: IP reservation is not currently available to all users.**
      * 
      */
     @Export(name="ipv4s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv4s;
 
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return A set of reserved IPv4 addresses to assign to this Linode on creation.
+     * 
+     * * **NOTE: IP reservation is not currently available to all users.**
      * 
      */
     public Output<List<String>> ipv4s() {

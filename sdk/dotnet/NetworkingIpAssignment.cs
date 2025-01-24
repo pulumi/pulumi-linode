@@ -9,14 +9,22 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
+    /// 
+    /// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+    /// </summary>
     [LinodeResourceType("linode:index/networkingIpAssignment:NetworkingIpAssignment")]
     public partial class NetworkingIpAssignment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of IP/Linode assignments to apply.
+        /// </summary>
         [Output("assignments")]
         public Output<ImmutableArray<Outputs.NetworkingIpAssignmentAssignment>> Assignments { get; private set; } = null!;
 
         /// <summary>
-        /// The region for the IP assignments.
+        /// The region where the IP addresses will be assigned.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -69,6 +77,10 @@ namespace Pulumi.Linode
     {
         [Input("assignments")]
         private InputList<Inputs.NetworkingIpAssignmentAssignmentArgs>? _assignments;
+
+        /// <summary>
+        /// A list of IP/Linode assignments to apply.
+        /// </summary>
         public InputList<Inputs.NetworkingIpAssignmentAssignmentArgs> Assignments
         {
             get => _assignments ?? (_assignments = new InputList<Inputs.NetworkingIpAssignmentAssignmentArgs>());
@@ -76,7 +88,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The region for the IP assignments.
+        /// The region where the IP addresses will be assigned.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -91,6 +103,10 @@ namespace Pulumi.Linode
     {
         [Input("assignments")]
         private InputList<Inputs.NetworkingIpAssignmentAssignmentGetArgs>? _assignments;
+
+        /// <summary>
+        /// A list of IP/Linode assignments to apply.
+        /// </summary>
         public InputList<Inputs.NetworkingIpAssignmentAssignmentGetArgs> Assignments
         {
             get => _assignments ?? (_assignments = new InputList<Inputs.NetworkingIpAssignmentAssignmentGetArgs>());
@@ -98,7 +114,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The region for the IP assignments.
+        /// The region where the IP addresses will be assigned.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

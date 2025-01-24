@@ -9,23 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// Manages allocation of reserved IPv4 address in a region and optionally assigning the reserved address to a Linode instance.
+    /// 
+    /// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-allocate-ip).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testIp = new Linode.NetworkingIp("test_ip", new()
+    ///     {
+    ///         Type = "ipv4",
+    ///         LinodeId = 12345,
+    ///         Public = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IP addresses can be imported using the IP address ID, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
+    /// ```
+    /// </summary>
     [LinodeResourceType("linode:index/networkingIp:NetworkingIp")]
     public partial class NetworkingIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The allocated IPv4 address.
+        /// The IP address.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+        /// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
         /// </summary>
         [Output("linodeId")]
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the IPv4 address is public or private.
+        /// Whether the IP address is public. Defaults to true.
         /// </summary>
         [Output("public")]
         public Output<bool> Public { get; private set; } = null!;
@@ -43,7 +76,7 @@ namespace Pulumi.Linode
         public Output<bool> Reserved { get; private set; } = null!;
 
         /// <summary>
-        /// The type of IP address (ipv4).
+        /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -95,13 +128,13 @@ namespace Pulumi.Linode
     public sealed class NetworkingIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+        /// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 address is public or private.
+        /// Whether the IP address is public. Defaults to true.
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
@@ -119,7 +152,7 @@ namespace Pulumi.Linode
         public Input<bool>? Reserved { get; set; }
 
         /// <summary>
-        /// The type of IP address (ipv4).
+        /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -133,19 +166,19 @@ namespace Pulumi.Linode
     public sealed class NetworkingIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The allocated IPv4 address.
+        /// The IP address.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+        /// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 address is public or private.
+        /// Whether the IP address is public. Defaults to true.
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
@@ -163,7 +196,7 @@ namespace Pulumi.Linode
         public Input<bool>? Reserved { get; set; }
 
         /// <summary>
-        /// The type of IP address (ipv4).
+        /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -75,6 +75,44 @@ import (
 //	}
 //
 // ```
+//
+// The following example shows how to grant a key the explicit access to multiple buckets.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewObjectStorageKey(ctx, "foo", &linode.ObjectStorageKeyArgs{
+//				Label: pulumi.String("image-access"),
+//				BucketAccesses: linode.ObjectStorageKeyBucketAccessArray{
+//					&linode.ObjectStorageKeyBucketAccessArgs{
+//						BucketName:  pulumi.String("foobar1"),
+//						Cluster:     pulumi.String("us-east-1"),
+//						Permissions: pulumi.String("read_write"),
+//					},
+//					&linode.ObjectStorageKeyBucketAccessArgs{
+//						BucketName:  pulumi.String("foobar2"),
+//						Cluster:     pulumi.String("us-east-1"),
+//						Permissions: pulumi.String("read_write"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ObjectStorageKey struct {
 	pulumi.CustomResourceState
 

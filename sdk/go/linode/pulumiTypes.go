@@ -226,6 +226,465 @@ func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type DatabaseMysqlV2PendingUpdate struct {
+	Deadline    string `pulumi:"deadline"`
+	Description string `pulumi:"description"`
+	PlannedFor  string `pulumi:"plannedFor"`
+}
+
+// DatabaseMysqlV2PendingUpdateInput is an input type that accepts DatabaseMysqlV2PendingUpdateArgs and DatabaseMysqlV2PendingUpdateOutput values.
+// You can construct a concrete instance of `DatabaseMysqlV2PendingUpdateInput` via:
+//
+//	DatabaseMysqlV2PendingUpdateArgs{...}
+type DatabaseMysqlV2PendingUpdateInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlV2PendingUpdateOutput() DatabaseMysqlV2PendingUpdateOutput
+	ToDatabaseMysqlV2PendingUpdateOutputWithContext(context.Context) DatabaseMysqlV2PendingUpdateOutput
+}
+
+type DatabaseMysqlV2PendingUpdateArgs struct {
+	Deadline    pulumi.StringInput `pulumi:"deadline"`
+	Description pulumi.StringInput `pulumi:"description"`
+	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+}
+
+func (DatabaseMysqlV2PendingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i DatabaseMysqlV2PendingUpdateArgs) ToDatabaseMysqlV2PendingUpdateOutput() DatabaseMysqlV2PendingUpdateOutput {
+	return i.ToDatabaseMysqlV2PendingUpdateOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlV2PendingUpdateArgs) ToDatabaseMysqlV2PendingUpdateOutputWithContext(ctx context.Context) DatabaseMysqlV2PendingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2PendingUpdateOutput)
+}
+
+// DatabaseMysqlV2PendingUpdateArrayInput is an input type that accepts DatabaseMysqlV2PendingUpdateArray and DatabaseMysqlV2PendingUpdateArrayOutput values.
+// You can construct a concrete instance of `DatabaseMysqlV2PendingUpdateArrayInput` via:
+//
+//	DatabaseMysqlV2PendingUpdateArray{ DatabaseMysqlV2PendingUpdateArgs{...} }
+type DatabaseMysqlV2PendingUpdateArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlV2PendingUpdateArrayOutput() DatabaseMysqlV2PendingUpdateArrayOutput
+	ToDatabaseMysqlV2PendingUpdateArrayOutputWithContext(context.Context) DatabaseMysqlV2PendingUpdateArrayOutput
+}
+
+type DatabaseMysqlV2PendingUpdateArray []DatabaseMysqlV2PendingUpdateInput
+
+func (DatabaseMysqlV2PendingUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i DatabaseMysqlV2PendingUpdateArray) ToDatabaseMysqlV2PendingUpdateArrayOutput() DatabaseMysqlV2PendingUpdateArrayOutput {
+	return i.ToDatabaseMysqlV2PendingUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlV2PendingUpdateArray) ToDatabaseMysqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) DatabaseMysqlV2PendingUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2PendingUpdateArrayOutput)
+}
+
+type DatabaseMysqlV2PendingUpdateOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlV2PendingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o DatabaseMysqlV2PendingUpdateOutput) ToDatabaseMysqlV2PendingUpdateOutput() DatabaseMysqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2PendingUpdateOutput) ToDatabaseMysqlV2PendingUpdateOutputWithContext(ctx context.Context) DatabaseMysqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMysqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMysqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
+}
+
+type DatabaseMysqlV2PendingUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlV2PendingUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o DatabaseMysqlV2PendingUpdateArrayOutput) ToDatabaseMysqlV2PendingUpdateArrayOutput() DatabaseMysqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2PendingUpdateArrayOutput) ToDatabaseMysqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) DatabaseMysqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2PendingUpdateArrayOutput) Index(i pulumi.IntInput) DatabaseMysqlV2PendingUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseMysqlV2PendingUpdate {
+		return vs[0].([]DatabaseMysqlV2PendingUpdate)[vs[1].(int)]
+	}).(DatabaseMysqlV2PendingUpdateOutput)
+}
+
+type DatabaseMysqlV2Timeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DatabaseMysqlV2TimeoutsInput is an input type that accepts DatabaseMysqlV2TimeoutsArgs and DatabaseMysqlV2TimeoutsOutput values.
+// You can construct a concrete instance of `DatabaseMysqlV2TimeoutsInput` via:
+//
+//	DatabaseMysqlV2TimeoutsArgs{...}
+type DatabaseMysqlV2TimeoutsInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlV2TimeoutsOutput() DatabaseMysqlV2TimeoutsOutput
+	ToDatabaseMysqlV2TimeoutsOutputWithContext(context.Context) DatabaseMysqlV2TimeoutsOutput
+}
+
+type DatabaseMysqlV2TimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DatabaseMysqlV2TimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlV2Timeouts)(nil)).Elem()
+}
+
+func (i DatabaseMysqlV2TimeoutsArgs) ToDatabaseMysqlV2TimeoutsOutput() DatabaseMysqlV2TimeoutsOutput {
+	return i.ToDatabaseMysqlV2TimeoutsOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlV2TimeoutsArgs) ToDatabaseMysqlV2TimeoutsOutputWithContext(ctx context.Context) DatabaseMysqlV2TimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2TimeoutsOutput)
+}
+
+func (i DatabaseMysqlV2TimeoutsArgs) ToDatabaseMysqlV2TimeoutsPtrOutput() DatabaseMysqlV2TimeoutsPtrOutput {
+	return i.ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlV2TimeoutsArgs) ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2TimeoutsOutput).ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(ctx)
+}
+
+// DatabaseMysqlV2TimeoutsPtrInput is an input type that accepts DatabaseMysqlV2TimeoutsArgs, DatabaseMysqlV2TimeoutsPtr and DatabaseMysqlV2TimeoutsPtrOutput values.
+// You can construct a concrete instance of `DatabaseMysqlV2TimeoutsPtrInput` via:
+//
+//	        DatabaseMysqlV2TimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseMysqlV2TimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlV2TimeoutsPtrOutput() DatabaseMysqlV2TimeoutsPtrOutput
+	ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(context.Context) DatabaseMysqlV2TimeoutsPtrOutput
+}
+
+type databaseMysqlV2TimeoutsPtrType DatabaseMysqlV2TimeoutsArgs
+
+func DatabaseMysqlV2TimeoutsPtr(v *DatabaseMysqlV2TimeoutsArgs) DatabaseMysqlV2TimeoutsPtrInput {
+	return (*databaseMysqlV2TimeoutsPtrType)(v)
+}
+
+func (*databaseMysqlV2TimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMysqlV2Timeouts)(nil)).Elem()
+}
+
+func (i *databaseMysqlV2TimeoutsPtrType) ToDatabaseMysqlV2TimeoutsPtrOutput() DatabaseMysqlV2TimeoutsPtrOutput {
+	return i.ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseMysqlV2TimeoutsPtrType) ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2TimeoutsPtrOutput)
+}
+
+type DatabaseMysqlV2TimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlV2TimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlV2Timeouts)(nil)).Elem()
+}
+
+func (o DatabaseMysqlV2TimeoutsOutput) ToDatabaseMysqlV2TimeoutsOutput() DatabaseMysqlV2TimeoutsOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2TimeoutsOutput) ToDatabaseMysqlV2TimeoutsOutputWithContext(ctx context.Context) DatabaseMysqlV2TimeoutsOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2TimeoutsOutput) ToDatabaseMysqlV2TimeoutsPtrOutput() DatabaseMysqlV2TimeoutsPtrOutput {
+	return o.ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseMysqlV2TimeoutsOutput) ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2TimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMysqlV2Timeouts) *DatabaseMysqlV2Timeouts {
+		return &v
+	}).(DatabaseMysqlV2TimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseMysqlV2TimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Timeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabaseMysqlV2TimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Timeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseMysqlV2TimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Timeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseMysqlV2TimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlV2TimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMysqlV2Timeouts)(nil)).Elem()
+}
+
+func (o DatabaseMysqlV2TimeoutsPtrOutput) ToDatabaseMysqlV2TimeoutsPtrOutput() DatabaseMysqlV2TimeoutsPtrOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2TimeoutsPtrOutput) ToDatabaseMysqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2TimeoutsPtrOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2TimeoutsPtrOutput) Elem() DatabaseMysqlV2TimeoutsOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Timeouts) DatabaseMysqlV2Timeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseMysqlV2Timeouts
+		return ret
+	}).(DatabaseMysqlV2TimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseMysqlV2TimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabaseMysqlV2TimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseMysqlV2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseMysqlV2Updates struct {
+	DayOfWeek int    `pulumi:"dayOfWeek"`
+	Duration  int    `pulumi:"duration"`
+	Frequency string `pulumi:"frequency"`
+	HourOfDay int    `pulumi:"hourOfDay"`
+}
+
+// DatabaseMysqlV2UpdatesInput is an input type that accepts DatabaseMysqlV2UpdatesArgs and DatabaseMysqlV2UpdatesOutput values.
+// You can construct a concrete instance of `DatabaseMysqlV2UpdatesInput` via:
+//
+//	DatabaseMysqlV2UpdatesArgs{...}
+type DatabaseMysqlV2UpdatesInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlV2UpdatesOutput() DatabaseMysqlV2UpdatesOutput
+	ToDatabaseMysqlV2UpdatesOutputWithContext(context.Context) DatabaseMysqlV2UpdatesOutput
+}
+
+type DatabaseMysqlV2UpdatesArgs struct {
+	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
+	Duration  pulumi.IntInput    `pulumi:"duration"`
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+}
+
+func (DatabaseMysqlV2UpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlV2Updates)(nil)).Elem()
+}
+
+func (i DatabaseMysqlV2UpdatesArgs) ToDatabaseMysqlV2UpdatesOutput() DatabaseMysqlV2UpdatesOutput {
+	return i.ToDatabaseMysqlV2UpdatesOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlV2UpdatesArgs) ToDatabaseMysqlV2UpdatesOutputWithContext(ctx context.Context) DatabaseMysqlV2UpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2UpdatesOutput)
+}
+
+func (i DatabaseMysqlV2UpdatesArgs) ToDatabaseMysqlV2UpdatesPtrOutput() DatabaseMysqlV2UpdatesPtrOutput {
+	return i.ToDatabaseMysqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseMysqlV2UpdatesArgs) ToDatabaseMysqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2UpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2UpdatesOutput).ToDatabaseMysqlV2UpdatesPtrOutputWithContext(ctx)
+}
+
+// DatabaseMysqlV2UpdatesPtrInput is an input type that accepts DatabaseMysqlV2UpdatesArgs, DatabaseMysqlV2UpdatesPtr and DatabaseMysqlV2UpdatesPtrOutput values.
+// You can construct a concrete instance of `DatabaseMysqlV2UpdatesPtrInput` via:
+//
+//	        DatabaseMysqlV2UpdatesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseMysqlV2UpdatesPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseMysqlV2UpdatesPtrOutput() DatabaseMysqlV2UpdatesPtrOutput
+	ToDatabaseMysqlV2UpdatesPtrOutputWithContext(context.Context) DatabaseMysqlV2UpdatesPtrOutput
+}
+
+type databaseMysqlV2UpdatesPtrType DatabaseMysqlV2UpdatesArgs
+
+func DatabaseMysqlV2UpdatesPtr(v *DatabaseMysqlV2UpdatesArgs) DatabaseMysqlV2UpdatesPtrInput {
+	return (*databaseMysqlV2UpdatesPtrType)(v)
+}
+
+func (*databaseMysqlV2UpdatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMysqlV2Updates)(nil)).Elem()
+}
+
+func (i *databaseMysqlV2UpdatesPtrType) ToDatabaseMysqlV2UpdatesPtrOutput() DatabaseMysqlV2UpdatesPtrOutput {
+	return i.ToDatabaseMysqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseMysqlV2UpdatesPtrType) ToDatabaseMysqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2UpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlV2UpdatesPtrOutput)
+}
+
+type DatabaseMysqlV2UpdatesOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlV2UpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMysqlV2Updates)(nil)).Elem()
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) ToDatabaseMysqlV2UpdatesOutput() DatabaseMysqlV2UpdatesOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) ToDatabaseMysqlV2UpdatesOutputWithContext(ctx context.Context) DatabaseMysqlV2UpdatesOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) ToDatabaseMysqlV2UpdatesPtrOutput() DatabaseMysqlV2UpdatesPtrOutput {
+	return o.ToDatabaseMysqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) ToDatabaseMysqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2UpdatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMysqlV2Updates) *DatabaseMysqlV2Updates {
+		return &v
+	}).(DatabaseMysqlV2UpdatesPtrOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+type DatabaseMysqlV2UpdatesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMysqlV2UpdatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMysqlV2Updates)(nil)).Elem()
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) ToDatabaseMysqlV2UpdatesPtrOutput() DatabaseMysqlV2UpdatesPtrOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) ToDatabaseMysqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlV2UpdatesPtrOutput {
+	return o
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) Elem() DatabaseMysqlV2UpdatesOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Updates) DatabaseMysqlV2Updates {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseMysqlV2Updates
+		return ret
+	}).(DatabaseMysqlV2UpdatesOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseMysqlV2UpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
 type DatabasePostgresqlUpdates struct {
 	// The day to perform maintenance.
 	DayOfWeek string `pulumi:"dayOfWeek"`
@@ -436,6 +895,465 @@ func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.WeekOfMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+type DatabasePostgresqlV2PendingUpdate struct {
+	Deadline    string `pulumi:"deadline"`
+	Description string `pulumi:"description"`
+	PlannedFor  string `pulumi:"plannedFor"`
+}
+
+// DatabasePostgresqlV2PendingUpdateInput is an input type that accepts DatabasePostgresqlV2PendingUpdateArgs and DatabasePostgresqlV2PendingUpdateOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlV2PendingUpdateInput` via:
+//
+//	DatabasePostgresqlV2PendingUpdateArgs{...}
+type DatabasePostgresqlV2PendingUpdateInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlV2PendingUpdateOutput() DatabasePostgresqlV2PendingUpdateOutput
+	ToDatabasePostgresqlV2PendingUpdateOutputWithContext(context.Context) DatabasePostgresqlV2PendingUpdateOutput
+}
+
+type DatabasePostgresqlV2PendingUpdateArgs struct {
+	Deadline    pulumi.StringInput `pulumi:"deadline"`
+	Description pulumi.StringInput `pulumi:"description"`
+	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+}
+
+func (DatabasePostgresqlV2PendingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlV2PendingUpdateArgs) ToDatabasePostgresqlV2PendingUpdateOutput() DatabasePostgresqlV2PendingUpdateOutput {
+	return i.ToDatabasePostgresqlV2PendingUpdateOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlV2PendingUpdateArgs) ToDatabasePostgresqlV2PendingUpdateOutputWithContext(ctx context.Context) DatabasePostgresqlV2PendingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2PendingUpdateOutput)
+}
+
+// DatabasePostgresqlV2PendingUpdateArrayInput is an input type that accepts DatabasePostgresqlV2PendingUpdateArray and DatabasePostgresqlV2PendingUpdateArrayOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlV2PendingUpdateArrayInput` via:
+//
+//	DatabasePostgresqlV2PendingUpdateArray{ DatabasePostgresqlV2PendingUpdateArgs{...} }
+type DatabasePostgresqlV2PendingUpdateArrayInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlV2PendingUpdateArrayOutput() DatabasePostgresqlV2PendingUpdateArrayOutput
+	ToDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(context.Context) DatabasePostgresqlV2PendingUpdateArrayOutput
+}
+
+type DatabasePostgresqlV2PendingUpdateArray []DatabasePostgresqlV2PendingUpdateInput
+
+func (DatabasePostgresqlV2PendingUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlV2PendingUpdateArray) ToDatabasePostgresqlV2PendingUpdateArrayOutput() DatabasePostgresqlV2PendingUpdateArrayOutput {
+	return i.ToDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlV2PendingUpdateArray) ToDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) DatabasePostgresqlV2PendingUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2PendingUpdateArrayOutput)
+}
+
+type DatabasePostgresqlV2PendingUpdateOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlV2PendingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlV2PendingUpdateOutput) ToDatabasePostgresqlV2PendingUpdateOutput() DatabasePostgresqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2PendingUpdateOutput) ToDatabasePostgresqlV2PendingUpdateOutputWithContext(ctx context.Context) DatabasePostgresqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
+}
+
+func (o DatabasePostgresqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o DatabasePostgresqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
+}
+
+type DatabasePostgresqlV2PendingUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlV2PendingUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlV2PendingUpdateArrayOutput) ToDatabasePostgresqlV2PendingUpdateArrayOutput() DatabasePostgresqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2PendingUpdateArrayOutput) ToDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) DatabasePostgresqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2PendingUpdateArrayOutput) Index(i pulumi.IntInput) DatabasePostgresqlV2PendingUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabasePostgresqlV2PendingUpdate {
+		return vs[0].([]DatabasePostgresqlV2PendingUpdate)[vs[1].(int)]
+	}).(DatabasePostgresqlV2PendingUpdateOutput)
+}
+
+type DatabasePostgresqlV2Timeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DatabasePostgresqlV2TimeoutsInput is an input type that accepts DatabasePostgresqlV2TimeoutsArgs and DatabasePostgresqlV2TimeoutsOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlV2TimeoutsInput` via:
+//
+//	DatabasePostgresqlV2TimeoutsArgs{...}
+type DatabasePostgresqlV2TimeoutsInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlV2TimeoutsOutput() DatabasePostgresqlV2TimeoutsOutput
+	ToDatabasePostgresqlV2TimeoutsOutputWithContext(context.Context) DatabasePostgresqlV2TimeoutsOutput
+}
+
+type DatabasePostgresqlV2TimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DatabasePostgresqlV2TimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlV2Timeouts)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlV2TimeoutsArgs) ToDatabasePostgresqlV2TimeoutsOutput() DatabasePostgresqlV2TimeoutsOutput {
+	return i.ToDatabasePostgresqlV2TimeoutsOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlV2TimeoutsArgs) ToDatabasePostgresqlV2TimeoutsOutputWithContext(ctx context.Context) DatabasePostgresqlV2TimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2TimeoutsOutput)
+}
+
+func (i DatabasePostgresqlV2TimeoutsArgs) ToDatabasePostgresqlV2TimeoutsPtrOutput() DatabasePostgresqlV2TimeoutsPtrOutput {
+	return i.ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlV2TimeoutsArgs) ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2TimeoutsOutput).ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(ctx)
+}
+
+// DatabasePostgresqlV2TimeoutsPtrInput is an input type that accepts DatabasePostgresqlV2TimeoutsArgs, DatabasePostgresqlV2TimeoutsPtr and DatabasePostgresqlV2TimeoutsPtrOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlV2TimeoutsPtrInput` via:
+//
+//	        DatabasePostgresqlV2TimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabasePostgresqlV2TimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlV2TimeoutsPtrOutput() DatabasePostgresqlV2TimeoutsPtrOutput
+	ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(context.Context) DatabasePostgresqlV2TimeoutsPtrOutput
+}
+
+type databasePostgresqlV2TimeoutsPtrType DatabasePostgresqlV2TimeoutsArgs
+
+func DatabasePostgresqlV2TimeoutsPtr(v *DatabasePostgresqlV2TimeoutsArgs) DatabasePostgresqlV2TimeoutsPtrInput {
+	return (*databasePostgresqlV2TimeoutsPtrType)(v)
+}
+
+func (*databasePostgresqlV2TimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePostgresqlV2Timeouts)(nil)).Elem()
+}
+
+func (i *databasePostgresqlV2TimeoutsPtrType) ToDatabasePostgresqlV2TimeoutsPtrOutput() DatabasePostgresqlV2TimeoutsPtrOutput {
+	return i.ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *databasePostgresqlV2TimeoutsPtrType) ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2TimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2TimeoutsPtrOutput)
+}
+
+type DatabasePostgresqlV2TimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlV2TimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlV2Timeouts)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlV2TimeoutsOutput) ToDatabasePostgresqlV2TimeoutsOutput() DatabasePostgresqlV2TimeoutsOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2TimeoutsOutput) ToDatabasePostgresqlV2TimeoutsOutputWithContext(ctx context.Context) DatabasePostgresqlV2TimeoutsOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2TimeoutsOutput) ToDatabasePostgresqlV2TimeoutsPtrOutput() DatabasePostgresqlV2TimeoutsPtrOutput {
+	return o.ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePostgresqlV2TimeoutsOutput) ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2TimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabasePostgresqlV2Timeouts) *DatabasePostgresqlV2Timeouts {
+		return &v
+	}).(DatabasePostgresqlV2TimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabasePostgresqlV2TimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Timeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabasePostgresqlV2TimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Timeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabasePostgresqlV2TimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Timeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DatabasePostgresqlV2TimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlV2TimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePostgresqlV2Timeouts)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlV2TimeoutsPtrOutput) ToDatabasePostgresqlV2TimeoutsPtrOutput() DatabasePostgresqlV2TimeoutsPtrOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2TimeoutsPtrOutput) ToDatabasePostgresqlV2TimeoutsPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2TimeoutsPtrOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2TimeoutsPtrOutput) Elem() DatabasePostgresqlV2TimeoutsOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Timeouts) DatabasePostgresqlV2Timeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasePostgresqlV2Timeouts
+		return ret
+	}).(DatabasePostgresqlV2TimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabasePostgresqlV2TimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabasePostgresqlV2TimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabasePostgresqlV2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Timeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabasePostgresqlV2Updates struct {
+	DayOfWeek int    `pulumi:"dayOfWeek"`
+	Duration  int    `pulumi:"duration"`
+	Frequency string `pulumi:"frequency"`
+	HourOfDay int    `pulumi:"hourOfDay"`
+}
+
+// DatabasePostgresqlV2UpdatesInput is an input type that accepts DatabasePostgresqlV2UpdatesArgs and DatabasePostgresqlV2UpdatesOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlV2UpdatesInput` via:
+//
+//	DatabasePostgresqlV2UpdatesArgs{...}
+type DatabasePostgresqlV2UpdatesInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlV2UpdatesOutput() DatabasePostgresqlV2UpdatesOutput
+	ToDatabasePostgresqlV2UpdatesOutputWithContext(context.Context) DatabasePostgresqlV2UpdatesOutput
+}
+
+type DatabasePostgresqlV2UpdatesArgs struct {
+	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
+	Duration  pulumi.IntInput    `pulumi:"duration"`
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+}
+
+func (DatabasePostgresqlV2UpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlV2UpdatesArgs) ToDatabasePostgresqlV2UpdatesOutput() DatabasePostgresqlV2UpdatesOutput {
+	return i.ToDatabasePostgresqlV2UpdatesOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlV2UpdatesArgs) ToDatabasePostgresqlV2UpdatesOutputWithContext(ctx context.Context) DatabasePostgresqlV2UpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2UpdatesOutput)
+}
+
+func (i DatabasePostgresqlV2UpdatesArgs) ToDatabasePostgresqlV2UpdatesPtrOutput() DatabasePostgresqlV2UpdatesPtrOutput {
+	return i.ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlV2UpdatesArgs) ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2UpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2UpdatesOutput).ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx)
+}
+
+// DatabasePostgresqlV2UpdatesPtrInput is an input type that accepts DatabasePostgresqlV2UpdatesArgs, DatabasePostgresqlV2UpdatesPtr and DatabasePostgresqlV2UpdatesPtrOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlV2UpdatesPtrInput` via:
+//
+//	        DatabasePostgresqlV2UpdatesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabasePostgresqlV2UpdatesPtrInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlV2UpdatesPtrOutput() DatabasePostgresqlV2UpdatesPtrOutput
+	ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Context) DatabasePostgresqlV2UpdatesPtrOutput
+}
+
+type databasePostgresqlV2UpdatesPtrType DatabasePostgresqlV2UpdatesArgs
+
+func DatabasePostgresqlV2UpdatesPtr(v *DatabasePostgresqlV2UpdatesArgs) DatabasePostgresqlV2UpdatesPtrInput {
+	return (*databasePostgresqlV2UpdatesPtrType)(v)
+}
+
+func (*databasePostgresqlV2UpdatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (i *databasePostgresqlV2UpdatesPtrType) ToDatabasePostgresqlV2UpdatesPtrOutput() DatabasePostgresqlV2UpdatesPtrOutput {
+	return i.ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i *databasePostgresqlV2UpdatesPtrType) ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2UpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlV2UpdatesPtrOutput)
+}
+
+type DatabasePostgresqlV2UpdatesOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlV2UpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) ToDatabasePostgresqlV2UpdatesOutput() DatabasePostgresqlV2UpdatesOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) ToDatabasePostgresqlV2UpdatesOutputWithContext(ctx context.Context) DatabasePostgresqlV2UpdatesOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) ToDatabasePostgresqlV2UpdatesPtrOutput() DatabasePostgresqlV2UpdatesPtrOutput {
+	return o.ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2UpdatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabasePostgresqlV2Updates) *DatabasePostgresqlV2Updates {
+		return &v
+	}).(DatabasePostgresqlV2UpdatesPtrOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+type DatabasePostgresqlV2UpdatesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlV2UpdatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) ToDatabasePostgresqlV2UpdatesPtrOutput() DatabasePostgresqlV2UpdatesPtrOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) ToDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlV2UpdatesPtrOutput {
+	return o
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) Elem() DatabasePostgresqlV2UpdatesOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) DatabasePostgresqlV2Updates {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasePostgresqlV2Updates
+		return ret
+	}).(DatabasePostgresqlV2UpdatesOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabasePostgresqlV2UpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -4540,7 +5458,9 @@ type InstanceInterface struct {
 	IpRanges []string `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress *string `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4 *InstanceInterfaceIpv4 `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label *string `pulumi:"label"`
@@ -4578,7 +5498,9 @@ type InstanceInterfaceArgs struct {
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
 	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4 InstanceInterfaceIpv4PtrInput `pulumi:"ipv4"`
 	// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
 	Label pulumi.StringPtrInput `pulumi:"label"`
@@ -4667,7 +5589,9 @@ func (o InstanceInterfaceOutput) IpamAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
 func (o InstanceInterfaceOutput) Ipv4() InstanceInterfaceIpv4PtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *InstanceInterfaceIpv4 { return v.Ipv4 }).(InstanceInterfaceIpv4PtrOutput)
 }
@@ -5293,8 +6217,12 @@ func (o InstancePlacementGroupPtrOutput) PlacementGroupType() pulumi.StringPtrOu
 }
 
 type InstanceSpecs struct {
+	// The number of VPUs this Linode has access to.
+	AcceleratedDevices *int `pulumi:"acceleratedDevices"`
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk *int `pulumi:"disk"`
+	// The number of GPUs this Linode has access to.
+	Gpus *int `pulumi:"gpus"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory *int `pulumi:"memory"`
 	// The amount of network transfer this Linode is allotted each month.
@@ -5315,8 +6243,12 @@ type InstanceSpecsInput interface {
 }
 
 type InstanceSpecsArgs struct {
+	// The number of VPUs this Linode has access to.
+	AcceleratedDevices pulumi.IntPtrInput `pulumi:"acceleratedDevices"`
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// The number of GPUs this Linode has access to.
+	Gpus pulumi.IntPtrInput `pulumi:"gpus"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory pulumi.IntPtrInput `pulumi:"memory"`
 	// The amount of network transfer this Linode is allotted each month.
@@ -5402,9 +6334,19 @@ func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Con
 	}).(InstanceSpecsPtrOutput)
 }
 
+// The number of VPUs this Linode has access to.
+func (o InstanceSpecsOutput) AcceleratedDevices() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.AcceleratedDevices }).(pulumi.IntPtrOutput)
+}
+
 // The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// The number of GPUs this Linode has access to.
+func (o InstanceSpecsOutput) Gpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpecs) *int { return v.Gpus }).(pulumi.IntPtrOutput)
 }
 
 // The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
@@ -5446,6 +6388,16 @@ func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
 	}).(InstanceSpecsOutput)
 }
 
+// The number of VPUs this Linode has access to.
+func (o InstanceSpecsPtrOutput) AcceleratedDevices() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceSpecs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratedDevices
+	}).(pulumi.IntPtrOutput)
+}
+
 // The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSpecs) *int {
@@ -5453,6 +6405,16 @@ func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of GPUs this Linode has access to.
+func (o InstanceSpecsPtrOutput) Gpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceSpecs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Gpus
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -6868,8 +7830,10 @@ func (o LkeNodePoolTaintArrayOutput) Index(i pulumi.IntInput) LkeNodePoolTaintOu
 }
 
 type NetworkingIpAssignmentAssignment struct {
-	Address  string `pulumi:"address"`
-	LinodeId int    `pulumi:"linodeId"`
+	// The IPv4 address or IPv6 range to assign.
+	Address string `pulumi:"address"`
+	// The ID of the Linode to which the IP address will be assigned.
+	LinodeId int `pulumi:"linodeId"`
 }
 
 // NetworkingIpAssignmentAssignmentInput is an input type that accepts NetworkingIpAssignmentAssignmentArgs and NetworkingIpAssignmentAssignmentOutput values.
@@ -6884,8 +7848,10 @@ type NetworkingIpAssignmentAssignmentInput interface {
 }
 
 type NetworkingIpAssignmentAssignmentArgs struct {
-	Address  pulumi.StringInput `pulumi:"address"`
-	LinodeId pulumi.IntInput    `pulumi:"linodeId"`
+	// The IPv4 address or IPv6 range to assign.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The ID of the Linode to which the IP address will be assigned.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 }
 
 func (NetworkingIpAssignmentAssignmentArgs) ElementType() reflect.Type {
@@ -6939,10 +7905,12 @@ func (o NetworkingIpAssignmentAssignmentOutput) ToNetworkingIpAssignmentAssignme
 	return o
 }
 
+// The IPv4 address or IPv6 range to assign.
 func (o NetworkingIpAssignmentAssignmentOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkingIpAssignmentAssignment) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The ID of the Linode to which the IP address will be assigned.
 func (o NetworkingIpAssignmentAssignmentOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkingIpAssignmentAssignment) int { return v.LinodeId }).(pulumi.IntOutput)
 }
@@ -12263,6 +13231,179 @@ func (o GetDatabaseMysqlUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseM
 	}).(GetDatabaseMysqlUpdateOutput)
 }
 
+type GetDatabaseMysqlV2PendingUpdate struct {
+	Deadline    string `pulumi:"deadline"`
+	Description string `pulumi:"description"`
+	PlannedFor  string `pulumi:"plannedFor"`
+}
+
+// GetDatabaseMysqlV2PendingUpdateInput is an input type that accepts GetDatabaseMysqlV2PendingUpdateArgs and GetDatabaseMysqlV2PendingUpdateOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlV2PendingUpdateInput` via:
+//
+//	GetDatabaseMysqlV2PendingUpdateArgs{...}
+type GetDatabaseMysqlV2PendingUpdateInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlV2PendingUpdateOutput() GetDatabaseMysqlV2PendingUpdateOutput
+	ToGetDatabaseMysqlV2PendingUpdateOutputWithContext(context.Context) GetDatabaseMysqlV2PendingUpdateOutput
+}
+
+type GetDatabaseMysqlV2PendingUpdateArgs struct {
+	Deadline    pulumi.StringInput `pulumi:"deadline"`
+	Description pulumi.StringInput `pulumi:"description"`
+	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+}
+
+func (GetDatabaseMysqlV2PendingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlV2PendingUpdateArgs) ToGetDatabaseMysqlV2PendingUpdateOutput() GetDatabaseMysqlV2PendingUpdateOutput {
+	return i.ToGetDatabaseMysqlV2PendingUpdateOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlV2PendingUpdateArgs) ToGetDatabaseMysqlV2PendingUpdateOutputWithContext(ctx context.Context) GetDatabaseMysqlV2PendingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlV2PendingUpdateOutput)
+}
+
+// GetDatabaseMysqlV2PendingUpdateArrayInput is an input type that accepts GetDatabaseMysqlV2PendingUpdateArray and GetDatabaseMysqlV2PendingUpdateArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlV2PendingUpdateArrayInput` via:
+//
+//	GetDatabaseMysqlV2PendingUpdateArray{ GetDatabaseMysqlV2PendingUpdateArgs{...} }
+type GetDatabaseMysqlV2PendingUpdateArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlV2PendingUpdateArrayOutput() GetDatabaseMysqlV2PendingUpdateArrayOutput
+	ToGetDatabaseMysqlV2PendingUpdateArrayOutputWithContext(context.Context) GetDatabaseMysqlV2PendingUpdateArrayOutput
+}
+
+type GetDatabaseMysqlV2PendingUpdateArray []GetDatabaseMysqlV2PendingUpdateInput
+
+func (GetDatabaseMysqlV2PendingUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlV2PendingUpdateArray) ToGetDatabaseMysqlV2PendingUpdateArrayOutput() GetDatabaseMysqlV2PendingUpdateArrayOutput {
+	return i.ToGetDatabaseMysqlV2PendingUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlV2PendingUpdateArray) ToGetDatabaseMysqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlV2PendingUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlV2PendingUpdateArrayOutput)
+}
+
+type GetDatabaseMysqlV2PendingUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlV2PendingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateOutput) ToGetDatabaseMysqlV2PendingUpdateOutput() GetDatabaseMysqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateOutput) ToGetDatabaseMysqlV2PendingUpdateOutputWithContext(ctx context.Context) GetDatabaseMysqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlV2PendingUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlV2PendingUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateArrayOutput) ToGetDatabaseMysqlV2PendingUpdateArrayOutput() GetDatabaseMysqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateArrayOutput) ToGetDatabaseMysqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlV2PendingUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlV2PendingUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlV2PendingUpdate {
+		return vs[0].([]GetDatabaseMysqlV2PendingUpdate)[vs[1].(int)]
+	}).(GetDatabaseMysqlV2PendingUpdateOutput)
+}
+
+type GetDatabaseMysqlV2Updates struct {
+	DayOfWeek int    `pulumi:"dayOfWeek"`
+	Duration  int    `pulumi:"duration"`
+	Frequency string `pulumi:"frequency"`
+	HourOfDay int    `pulumi:"hourOfDay"`
+}
+
+// GetDatabaseMysqlV2UpdatesInput is an input type that accepts GetDatabaseMysqlV2UpdatesArgs and GetDatabaseMysqlV2UpdatesOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlV2UpdatesInput` via:
+//
+//	GetDatabaseMysqlV2UpdatesArgs{...}
+type GetDatabaseMysqlV2UpdatesInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlV2UpdatesOutput() GetDatabaseMysqlV2UpdatesOutput
+	ToGetDatabaseMysqlV2UpdatesOutputWithContext(context.Context) GetDatabaseMysqlV2UpdatesOutput
+}
+
+type GetDatabaseMysqlV2UpdatesArgs struct {
+	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
+	Duration  pulumi.IntInput    `pulumi:"duration"`
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+}
+
+func (GetDatabaseMysqlV2UpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlV2Updates)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlV2UpdatesArgs) ToGetDatabaseMysqlV2UpdatesOutput() GetDatabaseMysqlV2UpdatesOutput {
+	return i.ToGetDatabaseMysqlV2UpdatesOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlV2UpdatesArgs) ToGetDatabaseMysqlV2UpdatesOutputWithContext(ctx context.Context) GetDatabaseMysqlV2UpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlV2UpdatesOutput)
+}
+
+type GetDatabaseMysqlV2UpdatesOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlV2UpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlV2Updates)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlV2UpdatesOutput) ToGetDatabaseMysqlV2UpdatesOutput() GetDatabaseMysqlV2UpdatesOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlV2UpdatesOutput) ToGetDatabaseMysqlV2UpdatesOutputWithContext(ctx context.Context) GetDatabaseMysqlV2UpdatesOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
 type GetDatabasePostgresqlUpdate struct {
 	DayOfWeek   string `pulumi:"dayOfWeek"`
 	Duration    int    `pulumi:"duration"`
@@ -12379,6 +13520,179 @@ func (o GetDatabasePostgresqlUpdateArrayOutput) Index(i pulumi.IntInput) GetData
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlUpdate {
 		return vs[0].([]GetDatabasePostgresqlUpdate)[vs[1].(int)]
 	}).(GetDatabasePostgresqlUpdateOutput)
+}
+
+type GetDatabasePostgresqlV2PendingUpdate struct {
+	Deadline    string `pulumi:"deadline"`
+	Description string `pulumi:"description"`
+	PlannedFor  string `pulumi:"plannedFor"`
+}
+
+// GetDatabasePostgresqlV2PendingUpdateInput is an input type that accepts GetDatabasePostgresqlV2PendingUpdateArgs and GetDatabasePostgresqlV2PendingUpdateOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlV2PendingUpdateInput` via:
+//
+//	GetDatabasePostgresqlV2PendingUpdateArgs{...}
+type GetDatabasePostgresqlV2PendingUpdateInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlV2PendingUpdateOutput() GetDatabasePostgresqlV2PendingUpdateOutput
+	ToGetDatabasePostgresqlV2PendingUpdateOutputWithContext(context.Context) GetDatabasePostgresqlV2PendingUpdateOutput
+}
+
+type GetDatabasePostgresqlV2PendingUpdateArgs struct {
+	Deadline    pulumi.StringInput `pulumi:"deadline"`
+	Description pulumi.StringInput `pulumi:"description"`
+	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+}
+
+func (GetDatabasePostgresqlV2PendingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlV2PendingUpdateArgs) ToGetDatabasePostgresqlV2PendingUpdateOutput() GetDatabasePostgresqlV2PendingUpdateOutput {
+	return i.ToGetDatabasePostgresqlV2PendingUpdateOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlV2PendingUpdateArgs) ToGetDatabasePostgresqlV2PendingUpdateOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2PendingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlV2PendingUpdateOutput)
+}
+
+// GetDatabasePostgresqlV2PendingUpdateArrayInput is an input type that accepts GetDatabasePostgresqlV2PendingUpdateArray and GetDatabasePostgresqlV2PendingUpdateArrayOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlV2PendingUpdateArrayInput` via:
+//
+//	GetDatabasePostgresqlV2PendingUpdateArray{ GetDatabasePostgresqlV2PendingUpdateArgs{...} }
+type GetDatabasePostgresqlV2PendingUpdateArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlV2PendingUpdateArrayOutput() GetDatabasePostgresqlV2PendingUpdateArrayOutput
+	ToGetDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(context.Context) GetDatabasePostgresqlV2PendingUpdateArrayOutput
+}
+
+type GetDatabasePostgresqlV2PendingUpdateArray []GetDatabasePostgresqlV2PendingUpdateInput
+
+func (GetDatabasePostgresqlV2PendingUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlV2PendingUpdateArray) ToGetDatabasePostgresqlV2PendingUpdateArrayOutput() GetDatabasePostgresqlV2PendingUpdateArrayOutput {
+	return i.ToGetDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlV2PendingUpdateArray) ToGetDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2PendingUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlV2PendingUpdateArrayOutput)
+}
+
+type GetDatabasePostgresqlV2PendingUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlV2PendingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateOutput) ToGetDatabasePostgresqlV2PendingUpdateOutput() GetDatabasePostgresqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateOutput) ToGetDatabasePostgresqlV2PendingUpdateOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2PendingUpdateOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
+}
+
+type GetDatabasePostgresqlV2PendingUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlV2PendingUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlV2PendingUpdate)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateArrayOutput) ToGetDatabasePostgresqlV2PendingUpdateArrayOutput() GetDatabasePostgresqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateArrayOutput) ToGetDatabasePostgresqlV2PendingUpdateArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2PendingUpdateArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2PendingUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlV2PendingUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlV2PendingUpdate {
+		return vs[0].([]GetDatabasePostgresqlV2PendingUpdate)[vs[1].(int)]
+	}).(GetDatabasePostgresqlV2PendingUpdateOutput)
+}
+
+type GetDatabasePostgresqlV2Updates struct {
+	DayOfWeek int    `pulumi:"dayOfWeek"`
+	Duration  int    `pulumi:"duration"`
+	Frequency string `pulumi:"frequency"`
+	HourOfDay int    `pulumi:"hourOfDay"`
+}
+
+// GetDatabasePostgresqlV2UpdatesInput is an input type that accepts GetDatabasePostgresqlV2UpdatesArgs and GetDatabasePostgresqlV2UpdatesOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlV2UpdatesInput` via:
+//
+//	GetDatabasePostgresqlV2UpdatesArgs{...}
+type GetDatabasePostgresqlV2UpdatesInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlV2UpdatesOutput() GetDatabasePostgresqlV2UpdatesOutput
+	ToGetDatabasePostgresqlV2UpdatesOutputWithContext(context.Context) GetDatabasePostgresqlV2UpdatesOutput
+}
+
+type GetDatabasePostgresqlV2UpdatesArgs struct {
+	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
+	Duration  pulumi.IntInput    `pulumi:"duration"`
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+}
+
+func (GetDatabasePostgresqlV2UpdatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlV2UpdatesArgs) ToGetDatabasePostgresqlV2UpdatesOutput() GetDatabasePostgresqlV2UpdatesOutput {
+	return i.ToGetDatabasePostgresqlV2UpdatesOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlV2UpdatesArgs) ToGetDatabasePostgresqlV2UpdatesOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlV2UpdatesOutput)
+}
+
+type GetDatabasePostgresqlV2UpdatesOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlV2UpdatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) ToGetDatabasePostgresqlV2UpdatesOutput() GetDatabasePostgresqlV2UpdatesOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) ToGetDatabasePostgresqlV2UpdatesOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
 }
 
 type GetDatabasesDatabase struct {
@@ -18267,6 +19581,8 @@ func (o GetInstanceTypesFilterArrayOutput) Index(i pulumi.IntInput) GetInstanceT
 }
 
 type GetInstanceTypesType struct {
+	// The number of VPUs this Linode Type offers.
+	AcceleratedDevices int `pulumi:"acceleratedDevices"`
 	// Information about the optional Backup service offered for Linodes.
 	Addons []GetInstanceTypesTypeAddon `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
@@ -18303,6 +19619,8 @@ type GetInstanceTypesTypeInput interface {
 }
 
 type GetInstanceTypesTypeArgs struct {
+	// The number of VPUs this Linode Type offers.
+	AcceleratedDevices pulumi.IntInput `pulumi:"acceleratedDevices"`
 	// Information about the optional Backup service offered for Linodes.
 	Addons GetInstanceTypesTypeAddonArrayInput `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
@@ -18376,6 +19694,11 @@ func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutput() GetInstanceTy
 
 func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutputWithContext(ctx context.Context) GetInstanceTypesTypeOutput {
 	return o
+}
+
+// The number of VPUs this Linode Type offers.
+func (o GetInstanceTypesTypeOutput) AcceleratedDevices() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.AcceleratedDevices }).(pulumi.IntOutput)
 }
 
 // Information about the optional Backup service offered for Linodes.
@@ -21701,8 +23024,12 @@ func (o GetInstancesInstancePlacementGroupArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstancesInstanceSpec struct {
+	// The number of VPUs this Linode has access to.
+	AcceleratedDevices int `pulumi:"acceleratedDevices"`
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk int `pulumi:"disk"`
+	// The number of GPUs this Linode has access to.
+	Gpus int `pulumi:"gpus"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory int `pulumi:"memory"`
 	// The amount of network transfer this Linode is allotted each month.
@@ -21723,8 +23050,12 @@ type GetInstancesInstanceSpecInput interface {
 }
 
 type GetInstancesInstanceSpecArgs struct {
+	// The number of VPUs this Linode has access to.
+	AcceleratedDevices pulumi.IntInput `pulumi:"acceleratedDevices"`
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 	Disk pulumi.IntInput `pulumi:"disk"`
+	// The number of GPUs this Linode has access to.
+	Gpus pulumi.IntInput `pulumi:"gpus"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The amount of network transfer this Linode is allotted each month.
@@ -21784,9 +23115,19 @@ func (o GetInstancesInstanceSpecOutput) ToGetInstancesInstanceSpecOutputWithCont
 	return o
 }
 
+// The number of VPUs this Linode has access to.
+func (o GetInstancesInstanceSpecOutput) AcceleratedDevices() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.AcceleratedDevices }).(pulumi.IntOutput)
+}
+
 // The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
 func (o GetInstancesInstanceSpecOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// The number of GPUs this Linode has access to.
+func (o GetInstancesInstanceSpecOutput) Gpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstanceSpec) int { return v.Gpus }).(pulumi.IntOutput)
 }
 
 // The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
@@ -25193,11 +26534,11 @@ func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetNetworkingIpsFilter struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name string `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values []string `pulumi:"values"`
 }
 
@@ -25213,11 +26554,11 @@ type GetNetworkingIpsFilterInput interface {
 }
 
 type GetNetworkingIpsFilterArgs struct {
-	// The type of comparison to use for this filter.
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value(s) to be used in the filter.
+	// A list of values for the filter to allow. These values should all be in string form.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -25272,17 +26613,17 @@ func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutputWithContext(
 	return o
 }
 
-// The type of comparison to use for this filter.
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 func (o GetNetworkingIpsFilterOutput) MatchBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkingIpsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
 }
 
-// The name of the attribute to filter on.
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
 func (o GetNetworkingIpsFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value(s) to be used in the filter.
+// A list of values for the filter to allow. These values should all be in string form.
 func (o GetNetworkingIpsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkingIpsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -25320,9 +26661,9 @@ type GetNetworkingIpsIpAddress struct {
 	Public bool `pulumi:"public"`
 	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
 	Rdns string `pulumi:"rdns"`
-	// The Region this IP address resides in.
+	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
 	Region string `pulumi:"region"`
-	// Whether this IP is reserved or not.
+	// Whether this IP address is a reserved IP.
 	Reserved bool `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask string `pulumi:"subnetMask"`
@@ -25354,9 +26695,9 @@ type GetNetworkingIpsIpAddressArgs struct {
 	Public pulumi.BoolInput `pulumi:"public"`
 	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
 	Rdns pulumi.StringInput `pulumi:"rdns"`
-	// The Region this IP address resides in.
+	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
 	Region pulumi.StringInput `pulumi:"region"`
-	// Whether this IP is reserved or not.
+	// Whether this IP address is a reserved IP.
 	Reserved pulumi.BoolInput `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
@@ -25445,12 +26786,12 @@ func (o GetNetworkingIpsIpAddressOutput) Rdns() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Rdns }).(pulumi.StringOutput)
 }
 
-// The Region this IP address resides in.
+// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
 func (o GetNetworkingIpsIpAddressOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Whether this IP is reserved or not.
+// Whether this IP address is a reserved IP.
 func (o GetNetworkingIpsIpAddressOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Reserved }).(pulumi.BoolOutput)
 }
@@ -27170,6 +28511,356 @@ func (o GetPlacementGroupMemberArrayOutput) Index(i pulumi.IntInput) GetPlacemen
 	}).(GetPlacementGroupMemberOutput)
 }
 
+type GetPlacementGroupMigrations struct {
+	// A list of the Linodes the system is migrating into the placement group.
+	Inbounds []GetPlacementGroupMigrationsInbound `pulumi:"inbounds"`
+	// A list of the Linodes the system is migrating out of the placement group.
+	Outbounds []GetPlacementGroupMigrationsOutbound `pulumi:"outbounds"`
+}
+
+// GetPlacementGroupMigrationsInput is an input type that accepts GetPlacementGroupMigrationsArgs and GetPlacementGroupMigrationsOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMigrationsInput` via:
+//
+//	GetPlacementGroupMigrationsArgs{...}
+type GetPlacementGroupMigrationsInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMigrationsOutput() GetPlacementGroupMigrationsOutput
+	ToGetPlacementGroupMigrationsOutputWithContext(context.Context) GetPlacementGroupMigrationsOutput
+}
+
+type GetPlacementGroupMigrationsArgs struct {
+	// A list of the Linodes the system is migrating into the placement group.
+	Inbounds GetPlacementGroupMigrationsInboundArrayInput `pulumi:"inbounds"`
+	// A list of the Linodes the system is migrating out of the placement group.
+	Outbounds GetPlacementGroupMigrationsOutboundArrayInput `pulumi:"outbounds"`
+}
+
+func (GetPlacementGroupMigrationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsOutput() GetPlacementGroupMigrationsOutput {
+	return i.ToGetPlacementGroupMigrationsOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsOutput)
+}
+
+func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
+	return i.ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsOutput).ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx)
+}
+
+// GetPlacementGroupMigrationsPtrInput is an input type that accepts GetPlacementGroupMigrationsArgs, GetPlacementGroupMigrationsPtr and GetPlacementGroupMigrationsPtrOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMigrationsPtrInput` via:
+//
+//	        GetPlacementGroupMigrationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPlacementGroupMigrationsPtrInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput
+	ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Context) GetPlacementGroupMigrationsPtrOutput
+}
+
+type getPlacementGroupMigrationsPtrType GetPlacementGroupMigrationsArgs
+
+func GetPlacementGroupMigrationsPtr(v *GetPlacementGroupMigrationsArgs) GetPlacementGroupMigrationsPtrInput {
+	return (*getPlacementGroupMigrationsPtrType)(v)
+}
+
+func (*getPlacementGroupMigrationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (i *getPlacementGroupMigrationsPtrType) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
+	return i.ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPlacementGroupMigrationsPtrType) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsPtrOutput)
+}
+
+type GetPlacementGroupMigrationsOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMigrationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsOutput() GetPlacementGroupMigrationsOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
+	return o.ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPlacementGroupMigrations) *GetPlacementGroupMigrations {
+		return &v
+	}).(GetPlacementGroupMigrationsPtrOutput)
+}
+
+// A list of the Linodes the system is migrating into the placement group.
+func (o GetPlacementGroupMigrationsOutput) Inbounds() GetPlacementGroupMigrationsInboundArrayOutput {
+	return o.ApplyT(func(v GetPlacementGroupMigrations) []GetPlacementGroupMigrationsInbound { return v.Inbounds }).(GetPlacementGroupMigrationsInboundArrayOutput)
+}
+
+// A list of the Linodes the system is migrating out of the placement group.
+func (o GetPlacementGroupMigrationsOutput) Outbounds() GetPlacementGroupMigrationsOutboundArrayOutput {
+	return o.ApplyT(func(v GetPlacementGroupMigrations) []GetPlacementGroupMigrationsOutbound { return v.Outbounds }).(GetPlacementGroupMigrationsOutboundArrayOutput)
+}
+
+type GetPlacementGroupMigrationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMigrationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsPtrOutput) Elem() GetPlacementGroupMigrationsOutput {
+	return o.ApplyT(func(v *GetPlacementGroupMigrations) GetPlacementGroupMigrations {
+		if v != nil {
+			return *v
+		}
+		var ret GetPlacementGroupMigrations
+		return ret
+	}).(GetPlacementGroupMigrationsOutput)
+}
+
+// A list of the Linodes the system is migrating into the placement group.
+func (o GetPlacementGroupMigrationsPtrOutput) Inbounds() GetPlacementGroupMigrationsInboundArrayOutput {
+	return o.ApplyT(func(v *GetPlacementGroupMigrations) []GetPlacementGroupMigrationsInbound {
+		if v == nil {
+			return nil
+		}
+		return v.Inbounds
+	}).(GetPlacementGroupMigrationsInboundArrayOutput)
+}
+
+// A list of the Linodes the system is migrating out of the placement group.
+func (o GetPlacementGroupMigrationsPtrOutput) Outbounds() GetPlacementGroupMigrationsOutboundArrayOutput {
+	return o.ApplyT(func(v *GetPlacementGroupMigrations) []GetPlacementGroupMigrationsOutbound {
+		if v == nil {
+			return nil
+		}
+		return v.Outbounds
+	}).(GetPlacementGroupMigrationsOutboundArrayOutput)
+}
+
+type GetPlacementGroupMigrationsInbound struct {
+	// The ID of the Linode.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetPlacementGroupMigrationsInboundInput is an input type that accepts GetPlacementGroupMigrationsInboundArgs and GetPlacementGroupMigrationsInboundOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMigrationsInboundInput` via:
+//
+//	GetPlacementGroupMigrationsInboundArgs{...}
+type GetPlacementGroupMigrationsInboundInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMigrationsInboundOutput() GetPlacementGroupMigrationsInboundOutput
+	ToGetPlacementGroupMigrationsInboundOutputWithContext(context.Context) GetPlacementGroupMigrationsInboundOutput
+}
+
+type GetPlacementGroupMigrationsInboundArgs struct {
+	// The ID of the Linode.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetPlacementGroupMigrationsInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMigrationsInboundArgs) ToGetPlacementGroupMigrationsInboundOutput() GetPlacementGroupMigrationsInboundOutput {
+	return i.ToGetPlacementGroupMigrationsInboundOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMigrationsInboundArgs) ToGetPlacementGroupMigrationsInboundOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsInboundOutput)
+}
+
+// GetPlacementGroupMigrationsInboundArrayInput is an input type that accepts GetPlacementGroupMigrationsInboundArray and GetPlacementGroupMigrationsInboundArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMigrationsInboundArrayInput` via:
+//
+//	GetPlacementGroupMigrationsInboundArray{ GetPlacementGroupMigrationsInboundArgs{...} }
+type GetPlacementGroupMigrationsInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMigrationsInboundArrayOutput() GetPlacementGroupMigrationsInboundArrayOutput
+	ToGetPlacementGroupMigrationsInboundArrayOutputWithContext(context.Context) GetPlacementGroupMigrationsInboundArrayOutput
+}
+
+type GetPlacementGroupMigrationsInboundArray []GetPlacementGroupMigrationsInboundInput
+
+func (GetPlacementGroupMigrationsInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMigrationsInboundArray) ToGetPlacementGroupMigrationsInboundArrayOutput() GetPlacementGroupMigrationsInboundArrayOutput {
+	return i.ToGetPlacementGroupMigrationsInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMigrationsInboundArray) ToGetPlacementGroupMigrationsInboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsInboundArrayOutput)
+}
+
+type GetPlacementGroupMigrationsInboundOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMigrationsInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMigrationsInboundOutput) ToGetPlacementGroupMigrationsInboundOutput() GetPlacementGroupMigrationsInboundOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsInboundOutput) ToGetPlacementGroupMigrationsInboundOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsInboundOutput {
+	return o
+}
+
+// The ID of the Linode.
+func (o GetPlacementGroupMigrationsInboundOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupMigrationsInbound) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetPlacementGroupMigrationsInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMigrationsInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMigrationsInboundArrayOutput) ToGetPlacementGroupMigrationsInboundArrayOutput() GetPlacementGroupMigrationsInboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsInboundArrayOutput) ToGetPlacementGroupMigrationsInboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsInboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsInboundArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupMigrationsInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupMigrationsInbound {
+		return vs[0].([]GetPlacementGroupMigrationsInbound)[vs[1].(int)]
+	}).(GetPlacementGroupMigrationsInboundOutput)
+}
+
+type GetPlacementGroupMigrationsOutbound struct {
+	// The ID of the Linode.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetPlacementGroupMigrationsOutboundInput is an input type that accepts GetPlacementGroupMigrationsOutboundArgs and GetPlacementGroupMigrationsOutboundOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMigrationsOutboundInput` via:
+//
+//	GetPlacementGroupMigrationsOutboundArgs{...}
+type GetPlacementGroupMigrationsOutboundInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMigrationsOutboundOutput() GetPlacementGroupMigrationsOutboundOutput
+	ToGetPlacementGroupMigrationsOutboundOutputWithContext(context.Context) GetPlacementGroupMigrationsOutboundOutput
+}
+
+type GetPlacementGroupMigrationsOutboundArgs struct {
+	// The ID of the Linode.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetPlacementGroupMigrationsOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMigrationsOutboundArgs) ToGetPlacementGroupMigrationsOutboundOutput() GetPlacementGroupMigrationsOutboundOutput {
+	return i.ToGetPlacementGroupMigrationsOutboundOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMigrationsOutboundArgs) ToGetPlacementGroupMigrationsOutboundOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsOutboundOutput)
+}
+
+// GetPlacementGroupMigrationsOutboundArrayInput is an input type that accepts GetPlacementGroupMigrationsOutboundArray and GetPlacementGroupMigrationsOutboundArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupMigrationsOutboundArrayInput` via:
+//
+//	GetPlacementGroupMigrationsOutboundArray{ GetPlacementGroupMigrationsOutboundArgs{...} }
+type GetPlacementGroupMigrationsOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupMigrationsOutboundArrayOutput() GetPlacementGroupMigrationsOutboundArrayOutput
+	ToGetPlacementGroupMigrationsOutboundArrayOutputWithContext(context.Context) GetPlacementGroupMigrationsOutboundArrayOutput
+}
+
+type GetPlacementGroupMigrationsOutboundArray []GetPlacementGroupMigrationsOutboundInput
+
+func (GetPlacementGroupMigrationsOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupMigrationsOutboundArray) ToGetPlacementGroupMigrationsOutboundArrayOutput() GetPlacementGroupMigrationsOutboundArrayOutput {
+	return i.ToGetPlacementGroupMigrationsOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupMigrationsOutboundArray) ToGetPlacementGroupMigrationsOutboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsOutboundArrayOutput)
+}
+
+type GetPlacementGroupMigrationsOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMigrationsOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMigrationsOutboundOutput) ToGetPlacementGroupMigrationsOutboundOutput() GetPlacementGroupMigrationsOutboundOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsOutboundOutput) ToGetPlacementGroupMigrationsOutboundOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsOutboundOutput {
+	return o
+}
+
+// The ID of the Linode.
+func (o GetPlacementGroupMigrationsOutboundOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupMigrationsOutbound) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetPlacementGroupMigrationsOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupMigrationsOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupMigrationsOutboundArrayOutput) ToGetPlacementGroupMigrationsOutboundArrayOutput() GetPlacementGroupMigrationsOutboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsOutboundArrayOutput) ToGetPlacementGroupMigrationsOutboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsOutboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupMigrationsOutboundArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupMigrationsOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupMigrationsOutbound {
+		return vs[0].([]GetPlacementGroupMigrationsOutbound)[vs[1].(int)]
+	}).(GetPlacementGroupMigrationsOutboundOutput)
+}
+
 type GetPlacementGroupsFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -27294,6 +28985,8 @@ type GetPlacementGroupsPlacementGroup struct {
 	Label string `pulumi:"label"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members []GetPlacementGroupsPlacementGroupMember `pulumi:"members"`
+	// Any Linodes that are being migrated to or from the placement group.
+	Migrations *GetPlacementGroupsPlacementGroupMigrations `pulumi:"migrations"`
 	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 	PlacementGroupPolicy string `pulumi:"placementGroupPolicy"`
 	// The placement group type to use when placing Linodes in this group.
@@ -27322,6 +29015,8 @@ type GetPlacementGroupsPlacementGroupArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members GetPlacementGroupsPlacementGroupMemberArrayInput `pulumi:"members"`
+	// Any Linodes that are being migrated to or from the placement group.
+	Migrations GetPlacementGroupsPlacementGroupMigrationsPtrInput `pulumi:"migrations"`
 	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 	PlacementGroupPolicy pulumi.StringInput `pulumi:"placementGroupPolicy"`
 	// The placement group type to use when placing Linodes in this group.
@@ -27401,6 +29096,13 @@ func (o GetPlacementGroupsPlacementGroupOutput) Members() GetPlacementGroupsPlac
 	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) []GetPlacementGroupsPlacementGroupMember { return v.Members }).(GetPlacementGroupsPlacementGroupMemberArrayOutput)
 }
 
+// Any Linodes that are being migrated to or from the placement group.
+func (o GetPlacementGroupsPlacementGroupOutput) Migrations() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) *GetPlacementGroupsPlacementGroupMigrations {
+		return v.Migrations
+	}).(GetPlacementGroupsPlacementGroupMigrationsPtrOutput)
+}
+
 // Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 func (o GetPlacementGroupsPlacementGroupOutput) PlacementGroupPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) string { return v.PlacementGroupPolicy }).(pulumi.StringOutput)
@@ -27439,7 +29141,7 @@ func (o GetPlacementGroupsPlacementGroupArrayOutput) Index(i pulumi.IntInput) Ge
 type GetPlacementGroupsPlacementGroupMember struct {
 	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant bool `pulumi:"isCompliant"`
-	// The ID of the Linode.
+	// The unique identifier for the Linode being migrated out of the placement group.
 	LinodeId int `pulumi:"linodeId"`
 }
 
@@ -27457,7 +29159,7 @@ type GetPlacementGroupsPlacementGroupMemberInput interface {
 type GetPlacementGroupsPlacementGroupMemberArgs struct {
 	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant pulumi.BoolInput `pulumi:"isCompliant"`
-	// The ID of the Linode.
+	// The unique identifier for the Linode being migrated out of the placement group.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 }
 
@@ -27517,7 +29219,7 @@ func (o GetPlacementGroupsPlacementGroupMemberOutput) IsCompliant() pulumi.BoolO
 	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMember) bool { return v.IsCompliant }).(pulumi.BoolOutput)
 }
 
-// The ID of the Linode.
+// The unique identifier for the Linode being migrated out of the placement group.
 func (o GetPlacementGroupsPlacementGroupMemberOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMember) int { return v.LinodeId }).(pulumi.IntOutput)
 }
@@ -27540,6 +29242,360 @@ func (o GetPlacementGroupsPlacementGroupMemberArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupsPlacementGroupMember {
 		return vs[0].([]GetPlacementGroupsPlacementGroupMember)[vs[1].(int)]
 	}).(GetPlacementGroupsPlacementGroupMemberOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrations struct {
+	// A list of the Linodes the system is migrating into the placement group.
+	Inbounds []GetPlacementGroupsPlacementGroupMigrationsInbound `pulumi:"inbounds"`
+	// A list of the Linodes the system is migrating out of the placement group.
+	Outbounds []GetPlacementGroupsPlacementGroupMigrationsOutbound `pulumi:"outbounds"`
+}
+
+// GetPlacementGroupsPlacementGroupMigrationsInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsArgs and GetPlacementGroupsPlacementGroupMigrationsOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMigrationsArgs{...}
+type GetPlacementGroupsPlacementGroupMigrationsInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMigrationsOutput() GetPlacementGroupsPlacementGroupMigrationsOutput
+	ToGetPlacementGroupsPlacementGroupMigrationsOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsOutput
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsArgs struct {
+	// A list of the Linodes the system is migrating into the placement group.
+	Inbounds GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput `pulumi:"inbounds"`
+	// A list of the Linodes the system is migrating out of the placement group.
+	Outbounds GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput `pulumi:"outbounds"`
+}
+
+func (GetPlacementGroupsPlacementGroupMigrationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlacementGroupMigrationsOutput() GetPlacementGroupsPlacementGroupMigrationsOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlacementGroupMigrationsOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsOutput)
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsOutput).ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx)
+}
+
+// GetPlacementGroupsPlacementGroupMigrationsPtrInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsArgs, GetPlacementGroupsPlacementGroupMigrationsPtr and GetPlacementGroupsPlacementGroupMigrationsPtrOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsPtrInput` via:
+//
+//	        GetPlacementGroupsPlacementGroupMigrationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPlacementGroupsPlacementGroupMigrationsPtrInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput
+	ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput
+}
+
+type getPlacementGroupsPlacementGroupMigrationsPtrType GetPlacementGroupsPlacementGroupMigrationsArgs
+
+func GetPlacementGroupsPlacementGroupMigrationsPtr(v *GetPlacementGroupsPlacementGroupMigrationsArgs) GetPlacementGroupsPlacementGroupMigrationsPtrInput {
+	return (*getPlacementGroupsPlacementGroupMigrationsPtrType)(v)
+}
+
+func (*getPlacementGroupsPlacementGroupMigrationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPlacementGroupsPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (i *getPlacementGroupsPlacementGroupMigrationsPtrType) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPlacementGroupsPlacementGroupMigrationsPtrType) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsPtrOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMigrationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPlacementGroupMigrationsOutput() GetPlacementGroupsPlacementGroupMigrationsOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPlacementGroupMigrationsOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return o.ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPlacementGroupsPlacementGroupMigrations) *GetPlacementGroupsPlacementGroupMigrations {
+		return &v
+	}).(GetPlacementGroupsPlacementGroupMigrationsPtrOutput)
+}
+
+// A list of the Linodes the system is migrating into the placement group.
+func (o GetPlacementGroupsPlacementGroupMigrationsOutput) Inbounds() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsInbound {
+		return v.Inbounds
+	}).(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput)
+}
+
+// A list of the Linodes the system is migrating out of the placement group.
+func (o GetPlacementGroupsPlacementGroupMigrationsOutput) Outbounds() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsOutbound {
+		return v.Outbounds
+	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMigrationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPlacementGroupsPlacementGroupMigrations)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) Elem() GetPlacementGroupsPlacementGroupMigrationsOutput {
+	return o.ApplyT(func(v *GetPlacementGroupsPlacementGroupMigrations) GetPlacementGroupsPlacementGroupMigrations {
+		if v != nil {
+			return *v
+		}
+		var ret GetPlacementGroupsPlacementGroupMigrations
+		return ret
+	}).(GetPlacementGroupsPlacementGroupMigrationsOutput)
+}
+
+// A list of the Linodes the system is migrating into the placement group.
+func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) Inbounds() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
+	return o.ApplyT(func(v *GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsInbound {
+		if v == nil {
+			return nil
+		}
+		return v.Inbounds
+	}).(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput)
+}
+
+// A list of the Linodes the system is migrating out of the placement group.
+func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) Outbounds() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
+	return o.ApplyT(func(v *GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsOutbound {
+		if v == nil {
+			return nil
+		}
+		return v.Outbounds
+	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsInbound struct {
+	// The unique identifier for the Linode being migrated out of the placement group.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetPlacementGroupsPlacementGroupMigrationsInboundInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsInboundArgs and GetPlacementGroupsPlacementGroupMigrationsInboundOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsInboundInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMigrationsInboundArgs{...}
+type GetPlacementGroupsPlacementGroupMigrationsInboundInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMigrationsInboundOutput() GetPlacementGroupsPlacementGroupMigrationsInboundOutput
+	ToGetPlacementGroupsPlacementGroupMigrationsInboundOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsInboundOutput
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsInboundArgs struct {
+	// The unique identifier for the Linode being migrated out of the placement group.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetPlacementGroupsPlacementGroupMigrationsInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsInboundArgs) ToGetPlacementGroupsPlacementGroupMigrationsInboundOutput() GetPlacementGroupsPlacementGroupMigrationsInboundOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsInboundOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsInboundArgs) ToGetPlacementGroupsPlacementGroupMigrationsInboundOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsInboundOutput)
+}
+
+// GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsInboundArray and GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMigrationsInboundArray{ GetPlacementGroupsPlacementGroupMigrationsInboundArgs{...} }
+type GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput
+	ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsInboundArray []GetPlacementGroupsPlacementGroupMigrationsInboundInput
+
+func (GetPlacementGroupsPlacementGroupMigrationsInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsInboundArray) ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsInboundArray) ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsInboundOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMigrationsInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsInboundOutput) ToGetPlacementGroupsPlacementGroupMigrationsInboundOutput() GetPlacementGroupsPlacementGroupMigrationsInboundOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsInboundOutput) ToGetPlacementGroupsPlacementGroupMigrationsInboundOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsInboundOutput {
+	return o
+}
+
+// The unique identifier for the Linode being migrated out of the placement group.
+func (o GetPlacementGroupsPlacementGroupMigrationsInboundOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMigrationsInbound) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroupMigrationsInbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput) ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput) ToGetPlacementGroupsPlacementGroupMigrationsInboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupsPlacementGroupMigrationsInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupsPlacementGroupMigrationsInbound {
+		return vs[0].([]GetPlacementGroupsPlacementGroupMigrationsInbound)[vs[1].(int)]
+	}).(GetPlacementGroupsPlacementGroupMigrationsInboundOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsOutbound struct {
+	// The unique identifier for the Linode being migrated out of the placement group.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetPlacementGroupsPlacementGroupMigrationsOutboundInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsOutboundArgs and GetPlacementGroupsPlacementGroupMigrationsOutboundOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsOutboundInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMigrationsOutboundArgs{...}
+type GetPlacementGroupsPlacementGroupMigrationsOutboundInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutput() GetPlacementGroupsPlacementGroupMigrationsOutboundOutput
+	ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsOutboundOutput
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsOutboundArgs struct {
+	// The unique identifier for the Linode being migrated out of the placement group.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetPlacementGroupsPlacementGroupMigrationsOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsOutboundArgs) ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutput() GetPlacementGroupsPlacementGroupMigrationsOutboundOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsOutboundArgs) ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput)
+}
+
+// GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsOutboundArray and GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput values.
+// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput` via:
+//
+//	GetPlacementGroupsPlacementGroupMigrationsOutboundArray{ GetPlacementGroupsPlacementGroupMigrationsOutboundArgs{...} }
+type GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput
+	ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsOutboundArray []GetPlacementGroupsPlacementGroupMigrationsOutboundInput
+
+func (GetPlacementGroupsPlacementGroupMigrationsOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsOutboundArray) ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
+	return i.ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetPlacementGroupsPlacementGroupMigrationsOutboundArray) ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMigrationsOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutboundOutput) ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutput() GetPlacementGroupsPlacementGroupMigrationsOutboundOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutboundOutput) ToGetPlacementGroupsPlacementGroupMigrationsOutboundOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsOutboundOutput {
+	return o
+}
+
+// The unique identifier for the Linode being migrated out of the placement group.
+func (o GetPlacementGroupsPlacementGroupMigrationsOutboundOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMigrationsOutbound) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPlacementGroupsPlacementGroupMigrationsOutbound)(nil)).Elem()
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput) ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput) ToGetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
+	return o
+}
+
+func (o GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput) Index(i pulumi.IntInput) GetPlacementGroupsPlacementGroupMigrationsOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlacementGroupsPlacementGroupMigrationsOutbound {
+		return vs[0].([]GetPlacementGroupsPlacementGroupMigrationsOutbound)[vs[1].(int)]
+	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput)
 }
 
 type GetProfileReferrals struct {
@@ -34278,8 +36334,20 @@ func (o GetVpcsVpcArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesPtrInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2TimeoutsInput)(nil)).Elem(), DatabaseMysqlV2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2TimeoutsPtrInput)(nil)).Elem(), DatabaseMysqlV2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2UpdatesInput)(nil)).Elem(), DatabaseMysqlV2UpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2UpdatesPtrInput)(nil)).Elem(), DatabaseMysqlV2UpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesPtrInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2PendingUpdateInput)(nil)).Elem(), DatabasePostgresqlV2PendingUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabasePostgresqlV2PendingUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2TimeoutsInput)(nil)).Elem(), DatabasePostgresqlV2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2TimeoutsPtrInput)(nil)).Elem(), DatabasePostgresqlV2TimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2UpdatesInput)(nil)).Elem(), DatabasePostgresqlV2UpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2UpdatesPtrInput)(nil)).Elem(), DatabasePostgresqlV2UpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceTypeInput)(nil)).Elem(), FirewallDeviceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeviceTypeArrayInput)(nil)).Elem(), FirewallDeviceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundInput)(nil)).Elem(), FirewallInboundArgs{})
@@ -34444,8 +36512,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateInput)(nil)).Elem(), GetDatabaseMysqlUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), GetDatabaseMysqlV2PendingUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlV2PendingUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2UpdatesInput)(nil)).Elem(), GetDatabaseMysqlV2UpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdateInput)(nil)).Elem(), GetDatabasePostgresqlV2PendingUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlV2PendingUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2UpdatesInput)(nil)).Elem(), GetDatabasePostgresqlV2UpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesFilterInput)(nil)).Elem(), GetDatabasesFilterArgs{})
@@ -34664,12 +36738,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInput)(nil)).Elem(), GetPlacementGroupMigrationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsPtrInput)(nil)).Elem(), GetPlacementGroupMigrationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInboundInput)(nil)).Elem(), GetPlacementGroupMigrationsInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInboundArrayInput)(nil)).Elem(), GetPlacementGroupMigrationsInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsOutboundInput)(nil)).Elem(), GetPlacementGroupMigrationsOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsOutboundArrayInput)(nil)).Elem(), GetPlacementGroupMigrationsOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsFilterInput)(nil)).Elem(), GetPlacementGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsFilterArrayInput)(nil)).Elem(), GetPlacementGroupsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsPtrInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInboundInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutboundInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralsInput)(nil)).Elem(), GetProfileReferralsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitInput)(nil)).Elem(), GetRegionPlacementGroupLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitArrayInput)(nil)).Elem(), GetRegionPlacementGroupLimitArray{})
@@ -34777,8 +36863,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcArrayInput)(nil)).Elem(), GetVpcsVpcArray{})
 	pulumi.RegisterOutputType(DatabaseMysqlUpdatesOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlUpdatesPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlV2TimeoutsOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlV2TimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlV2UpdatesOutput{})
+	pulumi.RegisterOutputType(DatabaseMysqlV2UpdatesPtrOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesPtrOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlV2PendingUpdateOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlV2PendingUpdateArrayOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlV2TimeoutsOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlV2TimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlV2UpdatesOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlV2UpdatesPtrOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceTypeOutput{})
 	pulumi.RegisterOutputType(FirewallDeviceTypeArrayOutput{})
 	pulumi.RegisterOutputType(FirewallInboundOutput{})
@@ -34943,8 +37041,14 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlV2PendingUpdateOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlV2PendingUpdateArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlV2UpdatesOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PendingUpdateOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PendingUpdateArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlV2UpdatesOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesFilterOutput{})
@@ -35163,12 +37267,24 @@ func init() {
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMigrationsPtrOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMigrationsInboundOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMigrationsInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutboundOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutboundArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsFilterOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsPtrOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsInboundOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput{})
+	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
 	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitOutput{})
 	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitArrayOutput{})

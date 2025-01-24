@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool IsCompliant;
         /// <summary>
-        /// The ID of the Linode.
+        /// The unique identifier for the Linode being migrated out of the placement group.
         /// </summary>
         public readonly int LinodeId;
 

@@ -12,6 +12,12 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetInstanceTypesTypeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The number of VPUs this Linode Type offers.
+        /// </summary>
+        [Input("acceleratedDevices", required: true)]
+        public int AcceleratedDevices { get; set; }
+
         [Input("addons", required: true)]
         private List<Inputs.GetInstanceTypesTypeAddonArgs>? _addons;
 

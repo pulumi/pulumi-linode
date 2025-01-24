@@ -138,6 +138,10 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetInstanceTypeResult
     {
+        /// <summary>
+        /// The number of VPUs this Linode Type offers.
+        /// </summary>
+        public readonly int AcceleratedDevices;
         public readonly Outputs.GetInstanceTypeAddonsResult Addons;
         /// <summary>
         /// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
@@ -176,6 +180,8 @@ namespace Pulumi.Linode
 
         [OutputConstructor]
         private GetInstanceTypeResult(
+            int acceleratedDevices,
+
             Outputs.GetInstanceTypeAddonsResult addons,
 
             string @class,
@@ -198,6 +204,7 @@ namespace Pulumi.Linode
 
             int vcpus)
         {
+            AcceleratedDevices = acceleratedDevices;
             Addons = addons;
             Class = @class;
             Disk = disk;

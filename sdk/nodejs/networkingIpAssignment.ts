@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
+ *
+ * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+ */
 export class NetworkingIpAssignment extends pulumi.CustomResource {
     /**
      * Get an existing NetworkingIpAssignment resource's state with the given name, ID, and optional extra
@@ -34,9 +39,12 @@ export class NetworkingIpAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkingIpAssignment.__pulumiType;
     }
 
+    /**
+     * A list of IP/Linode assignments to apply.
+     */
     public readonly assignments!: pulumi.Output<outputs.NetworkingIpAssignmentAssignment[] | undefined>;
     /**
-     * The region for the IP assignments.
+     * The region where the IP addresses will be assigned.
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -72,9 +80,12 @@ export class NetworkingIpAssignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkingIpAssignment resources.
  */
 export interface NetworkingIpAssignmentState {
+    /**
+     * A list of IP/Linode assignments to apply.
+     */
     assignments?: pulumi.Input<pulumi.Input<inputs.NetworkingIpAssignmentAssignment>[]>;
     /**
-     * The region for the IP assignments.
+     * The region where the IP addresses will be assigned.
      */
     region?: pulumi.Input<string>;
 }
@@ -83,9 +94,12 @@ export interface NetworkingIpAssignmentState {
  * The set of arguments for constructing a NetworkingIpAssignment resource.
  */
 export interface NetworkingIpAssignmentArgs {
+    /**
+     * A list of IP/Linode assignments to apply.
+     */
     assignments?: pulumi.Input<pulumi.Input<inputs.NetworkingIpAssignmentAssignment>[]>;
     /**
-     * The region for the IP assignments.
+     * The region where the IP addresses will be assigned.
      */
     region: pulumi.Input<string>;
 }

@@ -59,6 +59,39 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// 
+    /// The following example shows how to grant a key the explicit access to multiple buckets.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Linode.ObjectStorageKey("foo", new()
+    ///     {
+    ///         Label = "image-access",
+    ///         BucketAccesses = new[]
+    ///         {
+    ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
+    ///             {
+    ///                 BucketName = "foobar1",
+    ///                 Cluster = "us-east-1",
+    ///                 Permissions = "read_write",
+    ///             },
+    ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
+    ///             {
+    ///                 BucketName = "foobar2",
+    ///                 Cluster = "us-east-1",
+    ///                 Permissions = "read_write",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [LinodeResourceType("linode:index/objectStorageKey:ObjectStorageKey")]
     public partial class ObjectStorageKey : global::Pulumi.CustomResource

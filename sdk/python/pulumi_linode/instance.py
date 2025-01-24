@@ -76,7 +76,9 @@ class InstanceArgs:
                See /images for more information on the Images available for you to use.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -377,7 +379,9 @@ class InstanceArgs:
     @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
         """
         return pulumi.get(self, "ipv4s")
 
@@ -659,7 +663,9 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] ip_address: A string containing the Linode's public IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
@@ -1035,7 +1041,9 @@ class _InstanceState:
     @pulumi.getter
     def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
         """
         return pulumi.get(self, "ipv4s")
 
@@ -1467,7 +1475,9 @@ class Instance(pulumi.CustomResource):
                See /images for more information on the Images available for you to use.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -1786,7 +1796,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
                must be declared in the config block.
         :param pulumi.Input[str] ip_address: A string containing the Linode's public IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
         :param pulumi.Input[str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
@@ -2041,7 +2053,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def ipv4s(self) -> pulumi.Output[Sequence[str]]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
         """
         return pulumi.get(self, "ipv4s")
 

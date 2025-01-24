@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+ *
  * Provides information about a Linode PostgreSQL Database.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
  *
@@ -155,6 +157,8 @@ export interface GetDatabasePostgresqlResult {
     readonly version: string;
 }
 /**
+ * > **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+ *
  * Provides information about a Linode PostgreSQL Database.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
  *

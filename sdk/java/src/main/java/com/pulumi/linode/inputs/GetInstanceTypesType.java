@@ -19,6 +19,21 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
     public static final GetInstanceTypesType Empty = new GetInstanceTypesType();
 
     /**
+     * The number of VPUs this Linode Type offers.
+     * 
+     */
+    @Import(name="acceleratedDevices", required=true)
+    private Integer acceleratedDevices;
+
+    /**
+     * @return The number of VPUs this Linode Type offers.
+     * 
+     */
+    public Integer acceleratedDevices() {
+        return this.acceleratedDevices;
+    }
+
+    /**
      * Information about the optional Backup service offered for Linodes.
      * 
      */
@@ -186,6 +201,7 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
     private GetInstanceTypesType() {}
 
     private GetInstanceTypesType(GetInstanceTypesType $) {
+        this.acceleratedDevices = $.acceleratedDevices;
         this.addons = $.addons;
         this.class_ = $.class_;
         this.disk = $.disk;
@@ -215,6 +231,17 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
 
         public Builder(GetInstanceTypesType defaults) {
             $ = new GetInstanceTypesType(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratedDevices The number of VPUs this Linode Type offers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedDevices(Integer acceleratedDevices) {
+            $.acceleratedDevices = acceleratedDevices;
+            return this;
         }
 
         /**
@@ -369,6 +396,9 @@ public final class GetInstanceTypesType extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetInstanceTypesType build() {
+            if ($.acceleratedDevices == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesType", "acceleratedDevices");
+            }
             if ($.addons == null) {
                 throw new MissingRequiredPropertyException("GetInstanceTypesType", "addons");
             }

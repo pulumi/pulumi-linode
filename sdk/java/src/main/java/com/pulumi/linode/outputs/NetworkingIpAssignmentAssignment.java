@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class NetworkingIpAssignmentAssignment {
+    /**
+     * @return The IPv4 address or IPv6 range to assign.
+     * 
+     */
     private String address;
+    /**
+     * @return The ID of the Linode to which the IP address will be assigned.
+     * 
+     */
     private Integer linodeId;
 
     private NetworkingIpAssignmentAssignment() {}
+    /**
+     * @return The IPv4 address or IPv6 range to assign.
+     * 
+     */
     public String address() {
         return this.address;
     }
+    /**
+     * @return The ID of the Linode to which the IP address will be assigned.
+     * 
+     */
     public Integer linodeId() {
         return this.linodeId;
     }

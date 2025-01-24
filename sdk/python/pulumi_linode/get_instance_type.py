@@ -27,7 +27,10 @@ class GetInstanceTypeResult:
     """
     A collection of values returned by getInstanceType.
     """
-    def __init__(__self__, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, region_prices=None, transfer=None, vcpus=None):
+    def __init__(__self__, accelerated_devices=None, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, region_prices=None, transfer=None, vcpus=None):
+        if accelerated_devices and not isinstance(accelerated_devices, int):
+            raise TypeError("Expected argument 'accelerated_devices' to be a int")
+        pulumi.set(__self__, "accelerated_devices", accelerated_devices)
         if addons and not isinstance(addons, dict):
             raise TypeError("Expected argument 'addons' to be a dict")
         pulumi.set(__self__, "addons", addons)
@@ -61,6 +64,14 @@ class GetInstanceTypeResult:
         if vcpus and not isinstance(vcpus, int):
             raise TypeError("Expected argument 'vcpus' to be a int")
         pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter(name="acceleratedDevices")
+    def accelerated_devices(self) -> int:
+        """
+        The number of VPUs this Linode Type offers.
+        """
+        return pulumi.get(self, "accelerated_devices")
 
     @property
     @pulumi.getter
@@ -148,6 +159,7 @@ class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
         if False:
             yield self
         return GetInstanceTypeResult(
+            accelerated_devices=self.accelerated_devices,
             addons=self.addons,
             class_=self.class_,
             disk=self.disk,
@@ -190,6 +202,7 @@ def get_instance_type(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getInstanceType:getInstanceType', __args__, opts=opts, typ=GetInstanceTypeResult).value
 
     return AwaitableGetInstanceTypeResult(
+        accelerated_devices=pulumi.get(__ret__, 'accelerated_devices'),
         addons=pulumi.get(__ret__, 'addons'),
         class_=pulumi.get(__ret__, 'class_'),
         disk=pulumi.get(__ret__, 'disk'),
@@ -229,6 +242,7 @@ def get_instance_type_output(id: Optional[pulumi.Input[str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getInstanceType:getInstanceType', __args__, opts=opts, typ=GetInstanceTypeResult)
     return __ret__.apply(lambda __response__: GetInstanceTypeResult(
+        accelerated_devices=pulumi.get(__response__, 'accelerated_devices'),
         addons=pulumi.get(__response__, 'addons'),
         class_=pulumi.get(__response__, 'class_'),
         disk=pulumi.get(__response__, 'disk'),

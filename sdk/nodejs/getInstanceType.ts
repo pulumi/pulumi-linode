@@ -49,6 +49,10 @@ export interface GetInstanceTypeArgs {
  * A collection of values returned by getInstanceType.
  */
 export interface GetInstanceTypeResult {
+    /**
+     * The number of VPUs this Linode Type offers.
+     */
+    readonly acceleratedDevices: number;
     readonly addons: outputs.GetInstanceTypeAddons;
     /**
      * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).

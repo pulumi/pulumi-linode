@@ -13,7 +13,13 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class NetworkingIpAssignmentAssignment
     {
+        /// <summary>
+        /// The IPv4 address or IPv6 range to assign.
+        /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The ID of the Linode to which the IP address will be assigned.
+        /// </summary>
         public readonly int LinodeId;
 
         [OutputConstructor]

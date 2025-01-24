@@ -28,7 +28,7 @@ class GetPlacementGroupResult:
     """
     A collection of values returned by getPlacementGroup.
     """
-    def __init__(__self__, id=None, is_compliant=None, label=None, members=None, placement_group_policy=None, placement_group_type=None, region=None):
+    def __init__(__self__, id=None, is_compliant=None, label=None, members=None, migrations=None, placement_group_policy=None, placement_group_type=None, region=None):
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -41,6 +41,9 @@ class GetPlacementGroupResult:
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
         pulumi.set(__self__, "members", members)
+        if migrations and not isinstance(migrations, dict):
+            raise TypeError("Expected argument 'migrations' to be a dict")
+        pulumi.set(__self__, "migrations", migrations)
         if placement_group_policy and not isinstance(placement_group_policy, str):
             raise TypeError("Expected argument 'placement_group_policy' to be a str")
         pulumi.set(__self__, "placement_group_policy", placement_group_policy)
@@ -81,6 +84,14 @@ class GetPlacementGroupResult:
         return pulumi.get(self, "members")
 
     @property
+    @pulumi.getter
+    def migrations(self) -> Optional['outputs.GetPlacementGroupMigrationsResult']:
+        """
+        Any Linodes that are being migrated to or from the placement group.
+        """
+        return pulumi.get(self, "migrations")
+
+    @property
     @pulumi.getter(name="placementGroupPolicy")
     def placement_group_policy(self) -> str:
         """
@@ -115,6 +126,7 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
             is_compliant=self.is_compliant,
             label=self.label,
             members=self.members,
+            migrations=self.migrations,
             placement_group_policy=self.placement_group_policy,
             placement_group_type=self.placement_group_type,
             region=self.region)
@@ -122,6 +134,7 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
 
 def get_placement_group(id: Optional[int] = None,
                         members: Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]] = None,
+                        migrations: Optional[Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupResult:
     """
     `PlacementGroup` provides details about a Linode placement group.
@@ -141,10 +154,12 @@ def get_placement_group(id: Optional[int] = None,
 
     :param int id: The ID of the Placement Group.
     :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
+    :param Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict'] migrations: Any Linodes that are being migrated to or from the placement group.
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['members'] = members
+    __args__['migrations'] = migrations
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult).value
 
@@ -153,11 +168,13 @@ def get_placement_group(id: Optional[int] = None,
         is_compliant=pulumi.get(__ret__, 'is_compliant'),
         label=pulumi.get(__ret__, 'label'),
         members=pulumi.get(__ret__, 'members'),
+        migrations=pulumi.get(__ret__, 'migrations'),
         placement_group_policy=pulumi.get(__ret__, 'placement_group_policy'),
         placement_group_type=pulumi.get(__ret__, 'placement_group_type'),
         region=pulumi.get(__ret__, 'region'))
 def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
                                members: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]]]] = None,
+                               migrations: Optional[pulumi.Input[Optional[Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlacementGroupResult]:
     """
     `PlacementGroup` provides details about a Linode placement group.
@@ -177,10 +194,12 @@ def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
 
     :param int id: The ID of the Placement Group.
     :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
+    :param Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict'] migrations: Any Linodes that are being migrated to or from the placement group.
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['members'] = members
+    __args__['migrations'] = migrations
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult)
     return __ret__.apply(lambda __response__: GetPlacementGroupResult(
@@ -188,6 +207,7 @@ def get_placement_group_output(id: Optional[pulumi.Input[int]] = None,
         is_compliant=pulumi.get(__response__, 'is_compliant'),
         label=pulumi.get(__response__, 'label'),
         members=pulumi.get(__response__, 'members'),
+        migrations=pulumi.get(__response__, 'migrations'),
         placement_group_policy=pulumi.get(__response__, 'placement_group_policy'),
         placement_group_type=pulumi.get(__response__, 'placement_group_type'),
         region=pulumi.get(__response__, 'region')))

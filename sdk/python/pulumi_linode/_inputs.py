@@ -17,8 +17,20 @@ from . import _utilities
 __all__ = [
     'DatabaseMysqlUpdatesArgs',
     'DatabaseMysqlUpdatesArgsDict',
+    'DatabaseMysqlV2PendingUpdateArgs',
+    'DatabaseMysqlV2PendingUpdateArgsDict',
+    'DatabaseMysqlV2TimeoutsArgs',
+    'DatabaseMysqlV2TimeoutsArgsDict',
+    'DatabaseMysqlV2UpdatesArgs',
+    'DatabaseMysqlV2UpdatesArgsDict',
     'DatabasePostgresqlUpdatesArgs',
     'DatabasePostgresqlUpdatesArgsDict',
+    'DatabasePostgresqlV2PendingUpdateArgs',
+    'DatabasePostgresqlV2PendingUpdateArgsDict',
+    'DatabasePostgresqlV2TimeoutsArgs',
+    'DatabasePostgresqlV2TimeoutsArgsDict',
+    'DatabasePostgresqlV2UpdatesArgs',
+    'DatabasePostgresqlV2UpdatesArgsDict',
     'FirewallDeviceArgs',
     'FirewallDeviceArgsDict',
     'FirewallInboundArgs',
@@ -301,12 +313,24 @@ __all__ = [
     'GetNodebalancersNodebalancerTransferArgsDict',
     'GetPlacementGroupMemberArgs',
     'GetPlacementGroupMemberArgsDict',
+    'GetPlacementGroupMigrationsArgs',
+    'GetPlacementGroupMigrationsArgsDict',
+    'GetPlacementGroupMigrationsInboundArgs',
+    'GetPlacementGroupMigrationsInboundArgsDict',
+    'GetPlacementGroupMigrationsOutboundArgs',
+    'GetPlacementGroupMigrationsOutboundArgsDict',
     'GetPlacementGroupsFilterArgs',
     'GetPlacementGroupsFilterArgsDict',
     'GetPlacementGroupsPlacementGroupArgs',
     'GetPlacementGroupsPlacementGroupArgsDict',
     'GetPlacementGroupsPlacementGroupMemberArgs',
     'GetPlacementGroupsPlacementGroupMemberArgsDict',
+    'GetPlacementGroupsPlacementGroupMigrationsArgs',
+    'GetPlacementGroupsPlacementGroupMigrationsArgsDict',
+    'GetPlacementGroupsPlacementGroupMigrationsInboundArgs',
+    'GetPlacementGroupsPlacementGroupMigrationsInboundArgsDict',
+    'GetPlacementGroupsPlacementGroupMigrationsOutboundArgs',
+    'GetPlacementGroupsPlacementGroupMigrationsOutboundArgsDict',
     'GetRegionResolverArgs',
     'GetRegionResolverArgsDict',
     'GetRegionsFilterArgs',
@@ -514,6 +538,182 @@ class DatabaseMysqlUpdatesArgs:
 
 
 if not MYPY:
+    class DatabaseMysqlV2PendingUpdateArgsDict(TypedDict):
+        deadline: pulumi.Input[str]
+        description: pulumi.Input[str]
+        planned_for: pulumi.Input[str]
+elif False:
+    DatabaseMysqlV2PendingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseMysqlV2PendingUpdateArgs:
+    def __init__(__self__, *,
+                 deadline: pulumi.Input[str],
+                 description: pulumi.Input[str],
+                 planned_for: pulumi.Input[str]):
+        pulumi.set(__self__, "deadline", deadline)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "planned_for", planned_for)
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "deadline")
+
+    @deadline.setter
+    def deadline(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deadline", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="plannedFor")
+    def planned_for(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "planned_for")
+
+    @planned_for.setter
+    def planned_for(self, value: pulumi.Input[str]):
+        pulumi.set(self, "planned_for", value)
+
+
+if not MYPY:
+    class DatabaseMysqlV2TimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    DatabaseMysqlV2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseMysqlV2TimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class DatabaseMysqlV2UpdatesArgsDict(TypedDict):
+        day_of_week: pulumi.Input[int]
+        duration: pulumi.Input[int]
+        frequency: pulumi.Input[str]
+        hour_of_day: pulumi.Input[int]
+elif False:
+    DatabaseMysqlV2UpdatesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseMysqlV2UpdatesArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[int],
+                 duration: pulumi.Input[int],
+                 frequency: pulumi.Input[str],
+                 hour_of_day: pulumi.Input[int]):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[int]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "hour_of_day")
+
+    @hour_of_day.setter
+    def hour_of_day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hour_of_day", value)
+
+
+if not MYPY:
     class DatabasePostgresqlUpdatesArgsDict(TypedDict):
         day_of_week: pulumi.Input[str]
         """
@@ -619,6 +819,182 @@ class DatabasePostgresqlUpdatesArgs:
     @week_of_month.setter
     def week_of_month(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "week_of_month", value)
+
+
+if not MYPY:
+    class DatabasePostgresqlV2PendingUpdateArgsDict(TypedDict):
+        deadline: pulumi.Input[str]
+        description: pulumi.Input[str]
+        planned_for: pulumi.Input[str]
+elif False:
+    DatabasePostgresqlV2PendingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabasePostgresqlV2PendingUpdateArgs:
+    def __init__(__self__, *,
+                 deadline: pulumi.Input[str],
+                 description: pulumi.Input[str],
+                 planned_for: pulumi.Input[str]):
+        pulumi.set(__self__, "deadline", deadline)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "planned_for", planned_for)
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "deadline")
+
+    @deadline.setter
+    def deadline(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deadline", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="plannedFor")
+    def planned_for(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "planned_for")
+
+    @planned_for.setter
+    def planned_for(self, value: pulumi.Input[str]):
+        pulumi.set(self, "planned_for", value)
+
+
+if not MYPY:
+    class DatabasePostgresqlV2TimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    DatabasePostgresqlV2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabasePostgresqlV2TimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class DatabasePostgresqlV2UpdatesArgsDict(TypedDict):
+        day_of_week: pulumi.Input[int]
+        duration: pulumi.Input[int]
+        frequency: pulumi.Input[str]
+        hour_of_day: pulumi.Input[int]
+elif False:
+    DatabasePostgresqlV2UpdatesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabasePostgresqlV2UpdatesArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[int],
+                 duration: pulumi.Input[int],
+                 frequency: pulumi.Input[str],
+                 hour_of_day: pulumi.Input[int]):
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[int]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "hour_of_day")
+
+    @hour_of_day.setter
+    def hour_of_day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hour_of_day", value)
 
 
 if not MYPY:
@@ -3052,7 +3428,9 @@ if not MYPY:
         """
         ipv4: NotRequired[pulumi.Input['InstanceInterfaceIpv4ArgsDict']]
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
         """
         label: NotRequired[pulumi.Input[str]]
         """
@@ -3096,7 +3474,9 @@ class InstanceInterfaceArgs:
         :param pulumi.Input[int] id: The ID of the Placement Group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param pulumi.Input[str] ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        :param pulumi.Input['InstanceInterfaceIpv4Args'] ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param pulumi.Input['InstanceInterfaceIpv4Args'] ipv4: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param pulumi.Input[bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
@@ -3190,7 +3570,9 @@ class InstanceInterfaceArgs:
     @pulumi.getter
     def ipv4(self) -> Optional[pulumi.Input['InstanceInterfaceIpv4Args']]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
         """
         return pulumi.get(self, "ipv4")
 
@@ -3496,9 +3878,17 @@ class InstancePlacementGroupArgs:
 
 if not MYPY:
     class InstanceSpecsArgsDict(TypedDict):
+        accelerated_devices: NotRequired[pulumi.Input[int]]
+        """
+        The number of VPUs this Linode has access to.
+        """
         disk: NotRequired[pulumi.Input[int]]
         """
         The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+        """
+        gpus: NotRequired[pulumi.Input[int]]
+        """
+        The number of GPUs this Linode has access to.
         """
         memory: NotRequired[pulumi.Input[int]]
         """
@@ -3518,24 +3908,44 @@ elif False:
 @pulumi.input_type
 class InstanceSpecsArgs:
     def __init__(__self__, *,
+                 accelerated_devices: Optional[pulumi.Input[int]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
+                 gpus: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  transfer: Optional[pulumi.Input[int]] = None,
                  vcpus: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[int] accelerated_devices: The number of VPUs this Linode has access to.
         :param pulumi.Input[int] disk: The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+        :param pulumi.Input[int] gpus: The number of GPUs this Linode has access to.
         :param pulumi.Input[int] memory: The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
         :param pulumi.Input[int] transfer: The amount of network transfer this Linode is allotted each month.
         :param pulumi.Input[int] vcpus: The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
         """
+        if accelerated_devices is not None:
+            pulumi.set(__self__, "accelerated_devices", accelerated_devices)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if gpus is not None:
+            pulumi.set(__self__, "gpus", gpus)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if transfer is not None:
             pulumi.set(__self__, "transfer", transfer)
         if vcpus is not None:
             pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter(name="acceleratedDevices")
+    def accelerated_devices(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of VPUs this Linode has access to.
+        """
+        return pulumi.get(self, "accelerated_devices")
+
+    @accelerated_devices.setter
+    def accelerated_devices(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "accelerated_devices", value)
 
     @property
     @pulumi.getter
@@ -3548,6 +3958,18 @@ class InstanceSpecsArgs:
     @disk.setter
     def disk(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def gpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of GPUs this Linode has access to.
+        """
+        return pulumi.get(self, "gpus")
+
+    @gpus.setter
+    def gpus(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gpus", value)
 
     @property
     @pulumi.getter
@@ -4333,7 +4755,13 @@ class LkeNodePoolTaintArgs:
 if not MYPY:
     class NetworkingIpAssignmentAssignmentArgsDict(TypedDict):
         address: pulumi.Input[str]
+        """
+        The IPv4 address or IPv6 range to assign.
+        """
         linode_id: pulumi.Input[int]
+        """
+        The ID of the Linode to which the IP address will be assigned.
+        """
 elif False:
     NetworkingIpAssignmentAssignmentArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4342,12 +4770,19 @@ class NetworkingIpAssignmentAssignmentArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
                  linode_id: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] address: The IPv4 address or IPv6 range to assign.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to which the IP address will be assigned.
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "linode_id", linode_id)
 
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        The IPv4 address or IPv6 range to assign.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -4357,6 +4792,9 @@ class NetworkingIpAssignmentAssignmentArgs:
     @property
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the Linode to which the IP address will be assigned.
+        """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
@@ -9583,6 +10021,10 @@ class GetInstanceTypesFilterArgs:
 
 if not MYPY:
     class GetInstanceTypesTypeArgsDict(TypedDict):
+        accelerated_devices: int
+        """
+        The number of VPUs this Linode Type offers.
+        """
         addons: Sequence['GetInstanceTypesTypeAddonArgsDict']
         """
         Information about the optional Backup service offered for Linodes.
@@ -9633,6 +10075,7 @@ elif False:
 @pulumi.input_type
 class GetInstanceTypesTypeArgs:
     def __init__(__self__, *,
+                 accelerated_devices: int,
                  addons: Sequence['GetInstanceTypesTypeAddonArgs'],
                  class_: str,
                  disk: int,
@@ -9645,6 +10088,7 @@ class GetInstanceTypesTypeArgs:
                  transfer: int,
                  vcpus: int):
         """
+        :param int accelerated_devices: The number of VPUs this Linode Type offers.
         :param Sequence['GetInstanceTypesTypeAddonArgs'] addons: Information about the optional Backup service offered for Linodes.
         :param str class_: The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
         :param int disk: The Disk size, in MB, of the Linode Type.
@@ -9657,6 +10101,7 @@ class GetInstanceTypesTypeArgs:
         :param int transfer: The monthly outbound transfer amount, in MB.
         :param int vcpus: The number of VCPU cores this Linode Type offers.
         """
+        pulumi.set(__self__, "accelerated_devices", accelerated_devices)
         pulumi.set(__self__, "addons", addons)
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "disk", disk)
@@ -9668,6 +10113,18 @@ class GetInstanceTypesTypeArgs:
         pulumi.set(__self__, "region_prices", region_prices)
         pulumi.set(__self__, "transfer", transfer)
         pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter(name="acceleratedDevices")
+    def accelerated_devices(self) -> int:
+        """
+        The number of VPUs this Linode Type offers.
+        """
+        return pulumi.get(self, "accelerated_devices")
+
+    @accelerated_devices.setter
+    def accelerated_devices(self, value: int):
+        pulumi.set(self, "accelerated_devices", value)
 
     @property
     @pulumi.getter
@@ -12273,15 +12730,15 @@ if not MYPY:
     class GetNetworkingIpsFilterArgsDict(TypedDict):
         name: str
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         values: Sequence[str]
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         match_by: NotRequired[str]
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
 elif False:
     GetNetworkingIpsFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -12293,9 +12750,9 @@ class GetNetworkingIpsFilterArgs:
                  values: Sequence[str],
                  match_by: Optional[str] = None):
         """
-        :param str name: The name of the attribute to filter on.
-        :param Sequence[str] values: The value(s) to be used in the filter.
-        :param str match_by: The type of comparison to use for this filter.
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -12306,7 +12763,7 @@ class GetNetworkingIpsFilterArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the attribute to filter on.
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         """
         return pulumi.get(self, "name")
 
@@ -12318,7 +12775,7 @@ class GetNetworkingIpsFilterArgs:
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The value(s) to be used in the filter.
+        A list of values for the filter to allow. These values should all be in string form.
         """
         return pulumi.get(self, "values")
 
@@ -12330,7 +12787,7 @@ class GetNetworkingIpsFilterArgs:
     @pulumi.getter(name="matchBy")
     def match_by(self) -> Optional[str]:
         """
-        The type of comparison to use for this filter.
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
 
@@ -12367,11 +12824,11 @@ if not MYPY:
         """
         region: str
         """
-        The Region this IP address resides in.
+        The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         """
         reserved: bool
         """
-        Whether this IP is reserved or not.
+        Whether this IP address is a reserved IP.
         """
         subnet_mask: str
         """
@@ -12404,8 +12861,8 @@ class GetNetworkingIpsIpAddressArgs:
         :param int prefix: The number of bits set in the subnet mask.
         :param bool public: Whether this is a public or private IP address.
         :param str rdns: The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-        :param str region: The Region this IP address resides in.
-        :param bool reserved: Whether this IP is reserved or not.
+        :param str region: The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+        :param bool reserved: Whether this IP address is a reserved IP.
         :param str subnet_mask: The mask that separates host bits from network bits for this address.
         :param str type: The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
         """
@@ -12496,7 +12953,7 @@ class GetNetworkingIpsIpAddressArgs:
     @pulumi.getter
     def region(self) -> str:
         """
-        The Region this IP address resides in.
+        The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         """
         return pulumi.get(self, "region")
 
@@ -12508,7 +12965,7 @@ class GetNetworkingIpsIpAddressArgs:
     @pulumi.getter
     def reserved(self) -> bool:
         """
-        Whether this IP is reserved or not.
+        Whether this IP address is a reserved IP.
         """
         return pulumi.get(self, "reserved")
 
@@ -13888,6 +14345,118 @@ class GetPlacementGroupMemberArgs:
 
 
 if not MYPY:
+    class GetPlacementGroupMigrationsArgsDict(TypedDict):
+        inbounds: Sequence['GetPlacementGroupMigrationsInboundArgsDict']
+        """
+        A list of the Linodes the system is migrating into the placement group.
+        """
+        outbounds: Sequence['GetPlacementGroupMigrationsOutboundArgsDict']
+        """
+        A list of the Linodes the system is migrating out of the placement group.
+        """
+elif False:
+    GetPlacementGroupMigrationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPlacementGroupMigrationsArgs:
+    def __init__(__self__, *,
+                 inbounds: Sequence['GetPlacementGroupMigrationsInboundArgs'],
+                 outbounds: Sequence['GetPlacementGroupMigrationsOutboundArgs']):
+        """
+        :param Sequence['GetPlacementGroupMigrationsInboundArgs'] inbounds: A list of the Linodes the system is migrating into the placement group.
+        :param Sequence['GetPlacementGroupMigrationsOutboundArgs'] outbounds: A list of the Linodes the system is migrating out of the placement group.
+        """
+        pulumi.set(__self__, "inbounds", inbounds)
+        pulumi.set(__self__, "outbounds", outbounds)
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Sequence['GetPlacementGroupMigrationsInboundArgs']:
+        """
+        A list of the Linodes the system is migrating into the placement group.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @inbounds.setter
+    def inbounds(self, value: Sequence['GetPlacementGroupMigrationsInboundArgs']):
+        pulumi.set(self, "inbounds", value)
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Sequence['GetPlacementGroupMigrationsOutboundArgs']:
+        """
+        A list of the Linodes the system is migrating out of the placement group.
+        """
+        return pulumi.get(self, "outbounds")
+
+    @outbounds.setter
+    def outbounds(self, value: Sequence['GetPlacementGroupMigrationsOutboundArgs']):
+        pulumi.set(self, "outbounds", value)
+
+
+if not MYPY:
+    class GetPlacementGroupMigrationsInboundArgsDict(TypedDict):
+        linode_id: int
+        """
+        The ID of the Linode.
+        """
+elif False:
+    GetPlacementGroupMigrationsInboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPlacementGroupMigrationsInboundArgs:
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+
+if not MYPY:
+    class GetPlacementGroupMigrationsOutboundArgsDict(TypedDict):
+        linode_id: int
+        """
+        The ID of the Linode.
+        """
+elif False:
+    GetPlacementGroupMigrationsOutboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPlacementGroupMigrationsOutboundArgs:
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The ID of the Linode.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The ID of the Linode.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+
+if not MYPY:
     class GetPlacementGroupsFilterArgsDict(TypedDict):
         name: str
         """
@@ -13987,6 +14556,10 @@ if not MYPY:
         """
         A set of Linodes currently assigned to this Placement Group.
         """
+        migrations: NotRequired['GetPlacementGroupsPlacementGroupMigrationsArgsDict']
+        """
+        Any Linodes that are being migrated to or from the placement group.
+        """
 elif False:
     GetPlacementGroupsPlacementGroupArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13999,7 +14572,8 @@ class GetPlacementGroupsPlacementGroupArgs:
                  placement_group_policy: str,
                  placement_group_type: str,
                  region: str,
-                 members: Optional[Sequence['GetPlacementGroupsPlacementGroupMemberArgs']] = None):
+                 members: Optional[Sequence['GetPlacementGroupsPlacementGroupMemberArgs']] = None,
+                 migrations: Optional['GetPlacementGroupsPlacementGroupMigrationsArgs'] = None):
         """
         :param int id: The ID of the placement group.
         :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
@@ -14008,6 +14582,7 @@ class GetPlacementGroupsPlacementGroupArgs:
         :param str placement_group_type: The placement group type to use when placing Linodes in this group.
         :param str region: The region of the Placement Group.
         :param Sequence['GetPlacementGroupsPlacementGroupMemberArgs'] members: A set of Linodes currently assigned to this Placement Group.
+        :param 'GetPlacementGroupsPlacementGroupMigrationsArgs' migrations: Any Linodes that are being migrated to or from the placement group.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_compliant", is_compliant)
@@ -14017,6 +14592,8 @@ class GetPlacementGroupsPlacementGroupArgs:
         pulumi.set(__self__, "region", region)
         if members is not None:
             pulumi.set(__self__, "members", members)
+        if migrations is not None:
+            pulumi.set(__self__, "migrations", migrations)
 
     @property
     @pulumi.getter
@@ -14102,6 +14679,18 @@ class GetPlacementGroupsPlacementGroupArgs:
     def members(self, value: Optional[Sequence['GetPlacementGroupsPlacementGroupMemberArgs']]):
         pulumi.set(self, "members", value)
 
+    @property
+    @pulumi.getter
+    def migrations(self) -> Optional['GetPlacementGroupsPlacementGroupMigrationsArgs']:
+        """
+        Any Linodes that are being migrated to or from the placement group.
+        """
+        return pulumi.get(self, "migrations")
+
+    @migrations.setter
+    def migrations(self, value: Optional['GetPlacementGroupsPlacementGroupMigrationsArgs']):
+        pulumi.set(self, "migrations", value)
+
 
 if not MYPY:
     class GetPlacementGroupsPlacementGroupMemberArgsDict(TypedDict):
@@ -14111,7 +14700,7 @@ if not MYPY:
         """
         linode_id: int
         """
-        The ID of the Linode.
+        The unique identifier for the Linode being migrated out of the placement group.
         """
 elif False:
     GetPlacementGroupsPlacementGroupMemberArgsDict: TypeAlias = Mapping[str, Any]
@@ -14123,7 +14712,7 @@ class GetPlacementGroupsPlacementGroupMemberArgs:
                  linode_id: int):
         """
         :param bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
-        :param int linode_id: The ID of the Linode.
+        :param int linode_id: The unique identifier for the Linode being migrated out of the placement group.
         """
         pulumi.set(__self__, "is_compliant", is_compliant)
         pulumi.set(__self__, "linode_id", linode_id)
@@ -14144,7 +14733,119 @@ class GetPlacementGroupsPlacementGroupMemberArgs:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> int:
         """
-        The ID of the Linode.
+        The unique identifier for the Linode being migrated out of the placement group.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+
+if not MYPY:
+    class GetPlacementGroupsPlacementGroupMigrationsArgsDict(TypedDict):
+        inbounds: Sequence['GetPlacementGroupsPlacementGroupMigrationsInboundArgsDict']
+        """
+        A list of the Linodes the system is migrating into the placement group.
+        """
+        outbounds: Sequence['GetPlacementGroupsPlacementGroupMigrationsOutboundArgsDict']
+        """
+        A list of the Linodes the system is migrating out of the placement group.
+        """
+elif False:
+    GetPlacementGroupsPlacementGroupMigrationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPlacementGroupsPlacementGroupMigrationsArgs:
+    def __init__(__self__, *,
+                 inbounds: Sequence['GetPlacementGroupsPlacementGroupMigrationsInboundArgs'],
+                 outbounds: Sequence['GetPlacementGroupsPlacementGroupMigrationsOutboundArgs']):
+        """
+        :param Sequence['GetPlacementGroupsPlacementGroupMigrationsInboundArgs'] inbounds: A list of the Linodes the system is migrating into the placement group.
+        :param Sequence['GetPlacementGroupsPlacementGroupMigrationsOutboundArgs'] outbounds: A list of the Linodes the system is migrating out of the placement group.
+        """
+        pulumi.set(__self__, "inbounds", inbounds)
+        pulumi.set(__self__, "outbounds", outbounds)
+
+    @property
+    @pulumi.getter
+    def inbounds(self) -> Sequence['GetPlacementGroupsPlacementGroupMigrationsInboundArgs']:
+        """
+        A list of the Linodes the system is migrating into the placement group.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @inbounds.setter
+    def inbounds(self, value: Sequence['GetPlacementGroupsPlacementGroupMigrationsInboundArgs']):
+        pulumi.set(self, "inbounds", value)
+
+    @property
+    @pulumi.getter
+    def outbounds(self) -> Sequence['GetPlacementGroupsPlacementGroupMigrationsOutboundArgs']:
+        """
+        A list of the Linodes the system is migrating out of the placement group.
+        """
+        return pulumi.get(self, "outbounds")
+
+    @outbounds.setter
+    def outbounds(self, value: Sequence['GetPlacementGroupsPlacementGroupMigrationsOutboundArgs']):
+        pulumi.set(self, "outbounds", value)
+
+
+if not MYPY:
+    class GetPlacementGroupsPlacementGroupMigrationsInboundArgsDict(TypedDict):
+        linode_id: int
+        """
+        The unique identifier for the Linode being migrated out of the placement group.
+        """
+elif False:
+    GetPlacementGroupsPlacementGroupMigrationsInboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPlacementGroupsPlacementGroupMigrationsInboundArgs:
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The unique identifier for the Linode being migrated out of the placement group.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The unique identifier for the Linode being migrated out of the placement group.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: int):
+        pulumi.set(self, "linode_id", value)
+
+
+if not MYPY:
+    class GetPlacementGroupsPlacementGroupMigrationsOutboundArgsDict(TypedDict):
+        linode_id: int
+        """
+        The unique identifier for the Linode being migrated out of the placement group.
+        """
+elif False:
+    GetPlacementGroupsPlacementGroupMigrationsOutboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPlacementGroupsPlacementGroupMigrationsOutboundArgs:
+    def __init__(__self__, *,
+                 linode_id: int):
+        """
+        :param int linode_id: The unique identifier for the Linode being migrated out of the placement group.
+        """
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> int:
+        """
+        The unique identifier for the Linode being migrated out of the placement group.
         """
         return pulumi.get(self, "linode_id")
 

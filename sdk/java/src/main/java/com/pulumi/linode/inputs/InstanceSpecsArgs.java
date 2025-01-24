@@ -16,6 +16,21 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceSpecsArgs Empty = new InstanceSpecsArgs();
 
     /**
+     * The number of VPUs this Linode has access to.
+     * 
+     */
+    @Import(name="acceleratedDevices")
+    private @Nullable Output<Integer> acceleratedDevices;
+
+    /**
+     * @return The number of VPUs this Linode has access to.
+     * 
+     */
+    public Optional<Output<Integer>> acceleratedDevices() {
+        return Optional.ofNullable(this.acceleratedDevices);
+    }
+
+    /**
      * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
@@ -28,6 +43,21 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> disk() {
         return Optional.ofNullable(this.disk);
+    }
+
+    /**
+     * The number of GPUs this Linode has access to.
+     * 
+     */
+    @Import(name="gpus")
+    private @Nullable Output<Integer> gpus;
+
+    /**
+     * @return The number of GPUs this Linode has access to.
+     * 
+     */
+    public Optional<Output<Integer>> gpus() {
+        return Optional.ofNullable(this.gpus);
     }
 
     /**
@@ -78,7 +108,9 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceSpecsArgs() {}
 
     private InstanceSpecsArgs(InstanceSpecsArgs $) {
+        this.acceleratedDevices = $.acceleratedDevices;
         this.disk = $.disk;
+        this.gpus = $.gpus;
         this.memory = $.memory;
         this.transfer = $.transfer;
         this.vcpus = $.vcpus;
@@ -103,6 +135,27 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param acceleratedDevices The number of VPUs this Linode has access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedDevices(@Nullable Output<Integer> acceleratedDevices) {
+            $.acceleratedDevices = acceleratedDevices;
+            return this;
+        }
+
+        /**
+         * @param acceleratedDevices The number of VPUs this Linode has access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedDevices(Integer acceleratedDevices) {
+            return acceleratedDevices(Output.of(acceleratedDevices));
+        }
+
+        /**
          * @param disk The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
          * 
          * @return builder
@@ -121,6 +174,27 @@ public final class InstanceSpecsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disk(Integer disk) {
             return disk(Output.of(disk));
+        }
+
+        /**
+         * @param gpus The number of GPUs this Linode has access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpus(@Nullable Output<Integer> gpus) {
+            $.gpus = gpus;
+            return this;
+        }
+
+        /**
+         * @param gpus The number of GPUs this Linode has access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpus(Integer gpus) {
+            return gpus(Output.of(gpus));
         }
 
         /**

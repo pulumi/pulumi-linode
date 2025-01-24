@@ -29,8 +29,12 @@ import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlPlainArgs;
+import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
+import com.pulumi.linode.inputs.GetDatabaseMysqlV2PlainArgs;
 import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
 import com.pulumi.linode.inputs.GetDatabasePostgresqlPlainArgs;
+import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
+import com.pulumi.linode.inputs.GetDatabasePostgresqlV2PlainArgs;
 import com.pulumi.linode.inputs.GetDatabasesArgs;
 import com.pulumi.linode.inputs.GetDatabasesPlainArgs;
 import com.pulumi.linode.inputs.GetDomainArgs;
@@ -145,7 +149,9 @@ import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlResult;
+import com.pulumi.linode.outputs.GetDatabaseMysqlV2Result;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlResult;
+import com.pulumi.linode.outputs.GetDatabasePostgresqlV2Result;
 import com.pulumi.linode.outputs.GetDatabasesResult;
 import com.pulumi.linode.outputs.GetDomainRecordResult;
 import com.pulumi.linode.outputs.GetDomainResult;
@@ -2985,6 +2991,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getChildAccounts:getChildAccounts", TypeShape.of(GetChildAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode Database Backups that match a set of filters.
      * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -3071,6 +3079,8 @@ public final class LinodeFunctions {
         return getDatabaseBackups(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode Database Backups that match a set of filters.
      * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -3157,6 +3167,8 @@ public final class LinodeFunctions {
         return getDatabaseBackupsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode Database Backups that match a set of filters.
      * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -3243,6 +3255,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseBackups:getDatabaseBackups", TypeShape.of(GetDatabaseBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode Database Backups that match a set of filters.
      * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -3329,6 +3343,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseBackups:getDatabaseBackups", TypeShape.of(GetDatabaseBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode Database Backups that match a set of filters.
      * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -4332,6 +4348,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseEngines:getDatabaseEngines", TypeShape.of(GetDatabaseEnginesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4391,6 +4409,8 @@ public final class LinodeFunctions {
         return getDatabaseMysql(GetDatabaseMysqlArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4450,6 +4470,8 @@ public final class LinodeFunctions {
         return getDatabaseMysqlPlain(GetDatabaseMysqlPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4509,6 +4531,8 @@ public final class LinodeFunctions {
         return getDatabaseMysql(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4568,6 +4592,8 @@ public final class LinodeFunctions {
         return getDatabaseMysqlPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4627,6 +4653,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4686,6 +4714,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+     * 
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
@@ -4745,10 +4775,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -4831,10 +4861,10 @@ public final class LinodeFunctions {
         return getDatabaseMysqlBackups(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -4917,10 +4947,10 @@ public final class LinodeFunctions {
         return getDatabaseMysqlBackupsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -5003,10 +5033,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -5089,10 +5119,10 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+     * 
      * Provides information about Linode MySQL Database Backups that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * &gt; **NOTICE:** This data source has been deprecated in favor of `linode.getDatabaseBackups`.
      * 
      * ## Example Usage
      * 
@@ -5175,6 +5205,353 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args) {
+        return getDatabaseMysqlV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args) {
+        return getDatabaseMysqlV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", TypeShape.of(GetDatabaseMysqlV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", TypeShape.of(GetDatabaseMysqlV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode MySQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", TypeShape.of(GetDatabaseMysqlV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5234,6 +5611,8 @@ public final class LinodeFunctions {
         return getDatabasePostgresql(GetDatabasePostgresqlArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5293,6 +5672,8 @@ public final class LinodeFunctions {
         return getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5352,6 +5733,8 @@ public final class LinodeFunctions {
         return getDatabasePostgresql(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5411,6 +5794,8 @@ public final class LinodeFunctions {
         return getDatabasePostgresqlPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5470,6 +5855,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5529,6 +5916,8 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+     * 
      * Provides information about a Linode PostgreSQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
@@ -5586,6 +5975,351 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetDatabasePostgresqlResult> getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args) {
+        return getDatabasePostgresqlV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2Plain(GetDatabasePostgresqlV2PlainArgs args) {
+        return getDatabasePostgresqlV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", TypeShape.of(GetDatabasePostgresqlV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", TypeShape.of(GetDatabasePostgresqlV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pending_updates
+     * 
+     * The following arguments are exposed by each entry in the `pending_updates` attribute:
+     * 
+     * * `deadline` - The time when a mandatory update needs to be applied.
+     * 
+     * * `description` - A description of the update.
+     * 
+     * * `planned_for` - The date and time a maintenance update will be applied.
+     * 
+     * ## updates
+     * 
+     * The following arguments are supported in the `updates` specification block:
+     * 
+     * * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * 
+     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * 
+     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * 
+     * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2Plain(GetDatabasePostgresqlV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", TypeShape.of(GetDatabasePostgresqlV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode Managed Databases that match a set of filters.
@@ -14652,24 +15386,717 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetNetworkingIpResult> getNetworkingIpPlain(GetNetworkingIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNetworkingIp:getNetworkingIp", TypeShape.of(GetNetworkingIpResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static Output<GetNetworkingIpsResult> getNetworkingIps() {
         return getNetworkingIps(GetNetworkingIpsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static CompletableFuture<GetNetworkingIpsResult> getNetworkingIpsPlain() {
         return getNetworkingIpsPlain(GetNetworkingIpsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static Output<GetNetworkingIpsResult> getNetworkingIps(GetNetworkingIpsArgs args) {
         return getNetworkingIps(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static CompletableFuture<GetNetworkingIpsResult> getNetworkingIpsPlain(GetNetworkingIpsPlainArgs args) {
         return getNetworkingIpsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static Output<GetNetworkingIpsResult> getNetworkingIps(GetNetworkingIpsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getNetworkingIps:getNetworkingIps", TypeShape.of(GetNetworkingIpsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static Output<GetNetworkingIpsResult> getNetworkingIps(GetNetworkingIpsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getNetworkingIps:getNetworkingIps", TypeShape.of(GetNetworkingIpsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all IPs under the current account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getNetworkingIps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Retrieve all IPs under the current account in a specific region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .filters(GetNetworkingIpsFilterArgs.builder()
+     *                 .name("region")
+     *                 .values("us-mia")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `address`
+     * 
+     * * `gateway`
+     * 
+     * * `subnet_mask`
+     * 
+     * * `prefix`
+     * 
+     * * `type`
+     * 
+     * * `public`
+     * 
+     * * `rdns`
+     * 
+     * * `linode_id`
+     * 
+     * * `region`
+     * 
+     * * `reserved`
+     * 
+     */
     public static CompletableFuture<GetNetworkingIpsResult> getNetworkingIpsPlain(GetNetworkingIpsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNetworkingIps:getNetworkingIps", TypeShape.of(GetNetworkingIpsResult.class), args, Utilities.withVersion(options));
     }

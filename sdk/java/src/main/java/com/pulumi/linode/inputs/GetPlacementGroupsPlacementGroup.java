@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetPlacementGroupsPlacementGroupMember;
+import com.pulumi.linode.inputs.GetPlacementGroupsPlacementGroupMigrations;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -80,6 +81,21 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
     }
 
     /**
+     * Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    @Import(name="migrations")
+    private @Nullable GetPlacementGroupsPlacementGroupMigrations migrations;
+
+    /**
+     * @return Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    public Optional<GetPlacementGroupsPlacementGroupMigrations> migrations() {
+        return Optional.ofNullable(this.migrations);
+    }
+
+    /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      * 
      */
@@ -131,6 +147,7 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
         this.isCompliant = $.isCompliant;
         this.label = $.label;
         this.members = $.members;
+        this.migrations = $.migrations;
         this.placementGroupPolicy = $.placementGroupPolicy;
         this.placementGroupType = $.placementGroupType;
         this.region = $.region;
@@ -206,6 +223,17 @@ public final class GetPlacementGroupsPlacementGroup extends com.pulumi.resources
          */
         public Builder members(GetPlacementGroupsPlacementGroupMember... members) {
             return members(List.of(members));
+        }
+
+        /**
+         * @param migrations Any Linodes that are being migrated to or from the placement group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrations(@Nullable GetPlacementGroupsPlacementGroupMigrations migrations) {
+            $.migrations = migrations;
+            return this;
         }
 
         /**

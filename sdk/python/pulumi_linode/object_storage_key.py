@@ -240,6 +240,28 @@ class ObjectStorageKey(pulumi.CustomResource):
             }])
         ```
 
+        The following example shows how to grant a key the explicit access to multiple buckets.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.ObjectStorageKey("foo",
+            label="image-access",
+            bucket_accesses=[
+                {
+                    "bucket_name": "foobar1",
+                    "cluster": "us-east-1",
+                    "permissions": "read_write",
+                },
+                {
+                    "bucket_name": "foobar2",
+                    "cluster": "us-east-1",
+                    "permissions": "read_write",
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
@@ -282,6 +304,28 @@ class ObjectStorageKey(pulumi.CustomResource):
                 "region": "us-mia",
                 "permissions": "read_write",
             }])
+        ```
+
+        The following example shows how to grant a key the explicit access to multiple buckets.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foo = linode.ObjectStorageKey("foo",
+            label="image-access",
+            bucket_accesses=[
+                {
+                    "bucket_name": "foobar1",
+                    "cluster": "us-east-1",
+                    "permissions": "read_write",
+                },
+                {
+                    "bucket_name": "foobar2",
+                    "cluster": "us-east-1",
+                    "permissions": "read_write",
+                },
+            ])
         ```
 
         :param str resource_name: The name of the resource.

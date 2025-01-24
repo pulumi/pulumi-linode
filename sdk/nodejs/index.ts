@@ -20,10 +20,20 @@ export type DatabaseMysql = import("./databaseMysql").DatabaseMysql;
 export const DatabaseMysql: typeof import("./databaseMysql").DatabaseMysql = null as any;
 utilities.lazyLoad(exports, ["DatabaseMysql"], () => require("./databaseMysql"));
 
+export { DatabaseMysqlV2Args, DatabaseMysqlV2State } from "./databaseMysqlV2";
+export type DatabaseMysqlV2 = import("./databaseMysqlV2").DatabaseMysqlV2;
+export const DatabaseMysqlV2: typeof import("./databaseMysqlV2").DatabaseMysqlV2 = null as any;
+utilities.lazyLoad(exports, ["DatabaseMysqlV2"], () => require("./databaseMysqlV2"));
+
 export { DatabasePostgresqlArgs, DatabasePostgresqlState } from "./databasePostgresql";
 export type DatabasePostgresql = import("./databasePostgresql").DatabasePostgresql;
 export const DatabasePostgresql: typeof import("./databasePostgresql").DatabasePostgresql = null as any;
 utilities.lazyLoad(exports, ["DatabasePostgresql"], () => require("./databasePostgresql"));
+
+export { DatabasePostgresqlV2Args, DatabasePostgresqlV2State } from "./databasePostgresqlV2";
+export type DatabasePostgresqlV2 = import("./databasePostgresqlV2").DatabasePostgresqlV2;
+export const DatabasePostgresqlV2: typeof import("./databasePostgresqlV2").DatabasePostgresqlV2 = null as any;
+utilities.lazyLoad(exports, ["DatabasePostgresqlV2"], () => require("./databasePostgresqlV2"));
 
 export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
@@ -105,10 +115,20 @@ export const getDatabaseMysqlBackups: typeof import("./getDatabaseMysqlBackups")
 export const getDatabaseMysqlBackupsOutput: typeof import("./getDatabaseMysqlBackups").getDatabaseMysqlBackupsOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseMysqlBackups","getDatabaseMysqlBackupsOutput"], () => require("./getDatabaseMysqlBackups"));
 
+export { GetDatabaseMysqlV2Args, GetDatabaseMysqlV2Result, GetDatabaseMysqlV2OutputArgs } from "./getDatabaseMysqlV2";
+export const getDatabaseMysqlV2: typeof import("./getDatabaseMysqlV2").getDatabaseMysqlV2 = null as any;
+export const getDatabaseMysqlV2Output: typeof import("./getDatabaseMysqlV2").getDatabaseMysqlV2Output = null as any;
+utilities.lazyLoad(exports, ["getDatabaseMysqlV2","getDatabaseMysqlV2Output"], () => require("./getDatabaseMysqlV2"));
+
 export { GetDatabasePostgresqlArgs, GetDatabasePostgresqlResult, GetDatabasePostgresqlOutputArgs } from "./getDatabasePostgresql";
 export const getDatabasePostgresql: typeof import("./getDatabasePostgresql").getDatabasePostgresql = null as any;
 export const getDatabasePostgresqlOutput: typeof import("./getDatabasePostgresql").getDatabasePostgresqlOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabasePostgresql","getDatabasePostgresqlOutput"], () => require("./getDatabasePostgresql"));
+
+export { GetDatabasePostgresqlV2Args, GetDatabasePostgresqlV2Result, GetDatabasePostgresqlV2OutputArgs } from "./getDatabasePostgresqlV2";
+export const getDatabasePostgresqlV2: typeof import("./getDatabasePostgresqlV2").getDatabasePostgresqlV2 = null as any;
+export const getDatabasePostgresqlV2Output: typeof import("./getDatabasePostgresqlV2").getDatabasePostgresqlV2Output = null as any;
+utilities.lazyLoad(exports, ["getDatabasePostgresqlV2","getDatabasePostgresqlV2Output"], () => require("./getDatabasePostgresqlV2"));
 
 export { GetDatabasesArgs, GetDatabasesResult, GetDatabasesOutputArgs } from "./getDatabases";
 export const getDatabases: typeof import("./getDatabases").getDatabases = null as any;
@@ -540,8 +560,12 @@ const _module = {
                 return new DatabaseAccessControls(name, <any>undefined, { urn })
             case "linode:index/databaseMysql:DatabaseMysql":
                 return new DatabaseMysql(name, <any>undefined, { urn })
+            case "linode:index/databaseMysqlV2:DatabaseMysqlV2":
+                return new DatabaseMysqlV2(name, <any>undefined, { urn })
             case "linode:index/databasePostgresql:DatabasePostgresql":
                 return new DatabasePostgresql(name, <any>undefined, { urn })
+            case "linode:index/databasePostgresqlV2:DatabasePostgresqlV2":
+                return new DatabasePostgresqlV2(name, <any>undefined, { urn })
             case "linode:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "linode:index/domainRecord:DomainRecord":
@@ -614,7 +638,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("linode", "index/accountSettings", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
+pulumi.runtime.registerResourceModule("linode", "index/databaseMysqlV2", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databasePostgresql", _module)
+pulumi.runtime.registerResourceModule("linode", "index/databasePostgresqlV2", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)

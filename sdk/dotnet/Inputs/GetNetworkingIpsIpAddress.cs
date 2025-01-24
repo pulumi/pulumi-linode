@@ -49,13 +49,13 @@ namespace Pulumi.Linode.Inputs
         public string Rdns { get; set; } = null!;
 
         /// <summary>
-        /// The Region this IP address resides in.
+        /// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
 
         /// <summary>
-        /// Whether this IP is reserved or not.
+        /// Whether this IP address is a reserved IP.
         /// </summary>
         [Input("reserved", required: true)]
         public bool Reserved { get; set; }

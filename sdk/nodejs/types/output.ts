@@ -28,6 +28,34 @@ export interface DatabaseMysqlUpdates {
     weekOfMonth?: number;
 }
 
+export interface DatabaseMysqlV2PendingUpdate {
+    deadline: string;
+    description: string;
+    plannedFor: string;
+}
+
+export interface DatabaseMysqlV2Timeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface DatabaseMysqlV2Updates {
+    dayOfWeek: number;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+}
+
 export interface DatabasePostgresqlUpdates {
     /**
      * The day to perform maintenance.
@@ -49,6 +77,34 @@ export interface DatabasePostgresqlUpdates {
      * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
      */
     weekOfMonth?: number;
+}
+
+export interface DatabasePostgresqlV2PendingUpdate {
+    deadline: string;
+    description: string;
+    plannedFor: string;
+}
+
+export interface DatabasePostgresqlV2Timeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface DatabasePostgresqlV2Updates {
+    dayOfWeek: number;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
 }
 
 export interface FirewallDevice {
@@ -396,12 +452,38 @@ export interface GetDatabaseMysqlUpdate {
     weekOfMonth: number;
 }
 
+export interface GetDatabaseMysqlV2PendingUpdate {
+    deadline: string;
+    description: string;
+    plannedFor: string;
+}
+
+export interface GetDatabaseMysqlV2Updates {
+    dayOfWeek: number;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
+}
+
 export interface GetDatabasePostgresqlUpdate {
     dayOfWeek: string;
     duration: number;
     frequency: string;
     hourOfDay: number;
     weekOfMonth: number;
+}
+
+export interface GetDatabasePostgresqlV2PendingUpdate {
+    deadline: string;
+    description: string;
+    plannedFor: string;
+}
+
+export interface GetDatabasePostgresqlV2Updates {
+    dayOfWeek: number;
+    duration: number;
+    frequency: string;
+    hourOfDay: number;
 }
 
 export interface GetDatabasesDatabase {
@@ -1559,6 +1641,10 @@ export interface GetInstanceTypesFilter {
 
 export interface GetInstanceTypesType {
     /**
+     * The number of VPUs this Linode Type offers.
+     */
+    acceleratedDevices: number;
+    /**
      * Information about the optional Backup service offered for Linodes.
      */
     addons: outputs.GetInstanceTypesTypeAddon[];
@@ -2131,9 +2217,17 @@ export interface GetInstancesInstancePlacementGroup {
 
 export interface GetInstancesInstanceSpec {
     /**
+     * The number of VPUs this Linode has access to.
+     */
+    acceleratedDevices: number;
+    /**
      * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      */
     disk: number;
+    /**
+     * The number of GPUs this Linode has access to.
+     */
+    gpus: number;
     /**
      * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
      */
@@ -2603,15 +2697,15 @@ export interface GetNetworkTransferPricesTypeRegionPrice {
 
 export interface GetNetworkingIpsFilter {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: string;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
 }
@@ -2642,11 +2736,11 @@ export interface GetNetworkingIpsIpAddress {
      */
     rdns: string;
     /**
-     * The Region this IP address resides in.
+     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      */
     region: string;
     /**
-     * Whether this IP is reserved or not.
+     * Whether this IP address is a reserved IP.
      */
     reserved: boolean;
     /**
@@ -2973,6 +3067,31 @@ export interface GetPlacementGroupMember {
     linodeId: number;
 }
 
+export interface GetPlacementGroupMigrations {
+    /**
+     * A list of the Linodes the system is migrating into the placement group.
+     */
+    inbounds: outputs.GetPlacementGroupMigrationsInbound[];
+    /**
+     * A list of the Linodes the system is migrating out of the placement group.
+     */
+    outbounds: outputs.GetPlacementGroupMigrationsOutbound[];
+}
+
+export interface GetPlacementGroupMigrationsInbound {
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupMigrationsOutbound {
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: number;
+}
+
 export interface GetPlacementGroupsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3006,6 +3125,10 @@ export interface GetPlacementGroupsPlacementGroup {
      */
     members?: outputs.GetPlacementGroupsPlacementGroupMember[];
     /**
+     * Any Linodes that are being migrated to or from the placement group.
+     */
+    migrations?: outputs.GetPlacementGroupsPlacementGroupMigrations;
+    /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
     placementGroupPolicy: string;
@@ -3025,7 +3148,32 @@ export interface GetPlacementGroupsPlacementGroupMember {
      */
     isCompliant: boolean;
     /**
-     * The ID of the Linode.
+     * The unique identifier for the Linode being migrated out of the placement group.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrations {
+    /**
+     * A list of the Linodes the system is migrating into the placement group.
+     */
+    inbounds: outputs.GetPlacementGroupsPlacementGroupMigrationsInbound[];
+    /**
+     * A list of the Linodes the system is migrating out of the placement group.
+     */
+    outbounds: outputs.GetPlacementGroupsPlacementGroupMigrationsOutbound[];
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsInbound {
+    /**
+     * The unique identifier for the Linode being migrated out of the placement group.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsOutbound {
+    /**
+     * The unique identifier for the Linode being migrated out of the placement group.
      */
     linodeId: number;
 }
@@ -4545,7 +4693,9 @@ export interface InstanceInterface {
      */
     ipamAddress?: string;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
      */
     ipv4: outputs.InstanceInterfaceIpv4;
     /**
@@ -4623,9 +4773,17 @@ export interface InstancePlacementGroup {
 
 export interface InstanceSpecs {
     /**
+     * The number of VPUs this Linode has access to.
+     */
+    acceleratedDevices: number;
+    /**
      * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      */
     disk: number;
+    /**
+     * The number of GPUs this Linode has access to.
+     */
+    gpus: number;
     /**
      * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
      */
@@ -4801,7 +4959,13 @@ export interface LkeNodePoolTaint {
 }
 
 export interface NetworkingIpAssignmentAssignment {
+    /**
+     * The IPv4 address or IPv6 range to assign.
+     */
     address: string;
+    /**
+     * The ID of the Linode to which the IP address will be assigned.
+     */
     linodeId: number;
 }
 

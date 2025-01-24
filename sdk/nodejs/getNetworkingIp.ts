@@ -71,6 +71,9 @@ export interface GetNetworkingIpResult {
      * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      */
     readonly region: string;
+    /**
+     * Whether this IP address is a reserved IP.
+     */
     readonly reserved: boolean;
     /**
      * The mask that separates host bits from network bits for this address.

@@ -18,14 +18,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     public static final NetworkingIpState Empty = new NetworkingIpState();
 
     /**
-     * The allocated IPv4 address.
+     * The IP address.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The allocated IPv4 address.
+     * @return The IP address.
      * 
      */
     public Optional<Output<String>> address() {
@@ -33,14 +33,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      * 
      */
     @Import(name="linodeId")
     private @Nullable Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * @return The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      * 
      */
     public Optional<Output<Integer>> linodeId() {
@@ -48,14 +48,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to true.
      * 
      */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
     /**
-     * @return Whether the IPv4 address is public or private.
+     * @return Whether the IP address is public. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> public_() {
@@ -93,14 +93,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of IP address (ipv4).
+     * The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of IP address (ipv4).
+     * @return The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
     public Optional<Output<String>> type() {
@@ -137,7 +137,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The allocated IPv4 address.
+         * @param address The IP address.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The allocated IPv4 address.
+         * @param address The IP address.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeId The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+         * @param linodeId The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeId The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+         * @param linodeId The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Whether the IPv4 address is public or private.
+         * @param public_ Whether the IP address is public. Defaults to true.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Whether the IPv4 address is public or private.
+         * @param public_ Whether the IP address is public. Defaults to true.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of IP address (ipv4).
+         * @param type The type of IP address. (ipv4, ipv6, etc.)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of IP address (ipv4).
+         * @param type The type of IP address. (ipv4, ipv6, etc.)
          * 
          * @return builder
          * 

@@ -8,7 +8,9 @@ import typing
 from .account_settings import *
 from .database_access_controls import *
 from .database_mysql import *
+from .database_mysql_v2 import *
 from .database_postgresql import *
+from .database_postgresql_v2 import *
 from .domain import *
 from .domain_record import *
 from .firewall import *
@@ -25,7 +27,9 @@ from .get_database_backups import *
 from .get_database_engines import *
 from .get_database_mysql import *
 from .get_database_mysql_backups import *
+from .get_database_mysql_v2 import *
 from .get_database_postgresql import *
+from .get_database_postgresql_v2 import *
 from .get_databases import *
 from .get_domain import *
 from .get_domain_record import *
@@ -147,10 +151,26 @@ _utilities.register(
  },
  {
   "pkg": "linode",
+  "mod": "index/databaseMysqlV2",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/databaseMysqlV2:DatabaseMysqlV2": "DatabaseMysqlV2"
+  }
+ },
+ {
+  "pkg": "linode",
   "mod": "index/databasePostgresql",
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/databasePostgresql:DatabasePostgresql": "DatabasePostgresql"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/databasePostgresqlV2",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/databasePostgresqlV2:DatabasePostgresqlV2": "DatabasePostgresqlV2"
   }
  },
  {

@@ -90,7 +90,56 @@ def get_networking_ips(filters: Optional[Sequence[Union['GetNetworkingIpsFilterA
                        order_by: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkingIpsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+
+    ## Example Usage
+
+    Retrieve all IPs under the current account:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all = linode.get_networking_ips()
+    ```
+
+    Retrieve all IPs under the current account in a specific region:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered = linode.get_networking_ips(filters=[{
+        "name": "region",
+        "values": ["us-mia"],
+    }])
+    ```
+
+    ## Filterable Fields
+
+    * `address`
+
+    * `gateway`
+
+    * `subnet_mask`
+
+    * `prefix`
+
+    * `type`
+
+    * `public`
+
+    * `rdns`
+
+    * `linode_id`
+
+    * `region`
+
+    * `reserved`
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -112,7 +161,56 @@ def get_networking_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[U
                               order_by: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingIpsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+
+    ## Example Usage
+
+    Retrieve all IPs under the current account:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all = linode.get_networking_ips()
+    ```
+
+    Retrieve all IPs under the current account in a specific region:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    filtered = linode.get_networking_ips(filters=[{
+        "name": "region",
+        "values": ["us-mia"],
+    }])
+    ```
+
+    ## Filterable Fields
+
+    * `address`
+
+    * `gateway`
+
+    * `subnet_mask`
+
+    * `prefix`
+
+    * `type`
+
+    * `public`
+
+    * `rdns`
+
+    * `linode_id`
+
+    * `region`
+
+    * `reserved`
+
+
+    :param str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
     __args__['filters'] = filters

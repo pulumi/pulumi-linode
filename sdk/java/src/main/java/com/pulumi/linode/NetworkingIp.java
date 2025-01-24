@@ -15,45 +15,96 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Manages allocation of reserved IPv4 address in a region and optionally assigning the reserved address to a Linode instance.
+ * 
+ * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-allocate-ip).
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.NetworkingIp;
+ * import com.pulumi.linode.NetworkingIpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testIp = new NetworkingIp("testIp", NetworkingIpArgs.builder()
+ *             .type("ipv4")
+ *             .linodeId(12345)
+ *             .public_(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * IP addresses can be imported using the IP address ID, e.g.
+ * 
+ * ```sh
+ * $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
+ * ```
+ * 
+ */
 @ResourceType(type="linode:index/networkingIp:NetworkingIp")
 public class NetworkingIp extends com.pulumi.resources.CustomResource {
     /**
-     * The allocated IPv4 address.
+     * The IP address.
      * 
      */
     @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
-     * @return The allocated IPv4 address.
+     * @return The IP address.
      * 
      */
     public Output<String> address() {
         return this.address;
     }
     /**
-     * The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      * 
      */
     @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * @return The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      * 
      */
     public Output<Integer> linodeId() {
         return this.linodeId;
     }
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to true.
      * 
      */
     @Export(name="public", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> public_;
 
     /**
-     * @return Whether the IPv4 address is public or private.
+     * @return Whether the IP address is public. Defaults to true.
      * 
      */
     public Output<Boolean> public_() {
@@ -88,14 +139,14 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
         return this.reserved;
     }
     /**
-     * The type of IP address (ipv4).
+     * The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of IP address (ipv4).
+     * @return The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
     public Output<String> type() {

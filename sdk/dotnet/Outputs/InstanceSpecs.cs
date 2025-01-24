@@ -14,9 +14,17 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceSpecs
     {
         /// <summary>
+        /// The number of VPUs this Linode has access to.
+        /// </summary>
+        public readonly int? AcceleratedDevices;
+        /// <summary>
         /// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         /// </summary>
         public readonly int? Disk;
+        /// <summary>
+        /// The number of GPUs this Linode has access to.
+        /// </summary>
+        public readonly int? Gpus;
         /// <summary>
         /// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
         /// </summary>
@@ -32,7 +40,11 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private InstanceSpecs(
+            int? acceleratedDevices,
+
             int? disk,
+
+            int? gpus,
 
             int? memory,
 
@@ -40,7 +52,9 @@ namespace Pulumi.Linode.Outputs
 
             int? vcpus)
         {
+            AcceleratedDevices = acceleratedDevices;
             Disk = disk;
+            Gpus = gpus;
             Memory = memory;
             Transfer = transfer;
             Vcpus = vcpus;

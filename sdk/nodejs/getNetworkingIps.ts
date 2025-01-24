@@ -6,6 +6,56 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+ *
+ * ## Example Usage
+ *
+ * Retrieve all IPs under the current account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all = linode.getNetworkingIps({});
+ * ```
+ *
+ * Retrieve all IPs under the current account in a specific region:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filtered = linode.getNetworkingIps({
+ *     filters: [{
+ *         name: "region",
+ *         values: ["us-mia"],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Filterable Fields
+ *
+ * * `address`
+ *
+ * * `gateway`
+ *
+ * * `subnetMask`
+ *
+ * * `prefix`
+ *
+ * * `type`
+ *
+ * * `public`
+ *
+ * * `rdns`
+ *
+ * * `linodeId`
+ *
+ * * `region`
+ *
+ * * `reserved`
+ */
 export function getNetworkingIps(args?: GetNetworkingIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkingIpsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,7 +73,13 @@ export function getNetworkingIps(args?: GetNetworkingIpsArgs, opts?: pulumi.Invo
 export interface GetNetworkingIpsArgs {
     filters?: inputs.GetNetworkingIpsFilter[];
     ipAddresses?: inputs.GetNetworkingIpsIpAddress[];
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: string;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: string;
 }
 
@@ -37,6 +93,56 @@ export interface GetNetworkingIpsResult {
     readonly order?: string;
     readonly orderBy?: string;
 }
+/**
+ * Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+ *
+ * ## Example Usage
+ *
+ * Retrieve all IPs under the current account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all = linode.getNetworkingIps({});
+ * ```
+ *
+ * Retrieve all IPs under the current account in a specific region:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const filtered = linode.getNetworkingIps({
+ *     filters: [{
+ *         name: "region",
+ *         values: ["us-mia"],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Filterable Fields
+ *
+ * * `address`
+ *
+ * * `gateway`
+ *
+ * * `subnetMask`
+ *
+ * * `prefix`
+ *
+ * * `type`
+ *
+ * * `public`
+ *
+ * * `rdns`
+ *
+ * * `linodeId`
+ *
+ * * `region`
+ *
+ * * `reserved`
+ */
 export function getNetworkingIpsOutput(args?: GetNetworkingIpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkingIpsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -54,6 +160,12 @@ export function getNetworkingIpsOutput(args?: GetNetworkingIpsOutputArgs, opts?:
 export interface GetNetworkingIpsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkingIpsFilterArgs>[]>;
     ipAddresses?: pulumi.Input<pulumi.Input<inputs.GetNetworkingIpsIpAddressArgs>[]>;
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     */
     order?: pulumi.Input<string>;
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     */
     orderBy?: pulumi.Input<string>;
 }

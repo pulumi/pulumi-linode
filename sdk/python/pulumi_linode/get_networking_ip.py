@@ -125,6 +125,9 @@ class GetNetworkingIpResult:
     @property
     @pulumi.getter
     def reserved(self) -> bool:
+        """
+        Whether this IP address is a reserved IP.
+        """
         return pulumi.get(self, "reserved")
 
     @property

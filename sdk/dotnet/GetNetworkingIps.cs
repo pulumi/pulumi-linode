@@ -11,12 +11,222 @@ namespace Pulumi.Linode
 {
     public static class GetNetworkingIps
     {
+        /// <summary>
+        /// Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve all IPs under the current account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetNetworkingIps.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Retrieve all IPs under the current account in a specific region:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered = Linode.GetNetworkingIps.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNetworkingIpsFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-mia",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `address`
+        /// 
+        /// * `gateway`
+        /// 
+        /// * `subnet_mask`
+        /// 
+        /// * `prefix`
+        /// 
+        /// * `type`
+        /// 
+        /// * `public`
+        /// 
+        /// * `rdns`
+        /// 
+        /// * `linode_id`
+        /// 
+        /// * `region`
+        /// 
+        /// * `reserved`
+        /// </summary>
         public static Task<GetNetworkingIpsResult> InvokeAsync(GetNetworkingIpsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpsResult>("linode:index/getNetworkingIps:getNetworkingIps", args ?? new GetNetworkingIpsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve all IPs under the current account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetNetworkingIps.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Retrieve all IPs under the current account in a specific region:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered = Linode.GetNetworkingIps.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNetworkingIpsFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-mia",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `address`
+        /// 
+        /// * `gateway`
+        /// 
+        /// * `subnet_mask`
+        /// 
+        /// * `prefix`
+        /// 
+        /// * `type`
+        /// 
+        /// * `public`
+        /// 
+        /// * `rdns`
+        /// 
+        /// * `linode_id`
+        /// 
+        /// * `region`
+        /// 
+        /// * `reserved`
+        /// </summary>
         public static Output<GetNetworkingIpsResult> Invoke(GetNetworkingIpsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpsResult>("linode:index/getNetworkingIps:getNetworkingIps", args ?? new GetNetworkingIpsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve all IPs under the current account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Linode.GetNetworkingIps.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Retrieve all IPs under the current account in a specific region:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var filtered = Linode.GetNetworkingIps.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNetworkingIpsFilterInputArgs
+        ///             {
+        ///                 Name = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "us-mia",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `address`
+        /// 
+        /// * `gateway`
+        /// 
+        /// * `subnet_mask`
+        /// 
+        /// * `prefix`
+        /// 
+        /// * `type`
+        /// 
+        /// * `public`
+        /// 
+        /// * `rdns`
+        /// 
+        /// * `linode_id`
+        /// 
+        /// * `region`
+        /// 
+        /// * `reserved`
+        /// </summary>
         public static Output<GetNetworkingIpsResult> Invoke(GetNetworkingIpsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpsResult>("linode:index/getNetworkingIps:getNetworkingIps", args ?? new GetNetworkingIpsInvokeArgs(), options.WithDefaults());
     }
@@ -40,9 +250,15 @@ namespace Pulumi.Linode
             set => _ipAddresses = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
@@ -70,9 +286,15 @@ namespace Pulumi.Linode
             set => _ipAddresses = value;
         }
 
+        /// <summary>
+        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        /// <summary>
+        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 

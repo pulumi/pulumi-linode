@@ -559,6 +559,8 @@ class DatabaseMysql(pulumi.CustomResource):
                  updates: Optional[pulumi.Input[Union['DatabaseMysqlUpdatesArgs', 'DatabaseMysqlUpdatesArgsDict']]] = None,
                  __props__=None):
         """
+        > **DEPRECATION NOTICE:** This resource has been deprecated. Please use DatabaseMysqlV2 for all future implementations.
+
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
@@ -654,6 +656,8 @@ class DatabaseMysql(pulumi.CustomResource):
                  args: DatabaseMysqlArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATION NOTICE:** This resource has been deprecated. Please use DatabaseMysqlV2 for all future implementations.
+
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 

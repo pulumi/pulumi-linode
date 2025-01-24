@@ -25,7 +25,8 @@ class NetworkingIpAssignmentArgs:
                  assignments: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]]] = None):
         """
         The set of arguments for constructing a NetworkingIpAssignment resource.
-        :param pulumi.Input[str] region: The region for the IP assignments.
+        :param pulumi.Input[str] region: The region where the IP addresses will be assigned.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]] assignments: A list of IP/Linode assignments to apply.
         """
         pulumi.set(__self__, "region", region)
         if assignments is not None:
@@ -35,7 +36,7 @@ class NetworkingIpAssignmentArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region for the IP assignments.
+        The region where the IP addresses will be assigned.
         """
         return pulumi.get(self, "region")
 
@@ -46,6 +47,9 @@ class NetworkingIpAssignmentArgs:
     @property
     @pulumi.getter
     def assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]]]:
+        """
+        A list of IP/Linode assignments to apply.
+        """
         return pulumi.get(self, "assignments")
 
     @assignments.setter
@@ -60,7 +64,8 @@ class _NetworkingIpAssignmentState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NetworkingIpAssignment resources.
-        :param pulumi.Input[str] region: The region for the IP assignments.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]] assignments: A list of IP/Linode assignments to apply.
+        :param pulumi.Input[str] region: The region where the IP addresses will be assigned.
         """
         if assignments is not None:
             pulumi.set(__self__, "assignments", assignments)
@@ -70,6 +75,9 @@ class _NetworkingIpAssignmentState:
     @property
     @pulumi.getter
     def assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]]]:
+        """
+        A list of IP/Linode assignments to apply.
+        """
         return pulumi.get(self, "assignments")
 
     @assignments.setter
@@ -80,7 +88,7 @@ class _NetworkingIpAssignmentState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region for the IP assignments.
+        The region where the IP addresses will be assigned.
         """
         return pulumi.get(self, "region")
 
@@ -98,10 +106,14 @@ class NetworkingIpAssignment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NetworkingIpAssignment resource with the given unique name, props, and options.
+        Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
+
+        For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] region: The region for the IP assignments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
+        :param pulumi.Input[str] region: The region where the IP addresses will be assigned.
         """
         ...
     @overload
@@ -110,7 +122,10 @@ class NetworkingIpAssignment(pulumi.CustomResource):
                  args: NetworkingIpAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetworkingIpAssignment resource with the given unique name, props, and options.
+        Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
+
+        For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+
         :param str resource_name: The name of the resource.
         :param NetworkingIpAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -160,7 +175,8 @@ class NetworkingIpAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] region: The region for the IP assignments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
+        :param pulumi.Input[str] region: The region where the IP addresses will be assigned.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -173,13 +189,16 @@ class NetworkingIpAssignment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def assignments(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkingIpAssignmentAssignment']]]:
+        """
+        A list of IP/Linode assignments to apply.
+        """
         return pulumi.get(self, "assignments")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region for the IP assignments.
+        The region where the IP addresses will be assigned.
         """
         return pulumi.get(self, "region")
 

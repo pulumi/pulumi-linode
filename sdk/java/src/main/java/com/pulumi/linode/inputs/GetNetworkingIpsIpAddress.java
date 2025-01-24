@@ -106,14 +106,14 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The Region this IP address resides in.
+     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     @Import(name="region", required=true)
     private String region;
 
     /**
-     * @return The Region this IP address resides in.
+     * @return The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public String region() {
@@ -121,14 +121,14 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Whether this IP is reserved or not.
+     * Whether this IP address is a reserved IP.
      * 
      */
     @Import(name="reserved", required=true)
     private Boolean reserved;
 
     /**
-     * @return Whether this IP is reserved or not.
+     * @return Whether this IP address is a reserved IP.
      * 
      */
     public Boolean reserved() {
@@ -265,7 +265,7 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param region The Region this IP address resides in.
+         * @param region The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param reserved Whether this IP is reserved or not.
+         * @param reserved Whether this IP address is a reserved IP.
          * 
          * @return builder
          * 

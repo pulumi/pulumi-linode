@@ -38,11 +38,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Rdns;
         /// <summary>
-        /// The Region this IP address resides in.
+        /// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Whether this IP is reserved or not.
+        /// Whether this IP address is a reserved IP.
         /// </summary>
         public readonly bool Reserved;
         /// <summary>

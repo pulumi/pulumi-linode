@@ -12,6 +12,8 @@ namespace Pulumi.Linode
     public static class GetDatabasePostgresql
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+        /// 
         /// Provides information about a Linode PostgreSQL Database.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
@@ -53,6 +55,8 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+        /// 
         /// Provides information about a Linode PostgreSQL Database.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
@@ -94,6 +98,8 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlResult>("linode:index/getDatabasePostgresql:getDatabasePostgresql", args ?? new GetDatabasePostgresqlInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
+        /// 
         /// Provides information about a Linode PostgreSQL Database.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 

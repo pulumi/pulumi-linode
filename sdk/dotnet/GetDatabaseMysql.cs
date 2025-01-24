@@ -12,6 +12,8 @@ namespace Pulumi.Linode
     public static class GetDatabaseMysql
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+        /// 
         /// Provides information about a Linode MySQL Database.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
         /// 
@@ -53,6 +55,8 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+        /// 
         /// Provides information about a Linode MySQL Database.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
         /// 
@@ -94,6 +98,8 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+        /// 
         /// Provides information about a Linode MySQL Database.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
         /// 

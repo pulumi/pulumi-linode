@@ -26,11 +26,11 @@ class NetworkingIpArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NetworkingIp resource.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
-        :param pulumi.Input[bool] public: Whether the IPv4 address is public or private.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        :param pulumi.Input[bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[bool] reserved: Whether the IPv4 address should be reserved.
-        :param pulumi.Input[str] type: The type of IP address (ipv4).
+        :param pulumi.Input[str] type: The type of IP address. (ipv4, ipv6, etc.)
         """
         if linode_id is not None:
             pulumi.set(__self__, "linode_id", linode_id)
@@ -47,7 +47,7 @@ class NetworkingIpArgs:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+        The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
         """
         return pulumi.get(self, "linode_id")
 
@@ -59,7 +59,7 @@ class NetworkingIpArgs:
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the IPv4 address is public or private.
+        Whether the IP address is public. Defaults to true.
         """
         return pulumi.get(self, "public")
 
@@ -95,7 +95,7 @@ class NetworkingIpArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of IP address (ipv4).
+        The type of IP address. (ipv4, ipv6, etc.)
         """
         return pulumi.get(self, "type")
 
@@ -115,12 +115,12 @@ class _NetworkingIpState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NetworkingIp resources.
-        :param pulumi.Input[str] address: The allocated IPv4 address.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
-        :param pulumi.Input[bool] public: Whether the IPv4 address is public or private.
+        :param pulumi.Input[str] address: The IP address.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        :param pulumi.Input[bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[bool] reserved: Whether the IPv4 address should be reserved.
-        :param pulumi.Input[str] type: The type of IP address (ipv4).
+        :param pulumi.Input[str] type: The type of IP address. (ipv4, ipv6, etc.)
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -139,7 +139,7 @@ class _NetworkingIpState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The allocated IPv4 address.
+        The IP address.
         """
         return pulumi.get(self, "address")
 
@@ -151,7 +151,7 @@ class _NetworkingIpState:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+        The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
         """
         return pulumi.get(self, "linode_id")
 
@@ -163,7 +163,7 @@ class _NetworkingIpState:
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the IPv4 address is public or private.
+        Whether the IP address is public. Defaults to true.
         """
         return pulumi.get(self, "public")
 
@@ -199,7 +199,7 @@ class _NetworkingIpState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of IP address (ipv4).
+        The type of IP address. (ipv4, ipv6, etc.)
         """
         return pulumi.get(self, "type")
 
@@ -220,14 +220,37 @@ class NetworkingIp(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NetworkingIp resource with the given unique name, props, and options.
+        Manages allocation of reserved IPv4 address in a region and optionally assigning the reserved address to a Linode instance.
+
+        For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-allocate-ip).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test_ip = linode.NetworkingIp("test_ip",
+            type="ipv4",
+            linode_id=12345,
+            public=True)
+        ```
+
+        ## Import
+
+        IP addresses can be imported using the IP address ID, e.g.
+
+        ```sh
+        $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
-        :param pulumi.Input[bool] public: Whether the IPv4 address is public or private.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        :param pulumi.Input[bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[bool] reserved: Whether the IPv4 address should be reserved.
-        :param pulumi.Input[str] type: The type of IP address (ipv4).
+        :param pulumi.Input[str] type: The type of IP address. (ipv4, ipv6, etc.)
         """
         ...
     @overload
@@ -236,7 +259,30 @@ class NetworkingIp(pulumi.CustomResource):
                  args: Optional[NetworkingIpArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetworkingIp resource with the given unique name, props, and options.
+        Manages allocation of reserved IPv4 address in a region and optionally assigning the reserved address to a Linode instance.
+
+        For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-allocate-ip).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test_ip = linode.NetworkingIp("test_ip",
+            type="ipv4",
+            linode_id=12345,
+            public=True)
+        ```
+
+        ## Import
+
+        IP addresses can be imported using the IP address ID, e.g.
+
+        ```sh
+        $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
+        ```
+
         :param str resource_name: The name of the resource.
         :param NetworkingIpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -295,12 +341,12 @@ class NetworkingIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The allocated IPv4 address.
-        :param pulumi.Input[int] linode_id: The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
-        :param pulumi.Input[bool] public: Whether the IPv4 address is public or private.
+        :param pulumi.Input[str] address: The IP address.
+        :param pulumi.Input[int] linode_id: The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        :param pulumi.Input[bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[bool] reserved: Whether the IPv4 address should be reserved.
-        :param pulumi.Input[str] type: The type of IP address (ipv4).
+        :param pulumi.Input[str] type: The type of IP address. (ipv4, ipv6, etc.)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,7 +364,7 @@ class NetworkingIp(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        The allocated IPv4 address.
+        The IP address.
         """
         return pulumi.get(self, "address")
 
@@ -326,7 +372,7 @@ class NetworkingIp(pulumi.CustomResource):
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Output[int]:
         """
-        The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+        The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
         """
         return pulumi.get(self, "linode_id")
 
@@ -334,7 +380,7 @@ class NetworkingIp(pulumi.CustomResource):
     @pulumi.getter
     def public(self) -> pulumi.Output[bool]:
         """
-        Whether the IPv4 address is public or private.
+        Whether the IP address is public. Defaults to true.
         """
         return pulumi.get(self, "public")
 
@@ -358,7 +404,7 @@ class NetworkingIp(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of IP address (ipv4).
+        The type of IP address. (ipv4, ipv6, etc.)
         """
         return pulumi.get(self, "type")
 

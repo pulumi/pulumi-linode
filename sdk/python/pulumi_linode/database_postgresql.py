@@ -624,6 +624,8 @@ class DatabasePostgresql(pulumi.CustomResource):
                  updates: Optional[pulumi.Input[Union['DatabasePostgresqlUpdatesArgs', 'DatabasePostgresqlUpdatesArgsDict']]] = None,
                  __props__=None):
         """
+        > **DEPRECATION NOTICE:** This resource has been deprecated. Please use DatabasePostgresqlV2 for all future implementations.
+
         Provides a Linode PostgreSQL Database resource. This can be used to create, modify, and delete Linode PostgreSQL Databases.
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-databases-postgre-sql-instances).
 
@@ -725,6 +727,8 @@ class DatabasePostgresql(pulumi.CustomResource):
                  args: DatabasePostgresqlArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATION NOTICE:** This resource has been deprecated. Please use DatabasePostgresqlV2 for all future implementations.
+
         Provides a Linode PostgreSQL Database resource. This can be used to create, modify, and delete Linode PostgreSQL Databases.
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-databases-postgre-sql-instances).
 

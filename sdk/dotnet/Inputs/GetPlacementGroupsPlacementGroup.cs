@@ -43,6 +43,12 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
+        /// Any Linodes that are being migrated to or from the placement group.
+        /// </summary>
+        [Input("migrations")]
+        public Inputs.GetPlacementGroupsPlacementGroupMigrationsArgs? Migrations { get; set; }
+
+        /// <summary>
         /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         /// </summary>
         [Input("placementGroupPolicy", required: true)]

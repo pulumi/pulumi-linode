@@ -18,22 +18,30 @@ public final class NetworkingIpAssignmentArgs extends com.pulumi.resources.Resou
 
     public static final NetworkingIpAssignmentArgs Empty = new NetworkingIpAssignmentArgs();
 
+    /**
+     * A list of IP/Linode assignments to apply.
+     * 
+     */
     @Import(name="assignments")
     private @Nullable Output<List<NetworkingIpAssignmentAssignmentArgs>> assignments;
 
+    /**
+     * @return A list of IP/Linode assignments to apply.
+     * 
+     */
     public Optional<Output<List<NetworkingIpAssignmentAssignmentArgs>>> assignments() {
         return Optional.ofNullable(this.assignments);
     }
 
     /**
-     * The region for the IP assignments.
+     * The region where the IP addresses will be assigned.
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return The region for the IP assignments.
+     * @return The region where the IP addresses will be assigned.
      * 
      */
     public Output<String> region() {
@@ -65,21 +73,39 @@ public final class NetworkingIpAssignmentArgs extends com.pulumi.resources.Resou
             $ = new NetworkingIpAssignmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param assignments A list of IP/Linode assignments to apply.
+         * 
+         * @return builder
+         * 
+         */
         public Builder assignments(@Nullable Output<List<NetworkingIpAssignmentAssignmentArgs>> assignments) {
             $.assignments = assignments;
             return this;
         }
 
+        /**
+         * @param assignments A list of IP/Linode assignments to apply.
+         * 
+         * @return builder
+         * 
+         */
         public Builder assignments(List<NetworkingIpAssignmentAssignmentArgs> assignments) {
             return assignments(Output.of(assignments));
         }
 
+        /**
+         * @param assignments A list of IP/Linode assignments to apply.
+         * 
+         * @return builder
+         * 
+         */
         public Builder assignments(NetworkingIpAssignmentAssignmentArgs... assignments) {
             return assignments(List.of(assignments));
         }
 
         /**
-         * @param region The region for the IP assignments.
+         * @param region The region where the IP addresses will be assigned.
          * 
          * @return builder
          * 
@@ -90,7 +116,7 @@ public final class NetworkingIpAssignmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param region The region for the IP assignments.
+         * @param region The region where the IP addresses will be assigned.
          * 
          * @return builder
          * 
