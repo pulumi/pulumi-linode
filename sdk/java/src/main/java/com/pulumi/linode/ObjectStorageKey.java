@@ -100,6 +100,53 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * The following example shows how to grant a key the explicit access to multiple buckets.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.ObjectStorageKey;
+ * import com.pulumi.linode.ObjectStorageKeyArgs;
+ * import com.pulumi.linode.inputs.ObjectStorageKeyBucketAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()
+ *             .label("image-access")
+ *             .bucketAccesses(            
+ *                 ObjectStorageKeyBucketAccessArgs.builder()
+ *                     .bucketName("foobar1")
+ *                     .cluster("us-east-1")
+ *                     .permissions("read_write")
+ *                     .build(),
+ *                 ObjectStorageKeyBucketAccessArgs.builder()
+ *                     .bucketName("foobar2")
+ *                     .cluster("us-east-1")
+ *                     .permissions("read_write")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="linode:index/objectStorageKey:ObjectStorageKey")
 public class ObjectStorageKey extends com.pulumi.resources.CustomResource {

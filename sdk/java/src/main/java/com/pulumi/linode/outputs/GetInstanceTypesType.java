@@ -16,6 +16,11 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceTypesType {
     /**
+     * @return The number of VPUs this Linode Type offers.
+     * 
+     */
+    private Integer acceleratedDevices;
+    /**
      * @return Information about the optional Backup service offered for Linodes.
      * 
      */
@@ -72,6 +77,13 @@ public final class GetInstanceTypesType {
     private Integer vcpus;
 
     private GetInstanceTypesType() {}
+    /**
+     * @return The number of VPUs this Linode Type offers.
+     * 
+     */
+    public Integer acceleratedDevices() {
+        return this.acceleratedDevices;
+    }
     /**
      * @return Information about the optional Backup service offered for Linodes.
      * 
@@ -159,6 +171,7 @@ public final class GetInstanceTypesType {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer acceleratedDevices;
         private List<GetInstanceTypesTypeAddon> addons;
         private String class_;
         private Integer disk;
@@ -173,6 +186,7 @@ public final class GetInstanceTypesType {
         public Builder() {}
         public Builder(GetInstanceTypesType defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedDevices = defaults.acceleratedDevices;
     	      this.addons = defaults.addons;
     	      this.class_ = defaults.class_;
     	      this.disk = defaults.disk;
@@ -186,6 +200,14 @@ public final class GetInstanceTypesType {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
+        public Builder acceleratedDevices(Integer acceleratedDevices) {
+            if (acceleratedDevices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "acceleratedDevices");
+            }
+            this.acceleratedDevices = acceleratedDevices;
+            return this;
+        }
         @CustomType.Setter
         public Builder addons(List<GetInstanceTypesTypeAddon> addons) {
             if (addons == null) {
@@ -285,6 +307,7 @@ public final class GetInstanceTypesType {
         }
         public GetInstanceTypesType build() {
             final var _resultValue = new GetInstanceTypesType();
+            _resultValue.acceleratedDevices = acceleratedDevices;
             _resultValue.addons = addons;
             _resultValue.class_ = class_;
             _resultValue.disk = disk;

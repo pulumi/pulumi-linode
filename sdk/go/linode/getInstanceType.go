@@ -61,7 +61,9 @@ type GetInstanceTypeArgs struct {
 
 // A collection of values returned by getInstanceType.
 type GetInstanceTypeResult struct {
-	Addons GetInstanceTypeAddons `pulumi:"addons"`
+	// The number of VPUs this Linode Type offers.
+	AcceleratedDevices int                   `pulumi:"acceleratedDevices"`
+	Addons             GetInstanceTypeAddons `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
 	Class string `pulumi:"class"`
 	// The Disk size, in MB, of the Linode Type
@@ -116,6 +118,11 @@ func (o GetInstanceTypeResultOutput) ToGetInstanceTypeResultOutput() GetInstance
 
 func (o GetInstanceTypeResultOutput) ToGetInstanceTypeResultOutputWithContext(ctx context.Context) GetInstanceTypeResultOutput {
 	return o
+}
+
+// The number of VPUs this Linode Type offers.
+func (o GetInstanceTypeResultOutput) AcceleratedDevices() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.AcceleratedDevices }).(pulumi.IntOutput)
 }
 
 func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonsOutput {

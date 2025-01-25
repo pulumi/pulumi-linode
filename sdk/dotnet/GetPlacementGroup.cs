@@ -114,6 +114,12 @@ namespace Pulumi.Linode
             set => _members = value;
         }
 
+        /// <summary>
+        /// Any Linodes that are being migrated to or from the placement group.
+        /// </summary>
+        [Input("migrations")]
+        public Inputs.GetPlacementGroupMigrationsArgs? Migrations { get; set; }
+
         public GetPlacementGroupArgs()
         {
         }
@@ -140,6 +146,12 @@ namespace Pulumi.Linode
             set => _members = value;
         }
 
+        /// <summary>
+        /// Any Linodes that are being migrated to or from the placement group.
+        /// </summary>
+        [Input("migrations")]
+        public Input<Inputs.GetPlacementGroupMigrationsInputArgs>? Migrations { get; set; }
+
         public GetPlacementGroupInvokeArgs()
         {
         }
@@ -164,6 +176,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPlacementGroupMemberResult> Members;
         /// <summary>
+        /// Any Linodes that are being migrated to or from the placement group.
+        /// </summary>
+        public readonly Outputs.GetPlacementGroupMigrationsResult? Migrations;
+        /// <summary>
         /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         /// </summary>
         public readonly string PlacementGroupPolicy;
@@ -186,6 +202,8 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetPlacementGroupMemberResult> members,
 
+            Outputs.GetPlacementGroupMigrationsResult? migrations,
+
             string placementGroupPolicy,
 
             string placementGroupType,
@@ -196,6 +214,7 @@ namespace Pulumi.Linode
             IsCompliant = isCompliant;
             Label = label;
             Members = members;
+            Migrations = migrations;
             PlacementGroupPolicy = placementGroupPolicy;
             PlacementGroupType = placementGroupType;
             Region = region;

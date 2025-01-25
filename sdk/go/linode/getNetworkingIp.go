@@ -73,8 +73,9 @@ type LookupNetworkingIpResult struct {
 	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
 	Rdns string `pulumi:"rdns"`
 	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-	Region   string `pulumi:"region"`
-	Reserved bool   `pulumi:"reserved"`
+	Region string `pulumi:"region"`
+	// Whether this IP address is a reserved IP.
+	Reserved bool `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
@@ -154,6 +155,7 @@ func (o LookupNetworkingIpResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Whether this IP address is a reserved IP.
 func (o LookupNetworkingIpResultOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) bool { return v.Reserved }).(pulumi.BoolOutput)
 }

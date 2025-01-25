@@ -43,7 +43,9 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? IpamAddress { get; set; }
 
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// A set of reserved IPv4 addresses to assign to this Linode on creation.
+        /// 
+        /// * **NOTE: IP reservation is not currently available to all users.**
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.InstanceInterfaceIpv4GetArgs>? Ipv4 { get; set; }

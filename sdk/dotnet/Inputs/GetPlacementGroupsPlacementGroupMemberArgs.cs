@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<bool> IsCompliant { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Linode.
+        /// The unique identifier for the Linode being migrated out of the placement group.
         /// </summary>
         [Input("linodeId", required: true)]
         public Input<int> LinodeId { get; set; } = null!;

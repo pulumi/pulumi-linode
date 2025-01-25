@@ -28,6 +28,34 @@ export interface DatabaseMysqlUpdates {
     weekOfMonth?: pulumi.Input<number>;
 }
 
+export interface DatabaseMysqlV2PendingUpdate {
+    deadline: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    plannedFor: pulumi.Input<string>;
+}
+
+export interface DatabaseMysqlV2Timeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface DatabaseMysqlV2Updates {
+    dayOfWeek: pulumi.Input<number>;
+    duration: pulumi.Input<number>;
+    frequency: pulumi.Input<string>;
+    hourOfDay: pulumi.Input<number>;
+}
+
 export interface DatabasePostgresqlUpdates {
     /**
      * The day to perform maintenance.
@@ -49,6 +77,34 @@ export interface DatabasePostgresqlUpdates {
      * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
      */
     weekOfMonth?: pulumi.Input<number>;
+}
+
+export interface DatabasePostgresqlV2PendingUpdate {
+    deadline: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    plannedFor: pulumi.Input<string>;
+}
+
+export interface DatabasePostgresqlV2Timeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface DatabasePostgresqlV2Updates {
+    dayOfWeek: pulumi.Input<number>;
+    duration: pulumi.Input<number>;
+    frequency: pulumi.Input<string>;
+    hourOfDay: pulumi.Input<number>;
 }
 
 export interface FirewallDevice {
@@ -1464,6 +1520,10 @@ export interface GetInstanceTypesFilterArgs {
 
 export interface GetInstanceTypesType {
     /**
+     * The number of VPUs this Linode Type offers.
+     */
+    acceleratedDevices?: number;
+    /**
      * Information about the optional Backup service offered for Linodes.
      */
     addons?: inputs.GetInstanceTypesTypeAddon[];
@@ -1510,6 +1570,10 @@ export interface GetInstanceTypesType {
 }
 
 export interface GetInstanceTypesTypeArgs {
+    /**
+     * The number of VPUs this Linode Type offers.
+     */
+    acceleratedDevices?: pulumi.Input<number>;
     /**
      * Information about the optional Backup service offered for Linodes.
      */
@@ -2578,30 +2642,30 @@ export interface GetNetworkTransferPricesTypeRegionPriceArgs {
 
 export interface GetNetworkingIpsFilter {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: string;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: string;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
 }
 
 export interface GetNetworkingIpsFilterArgs {
     /**
-     * The type of comparison to use for this filter.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
     matchBy?: pulumi.Input<string>;
     /**
-     * The name of the attribute to filter on.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
     name: pulumi.Input<string>;
     /**
-     * The value(s) to be used in the filter.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2632,11 +2696,11 @@ export interface GetNetworkingIpsIpAddress {
      */
     rdns?: string;
     /**
-     * The Region this IP address resides in.
+     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      */
     region?: string;
     /**
-     * Whether this IP is reserved or not.
+     * Whether this IP address is a reserved IP.
      */
     reserved?: boolean;
     /**
@@ -2675,11 +2739,11 @@ export interface GetNetworkingIpsIpAddressArgs {
      */
     rdns?: pulumi.Input<string>;
     /**
-     * The Region this IP address resides in.
+     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      */
     region?: pulumi.Input<string>;
     /**
-     * Whether this IP is reserved or not.
+     * Whether this IP address is a reserved IP.
      */
     reserved?: pulumi.Input<boolean>;
     /**
@@ -3268,6 +3332,56 @@ export interface GetPlacementGroupMemberArgs {
     linodeId?: pulumi.Input<number>;
 }
 
+export interface GetPlacementGroupMigrations {
+    /**
+     * A list of the Linodes the system is migrating into the placement group.
+     */
+    inbounds?: inputs.GetPlacementGroupMigrationsInbound[];
+    /**
+     * A list of the Linodes the system is migrating out of the placement group.
+     */
+    outbounds?: inputs.GetPlacementGroupMigrationsOutbound[];
+}
+
+export interface GetPlacementGroupMigrationsArgs {
+    /**
+     * A list of the Linodes the system is migrating into the placement group.
+     */
+    inbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupMigrationsInboundArgs>[]>;
+    /**
+     * A list of the Linodes the system is migrating out of the placement group.
+     */
+    outbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupMigrationsOutboundArgs>[]>;
+}
+
+export interface GetPlacementGroupMigrationsInbound {
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupMigrationsInboundArgs {
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: pulumi.Input<number>;
+}
+
+export interface GetPlacementGroupMigrationsOutbound {
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupMigrationsOutboundArgs {
+    /**
+     * The ID of the Linode.
+     */
+    linodeId: pulumi.Input<number>;
+}
+
 export interface GetPlacementGroupsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3316,6 +3430,10 @@ export interface GetPlacementGroupsPlacementGroup {
      */
     members?: inputs.GetPlacementGroupsPlacementGroupMember[];
     /**
+     * Any Linodes that are being migrated to or from the placement group.
+     */
+    migrations?: inputs.GetPlacementGroupsPlacementGroupMigrations;
+    /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
     placementGroupPolicy?: string;
@@ -3347,6 +3465,10 @@ export interface GetPlacementGroupsPlacementGroupArgs {
      */
     members?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMemberArgs>[]>;
     /**
+     * Any Linodes that are being migrated to or from the placement group.
+     */
+    migrations?: pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMigrationsArgs>;
+    /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
     placementGroupPolicy?: pulumi.Input<string>;
@@ -3366,7 +3488,7 @@ export interface GetPlacementGroupsPlacementGroupMember {
      */
     isCompliant?: boolean;
     /**
-     * The ID of the Linode.
+     * The unique identifier for the Linode being migrated out of the placement group.
      */
     linodeId?: number;
 }
@@ -3377,9 +3499,59 @@ export interface GetPlacementGroupsPlacementGroupMemberArgs {
      */
     isCompliant?: pulumi.Input<boolean>;
     /**
-     * The ID of the Linode.
+     * The unique identifier for the Linode being migrated out of the placement group.
      */
     linodeId?: pulumi.Input<number>;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrations {
+    /**
+     * A list of the Linodes the system is migrating into the placement group.
+     */
+    inbounds?: inputs.GetPlacementGroupsPlacementGroupMigrationsInbound[];
+    /**
+     * A list of the Linodes the system is migrating out of the placement group.
+     */
+    outbounds?: inputs.GetPlacementGroupsPlacementGroupMigrationsOutbound[];
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsArgs {
+    /**
+     * A list of the Linodes the system is migrating into the placement group.
+     */
+    inbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMigrationsInboundArgs>[]>;
+    /**
+     * A list of the Linodes the system is migrating out of the placement group.
+     */
+    outbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMigrationsOutboundArgs>[]>;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsInbound {
+    /**
+     * The unique identifier for the Linode being migrated out of the placement group.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsInboundArgs {
+    /**
+     * The unique identifier for the Linode being migrated out of the placement group.
+     */
+    linodeId: pulumi.Input<number>;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsOutbound {
+    /**
+     * The unique identifier for the Linode being migrated out of the placement group.
+     */
+    linodeId: number;
+}
+
+export interface GetPlacementGroupsPlacementGroupMigrationsOutboundArgs {
+    /**
+     * The unique identifier for the Linode being migrated out of the placement group.
+     */
+    linodeId: pulumi.Input<number>;
 }
 
 export interface GetRegionResolver {
@@ -5721,7 +5893,9 @@ export interface InstanceInterface {
      */
     ipamAddress?: pulumi.Input<string>;
     /**
-     * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
      */
     ipv4?: pulumi.Input<inputs.InstanceInterfaceIpv4>;
     /**
@@ -5799,9 +5973,17 @@ export interface InstancePlacementGroup {
 
 export interface InstanceSpecs {
     /**
+     * The number of VPUs this Linode has access to.
+     */
+    acceleratedDevices?: pulumi.Input<number>;
+    /**
      * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      */
     disk?: pulumi.Input<number>;
+    /**
+     * The number of GPUs this Linode has access to.
+     */
+    gpus?: pulumi.Input<number>;
     /**
      * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
      */
@@ -5977,7 +6159,13 @@ export interface LkeNodePoolTaint {
 }
 
 export interface NetworkingIpAssignmentAssignment {
+    /**
+     * The IPv4 address or IPv6 range to assign.
+     */
     address: pulumi.Input<string>;
+    /**
+     * The ID of the Linode to which the IP address will be assigned.
+     */
     linodeId: pulumi.Input<number>;
 }
 

@@ -15,16 +15,32 @@ public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resou
 
     public static final NetworkingIpAssignmentAssignmentArgs Empty = new NetworkingIpAssignmentAssignmentArgs();
 
+    /**
+     * The IPv4 address or IPv6 range to assign.
+     * 
+     */
     @Import(name="address", required=true)
     private Output<String> address;
 
+    /**
+     * @return The IPv4 address or IPv6 range to assign.
+     * 
+     */
     public Output<String> address() {
         return this.address;
     }
 
+    /**
+     * The ID of the Linode to which the IP address will be assigned.
+     * 
+     */
     @Import(name="linodeId", required=true)
     private Output<Integer> linodeId;
 
+    /**
+     * @return The ID of the Linode to which the IP address will be assigned.
+     * 
+     */
     public Output<Integer> linodeId() {
         return this.linodeId;
     }
@@ -54,20 +70,44 @@ public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resou
             $ = new NetworkingIpAssignmentAssignmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address The IPv4 address or IPv6 range to assign.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address The IPv4 address or IPv6 range to assign.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param linodeId The ID of the Linode to which the IP address will be assigned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linodeId(Output<Integer> linodeId) {
             $.linodeId = linodeId;
             return this;
         }
 
+        /**
+         * @param linodeId The ID of the Linode to which the IP address will be assigned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linodeId(Integer linodeId) {
             return linodeId(Output.of(linodeId));
         }

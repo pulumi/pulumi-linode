@@ -37,7 +37,9 @@ public final class InstanceInterface {
      */
     private @Nullable String ipamAddress;
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return A set of reserved IPv4 addresses to assign to this Linode on creation.
+     * 
+     * * **NOTE: IP reservation is not currently available to all users.**
      * 
      */
     private @Nullable InstanceInterfaceIpv4 ipv4;
@@ -101,7 +103,9 @@ public final class InstanceInterface {
         return Optional.ofNullable(this.ipamAddress);
     }
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return A set of reserved IPv4 addresses to assign to this Linode on creation.
+     * 
+     * * **NOTE: IP reservation is not currently available to all users.**
      * 
      */
     public Optional<InstanceInterfaceIpv4> ipv4() {

@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceTypesTypeResult
     {
         /// <summary>
+        /// The number of VPUs this Linode Type offers.
+        /// </summary>
+        public readonly int AcceleratedDevices;
+        /// <summary>
         /// Information about the optional Backup service offered for Linodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonResult> Addons;
@@ -60,6 +64,8 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetInstanceTypesTypeResult(
+            int acceleratedDevices,
+
             ImmutableArray<Outputs.GetInstanceTypesTypeAddonResult> addons,
 
             string @class,
@@ -82,6 +88,7 @@ namespace Pulumi.Linode.Outputs
 
             int vcpus)
         {
+            AcceleratedDevices = acceleratedDevices;
             Addons = addons;
             Class = @class;
             Disk = disk;

@@ -349,14 +349,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     * 
+     * * **NOTE: IP reservation is not currently available to all users.**
      * 
      */
     @Import(name="ipv4s")
     private @Nullable Output<List<String>> ipv4s;
 
     /**
-     * @return This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+     * @return A set of reserved IPv4 addresses to assign to this Linode on creation.
+     * 
+     * * **NOTE: IP reservation is not currently available to all users.**
      * 
      */
     public Optional<Output<List<String>>> ipv4s() {
@@ -1288,7 +1292,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4s A set of reserved IPv4 addresses to assign to this Linode on creation.
+         * 
+         * * **NOTE: IP reservation is not currently available to all users.**
          * 
          * @return builder
          * 
@@ -1299,7 +1305,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4s A set of reserved IPv4 addresses to assign to this Linode on creation.
+         * 
+         * * **NOTE: IP reservation is not currently available to all users.**
          * 
          * @return builder
          * 
@@ -1309,7 +1317,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4s This Linode&#39;s IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+         * @param ipv4s A set of reserved IPv4 addresses to assign to this Linode on creation.
+         * 
+         * * **NOTE: IP reservation is not currently available to all users.**
          * 
          * @return builder
          * 

@@ -319,6 +319,8 @@ def get_database_postgresql(database_id: Optional[int] = None,
                             id: Optional[int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasePostgresqlResult:
     """
+    > **DEPRECATION NOTICE:** This data source has been deprecated. Please use DatabasePostgresqlV2 for all future implementations.
+
     Provides information about a Linode PostgreSQL Database.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
@@ -386,6 +388,8 @@ def get_database_postgresql_output(database_id: Optional[pulumi.Input[Optional[i
                                    id: Optional[pulumi.Input[Optional[int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasePostgresqlResult]:
     """
+    > **DEPRECATION NOTICE:** This data source has been deprecated. Please use DatabasePostgresqlV2 for all future implementations.
+
     Provides information about a Linode PostgreSQL Database.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 

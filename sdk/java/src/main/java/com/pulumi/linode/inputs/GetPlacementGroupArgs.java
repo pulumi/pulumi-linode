@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetPlacementGroupMemberArgs;
+import com.pulumi.linode.inputs.GetPlacementGroupMigrationsArgs;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -48,11 +49,27 @@ public final class GetPlacementGroupArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.members);
     }
 
+    /**
+     * Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    @Import(name="migrations")
+    private @Nullable Output<GetPlacementGroupMigrationsArgs> migrations;
+
+    /**
+     * @return Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    public Optional<Output<GetPlacementGroupMigrationsArgs>> migrations() {
+        return Optional.ofNullable(this.migrations);
+    }
+
     private GetPlacementGroupArgs() {}
 
     private GetPlacementGroupArgs(GetPlacementGroupArgs $) {
         this.id = $.id;
         this.members = $.members;
+        this.migrations = $.migrations;
     }
 
     public static Builder builder() {
@@ -123,6 +140,27 @@ public final class GetPlacementGroupArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder members(GetPlacementGroupMemberArgs... members) {
             return members(List.of(members));
+        }
+
+        /**
+         * @param migrations Any Linodes that are being migrated to or from the placement group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrations(@Nullable Output<GetPlacementGroupMigrationsArgs> migrations) {
+            $.migrations = migrations;
+            return this;
+        }
+
+        /**
+         * @param migrations Any Linodes that are being migrated to or from the placement group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrations(GetPlacementGroupMigrationsArgs migrations) {
+            return migrations(Output.of(migrations));
         }
 
         public GetPlacementGroupArgs build() {

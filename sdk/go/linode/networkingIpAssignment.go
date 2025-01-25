@@ -12,11 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
+//
+// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
 type NetworkingIpAssignment struct {
 	pulumi.CustomResourceState
 
+	// A list of IP/Linode assignments to apply.
 	Assignments NetworkingIpAssignmentAssignmentArrayOutput `pulumi:"assignments"`
-	// The region for the IP assignments.
+	// The region where the IP addresses will be assigned.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -53,14 +57,16 @@ func GetNetworkingIpAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkingIpAssignment resources.
 type networkingIpAssignmentState struct {
+	// A list of IP/Linode assignments to apply.
 	Assignments []NetworkingIpAssignmentAssignment `pulumi:"assignments"`
-	// The region for the IP assignments.
+	// The region where the IP addresses will be assigned.
 	Region *string `pulumi:"region"`
 }
 
 type NetworkingIpAssignmentState struct {
+	// A list of IP/Linode assignments to apply.
 	Assignments NetworkingIpAssignmentAssignmentArrayInput
-	// The region for the IP assignments.
+	// The region where the IP addresses will be assigned.
 	Region pulumi.StringPtrInput
 }
 
@@ -69,15 +75,17 @@ func (NetworkingIpAssignmentState) ElementType() reflect.Type {
 }
 
 type networkingIpAssignmentArgs struct {
+	// A list of IP/Linode assignments to apply.
 	Assignments []NetworkingIpAssignmentAssignment `pulumi:"assignments"`
-	// The region for the IP assignments.
+	// The region where the IP addresses will be assigned.
 	Region string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a NetworkingIpAssignment resource.
 type NetworkingIpAssignmentArgs struct {
+	// A list of IP/Linode assignments to apply.
 	Assignments NetworkingIpAssignmentAssignmentArrayInput
-	// The region for the IP assignments.
+	// The region where the IP addresses will be assigned.
 	Region pulumi.StringInput
 }
 
@@ -168,11 +176,12 @@ func (o NetworkingIpAssignmentOutput) ToNetworkingIpAssignmentOutputWithContext(
 	return o
 }
 
+// A list of IP/Linode assignments to apply.
 func (o NetworkingIpAssignmentOutput) Assignments() NetworkingIpAssignmentAssignmentArrayOutput {
 	return o.ApplyT(func(v *NetworkingIpAssignment) NetworkingIpAssignmentAssignmentArrayOutput { return v.Assignments }).(NetworkingIpAssignmentAssignmentArrayOutput)
 }
 
-// The region for the IP assignments.
+// The region where the IP addresses will be assigned.
 func (o NetworkingIpAssignmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingIpAssignment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

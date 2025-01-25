@@ -31,16 +31,32 @@ public final class GetNetworkingIpsPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.ipAddresses);
     }
 
+    /**
+     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * 
+     */
     @Import(name="order")
     private @Nullable String order;
 
+    /**
+     * @return The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * 
+     */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * 
+     */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
+    /**
+     * @return The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * 
+     */
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
@@ -90,11 +106,23 @@ public final class GetNetworkingIpsPlainArgs extends com.pulumi.resources.Invoke
             return ipAddresses(List.of(ipAddresses));
         }
 
+        /**
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder order(@Nullable String order) {
             $.order = order;
             return this;
         }
 
+        /**
+         * @param orderBy The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;

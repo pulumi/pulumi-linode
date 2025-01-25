@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetNetworkingIpsFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of comparison to use for this filter.
+        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         /// </summary>
         [Input("matchBy")]
         public string? MatchBy { get; set; }
 
         /// <summary>
-        /// The name of the attribute to filter on.
+        /// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Linode.Inputs
         private List<string>? _values;
 
         /// <summary>
-        /// The value(s) to be used in the filter.
+        /// A list of values for the filter to allow. These values should all be in string form.
         /// </summary>
         public List<string> Values
         {

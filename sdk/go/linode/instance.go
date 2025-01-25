@@ -209,7 +209,9 @@ type Instance struct {
 	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s pulumi.StringArrayOutput `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
@@ -370,7 +372,9 @@ type instanceState struct {
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s []string `pulumi:"ipv4s"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 *string `pulumi:"ipv6"`
@@ -488,7 +492,9 @@ type InstanceState struct {
 	Interfaces InstanceInterfaceArrayInput
 	// A string containing the Linode's public IP address.
 	IpAddress pulumi.StringPtrInput
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s pulumi.StringArrayInput
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
 	Ipv6 pulumi.StringPtrInput
@@ -600,7 +606,9 @@ type instanceArgs struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s []string `pulumi:"ipv4s"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
@@ -699,7 +707,9 @@ type InstanceArgs struct {
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
 	// must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
-	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s pulumi.StringArrayInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
@@ -950,7 +960,9 @@ func (o InstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
 func (o InstanceOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }

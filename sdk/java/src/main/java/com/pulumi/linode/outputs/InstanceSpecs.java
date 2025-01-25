@@ -12,10 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceSpecs {
     /**
+     * @return The number of VPUs this Linode has access to.
+     * 
+     */
+    private @Nullable Integer acceleratedDevices;
+    /**
      * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     private @Nullable Integer disk;
+    /**
+     * @return The number of GPUs this Linode has access to.
+     * 
+     */
+    private @Nullable Integer gpus;
     /**
      * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
      * 
@@ -34,11 +44,25 @@ public final class InstanceSpecs {
 
     private InstanceSpecs() {}
     /**
+     * @return The number of VPUs this Linode has access to.
+     * 
+     */
+    public Optional<Integer> acceleratedDevices() {
+        return Optional.ofNullable(this.acceleratedDevices);
+    }
+    /**
      * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
+    }
+    /**
+     * @return The number of GPUs this Linode has access to.
+     * 
+     */
+    public Optional<Integer> gpus() {
+        return Optional.ofNullable(this.gpus);
     }
     /**
      * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
@@ -71,23 +95,39 @@ public final class InstanceSpecs {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer acceleratedDevices;
         private @Nullable Integer disk;
+        private @Nullable Integer gpus;
         private @Nullable Integer memory;
         private @Nullable Integer transfer;
         private @Nullable Integer vcpus;
         public Builder() {}
         public Builder(InstanceSpecs defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedDevices = defaults.acceleratedDevices;
     	      this.disk = defaults.disk;
+    	      this.gpus = defaults.gpus;
     	      this.memory = defaults.memory;
     	      this.transfer = defaults.transfer;
     	      this.vcpus = defaults.vcpus;
         }
 
         @CustomType.Setter
+        public Builder acceleratedDevices(@Nullable Integer acceleratedDevices) {
+
+            this.acceleratedDevices = acceleratedDevices;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disk(@Nullable Integer disk) {
 
             this.disk = disk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpus(@Nullable Integer gpus) {
+
+            this.gpus = gpus;
             return this;
         }
         @CustomType.Setter
@@ -110,7 +150,9 @@ public final class InstanceSpecs {
         }
         public InstanceSpecs build() {
             final var _resultValue = new InstanceSpecs();
+            _resultValue.acceleratedDevices = acceleratedDevices;
             _resultValue.disk = disk;
+            _resultValue.gpus = gpus;
             _resultValue.memory = memory;
             _resultValue.transfer = transfer;
             _resultValue.vcpus = vcpus;

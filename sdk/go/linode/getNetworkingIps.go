@@ -11,6 +11,88 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides information about all IP addresses associated with the current Linode account, including both assigned and unassigned reserved IP addresses.
+//
+// ## Example Usage
+//
+// Retrieve all IPs under the current account:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetNetworkingIps(ctx, &linode.GetNetworkingIpsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Retrieve all IPs under the current account in a specific region:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetNetworkingIps(ctx, &linode.GetNetworkingIpsArgs{
+//				Filters: []linode.GetNetworkingIpsFilter{
+//					{
+//						Name: "region",
+//						Values: []string{
+//							"us-mia",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Filterable Fields
+//
+// * `address`
+//
+// * `gateway`
+//
+// * `subnetMask`
+//
+// * `prefix`
+//
+// * `type`
+//
+// * `public`
+//
+// * `rdns`
+//
+// * `linodeId`
+//
+// * `region`
+//
+// * `reserved`
 func GetNetworkingIps(ctx *pulumi.Context, args *GetNetworkingIpsArgs, opts ...pulumi.InvokeOption) (*GetNetworkingIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkingIpsResult
@@ -25,8 +107,10 @@ func GetNetworkingIps(ctx *pulumi.Context, args *GetNetworkingIpsArgs, opts ...p
 type GetNetworkingIpsArgs struct {
 	Filters     []GetNetworkingIpsFilter    `pulumi:"filters"`
 	IpAddresses []GetNetworkingIpsIpAddress `pulumi:"ipAddresses"`
-	Order       *string                     `pulumi:"order"`
-	OrderBy     *string                     `pulumi:"orderBy"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order *string `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getNetworkingIps.
@@ -51,8 +135,10 @@ func GetNetworkingIpsOutput(ctx *pulumi.Context, args GetNetworkingIpsOutputArgs
 type GetNetworkingIpsOutputArgs struct {
 	Filters     GetNetworkingIpsFilterArrayInput    `pulumi:"filters"`
 	IpAddresses GetNetworkingIpsIpAddressArrayInput `pulumi:"ipAddresses"`
-	Order       pulumi.StringPtrInput               `pulumi:"order"`
-	OrderBy     pulumi.StringPtrInput               `pulumi:"orderBy"`
+	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetNetworkingIpsOutputArgs) ElementType() reflect.Type {

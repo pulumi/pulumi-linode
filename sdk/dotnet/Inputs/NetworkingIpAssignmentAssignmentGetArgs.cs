@@ -12,9 +12,15 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class NetworkingIpAssignmentAssignmentGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IPv4 address or IPv6 range to assign.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the Linode to which the IP address will be assigned.
+        /// </summary>
         [Input("linodeId", required: true)]
         public Input<int> LinodeId { get; set; } = null!;
 

@@ -28,6 +28,7 @@ export function getPlacementGroup(args: GetPlacementGroupArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("linode:index/getPlacementGroup:getPlacementGroup", {
         "id": args.id,
         "members": args.members,
+        "migrations": args.migrations,
     }, opts);
 }
 
@@ -43,6 +44,10 @@ export interface GetPlacementGroupArgs {
      * A set of Linodes currently assigned to this Placement Group.
      */
     members?: inputs.GetPlacementGroupMember[];
+    /**
+     * Any Linodes that are being migrated to or from the placement group.
+     */
+    migrations?: inputs.GetPlacementGroupMigrations;
 }
 
 /**
@@ -62,6 +67,10 @@ export interface GetPlacementGroupResult {
      * A set of Linodes currently assigned to this Placement Group.
      */
     readonly members?: outputs.GetPlacementGroupMember[];
+    /**
+     * Any Linodes that are being migrated to or from the placement group.
+     */
+    readonly migrations?: outputs.GetPlacementGroupMigrations;
     /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
@@ -97,6 +106,7 @@ export function getPlacementGroupOutput(args: GetPlacementGroupOutputArgs, opts?
     return pulumi.runtime.invokeOutput("linode:index/getPlacementGroup:getPlacementGroup", {
         "id": args.id,
         "members": args.members,
+        "migrations": args.migrations,
     }, opts);
 }
 
@@ -112,4 +122,8 @@ export interface GetPlacementGroupOutputArgs {
      * A set of Linodes currently assigned to this Placement Group.
      */
     members?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupMemberArgs>[]>;
+    /**
+     * Any Linodes that are being migrated to or from the placement group.
+     */
+    migrations?: pulumi.Input<inputs.GetPlacementGroupMigrationsArgs>;
 }

@@ -43,12 +43,12 @@ public final class GetNetworkingIpsIpAddress {
      */
     private String rdns;
     /**
-     * @return The Region this IP address resides in.
+     * @return The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     private String region;
     /**
-     * @return Whether this IP is reserved or not.
+     * @return Whether this IP address is a reserved IP.
      * 
      */
     private Boolean reserved;
@@ -107,14 +107,14 @@ public final class GetNetworkingIpsIpAddress {
         return this.rdns;
     }
     /**
-     * @return The Region this IP address resides in.
+     * @return The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return Whether this IP is reserved or not.
+     * @return Whether this IP address is a reserved IP.
      * 
      */
     public Boolean reserved() {

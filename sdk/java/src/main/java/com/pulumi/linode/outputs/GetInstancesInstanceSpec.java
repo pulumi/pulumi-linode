@@ -11,10 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstanceSpec {
     /**
+     * @return The number of VPUs this Linode has access to.
+     * 
+     */
+    private Integer acceleratedDevices;
+    /**
      * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     private Integer disk;
+    /**
+     * @return The number of GPUs this Linode has access to.
+     * 
+     */
+    private Integer gpus;
     /**
      * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
      * 
@@ -33,11 +43,25 @@ public final class GetInstancesInstanceSpec {
 
     private GetInstancesInstanceSpec() {}
     /**
+     * @return The number of VPUs this Linode has access to.
+     * 
+     */
+    public Integer acceleratedDevices() {
+        return this.acceleratedDevices;
+    }
+    /**
      * @return The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      * 
      */
     public Integer disk() {
         return this.disk;
+    }
+    /**
+     * @return The number of GPUs this Linode has access to.
+     * 
+     */
+    public Integer gpus() {
+        return this.gpus;
     }
     /**
      * @return The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
@@ -70,25 +94,45 @@ public final class GetInstancesInstanceSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer acceleratedDevices;
         private Integer disk;
+        private Integer gpus;
         private Integer memory;
         private Integer transfer;
         private Integer vcpus;
         public Builder() {}
         public Builder(GetInstancesInstanceSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedDevices = defaults.acceleratedDevices;
     	      this.disk = defaults.disk;
+    	      this.gpus = defaults.gpus;
     	      this.memory = defaults.memory;
     	      this.transfer = defaults.transfer;
     	      this.vcpus = defaults.vcpus;
         }
 
         @CustomType.Setter
+        public Builder acceleratedDevices(Integer acceleratedDevices) {
+            if (acceleratedDevices == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "acceleratedDevices");
+            }
+            this.acceleratedDevices = acceleratedDevices;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disk(Integer disk) {
             if (disk == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "disk");
             }
             this.disk = disk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpus(Integer gpus) {
+            if (gpus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceSpec", "gpus");
+            }
+            this.gpus = gpus;
             return this;
         }
         @CustomType.Setter
@@ -117,7 +161,9 @@ public final class GetInstancesInstanceSpec {
         }
         public GetInstancesInstanceSpec build() {
             final var _resultValue = new GetInstancesInstanceSpec();
+            _resultValue.acceleratedDevices = acceleratedDevices;
             _resultValue.disk = disk;
+            _resultValue.gpus = gpus;
             _resultValue.memory = memory;
             _resultValue.transfer = transfer;
             _resultValue.vcpus = vcpus;

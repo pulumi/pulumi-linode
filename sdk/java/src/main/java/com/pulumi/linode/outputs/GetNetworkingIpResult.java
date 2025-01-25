@@ -48,6 +48,10 @@ public final class GetNetworkingIpResult {
      * 
      */
     private String region;
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
     private Boolean reserved;
     /**
      * @return The mask that separates host bits from network bits for this address.
@@ -113,6 +117,10 @@ public final class GetNetworkingIpResult {
     public String region() {
         return this.region;
     }
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
     public Boolean reserved() {
         return this.reserved;
     }

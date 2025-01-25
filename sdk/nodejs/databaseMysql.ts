@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **DEPRECATION NOTICE:** This resource has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
+ *
  * Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
  *

@@ -31,14 +31,14 @@ public final class GetPlacementGroupsPlacementGroupMemberArgs extends com.pulumi
     }
 
     /**
-     * The ID of the Linode.
+     * The unique identifier for the Linode being migrated out of the placement group.
      * 
      */
     @Import(name="linodeId", required=true)
     private Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode.
+     * @return The unique identifier for the Linode being migrated out of the placement group.
      * 
      */
     public Output<Integer> linodeId() {
@@ -92,7 +92,7 @@ public final class GetPlacementGroupsPlacementGroupMemberArgs extends com.pulumi
         }
 
         /**
-         * @param linodeId The ID of the Linode.
+         * @param linodeId The unique identifier for the Linode being migrated out of the placement group.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetPlacementGroupsPlacementGroupMemberArgs extends com.pulumi
         }
 
         /**
-         * @param linodeId The ID of the Linode.
+         * @param linodeId The unique identifier for the Linode being migrated out of the placement group.
          * 
          * @return builder
          * 

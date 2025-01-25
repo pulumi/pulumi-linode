@@ -11,20 +11,59 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages allocation of reserved IPv4 address in a region and optionally assigning the reserved address to a Linode instance.
+//
+// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-allocate-ip).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewNetworkingIp(ctx, "test_ip", &linode.NetworkingIpArgs{
+//				Type:     pulumi.String("ipv4"),
+//				LinodeId: pulumi.Int(12345),
+//				Public:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// IP addresses can be imported using the IP address ID, e.g.
+//
+// ```sh
+// $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
+// ```
 type NetworkingIp struct {
 	pulumi.CustomResourceState
 
-	// The allocated IPv4 address.
+	// The IP address.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolOutput `pulumi:"public"`
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Whether the IPv4 address should be reserved.
 	Reserved pulumi.BoolOutput `pulumi:"reserved"`
-	// The type of IP address (ipv4).
+	// The type of IP address. (ipv4, ipv6, etc.)
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -58,32 +97,32 @@ func GetNetworkingIp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkingIp resources.
 type networkingIpState struct {
-	// The allocated IPv4 address.
+	// The IP address.
 	Address *string `pulumi:"address"`
-	// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to true.
 	Public *bool `pulumi:"public"`
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region *string `pulumi:"region"`
 	// Whether the IPv4 address should be reserved.
 	Reserved *bool `pulumi:"reserved"`
-	// The type of IP address (ipv4).
+	// The type of IP address. (ipv4, ipv6, etc.)
 	Type *string `pulumi:"type"`
 }
 
 type NetworkingIpState struct {
-	// The allocated IPv4 address.
+	// The IP address.
 	Address pulumi.StringPtrInput
-	// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
 	LinodeId pulumi.IntPtrInput
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolPtrInput
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region pulumi.StringPtrInput
 	// Whether the IPv4 address should be reserved.
 	Reserved pulumi.BoolPtrInput
-	// The type of IP address (ipv4).
+	// The type of IP address. (ipv4, ipv6, etc.)
 	Type pulumi.StringPtrInput
 }
 
@@ -92,29 +131,29 @@ func (NetworkingIpState) ElementType() reflect.Type {
 }
 
 type networkingIpArgs struct {
-	// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to true.
 	Public *bool `pulumi:"public"`
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region *string `pulumi:"region"`
 	// Whether the IPv4 address should be reserved.
 	Reserved *bool `pulumi:"reserved"`
-	// The type of IP address (ipv4).
+	// The type of IP address. (ipv4, ipv6, etc.)
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NetworkingIp resource.
 type NetworkingIpArgs struct {
-	// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
 	LinodeId pulumi.IntPtrInput
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolPtrInput
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region pulumi.StringPtrInput
 	// Whether the IPv4 address should be reserved.
 	Reserved pulumi.BoolPtrInput
-	// The type of IP address (ipv4).
+	// The type of IP address. (ipv4, ipv6, etc.)
 	Type pulumi.StringPtrInput
 }
 
@@ -205,17 +244,17 @@ func (o NetworkingIpOutput) ToNetworkingIpOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The allocated IPv4 address.
+// The IP address.
 func (o NetworkingIpOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
 func (o NetworkingIpOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }
 
-// Whether the IPv4 address is public or private.
+// Whether the IP address is public. Defaults to true.
 func (o NetworkingIpOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.BoolOutput { return v.Public }).(pulumi.BoolOutput)
 }
@@ -230,7 +269,7 @@ func (o NetworkingIpOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.BoolOutput { return v.Reserved }).(pulumi.BoolOutput)
 }
 
-// The type of IP address (ipv4).
+// The type of IP address. (ipv4, ipv6, etc.)
 func (o NetworkingIpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

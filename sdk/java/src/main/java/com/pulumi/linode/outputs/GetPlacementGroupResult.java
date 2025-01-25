@@ -6,11 +6,13 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetPlacementGroupMember;
+import com.pulumi.linode.outputs.GetPlacementGroupMigrations;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -31,6 +33,11 @@ public final class GetPlacementGroupResult {
      * 
      */
     private @Nullable List<GetPlacementGroupMember> members;
+    /**
+     * @return Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    private @Nullable GetPlacementGroupMigrations migrations;
     /**
      * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      * 
@@ -73,6 +80,13 @@ public final class GetPlacementGroupResult {
         return this.members == null ? List.of() : this.members;
     }
     /**
+     * @return Any Linodes that are being migrated to or from the placement group.
+     * 
+     */
+    public Optional<GetPlacementGroupMigrations> migrations() {
+        return Optional.ofNullable(this.migrations);
+    }
+    /**
      * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      * 
      */
@@ -107,6 +121,7 @@ public final class GetPlacementGroupResult {
         private Boolean isCompliant;
         private String label;
         private @Nullable List<GetPlacementGroupMember> members;
+        private @Nullable GetPlacementGroupMigrations migrations;
         private String placementGroupPolicy;
         private String placementGroupType;
         private String region;
@@ -117,6 +132,7 @@ public final class GetPlacementGroupResult {
     	      this.isCompliant = defaults.isCompliant;
     	      this.label = defaults.label;
     	      this.members = defaults.members;
+    	      this.migrations = defaults.migrations;
     	      this.placementGroupPolicy = defaults.placementGroupPolicy;
     	      this.placementGroupType = defaults.placementGroupType;
     	      this.region = defaults.region;
@@ -156,6 +172,12 @@ public final class GetPlacementGroupResult {
             return members(List.of(members));
         }
         @CustomType.Setter
+        public Builder migrations(@Nullable GetPlacementGroupMigrations migrations) {
+
+            this.migrations = migrations;
+            return this;
+        }
+        @CustomType.Setter
         public Builder placementGroupPolicy(String placementGroupPolicy) {
             if (placementGroupPolicy == null) {
               throw new MissingRequiredPropertyException("GetPlacementGroupResult", "placementGroupPolicy");
@@ -185,6 +207,7 @@ public final class GetPlacementGroupResult {
             _resultValue.isCompliant = isCompliant;
             _resultValue.label = label;
             _resultValue.members = members;
+            _resultValue.migrations = migrations;
             _resultValue.placementGroupPolicy = placementGroupPolicy;
             _resultValue.placementGroupType = placementGroupType;
             _resultValue.region = region;

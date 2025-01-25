@@ -57,6 +57,8 @@ type LookupPlacementGroupArgs struct {
 	Id int `pulumi:"id"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members []GetPlacementGroupMember `pulumi:"members"`
+	// Any Linodes that are being migrated to or from the placement group.
+	Migrations *GetPlacementGroupMigrations `pulumi:"migrations"`
 }
 
 // A collection of values returned by getPlacementGroup.
@@ -68,6 +70,8 @@ type LookupPlacementGroupResult struct {
 	Label string `pulumi:"label"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members []GetPlacementGroupMember `pulumi:"members"`
+	// Any Linodes that are being migrated to or from the placement group.
+	Migrations *GetPlacementGroupMigrations `pulumi:"migrations"`
 	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 	PlacementGroupPolicy string `pulumi:"placementGroupPolicy"`
 	// The placement group type to use when placing Linodes in this group.
@@ -91,6 +95,8 @@ type LookupPlacementGroupOutputArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// A set of Linodes currently assigned to this Placement Group.
 	Members GetPlacementGroupMemberArrayInput `pulumi:"members"`
+	// Any Linodes that are being migrated to or from the placement group.
+	Migrations GetPlacementGroupMigrationsPtrInput `pulumi:"migrations"`
 }
 
 func (LookupPlacementGroupOutputArgs) ElementType() reflect.Type {
@@ -129,6 +135,11 @@ func (o LookupPlacementGroupResultOutput) Label() pulumi.StringOutput {
 // A set of Linodes currently assigned to this Placement Group.
 func (o LookupPlacementGroupResultOutput) Members() GetPlacementGroupMemberArrayOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) []GetPlacementGroupMember { return v.Members }).(GetPlacementGroupMemberArrayOutput)
+}
+
+// Any Linodes that are being migrated to or from the placement group.
+func (o LookupPlacementGroupResultOutput) Migrations() GetPlacementGroupMigrationsPtrOutput {
+	return o.ApplyT(func(v LookupPlacementGroupResult) *GetPlacementGroupMigrations { return v.Migrations }).(GetPlacementGroupMigrationsPtrOutput)
 }
 
 // Whether Linodes must be able to become compliant during assignment. (Default `strict`)

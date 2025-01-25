@@ -12,6 +12,8 @@ namespace Pulumi.Linode
     public static class GetDatabaseBackups
     {
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+        /// 
         /// Provides information about Linode Database Backups that match a set of filters.
         /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
@@ -70,6 +72,8 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+        /// 
         /// Provides information about Linode Database Backups that match a set of filters.
         /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
@@ -128,6 +132,8 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseBackupsResult>("linode:index/getDatabaseBackups:getDatabaseBackups", args ?? new GetDatabaseBackupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
+        /// 
         /// Provides information about Linode Database Backups that match a set of filters.
         /// For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 

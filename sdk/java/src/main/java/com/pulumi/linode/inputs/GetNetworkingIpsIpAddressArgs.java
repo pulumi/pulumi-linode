@@ -107,14 +107,14 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The Region this IP address resides in.
+     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return The Region this IP address resides in.
+     * @return The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
      * 
      */
     public Output<String> region() {
@@ -122,14 +122,14 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether this IP is reserved or not.
+     * Whether this IP address is a reserved IP.
      * 
      */
     @Import(name="reserved", required=true)
     private Output<Boolean> reserved;
 
     /**
-     * @return Whether this IP is reserved or not.
+     * @return Whether this IP address is a reserved IP.
      * 
      */
     public Output<Boolean> reserved() {
@@ -326,7 +326,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param region The Region this IP address resides in.
+         * @param region The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param region The Region this IP address resides in.
+         * @param region The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param reserved Whether this IP is reserved or not.
+         * @param reserved Whether this IP address is a reserved IP.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param reserved Whether this IP is reserved or not.
+         * @param reserved Whether this IP address is a reserved IP.
          * 
          * @return builder
          * 

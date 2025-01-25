@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages allocation of reserved IPv4 address in a region and optionally assigning the reserved address to a Linode instance.
+ *
+ * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-allocate-ip).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const testIp = new linode.NetworkingIp("test_ip", {
+ *     type: "ipv4",
+ *     linodeId: 12345,
+ *     "public": true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * IP addresses can be imported using the IP address ID, e.g.
+ *
+ * ```sh
+ * $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
+ * ```
+ */
 export class NetworkingIp extends pulumi.CustomResource {
     /**
      * Get an existing NetworkingIp resource's state with the given name, ID, and optional extra
@@ -33,15 +59,15 @@ export class NetworkingIp extends pulumi.CustomResource {
     }
 
     /**
-     * The allocated IPv4 address.
+     * The IP address.
      */
     public /*out*/ readonly address!: pulumi.Output<string>;
     /**
-     * The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      */
     public readonly linodeId!: pulumi.Output<number>;
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to true.
      */
     public readonly public!: pulumi.Output<boolean>;
     /**
@@ -53,7 +79,7 @@ export class NetworkingIp extends pulumi.CustomResource {
      */
     public readonly reserved!: pulumi.Output<boolean>;
     /**
-     * The type of IP address (ipv4).
+     * The type of IP address. (ipv4, ipv6, etc.)
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -95,15 +121,15 @@ export class NetworkingIp extends pulumi.CustomResource {
  */
 export interface NetworkingIpState {
     /**
-     * The allocated IPv4 address.
+     * The IP address.
      */
     address?: pulumi.Input<string>;
     /**
-     * The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to true.
      */
     public?: pulumi.Input<boolean>;
     /**
@@ -115,7 +141,7 @@ export interface NetworkingIpState {
      */
     reserved?: pulumi.Input<boolean>;
     /**
-     * The type of IP address (ipv4).
+     * The type of IP address. (ipv4, ipv6, etc.)
      */
     type?: pulumi.Input<string>;
 }
@@ -125,11 +151,11 @@ export interface NetworkingIpState {
  */
 export interface NetworkingIpArgs {
     /**
-     * The ID of the Linode to allocate an IPv4 address for. Required when reserved is false or not set.
+     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
      */
     linodeId?: pulumi.Input<number>;
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to true.
      */
     public?: pulumi.Input<boolean>;
     /**
@@ -141,7 +167,7 @@ export interface NetworkingIpArgs {
      */
     reserved?: pulumi.Input<boolean>;
     /**
-     * The type of IP address (ipv4).
+     * The type of IP address. (ipv4, ipv6, etc.)
      */
     type?: pulumi.Input<string>;
 }

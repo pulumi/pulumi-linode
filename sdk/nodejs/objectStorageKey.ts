@@ -36,6 +36,29 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * The following example shows how to grant a key the explicit access to multiple buckets.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = new linode.ObjectStorageKey("foo", {
+ *     label: "image-access",
+ *     bucketAccesses: [
+ *         {
+ *             bucketName: "foobar1",
+ *             cluster: "us-east-1",
+ *             permissions: "read_write",
+ *         },
+ *         {
+ *             bucketName: "foobar2",
+ *             cluster: "us-east-1",
+ *             permissions: "read_write",
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class ObjectStorageKey extends pulumi.CustomResource {
     /**

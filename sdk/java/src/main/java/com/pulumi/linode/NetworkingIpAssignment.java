@@ -16,23 +16,86 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
+ * 
+ * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.NetworkingIpAssignment;
+ * import com.pulumi.linode.NetworkingIpAssignmentArgs;
+ * import com.pulumi.linode.inputs.NetworkingIpAssignmentAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new NetworkingIpAssignment("foobar", NetworkingIpAssignmentArgs.builder()
+ *             .region("us-mia")
+ *             .assignments(            
+ *                 NetworkingIpAssignmentAssignmentArgs.builder()
+ *                     .address(reservedIp1.address())
+ *                     .linode_id(terraform_web1.id())
+ *                     .build(),
+ *                 NetworkingIpAssignmentAssignmentArgs.builder()
+ *                     .address(reservedIp2.address())
+ *                     .linode_id(terraform_web2.id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * Network IP assignments cannot be imported.
+ * 
+ */
 @ResourceType(type="linode:index/networkingIpAssignment:NetworkingIpAssignment")
 public class NetworkingIpAssignment extends com.pulumi.resources.CustomResource {
+    /**
+     * A list of IP/Linode assignments to apply.
+     * 
+     */
     @Export(name="assignments", refs={List.class,NetworkingIpAssignmentAssignment.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkingIpAssignmentAssignment>> assignments;
 
+    /**
+     * @return A list of IP/Linode assignments to apply.
+     * 
+     */
     public Output<Optional<List<NetworkingIpAssignmentAssignment>>> assignments() {
         return Codegen.optional(this.assignments);
     }
     /**
-     * The region for the IP assignments.
+     * The region where the IP addresses will be assigned.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region for the IP assignments.
+     * @return The region where the IP addresses will be assigned.
      * 
      */
     public Output<String> region() {

@@ -26,6 +26,18 @@
                     }
                 }
             },
+            "linode_database_mysql_v2": {
+                "current": "linode:index/databaseMysqlV2:DatabaseMysqlV2",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    },
+                    "pending_updates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_database_postgresql": {
                 "current": "linode:index/databasePostgresql:DatabasePostgresql",
                 "majorVersion": 4,
@@ -35,6 +47,18 @@
                     },
                     "updates": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "linode_database_postgresql_v2": {
+                "current": "linode:index/databasePostgresqlV2:DatabasePostgresqlV2",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    },
+                    "pending_updates": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -832,6 +856,18 @@
                     }
                 }
             },
+            "linode_database_mysql_v2": {
+                "current": "linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    },
+                    "pending_updates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_database_postgresql": {
                 "current": "linode:index/getDatabasePostgresql:getDatabasePostgresql",
                 "majorVersion": 4,
@@ -840,6 +876,18 @@
                         "maxItemsOne": false
                     },
                     "updates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_database_postgresql_v2": {
+                "current": "linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2",
+                "majorVersion": 4,
+                "fields": {
+                    "allow_list": {
+                        "maxItemsOne": false
+                    },
+                    "pending_updates": {
                         "maxItemsOne": false
                     }
                 }
@@ -1741,6 +1789,16 @@
                 "fields": {
                     "members": {
                         "maxItemsOne": false
+                    },
+                    "migrations": {
+                        "fields": {
+                            "inbound": {
+                                "maxItemsOne": false
+                            },
+                            "outbound": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -1764,6 +1822,16 @@
                             "fields": {
                                 "members": {
                                     "maxItemsOne": false
+                                },
+                                "migrations": {
+                                    "fields": {
+                                        "inbound": {
+                                            "maxItemsOne": false
+                                        },
+                                        "outbound": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2200,7 +2268,9 @@
             "linode:index/accountSettings:AccountSettings": 1,
             "linode:index/databaseAccessControls:DatabaseAccessControls": 0,
             "linode:index/databaseMysql:DatabaseMysql": 0,
+            "linode:index/databaseMysqlV2:DatabaseMysqlV2": 1,
             "linode:index/databasePostgresql:DatabasePostgresql": 0,
+            "linode:index/databasePostgresqlV2:DatabasePostgresqlV2": 1,
             "linode:index/domain:Domain": 0,
             "linode:index/domainRecord:DomainRecord": 0,
             "linode:index/firewall:Firewall": 1,
@@ -2247,7 +2317,9 @@
             "linode:index/getDatabaseEngines:getDatabaseEngines": 1,
             "linode:index/getDatabaseMysql:getDatabaseMysql": 1,
             "linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups": 0,
+            "linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2": 1,
             "linode:index/getDatabasePostgresql:getDatabasePostgresql": 1,
+            "linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2": 1,
             "linode:index/getDatabases:getDatabases": 1,
             "linode:index/getDomain:getDomain": 1,
             "linode:index/getDomainRecord:getDomainRecord": 1,

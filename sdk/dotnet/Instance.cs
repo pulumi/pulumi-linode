@@ -263,7 +263,9 @@ namespace Pulumi.Linode
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// A set of reserved IPv4 addresses to assign to this Linode on creation.
+        /// 
+        /// * **NOTE: IP reservation is not currently available to all users.**
         /// </summary>
         [Output("ipv4s")]
         public Output<ImmutableArray<string>> Ipv4s { get; private set; } = null!;
@@ -590,7 +592,9 @@ namespace Pulumi.Linode
         private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// A set of reserved IPv4 addresses to assign to this Linode on creation.
+        /// 
+        /// * **NOTE: IP reservation is not currently available to all users.**
         /// </summary>
         public InputList<string> Ipv4s
         {
@@ -921,7 +925,9 @@ namespace Pulumi.Linode
         private InputList<string>? _ipv4s;
 
         /// <summary>
-        /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        /// A set of reserved IPv4 addresses to assign to this Linode on creation.
+        /// 
+        /// * **NOTE: IP reservation is not currently available to all users.**
         /// </summary>
         public InputList<string> Ipv4s
         {

@@ -15,6 +15,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypeResult {
+    /**
+     * @return The number of VPUs this Linode Type offers.
+     * 
+     */
+    private Integer acceleratedDevices;
     private GetInstanceTypeAddons addons;
     /**
      * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
@@ -60,6 +65,13 @@ public final class GetInstanceTypeResult {
     private Integer vcpus;
 
     private GetInstanceTypeResult() {}
+    /**
+     * @return The number of VPUs this Linode Type offers.
+     * 
+     */
+    public Integer acceleratedDevices() {
+        return this.acceleratedDevices;
+    }
     public GetInstanceTypeAddons addons() {
         return this.addons;
     }
@@ -135,6 +147,7 @@ public final class GetInstanceTypeResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer acceleratedDevices;
         private GetInstanceTypeAddons addons;
         private String class_;
         private Integer disk;
@@ -149,6 +162,7 @@ public final class GetInstanceTypeResult {
         public Builder() {}
         public Builder(GetInstanceTypeResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedDevices = defaults.acceleratedDevices;
     	      this.addons = defaults.addons;
     	      this.class_ = defaults.class_;
     	      this.disk = defaults.disk;
@@ -162,6 +176,14 @@ public final class GetInstanceTypeResult {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
+        public Builder acceleratedDevices(Integer acceleratedDevices) {
+            if (acceleratedDevices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeResult", "acceleratedDevices");
+            }
+            this.acceleratedDevices = acceleratedDevices;
+            return this;
+        }
         @CustomType.Setter
         public Builder addons(GetInstanceTypeAddons addons) {
             if (addons == null) {
@@ -255,6 +277,7 @@ public final class GetInstanceTypeResult {
         }
         public GetInstanceTypeResult build() {
             final var _resultValue = new GetInstanceTypeResult();
+            _resultValue.acceleratedDevices = acceleratedDevices;
             _resultValue.addons = addons;
             _resultValue.class_ = class_;
             _resultValue.disk = disk;

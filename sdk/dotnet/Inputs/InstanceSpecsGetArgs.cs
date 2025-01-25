@@ -13,10 +13,22 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceSpecsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The number of VPUs this Linode has access to.
+        /// </summary>
+        [Input("acceleratedDevices")]
+        public Input<int>? AcceleratedDevices { get; set; }
+
+        /// <summary>
         /// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
+
+        /// <summary>
+        /// The number of GPUs this Linode has access to.
+        /// </summary>
+        [Input("gpus")]
+        public Input<int>? Gpus { get; set; }
 
         /// <summary>
         /// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.

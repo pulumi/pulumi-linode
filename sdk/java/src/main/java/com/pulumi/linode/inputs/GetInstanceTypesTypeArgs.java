@@ -20,6 +20,21 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
     public static final GetInstanceTypesTypeArgs Empty = new GetInstanceTypesTypeArgs();
 
     /**
+     * The number of VPUs this Linode Type offers.
+     * 
+     */
+    @Import(name="acceleratedDevices", required=true)
+    private Output<Integer> acceleratedDevices;
+
+    /**
+     * @return The number of VPUs this Linode Type offers.
+     * 
+     */
+    public Output<Integer> acceleratedDevices() {
+        return this.acceleratedDevices;
+    }
+
+    /**
      * Information about the optional Backup service offered for Linodes.
      * 
      */
@@ -187,6 +202,7 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
     private GetInstanceTypesTypeArgs() {}
 
     private GetInstanceTypesTypeArgs(GetInstanceTypesTypeArgs $) {
+        this.acceleratedDevices = $.acceleratedDevices;
         this.addons = $.addons;
         this.class_ = $.class_;
         this.disk = $.disk;
@@ -216,6 +232,27 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
 
         public Builder(GetInstanceTypesTypeArgs defaults) {
             $ = new GetInstanceTypesTypeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratedDevices The number of VPUs this Linode Type offers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedDevices(Output<Integer> acceleratedDevices) {
+            $.acceleratedDevices = acceleratedDevices;
+            return this;
+        }
+
+        /**
+         * @param acceleratedDevices The number of VPUs this Linode Type offers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedDevices(Integer acceleratedDevices) {
+            return acceleratedDevices(Output.of(acceleratedDevices));
         }
 
         /**
@@ -480,6 +517,9 @@ public final class GetInstanceTypesTypeArgs extends com.pulumi.resources.Resourc
         }
 
         public GetInstanceTypesTypeArgs build() {
+            if ($.acceleratedDevices == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "acceleratedDevices");
+            }
             if ($.addons == null) {
                 throw new MissingRequiredPropertyException("GetInstanceTypesTypeArgs", "addons");
             }

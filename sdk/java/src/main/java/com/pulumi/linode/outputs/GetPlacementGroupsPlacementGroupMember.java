@@ -17,7 +17,7 @@ public final class GetPlacementGroupsPlacementGroupMember {
      */
     private Boolean isCompliant;
     /**
-     * @return The ID of the Linode.
+     * @return The unique identifier for the Linode being migrated out of the placement group.
      * 
      */
     private Integer linodeId;
@@ -31,7 +31,7 @@ public final class GetPlacementGroupsPlacementGroupMember {
         return this.isCompliant;
     }
     /**
-     * @return The ID of the Linode.
+     * @return The unique identifier for the Linode being migrated out of the placement group.
      * 
      */
     public Integer linodeId() {
