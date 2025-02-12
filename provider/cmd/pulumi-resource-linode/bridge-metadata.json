@@ -633,6 +633,9 @@
                     "nodebalancer_grant": {
                         "maxItemsOne": false
                     },
+                    "placement_group_grant": {
+                        "maxItemsOne": false
+                    },
                     "ssh_keys": {
                         "maxItemsOne": false
                     },
@@ -640,6 +643,9 @@
                         "maxItemsOne": false
                     },
                     "volume_grant": {
+                        "maxItemsOne": false
+                    },
+                    "vpc_grant": {
                         "maxItemsOne": false
                     }
                 }
@@ -1783,6 +1789,25 @@
                 "current": "linode:index/getObjectStorageCluster:getObjectStorageCluster",
                 "majorVersion": 4
             },
+            "linode_object_storage_endpoints": {
+                "current": "linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints",
+                "majorVersion": 4,
+                "fields": {
+                    "endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_placement_group": {
                 "current": "linode:index/getPlacementGroup:getPlacementGroup",
                 "majorVersion": 4,
@@ -1989,6 +2014,9 @@
                     "nodebalancer_grant": {
                         "maxItemsOne": false
                     },
+                    "placement_group_grant": {
+                        "maxItemsOne": false
+                    },
                     "ssh_keys": {
                         "maxItemsOne": false
                     },
@@ -1996,6 +2024,9 @@
                         "maxItemsOne": false
                     },
                     "volume_grant": {
+                        "maxItemsOne": false
+                    },
+                    "vpc_grant": {
                         "maxItemsOne": false
                     }
                 }
@@ -2042,6 +2073,9 @@
                                 "nodebalancer_grant": {
                                     "maxItemsOne": false
                                 },
+                                "placement_group_grant": {
+                                    "maxItemsOne": false
+                                },
                                 "ssh_keys": {
                                     "maxItemsOne": false
                                 },
@@ -2049,6 +2083,9 @@
                                     "maxItemsOne": false
                                 },
                                 "volume_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "vpc_grant": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2353,6 +2390,7 @@
             "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": 1,
             "linode:index/getNodebalancers:getNodebalancers": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
+            "linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints": 1,
             "linode:index/getPlacementGroup:getPlacementGroup": 1,
             "linode:index/getPlacementGroups:getPlacementGroups": 1,
             "linode:index/getProfile:getProfile": 1,

@@ -139,6 +139,21 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="tier", required=true)
+    private String tier;
+
+    /**
+     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public String tier() {
+        return this.tier;
+    }
+
+    /**
      * When this Kubernetes cluster was updated.
      * 
      */
@@ -164,6 +179,7 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
         this.region = $.region;
         this.status = $.status;
         this.tags = $.tags;
+        this.tier = $.tier;
         this.updated = $.updated;
     }
 
@@ -284,6 +300,17 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
         }
 
         /**
+         * @param tier The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(String tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
          * @param updated When this Kubernetes cluster was updated.
          * 
          * @return builder
@@ -315,6 +342,9 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
             }
             if ($.tags == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "tags");
+            }
+            if ($.tier == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "tier");
             }
             if ($.updated == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "updated");

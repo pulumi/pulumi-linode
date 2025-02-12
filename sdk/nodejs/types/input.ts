@@ -2252,6 +2252,10 @@ export interface GetLkeClustersLkeCluster {
      */
     tags?: string[];
     /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    tier?: string;
+    /**
      * When this Kubernetes cluster was updated.
      */
     updated?: string;
@@ -2290,6 +2294,10 @@ export interface GetLkeClustersLkeClusterArgs {
      * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    tier?: pulumi.Input<string>;
     /**
      * When this Kubernetes cluster was updated.
      */
@@ -3310,6 +3318,66 @@ export interface GetNodebalancersNodebalancerTransferArgs {
     total: pulumi.Input<number>;
 }
 
+export interface GetObjectStorageEndpointsEndpoint {
+    /**
+     * The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType?: string;
+    /**
+     * The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+     */
+    region?: string;
+    /**
+     * Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+     */
+    s3Endpoint?: string;
+}
+
+export interface GetObjectStorageEndpointsEndpointArgs {
+    /**
+     * The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType?: pulumi.Input<string>;
+    /**
+     * The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+     */
+    s3Endpoint?: pulumi.Input<string>;
+}
+
+export interface GetObjectStorageEndpointsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetObjectStorageEndpointsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetPlacementGroupMember {
     /**
      * Whether this Linode is currently compliant with the group's placement group type.
@@ -4194,6 +4262,36 @@ export interface GetUserNodebalancerGrantArgs {
     permissions: pulumi.Input<string>;
 }
 
+export interface GetUserPlacementGroupGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: string;
+}
+
+export interface GetUserPlacementGroupGrantArgs {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: pulumi.Input<string>;
+}
+
 export interface GetUserStackscriptGrant {
     /**
      * The ID of entity this grant applies to.
@@ -4240,6 +4338,36 @@ export interface GetUserVolumeGrant {
 }
 
 export interface GetUserVolumeGrantArgs {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUserVpcGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: string;
+}
+
+export interface GetUserVpcGrantArgs {
     /**
      * The ID of entity this grant applies to.
      */
@@ -4330,6 +4458,10 @@ export interface GetUsersUser {
      */
     passwordCreated?: string;
     /**
+     * A set containing all of the user's active grants.
+     */
+    placementGroupGrants?: inputs.GetUsersUserPlacementGroupGrant[];
+    /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
     restricted?: boolean;
@@ -4361,6 +4493,10 @@ export interface GetUsersUser {
      * A set containing all of the user's active grants.
      */
     volumeGrants?: inputs.GetUsersUserVolumeGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
+    vpcGrants?: inputs.GetUsersUserVpcGrant[];
 }
 
 export interface GetUsersUserArgs {
@@ -4409,6 +4545,10 @@ export interface GetUsersUserArgs {
      */
     passwordCreated?: pulumi.Input<string>;
     /**
+     * A set containing all of the user's active grants.
+     */
+    placementGroupGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserPlacementGroupGrantArgs>[]>;
+    /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
     restricted?: pulumi.Input<boolean>;
@@ -4440,6 +4580,10 @@ export interface GetUsersUserArgs {
      * A set containing all of the user's active grants.
      */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserVolumeGrantArgs>[]>;
+    /**
+     * A set containing all of the user's active grants.
+     */
+    vpcGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserVpcGrantArgs>[]>;
 }
 
 export interface GetUsersUserDatabaseGrant {
@@ -4565,11 +4709,19 @@ export interface GetUsersUserGlobalGrant {
      * If true, this User may add NodeBalancers.
      */
     addNodebalancers: boolean;
+    /**
+     * If true, this User may add Placement Groups.
+     */
+    addPlacementGroups: boolean;
     addStackscripts: boolean;
     /**
      * If true, this User may add Volumes.
      */
     addVolumes: boolean;
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     */
+    addVpcs: boolean;
     /**
      * If true, this User may cancel the entire Account.
      */
@@ -4613,11 +4765,19 @@ export interface GetUsersUserGlobalGrantArgs {
      * If true, this User may add NodeBalancers.
      */
     addNodebalancers: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Placement Groups.
+     */
+    addPlacementGroups: pulumi.Input<boolean>;
     addStackscripts: pulumi.Input<boolean>;
     /**
      * If true, this User may add Volumes.
      */
     addVolumes: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     */
+    addVpcs: pulumi.Input<boolean>;
     /**
      * If true, this User may cancel the entire Account.
      */
@@ -4748,6 +4908,36 @@ export interface GetUsersUserNodebalancerGrantArgs {
     permissions: pulumi.Input<string>;
 }
 
+export interface GetUsersUserPlacementGroupGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserPlacementGroupGrantArgs {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: pulumi.Input<string>;
+}
+
 export interface GetUsersUserStackscriptGrant {
     /**
      * The ID of entity this grant applies to.
@@ -4794,6 +4984,36 @@ export interface GetUsersUserVolumeGrant {
 }
 
 export interface GetUsersUserVolumeGrantArgs {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: pulumi.Input<string>;
+}
+
+export interface GetUsersUserVpcGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserVpcGrantArgs {
     /**
      * The ID of entity this grant applies to.
      */
@@ -6375,6 +6595,10 @@ export interface ObjectStorageKeyBucketAccess {
 
 export interface ObjectStorageKeyRegionsDetail {
     /**
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType: pulumi.Input<string>;
+    /**
      * The ID of the region.
      */
     id: pulumi.Input<string>;
@@ -6495,6 +6719,10 @@ export interface UserGlobalGrants {
      */
     addNodebalancers?: pulumi.Input<boolean>;
     /**
+     * If true, this User may add Placement Groups.
+     */
+    addPlacementGroups?: pulumi.Input<boolean>;
+    /**
      * If true, this User may add StackScripts.
      */
     addStackscripts?: pulumi.Input<boolean>;
@@ -6502,6 +6730,10 @@ export interface UserGlobalGrants {
      * If true, this User may add Volumes.
      */
     addVolumes?: pulumi.Input<boolean>;
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     */
+    addVpcs?: pulumi.Input<boolean>;
     /**
      * If true, this User may cancel the entire Account.
      */
@@ -6556,6 +6788,17 @@ export interface UserNodebalancerGrant {
     permissions: pulumi.Input<string>;
 }
 
+export interface UserPlacementGroupGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: pulumi.Input<string>;
+}
+
 export interface UserStackscriptGrant {
     /**
      * The ID of the entity this grant applies to.
@@ -6568,6 +6811,17 @@ export interface UserStackscriptGrant {
 }
 
 export interface UserVolumeGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: pulumi.Input<string>;
+}
+
+export interface UserVpcGrant {
     /**
      * The ID of the entity this grant applies to.
      */

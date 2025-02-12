@@ -13,8 +13,10 @@ import com.pulumi.linode.inputs.UserImageGrantArgs;
 import com.pulumi.linode.inputs.UserLinodeGrantArgs;
 import com.pulumi.linode.inputs.UserLongviewGrantArgs;
 import com.pulumi.linode.inputs.UserNodebalancerGrantArgs;
+import com.pulumi.linode.inputs.UserPlacementGroupGrantArgs;
 import com.pulumi.linode.inputs.UserStackscriptGrantArgs;
 import com.pulumi.linode.inputs.UserVolumeGrantArgs;
+import com.pulumi.linode.inputs.UserVpcGrantArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -148,6 +150,21 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Placement Groups the user has permissions access to.
+     * 
+     */
+    @Import(name="placementGroupGrants")
+    private @Nullable Output<List<UserPlacementGroupGrantArgs>> placementGroupGrants;
+
+    /**
+     * @return The Placement Groups the user has permissions access to.
+     * 
+     */
+    public Optional<Output<List<UserPlacementGroupGrantArgs>>> placementGroupGrants() {
+        return Optional.ofNullable(this.placementGroupGrants);
+    }
+
+    /**
      * If true, this user will only have explicit permissions granted.
      * 
      * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -215,6 +232,21 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.volumeGrants);
     }
 
+    /**
+     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * 
+     */
+    @Import(name="vpcGrants")
+    private @Nullable Output<List<UserVpcGrantArgs>> vpcGrants;
+
+    /**
+     * @return The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * 
+     */
+    public Optional<Output<List<UserVpcGrantArgs>>> vpcGrants() {
+        return Optional.ofNullable(this.vpcGrants);
+    }
+
     private UserArgs() {}
 
     private UserArgs(UserArgs $) {
@@ -226,10 +258,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.linodeGrants = $.linodeGrants;
         this.longviewGrants = $.longviewGrants;
         this.nodebalancerGrants = $.nodebalancerGrants;
+        this.placementGroupGrants = $.placementGroupGrants;
         this.restricted = $.restricted;
         this.stackscriptGrants = $.stackscriptGrants;
         this.username = $.username;
         this.volumeGrants = $.volumeGrants;
+        this.vpcGrants = $.vpcGrants;
     }
 
     public static Builder builder() {
@@ -479,6 +513,37 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param placementGroupGrants The Placement Groups the user has permissions access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupGrants(@Nullable Output<List<UserPlacementGroupGrantArgs>> placementGroupGrants) {
+            $.placementGroupGrants = placementGroupGrants;
+            return this;
+        }
+
+        /**
+         * @param placementGroupGrants The Placement Groups the user has permissions access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupGrants(List<UserPlacementGroupGrantArgs> placementGroupGrants) {
+            return placementGroupGrants(Output.of(placementGroupGrants));
+        }
+
+        /**
+         * @param placementGroupGrants The Placement Groups the user has permissions access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupGrants(UserPlacementGroupGrantArgs... placementGroupGrants) {
+            return placementGroupGrants(List.of(placementGroupGrants));
+        }
+
+        /**
          * @param restricted If true, this user will only have explicit permissions granted.
          * 
          * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -588,6 +653,37 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder volumeGrants(UserVolumeGrantArgs... volumeGrants) {
             return volumeGrants(List.of(volumeGrants));
+        }
+
+        /**
+         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcGrants(@Nullable Output<List<UserVpcGrantArgs>> vpcGrants) {
+            $.vpcGrants = vpcGrants;
+            return this;
+        }
+
+        /**
+         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcGrants(List<UserVpcGrantArgs> vpcGrants) {
+            return vpcGrants(Output.of(vpcGrants));
+        }
+
+        /**
+         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcGrants(UserVpcGrantArgs... vpcGrants) {
+            return vpcGrants(List.of(vpcGrants));
         }
 
         public UserArgs build() {

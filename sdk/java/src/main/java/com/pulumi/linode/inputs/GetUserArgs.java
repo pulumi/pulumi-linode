@@ -13,8 +13,10 @@ import com.pulumi.linode.inputs.GetUserImageGrantArgs;
 import com.pulumi.linode.inputs.GetUserLinodeGrantArgs;
 import com.pulumi.linode.inputs.GetUserLongviewGrantArgs;
 import com.pulumi.linode.inputs.GetUserNodebalancerGrantArgs;
+import com.pulumi.linode.inputs.GetUserPlacementGroupGrantArgs;
 import com.pulumi.linode.inputs.GetUserStackscriptGrantArgs;
 import com.pulumi.linode.inputs.GetUserVolumeGrantArgs;
+import com.pulumi.linode.inputs.GetUserVpcGrantArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +77,13 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nodebalancerGrants);
     }
 
+    @Import(name="placementGroupGrants")
+    private @Nullable Output<List<GetUserPlacementGroupGrantArgs>> placementGroupGrants;
+
+    public Optional<Output<List<GetUserPlacementGroupGrantArgs>>> placementGroupGrants() {
+        return Optional.ofNullable(this.placementGroupGrants);
+    }
+
     @Import(name="stackscriptGrants")
     private @Nullable Output<List<GetUserStackscriptGrantArgs>> stackscriptGrants;
 
@@ -104,6 +113,13 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.volumeGrants);
     }
 
+    @Import(name="vpcGrants")
+    private @Nullable Output<List<GetUserVpcGrantArgs>> vpcGrants;
+
+    public Optional<Output<List<GetUserVpcGrantArgs>>> vpcGrants() {
+        return Optional.ofNullable(this.vpcGrants);
+    }
+
     private GetUserArgs() {}
 
     private GetUserArgs(GetUserArgs $) {
@@ -114,9 +130,11 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         this.linodeGrants = $.linodeGrants;
         this.longviewGrants = $.longviewGrants;
         this.nodebalancerGrants = $.nodebalancerGrants;
+        this.placementGroupGrants = $.placementGroupGrants;
         this.stackscriptGrants = $.stackscriptGrants;
         this.username = $.username;
         this.volumeGrants = $.volumeGrants;
+        this.vpcGrants = $.vpcGrants;
     }
 
     public static Builder builder() {
@@ -228,6 +246,19 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
             return nodebalancerGrants(List.of(nodebalancerGrants));
         }
 
+        public Builder placementGroupGrants(@Nullable Output<List<GetUserPlacementGroupGrantArgs>> placementGroupGrants) {
+            $.placementGroupGrants = placementGroupGrants;
+            return this;
+        }
+
+        public Builder placementGroupGrants(List<GetUserPlacementGroupGrantArgs> placementGroupGrants) {
+            return placementGroupGrants(Output.of(placementGroupGrants));
+        }
+
+        public Builder placementGroupGrants(GetUserPlacementGroupGrantArgs... placementGroupGrants) {
+            return placementGroupGrants(List.of(placementGroupGrants));
+        }
+
         public Builder stackscriptGrants(@Nullable Output<List<GetUserStackscriptGrantArgs>> stackscriptGrants) {
             $.stackscriptGrants = stackscriptGrants;
             return this;
@@ -273,6 +304,19 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder volumeGrants(GetUserVolumeGrantArgs... volumeGrants) {
             return volumeGrants(List.of(volumeGrants));
+        }
+
+        public Builder vpcGrants(@Nullable Output<List<GetUserVpcGrantArgs>> vpcGrants) {
+            $.vpcGrants = vpcGrants;
+            return this;
+        }
+
+        public Builder vpcGrants(List<GetUserVpcGrantArgs> vpcGrants) {
+            return vpcGrants(Output.of(vpcGrants));
+        }
+
+        public Builder vpcGrants(GetUserVpcGrantArgs... vpcGrants) {
+            return vpcGrants(List.of(vpcGrants));
         }
 
         public GetUserArgs build() {

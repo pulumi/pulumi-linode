@@ -67,6 +67,12 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
+        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Input("tier", required: true)]
+        public string Tier { get; set; } = null!;
+
+        /// <summary>
         /// When this Kubernetes cluster was updated.
         /// </summary>
         [Input("updated", required: true)]

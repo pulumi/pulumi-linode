@@ -191,6 +191,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     public Output<List<String>> tags() {
         return this.tags;
     }
+    /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Export(name="tier", refs={String.class}, tree="[0]")
+    private Output<String> tier;
+
+    /**
+     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Output<String> tier() {
+        return this.tier;
+    }
 
     /**
      *

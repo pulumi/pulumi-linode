@@ -51,12 +51,22 @@ public final class GetUserGlobalGrant {
      * 
      */
     private Boolean addNodebalancers;
+    /**
+     * @return If true, this User may add Placement Groups.
+     * 
+     */
+    private Boolean addPlacementGroups;
     private Boolean addStackscripts;
     /**
      * @return If true, this User may add Volumes.
      * 
      */
     private Boolean addVolumes;
+    /**
+     * @return If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    private Boolean addVpcs;
     /**
      * @return If true, this User may cancel the entire Account.
      * 
@@ -125,6 +135,13 @@ public final class GetUserGlobalGrant {
     public Boolean addNodebalancers() {
         return this.addNodebalancers;
     }
+    /**
+     * @return If true, this User may add Placement Groups.
+     * 
+     */
+    public Boolean addPlacementGroups() {
+        return this.addPlacementGroups;
+    }
     public Boolean addStackscripts() {
         return this.addStackscripts;
     }
@@ -134,6 +151,13 @@ public final class GetUserGlobalGrant {
      */
     public Boolean addVolumes() {
         return this.addVolumes;
+    }
+    /**
+     * @return If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    public Boolean addVpcs() {
+        return this.addVpcs;
     }
     /**
      * @return If true, this User may cancel the entire Account.
@@ -167,8 +191,10 @@ public final class GetUserGlobalGrant {
         private Boolean addLinodes;
         private Boolean addLongview;
         private Boolean addNodebalancers;
+        private Boolean addPlacementGroups;
         private Boolean addStackscripts;
         private Boolean addVolumes;
+        private Boolean addVpcs;
         private Boolean cancelAccount;
         private Boolean longviewSubscription;
         public Builder() {}
@@ -182,8 +208,10 @@ public final class GetUserGlobalGrant {
     	      this.addLinodes = defaults.addLinodes;
     	      this.addLongview = defaults.addLongview;
     	      this.addNodebalancers = defaults.addNodebalancers;
+    	      this.addPlacementGroups = defaults.addPlacementGroups;
     	      this.addStackscripts = defaults.addStackscripts;
     	      this.addVolumes = defaults.addVolumes;
+    	      this.addVpcs = defaults.addVpcs;
     	      this.cancelAccount = defaults.cancelAccount;
     	      this.longviewSubscription = defaults.longviewSubscription;
         }
@@ -253,6 +281,14 @@ public final class GetUserGlobalGrant {
             return this;
         }
         @CustomType.Setter
+        public Builder addPlacementGroups(Boolean addPlacementGroups) {
+            if (addPlacementGroups == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addPlacementGroups");
+            }
+            this.addPlacementGroups = addPlacementGroups;
+            return this;
+        }
+        @CustomType.Setter
         public Builder addStackscripts(Boolean addStackscripts) {
             if (addStackscripts == null) {
               throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addStackscripts");
@@ -266,6 +302,14 @@ public final class GetUserGlobalGrant {
               throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addVolumes");
             }
             this.addVolumes = addVolumes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder addVpcs(Boolean addVpcs) {
+            if (addVpcs == null) {
+              throw new MissingRequiredPropertyException("GetUserGlobalGrant", "addVpcs");
+            }
+            this.addVpcs = addVpcs;
             return this;
         }
         @CustomType.Setter
@@ -294,8 +338,10 @@ public final class GetUserGlobalGrant {
             _resultValue.addLinodes = addLinodes;
             _resultValue.addLongview = addLongview;
             _resultValue.addNodebalancers = addNodebalancers;
+            _resultValue.addPlacementGroups = addPlacementGroups;
             _resultValue.addStackscripts = addStackscripts;
             _resultValue.addVolumes = addVolumes;
+            _resultValue.addVpcs = addVpcs;
             _resultValue.cancelAccount = cancelAccount;
             _resultValue.longviewSubscription = longviewSubscription;
             return _resultValue;

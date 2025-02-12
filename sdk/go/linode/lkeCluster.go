@@ -48,6 +48,8 @@ type LkeCluster struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier pulumi.StringOutput `pulumi:"tier"`
 }
 
 // NewLkeCluster registers a new resource with the given unique name, arguments, and options.
@@ -122,6 +124,8 @@ type lkeClusterState struct {
 	Status *string `pulumi:"status"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier *string `pulumi:"tier"`
 }
 
 type LkeClusterState struct {
@@ -151,6 +155,8 @@ type LkeClusterState struct {
 	Status pulumi.StringPtrInput
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier pulumi.StringPtrInput
 }
 
 func (LkeClusterState) ElementType() reflect.Type {
@@ -176,6 +182,8 @@ type lkeClusterArgs struct {
 	Region string `pulumi:"region"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier *string `pulumi:"tier"`
 }
 
 // The set of arguments for constructing a LkeCluster resource.
@@ -198,6 +206,8 @@ type LkeClusterArgs struct {
 	Region pulumi.StringInput
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier pulumi.StringPtrInput
 }
 
 func (LkeClusterArgs) ElementType() reflect.Type {
@@ -344,6 +354,11 @@ func (o LkeClusterOutput) Status() pulumi.StringOutput {
 // An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 func (o LkeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+func (o LkeClusterOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
 type LkeClusterArrayOutput struct{ *pulumi.OutputState }

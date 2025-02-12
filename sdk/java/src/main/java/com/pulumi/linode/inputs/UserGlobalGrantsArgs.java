@@ -137,6 +137,21 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * If true, this User may add Placement Groups.
+     * 
+     */
+    @Import(name="addPlacementGroups")
+    private @Nullable Output<Boolean> addPlacementGroups;
+
+    /**
+     * @return If true, this User may add Placement Groups.
+     * 
+     */
+    public Optional<Output<Boolean>> addPlacementGroups() {
+        return Optional.ofNullable(this.addPlacementGroups);
+    }
+
+    /**
      * If true, this User may add StackScripts.
      * 
      */
@@ -164,6 +179,21 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Boolean>> addVolumes() {
         return Optional.ofNullable(this.addVolumes);
+    }
+
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    @Import(name="addVpcs")
+    private @Nullable Output<Boolean> addVpcs;
+
+    /**
+     * @return If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    public Optional<Output<Boolean>> addVpcs() {
+        return Optional.ofNullable(this.addVpcs);
     }
 
     /**
@@ -207,8 +237,10 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
         this.addLinodes = $.addLinodes;
         this.addLongview = $.addLongview;
         this.addNodebalancers = $.addNodebalancers;
+        this.addPlacementGroups = $.addPlacementGroups;
         this.addStackscripts = $.addStackscripts;
         this.addVolumes = $.addVolumes;
+        this.addVpcs = $.addVpcs;
         this.cancelAccount = $.cancelAccount;
         this.longviewSubscription = $.longviewSubscription;
     }
@@ -400,6 +432,27 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param addPlacementGroups If true, this User may add Placement Groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addPlacementGroups(@Nullable Output<Boolean> addPlacementGroups) {
+            $.addPlacementGroups = addPlacementGroups;
+            return this;
+        }
+
+        /**
+         * @param addPlacementGroups If true, this User may add Placement Groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addPlacementGroups(Boolean addPlacementGroups) {
+            return addPlacementGroups(Output.of(addPlacementGroups));
+        }
+
+        /**
          * @param addStackscripts If true, this User may add StackScripts.
          * 
          * @return builder
@@ -439,6 +492,27 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder addVolumes(Boolean addVolumes) {
             return addVolumes(Output.of(addVolumes));
+        }
+
+        /**
+         * @param addVpcs If true, this User may add Virtual Private Clouds (VPCs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addVpcs(@Nullable Output<Boolean> addVpcs) {
+            $.addVpcs = addVpcs;
+            return this;
+        }
+
+        /**
+         * @param addVpcs If true, this User may add Virtual Private Clouds (VPCs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addVpcs(Boolean addVpcs) {
+            return addVpcs(Output.of(addVpcs));
         }
 
         /**

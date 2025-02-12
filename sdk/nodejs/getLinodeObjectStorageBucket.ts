@@ -60,11 +60,13 @@ export interface GetLinodeObjectStorageBucketResult {
      */
     readonly cluster: string;
     readonly created: string;
+    readonly endpointType: string;
     readonly hostname: string;
     readonly id: string;
     readonly label: string;
     readonly objects: number;
     readonly region: string;
+    readonly s3Endpoint: string;
     readonly size: number;
 }
 /**

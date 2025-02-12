@@ -63,7 +63,11 @@ import * as utilities from "./utilities";
  *
  * * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
  *
+ * * `addPlacementGroups` - (optional) If true, this User may add Placement Groups.
+ *
  * * `addStackscripts` - (optional) If true, this User may add StackScripts.
+ *
+ * * `addVpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
  *
  * * `cancelAccount` - (optional) If true, this User may cancel the entire Account.
  *
@@ -136,6 +140,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly nodebalancerGrants!: pulumi.Output<outputs.UserNodebalancerGrant[]>;
     /**
+     * The Placement Groups the user has permissions access to.
+     */
+    public readonly placementGroupGrants!: pulumi.Output<outputs.UserPlacementGroupGrant[]>;
+    /**
      * If true, this user will only have explicit permissions granted.
      *
      * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -167,6 +175,10 @@ export class User extends pulumi.CustomResource {
      * The volumes the user has permissions access to.
      */
     public readonly volumeGrants!: pulumi.Output<outputs.UserVolumeGrant[]>;
+    /**
+     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     */
+    public readonly vpcGrants!: pulumi.Output<outputs.UserVpcGrant[]>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -189,6 +201,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["linodeGrants"] = state ? state.linodeGrants : undefined;
             resourceInputs["longviewGrants"] = state ? state.longviewGrants : undefined;
             resourceInputs["nodebalancerGrants"] = state ? state.nodebalancerGrants : undefined;
+            resourceInputs["placementGroupGrants"] = state ? state.placementGroupGrants : undefined;
             resourceInputs["restricted"] = state ? state.restricted : undefined;
             resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
             resourceInputs["stackscriptGrants"] = state ? state.stackscriptGrants : undefined;
@@ -196,6 +209,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["userType"] = state ? state.userType : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
             resourceInputs["volumeGrants"] = state ? state.volumeGrants : undefined;
+            resourceInputs["vpcGrants"] = state ? state.vpcGrants : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -212,10 +226,12 @@ export class User extends pulumi.CustomResource {
             resourceInputs["linodeGrants"] = args ? args.linodeGrants : undefined;
             resourceInputs["longviewGrants"] = args ? args.longviewGrants : undefined;
             resourceInputs["nodebalancerGrants"] = args ? args.nodebalancerGrants : undefined;
+            resourceInputs["placementGroupGrants"] = args ? args.placementGroupGrants : undefined;
             resourceInputs["restricted"] = args ? args.restricted : undefined;
             resourceInputs["stackscriptGrants"] = args ? args.stackscriptGrants : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["volumeGrants"] = args ? args.volumeGrants : undefined;
+            resourceInputs["vpcGrants"] = args ? args.vpcGrants : undefined;
             resourceInputs["sshKeys"] = undefined /*out*/;
             resourceInputs["tfaEnabled"] = undefined /*out*/;
             resourceInputs["userType"] = undefined /*out*/;
@@ -262,6 +278,10 @@ export interface UserState {
      */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
+     * The Placement Groups the user has permissions access to.
+     */
+    placementGroupGrants?: pulumi.Input<pulumi.Input<inputs.UserPlacementGroupGrant>[]>;
+    /**
      * If true, this user will only have explicit permissions granted.
      *
      * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -293,6 +313,10 @@ export interface UserState {
      * The volumes the user has permissions access to.
      */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
+    /**
+     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     */
+    vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[]>;
 }
 
 /**
@@ -332,6 +356,10 @@ export interface UserArgs {
      */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
     /**
+     * The Placement Groups the user has permissions access to.
+     */
+    placementGroupGrants?: pulumi.Input<pulumi.Input<inputs.UserPlacementGroupGrant>[]>;
+    /**
      * If true, this user will only have explicit permissions granted.
      *
      * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -351,4 +379,8 @@ export interface UserArgs {
      * The volumes the user has permissions access to.
      */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
+    /**
+     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     */
+    vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[]>;
 }

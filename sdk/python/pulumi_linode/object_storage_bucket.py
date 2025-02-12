@@ -27,8 +27,10 @@ class ObjectStorageBucketArgs:
                  cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  cors_enabled: Optional[pulumi.Input[bool]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 s3_endpoint: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[bool]] = None):
         """
@@ -42,8 +44,10 @@ class ObjectStorageBucketArgs:
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
@@ -67,10 +71,14 @@ class ObjectStorageBucketArgs:
             pulumi.set(__self__, "cluster", cluster)
         if cors_enabled is not None:
             pulumi.set(__self__, "cors_enabled", cors_enabled)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
         if lifecycle_rules is not None:
             pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if s3_endpoint is not None:
+            pulumi.set(__self__, "s3_endpoint", s3_endpoint)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if versioning is not None:
@@ -153,6 +161,18 @@ class ObjectStorageBucketArgs:
         pulumi.set(self, "cors_enabled", value)
 
     @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
         """
@@ -175,6 +195,18 @@ class ObjectStorageBucketArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        """
+        return pulumi.get(self, "s3_endpoint")
+
+    @s3_endpoint.setter
+    def s3_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "s3_endpoint", value)
 
     @property
     @pulumi.getter(name="secretKey")
@@ -216,10 +248,12 @@ class _ObjectStorageBucketState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  cors_enabled: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 s3_endpoint: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[bool]] = None):
         """
@@ -233,11 +267,13 @@ class _ObjectStorageBucketState:
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] endpoint: The endpoint for the bucket used for s3 connections.
+        :param pulumi.Input[str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
                public.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
@@ -261,7 +297,12 @@ class _ObjectStorageBucketState:
         if cors_enabled is not None:
             pulumi.set(__self__, "cors_enabled", cors_enabled)
         if endpoint is not None:
+            warnings.warn("""Use `s3_endpoint` instead""", DeprecationWarning)
+            pulumi.log.warn("""endpoint is deprecated: Use `s3_endpoint` instead""")
+        if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if label is not None:
@@ -270,6 +311,8 @@ class _ObjectStorageBucketState:
             pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if s3_endpoint is not None:
+            pulumi.set(__self__, "s3_endpoint", s3_endpoint)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if versioning is not None:
@@ -341,6 +384,7 @@ class _ObjectStorageBucketState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use `s3_endpoint` instead""")
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
         The endpoint for the bucket used for s3 connections.
@@ -350,6 +394,18 @@ class _ObjectStorageBucketState:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
 
     @property
     @pulumi.getter
@@ -401,6 +457,18 @@ class _ObjectStorageBucketState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        """
+        return pulumi.get(self, "s3_endpoint")
+
+    @s3_endpoint.setter
+    def s3_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "s3_endpoint", value)
+
+    @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -441,9 +509,11 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  cert: Optional[pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  cors_enabled: Optional[pulumi.Input[bool]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 s3_endpoint: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -507,9 +577,11 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
@@ -595,9 +667,11 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  cert: Optional[pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  cors_enabled: Optional[pulumi.Input[bool]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 s3_endpoint: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -614,11 +688,13 @@ class ObjectStorageBucket(pulumi.CustomResource):
             __props__.__dict__["cert"] = cert
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["cors_enabled"] = cors_enabled
+            __props__.__dict__["endpoint_type"] = endpoint_type
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
             __props__.__dict__["region"] = region
+            __props__.__dict__["s3_endpoint"] = s3_endpoint
             __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["endpoint"] = None
@@ -641,10 +717,12 @@ class ObjectStorageBucket(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             cors_enabled: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
+            endpoint_type: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            s3_endpoint: Optional[pulumi.Input[str]] = None,
             secret_key: Optional[pulumi.Input[str]] = None,
             versioning: Optional[pulumi.Input[bool]] = None) -> 'ObjectStorageBucket':
         """
@@ -663,11 +741,13 @@ class ObjectStorageBucket(pulumi.CustomResource):
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
         :param pulumi.Input[str] endpoint: The endpoint for the bucket used for s3 connections.
+        :param pulumi.Input[str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
                public.
         :param pulumi.Input[str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
@@ -687,10 +767,12 @@ class ObjectStorageBucket(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["cors_enabled"] = cors_enabled
         __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["endpoint_type"] = endpoint_type
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["label"] = label
         __props__.__dict__["lifecycle_rules"] = lifecycle_rules
         __props__.__dict__["region"] = region
+        __props__.__dict__["s3_endpoint"] = s3_endpoint
         __props__.__dict__["secret_key"] = secret_key
         __props__.__dict__["versioning"] = versioning
         return ObjectStorageBucket(resource_name, opts=opts, __props__=__props__)
@@ -741,11 +823,20 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use `s3_endpoint` instead""")
     def endpoint(self) -> pulumi.Output[str]:
         """
         The endpoint for the bucket used for s3 connections.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> pulumi.Output[str]:
+        """
+        The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
+        return pulumi.get(self, "endpoint_type")
 
     @property
     @pulumi.getter
@@ -779,6 +870,14 @@ class ObjectStorageBucket(pulumi.CustomResource):
         The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> pulumi.Output[str]:
+        """
+        The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        """
+        return pulumi.get(self, "s3_endpoint")
 
     @property
     @pulumi.getter(name="secretKey")

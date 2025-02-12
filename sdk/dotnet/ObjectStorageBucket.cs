@@ -131,6 +131,12 @@ namespace Pulumi.Linode
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// </summary>
+        [Output("endpointType")]
+        public Output<string> EndpointType { get; private set; } = null!;
+
+        /// <summary>
         /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
         /// public.
         /// </summary>
@@ -154,6 +160,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        /// </summary>
+        [Output("s3Endpoint")]
+        public Output<string> S3Endpoint { get; private set; } = null!;
 
         /// <summary>
         /// The secret key to authenticate with. If not specified with the resource, its value can be
@@ -257,6 +269,12 @@ namespace Pulumi.Linode
         public Input<bool>? CorsEnabled { get; set; }
 
         /// <summary>
+        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
         /// The label of the Linode Object Storage Bucket.
         /// </summary>
         [Input("label", required: true)]
@@ -279,6 +297,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        /// </summary>
+        [Input("s3Endpoint")]
+        public Input<string>? S3Endpoint { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;
@@ -356,6 +380,12 @@ namespace Pulumi.Linode
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
+        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
         /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
         /// public.
         /// </summary>
@@ -385,6 +415,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        /// </summary>
+        [Input("s3Endpoint")]
+        public Input<string>? S3Endpoint { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;

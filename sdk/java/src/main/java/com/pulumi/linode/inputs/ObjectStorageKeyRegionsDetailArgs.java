@@ -15,6 +15,21 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
     public static final ObjectStorageKeyRegionsDetailArgs Empty = new ObjectStorageKeyRegionsDetailArgs();
 
     /**
+     * The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    @Import(name="endpointType", required=true)
+    private Output<String> endpointType;
+
+    /**
+     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    public Output<String> endpointType() {
+        return this.endpointType;
+    }
+
+    /**
      * The ID of the region.
      * 
      */
@@ -47,6 +62,7 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
     private ObjectStorageKeyRegionsDetailArgs() {}
 
     private ObjectStorageKeyRegionsDetailArgs(ObjectStorageKeyRegionsDetailArgs $) {
+        this.endpointType = $.endpointType;
         this.id = $.id;
         this.s3Endpoint = $.s3Endpoint;
     }
@@ -67,6 +83,27 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
 
         public Builder(ObjectStorageKeyRegionsDetailArgs defaults) {
             $ = new ObjectStorageKeyRegionsDetailArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointType(Output<String> endpointType) {
+            $.endpointType = endpointType;
+            return this;
+        }
+
+        /**
+         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointType(String endpointType) {
+            return endpointType(Output.of(endpointType));
         }
 
         /**
@@ -112,6 +149,9 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
         }
 
         public ObjectStorageKeyRegionsDetailArgs build() {
+            if ($.endpointType == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageKeyRegionsDetailArgs", "endpointType");
+            }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageKeyRegionsDetailArgs", "id");
             }

@@ -58,6 +58,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string PasswordCreated;
         /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUsersUserPlacementGroupGrantResult> PlacementGroupGrants;
+        /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
         public readonly bool Restricted;
@@ -89,6 +93,10 @@ namespace Pulumi.Linode.Outputs
         /// A set containing all of the user's active grants.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserVolumeGrantResult> VolumeGrants;
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUsersUserVpcGrantResult> VpcGrants;
 
         [OutputConstructor]
         private GetUsersUserResult(
@@ -114,6 +122,8 @@ namespace Pulumi.Linode.Outputs
 
             string passwordCreated,
 
+            ImmutableArray<Outputs.GetUsersUserPlacementGroupGrantResult> placementGroupGrants,
+
             bool restricted,
 
             ImmutableArray<string> sshKeys,
@@ -128,7 +138,9 @@ namespace Pulumi.Linode.Outputs
 
             string verifiedPhoneNumber,
 
-            ImmutableArray<Outputs.GetUsersUserVolumeGrantResult> volumeGrants)
+            ImmutableArray<Outputs.GetUsersUserVolumeGrantResult> volumeGrants,
+
+            ImmutableArray<Outputs.GetUsersUserVpcGrantResult> vpcGrants)
         {
             DatabaseGrants = databaseGrants;
             DomainGrants = domainGrants;
@@ -141,6 +153,7 @@ namespace Pulumi.Linode.Outputs
             LongviewGrants = longviewGrants;
             NodebalancerGrants = nodebalancerGrants;
             PasswordCreated = passwordCreated;
+            PlacementGroupGrants = placementGroupGrants;
             Restricted = restricted;
             SshKeys = sshKeys;
             StackscriptGrants = stackscriptGrants;
@@ -149,6 +162,7 @@ namespace Pulumi.Linode.Outputs
             Username = username;
             VerifiedPhoneNumber = verifiedPhoneNumber;
             VolumeGrants = volumeGrants;
+            VpcGrants = vpcGrants;
         }
     }
 }

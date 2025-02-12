@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class ObjectStorageKeyRegionsDetail {
     /**
+     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    private String endpointType;
+    /**
      * @return The ID of the region.
      * 
      */
@@ -22,6 +27,13 @@ public final class ObjectStorageKeyRegionsDetail {
     private String s3Endpoint;
 
     private ObjectStorageKeyRegionsDetail() {}
+    /**
+     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    public String endpointType() {
+        return this.endpointType;
+    }
     /**
      * @return The ID of the region.
      * 
@@ -46,15 +58,25 @@ public final class ObjectStorageKeyRegionsDetail {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String endpointType;
         private String id;
         private String s3Endpoint;
         public Builder() {}
         public Builder(ObjectStorageKeyRegionsDetail defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.endpointType = defaults.endpointType;
     	      this.id = defaults.id;
     	      this.s3Endpoint = defaults.s3Endpoint;
         }
 
+        @CustomType.Setter
+        public Builder endpointType(String endpointType) {
+            if (endpointType == null) {
+              throw new MissingRequiredPropertyException("ObjectStorageKeyRegionsDetail", "endpointType");
+            }
+            this.endpointType = endpointType;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -73,6 +95,7 @@ public final class ObjectStorageKeyRegionsDetail {
         }
         public ObjectStorageKeyRegionsDetail build() {
             final var _resultValue = new ObjectStorageKeyRegionsDetail();
+            _resultValue.endpointType = endpointType;
             _resultValue.id = id;
             _resultValue.s3Endpoint = s3Endpoint;
             return _resultValue;

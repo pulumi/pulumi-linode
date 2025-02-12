@@ -123,7 +123,11 @@ type ObjectStorageBucket struct {
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolOutput `pulumi:"corsEnabled"`
 	// The endpoint for the bucket used for s3 connections.
+	//
+	// Deprecated: Use `s3Endpoint` instead
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
 	// public.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -133,6 +137,8 @@ type ObjectStorageBucket struct {
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
 	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The user's s3 endpoint URL, based on the `endpointType` and `region`.
+	S3Endpoint pulumi.StringOutput `pulumi:"s3Endpoint"`
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -201,7 +207,11 @@ type objectStorageBucketState struct {
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The endpoint for the bucket used for s3 connections.
+	//
+	// Deprecated: Use `s3Endpoint` instead
 	Endpoint *string `pulumi:"endpoint"`
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType *string `pulumi:"endpointType"`
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
 	// public.
 	Hostname *string `pulumi:"hostname"`
@@ -211,6 +221,8 @@ type objectStorageBucketState struct {
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
 	Region *string `pulumi:"region"`
+	// The user's s3 endpoint URL, based on the `endpointType` and `region`.
+	S3Endpoint *string `pulumi:"s3Endpoint"`
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -240,7 +252,11 @@ type ObjectStorageBucketState struct {
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrInput
 	// The endpoint for the bucket used for s3 connections.
+	//
+	// Deprecated: Use `s3Endpoint` instead
 	Endpoint pulumi.StringPtrInput
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType pulumi.StringPtrInput
 	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
 	// public.
 	Hostname pulumi.StringPtrInput
@@ -250,6 +266,8 @@ type ObjectStorageBucketState struct {
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
 	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
 	Region pulumi.StringPtrInput
+	// The user's s3 endpoint URL, based on the `endpointType` and `region`.
+	S3Endpoint pulumi.StringPtrInput
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -282,12 +300,16 @@ type objectStorageBucketArgs struct {
 	Cluster *string `pulumi:"cluster"`
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType *string `pulumi:"endpointType"`
 	// The label of the Linode Object Storage Bucket.
 	Label string `pulumi:"label"`
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules []ObjectStorageBucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
 	Region *string `pulumi:"region"`
+	// The user's s3 endpoint URL, based on the `endpointType` and `region`.
+	S3Endpoint *string `pulumi:"s3Endpoint"`
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -317,12 +339,16 @@ type ObjectStorageBucketArgs struct {
 	Cluster pulumi.StringPtrInput
 	// If true, the bucket will have CORS enabled for all origins.
 	CorsEnabled pulumi.BoolPtrInput
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType pulumi.StringPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringInput
 	// Lifecycle rules to be applied to the bucket.
 	LifecycleRules ObjectStorageBucketLifecycleRuleArrayInput
 	// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
 	Region pulumi.StringPtrInput
+	// The user's s3 endpoint URL, based on the `endpointType` and `region`.
+	S3Endpoint pulumi.StringPtrInput
 	// The secret key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objSecretKey` in the provider configuration;
 	// * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
@@ -453,8 +479,15 @@ func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolOutput {
 }
 
 // The endpoint for the bucket used for s3 connections.
+//
+// Deprecated: Use `s3Endpoint` instead
 func (o ObjectStorageBucketOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+func (o ObjectStorageBucketOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
 
 // The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
@@ -476,6 +509,11 @@ func (o ObjectStorageBucketOutput) LifecycleRules() ObjectStorageBucketLifecycle
 // The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
 func (o ObjectStorageBucketOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The user's s3 endpoint URL, based on the `endpointType` and `region`.
+func (o ObjectStorageBucketOutput) S3Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.S3Endpoint }).(pulumi.StringOutput)
 }
 
 // The secret key to authenticate with. If not specified with the resource, its value can be

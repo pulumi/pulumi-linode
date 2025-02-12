@@ -55,17 +55,19 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	DatabaseGrants     []GetUserDatabaseGrant     `pulumi:"databaseGrants"`
-	DomainGrants       []GetUserDomainGrant       `pulumi:"domainGrants"`
-	FirewallGrants     []GetUserFirewallGrant     `pulumi:"firewallGrants"`
-	ImageGrants        []GetUserImageGrant        `pulumi:"imageGrants"`
-	LinodeGrants       []GetUserLinodeGrant       `pulumi:"linodeGrants"`
-	LongviewGrants     []GetUserLongviewGrant     `pulumi:"longviewGrants"`
-	NodebalancerGrants []GetUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
-	StackscriptGrants  []GetUserStackscriptGrant  `pulumi:"stackscriptGrants"`
+	DatabaseGrants       []GetUserDatabaseGrant       `pulumi:"databaseGrants"`
+	DomainGrants         []GetUserDomainGrant         `pulumi:"domainGrants"`
+	FirewallGrants       []GetUserFirewallGrant       `pulumi:"firewallGrants"`
+	ImageGrants          []GetUserImageGrant          `pulumi:"imageGrants"`
+	LinodeGrants         []GetUserLinodeGrant         `pulumi:"linodeGrants"`
+	LongviewGrants       []GetUserLongviewGrant       `pulumi:"longviewGrants"`
+	NodebalancerGrants   []GetUserNodebalancerGrant   `pulumi:"nodebalancerGrants"`
+	PlacementGroupGrants []GetUserPlacementGroupGrant `pulumi:"placementGroupGrants"`
+	StackscriptGrants    []GetUserStackscriptGrant    `pulumi:"stackscriptGrants"`
 	// The unique username of this User.
 	Username     string               `pulumi:"username"`
 	VolumeGrants []GetUserVolumeGrant `pulumi:"volumeGrants"`
+	VpcGrants    []GetUserVpcGrant    `pulumi:"vpcGrants"`
 }
 
 // A collection of values returned by getUser.
@@ -83,7 +85,8 @@ type LookupUserResult struct {
 	LongviewGrants     []GetUserLongviewGrant     `pulumi:"longviewGrants"`
 	NodebalancerGrants []GetUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
-	PasswordCreated string `pulumi:"passwordCreated"`
+	PasswordCreated      string                       `pulumi:"passwordCreated"`
+	PlacementGroupGrants []GetUserPlacementGroupGrant `pulumi:"placementGroupGrants"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted bool `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
@@ -97,6 +100,7 @@ type LookupUserResult struct {
 	// The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
 	VerifiedPhoneNumber string               `pulumi:"verifiedPhoneNumber"`
 	VolumeGrants        []GetUserVolumeGrant `pulumi:"volumeGrants"`
+	VpcGrants           []GetUserVpcGrant    `pulumi:"vpcGrants"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -110,17 +114,19 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	DatabaseGrants     GetUserDatabaseGrantArrayInput     `pulumi:"databaseGrants"`
-	DomainGrants       GetUserDomainGrantArrayInput       `pulumi:"domainGrants"`
-	FirewallGrants     GetUserFirewallGrantArrayInput     `pulumi:"firewallGrants"`
-	ImageGrants        GetUserImageGrantArrayInput        `pulumi:"imageGrants"`
-	LinodeGrants       GetUserLinodeGrantArrayInput       `pulumi:"linodeGrants"`
-	LongviewGrants     GetUserLongviewGrantArrayInput     `pulumi:"longviewGrants"`
-	NodebalancerGrants GetUserNodebalancerGrantArrayInput `pulumi:"nodebalancerGrants"`
-	StackscriptGrants  GetUserStackscriptGrantArrayInput  `pulumi:"stackscriptGrants"`
+	DatabaseGrants       GetUserDatabaseGrantArrayInput       `pulumi:"databaseGrants"`
+	DomainGrants         GetUserDomainGrantArrayInput         `pulumi:"domainGrants"`
+	FirewallGrants       GetUserFirewallGrantArrayInput       `pulumi:"firewallGrants"`
+	ImageGrants          GetUserImageGrantArrayInput          `pulumi:"imageGrants"`
+	LinodeGrants         GetUserLinodeGrantArrayInput         `pulumi:"linodeGrants"`
+	LongviewGrants       GetUserLongviewGrantArrayInput       `pulumi:"longviewGrants"`
+	NodebalancerGrants   GetUserNodebalancerGrantArrayInput   `pulumi:"nodebalancerGrants"`
+	PlacementGroupGrants GetUserPlacementGroupGrantArrayInput `pulumi:"placementGroupGrants"`
+	StackscriptGrants    GetUserStackscriptGrantArrayInput    `pulumi:"stackscriptGrants"`
 	// The unique username of this User.
 	Username     pulumi.StringInput           `pulumi:"username"`
 	VolumeGrants GetUserVolumeGrantArrayInput `pulumi:"volumeGrants"`
+	VpcGrants    GetUserVpcGrantArrayInput    `pulumi:"vpcGrants"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -189,6 +195,10 @@ func (o LookupUserResultOutput) PasswordCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.PasswordCreated }).(pulumi.StringOutput)
 }
 
+func (o LookupUserResultOutput) PlacementGroupGrants() GetUserPlacementGroupGrantArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []GetUserPlacementGroupGrant { return v.PlacementGroupGrants }).(GetUserPlacementGroupGrantArrayOutput)
+}
+
 // If true, this User must be granted access to perform actions or access entities on this Account.
 func (o LookupUserResultOutput) Restricted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.Restricted }).(pulumi.BoolOutput)
@@ -224,6 +234,10 @@ func (o LookupUserResultOutput) VerifiedPhoneNumber() pulumi.StringOutput {
 
 func (o LookupUserResultOutput) VolumeGrants() GetUserVolumeGrantArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserVolumeGrant { return v.VolumeGrants }).(GetUserVolumeGrantArrayOutput)
+}
+
+func (o LookupUserResultOutput) VpcGrants() GetUserVpcGrantArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []GetUserVpcGrant { return v.VpcGrants }).(GetUserVpcGrantArrayOutput)
 }
 
 func init() {

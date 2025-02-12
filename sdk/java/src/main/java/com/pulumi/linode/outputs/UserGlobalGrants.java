@@ -53,6 +53,11 @@ public final class UserGlobalGrants {
      */
     private @Nullable Boolean addNodebalancers;
     /**
+     * @return If true, this User may add Placement Groups.
+     * 
+     */
+    private @Nullable Boolean addPlacementGroups;
+    /**
      * @return If true, this User may add StackScripts.
      * 
      */
@@ -62,6 +67,11 @@ public final class UserGlobalGrants {
      * 
      */
     private @Nullable Boolean addVolumes;
+    /**
+     * @return If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    private @Nullable Boolean addVpcs;
     /**
      * @return If true, this User may cancel the entire Account.
      * 
@@ -131,6 +141,13 @@ public final class UserGlobalGrants {
         return Optional.ofNullable(this.addNodebalancers);
     }
     /**
+     * @return If true, this User may add Placement Groups.
+     * 
+     */
+    public Optional<Boolean> addPlacementGroups() {
+        return Optional.ofNullable(this.addPlacementGroups);
+    }
+    /**
      * @return If true, this User may add StackScripts.
      * 
      */
@@ -143,6 +160,13 @@ public final class UserGlobalGrants {
      */
     public Optional<Boolean> addVolumes() {
         return Optional.ofNullable(this.addVolumes);
+    }
+    /**
+     * @return If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    public Optional<Boolean> addVpcs() {
+        return Optional.ofNullable(this.addVpcs);
     }
     /**
      * @return If true, this User may cancel the entire Account.
@@ -176,8 +200,10 @@ public final class UserGlobalGrants {
         private @Nullable Boolean addLinodes;
         private @Nullable Boolean addLongview;
         private @Nullable Boolean addNodebalancers;
+        private @Nullable Boolean addPlacementGroups;
         private @Nullable Boolean addStackscripts;
         private @Nullable Boolean addVolumes;
+        private @Nullable Boolean addVpcs;
         private @Nullable Boolean cancelAccount;
         private @Nullable Boolean longviewSubscription;
         public Builder() {}
@@ -191,8 +217,10 @@ public final class UserGlobalGrants {
     	      this.addLinodes = defaults.addLinodes;
     	      this.addLongview = defaults.addLongview;
     	      this.addNodebalancers = defaults.addNodebalancers;
+    	      this.addPlacementGroups = defaults.addPlacementGroups;
     	      this.addStackscripts = defaults.addStackscripts;
     	      this.addVolumes = defaults.addVolumes;
+    	      this.addVpcs = defaults.addVpcs;
     	      this.cancelAccount = defaults.cancelAccount;
     	      this.longviewSubscription = defaults.longviewSubscription;
         }
@@ -246,6 +274,12 @@ public final class UserGlobalGrants {
             return this;
         }
         @CustomType.Setter
+        public Builder addPlacementGroups(@Nullable Boolean addPlacementGroups) {
+
+            this.addPlacementGroups = addPlacementGroups;
+            return this;
+        }
+        @CustomType.Setter
         public Builder addStackscripts(@Nullable Boolean addStackscripts) {
 
             this.addStackscripts = addStackscripts;
@@ -255,6 +289,12 @@ public final class UserGlobalGrants {
         public Builder addVolumes(@Nullable Boolean addVolumes) {
 
             this.addVolumes = addVolumes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder addVpcs(@Nullable Boolean addVpcs) {
+
+            this.addVpcs = addVpcs;
             return this;
         }
         @CustomType.Setter
@@ -279,8 +319,10 @@ public final class UserGlobalGrants {
             _resultValue.addLinodes = addLinodes;
             _resultValue.addLongview = addLongview;
             _resultValue.addNodebalancers = addNodebalancers;
+            _resultValue.addPlacementGroups = addPlacementGroups;
             _resultValue.addStackscripts = addStackscripts;
             _resultValue.addVolumes = addVolumes;
+            _resultValue.addVpcs = addVpcs;
             _resultValue.cancelAccount = cancelAccount;
             _resultValue.longviewSubscription = longviewSubscription;
             return _resultValue;

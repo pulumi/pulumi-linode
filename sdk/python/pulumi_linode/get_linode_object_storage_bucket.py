@@ -26,13 +26,16 @@ class GetLinodeObjectStorageBucketResult:
     """
     A collection of values returned by getLinodeObjectStorageBucket.
     """
-    def __init__(__self__, cluster=None, created=None, hostname=None, id=None, label=None, objects=None, region=None, size=None):
+    def __init__(__self__, cluster=None, created=None, endpoint_type=None, hostname=None, id=None, label=None, objects=None, region=None, s3_endpoint=None, size=None):
         if cluster and not isinstance(cluster, str):
             raise TypeError("Expected argument 'cluster' to be a str")
         pulumi.set(__self__, "cluster", cluster)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
+        if endpoint_type and not isinstance(endpoint_type, str):
+            raise TypeError("Expected argument 'endpoint_type' to be a str")
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
@@ -48,6 +51,9 @@ class GetLinodeObjectStorageBucketResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if s3_endpoint and not isinstance(s3_endpoint, str):
+            raise TypeError("Expected argument 's3_endpoint' to be a str")
+        pulumi.set(__self__, "s3_endpoint", s3_endpoint)
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
@@ -62,6 +68,11 @@ class GetLinodeObjectStorageBucketResult:
     @pulumi.getter
     def created(self) -> str:
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> str:
+        return pulumi.get(self, "endpoint_type")
 
     @property
     @pulumi.getter
@@ -89,6 +100,11 @@ class GetLinodeObjectStorageBucketResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> str:
+        return pulumi.get(self, "s3_endpoint")
+
+    @property
     @pulumi.getter
     def size(self) -> int:
         return pulumi.get(self, "size")
@@ -102,11 +118,13 @@ class AwaitableGetLinodeObjectStorageBucketResult(GetLinodeObjectStorageBucketRe
         return GetLinodeObjectStorageBucketResult(
             cluster=self.cluster,
             created=self.created,
+            endpoint_type=self.endpoint_type,
             hostname=self.hostname,
             id=self.id,
             label=self.label,
             objects=self.objects,
             region=self.region,
+            s3_endpoint=self.s3_endpoint,
             size=self.size)
 
 
@@ -145,11 +163,13 @@ def get_linode_object_storage_bucket(cluster: Optional[str] = None,
     return AwaitableGetLinodeObjectStorageBucketResult(
         cluster=pulumi.get(__ret__, 'cluster'),
         created=pulumi.get(__ret__, 'created'),
+        endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         objects=pulumi.get(__ret__, 'objects'),
         region=pulumi.get(__ret__, 'region'),
+        s3_endpoint=pulumi.get(__ret__, 's3_endpoint'),
         size=pulumi.get(__ret__, 'size'))
 def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optional[str]]] = None,
                                             label: Optional[pulumi.Input[str]] = None,
@@ -185,9 +205,11 @@ def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optio
     return __ret__.apply(lambda __response__: GetLinodeObjectStorageBucketResult(
         cluster=pulumi.get(__response__, 'cluster'),
         created=pulumi.get(__response__, 'created'),
+        endpoint_type=pulumi.get(__response__, 'endpoint_type'),
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),
         objects=pulumi.get(__response__, 'objects'),
         region=pulumi.get(__response__, 'region'),
+        s3_endpoint=pulumi.get(__response__, 's3_endpoint'),
         size=pulumi.get(__response__, 'size')))

@@ -19,11 +19,13 @@ public final class GetLinodeObjectStorageBucketResult {
     @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
     private String cluster;
     private String created;
+    private String endpointType;
     private String hostname;
     private String id;
     private String label;
     private Integer objects;
     private String region;
+    private String s3Endpoint;
     private Integer size;
 
     private GetLinodeObjectStorageBucketResult() {}
@@ -38,6 +40,9 @@ public final class GetLinodeObjectStorageBucketResult {
     }
     public String created() {
         return this.created;
+    }
+    public String endpointType() {
+        return this.endpointType;
     }
     public String hostname() {
         return this.hostname;
@@ -54,6 +59,9 @@ public final class GetLinodeObjectStorageBucketResult {
     public String region() {
         return this.region;
     }
+    public String s3Endpoint() {
+        return this.s3Endpoint;
+    }
     public Integer size() {
         return this.size;
     }
@@ -69,22 +77,26 @@ public final class GetLinodeObjectStorageBucketResult {
     public static final class Builder {
         private String cluster;
         private String created;
+        private String endpointType;
         private String hostname;
         private String id;
         private String label;
         private Integer objects;
         private String region;
+        private String s3Endpoint;
         private Integer size;
         public Builder() {}
         public Builder(GetLinodeObjectStorageBucketResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
     	      this.created = defaults.created;
+    	      this.endpointType = defaults.endpointType;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.objects = defaults.objects;
     	      this.region = defaults.region;
+    	      this.s3Endpoint = defaults.s3Endpoint;
     	      this.size = defaults.size;
         }
 
@@ -102,6 +114,14 @@ public final class GetLinodeObjectStorageBucketResult {
               throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "created");
             }
             this.created = created;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpointType(String endpointType) {
+            if (endpointType == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "endpointType");
+            }
+            this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
@@ -145,6 +165,14 @@ public final class GetLinodeObjectStorageBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder s3Endpoint(String s3Endpoint) {
+            if (s3Endpoint == null) {
+              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "s3Endpoint");
+            }
+            this.s3Endpoint = s3Endpoint;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(Integer size) {
             if (size == null) {
               throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "size");
@@ -156,11 +184,13 @@ public final class GetLinodeObjectStorageBucketResult {
             final var _resultValue = new GetLinodeObjectStorageBucketResult();
             _resultValue.cluster = cluster;
             _resultValue.created = created;
+            _resultValue.endpointType = endpointType;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.objects = objects;
             _resultValue.region = region;
+            _resultValue.s3Endpoint = s3Endpoint;
             _resultValue.size = size;
             return _resultValue;
         }

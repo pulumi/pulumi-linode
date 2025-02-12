@@ -45,11 +45,19 @@ namespace Pulumi.Linode.Outputs
         /// If true, this User may add NodeBalancers.
         /// </summary>
         public readonly bool AddNodebalancers;
+        /// <summary>
+        /// If true, this User may add Placement Groups.
+        /// </summary>
+        public readonly bool AddPlacementGroups;
         public readonly bool AddStackscripts;
         /// <summary>
         /// If true, this User may add Volumes.
         /// </summary>
         public readonly bool AddVolumes;
+        /// <summary>
+        /// If true, this User may add Virtual Private Clouds (VPCs).
+        /// </summary>
+        public readonly bool AddVpcs;
         /// <summary>
         /// If true, this User may cancel the entire Account.
         /// </summary>
@@ -77,9 +85,13 @@ namespace Pulumi.Linode.Outputs
 
             bool addNodebalancers,
 
+            bool addPlacementGroups,
+
             bool addStackscripts,
 
             bool addVolumes,
+
+            bool addVpcs,
 
             bool cancelAccount,
 
@@ -93,8 +105,10 @@ namespace Pulumi.Linode.Outputs
             AddLinodes = addLinodes;
             AddLongview = addLongview;
             AddNodebalancers = addNodebalancers;
+            AddPlacementGroups = addPlacementGroups;
             AddStackscripts = addStackscripts;
             AddVolumes = addVolumes;
+            AddVpcs = addVpcs;
             CancelAccount = cancelAccount;
             LongviewSubscription = longviewSubscription;
         }

@@ -9381,6 +9381,8 @@ func (o ObjectStorageKeyBucketAccessArrayOutput) Index(i pulumi.IntInput) Object
 }
 
 type ObjectStorageKeyRegionsDetail struct {
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType string `pulumi:"endpointType"`
 	// The ID of the region.
 	Id string `pulumi:"id"`
 	// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
@@ -9399,6 +9401,8 @@ type ObjectStorageKeyRegionsDetailInput interface {
 }
 
 type ObjectStorageKeyRegionsDetailArgs struct {
+	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// The ID of the region.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The S3-compatible hostname you can use to access the Object Storage buckets in this region.
@@ -9454,6 +9458,11 @@ func (o ObjectStorageKeyRegionsDetailOutput) ToObjectStorageKeyRegionsDetailOutp
 
 func (o ObjectStorageKeyRegionsDetailOutput) ToObjectStorageKeyRegionsDetailOutputWithContext(ctx context.Context) ObjectStorageKeyRegionsDetailOutput {
 	return o
+}
+
+// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+func (o ObjectStorageKeyRegionsDetailOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectStorageKeyRegionsDetail) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
 // The ID of the region.
@@ -10225,10 +10234,14 @@ type UserGlobalGrants struct {
 	AddLongview *bool `pulumi:"addLongview"`
 	// If true, this User may add NodeBalancers.
 	AddNodebalancers *bool `pulumi:"addNodebalancers"`
+	// If true, this User may add Placement Groups.
+	AddPlacementGroups *bool `pulumi:"addPlacementGroups"`
 	// If true, this User may add StackScripts.
 	AddStackscripts *bool `pulumi:"addStackscripts"`
 	// If true, this User may add Volumes.
 	AddVolumes *bool `pulumi:"addVolumes"`
+	// If true, this User may add Virtual Private Clouds (VPCs).
+	AddVpcs *bool `pulumi:"addVpcs"`
 	// If true, this User may cancel the entire Account.
 	CancelAccount *bool `pulumi:"cancelAccount"`
 	// If true, this User may manage the Account’s Longview subscription.
@@ -10263,10 +10276,14 @@ type UserGlobalGrantsArgs struct {
 	AddLongview pulumi.BoolPtrInput `pulumi:"addLongview"`
 	// If true, this User may add NodeBalancers.
 	AddNodebalancers pulumi.BoolPtrInput `pulumi:"addNodebalancers"`
+	// If true, this User may add Placement Groups.
+	AddPlacementGroups pulumi.BoolPtrInput `pulumi:"addPlacementGroups"`
 	// If true, this User may add StackScripts.
 	AddStackscripts pulumi.BoolPtrInput `pulumi:"addStackscripts"`
 	// If true, this User may add Volumes.
 	AddVolumes pulumi.BoolPtrInput `pulumi:"addVolumes"`
+	// If true, this User may add Virtual Private Clouds (VPCs).
+	AddVpcs pulumi.BoolPtrInput `pulumi:"addVpcs"`
 	// If true, this User may cancel the entire Account.
 	CancelAccount pulumi.BoolPtrInput `pulumi:"cancelAccount"`
 	// If true, this User may manage the Account’s Longview subscription.
@@ -10390,6 +10407,11 @@ func (o UserGlobalGrantsOutput) AddNodebalancers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddNodebalancers }).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Placement Groups.
+func (o UserGlobalGrantsOutput) AddPlacementGroups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddPlacementGroups }).(pulumi.BoolPtrOutput)
+}
+
 // If true, this User may add StackScripts.
 func (o UserGlobalGrantsOutput) AddStackscripts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddStackscripts }).(pulumi.BoolPtrOutput)
@@ -10398,6 +10420,11 @@ func (o UserGlobalGrantsOutput) AddStackscripts() pulumi.BoolPtrOutput {
 // If true, this User may add Volumes.
 func (o UserGlobalGrantsOutput) AddVolumes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddVolumes }).(pulumi.BoolPtrOutput)
+}
+
+// If true, this User may add Virtual Private Clouds (VPCs).
+func (o UserGlobalGrantsOutput) AddVpcs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserGlobalGrants) *bool { return v.AddVpcs }).(pulumi.BoolPtrOutput)
 }
 
 // If true, this User may cancel the entire Account.
@@ -10514,6 +10541,16 @@ func (o UserGlobalGrantsPtrOutput) AddNodebalancers() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If true, this User may add Placement Groups.
+func (o UserGlobalGrantsPtrOutput) AddPlacementGroups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserGlobalGrants) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AddPlacementGroups
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If true, this User may add StackScripts.
 func (o UserGlobalGrantsPtrOutput) AddStackscripts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UserGlobalGrants) *bool {
@@ -10531,6 +10568,16 @@ func (o UserGlobalGrantsPtrOutput) AddVolumes() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.AddVolumes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, this User may add Virtual Private Clouds (VPCs).
+func (o UserGlobalGrantsPtrOutput) AddVpcs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserGlobalGrants) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AddVpcs
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10978,6 +11025,112 @@ func (o UserNodebalancerGrantArrayOutput) Index(i pulumi.IntInput) UserNodebalan
 	}).(UserNodebalancerGrantOutput)
 }
 
+type UserPlacementGroupGrant struct {
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions string `pulumi:"permissions"`
+}
+
+// UserPlacementGroupGrantInput is an input type that accepts UserPlacementGroupGrantArgs and UserPlacementGroupGrantOutput values.
+// You can construct a concrete instance of `UserPlacementGroupGrantInput` via:
+//
+//	UserPlacementGroupGrantArgs{...}
+type UserPlacementGroupGrantInput interface {
+	pulumi.Input
+
+	ToUserPlacementGroupGrantOutput() UserPlacementGroupGrantOutput
+	ToUserPlacementGroupGrantOutputWithContext(context.Context) UserPlacementGroupGrantOutput
+}
+
+type UserPlacementGroupGrantArgs struct {
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (UserPlacementGroupGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (i UserPlacementGroupGrantArgs) ToUserPlacementGroupGrantOutput() UserPlacementGroupGrantOutput {
+	return i.ToUserPlacementGroupGrantOutputWithContext(context.Background())
+}
+
+func (i UserPlacementGroupGrantArgs) ToUserPlacementGroupGrantOutputWithContext(ctx context.Context) UserPlacementGroupGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPlacementGroupGrantOutput)
+}
+
+// UserPlacementGroupGrantArrayInput is an input type that accepts UserPlacementGroupGrantArray and UserPlacementGroupGrantArrayOutput values.
+// You can construct a concrete instance of `UserPlacementGroupGrantArrayInput` via:
+//
+//	UserPlacementGroupGrantArray{ UserPlacementGroupGrantArgs{...} }
+type UserPlacementGroupGrantArrayInput interface {
+	pulumi.Input
+
+	ToUserPlacementGroupGrantArrayOutput() UserPlacementGroupGrantArrayOutput
+	ToUserPlacementGroupGrantArrayOutputWithContext(context.Context) UserPlacementGroupGrantArrayOutput
+}
+
+type UserPlacementGroupGrantArray []UserPlacementGroupGrantInput
+
+func (UserPlacementGroupGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (i UserPlacementGroupGrantArray) ToUserPlacementGroupGrantArrayOutput() UserPlacementGroupGrantArrayOutput {
+	return i.ToUserPlacementGroupGrantArrayOutputWithContext(context.Background())
+}
+
+func (i UserPlacementGroupGrantArray) ToUserPlacementGroupGrantArrayOutputWithContext(ctx context.Context) UserPlacementGroupGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPlacementGroupGrantArrayOutput)
+}
+
+type UserPlacementGroupGrantOutput struct{ *pulumi.OutputState }
+
+func (UserPlacementGroupGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (o UserPlacementGroupGrantOutput) ToUserPlacementGroupGrantOutput() UserPlacementGroupGrantOutput {
+	return o
+}
+
+func (o UserPlacementGroupGrantOutput) ToUserPlacementGroupGrantOutputWithContext(ctx context.Context) UserPlacementGroupGrantOutput {
+	return o
+}
+
+// The ID of the entity this grant applies to.
+func (o UserPlacementGroupGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v UserPlacementGroupGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The level of access this User has to this entity. If null, this User has no access.
+func (o UserPlacementGroupGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPlacementGroupGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type UserPlacementGroupGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPlacementGroupGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (o UserPlacementGroupGrantArrayOutput) ToUserPlacementGroupGrantArrayOutput() UserPlacementGroupGrantArrayOutput {
+	return o
+}
+
+func (o UserPlacementGroupGrantArrayOutput) ToUserPlacementGroupGrantArrayOutputWithContext(ctx context.Context) UserPlacementGroupGrantArrayOutput {
+	return o
+}
+
+func (o UserPlacementGroupGrantArrayOutput) Index(i pulumi.IntInput) UserPlacementGroupGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPlacementGroupGrant {
+		return vs[0].([]UserPlacementGroupGrant)[vs[1].(int)]
+	}).(UserPlacementGroupGrantOutput)
+}
+
 type UserStackscriptGrant struct {
 	// The ID of the entity this grant applies to.
 	Id int `pulumi:"id"`
@@ -11188,6 +11341,112 @@ func (o UserVolumeGrantArrayOutput) Index(i pulumi.IntInput) UserVolumeGrantOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserVolumeGrant {
 		return vs[0].([]UserVolumeGrant)[vs[1].(int)]
 	}).(UserVolumeGrantOutput)
+}
+
+type UserVpcGrant struct {
+	// The ID of the entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions string `pulumi:"permissions"`
+}
+
+// UserVpcGrantInput is an input type that accepts UserVpcGrantArgs and UserVpcGrantOutput values.
+// You can construct a concrete instance of `UserVpcGrantInput` via:
+//
+//	UserVpcGrantArgs{...}
+type UserVpcGrantInput interface {
+	pulumi.Input
+
+	ToUserVpcGrantOutput() UserVpcGrantOutput
+	ToUserVpcGrantOutputWithContext(context.Context) UserVpcGrantOutput
+}
+
+type UserVpcGrantArgs struct {
+	// The ID of the entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (UserVpcGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserVpcGrant)(nil)).Elem()
+}
+
+func (i UserVpcGrantArgs) ToUserVpcGrantOutput() UserVpcGrantOutput {
+	return i.ToUserVpcGrantOutputWithContext(context.Background())
+}
+
+func (i UserVpcGrantArgs) ToUserVpcGrantOutputWithContext(ctx context.Context) UserVpcGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserVpcGrantOutput)
+}
+
+// UserVpcGrantArrayInput is an input type that accepts UserVpcGrantArray and UserVpcGrantArrayOutput values.
+// You can construct a concrete instance of `UserVpcGrantArrayInput` via:
+//
+//	UserVpcGrantArray{ UserVpcGrantArgs{...} }
+type UserVpcGrantArrayInput interface {
+	pulumi.Input
+
+	ToUserVpcGrantArrayOutput() UserVpcGrantArrayOutput
+	ToUserVpcGrantArrayOutputWithContext(context.Context) UserVpcGrantArrayOutput
+}
+
+type UserVpcGrantArray []UserVpcGrantInput
+
+func (UserVpcGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserVpcGrant)(nil)).Elem()
+}
+
+func (i UserVpcGrantArray) ToUserVpcGrantArrayOutput() UserVpcGrantArrayOutput {
+	return i.ToUserVpcGrantArrayOutputWithContext(context.Background())
+}
+
+func (i UserVpcGrantArray) ToUserVpcGrantArrayOutputWithContext(ctx context.Context) UserVpcGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserVpcGrantArrayOutput)
+}
+
+type UserVpcGrantOutput struct{ *pulumi.OutputState }
+
+func (UserVpcGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserVpcGrant)(nil)).Elem()
+}
+
+func (o UserVpcGrantOutput) ToUserVpcGrantOutput() UserVpcGrantOutput {
+	return o
+}
+
+func (o UserVpcGrantOutput) ToUserVpcGrantOutputWithContext(ctx context.Context) UserVpcGrantOutput {
+	return o
+}
+
+// The ID of the entity this grant applies to.
+func (o UserVpcGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v UserVpcGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The level of access this User has to this entity. If null, this User has no access.
+func (o UserVpcGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v UserVpcGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type UserVpcGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (UserVpcGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserVpcGrant)(nil)).Elem()
+}
+
+func (o UserVpcGrantArrayOutput) ToUserVpcGrantArrayOutput() UserVpcGrantArrayOutput {
+	return o
+}
+
+func (o UserVpcGrantArrayOutput) ToUserVpcGrantArrayOutputWithContext(ctx context.Context) UserVpcGrantArrayOutput {
+	return o
+}
+
+func (o UserVpcGrantArrayOutput) Index(i pulumi.IntInput) UserVpcGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserVpcGrant {
+		return vs[0].([]UserVpcGrant)[vs[1].(int)]
+	}).(UserVpcGrantOutput)
 }
 
 type VolumeTimeouts struct {
@@ -24767,6 +25026,8 @@ type GetLkeClustersLkeCluster struct {
 	Status string `pulumi:"status"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier string `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
 }
@@ -24799,6 +25060,8 @@ type GetLkeClustersLkeClusterArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier pulumi.StringInput `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
 }
@@ -24892,6 +25155,11 @@ func (o GetLkeClustersLkeClusterOutput) Status() pulumi.StringOutput {
 // An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o GetLkeClustersLkeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+func (o GetLkeClustersLkeClusterOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 // When this Kubernetes cluster was updated.
@@ -28405,6 +28673,236 @@ func (o GetNodebalancersNodebalancerTransferArrayOutput) Index(i pulumi.IntInput
 	}).(GetNodebalancersNodebalancerTransferOutput)
 }
 
+type GetObjectStorageEndpointsEndpoint struct {
+	// The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType string `pulumi:"endpointType"`
+	// The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+	Region string `pulumi:"region"`
+	// Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+	S3Endpoint string `pulumi:"s3Endpoint"`
+}
+
+// GetObjectStorageEndpointsEndpointInput is an input type that accepts GetObjectStorageEndpointsEndpointArgs and GetObjectStorageEndpointsEndpointOutput values.
+// You can construct a concrete instance of `GetObjectStorageEndpointsEndpointInput` via:
+//
+//	GetObjectStorageEndpointsEndpointArgs{...}
+type GetObjectStorageEndpointsEndpointInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageEndpointsEndpointOutput() GetObjectStorageEndpointsEndpointOutput
+	ToGetObjectStorageEndpointsEndpointOutputWithContext(context.Context) GetObjectStorageEndpointsEndpointOutput
+}
+
+type GetObjectStorageEndpointsEndpointArgs struct {
+	// The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+	S3Endpoint pulumi.StringInput `pulumi:"s3Endpoint"`
+}
+
+func (GetObjectStorageEndpointsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetObjectStorageEndpointsEndpointArgs) ToGetObjectStorageEndpointsEndpointOutput() GetObjectStorageEndpointsEndpointOutput {
+	return i.ToGetObjectStorageEndpointsEndpointOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageEndpointsEndpointArgs) ToGetObjectStorageEndpointsEndpointOutputWithContext(ctx context.Context) GetObjectStorageEndpointsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageEndpointsEndpointOutput)
+}
+
+// GetObjectStorageEndpointsEndpointArrayInput is an input type that accepts GetObjectStorageEndpointsEndpointArray and GetObjectStorageEndpointsEndpointArrayOutput values.
+// You can construct a concrete instance of `GetObjectStorageEndpointsEndpointArrayInput` via:
+//
+//	GetObjectStorageEndpointsEndpointArray{ GetObjectStorageEndpointsEndpointArgs{...} }
+type GetObjectStorageEndpointsEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageEndpointsEndpointArrayOutput() GetObjectStorageEndpointsEndpointArrayOutput
+	ToGetObjectStorageEndpointsEndpointArrayOutputWithContext(context.Context) GetObjectStorageEndpointsEndpointArrayOutput
+}
+
+type GetObjectStorageEndpointsEndpointArray []GetObjectStorageEndpointsEndpointInput
+
+func (GetObjectStorageEndpointsEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetObjectStorageEndpointsEndpointArray) ToGetObjectStorageEndpointsEndpointArrayOutput() GetObjectStorageEndpointsEndpointArrayOutput {
+	return i.ToGetObjectStorageEndpointsEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageEndpointsEndpointArray) ToGetObjectStorageEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetObjectStorageEndpointsEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageEndpointsEndpointArrayOutput)
+}
+
+type GetObjectStorageEndpointsEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageEndpointsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetObjectStorageEndpointsEndpointOutput) ToGetObjectStorageEndpointsEndpointOutput() GetObjectStorageEndpointsEndpointOutput {
+	return o
+}
+
+func (o GetObjectStorageEndpointsEndpointOutput) ToGetObjectStorageEndpointsEndpointOutputWithContext(ctx context.Context) GetObjectStorageEndpointsEndpointOutput {
+	return o
+}
+
+// The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+func (o GetObjectStorageEndpointsEndpointOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageEndpointsEndpoint) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+func (o GetObjectStorageEndpointsEndpointOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageEndpointsEndpoint) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+func (o GetObjectStorageEndpointsEndpointOutput) S3Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageEndpointsEndpoint) string { return v.S3Endpoint }).(pulumi.StringOutput)
+}
+
+type GetObjectStorageEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageEndpointsEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetObjectStorageEndpointsEndpointArrayOutput) ToGetObjectStorageEndpointsEndpointArrayOutput() GetObjectStorageEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageEndpointsEndpointArrayOutput) ToGetObjectStorageEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetObjectStorageEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetObjectStorageEndpointsEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetObjectStorageEndpointsEndpoint {
+		return vs[0].([]GetObjectStorageEndpointsEndpoint)[vs[1].(int)]
+	}).(GetObjectStorageEndpointsEndpointOutput)
+}
+
+type GetObjectStorageEndpointsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetObjectStorageEndpointsFilterInput is an input type that accepts GetObjectStorageEndpointsFilterArgs and GetObjectStorageEndpointsFilterOutput values.
+// You can construct a concrete instance of `GetObjectStorageEndpointsFilterInput` via:
+//
+//	GetObjectStorageEndpointsFilterArgs{...}
+type GetObjectStorageEndpointsFilterInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageEndpointsFilterOutput() GetObjectStorageEndpointsFilterOutput
+	ToGetObjectStorageEndpointsFilterOutputWithContext(context.Context) GetObjectStorageEndpointsFilterOutput
+}
+
+type GetObjectStorageEndpointsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetObjectStorageEndpointsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageEndpointsFilter)(nil)).Elem()
+}
+
+func (i GetObjectStorageEndpointsFilterArgs) ToGetObjectStorageEndpointsFilterOutput() GetObjectStorageEndpointsFilterOutput {
+	return i.ToGetObjectStorageEndpointsFilterOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageEndpointsFilterArgs) ToGetObjectStorageEndpointsFilterOutputWithContext(ctx context.Context) GetObjectStorageEndpointsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageEndpointsFilterOutput)
+}
+
+// GetObjectStorageEndpointsFilterArrayInput is an input type that accepts GetObjectStorageEndpointsFilterArray and GetObjectStorageEndpointsFilterArrayOutput values.
+// You can construct a concrete instance of `GetObjectStorageEndpointsFilterArrayInput` via:
+//
+//	GetObjectStorageEndpointsFilterArray{ GetObjectStorageEndpointsFilterArgs{...} }
+type GetObjectStorageEndpointsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageEndpointsFilterArrayOutput() GetObjectStorageEndpointsFilterArrayOutput
+	ToGetObjectStorageEndpointsFilterArrayOutputWithContext(context.Context) GetObjectStorageEndpointsFilterArrayOutput
+}
+
+type GetObjectStorageEndpointsFilterArray []GetObjectStorageEndpointsFilterInput
+
+func (GetObjectStorageEndpointsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageEndpointsFilter)(nil)).Elem()
+}
+
+func (i GetObjectStorageEndpointsFilterArray) ToGetObjectStorageEndpointsFilterArrayOutput() GetObjectStorageEndpointsFilterArrayOutput {
+	return i.ToGetObjectStorageEndpointsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageEndpointsFilterArray) ToGetObjectStorageEndpointsFilterArrayOutputWithContext(ctx context.Context) GetObjectStorageEndpointsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageEndpointsFilterArrayOutput)
+}
+
+type GetObjectStorageEndpointsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageEndpointsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageEndpointsFilter)(nil)).Elem()
+}
+
+func (o GetObjectStorageEndpointsFilterOutput) ToGetObjectStorageEndpointsFilterOutput() GetObjectStorageEndpointsFilterOutput {
+	return o
+}
+
+func (o GetObjectStorageEndpointsFilterOutput) ToGetObjectStorageEndpointsFilterOutputWithContext(ctx context.Context) GetObjectStorageEndpointsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetObjectStorageEndpointsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectStorageEndpointsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetObjectStorageEndpointsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageEndpointsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetObjectStorageEndpointsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetObjectStorageEndpointsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetObjectStorageEndpointsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageEndpointsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageEndpointsFilter)(nil)).Elem()
+}
+
+func (o GetObjectStorageEndpointsFilterArrayOutput) ToGetObjectStorageEndpointsFilterArrayOutput() GetObjectStorageEndpointsFilterArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageEndpointsFilterArrayOutput) ToGetObjectStorageEndpointsFilterArrayOutputWithContext(ctx context.Context) GetObjectStorageEndpointsFilterArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageEndpointsFilterArrayOutput) Index(i pulumi.IntInput) GetObjectStorageEndpointsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetObjectStorageEndpointsFilter {
+		return vs[0].([]GetObjectStorageEndpointsFilter)[vs[1].(int)]
+	}).(GetObjectStorageEndpointsFilterOutput)
+}
+
 type GetPlacementGroupMember struct {
 	// Whether this Linode is currently compliant with the group's placement group type.
 	IsCompliant bool `pulumi:"isCompliant"`
@@ -31607,9 +32105,13 @@ type GetUserGlobalGrant struct {
 	AddLongview bool `pulumi:"addLongview"`
 	// If true, this User may add NodeBalancers.
 	AddNodebalancers bool `pulumi:"addNodebalancers"`
-	AddStackscripts  bool `pulumi:"addStackscripts"`
+	// If true, this User may add Placement Groups.
+	AddPlacementGroups bool `pulumi:"addPlacementGroups"`
+	AddStackscripts    bool `pulumi:"addStackscripts"`
 	// If true, this User may add Volumes.
 	AddVolumes bool `pulumi:"addVolumes"`
+	// If true, this User may add Virtual Private Clouds (VPCs).
+	AddVpcs bool `pulumi:"addVpcs"`
 	// If true, this User may cancel the entire Account.
 	CancelAccount bool `pulumi:"cancelAccount"`
 	// If true, this User may manage the Account’s Longview subscription.
@@ -31644,9 +32146,13 @@ type GetUserGlobalGrantArgs struct {
 	AddLongview pulumi.BoolInput `pulumi:"addLongview"`
 	// If true, this User may add NodeBalancers.
 	AddNodebalancers pulumi.BoolInput `pulumi:"addNodebalancers"`
-	AddStackscripts  pulumi.BoolInput `pulumi:"addStackscripts"`
+	// If true, this User may add Placement Groups.
+	AddPlacementGroups pulumi.BoolInput `pulumi:"addPlacementGroups"`
+	AddStackscripts    pulumi.BoolInput `pulumi:"addStackscripts"`
 	// If true, this User may add Volumes.
 	AddVolumes pulumi.BoolInput `pulumi:"addVolumes"`
+	// If true, this User may add Virtual Private Clouds (VPCs).
+	AddVpcs pulumi.BoolInput `pulumi:"addVpcs"`
 	// If true, this User may cancel the entire Account.
 	CancelAccount pulumi.BoolInput `pulumi:"cancelAccount"`
 	// If true, this User may manage the Account’s Longview subscription.
@@ -31744,6 +32250,11 @@ func (o GetUserGlobalGrantOutput) AddNodebalancers() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddNodebalancers }).(pulumi.BoolOutput)
 }
 
+// If true, this User may add Placement Groups.
+func (o GetUserGlobalGrantOutput) AddPlacementGroups() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddPlacementGroups }).(pulumi.BoolOutput)
+}
+
 func (o GetUserGlobalGrantOutput) AddStackscripts() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddStackscripts }).(pulumi.BoolOutput)
 }
@@ -31751,6 +32262,11 @@ func (o GetUserGlobalGrantOutput) AddStackscripts() pulumi.BoolOutput {
 // If true, this User may add Volumes.
 func (o GetUserGlobalGrantOutput) AddVolumes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddVolumes }).(pulumi.BoolOutput)
+}
+
+// If true, this User may add Virtual Private Clouds (VPCs).
+func (o GetUserGlobalGrantOutput) AddVpcs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserGlobalGrant) bool { return v.AddVpcs }).(pulumi.BoolOutput)
 }
 
 // If true, this User may cancel the entire Account.
@@ -32243,6 +32759,121 @@ func (o GetUserNodebalancerGrantArrayOutput) Index(i pulumi.IntInput) GetUserNod
 	}).(GetUserNodebalancerGrantOutput)
 }
 
+type GetUserPlacementGroupGrant struct {
+	// The ID of entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label string `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+	Permissions string `pulumi:"permissions"`
+}
+
+// GetUserPlacementGroupGrantInput is an input type that accepts GetUserPlacementGroupGrantArgs and GetUserPlacementGroupGrantOutput values.
+// You can construct a concrete instance of `GetUserPlacementGroupGrantInput` via:
+//
+//	GetUserPlacementGroupGrantArgs{...}
+type GetUserPlacementGroupGrantInput interface {
+	pulumi.Input
+
+	ToGetUserPlacementGroupGrantOutput() GetUserPlacementGroupGrantOutput
+	ToGetUserPlacementGroupGrantOutputWithContext(context.Context) GetUserPlacementGroupGrantOutput
+}
+
+type GetUserPlacementGroupGrantArgs struct {
+	// The ID of entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (GetUserPlacementGroupGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (i GetUserPlacementGroupGrantArgs) ToGetUserPlacementGroupGrantOutput() GetUserPlacementGroupGrantOutput {
+	return i.ToGetUserPlacementGroupGrantOutputWithContext(context.Background())
+}
+
+func (i GetUserPlacementGroupGrantArgs) ToGetUserPlacementGroupGrantOutputWithContext(ctx context.Context) GetUserPlacementGroupGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPlacementGroupGrantOutput)
+}
+
+// GetUserPlacementGroupGrantArrayInput is an input type that accepts GetUserPlacementGroupGrantArray and GetUserPlacementGroupGrantArrayOutput values.
+// You can construct a concrete instance of `GetUserPlacementGroupGrantArrayInput` via:
+//
+//	GetUserPlacementGroupGrantArray{ GetUserPlacementGroupGrantArgs{...} }
+type GetUserPlacementGroupGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetUserPlacementGroupGrantArrayOutput() GetUserPlacementGroupGrantArrayOutput
+	ToGetUserPlacementGroupGrantArrayOutputWithContext(context.Context) GetUserPlacementGroupGrantArrayOutput
+}
+
+type GetUserPlacementGroupGrantArray []GetUserPlacementGroupGrantInput
+
+func (GetUserPlacementGroupGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (i GetUserPlacementGroupGrantArray) ToGetUserPlacementGroupGrantArrayOutput() GetUserPlacementGroupGrantArrayOutput {
+	return i.ToGetUserPlacementGroupGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserPlacementGroupGrantArray) ToGetUserPlacementGroupGrantArrayOutputWithContext(ctx context.Context) GetUserPlacementGroupGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPlacementGroupGrantArrayOutput)
+}
+
+type GetUserPlacementGroupGrantOutput struct{ *pulumi.OutputState }
+
+func (GetUserPlacementGroupGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (o GetUserPlacementGroupGrantOutput) ToGetUserPlacementGroupGrantOutput() GetUserPlacementGroupGrantOutput {
+	return o
+}
+
+func (o GetUserPlacementGroupGrantOutput) ToGetUserPlacementGroupGrantOutputWithContext(ctx context.Context) GetUserPlacementGroupGrantOutput {
+	return o
+}
+
+// The ID of entity this grant applies to.
+func (o GetUserPlacementGroupGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUserPlacementGroupGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The current label of the entity this grant applies to, for display purposes.
+func (o GetUserPlacementGroupGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPlacementGroupGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+func (o GetUserPlacementGroupGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPlacementGroupGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type GetUserPlacementGroupGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserPlacementGroupGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (o GetUserPlacementGroupGrantArrayOutput) ToGetUserPlacementGroupGrantArrayOutput() GetUserPlacementGroupGrantArrayOutput {
+	return o
+}
+
+func (o GetUserPlacementGroupGrantArrayOutput) ToGetUserPlacementGroupGrantArrayOutputWithContext(ctx context.Context) GetUserPlacementGroupGrantArrayOutput {
+	return o
+}
+
+func (o GetUserPlacementGroupGrantArrayOutput) Index(i pulumi.IntInput) GetUserPlacementGroupGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserPlacementGroupGrant {
+		return vs[0].([]GetUserPlacementGroupGrant)[vs[1].(int)]
+	}).(GetUserPlacementGroupGrantOutput)
+}
+
 type GetUserStackscriptGrant struct {
 	// The ID of entity this grant applies to.
 	Id int `pulumi:"id"`
@@ -32473,6 +33104,121 @@ func (o GetUserVolumeGrantArrayOutput) Index(i pulumi.IntInput) GetUserVolumeGra
 	}).(GetUserVolumeGrantOutput)
 }
 
+type GetUserVpcGrant struct {
+	// The ID of entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label string `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+	Permissions string `pulumi:"permissions"`
+}
+
+// GetUserVpcGrantInput is an input type that accepts GetUserVpcGrantArgs and GetUserVpcGrantOutput values.
+// You can construct a concrete instance of `GetUserVpcGrantInput` via:
+//
+//	GetUserVpcGrantArgs{...}
+type GetUserVpcGrantInput interface {
+	pulumi.Input
+
+	ToGetUserVpcGrantOutput() GetUserVpcGrantOutput
+	ToGetUserVpcGrantOutputWithContext(context.Context) GetUserVpcGrantOutput
+}
+
+type GetUserVpcGrantArgs struct {
+	// The ID of entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (GetUserVpcGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserVpcGrant)(nil)).Elem()
+}
+
+func (i GetUserVpcGrantArgs) ToGetUserVpcGrantOutput() GetUserVpcGrantOutput {
+	return i.ToGetUserVpcGrantOutputWithContext(context.Background())
+}
+
+func (i GetUserVpcGrantArgs) ToGetUserVpcGrantOutputWithContext(ctx context.Context) GetUserVpcGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserVpcGrantOutput)
+}
+
+// GetUserVpcGrantArrayInput is an input type that accepts GetUserVpcGrantArray and GetUserVpcGrantArrayOutput values.
+// You can construct a concrete instance of `GetUserVpcGrantArrayInput` via:
+//
+//	GetUserVpcGrantArray{ GetUserVpcGrantArgs{...} }
+type GetUserVpcGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetUserVpcGrantArrayOutput() GetUserVpcGrantArrayOutput
+	ToGetUserVpcGrantArrayOutputWithContext(context.Context) GetUserVpcGrantArrayOutput
+}
+
+type GetUserVpcGrantArray []GetUserVpcGrantInput
+
+func (GetUserVpcGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserVpcGrant)(nil)).Elem()
+}
+
+func (i GetUserVpcGrantArray) ToGetUserVpcGrantArrayOutput() GetUserVpcGrantArrayOutput {
+	return i.ToGetUserVpcGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserVpcGrantArray) ToGetUserVpcGrantArrayOutputWithContext(ctx context.Context) GetUserVpcGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserVpcGrantArrayOutput)
+}
+
+type GetUserVpcGrantOutput struct{ *pulumi.OutputState }
+
+func (GetUserVpcGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserVpcGrant)(nil)).Elem()
+}
+
+func (o GetUserVpcGrantOutput) ToGetUserVpcGrantOutput() GetUserVpcGrantOutput {
+	return o
+}
+
+func (o GetUserVpcGrantOutput) ToGetUserVpcGrantOutputWithContext(ctx context.Context) GetUserVpcGrantOutput {
+	return o
+}
+
+// The ID of entity this grant applies to.
+func (o GetUserVpcGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUserVpcGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The current label of the entity this grant applies to, for display purposes.
+func (o GetUserVpcGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserVpcGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+func (o GetUserVpcGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserVpcGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type GetUserVpcGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserVpcGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserVpcGrant)(nil)).Elem()
+}
+
+func (o GetUserVpcGrantArrayOutput) ToGetUserVpcGrantArrayOutput() GetUserVpcGrantArrayOutput {
+	return o
+}
+
+func (o GetUserVpcGrantArrayOutput) ToGetUserVpcGrantArrayOutputWithContext(ctx context.Context) GetUserVpcGrantArrayOutput {
+	return o
+}
+
+func (o GetUserVpcGrantArrayOutput) Index(i pulumi.IntInput) GetUserVpcGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserVpcGrant {
+		return vs[0].([]GetUserVpcGrant)[vs[1].(int)]
+	}).(GetUserVpcGrantOutput)
+}
+
 type GetUsersFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -32611,6 +33357,8 @@ type GetUsersUser struct {
 	NodebalancerGrants []GetUsersUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
 	PasswordCreated string `pulumi:"passwordCreated"`
+	// A set containing all of the user's active grants.
+	PlacementGroupGrants []GetUsersUserPlacementGroupGrant `pulumi:"placementGroupGrants"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted bool `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
@@ -32627,6 +33375,8 @@ type GetUsersUser struct {
 	VerifiedPhoneNumber string `pulumi:"verifiedPhoneNumber"`
 	// A set containing all of the user's active grants.
 	VolumeGrants []GetUsersUserVolumeGrant `pulumi:"volumeGrants"`
+	// A set containing all of the user's active grants.
+	VpcGrants []GetUsersUserVpcGrant `pulumi:"vpcGrants"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -32663,6 +33413,8 @@ type GetUsersUserArgs struct {
 	NodebalancerGrants GetUsersUserNodebalancerGrantArrayInput `pulumi:"nodebalancerGrants"`
 	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
 	PasswordCreated pulumi.StringInput `pulumi:"passwordCreated"`
+	// A set containing all of the user's active grants.
+	PlacementGroupGrants GetUsersUserPlacementGroupGrantArrayInput `pulumi:"placementGroupGrants"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted pulumi.BoolInput `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
@@ -32679,6 +33431,8 @@ type GetUsersUserArgs struct {
 	VerifiedPhoneNumber pulumi.StringInput `pulumi:"verifiedPhoneNumber"`
 	// A set containing all of the user's active grants.
 	VolumeGrants GetUsersUserVolumeGrantArrayInput `pulumi:"volumeGrants"`
+	// A set containing all of the user's active grants.
+	VpcGrants GetUsersUserVpcGrantArrayInput `pulumi:"vpcGrants"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -32787,6 +33541,11 @@ func (o GetUsersUserOutput) PasswordCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.PasswordCreated }).(pulumi.StringOutput)
 }
 
+// A set containing all of the user's active grants.
+func (o GetUsersUserOutput) PlacementGroupGrants() GetUsersUserPlacementGroupGrantArrayOutput {
+	return o.ApplyT(func(v GetUsersUser) []GetUsersUserPlacementGroupGrant { return v.PlacementGroupGrants }).(GetUsersUserPlacementGroupGrantArrayOutput)
+}
+
 // If true, this User must be granted access to perform actions or access entities on this Account.
 func (o GetUsersUserOutput) Restricted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.Restricted }).(pulumi.BoolOutput)
@@ -32825,6 +33584,11 @@ func (o GetUsersUserOutput) VerifiedPhoneNumber() pulumi.StringOutput {
 // A set containing all of the user's active grants.
 func (o GetUsersUserOutput) VolumeGrants() GetUsersUserVolumeGrantArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserVolumeGrant { return v.VolumeGrants }).(GetUsersUserVolumeGrantArrayOutput)
+}
+
+// A set containing all of the user's active grants.
+func (o GetUsersUserOutput) VpcGrants() GetUsersUserVpcGrantArrayOutput {
+	return o.ApplyT(func(v GetUsersUser) []GetUsersUserVpcGrant { return v.VpcGrants }).(GetUsersUserVpcGrantArrayOutput)
 }
 
 type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
@@ -33209,9 +33973,13 @@ type GetUsersUserGlobalGrant struct {
 	AddLongview bool `pulumi:"addLongview"`
 	// If true, this User may add NodeBalancers.
 	AddNodebalancers bool `pulumi:"addNodebalancers"`
-	AddStackscripts  bool `pulumi:"addStackscripts"`
+	// If true, this User may add Placement Groups.
+	AddPlacementGroups bool `pulumi:"addPlacementGroups"`
+	AddStackscripts    bool `pulumi:"addStackscripts"`
 	// If true, this User may add Volumes.
 	AddVolumes bool `pulumi:"addVolumes"`
+	// If true, this User may add Virtual Private Clouds (VPCs).
+	AddVpcs bool `pulumi:"addVpcs"`
 	// If true, this User may cancel the entire Account.
 	CancelAccount bool `pulumi:"cancelAccount"`
 	// If true, this User may manage the Account’s Longview subscription.
@@ -33246,9 +34014,13 @@ type GetUsersUserGlobalGrantArgs struct {
 	AddLongview pulumi.BoolInput `pulumi:"addLongview"`
 	// If true, this User may add NodeBalancers.
 	AddNodebalancers pulumi.BoolInput `pulumi:"addNodebalancers"`
-	AddStackscripts  pulumi.BoolInput `pulumi:"addStackscripts"`
+	// If true, this User may add Placement Groups.
+	AddPlacementGroups pulumi.BoolInput `pulumi:"addPlacementGroups"`
+	AddStackscripts    pulumi.BoolInput `pulumi:"addStackscripts"`
 	// If true, this User may add Volumes.
 	AddVolumes pulumi.BoolInput `pulumi:"addVolumes"`
+	// If true, this User may add Virtual Private Clouds (VPCs).
+	AddVpcs pulumi.BoolInput `pulumi:"addVpcs"`
 	// If true, this User may cancel the entire Account.
 	CancelAccount pulumi.BoolInput `pulumi:"cancelAccount"`
 	// If true, this User may manage the Account’s Longview subscription.
@@ -33346,6 +34118,11 @@ func (o GetUsersUserGlobalGrantOutput) AddNodebalancers() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUserGlobalGrant) bool { return v.AddNodebalancers }).(pulumi.BoolOutput)
 }
 
+// If true, this User may add Placement Groups.
+func (o GetUsersUserGlobalGrantOutput) AddPlacementGroups() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUsersUserGlobalGrant) bool { return v.AddPlacementGroups }).(pulumi.BoolOutput)
+}
+
 func (o GetUsersUserGlobalGrantOutput) AddStackscripts() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUserGlobalGrant) bool { return v.AddStackscripts }).(pulumi.BoolOutput)
 }
@@ -33353,6 +34130,11 @@ func (o GetUsersUserGlobalGrantOutput) AddStackscripts() pulumi.BoolOutput {
 // If true, this User may add Volumes.
 func (o GetUsersUserGlobalGrantOutput) AddVolumes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUserGlobalGrant) bool { return v.AddVolumes }).(pulumi.BoolOutput)
+}
+
+// If true, this User may add Virtual Private Clouds (VPCs).
+func (o GetUsersUserGlobalGrantOutput) AddVpcs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUsersUserGlobalGrant) bool { return v.AddVpcs }).(pulumi.BoolOutput)
 }
 
 // If true, this User may cancel the entire Account.
@@ -33845,6 +34627,121 @@ func (o GetUsersUserNodebalancerGrantArrayOutput) Index(i pulumi.IntInput) GetUs
 	}).(GetUsersUserNodebalancerGrantOutput)
 }
 
+type GetUsersUserPlacementGroupGrant struct {
+	// The ID of entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label string `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions string `pulumi:"permissions"`
+}
+
+// GetUsersUserPlacementGroupGrantInput is an input type that accepts GetUsersUserPlacementGroupGrantArgs and GetUsersUserPlacementGroupGrantOutput values.
+// You can construct a concrete instance of `GetUsersUserPlacementGroupGrantInput` via:
+//
+//	GetUsersUserPlacementGroupGrantArgs{...}
+type GetUsersUserPlacementGroupGrantInput interface {
+	pulumi.Input
+
+	ToGetUsersUserPlacementGroupGrantOutput() GetUsersUserPlacementGroupGrantOutput
+	ToGetUsersUserPlacementGroupGrantOutputWithContext(context.Context) GetUsersUserPlacementGroupGrantOutput
+}
+
+type GetUsersUserPlacementGroupGrantArgs struct {
+	// The ID of entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (GetUsersUserPlacementGroupGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (i GetUsersUserPlacementGroupGrantArgs) ToGetUsersUserPlacementGroupGrantOutput() GetUsersUserPlacementGroupGrantOutput {
+	return i.ToGetUsersUserPlacementGroupGrantOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserPlacementGroupGrantArgs) ToGetUsersUserPlacementGroupGrantOutputWithContext(ctx context.Context) GetUsersUserPlacementGroupGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserPlacementGroupGrantOutput)
+}
+
+// GetUsersUserPlacementGroupGrantArrayInput is an input type that accepts GetUsersUserPlacementGroupGrantArray and GetUsersUserPlacementGroupGrantArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserPlacementGroupGrantArrayInput` via:
+//
+//	GetUsersUserPlacementGroupGrantArray{ GetUsersUserPlacementGroupGrantArgs{...} }
+type GetUsersUserPlacementGroupGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserPlacementGroupGrantArrayOutput() GetUsersUserPlacementGroupGrantArrayOutput
+	ToGetUsersUserPlacementGroupGrantArrayOutputWithContext(context.Context) GetUsersUserPlacementGroupGrantArrayOutput
+}
+
+type GetUsersUserPlacementGroupGrantArray []GetUsersUserPlacementGroupGrantInput
+
+func (GetUsersUserPlacementGroupGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (i GetUsersUserPlacementGroupGrantArray) ToGetUsersUserPlacementGroupGrantArrayOutput() GetUsersUserPlacementGroupGrantArrayOutput {
+	return i.ToGetUsersUserPlacementGroupGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserPlacementGroupGrantArray) ToGetUsersUserPlacementGroupGrantArrayOutputWithContext(ctx context.Context) GetUsersUserPlacementGroupGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserPlacementGroupGrantArrayOutput)
+}
+
+type GetUsersUserPlacementGroupGrantOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserPlacementGroupGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (o GetUsersUserPlacementGroupGrantOutput) ToGetUsersUserPlacementGroupGrantOutput() GetUsersUserPlacementGroupGrantOutput {
+	return o
+}
+
+func (o GetUsersUserPlacementGroupGrantOutput) ToGetUsersUserPlacementGroupGrantOutputWithContext(ctx context.Context) GetUsersUserPlacementGroupGrantOutput {
+	return o
+}
+
+// The ID of entity this grant applies to.
+func (o GetUsersUserPlacementGroupGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUsersUserPlacementGroupGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The current label of the entity this grant applies to, for display purposes.
+func (o GetUsersUserPlacementGroupGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserPlacementGroupGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The level of access this User has to this entity. If null, this User has no access.
+func (o GetUsersUserPlacementGroupGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserPlacementGroupGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type GetUsersUserPlacementGroupGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserPlacementGroupGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserPlacementGroupGrant)(nil)).Elem()
+}
+
+func (o GetUsersUserPlacementGroupGrantArrayOutput) ToGetUsersUserPlacementGroupGrantArrayOutput() GetUsersUserPlacementGroupGrantArrayOutput {
+	return o
+}
+
+func (o GetUsersUserPlacementGroupGrantArrayOutput) ToGetUsersUserPlacementGroupGrantArrayOutputWithContext(ctx context.Context) GetUsersUserPlacementGroupGrantArrayOutput {
+	return o
+}
+
+func (o GetUsersUserPlacementGroupGrantArrayOutput) Index(i pulumi.IntInput) GetUsersUserPlacementGroupGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUserPlacementGroupGrant {
+		return vs[0].([]GetUsersUserPlacementGroupGrant)[vs[1].(int)]
+	}).(GetUsersUserPlacementGroupGrantOutput)
+}
+
 type GetUsersUserStackscriptGrant struct {
 	// The ID of entity this grant applies to.
 	Id int `pulumi:"id"`
@@ -34073,6 +34970,121 @@ func (o GetUsersUserVolumeGrantArrayOutput) Index(i pulumi.IntInput) GetUsersUse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUserVolumeGrant {
 		return vs[0].([]GetUsersUserVolumeGrant)[vs[1].(int)]
 	}).(GetUsersUserVolumeGrantOutput)
+}
+
+type GetUsersUserVpcGrant struct {
+	// The ID of entity this grant applies to.
+	Id int `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label string `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions string `pulumi:"permissions"`
+}
+
+// GetUsersUserVpcGrantInput is an input type that accepts GetUsersUserVpcGrantArgs and GetUsersUserVpcGrantOutput values.
+// You can construct a concrete instance of `GetUsersUserVpcGrantInput` via:
+//
+//	GetUsersUserVpcGrantArgs{...}
+type GetUsersUserVpcGrantInput interface {
+	pulumi.Input
+
+	ToGetUsersUserVpcGrantOutput() GetUsersUserVpcGrantOutput
+	ToGetUsersUserVpcGrantOutputWithContext(context.Context) GetUsersUserVpcGrantOutput
+}
+
+type GetUsersUserVpcGrantArgs struct {
+	// The ID of entity this grant applies to.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The current label of the entity this grant applies to, for display purposes.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The level of access this User has to this entity. If null, this User has no access.
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (GetUsersUserVpcGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserVpcGrant)(nil)).Elem()
+}
+
+func (i GetUsersUserVpcGrantArgs) ToGetUsersUserVpcGrantOutput() GetUsersUserVpcGrantOutput {
+	return i.ToGetUsersUserVpcGrantOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserVpcGrantArgs) ToGetUsersUserVpcGrantOutputWithContext(ctx context.Context) GetUsersUserVpcGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserVpcGrantOutput)
+}
+
+// GetUsersUserVpcGrantArrayInput is an input type that accepts GetUsersUserVpcGrantArray and GetUsersUserVpcGrantArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserVpcGrantArrayInput` via:
+//
+//	GetUsersUserVpcGrantArray{ GetUsersUserVpcGrantArgs{...} }
+type GetUsersUserVpcGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserVpcGrantArrayOutput() GetUsersUserVpcGrantArrayOutput
+	ToGetUsersUserVpcGrantArrayOutputWithContext(context.Context) GetUsersUserVpcGrantArrayOutput
+}
+
+type GetUsersUserVpcGrantArray []GetUsersUserVpcGrantInput
+
+func (GetUsersUserVpcGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserVpcGrant)(nil)).Elem()
+}
+
+func (i GetUsersUserVpcGrantArray) ToGetUsersUserVpcGrantArrayOutput() GetUsersUserVpcGrantArrayOutput {
+	return i.ToGetUsersUserVpcGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserVpcGrantArray) ToGetUsersUserVpcGrantArrayOutputWithContext(ctx context.Context) GetUsersUserVpcGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserVpcGrantArrayOutput)
+}
+
+type GetUsersUserVpcGrantOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserVpcGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUserVpcGrant)(nil)).Elem()
+}
+
+func (o GetUsersUserVpcGrantOutput) ToGetUsersUserVpcGrantOutput() GetUsersUserVpcGrantOutput {
+	return o
+}
+
+func (o GetUsersUserVpcGrantOutput) ToGetUsersUserVpcGrantOutputWithContext(ctx context.Context) GetUsersUserVpcGrantOutput {
+	return o
+}
+
+// The ID of entity this grant applies to.
+func (o GetUsersUserVpcGrantOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUsersUserVpcGrant) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The current label of the entity this grant applies to, for display purposes.
+func (o GetUsersUserVpcGrantOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserVpcGrant) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The level of access this User has to this entity. If null, this User has no access.
+func (o GetUsersUserVpcGrantOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUserVpcGrant) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+type GetUsersUserVpcGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserVpcGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUserVpcGrant)(nil)).Elem()
+}
+
+func (o GetUsersUserVpcGrantArrayOutput) ToGetUsersUserVpcGrantArrayOutput() GetUsersUserVpcGrantArrayOutput {
+	return o
+}
+
+func (o GetUsersUserVpcGrantArrayOutput) ToGetUsersUserVpcGrantArrayOutputWithContext(ctx context.Context) GetUsersUserVpcGrantArrayOutput {
+	return o
+}
+
+func (o GetUsersUserVpcGrantArrayOutput) Index(i pulumi.IntInput) GetUsersUserVpcGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUserVpcGrant {
+		return vs[0].([]GetUsersUserVpcGrant)[vs[1].(int)]
+	}).(GetUsersUserVpcGrantOutput)
 }
 
 type GetVlansFilter struct {
@@ -36476,10 +37488,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserLongviewGrantArrayInput)(nil)).Elem(), UserLongviewGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserNodebalancerGrantInput)(nil)).Elem(), UserNodebalancerGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserNodebalancerGrantArrayInput)(nil)).Elem(), UserNodebalancerGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPlacementGroupGrantInput)(nil)).Elem(), UserPlacementGroupGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPlacementGroupGrantArrayInput)(nil)).Elem(), UserPlacementGroupGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantInput)(nil)).Elem(), UserStackscriptGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserStackscriptGrantArrayInput)(nil)).Elem(), UserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantInput)(nil)).Elem(), UserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserVolumeGrantArrayInput)(nil)).Elem(), UserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserVpcGrantInput)(nil)).Elem(), UserVpcGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserVpcGrantArrayInput)(nil)).Elem(), UserVpcGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTimeoutsInput)(nil)).Elem(), VolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTimeoutsPtrInput)(nil)).Elem(), VolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInput)(nil)).Elem(), VpcSubnetLinodeArgs{})
@@ -36736,6 +37752,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodebalancersNodebalancerTransferArrayInput)(nil)).Elem(), GetNodebalancersNodebalancerTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsEndpointInput)(nil)).Elem(), GetObjectStorageEndpointsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsEndpointArrayInput)(nil)).Elem(), GetObjectStorageEndpointsEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsFilterInput)(nil)).Elem(), GetObjectStorageEndpointsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsFilterArrayInput)(nil)).Elem(), GetObjectStorageEndpointsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInput)(nil)).Elem(), GetPlacementGroupMigrationsArgs{})
@@ -36797,10 +37817,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserLongviewGrantArrayInput)(nil)).Elem(), GetUserLongviewGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserNodebalancerGrantInput)(nil)).Elem(), GetUserNodebalancerGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserNodebalancerGrantArrayInput)(nil)).Elem(), GetUserNodebalancerGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPlacementGroupGrantInput)(nil)).Elem(), GetUserPlacementGroupGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPlacementGroupGrantArrayInput)(nil)).Elem(), GetUserPlacementGroupGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserStackscriptGrantInput)(nil)).Elem(), GetUserStackscriptGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserStackscriptGrantArrayInput)(nil)).Elem(), GetUserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserVolumeGrantInput)(nil)).Elem(), GetUserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserVolumeGrantArrayInput)(nil)).Elem(), GetUserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserVpcGrantInput)(nil)).Elem(), GetUserVpcGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserVpcGrantArrayInput)(nil)).Elem(), GetUserVpcGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterInput)(nil)).Elem(), GetUsersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterArrayInput)(nil)).Elem(), GetUsersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
@@ -36821,10 +37845,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserLongviewGrantArrayInput)(nil)).Elem(), GetUsersUserLongviewGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserNodebalancerGrantInput)(nil)).Elem(), GetUsersUserNodebalancerGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserNodebalancerGrantArrayInput)(nil)).Elem(), GetUsersUserNodebalancerGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserPlacementGroupGrantInput)(nil)).Elem(), GetUsersUserPlacementGroupGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserPlacementGroupGrantArrayInput)(nil)).Elem(), GetUsersUserPlacementGroupGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserStackscriptGrantInput)(nil)).Elem(), GetUsersUserStackscriptGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserStackscriptGrantArrayInput)(nil)).Elem(), GetUsersUserStackscriptGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserVolumeGrantInput)(nil)).Elem(), GetUsersUserVolumeGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserVolumeGrantArrayInput)(nil)).Elem(), GetUsersUserVolumeGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserVpcGrantInput)(nil)).Elem(), GetUsersUserVpcGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserVpcGrantArrayInput)(nil)).Elem(), GetUsersUserVpcGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterInput)(nil)).Elem(), GetVlansFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansFilterArrayInput)(nil)).Elem(), GetVlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVlansVlanInput)(nil)).Elem(), GetVlansVlanArgs{})
@@ -37005,10 +38033,14 @@ func init() {
 	pulumi.RegisterOutputType(UserLongviewGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserNodebalancerGrantOutput{})
 	pulumi.RegisterOutputType(UserNodebalancerGrantArrayOutput{})
+	pulumi.RegisterOutputType(UserPlacementGroupGrantOutput{})
+	pulumi.RegisterOutputType(UserPlacementGroupGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserStackscriptGrantOutput{})
 	pulumi.RegisterOutputType(UserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(UserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(UserVpcGrantOutput{})
+	pulumi.RegisterOutputType(UserVpcGrantArrayOutput{})
 	pulumi.RegisterOutputType(VolumeTimeoutsOutput{})
 	pulumi.RegisterOutputType(VolumeTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeOutput{})
@@ -37265,6 +38297,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerArrayOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferOutput{})
 	pulumi.RegisterOutputType(GetNodebalancersNodebalancerTransferArrayOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageEndpointsEndpointOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageEndpointsEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageEndpointsFilterOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageEndpointsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutput{})
@@ -37326,10 +38362,14 @@ func init() {
 	pulumi.RegisterOutputType(GetUserLongviewGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUserNodebalancerGrantOutput{})
 	pulumi.RegisterOutputType(GetUserNodebalancerGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetUserPlacementGroupGrantOutput{})
+	pulumi.RegisterOutputType(GetUserPlacementGroupGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUserStackscriptGrantOutput{})
 	pulumi.RegisterOutputType(GetUserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(GetUserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetUserVpcGrantOutput{})
+	pulumi.RegisterOutputType(GetUserVpcGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersFilterOutput{})
 	pulumi.RegisterOutputType(GetUsersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
@@ -37350,10 +38390,14 @@ func init() {
 	pulumi.RegisterOutputType(GetUsersUserLongviewGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserNodebalancerGrantOutput{})
 	pulumi.RegisterOutputType(GetUsersUserNodebalancerGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserPlacementGroupGrantOutput{})
+	pulumi.RegisterOutputType(GetUsersUserPlacementGroupGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserStackscriptGrantOutput{})
 	pulumi.RegisterOutputType(GetUsersUserStackscriptGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserVolumeGrantOutput{})
 	pulumi.RegisterOutputType(GetUsersUserVolumeGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserVpcGrantOutput{})
+	pulumi.RegisterOutputType(GetUsersUserVpcGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetVlansFilterOutput{})
 	pulumi.RegisterOutputType(GetVlansFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVlansVlanOutput{})

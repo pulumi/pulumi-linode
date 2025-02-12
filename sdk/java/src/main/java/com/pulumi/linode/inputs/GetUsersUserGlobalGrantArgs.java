@@ -135,6 +135,21 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
         return this.addNodebalancers;
     }
 
+    /**
+     * If true, this User may add Placement Groups.
+     * 
+     */
+    @Import(name="addPlacementGroups", required=true)
+    private Output<Boolean> addPlacementGroups;
+
+    /**
+     * @return If true, this User may add Placement Groups.
+     * 
+     */
+    public Output<Boolean> addPlacementGroups() {
+        return this.addPlacementGroups;
+    }
+
     @Import(name="addStackscripts", required=true)
     private Output<Boolean> addStackscripts;
 
@@ -155,6 +170,21 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
      */
     public Output<Boolean> addVolumes() {
         return this.addVolumes;
+    }
+
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    @Import(name="addVpcs", required=true)
+    private Output<Boolean> addVpcs;
+
+    /**
+     * @return If true, this User may add Virtual Private Clouds (VPCs).
+     * 
+     */
+    public Output<Boolean> addVpcs() {
+        return this.addVpcs;
     }
 
     /**
@@ -198,8 +228,10 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
         this.addLinodes = $.addLinodes;
         this.addLongview = $.addLongview;
         this.addNodebalancers = $.addNodebalancers;
+        this.addPlacementGroups = $.addPlacementGroups;
         this.addStackscripts = $.addStackscripts;
         this.addVolumes = $.addVolumes;
+        this.addVpcs = $.addVpcs;
         this.cancelAccount = $.cancelAccount;
         this.longviewSubscription = $.longviewSubscription;
     }
@@ -390,6 +422,27 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
             return addNodebalancers(Output.of(addNodebalancers));
         }
 
+        /**
+         * @param addPlacementGroups If true, this User may add Placement Groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addPlacementGroups(Output<Boolean> addPlacementGroups) {
+            $.addPlacementGroups = addPlacementGroups;
+            return this;
+        }
+
+        /**
+         * @param addPlacementGroups If true, this User may add Placement Groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addPlacementGroups(Boolean addPlacementGroups) {
+            return addPlacementGroups(Output.of(addPlacementGroups));
+        }
+
         public Builder addStackscripts(Output<Boolean> addStackscripts) {
             $.addStackscripts = addStackscripts;
             return this;
@@ -418,6 +471,27 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
          */
         public Builder addVolumes(Boolean addVolumes) {
             return addVolumes(Output.of(addVolumes));
+        }
+
+        /**
+         * @param addVpcs If true, this User may add Virtual Private Clouds (VPCs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addVpcs(Output<Boolean> addVpcs) {
+            $.addVpcs = addVpcs;
+            return this;
+        }
+
+        /**
+         * @param addVpcs If true, this User may add Virtual Private Clouds (VPCs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addVpcs(Boolean addVpcs) {
+            return addVpcs(Output.of(addVpcs));
         }
 
         /**
@@ -487,11 +561,17 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
             if ($.addNodebalancers == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserGlobalGrantArgs", "addNodebalancers");
             }
+            if ($.addPlacementGroups == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrantArgs", "addPlacementGroups");
+            }
             if ($.addStackscripts == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserGlobalGrantArgs", "addStackscripts");
             }
             if ($.addVolumes == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserGlobalGrantArgs", "addVolumes");
+            }
+            if ($.addVpcs == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrantArgs", "addVpcs");
             }
             if ($.cancelAccount == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserGlobalGrantArgs", "cancelAccount");

@@ -85,7 +85,11 @@ namespace Pulumi.Linode
     /// 
     /// * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
     /// 
+    /// * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
+    /// 
     /// * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+    /// 
+    /// * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
     /// 
     /// * `cancel_account` - (optional) If true, this User may cancel the entire Account.
     /// 
@@ -149,6 +153,12 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.UserNodebalancerGrant>> NodebalancerGrants { get; private set; } = null!;
 
         /// <summary>
+        /// The Placement Groups the user has permissions access to.
+        /// </summary>
+        [Output("placementGroupGrants")]
+        public Output<ImmutableArray<Outputs.UserPlacementGroupGrant>> PlacementGroupGrants { get; private set; } = null!;
+
+        /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
         /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -193,6 +203,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("volumeGrants")]
         public Output<ImmutableArray<Outputs.UserVolumeGrant>> VolumeGrants { get; private set; } = null!;
+
+        /// <summary>
+        /// The Virtual Private Clouds (VPCs) the user has permissions access to.
+        /// </summary>
+        [Output("vpcGrants")]
+        public Output<ImmutableArray<Outputs.UserVpcGrant>> VpcGrants { get; private set; } = null!;
 
 
         /// <summary>
@@ -324,6 +340,18 @@ namespace Pulumi.Linode
             set => _nodebalancerGrants = value;
         }
 
+        [Input("placementGroupGrants")]
+        private InputList<Inputs.UserPlacementGroupGrantArgs>? _placementGroupGrants;
+
+        /// <summary>
+        /// The Placement Groups the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserPlacementGroupGrantArgs> PlacementGroupGrants
+        {
+            get => _placementGroupGrants ?? (_placementGroupGrants = new InputList<Inputs.UserPlacementGroupGrantArgs>());
+            set => _placementGroupGrants = value;
+        }
+
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
@@ -362,6 +390,18 @@ namespace Pulumi.Linode
         {
             get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.UserVolumeGrantArgs>());
             set => _volumeGrants = value;
+        }
+
+        [Input("vpcGrants")]
+        private InputList<Inputs.UserVpcGrantArgs>? _vpcGrants;
+
+        /// <summary>
+        /// The Virtual Private Clouds (VPCs) the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserVpcGrantArgs> VpcGrants
+        {
+            get => _vpcGrants ?? (_vpcGrants = new InputList<Inputs.UserVpcGrantArgs>());
+            set => _vpcGrants = value;
         }
 
         public UserArgs()
@@ -456,6 +496,18 @@ namespace Pulumi.Linode
             set => _nodebalancerGrants = value;
         }
 
+        [Input("placementGroupGrants")]
+        private InputList<Inputs.UserPlacementGroupGrantGetArgs>? _placementGroupGrants;
+
+        /// <summary>
+        /// The Placement Groups the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserPlacementGroupGrantGetArgs> PlacementGroupGrants
+        {
+            get => _placementGroupGrants ?? (_placementGroupGrants = new InputList<Inputs.UserPlacementGroupGrantGetArgs>());
+            set => _placementGroupGrants = value;
+        }
+
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
@@ -518,6 +570,18 @@ namespace Pulumi.Linode
         {
             get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.UserVolumeGrantGetArgs>());
             set => _volumeGrants = value;
+        }
+
+        [Input("vpcGrants")]
+        private InputList<Inputs.UserVpcGrantGetArgs>? _vpcGrants;
+
+        /// <summary>
+        /// The Virtual Private Clouds (VPCs) the user has permissions access to.
+        /// </summary>
+        public InputList<Inputs.UserVpcGrantGetArgs> VpcGrants
+        {
+            get => _vpcGrants ?? (_vpcGrants = new InputList<Inputs.UserVpcGrantGetArgs>());
+            set => _vpcGrants = value;
         }
 
         public UserState()
