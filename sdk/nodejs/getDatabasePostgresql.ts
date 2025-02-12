@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-db = linode.getDatabasePostgresql({
+ * const my_db = linode.getDatabasePostgresql({
  *     id: 12345,
  * });
  * ```
@@ -170,7 +170,7 @@ export interface GetDatabasePostgresqlResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-db = linode.getDatabasePostgresql({
+ * const my_db = linode.getDatabasePostgresql({
  *     id: 12345,
  * });
  * ```

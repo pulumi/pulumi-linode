@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-db = linode.getDatabasePostgresqlV2({
+ * const my_db = linode.getDatabasePostgresqlV2({
  *     id: "12345",
  * });
  * ```
@@ -174,7 +174,7 @@ export interface GetDatabasePostgresqlV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-db = linode.getDatabasePostgresqlV2({
+ * const my_db = linode.getDatabasePostgresqlV2({
  *     id: "12345",
  * });
  * ```

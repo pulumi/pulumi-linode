@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-firewall = linode.getFirewall({
+ * const my_firewall = linode.getFirewall({
  *     id: 123,
  * });
  * ```
@@ -100,7 +100,7 @@ export interface GetFirewallResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-firewall = linode.getFirewall({
+ * const my_firewall = linode.getFirewall({
  *     id: 123,
  * });
  * ```

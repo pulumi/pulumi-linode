@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-stackscripts = linode.getStackScripts({
+ * const specific_stackscripts = linode.getStackScripts({
  *     filters: [
  *         {
  *             name: "label",
@@ -117,7 +117,7 @@ export interface GetStackScriptsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-stackscripts = linode.getStackScripts({
+ * const specific_stackscripts = linode.getStackScripts({
  *     filters: [
  *         {
  *             name: "label",

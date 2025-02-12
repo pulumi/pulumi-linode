@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-bucket = linode.getLinodeObjectStorageBucket({
+ * const my_bucket = linode.getLinodeObjectStorageBucket({
  *     label: "my-bucket",
  *     region: "us-mia",
  * });
@@ -81,7 +81,7 @@ export interface GetLinodeObjectStorageBucketResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-bucket = linode.getLinodeObjectStorageBucket({
+ * const my_bucket = linode.getLinodeObjectStorageBucket({
  *     label: "my-bucket",
  *     region: "us-mia",
  * });

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-ranges = linode.getIpv6Ranges({
+ * const filtered_ranges = linode.getIpv6Ranges({
  *     filters: [{
  *         name: "region",
  *         values: ["us-mia"],
@@ -74,7 +74,7 @@ export interface GetIpv6RangesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-ranges = linode.getIpv6Ranges({
+ * const filtered_ranges = linode.getIpv6Ranges({
  *     filters: [{
  *         name: "region",
  *         values: ["us-mia"],

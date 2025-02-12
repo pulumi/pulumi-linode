@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
+//			my_instance, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
 //				Label:  pulumi.String("my-instance"),
 //				Type:   pulumi.String("g6-standard-1"),
 //				Region: pulumi.String("us-southeast"),
@@ -70,7 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
+//			my_instance, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
 //				Label:  pulumi.String("my-instance"),
 //				Type:   pulumi.String("g6-standard-1"),
 //				Region: pulumi.String("us-southeast"),

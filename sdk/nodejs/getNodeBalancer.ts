@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-nodebalancer = linode.getNodeBalancer({
+ * const my_nodebalancer = linode.getNodeBalancer({
  *     id: 123,
  * });
  * ```
@@ -97,7 +97,7 @@ export interface GetNodeBalancerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-nodebalancer = linode.getNodeBalancer({
+ * const my_nodebalancer = linode.getNodeBalancer({
  *     id: 123,
  * });
  * ```

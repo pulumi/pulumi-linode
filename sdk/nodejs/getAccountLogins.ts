@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-account-logins = linode.getAccountLogins({
+ * const filtered_account_logins = linode.getAccountLogins({
  *     filters: [
  *         {
  *             name: "restricted",
@@ -81,7 +81,7 @@ export interface GetAccountLoginsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-account-logins = linode.getAccountLogins({
+ * const filtered_account_logins = linode.getAccountLogins({
  *     filters: [
  *         {
  *             name: "restricted",
