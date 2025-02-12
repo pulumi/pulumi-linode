@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-vpcs = linode.getVpcs({
+ * const filtered_vpcs = linode.getVpcs({
  *     filters: [{
  *         name: "label",
  *         values: ["test"],
@@ -77,7 +77,7 @@ export interface GetVpcsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-vpcs = linode.getVpcs({
+ * const filtered_vpcs = linode.getVpcs({
  *     filters: [{
  *         name: "label",
  *         values: ["test"],

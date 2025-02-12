@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-backups = linode.getInstanceBackups({
+ * const my_backups = linode.getInstanceBackups({
  *     linodeId: 123,
  * });
  * ```
@@ -61,7 +61,7 @@ export interface GetInstanceBackupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-backups = linode.getInstanceBackups({
+ * const my_backups = linode.getInstanceBackups({
  *     linodeId: 123,
  * });
  * ```

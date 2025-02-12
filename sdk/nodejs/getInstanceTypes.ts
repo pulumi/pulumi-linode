@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-types = linode.getInstanceTypes({
+ * const specific_types = linode.getInstanceTypes({
  *     filters: [{
  *         name: "vcpus",
  *         values: ["2"],
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-types = linode.getInstanceTypes({});
+ * const all_types = linode.getInstanceTypes({});
  * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
  * ```
  *
@@ -107,7 +107,7 @@ export interface GetInstanceTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-types = linode.getInstanceTypes({
+ * const specific_types = linode.getInstanceTypes({
  *     filters: [{
  *         name: "vcpus",
  *         values: ["2"],
@@ -122,7 +122,7 @@ export interface GetInstanceTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-types = linode.getInstanceTypes({});
+ * const all_types = linode.getInstanceTypes({});
  * export const typeIds = all_types.then(all_types => all_types.types.map(__item => __item.id));
  * ```
  *

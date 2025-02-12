@@ -55,7 +55,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewPlacementGroup(ctx, "my-pg", &linode.PlacementGroupArgs{
+//			my_pg, err := linode.NewPlacementGroup(ctx, "my-pg", &linode.PlacementGroupArgs{
 //				Label:              pulumi.String("my-pg"),
 //				Region:             pulumi.String("us-east"),
 //				PlacementGroupType: pulumi.String("anti_affinity:local"),
@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "my-inst", &linode.InstanceArgs{
+//			my_inst, err := linode.NewInstance(ctx, "my-inst", &linode.InstanceArgs{
 //				Label:                           pulumi.String("my-inst"),
 //				Region:                          pulumi.String("us-east"),
 //				Type:                            pulumi.String("g6-nanode-1"),

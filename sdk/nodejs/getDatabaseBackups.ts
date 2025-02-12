@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-backups = linode.getDatabaseBackups({
+ * const all_backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
  *     databaseType: "mysql",
  * });
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const auto-backups = linode.getDatabaseBackups({
+ * const auto_backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
  *     databaseType: "postgresql",
  *     filters: [{
@@ -115,7 +115,7 @@ export interface GetDatabaseBackupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-backups = linode.getDatabaseBackups({
+ * const all_backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
  *     databaseType: "mysql",
  * });
@@ -127,7 +127,7 @@ export interface GetDatabaseBackupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const auto-backups = linode.getDatabaseBackups({
+ * const auto_backups = linode.getDatabaseBackups({
  *     databaseId: 12345,
  *     databaseType: "postgresql",
  *     filters: [{

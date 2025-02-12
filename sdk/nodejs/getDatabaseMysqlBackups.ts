@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-backups = linode.getDatabaseMysqlBackups({
+ * const all_backups = linode.getDatabaseMysqlBackups({
  *     databaseId: 12345,
  * });
  * ```
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const auto-backups = linode.getDatabaseMysqlBackups({
+ * const auto_backups = linode.getDatabaseMysqlBackups({
  *     databaseId: 12345,
  *     filters: [{
  *         name: "type",
@@ -105,7 +105,7 @@ export interface GetDatabaseMysqlBackupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-backups = linode.getDatabaseMysqlBackups({
+ * const all_backups = linode.getDatabaseMysqlBackups({
  *     databaseId: 12345,
  * });
  * ```
@@ -116,7 +116,7 @@ export interface GetDatabaseMysqlBackupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const auto-backups = linode.getDatabaseMysqlBackups({
+ * const auto_backups = linode.getDatabaseMysqlBackups({
  *     databaseId: 12345,
  *     filters: [{
  *         name: "type",

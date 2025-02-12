@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-images = linode.getImages({
+ * const specific_images = linode.getImages({
  *     filters: [
  *         {
  *             name: "label",
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-images = linode.getImages({});
+ * const all_images = linode.getImages({});
  * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
  * ```
  *
@@ -125,7 +125,7 @@ export interface GetImagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-images = linode.getImages({
+ * const specific_images = linode.getImages({
  *     filters: [
  *         {
  *             name: "label",
@@ -146,7 +146,7 @@ export interface GetImagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-images = linode.getImages({});
+ * const all_images = linode.getImages({});
  * export const imageIds = all_images.then(all_images => all_images.images.map(__item => __item.id));
  * ```
  *
