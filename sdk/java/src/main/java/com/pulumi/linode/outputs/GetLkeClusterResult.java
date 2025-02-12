@@ -76,6 +76,11 @@ public final class GetLkeClusterResult {
      */
     private List<String> tags;
     /**
+     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    private String tier;
+    /**
      * @return When this Kubernetes cluster was updated.
      * 
      */
@@ -167,6 +172,13 @@ public final class GetLkeClusterResult {
         return this.tags;
     }
     /**
+     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public String tier() {
+        return this.tier;
+    }
+    /**
      * @return When this Kubernetes cluster was updated.
      * 
      */
@@ -195,6 +207,7 @@ public final class GetLkeClusterResult {
         private String region;
         private String status;
         private List<String> tags;
+        private String tier;
         private String updated;
         public Builder() {}
         public Builder(GetLkeClusterResult defaults) {
@@ -211,6 +224,7 @@ public final class GetLkeClusterResult {
     	      this.region = defaults.region;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
+    	      this.tier = defaults.tier;
     	      this.updated = defaults.updated;
         }
 
@@ -319,6 +333,14 @@ public final class GetLkeClusterResult {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder tier(String tier) {
+            if (tier == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "tier");
+            }
+            this.tier = tier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
               throw new MissingRequiredPropertyException("GetLkeClusterResult", "updated");
@@ -340,6 +362,7 @@ public final class GetLkeClusterResult {
             _resultValue.region = region;
             _resultValue.status = status;
             _resultValue.tags = tags;
+            _resultValue.tier = tier;
             _resultValue.updated = updated;
             return _resultValue;
         }

@@ -73,6 +73,7 @@
         "getNodebalancerConfigs.ts",
         "getNodebalancers.ts",
         "getObjectStorageCluster.ts",
+        "getObjectStorageEndpoints.ts",
         "getPlacementGroup.ts",
         "getPlacementGroups.ts",
         "getProfile.ts",

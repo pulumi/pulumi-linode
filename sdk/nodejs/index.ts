@@ -295,6 +295,11 @@ export const getObjectStorageCluster: typeof import("./getObjectStorageCluster")
 export const getObjectStorageClusterOutput: typeof import("./getObjectStorageCluster").getObjectStorageClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getObjectStorageCluster","getObjectStorageClusterOutput"], () => require("./getObjectStorageCluster"));
 
+export { GetObjectStorageEndpointsArgs, GetObjectStorageEndpointsResult, GetObjectStorageEndpointsOutputArgs } from "./getObjectStorageEndpoints";
+export const getObjectStorageEndpoints: typeof import("./getObjectStorageEndpoints").getObjectStorageEndpoints = null as any;
+export const getObjectStorageEndpointsOutput: typeof import("./getObjectStorageEndpoints").getObjectStorageEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectStorageEndpoints","getObjectStorageEndpointsOutput"], () => require("./getObjectStorageEndpoints"));
+
 export { GetPlacementGroupArgs, GetPlacementGroupResult, GetPlacementGroupOutputArgs } from "./getPlacementGroup";
 export const getPlacementGroup: typeof import("./getPlacementGroup").getPlacementGroup = null as any;
 export const getPlacementGroupOutput: typeof import("./getPlacementGroup").getPlacementGroupOutput = null as any;

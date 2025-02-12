@@ -14,8 +14,10 @@ import com.pulumi.linode.inputs.GetUsersUserImageGrantArgs;
 import com.pulumi.linode.inputs.GetUsersUserLinodeGrantArgs;
 import com.pulumi.linode.inputs.GetUsersUserLongviewGrantArgs;
 import com.pulumi.linode.inputs.GetUsersUserNodebalancerGrantArgs;
+import com.pulumi.linode.inputs.GetUsersUserPlacementGroupGrantArgs;
 import com.pulumi.linode.inputs.GetUsersUserStackscriptGrantArgs;
 import com.pulumi.linode.inputs.GetUsersUserVolumeGrantArgs;
+import com.pulumi.linode.inputs.GetUsersUserVpcGrantArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -192,6 +194,21 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
+    @Import(name="placementGroupGrants", required=true)
+    private Output<List<GetUsersUserPlacementGroupGrantArgs>> placementGroupGrants;
+
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
+    public Output<List<GetUsersUserPlacementGroupGrantArgs>> placementGroupGrants() {
+        return this.placementGroupGrants;
+    }
+
+    /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      * 
      */
@@ -311,6 +328,21 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
         return this.volumeGrants;
     }
 
+    /**
+     * A set containing all of the user&#39;s active grants.
+     * 
+     */
+    @Import(name="vpcGrants", required=true)
+    private Output<List<GetUsersUserVpcGrantArgs>> vpcGrants;
+
+    /**
+     * @return A set containing all of the user&#39;s active grants.
+     * 
+     */
+    public Output<List<GetUsersUserVpcGrantArgs>> vpcGrants() {
+        return this.vpcGrants;
+    }
+
     private GetUsersUserArgs() {}
 
     private GetUsersUserArgs(GetUsersUserArgs $) {
@@ -325,6 +357,7 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
         this.longviewGrants = $.longviewGrants;
         this.nodebalancerGrants = $.nodebalancerGrants;
         this.passwordCreated = $.passwordCreated;
+        this.placementGroupGrants = $.placementGroupGrants;
         this.restricted = $.restricted;
         this.sshKeys = $.sshKeys;
         this.stackscriptGrants = $.stackscriptGrants;
@@ -333,6 +366,7 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
         this.username = $.username;
         this.verifiedPhoneNumber = $.verifiedPhoneNumber;
         this.volumeGrants = $.volumeGrants;
+        this.vpcGrants = $.vpcGrants;
     }
 
     public static Builder builder() {
@@ -665,6 +699,37 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param placementGroupGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupGrants(Output<List<GetUsersUserPlacementGroupGrantArgs>> placementGroupGrants) {
+            $.placementGroupGrants = placementGroupGrants;
+            return this;
+        }
+
+        /**
+         * @param placementGroupGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupGrants(List<GetUsersUserPlacementGroupGrantArgs> placementGroupGrants) {
+            return placementGroupGrants(Output.of(placementGroupGrants));
+        }
+
+        /**
+         * @param placementGroupGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementGroupGrants(GetUsersUserPlacementGroupGrantArgs... placementGroupGrants) {
+            return placementGroupGrants(List.of(placementGroupGrants));
+        }
+
+        /**
          * @param restricted If true, this User must be granted access to perform actions or access entities on this Account.
          * 
          * @return builder
@@ -862,6 +927,37 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
             return volumeGrants(List.of(volumeGrants));
         }
 
+        /**
+         * @param vpcGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcGrants(Output<List<GetUsersUserVpcGrantArgs>> vpcGrants) {
+            $.vpcGrants = vpcGrants;
+            return this;
+        }
+
+        /**
+         * @param vpcGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcGrants(List<GetUsersUserVpcGrantArgs> vpcGrants) {
+            return vpcGrants(Output.of(vpcGrants));
+        }
+
+        /**
+         * @param vpcGrants A set containing all of the user&#39;s active grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcGrants(GetUsersUserVpcGrantArgs... vpcGrants) {
+            return vpcGrants(List.of(vpcGrants));
+        }
+
         public GetUsersUserArgs build() {
             if ($.databaseGrants == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserArgs", "databaseGrants");
@@ -896,6 +992,9 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
             if ($.passwordCreated == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserArgs", "passwordCreated");
             }
+            if ($.placementGroupGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserArgs", "placementGroupGrants");
+            }
             if ($.restricted == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserArgs", "restricted");
             }
@@ -919,6 +1018,9 @@ public final class GetUsersUserArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.volumeGrants == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserArgs", "volumeGrants");
+            }
+            if ($.vpcGrants == null) {
+                throw new MissingRequiredPropertyException("GetUsersUserArgs", "vpcGrants");
             }
             return $;
         }

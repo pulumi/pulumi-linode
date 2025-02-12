@@ -191,6 +191,21 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="tier")
+    private @Nullable Output<String> tier;
+
+    /**
+     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Optional<Output<String>> tier() {
+        return Optional.ofNullable(this.tier);
+    }
+
     private LkeClusterState() {}
 
     private LkeClusterState(LkeClusterState $) {
@@ -205,6 +220,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.status = $.status;
         this.tags = $.tags;
+        this.tier = $.tier;
     }
 
     public static Builder builder() {
@@ -502,6 +518,27 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param tier The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(@Nullable Output<String> tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
+         * @param tier The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(String tier) {
+            return tier(Output.of(tier));
         }
 
         public LkeClusterState build() {

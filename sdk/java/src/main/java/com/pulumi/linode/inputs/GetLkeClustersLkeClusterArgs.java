@@ -140,6 +140,21 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="tier", required=true)
+    private Output<String> tier;
+
+    /**
+     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Output<String> tier() {
+        return this.tier;
+    }
+
+    /**
      * When this Kubernetes cluster was updated.
      * 
      */
@@ -165,6 +180,7 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         this.region = $.region;
         this.status = $.status;
         this.tags = $.tags;
+        this.tier = $.tier;
         this.updated = $.updated;
     }
 
@@ -365,6 +381,27 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param tier The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(Output<String> tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
+         * @param tier The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(String tier) {
+            return tier(Output.of(tier));
+        }
+
+        /**
          * @param updated When this Kubernetes cluster was updated.
          * 
          * @return builder
@@ -406,6 +443,9 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
             }
             if ($.tags == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "tags");
+            }
+            if ($.tier == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "tier");
             }
             if ($.updated == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "updated");

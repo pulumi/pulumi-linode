@@ -115,8 +115,14 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
     public readonly corsEnabled!: pulumi.Output<boolean>;
     /**
      * The endpoint for the bucket used for s3 connections.
+     *
+     * @deprecated Use `s3Endpoint` instead
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    /**
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    public readonly endpointType!: pulumi.Output<string>;
     /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
      * public.
@@ -134,6 +140,10 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The user's s3 endpoint URL, based on the `endpointType` and `region`.
+     */
+    public readonly s3Endpoint!: pulumi.Output<string>;
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `objSecretKey` in the provider configuration;
@@ -168,10 +178,12 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["corsEnabled"] = state ? state.corsEnabled : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["s3Endpoint"] = state ? state.s3Endpoint : undefined;
             resourceInputs["secretKey"] = state ? state.secretKey : undefined;
             resourceInputs["versioning"] = state ? state.versioning : undefined;
         } else {
@@ -184,9 +196,11 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
             resourceInputs["cert"] = args ? args.cert : undefined;
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["corsEnabled"] = args ? args.corsEnabled : undefined;
+            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["s3Endpoint"] = args ? args.s3Endpoint : undefined;
             resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -230,8 +244,14 @@ export interface ObjectStorageBucketState {
     corsEnabled?: pulumi.Input<boolean>;
     /**
      * The endpoint for the bucket used for s3 connections.
+     *
+     * @deprecated Use `s3Endpoint` instead
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType?: pulumi.Input<string>;
     /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
      * public.
@@ -249,6 +269,10 @@ export interface ObjectStorageBucketState {
      * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The user's s3 endpoint URL, based on the `endpointType` and `region`.
+     */
+    s3Endpoint?: pulumi.Input<string>;
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `objSecretKey` in the provider configuration;
@@ -295,6 +319,10 @@ export interface ObjectStorageBucketArgs {
      */
     corsEnabled?: pulumi.Input<boolean>;
     /**
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType?: pulumi.Input<string>;
+    /**
      * The label of the Linode Object Storage Bucket.
      */
     label: pulumi.Input<string>;
@@ -306,6 +334,10 @@ export interface ObjectStorageBucketArgs {
      * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The user's s3 endpoint URL, based on the `endpointType` and `region`.
+     */
+    s3Endpoint?: pulumi.Input<string>;
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `objSecretKey` in the provider configuration;

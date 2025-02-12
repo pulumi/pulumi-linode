@@ -28,7 +28,7 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None, updated=None):
+    def __init__(__self__, api_endpoints=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None, tier=None, updated=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -65,6 +65,9 @@ class GetLkeClusterResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if tier and not isinstance(tier, str):
+            raise TypeError("Expected argument 'tier' to be a str")
+        pulumi.set(__self__, "tier", tier)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
@@ -167,6 +170,14 @@ class GetLkeClusterResult:
 
     @property
     @pulumi.getter
+    def tier(self) -> str:
+        """
+        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "tier")
+
+    @property
+    @pulumi.getter
     def updated(self) -> str:
         """
         When this Kubernetes cluster was updated.
@@ -192,6 +203,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             region=self.region,
             status=self.status,
             tags=self.tags,
+            tier=self.tier,
             updated=self.updated)
 
 
@@ -237,6 +249,7 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
         region=pulumi.get(__ret__, 'region'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
+        tier=pulumi.get(__ret__, 'tier'),
         updated=pulumi.get(__ret__, 'updated'))
 def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]]]] = None,
                            id: Optional[pulumi.Input[int]] = None,
@@ -279,4 +292,5 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
         region=pulumi.get(__response__, 'region'),
         status=pulumi.get(__response__, 'status'),
         tags=pulumi.get(__response__, 'tags'),
+        tier=pulumi.get(__response__, 'tier'),
         updated=pulumi.get(__response__, 'updated')))

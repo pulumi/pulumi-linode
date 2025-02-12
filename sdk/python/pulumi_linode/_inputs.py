@@ -159,10 +159,14 @@ __all__ = [
     'UserLongviewGrantArgsDict',
     'UserNodebalancerGrantArgs',
     'UserNodebalancerGrantArgsDict',
+    'UserPlacementGroupGrantArgs',
+    'UserPlacementGroupGrantArgsDict',
     'UserStackscriptGrantArgs',
     'UserStackscriptGrantArgsDict',
     'UserVolumeGrantArgs',
     'UserVolumeGrantArgsDict',
+    'UserVpcGrantArgs',
+    'UserVpcGrantArgsDict',
     'VolumeTimeoutsArgs',
     'VolumeTimeoutsArgsDict',
     'VpcSubnetLinodeArgs',
@@ -311,6 +315,10 @@ __all__ = [
     'GetNodebalancersNodebalancerArgsDict',
     'GetNodebalancersNodebalancerTransferArgs',
     'GetNodebalancersNodebalancerTransferArgsDict',
+    'GetObjectStorageEndpointsEndpointArgs',
+    'GetObjectStorageEndpointsEndpointArgsDict',
+    'GetObjectStorageEndpointsFilterArgs',
+    'GetObjectStorageEndpointsFilterArgsDict',
     'GetPlacementGroupMemberArgs',
     'GetPlacementGroupMemberArgsDict',
     'GetPlacementGroupMigrationsArgs',
@@ -365,10 +373,14 @@ __all__ = [
     'GetUserLongviewGrantArgsDict',
     'GetUserNodebalancerGrantArgs',
     'GetUserNodebalancerGrantArgsDict',
+    'GetUserPlacementGroupGrantArgs',
+    'GetUserPlacementGroupGrantArgsDict',
     'GetUserStackscriptGrantArgs',
     'GetUserStackscriptGrantArgsDict',
     'GetUserVolumeGrantArgs',
     'GetUserVolumeGrantArgsDict',
+    'GetUserVpcGrantArgs',
+    'GetUserVpcGrantArgsDict',
     'GetUsersFilterArgs',
     'GetUsersFilterArgsDict',
     'GetUsersUserArgs',
@@ -389,10 +401,14 @@ __all__ = [
     'GetUsersUserLongviewGrantArgsDict',
     'GetUsersUserNodebalancerGrantArgs',
     'GetUsersUserNodebalancerGrantArgsDict',
+    'GetUsersUserPlacementGroupGrantArgs',
+    'GetUsersUserPlacementGroupGrantArgsDict',
     'GetUsersUserStackscriptGrantArgs',
     'GetUsersUserStackscriptGrantArgsDict',
     'GetUsersUserVolumeGrantArgs',
     'GetUsersUserVolumeGrantArgsDict',
+    'GetUsersUserVpcGrantArgs',
+    'GetUsersUserVpcGrantArgsDict',
     'GetVlansFilterArgs',
     'GetVlansFilterArgsDict',
     'GetVlansVlanArgs',
@@ -5777,6 +5793,10 @@ class ObjectStorageKeyBucketAccessArgs:
 
 if not MYPY:
     class ObjectStorageKeyRegionsDetailArgsDict(TypedDict):
+        endpoint_type: pulumi.Input[str]
+        """
+        The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
         id: pulumi.Input[str]
         """
         The ID of the region.
@@ -5791,14 +5811,29 @@ elif False:
 @pulumi.input_type
 class ObjectStorageKeyRegionsDetailArgs:
     def __init__(__self__, *,
+                 endpoint_type: pulumi.Input[str],
                  id: pulumi.Input[str],
                  s3_endpoint: pulumi.Input[str]):
         """
+        :param pulumi.Input[str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[str] id: The ID of the region.
         :param pulumi.Input[str] s3_endpoint: The S3-compatible hostname you can use to access the Object Storage buckets in this region.
         """
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "s3_endpoint", s3_endpoint)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> pulumi.Input[str]:
+        """
+        The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_type", value)
 
     @property
     @pulumi.getter
@@ -6233,6 +6268,10 @@ if not MYPY:
         """
         If true, this User may add NodeBalancers.
         """
+        add_placement_groups: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Placement Groups.
+        """
         add_stackscripts: NotRequired[pulumi.Input[bool]]
         """
         If true, this User may add StackScripts.
@@ -6240,6 +6279,10 @@ if not MYPY:
         add_volumes: NotRequired[pulumi.Input[bool]]
         """
         If true, this User may add Volumes.
+        """
+        add_vpcs: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this User may add Virtual Private Clouds (VPCs).
         """
         cancel_account: NotRequired[pulumi.Input[bool]]
         """
@@ -6263,8 +6306,10 @@ class UserGlobalGrantsArgs:
                  add_linodes: Optional[pulumi.Input[bool]] = None,
                  add_longview: Optional[pulumi.Input[bool]] = None,
                  add_nodebalancers: Optional[pulumi.Input[bool]] = None,
+                 add_placement_groups: Optional[pulumi.Input[bool]] = None,
                  add_stackscripts: Optional[pulumi.Input[bool]] = None,
                  add_volumes: Optional[pulumi.Input[bool]] = None,
+                 add_vpcs: Optional[pulumi.Input[bool]] = None,
                  cancel_account: Optional[pulumi.Input[bool]] = None,
                  longview_subscription: Optional[pulumi.Input[bool]] = None):
         """
@@ -6276,8 +6321,10 @@ class UserGlobalGrantsArgs:
         :param pulumi.Input[bool] add_linodes: If true, this User may create Linodes.
         :param pulumi.Input[bool] add_longview: If true, this User may create Longview clients and view the current plan.
         :param pulumi.Input[bool] add_nodebalancers: If true, this User may add NodeBalancers.
+        :param pulumi.Input[bool] add_placement_groups: If true, this User may add Placement Groups.
         :param pulumi.Input[bool] add_stackscripts: If true, this User may add StackScripts.
         :param pulumi.Input[bool] add_volumes: If true, this User may add Volumes.
+        :param pulumi.Input[bool] add_vpcs: If true, this User may add Virtual Private Clouds (VPCs).
         :param pulumi.Input[bool] cancel_account: If true, this User may cancel the entire Account.
         :param pulumi.Input[bool] longview_subscription: If true, this User may manage the Account’s Longview subscription.
         """
@@ -6297,10 +6344,14 @@ class UserGlobalGrantsArgs:
             pulumi.set(__self__, "add_longview", add_longview)
         if add_nodebalancers is not None:
             pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        if add_placement_groups is not None:
+            pulumi.set(__self__, "add_placement_groups", add_placement_groups)
         if add_stackscripts is not None:
             pulumi.set(__self__, "add_stackscripts", add_stackscripts)
         if add_volumes is not None:
             pulumi.set(__self__, "add_volumes", add_volumes)
+        if add_vpcs is not None:
+            pulumi.set(__self__, "add_vpcs", add_vpcs)
         if cancel_account is not None:
             pulumi.set(__self__, "cancel_account", cancel_account)
         if longview_subscription is not None:
@@ -6403,6 +6454,18 @@ class UserGlobalGrantsArgs:
         pulumi.set(self, "add_nodebalancers", value)
 
     @property
+    @pulumi.getter(name="addPlacementGroups")
+    def add_placement_groups(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this User may add Placement Groups.
+        """
+        return pulumi.get(self, "add_placement_groups")
+
+    @add_placement_groups.setter
+    def add_placement_groups(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_placement_groups", value)
+
+    @property
     @pulumi.getter(name="addStackscripts")
     def add_stackscripts(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -6425,6 +6488,18 @@ class UserGlobalGrantsArgs:
     @add_volumes.setter
     def add_volumes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "add_volumes", value)
+
+    @property
+    @pulumi.getter(name="addVpcs")
+    def add_vpcs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this User may add Virtual Private Clouds (VPCs).
+        """
+        return pulumi.get(self, "add_vpcs")
+
+    @add_vpcs.setter
+    def add_vpcs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_vpcs", value)
 
     @property
     @pulumi.getter(name="cancelAccount")
@@ -6652,6 +6727,56 @@ class UserNodebalancerGrantArgs:
 
 
 if not MYPY:
+    class UserPlacementGroupGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserPlacementGroupGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserPlacementGroupGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] id: The ID of the entity this grant applies to.
+        :param pulumi.Input[str] permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        """
+        The ID of the entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
     class UserStackscriptGrantArgsDict(TypedDict):
         id: pulumi.Input[int]
         """
@@ -6716,6 +6841,56 @@ elif False:
 
 @pulumi.input_type
 class UserVolumeGrantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[int],
+                 permissions: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] id: The ID of the entity this grant applies to.
+        :param pulumi.Input[str] permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[int]:
+        """
+        The ID of the entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[str]:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
+    class UserVpcGrantArgsDict(TypedDict):
+        id: pulumi.Input[int]
+        """
+        The ID of the entity this grant applies to.
+        """
+        permissions: pulumi.Input[str]
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    UserVpcGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserVpcGrantArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[int],
                  permissions: pulumi.Input[str]):
@@ -11720,6 +11895,10 @@ if not MYPY:
         """
         An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         """
+        tier: str
+        """
+        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        """
         updated: str
         """
         When this Kubernetes cluster was updated.
@@ -11741,6 +11920,7 @@ class GetLkeClustersLkeClusterArgs:
                  region: str,
                  status: str,
                  tags: Sequence[str],
+                 tier: str,
                  updated: str,
                  control_plane: Optional['GetLkeClustersLkeClusterControlPlaneArgs'] = None):
         """
@@ -11751,6 +11931,7 @@ class GetLkeClustersLkeClusterArgs:
         :param str region: This Kubernetes cluster's location.
         :param str status: The status of the cluster.
         :param Sequence[str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        :param str tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
         :param str updated: When this Kubernetes cluster was updated.
         :param 'GetLkeClustersLkeClusterControlPlaneArgs' control_plane: Defines settings for the Kubernetes Control Plane.
         """
@@ -11761,6 +11942,7 @@ class GetLkeClustersLkeClusterArgs:
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "updated", updated)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
@@ -11848,6 +12030,18 @@ class GetLkeClustersLkeClusterArgs:
     @tags.setter
     def tags(self, value: Sequence[str]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> str:
+        """
+        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: str):
+        pulumi.set(self, "tier", value)
 
     @property
     @pulumi.getter
@@ -14295,6 +14489,145 @@ class GetNodebalancersNodebalancerTransferArgs:
 
 
 if not MYPY:
+    class GetObjectStorageEndpointsEndpointArgsDict(TypedDict):
+        endpoint_type: str
+        """
+        The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
+        region: str
+        """
+        The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+        """
+        s3_endpoint: str
+        """
+        Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+        """
+elif False:
+    GetObjectStorageEndpointsEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetObjectStorageEndpointsEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint_type: str,
+                 region: str,
+                 s3_endpoint: str):
+        """
+        :param str endpoint_type: The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        :param str region: The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+        :param str s3_endpoint: Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+        """
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "s3_endpoint", s3_endpoint)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> str:
+        """
+        The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: str):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> str:
+        """
+        Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+        """
+        return pulumi.get(self, "s3_endpoint")
+
+    @s3_endpoint.setter
+    def s3_endpoint(self, value: str):
+        pulumi.set(self, "s3_endpoint", value)
+
+
+if not MYPY:
+    class GetObjectStorageEndpointsFilterArgsDict(TypedDict):
+        name: str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetObjectStorageEndpointsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetObjectStorageEndpointsFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str],
+                 match_by: Optional[str] = None):
+        """
+        :param str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
     class GetPlacementGroupMemberArgsDict(TypedDict):
         is_compliant: bool
         """
@@ -16349,6 +16682,75 @@ class GetUserNodebalancerGrantArgs:
 
 
 if not MYPY:
+    class GetUserPlacementGroupGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserPlacementGroupGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUserPlacementGroupGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
     class GetUserStackscriptGrantArgsDict(TypedDict):
         id: int
         """
@@ -16436,6 +16838,75 @@ elif False:
 
 @pulumi.input_type
 class GetUserVolumeGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
+    class GetUserVpcGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        """
+elif False:
+    GetUserVpcGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUserVpcGrantArgs:
     def __init__(__self__, *,
                  id: int,
                  label: str,
@@ -16602,6 +17073,10 @@ if not MYPY:
         """
         The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
         """
+        placement_group_grants: Sequence['GetUsersUserPlacementGroupGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
         restricted: bool
         """
         If true, this User must be granted access to perform actions or access entities on this Account.
@@ -16634,6 +17109,10 @@ if not MYPY:
         """
         A set containing all of the user's active grants.
         """
+        vpc_grants: Sequence['GetUsersUserVpcGrantArgsDict']
+        """
+        A set containing all of the user's active grants.
+        """
 elif False:
     GetUsersUserArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -16651,6 +17130,7 @@ class GetUsersUserArgs:
                  longview_grants: Sequence['GetUsersUserLongviewGrantArgs'],
                  nodebalancer_grants: Sequence['GetUsersUserNodebalancerGrantArgs'],
                  password_created: str,
+                 placement_group_grants: Sequence['GetUsersUserPlacementGroupGrantArgs'],
                  restricted: bool,
                  ssh_keys: Sequence[str],
                  stackscript_grants: Sequence['GetUsersUserStackscriptGrantArgs'],
@@ -16658,7 +17138,8 @@ class GetUsersUserArgs:
                  user_type: str,
                  username: str,
                  verified_phone_number: str,
-                 volume_grants: Sequence['GetUsersUserVolumeGrantArgs']):
+                 volume_grants: Sequence['GetUsersUserVolumeGrantArgs'],
+                 vpc_grants: Sequence['GetUsersUserVpcGrantArgs']):
         """
         :param Sequence['GetUsersUserDatabaseGrantArgs'] database_grants: A set containing all of the user's active grants.
         :param Sequence['GetUsersUserDomainGrantArgs'] domain_grants: A set containing all of the user's active grants.
@@ -16671,6 +17152,7 @@ class GetUsersUserArgs:
         :param Sequence['GetUsersUserLongviewGrantArgs'] longview_grants: A set containing all of the user's active grants.
         :param Sequence['GetUsersUserNodebalancerGrantArgs'] nodebalancer_grants: A set containing all of the user's active grants.
         :param str password_created: The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
+        :param Sequence['GetUsersUserPlacementGroupGrantArgs'] placement_group_grants: A set containing all of the user's active grants.
         :param bool restricted: If true, this User must be granted access to perform actions or access entities on this Account.
         :param Sequence[str] ssh_keys: A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
         :param Sequence['GetUsersUserStackscriptGrantArgs'] stackscript_grants: A set containing all of the user's active grants.
@@ -16679,6 +17161,7 @@ class GetUsersUserArgs:
         :param str username: This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
         :param str verified_phone_number: The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
         :param Sequence['GetUsersUserVolumeGrantArgs'] volume_grants: A set containing all of the user's active grants.
+        :param Sequence['GetUsersUserVpcGrantArgs'] vpc_grants: A set containing all of the user's active grants.
         """
         pulumi.set(__self__, "database_grants", database_grants)
         pulumi.set(__self__, "domain_grants", domain_grants)
@@ -16691,6 +17174,7 @@ class GetUsersUserArgs:
         pulumi.set(__self__, "longview_grants", longview_grants)
         pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
         pulumi.set(__self__, "password_created", password_created)
+        pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         pulumi.set(__self__, "restricted", restricted)
         pulumi.set(__self__, "ssh_keys", ssh_keys)
         pulumi.set(__self__, "stackscript_grants", stackscript_grants)
@@ -16699,6 +17183,7 @@ class GetUsersUserArgs:
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "verified_phone_number", verified_phone_number)
         pulumi.set(__self__, "volume_grants", volume_grants)
+        pulumi.set(__self__, "vpc_grants", vpc_grants)
 
     @property
     @pulumi.getter(name="databaseGrants")
@@ -16833,6 +17318,18 @@ class GetUsersUserArgs:
         pulumi.set(self, "password_created", value)
 
     @property
+    @pulumi.getter(name="placementGroupGrants")
+    def placement_group_grants(self) -> Sequence['GetUsersUserPlacementGroupGrantArgs']:
+        """
+        A set containing all of the user's active grants.
+        """
+        return pulumi.get(self, "placement_group_grants")
+
+    @placement_group_grants.setter
+    def placement_group_grants(self, value: Sequence['GetUsersUserPlacementGroupGrantArgs']):
+        pulumi.set(self, "placement_group_grants", value)
+
+    @property
     @pulumi.getter
     def restricted(self) -> bool:
         """
@@ -16927,6 +17424,18 @@ class GetUsersUserArgs:
     @volume_grants.setter
     def volume_grants(self, value: Sequence['GetUsersUserVolumeGrantArgs']):
         pulumi.set(self, "volume_grants", value)
+
+    @property
+    @pulumi.getter(name="vpcGrants")
+    def vpc_grants(self) -> Sequence['GetUsersUserVpcGrantArgs']:
+        """
+        A set containing all of the user's active grants.
+        """
+        return pulumi.get(self, "vpc_grants")
+
+    @vpc_grants.setter
+    def vpc_grants(self, value: Sequence['GetUsersUserVpcGrantArgs']):
+        pulumi.set(self, "vpc_grants", value)
 
 
 if not MYPY:
@@ -17170,10 +17679,18 @@ if not MYPY:
         """
         If true, this User may add NodeBalancers.
         """
+        add_placement_groups: bool
+        """
+        If true, this User may add Placement Groups.
+        """
         add_stackscripts: bool
         add_volumes: bool
         """
         If true, this User may add Volumes.
+        """
+        add_vpcs: bool
+        """
+        If true, this User may add Virtual Private Clouds (VPCs).
         """
         cancel_account: bool
         """
@@ -17197,8 +17714,10 @@ class GetUsersUserGlobalGrantArgs:
                  add_linodes: bool,
                  add_longview: bool,
                  add_nodebalancers: bool,
+                 add_placement_groups: bool,
                  add_stackscripts: bool,
                  add_volumes: bool,
+                 add_vpcs: bool,
                  cancel_account: bool,
                  longview_subscription: bool):
         """
@@ -17210,7 +17729,9 @@ class GetUsersUserGlobalGrantArgs:
         :param bool add_linodes: If true, this User may create Linodes.
         :param bool add_longview: If true, this User may create Longview clients and view the current plan.
         :param bool add_nodebalancers: If true, this User may add NodeBalancers.
+        :param bool add_placement_groups: If true, this User may add Placement Groups.
         :param bool add_volumes: If true, this User may add Volumes.
+        :param bool add_vpcs: If true, this User may add Virtual Private Clouds (VPCs).
         :param bool cancel_account: If true, this User may cancel the entire Account.
         :param bool longview_subscription: If true, this User may manage the Account’s Longview subscription.
         """
@@ -17222,8 +17743,10 @@ class GetUsersUserGlobalGrantArgs:
         pulumi.set(__self__, "add_linodes", add_linodes)
         pulumi.set(__self__, "add_longview", add_longview)
         pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
+        pulumi.set(__self__, "add_placement_groups", add_placement_groups)
         pulumi.set(__self__, "add_stackscripts", add_stackscripts)
         pulumi.set(__self__, "add_volumes", add_volumes)
+        pulumi.set(__self__, "add_vpcs", add_vpcs)
         pulumi.set(__self__, "cancel_account", cancel_account)
         pulumi.set(__self__, "longview_subscription", longview_subscription)
 
@@ -17324,6 +17847,18 @@ class GetUsersUserGlobalGrantArgs:
         pulumi.set(self, "add_nodebalancers", value)
 
     @property
+    @pulumi.getter(name="addPlacementGroups")
+    def add_placement_groups(self) -> bool:
+        """
+        If true, this User may add Placement Groups.
+        """
+        return pulumi.get(self, "add_placement_groups")
+
+    @add_placement_groups.setter
+    def add_placement_groups(self, value: bool):
+        pulumi.set(self, "add_placement_groups", value)
+
+    @property
     @pulumi.getter(name="addStackscripts")
     def add_stackscripts(self) -> bool:
         return pulumi.get(self, "add_stackscripts")
@@ -17343,6 +17878,18 @@ class GetUsersUserGlobalGrantArgs:
     @add_volumes.setter
     def add_volumes(self, value: bool):
         pulumi.set(self, "add_volumes", value)
+
+    @property
+    @pulumi.getter(name="addVpcs")
+    def add_vpcs(self) -> bool:
+        """
+        If true, this User may add Virtual Private Clouds (VPCs).
+        """
+        return pulumi.get(self, "add_vpcs")
+
+    @add_vpcs.setter
+    def add_vpcs(self, value: bool):
+        pulumi.set(self, "add_vpcs", value)
 
     @property
     @pulumi.getter(name="cancelAccount")
@@ -17646,6 +18193,75 @@ class GetUsersUserNodebalancerGrantArgs:
 
 
 if not MYPY:
+    class GetUsersUserPlacementGroupGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserPlacementGroupGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserPlacementGroupGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
     class GetUsersUserStackscriptGrantArgsDict(TypedDict):
         id: int
         """
@@ -17733,6 +18349,75 @@ elif False:
 
 @pulumi.input_type
 class GetUsersUserVolumeGrantArgs:
+    def __init__(__self__, *,
+                 id: int,
+                 label: str,
+                 permissions: str):
+        """
+        :param int id: The ID of entity this grant applies to.
+        :param str label: The current label of the entity this grant applies to, for display purposes.
+        :param str permissions: The level of access this User has to this entity. If null, this User has no access.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of entity this grant applies to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: int):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: str):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: str):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
+    class GetUsersUserVpcGrantArgsDict(TypedDict):
+        id: int
+        """
+        The ID of entity this grant applies to.
+        """
+        label: str
+        """
+        The current label of the entity this grant applies to, for display purposes.
+        """
+        permissions: str
+        """
+        The level of access this User has to this entity. If null, this User has no access.
+        """
+elif False:
+    GetUsersUserVpcGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserVpcGrantArgs:
     def __init__(__self__, *,
                  id: int,
                  label: str,

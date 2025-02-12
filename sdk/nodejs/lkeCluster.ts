@@ -91,6 +91,10 @@ export class LkeCluster extends pulumi.CustomResource {
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    public readonly tier!: pulumi.Output<string>;
 
     /**
      * Create a LkeCluster resource with the given unique name, arguments, and options.
@@ -116,6 +120,7 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
         } else {
             const args = argsOrState as LkeClusterArgs | undefined;
             if ((!args || args.k8sVersion === undefined) && !opts.urn) {
@@ -137,6 +142,7 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["pools"] = args ? args.pools : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["apiEndpoints"] = undefined /*out*/;
             resourceInputs["dashboardUrl"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
@@ -201,6 +207,10 @@ export interface LkeClusterState {
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    tier?: pulumi.Input<string>;
 }
 
 /**
@@ -239,4 +249,8 @@ export interface LkeClusterArgs {
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    tier?: pulumi.Input<string>;
 }

@@ -60,6 +60,12 @@ namespace Pulumi.Linode.Inputs
         [Input("addNodebalancers", required: true)]
         public bool AddNodebalancers { get; set; }
 
+        /// <summary>
+        /// If true, this User may add Placement Groups.
+        /// </summary>
+        [Input("addPlacementGroups", required: true)]
+        public bool AddPlacementGroups { get; set; }
+
         [Input("addStackscripts", required: true)]
         public bool AddStackscripts { get; set; }
 
@@ -68,6 +74,12 @@ namespace Pulumi.Linode.Inputs
         /// </summary>
         [Input("addVolumes", required: true)]
         public bool AddVolumes { get; set; }
+
+        /// <summary>
+        /// If true, this User may add Virtual Private Clouds (VPCs).
+        /// </summary>
+        [Input("addVpcs", required: true)]
+        public bool AddVpcs { get; set; }
 
         /// <summary>
         /// If true, this User may cancel the entire Account.

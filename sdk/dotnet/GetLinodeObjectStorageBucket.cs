@@ -155,11 +155,13 @@ namespace Pulumi.Linode
     {
         public readonly string Cluster;
         public readonly string Created;
+        public readonly string EndpointType;
         public readonly string Hostname;
         public readonly string Id;
         public readonly string Label;
         public readonly int Objects;
         public readonly string Region;
+        public readonly string S3Endpoint;
         public readonly int Size;
 
         [OutputConstructor]
@@ -167,6 +169,8 @@ namespace Pulumi.Linode
             string cluster,
 
             string created,
+
+            string endpointType,
 
             string hostname,
 
@@ -178,15 +182,19 @@ namespace Pulumi.Linode
 
             string region,
 
+            string s3Endpoint,
+
             int size)
         {
             Cluster = cluster;
             Created = created;
+            EndpointType = endpointType;
             Hostname = hostname;
             Id = id;
             Label = label;
             Objects = objects;
             Region = region;
+            S3Endpoint = s3Endpoint;
             Size = size;
         }
     }

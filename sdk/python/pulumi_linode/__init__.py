@@ -63,6 +63,7 @@ from .get_node_balancer_node import *
 from .get_nodebalancer_configs import *
 from .get_nodebalancers import *
 from .get_object_storage_cluster import *
+from .get_object_storage_endpoints import *
 from .get_placement_group import *
 from .get_placement_groups import *
 from .get_profile import *

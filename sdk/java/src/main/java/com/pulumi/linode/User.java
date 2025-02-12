@@ -17,8 +17,10 @@ import com.pulumi.linode.outputs.UserImageGrant;
 import com.pulumi.linode.outputs.UserLinodeGrant;
 import com.pulumi.linode.outputs.UserLongviewGrant;
 import com.pulumi.linode.outputs.UserNodebalancerGrant;
+import com.pulumi.linode.outputs.UserPlacementGroupGrant;
 import com.pulumi.linode.outputs.UserStackscriptGrant;
 import com.pulumi.linode.outputs.UserVolumeGrant;
+import com.pulumi.linode.outputs.UserVpcGrant;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -132,7 +134,11 @@ import javax.annotation.Nullable;
  * 
  * * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
  * 
+ * * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
+ * 
  * * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+ * 
+ * * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
  * 
  * * `cancel_account` - (optional) If true, this User may cancel the entire Account.
  * 
@@ -260,6 +266,20 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.nodebalancerGrants;
     }
     /**
+     * The Placement Groups the user has permissions access to.
+     * 
+     */
+    @Export(name="placementGroupGrants", refs={List.class,UserPlacementGroupGrant.class}, tree="[0,1]")
+    private Output<List<UserPlacementGroupGrant>> placementGroupGrants;
+
+    /**
+     * @return The Placement Groups the user has permissions access to.
+     * 
+     */
+    public Output<List<UserPlacementGroupGrant>> placementGroupGrants() {
+        return this.placementGroupGrants;
+    }
+    /**
      * If true, this user will only have explicit permissions granted.
      * 
      * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -364,6 +384,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<List<UserVolumeGrant>> volumeGrants() {
         return this.volumeGrants;
+    }
+    /**
+     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * 
+     */
+    @Export(name="vpcGrants", refs={List.class,UserVpcGrant.class}, tree="[0,1]")
+    private Output<List<UserVpcGrant>> vpcGrants;
+
+    /**
+     * @return The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * 
+     */
+    public Output<List<UserVpcGrant>> vpcGrants() {
+        return this.vpcGrants;
     }
 
     /**

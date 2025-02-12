@@ -216,7 +216,11 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**
      * The endpoint for the bucket used for s3 connections.
      * 
+     * @deprecated
+     * Use `s3_endpoint` instead
+     * 
      */
+    @Deprecated /* Use `s3_endpoint` instead */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
@@ -226,6 +230,20 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpoint() {
         return this.endpoint;
+    }
+    /**
+     * The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
+    private Output<String> endpointType;
+
+    /**
+     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    public Output<String> endpointType() {
+        return this.endpointType;
     }
     /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
@@ -284,6 +302,20 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * 
+     */
+    @Export(name="s3Endpoint", refs={String.class}, tree="[0]")
+    private Output<String> s3Endpoint;
+
+    /**
+     * @return The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * 
+     */
+    public Output<String> s3Endpoint() {
+        return this.s3Endpoint;
     }
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be

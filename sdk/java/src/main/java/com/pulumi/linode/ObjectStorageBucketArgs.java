@@ -110,6 +110,21 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    @Import(name="endpointType")
+    private @Nullable Output<String> endpointType;
+
+    /**
+     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * 
+     */
+    public Optional<Output<String>> endpointType() {
+        return Optional.ofNullable(this.endpointType);
+    }
+
+    /**
      * The label of the Linode Object Storage Bucket.
      * 
      */
@@ -152,6 +167,21 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * 
+     */
+    @Import(name="s3Endpoint")
+    private @Nullable Output<String> s3Endpoint;
+
+    /**
+     * @return The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * 
+     */
+    public Optional<Output<String>> s3Endpoint() {
+        return Optional.ofNullable(this.s3Endpoint);
     }
 
     /**
@@ -204,9 +234,11 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         this.cert = $.cert;
         this.cluster = $.cluster;
         this.corsEnabled = $.corsEnabled;
+        this.endpointType = $.endpointType;
         this.label = $.label;
         this.lifecycleRules = $.lifecycleRules;
         this.region = $.region;
+        this.s3Endpoint = $.s3Endpoint;
         this.secretKey = $.secretKey;
         this.versioning = $.versioning;
     }
@@ -349,6 +381,27 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointType(@Nullable Output<String> endpointType) {
+            $.endpointType = endpointType;
+            return this;
+        }
+
+        /**
+         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointType(String endpointType) {
+            return endpointType(Output.of(endpointType));
+        }
+
+        /**
          * @param label The label of the Linode Object Storage Bucket.
          * 
          * @return builder
@@ -419,6 +472,27 @@ public final class ObjectStorageBucketArgs extends com.pulumi.resources.Resource
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param s3Endpoint The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder s3Endpoint(@Nullable Output<String> s3Endpoint) {
+            $.s3Endpoint = s3Endpoint;
+            return this;
+        }
+
+        /**
+         * @param s3Endpoint The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder s3Endpoint(String s3Endpoint) {
+            return s3Endpoint(Output.of(s3Endpoint));
         }
 
         /**

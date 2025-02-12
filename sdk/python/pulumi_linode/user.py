@@ -30,9 +30,11 @@ class UserArgs:
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]] = None,
+                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]] = None,
                  restricted: Optional[pulumi.Input[bool]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
-                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None):
+                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
+                 vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]] = None):
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] email: The email address of the user.
@@ -44,6 +46,7 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -51,6 +54,7 @@ class UserArgs:
                The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "username", username)
@@ -68,12 +72,16 @@ class UserArgs:
             pulumi.set(__self__, "longview_grants", longview_grants)
         if nodebalancer_grants is not None:
             pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
+        if placement_group_grants is not None:
+            pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         if restricted is not None:
             pulumi.set(__self__, "restricted", restricted)
         if stackscript_grants is not None:
             pulumi.set(__self__, "stackscript_grants", stackscript_grants)
         if volume_grants is not None:
             pulumi.set(__self__, "volume_grants", volume_grants)
+        if vpc_grants is not None:
+            pulumi.set(__self__, "vpc_grants", vpc_grants)
 
     @property
     @pulumi.getter
@@ -184,6 +192,18 @@ class UserArgs:
         pulumi.set(self, "nodebalancer_grants", value)
 
     @property
+    @pulumi.getter(name="placementGroupGrants")
+    def placement_group_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]:
+        """
+        The Placement Groups the user has permissions access to.
+        """
+        return pulumi.get(self, "placement_group_grants")
+
+    @placement_group_grants.setter
+    def placement_group_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]):
+        pulumi.set(self, "placement_group_grants", value)
+
+    @property
     @pulumi.getter
     def restricted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -223,6 +243,18 @@ class UserArgs:
     def volume_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]]):
         pulumi.set(self, "volume_grants", value)
 
+    @property
+    @pulumi.getter(name="vpcGrants")
+    def vpc_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]]:
+        """
+        The Virtual Private Clouds (VPCs) the user has permissions access to.
+        """
+        return pulumi.get(self, "vpc_grants")
+
+    @vpc_grants.setter
+    def vpc_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]]):
+        pulumi.set(self, "vpc_grants", value)
+
 
 @pulumi.input_type
 class _UserState:
@@ -235,13 +267,15 @@ class _UserState:
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]] = None,
+                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]] = None,
                  restricted: Optional[pulumi.Input[bool]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
                  tfa_enabled: Optional[pulumi.Input[bool]] = None,
                  user_type: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
-                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None):
+                 volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
+                 vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]] = None):
         """
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
@@ -252,6 +286,7 @@ class _UserState:
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -263,6 +298,7 @@ class _UserState:
         :param pulumi.Input[str] user_type: The type of this user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
         """
         if domain_grants is not None:
             pulumi.set(__self__, "domain_grants", domain_grants)
@@ -280,6 +316,8 @@ class _UserState:
             pulumi.set(__self__, "longview_grants", longview_grants)
         if nodebalancer_grants is not None:
             pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
+        if placement_group_grants is not None:
+            pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         if restricted is not None:
             pulumi.set(__self__, "restricted", restricted)
         if ssh_keys is not None:
@@ -294,6 +332,8 @@ class _UserState:
             pulumi.set(__self__, "username", username)
         if volume_grants is not None:
             pulumi.set(__self__, "volume_grants", volume_grants)
+        if vpc_grants is not None:
+            pulumi.set(__self__, "vpc_grants", vpc_grants)
 
     @property
     @pulumi.getter(name="domainGrants")
@@ -392,6 +432,18 @@ class _UserState:
         pulumi.set(self, "nodebalancer_grants", value)
 
     @property
+    @pulumi.getter(name="placementGroupGrants")
+    def placement_group_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]:
+        """
+        The Placement Groups the user has permissions access to.
+        """
+        return pulumi.get(self, "placement_group_grants")
+
+    @placement_group_grants.setter
+    def placement_group_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]):
+        pulumi.set(self, "placement_group_grants", value)
+
+    @property
     @pulumi.getter
     def restricted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -479,6 +531,18 @@ class _UserState:
     def volume_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]]):
         pulumi.set(self, "volume_grants", value)
 
+    @property
+    @pulumi.getter(name="vpcGrants")
+    def vpc_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]]:
+        """
+        The Virtual Private Clouds (VPCs) the user has permissions access to.
+        """
+        return pulumi.get(self, "vpc_grants")
+
+    @vpc_grants.setter
+    def vpc_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]]):
+        pulumi.set(self, "vpc_grants", value)
+
 
 class User(pulumi.CustomResource):
     @overload
@@ -493,10 +557,12 @@ class User(pulumi.CustomResource):
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
+                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]]] = None,
                  restricted: Optional[pulumi.Input[bool]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None,
+                 vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages a Linode User.
@@ -553,7 +619,11 @@ class User(pulumi.CustomResource):
 
         * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
 
+        * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
+
         * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+
+        * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
 
         * `cancel_account` - (optional) If true, this User may cancel the entire Account.
 
@@ -575,6 +645,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -583,6 +654,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
         """
         ...
     @overload
@@ -645,7 +717,11 @@ class User(pulumi.CustomResource):
 
         * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
 
+        * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
+
         * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+
+        * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
 
         * `cancel_account` - (optional) If true, this User may cancel the entire Account.
 
@@ -680,10 +756,12 @@ class User(pulumi.CustomResource):
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
+                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]]] = None,
                  restricted: Optional[pulumi.Input[bool]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None,
+                 vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -703,12 +781,14 @@ class User(pulumi.CustomResource):
             __props__.__dict__["linode_grants"] = linode_grants
             __props__.__dict__["longview_grants"] = longview_grants
             __props__.__dict__["nodebalancer_grants"] = nodebalancer_grants
+            __props__.__dict__["placement_group_grants"] = placement_group_grants
             __props__.__dict__["restricted"] = restricted
             __props__.__dict__["stackscript_grants"] = stackscript_grants
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["volume_grants"] = volume_grants
+            __props__.__dict__["vpc_grants"] = vpc_grants
             __props__.__dict__["ssh_keys"] = None
             __props__.__dict__["tfa_enabled"] = None
             __props__.__dict__["user_type"] = None
@@ -730,13 +810,15 @@ class User(pulumi.CustomResource):
             linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
             longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
             nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
+            placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]]] = None,
             restricted: Optional[pulumi.Input[bool]] = None,
             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
             tfa_enabled: Optional[pulumi.Input[bool]] = None,
             user_type: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
-            volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None) -> 'User':
+            volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]]] = None,
+            vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -752,6 +834,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -763,6 +846,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] user_type: The type of this user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -776,6 +860,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["linode_grants"] = linode_grants
         __props__.__dict__["longview_grants"] = longview_grants
         __props__.__dict__["nodebalancer_grants"] = nodebalancer_grants
+        __props__.__dict__["placement_group_grants"] = placement_group_grants
         __props__.__dict__["restricted"] = restricted
         __props__.__dict__["ssh_keys"] = ssh_keys
         __props__.__dict__["stackscript_grants"] = stackscript_grants
@@ -783,6 +868,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user_type"] = user_type
         __props__.__dict__["username"] = username
         __props__.__dict__["volume_grants"] = volume_grants
+        __props__.__dict__["vpc_grants"] = vpc_grants
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -850,6 +936,14 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "nodebalancer_grants")
 
     @property
+    @pulumi.getter(name="placementGroupGrants")
+    def placement_group_grants(self) -> pulumi.Output[Sequence['outputs.UserPlacementGroupGrant']]:
+        """
+        The Placement Groups the user has permissions access to.
+        """
+        return pulumi.get(self, "placement_group_grants")
+
+    @property
     @pulumi.getter
     def restricted(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -908,4 +1002,12 @@ class User(pulumi.CustomResource):
         The volumes the user has permissions access to.
         """
         return pulumi.get(self, "volume_grants")
+
+    @property
+    @pulumi.getter(name="vpcGrants")
+    def vpc_grants(self) -> pulumi.Output[Sequence['outputs.UserVpcGrant']]:
+        """
+        The Virtual Private Clouds (VPCs) the user has permissions access to.
+        """
+        return pulumi.get(self, "vpc_grants")
 

@@ -2511,6 +2511,10 @@ export interface GetLkeClustersLkeCluster {
      */
     tags: string[];
     /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    tier: string;
+    /**
      * When this Kubernetes cluster was updated.
      */
     updated: string;
@@ -3056,6 +3060,36 @@ export interface GetNodebalancersNodebalancerTransfer {
     total: number;
 }
 
+export interface GetObjectStorageEndpointsEndpoint {
+    /**
+     * The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType: string;
+    /**
+     * The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
+     */
+    region: string;
+    /**
+     * Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+     */
+    s3Endpoint: string;
+}
+
+export interface GetObjectStorageEndpointsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
 export interface GetPlacementGroupMember {
     /**
      * Whether this Linode is currently compliant with the group's placement group type.
@@ -3536,11 +3570,19 @@ export interface GetUserGlobalGrant {
      * If true, this User may add NodeBalancers.
      */
     addNodebalancers: boolean;
+    /**
+     * If true, this User may add Placement Groups.
+     */
+    addPlacementGroups: boolean;
     addStackscripts: boolean;
     /**
      * If true, this User may add Volumes.
      */
     addVolumes: boolean;
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     */
+    addVpcs: boolean;
     /**
      * If true, this User may cancel the entire Account.
      */
@@ -3611,6 +3653,21 @@ export interface GetUserNodebalancerGrant {
     permissions: string;
 }
 
+export interface GetUserPlacementGroupGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: string;
+}
+
 export interface GetUserStackscriptGrant {
     /**
      * The ID of entity this grant applies to.
@@ -3627,6 +3684,21 @@ export interface GetUserStackscriptGrant {
 }
 
 export interface GetUserVolumeGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
+     */
+    permissions: string;
+}
+
+export interface GetUserVpcGrant {
     /**
      * The ID of entity this grant applies to.
      */
@@ -3702,6 +3774,10 @@ export interface GetUsersUser {
      */
     passwordCreated: string;
     /**
+     * A set containing all of the user's active grants.
+     */
+    placementGroupGrants: outputs.GetUsersUserPlacementGroupGrant[];
+    /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
     restricted: boolean;
@@ -3733,6 +3809,10 @@ export interface GetUsersUser {
      * A set containing all of the user's active grants.
      */
     volumeGrants: outputs.GetUsersUserVolumeGrant[];
+    /**
+     * A set containing all of the user's active grants.
+     */
+    vpcGrants: outputs.GetUsersUserVpcGrant[];
 }
 
 export interface GetUsersUserDatabaseGrant {
@@ -3813,11 +3893,19 @@ export interface GetUsersUserGlobalGrant {
      * If true, this User may add NodeBalancers.
      */
     addNodebalancers: boolean;
+    /**
+     * If true, this User may add Placement Groups.
+     */
+    addPlacementGroups: boolean;
     addStackscripts: boolean;
     /**
      * If true, this User may add Volumes.
      */
     addVolumes: boolean;
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     */
+    addVpcs: boolean;
     /**
      * If true, this User may cancel the entire Account.
      */
@@ -3888,6 +3976,21 @@ export interface GetUsersUserNodebalancerGrant {
     permissions: string;
 }
 
+export interface GetUsersUserPlacementGroupGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
 export interface GetUsersUserStackscriptGrant {
     /**
      * The ID of entity this grant applies to.
@@ -3904,6 +4007,21 @@ export interface GetUsersUserStackscriptGrant {
 }
 
 export interface GetUsersUserVolumeGrant {
+    /**
+     * The ID of entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The current label of the entity this grant applies to, for display purposes.
+     */
+    label: string;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface GetUsersUserVpcGrant {
     /**
      * The ID of entity this grant applies to.
      */
@@ -5175,6 +5293,10 @@ export interface ObjectStorageKeyBucketAccess {
 
 export interface ObjectStorageKeyRegionsDetail {
     /**
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     */
+    endpointType: string;
+    /**
      * The ID of the region.
      */
     id: string;
@@ -5295,6 +5417,10 @@ export interface UserGlobalGrants {
      */
     addNodebalancers?: boolean;
     /**
+     * If true, this User may add Placement Groups.
+     */
+    addPlacementGroups?: boolean;
+    /**
      * If true, this User may add StackScripts.
      */
     addStackscripts?: boolean;
@@ -5302,6 +5428,10 @@ export interface UserGlobalGrants {
      * If true, this User may add Volumes.
      */
     addVolumes?: boolean;
+    /**
+     * If true, this User may add Virtual Private Clouds (VPCs).
+     */
+    addVpcs?: boolean;
     /**
      * If true, this User may cancel the entire Account.
      */
@@ -5356,6 +5486,17 @@ export interface UserNodebalancerGrant {
     permissions: string;
 }
 
+export interface UserPlacementGroupGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
 export interface UserStackscriptGrant {
     /**
      * The ID of the entity this grant applies to.
@@ -5368,6 +5509,17 @@ export interface UserStackscriptGrant {
 }
 
 export interface UserVolumeGrant {
+    /**
+     * The ID of the entity this grant applies to.
+     */
+    id: number;
+    /**
+     * The level of access this User has to this entity. If null, this User has no access.
+     */
+    permissions: string;
+}
+
+export interface UserVpcGrant {
     /**
      * The ID of the entity this grant applies to.
      */

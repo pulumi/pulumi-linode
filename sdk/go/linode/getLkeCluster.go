@@ -85,6 +85,8 @@ type LookupLkeClusterResult struct {
 	Status string `pulumi:"status"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	Tier string `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
 }
@@ -185,6 +187,11 @@ func (o LookupLkeClusterResultOutput) Status() pulumi.StringOutput {
 // An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 func (o LookupLkeClusterResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+func (o LookupLkeClusterResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 // When this Kubernetes cluster was updated.

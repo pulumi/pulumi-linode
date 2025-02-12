@@ -67,14 +67,16 @@ type GetLinodeObjectStorageBucketArgs struct {
 // A collection of values returned by getLinodeObjectStorageBucket.
 type GetLinodeObjectStorageBucketResult struct {
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-	Cluster  string `pulumi:"cluster"`
-	Created  string `pulumi:"created"`
-	Hostname string `pulumi:"hostname"`
-	Id       string `pulumi:"id"`
-	Label    string `pulumi:"label"`
-	Objects  int    `pulumi:"objects"`
-	Region   string `pulumi:"region"`
-	Size     int    `pulumi:"size"`
+	Cluster      string `pulumi:"cluster"`
+	Created      string `pulumi:"created"`
+	EndpointType string `pulumi:"endpointType"`
+	Hostname     string `pulumi:"hostname"`
+	Id           string `pulumi:"id"`
+	Label        string `pulumi:"label"`
+	Objects      int    `pulumi:"objects"`
+	Region       string `pulumi:"region"`
+	S3Endpoint   string `pulumi:"s3Endpoint"`
+	Size         int    `pulumi:"size"`
 }
 
 func GetLinodeObjectStorageBucketOutput(ctx *pulumi.Context, args GetLinodeObjectStorageBucketOutputArgs, opts ...pulumi.InvokeOption) GetLinodeObjectStorageBucketResultOutput {
@@ -126,6 +128,10 @@ func (o GetLinodeObjectStorageBucketResultOutput) Created() pulumi.StringOutput 
 	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+func (o GetLinodeObjectStorageBucketResultOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
 func (o GetLinodeObjectStorageBucketResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -144,6 +150,10 @@ func (o GetLinodeObjectStorageBucketResultOutput) Objects() pulumi.IntOutput {
 
 func (o GetLinodeObjectStorageBucketResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetLinodeObjectStorageBucketResultOutput) S3Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLinodeObjectStorageBucketResult) string { return v.S3Endpoint }).(pulumi.StringOutput)
 }
 
 func (o GetLinodeObjectStorageBucketResultOutput) Size() pulumi.IntOutput {

@@ -101,6 +101,10 @@ export interface GetLkeClusterResult {
      */
     readonly tags: string[];
     /**
+     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    readonly tier: string;
+    /**
      * When this Kubernetes cluster was updated.
      */
     readonly updated: string;

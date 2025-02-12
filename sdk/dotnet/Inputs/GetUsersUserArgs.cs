@@ -126,6 +126,18 @@ namespace Pulumi.Linode.Inputs
         [Input("passwordCreated", required: true)]
         public Input<string> PasswordCreated { get; set; } = null!;
 
+        [Input("placementGroupGrants", required: true)]
+        private InputList<Inputs.GetUsersUserPlacementGroupGrantInputArgs>? _placementGroupGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
+        public InputList<Inputs.GetUsersUserPlacementGroupGrantInputArgs> PlacementGroupGrants
+        {
+            get => _placementGroupGrants ?? (_placementGroupGrants = new InputList<Inputs.GetUsersUserPlacementGroupGrantInputArgs>());
+            set => _placementGroupGrants = value;
+        }
+
         /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
@@ -190,6 +202,18 @@ namespace Pulumi.Linode.Inputs
         {
             get => _volumeGrants ?? (_volumeGrants = new InputList<Inputs.GetUsersUserVolumeGrantInputArgs>());
             set => _volumeGrants = value;
+        }
+
+        [Input("vpcGrants", required: true)]
+        private InputList<Inputs.GetUsersUserVpcGrantInputArgs>? _vpcGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
+        public InputList<Inputs.GetUsersUserVpcGrantInputArgs> VpcGrants
+        {
+            get => _vpcGrants ?? (_vpcGrants = new InputList<Inputs.GetUsersUserVpcGrantInputArgs>());
+            set => _vpcGrants = value;
         }
 
         public GetUsersUserInputArgs()

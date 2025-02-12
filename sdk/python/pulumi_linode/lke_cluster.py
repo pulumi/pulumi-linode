@@ -27,7 +27,8 @@ class LkeClusterArgs:
                  region: pulumi.Input[str],
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LkeCluster resource.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
@@ -41,6 +42,7 @@ class LkeClusterArgs:
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "label", label)
@@ -52,6 +54,8 @@ class LkeClusterArgs:
             pulumi.set(__self__, "external_pool_tags", external_pool_tags)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
 
     @property
     @pulumi.getter(name="k8sVersion")
@@ -141,6 +145,18 @@ class LkeClusterArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
 
 @pulumi.input_type
 class _LkeClusterState:
@@ -155,7 +171,8 @@ class _LkeClusterState:
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tier: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LkeCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
@@ -173,6 +190,7 @@ class _LkeClusterState:
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
         """
         if api_endpoints is not None:
             pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -196,6 +214,8 @@ class _LkeClusterState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
 
     @property
     @pulumi.getter(name="apiEndpoints")
@@ -333,6 +353,18 @@ class _LkeClusterState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
 
 class LkeCluster(pulumi.CustomResource):
     @overload
@@ -346,6 +378,7 @@ class LkeCluster(pulumi.CustomResource):
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -369,6 +402,7 @@ class LkeCluster(pulumi.CustomResource):
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
         """
         ...
     @overload
@@ -407,6 +441,7 @@ class LkeCluster(pulumi.CustomResource):
                  pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -431,6 +466,7 @@ class LkeCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tier"] = tier
             __props__.__dict__["api_endpoints"] = None
             __props__.__dict__["dashboard_url"] = None
             __props__.__dict__["kubeconfig"] = None
@@ -457,7 +493,8 @@ class LkeCluster(pulumi.CustomResource):
             pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'LkeCluster':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tier: Optional[pulumi.Input[str]] = None) -> 'LkeCluster':
         """
         Get an existing LkeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -480,6 +517,7 @@ class LkeCluster(pulumi.CustomResource):
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -496,6 +534,7 @@ class LkeCluster(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tier"] = tier
         return LkeCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -589,4 +628,12 @@ class LkeCluster(pulumi.CustomResource):
         An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Output[str]:
+        """
+        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "tier")
 

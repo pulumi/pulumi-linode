@@ -217,6 +217,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly string Tier;
+        /// <summary>
         /// When this Kubernetes cluster was updated.
         /// </summary>
         public readonly string Updated;
@@ -247,6 +251,8 @@ namespace Pulumi.Linode
 
             ImmutableArray<string> tags,
 
+            string tier,
+
             string updated)
         {
             ApiEndpoints = apiEndpoints;
@@ -261,6 +267,7 @@ namespace Pulumi.Linode
             Region = region;
             Status = status;
             Tags = tags;
+            Tier = tier;
             Updated = updated;
         }
     }

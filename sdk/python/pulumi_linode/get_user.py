@@ -28,7 +28,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, password_created=None, restricted=None, ssh_keys=None, stackscript_grants=None, tfa_enabled=None, user_type=None, username=None, verified_phone_number=None, volume_grants=None):
+    def __init__(__self__, database_grants=None, domain_grants=None, email=None, firewall_grants=None, global_grants=None, id=None, image_grants=None, linode_grants=None, longview_grants=None, nodebalancer_grants=None, password_created=None, placement_group_grants=None, restricted=None, ssh_keys=None, stackscript_grants=None, tfa_enabled=None, user_type=None, username=None, verified_phone_number=None, volume_grants=None, vpc_grants=None):
         if database_grants and not isinstance(database_grants, list):
             raise TypeError("Expected argument 'database_grants' to be a list")
         pulumi.set(__self__, "database_grants", database_grants)
@@ -62,6 +62,9 @@ class GetUserResult:
         if password_created and not isinstance(password_created, str):
             raise TypeError("Expected argument 'password_created' to be a str")
         pulumi.set(__self__, "password_created", password_created)
+        if placement_group_grants and not isinstance(placement_group_grants, list):
+            raise TypeError("Expected argument 'placement_group_grants' to be a list")
+        pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         if restricted and not isinstance(restricted, bool):
             raise TypeError("Expected argument 'restricted' to be a bool")
         pulumi.set(__self__, "restricted", restricted)
@@ -86,6 +89,9 @@ class GetUserResult:
         if volume_grants and not isinstance(volume_grants, list):
             raise TypeError("Expected argument 'volume_grants' to be a list")
         pulumi.set(__self__, "volume_grants", volume_grants)
+        if vpc_grants and not isinstance(vpc_grants, list):
+            raise TypeError("Expected argument 'vpc_grants' to be a list")
+        pulumi.set(__self__, "vpc_grants", vpc_grants)
 
     @property
     @pulumi.getter(name="databaseGrants")
@@ -152,6 +158,11 @@ class GetUserResult:
         return pulumi.get(self, "password_created")
 
     @property
+    @pulumi.getter(name="placementGroupGrants")
+    def placement_group_grants(self) -> Sequence['outputs.GetUserPlacementGroupGrantResult']:
+        return pulumi.get(self, "placement_group_grants")
+
+    @property
     @pulumi.getter
     def restricted(self) -> bool:
         """
@@ -206,6 +217,11 @@ class GetUserResult:
     def volume_grants(self) -> Sequence['outputs.GetUserVolumeGrantResult']:
         return pulumi.get(self, "volume_grants")
 
+    @property
+    @pulumi.getter(name="vpcGrants")
+    def vpc_grants(self) -> Sequence['outputs.GetUserVpcGrantResult']:
+        return pulumi.get(self, "vpc_grants")
+
 
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
@@ -224,6 +240,7 @@ class AwaitableGetUserResult(GetUserResult):
             longview_grants=self.longview_grants,
             nodebalancer_grants=self.nodebalancer_grants,
             password_created=self.password_created,
+            placement_group_grants=self.placement_group_grants,
             restricted=self.restricted,
             ssh_keys=self.ssh_keys,
             stackscript_grants=self.stackscript_grants,
@@ -231,7 +248,8 @@ class AwaitableGetUserResult(GetUserResult):
             user_type=self.user_type,
             username=self.username,
             verified_phone_number=self.verified_phone_number,
-            volume_grants=self.volume_grants)
+            volume_grants=self.volume_grants,
+            vpc_grants=self.vpc_grants)
 
 
 def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict']]] = None,
@@ -241,9 +259,11 @@ def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs'
              linode_grants: Optional[Sequence[Union['GetUserLinodeGrantArgs', 'GetUserLinodeGrantArgsDict']]] = None,
              longview_grants: Optional[Sequence[Union['GetUserLongviewGrantArgs', 'GetUserLongviewGrantArgsDict']]] = None,
              nodebalancer_grants: Optional[Sequence[Union['GetUserNodebalancerGrantArgs', 'GetUserNodebalancerGrantArgsDict']]] = None,
+             placement_group_grants: Optional[Sequence[Union['GetUserPlacementGroupGrantArgs', 'GetUserPlacementGroupGrantArgsDict']]] = None,
              stackscript_grants: Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict']]] = None,
              username: Optional[str] = None,
              volume_grants: Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict']]] = None,
+             vpc_grants: Optional[Sequence[Union['GetUserVpcGrantArgs', 'GetUserVpcGrantArgsDict']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Provides information about a Linode user
@@ -273,9 +293,11 @@ def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs'
     __args__['linodeGrants'] = linode_grants
     __args__['longviewGrants'] = longview_grants
     __args__['nodebalancerGrants'] = nodebalancer_grants
+    __args__['placementGroupGrants'] = placement_group_grants
     __args__['stackscriptGrants'] = stackscript_grants
     __args__['username'] = username
     __args__['volumeGrants'] = volume_grants
+    __args__['vpcGrants'] = vpc_grants
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
@@ -291,6 +313,7 @@ def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs'
         longview_grants=pulumi.get(__ret__, 'longview_grants'),
         nodebalancer_grants=pulumi.get(__ret__, 'nodebalancer_grants'),
         password_created=pulumi.get(__ret__, 'password_created'),
+        placement_group_grants=pulumi.get(__ret__, 'placement_group_grants'),
         restricted=pulumi.get(__ret__, 'restricted'),
         ssh_keys=pulumi.get(__ret__, 'ssh_keys'),
         stackscript_grants=pulumi.get(__ret__, 'stackscript_grants'),
@@ -298,7 +321,8 @@ def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs'
         user_type=pulumi.get(__ret__, 'user_type'),
         username=pulumi.get(__ret__, 'username'),
         verified_phone_number=pulumi.get(__ret__, 'verified_phone_number'),
-        volume_grants=pulumi.get(__ret__, 'volume_grants'))
+        volume_grants=pulumi.get(__ret__, 'volume_grants'),
+        vpc_grants=pulumi.get(__ret__, 'vpc_grants'))
 def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict']]]]] = None,
                     domain_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserDomainGrantArgs', 'GetUserDomainGrantArgsDict']]]]] = None,
                     firewall_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserFirewallGrantArgs', 'GetUserFirewallGrantArgsDict']]]]] = None,
@@ -306,9 +330,11 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
                     linode_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserLinodeGrantArgs', 'GetUserLinodeGrantArgsDict']]]]] = None,
                     longview_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserLongviewGrantArgs', 'GetUserLongviewGrantArgsDict']]]]] = None,
                     nodebalancer_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserNodebalancerGrantArgs', 'GetUserNodebalancerGrantArgsDict']]]]] = None,
+                    placement_group_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserPlacementGroupGrantArgs', 'GetUserPlacementGroupGrantArgsDict']]]]] = None,
                     stackscript_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict']]]]] = None,
                     username: Optional[pulumi.Input[str]] = None,
                     volume_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict']]]]] = None,
+                    vpc_grants: Optional[pulumi.Input[Optional[Sequence[Union['GetUserVpcGrantArgs', 'GetUserVpcGrantArgsDict']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Provides information about a Linode user
@@ -338,9 +364,11 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
     __args__['linodeGrants'] = linode_grants
     __args__['longviewGrants'] = longview_grants
     __args__['nodebalancerGrants'] = nodebalancer_grants
+    __args__['placementGroupGrants'] = placement_group_grants
     __args__['stackscriptGrants'] = stackscript_grants
     __args__['username'] = username
     __args__['volumeGrants'] = volume_grants
+    __args__['vpcGrants'] = vpc_grants
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
@@ -355,6 +383,7 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
         longview_grants=pulumi.get(__response__, 'longview_grants'),
         nodebalancer_grants=pulumi.get(__response__, 'nodebalancer_grants'),
         password_created=pulumi.get(__response__, 'password_created'),
+        placement_group_grants=pulumi.get(__response__, 'placement_group_grants'),
         restricted=pulumi.get(__response__, 'restricted'),
         ssh_keys=pulumi.get(__response__, 'ssh_keys'),
         stackscript_grants=pulumi.get(__response__, 'stackscript_grants'),
@@ -362,4 +391,5 @@ def get_user_output(database_grants: Optional[pulumi.Input[Optional[Sequence[Uni
         user_type=pulumi.get(__response__, 'user_type'),
         username=pulumi.get(__response__, 'username'),
         verified_phone_number=pulumi.get(__response__, 'verified_phone_number'),
-        volume_grants=pulumi.get(__response__, 'volume_grants')))
+        volume_grants=pulumi.get(__response__, 'volume_grants'),
+        vpc_grants=pulumi.get(__response__, 'vpc_grants')))

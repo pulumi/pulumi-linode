@@ -91,6 +91,12 @@ namespace Pulumi.Linode
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a LkeCluster resource with the given unique name, arguments, and options.
@@ -205,6 +211,12 @@ namespace Pulumi.Linode
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Input("tier")]
+        public Input<string>? Tier { get; set; }
+
         public LkeClusterArgs()
         {
         }
@@ -316,6 +328,12 @@ namespace Pulumi.Linode
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Input("tier")]
+        public Input<string>? Tier { get; set; }
 
         public LkeClusterState()
         {

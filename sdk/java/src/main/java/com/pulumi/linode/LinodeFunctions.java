@@ -99,6 +99,8 @@ import com.pulumi.linode.inputs.GetNodebalancersArgs;
 import com.pulumi.linode.inputs.GetNodebalancersPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterPlainArgs;
+import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+import com.pulumi.linode.inputs.GetObjectStorageEndpointsPlainArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupPlainArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
@@ -185,6 +187,7 @@ import com.pulumi.linode.outputs.GetNodeBalancerResult;
 import com.pulumi.linode.outputs.GetNodebalancerConfigsResult;
 import com.pulumi.linode.outputs.GetNodebalancersResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
+import com.pulumi.linode.outputs.GetObjectStorageEndpointsResult;
 import com.pulumi.linode.outputs.GetPlacementGroupResult;
 import com.pulumi.linode.outputs.GetPlacementGroupsResult;
 import com.pulumi.linode.outputs.GetProfileResult;
@@ -17854,6 +17857,643 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageCluster:getObjectStorageCluster", TypeShape.of(GetObjectStorageClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static Output<GetObjectStorageEndpointsResult> getObjectStorageEndpoints() {
+        return getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageEndpointsResult> getObjectStorageEndpointsPlain() {
+        return getObjectStorageEndpointsPlain(GetObjectStorageEndpointsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static Output<GetObjectStorageEndpointsResult> getObjectStorageEndpoints(GetObjectStorageEndpointsArgs args) {
+        return getObjectStorageEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageEndpointsResult> getObjectStorageEndpointsPlain(GetObjectStorageEndpointsPlainArgs args) {
+        return getObjectStorageEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static Output<GetObjectStorageEndpointsResult> getObjectStorageEndpoints(GetObjectStorageEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", TypeShape.of(GetObjectStorageEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static Output<GetObjectStorageEndpointsResult> getObjectStorageEndpoints(GetObjectStorageEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", TypeShape.of(GetObjectStorageEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Object Storage endpoints available to the user.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
+     * 
+     * ## Example Usage
+     * 
+     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .filters(GetObjectStorageEndpointsFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E3")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get a list of all available endpoints of Linode Object Storage services.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     * 
+     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `endpoint_type`
+     * 
+     * * `region`
+     * 
+     * * `s3_endpoint`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageEndpointsResult> getObjectStorageEndpointsPlain(GetObjectStorageEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", TypeShape.of(GetObjectStorageEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * `linode.PlacementGroup` provides details about a Linode placement group.

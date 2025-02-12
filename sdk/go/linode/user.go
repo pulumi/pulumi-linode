@@ -100,7 +100,11 @@ import (
 //
 // * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
 //
+// * `addPlacementGroups` - (optional) If true, this User may add Placement Groups.
+//
 // * `addStackscripts` - (optional) If true, this User may add StackScripts.
+//
+// * `addVpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
 //
 // * `cancelAccount` - (optional) If true, this User may cancel the entire Account.
 //
@@ -130,6 +134,8 @@ type User struct {
 	LongviewGrants UserLongviewGrantArrayOutput `pulumi:"longviewGrants"`
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayOutput `pulumi:"nodebalancerGrants"`
+	// The Placement Groups the user has permissions access to.
+	PlacementGroupGrants UserPlacementGroupGrantArrayOutput `pulumi:"placementGroupGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -148,6 +154,8 @@ type User struct {
 	Username pulumi.StringOutput `pulumi:"username"`
 	// The volumes the user has permissions access to.
 	VolumeGrants UserVolumeGrantArrayOutput `pulumi:"volumeGrants"`
+	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	VpcGrants UserVpcGrantArrayOutput `pulumi:"vpcGrants"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -202,6 +210,8 @@ type userState struct {
 	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
+	// The Placement Groups the user has permissions access to.
+	PlacementGroupGrants []UserPlacementGroupGrant `pulumi:"placementGroupGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -220,6 +230,8 @@ type userState struct {
 	Username *string `pulumi:"username"`
 	// The volumes the user has permissions access to.
 	VolumeGrants []UserVolumeGrant `pulumi:"volumeGrants"`
+	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	VpcGrants []UserVpcGrant `pulumi:"vpcGrants"`
 }
 
 type UserState struct {
@@ -239,6 +251,8 @@ type UserState struct {
 	LongviewGrants UserLongviewGrantArrayInput
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
+	// The Placement Groups the user has permissions access to.
+	PlacementGroupGrants UserPlacementGroupGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -257,6 +271,8 @@ type UserState struct {
 	Username pulumi.StringPtrInput
 	// The volumes the user has permissions access to.
 	VolumeGrants UserVolumeGrantArrayInput
+	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	VpcGrants UserVpcGrantArrayInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -280,6 +296,8 @@ type userArgs struct {
 	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
+	// The Placement Groups the user has permissions access to.
+	PlacementGroupGrants []UserPlacementGroupGrant `pulumi:"placementGroupGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -292,6 +310,8 @@ type userArgs struct {
 	Username string `pulumi:"username"`
 	// The volumes the user has permissions access to.
 	VolumeGrants []UserVolumeGrant `pulumi:"volumeGrants"`
+	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	VpcGrants []UserVpcGrant `pulumi:"vpcGrants"`
 }
 
 // The set of arguments for constructing a User resource.
@@ -312,6 +332,8 @@ type UserArgs struct {
 	LongviewGrants UserLongviewGrantArrayInput
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
+	// The Placement Groups the user has permissions access to.
+	PlacementGroupGrants UserPlacementGroupGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -324,6 +346,8 @@ type UserArgs struct {
 	Username pulumi.StringInput
 	// The volumes the user has permissions access to.
 	VolumeGrants UserVolumeGrantArrayInput
+	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	VpcGrants UserVpcGrantArrayInput
 }
 
 func (UserArgs) ElementType() reflect.Type {
@@ -453,6 +477,11 @@ func (o UserOutput) NodebalancerGrants() UserNodebalancerGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserNodebalancerGrantArrayOutput { return v.NodebalancerGrants }).(UserNodebalancerGrantArrayOutput)
 }
 
+// The Placement Groups the user has permissions access to.
+func (o UserOutput) PlacementGroupGrants() UserPlacementGroupGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserPlacementGroupGrantArrayOutput { return v.PlacementGroupGrants }).(UserPlacementGroupGrantArrayOutput)
+}
+
 // If true, this user will only have explicit permissions granted.
 //
 // * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -490,6 +519,11 @@ func (o UserOutput) Username() pulumi.StringOutput {
 // The volumes the user has permissions access to.
 func (o UserOutput) VolumeGrants() UserVolumeGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserVolumeGrantArrayOutput { return v.VolumeGrants }).(UserVolumeGrantArrayOutput)
+}
+
+// The Virtual Private Clouds (VPCs) the user has permissions access to.
+func (o UserOutput) VpcGrants() UserVpcGrantArrayOutput {
+	return o.ApplyT(func(v *User) UserVpcGrantArrayOutput { return v.VpcGrants }).(UserVpcGrantArrayOutput)
 }
 
 type UserArrayOutput struct{ *pulumi.OutputState }

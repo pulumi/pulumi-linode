@@ -126,6 +126,18 @@ namespace Pulumi.Linode.Inputs
         [Input("passwordCreated", required: true)]
         public string PasswordCreated { get; set; } = null!;
 
+        [Input("placementGroupGrants", required: true)]
+        private List<Inputs.GetUsersUserPlacementGroupGrantArgs>? _placementGroupGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
+        public List<Inputs.GetUsersUserPlacementGroupGrantArgs> PlacementGroupGrants
+        {
+            get => _placementGroupGrants ?? (_placementGroupGrants = new List<Inputs.GetUsersUserPlacementGroupGrantArgs>());
+            set => _placementGroupGrants = value;
+        }
+
         /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
@@ -190,6 +202,18 @@ namespace Pulumi.Linode.Inputs
         {
             get => _volumeGrants ?? (_volumeGrants = new List<Inputs.GetUsersUserVolumeGrantArgs>());
             set => _volumeGrants = value;
+        }
+
+        [Input("vpcGrants", required: true)]
+        private List<Inputs.GetUsersUserVpcGrantArgs>? _vpcGrants;
+
+        /// <summary>
+        /// A set containing all of the user's active grants.
+        /// </summary>
+        public List<Inputs.GetUsersUserVpcGrantArgs> VpcGrants
+        {
+            get => _vpcGrants ?? (_vpcGrants = new List<Inputs.GetUsersUserVpcGrantArgs>());
+            set => _vpcGrants = value;
         }
 
         public GetUsersUserArgs()
