@@ -1837,6 +1837,10 @@
         },
         "linode:index/ObjectStorageKeyRegionsDetail:ObjectStorageKeyRegionsDetail": {
             "properties": {
+                "endpointType": {
+                    "type": "string",
+                    "description": "The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "The ID of the region.\n"
@@ -1848,6 +1852,7 @@
             },
             "type": "object",
             "required": [
+                "endpointType",
                 "id",
                 "s3Endpoint"
             ]
@@ -2006,6 +2011,10 @@
                     "type": "boolean",
                     "description": "If true, this User may add NodeBalancers.\n"
                 },
+                "addPlacementGroups": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Placement Groups.\n"
+                },
                 "addStackscripts": {
                     "type": "boolean",
                     "description": "If true, this User may add StackScripts.\n"
@@ -2013,6 +2022,10 @@
                 "addVolumes": {
                     "type": "boolean",
                     "description": "If true, this User may add Volumes.\n"
+                },
+                "addVpcs": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Virtual Private Clouds (VPCs).\n"
                 },
                 "cancelAccount": {
                     "type": "boolean",
@@ -2093,6 +2106,23 @@
                 "permissions"
             ]
         },
+        "linode:index/UserPlacementGroupGrant:UserPlacementGroupGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "permissions"
+            ]
+        },
         "linode:index/UserStackscriptGrant:UserStackscriptGrant": {
             "properties": {
                 "id": {
@@ -2111,6 +2141,23 @@
             ]
         },
         "linode:index/UserVolumeGrant:UserVolumeGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the entity this grant applies to.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "permissions"
+            ]
+        },
+        "linode:index/UserVpcGrant:UserVpcGrant": {
             "properties": {
                 "id": {
                     "type": "integer",
@@ -6213,6 +6260,10 @@
                     },
                     "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n"
                 },
+                "tier": {
+                    "type": "string",
+                    "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n"
+                },
                 "updated": {
                     "type": "string",
                     "description": "When this Kubernetes cluster was updated.\n"
@@ -6227,6 +6278,7 @@
                 "region",
                 "status",
                 "tags",
+                "tier",
                 "updated"
             ],
             "language": {
@@ -7154,6 +7206,57 @@
                 "total"
             ]
         },
+        "linode:index/getObjectStorageEndpointsEndpoint:getObjectStorageEndpointsEndpoint": {
+            "properties": {
+                "endpointType": {
+                    "type": "string",
+                    "description": "The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.\n"
+                },
+                "s3Endpoint": {
+                    "type": "string",
+                    "description": "Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpointType",
+                "region",
+                "s3Endpoint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getObjectStorageEndpointsFilter:getObjectStorageEndpointsFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
         "linode:index/getPlacementGroupMember:getPlacementGroupMember": {
             "properties": {
                 "isCompliant": {
@@ -7941,12 +8044,20 @@
                     "type": "boolean",
                     "description": "If true, this User may add NodeBalancers.\n"
                 },
+                "addPlacementGroups": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Placement Groups.\n"
+                },
                 "addStackscripts": {
                     "type": "boolean"
                 },
                 "addVolumes": {
                     "type": "boolean",
                     "description": "If true, this User may add Volumes.\n"
+                },
+                "addVpcs": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Virtual Private Clouds (VPCs).\n"
                 },
                 "cancelAccount": {
                     "type": "boolean",
@@ -7967,8 +8078,10 @@
                 "addLinodes",
                 "addLongview",
                 "addNodebalancers",
+                "addPlacementGroups",
                 "addStackscripts",
                 "addVolumes",
+                "addVpcs",
                 "cancelAccount",
                 "longviewSubscription"
             ],
@@ -8066,6 +8179,28 @@
                 "permissions"
             ]
         },
+        "linode:index/getUserPlacementGroupGrant:getUserPlacementGroupGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
         "linode:index/getUserStackscriptGrant:getUserStackscriptGrant": {
             "properties": {
                 "id": {
@@ -8089,6 +8224,28 @@
             ]
         },
         "linode:index/getUserVolumeGrant:getUserVolumeGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUserVpcGrant:getUserVpcGrant": {
             "properties": {
                 "id": {
                     "type": "integer",
@@ -8204,6 +8361,13 @@
                     "type": "string",
                     "description": "The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.\n"
                 },
+                "placementGroupGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserPlacementGroupGrant:getUsersUserPlacementGroupGrant"
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
+                },
                 "restricted": {
                     "type": "boolean",
                     "description": "If true, this User must be granted access to perform actions or access entities on this Account.\n"
@@ -8244,6 +8408,13 @@
                         "$ref": "#/types/linode:index/getUsersUserVolumeGrant:getUsersUserVolumeGrant"
                     },
                     "description": "A set containing all of the user's active grants.\n"
+                },
+                "vpcGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getUsersUserVpcGrant:getUsersUserVpcGrant"
+                    },
+                    "description": "A set containing all of the user's active grants.\n"
                 }
             },
             "type": "object",
@@ -8259,6 +8430,7 @@
                 "longviewGrants",
                 "nodebalancerGrants",
                 "passwordCreated",
+                "placementGroupGrants",
                 "restricted",
                 "sshKeys",
                 "stackscriptGrants",
@@ -8266,7 +8438,8 @@
                 "userType",
                 "username",
                 "verifiedPhoneNumber",
-                "volumeGrants"
+                "volumeGrants",
+                "vpcGrants"
             ],
             "language": {
                 "nodejs": {
@@ -8376,12 +8549,20 @@
                     "type": "boolean",
                     "description": "If true, this User may add NodeBalancers.\n"
                 },
+                "addPlacementGroups": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Placement Groups.\n"
+                },
                 "addStackscripts": {
                     "type": "boolean"
                 },
                 "addVolumes": {
                     "type": "boolean",
                     "description": "If true, this User may add Volumes.\n"
+                },
+                "addVpcs": {
+                    "type": "boolean",
+                    "description": "If true, this User may add Virtual Private Clouds (VPCs).\n"
                 },
                 "cancelAccount": {
                     "type": "boolean",
@@ -8402,8 +8583,10 @@
                 "addLinodes",
                 "addLongview",
                 "addNodebalancers",
+                "addPlacementGroups",
                 "addStackscripts",
                 "addVolumes",
+                "addVpcs",
                 "cancelAccount",
                 "longviewSubscription"
             ]
@@ -8496,6 +8679,28 @@
                 "permissions"
             ]
         },
+        "linode:index/getUsersUserPlacementGroupGrant:getUsersUserPlacementGroupGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
         "linode:index/getUsersUserStackscriptGrant:getUsersUserStackscriptGrant": {
             "properties": {
                 "id": {
@@ -8519,6 +8724,28 @@
             ]
         },
         "linode:index/getUsersUserVolumeGrant:getUsersUserVolumeGrant": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of entity this grant applies to.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The current label of the entity this grant applies to, for display purposes.\n"
+                },
+                "permissions": {
+                    "type": "string",
+                    "description": "The level of access this User has to this entity. If null, this User has no access.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "label",
+                "permissions"
+            ]
+        },
+        "linode:index/getUsersUserVpcGrant:getUsersUserVpcGrant": {
             "properties": {
                 "id": {
                     "type": "integer",
@@ -13045,6 +13272,10 @@
                         "type": "string"
                     },
                     "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
+                },
+                "tier": {
+                    "type": "string",
+                    "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n"
                 }
             },
             "required": [
@@ -13057,7 +13288,8 @@
                 "pools",
                 "region",
                 "status",
-                "tags"
+                "tags",
+                "tier"
             ],
             "inputProperties": {
                 "controlPlane": {
@@ -13097,6 +13329,11 @@
                         "type": "string"
                     },
                     "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
+                },
+                "tier": {
+                    "type": "string",
+                    "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -13165,6 +13402,11 @@
                             "type": "string"
                         },
                         "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
+                    },
+                    "tier": {
+                        "type": "string",
+                        "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -14026,7 +14268,12 @@
                 },
                 "endpoint": {
                     "type": "string",
-                    "description": "The endpoint for the bucket used for s3 connections.\n"
+                    "description": "The endpoint for the bucket used for s3 connections.\n",
+                    "deprecationMessage": "Use `s3_endpoint` instead"
+                },
+                "endpointType": {
+                    "type": "string",
+                    "description": "The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -14047,6 +14294,10 @@
                     "type": "string",
                     "description": "The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.\n"
                 },
+                "s3Endpoint": {
+                    "type": "string",
+                    "description": "The user's s3 endpoint URL, based on the `endpoint_type` and `region`.\n"
+                },
                 "secretKey": {
                     "type": "string",
                     "description": "The secret key to authenticate with. If not specified with the resource, its value can be\n* configured by `obj_secret_key` in the provider configuration;\n* or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.\n",
@@ -14061,9 +14312,11 @@
                 "cluster",
                 "corsEnabled",
                 "endpoint",
+                "endpointType",
                 "hostname",
                 "label",
                 "region",
+                "s3Endpoint",
                 "versioning"
             ],
             "inputProperties": {
@@ -14089,6 +14342,11 @@
                     "type": "boolean",
                     "description": "If true, the bucket will have CORS enabled for all origins.\n"
                 },
+                "endpointType": {
+                    "type": "string",
+                    "description": "The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.\n",
+                    "willReplaceOnChanges": true
+                },
                 "label": {
                     "type": "string",
                     "description": "The label of the Linode Object Storage Bucket.\n",
@@ -14104,6 +14362,11 @@
                 "region": {
                     "type": "string",
                     "description": "The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.\n",
+                    "willReplaceOnChanges": true
+                },
+                "s3Endpoint": {
+                    "type": "string",
+                    "description": "The user's s3 endpoint URL, based on the `endpoint_type` and `region`.\n",
                     "willReplaceOnChanges": true
                 },
                 "secretKey": {
@@ -14146,7 +14409,13 @@
                     },
                     "endpoint": {
                         "type": "string",
-                        "description": "The endpoint for the bucket used for s3 connections.\n"
+                        "description": "The endpoint for the bucket used for s3 connections.\n",
+                        "deprecationMessage": "Use `s3_endpoint` instead"
+                    },
+                    "endpointType": {
+                        "type": "string",
+                        "description": "The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.\n",
+                        "willReplaceOnChanges": true
                     },
                     "hostname": {
                         "type": "string",
@@ -14167,6 +14436,11 @@
                     "region": {
                         "type": "string",
                         "description": "The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "s3Endpoint": {
+                        "type": "string",
+                        "description": "The user's s3 endpoint URL, based on the `endpoint_type` and `region`.\n",
                         "willReplaceOnChanges": true
                     },
                     "secretKey": {
@@ -15308,7 +15582,7 @@
             }
         },
         "linode:index/user:User": {
-            "description": "Manages a Linode User.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-user).\n\n## Example Usage\n\nCreate an unrestricted user:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst john = new linode.User(\"john\", {\n    username: \"john123\",\n    email: \"john@acme.io\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\njohn = linode.User(\"john\",\n    username=\"john123\",\n    email=\"john@acme.io\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var john = new Linode.User(\"john\", new()\n    {\n        Username = \"john123\",\n        Email = \"john@acme.io\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"john\", \u0026linode.UserArgs{\n\t\t\tUsername: pulumi.String(\"john123\"),\n\t\t\tEmail:    pulumi.String(\"john@acme.io\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.User;\nimport com.pulumi.linode.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var john = new User(\"john\", UserArgs.builder()\n            .username(\"john123\")\n            .email(\"john@acme.io\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  john:\n    type: linode:User\n    properties:\n      username: john123\n      email: john@acme.io\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a restricted user with grants:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooser = new linode.User(\"fooser\", {\n    username: \"cooluser123\",\n    email: \"cool@acme.io\",\n    restricted: true,\n    globalGrants: {\n        addLinodes: true,\n        addImages: true,\n    },\n    linodeGrants: [{\n        id: 12345,\n        permissions: \"read_write\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfooser = linode.User(\"fooser\",\n    username=\"cooluser123\",\n    email=\"cool@acme.io\",\n    restricted=True,\n    global_grants={\n        \"add_linodes\": True,\n        \"add_images\": True,\n    },\n    linode_grants=[{\n        \"id\": 12345,\n        \"permissions\": \"read_write\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fooser = new Linode.User(\"fooser\", new()\n    {\n        Username = \"cooluser123\",\n        Email = \"cool@acme.io\",\n        Restricted = true,\n        GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs\n        {\n            AddLinodes = true,\n            AddImages = true,\n        },\n        LinodeGrants = new[]\n        {\n            new Linode.Inputs.UserLinodeGrantArgs\n            {\n                Id = 12345,\n                Permissions = \"read_write\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"fooser\", \u0026linode.UserArgs{\n\t\t\tUsername:   pulumi.String(\"cooluser123\"),\n\t\t\tEmail:      pulumi.String(\"cool@acme.io\"),\n\t\t\tRestricted: pulumi.Bool(true),\n\t\t\tGlobalGrants: \u0026linode.UserGlobalGrantsArgs{\n\t\t\t\tAddLinodes: pulumi.Bool(true),\n\t\t\t\tAddImages:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tLinodeGrants: linode.UserLinodeGrantArray{\n\t\t\t\t\u0026linode.UserLinodeGrantArgs{\n\t\t\t\t\tId:          pulumi.Int(12345),\n\t\t\t\t\tPermissions: pulumi.String(\"read_write\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.User;\nimport com.pulumi.linode.UserArgs;\nimport com.pulumi.linode.inputs.UserGlobalGrantsArgs;\nimport com.pulumi.linode.inputs.UserLinodeGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fooser = new User(\"fooser\", UserArgs.builder()\n            .username(\"cooluser123\")\n            .email(\"cool@acme.io\")\n            .restricted(true)\n            .globalGrants(UserGlobalGrantsArgs.builder()\n                .addLinodes(true)\n                .addImages(true)\n                .build())\n            .linodeGrants(UserLinodeGrantArgs.builder()\n                .id(12345)\n                .permissions(\"read_write\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fooser:\n    type: linode:User\n    properties:\n      username: cooluser123\n      email: cool@acme.io\n      restricted: true\n      globalGrants:\n        addLinodes: true\n        addImages: true\n      linodeGrants:\n        - id: 12345\n          permissions: read_write\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Global Grants\n\n* `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)\n\n* `add_domains` - (optional) If true, this User may add Domains.\n\n* `add_databases` - (optional) If true, this User may add Databases.\n\n* `add_firewalls` - (optional) If true, this User may add Firewalls.\n\n* `add_images` - (optional) If true, this User may add Images.\n\n* `add_linodes` - (optional) If true, this User may create Linodes.\n\n* `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.\n\n* `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.\n\n* `add_stackscripts` - (optional) If true, this User may add StackScripts.\n\n* `cancel_account` - (optional) If true, this User may cancel the entire Account.\n\n* `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.\n\n## Entity Grants\n\n* `id` - (required) The ID of the entity this grant applies to.\n\n* `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)\n",
+            "description": "Manages a Linode User.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-user).\n\n## Example Usage\n\nCreate an unrestricted user:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst john = new linode.User(\"john\", {\n    username: \"john123\",\n    email: \"john@acme.io\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\njohn = linode.User(\"john\",\n    username=\"john123\",\n    email=\"john@acme.io\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var john = new Linode.User(\"john\", new()\n    {\n        Username = \"john123\",\n        Email = \"john@acme.io\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"john\", \u0026linode.UserArgs{\n\t\t\tUsername: pulumi.String(\"john123\"),\n\t\t\tEmail:    pulumi.String(\"john@acme.io\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.User;\nimport com.pulumi.linode.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var john = new User(\"john\", UserArgs.builder()\n            .username(\"john123\")\n            .email(\"john@acme.io\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  john:\n    type: linode:User\n    properties:\n      username: john123\n      email: john@acme.io\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a restricted user with grants:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst fooser = new linode.User(\"fooser\", {\n    username: \"cooluser123\",\n    email: \"cool@acme.io\",\n    restricted: true,\n    globalGrants: {\n        addLinodes: true,\n        addImages: true,\n    },\n    linodeGrants: [{\n        id: 12345,\n        permissions: \"read_write\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nfooser = linode.User(\"fooser\",\n    username=\"cooluser123\",\n    email=\"cool@acme.io\",\n    restricted=True,\n    global_grants={\n        \"add_linodes\": True,\n        \"add_images\": True,\n    },\n    linode_grants=[{\n        \"id\": 12345,\n        \"permissions\": \"read_write\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fooser = new Linode.User(\"fooser\", new()\n    {\n        Username = \"cooluser123\",\n        Email = \"cool@acme.io\",\n        Restricted = true,\n        GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs\n        {\n            AddLinodes = true,\n            AddImages = true,\n        },\n        LinodeGrants = new[]\n        {\n            new Linode.Inputs.UserLinodeGrantArgs\n            {\n                Id = 12345,\n                Permissions = \"read_write\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewUser(ctx, \"fooser\", \u0026linode.UserArgs{\n\t\t\tUsername:   pulumi.String(\"cooluser123\"),\n\t\t\tEmail:      pulumi.String(\"cool@acme.io\"),\n\t\t\tRestricted: pulumi.Bool(true),\n\t\t\tGlobalGrants: \u0026linode.UserGlobalGrantsArgs{\n\t\t\t\tAddLinodes: pulumi.Bool(true),\n\t\t\t\tAddImages:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tLinodeGrants: linode.UserLinodeGrantArray{\n\t\t\t\t\u0026linode.UserLinodeGrantArgs{\n\t\t\t\t\tId:          pulumi.Int(12345),\n\t\t\t\t\tPermissions: pulumi.String(\"read_write\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.User;\nimport com.pulumi.linode.UserArgs;\nimport com.pulumi.linode.inputs.UserGlobalGrantsArgs;\nimport com.pulumi.linode.inputs.UserLinodeGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fooser = new User(\"fooser\", UserArgs.builder()\n            .username(\"cooluser123\")\n            .email(\"cool@acme.io\")\n            .restricted(true)\n            .globalGrants(UserGlobalGrantsArgs.builder()\n                .addLinodes(true)\n                .addImages(true)\n                .build())\n            .linodeGrants(UserLinodeGrantArgs.builder()\n                .id(12345)\n                .permissions(\"read_write\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fooser:\n    type: linode:User\n    properties:\n      username: cooluser123\n      email: cool@acme.io\n      restricted: true\n      globalGrants:\n        addLinodes: true\n        addImages: true\n      linodeGrants:\n        - id: 12345\n          permissions: read_write\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Global Grants\n\n* `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)\n\n* `add_domains` - (optional) If true, this User may add Domains.\n\n* `add_databases` - (optional) If true, this User may add Databases.\n\n* `add_firewalls` - (optional) If true, this User may add Firewalls.\n\n* `add_images` - (optional) If true, this User may add Images.\n\n* `add_linodes` - (optional) If true, this User may create Linodes.\n\n* `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.\n\n* `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.\n\n* `add_placement_groups` - (optional) If true, this User may add Placement Groups.\n\n* `add_stackscripts` - (optional) If true, this User may add StackScripts.\n\n* `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).\n\n* `cancel_account` - (optional) If true, this User may cancel the entire Account.\n\n* `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.\n\n## Entity Grants\n\n* `id` - (required) The ID of the entity this grant applies to.\n\n* `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)\n",
             "properties": {
                 "domainGrants": {
                     "type": "array",
@@ -15360,6 +15634,13 @@
                     },
                     "description": "The NodeBalancers the user has permissions access to.\n"
                 },
+                "placementGroupGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/UserPlacementGroupGrant:UserPlacementGroupGrant"
+                    },
+                    "description": "The Placement Groups the user has permissions access to.\n"
+                },
                 "restricted": {
                     "type": "boolean",
                     "description": "If true, this user will only have explicit permissions granted.\n\n* `global_grants` - (optional) A structure containing the Account-level grants a User has.\n\nThe following arguments are sets of entity grants:\n"
@@ -15396,6 +15677,13 @@
                         "$ref": "#/types/linode:index/UserVolumeGrant:UserVolumeGrant"
                     },
                     "description": "The volumes the user has permissions access to.\n"
+                },
+                "vpcGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/UserVpcGrant:UserVpcGrant"
+                    },
+                    "description": "The Virtual Private Clouds (VPCs) the user has permissions access to.\n"
                 }
             },
             "required": [
@@ -15407,12 +15695,14 @@
                 "linodeGrants",
                 "longviewGrants",
                 "nodebalancerGrants",
+                "placementGroupGrants",
                 "sshKeys",
                 "stackscriptGrants",
                 "tfaEnabled",
                 "userType",
                 "username",
-                "volumeGrants"
+                "volumeGrants",
+                "vpcGrants"
             ],
             "inputProperties": {
                 "domainGrants": {
@@ -15466,6 +15756,13 @@
                     },
                     "description": "The NodeBalancers the user has permissions access to.\n"
                 },
+                "placementGroupGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/UserPlacementGroupGrant:UserPlacementGroupGrant"
+                    },
+                    "description": "The Placement Groups the user has permissions access to.\n"
+                },
                 "restricted": {
                     "type": "boolean",
                     "description": "If true, this user will only have explicit permissions granted.\n\n* `global_grants` - (optional) A structure containing the Account-level grants a User has.\n\nThe following arguments are sets of entity grants:\n"
@@ -15487,6 +15784,13 @@
                         "$ref": "#/types/linode:index/UserVolumeGrant:UserVolumeGrant"
                     },
                     "description": "The volumes the user has permissions access to.\n"
+                },
+                "vpcGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/UserVpcGrant:UserVpcGrant"
+                    },
+                    "description": "The Virtual Private Clouds (VPCs) the user has permissions access to.\n"
                 }
             },
             "requiredInputs": [
@@ -15547,6 +15851,13 @@
                         },
                         "description": "The NodeBalancers the user has permissions access to.\n"
                     },
+                    "placementGroupGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/UserPlacementGroupGrant:UserPlacementGroupGrant"
+                        },
+                        "description": "The Placement Groups the user has permissions access to.\n"
+                    },
                     "restricted": {
                         "type": "boolean",
                         "description": "If true, this user will only have explicit permissions granted.\n\n* `global_grants` - (optional) A structure containing the Account-level grants a User has.\n\nThe following arguments are sets of entity grants:\n"
@@ -15583,6 +15894,13 @@
                             "$ref": "#/types/linode:index/UserVolumeGrant:UserVolumeGrant"
                         },
                         "description": "The volumes the user has permissions access to.\n"
+                    },
+                    "vpcGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/UserVpcGrant:UserVpcGrant"
+                        },
+                        "description": "The Virtual Private Clouds (VPCs) the user has permissions access to.\n"
                     }
                 },
                 "type": "object"
@@ -18497,6 +18815,9 @@
                     "created": {
                         "type": "string"
                     },
+                    "endpointType": {
+                        "type": "string"
+                    },
                     "hostname": {
                         "type": "string"
                     },
@@ -18512,6 +18833,9 @@
                     "region": {
                         "type": "string"
                     },
+                    "s3Endpoint": {
+                        "type": "string"
+                    },
                     "size": {
                         "type": "integer"
                     }
@@ -18519,11 +18843,13 @@
                 "required": [
                     "cluster",
                     "created",
+                    "endpointType",
                     "hostname",
                     "id",
                     "label",
                     "objects",
                     "region",
+                    "s3Endpoint",
                     "size"
                 ],
                 "type": "object"
@@ -18622,6 +18948,10 @@
                         },
                         "type": "array"
                     },
+                    "tier": {
+                        "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n",
+                        "type": "string"
+                    },
                     "updated": {
                         "description": "When this Kubernetes cluster was updated.\n",
                         "type": "string"
@@ -18638,6 +18968,7 @@
                     "region",
                     "status",
                     "tags",
+                    "tier",
                     "updated"
                 ],
                 "type": "object"
@@ -19504,6 +19835,65 @@
                 "type": "object"
             }
         },
+        "linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints": {
+            "description": "Provides information about Linode Object Storage endpoints available to the user.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).\n\n## Example Usage\n\nGet an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nexport = async () =\u003e {\n    const test = await linode.getObjectStorageEndpoints({\n        filters: [{\n            name: \"endpoint_type\",\n            values: [\"E3\"],\n        }],\n    });\n    return {\n        \"high-performance-obj-endpoint\": test.endpoints?.[0]?.s3Endpoint,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.get_object_storage_endpoints(filters=[{\n    \"name\": \"endpoint_type\",\n    \"values\": [\"E3\"],\n}])\npulumi.export(\"high-performance-obj-endpoint\", test.endpoints[0].s3_endpoint)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Linode.GetObjectStorageEndpoints.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetObjectStorageEndpointsFilterInputArgs\n            {\n                Name = \"endpoint_type\",\n                Values = new[]\n                {\n                    \"E3\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"high-performance-obj-endpoint\"] = test.Apply(getObjectStorageEndpointsResult =\u003e getObjectStorageEndpointsResult.Endpoints[0]?.S3Endpoint),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := linode.GetObjectStorageEndpoints(ctx, \u0026linode.GetObjectStorageEndpointsArgs{\n\t\t\tFilters: []linode.GetObjectStorageEndpointsFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"endpoint_type\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"E3\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"high-performance-obj-endpoint\", test.Endpoints[0].S3Endpoint)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()\n            .filters(GetObjectStorageEndpointsFilterArgs.builder()\n                .name(\"endpoint_type\")\n                .values(\"E3\")\n                .build())\n            .build());\n\n        ctx.export(\"high-performance-obj-endpoint\", test.applyValue(getObjectStorageEndpointsResult -\u003e getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: linode:getObjectStorageEndpoints\n      arguments:\n        filters:\n          - name: endpoint_type\n            values:\n              - E3\noutputs:\n  high-performance-obj-endpoint: ${test.endpoints[0].s3Endpoint}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet a list of all available endpoints of Linode Object Storage services.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nexport = async () =\u003e {\n    const test = await linode.getObjectStorageEndpoints({});\n    return {\n        \"available-endpoints\": test.endpoints,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\ntest = linode.get_object_storage_endpoints()\npulumi.export(\"available-endpoints\", test.endpoints)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Linode.GetObjectStorageEndpoints.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"available-endpoints\"] = test.Apply(getObjectStorageEndpointsResult =\u003e getObjectStorageEndpointsResult.Endpoints),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := linode.GetObjectStorageEndpoints(ctx, \u0026linode.GetObjectStorageEndpointsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"available-endpoints\", test.Endpoints)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = LinodeFunctions.getObjectStorageEndpoints();\n\n        ctx.export(\"available-endpoints\", test.applyValue(getObjectStorageEndpointsResult -\u003e getObjectStorageEndpointsResult.endpoints()));\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: linode:getObjectStorageEndpoints\n      arguments: {}\noutputs:\n  available-endpoints: ${test.endpoints}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `endpoint_type`\n\n* `region`\n\n* `s3_endpoint`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getObjectStorageEndpoints.\n",
+                "properties": {
+                    "endpoints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageEndpointsEndpoint:getObjectStorageEndpointsEndpoint"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageEndpointsFilter:getObjectStorageEndpointsFilter"
+                        }
+                    },
+                    "order": {
+                        "type": "string",
+                        "description": "The order in which results should be returned. (`asc`, `desc`; default `asc`)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getObjectStorageEndpoints.\n",
+                "properties": {
+                    "endpoints": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageEndpointsEndpoint:getObjectStorageEndpointsEndpoint"
+                        },
+                        "type": "array"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageEndpointsFilter:getObjectStorageEndpointsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "linode:index/getPlacementGroup:getPlacementGroup": {
             "description": "`linode.PlacementGroup` provides details about a Linode placement group.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-placement-group).\n\n## Example Usage\n\nThe following example shows how the resource might be used to obtain additional information about a Linode placement group.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst pg = linode.getPlacementGroup({\n    id: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\npg = linode.get_placement_group(id=12345)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pg = Linode.GetPlacementGroup.Invoke(new()\n    {\n        Id = 12345,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.LookupPlacementGroup(ctx, \u0026linode.LookupPlacementGroupArgs{\n\t\t\tId: 12345,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetPlacementGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var pg = LinodeFunctions.getPlacementGroup(GetPlacementGroupArgs.builder()\n            .id(12345)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  pg:\n    fn::invoke:\n      function: linode:getPlacementGroup\n      arguments:\n        id: 12345\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -20143,6 +20533,12 @@
                             "$ref": "#/types/linode:index/getUserNodebalancerGrant:getUserNodebalancerGrant"
                         }
                     },
+                    "placementGroupGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUserPlacementGroupGrant:getUserPlacementGroupGrant"
+                        }
+                    },
                     "stackscriptGrants": {
                         "type": "array",
                         "items": {
@@ -20157,6 +20553,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/getUserVolumeGrant:getUserVolumeGrant"
+                        }
+                    },
+                    "vpcGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getUserVpcGrant:getUserVpcGrant"
                         }
                     }
                 },
@@ -20228,6 +20630,12 @@
                         "description": "The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.\n",
                         "type": "string"
                     },
+                    "placementGroupGrants": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getUserPlacementGroupGrant:getUserPlacementGroupGrant"
+                        },
+                        "type": "array"
+                    },
                     "restricted": {
                         "description": "If true, this User must be granted access to perform actions or access entities on this Account.\n",
                         "type": "boolean"
@@ -20265,6 +20673,12 @@
                             "$ref": "#/types/linode:index/getUserVolumeGrant:getUserVolumeGrant"
                         },
                         "type": "array"
+                    },
+                    "vpcGrants": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getUserVpcGrant:getUserVpcGrant"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
@@ -20279,6 +20693,7 @@
                     "longviewGrants",
                     "nodebalancerGrants",
                     "passwordCreated",
+                    "placementGroupGrants",
                     "restricted",
                     "sshKeys",
                     "stackscriptGrants",
@@ -20286,7 +20701,8 @@
                     "userType",
                     "username",
                     "verifiedPhoneNumber",
-                    "volumeGrants"
+                    "volumeGrants",
+                    "vpcGrants"
                 ],
                 "type": "object"
             }
