@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-nodebalancers = linode.getNodebalancers({
+ * const specific_nodebalancers = linode.getNodebalancers({
  *     filters: [
  *         {
  *             name: "label",
@@ -101,7 +101,7 @@ export interface GetNodebalancersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-nodebalancers = linode.getNodebalancers({
+ * const specific_nodebalancers = linode.getNodebalancers({
  *     filters: [
  *         {
  *             name: "label",

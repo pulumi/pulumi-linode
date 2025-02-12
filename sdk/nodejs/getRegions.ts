@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-regions = linode.getRegions({
+ * const filtered_regions = linode.getRegions({
  *     filters: [
  *         {
  *             name: "status",
@@ -72,7 +72,7 @@ export interface GetRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-regions = linode.getRegions({
+ * const filtered_regions = linode.getRegions({
  *     filters: [
  *         {
  *             name: "status",

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-instances = linode.getInstances({
+ * const my_instances = linode.getInstances({
  *     filters: [
  *         {
  *             name: "label",
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-instances = linode.getInstances({});
+ * const all_instances = linode.getInstances({});
  * export const instanceIds = all_instances.then(all_instances => all_instances.instances.map(__item => __item.id));
  * ```
  *
@@ -116,7 +116,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-instances = linode.getInstances({
+ * const my_instances = linode.getInstances({
  *     filters: [
  *         {
  *             name: "label",
@@ -140,7 +140,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const all-instances = linode.getInstances({});
+ * const all_instances = linode.getInstances({});
  * export const instanceIds = all_instances.then(all_instances => all_instances.instances.map(__item => __item.id));
  * ```
  *

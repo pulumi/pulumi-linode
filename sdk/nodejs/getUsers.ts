@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-users = linode.getUsers({
+ * const filtered_users = linode.getUsers({
  *     filters: [{
  *         name: "username",
  *         values: ["test-user"],
@@ -87,7 +87,7 @@ export interface GetUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-users = linode.getUsers({
+ * const filtered_users = linode.getUsers({
  *     filters: [{
  *         name: "username",
  *         values: ["test-user"],

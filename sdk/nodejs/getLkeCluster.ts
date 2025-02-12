@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-cluster = linode.getLkeCluster({
+ * const my_cluster = linode.getLkeCluster({
  *     id: 123,
  * });
  * ```
@@ -115,7 +115,7 @@ export interface GetLkeClusterResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-cluster = linode.getLkeCluster({
+ * const my_cluster = linode.getLkeCluster({
  *     id: 123,
  * });
  * ```

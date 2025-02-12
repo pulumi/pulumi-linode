@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-volumes = linode.getVolumes({
+ * const filtered_volumes = linode.getVolumes({
  *     filters: [{
  *         name: "label",
  *         values: ["test-volume"],
@@ -77,7 +77,7 @@ export interface GetVolumesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-volumes = linode.getVolumes({
+ * const filtered_volumes = linode.getVolumes({
  *     filters: [{
  *         name: "label",
  *         values: ["test-volume"],

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const range-info = linode.getIpv6Range({
+ * const range_info = linode.getIpv6Range({
  *     range: "2001:0db8::",
  * });
  * ```
@@ -70,7 +70,7 @@ export interface GetIpv6RangeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const range-info = linode.getIpv6Range({
+ * const range_info = linode.getIpv6Range({
  *     range: "2001:0db8::",
  * });
  * ```

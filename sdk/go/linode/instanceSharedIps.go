@@ -113,7 +113,7 @@ import (
 //				return err
 //			}
 //			// Share with primary node
-//			_, err = linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
+//			share_primary, err := linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
 //				LinodeId: primary.ID(),
 //				Addresses: pulumi.StringArray{
 //					rangeIpv6Range.Range,
