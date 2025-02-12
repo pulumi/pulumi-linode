@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-config = linode.getNodeBalancerConfig({
+ * const my_config = linode.getNodeBalancerConfig({
  *     id: 123,
  *     nodebalancerId: 456,
  * });
@@ -119,7 +119,7 @@ export interface GetNodeBalancerConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-config = linode.getNodeBalancerConfig({
+ * const my_config = linode.getNodeBalancerConfig({
  *     id: 123,
  *     nodebalancerId: 456,
  * });

@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *         label: "my-vlan",
  *     }],
  * });
- * const my-vlans = linode.getVlans({
+ * const my_vlans = linode.getVlans({
  *     filters: [{
  *         name: "label",
  *         values: ["my-vlan"],
@@ -108,7 +108,7 @@ export interface GetVlansResult {
  *         label: "my-vlan",
  *     }],
  * });
- * const my-vlans = linode.getVlans({
+ * const my_vlans = linode.getVlans({
  *     filters: [{
  *         name: "label",
  *         values: ["my-vlan"],

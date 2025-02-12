@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * export = async () => {
- *     const filtered-availabilities = await linode.getAccountAvailabilities({
+ *     const filtered_availabilities = await linode.getAccountAvailabilities({
  *         filters: [{
  *             name: "unavailable",
  *             values: ["Linodes"],
@@ -77,7 +77,7 @@ export interface GetAccountAvailabilitiesResult {
  * import * as linode from "@pulumi/linode";
  *
  * export = async () => {
- *     const filtered-availabilities = await linode.getAccountAvailabilities({
+ *     const filtered_availabilities = await linode.getAccountAvailabilities({
  *         filters: [{
  *             name: "unavailable",
  *             values: ["Linodes"],

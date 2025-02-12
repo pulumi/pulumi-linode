@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-db = linode.getDatabaseMysql({
+ * const my_db = linode.getDatabaseMysql({
  *     id: 12345,
  * });
  * ```
@@ -165,7 +165,7 @@ export interface GetDatabaseMysqlResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const my-db = linode.getDatabaseMysql({
+ * const my_db = linode.getDatabaseMysql({
  *     id: 12345,
  * });
  * ```

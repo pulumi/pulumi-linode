@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
+//			my_instance, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
 //				Label:  pulumi.String("myinstance"),
 //				Region: pulumi.String("us-southeast"),
 //				Type:   pulumi.String("g6-nanode-1"),
@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDatabaseMysql(ctx, "my-db", &linode.DatabaseMysqlArgs{
+//			my_db, err := linode.NewDatabaseMysql(ctx, "my-db", &linode.DatabaseMysqlArgs{
 //				Label:    pulumi.String("mydatabase"),
 //				EngineId: pulumi.String("mysql/8.0.30"),
 //				Region:   pulumi.String("us-southeast"),

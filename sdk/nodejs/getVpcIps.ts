@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-ips = linode.getVpcIps({
+ * const filtered_ips = linode.getVpcIps({
  *     filters: [{
  *         name: "address",
  *         values: ["10.0.0.0"],
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-vpc-ips = linode.getVpcIps({
+ * const specific_vpc_ips = linode.getVpcIps({
  *     vpcId: 123,
  * });
  * export const vpcIps = specific_vpc_ips.then(specific_vpc_ips => specific_vpc_ips.vpcIps);
@@ -105,7 +105,7 @@ export interface GetVpcIpsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-ips = linode.getVpcIps({
+ * const filtered_ips = linode.getVpcIps({
  *     filters: [{
  *         name: "address",
  *         values: ["10.0.0.0"],
@@ -120,7 +120,7 @@ export interface GetVpcIpsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const specific-vpc-ips = linode.getVpcIps({
+ * const specific_vpc_ips = linode.getVpcIps({
  *     vpcId: 123,
  * });
  * export const vpcIps = specific_vpc_ips.then(specific_vpc_ips => specific_vpc_ips.vpcIps);

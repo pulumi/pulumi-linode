@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-subnets = linode.getVpcSubnets({
+ * const filtered_subnets = linode.getVpcSubnets({
  *     vpcId: 123,
  *     filters: [{
  *         name: "label",
@@ -83,7 +83,7 @@ export interface GetVpcSubnetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const filtered-subnets = linode.getVpcSubnets({
+ * const filtered_subnets = linode.getVpcSubnets({
  *     vpcId: 123,
  *     filters: [{
  *         name: "label",
