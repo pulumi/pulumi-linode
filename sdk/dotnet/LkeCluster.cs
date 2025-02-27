@@ -34,7 +34,7 @@ namespace Pulumi.Linode
         public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
 
         /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster.
+        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         /// </summary>
         [Output("dashboardUrl")]
         public Output<string> DashboardUrl { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.Linode
         public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
 
         /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster.
+        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         /// </summary>
         [Input("dashboardUrl")]
         public Input<string>? DashboardUrl { get; set; }

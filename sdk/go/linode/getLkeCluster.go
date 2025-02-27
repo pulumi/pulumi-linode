@@ -67,7 +67,7 @@ type LookupLkeClusterResult struct {
 	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// When this Kubernetes cluster was created.
 	Created string `pulumi:"created"`
-	// The Kubernetes Dashboard access URL for this cluster.
+	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
 	DashboardUrl string `pulumi:"dashboardUrl"`
 	// The ID of the node.
 	Id int `pulumi:"id"`
@@ -144,7 +144,7 @@ func (o LookupLkeClusterResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// The Kubernetes Dashboard access URL for this cluster.
+// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
 func (o LookupLkeClusterResultOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }

@@ -50,6 +50,38 @@ import (
 //
 // Creating a simple MySQL database that allows connections from all IPv4 addresses:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//				AllowLists: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating a complex MySQL database:
+//
 // ## Import
 //
 // Linode MySQL Databases can be imported using the `id`, e.g.

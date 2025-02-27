@@ -60,11 +60,9 @@ import (
 //
 // * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
 //
-// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
 //
 // * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-//
-// * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
 func LookupDatabaseMysqlV2(ctx *pulumi.Context, args *LookupDatabaseMysqlV2Args, opts ...pulumi.InvokeOption) (*LookupDatabaseMysqlV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMysqlV2Result

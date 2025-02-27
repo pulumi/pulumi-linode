@@ -31,7 +31,7 @@ public final class GetLkeClusterResult {
      */
     private String created;
     /**
-     * @return The Kubernetes Dashboard access URL for this cluster.
+     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      * 
      */
     private String dashboardUrl;
@@ -109,7 +109,7 @@ public final class GetLkeClusterResult {
         return this.created;
     }
     /**
-     * @return The Kubernetes Dashboard access URL for this cluster.
+     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      * 
      */
     public String dashboardUrl() {

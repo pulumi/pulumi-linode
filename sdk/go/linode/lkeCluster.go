@@ -26,7 +26,7 @@ type LkeCluster struct {
 	ApiEndpoints pulumi.StringArrayOutput `pulumi:"apiEndpoints"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
-	// The Kubernetes Dashboard access URL for this cluster.
+	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
 	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayOutput `pulumi:"externalPoolTags"`
@@ -102,7 +102,7 @@ type lkeClusterState struct {
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// The Kubernetes Dashboard access URL for this cluster.
+	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
 	DashboardUrl *string `pulumi:"dashboardUrl"`
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags []string `pulumi:"externalPoolTags"`
@@ -133,7 +133,7 @@ type LkeClusterState struct {
 	ApiEndpoints pulumi.StringArrayInput
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// The Kubernetes Dashboard access URL for this cluster.
+	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
 	DashboardUrl pulumi.StringPtrInput
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayInput
@@ -307,7 +307,7 @@ func (o LkeClusterOutput) ControlPlane() LkeClusterControlPlaneOutput {
 	return o.ApplyT(func(v *LkeCluster) LkeClusterControlPlaneOutput { return v.ControlPlane }).(LkeClusterControlPlaneOutput)
 }
 
-// The Kubernetes Dashboard access URL for this cluster.
+// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
 func (o LkeClusterOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.DashboardUrl }).(pulumi.StringOutput)
 }

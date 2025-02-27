@@ -52,7 +52,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
     /**
-     * The Kubernetes Dashboard access URL for this cluster.
+     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      */
     public /*out*/ readonly dashboardUrl!: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface LkeClusterState {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
     /**
-     * The Kubernetes Dashboard access URL for this cluster.
+     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      */
     dashboardUrl?: pulumi.Input<string>;
     /**

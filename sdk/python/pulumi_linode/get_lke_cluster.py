@@ -100,7 +100,7 @@ class GetLkeClusterResult:
     @pulumi.getter(name="dashboardUrl")
     def dashboard_url(self) -> str:
         """
-        The Kubernetes Dashboard access URL for this cluster.
+        The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         """
         return pulumi.get(self, "dashboard_url")
 

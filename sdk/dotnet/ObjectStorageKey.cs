@@ -78,13 +78,13 @@ namespace Pulumi.Linode
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "foobar1",
-    ///                 Cluster = "us-east-1",
+    ///                 Region = "us-mia",
     ///                 Permissions = "read_write",
     ///             },
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "foobar2",
-    ///                 Cluster = "us-east-1",
+    ///                 Region = "gb-lon",
     ///                 Permissions = "read_write",
     ///             },
     ///         },

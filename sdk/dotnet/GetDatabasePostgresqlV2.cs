@@ -53,11 +53,9 @@ namespace Pulumi.Linode
         /// 
         /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-        /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Task<GetDatabasePostgresqlV2Result> InvokeAsync(GetDatabasePostgresqlV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2Args(), options.WithDefaults());
@@ -104,11 +102,9 @@ namespace Pulumi.Linode
         /// 
         /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-        /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabasePostgresqlV2Result> Invoke(GetDatabasePostgresqlV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2InvokeArgs(), options.WithDefaults());
@@ -155,11 +151,9 @@ namespace Pulumi.Linode
         /// 
         /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-        /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabasePostgresqlV2Result> Invoke(GetDatabasePostgresqlV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2InvokeArgs(), options.WithDefaults());

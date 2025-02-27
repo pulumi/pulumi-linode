@@ -669,6 +669,20 @@ class DatabaseMysqlV2(pulumi.CustomResource):
 
         Creating a simple MySQL database that allows connections from all IPv4 addresses:
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+
+        Creating a complex MySQL database:
+
         ## Import
 
         Linode MySQL Databases can be imported using the `id`, e.g.
@@ -721,6 +735,20 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         ```
 
         Creating a simple MySQL database that allows connections from all IPv4 addresses:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+
+        Creating a complex MySQL database:
 
         ## Import
 

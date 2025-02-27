@@ -50,6 +50,38 @@ import (
 //
 // Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//				AllowLists: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating a complex PostgreSQL database:
+//
 // ## Import
 //
 // Linode PostgreSQL Databases can be imported using the `id`, e.g.

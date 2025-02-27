@@ -41,11 +41,9 @@ import * as utilities from "./utilities";
  *
  * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
  *
- * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+ * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
  *
  * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
- *
- * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
 export function getDatabaseMysqlV2(args: GetDatabaseMysqlV2Args, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMysqlV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -197,11 +195,9 @@ export interface GetDatabaseMysqlV2Result {
  *
  * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
  *
- * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+ * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
  *
  * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
- *
- * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  */
 export function getDatabaseMysqlV2Output(args: GetDatabaseMysqlV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseMysqlV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

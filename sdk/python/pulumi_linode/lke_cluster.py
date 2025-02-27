@@ -177,7 +177,7 @@ class _LkeClusterState:
         Input properties used for looking up and filtering LkeCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
+        :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -245,7 +245,7 @@ class _LkeClusterState:
     @pulumi.getter(name="dashboardUrl")
     def dashboard_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kubernetes Dashboard access URL for this cluster.
+        The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         """
         return pulumi.get(self, "dashboard_url")
 
@@ -504,7 +504,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster.
+        :param pulumi.Input[str] dashboard_url: The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
@@ -557,7 +557,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter(name="dashboardUrl")
     def dashboard_url(self) -> pulumi.Output[str]:
         """
-        The Kubernetes Dashboard access URL for this cluster.
+        The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         """
         return pulumi.get(self, "dashboard_url")
 

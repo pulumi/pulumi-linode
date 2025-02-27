@@ -70,6 +70,40 @@ import javax.annotation.Nullable;
  * Creating a simple MySQL database that allows connections from all IPv4 addresses:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabaseMysqlV2;
+ * import com.pulumi.linode.DatabaseMysqlV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("mysql/8")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .allowLists("0.0.0.0/0")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a complex MySQL database:
@@ -158,6 +192,8 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * &gt; **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+ * 
  * ## pending_updates
  * 
  * The following arguments are exposed by each entry in the `pending_updates` attribute:
@@ -176,11 +212,9 @@ import javax.annotation.Nullable;
  * 
  * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
  * 
- * * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+ * * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
  * 
  * * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
- * 
- * * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
  * 
  * ## Import
  * 

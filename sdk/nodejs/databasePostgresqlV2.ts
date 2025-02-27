@@ -30,6 +30,21 @@ import * as utilities from "./utilities";
  *
  * Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     allowLists: ["0.0.0.0/0"],
+ * });
+ * ```
+ *
+ * Creating a complex PostgreSQL database:
+ *
  * ## Import
  *
  * Linode PostgreSQL Databases can be imported using the `id`, e.g.

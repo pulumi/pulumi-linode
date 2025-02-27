@@ -131,12 +131,12 @@ import javax.annotation.Nullable;
  *             .bucketAccesses(            
  *                 ObjectStorageKeyBucketAccessArgs.builder()
  *                     .bucketName("foobar1")
- *                     .cluster("us-east-1")
+ *                     .region("us-mia")
  *                     .permissions("read_write")
  *                     .build(),
  *                 ObjectStorageKeyBucketAccessArgs.builder()
  *                     .bucketName("foobar2")
- *                     .cluster("us-east-1")
+ *                     .region("gb-lon")
  *                     .permissions("read_write")
  *                     .build())
  *             .build());
