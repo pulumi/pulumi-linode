@@ -2985,7 +2985,7 @@ class LkeClusterControlPlane(dict):
         :param 'LkeClusterControlPlaneAclArgs' acl: Defines the ACL configuration for an LKE cluster's control plane.
         :param bool high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
                
-               * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+               * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -3006,7 +3006,7 @@ class LkeClusterControlPlane(dict):
         """
         Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 
-        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
         """
         return pulumi.get(self, "high_availability")
 
@@ -11092,7 +11092,7 @@ class GetLkeClusterControlPlaneResult(dict):
                  acls: Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']] = None):
         """
         :param bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
-        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane.
         """
         pulumi.set(__self__, "high_availability", high_availability)
         if acls is not None:
@@ -11110,7 +11110,7 @@ class GetLkeClusterControlPlaneResult(dict):
     @pulumi.getter
     def acls(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']]:
         """
-        The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+        The ACL configuration for an LKE cluster's control plane.
         """
         return pulumi.get(self, "acls")
 

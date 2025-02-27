@@ -30,6 +30,21 @@ import * as utilities from "./utilities";
  *
  * Creating a simple MySQL database that allows connections from all IPv4 addresses:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     allowLists: ["0.0.0.0/0"],
+ * });
+ * ```
+ *
+ * Creating a complex MySQL database:
+ *
  * ## Import
  *
  * Linode MySQL Databases can be imported using the `id`, e.g.

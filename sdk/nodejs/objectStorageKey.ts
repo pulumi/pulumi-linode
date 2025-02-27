@@ -48,12 +48,12 @@ import * as utilities from "./utilities";
  *     bucketAccesses: [
  *         {
  *             bucketName: "foobar1",
- *             cluster: "us-east-1",
+ *             region: "us-mia",
  *             permissions: "read_write",
  *         },
  *         {
  *             bucketName: "foobar2",
- *             cluster: "us-east-1",
+ *             region: "gb-lon",
  *             permissions: "read_write",
  *         },
  *     ],

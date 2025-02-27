@@ -669,6 +669,20 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
         Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+
+        Creating a complex PostgreSQL database:
+
         ## Import
 
         Linode PostgreSQL Databases can be imported using the `id`, e.g.
@@ -721,6 +735,20 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         ```
 
         Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+
+        Creating a complex PostgreSQL database:
 
         ## Import
 

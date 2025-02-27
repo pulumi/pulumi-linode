@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.linode.LinodeFunctions;
- * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
  * import com.pulumi.linode.ObjectStorageBucket;
  * import com.pulumi.linode.ObjectStorageBucketArgs;
  * import java.util.List;
@@ -51,12 +49,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
- *             .id("us-east-1")
- *             .build());
- * 
  *         var foobar = new ObjectStorageBucket("foobar", ObjectStorageBucketArgs.builder()
- *             .cluster(primary.applyValue(getObjectStorageClusterResult -> getObjectStorageClusterResult.id()))
+ *             .region("us-mia")
  *             .label("mybucket")
  *             .build());
  * 

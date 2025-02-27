@@ -19,14 +19,14 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
     public static final GetLkeClusterControlPlaneArgs Empty = new GetLkeClusterControlPlaneArgs();
 
     /**
-     * The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+     * The ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     @Import(name="acls")
     private @Nullable Output<List<GetLkeClusterControlPlaneAclArgs>> acls;
 
     /**
-     * @return The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+     * @return The ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     public Optional<Output<List<GetLkeClusterControlPlaneAclArgs>>> acls() {
@@ -74,7 +74,7 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param acls The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param acls The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param acls The ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+         * @param acls The ACL configuration for an LKE cluster&#39;s control plane.
          * 
          * @return builder
          * 

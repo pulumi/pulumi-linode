@@ -58,14 +58,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.controlPlane;
     }
     /**
-     * The Kubernetes Dashboard access URL for this cluster.
+     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      * 
      */
     @Export(name="dashboardUrl", refs={String.class}, tree="[0]")
     private Output<String> dashboardUrl;
 
     /**
-     * @return The Kubernetes Dashboard access URL for this cluster.
+     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      * 
      */
     public Output<String> dashboardUrl() {

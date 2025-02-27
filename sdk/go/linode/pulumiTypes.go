@@ -6453,7 +6453,7 @@ type LkeClusterControlPlane struct {
 	Acl *LkeClusterControlPlaneAcl `pulumi:"acl"`
 	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	//
-	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 	HighAvailability *bool `pulumi:"highAvailability"`
 }
 
@@ -6473,7 +6473,7 @@ type LkeClusterControlPlaneArgs struct {
 	Acl LkeClusterControlPlaneAclPtrInput `pulumi:"acl"`
 	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	//
-	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
 }
 
@@ -6561,7 +6561,7 @@ func (o LkeClusterControlPlaneOutput) Acl() LkeClusterControlPlaneAclPtrOutput {
 
 // Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 //
-// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 func (o LkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
 }
@@ -6602,7 +6602,7 @@ func (o LkeClusterControlPlanePtrOutput) Acl() LkeClusterControlPlaneAclPtrOutpu
 
 // Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 //
-// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
 func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
 		if v == nil {
@@ -23948,7 +23948,7 @@ func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOu
 }
 
 type GetLkeClusterControlPlane struct {
-	// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+	// The ACL configuration for an LKE cluster's control plane.
 	Acls []GetLkeClusterControlPlaneAcl `pulumi:"acls"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
@@ -23966,7 +23966,7 @@ type GetLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClusterControlPlaneArgs struct {
-	// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+	// The ACL configuration for an LKE cluster's control plane.
 	Acls GetLkeClusterControlPlaneAclArrayInput `pulumi:"acls"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
@@ -24023,7 +24023,7 @@ func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithCo
 	return o
 }
 
-// The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+// The ACL configuration for an LKE cluster's control plane.
 func (o GetLkeClusterControlPlaneOutput) Acls() GetLkeClusterControlPlaneAclArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterControlPlane) []GetLkeClusterControlPlaneAcl { return v.Acls }).(GetLkeClusterControlPlaneAclArrayOutput)
 }

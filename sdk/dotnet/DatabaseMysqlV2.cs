@@ -40,6 +40,31 @@ namespace Pulumi.Linode
     /// 
     /// Creating a simple MySQL database that allows connections from all IPv4 addresses:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         AllowLists = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a complex MySQL database:
+    /// 
     /// ## Import
     /// 
     /// Linode MySQL Databases can be imported using the `id`, e.g.

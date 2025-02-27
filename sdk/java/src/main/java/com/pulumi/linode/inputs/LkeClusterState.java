@@ -49,14 +49,14 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Kubernetes Dashboard access URL for this cluster.
+     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      * 
      */
     @Import(name="dashboardUrl")
     private @Nullable Output<String> dashboardUrl;
 
     /**
-     * @return The Kubernetes Dashboard access URL for this cluster.
+     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      * 
      */
     public Optional<Output<String>> dashboardUrl() {
@@ -294,7 +294,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardUrl The Kubernetes Dashboard access URL for this cluster.
+         * @param dashboardUrl The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardUrl The Kubernetes Dashboard access URL for this cluster.
+         * @param dashboardUrl The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
          * 
          * @return builder
          * 

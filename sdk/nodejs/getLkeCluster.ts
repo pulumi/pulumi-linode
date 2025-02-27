@@ -65,7 +65,7 @@ export interface GetLkeClusterResult {
      */
     readonly created: string;
     /**
-     * The Kubernetes Dashboard access URL for this cluster.
+     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      */
     readonly dashboardUrl: string;
     /**

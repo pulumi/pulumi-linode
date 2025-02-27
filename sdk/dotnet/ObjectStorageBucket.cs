@@ -25,14 +25,9 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
-    ///     {
-    ///         Id = "us-east-1",
-    ///     });
-    /// 
     ///     var foobar = new Linode.ObjectStorageBucket("foobar", new()
     ///     {
-    ///         Cluster = primary.Apply(getObjectStorageClusterResult =&gt; getObjectStorageClusterResult.Id),
+    ///         Region = "us-mia",
     ///         Label = "mybucket",
     ///     });
     /// 

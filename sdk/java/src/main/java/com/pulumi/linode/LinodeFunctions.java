@@ -5266,11 +5266,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args) {
@@ -5335,11 +5333,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args) {
@@ -5404,11 +5400,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args, InvokeOptions options) {
@@ -5473,11 +5467,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args, InvokeOutputOptions options) {
@@ -5542,11 +5534,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args, InvokeOptions options) {
@@ -6038,11 +6028,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args) {
@@ -6107,11 +6095,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static CompletableFuture<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2Plain(GetDatabasePostgresqlV2PlainArgs args) {
@@ -6176,11 +6162,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args, InvokeOptions options) {
@@ -6245,11 +6229,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args, InvokeOutputOptions options) {
@@ -6314,11 +6296,9 @@ public final class LinodeFunctions {
      * 
      * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
      * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+     * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
      * 
      */
     public static CompletableFuture<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2Plain(GetDatabasePostgresqlV2PlainArgs args, InvokeOptions options) {

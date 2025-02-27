@@ -20,7 +20,7 @@ public final class LkeClusterControlPlane {
     /**
      * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     private @Nullable Boolean highAvailability;
@@ -36,7 +36,7 @@ public final class LkeClusterControlPlane {
     /**
      * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     public Optional<Boolean> highAvailability() {

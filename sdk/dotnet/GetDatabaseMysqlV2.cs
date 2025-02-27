@@ -53,11 +53,9 @@ namespace Pulumi.Linode
         /// 
         /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-        /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Task<GetDatabaseMysqlV2Result> InvokeAsync(GetDatabaseMysqlV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2Args(), options.WithDefaults());
@@ -104,11 +102,9 @@ namespace Pulumi.Linode
         /// 
         /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-        /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabaseMysqlV2Result> Invoke(GetDatabaseMysqlV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2InvokeArgs(), options.WithDefaults());
@@ -155,11 +151,9 @@ namespace Pulumi.Linode
         /// 
         /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-        /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabaseMysqlV2Result> Invoke(GetDatabaseMysqlV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2InvokeArgs(), options.WithDefaults());

@@ -1926,7 +1926,7 @@ export interface GetKernelsKernelArgs {
 
 export interface GetLkeClusterControlPlane {
     /**
-     * The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+     * The ACL configuration for an LKE cluster's control plane.
      */
     acls?: inputs.GetLkeClusterControlPlaneAcl[];
     /**
@@ -1937,7 +1937,7 @@ export interface GetLkeClusterControlPlane {
 
 export interface GetLkeClusterControlPlaneArgs {
     /**
-     * The ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to all users.**
+     * The ACL configuration for an LKE cluster's control plane.
      */
     acls?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneAclArgs>[]>;
     /**
@@ -6226,7 +6226,7 @@ export interface LkeClusterControlPlane {
     /**
      * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      *
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane. **NOTE: Control Plane ACLs may not currently be available to  all users.**
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
      */
     highAvailability?: pulumi.Input<boolean>;
 }

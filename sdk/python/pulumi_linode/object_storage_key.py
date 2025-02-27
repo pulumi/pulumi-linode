@@ -251,12 +251,12 @@ class ObjectStorageKey(pulumi.CustomResource):
             bucket_accesses=[
                 {
                     "bucket_name": "foobar1",
-                    "cluster": "us-east-1",
+                    "region": "us-mia",
                     "permissions": "read_write",
                 },
                 {
                     "bucket_name": "foobar2",
-                    "cluster": "us-east-1",
+                    "region": "gb-lon",
                     "permissions": "read_write",
                 },
             ])
@@ -317,12 +317,12 @@ class ObjectStorageKey(pulumi.CustomResource):
             bucket_accesses=[
                 {
                     "bucket_name": "foobar1",
-                    "cluster": "us-east-1",
+                    "region": "us-mia",
                     "permissions": "read_write",
                 },
                 {
                     "bucket_name": "foobar2",
-                    "cluster": "us-east-1",
+                    "region": "gb-lon",
                     "permissions": "read_write",
                 },
             ])

@@ -95,12 +95,12 @@ import (
 //				BucketAccesses: linode.ObjectStorageKeyBucketAccessArray{
 //					&linode.ObjectStorageKeyBucketAccessArgs{
 //						BucketName:  pulumi.String("foobar1"),
-//						Cluster:     pulumi.String("us-east-1"),
+//						Region:      pulumi.String("us-mia"),
 //						Permissions: pulumi.String("read_write"),
 //					},
 //					&linode.ObjectStorageKeyBucketAccessArgs{
 //						BucketName:  pulumi.String("foobar2"),
-//						Cluster:     pulumi.String("us-east-1"),
+//						Region:      pulumi.String("gb-lon"),
 //						Permissions: pulumi.String("read_write"),
 //					},
 //				},

@@ -181,7 +181,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster.
+        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         /// </summary>
         public readonly string DashboardUrl;
         /// <summary>

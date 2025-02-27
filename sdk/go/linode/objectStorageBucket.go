@@ -31,15 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := linode.GetObjectStorageCluster(ctx, &linode.GetObjectStorageClusterArgs{
-//				Id: "us-east-1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
-//				Cluster: pulumi.String(primary.Id),
-//				Label:   pulumi.String("mybucket"),
+//			_, err := linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
+//				Region: pulumi.String("us-mia"),
+//				Label:  pulumi.String("mybucket"),
 //			})
 //			if err != nil {
 //				return err
