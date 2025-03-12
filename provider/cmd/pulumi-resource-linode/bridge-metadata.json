@@ -1575,6 +1575,10 @@
                     }
                 }
             },
+            "linode_lke_version": {
+                "current": "linode:index/getLkeVersion:getLkeVersion",
+                "majorVersion": 4
+            },
             "linode_lke_versions": {
                 "current": "linode:index/getLkeVersions:getLkeVersions",
                 "majorVersion": 4,
@@ -2379,6 +2383,7 @@
             "linode:index/getLkeCluster:getLkeCluster": 1,
             "linode:index/getLkeClusters:getLkeClusters": 1,
             "linode:index/getLkeTypes:getLkeTypes": 1,
+            "linode:index/getLkeVersion:getLkeVersion": 1,
             "linode:index/getLkeVersions:getLkeVersions": 1,
             "linode:index/getNbTypes:getNbTypes": 1,
             "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,

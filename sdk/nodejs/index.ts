@@ -240,7 +240,12 @@ export const getLkeTypes: typeof import("./getLkeTypes").getLkeTypes = null as a
 export const getLkeTypesOutput: typeof import("./getLkeTypes").getLkeTypesOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeTypes","getLkeTypesOutput"], () => require("./getLkeTypes"));
 
-export { GetLkeVersionsResult } from "./getLkeVersions";
+export { GetLkeVersionArgs, GetLkeVersionResult, GetLkeVersionOutputArgs } from "./getLkeVersion";
+export const getLkeVersion: typeof import("./getLkeVersion").getLkeVersion = null as any;
+export const getLkeVersionOutput: typeof import("./getLkeVersion").getLkeVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getLkeVersion","getLkeVersionOutput"], () => require("./getLkeVersion"));
+
+export { GetLkeVersionsArgs, GetLkeVersionsResult, GetLkeVersionsOutputArgs } from "./getLkeVersions";
 export const getLkeVersions: typeof import("./getLkeVersions").getLkeVersions = null as any;
 export const getLkeVersionsOutput: typeof import("./getLkeVersions").getLkeVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeVersions","getLkeVersionsOutput"], () => require("./getLkeVersions"));

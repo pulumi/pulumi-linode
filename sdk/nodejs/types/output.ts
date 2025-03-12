@@ -2590,6 +2590,10 @@ export interface GetLkeVersionsVersion {
      * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      */
     id: string;
+    /**
+     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     */
+    tier: string;
 }
 
 export interface GetNbTypesFilter {

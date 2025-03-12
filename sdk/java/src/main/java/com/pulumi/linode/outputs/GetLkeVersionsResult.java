@@ -9,6 +9,8 @@ import com.pulumi.linode.outputs.GetLkeVersionsVersion;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeVersionsResult {
@@ -17,7 +19,12 @@ public final class GetLkeVersionsResult {
      * 
      */
     private String id;
-    private List<GetLkeVersionsVersion> versions;
+    /**
+     * @return The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
+     * 
+     */
+    private @Nullable String tier;
+    private @Nullable List<GetLkeVersionsVersion> versions;
 
     private GetLkeVersionsResult() {}
     /**
@@ -27,8 +34,15 @@ public final class GetLkeVersionsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
+     * 
+     */
+    public Optional<String> tier() {
+        return Optional.ofNullable(this.tier);
+    }
     public List<GetLkeVersionsVersion> versions() {
-        return this.versions;
+        return this.versions == null ? List.of() : this.versions;
     }
 
     public static Builder builder() {
@@ -41,11 +55,13 @@ public final class GetLkeVersionsResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private List<GetLkeVersionsVersion> versions;
+        private @Nullable String tier;
+        private @Nullable List<GetLkeVersionsVersion> versions;
         public Builder() {}
         public Builder(GetLkeVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.tier = defaults.tier;
     	      this.versions = defaults.versions;
         }
 
@@ -58,10 +74,14 @@ public final class GetLkeVersionsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder versions(List<GetLkeVersionsVersion> versions) {
-            if (versions == null) {
-              throw new MissingRequiredPropertyException("GetLkeVersionsResult", "versions");
-            }
+        public Builder tier(@Nullable String tier) {
+
+            this.tier = tier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder versions(@Nullable List<GetLkeVersionsVersion> versions) {
+
             this.versions = versions;
             return this;
         }
@@ -71,6 +91,7 @@ public final class GetLkeVersionsResult {
         public GetLkeVersionsResult build() {
             final var _resultValue = new GetLkeVersionsResult();
             _resultValue.id = id;
+            _resultValue.tier = tier;
             _resultValue.versions = versions;
             return _resultValue;
         }

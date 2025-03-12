@@ -25790,6 +25790,8 @@ func (o GetLkeTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetLkeTy
 type GetLkeVersionsVersion struct {
 	// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 	Id string `pulumi:"id"`
+	// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+	Tier string `pulumi:"tier"`
 }
 
 // GetLkeVersionsVersionInput is an input type that accepts GetLkeVersionsVersionArgs and GetLkeVersionsVersionOutput values.
@@ -25806,6 +25808,8 @@ type GetLkeVersionsVersionInput interface {
 type GetLkeVersionsVersionArgs struct {
 	// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+	Tier pulumi.StringInput `pulumi:"tier"`
 }
 
 func (GetLkeVersionsVersionArgs) ElementType() reflect.Type {
@@ -25862,6 +25866,11 @@ func (o GetLkeVersionsVersionOutput) ToGetLkeVersionsVersionOutputWithContext(ct
 // The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 func (o GetLkeVersionsVersionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+func (o GetLkeVersionsVersionOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeVersionsVersion) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 type GetLkeVersionsVersionArrayOutput struct{ *pulumi.OutputState }

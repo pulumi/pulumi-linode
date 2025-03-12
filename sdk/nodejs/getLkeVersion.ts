@@ -2,13 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+ * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
  *
  * ## Example Usage
  *
@@ -18,7 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const example = linode.getLkeVersions({});
+ * const example = linode.getLkeVersion({
+ *     id: "1.31",
+ * });
  * ```
  *
  * The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -30,35 +30,38 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const example = linode.getLkeVersions({
- *     tier: "enterprise",
+ * const example = linode.getLkeVersion({
+ *     id: "1.31",
+ *     tier: "standard",
  * });
  * ```
  */
-export function getLkeVersions(args?: GetLkeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeVersionsResult> {
-    args = args || {};
+export function getLkeVersion(args: GetLkeVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("linode:index/getLkeVersions:getLkeVersions", {
+    return pulumi.runtime.invoke("linode:index/getLkeVersion:getLkeVersion", {
+        "id": args.id,
         "tier": args.tier,
-        "versions": args.versions,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getLkeVersions.
+ * A collection of arguments for invoking getLkeVersion.
  */
-export interface GetLkeVersionsArgs {
+export interface GetLkeVersionArgs {
     /**
-     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     * The unique ID of this Linode LKE Version.
+     */
+    id: string;
+    /**
+     * The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
      */
     tier?: string;
-    versions?: inputs.GetLkeVersionsVersion[];
 }
 
 /**
- * A collection of values returned by getLkeVersions.
+ * A collection of values returned by getLkeVersion.
  */
-export interface GetLkeVersionsResult {
+export interface GetLkeVersionResult {
     /**
      * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      */
@@ -66,12 +69,11 @@ export interface GetLkeVersionsResult {
     /**
      * The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
      */
-    readonly tier?: string;
-    readonly versions?: outputs.GetLkeVersionsVersion[];
+    readonly tier: string;
 }
 /**
- * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+ * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
  *
  * ## Example Usage
  *
@@ -81,7 +83,9 @@ export interface GetLkeVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const example = linode.getLkeVersions({});
+ * const example = linode.getLkeVersion({
+ *     id: "1.31",
+ * });
  * ```
  *
  * The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -93,27 +97,30 @@ export interface GetLkeVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const example = linode.getLkeVersions({
- *     tier: "enterprise",
+ * const example = linode.getLkeVersion({
+ *     id: "1.31",
+ *     tier: "standard",
  * });
  * ```
  */
-export function getLkeVersionsOutput(args?: GetLkeVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeVersionsResult> {
-    args = args || {};
+export function getLkeVersionOutput(args: GetLkeVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("linode:index/getLkeVersions:getLkeVersions", {
+    return pulumi.runtime.invokeOutput("linode:index/getLkeVersion:getLkeVersion", {
+        "id": args.id,
         "tier": args.tier,
-        "versions": args.versions,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getLkeVersions.
+ * A collection of arguments for invoking getLkeVersion.
  */
-export interface GetLkeVersionsOutputArgs {
+export interface GetLkeVersionOutputArgs {
     /**
-     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     * The unique ID of this Linode LKE Version.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
      */
     tier?: pulumi.Input<string>;
-    versions?: pulumi.Input<pulumi.Input<inputs.GetLkeVersionsVersionArgs>[]>;
 }

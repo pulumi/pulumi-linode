@@ -9,11 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
-    public static class GetLkeVersions
+    public static class GetLkeVersion
     {
         /// <summary>
-        /// Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+        /// Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,10 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke();
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
+        ///     {
+        ///         Id = "1.31",
+        ///     });
         /// 
         /// });
         /// ```
@@ -45,20 +48,21 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
-        ///         Tier = "enterprise",
+        ///         Id = "1.31",
+        ///         Tier = "standard",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLkeVersionsResult> InvokeAsync(GetLkeVersionsArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", args ?? new GetLkeVersionsArgs(), options.WithDefaults());
+        public static Task<GetLkeVersionResult> InvokeAsync(GetLkeVersionArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLkeVersionResult>("linode:index/getLkeVersion:getLkeVersion", args ?? new GetLkeVersionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+        /// Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +76,10 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke();
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
+        ///     {
+        ///         Id = "1.31",
+        ///     });
         /// 
         /// });
         /// ```
@@ -90,20 +97,21 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
-        ///         Tier = "enterprise",
+        ///         Id = "1.31",
+        ///         Tier = "standard",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLkeVersionsResult> Invoke(GetLkeVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", args ?? new GetLkeVersionsInvokeArgs(), options.WithDefaults());
+        public static Output<GetLkeVersionResult> Invoke(GetLkeVersionInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionResult>("linode:index/getLkeVersion:getLkeVersion", args ?? new GetLkeVersionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+        /// Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
         /// 
         /// ## Example Usage
         /// 
@@ -117,7 +125,10 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke();
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
+        ///     {
+        ///         Id = "1.31",
+        ///     });
         /// 
         /// });
         /// ```
@@ -135,66 +146,63 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
-        ///         Tier = "enterprise",
+        ///         Id = "1.31",
+        ///         Tier = "standard",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLkeVersionsResult> Invoke(GetLkeVersionsInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionsResult>("linode:index/getLkeVersions:getLkeVersions", args ?? new GetLkeVersionsInvokeArgs(), options.WithDefaults());
+        public static Output<GetLkeVersionResult> Invoke(GetLkeVersionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLkeVersionResult>("linode:index/getLkeVersion:getLkeVersion", args ?? new GetLkeVersionInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLkeVersionsArgs : global::Pulumi.InvokeArgs
+    public sealed class GetLkeVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        /// The unique ID of this Linode LKE Version.
+        /// </summary>
+        [Input("id", required: true)]
+        public string Id { get; set; } = null!;
+
+        /// <summary>
+        /// The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
         /// </summary>
         [Input("tier")]
         public string? Tier { get; set; }
 
-        [Input("versions")]
-        private List<Inputs.GetLkeVersionsVersionArgs>? _versions;
-        public List<Inputs.GetLkeVersionsVersionArgs> Versions
-        {
-            get => _versions ?? (_versions = new List<Inputs.GetLkeVersionsVersionArgs>());
-            set => _versions = value;
-        }
-
-        public GetLkeVersionsArgs()
+        public GetLkeVersionArgs()
         {
         }
-        public static new GetLkeVersionsArgs Empty => new GetLkeVersionsArgs();
+        public static new GetLkeVersionArgs Empty => new GetLkeVersionArgs();
     }
 
-    public sealed class GetLkeVersionsInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetLkeVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        /// The unique ID of this Linode LKE Version.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        /// <summary>
+        /// The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 
-        [Input("versions")]
-        private InputList<Inputs.GetLkeVersionsVersionInputArgs>? _versions;
-        public InputList<Inputs.GetLkeVersionsVersionInputArgs> Versions
-        {
-            get => _versions ?? (_versions = new InputList<Inputs.GetLkeVersionsVersionInputArgs>());
-            set => _versions = value;
-        }
-
-        public GetLkeVersionsInvokeArgs()
+        public GetLkeVersionInvokeArgs()
         {
         }
-        public static new GetLkeVersionsInvokeArgs Empty => new GetLkeVersionsInvokeArgs();
+        public static new GetLkeVersionInvokeArgs Empty => new GetLkeVersionInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetLkeVersionsResult
+    public sealed class GetLkeVersionResult
     {
         /// <summary>
         /// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
@@ -203,20 +211,16 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
         /// </summary>
-        public readonly string? Tier;
-        public readonly ImmutableArray<Outputs.GetLkeVersionsVersionResult> Versions;
+        public readonly string Tier;
 
         [OutputConstructor]
-        private GetLkeVersionsResult(
+        private GetLkeVersionResult(
             string id,
 
-            string? tier,
-
-            ImmutableArray<Outputs.GetLkeVersionsVersionResult> versions)
+            string tier)
         {
             Id = id;
             Tier = tier;
-            Versions = versions;
         }
     }
 }

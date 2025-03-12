@@ -13,31 +13,26 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = [
-    'GetLkeVersionsResult',
-    'AwaitableGetLkeVersionsResult',
-    'get_lke_versions',
-    'get_lke_versions_output',
+    'GetLkeVersionResult',
+    'AwaitableGetLkeVersionResult',
+    'get_lke_version',
+    'get_lke_version_output',
 ]
 
 @pulumi.output_type
-class GetLkeVersionsResult:
+class GetLkeVersionResult:
     """
-    A collection of values returned by getLkeVersions.
+    A collection of values returned by getLkeVersion.
     """
-    def __init__(__self__, id=None, tier=None, versions=None):
+    def __init__(__self__, id=None, tier=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
-        if versions and not isinstance(versions, list):
-            raise TypeError("Expected argument 'versions' to be a list")
-        pulumi.set(__self__, "versions", versions)
 
     @property
     @pulumi.getter
@@ -49,35 +44,29 @@ class GetLkeVersionsResult:
 
     @property
     @pulumi.getter
-    def tier(self) -> Optional[str]:
+    def tier(self) -> str:
         """
         The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
         """
         return pulumi.get(self, "tier")
 
-    @property
-    @pulumi.getter
-    def versions(self) -> Optional[Sequence['outputs.GetLkeVersionsVersionResult']]:
-        return pulumi.get(self, "versions")
 
-
-class AwaitableGetLkeVersionsResult(GetLkeVersionsResult):
+class AwaitableGetLkeVersionResult(GetLkeVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetLkeVersionsResult(
+        return GetLkeVersionResult(
             id=self.id,
-            tier=self.tier,
-            versions=self.versions)
+            tier=self.tier)
 
 
-def get_lke_versions(tier: Optional[str] = None,
-                     versions: Optional[Sequence[Union['GetLkeVersionsVersionArgs', 'GetLkeVersionsVersionArgsDict']]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeVersionsResult:
+def get_lke_version(id: Optional[str] = None,
+                    tier: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeVersionResult:
     """
-    Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+    Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
 
     ## Example Usage
 
@@ -87,7 +76,7 @@ def get_lke_versions(tier: Optional[str] = None,
     import pulumi
     import pulumi_linode as linode
 
-    example = linode.get_lke_versions()
+    example = linode.get_lke_version(id="1.31")
     ```
 
     The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -99,28 +88,29 @@ def get_lke_versions(tier: Optional[str] = None,
     import pulumi
     import pulumi_linode as linode
 
-    example = linode.get_lke_versions(tier="enterprise")
+    example = linode.get_lke_version(id="1.31",
+        tier="standard")
     ```
 
 
-    :param str tier: The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+    :param str id: The unique ID of this Linode LKE Version.
+    :param str tier: The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['tier'] = tier
-    __args__['versions'] = versions
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('linode:index/getLkeVersions:getLkeVersions', __args__, opts=opts, typ=GetLkeVersionsResult).value
+    __ret__ = pulumi.runtime.invoke('linode:index/getLkeVersion:getLkeVersion', __args__, opts=opts, typ=GetLkeVersionResult).value
 
-    return AwaitableGetLkeVersionsResult(
+    return AwaitableGetLkeVersionResult(
         id=pulumi.get(__ret__, 'id'),
-        tier=pulumi.get(__ret__, 'tier'),
-        versions=pulumi.get(__ret__, 'versions'))
-def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[str]]] = None,
-                            versions: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeVersionsVersionArgs', 'GetLkeVersionsVersionArgsDict']]]]] = None,
-                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeVersionsResult]:
+        tier=pulumi.get(__ret__, 'tier'))
+def get_lke_version_output(id: Optional[pulumi.Input[str]] = None,
+                           tier: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeVersionResult]:
     """
-    Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
+    Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
 
     ## Example Usage
 
@@ -130,7 +120,7 @@ def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    example = linode.get_lke_versions()
+    example = linode.get_lke_version(id="1.31")
     ```
 
     The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -142,18 +132,19 @@ def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    example = linode.get_lke_versions(tier="enterprise")
+    example = linode.get_lke_version(id="1.31",
+        tier="standard")
     ```
 
 
-    :param str tier: The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+    :param str id: The unique ID of this Linode LKE Version.
+    :param str tier: The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['tier'] = tier
-    __args__['versions'] = versions
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeVersions:getLkeVersions', __args__, opts=opts, typ=GetLkeVersionsResult)
-    return __ret__.apply(lambda __response__: GetLkeVersionsResult(
+    __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeVersion:getLkeVersion', __args__, opts=opts, typ=GetLkeVersionResult)
+    return __ret__.apply(lambda __response__: GetLkeVersionResult(
         id=pulumi.get(__response__, 'id'),
-        tier=pulumi.get(__response__, 'tier'),
-        versions=pulumi.get(__response__, 'versions')))
+        tier=pulumi.get(__response__, 'tier')))
