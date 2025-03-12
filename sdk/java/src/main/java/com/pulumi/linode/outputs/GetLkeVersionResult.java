@@ -9,19 +9,19 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetLkeVersionsVersion {
+public final class GetLkeVersionResult {
     /**
      * @return The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      * 
      */
     private String id;
     /**
-     * @return The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     * @return The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
      * 
      */
     private String tier;
 
-    private GetLkeVersionsVersion() {}
+    private GetLkeVersionResult() {}
     /**
      * @return The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
      * 
@@ -30,7 +30,7 @@ public final class GetLkeVersionsVersion {
         return this.id;
     }
     /**
-     * @return The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     * @return The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
      * 
      */
     public String tier() {
@@ -41,7 +41,7 @@ public final class GetLkeVersionsVersion {
         return new Builder();
     }
 
-    public static Builder builder(GetLkeVersionsVersion defaults) {
+    public static Builder builder(GetLkeVersionResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -49,7 +49,7 @@ public final class GetLkeVersionsVersion {
         private String id;
         private String tier;
         public Builder() {}
-        public Builder(GetLkeVersionsVersion defaults) {
+        public Builder(GetLkeVersionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.tier = defaults.tier;
@@ -58,7 +58,7 @@ public final class GetLkeVersionsVersion {
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
-              throw new MissingRequiredPropertyException("GetLkeVersionsVersion", "id");
+              throw new MissingRequiredPropertyException("GetLkeVersionResult", "id");
             }
             this.id = id;
             return this;
@@ -66,13 +66,13 @@ public final class GetLkeVersionsVersion {
         @CustomType.Setter
         public Builder tier(String tier) {
             if (tier == null) {
-              throw new MissingRequiredPropertyException("GetLkeVersionsVersion", "tier");
+              throw new MissingRequiredPropertyException("GetLkeVersionResult", "tier");
             }
             this.tier = tier;
             return this;
         }
-        public GetLkeVersionsVersion build() {
-            final var _resultValue = new GetLkeVersionsVersion();
+        public GetLkeVersionResult build() {
+            final var _resultValue = new GetLkeVersionResult();
             _resultValue.id = id;
             _resultValue.tier = tier;
             return _resultValue;

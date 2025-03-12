@@ -7,29 +7,26 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Linode.Outputs
+namespace Pulumi.Linode.Inputs
 {
 
-    [OutputType]
-    public sealed class GetLkeVersionsVersionResult
+    public sealed class GetLkeVersionsVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
         /// </summary>
-        public readonly string Id;
+        [Input("id", required: true)]
+        public string Id { get; set; } = null!;
+
         /// <summary>
         /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
         /// </summary>
-        public readonly string Tier;
+        [Input("tier", required: true)]
+        public string Tier { get; set; } = null!;
 
-        [OutputConstructor]
-        private GetLkeVersionsVersionResult(
-            string id,
-
-            string tier)
+        public GetLkeVersionsVersionArgs()
         {
-            Id = id;
-            Tier = tier;
         }
+        public static new GetLkeVersionsVersionArgs Empty => new GetLkeVersionsVersionArgs();
     }
 }

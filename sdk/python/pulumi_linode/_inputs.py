@@ -277,6 +277,8 @@ __all__ = [
     'GetLkeTypesTypePriceArgsDict',
     'GetLkeTypesTypeRegionPriceArgs',
     'GetLkeTypesTypeRegionPriceArgsDict',
+    'GetLkeVersionsVersionArgs',
+    'GetLkeVersionsVersionArgsDict',
     'GetNbTypesFilterArgs',
     'GetNbTypesFilterArgsDict',
     'GetNbTypesTypeArgs',
@@ -12379,6 +12381,56 @@ class GetLkeTypesTypeRegionPriceArgs:
     @monthly.setter
     def monthly(self, value: float):
         pulumi.set(self, "monthly", value)
+
+
+if not MYPY:
+    class GetLkeVersionsVersionArgsDict(TypedDict):
+        id: str
+        """
+        The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+        """
+        tier: str
+        """
+        The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        """
+elif False:
+    GetLkeVersionsVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetLkeVersionsVersionArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 tier: str):
+        """
+        :param str id: The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+        :param str tier: The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tier", tier)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> str:
+        """
+        The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: str):
+        pulumi.set(self, "tier", value)
 
 
 if not MYPY:

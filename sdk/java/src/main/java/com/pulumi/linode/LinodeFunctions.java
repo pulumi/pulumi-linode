@@ -79,6 +79,10 @@ import com.pulumi.linode.inputs.GetLkeClustersArgs;
 import com.pulumi.linode.inputs.GetLkeClustersPlainArgs;
 import com.pulumi.linode.inputs.GetLkeTypesArgs;
 import com.pulumi.linode.inputs.GetLkeTypesPlainArgs;
+import com.pulumi.linode.inputs.GetLkeVersionArgs;
+import com.pulumi.linode.inputs.GetLkeVersionPlainArgs;
+import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+import com.pulumi.linode.inputs.GetLkeVersionsPlainArgs;
 import com.pulumi.linode.inputs.GetNbTypesArgs;
 import com.pulumi.linode.inputs.GetNbTypesPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkTransferPricesArgs;
@@ -176,6 +180,7 @@ import com.pulumi.linode.outputs.GetLinodeObjectStorageBucketResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
 import com.pulumi.linode.outputs.GetLkeClustersResult;
 import com.pulumi.linode.outputs.GetLkeTypesResult;
+import com.pulumi.linode.outputs.GetLkeVersionResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
 import com.pulumi.linode.outputs.GetNbTypesResult;
 import com.pulumi.linode.outputs.GetNetworkTransferPricesResult;
@@ -14774,6 +14779,426 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .tier("standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLkeVersionResult> getLkeVersion(GetLkeVersionArgs args) {
+        return getLkeVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .tier("standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLkeVersionResult> getLkeVersionPlain(GetLkeVersionPlainArgs args) {
+        return getLkeVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .tier("standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLkeVersionResult> getLkeVersion(GetLkeVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeVersion:getLkeVersion", TypeShape.of(GetLkeVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .tier("standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLkeVersionResult> getLkeVersion(GetLkeVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeVersion:getLkeVersion", TypeShape.of(GetLkeVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()
+     *             .id("1.31")
+     *             .tier("standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLkeVersionResult> getLkeVersionPlain(GetLkeVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLkeVersion:getLkeVersion", TypeShape.of(GetLkeVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).
      * 
@@ -14790,6 +15215,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14804,6 +15230,44 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
      * 
      *     }
      * }
@@ -14813,7 +15277,7 @@ public final class LinodeFunctions {
      * 
      */
     public static Output<GetLkeVersionsResult> getLkeVersions() {
-        return getLkeVersions(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getLkeVersions(GetLkeVersionsArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -14832,6 +15296,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14846,6 +15311,44 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
      * 
      *     }
      * }
@@ -14855,7 +15358,7 @@ public final class LinodeFunctions {
      * 
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain() {
-        return getLkeVersionsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getLkeVersionsPlain(GetLkeVersionsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -14874,6 +15377,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14895,8 +15399,46 @@ public final class LinodeFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args) {
+    public static Output<GetLkeVersionsResult> getLkeVersions(GetLkeVersionsArgs args) {
         return getLkeVersions(args, InvokeOptions.Empty);
     }
     /**
@@ -14916,6 +15458,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14937,8 +15480,46 @@ public final class LinodeFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(GetLkeVersionsPlainArgs args) {
         return getLkeVersionsPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -14958,6 +15539,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -14979,8 +15561,46 @@ public final class LinodeFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetLkeVersionsResult> getLkeVersions(GetLkeVersionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -15000,6 +15620,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -15021,8 +15642,46 @@ public final class LinodeFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetLkeVersionsResult> getLkeVersions(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetLkeVersionsResult> getLkeVersions(GetLkeVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -15042,6 +15701,7 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -15063,8 +15723,46 @@ public final class LinodeFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * The following example shows how one might use this data source to access information about a Linode LKE Version
+     * with additional information about the Linode LKE Version&#39;s tier (`enterprise` or `standard`).
+     * 
+     * &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .tier("enterprise")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(GetLkeVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetNbTypesResult> getNbTypes() {

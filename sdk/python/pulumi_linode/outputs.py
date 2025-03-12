@@ -11787,11 +11787,14 @@ class GetLkeTypesTypeRegionPriceResult(dict):
 @pulumi.output_type
 class GetLkeVersionsVersionResult(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: str,
+                 tier: str):
         """
         :param str id: The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+        :param str tier: The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tier", tier)
 
     @property
     @pulumi.getter
@@ -11800,6 +11803,14 @@ class GetLkeVersionsVersionResult(dict):
         The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> str:
+        """
+        The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        """
+        return pulumi.get(self, "tier")
 
 
 @pulumi.output_type

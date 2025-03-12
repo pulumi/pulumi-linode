@@ -2434,6 +2434,28 @@ export interface GetLkeTypesTypeRegionPriceArgs {
     monthly: pulumi.Input<number>;
 }
 
+export interface GetLkeVersionsVersion {
+    /**
+     * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+     */
+    id: string;
+    /**
+     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     */
+    tier?: string;
+}
+
+export interface GetLkeVersionsVersionArgs {
+    /**
+     * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+     */
+    tier?: pulumi.Input<string>;
+}
+
 export interface GetNbTypesFilter {
     /**
      * The type of comparison to use for this filter.
