@@ -6415,15 +6415,22 @@
                 "id": {
                     "type": "string",
                     "description": "The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.\n"
+                },
+                "tier": {
+                    "type": "string",
+                    "description": "The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.\n"
                 }
             },
             "type": "object",
             "required": [
-                "id"
+                "id",
+                "tier"
             ],
             "language": {
                 "nodejs": {
-                    "requiredInputs": []
+                    "requiredInputs": [
+                        "id"
+                    ]
                 }
             }
         },
@@ -19094,13 +19101,71 @@
                 "type": "object"
             }
         },
+        "linode:index/getLkeVersion:getLkeVersion": {
+            "description": "Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-version).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersion({\n    id: \"1.31\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_version(id=\"1.31\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersion.Invoke(new()\n    {\n        Id = \"1.31\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersion(ctx, \u0026linode.GetLkeVersionArgs{\n\t\t\tId: \"1.31\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()\n            .id(\"1.31\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersion\n      arguments:\n        id: '1.31'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version\nwith additional information about the Linode LKE Version's tier (`enterprise` or `standard`).\n\n\u003e **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersion({\n    id: \"1.31\",\n    tier: \"standard\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_version(id=\"1.31\",\n    tier=\"standard\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersion.Invoke(new()\n    {\n        Id = \"1.31\",\n        Tier = \"standard\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersion(ctx, \u0026linode.GetLkeVersionArgs{\n\t\t\tId:   \"1.31\",\n\t\t\tTier: pulumi.StringRef(\"standard\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersion(GetLkeVersionArgs.builder()\n            .id(\"1.31\")\n            .tier(\"standard\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersion\n      arguments:\n        id: '1.31'\n        tier: standard\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLkeVersion.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique ID of this Linode LKE Version.\n"
+                    },
+                    "tier": {
+                        "type": "string",
+                        "description": "The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLkeVersion.\n",
+                "properties": {
+                    "id": {
+                        "description": "The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.\n",
+                        "type": "string"
+                    },
+                    "tier": {
+                        "description": "The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "tier"
+                ],
+                "type": "object"
+            }
+        },
         "linode:index/getLkeVersions:getLkeVersions": {
-            "description": "Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersions(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions();\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersions(ctx, \u0026linode.GetLkeVersionsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions();\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version\nwith additional information about the Linode LKE Version's tier (`enterprise` or `standard`).\n\n\u003e **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({\n    tier: \"enterprise\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions(tier=\"enterprise\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke(new()\n    {\n        Tier = \"enterprise\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersions(ctx, \u0026linode.GetLkeVersionsArgs{\n\t\t\tTier: pulumi.StringRef(\"enterprise\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()\n            .tier(\"enterprise\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments:\n        tier: enterprise\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLkeVersions.\n",
+                "properties": {
+                    "tier": {
+                        "type": "string",
+                        "description": "The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.\n"
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getLkeVersionsVersion:getLkeVersionsVersion"
+                        }
+                    }
+                },
+                "type": "object"
+            },
             "outputs": {
                 "description": "A collection of values returned by getLkeVersions.\n",
                 "properties": {
                     "id": {
                         "description": "The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.\n",
+                        "type": "string"
+                    },
+                    "tier": {
+                        "description": "The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.\n",
                         "type": "string"
                     },
                     "versions": {
@@ -19111,8 +19176,7 @@
                     }
                 },
                 "required": [
-                    "id",
-                    "versions"
+                    "id"
                 ],
                 "type": "object"
             }
