@@ -210,6 +210,12 @@ namespace Pulumi.Linode
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether this Managed Database should be suspended.
+        /// </summary>
+        [Output("suspended")]
+        public Output<bool> Suspended { get; private set; } = null!;
+
         [Output("timeouts")]
         public Output<Outputs.DatabasePostgresqlV2Timeouts?> Timeouts { get; private set; } = null!;
 
@@ -340,6 +346,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// Whether this Managed Database should be suspended.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.DatabasePostgresqlV2TimeoutsArgs>? Timeouts { get; set; }
@@ -547,6 +559,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Whether this Managed Database should be suspended.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.DatabasePostgresqlV2TimeoutsGetArgs>? Timeouts { get; set; }

@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const example = linode.getLkeVersions({});
+ * export const exampleOutput = example;
+ * export const exampleOutputFirstVersion = example.then(example => example.versions?.[0]);
  * ```
  *
  * The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -30,9 +32,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const example = linode.getLkeVersions({
+ * const exampleEnterprise = linode.getLkeVersions({
  *     tier: "enterprise",
  * });
+ * export const exampleEnterpriseOutput = exampleEnterprise;
+ * export const exampleEnterpriseOutputFirstVersion = exampleEnterprise.then(exampleEnterprise => exampleEnterprise.versions?.[0]);
  * ```
  */
 export function getLkeVersions(args?: GetLkeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeVersionsResult> {
@@ -82,6 +86,8 @@ export interface GetLkeVersionsResult {
  * import * as linode from "@pulumi/linode";
  *
  * const example = linode.getLkeVersions({});
+ * export const exampleOutput = example;
+ * export const exampleOutputFirstVersion = example.then(example => example.versions?.[0]);
  * ```
  *
  * The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -93,9 +99,11 @@ export interface GetLkeVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const example = linode.getLkeVersions({
+ * const exampleEnterprise = linode.getLkeVersions({
  *     tier: "enterprise",
  * });
+ * export const exampleEnterpriseOutput = exampleEnterprise;
+ * export const exampleEnterpriseOutputFirstVersion = exampleEnterprise.then(exampleEnterprise => exampleEnterprise.versions?.[0]);
  * ```
  */
 export function getLkeVersionsOutput(args?: GetLkeVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeVersionsResult> {

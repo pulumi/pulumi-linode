@@ -88,6 +88,8 @@ def get_lke_versions(tier: Optional[str] = None,
     import pulumi_linode as linode
 
     example = linode.get_lke_versions()
+    pulumi.export("exampleOutput", example)
+    pulumi.export("exampleOutputFirstVersion", example.versions[0])
     ```
 
     The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -99,7 +101,9 @@ def get_lke_versions(tier: Optional[str] = None,
     import pulumi
     import pulumi_linode as linode
 
-    example = linode.get_lke_versions(tier="enterprise")
+    example_enterprise = linode.get_lke_versions(tier="enterprise")
+    pulumi.export("exampleEnterpriseOutput", example_enterprise)
+    pulumi.export("exampleEnterpriseOutputFirstVersion", example_enterprise.versions[0])
     ```
 
 
@@ -131,6 +135,8 @@ def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_linode as linode
 
     example = linode.get_lke_versions()
+    pulumi.export("exampleOutput", example)
+    pulumi.export("exampleOutputFirstVersion", example.versions[0])
     ```
 
     The following example shows how one might use this data source to access information about a Linode LKE Version
@@ -142,7 +148,9 @@ def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_linode as linode
 
-    example = linode.get_lke_versions(tier="enterprise")
+    example_enterprise = linode.get_lke_versions(tier="enterprise")
+    pulumi.export("exampleEnterpriseOutput", example_enterprise)
+    pulumi.export("exampleEnterpriseOutputFirstVersion", example_enterprise.versions[0])
     ```
 
 

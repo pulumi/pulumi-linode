@@ -273,6 +273,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// Whether this Managed Database is suspended.
+        /// </summary>
+        public readonly bool Suspended;
+        /// <summary>
         /// The Linode Instance type used for the nodes of the Managed Database.
         /// </summary>
         public readonly string Type;
@@ -334,6 +338,8 @@ namespace Pulumi.Linode
 
             string status,
 
+            bool suspended,
+
             string type,
 
             string updated,
@@ -365,6 +371,7 @@ namespace Pulumi.Linode
             RootUsername = rootUsername;
             SslConnection = sslConnection;
             Status = status;
+            Suspended = suspended;
             Type = type;
             Updated = updated;
             Updates = updates;

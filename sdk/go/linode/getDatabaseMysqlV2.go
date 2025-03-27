@@ -123,6 +123,8 @@ type LookupDatabaseMysqlV2Result struct {
 	SslConnection bool `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
 	Status string `pulumi:"status"`
+	// Whether this Managed Database is suspended.
+	Suspended bool `pulumi:"suspended"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	Type string `pulumi:"type"`
 	// When this Managed Database was last updated.
@@ -275,6 +277,11 @@ func (o LookupDatabaseMysqlV2ResultOutput) SslConnection() pulumi.BoolOutput {
 // The operating status of the Managed Database.
 func (o LookupDatabaseMysqlV2ResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether this Managed Database is suspended.
+func (o LookupDatabaseMysqlV2ResultOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) bool { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 // The Linode Instance type used for the nodes of the Managed Database.

@@ -171,6 +171,10 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
      * The operating status of the Managed Database.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Whether this Managed Database should be suspended.
+     */
+    public readonly suspended!: pulumi.Output<boolean>;
     public readonly timeouts!: pulumi.Output<outputs.DatabaseMysqlV2Timeouts | undefined>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
@@ -226,6 +230,7 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
             resourceInputs["rootUsername"] = state ? state.rootUsername : undefined;
             resourceInputs["sslConnection"] = state ? state.sslConnection : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["suspended"] = state ? state.suspended : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updated"] = state ? state.updated : undefined;
@@ -252,6 +257,7 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
             resourceInputs["forkSource"] = args ? args.forkSource : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["updates"] = args ? args.updates : undefined;
@@ -374,6 +380,10 @@ export interface DatabaseMysqlV2State {
      * The operating status of the Managed Database.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Whether this Managed Database should be suspended.
+     */
+    suspended?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.DatabaseMysqlV2Timeouts>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
@@ -429,6 +439,10 @@ export interface DatabaseMysqlV2Args {
      * The region to use for the Managed Database.
      */
     region: pulumi.Input<string>;
+    /**
+     * Whether this Managed Database should be suspended.
+     */
+    suspended?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.DatabaseMysqlV2Timeouts>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.

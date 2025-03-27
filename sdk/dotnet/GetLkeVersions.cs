@@ -29,6 +29,11 @@ namespace Pulumi.Linode
         /// {
         ///     var example = Linode.GetLkeVersions.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleOutput"] = example,
+        ///         ["exampleOutputFirstVersion"] = example.Apply(getLkeVersionsResult =&gt; getLkeVersionsResult.Versions[0]),
+        ///     };
         /// });
         /// ```
         /// 
@@ -45,11 +50,16 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke(new()
+        ///     var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()
         ///     {
         ///         Tier = "enterprise",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleEnterpriseOutput"] = exampleEnterprise,
+        ///         ["exampleEnterpriseOutputFirstVersion"] = exampleEnterprise.Apply(getLkeVersionsResult =&gt; getLkeVersionsResult.Versions[0]),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -74,6 +84,11 @@ namespace Pulumi.Linode
         /// {
         ///     var example = Linode.GetLkeVersions.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleOutput"] = example,
+        ///         ["exampleOutputFirstVersion"] = example.Apply(getLkeVersionsResult =&gt; getLkeVersionsResult.Versions[0]),
+        ///     };
         /// });
         /// ```
         /// 
@@ -90,11 +105,16 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke(new()
+        ///     var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()
         ///     {
         ///         Tier = "enterprise",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleEnterpriseOutput"] = exampleEnterprise,
+        ///         ["exampleEnterpriseOutputFirstVersion"] = exampleEnterprise.Apply(getLkeVersionsResult =&gt; getLkeVersionsResult.Versions[0]),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -119,6 +139,11 @@ namespace Pulumi.Linode
         /// {
         ///     var example = Linode.GetLkeVersions.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleOutput"] = example,
+        ///         ["exampleOutputFirstVersion"] = example.Apply(getLkeVersionsResult =&gt; getLkeVersionsResult.Versions[0]),
+        ///     };
         /// });
         /// ```
         /// 
@@ -135,11 +160,16 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetLkeVersions.Invoke(new()
+        ///     var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()
         ///     {
         ///         Tier = "enterprise",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["exampleEnterpriseOutput"] = exampleEnterprise,
+        ///         ["exampleEnterpriseOutputFirstVersion"] = exampleEnterprise.Apply(getLkeVersionsResult =&gt; getLkeVersionsResult.Versions[0]),
+        ///     };
         /// });
         /// ```
         /// </summary>

@@ -30,10 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetLkeVersions(ctx, &linode.GetLkeVersionsArgs{}, nil)
+//			example, err := linode.GetLkeVersions(ctx, &linode.GetLkeVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("exampleOutput", example)
+//			ctx.Export("exampleOutputFirstVersion", example.Versions[0])
 //			return nil
 //		})
 //	}
@@ -57,12 +59,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.GetLkeVersions(ctx, &linode.GetLkeVersionsArgs{
+//			exampleEnterprise, err := linode.GetLkeVersions(ctx, &linode.GetLkeVersionsArgs{
 //				Tier: pulumi.StringRef("enterprise"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("exampleEnterpriseOutput", exampleEnterprise)
+//			ctx.Export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.Versions[0])
 //			return nil
 //		})
 //	}

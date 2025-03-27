@@ -27,7 +27,7 @@ class GetDatabaseMysqlV2Result:
     """
     A collection of values returned by getDatabaseMysqlV2.
     """
-    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, type=None, updated=None, updates=None, version=None):
+    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
         if allow_lists and not isinstance(allow_lists, list):
             raise TypeError("Expected argument 'allow_lists' to be a list")
         pulumi.set(__self__, "allow_lists", allow_lists)
@@ -97,6 +97,9 @@ class GetDatabaseMysqlV2Result:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if suspended and not isinstance(suspended, bool):
+            raise TypeError("Expected argument 'suspended' to be a bool")
+        pulumi.set(__self__, "suspended", suspended)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -284,6 +287,14 @@ class GetDatabaseMysqlV2Result:
 
     @property
     @pulumi.getter
+    def suspended(self) -> bool:
+        """
+        Whether this Managed Database is suspended.
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter
     def type(self) -> str:
         """
         The Linode Instance type used for the nodes of the Managed Database.
@@ -341,6 +352,7 @@ class AwaitableGetDatabaseMysqlV2Result(GetDatabaseMysqlV2Result):
             root_username=self.root_username,
             ssl_connection=self.ssl_connection,
             status=self.status,
+            suspended=self.suspended,
             type=self.type,
             updated=self.updated,
             updates=self.updates,
@@ -418,6 +430,7 @@ def get_database_mysql_v2(id: Optional[str] = None,
         root_username=pulumi.get(__ret__, 'root_username'),
         ssl_connection=pulumi.get(__ret__, 'ssl_connection'),
         status=pulumi.get(__ret__, 'status'),
+        suspended=pulumi.get(__ret__, 'suspended'),
         type=pulumi.get(__ret__, 'type'),
         updated=pulumi.get(__ret__, 'updated'),
         updates=pulumi.get(__ret__, 'updates'),
@@ -492,6 +505,7 @@ def get_database_mysql_v2_output(id: Optional[pulumi.Input[str]] = None,
         root_username=pulumi.get(__response__, 'root_username'),
         ssl_connection=pulumi.get(__response__, 'ssl_connection'),
         status=pulumi.get(__response__, 'status'),
+        suspended=pulumi.get(__response__, 'suspended'),
         type=pulumi.get(__response__, 'type'),
         updated=pulumi.get(__response__, 'updated'),
         updates=pulumi.get(__response__, 'updates'),

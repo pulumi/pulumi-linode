@@ -137,8 +137,10 @@ type DatabaseMysqlV2 struct {
 	// Whether to require SSL credentials to establish a connection to the Managed Database.
 	SslConnection pulumi.BoolOutput `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
-	Status   pulumi.StringOutput              `pulumi:"status"`
-	Timeouts DatabaseMysqlV2TimeoutsPtrOutput `pulumi:"timeouts"`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Whether this Managed Database should be suspended.
+	Suspended pulumi.BoolOutput                `pulumi:"suspended"`
+	Timeouts  DatabaseMysqlV2TimeoutsPtrOutput `pulumi:"timeouts"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -244,8 +246,10 @@ type databaseMysqlV2State struct {
 	// Whether to require SSL credentials to establish a connection to the Managed Database.
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
-	Status   *string                  `pulumi:"status"`
-	Timeouts *DatabaseMysqlV2Timeouts `pulumi:"timeouts"`
+	Status *string `pulumi:"status"`
+	// Whether this Managed Database should be suspended.
+	Suspended *bool                    `pulumi:"suspended"`
+	Timeouts  *DatabaseMysqlV2Timeouts `pulumi:"timeouts"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -304,8 +308,10 @@ type DatabaseMysqlV2State struct {
 	// Whether to require SSL credentials to establish a connection to the Managed Database.
 	SslConnection pulumi.BoolPtrInput
 	// The operating status of the Managed Database.
-	Status   pulumi.StringPtrInput
-	Timeouts DatabaseMysqlV2TimeoutsPtrInput
+	Status pulumi.StringPtrInput
+	// Whether this Managed Database should be suspended.
+	Suspended pulumi.BoolPtrInput
+	Timeouts  DatabaseMysqlV2TimeoutsPtrInput
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -338,8 +344,10 @@ type databaseMysqlV2Args struct {
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
 	// The region to use for the Managed Database.
-	Region   string                   `pulumi:"region"`
-	Timeouts *DatabaseMysqlV2Timeouts `pulumi:"timeouts"`
+	Region string `pulumi:"region"`
+	// Whether this Managed Database should be suspended.
+	Suspended *bool                    `pulumi:"suspended"`
+	Timeouts  *DatabaseMysqlV2Timeouts `pulumi:"timeouts"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -365,8 +373,10 @@ type DatabaseMysqlV2Args struct {
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
 	// The region to use for the Managed Database.
-	Region   pulumi.StringInput
-	Timeouts DatabaseMysqlV2TimeoutsPtrInput
+	Region pulumi.StringInput
+	// Whether this Managed Database should be suspended.
+	Suspended pulumi.BoolPtrInput
+	Timeouts  DatabaseMysqlV2TimeoutsPtrInput
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -572,6 +582,11 @@ func (o DatabaseMysqlV2Output) SslConnection() pulumi.BoolOutput {
 // The operating status of the Managed Database.
 func (o DatabaseMysqlV2Output) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether this Managed Database should be suspended.
+func (o DatabaseMysqlV2Output) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 func (o DatabaseMysqlV2Output) Timeouts() DatabaseMysqlV2TimeoutsPtrOutput {

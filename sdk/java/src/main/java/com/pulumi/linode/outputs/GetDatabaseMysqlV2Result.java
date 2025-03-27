@@ -116,6 +116,11 @@ public final class GetDatabaseMysqlV2Result {
      */
     private String status;
     /**
+     * @return Whether this Managed Database is suspended.
+     * 
+     */
+    private Boolean suspended;
+    /**
      * @return The Linode Instance type used for the nodes of the Managed Database.
      * 
      */
@@ -279,6 +284,13 @@ public final class GetDatabaseMysqlV2Result {
         return this.status;
     }
     /**
+     * @return Whether this Managed Database is suspended.
+     * 
+     */
+    public Boolean suspended() {
+        return this.suspended;
+    }
+    /**
      * @return The Linode Instance type used for the nodes of the Managed Database.
      * 
      */
@@ -335,6 +347,7 @@ public final class GetDatabaseMysqlV2Result {
         private String rootUsername;
         private Boolean sslConnection;
         private String status;
+        private Boolean suspended;
         private String type;
         private String updated;
         private GetDatabaseMysqlV2Updates updates;
@@ -365,6 +378,7 @@ public final class GetDatabaseMysqlV2Result {
     	      this.rootUsername = defaults.rootUsername;
     	      this.sslConnection = defaults.sslConnection;
     	      this.status = defaults.status;
+    	      this.suspended = defaults.suspended;
     	      this.type = defaults.type;
     	      this.updated = defaults.updated;
     	      this.updates = defaults.updates;
@@ -562,6 +576,14 @@ public final class GetDatabaseMysqlV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder suspended(Boolean suspended) {
+            if (suspended == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseMysqlV2Result", "suspended");
+            }
+            this.suspended = suspended;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetDatabaseMysqlV2Result", "type");
@@ -618,6 +640,7 @@ public final class GetDatabaseMysqlV2Result {
             _resultValue.rootUsername = rootUsername;
             _resultValue.sslConnection = sslConnection;
             _resultValue.status = status;
+            _resultValue.suspended = suspended;
             _resultValue.type = type;
             _resultValue.updated = updated;
             _resultValue.updates = updates;

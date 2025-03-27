@@ -539,6 +539,20 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * Whether this Managed Database should be suspended.
+     * 
+     */
+    @Export(name="suspended", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> suspended;
+
+    /**
+     * @return Whether this Managed Database should be suspended.
+     * 
+     */
+    public Output<Boolean> suspended() {
+        return this.suspended;
+    }
     @Export(name="timeouts", refs={DatabasePostgresqlV2Timeouts.class}, tree="[0]")
     private Output</* @Nullable */ DatabasePostgresqlV2Timeouts> timeouts;
 
