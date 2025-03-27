@@ -10052,6 +10052,10 @@
                     "type": "string",
                     "description": "The operating status of the Managed Database.\n"
                 },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "Whether this Managed Database should be suspended.\n"
+                },
                 "timeouts": {
                     "$ref": "#/types/linode:index/DatabaseMysqlV2Timeouts:DatabaseMysqlV2Timeouts"
                 },
@@ -10094,6 +10098,7 @@
                 "rootUsername",
                 "sslConnection",
                 "status",
+                "suspended",
                 "type",
                 "updated",
                 "updates",
@@ -10130,6 +10135,10 @@
                 "region": {
                     "type": "string",
                     "description": "The region to use for the Managed Database.\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "Whether this Managed Database should be suspended.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/linode:index/DatabaseMysqlV2Timeouts:DatabaseMysqlV2Timeouts"
@@ -10251,6 +10260,10 @@
                     "status": {
                         "type": "string",
                         "description": "The operating status of the Managed Database.\n"
+                    },
+                    "suspended": {
+                        "type": "boolean",
+                        "description": "Whether this Managed Database should be suspended.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/linode:index/DatabaseMysqlV2Timeouts:DatabaseMysqlV2Timeouts"
@@ -10667,6 +10680,10 @@
                     "type": "string",
                     "description": "The operating status of the Managed Database.\n"
                 },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "Whether this Managed Database should be suspended.\n"
+                },
                 "timeouts": {
                     "$ref": "#/types/linode:index/DatabasePostgresqlV2Timeouts:DatabasePostgresqlV2Timeouts"
                 },
@@ -10709,6 +10726,7 @@
                 "rootUsername",
                 "sslConnection",
                 "status",
+                "suspended",
                 "type",
                 "updated",
                 "updates",
@@ -10745,6 +10763,10 @@
                 "region": {
                     "type": "string",
                     "description": "The region to use for the Managed Database.\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "Whether this Managed Database should be suspended.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/linode:index/DatabasePostgresqlV2Timeouts:DatabasePostgresqlV2Timeouts"
@@ -10866,6 +10888,10 @@
                     "status": {
                         "type": "string",
                         "description": "The operating status of the Managed Database.\n"
+                    },
+                    "suspended": {
+                        "type": "boolean",
+                        "description": "Whether this Managed Database should be suspended.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/linode:index/DatabasePostgresqlV2Timeouts:DatabasePostgresqlV2Timeouts"
@@ -17189,6 +17215,10 @@
                         "description": "The operating status of the Managed Database.\n",
                         "type": "string"
                     },
+                    "suspended": {
+                        "description": "Whether this Managed Database is suspended.\n",
+                        "type": "boolean"
+                    },
                     "type": {
                         "description": "The Linode Instance type used for the nodes of the Managed Database.\n",
                         "type": "string"
@@ -17229,6 +17259,7 @@
                     "rootUsername",
                     "sslConnection",
                     "status",
+                    "suspended",
                     "type",
                     "updated",
                     "updates",
@@ -17505,6 +17536,10 @@
                         "description": "The operating status of the Managed Database.\n",
                         "type": "string"
                     },
+                    "suspended": {
+                        "description": "Whether this Managed Database is suspended.\n",
+                        "type": "boolean"
+                    },
                     "type": {
                         "description": "The Linode Instance type used for the nodes of the Managed Database.\n",
                         "type": "string"
@@ -17545,6 +17580,7 @@
                     "rootUsername",
                     "sslConnection",
                     "status",
+                    "suspended",
                     "type",
                     "updated",
                     "updates",
@@ -19140,7 +19176,7 @@
             }
         },
         "linode:index/getLkeVersions:getLkeVersions": {
-            "description": "Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersions(ctx, \u0026linode.GetLkeVersionsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions();\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version\nwith additional information about the Linode LKE Version's tier (`enterprise` or `standard`).\n\n\u003e **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({\n    tier: \"enterprise\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions(tier=\"enterprise\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke(new()\n    {\n        Tier = \"enterprise\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetLkeVersions(ctx, \u0026linode.GetLkeVersionsArgs{\n\t\t\tTier: pulumi.StringRef(\"enterprise\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()\n            .tier(\"enterprise\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments:\n        tier: enterprise\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-versions).\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getLkeVersions({});\nexport const exampleOutput = example;\nexport const exampleOutputFirstVersion = example.then(example =\u003e example.versions?.[0]);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_lke_versions()\npulumi.export(\"exampleOutput\", example)\npulumi.export(\"exampleOutputFirstVersion\", example.versions[0])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetLkeVersions.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"exampleOutput\"] = example,\n        [\"exampleOutputFirstVersion\"] = example.Apply(getLkeVersionsResult =\u003e getLkeVersionsResult.Versions[0]),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := linode.GetLkeVersions(ctx, \u0026linode.GetLkeVersionsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"exampleOutput\", example)\n\t\tctx.Export(\"exampleOutputFirstVersion\", example.Versions[0])\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getLkeVersions();\n\n        ctx.export(\"exampleOutput\", example.applyValue(getLkeVersionsResult -\u003e getLkeVersionsResult));\n        ctx.export(\"exampleOutputFirstVersion\", example.applyValue(getLkeVersionsResult -\u003e getLkeVersionsResult.versions()[0]));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments: {}\noutputs:\n  exampleOutput: ${example}\n  exampleOutputFirstVersion: ${example.versions[0]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example shows how one might use this data source to access information about a Linode LKE Version\nwith additional information about the Linode LKE Version's tier (`enterprise` or `standard`).\n\n\u003e **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst exampleEnterprise = linode.getLkeVersions({\n    tier: \"enterprise\",\n});\nexport const exampleEnterpriseOutput = exampleEnterprise;\nexport const exampleEnterpriseOutputFirstVersion = exampleEnterprise.then(exampleEnterprise =\u003e exampleEnterprise.versions?.[0]);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample_enterprise = linode.get_lke_versions(tier=\"enterprise\")\npulumi.export(\"exampleEnterpriseOutput\", example_enterprise)\npulumi.export(\"exampleEnterpriseOutputFirstVersion\", example_enterprise.versions[0])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()\n    {\n        Tier = \"enterprise\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"exampleEnterpriseOutput\"] = exampleEnterprise,\n        [\"exampleEnterpriseOutputFirstVersion\"] = exampleEnterprise.Apply(getLkeVersionsResult =\u003e getLkeVersionsResult.Versions[0]),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleEnterprise, err := linode.GetLkeVersions(ctx, \u0026linode.GetLkeVersionsArgs{\n\t\t\tTier: pulumi.StringRef(\"enterprise\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"exampleEnterpriseOutput\", exampleEnterprise)\n\t\tctx.Export(\"exampleEnterpriseOutputFirstVersion\", exampleEnterprise.Versions[0])\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetLkeVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()\n            .tier(\"enterprise\")\n            .build());\n\n        ctx.export(\"exampleEnterpriseOutput\", exampleEnterprise.applyValue(getLkeVersionsResult -\u003e getLkeVersionsResult));\n        ctx.export(\"exampleEnterpriseOutputFirstVersion\", exampleEnterprise.applyValue(getLkeVersionsResult -\u003e getLkeVersionsResult.versions()[0]));\n    }\n}\n```\n```yaml\nvariables:\n  exampleEnterprise:\n    fn::invoke:\n      function: linode:getLkeVersions\n      arguments:\n        tier: enterprise\noutputs:\n  exampleEnterpriseOutput: ${exampleEnterprise}\n  exampleEnterpriseOutputFirstVersion: ${exampleEnterprise.versions[0]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getLkeVersions.\n",
                 "properties": {
