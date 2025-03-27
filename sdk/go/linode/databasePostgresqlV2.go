@@ -137,8 +137,10 @@ type DatabasePostgresqlV2 struct {
 	// Whether to require SSL credentials to establish a connection to the Managed Database.
 	SslConnection pulumi.BoolOutput `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
-	Status   pulumi.StringOutput                   `pulumi:"status"`
-	Timeouts DatabasePostgresqlV2TimeoutsPtrOutput `pulumi:"timeouts"`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Whether this Managed Database should be suspended.
+	Suspended pulumi.BoolOutput                     `pulumi:"suspended"`
+	Timeouts  DatabasePostgresqlV2TimeoutsPtrOutput `pulumi:"timeouts"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -244,8 +246,10 @@ type databasePostgresqlV2State struct {
 	// Whether to require SSL credentials to establish a connection to the Managed Database.
 	SslConnection *bool `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
-	Status   *string                       `pulumi:"status"`
-	Timeouts *DatabasePostgresqlV2Timeouts `pulumi:"timeouts"`
+	Status *string `pulumi:"status"`
+	// Whether this Managed Database should be suspended.
+	Suspended *bool                         `pulumi:"suspended"`
+	Timeouts  *DatabasePostgresqlV2Timeouts `pulumi:"timeouts"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -304,8 +308,10 @@ type DatabasePostgresqlV2State struct {
 	// Whether to require SSL credentials to establish a connection to the Managed Database.
 	SslConnection pulumi.BoolPtrInput
 	// The operating status of the Managed Database.
-	Status   pulumi.StringPtrInput
-	Timeouts DatabasePostgresqlV2TimeoutsPtrInput
+	Status pulumi.StringPtrInput
+	// Whether this Managed Database should be suspended.
+	Suspended pulumi.BoolPtrInput
+	Timeouts  DatabasePostgresqlV2TimeoutsPtrInput
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -338,8 +344,10 @@ type databasePostgresqlV2Args struct {
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
 	// The region to use for the Managed Database.
-	Region   string                        `pulumi:"region"`
-	Timeouts *DatabasePostgresqlV2Timeouts `pulumi:"timeouts"`
+	Region string `pulumi:"region"`
+	// Whether this Managed Database should be suspended.
+	Suspended *bool                         `pulumi:"suspended"`
+	Timeouts  *DatabasePostgresqlV2Timeouts `pulumi:"timeouts"`
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -365,8 +373,10 @@ type DatabasePostgresqlV2Args struct {
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
 	// The region to use for the Managed Database.
-	Region   pulumi.StringInput
-	Timeouts DatabasePostgresqlV2TimeoutsPtrInput
+	Region pulumi.StringInput
+	// Whether this Managed Database should be suspended.
+	Suspended pulumi.BoolPtrInput
+	Timeouts  DatabasePostgresqlV2TimeoutsPtrInput
 	// The Linode Instance type used for the nodes of the Managed Database.
 	//
 	// ***
@@ -572,6 +582,11 @@ func (o DatabasePostgresqlV2Output) SslConnection() pulumi.BoolOutput {
 // The operating status of the Managed Database.
 func (o DatabasePostgresqlV2Output) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether this Managed Database should be suspended.
+func (o DatabasePostgresqlV2Output) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 func (o DatabasePostgresqlV2Output) Timeouts() DatabasePostgresqlV2TimeoutsPtrOutput {

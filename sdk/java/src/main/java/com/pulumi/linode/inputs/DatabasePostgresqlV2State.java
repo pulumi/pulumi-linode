@@ -356,6 +356,21 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Whether this Managed Database should be suspended.
+     * 
+     */
+    @Import(name="suspended")
+    private @Nullable Output<Boolean> suspended;
+
+    /**
+     * @return Whether this Managed Database should be suspended.
+     * 
+     */
+    public Optional<Output<Boolean>> suspended() {
+        return Optional.ofNullable(this.suspended);
+    }
+
     @Import(name="timeouts")
     private @Nullable Output<DatabasePostgresqlV2TimeoutsArgs> timeouts;
 
@@ -452,6 +467,7 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
         this.rootUsername = $.rootUsername;
         this.sslConnection = $.sslConnection;
         this.status = $.status;
+        this.suspended = $.suspended;
         this.timeouts = $.timeouts;
         this.type = $.type;
         this.updated = $.updated;
@@ -961,6 +977,27 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param suspended Whether this Managed Database should be suspended.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(@Nullable Output<Boolean> suspended) {
+            $.suspended = suspended;
+            return this;
+        }
+
+        /**
+         * @param suspended Whether this Managed Database should be suspended.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(Boolean suspended) {
+            return suspended(Output.of(suspended));
         }
 
         public Builder timeouts(@Nullable Output<DatabasePostgresqlV2TimeoutsArgs> timeouts) {

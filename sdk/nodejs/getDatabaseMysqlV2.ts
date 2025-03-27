@@ -147,6 +147,10 @@ export interface GetDatabaseMysqlV2Result {
      */
     readonly status: string;
     /**
+     * Whether this Managed Database is suspended.
+     */
+    readonly suspended: boolean;
+    /**
      * The Linode Instance type used for the nodes of the Managed Database.
      */
     readonly type: string;

@@ -15231,6 +15231,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15265,10 +15267,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15312,6 +15316,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15346,10 +15352,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15393,6 +15401,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15427,10 +15437,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15474,6 +15486,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15508,10 +15522,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15555,6 +15571,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15589,10 +15607,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15636,6 +15656,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15670,10 +15692,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15717,6 +15741,8 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = LinodeFunctions.getLkeVersions();
      * 
+     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }
@@ -15751,10 +15777,12 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *         final var exampleEnterprise = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
      *             .tier("enterprise")
      *             .build());
      * 
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
      *     }
      * }
      * }

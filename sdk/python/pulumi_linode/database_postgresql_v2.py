@@ -29,6 +29,7 @@ class DatabasePostgresqlV2Args:
                  cluster_size: Optional[pulumi.Input[int]] = None,
                  fork_restore_time: Optional[pulumi.Input[str]] = None,
                  fork_source: Optional[pulumi.Input[int]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input['DatabasePostgresqlV2TimeoutsArgs']] = None,
                  updates: Optional[pulumi.Input['DatabasePostgresqlV2UpdatesArgs']] = None):
         """
@@ -45,6 +46,7 @@ class DatabasePostgresqlV2Args:
         :param pulumi.Input[int] fork_source: The ID of the database that was forked from.
                
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input['DatabasePostgresqlV2UpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         pulumi.set(__self__, "engine_id", engine_id)
@@ -59,6 +61,8 @@ class DatabasePostgresqlV2Args:
             pulumi.set(__self__, "fork_restore_time", fork_restore_time)
         if fork_source is not None:
             pulumi.set(__self__, "fork_source", fork_source)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if updates is not None:
@@ -166,6 +170,18 @@ class DatabasePostgresqlV2Args:
 
     @property
     @pulumi.getter
+    def suspended(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this Managed Database should be suspended.
+        """
+        return pulumi.get(self, "suspended")
+
+    @suspended.setter
+    def suspended(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspended", value)
+
+    @property
+    @pulumi.getter
     def timeouts(self) -> Optional[pulumi.Input['DatabasePostgresqlV2TimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
@@ -211,6 +227,7 @@ class _DatabasePostgresqlV2State:
                  root_username: Optional[pulumi.Input[str]] = None,
                  ssl_connection: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input['DatabasePostgresqlV2TimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
@@ -242,6 +259,7 @@ class _DatabasePostgresqlV2State:
         :param pulumi.Input[str] root_username: The root username for the Managed Database instance.
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database.
         :param pulumi.Input[str] status: The operating status of the Managed Database.
+        :param pulumi.Input[bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the Managed Database.
                
                - - -
@@ -293,6 +311,8 @@ class _DatabasePostgresqlV2State:
             pulumi.set(__self__, "ssl_connection", ssl_connection)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
@@ -572,6 +592,18 @@ class _DatabasePostgresqlV2State:
 
     @property
     @pulumi.getter
+    def suspended(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this Managed Database should be suspended.
+        """
+        return pulumi.get(self, "suspended")
+
+    @suspended.setter
+    def suspended(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspended", value)
+
+    @property
+    @pulumi.getter
     def timeouts(self) -> Optional[pulumi.Input['DatabasePostgresqlV2TimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
@@ -642,6 +674,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                  fork_source: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input[Union['DatabasePostgresqlV2TimeoutsArgs', 'DatabasePostgresqlV2TimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  updates: Optional[pulumi.Input[Union['DatabasePostgresqlV2UpdatesArgs', 'DatabasePostgresqlV2UpdatesArgsDict']]] = None,
@@ -702,6 +735,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[str] region: The region to use for the Managed Database.
+        :param pulumi.Input[bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the Managed Database.
                
                - - -
@@ -780,6 +814,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                  fork_source: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input[Union['DatabasePostgresqlV2TimeoutsArgs', 'DatabasePostgresqlV2TimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  updates: Optional[pulumi.Input[Union['DatabasePostgresqlV2UpdatesArgs', 'DatabasePostgresqlV2UpdatesArgsDict']]] = None,
@@ -805,6 +840,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["suspended"] = suspended
             __props__.__dict__["timeouts"] = timeouts
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -861,6 +897,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             root_username: Optional[pulumi.Input[str]] = None,
             ssl_connection: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            suspended: Optional[pulumi.Input[bool]] = None,
             timeouts: Optional[pulumi.Input[Union['DatabasePostgresqlV2TimeoutsArgs', 'DatabasePostgresqlV2TimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated: Optional[pulumi.Input[str]] = None,
@@ -897,6 +934,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.Input[str] root_username: The root username for the Managed Database instance.
         :param pulumi.Input[bool] ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database.
         :param pulumi.Input[str] status: The operating status of the Managed Database.
+        :param pulumi.Input[bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[str] type: The Linode Instance type used for the nodes of the Managed Database.
                
                - - -
@@ -930,6 +968,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         __props__.__dict__["root_username"] = root_username
         __props__.__dict__["ssl_connection"] = ssl_connection
         __props__.__dict__["status"] = status
+        __props__.__dict__["suspended"] = suspended
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         __props__.__dict__["updated"] = updated
@@ -1114,6 +1153,14 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         The operating status of the Managed Database.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> pulumi.Output[bool]:
+        """
+        Whether this Managed Database should be suspended.
+        """
+        return pulumi.get(self, "suspended")
 
     @property
     @pulumi.getter

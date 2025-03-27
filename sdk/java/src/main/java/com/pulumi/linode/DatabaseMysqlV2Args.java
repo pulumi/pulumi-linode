@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.DatabaseMysqlV2TimeoutsArgs;
 import com.pulumi.linode.inputs.DatabaseMysqlV2UpdatesArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -129,6 +130,21 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
         return this.region;
     }
 
+    /**
+     * Whether this Managed Database should be suspended.
+     * 
+     */
+    @Import(name="suspended")
+    private @Nullable Output<Boolean> suspended;
+
+    /**
+     * @return Whether this Managed Database should be suspended.
+     * 
+     */
+    public Optional<Output<Boolean>> suspended() {
+        return Optional.ofNullable(this.suspended);
+    }
+
     @Import(name="timeouts")
     private @Nullable Output<DatabaseMysqlV2TimeoutsArgs> timeouts;
 
@@ -180,6 +196,7 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
         this.forkSource = $.forkSource;
         this.label = $.label;
         this.region = $.region;
+        this.suspended = $.suspended;
         this.timeouts = $.timeouts;
         this.type = $.type;
         this.updates = $.updates;
@@ -362,6 +379,27 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param suspended Whether this Managed Database should be suspended.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(@Nullable Output<Boolean> suspended) {
+            $.suspended = suspended;
+            return this;
+        }
+
+        /**
+         * @param suspended Whether this Managed Database should be suspended.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(Boolean suspended) {
+            return suspended(Output.of(suspended));
         }
 
         public Builder timeouts(@Nullable Output<DatabaseMysqlV2TimeoutsArgs> timeouts) {
